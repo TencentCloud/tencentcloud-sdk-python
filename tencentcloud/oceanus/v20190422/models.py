@@ -25,26 +25,51 @@ class CCN(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 私有网络 ID
+        :param _VpcId: 私有网络 ID
         :type VpcId: str
-        :param SubnetId: 子网 ID
+        :param _SubnetId: 子网 ID
         :type SubnetId: str
-        :param CcnId: 云联网 ID，如 ccn-rahigzjd
+        :param _CcnId: 云联网 ID，如 ccn-rahigzjd
         :type CcnId: str
         """
-        self.VpcId = None
-        self.SubnetId = None
-        self.CcnId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._CcnId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.CcnId = params.get("CcnId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._CcnId = params.get("CcnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,34 +82,75 @@ class CheckSavepointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业 id
+        :param _JobId: 作业 id
         :type JobId: str
-        :param SerialId: 快照资源 id
+        :param _SerialId: 快照资源 id
         :type SerialId: str
-        :param RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        :param _RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
         :type RecordType: int
-        :param SavepointPath: 快照路径，目前只支持 cos 路径
+        :param _SavepointPath: 快照路径，目前只支持 cos 路径
         :type SavepointPath: str
-        :param WorkSpaceId: 工作空间 id
+        :param _WorkSpaceId: 工作空间 id
         :type WorkSpaceId: str
         """
-        self.JobId = None
-        self.SerialId = None
-        self.RecordType = None
-        self.SavepointPath = None
-        self.WorkSpaceId = None
+        self._JobId = None
+        self._SerialId = None
+        self._RecordType = None
+        self._SavepointPath = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def SerialId(self):
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def RecordType(self):
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def SavepointPath(self):
+        return self._SavepointPath
+
+    @SavepointPath.setter
+    def SavepointPath(self, SavepointPath):
+        self._SavepointPath = SavepointPath
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.SerialId = params.get("SerialId")
-        self.RecordType = params.get("RecordType")
-        self.SavepointPath = params.get("SavepointPath")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._JobId = params.get("JobId")
+        self._SerialId = params.get("SerialId")
+        self._RecordType = params.get("RecordType")
+        self._SavepointPath = params.get("SavepointPath")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -97,22 +163,46 @@ class CheckSavepointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SerialId: 资源 id
+        :param _SerialId: 资源 id
         :type SerialId: str
-        :param SavepointStatus: 1=可用，2=不可用
+        :param _SavepointStatus: 1=可用，2=不可用
         :type SavepointStatus: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SerialId = None
-        self.SavepointStatus = None
-        self.RequestId = None
+        self._SerialId = None
+        self._SavepointStatus = None
+        self._RequestId = None
+
+    @property
+    def SerialId(self):
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def SavepointStatus(self):
+        return self._SavepointStatus
+
+    @SavepointStatus.setter
+    def SavepointStatus(self, SavepointStatus):
+        self._SavepointStatus = SavepointStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SerialId = params.get("SerialId")
-        self.SavepointStatus = params.get("SavepointStatus")
-        self.RequestId = params.get("RequestId")
+        self._SerialId = params.get("SerialId")
+        self._SavepointStatus = params.get("SavepointStatus")
+        self._RequestId = params.get("RequestId")
 
 
 class Cluster(AbstractModel):
@@ -122,199 +212,488 @@ class Cluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群 ID
+        :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param Name: 集群名称
+        :param _Name: 集群名称
         :type Name: str
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param AppId: 用户 AppID
+        :param _AppId: 用户 AppID
         :type AppId: int
-        :param OwnerUin: 主账号 UIN
+        :param _OwnerUin: 主账号 UIN
         :type OwnerUin: str
-        :param CreatorUin: 创建者 UIN
+        :param _CreatorUin: 创建者 UIN
         :type CreatorUin: str
-        :param Status: 集群状态, 1 未初始化,，3 初始化中，2 运行中
+        :param _Status: 集群状态, 1 未初始化,，3 初始化中，2 运行中
         :type Status: int
-        :param Remark: 描述
+        :param _Remark: 描述
         :type Remark: str
-        :param CreateTime: 集群创建时间
+        :param _CreateTime: 集群创建时间
         :type CreateTime: str
-        :param UpdateTime: 最后一次操作集群的时间
+        :param _UpdateTime: 最后一次操作集群的时间
         :type UpdateTime: str
-        :param CuNum: CU 数量
+        :param _CuNum: CU 数量
         :type CuNum: int
-        :param CuMem: CU 内存规格
+        :param _CuMem: CU 内存规格
         :type CuMem: int
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param StatusDesc: 状态描述
+        :param _StatusDesc: 状态描述
         :type StatusDesc: str
-        :param CCNs: 网络
+        :param _CCNs: 网络
         :type CCNs: list of CCN
-        :param NetEnvironmentType: 网络
+        :param _NetEnvironmentType: 网络
         :type NetEnvironmentType: int
-        :param FreeCuNum: 空闲 CU
+        :param _FreeCuNum: 空闲 CU
         :type FreeCuNum: int
-        :param Tags: 集群绑定的标签
+        :param _Tags: 集群绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param IsolatedTime: 集群隔离时间; 没隔离时间，则为 -
+        :param _IsolatedTime: 集群隔离时间; 没隔离时间，则为 -
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTime: str
-        :param ExpireTime: 集群过期时间; 没过期概念，则为 -
+        :param _ExpireTime: 集群过期时间; 没过期概念，则为 -
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param SecondsUntilExpiry: 距离过期还有多少秒; 没过期概念，则为 -
+        :param _SecondsUntilExpiry: 距离过期还有多少秒; 没过期概念，则为 -
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondsUntilExpiry: str
-        :param AutoRenewFlag: 自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutoRenewFlag: 自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
-        :param DefaultCOSBucket: 集群的默认 COS 存储桶
+        :param _DefaultCOSBucket: 集群的默认 COS 存储桶
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultCOSBucket: str
-        :param CLSLogSet: 集群的CLS 日志集 LogSet
+        :param _CLSLogSet: 集群的CLS 日志集 LogSet
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSLogSet: str
-        :param CLSTopicId: 集群的CLS 日志主题 TopicId
+        :param _CLSTopicId: 集群的CLS 日志主题 TopicId
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSTopicId: str
-        :param CLSLogName: 集群的CLS 日志集  名字
+        :param _CLSLogName: 集群的CLS 日志集  名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSLogName: str
-        :param CLSTopicName: 集群的CLS 日志主题  名字
+        :param _CLSTopicName: 集群的CLS 日志主题  名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSTopicName: str
-        :param Version: 集群的版本信息
+        :param _Version: 集群的版本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: :class:`tencentcloud.oceanus.v20190422.models.ClusterVersion`
-        :param FreeCu: 细粒度资源下的空闲CU
+        :param _FreeCu: 细粒度资源下的空闲CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreeCu: float
-        :param DefaultLogCollectConf: 集群的默认日志采集配置
+        :param _DefaultLogCollectConf: 集群的默认日志采集配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultLogCollectConf: str
-        :param CustomizedDNSEnabled: 取值：0-没有设置，1-已设置，2-不允许设置
+        :param _CustomizedDNSEnabled: 取值：0-没有设置，1-已设置，2-不允许设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomizedDNSEnabled: int
-        :param Correlations: 空间信息
+        :param _Correlations: 空间信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Correlations: list of WorkSpaceClusterItem
-        :param RunningCu: 运行CU
+        :param _RunningCu: 运行CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
-        :param PayMode: 0 后付费,1 预付费
+        :param _PayMode: 0 后付费,1 预付费
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
-        :param IsNeedManageNode: 前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
+        :param _IsNeedManageNode: 前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNeedManageNode: int
-        :param ClusterSessions: session集群信息
+        :param _ClusterSessions: session集群信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterSessions: list of ClusterSession
         """
-        self.ClusterId = None
-        self.Name = None
-        self.Region = None
-        self.AppId = None
-        self.OwnerUin = None
-        self.CreatorUin = None
-        self.Status = None
-        self.Remark = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.CuNum = None
-        self.CuMem = None
-        self.Zone = None
-        self.StatusDesc = None
-        self.CCNs = None
-        self.NetEnvironmentType = None
-        self.FreeCuNum = None
-        self.Tags = None
-        self.IsolatedTime = None
-        self.ExpireTime = None
-        self.SecondsUntilExpiry = None
-        self.AutoRenewFlag = None
-        self.DefaultCOSBucket = None
-        self.CLSLogSet = None
-        self.CLSTopicId = None
-        self.CLSLogName = None
-        self.CLSTopicName = None
-        self.Version = None
-        self.FreeCu = None
-        self.DefaultLogCollectConf = None
-        self.CustomizedDNSEnabled = None
-        self.Correlations = None
-        self.RunningCu = None
-        self.PayMode = None
-        self.IsNeedManageNode = None
-        self.ClusterSessions = None
+        self._ClusterId = None
+        self._Name = None
+        self._Region = None
+        self._AppId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._Status = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CuNum = None
+        self._CuMem = None
+        self._Zone = None
+        self._StatusDesc = None
+        self._CCNs = None
+        self._NetEnvironmentType = None
+        self._FreeCuNum = None
+        self._Tags = None
+        self._IsolatedTime = None
+        self._ExpireTime = None
+        self._SecondsUntilExpiry = None
+        self._AutoRenewFlag = None
+        self._DefaultCOSBucket = None
+        self._CLSLogSet = None
+        self._CLSTopicId = None
+        self._CLSLogName = None
+        self._CLSTopicName = None
+        self._Version = None
+        self._FreeCu = None
+        self._DefaultLogCollectConf = None
+        self._CustomizedDNSEnabled = None
+        self._Correlations = None
+        self._RunningCu = None
+        self._PayMode = None
+        self._IsNeedManageNode = None
+        self._ClusterSessions = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CuNum(self):
+        return self._CuNum
+
+    @CuNum.setter
+    def CuNum(self, CuNum):
+        self._CuNum = CuNum
+
+    @property
+    def CuMem(self):
+        return self._CuMem
+
+    @CuMem.setter
+    def CuMem(self, CuMem):
+        self._CuMem = CuMem
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def CCNs(self):
+        return self._CCNs
+
+    @CCNs.setter
+    def CCNs(self, CCNs):
+        self._CCNs = CCNs
+
+    @property
+    def NetEnvironmentType(self):
+        return self._NetEnvironmentType
+
+    @NetEnvironmentType.setter
+    def NetEnvironmentType(self, NetEnvironmentType):
+        self._NetEnvironmentType = NetEnvironmentType
+
+    @property
+    def FreeCuNum(self):
+        return self._FreeCuNum
+
+    @FreeCuNum.setter
+    def FreeCuNum(self, FreeCuNum):
+        self._FreeCuNum = FreeCuNum
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def IsolatedTime(self):
+        return self._IsolatedTime
+
+    @IsolatedTime.setter
+    def IsolatedTime(self, IsolatedTime):
+        self._IsolatedTime = IsolatedTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SecondsUntilExpiry(self):
+        return self._SecondsUntilExpiry
+
+    @SecondsUntilExpiry.setter
+    def SecondsUntilExpiry(self, SecondsUntilExpiry):
+        self._SecondsUntilExpiry = SecondsUntilExpiry
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def DefaultCOSBucket(self):
+        return self._DefaultCOSBucket
+
+    @DefaultCOSBucket.setter
+    def DefaultCOSBucket(self, DefaultCOSBucket):
+        self._DefaultCOSBucket = DefaultCOSBucket
+
+    @property
+    def CLSLogSet(self):
+        return self._CLSLogSet
+
+    @CLSLogSet.setter
+    def CLSLogSet(self, CLSLogSet):
+        self._CLSLogSet = CLSLogSet
+
+    @property
+    def CLSTopicId(self):
+        return self._CLSTopicId
+
+    @CLSTopicId.setter
+    def CLSTopicId(self, CLSTopicId):
+        self._CLSTopicId = CLSTopicId
+
+    @property
+    def CLSLogName(self):
+        return self._CLSLogName
+
+    @CLSLogName.setter
+    def CLSLogName(self, CLSLogName):
+        self._CLSLogName = CLSLogName
+
+    @property
+    def CLSTopicName(self):
+        return self._CLSTopicName
+
+    @CLSTopicName.setter
+    def CLSTopicName(self, CLSTopicName):
+        self._CLSTopicName = CLSTopicName
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def FreeCu(self):
+        return self._FreeCu
+
+    @FreeCu.setter
+    def FreeCu(self, FreeCu):
+        self._FreeCu = FreeCu
+
+    @property
+    def DefaultLogCollectConf(self):
+        return self._DefaultLogCollectConf
+
+    @DefaultLogCollectConf.setter
+    def DefaultLogCollectConf(self, DefaultLogCollectConf):
+        self._DefaultLogCollectConf = DefaultLogCollectConf
+
+    @property
+    def CustomizedDNSEnabled(self):
+        return self._CustomizedDNSEnabled
+
+    @CustomizedDNSEnabled.setter
+    def CustomizedDNSEnabled(self, CustomizedDNSEnabled):
+        self._CustomizedDNSEnabled = CustomizedDNSEnabled
+
+    @property
+    def Correlations(self):
+        return self._Correlations
+
+    @Correlations.setter
+    def Correlations(self, Correlations):
+        self._Correlations = Correlations
+
+    @property
+    def RunningCu(self):
+        return self._RunningCu
+
+    @RunningCu.setter
+    def RunningCu(self, RunningCu):
+        self._RunningCu = RunningCu
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def IsNeedManageNode(self):
+        return self._IsNeedManageNode
+
+    @IsNeedManageNode.setter
+    def IsNeedManageNode(self, IsNeedManageNode):
+        self._IsNeedManageNode = IsNeedManageNode
+
+    @property
+    def ClusterSessions(self):
+        return self._ClusterSessions
+
+    @ClusterSessions.setter
+    def ClusterSessions(self, ClusterSessions):
+        self._ClusterSessions = ClusterSessions
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.Name = params.get("Name")
-        self.Region = params.get("Region")
-        self.AppId = params.get("AppId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.CreatorUin = params.get("CreatorUin")
-        self.Status = params.get("Status")
-        self.Remark = params.get("Remark")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.CuNum = params.get("CuNum")
-        self.CuMem = params.get("CuMem")
-        self.Zone = params.get("Zone")
-        self.StatusDesc = params.get("StatusDesc")
+        self._ClusterId = params.get("ClusterId")
+        self._Name = params.get("Name")
+        self._Region = params.get("Region")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CuNum = params.get("CuNum")
+        self._CuMem = params.get("CuMem")
+        self._Zone = params.get("Zone")
+        self._StatusDesc = params.get("StatusDesc")
         if params.get("CCNs") is not None:
-            self.CCNs = []
+            self._CCNs = []
             for item in params.get("CCNs"):
                 obj = CCN()
                 obj._deserialize(item)
-                self.CCNs.append(obj)
-        self.NetEnvironmentType = params.get("NetEnvironmentType")
-        self.FreeCuNum = params.get("FreeCuNum")
+                self._CCNs.append(obj)
+        self._NetEnvironmentType = params.get("NetEnvironmentType")
+        self._FreeCuNum = params.get("FreeCuNum")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.IsolatedTime = params.get("IsolatedTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.SecondsUntilExpiry = params.get("SecondsUntilExpiry")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.DefaultCOSBucket = params.get("DefaultCOSBucket")
-        self.CLSLogSet = params.get("CLSLogSet")
-        self.CLSTopicId = params.get("CLSTopicId")
-        self.CLSLogName = params.get("CLSLogName")
-        self.CLSTopicName = params.get("CLSTopicName")
+                self._Tags.append(obj)
+        self._IsolatedTime = params.get("IsolatedTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._SecondsUntilExpiry = params.get("SecondsUntilExpiry")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._DefaultCOSBucket = params.get("DefaultCOSBucket")
+        self._CLSLogSet = params.get("CLSLogSet")
+        self._CLSTopicId = params.get("CLSTopicId")
+        self._CLSLogName = params.get("CLSLogName")
+        self._CLSTopicName = params.get("CLSTopicName")
         if params.get("Version") is not None:
-            self.Version = ClusterVersion()
-            self.Version._deserialize(params.get("Version"))
-        self.FreeCu = params.get("FreeCu")
-        self.DefaultLogCollectConf = params.get("DefaultLogCollectConf")
-        self.CustomizedDNSEnabled = params.get("CustomizedDNSEnabled")
+            self._Version = ClusterVersion()
+            self._Version._deserialize(params.get("Version"))
+        self._FreeCu = params.get("FreeCu")
+        self._DefaultLogCollectConf = params.get("DefaultLogCollectConf")
+        self._CustomizedDNSEnabled = params.get("CustomizedDNSEnabled")
         if params.get("Correlations") is not None:
-            self.Correlations = []
+            self._Correlations = []
             for item in params.get("Correlations"):
                 obj = WorkSpaceClusterItem()
                 obj._deserialize(item)
-                self.Correlations.append(obj)
-        self.RunningCu = params.get("RunningCu")
-        self.PayMode = params.get("PayMode")
-        self.IsNeedManageNode = params.get("IsNeedManageNode")
+                self._Correlations.append(obj)
+        self._RunningCu = params.get("RunningCu")
+        self._PayMode = params.get("PayMode")
+        self._IsNeedManageNode = params.get("IsNeedManageNode")
         if params.get("ClusterSessions") is not None:
-            self.ClusterSessions = []
+            self._ClusterSessions = []
             for item in params.get("ClusterSessions"):
                 obj = ClusterSession()
                 obj._deserialize(item)
-                self.ClusterSessions.append(obj)
+                self._ClusterSessions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -327,90 +706,243 @@ class ClusterGroupSetItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: clusterGroup 的 SerialId
+        :param _ClusterId: clusterGroup 的 SerialId
         :type ClusterId: str
-        :param Name: 集群名称
+        :param _Name: 集群名称
         :type Name: str
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param Zone: 区
+        :param _Zone: 区
         :type Zone: str
-        :param AppId: 账号 APPID
+        :param _AppId: 账号 APPID
         :type AppId: int
-        :param OwnerUin: 主账号 UIN
+        :param _OwnerUin: 主账号 UIN
         :type OwnerUin: str
-        :param CreatorUin: 创建账号 UIN
+        :param _CreatorUin: 创建账号 UIN
         :type CreatorUin: str
-        :param CuNum: CU 数量
+        :param _CuNum: CU 数量
         :type CuNum: int
-        :param CuMem: CU 内存规格
+        :param _CuMem: CU 内存规格
         :type CuMem: int
-        :param Status: 集群状态, 1 未初始化,，3 初始化中，2 运行中
+        :param _Status: 集群状态, 1 未初始化,，3 初始化中，2 运行中
         :type Status: int
-        :param StatusDesc: 状态描述
+        :param _StatusDesc: 状态描述
         :type StatusDesc: str
-        :param CreateTime: 集群创建时间
+        :param _CreateTime: 集群创建时间
         :type CreateTime: str
-        :param UpdateTime: 最后一次操作集群的时间
+        :param _UpdateTime: 最后一次操作集群的时间
         :type UpdateTime: str
-        :param Remark: 描述
+        :param _Remark: 描述
         :type Remark: str
-        :param NetEnvironmentType: 网络
+        :param _NetEnvironmentType: 网络
         :type NetEnvironmentType: int
-        :param FreeCuNum: 空闲 CU
+        :param _FreeCuNum: 空闲 CU
         :type FreeCuNum: int
-        :param FreeCu: 细粒度资源下的空闲CU
+        :param _FreeCu: 细粒度资源下的空闲CU
         :type FreeCu: float
-        :param RunningCu: 运行中CU
+        :param _RunningCu: 运行中CU
         :type RunningCu: float
-        :param PayMode: 付费模式
+        :param _PayMode: 付费模式
         :type PayMode: int
         """
-        self.ClusterId = None
-        self.Name = None
-        self.Region = None
-        self.Zone = None
-        self.AppId = None
-        self.OwnerUin = None
-        self.CreatorUin = None
-        self.CuNum = None
-        self.CuMem = None
-        self.Status = None
-        self.StatusDesc = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Remark = None
-        self.NetEnvironmentType = None
-        self.FreeCuNum = None
-        self.FreeCu = None
-        self.RunningCu = None
-        self.PayMode = None
+        self._ClusterId = None
+        self._Name = None
+        self._Region = None
+        self._Zone = None
+        self._AppId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._CuNum = None
+        self._CuMem = None
+        self._Status = None
+        self._StatusDesc = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Remark = None
+        self._NetEnvironmentType = None
+        self._FreeCuNum = None
+        self._FreeCu = None
+        self._RunningCu = None
+        self._PayMode = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CuNum(self):
+        return self._CuNum
+
+    @CuNum.setter
+    def CuNum(self, CuNum):
+        self._CuNum = CuNum
+
+    @property
+    def CuMem(self):
+        return self._CuMem
+
+    @CuMem.setter
+    def CuMem(self, CuMem):
+        self._CuMem = CuMem
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def NetEnvironmentType(self):
+        return self._NetEnvironmentType
+
+    @NetEnvironmentType.setter
+    def NetEnvironmentType(self, NetEnvironmentType):
+        self._NetEnvironmentType = NetEnvironmentType
+
+    @property
+    def FreeCuNum(self):
+        return self._FreeCuNum
+
+    @FreeCuNum.setter
+    def FreeCuNum(self, FreeCuNum):
+        self._FreeCuNum = FreeCuNum
+
+    @property
+    def FreeCu(self):
+        return self._FreeCu
+
+    @FreeCu.setter
+    def FreeCu(self, FreeCu):
+        self._FreeCu = FreeCu
+
+    @property
+    def RunningCu(self):
+        return self._RunningCu
+
+    @RunningCu.setter
+    def RunningCu(self, RunningCu):
+        self._RunningCu = RunningCu
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.Name = params.get("Name")
-        self.Region = params.get("Region")
-        self.Zone = params.get("Zone")
-        self.AppId = params.get("AppId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.CreatorUin = params.get("CreatorUin")
-        self.CuNum = params.get("CuNum")
-        self.CuMem = params.get("CuMem")
-        self.Status = params.get("Status")
-        self.StatusDesc = params.get("StatusDesc")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Remark = params.get("Remark")
-        self.NetEnvironmentType = params.get("NetEnvironmentType")
-        self.FreeCuNum = params.get("FreeCuNum")
-        self.FreeCu = params.get("FreeCu")
-        self.RunningCu = params.get("RunningCu")
-        self.PayMode = params.get("PayMode")
+        self._ClusterId = params.get("ClusterId")
+        self._Name = params.get("Name")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
+        self._CuNum = params.get("CuNum")
+        self._CuMem = params.get("CuMem")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Remark = params.get("Remark")
+        self._NetEnvironmentType = params.get("NetEnvironmentType")
+        self._FreeCuNum = params.get("FreeCuNum")
+        self._FreeCu = params.get("FreeCu")
+        self._RunningCu = params.get("RunningCu")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -429,24 +961,41 @@ class ClusterVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Flink: 集群的Flink版本
+        :param _Flink: 集群的Flink版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Flink: str
-        :param SupportedFlink: 集群支持的Flink版本
+        :param _SupportedFlink: 集群支持的Flink版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportedFlink: list of str
         """
-        self.Flink = None
-        self.SupportedFlink = None
+        self._Flink = None
+        self._SupportedFlink = None
+
+    @property
+    def Flink(self):
+        return self._Flink
+
+    @Flink.setter
+    def Flink(self, Flink):
+        self._Flink = Flink
+
+    @property
+    def SupportedFlink(self):
+        return self._SupportedFlink
+
+    @SupportedFlink.setter
+    def SupportedFlink(self, SupportedFlink):
+        self._SupportedFlink = SupportedFlink
 
 
     def _deserialize(self, params):
-        self.Flink = params.get("Flink")
-        self.SupportedFlink = params.get("SupportedFlink")
+        self._Flink = params.get("Flink")
+        self._SupportedFlink = params.get("SupportedFlink")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -459,38 +1008,87 @@ class CopyJobItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceId: 需要复制的作业serial id
+        :param _SourceId: 需要复制的作业serial id
         :type SourceId: str
-        :param TargetClusterId: 目标集群的cluster serial id
+        :param _TargetClusterId: 目标集群的cluster serial id
         :type TargetClusterId: str
-        :param SourceName: 需要复制的作业名称
+        :param _SourceName: 需要复制的作业名称
         :type SourceName: str
-        :param TargetName: 新作业的名称
+        :param _TargetName: 新作业的名称
         :type TargetName: str
-        :param TargetFolderId: 新作业的目录id
+        :param _TargetFolderId: 新作业的目录id
         :type TargetFolderId: str
-        :param JobType: 源作业类型
+        :param _JobType: 源作业类型
         :type JobType: int
         """
-        self.SourceId = None
-        self.TargetClusterId = None
-        self.SourceName = None
-        self.TargetName = None
-        self.TargetFolderId = None
-        self.JobType = None
+        self._SourceId = None
+        self._TargetClusterId = None
+        self._SourceName = None
+        self._TargetName = None
+        self._TargetFolderId = None
+        self._JobType = None
+
+    @property
+    def SourceId(self):
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def TargetClusterId(self):
+        return self._TargetClusterId
+
+    @TargetClusterId.setter
+    def TargetClusterId(self, TargetClusterId):
+        self._TargetClusterId = TargetClusterId
+
+    @property
+    def SourceName(self):
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def TargetName(self):
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
+    @property
+    def TargetFolderId(self):
+        return self._TargetFolderId
+
+    @TargetFolderId.setter
+    def TargetFolderId(self, TargetFolderId):
+        self._TargetFolderId = TargetFolderId
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
 
 
     def _deserialize(self, params):
-        self.SourceId = params.get("SourceId")
-        self.TargetClusterId = params.get("TargetClusterId")
-        self.SourceName = params.get("SourceName")
-        self.TargetName = params.get("TargetName")
-        self.TargetFolderId = params.get("TargetFolderId")
-        self.JobType = params.get("JobType")
+        self._SourceId = params.get("SourceId")
+        self._TargetClusterId = params.get("TargetClusterId")
+        self._SourceName = params.get("SourceName")
+        self._TargetName = params.get("TargetName")
+        self._TargetFolderId = params.get("TargetFolderId")
+        self._JobType = params.get("JobType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -503,59 +1101,132 @@ class CopyJobResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 原作业id
+        :param _JobId: 原作业id
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param JobName: 原作业名称
+        :param _JobName: 原作业名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
-        :param TargetJobName: 新作业名称
+        :param _TargetJobName: 新作业名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetJobName: str
-        :param TargetJobId: 新作业id
+        :param _TargetJobId: 新作业id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetJobId: str
-        :param Message: 失败时候的信息
+        :param _Message: 失败时候的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Result: 0 成功  -1 失败
+        :param _Result: 0 成功  -1 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
-        :param ClusterName: 目标集群名称
+        :param _ClusterName: 目标集群名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param ClusterId: 目标集群id
+        :param _ClusterId: 目标集群id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param JobType: 作业类型
+        :param _JobType: 作业类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: int
         """
-        self.JobId = None
-        self.JobName = None
-        self.TargetJobName = None
-        self.TargetJobId = None
-        self.Message = None
-        self.Result = None
-        self.ClusterName = None
-        self.ClusterId = None
-        self.JobType = None
+        self._JobId = None
+        self._JobName = None
+        self._TargetJobName = None
+        self._TargetJobId = None
+        self._Message = None
+        self._Result = None
+        self._ClusterName = None
+        self._ClusterId = None
+        self._JobType = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def TargetJobName(self):
+        return self._TargetJobName
+
+    @TargetJobName.setter
+    def TargetJobName(self, TargetJobName):
+        self._TargetJobName = TargetJobName
+
+    @property
+    def TargetJobId(self):
+        return self._TargetJobId
+
+    @TargetJobId.setter
+    def TargetJobId(self, TargetJobId):
+        self._TargetJobId = TargetJobId
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.TargetJobName = params.get("TargetJobName")
-        self.TargetJobId = params.get("TargetJobId")
-        self.Message = params.get("Message")
-        self.Result = params.get("Result")
-        self.ClusterName = params.get("ClusterName")
-        self.ClusterId = params.get("ClusterId")
-        self.JobType = params.get("JobType")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._TargetJobName = params.get("TargetJobName")
+        self._TargetJobId = params.get("TargetJobId")
+        self._Message = params.get("Message")
+        self._Result = params.get("Result")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterId = params.get("ClusterId")
+        self._JobType = params.get("JobType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -568,27 +1239,44 @@ class CopyJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobItems: 复制明细列表
+        :param _JobItems: 复制明细列表
         :type JobItems: list of CopyJobItem
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.JobItems = None
-        self.WorkSpaceId = None
+        self._JobItems = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobItems(self):
+        return self._JobItems
+
+    @JobItems.setter
+    def JobItems(self, JobItems):
+        self._JobItems = JobItems
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
         if params.get("JobItems") is not None:
-            self.JobItems = []
+            self._JobItems = []
             for item in params.get("JobItems"):
                 obj = CopyJobItem()
                 obj._deserialize(item)
-                self.JobItems.append(obj)
-        self.WorkSpaceId = params.get("WorkSpaceId")
+                self._JobItems.append(obj)
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -601,34 +1289,66 @@ class CopyJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SuccessCount: 成功条数
+        :param _SuccessCount: 成功条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCount: int
-        :param FailCount: 失败条数
+        :param _FailCount: 失败条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailCount: int
-        :param CopyJobsResults: 结果列表
+        :param _CopyJobsResults: 结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CopyJobsResults: list of CopyJobResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SuccessCount = None
-        self.FailCount = None
-        self.CopyJobsResults = None
-        self.RequestId = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._CopyJobsResults = None
+        self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def CopyJobsResults(self):
+        return self._CopyJobsResults
+
+    @CopyJobsResults.setter
+    def CopyJobsResults(self, CopyJobsResults):
+        self._CopyJobsResults = CopyJobsResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SuccessCount = params.get("SuccessCount")
-        self.FailCount = params.get("FailCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
         if params.get("CopyJobsResults") is not None:
-            self.CopyJobsResults = []
+            self._CopyJobsResults = []
             for item in params.get("CopyJobsResults"):
                 obj = CopyJobResult()
                 obj._deserialize(item)
-                self.CopyJobsResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CopyJobsResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFolderRequest(AbstractModel):
@@ -638,30 +1358,63 @@ class CreateFolderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FolderName: 新建文件夹名
+        :param _FolderName: 新建文件夹名
         :type FolderName: str
-        :param ParentId: 新建文件夹的父目录ID
+        :param _ParentId: 新建文件夹的父目录ID
         :type ParentId: str
-        :param FolderType: 文件夹类型，0是任务文件夹，1是依赖文件夹
+        :param _FolderType: 文件夹类型，0是任务文件夹，1是依赖文件夹
         :type FolderType: int
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.FolderName = None
-        self.ParentId = None
-        self.FolderType = None
-        self.WorkSpaceId = None
+        self._FolderName = None
+        self._ParentId = None
+        self._FolderType = None
+        self._WorkSpaceId = None
+
+    @property
+    def FolderName(self):
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def FolderType(self):
+        return self._FolderType
+
+    @FolderType.setter
+    def FolderType(self, FolderType):
+        self._FolderType = FolderType
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.FolderName = params.get("FolderName")
-        self.ParentId = params.get("ParentId")
-        self.FolderType = params.get("FolderType")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._FolderName = params.get("FolderName")
+        self._ParentId = params.get("ParentId")
+        self._FolderType = params.get("FolderType")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -674,18 +1427,34 @@ class CreateFolderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FolderId: 新建文件夹的唯一ID
+        :param _FolderId: 新建文件夹的唯一ID
         :type FolderId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FolderId = None
-        self.RequestId = None
+        self._FolderId = None
+        self._RequestId = None
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FolderId = params.get("FolderId")
-        self.RequestId = params.get("RequestId")
+        self._FolderId = params.get("FolderId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateJobConfigRequest(AbstractModel):
@@ -695,100 +1464,253 @@ class CreateJobConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业Id
+        :param _JobId: 作业Id
         :type JobId: str
-        :param EntrypointClass: 主类
+        :param _EntrypointClass: 主类
         :type EntrypointClass: str
-        :param ProgramArgs: 主类入参
+        :param _ProgramArgs: 主类入参
         :type ProgramArgs: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param ResourceRefs: 资源引用数组
+        :param _ResourceRefs: 资源引用数组
         :type ResourceRefs: list of ResourceRef
-        :param DefaultParallelism: 作业默认并行度
+        :param _DefaultParallelism: 作业默认并行度
         :type DefaultParallelism: int
-        :param Properties: 系统参数
+        :param _Properties: 系统参数
         :type Properties: list of Property
-        :param AutoDelete: 1: 作业配置达到上限之后，自动删除可删除的最早版本
+        :param _AutoDelete: 1: 作业配置达到上限之后，自动删除可删除的最早版本
         :type AutoDelete: int
-        :param COSBucket: 作业使用的 COS 存储桶名
+        :param _COSBucket: 作业使用的 COS 存储桶名
         :type COSBucket: str
-        :param LogCollect: 是否采集作业日志
+        :param _LogCollect: 是否采集作业日志
         :type LogCollect: bool
-        :param JobManagerSpec: JobManager规格
+        :param _JobManagerSpec: JobManager规格
         :type JobManagerSpec: float
-        :param TaskManagerSpec: TaskManager规格
+        :param _TaskManagerSpec: TaskManager规格
         :type TaskManagerSpec: float
-        :param ClsLogsetId: CLS日志集ID
+        :param _ClsLogsetId: CLS日志集ID
         :type ClsLogsetId: str
-        :param ClsTopicId: CLS日志主题ID
+        :param _ClsTopicId: CLS日志主题ID
         :type ClsTopicId: str
-        :param LogCollectType: 日志采集类型 2：CLS；3：COS
+        :param _LogCollectType: 日志采集类型 2：CLS；3：COS
         :type LogCollectType: int
-        :param PythonVersion: pyflink作业运行时使用的python版本
+        :param _PythonVersion: pyflink作业运行时使用的python版本
         :type PythonVersion: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
-        :param LogLevel: 日志级别
+        :param _LogLevel: 日志级别
         :type LogLevel: str
-        :param AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        :param _AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
         :type AutoRecover: int
         """
-        self.JobId = None
-        self.EntrypointClass = None
-        self.ProgramArgs = None
-        self.Remark = None
-        self.ResourceRefs = None
-        self.DefaultParallelism = None
-        self.Properties = None
-        self.AutoDelete = None
-        self.COSBucket = None
-        self.LogCollect = None
-        self.JobManagerSpec = None
-        self.TaskManagerSpec = None
-        self.ClsLogsetId = None
-        self.ClsTopicId = None
-        self.LogCollectType = None
-        self.PythonVersion = None
-        self.WorkSpaceId = None
-        self.LogLevel = None
-        self.AutoRecover = None
+        self._JobId = None
+        self._EntrypointClass = None
+        self._ProgramArgs = None
+        self._Remark = None
+        self._ResourceRefs = None
+        self._DefaultParallelism = None
+        self._Properties = None
+        self._AutoDelete = None
+        self._COSBucket = None
+        self._LogCollect = None
+        self._JobManagerSpec = None
+        self._TaskManagerSpec = None
+        self._ClsLogsetId = None
+        self._ClsTopicId = None
+        self._LogCollectType = None
+        self._PythonVersion = None
+        self._WorkSpaceId = None
+        self._LogLevel = None
+        self._AutoRecover = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def EntrypointClass(self):
+        return self._EntrypointClass
+
+    @EntrypointClass.setter
+    def EntrypointClass(self, EntrypointClass):
+        self._EntrypointClass = EntrypointClass
+
+    @property
+    def ProgramArgs(self):
+        return self._ProgramArgs
+
+    @ProgramArgs.setter
+    def ProgramArgs(self, ProgramArgs):
+        self._ProgramArgs = ProgramArgs
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ResourceRefs(self):
+        return self._ResourceRefs
+
+    @ResourceRefs.setter
+    def ResourceRefs(self, ResourceRefs):
+        self._ResourceRefs = ResourceRefs
+
+    @property
+    def DefaultParallelism(self):
+        return self._DefaultParallelism
+
+    @DefaultParallelism.setter
+    def DefaultParallelism(self, DefaultParallelism):
+        self._DefaultParallelism = DefaultParallelism
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def AutoDelete(self):
+        return self._AutoDelete
+
+    @AutoDelete.setter
+    def AutoDelete(self, AutoDelete):
+        self._AutoDelete = AutoDelete
+
+    @property
+    def COSBucket(self):
+        return self._COSBucket
+
+    @COSBucket.setter
+    def COSBucket(self, COSBucket):
+        self._COSBucket = COSBucket
+
+    @property
+    def LogCollect(self):
+        return self._LogCollect
+
+    @LogCollect.setter
+    def LogCollect(self, LogCollect):
+        self._LogCollect = LogCollect
+
+    @property
+    def JobManagerSpec(self):
+        return self._JobManagerSpec
+
+    @JobManagerSpec.setter
+    def JobManagerSpec(self, JobManagerSpec):
+        self._JobManagerSpec = JobManagerSpec
+
+    @property
+    def TaskManagerSpec(self):
+        return self._TaskManagerSpec
+
+    @TaskManagerSpec.setter
+    def TaskManagerSpec(self, TaskManagerSpec):
+        self._TaskManagerSpec = TaskManagerSpec
+
+    @property
+    def ClsLogsetId(self):
+        return self._ClsLogsetId
+
+    @ClsLogsetId.setter
+    def ClsLogsetId(self, ClsLogsetId):
+        self._ClsLogsetId = ClsLogsetId
+
+    @property
+    def ClsTopicId(self):
+        return self._ClsTopicId
+
+    @ClsTopicId.setter
+    def ClsTopicId(self, ClsTopicId):
+        self._ClsTopicId = ClsTopicId
+
+    @property
+    def LogCollectType(self):
+        return self._LogCollectType
+
+    @LogCollectType.setter
+    def LogCollectType(self, LogCollectType):
+        self._LogCollectType = LogCollectType
+
+    @property
+    def PythonVersion(self):
+        return self._PythonVersion
+
+    @PythonVersion.setter
+    def PythonVersion(self, PythonVersion):
+        self._PythonVersion = PythonVersion
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def LogLevel(self):
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def AutoRecover(self):
+        return self._AutoRecover
+
+    @AutoRecover.setter
+    def AutoRecover(self, AutoRecover):
+        self._AutoRecover = AutoRecover
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.EntrypointClass = params.get("EntrypointClass")
-        self.ProgramArgs = params.get("ProgramArgs")
-        self.Remark = params.get("Remark")
+        self._JobId = params.get("JobId")
+        self._EntrypointClass = params.get("EntrypointClass")
+        self._ProgramArgs = params.get("ProgramArgs")
+        self._Remark = params.get("Remark")
         if params.get("ResourceRefs") is not None:
-            self.ResourceRefs = []
+            self._ResourceRefs = []
             for item in params.get("ResourceRefs"):
                 obj = ResourceRef()
                 obj._deserialize(item)
-                self.ResourceRefs.append(obj)
-        self.DefaultParallelism = params.get("DefaultParallelism")
+                self._ResourceRefs.append(obj)
+        self._DefaultParallelism = params.get("DefaultParallelism")
         if params.get("Properties") is not None:
-            self.Properties = []
+            self._Properties = []
             for item in params.get("Properties"):
                 obj = Property()
                 obj._deserialize(item)
-                self.Properties.append(obj)
-        self.AutoDelete = params.get("AutoDelete")
-        self.COSBucket = params.get("COSBucket")
-        self.LogCollect = params.get("LogCollect")
-        self.JobManagerSpec = params.get("JobManagerSpec")
-        self.TaskManagerSpec = params.get("TaskManagerSpec")
-        self.ClsLogsetId = params.get("ClsLogsetId")
-        self.ClsTopicId = params.get("ClsTopicId")
-        self.LogCollectType = params.get("LogCollectType")
-        self.PythonVersion = params.get("PythonVersion")
-        self.WorkSpaceId = params.get("WorkSpaceId")
-        self.LogLevel = params.get("LogLevel")
-        self.AutoRecover = params.get("AutoRecover")
+                self._Properties.append(obj)
+        self._AutoDelete = params.get("AutoDelete")
+        self._COSBucket = params.get("COSBucket")
+        self._LogCollect = params.get("LogCollect")
+        self._JobManagerSpec = params.get("JobManagerSpec")
+        self._TaskManagerSpec = params.get("TaskManagerSpec")
+        self._ClsLogsetId = params.get("ClsLogsetId")
+        self._ClsTopicId = params.get("ClsTopicId")
+        self._LogCollectType = params.get("LogCollectType")
+        self._PythonVersion = params.get("PythonVersion")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._LogLevel = params.get("LogLevel")
+        self._AutoRecover = params.get("AutoRecover")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -801,18 +1723,34 @@ class CreateJobConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Version: 作业配置版本号
+        :param _Version: 作业配置版本号
         :type Version: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Version = None
-        self.RequestId = None
+        self._Version = None
+        self._RequestId = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Version = params.get("Version")
-        self.RequestId = params.get("RequestId")
+        self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateJobRequest(AbstractModel):
@@ -822,59 +1760,140 @@ class CreateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 作业名称，允许输入长度小于等于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名
+        :param _Name: 作业名称，允许输入长度小于等于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名
         :type Name: str
-        :param JobType: 作业的类型，1 表示 SQL 作业，2 表示 JAR 作业
+        :param _JobType: 作业的类型，1 表示 SQL 作业，2 表示 JAR 作业
         :type JobType: int
-        :param ClusterType: 集群的类型，1 表示共享集群，2 表示独享集群
+        :param _ClusterType: 集群的类型，1 表示共享集群，2 表示独享集群
         :type ClusterType: int
-        :param ClusterId: 当 ClusterType=2 时，必选，用来指定该作业提交的独享集群 ID
+        :param _ClusterId: 当 ClusterType=2 时，必选，用来指定该作业提交的独享集群 ID
         :type ClusterId: str
-        :param CuMem: 设置每 CU 的内存规格，单位为 GB，支持 2、4、8、16（需申请开通白名单后使用）。默认为 4，即 1 CU 对应 4 GB 的运行内存
+        :param _CuMem: 设置每 CU 的内存规格，单位为 GB，支持 2、4、8、16（需申请开通白名单后使用）。默认为 4，即 1 CU 对应 4 GB 的运行内存
         :type CuMem: int
-        :param Remark: 作业的备注信息，可以随意设置
+        :param _Remark: 作业的备注信息，可以随意设置
         :type Remark: str
-        :param FolderId: 作业名所属文件夹ID，根目录为"root"
+        :param _FolderId: 作业名所属文件夹ID，根目录为"root"
         :type FolderId: str
-        :param FlinkVersion: 作业运行的Flink版本
+        :param _FlinkVersion: 作业运行的Flink版本
         :type FlinkVersion: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
-        :param Tags: 作业标签
+        :param _Tags: 作业标签
         :type Tags: list of Tag
         """
-        self.Name = None
-        self.JobType = None
-        self.ClusterType = None
-        self.ClusterId = None
-        self.CuMem = None
-        self.Remark = None
-        self.FolderId = None
-        self.FlinkVersion = None
-        self.WorkSpaceId = None
-        self.Tags = None
+        self._Name = None
+        self._JobType = None
+        self._ClusterType = None
+        self._ClusterId = None
+        self._CuMem = None
+        self._Remark = None
+        self._FolderId = None
+        self._FlinkVersion = None
+        self._WorkSpaceId = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CuMem(self):
+        return self._CuMem
+
+    @CuMem.setter
+    def CuMem(self, CuMem):
+        self._CuMem = CuMem
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FlinkVersion(self):
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.JobType = params.get("JobType")
-        self.ClusterType = params.get("ClusterType")
-        self.ClusterId = params.get("ClusterId")
-        self.CuMem = params.get("CuMem")
-        self.Remark = params.get("Remark")
-        self.FolderId = params.get("FolderId")
-        self.FlinkVersion = params.get("FlinkVersion")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._Name = params.get("Name")
+        self._JobType = params.get("JobType")
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterId = params.get("ClusterId")
+        self._CuMem = params.get("CuMem")
+        self._Remark = params.get("Remark")
+        self._FolderId = params.get("FolderId")
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -887,18 +1906,34 @@ class CreateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业Id
+        :param _JobId: 作业Id
         :type JobId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.RequestId = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateResourceConfigRequest(AbstractModel):
@@ -908,36 +1943,77 @@ class CreateResourceConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param ResourceLoc: 位置信息
+        :param _ResourceLoc: 位置信息
         :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
-        :param Remark: 资源描述信息
+        :param _Remark: 资源描述信息
         :type Remark: str
-        :param AutoDelete: 1： 资源版本达到上限，自动删除最早可删除的版本
+        :param _AutoDelete: 1： 资源版本达到上限，自动删除最早可删除的版本
         :type AutoDelete: int
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ResourceId = None
-        self.ResourceLoc = None
-        self.Remark = None
-        self.AutoDelete = None
-        self.WorkSpaceId = None
+        self._ResourceId = None
+        self._ResourceLoc = None
+        self._Remark = None
+        self._AutoDelete = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceLoc(self):
+        return self._ResourceLoc
+
+    @ResourceLoc.setter
+    def ResourceLoc(self, ResourceLoc):
+        self._ResourceLoc = ResourceLoc
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AutoDelete(self):
+        return self._AutoDelete
+
+    @AutoDelete.setter
+    def AutoDelete(self, AutoDelete):
+        self._AutoDelete = AutoDelete
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
+        self._ResourceId = params.get("ResourceId")
         if params.get("ResourceLoc") is not None:
-            self.ResourceLoc = ResourceLoc()
-            self.ResourceLoc._deserialize(params.get("ResourceLoc"))
-        self.Remark = params.get("Remark")
-        self.AutoDelete = params.get("AutoDelete")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+            self._ResourceLoc = ResourceLoc()
+            self._ResourceLoc._deserialize(params.get("ResourceLoc"))
+        self._Remark = params.get("Remark")
+        self._AutoDelete = params.get("AutoDelete")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -950,18 +2026,34 @@ class CreateResourceConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Version: 资源版本ID
+        :param _Version: 资源版本ID
         :type Version: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Version = None
-        self.RequestId = None
+        self._Version = None
+        self._RequestId = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Version = params.get("Version")
-        self.RequestId = params.get("RequestId")
+        self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateResourceRequest(AbstractModel):
@@ -971,44 +2063,101 @@ class CreateResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceLoc: 资源位置
+        :param _ResourceLoc: 资源位置
         :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
-        :param ResourceType: 资源类型。目前只支持 JAR，取值为 1
+        :param _ResourceType: 资源类型。目前只支持 JAR，取值为 1
         :type ResourceType: int
-        :param Remark: 资源描述
+        :param _Remark: 资源描述
         :type Remark: str
-        :param Name: 资源名称
+        :param _Name: 资源名称
         :type Name: str
-        :param ResourceConfigRemark: 资源版本描述
+        :param _ResourceConfigRemark: 资源版本描述
         :type ResourceConfigRemark: str
-        :param FolderId: 目录ID
+        :param _FolderId: 目录ID
         :type FolderId: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ResourceLoc = None
-        self.ResourceType = None
-        self.Remark = None
-        self.Name = None
-        self.ResourceConfigRemark = None
-        self.FolderId = None
-        self.WorkSpaceId = None
+        self._ResourceLoc = None
+        self._ResourceType = None
+        self._Remark = None
+        self._Name = None
+        self._ResourceConfigRemark = None
+        self._FolderId = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceLoc(self):
+        return self._ResourceLoc
+
+    @ResourceLoc.setter
+    def ResourceLoc(self, ResourceLoc):
+        self._ResourceLoc = ResourceLoc
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourceConfigRemark(self):
+        return self._ResourceConfigRemark
+
+    @ResourceConfigRemark.setter
+    def ResourceConfigRemark(self, ResourceConfigRemark):
+        self._ResourceConfigRemark = ResourceConfigRemark
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
         if params.get("ResourceLoc") is not None:
-            self.ResourceLoc = ResourceLoc()
-            self.ResourceLoc._deserialize(params.get("ResourceLoc"))
-        self.ResourceType = params.get("ResourceType")
-        self.Remark = params.get("Remark")
-        self.Name = params.get("Name")
-        self.ResourceConfigRemark = params.get("ResourceConfigRemark")
-        self.FolderId = params.get("FolderId")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+            self._ResourceLoc = ResourceLoc()
+            self._ResourceLoc._deserialize(params.get("ResourceLoc"))
+        self._ResourceType = params.get("ResourceType")
+        self._Remark = params.get("Remark")
+        self._Name = params.get("Name")
+        self._ResourceConfigRemark = params.get("ResourceConfigRemark")
+        self._FolderId = params.get("FolderId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1021,22 +2170,46 @@ class CreateResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param Version: 资源版本
+        :param _Version: 资源版本
         :type Version: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResourceId = None
-        self.Version = None
-        self.RequestId = None
+        self._ResourceId = None
+        self._Version = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Version = params.get("Version")
-        self.RequestId = params.get("RequestId")
+        self._ResourceId = params.get("ResourceId")
+        self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteJobsRequest(AbstractModel):
@@ -1046,22 +2219,39 @@ class DeleteJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobIds: 作业Id列表
+        :param _JobIds: 作业Id列表
         :type JobIds: list of str
-        :param WorkSpaceId: 工作空间Id
+        :param _WorkSpaceId: 工作空间Id
         :type WorkSpaceId: str
         """
-        self.JobIds = None
-        self.WorkSpaceId = None
+        self._JobIds = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobIds = params.get("JobIds")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._JobIds = params.get("JobIds")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1074,14 +2264,22 @@ class DeleteJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteResourceConfigsRequest(AbstractModel):
@@ -1091,26 +2289,51 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param ResourceConfigVersions: 资源版本数组
+        :param _ResourceConfigVersions: 资源版本数组
         :type ResourceConfigVersions: list of int
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ResourceId = None
-        self.ResourceConfigVersions = None
-        self.WorkSpaceId = None
+        self._ResourceId = None
+        self._ResourceConfigVersions = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceConfigVersions(self):
+        return self._ResourceConfigVersions
+
+    @ResourceConfigVersions.setter
+    def ResourceConfigVersions(self, ResourceConfigVersions):
+        self._ResourceConfigVersions = ResourceConfigVersions
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceConfigVersions = params.get("ResourceConfigVersions")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceConfigVersions = params.get("ResourceConfigVersions")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1123,14 +2346,22 @@ class DeleteResourceConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteResourcesRequest(AbstractModel):
@@ -1140,22 +2371,39 @@ class DeleteResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceIds: 待删除资源ID列表
+        :param _ResourceIds: 待删除资源ID列表
         :type ResourceIds: list of str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ResourceIds = None
-        self.WorkSpaceId = None
+        self._ResourceIds = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.ResourceIds = params.get("ResourceIds")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._ResourceIds = params.get("ResourceIds")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1168,14 +2416,22 @@ class DeleteResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTableConfigRequest(AbstractModel):
@@ -1185,30 +2441,63 @@ class DeleteTableConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业ID
+        :param _JobId: 作业ID
         :type JobId: str
-        :param DebugId: 调试作业ID
+        :param _DebugId: 调试作业ID
         :type DebugId: int
-        :param TableName: 表名
+        :param _TableName: 表名
         :type TableName: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.JobId = None
-        self.DebugId = None
-        self.TableName = None
-        self.WorkSpaceId = None
+        self._JobId = None
+        self._DebugId = None
+        self._TableName = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def DebugId(self):
+        return self._DebugId
+
+    @DebugId.setter
+    def DebugId(self, DebugId):
+        self._DebugId = DebugId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.DebugId = params.get("DebugId")
-        self.TableName = params.get("TableName")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._JobId = params.get("JobId")
+        self._DebugId = params.get("DebugId")
+        self._TableName = params.get("TableName")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1221,14 +2510,22 @@ class DeleteTableConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClustersRequest(AbstractModel):
@@ -1238,43 +2535,92 @@ class DescribeClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterIds: 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+        :param _ClusterIds: 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
         :type ClusterIds: list of str
-        :param Offset: 偏移量，默认 0
+        :param _Offset: 偏移量，默认 0
         :type Offset: int
-        :param Limit: 请求的集群数量，默认 20，最大值 100
+        :param _Limit: 请求的集群数量，默认 20，最大值 100
         :type Limit: int
-        :param OrderType: 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+        :param _OrderType: 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
         :type OrderType: int
-        :param Filters: 过滤规则
+        :param _Filters: 过滤规则
         :type Filters: list of Filter
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ClusterIds = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderType = None
-        self.Filters = None
-        self.WorkSpaceId = None
+        self._ClusterIds = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderType = None
+        self._Filters = None
+        self._WorkSpaceId = None
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.ClusterIds = params.get("ClusterIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderType = params.get("OrderType")
+        self._ClusterIds = params.get("ClusterIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderType = params.get("OrderType")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.WorkSpaceId = params.get("WorkSpaceId")
+                self._Filters.append(obj)
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1287,27 +2633,51 @@ class DescribeClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 集群总数
+        :param _TotalCount: 集群总数
         :type TotalCount: int
-        :param ClusterSet: 集群列表
+        :param _ClusterSet: 集群列表
         :type ClusterSet: list of Cluster
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.ClusterSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._ClusterSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClusterSet(self):
+        return self._ClusterSet
+
+    @ClusterSet.setter
+    def ClusterSet(self, ClusterSet):
+        self._ClusterSet = ClusterSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ClusterSet") is not None:
-            self.ClusterSet = []
+            self._ClusterSet = []
             for item in params.get("ClusterSet"):
                 obj = Cluster()
                 obj._deserialize(item)
-                self.ClusterSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ClusterSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobConfigsRequest(AbstractModel):
@@ -1317,47 +2687,104 @@ class DescribeJobConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业Id
+        :param _JobId: 作业Id
         :type JobId: str
-        :param JobConfigVersions: 作业配置版本
+        :param _JobConfigVersions: 作业配置版本
         :type JobConfigVersions: list of int non-negative
-        :param Offset: 偏移量，默认0
+        :param _Offset: 偏移量，默认0
         :type Offset: int
-        :param Limit: 分页大小，默认20，最大100
+        :param _Limit: 分页大小，默认20，最大100
         :type Limit: int
-        :param Filters: 过滤条件
+        :param _Filters: 过滤条件
         :type Filters: list of Filter
-        :param OnlyDraft: true 表示只展示草稿
+        :param _OnlyDraft: true 表示只展示草稿
         :type OnlyDraft: bool
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.JobId = None
-        self.JobConfigVersions = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-        self.OnlyDraft = None
-        self.WorkSpaceId = None
+        self._JobId = None
+        self._JobConfigVersions = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._OnlyDraft = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobConfigVersions(self):
+        return self._JobConfigVersions
+
+    @JobConfigVersions.setter
+    def JobConfigVersions(self, JobConfigVersions):
+        self._JobConfigVersions = JobConfigVersions
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OnlyDraft(self):
+        return self._OnlyDraft
+
+    @OnlyDraft.setter
+    def OnlyDraft(self, OnlyDraft):
+        self._OnlyDraft = OnlyDraft
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobConfigVersions = params.get("JobConfigVersions")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._JobId = params.get("JobId")
+        self._JobConfigVersions = params.get("JobConfigVersions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.OnlyDraft = params.get("OnlyDraft")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+                self._Filters.append(obj)
+        self._OnlyDraft = params.get("OnlyDraft")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1370,27 +2797,51 @@ class DescribeJobConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总的配置版本数量
+        :param _TotalCount: 总的配置版本数量
         :type TotalCount: int
-        :param JobConfigSet: 作业配置列表
+        :param _JobConfigSet: 作业配置列表
         :type JobConfigSet: list of JobConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.JobConfigSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._JobConfigSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JobConfigSet(self):
+        return self._JobConfigSet
+
+    @JobConfigSet.setter
+    def JobConfigSet(self, JobConfigSet):
+        self._JobConfigSet = JobConfigSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("JobConfigSet") is not None:
-            self.JobConfigSet = []
+            self._JobConfigSet = []
             for item in params.get("JobConfigSet"):
                 obj = JobConfig()
                 obj._deserialize(item)
-                self.JobConfigSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._JobConfigSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobSavepointRequest(AbstractModel):
@@ -1400,30 +2851,63 @@ class DescribeJobSavepointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业 SerialId
+        :param _JobId: 作业 SerialId
         :type JobId: str
-        :param Limit: 分页参数，单页总数
+        :param _Limit: 分页参数，单页总数
         :type Limit: int
-        :param Offset: 分页参数，偏移量
+        :param _Offset: 分页参数，偏移量
         :type Offset: int
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.JobId = None
-        self.Limit = None
-        self.Offset = None
-        self.WorkSpaceId = None
+        self._JobId = None
+        self._Limit = None
+        self._Offset = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._JobId = params.get("JobId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1436,44 +2920,84 @@ class DescribeJobSavepointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNumber: 快照列表总数
+        :param _TotalNumber: 快照列表总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNumber: int
-        :param Savepoint: 快照列表
+        :param _Savepoint: 快照列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Savepoint: list of Savepoint
-        :param RunningSavepoint: 进行中的快照列表
+        :param _RunningSavepoint: 进行中的快照列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningSavepoint: list of Savepoint
-        :param RunningTotalNumber: 进行中的快照列表总数
+        :param _RunningTotalNumber: 进行中的快照列表总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTotalNumber: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNumber = None
-        self.Savepoint = None
-        self.RunningSavepoint = None
-        self.RunningTotalNumber = None
-        self.RequestId = None
+        self._TotalNumber = None
+        self._Savepoint = None
+        self._RunningSavepoint = None
+        self._RunningTotalNumber = None
+        self._RequestId = None
+
+    @property
+    def TotalNumber(self):
+        return self._TotalNumber
+
+    @TotalNumber.setter
+    def TotalNumber(self, TotalNumber):
+        self._TotalNumber = TotalNumber
+
+    @property
+    def Savepoint(self):
+        return self._Savepoint
+
+    @Savepoint.setter
+    def Savepoint(self, Savepoint):
+        self._Savepoint = Savepoint
+
+    @property
+    def RunningSavepoint(self):
+        return self._RunningSavepoint
+
+    @RunningSavepoint.setter
+    def RunningSavepoint(self, RunningSavepoint):
+        self._RunningSavepoint = RunningSavepoint
+
+    @property
+    def RunningTotalNumber(self):
+        return self._RunningTotalNumber
+
+    @RunningTotalNumber.setter
+    def RunningTotalNumber(self, RunningTotalNumber):
+        self._RunningTotalNumber = RunningTotalNumber
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNumber = params.get("TotalNumber")
+        self._TotalNumber = params.get("TotalNumber")
         if params.get("Savepoint") is not None:
-            self.Savepoint = []
+            self._Savepoint = []
             for item in params.get("Savepoint"):
                 obj = Savepoint()
                 obj._deserialize(item)
-                self.Savepoint.append(obj)
+                self._Savepoint.append(obj)
         if params.get("RunningSavepoint") is not None:
-            self.RunningSavepoint = []
+            self._RunningSavepoint = []
             for item in params.get("RunningSavepoint"):
                 obj = Savepoint()
                 obj._deserialize(item)
-                self.RunningSavepoint.append(obj)
-        self.RunningTotalNumber = params.get("RunningTotalNumber")
-        self.RequestId = params.get("RequestId")
+                self._RunningSavepoint.append(obj)
+        self._RunningTotalNumber = params.get("RunningTotalNumber")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobsRequest(AbstractModel):
@@ -1483,39 +3007,80 @@ class DescribeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
+        :param _JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
         :type JobIds: list of str
-        :param Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+        :param _Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param Limit: 分页大小，默认为20，最大值为100
+        :param _Limit: 分页大小，默认为20，最大值为100
         :type Limit: int
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.JobIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.WorkSpaceId = None
+        self._JobIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobIds = params.get("JobIds")
+        self._JobIds = params.get("JobIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1528,27 +3093,51 @@ class DescribeJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 作业总数
+        :param _TotalCount: 作业总数
         :type TotalCount: int
-        :param JobSet: 作业列表
+        :param _JobSet: 作业列表
         :type JobSet: list of JobV1
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.JobSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._JobSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JobSet(self):
+        return self._JobSet
+
+    @JobSet.setter
+    def JobSet(self, JobSet):
+        self._JobSet = JobSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("JobSet") is not None:
-            self.JobSet = []
+            self._JobSet = []
             for item in params.get("JobSet"):
                 obj = JobV1()
                 obj._deserialize(item)
-                self.JobSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._JobSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeResourceConfigsRequest(AbstractModel):
@@ -1558,42 +3147,99 @@ class DescribeResourceConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param Offset: 偏移量，仅当设置 Limit 时该参数有效
+        :param _Offset: 偏移量，仅当设置 Limit 时该参数有效
         :type Offset: int
-        :param Limit: 返回值大小，不填则返回全量数据
+        :param _Limit: 返回值大小，不填则返回全量数据
         :type Limit: int
-        :param ResourceConfigVersions: 资源配置Versions集合
+        :param _ResourceConfigVersions: 资源配置Versions集合
         :type ResourceConfigVersions: list of int
-        :param JobConfigVersion: 作业配置版本
+        :param _JobConfigVersion: 作业配置版本
         :type JobConfigVersion: int
-        :param JobId: 作业ID
+        :param _JobId: 作业ID
         :type JobId: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ResourceId = None
-        self.Offset = None
-        self.Limit = None
-        self.ResourceConfigVersions = None
-        self.JobConfigVersion = None
-        self.JobId = None
-        self.WorkSpaceId = None
+        self._ResourceId = None
+        self._Offset = None
+        self._Limit = None
+        self._ResourceConfigVersions = None
+        self._JobConfigVersion = None
+        self._JobId = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ResourceConfigVersions(self):
+        return self._ResourceConfigVersions
+
+    @ResourceConfigVersions.setter
+    def ResourceConfigVersions(self, ResourceConfigVersions):
+        self._ResourceConfigVersions = ResourceConfigVersions
+
+    @property
+    def JobConfigVersion(self):
+        return self._JobConfigVersion
+
+    @JobConfigVersion.setter
+    def JobConfigVersion(self, JobConfigVersion):
+        self._JobConfigVersion = JobConfigVersion
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ResourceConfigVersions = params.get("ResourceConfigVersions")
-        self.JobConfigVersion = params.get("JobConfigVersion")
-        self.JobId = params.get("JobId")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._ResourceId = params.get("ResourceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ResourceConfigVersions = params.get("ResourceConfigVersions")
+        self._JobConfigVersion = params.get("JobConfigVersion")
+        self._JobId = params.get("JobId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1606,27 +3252,51 @@ class DescribeResourceConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceConfigSet: 资源配置描述数组
+        :param _ResourceConfigSet: 资源配置描述数组
         :type ResourceConfigSet: list of ResourceConfigItem
-        :param TotalCount: 资源配置数量
+        :param _TotalCount: 资源配置数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResourceConfigSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ResourceConfigSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ResourceConfigSet(self):
+        return self._ResourceConfigSet
+
+    @ResourceConfigSet.setter
+    def ResourceConfigSet(self, ResourceConfigSet):
+        self._ResourceConfigSet = ResourceConfigSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResourceConfigSet") is not None:
-            self.ResourceConfigSet = []
+            self._ResourceConfigSet = []
             for item in params.get("ResourceConfigSet"):
                 obj = ResourceConfigItem()
                 obj._deserialize(item)
-                self.ResourceConfigSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ResourceConfigSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeResourceRelatedJobsRequest(AbstractModel):
@@ -1636,38 +3306,87 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param DESCByJobConfigCreateTime: 默认0;   1： 按照作业版本创建时间降序
+        :param _DESCByJobConfigCreateTime: 默认0;   1： 按照作业版本创建时间降序
         :type DESCByJobConfigCreateTime: int
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param Limit: 分页大小，默认为20，最大值为100
+        :param _Limit: 分页大小，默认为20，最大值为100
         :type Limit: int
-        :param ResourceConfigVersion: 资源版本号
+        :param _ResourceConfigVersion: 资源版本号
         :type ResourceConfigVersion: int
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ResourceId = None
-        self.DESCByJobConfigCreateTime = None
-        self.Offset = None
-        self.Limit = None
-        self.ResourceConfigVersion = None
-        self.WorkSpaceId = None
+        self._ResourceId = None
+        self._DESCByJobConfigCreateTime = None
+        self._Offset = None
+        self._Limit = None
+        self._ResourceConfigVersion = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def DESCByJobConfigCreateTime(self):
+        return self._DESCByJobConfigCreateTime
+
+    @DESCByJobConfigCreateTime.setter
+    def DESCByJobConfigCreateTime(self, DESCByJobConfigCreateTime):
+        self._DESCByJobConfigCreateTime = DESCByJobConfigCreateTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ResourceConfigVersion(self):
+        return self._ResourceConfigVersion
+
+    @ResourceConfigVersion.setter
+    def ResourceConfigVersion(self, ResourceConfigVersion):
+        self._ResourceConfigVersion = ResourceConfigVersion
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.DESCByJobConfigCreateTime = params.get("DESCByJobConfigCreateTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ResourceConfigVersion = params.get("ResourceConfigVersion")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._ResourceId = params.get("ResourceId")
+        self._DESCByJobConfigCreateTime = params.get("DESCByJobConfigCreateTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ResourceConfigVersion = params.get("ResourceConfigVersion")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1680,27 +3399,51 @@ class DescribeResourceRelatedJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param RefJobInfos: 关联作业信息
+        :param _RefJobInfos: 关联作业信息
         :type RefJobInfos: list of ResourceRefJobInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.RefJobInfos = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._RefJobInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RefJobInfos(self):
+        return self._RefJobInfos
+
+    @RefJobInfos.setter
+    def RefJobInfos(self, RefJobInfos):
+        self._RefJobInfos = RefJobInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("RefJobInfos") is not None:
-            self.RefJobInfos = []
+            self._RefJobInfos = []
             for item in params.get("RefJobInfos"):
                 obj = ResourceRefJobInfo()
                 obj._deserialize(item)
-                self.RefJobInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RefJobInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeResourcesRequest(AbstractModel):
@@ -1710,40 +3453,81 @@ class DescribeResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceIds: 需要查询的资源ID数组，数量不超过100个。如果填写了该参数则忽略Filters参数。
+        :param _ResourceIds: 需要查询的资源ID数组，数量不超过100个。如果填写了该参数则忽略Filters参数。
         :type ResourceIds: list of str
-        :param Offset: 偏移量，仅当设置 Limit 参数时有效
+        :param _Offset: 偏移量，仅当设置 Limit 参数时有效
         :type Offset: int
-        :param Limit: 条数限制。如果不填，默认返回 20 条
+        :param _Limit: 条数限制。如果不填，默认返回 20 条
         :type Limit: int
-        :param Filters: <li><strong>ResourceName</strong></li>
+        :param _Filters: <li><strong>ResourceName</strong></li>
 <p style="padding-left: 30px;">按照资源名字过滤，支持模糊过滤。传入的过滤名字不超过5个</p><p style="padding-left: 30px;">类型: String</p><p style="padding-left: 30px;">必选: 否</p>
         :type Filters: list of Filter
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.ResourceIds = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-        self.WorkSpaceId = None
+        self._ResourceIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._WorkSpaceId = None
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.ResourceIds = params.get("ResourceIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._ResourceIds = params.get("ResourceIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.WorkSpaceId = params.get("WorkSpaceId")
+                self._Filters.append(obj)
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1756,27 +3540,51 @@ class DescribeResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceSet: 资源详细信息集合
+        :param _ResourceSet: 资源详细信息集合
         :type ResourceSet: list of ResourceItem
-        :param TotalCount: 总数量
+        :param _TotalCount: 总数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResourceSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ResourceSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ResourceSet(self):
+        return self._ResourceSet
+
+    @ResourceSet.setter
+    def ResourceSet(self, ResourceSet):
+        self._ResourceSet = ResourceSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResourceSet") is not None:
-            self.ResourceSet = []
+            self._ResourceSet = []
             for item in params.get("ResourceSet"):
                 obj = ResourceItem()
                 obj._deserialize(item)
-                self.ResourceSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ResourceSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSystemResourcesRequest(AbstractModel):
@@ -1786,43 +3594,92 @@ class DescribeSystemResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceIds: 需要查询的资源ID数组
+        :param _ResourceIds: 需要查询的资源ID数组
         :type ResourceIds: list of str
-        :param Offset: 偏移量，仅当设置 Limit 参数时有效
+        :param _Offset: 偏移量，仅当设置 Limit 参数时有效
         :type Offset: int
-        :param Limit: 条数限制，默认返回 20 条
+        :param _Limit: 条数限制，默认返回 20 条
         :type Limit: int
-        :param Filters: 查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表
+        :param _Filters: 查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表
         :type Filters: list of Filter
-        :param ClusterId: 集群ID
+        :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param FlinkVersion: 查询对应Flink版本的内置connector
+        :param _FlinkVersion: 查询对应Flink版本的内置connector
         :type FlinkVersion: str
         """
-        self.ResourceIds = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-        self.ClusterId = None
-        self.FlinkVersion = None
+        self._ResourceIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._ClusterId = None
+        self._FlinkVersion = None
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def FlinkVersion(self):
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
 
 
     def _deserialize(self, params):
-        self.ResourceIds = params.get("ResourceIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._ResourceIds = params.get("ResourceIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.ClusterId = params.get("ClusterId")
-        self.FlinkVersion = params.get("FlinkVersion")
+                self._Filters.append(obj)
+        self._ClusterId = params.get("ClusterId")
+        self._FlinkVersion = params.get("FlinkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1835,27 +3692,51 @@ class DescribeSystemResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceSet: 资源详细信息集合
+        :param _ResourceSet: 资源详细信息集合
         :type ResourceSet: list of SystemResourceItem
-        :param TotalCount: 总数量
+        :param _TotalCount: 总数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResourceSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ResourceSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ResourceSet(self):
+        return self._ResourceSet
+
+    @ResourceSet.setter
+    def ResourceSet(self, ResourceSet):
+        self._ResourceSet = ResourceSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResourceSet") is not None:
-            self.ResourceSet = []
+            self._ResourceSet = []
             for item in params.get("ResourceSet"):
                 obj = SystemResourceItem()
                 obj._deserialize(item)
-                self.ResourceSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ResourceSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTreeJobsRequest(AbstractModel):
@@ -1865,18 +3746,27 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WorkSpaceId: 工作空间 Serialid
+        :param _WorkSpaceId: 工作空间 Serialid
         :type WorkSpaceId: str
         """
-        self.WorkSpaceId = None
+        self._WorkSpaceId = None
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1889,14 +3779,22 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTreeResourcesRequest(AbstractModel):
@@ -1906,18 +3804,27 @@ class DescribeTreeResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.WorkSpaceId = None
+        self._WorkSpaceId = None
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1930,54 +3837,110 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ParentId: 父节点ID
+        :param _ParentId: 父节点ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: str
-        :param Id: 文件夹ID
+        :param _Id: 文件夹ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param Name: 文件夹名
+        :param _Name: 文件夹名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Items: 文件列表
+        :param _Items: 文件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of TreeResourceItem
-        :param Children: 子目录列表
+        :param _Children: 子目录列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of DescribeTreeResourcesRsp
-        :param TotalCount: 资源总数
+        :param _TotalCount: 资源总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ParentId = None
-        self.Id = None
-        self.Name = None
-        self.Items = None
-        self.Children = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ParentId = None
+        self._Id = None
+        self._Name = None
+        self._Items = None
+        self._Children = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ParentId = params.get("ParentId")
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
+        self._ParentId = params.get("ParentId")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = TreeResourceItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
+                self._Items.append(obj)
         if params.get("Children") is not None:
-            self.Children = []
+            self._Children = []
             for item in params.get("Children"):
                 obj = DescribeTreeResourcesRsp()
                 obj._deserialize(item)
-                self.Children.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Children.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTreeResourcesRsp(AbstractModel):
@@ -1987,51 +3950,100 @@ class DescribeTreeResourcesRsp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ParentId: 父节点ID
+        :param _ParentId: 父节点ID
         :type ParentId: str
-        :param Id: 文件夹ID
+        :param _Id: 文件夹ID
         :type Id: str
-        :param Name: 文件夹名称
+        :param _Name: 文件夹名称
         :type Name: str
-        :param Items: 文件夹下资源数字
+        :param _Items: 文件夹下资源数字
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of TreeResourceItem
-        :param Children: 子节点
+        :param _Children: 子节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of DescribeTreeResourcesRsp
-        :param TotalCount: 资源总数
+        :param _TotalCount: 资源总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
-        self.ParentId = None
-        self.Id = None
-        self.Name = None
-        self.Items = None
-        self.Children = None
-        self.TotalCount = None
+        self._ParentId = None
+        self._Id = None
+        self._Name = None
+        self._Items = None
+        self._Children = None
+        self._TotalCount = None
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
 
     def _deserialize(self, params):
-        self.ParentId = params.get("ParentId")
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
+        self._ParentId = params.get("ParentId")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = TreeResourceItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
+                self._Items.append(obj)
         if params.get("Children") is not None:
-            self.Children = []
+            self._Children = []
             for item in params.get("Children"):
                 obj = DescribeTreeResourcesRsp()
                 obj._deserialize(item)
-                self.Children.append(obj)
-        self.TotalCount = params.get("TotalCount")
+                self._Children.append(obj)
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2044,35 +4056,68 @@ class DescribeWorkSpacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量，默认 0
+        :param _Offset: 偏移量，默认 0
         :type Offset: int
-        :param OrderType: 1 按照创建时间降序排序(默认) 2.按照创建时间升序排序，3. 按照状态降序排序 4. 按照状态升序排序 默认为0
+        :param _OrderType: 1 按照创建时间降序排序(默认) 2.按照创建时间升序排序，3. 按照状态降序排序 4. 按照状态升序排序 默认为0
         :type OrderType: int
-        :param Limit: 请求的集群数量，默认 20
+        :param _Limit: 请求的集群数量，默认 20
         :type Limit: int
-        :param Filters: 过滤规则
+        :param _Filters: 过滤规则
         :type Filters: list of Filter
         """
-        self.Offset = None
-        self.OrderType = None
-        self.Limit = None
-        self.Filters = None
+        self._Offset = None
+        self._OrderType = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.OrderType = params.get("OrderType")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderType = params.get("OrderType")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2085,28 +4130,52 @@ class DescribeWorkSpacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WorkSpaceSetItem: 空间详情列表
+        :param _WorkSpaceSetItem: 空间详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceSetItem: list of WorkSpaceSetItem
-        :param TotalCount: 空间总数
+        :param _TotalCount: 空间总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.WorkSpaceSetItem = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._WorkSpaceSetItem = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def WorkSpaceSetItem(self):
+        return self._WorkSpaceSetItem
+
+    @WorkSpaceSetItem.setter
+    def WorkSpaceSetItem(self, WorkSpaceSetItem):
+        self._WorkSpaceSetItem = WorkSpaceSetItem
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("WorkSpaceSetItem") is not None:
-            self.WorkSpaceSetItem = []
+            self._WorkSpaceSetItem = []
             for item in params.get("WorkSpaceSetItem"):
                 obj = WorkSpaceSetItem()
                 obj._deserialize(item)
-                self.WorkSpaceSetItem.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._WorkSpaceSetItem.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):
@@ -2116,22 +4185,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 要过滤的字段
+        :param _Name: 要过滤的字段
         :type Name: str
-        :param Values: 字段的过滤值
+        :param _Values: 字段的过滤值
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2144,126 +4230,295 @@ class JobConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业Id
+        :param _JobId: 作业Id
         :type JobId: str
-        :param EntrypointClass: 主类
+        :param _EntrypointClass: 主类
 注意：此字段可能返回 null，表示取不到有效值。
         :type EntrypointClass: str
-        :param ProgramArgs: 主类入参
+        :param _ProgramArgs: 主类入参
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgramArgs: str
-        :param Remark: 备注
+        :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param CreateTime: 作业配置创建时间
+        :param _CreateTime: 作业配置创建时间
         :type CreateTime: str
-        :param Version: 作业配置的版本号
+        :param _Version: 作业配置的版本号
         :type Version: int
-        :param DefaultParallelism: 作业默认并行度
+        :param _DefaultParallelism: 作业默认并行度
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultParallelism: int
-        :param Properties: 系统参数
+        :param _Properties: 系统参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
-        :param ResourceRefDetails: 引用资源
+        :param _ResourceRefDetails: 引用资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRefDetails: list of ResourceRefDetail
-        :param CreatorUin: 创建者uin
+        :param _CreatorUin: 创建者uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param UpdateTime: 作业配置上次启动时间
+        :param _UpdateTime: 作业配置上次启动时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param COSBucket: 作业绑定的存储桶
+        :param _COSBucket: 作业绑定的存储桶
 注意：此字段可能返回 null，表示取不到有效值。
         :type COSBucket: str
-        :param LogCollect: 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+        :param _LogCollect: 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogCollect: int
-        :param MaxParallelism: 作业的最大并行度
+        :param _MaxParallelism: 作业的最大并行度
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxParallelism: int
-        :param JobManagerSpec: JobManager规格
+        :param _JobManagerSpec: JobManager规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobManagerSpec: float
-        :param TaskManagerSpec: TaskManager规格
+        :param _TaskManagerSpec: TaskManager规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskManagerSpec: float
-        :param ClsLogsetId: CLS日志集ID
+        :param _ClsLogsetId: CLS日志集ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsLogsetId: str
-        :param ClsTopicId: CLS日志主题ID
+        :param _ClsTopicId: CLS日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsTopicId: str
-        :param PythonVersion: pyflink作业运行的python版本
+        :param _PythonVersion: pyflink作业运行的python版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type PythonVersion: str
-        :param AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        :param _AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRecover: int
-        :param LogLevel: 日志级别
+        :param _LogLevel: 日志级别
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogLevel: str
         """
-        self.JobId = None
-        self.EntrypointClass = None
-        self.ProgramArgs = None
-        self.Remark = None
-        self.CreateTime = None
-        self.Version = None
-        self.DefaultParallelism = None
-        self.Properties = None
-        self.ResourceRefDetails = None
-        self.CreatorUin = None
-        self.UpdateTime = None
-        self.COSBucket = None
-        self.LogCollect = None
-        self.MaxParallelism = None
-        self.JobManagerSpec = None
-        self.TaskManagerSpec = None
-        self.ClsLogsetId = None
-        self.ClsTopicId = None
-        self.PythonVersion = None
-        self.AutoRecover = None
-        self.LogLevel = None
+        self._JobId = None
+        self._EntrypointClass = None
+        self._ProgramArgs = None
+        self._Remark = None
+        self._CreateTime = None
+        self._Version = None
+        self._DefaultParallelism = None
+        self._Properties = None
+        self._ResourceRefDetails = None
+        self._CreatorUin = None
+        self._UpdateTime = None
+        self._COSBucket = None
+        self._LogCollect = None
+        self._MaxParallelism = None
+        self._JobManagerSpec = None
+        self._TaskManagerSpec = None
+        self._ClsLogsetId = None
+        self._ClsTopicId = None
+        self._PythonVersion = None
+        self._AutoRecover = None
+        self._LogLevel = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def EntrypointClass(self):
+        return self._EntrypointClass
+
+    @EntrypointClass.setter
+    def EntrypointClass(self, EntrypointClass):
+        self._EntrypointClass = EntrypointClass
+
+    @property
+    def ProgramArgs(self):
+        return self._ProgramArgs
+
+    @ProgramArgs.setter
+    def ProgramArgs(self, ProgramArgs):
+        self._ProgramArgs = ProgramArgs
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def DefaultParallelism(self):
+        return self._DefaultParallelism
+
+    @DefaultParallelism.setter
+    def DefaultParallelism(self, DefaultParallelism):
+        self._DefaultParallelism = DefaultParallelism
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def ResourceRefDetails(self):
+        return self._ResourceRefDetails
+
+    @ResourceRefDetails.setter
+    def ResourceRefDetails(self, ResourceRefDetails):
+        self._ResourceRefDetails = ResourceRefDetails
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def COSBucket(self):
+        return self._COSBucket
+
+    @COSBucket.setter
+    def COSBucket(self, COSBucket):
+        self._COSBucket = COSBucket
+
+    @property
+    def LogCollect(self):
+        return self._LogCollect
+
+    @LogCollect.setter
+    def LogCollect(self, LogCollect):
+        self._LogCollect = LogCollect
+
+    @property
+    def MaxParallelism(self):
+        return self._MaxParallelism
+
+    @MaxParallelism.setter
+    def MaxParallelism(self, MaxParallelism):
+        self._MaxParallelism = MaxParallelism
+
+    @property
+    def JobManagerSpec(self):
+        return self._JobManagerSpec
+
+    @JobManagerSpec.setter
+    def JobManagerSpec(self, JobManagerSpec):
+        self._JobManagerSpec = JobManagerSpec
+
+    @property
+    def TaskManagerSpec(self):
+        return self._TaskManagerSpec
+
+    @TaskManagerSpec.setter
+    def TaskManagerSpec(self, TaskManagerSpec):
+        self._TaskManagerSpec = TaskManagerSpec
+
+    @property
+    def ClsLogsetId(self):
+        return self._ClsLogsetId
+
+    @ClsLogsetId.setter
+    def ClsLogsetId(self, ClsLogsetId):
+        self._ClsLogsetId = ClsLogsetId
+
+    @property
+    def ClsTopicId(self):
+        return self._ClsTopicId
+
+    @ClsTopicId.setter
+    def ClsTopicId(self, ClsTopicId):
+        self._ClsTopicId = ClsTopicId
+
+    @property
+    def PythonVersion(self):
+        return self._PythonVersion
+
+    @PythonVersion.setter
+    def PythonVersion(self, PythonVersion):
+        self._PythonVersion = PythonVersion
+
+    @property
+    def AutoRecover(self):
+        return self._AutoRecover
+
+    @AutoRecover.setter
+    def AutoRecover(self, AutoRecover):
+        self._AutoRecover = AutoRecover
+
+    @property
+    def LogLevel(self):
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.EntrypointClass = params.get("EntrypointClass")
-        self.ProgramArgs = params.get("ProgramArgs")
-        self.Remark = params.get("Remark")
-        self.CreateTime = params.get("CreateTime")
-        self.Version = params.get("Version")
-        self.DefaultParallelism = params.get("DefaultParallelism")
+        self._JobId = params.get("JobId")
+        self._EntrypointClass = params.get("EntrypointClass")
+        self._ProgramArgs = params.get("ProgramArgs")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._Version = params.get("Version")
+        self._DefaultParallelism = params.get("DefaultParallelism")
         if params.get("Properties") is not None:
-            self.Properties = []
+            self._Properties = []
             for item in params.get("Properties"):
                 obj = Property()
                 obj._deserialize(item)
-                self.Properties.append(obj)
+                self._Properties.append(obj)
         if params.get("ResourceRefDetails") is not None:
-            self.ResourceRefDetails = []
+            self._ResourceRefDetails = []
             for item in params.get("ResourceRefDetails"):
                 obj = ResourceRefDetail()
                 obj._deserialize(item)
-                self.ResourceRefDetails.append(obj)
-        self.CreatorUin = params.get("CreatorUin")
-        self.UpdateTime = params.get("UpdateTime")
-        self.COSBucket = params.get("COSBucket")
-        self.LogCollect = params.get("LogCollect")
-        self.MaxParallelism = params.get("MaxParallelism")
-        self.JobManagerSpec = params.get("JobManagerSpec")
-        self.TaskManagerSpec = params.get("TaskManagerSpec")
-        self.ClsLogsetId = params.get("ClsLogsetId")
-        self.ClsTopicId = params.get("ClsTopicId")
-        self.PythonVersion = params.get("PythonVersion")
-        self.AutoRecover = params.get("AutoRecover")
-        self.LogLevel = params.get("LogLevel")
+                self._ResourceRefDetails.append(obj)
+        self._CreatorUin = params.get("CreatorUin")
+        self._UpdateTime = params.get("UpdateTime")
+        self._COSBucket = params.get("COSBucket")
+        self._LogCollect = params.get("LogCollect")
+        self._MaxParallelism = params.get("MaxParallelism")
+        self._JobManagerSpec = params.get("JobManagerSpec")
+        self._TaskManagerSpec = params.get("TaskManagerSpec")
+        self._ClsLogsetId = params.get("ClsLogsetId")
+        self._ClsTopicId = params.get("ClsTopicId")
+        self._PythonVersion = params.get("PythonVersion")
+        self._AutoRecover = params.get("AutoRecover")
+        self._LogLevel = params.get("LogLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2276,179 +4531,436 @@ class JobV1(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业ID
+        :param _JobId: 作业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param Region: 地域
+        :param _Region: 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param Zone: 可用区
+        :param _Zone: 可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param AppId: 用户AppId
+        :param _AppId: 用户AppId
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param OwnerUin: 用户UIN
+        :param _OwnerUin: 用户UIN
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param CreatorUin: 创建者UIN
+        :param _CreatorUin: 创建者UIN
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param Name: 作业名字
+        :param _Name: 作业名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param JobType: 作业类型，1：sql作业，2：Jar作业
+        :param _JobType: 作业类型，1：sql作业，2：Jar作业
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: int
-        :param Status: 作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
+        :param _Status: 作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param CreateTime: 作业创建时间
+        :param _CreateTime: 作业创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param StartTime: 作业启动时间
+        :param _StartTime: 作业启动时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param StopTime: 作业停止时间
+        :param _StopTime: 作业停止时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StopTime: str
-        :param UpdateTime: 作业更新时间
+        :param _UpdateTime: 作业更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param TotalRunMillis: 作业累计运行时间
+        :param _TotalRunMillis: 作业累计运行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRunMillis: int
-        :param Remark: 备注信息
+        :param _Remark: 备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param LastOpResult: 操作错误提示信息
+        :param _LastOpResult: 操作错误提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastOpResult: str
-        :param ClusterName: 集群名字
+        :param _ClusterName: 集群名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param LatestJobConfigVersion: 最新配置版本号
+        :param _LatestJobConfigVersion: 最新配置版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestJobConfigVersion: int
-        :param PublishedJobConfigVersion: 已发布的配置版本
+        :param _PublishedJobConfigVersion: 已发布的配置版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublishedJobConfigVersion: int
-        :param RunningCuNum: 运行的CU数量
+        :param _RunningCuNum: 运行的CU数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCuNum: int
-        :param CuMem: 作业内存规格
+        :param _CuMem: 作业内存规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type CuMem: int
-        :param StatusDesc: 作业状态描述
+        :param _StatusDesc: 作业状态描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
-        :param CurrentRunMillis: 运行状态时表示单次运行时间
+        :param _CurrentRunMillis: 运行状态时表示单次运行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentRunMillis: int
-        :param ClusterId: 作业所在的集群ID
+        :param _ClusterId: 作业所在的集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param WebUIUrl: 作业管理WEB UI 入口
+        :param _WebUIUrl: 作业管理WEB UI 入口
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebUIUrl: str
-        :param SchedulerType: 作业所在集群类型
+        :param _SchedulerType: 作业所在集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerType: int
-        :param ClusterStatus: 作业所在集群状态
+        :param _ClusterStatus: 作业所在集群状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: int
-        :param RunningCu: 细粒度下的运行的CU数量
+        :param _RunningCu: 细粒度下的运行的CU数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
-        :param FlinkVersion: 作业运行的 Flink 版本
+        :param _FlinkVersion: 作业运行的 Flink 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlinkVersion: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceId: str
-        :param WorkSpaceName: 工作空间名称
+        :param _WorkSpaceName: 工作空间名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceName: str
-        :param Tags: 作业标签
+        :param _Tags: 作业标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
-        self.JobId = None
-        self.Region = None
-        self.Zone = None
-        self.AppId = None
-        self.OwnerUin = None
-        self.CreatorUin = None
-        self.Name = None
-        self.JobType = None
-        self.Status = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.StopTime = None
-        self.UpdateTime = None
-        self.TotalRunMillis = None
-        self.Remark = None
-        self.LastOpResult = None
-        self.ClusterName = None
-        self.LatestJobConfigVersion = None
-        self.PublishedJobConfigVersion = None
-        self.RunningCuNum = None
-        self.CuMem = None
-        self.StatusDesc = None
-        self.CurrentRunMillis = None
-        self.ClusterId = None
-        self.WebUIUrl = None
-        self.SchedulerType = None
-        self.ClusterStatus = None
-        self.RunningCu = None
-        self.FlinkVersion = None
-        self.WorkSpaceId = None
-        self.WorkSpaceName = None
-        self.Tags = None
+        self._JobId = None
+        self._Region = None
+        self._Zone = None
+        self._AppId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._Name = None
+        self._JobType = None
+        self._Status = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._StopTime = None
+        self._UpdateTime = None
+        self._TotalRunMillis = None
+        self._Remark = None
+        self._LastOpResult = None
+        self._ClusterName = None
+        self._LatestJobConfigVersion = None
+        self._PublishedJobConfigVersion = None
+        self._RunningCuNum = None
+        self._CuMem = None
+        self._StatusDesc = None
+        self._CurrentRunMillis = None
+        self._ClusterId = None
+        self._WebUIUrl = None
+        self._SchedulerType = None
+        self._ClusterStatus = None
+        self._RunningCu = None
+        self._FlinkVersion = None
+        self._WorkSpaceId = None
+        self._WorkSpaceName = None
+        self._Tags = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TotalRunMillis(self):
+        return self._TotalRunMillis
+
+    @TotalRunMillis.setter
+    def TotalRunMillis(self, TotalRunMillis):
+        self._TotalRunMillis = TotalRunMillis
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def LastOpResult(self):
+        return self._LastOpResult
+
+    @LastOpResult.setter
+    def LastOpResult(self, LastOpResult):
+        self._LastOpResult = LastOpResult
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def LatestJobConfigVersion(self):
+        return self._LatestJobConfigVersion
+
+    @LatestJobConfigVersion.setter
+    def LatestJobConfigVersion(self, LatestJobConfigVersion):
+        self._LatestJobConfigVersion = LatestJobConfigVersion
+
+    @property
+    def PublishedJobConfigVersion(self):
+        return self._PublishedJobConfigVersion
+
+    @PublishedJobConfigVersion.setter
+    def PublishedJobConfigVersion(self, PublishedJobConfigVersion):
+        self._PublishedJobConfigVersion = PublishedJobConfigVersion
+
+    @property
+    def RunningCuNum(self):
+        return self._RunningCuNum
+
+    @RunningCuNum.setter
+    def RunningCuNum(self, RunningCuNum):
+        self._RunningCuNum = RunningCuNum
+
+    @property
+    def CuMem(self):
+        return self._CuMem
+
+    @CuMem.setter
+    def CuMem(self, CuMem):
+        self._CuMem = CuMem
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def CurrentRunMillis(self):
+        return self._CurrentRunMillis
+
+    @CurrentRunMillis.setter
+    def CurrentRunMillis(self, CurrentRunMillis):
+        self._CurrentRunMillis = CurrentRunMillis
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def WebUIUrl(self):
+        return self._WebUIUrl
+
+    @WebUIUrl.setter
+    def WebUIUrl(self, WebUIUrl):
+        self._WebUIUrl = WebUIUrl
+
+    @property
+    def SchedulerType(self):
+        return self._SchedulerType
+
+    @SchedulerType.setter
+    def SchedulerType(self, SchedulerType):
+        self._SchedulerType = SchedulerType
+
+    @property
+    def ClusterStatus(self):
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def RunningCu(self):
+        return self._RunningCu
+
+    @RunningCu.setter
+    def RunningCu(self, RunningCu):
+        self._RunningCu = RunningCu
+
+    @property
+    def FlinkVersion(self):
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def WorkSpaceName(self):
+        return self._WorkSpaceName
+
+    @WorkSpaceName.setter
+    def WorkSpaceName(self, WorkSpaceName):
+        self._WorkSpaceName = WorkSpaceName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Region = params.get("Region")
-        self.Zone = params.get("Zone")
-        self.AppId = params.get("AppId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.CreatorUin = params.get("CreatorUin")
-        self.Name = params.get("Name")
-        self.JobType = params.get("JobType")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.StopTime = params.get("StopTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.TotalRunMillis = params.get("TotalRunMillis")
-        self.Remark = params.get("Remark")
-        self.LastOpResult = params.get("LastOpResult")
-        self.ClusterName = params.get("ClusterName")
-        self.LatestJobConfigVersion = params.get("LatestJobConfigVersion")
-        self.PublishedJobConfigVersion = params.get("PublishedJobConfigVersion")
-        self.RunningCuNum = params.get("RunningCuNum")
-        self.CuMem = params.get("CuMem")
-        self.StatusDesc = params.get("StatusDesc")
-        self.CurrentRunMillis = params.get("CurrentRunMillis")
-        self.ClusterId = params.get("ClusterId")
-        self.WebUIUrl = params.get("WebUIUrl")
-        self.SchedulerType = params.get("SchedulerType")
-        self.ClusterStatus = params.get("ClusterStatus")
-        self.RunningCu = params.get("RunningCu")
-        self.FlinkVersion = params.get("FlinkVersion")
-        self.WorkSpaceId = params.get("WorkSpaceId")
-        self.WorkSpaceName = params.get("WorkSpaceName")
+        self._JobId = params.get("JobId")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
+        self._Name = params.get("Name")
+        self._JobType = params.get("JobType")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TotalRunMillis = params.get("TotalRunMillis")
+        self._Remark = params.get("Remark")
+        self._LastOpResult = params.get("LastOpResult")
+        self._ClusterName = params.get("ClusterName")
+        self._LatestJobConfigVersion = params.get("LatestJobConfigVersion")
+        self._PublishedJobConfigVersion = params.get("PublishedJobConfigVersion")
+        self._RunningCuNum = params.get("RunningCuNum")
+        self._CuMem = params.get("CuMem")
+        self._StatusDesc = params.get("StatusDesc")
+        self._CurrentRunMillis = params.get("CurrentRunMillis")
+        self._ClusterId = params.get("ClusterId")
+        self._WebUIUrl = params.get("WebUIUrl")
+        self._SchedulerType = params.get("SchedulerType")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._RunningCu = params.get("RunningCu")
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._WorkSpaceName = params.get("WorkSpaceName")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2461,34 +4973,75 @@ class ModifyJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业Id
+        :param _JobId: 作业Id
         :type JobId: str
-        :param Name: 作业名称，支持长度小于50的中文/英文/数字/”-”/”_”/”.”，不能重名
+        :param _Name: 作业名称，支持长度小于50的中文/英文/数字/”-”/”_”/”.”，不能重名
         :type Name: str
-        :param Remark: 描述
+        :param _Remark: 描述
         :type Remark: str
-        :param TargetFolderId: 拖拽文件需传入此参数
+        :param _TargetFolderId: 拖拽文件需传入此参数
         :type TargetFolderId: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.JobId = None
-        self.Name = None
-        self.Remark = None
-        self.TargetFolderId = None
-        self.WorkSpaceId = None
+        self._JobId = None
+        self._Name = None
+        self._Remark = None
+        self._TargetFolderId = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TargetFolderId(self):
+        return self._TargetFolderId
+
+    @TargetFolderId.setter
+    def TargetFolderId(self, TargetFolderId):
+        self._TargetFolderId = TargetFolderId
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.TargetFolderId = params.get("TargetFolderId")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._JobId = params.get("JobId")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._TargetFolderId = params.get("TargetFolderId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2501,14 +5054,22 @@ class ModifyJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Property(AbstractModel):
@@ -2518,22 +5079,39 @@ class Property(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 系统配置的Key
+        :param _Key: 系统配置的Key
         :type Key: str
-        :param Value: 系统配置的Value
+        :param _Value: 系统配置的Value
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2546,24 +5124,41 @@ class RefJobStatusCountItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobStatus: 作业状态
+        :param _JobStatus: 作业状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobStatus: int
-        :param Count: 作业数量
+        :param _Count: 作业数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
-        self.JobStatus = None
-        self.Count = None
+        self._JobStatus = None
+        self._Count = None
+
+    @property
+    def JobStatus(self):
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.JobStatus = params.get("JobStatus")
-        self.Count = params.get("Count")
+        self._JobStatus = params.get("JobStatus")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2576,76 +5171,181 @@ class ResourceConfigItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param ResourceType: 资源类型
+        :param _ResourceType: 资源类型
         :type ResourceType: int
-        :param Region: 资源所属地域
+        :param _Region: 资源所属地域
         :type Region: str
-        :param AppId: 资源所属AppId
+        :param _AppId: 资源所属AppId
         :type AppId: int
-        :param OwnerUin: 主账号Uin
+        :param _OwnerUin: 主账号Uin
         :type OwnerUin: str
-        :param CreatorUin: 子账号Uin
+        :param _CreatorUin: 子账号Uin
         :type CreatorUin: str
-        :param ResourceLoc: 资源位置描述
+        :param _ResourceLoc: 资源位置描述
         :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
-        :param CreateTime: 资源创建时间
+        :param _CreateTime: 资源创建时间
         :type CreateTime: str
-        :param Version: 资源版本
+        :param _Version: 资源版本
         :type Version: int
-        :param Remark: 资源描述
+        :param _Remark: 资源描述
         :type Remark: str
-        :param Status: 资源状态：0: 资源同步中，1:资源已就绪
+        :param _Status: 资源状态：0: 资源同步中，1:资源已就绪
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param RefJobCount: 关联作业个数
+        :param _RefJobCount: 关联作业个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefJobCount: int
-        :param RefJobStatusCountSet: 分状态统计关联作业数
+        :param _RefJobStatusCountSet: 分状态统计关联作业数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefJobStatusCountSet: list of RefJobStatusCountItem
         """
-        self.ResourceId = None
-        self.ResourceType = None
-        self.Region = None
-        self.AppId = None
-        self.OwnerUin = None
-        self.CreatorUin = None
-        self.ResourceLoc = None
-        self.CreateTime = None
-        self.Version = None
-        self.Remark = None
-        self.Status = None
-        self.RefJobCount = None
-        self.RefJobStatusCountSet = None
+        self._ResourceId = None
+        self._ResourceType = None
+        self._Region = None
+        self._AppId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._ResourceLoc = None
+        self._CreateTime = None
+        self._Version = None
+        self._Remark = None
+        self._Status = None
+        self._RefJobCount = None
+        self._RefJobStatusCountSet = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def ResourceLoc(self):
+        return self._ResourceLoc
+
+    @ResourceLoc.setter
+    def ResourceLoc(self, ResourceLoc):
+        self._ResourceLoc = ResourceLoc
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RefJobCount(self):
+        return self._RefJobCount
+
+    @RefJobCount.setter
+    def RefJobCount(self, RefJobCount):
+        self._RefJobCount = RefJobCount
+
+    @property
+    def RefJobStatusCountSet(self):
+        return self._RefJobStatusCountSet
+
+    @RefJobStatusCountSet.setter
+    def RefJobStatusCountSet(self, RefJobStatusCountSet):
+        self._RefJobStatusCountSet = RefJobStatusCountSet
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceType = params.get("ResourceType")
-        self.Region = params.get("Region")
-        self.AppId = params.get("AppId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.CreatorUin = params.get("CreatorUin")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._Region = params.get("Region")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
         if params.get("ResourceLoc") is not None:
-            self.ResourceLoc = ResourceLoc()
-            self.ResourceLoc._deserialize(params.get("ResourceLoc"))
-        self.CreateTime = params.get("CreateTime")
-        self.Version = params.get("Version")
-        self.Remark = params.get("Remark")
-        self.Status = params.get("Status")
-        self.RefJobCount = params.get("RefJobCount")
+            self._ResourceLoc = ResourceLoc()
+            self._ResourceLoc._deserialize(params.get("ResourceLoc"))
+        self._CreateTime = params.get("CreateTime")
+        self._Version = params.get("Version")
+        self._Remark = params.get("Remark")
+        self._Status = params.get("Status")
+        self._RefJobCount = params.get("RefJobCount")
         if params.get("RefJobStatusCountSet") is not None:
-            self.RefJobStatusCountSet = []
+            self._RefJobStatusCountSet = []
             for item in params.get("RefJobStatusCountSet"):
                 obj = RefJobStatusCountItem()
                 obj._deserialize(item)
-                self.RefJobStatusCountSet.append(obj)
+                self._RefJobStatusCountSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2658,100 +5358,245 @@ class ResourceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param Name: 资源名称
+        :param _Name: 资源名称
         :type Name: str
-        :param ResourceType: 资源类型
+        :param _ResourceType: 资源类型
         :type ResourceType: int
-        :param ResourceLoc: 资源位置
+        :param _ResourceLoc: 资源位置
         :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
-        :param Region: 资源地域
+        :param _Region: 资源地域
         :type Region: str
-        :param AppId: 应用ID
+        :param _AppId: 应用ID
         :type AppId: int
-        :param OwnerUin: 主账号Uin
+        :param _OwnerUin: 主账号Uin
         :type OwnerUin: str
-        :param CreatorUin: 子账号Uin
+        :param _CreatorUin: 子账号Uin
         :type CreatorUin: str
-        :param CreateTime: 资源创建时间
+        :param _CreateTime: 资源创建时间
         :type CreateTime: str
-        :param UpdateTime: 资源最后更新时间
+        :param _UpdateTime: 资源最后更新时间
         :type UpdateTime: str
-        :param LatestResourceConfigVersion: 资源的资源版本ID
+        :param _LatestResourceConfigVersion: 资源的资源版本ID
         :type LatestResourceConfigVersion: int
-        :param Remark: 资源备注
+        :param _Remark: 资源备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param VersionCount: 版本个数
+        :param _VersionCount: 版本个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionCount: int
-        :param RefJobCount: 关联作业数
+        :param _RefJobCount: 关联作业数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefJobCount: int
-        :param IsJobRun: 作业运行状态
+        :param _IsJobRun: 作业运行状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsJobRun: int
-        :param FileName: 文件名
+        :param _FileName: 文件名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
-        :param WorkSpaceId: 工作空间ID
+        :param _WorkSpaceId: 工作空间ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceId: int
-        :param RefJobStatusCountSet: 分状态统计关联作业数
+        :param _RefJobStatusCountSet: 分状态统计关联作业数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefJobStatusCountSet: list of RefJobStatusCountItem
         """
-        self.ResourceId = None
-        self.Name = None
-        self.ResourceType = None
-        self.ResourceLoc = None
-        self.Region = None
-        self.AppId = None
-        self.OwnerUin = None
-        self.CreatorUin = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.LatestResourceConfigVersion = None
-        self.Remark = None
-        self.VersionCount = None
-        self.RefJobCount = None
-        self.IsJobRun = None
-        self.FileName = None
-        self.WorkSpaceId = None
-        self.RefJobStatusCountSet = None
+        self._ResourceId = None
+        self._Name = None
+        self._ResourceType = None
+        self._ResourceLoc = None
+        self._Region = None
+        self._AppId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LatestResourceConfigVersion = None
+        self._Remark = None
+        self._VersionCount = None
+        self._RefJobCount = None
+        self._IsJobRun = None
+        self._FileName = None
+        self._WorkSpaceId = None
+        self._RefJobStatusCountSet = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceLoc(self):
+        return self._ResourceLoc
+
+    @ResourceLoc.setter
+    def ResourceLoc(self, ResourceLoc):
+        self._ResourceLoc = ResourceLoc
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LatestResourceConfigVersion(self):
+        return self._LatestResourceConfigVersion
+
+    @LatestResourceConfigVersion.setter
+    def LatestResourceConfigVersion(self, LatestResourceConfigVersion):
+        self._LatestResourceConfigVersion = LatestResourceConfigVersion
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def VersionCount(self):
+        return self._VersionCount
+
+    @VersionCount.setter
+    def VersionCount(self, VersionCount):
+        self._VersionCount = VersionCount
+
+    @property
+    def RefJobCount(self):
+        return self._RefJobCount
+
+    @RefJobCount.setter
+    def RefJobCount(self, RefJobCount):
+        self._RefJobCount = RefJobCount
+
+    @property
+    def IsJobRun(self):
+        return self._IsJobRun
+
+    @IsJobRun.setter
+    def IsJobRun(self, IsJobRun):
+        self._IsJobRun = IsJobRun
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def RefJobStatusCountSet(self):
+        return self._RefJobStatusCountSet
+
+    @RefJobStatusCountSet.setter
+    def RefJobStatusCountSet(self, RefJobStatusCountSet):
+        self._RefJobStatusCountSet = RefJobStatusCountSet
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Name = params.get("Name")
-        self.ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._Name = params.get("Name")
+        self._ResourceType = params.get("ResourceType")
         if params.get("ResourceLoc") is not None:
-            self.ResourceLoc = ResourceLoc()
-            self.ResourceLoc._deserialize(params.get("ResourceLoc"))
-        self.Region = params.get("Region")
-        self.AppId = params.get("AppId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.CreatorUin = params.get("CreatorUin")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.LatestResourceConfigVersion = params.get("LatestResourceConfigVersion")
-        self.Remark = params.get("Remark")
-        self.VersionCount = params.get("VersionCount")
-        self.RefJobCount = params.get("RefJobCount")
-        self.IsJobRun = params.get("IsJobRun")
-        self.FileName = params.get("FileName")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+            self._ResourceLoc = ResourceLoc()
+            self._ResourceLoc._deserialize(params.get("ResourceLoc"))
+        self._Region = params.get("Region")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LatestResourceConfigVersion = params.get("LatestResourceConfigVersion")
+        self._Remark = params.get("Remark")
+        self._VersionCount = params.get("VersionCount")
+        self._RefJobCount = params.get("RefJobCount")
+        self._IsJobRun = params.get("IsJobRun")
+        self._FileName = params.get("FileName")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         if params.get("RefJobStatusCountSet") is not None:
-            self.RefJobStatusCountSet = []
+            self._RefJobStatusCountSet = []
             for item in params.get("RefJobStatusCountSet"):
                 obj = RefJobStatusCountItem()
                 obj._deserialize(item)
-                self.RefJobStatusCountSet.append(obj)
+                self._RefJobStatusCountSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2764,24 +5609,41 @@ class ResourceLoc(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StorageType: 资源位置的存储类型，目前只支持1:COS
+        :param _StorageType: 资源位置的存储类型，目前只支持1:COS
         :type StorageType: int
-        :param Param: 描述资源位置的json
+        :param _Param: 描述资源位置的json
         :type Param: :class:`tencentcloud.oceanus.v20190422.models.ResourceLocParam`
         """
-        self.StorageType = None
-        self.Param = None
+        self._StorageType = None
+        self._Param = None
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def Param(self):
+        return self._Param
+
+    @Param.setter
+    def Param(self, Param):
+        self._Param = Param
 
 
     def _deserialize(self, params):
-        self.StorageType = params.get("StorageType")
+        self._StorageType = params.get("StorageType")
         if params.get("Param") is not None:
-            self.Param = ResourceLocParam()
-            self.Param._deserialize(params.get("Param"))
+            self._Param = ResourceLocParam()
+            self._Param._deserialize(params.get("Param"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2794,27 +5656,52 @@ class ResourceLocParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bucket: 资源bucket
+        :param _Bucket: 资源bucket
         :type Bucket: str
-        :param Path: 资源路径
+        :param _Path: 资源路径
         :type Path: str
-        :param Region: 资源所在地域，如果不填，则使用Resource的Region
+        :param _Region: 资源所在地域，如果不填，则使用Resource的Region
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
-        self.Bucket = None
-        self.Path = None
-        self.Region = None
+        self._Bucket = None
+        self._Path = None
+        self._Region = None
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
-        self.Bucket = params.get("Bucket")
-        self.Path = params.get("Path")
-        self.Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._Path = params.get("Path")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2827,26 +5714,51 @@ class ResourceRef(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param Version: 资源版本ID，-1表示使用最新版本
+        :param _Version: 资源版本ID，-1表示使用最新版本
         :type Version: int
-        :param Type: 引用资源类型，例如主资源设置为1，代表main class所在的jar包
+        :param _Type: 引用资源类型，例如主资源设置为1，代表main class所在的jar包
         :type Type: int
         """
-        self.ResourceId = None
-        self.Version = None
-        self.Type = None
+        self._ResourceId = None
+        self._Version = None
+        self._Type = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Version = params.get("Version")
-        self.Type = params.get("Type")
+        self._ResourceId = params.get("ResourceId")
+        self._Version = params.get("Version")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2859,34 +5771,75 @@ class ResourceRefDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源id
+        :param _ResourceId: 资源id
         :type ResourceId: str
-        :param Version: 资源版本，-1表示使用最新版本
+        :param _Version: 资源版本，-1表示使用最新版本
         :type Version: int
-        :param Name: 资源名称
+        :param _Name: 资源名称
         :type Name: str
-        :param Type: 1: 主资源
+        :param _Type: 1: 主资源
         :type Type: int
-        :param SystemProvide: 1: 系统内置资源
+        :param _SystemProvide: 1: 系统内置资源
         :type SystemProvide: int
         """
-        self.ResourceId = None
-        self.Version = None
-        self.Name = None
-        self.Type = None
-        self.SystemProvide = None
+        self._ResourceId = None
+        self._Version = None
+        self._Name = None
+        self._Type = None
+        self._SystemProvide = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SystemProvide(self):
+        return self._SystemProvide
+
+    @SystemProvide.setter
+    def SystemProvide(self, SystemProvide):
+        self._SystemProvide = SystemProvide
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Version = params.get("Version")
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.SystemProvide = params.get("SystemProvide")
+        self._ResourceId = params.get("ResourceId")
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._SystemProvide = params.get("SystemProvide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2899,26 +5852,51 @@ class ResourceRefJobInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job id
+        :param _JobId: Job id
         :type JobId: str
-        :param JobConfigVersion: Job配置版本
+        :param _JobConfigVersion: Job配置版本
         :type JobConfigVersion: int
-        :param ResourceVersion: 资源版本
+        :param _ResourceVersion: 资源版本
         :type ResourceVersion: int
         """
-        self.JobId = None
-        self.JobConfigVersion = None
-        self.ResourceVersion = None
+        self._JobId = None
+        self._JobConfigVersion = None
+        self._ResourceVersion = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobConfigVersion(self):
+        return self._JobConfigVersion
+
+    @JobConfigVersion.setter
+    def JobConfigVersion(self, JobConfigVersion):
+        self._JobConfigVersion = JobConfigVersion
+
+    @property
+    def ResourceVersion(self):
+        return self._ResourceVersion
+
+    @ResourceVersion.setter
+    def ResourceVersion(self, ResourceVersion):
+        self._ResourceVersion = ResourceVersion
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobConfigVersion = params.get("JobConfigVersion")
-        self.ResourceVersion = params.get("ResourceVersion")
+        self._JobId = params.get("JobId")
+        self._JobConfigVersion = params.get("JobConfigVersion")
+        self._ResourceVersion = params.get("ResourceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2931,65 +5909,162 @@ class RoleAuth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: 用户 AppID
+        :param _AppId: 用户 AppID
         :type AppId: int
-        :param WorkSpaceSerialId: 工作空间 SerialId
+        :param _WorkSpaceSerialId: 工作空间 SerialId
         :type WorkSpaceSerialId: str
-        :param OwnerUin: 主账号 UIN
+        :param _OwnerUin: 主账号 UIN
         :type OwnerUin: str
-        :param CreatorUin: 创建者 UIN
+        :param _CreatorUin: 创建者 UIN
         :type CreatorUin: str
-        :param AuthSubAccountUin: 绑定授权的 UIN
+        :param _AuthSubAccountUin: 绑定授权的 UIN
         :type AuthSubAccountUin: str
-        :param Permission: 对应 role表的id
+        :param _Permission: 对应 role表的id
         :type Permission: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 最后一次操作时间
+        :param _UpdateTime: 最后一次操作时间
         :type UpdateTime: str
-        :param Status: 2 启用 1 停用
+        :param _Status: 2 启用 1 停用
         :type Status: int
-        :param Id: id
+        :param _Id: id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param WorkSpaceId: 工作空间id
+        :param _WorkSpaceId: 工作空间id
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceId: int
-        :param RoleName: 权限名称
+        :param _RoleName: 权限名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
         """
-        self.AppId = None
-        self.WorkSpaceSerialId = None
-        self.OwnerUin = None
-        self.CreatorUin = None
-        self.AuthSubAccountUin = None
-        self.Permission = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Status = None
-        self.Id = None
-        self.WorkSpaceId = None
-        self.RoleName = None
+        self._AppId = None
+        self._WorkSpaceSerialId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._AuthSubAccountUin = None
+        self._Permission = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+        self._Id = None
+        self._WorkSpaceId = None
+        self._RoleName = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def WorkSpaceSerialId(self):
+        return self._WorkSpaceSerialId
+
+    @WorkSpaceSerialId.setter
+    def WorkSpaceSerialId(self, WorkSpaceSerialId):
+        self._WorkSpaceSerialId = WorkSpaceSerialId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def AuthSubAccountUin(self):
+        return self._AuthSubAccountUin
+
+    @AuthSubAccountUin.setter
+    def AuthSubAccountUin(self, AuthSubAccountUin):
+        self._AuthSubAccountUin = AuthSubAccountUin
+
+    @property
+    def Permission(self):
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.AppId = params.get("AppId")
-        self.WorkSpaceSerialId = params.get("WorkSpaceSerialId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.CreatorUin = params.get("CreatorUin")
-        self.AuthSubAccountUin = params.get("AuthSubAccountUin")
-        self.Permission = params.get("Permission")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Status = params.get("Status")
-        self.Id = params.get("Id")
-        self.WorkSpaceId = params.get("WorkSpaceId")
-        self.RoleName = params.get("RoleName")
+        self._AppId = params.get("AppId")
+        self._WorkSpaceSerialId = params.get("WorkSpaceSerialId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
+        self._AuthSubAccountUin = params.get("AuthSubAccountUin")
+        self._Permission = params.get("Permission")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._Id = params.get("Id")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3002,42 +6077,99 @@ class RunJobDescription(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业Id
+        :param _JobId: 作业Id
         :type JobId: str
-        :param RunType: 运行类型，1：启动，2：恢复
+        :param _RunType: 运行类型，1：启动，2：恢复
         :type RunType: int
-        :param StartMode: 兼容旧版 SQL 类型作业启动参数：指定数据源消费起始时间点（例:T1557394288000）
+        :param _StartMode: 兼容旧版 SQL 类型作业启动参数：指定数据源消费起始时间点（例:T1557394288000）
         :type StartMode: str
-        :param JobConfigVersion: 当前作业的某个版本
+        :param _JobConfigVersion: 当前作业的某个版本
         :type JobConfigVersion: int
-        :param SavepointPath: Savepoint路径
+        :param _SavepointPath: Savepoint路径
         :type SavepointPath: str
-        :param SavepointId: Savepoint的Id
+        :param _SavepointId: Savepoint的Id
         :type SavepointId: str
-        :param UseOldSystemConnector: 使用历史版本系统依赖
+        :param _UseOldSystemConnector: 使用历史版本系统依赖
         :type UseOldSystemConnector: bool
         """
-        self.JobId = None
-        self.RunType = None
-        self.StartMode = None
-        self.JobConfigVersion = None
-        self.SavepointPath = None
-        self.SavepointId = None
-        self.UseOldSystemConnector = None
+        self._JobId = None
+        self._RunType = None
+        self._StartMode = None
+        self._JobConfigVersion = None
+        self._SavepointPath = None
+        self._SavepointId = None
+        self._UseOldSystemConnector = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RunType(self):
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def StartMode(self):
+        return self._StartMode
+
+    @StartMode.setter
+    def StartMode(self, StartMode):
+        self._StartMode = StartMode
+
+    @property
+    def JobConfigVersion(self):
+        return self._JobConfigVersion
+
+    @JobConfigVersion.setter
+    def JobConfigVersion(self, JobConfigVersion):
+        self._JobConfigVersion = JobConfigVersion
+
+    @property
+    def SavepointPath(self):
+        return self._SavepointPath
+
+    @SavepointPath.setter
+    def SavepointPath(self, SavepointPath):
+        self._SavepointPath = SavepointPath
+
+    @property
+    def SavepointId(self):
+        return self._SavepointId
+
+    @SavepointId.setter
+    def SavepointId(self, SavepointId):
+        self._SavepointId = SavepointId
+
+    @property
+    def UseOldSystemConnector(self):
+        return self._UseOldSystemConnector
+
+    @UseOldSystemConnector.setter
+    def UseOldSystemConnector(self, UseOldSystemConnector):
+        self._UseOldSystemConnector = UseOldSystemConnector
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RunType = params.get("RunType")
-        self.StartMode = params.get("StartMode")
-        self.JobConfigVersion = params.get("JobConfigVersion")
-        self.SavepointPath = params.get("SavepointPath")
-        self.SavepointId = params.get("SavepointId")
-        self.UseOldSystemConnector = params.get("UseOldSystemConnector")
+        self._JobId = params.get("JobId")
+        self._RunType = params.get("RunType")
+        self._StartMode = params.get("StartMode")
+        self._JobConfigVersion = params.get("JobConfigVersion")
+        self._SavepointPath = params.get("SavepointPath")
+        self._SavepointId = params.get("SavepointId")
+        self._UseOldSystemConnector = params.get("UseOldSystemConnector")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3050,27 +6182,44 @@ class RunJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RunJobDescriptions: 批量启动作业的描述信息
+        :param _RunJobDescriptions: 批量启动作业的描述信息
         :type RunJobDescriptions: list of RunJobDescription
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.RunJobDescriptions = None
-        self.WorkSpaceId = None
+        self._RunJobDescriptions = None
+        self._WorkSpaceId = None
+
+    @property
+    def RunJobDescriptions(self):
+        return self._RunJobDescriptions
+
+    @RunJobDescriptions.setter
+    def RunJobDescriptions(self, RunJobDescriptions):
+        self._RunJobDescriptions = RunJobDescriptions
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
         if params.get("RunJobDescriptions") is not None:
-            self.RunJobDescriptions = []
+            self._RunJobDescriptions = []
             for item in params.get("RunJobDescriptions"):
                 obj = RunJobDescription()
                 obj._deserialize(item)
-                self.RunJobDescriptions.append(obj)
-        self.WorkSpaceId = params.get("WorkSpaceId")
+                self._RunJobDescriptions.append(obj)
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3083,14 +6232,22 @@ class RunJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Savepoint(AbstractModel):
@@ -3100,84 +6257,197 @@ class Savepoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 主键
+        :param _Id: 主键
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param VersionId: 版本号
+        :param _VersionId: 版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
-        :param Status: 状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout
+        :param _Status: 状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
-        :param Path: 路径
+        :param _Path: 路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param Size: 大小
+        :param _Size: 大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
-        :param RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        :param _RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordType: int
-        :param JobRuntimeId: 运行作业实例的顺序 ID
+        :param _JobRuntimeId: 运行作业实例的顺序 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobRuntimeId: int
-        :param Description: 描述
+        :param _Description: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param Timeout: 固定超时时间
+        :param _Timeout: 固定超时时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
-        :param SerialId: 快照 serialId
+        :param _SerialId: 快照 serialId
 注意：此字段可能返回 null，表示取不到有效值。
         :type SerialId: str
-        :param TimeConsuming: 耗时
+        :param _TimeConsuming: 耗时
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeConsuming: int
-        :param PathStatus: 快照路径状态 1：可用；2：不可用；
+        :param _PathStatus: 快照路径状态 1：可用；2：不可用；
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathStatus: int
         """
-        self.Id = None
-        self.VersionId = None
-        self.Status = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Path = None
-        self.Size = None
-        self.RecordType = None
-        self.JobRuntimeId = None
-        self.Description = None
-        self.Timeout = None
-        self.SerialId = None
-        self.TimeConsuming = None
-        self.PathStatus = None
+        self._Id = None
+        self._VersionId = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Path = None
+        self._Size = None
+        self._RecordType = None
+        self._JobRuntimeId = None
+        self._Description = None
+        self._Timeout = None
+        self._SerialId = None
+        self._TimeConsuming = None
+        self._PathStatus = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def RecordType(self):
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def JobRuntimeId(self):
+        return self._JobRuntimeId
+
+    @JobRuntimeId.setter
+    def JobRuntimeId(self, JobRuntimeId):
+        self._JobRuntimeId = JobRuntimeId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def SerialId(self):
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def TimeConsuming(self):
+        return self._TimeConsuming
+
+    @TimeConsuming.setter
+    def TimeConsuming(self, TimeConsuming):
+        self._TimeConsuming = TimeConsuming
+
+    @property
+    def PathStatus(self):
+        return self._PathStatus
+
+    @PathStatus.setter
+    def PathStatus(self, PathStatus):
+        self._PathStatus = PathStatus
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.VersionId = params.get("VersionId")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Path = params.get("Path")
-        self.Size = params.get("Size")
-        self.RecordType = params.get("RecordType")
-        self.JobRuntimeId = params.get("JobRuntimeId")
-        self.Description = params.get("Description")
-        self.Timeout = params.get("Timeout")
-        self.SerialId = params.get("SerialId")
-        self.TimeConsuming = params.get("TimeConsuming")
-        self.PathStatus = params.get("PathStatus")
+        self._Id = params.get("Id")
+        self._VersionId = params.get("VersionId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Path = params.get("Path")
+        self._Size = params.get("Size")
+        self._RecordType = params.get("RecordType")
+        self._JobRuntimeId = params.get("JobRuntimeId")
+        self._Description = params.get("Description")
+        self._Timeout = params.get("Timeout")
+        self._SerialId = params.get("SerialId")
+        self._TimeConsuming = params.get("TimeConsuming")
+        self._PathStatus = params.get("PathStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3190,22 +6460,39 @@ class StopJobDescription(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业Id
+        :param _JobId: 作业Id
         :type JobId: str
-        :param StopType: 停止类型，1 停止 2 暂停
+        :param _StopType: 停止类型，1 停止 2 暂停
         :type StopType: int
         """
-        self.JobId = None
-        self.StopType = None
+        self._JobId = None
+        self._StopType = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def StopType(self):
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.StopType = params.get("StopType")
+        self._JobId = params.get("JobId")
+        self._StopType = params.get("StopType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3218,27 +6505,44 @@ class StopJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StopJobDescriptions: 批量停止作业的描述信息
+        :param _StopJobDescriptions: 批量停止作业的描述信息
         :type StopJobDescriptions: list of StopJobDescription
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.StopJobDescriptions = None
-        self.WorkSpaceId = None
+        self._StopJobDescriptions = None
+        self._WorkSpaceId = None
+
+    @property
+    def StopJobDescriptions(self):
+        return self._StopJobDescriptions
+
+    @StopJobDescriptions.setter
+    def StopJobDescriptions(self, StopJobDescriptions):
+        self._StopJobDescriptions = StopJobDescriptions
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
         if params.get("StopJobDescriptions") is not None:
-            self.StopJobDescriptions = []
+            self._StopJobDescriptions = []
             for item in params.get("StopJobDescriptions"):
                 obj = StopJobDescription()
                 obj._deserialize(item)
-                self.StopJobDescriptions.append(obj)
-        self.WorkSpaceId = params.get("WorkSpaceId")
+                self._StopJobDescriptions.append(obj)
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3251,14 +6555,22 @@ class StopJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SystemResourceItem(AbstractModel):
@@ -3268,38 +6580,87 @@ class SystemResourceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param Name: 资源名称
+        :param _Name: 资源名称
         :type Name: str
-        :param ResourceType: 资源类型。1 表示 JAR 包，目前只支持该值。
+        :param _ResourceType: 资源类型。1 表示 JAR 包，目前只支持该值。
         :type ResourceType: int
-        :param Remark: 资源备注
+        :param _Remark: 资源备注
         :type Remark: str
-        :param Region: 资源所属地域
+        :param _Region: 资源所属地域
         :type Region: str
-        :param LatestResourceConfigVersion: 资源的最新版本
+        :param _LatestResourceConfigVersion: 资源的最新版本
         :type LatestResourceConfigVersion: int
         """
-        self.ResourceId = None
-        self.Name = None
-        self.ResourceType = None
-        self.Remark = None
-        self.Region = None
-        self.LatestResourceConfigVersion = None
+        self._ResourceId = None
+        self._Name = None
+        self._ResourceType = None
+        self._Remark = None
+        self._Region = None
+        self._LatestResourceConfigVersion = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LatestResourceConfigVersion(self):
+        return self._LatestResourceConfigVersion
+
+    @LatestResourceConfigVersion.setter
+    def LatestResourceConfigVersion(self, LatestResourceConfigVersion):
+        self._LatestResourceConfigVersion = LatestResourceConfigVersion
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Name = params.get("Name")
-        self.ResourceType = params.get("ResourceType")
-        self.Remark = params.get("Remark")
-        self.Region = params.get("Region")
-        self.LatestResourceConfigVersion = params.get("LatestResourceConfigVersion")
+        self._ResourceId = params.get("ResourceId")
+        self._Name = params.get("Name")
+        self._ResourceType = params.get("ResourceType")
+        self._Remark = params.get("Remark")
+        self._Region = params.get("Region")
+        self._LatestResourceConfigVersion = params.get("LatestResourceConfigVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3312,24 +6673,41 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param _TagKey: 标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3342,52 +6720,109 @@ class TreeResourceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param Name: 资源名称
+        :param _Name: 资源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param ResourceType: 资源类型
+        :param _ResourceType: 资源类型
         :type ResourceType: int
-        :param Remark: 备注
+        :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param FileName: 文件名
+        :param _FileName: 文件名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
-        :param FolderId: 目录ID
+        :param _FolderId: 目录ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param RefJobStatusCountSet: 分状态统计关联作业数
+        :param _RefJobStatusCountSet: 分状态统计关联作业数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefJobStatusCountSet: list of RefJobStatusCountItem
         """
-        self.ResourceId = None
-        self.Name = None
-        self.ResourceType = None
-        self.Remark = None
-        self.FileName = None
-        self.FolderId = None
-        self.RefJobStatusCountSet = None
+        self._ResourceId = None
+        self._Name = None
+        self._ResourceType = None
+        self._Remark = None
+        self._FileName = None
+        self._FolderId = None
+        self._RefJobStatusCountSet = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def RefJobStatusCountSet(self):
+        return self._RefJobStatusCountSet
+
+    @RefJobStatusCountSet.setter
+    def RefJobStatusCountSet(self, RefJobStatusCountSet):
+        self._RefJobStatusCountSet = RefJobStatusCountSet
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Name = params.get("Name")
-        self.ResourceType = params.get("ResourceType")
-        self.Remark = params.get("Remark")
-        self.FileName = params.get("FileName")
-        self.FolderId = params.get("FolderId")
+        self._ResourceId = params.get("ResourceId")
+        self._Name = params.get("Name")
+        self._ResourceType = params.get("ResourceType")
+        self._Remark = params.get("Remark")
+        self._FileName = params.get("FileName")
+        self._FolderId = params.get("FolderId")
         if params.get("RefJobStatusCountSet") is not None:
-            self.RefJobStatusCountSet = []
+            self._RefJobStatusCountSet = []
             for item in params.get("RefJobStatusCountSet"):
                 obj = RefJobStatusCountItem()
                 obj._deserialize(item)
-                self.RefJobStatusCountSet.append(obj)
+                self._RefJobStatusCountSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3400,26 +6835,51 @@ class TriggerJobSavepointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 作业 SerialId
+        :param _JobId: 作业 SerialId
         :type JobId: str
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
-        self.JobId = None
-        self.Description = None
-        self.WorkSpaceId = None
+        self._JobId = None
+        self._Description = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Description = params.get("Description")
-        self.WorkSpaceId = params.get("WorkSpaceId")
+        self._JobId = params.get("JobId")
+        self._Description = params.get("Description")
+        self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3432,33 +6892,73 @@ class TriggerJobSavepointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SavepointTrigger: 是否成功
+        :param _SavepointTrigger: 是否成功
         :type SavepointTrigger: bool
-        :param ErrorMsg: 错误消息
+        :param _ErrorMsg: 错误消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param FinalSavepointPath: 快照路径
+        :param _FinalSavepointPath: 快照路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinalSavepointPath: str
-        :param SavepointId: 快照 ID
+        :param _SavepointId: 快照 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SavepointId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SavepointTrigger = None
-        self.ErrorMsg = None
-        self.FinalSavepointPath = None
-        self.SavepointId = None
-        self.RequestId = None
+        self._SavepointTrigger = None
+        self._ErrorMsg = None
+        self._FinalSavepointPath = None
+        self._SavepointId = None
+        self._RequestId = None
+
+    @property
+    def SavepointTrigger(self):
+        return self._SavepointTrigger
+
+    @SavepointTrigger.setter
+    def SavepointTrigger(self, SavepointTrigger):
+        self._SavepointTrigger = SavepointTrigger
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def FinalSavepointPath(self):
+        return self._FinalSavepointPath
+
+    @FinalSavepointPath.setter
+    def FinalSavepointPath(self, FinalSavepointPath):
+        self._FinalSavepointPath = FinalSavepointPath
+
+    @property
+    def SavepointId(self):
+        return self._SavepointId
+
+    @SavepointId.setter
+    def SavepointId(self, SavepointId):
+        self._SavepointId = SavepointId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SavepointTrigger = params.get("SavepointTrigger")
-        self.ErrorMsg = params.get("ErrorMsg")
-        self.FinalSavepointPath = params.get("FinalSavepointPath")
-        self.SavepointId = params.get("SavepointId")
-        self.RequestId = params.get("RequestId")
+        self._SavepointTrigger = params.get("SavepointTrigger")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._FinalSavepointPath = params.get("FinalSavepointPath")
+        self._SavepointId = params.get("SavepointId")
+        self._RequestId = params.get("RequestId")
 
 
 class WorkSpaceClusterItem(AbstractModel):
@@ -3468,47 +6968,112 @@ class WorkSpaceClusterItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterGroupId: 集群 ID
+        :param _ClusterGroupId: 集群 ID
         :type ClusterGroupId: int
-        :param ClusterGroupSerialId: 集群 SerialId
+        :param _ClusterGroupSerialId: 集群 SerialId
         :type ClusterGroupSerialId: str
-        :param ClusterName: 集群名称
+        :param _ClusterName: 集群名称
         :type ClusterName: str
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
-        :param WorkSpaceName: 工作空间名称
+        :param _WorkSpaceName: 工作空间名称
         :type WorkSpaceName: str
-        :param Status: 绑定状态  2 绑定 1  解除绑定
+        :param _Status: 绑定状态  2 绑定 1  解除绑定
         :type Status: int
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: int
-        :param ProjectIdStr: 项目ID string类型
+        :param _ProjectIdStr: 项目ID string类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIdStr: str
         """
-        self.ClusterGroupId = None
-        self.ClusterGroupSerialId = None
-        self.ClusterName = None
-        self.WorkSpaceId = None
-        self.WorkSpaceName = None
-        self.Status = None
-        self.ProjectId = None
-        self.ProjectIdStr = None
+        self._ClusterGroupId = None
+        self._ClusterGroupSerialId = None
+        self._ClusterName = None
+        self._WorkSpaceId = None
+        self._WorkSpaceName = None
+        self._Status = None
+        self._ProjectId = None
+        self._ProjectIdStr = None
+
+    @property
+    def ClusterGroupId(self):
+        return self._ClusterGroupId
+
+    @ClusterGroupId.setter
+    def ClusterGroupId(self, ClusterGroupId):
+        self._ClusterGroupId = ClusterGroupId
+
+    @property
+    def ClusterGroupSerialId(self):
+        return self._ClusterGroupSerialId
+
+    @ClusterGroupSerialId.setter
+    def ClusterGroupSerialId(self, ClusterGroupSerialId):
+        self._ClusterGroupSerialId = ClusterGroupSerialId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def WorkSpaceName(self):
+        return self._WorkSpaceName
+
+    @WorkSpaceName.setter
+    def WorkSpaceName(self, WorkSpaceName):
+        self._WorkSpaceName = WorkSpaceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectIdStr(self):
+        return self._ProjectIdStr
+
+    @ProjectIdStr.setter
+    def ProjectIdStr(self, ProjectIdStr):
+        self._ProjectIdStr = ProjectIdStr
 
 
     def _deserialize(self, params):
-        self.ClusterGroupId = params.get("ClusterGroupId")
-        self.ClusterGroupSerialId = params.get("ClusterGroupSerialId")
-        self.ClusterName = params.get("ClusterName")
-        self.WorkSpaceId = params.get("WorkSpaceId")
-        self.WorkSpaceName = params.get("WorkSpaceName")
-        self.Status = params.get("Status")
-        self.ProjectId = params.get("ProjectId")
-        self.ProjectIdStr = params.get("ProjectIdStr")
+        self._ClusterGroupId = params.get("ClusterGroupId")
+        self._ClusterGroupSerialId = params.get("ClusterGroupSerialId")
+        self._ClusterName = params.get("ClusterName")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._WorkSpaceName = params.get("WorkSpaceName")
+        self._Status = params.get("Status")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectIdStr = params.get("ProjectIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3521,85 +7086,206 @@ class WorkSpaceSetItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SerialId: 工作空间 SerialId
+        :param _SerialId: 工作空间 SerialId
         :type SerialId: str
-        :param AppId: 用户 APPID
+        :param _AppId: 用户 APPID
         :type AppId: int
-        :param OwnerUin: 主账号 UIN
+        :param _OwnerUin: 主账号 UIN
         :type OwnerUin: str
-        :param CreatorUin: 创建者 UIN
+        :param _CreatorUin: 创建者 UIN
         :type CreatorUin: str
-        :param WorkSpaceName: 工作空间名称
+        :param _WorkSpaceName: 工作空间名称
         :type WorkSpaceName: str
-        :param Region: 区域
+        :param _Region: 区域
         :type Region: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
         :type UpdateTime: str
-        :param Status: 1 未初始化 2 可用  -1 已删除
+        :param _Status: 1 未初始化 2 可用  -1 已删除
         :type Status: int
-        :param Description: 工作空间描述
+        :param _Description: 工作空间描述
         :type Description: str
-        :param ClusterGroupSetItem: 工作空间包含集群信息
+        :param _ClusterGroupSetItem: 工作空间包含集群信息
         :type ClusterGroupSetItem: list of ClusterGroupSetItem
-        :param RoleAuth: 工作空间角色的信息
+        :param _RoleAuth: 工作空间角色的信息
         :type RoleAuth: list of RoleAuth
-        :param RoleAuthCount: 工作空间成员数量
+        :param _RoleAuthCount: 工作空间成员数量
         :type RoleAuthCount: int
-        :param WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
-        :param JobsCount: 1
+        :param _JobsCount: 1
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobsCount: int
         """
-        self.SerialId = None
-        self.AppId = None
-        self.OwnerUin = None
-        self.CreatorUin = None
-        self.WorkSpaceName = None
-        self.Region = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Status = None
-        self.Description = None
-        self.ClusterGroupSetItem = None
-        self.RoleAuth = None
-        self.RoleAuthCount = None
-        self.WorkSpaceId = None
-        self.JobsCount = None
+        self._SerialId = None
+        self._AppId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._WorkSpaceName = None
+        self._Region = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+        self._Description = None
+        self._ClusterGroupSetItem = None
+        self._RoleAuth = None
+        self._RoleAuthCount = None
+        self._WorkSpaceId = None
+        self._JobsCount = None
+
+    @property
+    def SerialId(self):
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def WorkSpaceName(self):
+        return self._WorkSpaceName
+
+    @WorkSpaceName.setter
+    def WorkSpaceName(self, WorkSpaceName):
+        self._WorkSpaceName = WorkSpaceName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ClusterGroupSetItem(self):
+        return self._ClusterGroupSetItem
+
+    @ClusterGroupSetItem.setter
+    def ClusterGroupSetItem(self, ClusterGroupSetItem):
+        self._ClusterGroupSetItem = ClusterGroupSetItem
+
+    @property
+    def RoleAuth(self):
+        return self._RoleAuth
+
+    @RoleAuth.setter
+    def RoleAuth(self, RoleAuth):
+        self._RoleAuth = RoleAuth
+
+    @property
+    def RoleAuthCount(self):
+        return self._RoleAuthCount
+
+    @RoleAuthCount.setter
+    def RoleAuthCount(self, RoleAuthCount):
+        self._RoleAuthCount = RoleAuthCount
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def JobsCount(self):
+        return self._JobsCount
+
+    @JobsCount.setter
+    def JobsCount(self, JobsCount):
+        self._JobsCount = JobsCount
 
 
     def _deserialize(self, params):
-        self.SerialId = params.get("SerialId")
-        self.AppId = params.get("AppId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.CreatorUin = params.get("CreatorUin")
-        self.WorkSpaceName = params.get("WorkSpaceName")
-        self.Region = params.get("Region")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Status = params.get("Status")
-        self.Description = params.get("Description")
+        self._SerialId = params.get("SerialId")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
+        self._WorkSpaceName = params.get("WorkSpaceName")
+        self._Region = params.get("Region")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._Description = params.get("Description")
         if params.get("ClusterGroupSetItem") is not None:
-            self.ClusterGroupSetItem = []
+            self._ClusterGroupSetItem = []
             for item in params.get("ClusterGroupSetItem"):
                 obj = ClusterGroupSetItem()
                 obj._deserialize(item)
-                self.ClusterGroupSetItem.append(obj)
+                self._ClusterGroupSetItem.append(obj)
         if params.get("RoleAuth") is not None:
-            self.RoleAuth = []
+            self._RoleAuth = []
             for item in params.get("RoleAuth"):
                 obj = RoleAuth()
                 obj._deserialize(item)
-                self.RoleAuth.append(obj)
-        self.RoleAuthCount = params.get("RoleAuthCount")
-        self.WorkSpaceId = params.get("WorkSpaceId")
-        self.JobsCount = params.get("JobsCount")
+                self._RoleAuth.append(obj)
+        self._RoleAuthCount = params.get("RoleAuthCount")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._JobsCount = params.get("JobsCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

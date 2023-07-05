@@ -25,59 +25,148 @@ class CertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Hash: 证书sha1
+        :param _Hash: 证书sha1
         :type Hash: str
-        :param CN: 证书通用名称
+        :param _CN: 证书通用名称
         :type CN: str
-        :param SANs: 备用名称
+        :param _SANs: 备用名称
         :type SANs: str
-        :param KeyAlgo: 公钥算法
+        :param _KeyAlgo: 公钥算法
         :type KeyAlgo: str
-        :param Issuer: 颁发者
+        :param _Issuer: 颁发者
         :type Issuer: str
-        :param BeginTime: 有效期开始
+        :param _BeginTime: 有效期开始
         :type BeginTime: str
-        :param EndTime: 有效期结束
+        :param _EndTime: 有效期结束
         :type EndTime: str
-        :param Days: 剩余天数
+        :param _Days: 剩余天数
         :type Days: int
-        :param Brand: 品牌
+        :param _Brand: 品牌
         :type Brand: str
-        :param TrustStatus: 信任状态
+        :param _TrustStatus: 信任状态
         :type TrustStatus: str
-        :param CertType: 证书类型
+        :param _CertType: 证书类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertType: str
         """
-        self.Hash = None
-        self.CN = None
-        self.SANs = None
-        self.KeyAlgo = None
-        self.Issuer = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.Days = None
-        self.Brand = None
-        self.TrustStatus = None
-        self.CertType = None
+        self._Hash = None
+        self._CN = None
+        self._SANs = None
+        self._KeyAlgo = None
+        self._Issuer = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Days = None
+        self._Brand = None
+        self._TrustStatus = None
+        self._CertType = None
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
+
+    @property
+    def CN(self):
+        return self._CN
+
+    @CN.setter
+    def CN(self, CN):
+        self._CN = CN
+
+    @property
+    def SANs(self):
+        return self._SANs
+
+    @SANs.setter
+    def SANs(self, SANs):
+        self._SANs = SANs
+
+    @property
+    def KeyAlgo(self):
+        return self._KeyAlgo
+
+    @KeyAlgo.setter
+    def KeyAlgo(self, KeyAlgo):
+        self._KeyAlgo = KeyAlgo
+
+    @property
+    def Issuer(self):
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Days(self):
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def Brand(self):
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def TrustStatus(self):
+        return self._TrustStatus
+
+    @TrustStatus.setter
+    def TrustStatus(self, TrustStatus):
+        self._TrustStatus = TrustStatus
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
 
 
     def _deserialize(self, params):
-        self.Hash = params.get("Hash")
-        self.CN = params.get("CN")
-        self.SANs = params.get("SANs")
-        self.KeyAlgo = params.get("KeyAlgo")
-        self.Issuer = params.get("Issuer")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.Days = params.get("Days")
-        self.Brand = params.get("Brand")
-        self.TrustStatus = params.get("TrustStatus")
-        self.CertType = params.get("CertType")
+        self._Hash = params.get("Hash")
+        self._CN = params.get("CN")
+        self._SANs = params.get("SANs")
+        self._KeyAlgo = params.get("KeyAlgo")
+        self._Issuer = params.get("Issuer")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Days = params.get("Days")
+        self._Brand = params.get("Brand")
+        self._TrustStatus = params.get("TrustStatus")
+        self._CertType = params.get("CertType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -90,27 +179,44 @@ class ChartHistogram(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 项目名
+        :param _Name: 项目名
         :type Name: str
-        :param Children: 项目值
+        :param _Children: 项目值
         :type Children: list of ChartNameValue
         """
-        self.Name = None
-        self.Children = None
+        self._Name = None
+        self._Children = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         if params.get("Children") is not None:
-            self.Children = []
+            self._Children = []
             for item in params.get("Children"):
                 obj = ChartNameValue()
                 obj._deserialize(item)
-                self.Children.append(obj)
+                self._Children.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -123,22 +229,39 @@ class ChartNameValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 图表项名称
+        :param _Name: 图表项名称
         :type Name: str
-        :param Value: 图表项值
+        :param _Value: 图表项值
         :type Value: int
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -151,38 +274,87 @@ class CreateDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerType: 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
+        :param _ServerType: 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
         :type ServerType: int
-        :param Domain: 添加的域名
+        :param _Domain: 添加的域名
         :type Domain: str
-        :param Port: 添加的端口
+        :param _Port: 添加的端口
         :type Port: str
-        :param IP: 指定域名的IP
+        :param _IP: 指定域名的IP
         :type IP: str
-        :param Notice: 是否开启通知告警；true：开启通知告警，false：关闭通知告警
+        :param _Notice: 是否开启通知告警；true：开启通知告警，false：关闭通知告警
         :type Notice: bool
-        :param Tags: 给域名添加标签，多个以逗号隔开
+        :param _Tags: 给域名添加标签，多个以逗号隔开
         :type Tags: str
         """
-        self.ServerType = None
-        self.Domain = None
-        self.Port = None
-        self.IP = None
-        self.Notice = None
-        self.Tags = None
+        self._ServerType = None
+        self._Domain = None
+        self._Port = None
+        self._IP = None
+        self._Notice = None
+        self._Tags = None
+
+    @property
+    def ServerType(self):
+        return self._ServerType
+
+    @ServerType.setter
+    def ServerType(self, ServerType):
+        self._ServerType = ServerType
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Notice(self):
+        return self._Notice
+
+    @Notice.setter
+    def Notice(self, Notice):
+        self._Notice = Notice
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.ServerType = params.get("ServerType")
-        self.Domain = params.get("Domain")
-        self.Port = params.get("Port")
-        self.IP = params.get("IP")
-        self.Notice = params.get("Notice")
-        self.Tags = params.get("Tags")
+        self._ServerType = params.get("ServerType")
+        self._Domain = params.get("Domain")
+        self._Port = params.get("Port")
+        self._IP = params.get("IP")
+        self._Notice = params.get("Notice")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -195,14 +367,22 @@ class CreateDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DashboardResult(AbstractModel):
@@ -212,68 +392,117 @@ class DashboardResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityLevelPie: 安全等级图表
+        :param _SecurityLevelPie: 安全等级图表
         :type SecurityLevelPie: list of ChartNameValue
-        :param CertBrandsPie: 证书品牌图表
+        :param _CertBrandsPie: 证书品牌图表
         :type CertBrandsPie: list of ChartNameValue
-        :param CertValidTimePie: 证书有效时间图表
+        :param _CertValidTimePie: 证书有效时间图表
         :type CertValidTimePie: list of ChartNameValue
-        :param CertTypePie: 证书类型图表
+        :param _CertTypePie: 证书类型图表
         :type CertTypePie: list of ChartNameValue
-        :param SSLBugsLoopholeHistogram: ssl bugs图表
+        :param _SSLBugsLoopholeHistogram: ssl bugs图表
         :type SSLBugsLoopholeHistogram: list of ChartHistogram
-        :param ComplianceHistogram: 合规图表
+        :param _ComplianceHistogram: 合规图表
         :type ComplianceHistogram: list of ChartHistogram
         """
-        self.SecurityLevelPie = None
-        self.CertBrandsPie = None
-        self.CertValidTimePie = None
-        self.CertTypePie = None
-        self.SSLBugsLoopholeHistogram = None
-        self.ComplianceHistogram = None
+        self._SecurityLevelPie = None
+        self._CertBrandsPie = None
+        self._CertValidTimePie = None
+        self._CertTypePie = None
+        self._SSLBugsLoopholeHistogram = None
+        self._ComplianceHistogram = None
+
+    @property
+    def SecurityLevelPie(self):
+        return self._SecurityLevelPie
+
+    @SecurityLevelPie.setter
+    def SecurityLevelPie(self, SecurityLevelPie):
+        self._SecurityLevelPie = SecurityLevelPie
+
+    @property
+    def CertBrandsPie(self):
+        return self._CertBrandsPie
+
+    @CertBrandsPie.setter
+    def CertBrandsPie(self, CertBrandsPie):
+        self._CertBrandsPie = CertBrandsPie
+
+    @property
+    def CertValidTimePie(self):
+        return self._CertValidTimePie
+
+    @CertValidTimePie.setter
+    def CertValidTimePie(self, CertValidTimePie):
+        self._CertValidTimePie = CertValidTimePie
+
+    @property
+    def CertTypePie(self):
+        return self._CertTypePie
+
+    @CertTypePie.setter
+    def CertTypePie(self, CertTypePie):
+        self._CertTypePie = CertTypePie
+
+    @property
+    def SSLBugsLoopholeHistogram(self):
+        return self._SSLBugsLoopholeHistogram
+
+    @SSLBugsLoopholeHistogram.setter
+    def SSLBugsLoopholeHistogram(self, SSLBugsLoopholeHistogram):
+        self._SSLBugsLoopholeHistogram = SSLBugsLoopholeHistogram
+
+    @property
+    def ComplianceHistogram(self):
+        return self._ComplianceHistogram
+
+    @ComplianceHistogram.setter
+    def ComplianceHistogram(self, ComplianceHistogram):
+        self._ComplianceHistogram = ComplianceHistogram
 
 
     def _deserialize(self, params):
         if params.get("SecurityLevelPie") is not None:
-            self.SecurityLevelPie = []
+            self._SecurityLevelPie = []
             for item in params.get("SecurityLevelPie"):
                 obj = ChartNameValue()
                 obj._deserialize(item)
-                self.SecurityLevelPie.append(obj)
+                self._SecurityLevelPie.append(obj)
         if params.get("CertBrandsPie") is not None:
-            self.CertBrandsPie = []
+            self._CertBrandsPie = []
             for item in params.get("CertBrandsPie"):
                 obj = ChartNameValue()
                 obj._deserialize(item)
-                self.CertBrandsPie.append(obj)
+                self._CertBrandsPie.append(obj)
         if params.get("CertValidTimePie") is not None:
-            self.CertValidTimePie = []
+            self._CertValidTimePie = []
             for item in params.get("CertValidTimePie"):
                 obj = ChartNameValue()
                 obj._deserialize(item)
-                self.CertValidTimePie.append(obj)
+                self._CertValidTimePie.append(obj)
         if params.get("CertTypePie") is not None:
-            self.CertTypePie = []
+            self._CertTypePie = []
             for item in params.get("CertTypePie"):
                 obj = ChartNameValue()
                 obj._deserialize(item)
-                self.CertTypePie.append(obj)
+                self._CertTypePie.append(obj)
         if params.get("SSLBugsLoopholeHistogram") is not None:
-            self.SSLBugsLoopholeHistogram = []
+            self._SSLBugsLoopholeHistogram = []
             for item in params.get("SSLBugsLoopholeHistogram"):
                 obj = ChartHistogram()
                 obj._deserialize(item)
-                self.SSLBugsLoopholeHistogram.append(obj)
+                self._SSLBugsLoopholeHistogram.append(obj)
         if params.get("ComplianceHistogram") is not None:
-            self.ComplianceHistogram = []
+            self._ComplianceHistogram = []
             for item in params.get("ComplianceHistogram"):
                 obj = ChartHistogram()
                 obj._deserialize(item)
-                self.ComplianceHistogram.append(obj)
+                self._ComplianceHistogram.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -286,18 +515,27 @@ class DeleteDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainId: 域名ID，可通过<a href="https://cloud.tencent.com/document/api/1084/49339">搜索域名</a>接口获得
+        :param _DomainId: 域名ID，可通过<a href="https://cloud.tencent.com/document/api/1084/49339">搜索域名</a>接口获得
         :type DomainId: int
         """
-        self.DomainId = None
+        self._DomainId = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
 
 
     def _deserialize(self, params):
-        self.DomainId = params.get("DomainId")
+        self._DomainId = params.get("DomainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -310,14 +548,22 @@ class DeleteDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDashboardRequest(AbstractModel):
@@ -333,21 +579,37 @@ class DescribeDashboardResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: dashboard面板数据
+        :param _Data: dashboard面板数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.sslpod.v20190605.models.DashboardResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = DashboardResult()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = DashboardResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDomainCertsRequest(AbstractModel):
@@ -357,18 +619,27 @@ class DescribeDomainCertsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainId: 域名ID，可通过搜索域名接口获得
+        :param _DomainId: 域名ID，可通过搜索域名接口获得
         :type DomainId: int
         """
-        self.DomainId = None
+        self._DomainId = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
 
 
     def _deserialize(self, params):
-        self.DomainId = params.get("DomainId")
+        self._DomainId = params.get("DomainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -381,23 +652,39 @@ class DescribeDomainCertsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 证书信息
+        :param _Data: 证书信息
         :type Data: list of CertInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = CertInfo()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDomainTagsRequest(AbstractModel):
@@ -413,18 +700,34 @@ class DescribeDomainTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Tag数组
+        :param _Data: Tag数组
         :type Data: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
-        self.RequestId = params.get("RequestId")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDomains(AbstractModel):
@@ -434,44 +737,93 @@ class DescribeDomains(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 列表数据
+        :param _Result: 列表数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of DomainSiteInfo
-        :param SearchTotal: 搜索出来的数量
+        :param _SearchTotal: 搜索出来的数量
         :type SearchTotal: int
-        :param Total: 总数
+        :param _Total: 总数
         :type Total: int
-        :param AllowMonitoringCount: 允许的监控数量
+        :param _AllowMonitoringCount: 允许的监控数量
         :type AllowMonitoringCount: int
-        :param CurrentMonitoringCount: 当前监控的数量
+        :param _CurrentMonitoringCount: 当前监控的数量
         :type CurrentMonitoringCount: int
-        :param AllowMaxAddDomain: 允许添加域名总数
+        :param _AllowMaxAddDomain: 允许添加域名总数
         :type AllowMaxAddDomain: int
         """
-        self.Result = None
-        self.SearchTotal = None
-        self.Total = None
-        self.AllowMonitoringCount = None
-        self.CurrentMonitoringCount = None
-        self.AllowMaxAddDomain = None
+        self._Result = None
+        self._SearchTotal = None
+        self._Total = None
+        self._AllowMonitoringCount = None
+        self._CurrentMonitoringCount = None
+        self._AllowMaxAddDomain = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def SearchTotal(self):
+        return self._SearchTotal
+
+    @SearchTotal.setter
+    def SearchTotal(self, SearchTotal):
+        self._SearchTotal = SearchTotal
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AllowMonitoringCount(self):
+        return self._AllowMonitoringCount
+
+    @AllowMonitoringCount.setter
+    def AllowMonitoringCount(self, AllowMonitoringCount):
+        self._AllowMonitoringCount = AllowMonitoringCount
+
+    @property
+    def CurrentMonitoringCount(self):
+        return self._CurrentMonitoringCount
+
+    @CurrentMonitoringCount.setter
+    def CurrentMonitoringCount(self, CurrentMonitoringCount):
+        self._CurrentMonitoringCount = CurrentMonitoringCount
+
+    @property
+    def AllowMaxAddDomain(self):
+        return self._AllowMaxAddDomain
+
+    @AllowMaxAddDomain.setter
+    def AllowMaxAddDomain(self, AllowMaxAddDomain):
+        self._AllowMaxAddDomain = AllowMaxAddDomain
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = []
+            self._Result = []
             for item in params.get("Result"):
                 obj = DomainSiteInfo()
                 obj._deserialize(item)
-                self.Result.append(obj)
-        self.SearchTotal = params.get("SearchTotal")
-        self.Total = params.get("Total")
-        self.AllowMonitoringCount = params.get("AllowMonitoringCount")
-        self.CurrentMonitoringCount = params.get("CurrentMonitoringCount")
-        self.AllowMaxAddDomain = params.get("AllowMaxAddDomain")
+                self._Result.append(obj)
+        self._SearchTotal = params.get("SearchTotal")
+        self._Total = params.get("Total")
+        self._AllowMonitoringCount = params.get("AllowMonitoringCount")
+        self._CurrentMonitoringCount = params.get("CurrentMonitoringCount")
+        self._AllowMaxAddDomain = params.get("AllowMaxAddDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -484,11 +836,11 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 获取数量
+        :param _Limit: 获取数量
         :type Limit: int
-        :param SearchType: 搜索的类型有：none，tags，grade，brand，code，hash，limit，domain。
+        :param _SearchType: 搜索的类型有：none，tags，grade，brand，code，hash，limit，domain。
 选tags，入参请填Tag，
 选grade，入参请填Grade，
 选brand，入参请填Brand，
@@ -497,52 +849,141 @@ class DescribeDomainsRequest(AbstractModel):
 选limit，标识只返回数量信息
 选domain，入参请填Domain
         :type SearchType: str
-        :param Tag: 标签，多个标签用逗号分隔
+        :param _Tag: 标签，多个标签用逗号分隔
         :type Tag: str
-        :param Grade: 等级
+        :param _Grade: 等级
         :type Grade: str
-        :param Brand: 品牌
+        :param _Brand: 品牌
         :type Brand: str
-        :param Code: 混合搜索
+        :param _Code: 混合搜索
         :type Code: str
-        :param Hash: 证书指纹
+        :param _Hash: 证书指纹
         :type Hash: str
-        :param Item: 搜索图标类型
+        :param _Item: 搜索图标类型
         :type Item: str
-        :param Status: 搜索图标值
+        :param _Status: 搜索图标值
         :type Status: str
-        :param Domain: 搜索域名
+        :param _Domain: 搜索域名
         :type Domain: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.SearchType = None
-        self.Tag = None
-        self.Grade = None
-        self.Brand = None
-        self.Code = None
-        self.Hash = None
-        self.Item = None
-        self.Status = None
-        self.Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchType = None
+        self._Tag = None
+        self._Grade = None
+        self._Brand = None
+        self._Code = None
+        self._Hash = None
+        self._Item = None
+        self._Status = None
+        self._Domain = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchType(self):
+        return self._SearchType
+
+    @SearchType.setter
+    def SearchType(self, SearchType):
+        self._SearchType = SearchType
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Grade(self):
+        return self._Grade
+
+    @Grade.setter
+    def Grade(self, Grade):
+        self._Grade = Grade
+
+    @property
+    def Brand(self):
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchType = params.get("SearchType")
-        self.Tag = params.get("Tag")
-        self.Grade = params.get("Grade")
-        self.Brand = params.get("Brand")
-        self.Code = params.get("Code")
-        self.Hash = params.get("Hash")
-        self.Item = params.get("Item")
-        self.Status = params.get("Status")
-        self.Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchType = params.get("SearchType")
+        self._Tag = params.get("Tag")
+        self._Grade = params.get("Grade")
+        self._Brand = params.get("Brand")
+        self._Code = params.get("Code")
+        self._Hash = params.get("Hash")
+        self._Item = params.get("Item")
+        self._Status = params.get("Status")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -555,20 +996,36 @@ class DescribeDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 列表数据
+        :param _Data: 列表数据
         :type Data: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomains`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = DescribeDomains()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = DescribeDomains()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeNoticeInfoRequest(AbstractModel):
@@ -584,20 +1041,36 @@ class DescribeNoticeInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 通知信息结果
+        :param _Data: 通知信息结果
         :type Data: :class:`tencentcloud.sslpod.v20190605.models.NoticeInfoResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = NoticeInfoResult()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = NoticeInfoResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DomainSiteInfo(AbstractModel):
@@ -607,15 +1080,15 @@ class DomainSiteInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: ID标识
+        :param _Id: ID标识
         :type Id: int
-        :param Domain: 域名
+        :param _Domain: 域名
         :type Domain: str
-        :param Ip: IP地址
+        :param _Ip: IP地址
         :type Ip: str
-        :param AutoIP: 是否自动获取IP：true：是，false:否
+        :param _AutoIP: 是否自动获取IP：true：是，false:否
         :type AutoIP: bool
-        :param Grade: 评级
+        :param _Grade: 评级
 "A+"，
  "A"，
 "A-"，
@@ -626,15 +1099,15 @@ class DomainSiteInfo(AbstractModel):
  "F"，
 "T"，
         :type Grade: str
-        :param Brand: 证书品牌
+        :param _Brand: 证书品牌
         :type Brand: str
-        :param ServerType: 监控服务类型
+        :param _ServerType: 监控服务类型
 0 :Web
 1: SMTP
 2: IMAP
 3: POP3
         :type ServerType: int
-        :param GradeCode: 评级Code
+        :param _GradeCode: 评级Code
 0："unknown"，
 1："A+"，
 2： "A"，
@@ -646,14 +1119,14 @@ class DomainSiteInfo(AbstractModel):
 8： "F"，
 9："T"，
         :type GradeCode: int
-        :param Notice: 是否监控告警；true：是，false:否
+        :param _Notice: 是否监控告警；true：是，false:否
         :type Notice: bool
-        :param AccountDomainId: 账号域名关系ID
+        :param _AccountDomainId: 账号域名关系ID
         :type AccountDomainId: int
-        :param Tags: 标签
+        :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
-        :param Status: 域名状态:
+        :param _Status: 域名状态:
 连接异常，
 证书已过期，
 证书已吊销，
@@ -666,42 +1139,147 @@ class DomainSiteInfo(AbstractModel):
 正常，
 部分异常
         :type Status: str
-        :param Port: 域名端口
+        :param _Port: 域名端口
         :type Port: str
         """
-        self.Id = None
-        self.Domain = None
-        self.Ip = None
-        self.AutoIP = None
-        self.Grade = None
-        self.Brand = None
-        self.ServerType = None
-        self.GradeCode = None
-        self.Notice = None
-        self.AccountDomainId = None
-        self.Tags = None
-        self.Status = None
-        self.Port = None
+        self._Id = None
+        self._Domain = None
+        self._Ip = None
+        self._AutoIP = None
+        self._Grade = None
+        self._Brand = None
+        self._ServerType = None
+        self._GradeCode = None
+        self._Notice = None
+        self._AccountDomainId = None
+        self._Tags = None
+        self._Status = None
+        self._Port = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def AutoIP(self):
+        return self._AutoIP
+
+    @AutoIP.setter
+    def AutoIP(self, AutoIP):
+        self._AutoIP = AutoIP
+
+    @property
+    def Grade(self):
+        return self._Grade
+
+    @Grade.setter
+    def Grade(self, Grade):
+        self._Grade = Grade
+
+    @property
+    def Brand(self):
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def ServerType(self):
+        return self._ServerType
+
+    @ServerType.setter
+    def ServerType(self, ServerType):
+        self._ServerType = ServerType
+
+    @property
+    def GradeCode(self):
+        return self._GradeCode
+
+    @GradeCode.setter
+    def GradeCode(self, GradeCode):
+        self._GradeCode = GradeCode
+
+    @property
+    def Notice(self):
+        return self._Notice
+
+    @Notice.setter
+    def Notice(self, Notice):
+        self._Notice = Notice
+
+    @property
+    def AccountDomainId(self):
+        return self._AccountDomainId
+
+    @AccountDomainId.setter
+    def AccountDomainId(self, AccountDomainId):
+        self._AccountDomainId = AccountDomainId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Domain = params.get("Domain")
-        self.Ip = params.get("Ip")
-        self.AutoIP = params.get("AutoIP")
-        self.Grade = params.get("Grade")
-        self.Brand = params.get("Brand")
-        self.ServerType = params.get("ServerType")
-        self.GradeCode = params.get("GradeCode")
-        self.Notice = params.get("Notice")
-        self.AccountDomainId = params.get("AccountDomainId")
-        self.Tags = params.get("Tags")
-        self.Status = params.get("Status")
-        self.Port = params.get("Port")
+        self._Id = params.get("Id")
+        self._Domain = params.get("Domain")
+        self._Ip = params.get("Ip")
+        self._AutoIP = params.get("AutoIP")
+        self._Grade = params.get("Grade")
+        self._Brand = params.get("Brand")
+        self._ServerType = params.get("ServerType")
+        self._GradeCode = params.get("GradeCode")
+        self._Notice = params.get("Notice")
+        self._AccountDomainId = params.get("AccountDomainId")
+        self._Tags = params.get("Tags")
+        self._Status = params.get("Status")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -714,29 +1292,54 @@ class LimitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 通知类型：
+        :param _Type: 通知类型：
 limit_emai：邮件
 limit_wechat：微信
 limit_phone：手机
         :type Type: str
-        :param Total: 总量
+        :param _Total: 总量
         :type Total: int
-        :param Sent: 已发送
+        :param _Sent: 已发送
         :type Sent: int
         """
-        self.Type = None
-        self.Total = None
-        self.Sent = None
+        self._Type = None
+        self._Total = None
+        self._Sent = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Sent(self):
+        return self._Sent
+
+    @Sent.setter
+    def Sent(self, Sent):
+        self._Sent = Sent
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Total = params.get("Total")
-        self.Sent = params.get("Sent")
+        self._Type = params.get("Type")
+        self._Total = params.get("Total")
+        self._Sent = params.get("Sent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -749,22 +1352,39 @@ class ModifyDomainTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountDomainId: 账号下域名ID
+        :param _AccountDomainId: 账号下域名ID
         :type AccountDomainId: int
-        :param Tags: 更新后的tag，多个以逗号隔开
+        :param _Tags: 更新后的tag，多个以逗号隔开
         :type Tags: str
         """
-        self.AccountDomainId = None
-        self.Tags = None
+        self._AccountDomainId = None
+        self._Tags = None
+
+    @property
+    def AccountDomainId(self):
+        return self._AccountDomainId
+
+    @AccountDomainId.setter
+    def AccountDomainId(self, AccountDomainId):
+        self._AccountDomainId = AccountDomainId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.AccountDomainId = params.get("AccountDomainId")
-        self.Tags = params.get("Tags")
+        self._AccountDomainId = params.get("AccountDomainId")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -777,14 +1397,22 @@ class ModifyDomainTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class NoticeInfoResult(AbstractModel):
@@ -794,31 +1422,56 @@ class NoticeInfoResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 通知ID
+        :param _Id: 通知ID
         :type Id: int
-        :param NoticeType: 通知开关信息；0：关闭；15开启
+        :param _NoticeType: 通知开关信息；0：关闭；15开启
         :type NoticeType: int
-        :param LimitInfos: 额度信息
+        :param _LimitInfos: 额度信息
         :type LimitInfos: list of LimitInfo
         """
-        self.Id = None
-        self.NoticeType = None
-        self.LimitInfos = None
+        self._Id = None
+        self._NoticeType = None
+        self._LimitInfos = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def NoticeType(self):
+        return self._NoticeType
+
+    @NoticeType.setter
+    def NoticeType(self, NoticeType):
+        self._NoticeType = NoticeType
+
+    @property
+    def LimitInfos(self):
+        return self._LimitInfos
+
+    @LimitInfos.setter
+    def LimitInfos(self, LimitInfos):
+        self._LimitInfos = LimitInfos
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.NoticeType = params.get("NoticeType")
+        self._Id = params.get("Id")
+        self._NoticeType = params.get("NoticeType")
         if params.get("LimitInfos") is not None:
-            self.LimitInfos = []
+            self._LimitInfos = []
             for item in params.get("LimitInfos"):
                 obj = LimitInfo()
                 obj._deserialize(item)
-                self.LimitInfos.append(obj)
+                self._LimitInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -831,18 +1484,27 @@ class RefreshDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainId: 域名列表中的ID，可通过搜索域名接口获得
+        :param _DomainId: 域名列表中的ID，可通过搜索域名接口获得
         :type DomainId: int
         """
-        self.DomainId = None
+        self._DomainId = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
 
 
     def _deserialize(self, params):
-        self.DomainId = params.get("DomainId")
+        self._DomainId = params.get("DomainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -855,14 +1517,22 @@ class RefreshDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResolveDomainRequest(AbstractModel):
@@ -872,18 +1542,27 @@ class ResolveDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: 域名
+        :param _Domain: 域名
         :type Domain: str
         """
-        self.Domain = None
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -896,15 +1575,31 @@ class ResolveDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 响应数据
+        :param _Data: 响应数据
         :type Data: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
-        self.RequestId = params.get("RequestId")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")

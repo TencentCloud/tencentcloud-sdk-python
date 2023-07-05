@@ -25,18 +25,27 @@ class AuthTestTidRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 设备端SDK填入测试TID参数后生成的加密数据串
+        :param _Data: 设备端SDK填入测试TID参数后生成的加密数据串
         :type Data: str
         """
-        self.Data = None
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -49,18 +58,34 @@ class AuthTestTidResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Pass: 认证结果
+        :param _Pass: 认证结果
         :type Pass: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Pass = None
-        self.RequestId = None
+        self._Pass = None
+        self._RequestId = None
+
+    @property
+    def Pass(self):
+        return self._Pass
+
+    @Pass.setter
+    def Pass(self, Pass):
+        self._Pass = Pass
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Pass = params.get("Pass")
-        self.RequestId = params.get("RequestId")
+        self._Pass = params.get("Pass")
+        self._RequestId = params.get("RequestId")
 
 
 class BurnTidNotifyRequest(AbstractModel):
@@ -70,22 +95,39 @@ class BurnTidNotifyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderId: 订单编号
+        :param _OrderId: 订单编号
         :type OrderId: str
-        :param Tid: TID编号
+        :param _Tid: TID编号
         :type Tid: str
         """
-        self.OrderId = None
-        self.Tid = None
+        self._OrderId = None
+        self._Tid = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
 
 
     def _deserialize(self, params):
-        self.OrderId = params.get("OrderId")
-        self.Tid = params.get("Tid")
+        self._OrderId = params.get("OrderId")
+        self._Tid = params.get("Tid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -98,18 +140,34 @@ class BurnTidNotifyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tid: 接收回执成功的TID
+        :param _Tid: 接收回执成功的TID
         :type Tid: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Tid = None
-        self.RequestId = None
+        self._Tid = None
+        self._RequestId = None
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Tid = params.get("Tid")
-        self.RequestId = params.get("RequestId")
+        self._Tid = params.get("Tid")
+        self._RequestId = params.get("RequestId")
 
 
 class DeliverTidNotifyRequest(AbstractModel):
@@ -119,22 +177,39 @@ class DeliverTidNotifyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderId: 订单编号
+        :param _OrderId: 订单编号
         :type OrderId: str
-        :param Tid: TID编号
+        :param _Tid: TID编号
         :type Tid: str
         """
-        self.OrderId = None
-        self.Tid = None
+        self._OrderId = None
+        self._Tid = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
 
 
     def _deserialize(self, params):
-        self.OrderId = params.get("OrderId")
-        self.Tid = params.get("Tid")
+        self._OrderId = params.get("OrderId")
+        self._Tid = params.get("Tid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -147,26 +222,58 @@ class DeliverTidNotifyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RemaindCount: 剩余空发数量
+        :param _RemaindCount: 剩余空发数量
         :type RemaindCount: int
-        :param Tid: 已回执的TID编码
+        :param _Tid: 已回执的TID编码
         :type Tid: str
-        :param ProductKey: 产品公钥
+        :param _ProductKey: 产品公钥
         :type ProductKey: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RemaindCount = None
-        self.Tid = None
-        self.ProductKey = None
-        self.RequestId = None
+        self._RemaindCount = None
+        self._Tid = None
+        self._ProductKey = None
+        self._RequestId = None
+
+    @property
+    def RemaindCount(self):
+        return self._RemaindCount
+
+    @RemaindCount.setter
+    def RemaindCount(self, RemaindCount):
+        self._RemaindCount = RemaindCount
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+    @property
+    def ProductKey(self):
+        return self._ProductKey
+
+    @ProductKey.setter
+    def ProductKey(self, ProductKey):
+        self._ProductKey = ProductKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RemaindCount = params.get("RemaindCount")
-        self.Tid = params.get("Tid")
-        self.ProductKey = params.get("ProductKey")
-        self.RequestId = params.get("RequestId")
+        self._RemaindCount = params.get("RemaindCount")
+        self._Tid = params.get("Tid")
+        self._ProductKey = params.get("ProductKey")
+        self._RequestId = params.get("RequestId")
 
 
 class DeliverTidsRequest(AbstractModel):
@@ -176,22 +283,39 @@ class DeliverTidsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderId: 订单ID
+        :param _OrderId: 订单ID
         :type OrderId: str
-        :param Quantity: 数量，1~100
+        :param _Quantity: 数量，1~100
         :type Quantity: int
         """
-        self.OrderId = None
-        self.Quantity = None
+        self._OrderId = None
+        self._Quantity = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Quantity(self):
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
 
 
     def _deserialize(self, params):
-        self.OrderId = params.get("OrderId")
-        self.Quantity = params.get("Quantity")
+        self._OrderId = params.get("OrderId")
+        self._Quantity = params.get("Quantity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -204,28 +328,52 @@ class DeliverTidsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TidSet: 空发的TID信息
+        :param _TidSet: 空发的TID信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TidSet: list of TidKeysInfo
-        :param ProductKey: 产品公钥
+        :param _ProductKey: 产品公钥
         :type ProductKey: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TidSet = None
-        self.ProductKey = None
-        self.RequestId = None
+        self._TidSet = None
+        self._ProductKey = None
+        self._RequestId = None
+
+    @property
+    def TidSet(self):
+        return self._TidSet
+
+    @TidSet.setter
+    def TidSet(self, TidSet):
+        self._TidSet = TidSet
+
+    @property
+    def ProductKey(self):
+        return self._ProductKey
+
+    @ProductKey.setter
+    def ProductKey(self, ProductKey):
+        self._ProductKey = ProductKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TidSet") is not None:
-            self.TidSet = []
+            self._TidSet = []
             for item in params.get("TidSet"):
                 obj = TidKeysInfo()
                 obj._deserialize(item)
-                self.TidSet.append(obj)
-        self.ProductKey = params.get("ProductKey")
-        self.RequestId = params.get("RequestId")
+                self._TidSet.append(obj)
+        self._ProductKey = params.get("ProductKey")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAvailableLibCountRequest(AbstractModel):
@@ -235,18 +383,27 @@ class DescribeAvailableLibCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderId: 订单编号
+        :param _OrderId: 订单编号
         :type OrderId: str
         """
-        self.OrderId = None
+        self._OrderId = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
 
 
     def _deserialize(self, params):
-        self.OrderId = params.get("OrderId")
+        self._OrderId = params.get("OrderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -259,18 +416,34 @@ class DescribeAvailableLibCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Quantity: 可空发的白盒密钥数量
+        :param _Quantity: 可空发的白盒密钥数量
         :type Quantity: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Quantity = None
-        self.RequestId = None
+        self._Quantity = None
+        self._RequestId = None
+
+    @property
+    def Quantity(self):
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Quantity = params.get("Quantity")
-        self.RequestId = params.get("RequestId")
+        self._Quantity = params.get("Quantity")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePermissionRequest(AbstractModel):
@@ -286,26 +459,58 @@ class DescribePermissionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnterpriseUser: 企业用户
+        :param _EnterpriseUser: 企业用户
         :type EnterpriseUser: bool
-        :param DownloadPermission: 下载控制台权限
+        :param _DownloadPermission: 下载控制台权限
         :type DownloadPermission: str
-        :param UsePermission: 使用控制台权限
+        :param _UsePermission: 使用控制台权限
         :type UsePermission: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EnterpriseUser = None
-        self.DownloadPermission = None
-        self.UsePermission = None
-        self.RequestId = None
+        self._EnterpriseUser = None
+        self._DownloadPermission = None
+        self._UsePermission = None
+        self._RequestId = None
+
+    @property
+    def EnterpriseUser(self):
+        return self._EnterpriseUser
+
+    @EnterpriseUser.setter
+    def EnterpriseUser(self, EnterpriseUser):
+        self._EnterpriseUser = EnterpriseUser
+
+    @property
+    def DownloadPermission(self):
+        return self._DownloadPermission
+
+    @DownloadPermission.setter
+    def DownloadPermission(self, DownloadPermission):
+        self._DownloadPermission = DownloadPermission
+
+    @property
+    def UsePermission(self):
+        return self._UsePermission
+
+    @UsePermission.setter
+    def UsePermission(self, UsePermission):
+        self._UsePermission = UsePermission
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EnterpriseUser = params.get("EnterpriseUser")
-        self.DownloadPermission = params.get("DownloadPermission")
-        self.UsePermission = params.get("UsePermission")
-        self.RequestId = params.get("RequestId")
+        self._EnterpriseUser = params.get("EnterpriseUser")
+        self._DownloadPermission = params.get("DownloadPermission")
+        self._UsePermission = params.get("UsePermission")
+        self._RequestId = params.get("RequestId")
 
 
 class DownloadTidsRequest(AbstractModel):
@@ -315,22 +520,39 @@ class DownloadTidsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderId: 订单编号
+        :param _OrderId: 订单编号
         :type OrderId: str
-        :param Quantity: 下载数量：1~10
+        :param _Quantity: 下载数量：1~10
         :type Quantity: int
         """
-        self.OrderId = None
-        self.Quantity = None
+        self._OrderId = None
+        self._Quantity = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Quantity(self):
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
 
 
     def _deserialize(self, params):
-        self.OrderId = params.get("OrderId")
-        self.Quantity = params.get("Quantity")
+        self._OrderId = params.get("OrderId")
+        self._Quantity = params.get("Quantity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -343,24 +565,40 @@ class DownloadTidsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TidSet: 下载的TID信息列表
+        :param _TidSet: 下载的TID信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TidSet: list of TidKeysInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TidSet = None
-        self.RequestId = None
+        self._TidSet = None
+        self._RequestId = None
+
+    @property
+    def TidSet(self):
+        return self._TidSet
+
+    @TidSet.setter
+    def TidSet(self, TidSet):
+        self._TidSet = TidSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TidSet") is not None:
-            self.TidSet = []
+            self._TidSet = []
             for item in params.get("TidSet"):
                 obj = TidKeysInfo()
                 obj._deserialize(item)
-                self.TidSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TidSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class TidKeysInfo(AbstractModel):
@@ -370,38 +608,87 @@ class TidKeysInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tid: TID号码
+        :param _Tid: TID号码
         :type Tid: str
-        :param PublicKey: 公钥
+        :param _PublicKey: 公钥
         :type PublicKey: str
-        :param PrivateKey: 私钥
+        :param _PrivateKey: 私钥
         :type PrivateKey: str
-        :param Psk: 共享密钥
+        :param _Psk: 共享密钥
         :type Psk: str
-        :param DownloadUrl: 软加固白盒密钥下载地址
+        :param _DownloadUrl: 软加固白盒密钥下载地址
         :type DownloadUrl: str
-        :param DeviceCode: 软加固设备标识码
+        :param _DeviceCode: 软加固设备标识码
         :type DeviceCode: str
         """
-        self.Tid = None
-        self.PublicKey = None
-        self.PrivateKey = None
-        self.Psk = None
-        self.DownloadUrl = None
-        self.DeviceCode = None
+        self._Tid = None
+        self._PublicKey = None
+        self._PrivateKey = None
+        self._Psk = None
+        self._DownloadUrl = None
+        self._DeviceCode = None
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def Psk(self):
+        return self._Psk
+
+    @Psk.setter
+    def Psk(self, Psk):
+        self._Psk = Psk
+
+    @property
+    def DownloadUrl(self):
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def DeviceCode(self):
+        return self._DeviceCode
+
+    @DeviceCode.setter
+    def DeviceCode(self, DeviceCode):
+        self._DeviceCode = DeviceCode
 
 
     def _deserialize(self, params):
-        self.Tid = params.get("Tid")
-        self.PublicKey = params.get("PublicKey")
-        self.PrivateKey = params.get("PrivateKey")
-        self.Psk = params.get("Psk")
-        self.DownloadUrl = params.get("DownloadUrl")
-        self.DeviceCode = params.get("DeviceCode")
+        self._Tid = params.get("Tid")
+        self._PublicKey = params.get("PublicKey")
+        self._PrivateKey = params.get("PrivateKey")
+        self._Psk = params.get("Psk")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._DeviceCode = params.get("DeviceCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -414,22 +701,39 @@ class UploadDeviceUniqueCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CodeSet: 硬件唯一标识码
+        :param _CodeSet: 硬件唯一标识码
         :type CodeSet: list of str
-        :param OrderId: 硬件标识码绑定的申请编号
+        :param _OrderId: 硬件标识码绑定的申请编号
         :type OrderId: str
         """
-        self.CodeSet = None
-        self.OrderId = None
+        self._CodeSet = None
+        self._OrderId = None
+
+    @property
+    def CodeSet(self):
+        return self._CodeSet
+
+    @CodeSet.setter
+    def CodeSet(self, CodeSet):
+        self._CodeSet = CodeSet
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
 
 
     def _deserialize(self, params):
-        self.CodeSet = params.get("CodeSet")
-        self.OrderId = params.get("OrderId")
+        self._CodeSet = params.get("CodeSet")
+        self._OrderId = params.get("OrderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -442,32 +746,72 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Count: 本次已上传数量
+        :param _Count: 本次已上传数量
         :type Count: int
-        :param ExistedCodeSet: 重复的硬件唯一标识码
+        :param _ExistedCodeSet: 重复的硬件唯一标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExistedCodeSet: list of str
-        :param LeftQuantity: 剩余可上传数量
+        :param _LeftQuantity: 剩余可上传数量
         :type LeftQuantity: int
-        :param IllegalCodeSet: 错误的硬件唯一标识码
+        :param _IllegalCodeSet: 错误的硬件唯一标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type IllegalCodeSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Count = None
-        self.ExistedCodeSet = None
-        self.LeftQuantity = None
-        self.IllegalCodeSet = None
-        self.RequestId = None
+        self._Count = None
+        self._ExistedCodeSet = None
+        self._LeftQuantity = None
+        self._IllegalCodeSet = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def ExistedCodeSet(self):
+        return self._ExistedCodeSet
+
+    @ExistedCodeSet.setter
+    def ExistedCodeSet(self, ExistedCodeSet):
+        self._ExistedCodeSet = ExistedCodeSet
+
+    @property
+    def LeftQuantity(self):
+        return self._LeftQuantity
+
+    @LeftQuantity.setter
+    def LeftQuantity(self, LeftQuantity):
+        self._LeftQuantity = LeftQuantity
+
+    @property
+    def IllegalCodeSet(self):
+        return self._IllegalCodeSet
+
+    @IllegalCodeSet.setter
+    def IllegalCodeSet(self, IllegalCodeSet):
+        self._IllegalCodeSet = IllegalCodeSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Count = params.get("Count")
-        self.ExistedCodeSet = params.get("ExistedCodeSet")
-        self.LeftQuantity = params.get("LeftQuantity")
-        self.IllegalCodeSet = params.get("IllegalCodeSet")
-        self.RequestId = params.get("RequestId")
+        self._Count = params.get("Count")
+        self._ExistedCodeSet = params.get("ExistedCodeSet")
+        self._LeftQuantity = params.get("LeftQuantity")
+        self._IllegalCodeSet = params.get("IllegalCodeSet")
+        self._RequestId = params.get("RequestId")
 
 
 class VerifyChipBurnInfoRequest(AbstractModel):
@@ -477,18 +821,27 @@ class VerifyChipBurnInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 验证数据
+        :param _Data: 验证数据
         :type Data: str
         """
-        self.Data = None
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -501,23 +854,55 @@ class VerifyChipBurnInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Pass: 验证结果
+        :param _Pass: 验证结果
         :type Pass: bool
-        :param VerifiedTimes: 已验证次数
+        :param _VerifiedTimes: 已验证次数
         :type VerifiedTimes: int
-        :param LeftTimes: 剩余验证次数
+        :param _LeftTimes: 剩余验证次数
         :type LeftTimes: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Pass = None
-        self.VerifiedTimes = None
-        self.LeftTimes = None
-        self.RequestId = None
+        self._Pass = None
+        self._VerifiedTimes = None
+        self._LeftTimes = None
+        self._RequestId = None
+
+    @property
+    def Pass(self):
+        return self._Pass
+
+    @Pass.setter
+    def Pass(self, Pass):
+        self._Pass = Pass
+
+    @property
+    def VerifiedTimes(self):
+        return self._VerifiedTimes
+
+    @VerifiedTimes.setter
+    def VerifiedTimes(self, VerifiedTimes):
+        self._VerifiedTimes = VerifiedTimes
+
+    @property
+    def LeftTimes(self):
+        return self._LeftTimes
+
+    @LeftTimes.setter
+    def LeftTimes(self, LeftTimes):
+        self._LeftTimes = LeftTimes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Pass = params.get("Pass")
-        self.VerifiedTimes = params.get("VerifiedTimes")
-        self.LeftTimes = params.get("LeftTimes")
-        self.RequestId = params.get("RequestId")
+        self._Pass = params.get("Pass")
+        self._VerifiedTimes = params.get("VerifiedTimes")
+        self._LeftTimes = params.get("LeftTimes")
+        self._RequestId = params.get("RequestId")

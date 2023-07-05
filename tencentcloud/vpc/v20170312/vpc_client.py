@@ -447,7 +447,7 @@ class VpcClient(AbstractClient):
 
     def AttachCcnInstances(self, request):
         """本接口（AttachCcnInstances）用于将网络实例加载到云联网实例中，网络实例包括VPC和专线网关。<br />
-        每个云联网能够关联的网络实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
+        每个云联网能够关联的网络实例个数是有限的，详情请参考产品文档。如果需要扩充请联系在线客服。
 
         :param request: Request instance for AttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachCcnInstancesRequest`

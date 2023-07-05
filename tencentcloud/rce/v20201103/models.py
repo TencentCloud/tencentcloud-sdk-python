@@ -25,36 +25,69 @@ class AccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountType: 账号类型
+        :param _AccountType: 账号类型
         :type AccountType: int
-        :param QQAccount: QQ账号信息，AccountType是1时，该字段必填。
+        :param _QQAccount: QQ账号信息，AccountType是1时，该字段必填。
         :type QQAccount: :class:`tencentcloud.rce.v20201103.models.QQAccountInfo`
-        :param WeChatAccount: 微信账号信息，AccountType是2时，该字段必填。
+        :param _WeChatAccount: 微信账号信息，AccountType是2时，该字段必填。
         :type WeChatAccount: :class:`tencentcloud.rce.v20201103.models.WeChatAccountInfo`
-        :param OtherAccount: 其它账号信息，AccountType是0、4、8或10004时，该字段必填。
+        :param _OtherAccount: 其它账号信息，AccountType是0、4、8或10004时，该字段必填。
         :type OtherAccount: :class:`tencentcloud.rce.v20201103.models.OtherAccountInfo`
         """
-        self.AccountType = None
-        self.QQAccount = None
-        self.WeChatAccount = None
-        self.OtherAccount = None
+        self._AccountType = None
+        self._QQAccount = None
+        self._WeChatAccount = None
+        self._OtherAccount = None
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def QQAccount(self):
+        return self._QQAccount
+
+    @QQAccount.setter
+    def QQAccount(self, QQAccount):
+        self._QQAccount = QQAccount
+
+    @property
+    def WeChatAccount(self):
+        return self._WeChatAccount
+
+    @WeChatAccount.setter
+    def WeChatAccount(self, WeChatAccount):
+        self._WeChatAccount = WeChatAccount
+
+    @property
+    def OtherAccount(self):
+        return self._OtherAccount
+
+    @OtherAccount.setter
+    def OtherAccount(self, OtherAccount):
+        self._OtherAccount = OtherAccount
 
 
     def _deserialize(self, params):
-        self.AccountType = params.get("AccountType")
+        self._AccountType = params.get("AccountType")
         if params.get("QQAccount") is not None:
-            self.QQAccount = QQAccountInfo()
-            self.QQAccount._deserialize(params.get("QQAccount"))
+            self._QQAccount = QQAccountInfo()
+            self._QQAccount._deserialize(params.get("QQAccount"))
         if params.get("WeChatAccount") is not None:
-            self.WeChatAccount = WeChatAccountInfo()
-            self.WeChatAccount._deserialize(params.get("WeChatAccount"))
+            self._WeChatAccount = WeChatAccountInfo()
+            self._WeChatAccount._deserialize(params.get("WeChatAccount"))
         if params.get("OtherAccount") is not None:
-            self.OtherAccount = OtherAccountInfo()
-            self.OtherAccount._deserialize(params.get("OtherAccount"))
+            self._OtherAccount = OtherAccountInfo()
+            self._OtherAccount._deserialize(params.get("OtherAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -73,14 +106,22 @@ class DescribeRiskAssessmentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRiskTrendsRequest(AbstractModel):
@@ -90,20 +131,29 @@ class DescribeRiskTrendsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessSecurityData: 业务入参
+        :param _BusinessSecurityData: 业务入参
         :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputFrontRisk`
         """
-        self.BusinessSecurityData = None
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = InputFrontRisk()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+            self._BusinessSecurityData = InputFrontRisk()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -116,20 +166,36 @@ class DescribeRiskTrendsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 业务出参
+        :param _Data: 业务出参
         :type Data: :class:`tencentcloud.rce.v20201103.models.OutputFrontRiskData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = OutputFrontRiskData()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = OutputFrontRiskData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class InputCryptoManageMarketingRisk(AbstractModel):
@@ -139,26 +205,51 @@ class InputCryptoManageMarketingRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsAuthorized: 是否授权
+        :param _IsAuthorized: 是否授权
         :type IsAuthorized: str
-        :param CryptoType: 加密类型
+        :param _CryptoType: 加密类型
         :type CryptoType: str
-        :param CryptoContent: 加密内容
+        :param _CryptoContent: 加密内容
         :type CryptoContent: str
         """
-        self.IsAuthorized = None
-        self.CryptoType = None
-        self.CryptoContent = None
+        self._IsAuthorized = None
+        self._CryptoType = None
+        self._CryptoContent = None
+
+    @property
+    def IsAuthorized(self):
+        return self._IsAuthorized
+
+    @IsAuthorized.setter
+    def IsAuthorized(self, IsAuthorized):
+        self._IsAuthorized = IsAuthorized
+
+    @property
+    def CryptoType(self):
+        return self._CryptoType
+
+    @CryptoType.setter
+    def CryptoType(self, CryptoType):
+        self._CryptoType = CryptoType
+
+    @property
+    def CryptoContent(self):
+        return self._CryptoContent
+
+    @CryptoContent.setter
+    def CryptoContent(self, CryptoContent):
+        self._CryptoContent = CryptoContent
 
 
     def _deserialize(self, params):
-        self.IsAuthorized = params.get("IsAuthorized")
-        self.CryptoType = params.get("CryptoType")
-        self.CryptoContent = params.get("CryptoContent")
+        self._IsAuthorized = params.get("IsAuthorized")
+        self._CryptoType = params.get("CryptoType")
+        self._CryptoContent = params.get("CryptoContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -171,22 +262,39 @@ class InputDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FieldName: 字段名称
+        :param _FieldName: 字段名称
         :type FieldName: str
-        :param FieldValue: 字段值
+        :param _FieldValue: 字段值
         :type FieldValue: str
         """
-        self.FieldName = None
-        self.FieldValue = None
+        self._FieldName = None
+        self._FieldValue = None
+
+    @property
+    def FieldName(self):
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def FieldValue(self):
+        return self._FieldValue
+
+    @FieldValue.setter
+    def FieldValue(self, FieldValue):
+        self._FieldValue = FieldValue
 
 
     def _deserialize(self, params):
-        self.FieldName = params.get("FieldName")
-        self.FieldValue = params.get("FieldValue")
+        self._FieldName = params.get("FieldName")
+        self._FieldValue = params.get("FieldValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -199,38 +307,87 @@ class InputFrontRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 事件ID
+        :param _EventId: 事件ID
         :type EventId: int
-        :param StartTime: 开始时间
+        :param _StartTime: 开始时间
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param _EndTime: 结束时间
         :type EndTime: str
-        :param Type: 趋势类型
+        :param _Type: 趋势类型
         :type Type: int
-        :param CurrentStartTime: 当前开始时间
+        :param _CurrentStartTime: 当前开始时间
         :type CurrentStartTime: str
-        :param CurrentEndTime: 当前结束时间
+        :param _CurrentEndTime: 当前结束时间
         :type CurrentEndTime: str
         """
-        self.EventId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Type = None
-        self.CurrentStartTime = None
-        self.CurrentEndTime = None
+        self._EventId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._CurrentStartTime = None
+        self._CurrentEndTime = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CurrentStartTime(self):
+        return self._CurrentStartTime
+
+    @CurrentStartTime.setter
+    def CurrentStartTime(self, CurrentStartTime):
+        self._CurrentStartTime = CurrentStartTime
+
+    @property
+    def CurrentEndTime(self):
+        return self._CurrentEndTime
+
+    @CurrentEndTime.setter
+    def CurrentEndTime(self, CurrentEndTime):
+        self._CurrentEndTime = CurrentEndTime
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Type = params.get("Type")
-        self.CurrentStartTime = params.get("CurrentStartTime")
-        self.CurrentEndTime = params.get("CurrentEndTime")
+        self._EventId = params.get("EventId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._CurrentStartTime = params.get("CurrentStartTime")
+        self._CurrentEndTime = params.get("CurrentEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -243,119 +400,296 @@ class InputManageMarketingRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Account: 账号信息。
+        :param _Account: 账号信息。
         :type Account: :class:`tencentcloud.rce.v20201103.models.AccountInfo`
-        :param SceneCode: 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
+        :param _SceneCode: 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
 例如：e_register_protection_1521184361
 控制台链接：https://console.cloud.tencent.com/rce/risk/sceneroot；
         :type SceneCode: str
-        :param UserIp: 登录来源的外网IP
+        :param _UserIp: 登录来源的外网IP
         :type UserIp: str
-        :param PostTime: 时间戳
+        :param _PostTime: 时间戳
         :type PostTime: int
-        :param UserId: 用户唯一标识。
+        :param _UserId: 用户唯一标识。
         :type UserId: str
-        :param DeviceToken: 设备指纹token。
+        :param _DeviceToken: 设备指纹token。
         :type DeviceToken: str
-        :param DeviceBusinessId: 设备指纹BusinessId
+        :param _DeviceBusinessId: 设备指纹BusinessId
         :type DeviceBusinessId: int
-        :param BusinessId: 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
+        :param _BusinessId: 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
         :type BusinessId: int
-        :param Nickname: 昵称，UTF-8 编码。
+        :param _Nickname: 昵称，UTF-8 编码。
         :type Nickname: str
-        :param EmailAddress: 用户邮箱地址（非系统自动生成）。
+        :param _EmailAddress: 用户邮箱地址（非系统自动生成）。
         :type EmailAddress: str
-        :param CheckDevice: 是否识别设备异常：
+        :param _CheckDevice: 是否识别设备异常：
 0：不识别。
 1：识别。
         :type CheckDevice: int
-        :param CookieHash: 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
+        :param _CookieHash: 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
         :type CookieHash: str
-        :param Referer: 用户HTTP请求的Referer值。
+        :param _Referer: 用户HTTP请求的Referer值。
         :type Referer: str
-        :param UserAgent: 用户HTTP请求的User-Agent值。
+        :param _UserAgent: 用户HTTP请求的User-Agent值。
         :type UserAgent: str
-        :param XForwardedFor: 用户HTTP请求的X-Forwarded-For值。
+        :param _XForwardedFor: 用户HTTP请求的X-Forwarded-For值。
         :type XForwardedFor: str
-        :param MacAddress: MAC地址或设备唯一标识。
+        :param _MacAddress: MAC地址或设备唯一标识。
         :type MacAddress: str
-        :param VendorId: 手机制造商ID，如果手机注册，请带上此信息。
+        :param _VendorId: 手机制造商ID，如果手机注册，请带上此信息。
         :type VendorId: str
-        :param DeviceType: 设备类型：
+        :param _DeviceType: 设备类型：
 1：Android
 2：IOS
         :type DeviceType: int
-        :param Details: 详细信息
+        :param _Details: 详细信息
         :type Details: list of InputDetails
-        :param Sponsor: 可选填写。详情请跳转至SponsorInfo查看。
+        :param _Sponsor: 可选填写。详情请跳转至SponsorInfo查看。
         :type Sponsor: :class:`tencentcloud.rce.v20201103.models.SponsorInfo`
-        :param OnlineScam: 可选填写。详情请跳转至OnlineScamInfo查看。
+        :param _OnlineScam: 可选填写。详情请跳转至OnlineScamInfo查看。
         :type OnlineScam: :class:`tencentcloud.rce.v20201103.models.OnlineScamInfo`
-        :param Platform: 平台: 1android
+        :param _Platform: 平台: 1android
         :type Platform: str
         """
-        self.Account = None
-        self.SceneCode = None
-        self.UserIp = None
-        self.PostTime = None
-        self.UserId = None
-        self.DeviceToken = None
-        self.DeviceBusinessId = None
-        self.BusinessId = None
-        self.Nickname = None
-        self.EmailAddress = None
-        self.CheckDevice = None
-        self.CookieHash = None
-        self.Referer = None
-        self.UserAgent = None
-        self.XForwardedFor = None
-        self.MacAddress = None
-        self.VendorId = None
-        self.DeviceType = None
-        self.Details = None
-        self.Sponsor = None
-        self.OnlineScam = None
-        self.Platform = None
+        self._Account = None
+        self._SceneCode = None
+        self._UserIp = None
+        self._PostTime = None
+        self._UserId = None
+        self._DeviceToken = None
+        self._DeviceBusinessId = None
+        self._BusinessId = None
+        self._Nickname = None
+        self._EmailAddress = None
+        self._CheckDevice = None
+        self._CookieHash = None
+        self._Referer = None
+        self._UserAgent = None
+        self._XForwardedFor = None
+        self._MacAddress = None
+        self._VendorId = None
+        self._DeviceType = None
+        self._Details = None
+        self._Sponsor = None
+        self._OnlineScam = None
+        self._Platform = None
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def PostTime(self):
+        return self._PostTime
+
+    @PostTime.setter
+    def PostTime(self, PostTime):
+        self._PostTime = PostTime
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def DeviceToken(self):
+        return self._DeviceToken
+
+    @DeviceToken.setter
+    def DeviceToken(self, DeviceToken):
+        self._DeviceToken = DeviceToken
+
+    @property
+    def DeviceBusinessId(self):
+        return self._DeviceBusinessId
+
+    @DeviceBusinessId.setter
+    def DeviceBusinessId(self, DeviceBusinessId):
+        self._DeviceBusinessId = DeviceBusinessId
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
+
+    @property
+    def CheckDevice(self):
+        return self._CheckDevice
+
+    @CheckDevice.setter
+    def CheckDevice(self, CheckDevice):
+        self._CheckDevice = CheckDevice
+
+    @property
+    def CookieHash(self):
+        return self._CookieHash
+
+    @CookieHash.setter
+    def CookieHash(self, CookieHash):
+        self._CookieHash = CookieHash
+
+    @property
+    def Referer(self):
+        return self._Referer
+
+    @Referer.setter
+    def Referer(self, Referer):
+        self._Referer = Referer
+
+    @property
+    def UserAgent(self):
+        return self._UserAgent
+
+    @UserAgent.setter
+    def UserAgent(self, UserAgent):
+        self._UserAgent = UserAgent
+
+    @property
+    def XForwardedFor(self):
+        return self._XForwardedFor
+
+    @XForwardedFor.setter
+    def XForwardedFor(self, XForwardedFor):
+        self._XForwardedFor = XForwardedFor
+
+    @property
+    def MacAddress(self):
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def VendorId(self):
+        return self._VendorId
+
+    @VendorId.setter
+    def VendorId(self, VendorId):
+        self._VendorId = VendorId
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def Sponsor(self):
+        return self._Sponsor
+
+    @Sponsor.setter
+    def Sponsor(self, Sponsor):
+        self._Sponsor = Sponsor
+
+    @property
+    def OnlineScam(self):
+        return self._OnlineScam
+
+    @OnlineScam.setter
+    def OnlineScam(self, OnlineScam):
+        self._OnlineScam = OnlineScam
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
 
 
     def _deserialize(self, params):
         if params.get("Account") is not None:
-            self.Account = AccountInfo()
-            self.Account._deserialize(params.get("Account"))
-        self.SceneCode = params.get("SceneCode")
-        self.UserIp = params.get("UserIp")
-        self.PostTime = params.get("PostTime")
-        self.UserId = params.get("UserId")
-        self.DeviceToken = params.get("DeviceToken")
-        self.DeviceBusinessId = params.get("DeviceBusinessId")
-        self.BusinessId = params.get("BusinessId")
-        self.Nickname = params.get("Nickname")
-        self.EmailAddress = params.get("EmailAddress")
-        self.CheckDevice = params.get("CheckDevice")
-        self.CookieHash = params.get("CookieHash")
-        self.Referer = params.get("Referer")
-        self.UserAgent = params.get("UserAgent")
-        self.XForwardedFor = params.get("XForwardedFor")
-        self.MacAddress = params.get("MacAddress")
-        self.VendorId = params.get("VendorId")
-        self.DeviceType = params.get("DeviceType")
+            self._Account = AccountInfo()
+            self._Account._deserialize(params.get("Account"))
+        self._SceneCode = params.get("SceneCode")
+        self._UserIp = params.get("UserIp")
+        self._PostTime = params.get("PostTime")
+        self._UserId = params.get("UserId")
+        self._DeviceToken = params.get("DeviceToken")
+        self._DeviceBusinessId = params.get("DeviceBusinessId")
+        self._BusinessId = params.get("BusinessId")
+        self._Nickname = params.get("Nickname")
+        self._EmailAddress = params.get("EmailAddress")
+        self._CheckDevice = params.get("CheckDevice")
+        self._CookieHash = params.get("CookieHash")
+        self._Referer = params.get("Referer")
+        self._UserAgent = params.get("UserAgent")
+        self._XForwardedFor = params.get("XForwardedFor")
+        self._MacAddress = params.get("MacAddress")
+        self._VendorId = params.get("VendorId")
+        self._DeviceType = params.get("DeviceType")
         if params.get("Details") is not None:
-            self.Details = []
+            self._Details = []
             for item in params.get("Details"):
                 obj = InputDetails()
                 obj._deserialize(item)
-                self.Details.append(obj)
+                self._Details.append(obj)
         if params.get("Sponsor") is not None:
-            self.Sponsor = SponsorInfo()
-            self.Sponsor._deserialize(params.get("Sponsor"))
+            self._Sponsor = SponsorInfo()
+            self._Sponsor._deserialize(params.get("Sponsor"))
         if params.get("OnlineScam") is not None:
-            self.OnlineScam = OnlineScamInfo()
-            self.OnlineScam._deserialize(params.get("OnlineScam"))
-        self.Platform = params.get("Platform")
+            self._OnlineScam = OnlineScamInfo()
+            self._OnlineScam._deserialize(params.get("OnlineScam"))
+        self._Platform = params.get("Platform")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -368,26 +702,43 @@ class ManageMarketingRiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessSecurityData: 业务入参
+        :param _BusinessSecurityData: 业务入参
         :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputManageMarketingRisk`
-        :param BusinessCryptoData: 业务入参
+        :param _BusinessCryptoData: 业务入参
         :type BusinessCryptoData: :class:`tencentcloud.rce.v20201103.models.InputCryptoManageMarketingRisk`
         """
-        self.BusinessSecurityData = None
-        self.BusinessCryptoData = None
+        self._BusinessSecurityData = None
+        self._BusinessCryptoData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+    @property
+    def BusinessCryptoData(self):
+        return self._BusinessCryptoData
+
+    @BusinessCryptoData.setter
+    def BusinessCryptoData(self, BusinessCryptoData):
+        self._BusinessCryptoData = BusinessCryptoData
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = InputManageMarketingRisk()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+            self._BusinessSecurityData = InputManageMarketingRisk()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
         if params.get("BusinessCryptoData") is not None:
-            self.BusinessCryptoData = InputCryptoManageMarketingRisk()
-            self.BusinessCryptoData._deserialize(params.get("BusinessCryptoData"))
+            self._BusinessCryptoData = InputCryptoManageMarketingRisk()
+            self._BusinessCryptoData._deserialize(params.get("BusinessCryptoData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -400,20 +751,36 @@ class ManageMarketingRiskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 业务出参
+        :param _Data: 业务出参
         :type Data: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRisk`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = OutputManageMarketingRisk()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = OutputManageMarketingRisk()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class OnlineScamInfo(AbstractModel):
@@ -423,38 +790,79 @@ class OnlineScamInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ContentLabel: 内容标签。
+        :param _ContentLabel: 内容标签。
         :type ContentLabel: str
-        :param ContentRiskLevel: 内容风险等级：
+        :param _ContentRiskLevel: 内容风险等级：
 0：正常。
 1：可疑。
         :type ContentRiskLevel: int
-        :param ContentType: 内容产生形式：
+        :param _ContentType: 内容产生形式：
 0：对话。
 1：广播。
         :type ContentType: int
-        :param FraudType: 类型
+        :param _FraudType: 类型
         :type FraudType: int
-        :param FraudAccount: 账号
+        :param _FraudAccount: 账号
         :type FraudAccount: str
         """
-        self.ContentLabel = None
-        self.ContentRiskLevel = None
-        self.ContentType = None
-        self.FraudType = None
-        self.FraudAccount = None
+        self._ContentLabel = None
+        self._ContentRiskLevel = None
+        self._ContentType = None
+        self._FraudType = None
+        self._FraudAccount = None
+
+    @property
+    def ContentLabel(self):
+        return self._ContentLabel
+
+    @ContentLabel.setter
+    def ContentLabel(self, ContentLabel):
+        self._ContentLabel = ContentLabel
+
+    @property
+    def ContentRiskLevel(self):
+        return self._ContentRiskLevel
+
+    @ContentRiskLevel.setter
+    def ContentRiskLevel(self, ContentRiskLevel):
+        self._ContentRiskLevel = ContentRiskLevel
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def FraudType(self):
+        return self._FraudType
+
+    @FraudType.setter
+    def FraudType(self, FraudType):
+        self._FraudType = FraudType
+
+    @property
+    def FraudAccount(self):
+        return self._FraudAccount
+
+    @FraudAccount.setter
+    def FraudAccount(self, FraudAccount):
+        self._FraudAccount = FraudAccount
 
 
     def _deserialize(self, params):
-        self.ContentLabel = params.get("ContentLabel")
-        self.ContentRiskLevel = params.get("ContentRiskLevel")
-        self.ContentType = params.get("ContentType")
-        self.FraudType = params.get("FraudType")
-        self.FraudAccount = params.get("FraudAccount")
+        self._ContentLabel = params.get("ContentLabel")
+        self._ContentRiskLevel = params.get("ContentRiskLevel")
+        self._ContentType = params.get("ContentType")
+        self._FraudType = params.get("FraudType")
+        self._FraudAccount = params.get("FraudAccount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -467,26 +875,51 @@ class OtherAccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: id
+        :param _AccountId: id
         :type AccountId: str
-        :param MobilePhone: 手机号
+        :param _MobilePhone: 手机号
         :type MobilePhone: str
-        :param DeviceId: id
+        :param _DeviceId: id
         :type DeviceId: str
         """
-        self.AccountId = None
-        self.MobilePhone = None
-        self.DeviceId = None
+        self._AccountId = None
+        self._MobilePhone = None
+        self._DeviceId = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def MobilePhone(self):
+        return self._MobilePhone
+
+    @MobilePhone.setter
+    def MobilePhone(self, MobilePhone):
+        self._MobilePhone = MobilePhone
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
-        self.MobilePhone = params.get("MobilePhone")
-        self.DeviceId = params.get("DeviceId")
+        self._AccountId = params.get("AccountId")
+        self._MobilePhone = params.get("MobilePhone")
+        self._DeviceId = params.get("DeviceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -499,29 +932,46 @@ class OutputFrontRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名称
+        :param _Name: 名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Value: 参数值
+        :param _Value: 参数值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of OutputFrontRiskValue
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         if params.get("Value") is not None:
-            self.Value = []
+            self._Value = []
             for item in params.get("Value"):
                 obj = OutputFrontRiskValue()
                 obj._deserialize(item)
-                self.Value.append(obj)
+                self._Value.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -534,34 +984,59 @@ class OutputFrontRiskData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 返回码[0：成功；非0：标识失败错误码]。
+        :param _Code: 返回码[0：成功；非0：标识失败错误码]。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
-        :param Message: 出错消息[UTF-8编码]。
+        :param _Message: 出错消息[UTF-8编码]。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Value: 返回结果。
+        :param _Value: 返回结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of OutputFrontRisk
         """
-        self.Code = None
-        self.Message = None
-        self.Value = None
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         if params.get("Value") is not None:
-            self.Value = []
+            self._Value = []
             for item in params.get("Value"):
                 obj = OutputFrontRisk()
                 obj._deserialize(item)
-                self.Value.append(obj)
+                self._Value.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -574,24 +1049,41 @@ class OutputFrontRiskValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Requests: 请求次数
+        :param _Requests: 请求次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Requests: int
-        :param Index: 日期标签
+        :param _Index: 日期标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: str
         """
-        self.Requests = None
-        self.Index = None
+        self._Requests = None
+        self._Index = None
+
+    @property
+    def Requests(self):
+        return self._Requests
+
+    @Requests.setter
+    def Requests(self, Requests):
+        self._Requests = Requests
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
 
 
     def _deserialize(self, params):
-        self.Requests = params.get("Requests")
-        self.Index = params.get("Index")
+        self._Requests = params.get("Requests")
+        self._Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -604,36 +1096,69 @@ class OutputManageMarketingRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 返回码。0表示成功，非0标识失败错误码。
+        :param _Code: 返回码。0表示成功，非0标识失败错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
-        :param Message: UTF-8编码，出错消息。
+        :param _Message: UTF-8编码，出错消息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Value: 业务详情。
+        :param _Value: 业务详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRiskValue`
-        :param UUid: 控制台显示的req_id。
+        :param _UUid: 控制台显示的req_id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UUid: str
         """
-        self.Code = None
-        self.Message = None
-        self.Value = None
-        self.UUid = None
+        self._Code = None
+        self._Message = None
+        self._Value = None
+        self._UUid = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def UUid(self):
+        return self._UUid
+
+    @UUid.setter
+    def UUid(self, UUid):
+        self._UUid = UUid
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         if params.get("Value") is not None:
-            self.Value = OutputManageMarketingRiskValue()
-            self.Value._deserialize(params.get("Value"))
-        self.UUid = params.get("UUid")
+            self._Value = OutputManageMarketingRiskValue()
+            self._Value._deserialize(params.get("Value"))
+        self._UUid = params.get("UUid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -646,7 +1171,7 @@ class OutputManageMarketingRiskValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 账号ID。对应输入参数：
+        :param _UserId: 账号ID。对应输入参数：
 AccountType是1时，对应QQ的OpenID。
 AccountType是2时，对应微信的OpenID/UnionID。
 AccountType是4时，对应手机号。
@@ -655,22 +1180,22 @@ AccountType是0时，对应账号信息。
 AccountType是10004时，对应手机号的MD5。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param PostTime: 操作时间戳，单位秒（对应输入参数）。
+        :param _PostTime: 操作时间戳，单位秒（对应输入参数）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostTime: int
-        :param AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
+        :param _AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociateAccount: str
-        :param UserIp: 操作来源的外网IP（对应输入参数）。
+        :param _UserIp: 操作来源的外网IP（对应输入参数）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserIp: str
-        :param RiskLevel: 风险值
+        :param _RiskLevel: 风险值
 pass : 无恶意
 review：需要人工审核
 reject：拒绝，高风险恶意
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
-        :param RiskType: 风险类型，请参考官网风险类型
+        :param _RiskType: 风险类型，请参考官网风险类型
 账号风险 
 1 账号信用低,账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 11 疑似 低活跃账号,账号活跃度与正常用户有差异
@@ -698,31 +1223,88 @@ reject：拒绝，高风险恶意
 2063 疑似 群控设备 请求设备为猫池、手机墙等群控设备
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: list of int
-        :param ConstId: 唯一ID
+        :param _ConstId: 唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConstId: str
         """
-        self.UserId = None
-        self.PostTime = None
-        self.AssociateAccount = None
-        self.UserIp = None
-        self.RiskLevel = None
-        self.RiskType = None
-        self.ConstId = None
+        self._UserId = None
+        self._PostTime = None
+        self._AssociateAccount = None
+        self._UserIp = None
+        self._RiskLevel = None
+        self._RiskType = None
+        self._ConstId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PostTime(self):
+        return self._PostTime
+
+    @PostTime.setter
+    def PostTime(self, PostTime):
+        self._PostTime = PostTime
+
+    @property
+    def AssociateAccount(self):
+        return self._AssociateAccount
+
+    @AssociateAccount.setter
+    def AssociateAccount(self, AssociateAccount):
+        self._AssociateAccount = AssociateAccount
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskType(self):
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def ConstId(self):
+        return self._ConstId
+
+    @ConstId.setter
+    def ConstId(self, ConstId):
+        self._ConstId = ConstId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.PostTime = params.get("PostTime")
-        self.AssociateAccount = params.get("AssociateAccount")
-        self.UserIp = params.get("UserIp")
-        self.RiskLevel = params.get("RiskLevel")
-        self.RiskType = params.get("RiskType")
-        self.ConstId = params.get("ConstId")
+        self._UserId = params.get("UserId")
+        self._PostTime = params.get("PostTime")
+        self._AssociateAccount = params.get("AssociateAccount")
+        self._UserIp = params.get("UserIp")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskType = params.get("RiskType")
+        self._ConstId = params.get("ConstId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -735,34 +1317,75 @@ class QQAccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QQOpenId: QQ的OpenID。
+        :param _QQOpenId: QQ的OpenID。
         :type QQOpenId: str
-        :param AppIdUser: QQ分配给网站或应用的AppId，用来唯一标识网站或应用。
+        :param _AppIdUser: QQ分配给网站或应用的AppId，用来唯一标识网站或应用。
         :type AppIdUser: str
-        :param AssociateAccount: 用于标识QQ用户登录后所关联业务自身的账号ID。
+        :param _AssociateAccount: 用于标识QQ用户登录后所关联业务自身的账号ID。
         :type AssociateAccount: str
-        :param MobilePhone: 账号绑定的手机号。
+        :param _MobilePhone: 账号绑定的手机号。
         :type MobilePhone: str
-        :param DeviceId: 用户设备号。
+        :param _DeviceId: 用户设备号。
         :type DeviceId: str
         """
-        self.QQOpenId = None
-        self.AppIdUser = None
-        self.AssociateAccount = None
-        self.MobilePhone = None
-        self.DeviceId = None
+        self._QQOpenId = None
+        self._AppIdUser = None
+        self._AssociateAccount = None
+        self._MobilePhone = None
+        self._DeviceId = None
+
+    @property
+    def QQOpenId(self):
+        return self._QQOpenId
+
+    @QQOpenId.setter
+    def QQOpenId(self, QQOpenId):
+        self._QQOpenId = QQOpenId
+
+    @property
+    def AppIdUser(self):
+        return self._AppIdUser
+
+    @AppIdUser.setter
+    def AppIdUser(self, AppIdUser):
+        self._AppIdUser = AppIdUser
+
+    @property
+    def AssociateAccount(self):
+        return self._AssociateAccount
+
+    @AssociateAccount.setter
+    def AssociateAccount(self, AssociateAccount):
+        self._AssociateAccount = AssociateAccount
+
+    @property
+    def MobilePhone(self):
+        return self._MobilePhone
+
+    @MobilePhone.setter
+    def MobilePhone(self, MobilePhone):
+        self._MobilePhone = MobilePhone
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
 
 
     def _deserialize(self, params):
-        self.QQOpenId = params.get("QQOpenId")
-        self.AppIdUser = params.get("AppIdUser")
-        self.AssociateAccount = params.get("AssociateAccount")
-        self.MobilePhone = params.get("MobilePhone")
-        self.DeviceId = params.get("DeviceId")
+        self._QQOpenId = params.get("QQOpenId")
+        self._AppIdUser = params.get("AppIdUser")
+        self._AssociateAccount = params.get("AssociateAccount")
+        self._MobilePhone = params.get("MobilePhone")
+        self._DeviceId = params.get("DeviceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -775,34 +1398,75 @@ class SponsorInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SponsorOpenId: OpenID
+        :param _SponsorOpenId: OpenID
         :type SponsorOpenId: str
-        :param SponsorDeviceNumber: 设备号
+        :param _SponsorDeviceNumber: 设备号
         :type SponsorDeviceNumber: str
-        :param SponsorPhone: 手机号
+        :param _SponsorPhone: 手机号
         :type SponsorPhone: str
-        :param SponsorIp: IP
+        :param _SponsorIp: IP
         :type SponsorIp: str
-        :param CampaignUrl: 链接
+        :param _CampaignUrl: 链接
         :type CampaignUrl: str
         """
-        self.SponsorOpenId = None
-        self.SponsorDeviceNumber = None
-        self.SponsorPhone = None
-        self.SponsorIp = None
-        self.CampaignUrl = None
+        self._SponsorOpenId = None
+        self._SponsorDeviceNumber = None
+        self._SponsorPhone = None
+        self._SponsorIp = None
+        self._CampaignUrl = None
+
+    @property
+    def SponsorOpenId(self):
+        return self._SponsorOpenId
+
+    @SponsorOpenId.setter
+    def SponsorOpenId(self, SponsorOpenId):
+        self._SponsorOpenId = SponsorOpenId
+
+    @property
+    def SponsorDeviceNumber(self):
+        return self._SponsorDeviceNumber
+
+    @SponsorDeviceNumber.setter
+    def SponsorDeviceNumber(self, SponsorDeviceNumber):
+        self._SponsorDeviceNumber = SponsorDeviceNumber
+
+    @property
+    def SponsorPhone(self):
+        return self._SponsorPhone
+
+    @SponsorPhone.setter
+    def SponsorPhone(self, SponsorPhone):
+        self._SponsorPhone = SponsorPhone
+
+    @property
+    def SponsorIp(self):
+        return self._SponsorIp
+
+    @SponsorIp.setter
+    def SponsorIp(self, SponsorIp):
+        self._SponsorIp = SponsorIp
+
+    @property
+    def CampaignUrl(self):
+        return self._CampaignUrl
+
+    @CampaignUrl.setter
+    def CampaignUrl(self, CampaignUrl):
+        self._CampaignUrl = CampaignUrl
 
 
     def _deserialize(self, params):
-        self.SponsorOpenId = params.get("SponsorOpenId")
-        self.SponsorDeviceNumber = params.get("SponsorDeviceNumber")
-        self.SponsorPhone = params.get("SponsorPhone")
-        self.SponsorIp = params.get("SponsorIp")
-        self.CampaignUrl = params.get("CampaignUrl")
+        self._SponsorOpenId = params.get("SponsorOpenId")
+        self._SponsorDeviceNumber = params.get("SponsorDeviceNumber")
+        self._SponsorPhone = params.get("SponsorPhone")
+        self._SponsorIp = params.get("SponsorIp")
+        self._CampaignUrl = params.get("CampaignUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -815,44 +1479,101 @@ class WeChatAccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WeChatOpenId: 微信的OpenID/UnionID 。
+        :param _WeChatOpenId: 微信的OpenID/UnionID 。
         :type WeChatOpenId: str
-        :param WeChatSubType: 微信开放账号类型：
+        :param _WeChatSubType: 微信开放账号类型：
 1：微信公众号/微信第三方登录。
 2：微信小程序。
         :type WeChatSubType: int
-        :param RandStr: 随机串。如果WeChatSubType是2，该字段必填。Token签名随机数，建议16个字符。
+        :param _RandStr: 随机串。如果WeChatSubType是2，该字段必填。Token签名随机数，建议16个字符。
         :type RandStr: str
-        :param WeChatAccessToken: token
+        :param _WeChatAccessToken: token
         :type WeChatAccessToken: str
-        :param AssociateAccount: 用于标识微信用户登录后所关联业务自身的账号ID。
+        :param _AssociateAccount: 用于标识微信用户登录后所关联业务自身的账号ID。
         :type AssociateAccount: str
-        :param MobilePhone: 账号绑定的手机号。
+        :param _MobilePhone: 账号绑定的手机号。
         :type MobilePhone: str
-        :param DeviceId: 用户设备号。
+        :param _DeviceId: 用户设备号。
         :type DeviceId: str
         """
-        self.WeChatOpenId = None
-        self.WeChatSubType = None
-        self.RandStr = None
-        self.WeChatAccessToken = None
-        self.AssociateAccount = None
-        self.MobilePhone = None
-        self.DeviceId = None
+        self._WeChatOpenId = None
+        self._WeChatSubType = None
+        self._RandStr = None
+        self._WeChatAccessToken = None
+        self._AssociateAccount = None
+        self._MobilePhone = None
+        self._DeviceId = None
+
+    @property
+    def WeChatOpenId(self):
+        return self._WeChatOpenId
+
+    @WeChatOpenId.setter
+    def WeChatOpenId(self, WeChatOpenId):
+        self._WeChatOpenId = WeChatOpenId
+
+    @property
+    def WeChatSubType(self):
+        return self._WeChatSubType
+
+    @WeChatSubType.setter
+    def WeChatSubType(self, WeChatSubType):
+        self._WeChatSubType = WeChatSubType
+
+    @property
+    def RandStr(self):
+        return self._RandStr
+
+    @RandStr.setter
+    def RandStr(self, RandStr):
+        self._RandStr = RandStr
+
+    @property
+    def WeChatAccessToken(self):
+        return self._WeChatAccessToken
+
+    @WeChatAccessToken.setter
+    def WeChatAccessToken(self, WeChatAccessToken):
+        self._WeChatAccessToken = WeChatAccessToken
+
+    @property
+    def AssociateAccount(self):
+        return self._AssociateAccount
+
+    @AssociateAccount.setter
+    def AssociateAccount(self, AssociateAccount):
+        self._AssociateAccount = AssociateAccount
+
+    @property
+    def MobilePhone(self):
+        return self._MobilePhone
+
+    @MobilePhone.setter
+    def MobilePhone(self, MobilePhone):
+        self._MobilePhone = MobilePhone
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
 
 
     def _deserialize(self, params):
-        self.WeChatOpenId = params.get("WeChatOpenId")
-        self.WeChatSubType = params.get("WeChatSubType")
-        self.RandStr = params.get("RandStr")
-        self.WeChatAccessToken = params.get("WeChatAccessToken")
-        self.AssociateAccount = params.get("AssociateAccount")
-        self.MobilePhone = params.get("MobilePhone")
-        self.DeviceId = params.get("DeviceId")
+        self._WeChatOpenId = params.get("WeChatOpenId")
+        self._WeChatSubType = params.get("WeChatSubType")
+        self._RandStr = params.get("RandStr")
+        self._WeChatAccessToken = params.get("WeChatAccessToken")
+        self._AssociateAccount = params.get("AssociateAccount")
+        self._MobilePhone = params.get("MobilePhone")
+        self._DeviceId = params.get("DeviceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

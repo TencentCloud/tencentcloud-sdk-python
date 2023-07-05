@@ -25,72 +25,169 @@ class AppInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppPackage: App包名
+        :param _AppPackage: App包名
         :type AppPackage: str
-        :param AppName: App名称
+        :param _AppName: App名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
-        :param AppVersion: App版本
+        :param _AppVersion: App版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppVersion: str
-        :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
+        :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
-        :param ReportUrl: App隐私诊断报告下载链接
+        :param _ReportUrl: App隐私诊断报告下载链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param ReportTitle: App隐私诊断报告名称
+        :param _ReportTitle: App隐私诊断报告名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTitle: str
-        :param BehaviorUrl: App诊断堆栈报告下载链接
+        :param _BehaviorUrl: App诊断堆栈报告下载链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type BehaviorUrl: str
-        :param BehaviorTitle: App诊断堆栈报告名称
+        :param _BehaviorTitle: App诊断堆栈报告名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type BehaviorTitle: str
-        :param HighRiskCount: 诊断高风险项数量
+        :param _HighRiskCount: 诊断高风险项数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighRiskCount: int
-        :param PrivacyTextName: 隐私申明文件名称
+        :param _PrivacyTextName: 隐私申明文件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivacyTextName: str
-        :param SoftwareMD5: 软件MD5
+        :param _SoftwareMD5: 软件MD5
 注意：此字段可能返回 null，表示取不到有效值。
         :type SoftwareMD5: str
-        :param PrivacyTextMD5: 隐私文本MD5
+        :param _PrivacyTextMD5: 隐私文本MD5
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivacyTextMD5: str
         """
-        self.AppPackage = None
-        self.AppName = None
-        self.AppVersion = None
-        self.Platform = None
-        self.ReportUrl = None
-        self.ReportTitle = None
-        self.BehaviorUrl = None
-        self.BehaviorTitle = None
-        self.HighRiskCount = None
-        self.PrivacyTextName = None
-        self.SoftwareMD5 = None
-        self.PrivacyTextMD5 = None
+        self._AppPackage = None
+        self._AppName = None
+        self._AppVersion = None
+        self._Platform = None
+        self._ReportUrl = None
+        self._ReportTitle = None
+        self._BehaviorUrl = None
+        self._BehaviorTitle = None
+        self._HighRiskCount = None
+        self._PrivacyTextName = None
+        self._SoftwareMD5 = None
+        self._PrivacyTextMD5 = None
+
+    @property
+    def AppPackage(self):
+        return self._AppPackage
+
+    @AppPackage.setter
+    def AppPackage(self, AppPackage):
+        self._AppPackage = AppPackage
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def AppVersion(self):
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ReportUrl(self):
+        return self._ReportUrl
+
+    @ReportUrl.setter
+    def ReportUrl(self, ReportUrl):
+        self._ReportUrl = ReportUrl
+
+    @property
+    def ReportTitle(self):
+        return self._ReportTitle
+
+    @ReportTitle.setter
+    def ReportTitle(self, ReportTitle):
+        self._ReportTitle = ReportTitle
+
+    @property
+    def BehaviorUrl(self):
+        return self._BehaviorUrl
+
+    @BehaviorUrl.setter
+    def BehaviorUrl(self, BehaviorUrl):
+        self._BehaviorUrl = BehaviorUrl
+
+    @property
+    def BehaviorTitle(self):
+        return self._BehaviorTitle
+
+    @BehaviorTitle.setter
+    def BehaviorTitle(self, BehaviorTitle):
+        self._BehaviorTitle = BehaviorTitle
+
+    @property
+    def HighRiskCount(self):
+        return self._HighRiskCount
+
+    @HighRiskCount.setter
+    def HighRiskCount(self, HighRiskCount):
+        self._HighRiskCount = HighRiskCount
+
+    @property
+    def PrivacyTextName(self):
+        return self._PrivacyTextName
+
+    @PrivacyTextName.setter
+    def PrivacyTextName(self, PrivacyTextName):
+        self._PrivacyTextName = PrivacyTextName
+
+    @property
+    def SoftwareMD5(self):
+        return self._SoftwareMD5
+
+    @SoftwareMD5.setter
+    def SoftwareMD5(self, SoftwareMD5):
+        self._SoftwareMD5 = SoftwareMD5
+
+    @property
+    def PrivacyTextMD5(self):
+        return self._PrivacyTextMD5
+
+    @PrivacyTextMD5.setter
+    def PrivacyTextMD5(self, PrivacyTextMD5):
+        self._PrivacyTextMD5 = PrivacyTextMD5
 
 
     def _deserialize(self, params):
-        self.AppPackage = params.get("AppPackage")
-        self.AppName = params.get("AppName")
-        self.AppVersion = params.get("AppVersion")
-        self.Platform = params.get("Platform")
-        self.ReportUrl = params.get("ReportUrl")
-        self.ReportTitle = params.get("ReportTitle")
-        self.BehaviorUrl = params.get("BehaviorUrl")
-        self.BehaviorTitle = params.get("BehaviorTitle")
-        self.HighRiskCount = params.get("HighRiskCount")
-        self.PrivacyTextName = params.get("PrivacyTextName")
-        self.SoftwareMD5 = params.get("SoftwareMD5")
-        self.PrivacyTextMD5 = params.get("PrivacyTextMD5")
+        self._AppPackage = params.get("AppPackage")
+        self._AppName = params.get("AppName")
+        self._AppVersion = params.get("AppVersion")
+        self._Platform = params.get("Platform")
+        self._ReportUrl = params.get("ReportUrl")
+        self._ReportTitle = params.get("ReportTitle")
+        self._BehaviorUrl = params.get("BehaviorUrl")
+        self._BehaviorTitle = params.get("BehaviorTitle")
+        self._HighRiskCount = params.get("HighRiskCount")
+        self._PrivacyTextName = params.get("PrivacyTextName")
+        self._SoftwareMD5 = params.get("SoftwareMD5")
+        self._PrivacyTextMD5 = params.get("PrivacyTextMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -103,54 +200,127 @@ class AppTaskData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskID: 任务ID
+        :param _TaskID: 任务ID
         :type TaskID: str
-        :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
+        :param _TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param TaskStatus: 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        :param _TaskStatus: 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :type TaskStatus: int
-        :param TaskErrMsg: 错误信息
+        :param _TaskErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskErrMsg: str
-        :param Source: 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android)
+        :param _Source: 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android)
         :type Source: int
-        :param AppInfo: 应用信息
+        :param _AppInfo: 应用信息
         :type AppInfo: :class:`tencentcloud.acp.v20220105.models.AppInfoItem`
-        :param StartTime: 任务启动时间
+        :param _StartTime: 任务启动时间
         :type StartTime: str
-        :param EndTime: 任务完成时间(更新时间)
+        :param _EndTime: 任务完成时间(更新时间)
         :type EndTime: str
-        :param ContactName: 联系人信息
+        :param _ContactName: 联系人信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContactName: str
         """
-        self.TaskID = None
-        self.TaskType = None
-        self.TaskStatus = None
-        self.TaskErrMsg = None
-        self.Source = None
-        self.AppInfo = None
-        self.StartTime = None
-        self.EndTime = None
-        self.ContactName = None
+        self._TaskID = None
+        self._TaskType = None
+        self._TaskStatus = None
+        self._TaskErrMsg = None
+        self._Source = None
+        self._AppInfo = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ContactName = None
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def TaskErrMsg(self):
+        return self._TaskErrMsg
+
+    @TaskErrMsg.setter
+    def TaskErrMsg(self, TaskErrMsg):
+        self._TaskErrMsg = TaskErrMsg
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def AppInfo(self):
+        return self._AppInfo
+
+    @AppInfo.setter
+    def AppInfo(self, AppInfo):
+        self._AppInfo = AppInfo
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ContactName(self):
+        return self._ContactName
+
+    @ContactName.setter
+    def ContactName(self, ContactName):
+        self._ContactName = ContactName
 
 
     def _deserialize(self, params):
-        self.TaskID = params.get("TaskID")
-        self.TaskType = params.get("TaskType")
-        self.TaskStatus = params.get("TaskStatus")
-        self.TaskErrMsg = params.get("TaskErrMsg")
-        self.Source = params.get("Source")
+        self._TaskID = params.get("TaskID")
+        self._TaskType = params.get("TaskType")
+        self._TaskStatus = params.get("TaskStatus")
+        self._TaskErrMsg = params.get("TaskErrMsg")
+        self._Source = params.get("Source")
         if params.get("AppInfo") is not None:
-            self.AppInfo = AppInfoItem()
-            self.AppInfo._deserialize(params.get("AppInfo"))
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.ContactName = params.get("ContactName")
+            self._AppInfo = AppInfoItem()
+            self._AppInfo._deserialize(params.get("AppInfo"))
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ContactName = params.get("ContactName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -163,62 +333,159 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
-        :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
+        :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
-        :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
+        :param _TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param OrgTaskID: 原诊断任务ID
+        :param _OrgTaskID: 原诊断任务ID
         :type OrgTaskID: str
-        :param AppPackage: App包名
+        :param _AppPackage: App包名
         :type AppPackage: str
-        :param FileID: 上传的文件ID(任务来源为1时必填)
+        :param _FileID: 上传的文件ID(任务来源为1时必填)
         :type FileID: str
-        :param AppDownloadUrl: 软件下载链接地址(任务来源为2时必填)
+        :param _AppDownloadUrl: 软件下载链接地址(任务来源为2时必填)
         :type AppDownloadUrl: str
-        :param PrivacyTextUrl: 隐私文本下载地址(任务来源为2时必填)
+        :param _PrivacyTextUrl: 隐私文本下载地址(任务来源为2时必填)
         :type PrivacyTextUrl: str
-        :param AppName: 应用名称
+        :param _AppName: 应用名称
         :type AppName: str
-        :param PrivacyTextName: 隐私申明文件名称
+        :param _PrivacyTextName: 隐私申明文件名称
         :type PrivacyTextName: str
-        :param AppSha1: 软件Sha1值(PrivacyTextMD5不为空时必填)
+        :param _AppSha1: 软件Sha1值(PrivacyTextMD5不为空时必填)
         :type AppSha1: str
-        :param PrivacyTextMD5: 隐私申明文本md5(AppSha1不为空时必填)
+        :param _PrivacyTextMD5: 隐私申明文本md5(AppSha1不为空时必填)
         :type PrivacyTextMD5: str
         """
-        self.Source = None
-        self.Platform = None
-        self.TaskType = None
-        self.OrgTaskID = None
-        self.AppPackage = None
-        self.FileID = None
-        self.AppDownloadUrl = None
-        self.PrivacyTextUrl = None
-        self.AppName = None
-        self.PrivacyTextName = None
-        self.AppSha1 = None
-        self.PrivacyTextMD5 = None
+        self._Source = None
+        self._Platform = None
+        self._TaskType = None
+        self._OrgTaskID = None
+        self._AppPackage = None
+        self._FileID = None
+        self._AppDownloadUrl = None
+        self._PrivacyTextUrl = None
+        self._AppName = None
+        self._PrivacyTextName = None
+        self._AppSha1 = None
+        self._PrivacyTextMD5 = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def OrgTaskID(self):
+        return self._OrgTaskID
+
+    @OrgTaskID.setter
+    def OrgTaskID(self, OrgTaskID):
+        self._OrgTaskID = OrgTaskID
+
+    @property
+    def AppPackage(self):
+        return self._AppPackage
+
+    @AppPackage.setter
+    def AppPackage(self, AppPackage):
+        self._AppPackage = AppPackage
+
+    @property
+    def FileID(self):
+        return self._FileID
+
+    @FileID.setter
+    def FileID(self, FileID):
+        self._FileID = FileID
+
+    @property
+    def AppDownloadUrl(self):
+        return self._AppDownloadUrl
+
+    @AppDownloadUrl.setter
+    def AppDownloadUrl(self, AppDownloadUrl):
+        self._AppDownloadUrl = AppDownloadUrl
+
+    @property
+    def PrivacyTextUrl(self):
+        return self._PrivacyTextUrl
+
+    @PrivacyTextUrl.setter
+    def PrivacyTextUrl(self, PrivacyTextUrl):
+        self._PrivacyTextUrl = PrivacyTextUrl
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PrivacyTextName(self):
+        return self._PrivacyTextName
+
+    @PrivacyTextName.setter
+    def PrivacyTextName(self, PrivacyTextName):
+        self._PrivacyTextName = PrivacyTextName
+
+    @property
+    def AppSha1(self):
+        return self._AppSha1
+
+    @AppSha1.setter
+    def AppSha1(self, AppSha1):
+        self._AppSha1 = AppSha1
+
+    @property
+    def PrivacyTextMD5(self):
+        return self._PrivacyTextMD5
+
+    @PrivacyTextMD5.setter
+    def PrivacyTextMD5(self, PrivacyTextMD5):
+        self._PrivacyTextMD5 = PrivacyTextMD5
 
 
     def _deserialize(self, params):
-        self.Source = params.get("Source")
-        self.Platform = params.get("Platform")
-        self.TaskType = params.get("TaskType")
-        self.OrgTaskID = params.get("OrgTaskID")
-        self.AppPackage = params.get("AppPackage")
-        self.FileID = params.get("FileID")
-        self.AppDownloadUrl = params.get("AppDownloadUrl")
-        self.PrivacyTextUrl = params.get("PrivacyTextUrl")
-        self.AppName = params.get("AppName")
-        self.PrivacyTextName = params.get("PrivacyTextName")
-        self.AppSha1 = params.get("AppSha1")
-        self.PrivacyTextMD5 = params.get("PrivacyTextMD5")
+        self._Source = params.get("Source")
+        self._Platform = params.get("Platform")
+        self._TaskType = params.get("TaskType")
+        self._OrgTaskID = params.get("OrgTaskID")
+        self._AppPackage = params.get("AppPackage")
+        self._FileID = params.get("FileID")
+        self._AppDownloadUrl = params.get("AppDownloadUrl")
+        self._PrivacyTextUrl = params.get("PrivacyTextUrl")
+        self._AppName = params.get("AppName")
+        self._PrivacyTextName = params.get("PrivacyTextName")
+        self._AppSha1 = params.get("AppSha1")
+        self._PrivacyTextMD5 = params.get("PrivacyTextMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -231,22 +498,46 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
-        :param TaskID: 任务id
+        :param _TaskID: 任务id
         :type TaskID: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.TaskID = None
-        self.RequestId = None
+        self._Result = None
+        self._TaskID = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.TaskID = params.get("TaskID")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._TaskID = params.get("TaskID")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAppScanTaskRequest(AbstractModel):
@@ -256,90 +547,243 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
+        :param _TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
-        :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
+        :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
-        :param AppPackage: App包名
+        :param _AppPackage: App包名
         :type AppPackage: str
-        :param AppName: App名称(任务来源为2时必填)
+        :param _AppName: App名称(任务来源为2时必填)
         :type AppName: str
-        :param AppVersion: App版本
+        :param _AppVersion: App版本
         :type AppVersion: str
-        :param FileID: 上传的软件文件ID(任务来源为1时必填)
+        :param _FileID: 上传的软件文件ID(任务来源为1时必填)
         :type FileID: str
-        :param AppDownloadUrl: 软件下载链接地址(任务来源为2时必填)
+        :param _AppDownloadUrl: 软件下载链接地址(任务来源为2时必填)
         :type AppDownloadUrl: str
-        :param PrivacyTextUrl: 隐私文本下载地址(任务来源为2时必填)
+        :param _PrivacyTextUrl: 隐私文本下载地址(任务来源为2时必填)
         :type PrivacyTextUrl: str
-        :param ContactName: 联系人信息
+        :param _ContactName: 联系人信息
         :type ContactName: str
-        :param TelNumber: 联系电话
+        :param _TelNumber: 联系电话
         :type TelNumber: str
-        :param Email: 公司邮箱
+        :param _Email: 公司邮箱
         :type Email: str
-        :param CorpName: 公司名称
+        :param _CorpName: 公司名称
         :type CorpName: str
-        :param SalesPerson: 商务对接人员
+        :param _SalesPerson: 商务对接人员
         :type SalesPerson: str
-        :param Remark: 备注信息
+        :param _Remark: 备注信息
         :type Remark: str
-        :param IsAgreePrivacy: 是否同意隐私条款，0:不同意(默认), 1:同意
+        :param _IsAgreePrivacy: 是否同意隐私条款，0:不同意(默认), 1:同意
         :type IsAgreePrivacy: int
-        :param PrivacyTextName: 隐私申明文件名称
+        :param _PrivacyTextName: 隐私申明文件名称
         :type PrivacyTextName: str
-        :param AppSha1: 软件Sha1值(PrivacyTextMD5不为空时必填)
+        :param _AppSha1: 软件Sha1值(PrivacyTextMD5不为空时必填)
         :type AppSha1: str
-        :param PrivacyTextMD5: 隐私申明文本md5(AppSha1不为空时必填)
+        :param _PrivacyTextMD5: 隐私申明文本md5(AppSha1不为空时必填)
         :type PrivacyTextMD5: str
         """
-        self.TaskType = None
-        self.Source = None
-        self.Platform = None
-        self.AppPackage = None
-        self.AppName = None
-        self.AppVersion = None
-        self.FileID = None
-        self.AppDownloadUrl = None
-        self.PrivacyTextUrl = None
-        self.ContactName = None
-        self.TelNumber = None
-        self.Email = None
-        self.CorpName = None
-        self.SalesPerson = None
-        self.Remark = None
-        self.IsAgreePrivacy = None
-        self.PrivacyTextName = None
-        self.AppSha1 = None
-        self.PrivacyTextMD5 = None
+        self._TaskType = None
+        self._Source = None
+        self._Platform = None
+        self._AppPackage = None
+        self._AppName = None
+        self._AppVersion = None
+        self._FileID = None
+        self._AppDownloadUrl = None
+        self._PrivacyTextUrl = None
+        self._ContactName = None
+        self._TelNumber = None
+        self._Email = None
+        self._CorpName = None
+        self._SalesPerson = None
+        self._Remark = None
+        self._IsAgreePrivacy = None
+        self._PrivacyTextName = None
+        self._AppSha1 = None
+        self._PrivacyTextMD5 = None
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppPackage(self):
+        return self._AppPackage
+
+    @AppPackage.setter
+    def AppPackage(self, AppPackage):
+        self._AppPackage = AppPackage
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def AppVersion(self):
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def FileID(self):
+        return self._FileID
+
+    @FileID.setter
+    def FileID(self, FileID):
+        self._FileID = FileID
+
+    @property
+    def AppDownloadUrl(self):
+        return self._AppDownloadUrl
+
+    @AppDownloadUrl.setter
+    def AppDownloadUrl(self, AppDownloadUrl):
+        self._AppDownloadUrl = AppDownloadUrl
+
+    @property
+    def PrivacyTextUrl(self):
+        return self._PrivacyTextUrl
+
+    @PrivacyTextUrl.setter
+    def PrivacyTextUrl(self, PrivacyTextUrl):
+        self._PrivacyTextUrl = PrivacyTextUrl
+
+    @property
+    def ContactName(self):
+        return self._ContactName
+
+    @ContactName.setter
+    def ContactName(self, ContactName):
+        self._ContactName = ContactName
+
+    @property
+    def TelNumber(self):
+        return self._TelNumber
+
+    @TelNumber.setter
+    def TelNumber(self, TelNumber):
+        self._TelNumber = TelNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CorpName(self):
+        return self._CorpName
+
+    @CorpName.setter
+    def CorpName(self, CorpName):
+        self._CorpName = CorpName
+
+    @property
+    def SalesPerson(self):
+        return self._SalesPerson
+
+    @SalesPerson.setter
+    def SalesPerson(self, SalesPerson):
+        self._SalesPerson = SalesPerson
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IsAgreePrivacy(self):
+        return self._IsAgreePrivacy
+
+    @IsAgreePrivacy.setter
+    def IsAgreePrivacy(self, IsAgreePrivacy):
+        self._IsAgreePrivacy = IsAgreePrivacy
+
+    @property
+    def PrivacyTextName(self):
+        return self._PrivacyTextName
+
+    @PrivacyTextName.setter
+    def PrivacyTextName(self, PrivacyTextName):
+        self._PrivacyTextName = PrivacyTextName
+
+    @property
+    def AppSha1(self):
+        return self._AppSha1
+
+    @AppSha1.setter
+    def AppSha1(self, AppSha1):
+        self._AppSha1 = AppSha1
+
+    @property
+    def PrivacyTextMD5(self):
+        return self._PrivacyTextMD5
+
+    @PrivacyTextMD5.setter
+    def PrivacyTextMD5(self, PrivacyTextMD5):
+        self._PrivacyTextMD5 = PrivacyTextMD5
 
 
     def _deserialize(self, params):
-        self.TaskType = params.get("TaskType")
-        self.Source = params.get("Source")
-        self.Platform = params.get("Platform")
-        self.AppPackage = params.get("AppPackage")
-        self.AppName = params.get("AppName")
-        self.AppVersion = params.get("AppVersion")
-        self.FileID = params.get("FileID")
-        self.AppDownloadUrl = params.get("AppDownloadUrl")
-        self.PrivacyTextUrl = params.get("PrivacyTextUrl")
-        self.ContactName = params.get("ContactName")
-        self.TelNumber = params.get("TelNumber")
-        self.Email = params.get("Email")
-        self.CorpName = params.get("CorpName")
-        self.SalesPerson = params.get("SalesPerson")
-        self.Remark = params.get("Remark")
-        self.IsAgreePrivacy = params.get("IsAgreePrivacy")
-        self.PrivacyTextName = params.get("PrivacyTextName")
-        self.AppSha1 = params.get("AppSha1")
-        self.PrivacyTextMD5 = params.get("PrivacyTextMD5")
+        self._TaskType = params.get("TaskType")
+        self._Source = params.get("Source")
+        self._Platform = params.get("Platform")
+        self._AppPackage = params.get("AppPackage")
+        self._AppName = params.get("AppName")
+        self._AppVersion = params.get("AppVersion")
+        self._FileID = params.get("FileID")
+        self._AppDownloadUrl = params.get("AppDownloadUrl")
+        self._PrivacyTextUrl = params.get("PrivacyTextUrl")
+        self._ContactName = params.get("ContactName")
+        self._TelNumber = params.get("TelNumber")
+        self._Email = params.get("Email")
+        self._CorpName = params.get("CorpName")
+        self._SalesPerson = params.get("SalesPerson")
+        self._Remark = params.get("Remark")
+        self._IsAgreePrivacy = params.get("IsAgreePrivacy")
+        self._PrivacyTextName = params.get("PrivacyTextName")
+        self._AppSha1 = params.get("AppSha1")
+        self._PrivacyTextMD5 = params.get("PrivacyTextMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -352,23 +796,47 @@ class CreateAppScanTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
-        :param TaskID: 任务ID
+        :param _TaskID: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskID: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.TaskID = None
-        self.RequestId = None
+        self._Result = None
+        self._TaskID = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.TaskID = params.get("TaskID")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._TaskID = params.get("TaskID")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeChannelTaskReportUrlRequest(AbstractModel):
@@ -378,38 +846,87 @@ class DescribeChannelTaskReportUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
-        :param Platform: 应用平台, 0:android, 1: iOS，2:小程序
+        :param _Platform: 应用平台, 0:android, 1: iOS，2:小程序
         :type Platform: int
-        :param TaskID: 任务id
+        :param _TaskID: 任务id
         :type TaskID: str
-        :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
+        :param _TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param ReportType: 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
+        :param _ReportType: 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
         :type ReportType: int
-        :param AppMD5: 子渠道APP MD5值
+        :param _AppMD5: 子渠道APP MD5值
         :type AppMD5: str
         """
-        self.Source = None
-        self.Platform = None
-        self.TaskID = None
-        self.TaskType = None
-        self.ReportType = None
-        self.AppMD5 = None
+        self._Source = None
+        self._Platform = None
+        self._TaskID = None
+        self._TaskType = None
+        self._ReportType = None
+        self._AppMD5 = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ReportType(self):
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
+
+    @property
+    def AppMD5(self):
+        return self._AppMD5
+
+    @AppMD5.setter
+    def AppMD5(self, AppMD5):
+        self._AppMD5 = AppMD5
 
 
     def _deserialize(self, params):
-        self.Source = params.get("Source")
-        self.Platform = params.get("Platform")
-        self.TaskID = params.get("TaskID")
-        self.TaskType = params.get("TaskType")
-        self.ReportType = params.get("ReportType")
-        self.AppMD5 = params.get("AppMD5")
+        self._Source = params.get("Source")
+        self._Platform = params.get("Platform")
+        self._TaskID = params.get("TaskID")
+        self._TaskType = params.get("TaskType")
+        self._ReportType = params.get("ReportType")
+        self._AppMD5 = params.get("AppMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -422,26 +939,58 @@ class DescribeChannelTaskReportUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
-        :param ReportUrl: 诊断报告/堆栈信息/报告json结果下载链接
+        :param _ReportUrl: 诊断报告/堆栈信息/报告json结果下载链接
         :type ReportUrl: str
-        :param ReportTitle: 诊断报告/堆栈/报告json结果的名称
+        :param _ReportTitle: 诊断报告/堆栈/报告json结果的名称
         :type ReportTitle: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.ReportUrl = None
-        self.ReportTitle = None
-        self.RequestId = None
+        self._Result = None
+        self._ReportUrl = None
+        self._ReportTitle = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ReportUrl(self):
+        return self._ReportUrl
+
+    @ReportUrl.setter
+    def ReportUrl(self, ReportUrl):
+        self._ReportUrl = ReportUrl
+
+    @property
+    def ReportTitle(self):
+        return self._ReportTitle
+
+    @ReportTitle.setter
+    def ReportTitle(self, ReportTitle):
+        self._ReportTitle = ReportTitle
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.ReportUrl = params.get("ReportUrl")
-        self.ReportTitle = params.get("ReportTitle")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._ReportUrl = params.get("ReportUrl")
+        self._ReportTitle = params.get("ReportTitle")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFileTicketRequest(AbstractModel):
@@ -451,22 +1000,39 @@ class DescribeFileTicketRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
-        :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
+        :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
         """
-        self.Source = None
-        self.Platform = None
+        self._Source = None
+        self._Platform = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
 
 
     def _deserialize(self, params):
-        self.Source = params.get("Source")
-        self.Platform = params.get("Platform")
+        self._Source = params.get("Source")
+        self._Platform = params.get("Platform")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -479,32 +1045,72 @@ class DescribeFileTicketResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
-        :param UploadUrl: 上传url(任务来源为2时:Post方法（100:apk,101:txt）, 任务来源为1时:put方法)
+        :param _UploadUrl: 上传url(任务来源为2时:Post方法（100:apk,101:txt）, 任务来源为1时:put方法)
         :type UploadUrl: str
-        :param UploadSign: 上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
+        :param _UploadSign: 上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
 注意：此字段可能返回 null，表示取不到有效值。
         :type UploadSign: str
-        :param FildID: 上传文件ID(任务来源为1时提交诊断任务需要)
+        :param _FildID: 上传文件ID(任务来源为1时提交诊断任务需要)
 注意：此字段可能返回 null，表示取不到有效值。
         :type FildID: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.UploadUrl = None
-        self.UploadSign = None
-        self.FildID = None
-        self.RequestId = None
+        self._Result = None
+        self._UploadUrl = None
+        self._UploadSign = None
+        self._FildID = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def UploadUrl(self):
+        return self._UploadUrl
+
+    @UploadUrl.setter
+    def UploadUrl(self, UploadUrl):
+        self._UploadUrl = UploadUrl
+
+    @property
+    def UploadSign(self):
+        return self._UploadSign
+
+    @UploadSign.setter
+    def UploadSign(self, UploadSign):
+        self._UploadSign = UploadSign
+
+    @property
+    def FildID(self):
+        return self._FildID
+
+    @FildID.setter
+    def FildID(self, FildID):
+        self._FildID = FildID
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.UploadUrl = params.get("UploadUrl")
-        self.UploadSign = params.get("UploadSign")
-        self.FildID = params.get("FildID")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._UploadUrl = params.get("UploadUrl")
+        self._UploadSign = params.get("UploadSign")
+        self._FildID = params.get("FildID")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeResourceUsageInfoRequest(AbstractModel):
@@ -514,30 +1120,63 @@ class DescribeResourceUsageInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PriceName: 资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
+        :param _PriceName: 资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
         :type PriceName: str
-        :param TaskType: 任务类型, 0:基础版, 1:专家版
+        :param _TaskType: 任务类型, 0:基础版, 1:专家版
         :type TaskType: int
-        :param Platform: 应用平台, 0:android
+        :param _Platform: 应用平台, 0:android
         :type Platform: int
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
         """
-        self.PriceName = None
-        self.TaskType = None
-        self.Platform = None
-        self.Source = None
+        self._PriceName = None
+        self._TaskType = None
+        self._Platform = None
+        self._Source = None
+
+    @property
+    def PriceName(self):
+        return self._PriceName
+
+    @PriceName.setter
+    def PriceName(self, PriceName):
+        self._PriceName = PriceName
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
 
 
     def _deserialize(self, params):
-        self.PriceName = params.get("PriceName")
-        self.TaskType = params.get("TaskType")
-        self.Platform = params.get("Platform")
-        self.Source = params.get("Source")
+        self._PriceName = params.get("PriceName")
+        self._TaskType = params.get("TaskType")
+        self._Platform = params.get("Platform")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -550,24 +1189,48 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义，暂时未定
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义，暂时未定
         :type Result: int
-        :param Data: 资源使用信息
+        :param _Data: 资源使用信息
         :type Data: :class:`tencentcloud.acp.v20220105.models.ResourceUsageInfoData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Data = None
-        self.RequestId = None
+        self._Result = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
+        self._Result = params.get("Result")
         if params.get("Data") is not None:
-            self.Data = ResourceUsageInfoData()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = ResourceUsageInfoData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScanTaskListRequest(AbstractModel):
@@ -577,50 +1240,123 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
-        :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
+        :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
-        :param TaskStatuses: 任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        :param _TaskStatuses: 任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :type TaskStatuses: str
-        :param TaskTypes: 任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
+        :param _TaskTypes: 任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
         :type TaskTypes: str
-        :param PageNo: 页码
+        :param _PageNo: 页码
         :type PageNo: int
-        :param PageSize: 页码大小
+        :param _PageSize: 页码大小
         :type PageSize: int
-        :param AppName: 应用名称或小程序名称(可选参数)
+        :param _AppName: 应用名称或小程序名称(可选参数)
         :type AppName: str
-        :param StartTime: 查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
+        :param _StartTime: 查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
         :type StartTime: str
-        :param EndTime: 查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
+        :param _EndTime: 查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
         :type EndTime: str
         """
-        self.Source = None
-        self.Platform = None
-        self.TaskStatuses = None
-        self.TaskTypes = None
-        self.PageNo = None
-        self.PageSize = None
-        self.AppName = None
-        self.StartTime = None
-        self.EndTime = None
+        self._Source = None
+        self._Platform = None
+        self._TaskStatuses = None
+        self._TaskTypes = None
+        self._PageNo = None
+        self._PageSize = None
+        self._AppName = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def TaskStatuses(self):
+        return self._TaskStatuses
+
+    @TaskStatuses.setter
+    def TaskStatuses(self, TaskStatuses):
+        self._TaskStatuses = TaskStatuses
+
+    @property
+    def TaskTypes(self):
+        return self._TaskTypes
+
+    @TaskTypes.setter
+    def TaskTypes(self, TaskTypes):
+        self._TaskTypes = TaskTypes
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Source = params.get("Source")
-        self.Platform = params.get("Platform")
-        self.TaskStatuses = params.get("TaskStatuses")
-        self.TaskTypes = params.get("TaskTypes")
-        self.PageNo = params.get("PageNo")
-        self.PageSize = params.get("PageSize")
-        self.AppName = params.get("AppName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._Source = params.get("Source")
+        self._Platform = params.get("Platform")
+        self._TaskStatuses = params.get("TaskStatuses")
+        self._TaskTypes = params.get("TaskTypes")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._AppName = params.get("AppName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -633,32 +1369,64 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
-        :param Total: 任务总数量
+        :param _Total: 任务总数量
         :type Total: int
-        :param Data: 诊断任务数据列表
+        :param _Data: 诊断任务数据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of AppTaskData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Total = None
-        self.Data = None
-        self.RequestId = None
+        self._Result = None
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Total = params.get("Total")
+        self._Result = params.get("Result")
+        self._Total = params.get("Total")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = AppTaskData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScanTaskReportUrlRequest(AbstractModel):
@@ -668,34 +1436,75 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
-        :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
+        :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
-        :param TaskID: 任务id
+        :param _TaskID: 任务id
         :type TaskID: str
-        :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
+        :param _TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param ReportType: 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
+        :param _ReportType: 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
         :type ReportType: int
         """
-        self.Source = None
-        self.Platform = None
-        self.TaskID = None
-        self.TaskType = None
-        self.ReportType = None
+        self._Source = None
+        self._Platform = None
+        self._TaskID = None
+        self._TaskType = None
+        self._ReportType = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ReportType(self):
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
 
 
     def _deserialize(self, params):
-        self.Source = params.get("Source")
-        self.Platform = params.get("Platform")
-        self.TaskID = params.get("TaskID")
-        self.TaskType = params.get("TaskType")
-        self.ReportType = params.get("ReportType")
+        self._Source = params.get("Source")
+        self._Platform = params.get("Platform")
+        self._TaskID = params.get("TaskID")
+        self._TaskType = params.get("TaskType")
+        self._ReportType = params.get("ReportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -708,33 +1517,73 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
-        :param ReportUrl: 诊断报告/堆栈信息/报告json结果下载链接
+        :param _ReportUrl: 诊断报告/堆栈信息/报告json结果下载链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param ReportTitle: 诊断报告/堆栈/报告json结果的名称
+        :param _ReportTitle: 诊断报告/堆栈/报告json结果的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTitle: str
-        :param ReportResult: 诊断json结果内容
+        :param _ReportResult: 诊断json结果内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportResult: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.ReportUrl = None
-        self.ReportTitle = None
-        self.ReportResult = None
-        self.RequestId = None
+        self._Result = None
+        self._ReportUrl = None
+        self._ReportTitle = None
+        self._ReportResult = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ReportUrl(self):
+        return self._ReportUrl
+
+    @ReportUrl.setter
+    def ReportUrl(self, ReportUrl):
+        self._ReportUrl = ReportUrl
+
+    @property
+    def ReportTitle(self):
+        return self._ReportTitle
+
+    @ReportTitle.setter
+    def ReportTitle(self, ReportTitle):
+        self._ReportTitle = ReportTitle
+
+    @property
+    def ReportResult(self):
+        return self._ReportResult
+
+    @ReportResult.setter
+    def ReportResult(self, ReportResult):
+        self._ReportResult = ReportResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.ReportUrl = params.get("ReportUrl")
-        self.ReportTitle = params.get("ReportTitle")
-        self.ReportResult = params.get("ReportResult")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._ReportUrl = params.get("ReportUrl")
+        self._ReportTitle = params.get("ReportTitle")
+        self._ReportResult = params.get("ReportResult")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScanTaskStatusRequest(AbstractModel):
@@ -744,30 +1593,63 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :param _Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
-        :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
+        :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
-        :param TaskID: 任务id
+        :param _TaskID: 任务id
         :type TaskID: str
-        :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
+        :param _TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
         """
-        self.Source = None
-        self.Platform = None
-        self.TaskID = None
-        self.TaskType = None
+        self._Source = None
+        self._Platform = None
+        self._TaskID = None
+        self._TaskType = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
 
 
     def _deserialize(self, params):
-        self.Source = params.get("Source")
-        self.Platform = params.get("Platform")
-        self.TaskID = params.get("TaskID")
-        self.TaskType = params.get("TaskType")
+        self._Source = params.get("Source")
+        self._Platform = params.get("Platform")
+        self._TaskID = params.get("TaskID")
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -780,37 +1662,77 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
-        :param Status: 0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        :param _Status: 0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :type Status: int
-        :param ErrMsg: 诊断失败的错误信息
+        :param _ErrMsg: 诊断失败的错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
-        :param FlowSteps: 任务流详情
+        :param _FlowSteps: 任务流详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowSteps: list of TaskFlowStepsInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Status = None
-        self.ErrMsg = None
-        self.FlowSteps = None
-        self.RequestId = None
+        self._Result = None
+        self._Status = None
+        self._ErrMsg = None
+        self._FlowSteps = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def FlowSteps(self):
+        return self._FlowSteps
+
+    @FlowSteps.setter
+    def FlowSteps(self, FlowSteps):
+        self._FlowSteps = FlowSteps
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Status = params.get("Status")
-        self.ErrMsg = params.get("ErrMsg")
+        self._Result = params.get("Result")
+        self._Status = params.get("Status")
+        self._ErrMsg = params.get("ErrMsg")
         if params.get("FlowSteps") is not None:
-            self.FlowSteps = []
+            self._FlowSteps = []
             for item in params.get("FlowSteps"):
                 obj = TaskFlowStepsInfo()
                 obj._deserialize(item)
-                self.FlowSteps.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FlowSteps.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ResourceUsageInfoData(AbstractModel):
@@ -820,26 +1742,51 @@ class ResourceUsageInfoData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceName: 资源计费项名称
+        :param _ResourceName: 资源计费项名称
         :type ResourceName: str
-        :param Total: 资源总数
+        :param _Total: 资源总数
         :type Total: int
-        :param UnusedCount: 未使用资源数
+        :param _UnusedCount: 未使用资源数
         :type UnusedCount: int
         """
-        self.ResourceName = None
-        self.Total = None
-        self.UnusedCount = None
+        self._ResourceName = None
+        self._Total = None
+        self._UnusedCount = None
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def UnusedCount(self):
+        return self._UnusedCount
+
+    @UnusedCount.setter
+    def UnusedCount(self, UnusedCount):
+        self._UnusedCount = UnusedCount
 
 
     def _deserialize(self, params):
-        self.ResourceName = params.get("ResourceName")
-        self.Total = params.get("Total")
-        self.UnusedCount = params.get("UnusedCount")
+        self._ResourceName = params.get("ResourceName")
+        self._Total = params.get("Total")
+        self._UnusedCount = params.get("UnusedCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -852,42 +1799,91 @@ class TaskFlowStepsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowNo: 流程编号
+        :param _FlowNo: 流程编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowNo: str
-        :param FlowName: 流程名称
+        :param _FlowName: 流程名称
         :type FlowName: str
-        :param FlowStatus: 流程状态, 其他值:进行中, 2:成功, 3:失败
+        :param _FlowStatus: 流程状态, 其他值:进行中, 2:成功, 3:失败
         :type FlowStatus: int
-        :param FlowStateDesc: 流程状态描述
+        :param _FlowStateDesc: 流程状态描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowStateDesc: str
-        :param StartTime: 流程启动时间
+        :param _StartTime: 流程启动时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param EndTime: 流程完成时间
+        :param _EndTime: 流程完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
-        self.FlowNo = None
-        self.FlowName = None
-        self.FlowStatus = None
-        self.FlowStateDesc = None
-        self.StartTime = None
-        self.EndTime = None
+        self._FlowNo = None
+        self._FlowName = None
+        self._FlowStatus = None
+        self._FlowStateDesc = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FlowNo(self):
+        return self._FlowNo
+
+    @FlowNo.setter
+    def FlowNo(self, FlowNo):
+        self._FlowNo = FlowNo
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowStatus(self):
+        return self._FlowStatus
+
+    @FlowStatus.setter
+    def FlowStatus(self, FlowStatus):
+        self._FlowStatus = FlowStatus
+
+    @property
+    def FlowStateDesc(self):
+        return self._FlowStateDesc
+
+    @FlowStateDesc.setter
+    def FlowStateDesc(self, FlowStateDesc):
+        self._FlowStateDesc = FlowStateDesc
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.FlowNo = params.get("FlowNo")
-        self.FlowName = params.get("FlowName")
-        self.FlowStatus = params.get("FlowStatus")
-        self.FlowStateDesc = params.get("FlowStateDesc")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._FlowNo = params.get("FlowNo")
+        self._FlowName = params.get("FlowName")
+        self._FlowStatus = params.get("FlowStatus")
+        self._FlowStateDesc = params.get("FlowStateDesc")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

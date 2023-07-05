@@ -25,39 +25,80 @@ class AddFairPlayPemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Pem: 加密后的fairplay方案申请时使用的私钥。
+        :param _Pem: 加密后的fairplay方案申请时使用的私钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
         :type Pem: str
-        :param Ask: 加密后的fairplay方案申请返回的ask数据。
+        :param _Ask: 加密后的fairplay方案申请返回的ask数据。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
         :type Ask: str
-        :param PemDecryptKey: 私钥的解密密钥。
+        :param _PemDecryptKey: 私钥的解密密钥。
 openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :type PemDecryptKey: str
-        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :param _BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :type BailorId: int
-        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+        :param _Priority: 私钥的优先级，优先级数值越高，优先级越高。
 该值可以不传，后台将自动分配一个优先级。
         :type Priority: int
         """
-        self.Pem = None
-        self.Ask = None
-        self.PemDecryptKey = None
-        self.BailorId = None
-        self.Priority = None
+        self._Pem = None
+        self._Ask = None
+        self._PemDecryptKey = None
+        self._BailorId = None
+        self._Priority = None
+
+    @property
+    def Pem(self):
+        return self._Pem
+
+    @Pem.setter
+    def Pem(self, Pem):
+        self._Pem = Pem
+
+    @property
+    def Ask(self):
+        return self._Ask
+
+    @Ask.setter
+    def Ask(self, Ask):
+        self._Ask = Ask
+
+    @property
+    def PemDecryptKey(self):
+        return self._PemDecryptKey
+
+    @PemDecryptKey.setter
+    def PemDecryptKey(self, PemDecryptKey):
+        self._PemDecryptKey = PemDecryptKey
+
+    @property
+    def BailorId(self):
+        return self._BailorId
+
+    @BailorId.setter
+    def BailorId(self, BailorId):
+        self._BailorId = BailorId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
 
 
     def _deserialize(self, params):
-        self.Pem = params.get("Pem")
-        self.Ask = params.get("Ask")
-        self.PemDecryptKey = params.get("PemDecryptKey")
-        self.BailorId = params.get("BailorId")
-        self.Priority = params.get("Priority")
+        self._Pem = params.get("Pem")
+        self._Ask = params.get("Ask")
+        self._PemDecryptKey = params.get("PemDecryptKey")
+        self._BailorId = params.get("BailorId")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -70,24 +111,48 @@ class AddFairPlayPemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FairPlayPemId: 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+        :param _FairPlayPemId: 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FairPlayPemId: int
-        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+        :param _Priority: 私钥的优先级，优先级数值越高，优先级越高。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FairPlayPemId = None
-        self.Priority = None
-        self.RequestId = None
+        self._FairPlayPemId = None
+        self._Priority = None
+        self._RequestId = None
+
+    @property
+    def FairPlayPemId(self):
+        return self._FairPlayPemId
+
+    @FairPlayPemId.setter
+    def FairPlayPemId(self, FairPlayPemId):
+        self._FairPlayPemId = FairPlayPemId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FairPlayPemId = params.get("FairPlayPemId")
-        self.Priority = params.get("Priority")
-        self.RequestId = params.get("RequestId")
+        self._FairPlayPemId = params.get("FairPlayPemId")
+        self._Priority = params.get("Priority")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEncryptKeysRequest(AbstractModel):
@@ -97,35 +162,68 @@ class CreateEncryptKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        :param _DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
         :type DrmType: str
-        :param Keys: 设置的加密密钥列表。
+        :param _Keys: 设置的加密密钥列表。
         :type Keys: list of KeyParam
-        :param ContentId: 一个加密内容的唯一标识。
+        :param _ContentId: 一个加密内容的唯一标识。
         :type ContentId: str
-        :param ContentType: 内容类型。接口取值VodVideo,LiveVideo。
+        :param _ContentType: 内容类型。接口取值VodVideo,LiveVideo。
         :type ContentType: str
         """
-        self.DrmType = None
-        self.Keys = None
-        self.ContentId = None
-        self.ContentType = None
+        self._DrmType = None
+        self._Keys = None
+        self._ContentId = None
+        self._ContentType = None
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def Keys(self):
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
 
 
     def _deserialize(self, params):
-        self.DrmType = params.get("DrmType")
+        self._DrmType = params.get("DrmType")
         if params.get("Keys") is not None:
-            self.Keys = []
+            self._Keys = []
             for item in params.get("Keys"):
                 obj = KeyParam()
                 obj._deserialize(item)
-                self.Keys.append(obj)
-        self.ContentId = params.get("ContentId")
-        self.ContentType = params.get("ContentType")
+                self._Keys.append(obj)
+        self._ContentId = params.get("ContentId")
+        self._ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -138,14 +236,22 @@ class CreateEncryptKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLicenseRequest(AbstractModel):
@@ -155,37 +261,78 @@ class CreateLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DrmType: DRM方案类型，接口取值：WIDEVINE，FAIRPLAY。
+        :param _DrmType: DRM方案类型，接口取值：WIDEVINE，FAIRPLAY。
         :type DrmType: str
-        :param LicenseRequest: Base64编码的终端设备License Request数据。
+        :param _LicenseRequest: Base64编码的终端设备License Request数据。
         :type LicenseRequest: str
-        :param ContentType: 内容类型，接口取值：VodVideo,LiveVideo。
+        :param _ContentType: 内容类型，接口取值：VodVideo,LiveVideo。
         :type ContentType: str
-        :param Tracks: 授权播放的Track列表。
+        :param _Tracks: 授权播放的Track列表。
 该值为空时，默认授权所有track播放。
         :type Tracks: list of str
-        :param PlaybackPolicy: 播放策略参数。
+        :param _PlaybackPolicy: 播放策略参数。
         :type PlaybackPolicy: :class:`tencentcloud.drm.v20181115.models.PlaybackPolicy`
         """
-        self.DrmType = None
-        self.LicenseRequest = None
-        self.ContentType = None
-        self.Tracks = None
-        self.PlaybackPolicy = None
+        self._DrmType = None
+        self._LicenseRequest = None
+        self._ContentType = None
+        self._Tracks = None
+        self._PlaybackPolicy = None
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def LicenseRequest(self):
+        return self._LicenseRequest
+
+    @LicenseRequest.setter
+    def LicenseRequest(self, LicenseRequest):
+        self._LicenseRequest = LicenseRequest
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Tracks(self):
+        return self._Tracks
+
+    @Tracks.setter
+    def Tracks(self, Tracks):
+        self._Tracks = Tracks
+
+    @property
+    def PlaybackPolicy(self):
+        return self._PlaybackPolicy
+
+    @PlaybackPolicy.setter
+    def PlaybackPolicy(self, PlaybackPolicy):
+        self._PlaybackPolicy = PlaybackPolicy
 
 
     def _deserialize(self, params):
-        self.DrmType = params.get("DrmType")
-        self.LicenseRequest = params.get("LicenseRequest")
-        self.ContentType = params.get("ContentType")
-        self.Tracks = params.get("Tracks")
+        self._DrmType = params.get("DrmType")
+        self._LicenseRequest = params.get("LicenseRequest")
+        self._ContentType = params.get("ContentType")
+        self._Tracks = params.get("Tracks")
         if params.get("PlaybackPolicy") is not None:
-            self.PlaybackPolicy = PlaybackPolicy()
-            self.PlaybackPolicy._deserialize(params.get("PlaybackPolicy"))
+            self._PlaybackPolicy = PlaybackPolicy()
+            self._PlaybackPolicy._deserialize(params.get("PlaybackPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -198,22 +345,46 @@ class CreateLicenseResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: Base64 编码的许可证二进制数据。
+        :param _License: Base64 编码的许可证二进制数据。
         :type License: str
-        :param ContentId: 加密内容的内容ID
+        :param _ContentId: 加密内容的内容ID
         :type ContentId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.License = None
-        self.ContentId = None
-        self.RequestId = None
+        self._License = None
+        self._ContentId = None
+        self._RequestId = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.ContentId = params.get("ContentId")
-        self.RequestId = params.get("RequestId")
+        self._License = params.get("License")
+        self._ContentId = params.get("ContentId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteFairPlayPemRequest(AbstractModel):
@@ -223,23 +394,40 @@ class DeleteFairPlayPemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :param _BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :type BailorId: int
-        :param FairPlayPemId: 要删除的pem id。
+        :param _FairPlayPemId: 要删除的pem id。
 当未传入该值时，将删除所有的私钥。
         :type FairPlayPemId: int
         """
-        self.BailorId = None
-        self.FairPlayPemId = None
+        self._BailorId = None
+        self._FairPlayPemId = None
+
+    @property
+    def BailorId(self):
+        return self._BailorId
+
+    @BailorId.setter
+    def BailorId(self, BailorId):
+        self._BailorId = BailorId
+
+    @property
+    def FairPlayPemId(self):
+        return self._FairPlayPemId
+
+    @FairPlayPemId.setter
+    def FairPlayPemId(self, FairPlayPemId):
+        self._FairPlayPemId = FairPlayPemId
 
 
     def _deserialize(self, params):
-        self.BailorId = params.get("BailorId")
-        self.FairPlayPemId = params.get("FairPlayPemId")
+        self._BailorId = params.get("BailorId")
+        self._FairPlayPemId = params.get("FairPlayPemId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -252,14 +440,22 @@ class DeleteFairPlayPemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAllKeysRequest(AbstractModel):
@@ -269,31 +465,64 @@ class DescribeAllKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        :param _DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
         :type DrmType: str
-        :param RsaPublicKey: Base64编码的Rsa公钥，用来加密出参中的SessionKey。
+        :param _RsaPublicKey: Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 如果该参数为空，则出参中SessionKey为明文。
         :type RsaPublicKey: str
-        :param ContentId: 一个加密内容的唯一标识。
+        :param _ContentId: 一个加密内容的唯一标识。
         :type ContentId: str
-        :param ContentType: 内容类型。接口取值VodVideo,LiveVideo。
+        :param _ContentType: 内容类型。接口取值VodVideo,LiveVideo。
         :type ContentType: str
         """
-        self.DrmType = None
-        self.RsaPublicKey = None
-        self.ContentId = None
-        self.ContentType = None
+        self._DrmType = None
+        self._RsaPublicKey = None
+        self._ContentId = None
+        self._ContentType = None
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def RsaPublicKey(self):
+        return self._RsaPublicKey
+
+    @RsaPublicKey.setter
+    def RsaPublicKey(self, RsaPublicKey):
+        self._RsaPublicKey = RsaPublicKey
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
 
 
     def _deserialize(self, params):
-        self.DrmType = params.get("DrmType")
-        self.RsaPublicKey = params.get("RsaPublicKey")
-        self.ContentId = params.get("ContentId")
-        self.ContentType = params.get("ContentType")
+        self._DrmType = params.get("DrmType")
+        self._RsaPublicKey = params.get("RsaPublicKey")
+        self._ContentId = params.get("ContentId")
+        self._ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -306,36 +535,68 @@ class DescribeAllKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keys: 加密密钥列表。
+        :param _Keys: 加密密钥列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keys: list of Key
-        :param SessionKey: 用来加密密钥。
+        :param _SessionKey: 用来加密密钥。
 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionKey: str
-        :param ContentId: 内容ID
+        :param _ContentId: 内容ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Keys = None
-        self.SessionKey = None
-        self.ContentId = None
-        self.RequestId = None
+        self._Keys = None
+        self._SessionKey = None
+        self._ContentId = None
+        self._RequestId = None
+
+    @property
+    def Keys(self):
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def SessionKey(self):
+        return self._SessionKey
+
+    @SessionKey.setter
+    def SessionKey(self, SessionKey):
+        self._SessionKey = SessionKey
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Keys") is not None:
-            self.Keys = []
+            self._Keys = []
             for item in params.get("Keys"):
                 obj = Key()
                 obj._deserialize(item)
-                self.Keys.append(obj)
-        self.SessionKey = params.get("SessionKey")
-        self.ContentId = params.get("ContentId")
-        self.RequestId = params.get("RequestId")
+                self._Keys.append(obj)
+        self._SessionKey = params.get("SessionKey")
+        self._ContentId = params.get("ContentId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFairPlayPemRequest(AbstractModel):
@@ -345,23 +606,40 @@ class DescribeFairPlayPemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :param _BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :type BailorId: int
-        :param FairPlayPemId: 需要查询的pem id。
+        :param _FairPlayPemId: 需要查询的pem id。
 当该值未填入时，将返回所有的私钥信息。
         :type FairPlayPemId: int
         """
-        self.BailorId = None
-        self.FairPlayPemId = None
+        self._BailorId = None
+        self._FairPlayPemId = None
+
+    @property
+    def BailorId(self):
+        return self._BailorId
+
+    @BailorId.setter
+    def BailorId(self, BailorId):
+        self._BailorId = BailorId
+
+    @property
+    def FairPlayPemId(self):
+        return self._FairPlayPemId
+
+    @FairPlayPemId.setter
+    def FairPlayPemId(self, FairPlayPemId):
+        self._FairPlayPemId = FairPlayPemId
 
 
     def _deserialize(self, params):
-        self.BailorId = params.get("BailorId")
-        self.FairPlayPemId = params.get("FairPlayPemId")
+        self._BailorId = params.get("BailorId")
+        self._FairPlayPemId = params.get("FairPlayPemId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -374,24 +652,40 @@ class DescribeFairPlayPemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FairPlayPems: 该账户下，所有设置的FairPlay私钥摘要信息
+        :param _FairPlayPems: 该账户下，所有设置的FairPlay私钥摘要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FairPlayPems: list of FairPlayPemDigestInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FairPlayPems = None
-        self.RequestId = None
+        self._FairPlayPems = None
+        self._RequestId = None
+
+    @property
+    def FairPlayPems(self):
+        return self._FairPlayPems
+
+    @FairPlayPems.setter
+    def FairPlayPems(self, FairPlayPems):
+        self._FairPlayPems = FairPlayPems
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FairPlayPems") is not None:
-            self.FairPlayPems = []
+            self._FairPlayPems = []
             for item in params.get("FairPlayPems"):
                 obj = FairPlayPemDigestInfo()
                 obj._deserialize(item)
-                self.FairPlayPems.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FairPlayPems.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKeysRequest(AbstractModel):
@@ -401,36 +695,77 @@ class DescribeKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        :param _DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
         :type DrmType: str
-        :param Tracks: 加密的track列表，接口取值VIDEO、AUDIO。
+        :param _Tracks: 加密的track列表，接口取值VIDEO、AUDIO。
         :type Tracks: list of str
-        :param ContentType: 内容类型。接口取值VodVideo,LiveVideo
+        :param _ContentType: 内容类型。接口取值VodVideo,LiveVideo
         :type ContentType: str
-        :param RsaPublicKey: Base64编码的Rsa公钥，用来加密出参中的SessionKey。
+        :param _RsaPublicKey: Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 如果该参数为空，则出参中SessionKey为明文。
         :type RsaPublicKey: str
-        :param ContentId: 一个加密内容的唯一标识。
+        :param _ContentId: 一个加密内容的唯一标识。
 如果该参数为空，则后台自动生成
         :type ContentId: str
         """
-        self.DrmType = None
-        self.Tracks = None
-        self.ContentType = None
-        self.RsaPublicKey = None
-        self.ContentId = None
+        self._DrmType = None
+        self._Tracks = None
+        self._ContentType = None
+        self._RsaPublicKey = None
+        self._ContentId = None
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def Tracks(self):
+        return self._Tracks
+
+    @Tracks.setter
+    def Tracks(self, Tracks):
+        self._Tracks = Tracks
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def RsaPublicKey(self):
+        return self._RsaPublicKey
+
+    @RsaPublicKey.setter
+    def RsaPublicKey(self, RsaPublicKey):
+        self._RsaPublicKey = RsaPublicKey
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
 
 
     def _deserialize(self, params):
-        self.DrmType = params.get("DrmType")
-        self.Tracks = params.get("Tracks")
-        self.ContentType = params.get("ContentType")
-        self.RsaPublicKey = params.get("RsaPublicKey")
-        self.ContentId = params.get("ContentId")
+        self._DrmType = params.get("DrmType")
+        self._Tracks = params.get("Tracks")
+        self._ContentType = params.get("ContentType")
+        self._RsaPublicKey = params.get("RsaPublicKey")
+        self._ContentId = params.get("ContentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -443,38 +778,78 @@ class DescribeKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keys: 加密密钥列表
+        :param _Keys: 加密密钥列表
         :type Keys: list of Key
-        :param SessionKey: 用来加密密钥。
+        :param _SessionKey: 用来加密密钥。
 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
         :type SessionKey: str
-        :param ContentId: 内容ID
+        :param _ContentId: 内容ID
         :type ContentId: str
-        :param Pssh: Widevine方案的Pssh数据，Base64编码。
+        :param _Pssh: Widevine方案的Pssh数据，Base64编码。
 Fairplay方案无该值。
         :type Pssh: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Keys = None
-        self.SessionKey = None
-        self.ContentId = None
-        self.Pssh = None
-        self.RequestId = None
+        self._Keys = None
+        self._SessionKey = None
+        self._ContentId = None
+        self._Pssh = None
+        self._RequestId = None
+
+    @property
+    def Keys(self):
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def SessionKey(self):
+        return self._SessionKey
+
+    @SessionKey.setter
+    def SessionKey(self, SessionKey):
+        self._SessionKey = SessionKey
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def Pssh(self):
+        return self._Pssh
+
+    @Pssh.setter
+    def Pssh(self, Pssh):
+        self._Pssh = Pssh
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Keys") is not None:
-            self.Keys = []
+            self._Keys = []
             for item in params.get("Keys"):
                 obj = Key()
                 obj._deserialize(item)
-                self.Keys.append(obj)
-        self.SessionKey = params.get("SessionKey")
-        self.ContentId = params.get("ContentId")
-        self.Pssh = params.get("Pssh")
-        self.RequestId = params.get("RequestId")
+                self._Keys.append(obj)
+        self._SessionKey = params.get("SessionKey")
+        self._ContentId = params.get("ContentId")
+        self._Pssh = params.get("Pssh")
+        self._RequestId = params.get("RequestId")
 
 
 class DrmOutputObject(AbstractModel):
@@ -484,28 +859,53 @@ class DrmOutputObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BucketName: 输出的桶名称。
+        :param _BucketName: 输出的桶名称。
         :type BucketName: str
-        :param ObjectName: 输出的对象名称。
+        :param _ObjectName: 输出的对象名称。
         :type ObjectName: str
-        :param Para: 输出对象参数。
+        :param _Para: 输出对象参数。
         :type Para: :class:`tencentcloud.drm.v20181115.models.DrmOutputPara`
         """
-        self.BucketName = None
-        self.ObjectName = None
-        self.Para = None
+        self._BucketName = None
+        self._ObjectName = None
+        self._Para = None
+
+    @property
+    def BucketName(self):
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def ObjectName(self):
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
+
+    @property
+    def Para(self):
+        return self._Para
+
+    @Para.setter
+    def Para(self, Para):
+        self._Para = Para
 
 
     def _deserialize(self, params):
-        self.BucketName = params.get("BucketName")
-        self.ObjectName = params.get("ObjectName")
+        self._BucketName = params.get("BucketName")
+        self._ObjectName = params.get("ObjectName")
         if params.get("Para") is not None:
-            self.Para = DrmOutputPara()
-            self.Para._deserialize(params.get("Para"))
+            self._Para = DrmOutputPara()
+            self._Para._deserialize(params.get("Para"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -518,22 +918,39 @@ class DrmOutputPara(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 内容类型。例:video，audio，mpd，m3u8
+        :param _Type: 内容类型。例:video，audio，mpd，m3u8
         :type Type: str
-        :param Language: 语言,例: en, zh-cn
+        :param _Language: 语言,例: en, zh-cn
         :type Language: str
         """
-        self.Type = None
-        self.Language = None
+        self._Type = None
+        self._Language = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Language = params.get("Language")
+        self._Type = params.get("Type")
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -546,22 +963,39 @@ class DrmSourceObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BucketName: 输入的桶名称。
+        :param _BucketName: 输入的桶名称。
         :type BucketName: str
-        :param ObjectName: 输入对象名称。
+        :param _ObjectName: 输入对象名称。
         :type ObjectName: str
         """
-        self.BucketName = None
-        self.ObjectName = None
+        self._BucketName = None
+        self._ObjectName = None
+
+    @property
+    def BucketName(self):
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def ObjectName(self):
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
 
 
     def _deserialize(self, params):
-        self.BucketName = params.get("BucketName")
-        self.ObjectName = params.get("ObjectName")
+        self._BucketName = params.get("BucketName")
+        self._ObjectName = params.get("ObjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -574,39 +1008,80 @@ class FairPlayPemDigestInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FairPlayPemId: fairplay 私钥pem id。
+        :param _FairPlayPemId: fairplay 私钥pem id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FairPlayPemId: int
-        :param Priority: 私钥的优先级。
+        :param _Priority: 私钥的优先级。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
-        :param Md5Pem: 私钥的md5 信息。
+        :param _Md5Pem: 私钥的md5 信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Md5Pem: str
-        :param Md5Ask: ASK的md5信息。
+        :param _Md5Ask: ASK的md5信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Md5Ask: str
-        :param Md5PemDecryptKey: 私钥解密密钥的md5值。
+        :param _Md5PemDecryptKey: 私钥解密密钥的md5值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Md5PemDecryptKey: str
         """
-        self.FairPlayPemId = None
-        self.Priority = None
-        self.Md5Pem = None
-        self.Md5Ask = None
-        self.Md5PemDecryptKey = None
+        self._FairPlayPemId = None
+        self._Priority = None
+        self._Md5Pem = None
+        self._Md5Ask = None
+        self._Md5PemDecryptKey = None
+
+    @property
+    def FairPlayPemId(self):
+        return self._FairPlayPemId
+
+    @FairPlayPemId.setter
+    def FairPlayPemId(self, FairPlayPemId):
+        self._FairPlayPemId = FairPlayPemId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Md5Pem(self):
+        return self._Md5Pem
+
+    @Md5Pem.setter
+    def Md5Pem(self, Md5Pem):
+        self._Md5Pem = Md5Pem
+
+    @property
+    def Md5Ask(self):
+        return self._Md5Ask
+
+    @Md5Ask.setter
+    def Md5Ask(self, Md5Ask):
+        self._Md5Ask = Md5Ask
+
+    @property
+    def Md5PemDecryptKey(self):
+        return self._Md5PemDecryptKey
+
+    @Md5PemDecryptKey.setter
+    def Md5PemDecryptKey(self, Md5PemDecryptKey):
+        self._Md5PemDecryptKey = Md5PemDecryptKey
 
 
     def _deserialize(self, params):
-        self.FairPlayPemId = params.get("FairPlayPemId")
-        self.Priority = params.get("Priority")
-        self.Md5Pem = params.get("Md5Pem")
-        self.Md5Ask = params.get("Md5Ask")
-        self.Md5PemDecryptKey = params.get("Md5PemDecryptKey")
+        self._FairPlayPemId = params.get("FairPlayPemId")
+        self._Priority = params.get("Priority")
+        self._Md5Pem = params.get("Md5Pem")
+        self._Md5Ask = params.get("Md5Ask")
+        self._Md5PemDecryptKey = params.get("Md5PemDecryptKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -619,35 +1094,76 @@ class Key(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Track: 加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
+        :param _Track: 加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
         :type Track: str
-        :param KeyId: 密钥ID。
+        :param _KeyId: 密钥ID。
         :type KeyId: str
-        :param Key: 原始Key使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
+        :param _Key: 原始Key使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
         :type Key: str
-        :param Iv: 原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
+        :param _Iv: 原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
         :type Iv: str
-        :param InsertTimestamp: 该key生成时的时间戳
+        :param _InsertTimestamp: 该key生成时的时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTimestamp: int
         """
-        self.Track = None
-        self.KeyId = None
-        self.Key = None
-        self.Iv = None
-        self.InsertTimestamp = None
+        self._Track = None
+        self._KeyId = None
+        self._Key = None
+        self._Iv = None
+        self._InsertTimestamp = None
+
+    @property
+    def Track(self):
+        return self._Track
+
+    @Track.setter
+    def Track(self, Track):
+        self._Track = Track
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Iv(self):
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
+
+    @property
+    def InsertTimestamp(self):
+        return self._InsertTimestamp
+
+    @InsertTimestamp.setter
+    def InsertTimestamp(self, InsertTimestamp):
+        self._InsertTimestamp = InsertTimestamp
 
 
     def _deserialize(self, params):
-        self.Track = params.get("Track")
-        self.KeyId = params.get("KeyId")
-        self.Key = params.get("Key")
-        self.Iv = params.get("Iv")
-        self.InsertTimestamp = params.get("InsertTimestamp")
+        self._Track = params.get("Track")
+        self._KeyId = params.get("KeyId")
+        self._Key = params.get("Key")
+        self._Iv = params.get("Iv")
+        self._InsertTimestamp = params.get("InsertTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -660,31 +1176,64 @@ class KeyParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Track: 加密track类型。取值范围：
+        :param _Track: 加密track类型。取值范围：
 SD、HD、UHD1、UHD2、AUDIO
         :type Track: str
-        :param Key: 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        :param _Key: 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :type Key: str
-        :param KeyId: 密钥ID。
+        :param _KeyId: 密钥ID。
         :type KeyId: str
-        :param Iv: 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        :param _Iv: 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :type Iv: str
         """
-        self.Track = None
-        self.Key = None
-        self.KeyId = None
-        self.Iv = None
+        self._Track = None
+        self._Key = None
+        self._KeyId = None
+        self._Iv = None
+
+    @property
+    def Track(self):
+        return self._Track
+
+    @Track.setter
+    def Track(self, Track):
+        self._Track = Track
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Iv(self):
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
 
 
     def _deserialize(self, params):
-        self.Track = params.get("Track")
-        self.Key = params.get("Key")
-        self.KeyId = params.get("KeyId")
-        self.Iv = params.get("Iv")
+        self._Track = params.get("Track")
+        self._Key = params.get("Key")
+        self._KeyId = params.get("KeyId")
+        self._Iv = params.get("Iv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -697,43 +1246,92 @@ class ModifyFairPlayPemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Pem: 加密后的fairplay方案申请时使用的私钥。
+        :param _Pem: 加密后的fairplay方案申请时使用的私钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
         :type Pem: str
-        :param Ask: 加密后的fairplay方案申请返回的ask数据。
+        :param _Ask: 加密后的fairplay方案申请返回的ask数据。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
         :type Ask: str
-        :param FairPlayPemId: 要修改的私钥id
+        :param _FairPlayPemId: 要修改的私钥id
         :type FairPlayPemId: int
-        :param PemDecryptKey: 私钥的解密密钥。
+        :param _PemDecryptKey: 私钥的解密密钥。
 openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
         :type PemDecryptKey: str
-        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :param _BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
         :type BailorId: int
-        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+        :param _Priority: 私钥的优先级，优先级数值越高，优先级越高。
 该值可以不传，后台将自动分配一个优先级。
         :type Priority: int
         """
-        self.Pem = None
-        self.Ask = None
-        self.FairPlayPemId = None
-        self.PemDecryptKey = None
-        self.BailorId = None
-        self.Priority = None
+        self._Pem = None
+        self._Ask = None
+        self._FairPlayPemId = None
+        self._PemDecryptKey = None
+        self._BailorId = None
+        self._Priority = None
+
+    @property
+    def Pem(self):
+        return self._Pem
+
+    @Pem.setter
+    def Pem(self, Pem):
+        self._Pem = Pem
+
+    @property
+    def Ask(self):
+        return self._Ask
+
+    @Ask.setter
+    def Ask(self, Ask):
+        self._Ask = Ask
+
+    @property
+    def FairPlayPemId(self):
+        return self._FairPlayPemId
+
+    @FairPlayPemId.setter
+    def FairPlayPemId(self, FairPlayPemId):
+        self._FairPlayPemId = FairPlayPemId
+
+    @property
+    def PemDecryptKey(self):
+        return self._PemDecryptKey
+
+    @PemDecryptKey.setter
+    def PemDecryptKey(self, PemDecryptKey):
+        self._PemDecryptKey = PemDecryptKey
+
+    @property
+    def BailorId(self):
+        return self._BailorId
+
+    @BailorId.setter
+    def BailorId(self, BailorId):
+        self._BailorId = BailorId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
 
 
     def _deserialize(self, params):
-        self.Pem = params.get("Pem")
-        self.Ask = params.get("Ask")
-        self.FairPlayPemId = params.get("FairPlayPemId")
-        self.PemDecryptKey = params.get("PemDecryptKey")
-        self.BailorId = params.get("BailorId")
-        self.Priority = params.get("Priority")
+        self._Pem = params.get("Pem")
+        self._Ask = params.get("Ask")
+        self._FairPlayPemId = params.get("FairPlayPemId")
+        self._PemDecryptKey = params.get("PemDecryptKey")
+        self._BailorId = params.get("BailorId")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -746,24 +1344,48 @@ class ModifyFairPlayPemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FairPlayPemId: 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+        :param _FairPlayPemId: 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FairPlayPemId: int
-        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+        :param _Priority: 私钥的优先级，优先级数值越高，优先级越高。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FairPlayPemId = None
-        self.Priority = None
-        self.RequestId = None
+        self._FairPlayPemId = None
+        self._Priority = None
+        self._RequestId = None
+
+    @property
+    def FairPlayPemId(self):
+        return self._FairPlayPemId
+
+    @FairPlayPemId.setter
+    def FairPlayPemId(self, FairPlayPemId):
+        self._FairPlayPemId = FairPlayPemId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FairPlayPemId = params.get("FairPlayPemId")
-        self.Priority = params.get("Priority")
-        self.RequestId = params.get("RequestId")
+        self._FairPlayPemId = params.get("FairPlayPemId")
+        self._Priority = params.get("Priority")
+        self._RequestId = params.get("RequestId")
 
 
 class PlaybackPolicy(AbstractModel):
@@ -773,22 +1395,39 @@ class PlaybackPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LicenseDurationSeconds: 播放许可证的有效期
+        :param _LicenseDurationSeconds: 播放许可证的有效期
         :type LicenseDurationSeconds: int
-        :param PlaybackDurationSeconds: 开始播放后，允许最长播放时间
+        :param _PlaybackDurationSeconds: 开始播放后，允许最长播放时间
         :type PlaybackDurationSeconds: int
         """
-        self.LicenseDurationSeconds = None
-        self.PlaybackDurationSeconds = None
+        self._LicenseDurationSeconds = None
+        self._PlaybackDurationSeconds = None
+
+    @property
+    def LicenseDurationSeconds(self):
+        return self._LicenseDurationSeconds
+
+    @LicenseDurationSeconds.setter
+    def LicenseDurationSeconds(self, LicenseDurationSeconds):
+        self._LicenseDurationSeconds = LicenseDurationSeconds
+
+    @property
+    def PlaybackDurationSeconds(self):
+        return self._PlaybackDurationSeconds
+
+    @PlaybackDurationSeconds.setter
+    def PlaybackDurationSeconds(self, PlaybackDurationSeconds):
+        self._PlaybackDurationSeconds = PlaybackDurationSeconds
 
 
     def _deserialize(self, params):
-        self.LicenseDurationSeconds = params.get("LicenseDurationSeconds")
-        self.PlaybackDurationSeconds = params.get("PlaybackDurationSeconds")
+        self._LicenseDurationSeconds = params.get("LicenseDurationSeconds")
+        self._PlaybackDurationSeconds = params.get("PlaybackDurationSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -801,45 +1440,94 @@ class StartEncryptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CosEndPoint: cos的end point。
+        :param _CosEndPoint: cos的end point。
         :type CosEndPoint: str
-        :param CosSecretId: cos api密钥id。
+        :param _CosSecretId: cos api密钥id。
         :type CosSecretId: str
-        :param CosSecretKey: cos api密钥。
+        :param _CosSecretKey: cos api密钥。
         :type CosSecretKey: str
-        :param DrmType: 使用的DRM方案类型，接口取值WIDEVINE,FAIRPLAY
+        :param _DrmType: 使用的DRM方案类型，接口取值WIDEVINE,FAIRPLAY
         :type DrmType: str
-        :param SourceObject: 存储在COS上的原始内容信息
+        :param _SourceObject: 存储在COS上的原始内容信息
         :type SourceObject: :class:`tencentcloud.drm.v20181115.models.DrmSourceObject`
-        :param OutputObjects: 加密后的内容存储到COS的对象
+        :param _OutputObjects: 加密后的内容存储到COS的对象
         :type OutputObjects: list of DrmOutputObject
         """
-        self.CosEndPoint = None
-        self.CosSecretId = None
-        self.CosSecretKey = None
-        self.DrmType = None
-        self.SourceObject = None
-        self.OutputObjects = None
+        self._CosEndPoint = None
+        self._CosSecretId = None
+        self._CosSecretKey = None
+        self._DrmType = None
+        self._SourceObject = None
+        self._OutputObjects = None
+
+    @property
+    def CosEndPoint(self):
+        return self._CosEndPoint
+
+    @CosEndPoint.setter
+    def CosEndPoint(self, CosEndPoint):
+        self._CosEndPoint = CosEndPoint
+
+    @property
+    def CosSecretId(self):
+        return self._CosSecretId
+
+    @CosSecretId.setter
+    def CosSecretId(self, CosSecretId):
+        self._CosSecretId = CosSecretId
+
+    @property
+    def CosSecretKey(self):
+        return self._CosSecretKey
+
+    @CosSecretKey.setter
+    def CosSecretKey(self, CosSecretKey):
+        self._CosSecretKey = CosSecretKey
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def SourceObject(self):
+        return self._SourceObject
+
+    @SourceObject.setter
+    def SourceObject(self, SourceObject):
+        self._SourceObject = SourceObject
+
+    @property
+    def OutputObjects(self):
+        return self._OutputObjects
+
+    @OutputObjects.setter
+    def OutputObjects(self, OutputObjects):
+        self._OutputObjects = OutputObjects
 
 
     def _deserialize(self, params):
-        self.CosEndPoint = params.get("CosEndPoint")
-        self.CosSecretId = params.get("CosSecretId")
-        self.CosSecretKey = params.get("CosSecretKey")
-        self.DrmType = params.get("DrmType")
+        self._CosEndPoint = params.get("CosEndPoint")
+        self._CosSecretId = params.get("CosSecretId")
+        self._CosSecretKey = params.get("CosSecretKey")
+        self._DrmType = params.get("DrmType")
         if params.get("SourceObject") is not None:
-            self.SourceObject = DrmSourceObject()
-            self.SourceObject._deserialize(params.get("SourceObject"))
+            self._SourceObject = DrmSourceObject()
+            self._SourceObject._deserialize(params.get("SourceObject"))
         if params.get("OutputObjects") is not None:
-            self.OutputObjects = []
+            self._OutputObjects = []
             for item in params.get("OutputObjects"):
                 obj = DrmOutputObject()
                 obj._deserialize(item)
-                self.OutputObjects.append(obj)
+                self._OutputObjects.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -852,11 +1540,19 @@ class StartEncryptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

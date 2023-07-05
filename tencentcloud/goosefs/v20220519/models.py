@@ -25,42 +25,99 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
+        :param _TaskType: 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
         :type TaskType: str
-        :param Bucket: COS存储桶名
+        :param _Bucket: COS存储桶名
         :type Bucket: str
-        :param FileSystemId: 文件系统ID
+        :param _FileSystemId: 文件系统ID
         :type FileSystemId: str
-        :param TaskPath: 对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
+        :param _TaskPath: 对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
         :type TaskPath: str
-        :param TaskName: 任务名称
+        :param _TaskName: 任务名称
         :type TaskName: str
-        :param RepositoryType: 数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
+        :param _RepositoryType: 数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
         :type RepositoryType: str
-        :param TextLocation: 文件列表下载地址，以http开头
+        :param _TextLocation: 文件列表下载地址，以http开头
         :type TextLocation: str
         """
-        self.TaskType = None
-        self.Bucket = None
-        self.FileSystemId = None
-        self.TaskPath = None
-        self.TaskName = None
-        self.RepositoryType = None
-        self.TextLocation = None
+        self._TaskType = None
+        self._Bucket = None
+        self._FileSystemId = None
+        self._TaskPath = None
+        self._TaskName = None
+        self._RepositoryType = None
+        self._TextLocation = None
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def FileSystemId(self):
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def TaskPath(self):
+        return self._TaskPath
+
+    @TaskPath.setter
+    def TaskPath(self, TaskPath):
+        self._TaskPath = TaskPath
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def RepositoryType(self):
+        return self._RepositoryType
+
+    @RepositoryType.setter
+    def RepositoryType(self, RepositoryType):
+        self._RepositoryType = RepositoryType
+
+    @property
+    def TextLocation(self):
+        return self._TextLocation
+
+    @TextLocation.setter
+    def TextLocation(self, TextLocation):
+        self._TextLocation = TextLocation
 
 
     def _deserialize(self, params):
-        self.TaskType = params.get("TaskType")
-        self.Bucket = params.get("Bucket")
-        self.FileSystemId = params.get("FileSystemId")
-        self.TaskPath = params.get("TaskPath")
-        self.TaskName = params.get("TaskName")
-        self.RepositoryType = params.get("RepositoryType")
-        self.TextLocation = params.get("TextLocation")
+        self._TaskType = params.get("TaskType")
+        self._Bucket = params.get("Bucket")
+        self._FileSystemId = params.get("FileSystemId")
+        self._TaskPath = params.get("TaskPath")
+        self._TaskName = params.get("TaskName")
+        self._RepositoryType = params.get("RepositoryType")
+        self._TextLocation = params.get("TextLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -73,18 +130,34 @@ class CreateDataRepositoryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDataRepositoryTaskStatusRequest(AbstractModel):
@@ -94,22 +167,39 @@ class DescribeDataRepositoryTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: task id
+        :param _TaskId: task id
         :type TaskId: str
-        :param FileSystemId: file system id
+        :param _FileSystemId: file system id
         :type FileSystemId: str
         """
-        self.TaskId = None
-        self.FileSystemId = None
+        self._TaskId = None
+        self._FileSystemId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FileSystemId(self):
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.FileSystemId = params.get("FileSystemId")
+        self._TaskId = params.get("TaskId")
+        self._FileSystemId = params.get("FileSystemId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -122,27 +212,67 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务id
+        :param _TaskId: 任务id
         :type TaskId: str
-        :param Status: 任务状态 0(初始化中), 1(运行中), 2(已完成), 3(任务失败)
+        :param _Status: 任务状态 0(初始化中), 1(运行中), 2(已完成), 3(任务失败)
         :type Status: int
-        :param FinishedFileNumber: 已完成的文件数量
+        :param _FinishedFileNumber: 已完成的文件数量
         :type FinishedFileNumber: int
-        :param FinishedCapacity: 已完成的数据量
+        :param _FinishedCapacity: 已完成的数据量
         :type FinishedCapacity: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.Status = None
-        self.FinishedFileNumber = None
-        self.FinishedCapacity = None
-        self.RequestId = None
+        self._TaskId = None
+        self._Status = None
+        self._FinishedFileNumber = None
+        self._FinishedCapacity = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FinishedFileNumber(self):
+        return self._FinishedFileNumber
+
+    @FinishedFileNumber.setter
+    def FinishedFileNumber(self, FinishedFileNumber):
+        self._FinishedFileNumber = FinishedFileNumber
+
+    @property
+    def FinishedCapacity(self):
+        return self._FinishedCapacity
+
+    @FinishedCapacity.setter
+    def FinishedCapacity(self, FinishedCapacity):
+        self._FinishedCapacity = FinishedCapacity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Status = params.get("Status")
-        self.FinishedFileNumber = params.get("FinishedFileNumber")
-        self.FinishedCapacity = params.get("FinishedCapacity")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._FinishedFileNumber = params.get("FinishedFileNumber")
+        self._FinishedCapacity = params.get("FinishedCapacity")
+        self._RequestId = params.get("RequestId")

@@ -25,66 +25,123 @@ class CVSSV2Info(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CVSS: CVE评分。
+        :param _CVSS: CVE评分。
         :type CVSS: float
-        :param AccessVector: AccessVector 攻击途径。
+        :param _AccessVector: AccessVector 攻击途径。
 取值范围：
 <li>NETWORK 远程</li>
 <li>ADJACENT_NETWORK 近邻</li>
 <li>LOCAL 本地</li>
         :type AccessVector: str
-        :param AccessComplexity: AccessComplexity 攻击复杂度。
+        :param _AccessComplexity: AccessComplexity 攻击复杂度。
 取值范围：
 <li>HIGH 高</li>
 <li>MEDIUM 中</li>
 <li>LOW 低</li>
         :type AccessComplexity: str
-        :param Authentication: Authentication 身份验证。
+        :param _Authentication: Authentication 身份验证。
 取值范围：
 <li>MULTIPLE 多系统认证</li>
 <li>SINGLE 单系统认证</li>
 <li>NONE 无</li>
         :type Authentication: str
-        :param ConImpact: ConfidentialityImpact 机密性影响。
+        :param _ConImpact: ConfidentialityImpact 机密性影响。
 取值范围：
 <li>NONE 无</li>
 <li>PARTIAL 部分</li>
 <li>COMPLETE 完整</li>
         :type ConImpact: str
-        :param IntegrityImpact: IntegrityImpact 完整性影响。
+        :param _IntegrityImpact: IntegrityImpact 完整性影响。
 取值范围：
 <li>NONE 无</li>
 <li>PARTIAL 部分</li>
 <li>COMPLETE 完整</li>
         :type IntegrityImpact: str
-        :param AvailabilityImpact: AvailabilityImpact 可用性影响。
+        :param _AvailabilityImpact: AvailabilityImpact 可用性影响。
 取值范围：
 <li>NONE 无</li>
 <li>PARTIAL 部分</li>
 <li>COMPLETE 完整</li>
         :type AvailabilityImpact: str
         """
-        self.CVSS = None
-        self.AccessVector = None
-        self.AccessComplexity = None
-        self.Authentication = None
-        self.ConImpact = None
-        self.IntegrityImpact = None
-        self.AvailabilityImpact = None
+        self._CVSS = None
+        self._AccessVector = None
+        self._AccessComplexity = None
+        self._Authentication = None
+        self._ConImpact = None
+        self._IntegrityImpact = None
+        self._AvailabilityImpact = None
+
+    @property
+    def CVSS(self):
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def AccessVector(self):
+        return self._AccessVector
+
+    @AccessVector.setter
+    def AccessVector(self, AccessVector):
+        self._AccessVector = AccessVector
+
+    @property
+    def AccessComplexity(self):
+        return self._AccessComplexity
+
+    @AccessComplexity.setter
+    def AccessComplexity(self, AccessComplexity):
+        self._AccessComplexity = AccessComplexity
+
+    @property
+    def Authentication(self):
+        return self._Authentication
+
+    @Authentication.setter
+    def Authentication(self, Authentication):
+        self._Authentication = Authentication
+
+    @property
+    def ConImpact(self):
+        return self._ConImpact
+
+    @ConImpact.setter
+    def ConImpact(self, ConImpact):
+        self._ConImpact = ConImpact
+
+    @property
+    def IntegrityImpact(self):
+        return self._IntegrityImpact
+
+    @IntegrityImpact.setter
+    def IntegrityImpact(self, IntegrityImpact):
+        self._IntegrityImpact = IntegrityImpact
+
+    @property
+    def AvailabilityImpact(self):
+        return self._AvailabilityImpact
+
+    @AvailabilityImpact.setter
+    def AvailabilityImpact(self, AvailabilityImpact):
+        self._AvailabilityImpact = AvailabilityImpact
 
 
     def _deserialize(self, params):
-        self.CVSS = params.get("CVSS")
-        self.AccessVector = params.get("AccessVector")
-        self.AccessComplexity = params.get("AccessComplexity")
-        self.Authentication = params.get("Authentication")
-        self.ConImpact = params.get("ConImpact")
-        self.IntegrityImpact = params.get("IntegrityImpact")
-        self.AvailabilityImpact = params.get("AvailabilityImpact")
+        self._CVSS = params.get("CVSS")
+        self._AccessVector = params.get("AccessVector")
+        self._AccessComplexity = params.get("AccessComplexity")
+        self._Authentication = params.get("Authentication")
+        self._ConImpact = params.get("ConImpact")
+        self._IntegrityImpact = params.get("IntegrityImpact")
+        self._AvailabilityImpact = params.get("AvailabilityImpact")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -97,80 +154,153 @@ class CVSSV3Info(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CVSS: CVE评分。
+        :param _CVSS: CVE评分。
         :type CVSS: float
-        :param AttackVector: AttackVector 攻击途径。
+        :param _AttackVector: AttackVector 攻击途径。
 取值范围：
 <li>NETWORK 远程</li>
 <li>ADJACENT_NETWORK 近邻</li>
 <li>LOCAL 本地</li>
 <li>PHYSICAL 物理</li>
         :type AttackVector: str
-        :param AttackComplexity: AttackComplexity 攻击复杂度。
+        :param _AttackComplexity: AttackComplexity 攻击复杂度。
 取值范围：
 <li>HIGH 高</li>
 <li>LOW 低</li>
         :type AttackComplexity: str
-        :param PrivilegesRequired: PrivilegesRequired 触发特权。
+        :param _PrivilegesRequired: PrivilegesRequired 触发特权。
 取值范围：
 <li>HIGH 高</li>
 <li>LOW 低</li>
 <li>NONE 无</li>
         :type PrivilegesRequired: str
-        :param UserInteraction: UserInteraction 交互必要性。
+        :param _UserInteraction: UserInteraction 交互必要性。
 取值范围：
 <li>NONE 无</li>
 <li>REQUIRED 需要</li>
         :type UserInteraction: str
-        :param Scope: Scope 绕过安全边界。
+        :param _Scope: Scope 绕过安全边界。
 取值范围：
 <li>UNCHANGED 否</li>
 <li>CHANGED 能</li>
         :type Scope: str
-        :param ConImpact: ConfidentialityImpact 机密性影响。
+        :param _ConImpact: ConfidentialityImpact 机密性影响。
 取值范围：
 <li>NONE 无</li>
 <li>LOW 低</li>
 <li>HIGH 高</li>
         :type ConImpact: str
-        :param IntegrityImpact: IntegrityImpact 完整性影响。
+        :param _IntegrityImpact: IntegrityImpact 完整性影响。
 取值范围：
 <li>NONE 无</li>
 <li>LOW 低</li>
 <li>HIGH 高</li>
         :type IntegrityImpact: str
-        :param AvailabilityImpact: AvailabilityImpact 可用性影响。
+        :param _AvailabilityImpact: AvailabilityImpact 可用性影响。
 取值范围：
 <li>NONE 无</li>
 <li>LOW 低</li>
 <li>HIGH 高</li>
         :type AvailabilityImpact: str
         """
-        self.CVSS = None
-        self.AttackVector = None
-        self.AttackComplexity = None
-        self.PrivilegesRequired = None
-        self.UserInteraction = None
-        self.Scope = None
-        self.ConImpact = None
-        self.IntegrityImpact = None
-        self.AvailabilityImpact = None
+        self._CVSS = None
+        self._AttackVector = None
+        self._AttackComplexity = None
+        self._PrivilegesRequired = None
+        self._UserInteraction = None
+        self._Scope = None
+        self._ConImpact = None
+        self._IntegrityImpact = None
+        self._AvailabilityImpact = None
+
+    @property
+    def CVSS(self):
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def AttackVector(self):
+        return self._AttackVector
+
+    @AttackVector.setter
+    def AttackVector(self, AttackVector):
+        self._AttackVector = AttackVector
+
+    @property
+    def AttackComplexity(self):
+        return self._AttackComplexity
+
+    @AttackComplexity.setter
+    def AttackComplexity(self, AttackComplexity):
+        self._AttackComplexity = AttackComplexity
+
+    @property
+    def PrivilegesRequired(self):
+        return self._PrivilegesRequired
+
+    @PrivilegesRequired.setter
+    def PrivilegesRequired(self, PrivilegesRequired):
+        self._PrivilegesRequired = PrivilegesRequired
+
+    @property
+    def UserInteraction(self):
+        return self._UserInteraction
+
+    @UserInteraction.setter
+    def UserInteraction(self, UserInteraction):
+        self._UserInteraction = UserInteraction
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def ConImpact(self):
+        return self._ConImpact
+
+    @ConImpact.setter
+    def ConImpact(self, ConImpact):
+        self._ConImpact = ConImpact
+
+    @property
+    def IntegrityImpact(self):
+        return self._IntegrityImpact
+
+    @IntegrityImpact.setter
+    def IntegrityImpact(self, IntegrityImpact):
+        self._IntegrityImpact = IntegrityImpact
+
+    @property
+    def AvailabilityImpact(self):
+        return self._AvailabilityImpact
+
+    @AvailabilityImpact.setter
+    def AvailabilityImpact(self, AvailabilityImpact):
+        self._AvailabilityImpact = AvailabilityImpact
 
 
     def _deserialize(self, params):
-        self.CVSS = params.get("CVSS")
-        self.AttackVector = params.get("AttackVector")
-        self.AttackComplexity = params.get("AttackComplexity")
-        self.PrivilegesRequired = params.get("PrivilegesRequired")
-        self.UserInteraction = params.get("UserInteraction")
-        self.Scope = params.get("Scope")
-        self.ConImpact = params.get("ConImpact")
-        self.IntegrityImpact = params.get("IntegrityImpact")
-        self.AvailabilityImpact = params.get("AvailabilityImpact")
+        self._CVSS = params.get("CVSS")
+        self._AttackVector = params.get("AttackVector")
+        self._AttackComplexity = params.get("AttackComplexity")
+        self._PrivilegesRequired = params.get("PrivilegesRequired")
+        self._UserInteraction = params.get("UserInteraction")
+        self._Scope = params.get("Scope")
+        self._ConImpact = params.get("ConImpact")
+        self._IntegrityImpact = params.get("IntegrityImpact")
+        self._AvailabilityImpact = params.get("AvailabilityImpact")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -183,42 +313,91 @@ class Component(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PURL: 第三方组件的PURL
+        :param _PURL: 第三方组件的PURL
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
-        :param Homepage: 第三方组件的主页
+        :param _Homepage: 第三方组件的主页
         :type Homepage: str
-        :param Summary: 第三方组件的简介
+        :param _Summary: 第三方组件的简介
         :type Summary: str
-        :param NicknameList: 第三方组件的别名列表
+        :param _NicknameList: 第三方组件的别名列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NicknameList: list of str
-        :param CodeLocationList: 第三方组件的代码位置列表
+        :param _CodeLocationList: 第三方组件的代码位置列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeLocationList: list of str
-        :param LicenseExpression: 第三方组件的许可证表达式
+        :param _LicenseExpression: 第三方组件的许可证表达式
         :type LicenseExpression: str
         """
-        self.PURL = None
-        self.Homepage = None
-        self.Summary = None
-        self.NicknameList = None
-        self.CodeLocationList = None
-        self.LicenseExpression = None
+        self._PURL = None
+        self._Homepage = None
+        self._Summary = None
+        self._NicknameList = None
+        self._CodeLocationList = None
+        self._LicenseExpression = None
+
+    @property
+    def PURL(self):
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
+
+    @property
+    def Homepage(self):
+        return self._Homepage
+
+    @Homepage.setter
+    def Homepage(self, Homepage):
+        self._Homepage = Homepage
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def NicknameList(self):
+        return self._NicknameList
+
+    @NicknameList.setter
+    def NicknameList(self, NicknameList):
+        self._NicknameList = NicknameList
+
+    @property
+    def CodeLocationList(self):
+        return self._CodeLocationList
+
+    @CodeLocationList.setter
+    def CodeLocationList(self, CodeLocationList):
+        self._CodeLocationList = CodeLocationList
+
+    @property
+    def LicenseExpression(self):
+        return self._LicenseExpression
+
+    @LicenseExpression.setter
+    def LicenseExpression(self, LicenseExpression):
+        self._LicenseExpression = LicenseExpression
 
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
-            self.PURL = PURL()
-            self.PURL._deserialize(params.get("PURL"))
-        self.Homepage = params.get("Homepage")
-        self.Summary = params.get("Summary")
-        self.NicknameList = params.get("NicknameList")
-        self.CodeLocationList = params.get("CodeLocationList")
-        self.LicenseExpression = params.get("LicenseExpression")
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
+        self._Homepage = params.get("Homepage")
+        self._Summary = params.get("Summary")
+        self._NicknameList = params.get("NicknameList")
+        self._CodeLocationList = params.get("CodeLocationList")
+        self._LicenseExpression = params.get("LicenseExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -231,45 +410,94 @@ class ComponentVulnerabilitySummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PURL: 用于匹配漏洞的PURL
+        :param _PURL: 用于匹配漏洞的PURL
 注意：此字段可能返回 null，表示取不到有效值。
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
-        :param CanBeFixed: 该组件是否包含修复漏洞的官方补丁
+        :param _CanBeFixed: 该组件是否包含修复漏洞的官方补丁
         :type CanBeFixed: bool
-        :param FixedVersion: 修复漏洞的组件版本号
+        :param _FixedVersion: 修复漏洞的组件版本号
         :type FixedVersion: str
-        :param AffectedVersion: 漏洞影响的组件版本号
+        :param _AffectedVersion: 漏洞影响的组件版本号
         :type AffectedVersion: str
-        :param AffectedComponent: 漏洞影响组件
+        :param _AffectedComponent: 漏洞影响组件
         :type AffectedComponent: str
-        :param RiskLevel: 漏洞在该产品中的风险等级
+        :param _RiskLevel: 漏洞在该产品中的风险等级
 <li>Critical</li>
 <li>High</li>
 <li>Medium</li>
 <li>Low</li>
         :type RiskLevel: str
         """
-        self.PURL = None
-        self.CanBeFixed = None
-        self.FixedVersion = None
-        self.AffectedVersion = None
-        self.AffectedComponent = None
-        self.RiskLevel = None
+        self._PURL = None
+        self._CanBeFixed = None
+        self._FixedVersion = None
+        self._AffectedVersion = None
+        self._AffectedComponent = None
+        self._RiskLevel = None
+
+    @property
+    def PURL(self):
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
+
+    @property
+    def CanBeFixed(self):
+        return self._CanBeFixed
+
+    @CanBeFixed.setter
+    def CanBeFixed(self, CanBeFixed):
+        self._CanBeFixed = CanBeFixed
+
+    @property
+    def FixedVersion(self):
+        return self._FixedVersion
+
+    @FixedVersion.setter
+    def FixedVersion(self, FixedVersion):
+        self._FixedVersion = FixedVersion
+
+    @property
+    def AffectedVersion(self):
+        return self._AffectedVersion
+
+    @AffectedVersion.setter
+    def AffectedVersion(self, AffectedVersion):
+        self._AffectedVersion = AffectedVersion
+
+    @property
+    def AffectedComponent(self):
+        return self._AffectedComponent
+
+    @AffectedComponent.setter
+    def AffectedComponent(self, AffectedComponent):
+        self._AffectedComponent = AffectedComponent
+
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
 
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
-            self.PURL = PURL()
-            self.PURL._deserialize(params.get("PURL"))
-        self.CanBeFixed = params.get("CanBeFixed")
-        self.FixedVersion = params.get("FixedVersion")
-        self.AffectedVersion = params.get("AffectedVersion")
-        self.AffectedComponent = params.get("AffectedComponent")
-        self.RiskLevel = params.get("RiskLevel")
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
+        self._CanBeFixed = params.get("CanBeFixed")
+        self._FixedVersion = params.get("FixedVersion")
+        self._AffectedVersion = params.get("AffectedVersion")
+        self._AffectedComponent = params.get("AffectedComponent")
+        self._RiskLevel = params.get("RiskLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -282,26 +510,43 @@ class ComponentVulnerabilityUnion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Summary: 漏洞概览信息
+        :param _Summary: 漏洞概览信息
         :type Summary: :class:`tencentcloud.bsca.v20210811.models.VulnerabilitySummary`
-        :param SummaryInComponent: 与组件相关的漏洞概览信息
+        :param _SummaryInComponent: 与组件相关的漏洞概览信息
         :type SummaryInComponent: :class:`tencentcloud.bsca.v20210811.models.ComponentVulnerabilitySummary`
         """
-        self.Summary = None
-        self.SummaryInComponent = None
+        self._Summary = None
+        self._SummaryInComponent = None
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def SummaryInComponent(self):
+        return self._SummaryInComponent
+
+    @SummaryInComponent.setter
+    def SummaryInComponent(self, SummaryInComponent):
+        self._SummaryInComponent = SummaryInComponent
 
 
     def _deserialize(self, params):
         if params.get("Summary") is not None:
-            self.Summary = VulnerabilitySummary()
-            self.Summary._deserialize(params.get("Summary"))
+            self._Summary = VulnerabilitySummary()
+            self._Summary._deserialize(params.get("Summary"))
         if params.get("SummaryInComponent") is not None:
-            self.SummaryInComponent = ComponentVulnerabilitySummary()
-            self.SummaryInComponent._deserialize(params.get("SummaryInComponent"))
+            self._SummaryInComponent = ComponentVulnerabilitySummary()
+            self._SummaryInComponent._deserialize(params.get("SummaryInComponent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -314,20 +559,29 @@ class DescribeKBComponentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PURL: 组件的PURL
+        :param _PURL: 组件的PURL
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
         """
-        self.PURL = None
+        self._PURL = None
+
+    @property
+    def PURL(self):
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
 
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
-            self.PURL = PURL()
-            self.PURL._deserialize(params.get("PURL"))
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -340,20 +594,36 @@ class DescribeKBComponentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Component: 匹配的组件信息
+        :param _Component: 匹配的组件信息
         :type Component: :class:`tencentcloud.bsca.v20210811.models.Component`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Component = None
-        self.RequestId = None
+        self._Component = None
+        self._RequestId = None
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Component") is not None:
-            self.Component = Component()
-            self.Component._deserialize(params.get("Component"))
-        self.RequestId = params.get("RequestId")
+            self._Component = Component()
+            self._Component._deserialize(params.get("Component"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKBComponentVulnerabilityRequest(AbstractModel):
@@ -363,20 +633,29 @@ class DescribeKBComponentVulnerabilityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PURL: 组件的PURL，其中Name和Version为必填字段
+        :param _PURL: 组件的PURL，其中Name和Version为必填字段
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
         """
-        self.PURL = None
+        self._PURL = None
+
+    @property
+    def PURL(self):
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
 
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
-            self.PURL = PURL()
-            self.PURL._deserialize(params.get("PURL"))
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -389,24 +668,40 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VulnerabilityList: 漏洞信息列表
+        :param _VulnerabilityList: 漏洞信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityList: list of ComponentVulnerabilityUnion
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VulnerabilityList = None
-        self.RequestId = None
+        self._VulnerabilityList = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityList(self):
+        return self._VulnerabilityList
+
+    @VulnerabilityList.setter
+    def VulnerabilityList(self, VulnerabilityList):
+        self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("VulnerabilityList") is not None:
-            self.VulnerabilityList = []
+            self._VulnerabilityList = []
             for item in params.get("VulnerabilityList"):
                 obj = ComponentVulnerabilityUnion()
                 obj._deserialize(item)
-                self.VulnerabilityList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._VulnerabilityList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKBLicenseRequest(AbstractModel):
@@ -416,18 +711,27 @@ class DescribeKBLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LicenseExpression: License表达式
+        :param _LicenseExpression: License表达式
         :type LicenseExpression: str
         """
-        self.LicenseExpression = None
+        self._LicenseExpression = None
+
+    @property
+    def LicenseExpression(self):
+        return self._LicenseExpression
+
+    @LicenseExpression.setter
+    def LicenseExpression(self, LicenseExpression):
+        self._LicenseExpression = LicenseExpression
 
 
     def _deserialize(self, params):
-        self.LicenseExpression = params.get("LicenseExpression")
+        self._LicenseExpression = params.get("LicenseExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -440,28 +744,52 @@ class DescribeKBLicenseResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LicenseList: 许可证列表
+        :param _LicenseList: 许可证列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseList: list of LicenseUnion
-        :param NormalizedLicenseExpression: 用于匹配的License表达式
+        :param _NormalizedLicenseExpression: 用于匹配的License表达式
         :type NormalizedLicenseExpression: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LicenseList = None
-        self.NormalizedLicenseExpression = None
-        self.RequestId = None
+        self._LicenseList = None
+        self._NormalizedLicenseExpression = None
+        self._RequestId = None
+
+    @property
+    def LicenseList(self):
+        return self._LicenseList
+
+    @LicenseList.setter
+    def LicenseList(self, LicenseList):
+        self._LicenseList = LicenseList
+
+    @property
+    def NormalizedLicenseExpression(self):
+        return self._NormalizedLicenseExpression
+
+    @NormalizedLicenseExpression.setter
+    def NormalizedLicenseExpression(self, NormalizedLicenseExpression):
+        self._NormalizedLicenseExpression = NormalizedLicenseExpression
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LicenseList") is not None:
-            self.LicenseList = []
+            self._LicenseList = []
             for item in params.get("LicenseList"):
                 obj = LicenseUnion()
                 obj._deserialize(item)
-                self.LicenseList.append(obj)
-        self.NormalizedLicenseExpression = params.get("NormalizedLicenseExpression")
-        self.RequestId = params.get("RequestId")
+                self._LicenseList.append(obj)
+        self._NormalizedLicenseExpression = params.get("NormalizedLicenseExpression")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKBVulnerabilityRequest(AbstractModel):
@@ -471,22 +799,39 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CVEID: CVE ID列表（不能与Vul ID同时存在）
+        :param _CVEID: CVE ID列表（不能与Vul ID同时存在）
         :type CVEID: list of str
-        :param VulID: Vul ID列表（不能与CVE ID 同时存在）
+        :param _VulID: Vul ID列表（不能与CVE ID 同时存在）
         :type VulID: list of str
         """
-        self.CVEID = None
-        self.VulID = None
+        self._CVEID = None
+        self._VulID = None
+
+    @property
+    def CVEID(self):
+        return self._CVEID
+
+    @CVEID.setter
+    def CVEID(self, CVEID):
+        self._CVEID = CVEID
+
+    @property
+    def VulID(self):
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
 
 
     def _deserialize(self, params):
-        self.CVEID = params.get("CVEID")
-        self.VulID = params.get("VulID")
+        self._CVEID = params.get("CVEID")
+        self._VulID = params.get("VulID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -499,24 +844,40 @@ class DescribeKBVulnerabilityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VulnerabilityDetailList: 漏洞详细信息列表
+        :param _VulnerabilityDetailList: 漏洞详细信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityDetailList: list of VulnerabilityUnion
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VulnerabilityDetailList = None
-        self.RequestId = None
+        self._VulnerabilityDetailList = None
+        self._RequestId = None
+
+    @property
+    def VulnerabilityDetailList(self):
+        return self._VulnerabilityDetailList
+
+    @VulnerabilityDetailList.setter
+    def VulnerabilityDetailList(self, VulnerabilityDetailList):
+        self._VulnerabilityDetailList = VulnerabilityDetailList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("VulnerabilityDetailList") is not None:
-            self.VulnerabilityDetailList = []
+            self._VulnerabilityDetailList = []
             for item in params.get("VulnerabilityDetailList"):
                 obj = VulnerabilityUnion()
                 obj._deserialize(item)
-                self.VulnerabilityDetailList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._VulnerabilityDetailList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class LicenseDetail(AbstractModel):
@@ -526,45 +887,78 @@ class LicenseDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Content: 许可证内容
+        :param _Content: 许可证内容
         :type Content: str
-        :param ConditionSet: 许可证允许信息列表
+        :param _ConditionSet: 许可证允许信息列表
         :type ConditionSet: list of LicenseRestriction
-        :param ForbiddenSet: 许可证要求信息列表
+        :param _ForbiddenSet: 许可证要求信息列表
         :type ForbiddenSet: list of LicenseRestriction
-        :param PermissionSet: 许可证禁止信息列表
+        :param _PermissionSet: 许可证禁止信息列表
         :type PermissionSet: list of LicenseRestriction
         """
-        self.Content = None
-        self.ConditionSet = None
-        self.ForbiddenSet = None
-        self.PermissionSet = None
+        self._Content = None
+        self._ConditionSet = None
+        self._ForbiddenSet = None
+        self._PermissionSet = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ConditionSet(self):
+        return self._ConditionSet
+
+    @ConditionSet.setter
+    def ConditionSet(self, ConditionSet):
+        self._ConditionSet = ConditionSet
+
+    @property
+    def ForbiddenSet(self):
+        return self._ForbiddenSet
+
+    @ForbiddenSet.setter
+    def ForbiddenSet(self, ForbiddenSet):
+        self._ForbiddenSet = ForbiddenSet
+
+    @property
+    def PermissionSet(self):
+        return self._PermissionSet
+
+    @PermissionSet.setter
+    def PermissionSet(self, PermissionSet):
+        self._PermissionSet = PermissionSet
 
 
     def _deserialize(self, params):
-        self.Content = params.get("Content")
+        self._Content = params.get("Content")
         if params.get("ConditionSet") is not None:
-            self.ConditionSet = []
+            self._ConditionSet = []
             for item in params.get("ConditionSet"):
                 obj = LicenseRestriction()
                 obj._deserialize(item)
-                self.ConditionSet.append(obj)
+                self._ConditionSet.append(obj)
         if params.get("ForbiddenSet") is not None:
-            self.ForbiddenSet = []
+            self._ForbiddenSet = []
             for item in params.get("ForbiddenSet"):
                 obj = LicenseRestriction()
                 obj._deserialize(item)
-                self.ForbiddenSet.append(obj)
+                self._ForbiddenSet.append(obj)
         if params.get("PermissionSet") is not None:
-            self.PermissionSet = []
+            self._PermissionSet = []
             for item in params.get("PermissionSet"):
                 obj = LicenseRestriction()
                 obj._deserialize(item)
-                self.PermissionSet.append(obj)
+                self._PermissionSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -577,22 +971,39 @@ class LicenseRestriction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: license约束的名称。
+        :param _Name: license约束的名称。
         :type Name: str
-        :param Description: license约束的描述。
+        :param _Description: license约束的描述。
         :type Description: str
         """
-        self.Name = None
-        self.Description = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -605,42 +1016,91 @@ class LicenseSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 许可证标识符
+        :param _Key: 许可证标识符
         :type Key: str
-        :param SPDXKey: 许可证的SPDX标识符，见 https://spdx.org/licenses/
+        :param _SPDXKey: 许可证的SPDX标识符，见 https://spdx.org/licenses/
         :type SPDXKey: str
-        :param ShortName: 许可证短名称
+        :param _ShortName: 许可证短名称
         :type ShortName: str
-        :param Name: 许可证完整名称
+        :param _Name: 许可证完整名称
         :type Name: str
-        :param Risk: License风险等级
+        :param _Risk: License风险等级
 <li>NotDefined</li>
 <li>LowRisk</li>
 <li>MediumRisk</li>
 <li>HighRisk</li>
         :type Risk: str
-        :param Source: 许可证来源URL
+        :param _Source: 许可证来源URL
         :type Source: str
         """
-        self.Key = None
-        self.SPDXKey = None
-        self.ShortName = None
-        self.Name = None
-        self.Risk = None
-        self.Source = None
+        self._Key = None
+        self._SPDXKey = None
+        self._ShortName = None
+        self._Name = None
+        self._Risk = None
+        self._Source = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def SPDXKey(self):
+        return self._SPDXKey
+
+    @SPDXKey.setter
+    def SPDXKey(self, SPDXKey):
+        self._SPDXKey = SPDXKey
+
+    @property
+    def ShortName(self):
+        return self._ShortName
+
+    @ShortName.setter
+    def ShortName(self, ShortName):
+        self._ShortName = ShortName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Risk(self):
+        return self._Risk
+
+    @Risk.setter
+    def Risk(self, Risk):
+        self._Risk = Risk
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.SPDXKey = params.get("SPDXKey")
-        self.ShortName = params.get("ShortName")
-        self.Name = params.get("Name")
-        self.Risk = params.get("Risk")
-        self.Source = params.get("Source")
+        self._Key = params.get("Key")
+        self._SPDXKey = params.get("SPDXKey")
+        self._ShortName = params.get("ShortName")
+        self._Name = params.get("Name")
+        self._Risk = params.get("Risk")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -653,26 +1113,43 @@ class LicenseUnion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LicenseSummary: 许可证概览信息
+        :param _LicenseSummary: 许可证概览信息
         :type LicenseSummary: :class:`tencentcloud.bsca.v20210811.models.LicenseSummary`
-        :param LicenseDetail: 许可证详细信息
+        :param _LicenseDetail: 许可证详细信息
         :type LicenseDetail: :class:`tencentcloud.bsca.v20210811.models.LicenseDetail`
         """
-        self.LicenseSummary = None
-        self.LicenseDetail = None
+        self._LicenseSummary = None
+        self._LicenseDetail = None
+
+    @property
+    def LicenseSummary(self):
+        return self._LicenseSummary
+
+    @LicenseSummary.setter
+    def LicenseSummary(self, LicenseSummary):
+        self._LicenseSummary = LicenseSummary
+
+    @property
+    def LicenseDetail(self):
+        return self._LicenseDetail
+
+    @LicenseDetail.setter
+    def LicenseDetail(self, LicenseDetail):
+        self._LicenseDetail = LicenseDetail
 
 
     def _deserialize(self, params):
         if params.get("LicenseSummary") is not None:
-            self.LicenseSummary = LicenseSummary()
-            self.LicenseSummary._deserialize(params.get("LicenseSummary"))
+            self._LicenseSummary = LicenseSummary()
+            self._LicenseSummary._deserialize(params.get("LicenseSummary"))
         if params.get("LicenseDetail") is not None:
-            self.LicenseDetail = LicenseDetail()
-            self.LicenseDetail._deserialize(params.get("LicenseDetail"))
+            self._LicenseDetail = LicenseDetail()
+            self._LicenseDetail._deserialize(params.get("LicenseDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -685,18 +1162,27 @@ class MatchKBPURLListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SHA1: SHA1。
+        :param _SHA1: SHA1。
         :type SHA1: str
         """
-        self.SHA1 = None
+        self._SHA1 = None
+
+    @property
+    def SHA1(self):
+        return self._SHA1
+
+    @SHA1.setter
+    def SHA1(self, SHA1):
+        self._SHA1 = SHA1
 
 
     def _deserialize(self, params):
-        self.SHA1 = params.get("SHA1")
+        self._SHA1 = params.get("SHA1")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -709,27 +1195,51 @@ class MatchKBPURLListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PURLList: 组件列表。
+        :param _PURLList: 组件列表。
         :type PURLList: list of PURL
-        :param Hit: 是否命中数据库。
+        :param _Hit: 是否命中数据库。
         :type Hit: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PURLList = None
-        self.Hit = None
-        self.RequestId = None
+        self._PURLList = None
+        self._Hit = None
+        self._RequestId = None
+
+    @property
+    def PURLList(self):
+        return self._PURLList
+
+    @PURLList.setter
+    def PURLList(self, PURLList):
+        self._PURLList = PURLList
+
+    @property
+    def Hit(self):
+        return self._Hit
+
+    @Hit.setter
+    def Hit(self, Hit):
+        self._Hit = Hit
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PURLList") is not None:
-            self.PURLList = []
+            self._PURLList = []
             for item in params.get("PURLList"):
                 obj = PURL()
                 obj._deserialize(item)
-                self.PURLList.append(obj)
-        self.Hit = params.get("Hit")
-        self.RequestId = params.get("RequestId")
+                self._PURLList.append(obj)
+        self._Hit = params.get("Hit")
+        self._RequestId = params.get("RequestId")
 
 
 class PURL(AbstractModel):
@@ -739,44 +1249,93 @@ class PURL(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 组件名称
+        :param _Name: 组件名称
         :type Name: str
-        :param Protocol: 组件所属的类型，如：github, gitlab, generic, deb, rpm, maven 等
+        :param _Protocol: 组件所属的类型，如：github, gitlab, generic, deb, rpm, maven 等
         :type Protocol: str
-        :param Namespace: 组件名的前缀名，如github和gitlab的用户名，deb的操作系统，maven包的group id等
+        :param _Namespace: 组件名的前缀名，如github和gitlab的用户名，deb的操作系统，maven包的group id等
         :type Namespace: str
-        :param Qualifiers: 修饰组件的额外属性
+        :param _Qualifiers: 修饰组件的额外属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type Qualifiers: list of Qualifier
-        :param Subpath: 相对于组件包根位置的子目录
+        :param _Subpath: 相对于组件包根位置的子目录
         :type Subpath: str
-        :param Version: 组件版本号
+        :param _Version: 组件版本号
         :type Version: str
         """
-        self.Name = None
-        self.Protocol = None
-        self.Namespace = None
-        self.Qualifiers = None
-        self.Subpath = None
-        self.Version = None
+        self._Name = None
+        self._Protocol = None
+        self._Namespace = None
+        self._Qualifiers = None
+        self._Subpath = None
+        self._Version = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifiers(self):
+        return self._Qualifiers
+
+    @Qualifiers.setter
+    def Qualifiers(self, Qualifiers):
+        self._Qualifiers = Qualifiers
+
+    @property
+    def Subpath(self):
+        return self._Subpath
+
+    @Subpath.setter
+    def Subpath(self, Subpath):
+        self._Subpath = Subpath
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Protocol = params.get("Protocol")
-        self.Namespace = params.get("Namespace")
+        self._Name = params.get("Name")
+        self._Protocol = params.get("Protocol")
+        self._Namespace = params.get("Namespace")
         if params.get("Qualifiers") is not None:
-            self.Qualifiers = []
+            self._Qualifiers = []
             for item in params.get("Qualifiers"):
                 obj = Qualifier()
                 obj._deserialize(item)
-                self.Qualifiers.append(obj)
-        self.Subpath = params.get("Subpath")
-        self.Version = params.get("Version")
+                self._Qualifiers.append(obj)
+        self._Subpath = params.get("Subpath")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -789,22 +1348,39 @@ class Qualifier(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 额外属性的名称。
+        :param _Key: 额外属性的名称。
         :type Key: str
-        :param Value: 额外属性的值。
+        :param _Value: 额外属性的值。
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -817,68 +1393,165 @@ class VulnerabilityDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Category: 漏洞类别
+        :param _Category: 漏洞类别
         :type Category: str
-        :param CategoryType: 漏洞分类
+        :param _CategoryType: 漏洞分类
         :type CategoryType: str
-        :param Description: 漏洞描述
+        :param _Description: 漏洞描述
         :type Description: str
-        :param OfficialSolution: 漏洞官方解决方案
+        :param _OfficialSolution: 漏洞官方解决方案
         :type OfficialSolution: str
-        :param ReferenceList: 漏洞信息参考列表
+        :param _ReferenceList: 漏洞信息参考列表
         :type ReferenceList: list of str
-        :param DefenseSolution: 漏洞防御方案
+        :param _DefenseSolution: 漏洞防御方案
         :type DefenseSolution: str
-        :param CVSSv2Info: 漏洞CVSSv2信息
+        :param _CVSSv2Info: 漏洞CVSSv2信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CVSSv2Info: :class:`tencentcloud.bsca.v20210811.models.CVSSV2Info`
-        :param CVSSv3Info: 漏洞CVSSv3信息
+        :param _CVSSv3Info: 漏洞CVSSv3信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CVSSv3Info: :class:`tencentcloud.bsca.v20210811.models.CVSSV3Info`
-        :param SubmitTime: 漏洞提交时间
+        :param _SubmitTime: 漏洞提交时间
         :type SubmitTime: str
-        :param CWEID: CWE编号
+        :param _CWEID: CWE编号
         :type CWEID: str
-        :param CVSSv2Vector: 漏洞CVSSv2向量
+        :param _CVSSv2Vector: 漏洞CVSSv2向量
         :type CVSSv2Vector: str
-        :param CVSSv3Vector: 漏洞CVSSv3向量
+        :param _CVSSv3Vector: 漏洞CVSSv3向量
         :type CVSSv3Vector: str
         """
-        self.Category = None
-        self.CategoryType = None
-        self.Description = None
-        self.OfficialSolution = None
-        self.ReferenceList = None
-        self.DefenseSolution = None
-        self.CVSSv2Info = None
-        self.CVSSv3Info = None
-        self.SubmitTime = None
-        self.CWEID = None
-        self.CVSSv2Vector = None
-        self.CVSSv3Vector = None
+        self._Category = None
+        self._CategoryType = None
+        self._Description = None
+        self._OfficialSolution = None
+        self._ReferenceList = None
+        self._DefenseSolution = None
+        self._CVSSv2Info = None
+        self._CVSSv3Info = None
+        self._SubmitTime = None
+        self._CWEID = None
+        self._CVSSv2Vector = None
+        self._CVSSv3Vector = None
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def CategoryType(self):
+        return self._CategoryType
+
+    @CategoryType.setter
+    def CategoryType(self, CategoryType):
+        self._CategoryType = CategoryType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OfficialSolution(self):
+        return self._OfficialSolution
+
+    @OfficialSolution.setter
+    def OfficialSolution(self, OfficialSolution):
+        self._OfficialSolution = OfficialSolution
+
+    @property
+    def ReferenceList(self):
+        return self._ReferenceList
+
+    @ReferenceList.setter
+    def ReferenceList(self, ReferenceList):
+        self._ReferenceList = ReferenceList
+
+    @property
+    def DefenseSolution(self):
+        return self._DefenseSolution
+
+    @DefenseSolution.setter
+    def DefenseSolution(self, DefenseSolution):
+        self._DefenseSolution = DefenseSolution
+
+    @property
+    def CVSSv2Info(self):
+        return self._CVSSv2Info
+
+    @CVSSv2Info.setter
+    def CVSSv2Info(self, CVSSv2Info):
+        self._CVSSv2Info = CVSSv2Info
+
+    @property
+    def CVSSv3Info(self):
+        return self._CVSSv3Info
+
+    @CVSSv3Info.setter
+    def CVSSv3Info(self, CVSSv3Info):
+        self._CVSSv3Info = CVSSv3Info
+
+    @property
+    def SubmitTime(self):
+        return self._SubmitTime
+
+    @SubmitTime.setter
+    def SubmitTime(self, SubmitTime):
+        self._SubmitTime = SubmitTime
+
+    @property
+    def CWEID(self):
+        return self._CWEID
+
+    @CWEID.setter
+    def CWEID(self, CWEID):
+        self._CWEID = CWEID
+
+    @property
+    def CVSSv2Vector(self):
+        return self._CVSSv2Vector
+
+    @CVSSv2Vector.setter
+    def CVSSv2Vector(self, CVSSv2Vector):
+        self._CVSSv2Vector = CVSSv2Vector
+
+    @property
+    def CVSSv3Vector(self):
+        return self._CVSSv3Vector
+
+    @CVSSv3Vector.setter
+    def CVSSv3Vector(self, CVSSv3Vector):
+        self._CVSSv3Vector = CVSSv3Vector
 
 
     def _deserialize(self, params):
-        self.Category = params.get("Category")
-        self.CategoryType = params.get("CategoryType")
-        self.Description = params.get("Description")
-        self.OfficialSolution = params.get("OfficialSolution")
-        self.ReferenceList = params.get("ReferenceList")
-        self.DefenseSolution = params.get("DefenseSolution")
+        self._Category = params.get("Category")
+        self._CategoryType = params.get("CategoryType")
+        self._Description = params.get("Description")
+        self._OfficialSolution = params.get("OfficialSolution")
+        self._ReferenceList = params.get("ReferenceList")
+        self._DefenseSolution = params.get("DefenseSolution")
         if params.get("CVSSv2Info") is not None:
-            self.CVSSv2Info = CVSSV2Info()
-            self.CVSSv2Info._deserialize(params.get("CVSSv2Info"))
+            self._CVSSv2Info = CVSSV2Info()
+            self._CVSSv2Info._deserialize(params.get("CVSSv2Info"))
         if params.get("CVSSv3Info") is not None:
-            self.CVSSv3Info = CVSSV3Info()
-            self.CVSSv3Info._deserialize(params.get("CVSSv3Info"))
-        self.SubmitTime = params.get("SubmitTime")
-        self.CWEID = params.get("CWEID")
-        self.CVSSv2Vector = params.get("CVSSv2Vector")
-        self.CVSSv3Vector = params.get("CVSSv3Vector")
+            self._CVSSv3Info = CVSSV3Info()
+            self._CVSSv3Info._deserialize(params.get("CVSSv3Info"))
+        self._SubmitTime = params.get("SubmitTime")
+        self._CWEID = params.get("CWEID")
+        self._CVSSv2Vector = params.get("CVSSv2Vector")
+        self._CVSSv3Vector = params.get("CVSSv3Vector")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -891,46 +1564,103 @@ class VulnerabilitySummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VulID: 漏洞ID
+        :param _VulID: 漏洞ID
         :type VulID: str
-        :param CVEID: 漏洞所属CVE编号
+        :param _CVEID: 漏洞所属CVE编号
         :type CVEID: str
-        :param CNVDID: 漏洞所属CNVD编号
+        :param _CNVDID: 漏洞所属CNVD编号
         :type CNVDID: str
-        :param CNNVDID: 漏洞所属CNNVD编号
+        :param _CNNVDID: 漏洞所属CNNVD编号
         :type CNNVDID: str
-        :param Name: 漏洞名称
+        :param _Name: 漏洞名称
         :type Name: str
-        :param IsSuggest: 该漏洞是否是需重点关注的漏洞
+        :param _IsSuggest: 该漏洞是否是需重点关注的漏洞
         :type IsSuggest: bool
-        :param Severity: 漏洞风险等级
+        :param _Severity: 漏洞风险等级
 <li>Critical</li>
 <li>High</li>
 <li>Medium</li>
 <li>Low</li>
         :type Severity: str
         """
-        self.VulID = None
-        self.CVEID = None
-        self.CNVDID = None
-        self.CNNVDID = None
-        self.Name = None
-        self.IsSuggest = None
-        self.Severity = None
+        self._VulID = None
+        self._CVEID = None
+        self._CNVDID = None
+        self._CNNVDID = None
+        self._Name = None
+        self._IsSuggest = None
+        self._Severity = None
+
+    @property
+    def VulID(self):
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def CVEID(self):
+        return self._CVEID
+
+    @CVEID.setter
+    def CVEID(self, CVEID):
+        self._CVEID = CVEID
+
+    @property
+    def CNVDID(self):
+        return self._CNVDID
+
+    @CNVDID.setter
+    def CNVDID(self, CNVDID):
+        self._CNVDID = CNVDID
+
+    @property
+    def CNNVDID(self):
+        return self._CNNVDID
+
+    @CNNVDID.setter
+    def CNNVDID(self, CNNVDID):
+        self._CNNVDID = CNNVDID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IsSuggest(self):
+        return self._IsSuggest
+
+    @IsSuggest.setter
+    def IsSuggest(self, IsSuggest):
+        self._IsSuggest = IsSuggest
+
+    @property
+    def Severity(self):
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
 
 
     def _deserialize(self, params):
-        self.VulID = params.get("VulID")
-        self.CVEID = params.get("CVEID")
-        self.CNVDID = params.get("CNVDID")
-        self.CNNVDID = params.get("CNNVDID")
-        self.Name = params.get("Name")
-        self.IsSuggest = params.get("IsSuggest")
-        self.Severity = params.get("Severity")
+        self._VulID = params.get("VulID")
+        self._CVEID = params.get("CVEID")
+        self._CNVDID = params.get("CNVDID")
+        self._CNNVDID = params.get("CNNVDID")
+        self._Name = params.get("Name")
+        self._IsSuggest = params.get("IsSuggest")
+        self._Severity = params.get("Severity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -943,26 +1673,43 @@ class VulnerabilityUnion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Summary: 漏洞概览信息
+        :param _Summary: 漏洞概览信息
         :type Summary: :class:`tencentcloud.bsca.v20210811.models.VulnerabilitySummary`
-        :param Detail: 漏洞详细信息
+        :param _Detail: 漏洞详细信息
         :type Detail: :class:`tencentcloud.bsca.v20210811.models.VulnerabilityDetail`
         """
-        self.Summary = None
-        self.Detail = None
+        self._Summary = None
+        self._Detail = None
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
 
 
     def _deserialize(self, params):
         if params.get("Summary") is not None:
-            self.Summary = VulnerabilitySummary()
-            self.Summary._deserialize(params.get("Summary"))
+            self._Summary = VulnerabilitySummary()
+            self._Summary._deserialize(params.get("Summary"))
         if params.get("Detail") is not None:
-            self.Detail = VulnerabilityDetail()
-            self.Detail._deserialize(params.get("Detail"))
+            self._Detail = VulnerabilityDetail()
+            self._Detail._deserialize(params.get("Detail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

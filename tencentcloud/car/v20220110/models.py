@@ -25,34 +25,75 @@ class ApplyConcurrentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param UserIp: 用户IP，用户客户端的公网IP，用于就近调度
+        :param _UserIp: 用户IP，用户客户端的公网IP，用于就近调度
         :type UserIp: str
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param ApplicationVersionId: 应用版本ID
+        :param _ApplicationVersionId: 应用版本ID
         :type ApplicationVersionId: str
-        :param ApplicationId: 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
+        :param _ApplicationId: 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
         :type ApplicationId: str
         """
-        self.UserId = None
-        self.UserIp = None
-        self.ProjectId = None
-        self.ApplicationVersionId = None
-        self.ApplicationId = None
+        self._UserId = None
+        self._UserIp = None
+        self._ProjectId = None
+        self._ApplicationVersionId = None
+        self._ApplicationId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ApplicationVersionId(self):
+        return self._ApplicationVersionId
+
+    @ApplicationVersionId.setter
+    def ApplicationVersionId(self, ApplicationVersionId):
+        self._ApplicationVersionId = ApplicationVersionId
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserIp = params.get("UserIp")
-        self.ProjectId = params.get("ProjectId")
-        self.ApplicationVersionId = params.get("ApplicationVersionId")
-        self.ApplicationId = params.get("ApplicationId")
+        self._UserId = params.get("UserId")
+        self._UserIp = params.get("UserIp")
+        self._ProjectId = params.get("ProjectId")
+        self._ApplicationVersionId = params.get("ApplicationVersionId")
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -65,14 +106,22 @@ class ApplyConcurrentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSessionRequest(AbstractModel):
@@ -82,51 +131,108 @@ class CreateSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param UserIp: 用户IP，用户客户端的公网IP，用于就近调度
+        :param _UserIp: 用户IP，用户客户端的公网IP，用于就近调度
         :type UserIp: str
-        :param ClientSession: 客户端session信息，从SDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+        :param _ClientSession: 客户端session信息，从SDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
         :type ClientSession: str
-        :param RunMode: 云端运行模式。
+        :param _RunMode: 云端运行模式。
 RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
         :type RunMode: str
-        :param ApplicationParameters: 应用启动参数。
+        :param _ApplicationParameters: 应用启动参数。
 如果请求的是多应用共享项目，此参数生效；
 如果请求的是关闭预启动的单应用独享项目，此参数生效；
 如果请求的是开启预启动的单应用独享项目，此参数失效。
         :type ApplicationParameters: str
-        :param HostUserId: 【多人互动】房主用户ID，在多人互动模式下为必填字段。
+        :param _HostUserId: 【多人互动】房主用户ID，在多人互动模式下为必填字段。
 如果该用户是房主，HostUserId需要和UserId保持一致；
 如果该用户非房主，HostUserId需要填写房主的HostUserId。
         :type HostUserId: str
-        :param Role: 【多人互动】角色。
+        :param _Role: 【多人互动】角色。
 Player：玩家（可通过键鼠等操作应用）
 Viewer：观察者（只能观看，无法操作）
         :type Role: str
         """
-        self.UserId = None
-        self.UserIp = None
-        self.ClientSession = None
-        self.RunMode = None
-        self.ApplicationParameters = None
-        self.HostUserId = None
-        self.Role = None
+        self._UserId = None
+        self._UserIp = None
+        self._ClientSession = None
+        self._RunMode = None
+        self._ApplicationParameters = None
+        self._HostUserId = None
+        self._Role = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def ClientSession(self):
+        return self._ClientSession
+
+    @ClientSession.setter
+    def ClientSession(self, ClientSession):
+        self._ClientSession = ClientSession
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def ApplicationParameters(self):
+        return self._ApplicationParameters
+
+    @ApplicationParameters.setter
+    def ApplicationParameters(self, ApplicationParameters):
+        self._ApplicationParameters = ApplicationParameters
+
+    @property
+    def HostUserId(self):
+        return self._HostUserId
+
+    @HostUserId.setter
+    def HostUserId(self, HostUserId):
+        self._HostUserId = HostUserId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserIp = params.get("UserIp")
-        self.ClientSession = params.get("ClientSession")
-        self.RunMode = params.get("RunMode")
-        self.ApplicationParameters = params.get("ApplicationParameters")
-        self.HostUserId = params.get("HostUserId")
-        self.Role = params.get("Role")
+        self._UserId = params.get("UserId")
+        self._UserIp = params.get("UserIp")
+        self._ClientSession = params.get("ClientSession")
+        self._RunMode = params.get("RunMode")
+        self._ApplicationParameters = params.get("ApplicationParameters")
+        self._HostUserId = params.get("HostUserId")
+        self._Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -139,18 +245,34 @@ class CreateSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerSession: 服务端session信息，返回给SDK
+        :param _ServerSession: 服务端session信息，返回给SDK
         :type ServerSession: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ServerSession = None
-        self.RequestId = None
+        self._ServerSession = None
+        self._RequestId = None
+
+    @property
+    def ServerSession(self):
+        return self._ServerSession
+
+    @ServerSession.setter
+    def ServerSession(self, ServerSession):
+        self._ServerSession = ServerSession
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ServerSession = params.get("ServerSession")
-        self.RequestId = params.get("RequestId")
+        self._ServerSession = params.get("ServerSession")
+        self._RequestId = params.get("RequestId")
 
 
 class DestroySessionRequest(AbstractModel):
@@ -160,18 +282,27 @@ class DestroySessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
         """
-        self.UserId = None
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -184,14 +315,22 @@ class DestroySessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartPublishStreamRequest(AbstractModel):
@@ -201,18 +340,27 @@ class StartPublishStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（UserId将作为StreamId进行推流，比如绑定推流域名为abc.livepush.myqcloud.com，那么推流地址为rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（UserId将作为StreamId进行推流，比如绑定推流域名为abc.livepush.myqcloud.com，那么推流地址为rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx）
         :type UserId: str
         """
-        self.UserId = None
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -225,14 +373,22 @@ class StartPublishStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopPublishStreamRequest(AbstractModel):
@@ -242,18 +398,27 @@ class StopPublishStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
         """
-        self.UserId = None
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -266,11 +431,19 @@ class StopPublishStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

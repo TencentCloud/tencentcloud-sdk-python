@@ -25,38 +25,87 @@ class AlarmPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 用户账号
+        :param _Uin: 用户账号
         :type Uin: str
-        :param Event: 告警事件
+        :param _Event: 告警事件
         :type Event: str
-        :param Limit: 告警阈值
+        :param _Limit: 告警阈值
         :type Limit: int
-        :param Status: 告警策略是否生效，0：停用，1：启用
+        :param _Status: 告警策略是否生效，0：停用，1：启用
         :type Status: int
-        :param BeginTime: 在这个时间后才允许发送告警
+        :param _BeginTime: 在这个时间后才允许发送告警
         :type BeginTime: str
-        :param EndTime: 在这个时间前才允许发送告警
+        :param _EndTime: 在这个时间前才允许发送告警
         :type EndTime: str
         """
-        self.Uin = None
-        self.Event = None
-        self.Limit = None
-        self.Status = None
-        self.BeginTime = None
-        self.EndTime = None
+        self._Uin = None
+        self._Event = None
+        self._Limit = None
+        self._Status = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Event = params.get("Event")
-        self.Limit = params.get("Limit")
-        self.Status = params.get("Status")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
+        self._Uin = params.get("Uin")
+        self._Event = params.get("Event")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -69,18 +118,27 @@ class DescribeHSMBySubnetIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubnetId: Subnet标识符
+        :param _SubnetId: Subnet标识符
         :type SubnetId: str
         """
-        self.SubnetId = None
+        self._SubnetId = None
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
-        self.SubnetId = params.get("SubnetId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -93,22 +151,46 @@ class DescribeHSMBySubnetIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: HSM数量
+        :param _TotalCount: HSM数量
         :type TotalCount: int
-        :param SubnetId: 作为查询条件的SubnetId
+        :param _SubnetId: 作为查询条件的SubnetId
         :type SubnetId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SubnetId = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SubnetId = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.SubnetId = params.get("SubnetId")
-        self.RequestId = params.get("RequestId")
+        self._TotalCount = params.get("TotalCount")
+        self._SubnetId = params.get("SubnetId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeHSMByVpcIdRequest(AbstractModel):
@@ -118,18 +200,27 @@ class DescribeHSMByVpcIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC标识符
+        :param _VpcId: VPC标识符
         :type VpcId: str
         """
-        self.VpcId = None
+        self._VpcId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
+        self._VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -142,22 +233,46 @@ class DescribeHSMByVpcIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: HSM数量
+        :param _TotalCount: HSM数量
         :type TotalCount: int
-        :param VpcId: 作为查询条件的VpcId
+        :param _VpcId: 作为查询条件的VpcId
         :type VpcId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.VpcId = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._VpcId = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.VpcId = params.get("VpcId")
-        self.RequestId = params.get("RequestId")
+        self._TotalCount = params.get("TotalCount")
+        self._VpcId = params.get("VpcId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSubnetRequest(AbstractModel):
@@ -167,30 +282,63 @@ class DescribeSubnetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 返回数量。Limit需要在[1, 100]之间。
+        :param _Limit: 返回数量。Limit需要在[1, 100]之间。
         :type Limit: int
-        :param Offset: 偏移量。偏移量最小为0。
+        :param _Offset: 偏移量。偏移量最小为0。
         :type Offset: int
-        :param VpcId: 查询指定VpcId下的子网信息。
+        :param _VpcId: 查询指定VpcId下的子网信息。
         :type VpcId: str
-        :param SearchWord: 查找关键字
+        :param _SearchWord: 查找关键字
         :type SearchWord: str
         """
-        self.Limit = None
-        self.Offset = None
-        self.VpcId = None
-        self.SearchWord = None
+        self._Limit = None
+        self._Offset = None
+        self._VpcId = None
+        self._SearchWord = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.VpcId = params.get("VpcId")
-        self.SearchWord = params.get("SearchWord")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._VpcId = params.get("VpcId")
+        self._SearchWord = params.get("SearchWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -203,28 +351,52 @@ class DescribeSubnetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 返回的子网数量。
+        :param _TotalCount: 返回的子网数量。
         :type TotalCount: int
-        :param SubnetList: 返回的子网实例列表。
+        :param _SubnetList: 返回的子网实例列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetList: list of Subnet
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SubnetList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SubnetList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SubnetList(self):
+        return self._SubnetList
+
+    @SubnetList.setter
+    def SubnetList(self, SubnetList):
+        self._SubnetList = SubnetList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("SubnetList") is not None:
-            self.SubnetList = []
+            self._SubnetList = []
             for item in params.get("SubnetList"):
                 obj = Subnet()
                 obj._deserialize(item)
-                self.SubnetList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SubnetList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSupportedHsmRequest(AbstractModel):
@@ -234,18 +406,27 @@ class DescribeSupportedHsmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HsmType: Hsm类型，可选值all、virtulization、GHSM、EHSM、SHSM
+        :param _HsmType: Hsm类型，可选值all、virtulization、GHSM、EHSM、SHSM
         :type HsmType: str
         """
-        self.HsmType = None
+        self._HsmType = None
+
+    @property
+    def HsmType(self):
+        return self._HsmType
+
+    @HsmType.setter
+    def HsmType(self, HsmType):
+        self._HsmType = HsmType
 
 
     def _deserialize(self, params):
-        self.HsmType = params.get("HsmType")
+        self._HsmType = params.get("HsmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -258,24 +439,40 @@ class DescribeSupportedHsmResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceTypes: 当前地域所支持的设备列表
+        :param _DeviceTypes: 当前地域所支持的设备列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypes: list of DeviceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DeviceTypes = None
-        self.RequestId = None
+        self._DeviceTypes = None
+        self._RequestId = None
+
+    @property
+    def DeviceTypes(self):
+        return self._DeviceTypes
+
+    @DeviceTypes.setter
+    def DeviceTypes(self, DeviceTypes):
+        self._DeviceTypes = DeviceTypes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DeviceTypes") is not None:
-            self.DeviceTypes = []
+            self._DeviceTypes = []
             for item in params.get("DeviceTypes"):
                 obj = DeviceInfo()
                 obj._deserialize(item)
-                self.DeviceTypes.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DeviceTypes.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsgRequest(AbstractModel):
@@ -285,26 +482,51 @@ class DescribeUsgRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
+        :param _Offset: 偏移量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
         :type Offset: int
-        :param Limit: 返回量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
+        :param _Limit: 返回量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
         :type Limit: int
-        :param SearchWord: 搜索关键字
+        :param _SearchWord: 搜索关键字
         :type SearchWord: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.SearchWord = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchWord = params.get("SearchWord")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -317,28 +539,52 @@ class DescribeUsgResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SgList: 用户的安全组列表
+        :param _SgList: 用户的安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgList: list of SgUnit
-        :param TotalCount: 返回的安全组数量
+        :param _TotalCount: 返回的安全组数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SgList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._SgList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SgList(self):
+        return self._SgList
+
+    @SgList.setter
+    def SgList(self, SgList):
+        self._SgList = SgList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SgList") is not None:
-            self.SgList = []
+            self._SgList = []
             for item in params.get("SgList"):
                 obj = SgUnit()
                 obj._deserialize(item)
-                self.SgList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._SgList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsgRuleRequest(AbstractModel):
@@ -348,18 +594,27 @@ class DescribeUsgRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SgIds: 根据安全组Id获取安全组详情
+        :param _SgIds: 根据安全组Id获取安全组详情
         :type SgIds: list of str
         """
-        self.SgIds = None
+        self._SgIds = None
+
+    @property
+    def SgIds(self):
+        return self._SgIds
+
+    @SgIds.setter
+    def SgIds(self, SgIds):
+        self._SgIds = SgIds
 
 
     def _deserialize(self, params):
-        self.SgIds = params.get("SgIds")
+        self._SgIds = params.get("SgIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -372,29 +627,53 @@ class DescribeUsgRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SgRules: 安全组详情
+        :param _SgRules: 安全组详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgRules: list of UsgRuleDetail
-        :param TotalCount: 安全组详情数量
+        :param _TotalCount: 安全组详情数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SgRules = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._SgRules = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SgRules(self):
+        return self._SgRules
+
+    @SgRules.setter
+    def SgRules(self, SgRules):
+        self._SgRules = SgRules
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SgRules") is not None:
-            self.SgRules = []
+            self._SgRules = []
             for item in params.get("SgRules"):
                 obj = UsgRuleDetail()
                 obj._deserialize(item)
-                self.SgRules.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._SgRules.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVpcRequest(AbstractModel):
@@ -404,26 +683,51 @@ class DescribeVpcRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 返回偏移量。Offset最小为0。
+        :param _Offset: 返回偏移量。Offset最小为0。
         :type Offset: int
-        :param Limit: 返回数量。Limit需要在[1, 100]之间。
+        :param _Limit: 返回数量。Limit需要在[1, 100]之间。
         :type Limit: int
-        :param SearchWord: 搜索关键字
+        :param _SearchWord: 搜索关键字
         :type SearchWord: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.SearchWord = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchWord = params.get("SearchWord")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -436,28 +740,52 @@ class DescribeVpcResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 可查询到的所有Vpc实例总数。
+        :param _TotalCount: 可查询到的所有Vpc实例总数。
         :type TotalCount: int
-        :param VpcList: Vpc对象列表
+        :param _VpcList: Vpc对象列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcList: list of Vpc
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.VpcList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._VpcList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VpcList(self):
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("VpcList") is not None:
-            self.VpcList = []
+            self._VpcList = []
             for item in params.get("VpcList"):
                 obj = Vpc()
                 obj._deserialize(item)
-                self.VpcList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._VpcList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVsmAttributesRequest(AbstractModel):
@@ -467,18 +795,27 @@ class DescribeVsmAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源Id
+        :param _ResourceId: 资源Id
         :type ResourceId: str
         """
-        self.ResourceId = None
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -491,128 +828,320 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源Id
+        :param _ResourceId: 资源Id
         :type ResourceId: str
-        :param ResourceName: 资源名称
+        :param _ResourceName: 资源名称
         :type ResourceName: str
-        :param Status: 资源状态，1表示资源为正常，2表示资源处于隔离状态
+        :param _Status: 资源状态，1表示资源为正常，2表示资源处于隔离状态
         :type Status: int
-        :param Vip: 资源IP
+        :param _Vip: 资源IP
         :type Vip: str
-        :param VpcId: 资源所属Vpc
+        :param _VpcId: 资源所属Vpc
         :type VpcId: str
-        :param SubnetId: 资源所属子网
+        :param _SubnetId: 资源所属子网
         :type SubnetId: str
-        :param Model: 资源所属HSM的规格
+        :param _Model: 资源所属HSM的规格
         :type Model: str
-        :param VsmType: 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
+        :param _VsmType: 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
         :type VsmType: int
-        :param RegionId: 地域Id，返回腾讯云地域代码，如广州为1，北京为8
+        :param _RegionId: 地域Id，返回腾讯云地域代码，如广州为1，北京为8
         :type RegionId: int
-        :param ZoneId: 区域Id，返回腾讯云每个地域的可用区代码
+        :param _ZoneId: 区域Id，返回腾讯云每个地域的可用区代码
         :type ZoneId: int
-        :param ExpireTime: 资源过期时间，以时间戳形式展示。
+        :param _ExpireTime: 资源过期时间，以时间戳形式展示。
         :type ExpireTime: int
-        :param SgList: 安全组详情信息
+        :param _SgList: 安全组详情信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgList: list of UsgRuleDetail
-        :param SubnetName: 子网名
+        :param _SubnetName: 子网名
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
-        :param RegionName: 地域名
+        :param _RegionName: 地域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
-        :param ZoneName: 区域名
+        :param _ZoneName: 区域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
-        :param Expired: 实例是否已经过期
+        :param _Expired: 实例是否已经过期
 注意：此字段可能返回 null，表示取不到有效值。
         :type Expired: bool
-        :param RemainSeconds: 为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
+        :param _RemainSeconds: 为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemainSeconds: int
-        :param VpcName: 私有虚拟网络名称
+        :param _VpcName: 私有虚拟网络名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
-        :param VpcCidrBlock: VPC的IPv4 CIDR
+        :param _VpcCidrBlock: VPC的IPv4 CIDR
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcCidrBlock: str
-        :param SubnetCidrBlock: 子网的CIDR
+        :param _SubnetCidrBlock: 子网的CIDR
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetCidrBlock: str
-        :param Tags: 资源所关联的Tag
+        :param _Tags: 资源所关联的Tag
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param RenewFlag: 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _RenewFlag: 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
-        :param Manufacturer: 厂商
+        :param _Manufacturer: 厂商
 注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResourceId = None
-        self.ResourceName = None
-        self.Status = None
-        self.Vip = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.Model = None
-        self.VsmType = None
-        self.RegionId = None
-        self.ZoneId = None
-        self.ExpireTime = None
-        self.SgList = None
-        self.SubnetName = None
-        self.RegionName = None
-        self.ZoneName = None
-        self.Expired = None
-        self.RemainSeconds = None
-        self.VpcName = None
-        self.VpcCidrBlock = None
-        self.SubnetCidrBlock = None
-        self.Tags = None
-        self.RenewFlag = None
-        self.Manufacturer = None
-        self.RequestId = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Status = None
+        self._Vip = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Model = None
+        self._VsmType = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._ExpireTime = None
+        self._SgList = None
+        self._SubnetName = None
+        self._RegionName = None
+        self._ZoneName = None
+        self._Expired = None
+        self._RemainSeconds = None
+        self._VpcName = None
+        self._VpcCidrBlock = None
+        self._SubnetCidrBlock = None
+        self._Tags = None
+        self._RenewFlag = None
+        self._Manufacturer = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def VsmType(self):
+        return self._VsmType
+
+    @VsmType.setter
+    def VsmType(self, VsmType):
+        self._VsmType = VsmType
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SgList(self):
+        return self._SgList
+
+    @SgList.setter
+    def SgList(self, SgList):
+        self._SgList = SgList
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def Expired(self):
+        return self._Expired
+
+    @Expired.setter
+    def Expired(self, Expired):
+        self._Expired = Expired
+
+    @property
+    def RemainSeconds(self):
+        return self._RemainSeconds
+
+    @RemainSeconds.setter
+    def RemainSeconds(self, RemainSeconds):
+        self._RemainSeconds = RemainSeconds
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcCidrBlock(self):
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def SubnetCidrBlock(self):
+        return self._SubnetCidrBlock
+
+    @SubnetCidrBlock.setter
+    def SubnetCidrBlock(self, SubnetCidrBlock):
+        self._SubnetCidrBlock = SubnetCidrBlock
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Manufacturer(self):
+        return self._Manufacturer
+
+    @Manufacturer.setter
+    def Manufacturer(self, Manufacturer):
+        self._Manufacturer = Manufacturer
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceName = params.get("ResourceName")
-        self.Status = params.get("Status")
-        self.Vip = params.get("Vip")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.Model = params.get("Model")
-        self.VsmType = params.get("VsmType")
-        self.RegionId = params.get("RegionId")
-        self.ZoneId = params.get("ZoneId")
-        self.ExpireTime = params.get("ExpireTime")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._Status = params.get("Status")
+        self._Vip = params.get("Vip")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Model = params.get("Model")
+        self._VsmType = params.get("VsmType")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._ExpireTime = params.get("ExpireTime")
         if params.get("SgList") is not None:
-            self.SgList = []
+            self._SgList = []
             for item in params.get("SgList"):
                 obj = UsgRuleDetail()
                 obj._deserialize(item)
-                self.SgList.append(obj)
-        self.SubnetName = params.get("SubnetName")
-        self.RegionName = params.get("RegionName")
-        self.ZoneName = params.get("ZoneName")
-        self.Expired = params.get("Expired")
-        self.RemainSeconds = params.get("RemainSeconds")
-        self.VpcName = params.get("VpcName")
-        self.VpcCidrBlock = params.get("VpcCidrBlock")
-        self.SubnetCidrBlock = params.get("SubnetCidrBlock")
+                self._SgList.append(obj)
+        self._SubnetName = params.get("SubnetName")
+        self._RegionName = params.get("RegionName")
+        self._ZoneName = params.get("ZoneName")
+        self._Expired = params.get("Expired")
+        self._RemainSeconds = params.get("RemainSeconds")
+        self._VpcName = params.get("VpcName")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._SubnetCidrBlock = params.get("SubnetCidrBlock")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RenewFlag = params.get("RenewFlag")
-        self.Manufacturer = params.get("Manufacturer")
-        self.RequestId = params.get("RequestId")
+                self._Tags.append(obj)
+        self._RenewFlag = params.get("RenewFlag")
+        self._Manufacturer = params.get("Manufacturer")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVsmsRequest(AbstractModel):
@@ -622,43 +1151,92 @@ class DescribeVsmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移
+        :param _Offset: 偏移
         :type Offset: int
-        :param Limit: 最大数量
+        :param _Limit: 最大数量
         :type Limit: int
-        :param SearchWord: 查询关键字
+        :param _SearchWord: 查询关键字
         :type SearchWord: str
-        :param TagFilters: 标签过滤条件
+        :param _TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter
-        :param Manufacturer: 设备所属的厂商名称，根据厂商来进行筛选
+        :param _Manufacturer: 设备所属的厂商名称，根据厂商来进行筛选
         :type Manufacturer: str
-        :param HsmType: Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+        :param _HsmType: Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
         :type HsmType: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.SearchWord = None
-        self.TagFilters = None
-        self.Manufacturer = None
-        self.HsmType = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+        self._TagFilters = None
+        self._Manufacturer = None
+        self._HsmType = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+    @property
+    def Manufacturer(self):
+        return self._Manufacturer
+
+    @Manufacturer.setter
+    def Manufacturer(self, Manufacturer):
+        self._Manufacturer = Manufacturer
+
+    @property
+    def HsmType(self):
+        return self._HsmType
+
+    @HsmType.setter
+    def HsmType(self, HsmType):
+        self._HsmType = HsmType
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchWord = params.get("SearchWord")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
         if params.get("TagFilters") is not None:
-            self.TagFilters = []
+            self._TagFilters = []
             for item in params.get("TagFilters"):
                 obj = TagFilter()
                 obj._deserialize(item)
-                self.TagFilters.append(obj)
-        self.Manufacturer = params.get("Manufacturer")
-        self.HsmType = params.get("HsmType")
+                self._TagFilters.append(obj)
+        self._Manufacturer = params.get("Manufacturer")
+        self._HsmType = params.get("HsmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -671,28 +1249,52 @@ class DescribeVsmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 获取实例的总个数
+        :param _TotalCount: 获取实例的总个数
         :type TotalCount: int
-        :param VsmList: 资源信息
+        :param _VsmList: 资源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VsmList: list of ResourceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.VsmList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._VsmList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VsmList(self):
+        return self._VsmList
+
+    @VsmList.setter
+    def VsmList(self, VsmList):
+        self._VsmList = VsmList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("VsmList") is not None:
-            self.VsmList = []
+            self._VsmList = []
             for item in params.get("VsmList"):
                 obj = ResourceInfo()
                 obj._deserialize(item)
-                self.VsmList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._VsmList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeviceInfo(AbstractModel):
@@ -702,27 +1304,44 @@ class DeviceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Manufacturer: 厂商名称
+        :param _Manufacturer: 厂商名称
         :type Manufacturer: str
-        :param HsmTypes: 此厂商旗下的设备信息列表
+        :param _HsmTypes: 此厂商旗下的设备信息列表
         :type HsmTypes: list of HsmInfo
         """
-        self.Manufacturer = None
-        self.HsmTypes = None
+        self._Manufacturer = None
+        self._HsmTypes = None
+
+    @property
+    def Manufacturer(self):
+        return self._Manufacturer
+
+    @Manufacturer.setter
+    def Manufacturer(self, Manufacturer):
+        self._Manufacturer = Manufacturer
+
+    @property
+    def HsmTypes(self):
+        return self._HsmTypes
+
+    @HsmTypes.setter
+    def HsmTypes(self, HsmTypes):
+        self._HsmTypes = HsmTypes
 
 
     def _deserialize(self, params):
-        self.Manufacturer = params.get("Manufacturer")
+        self._Manufacturer = params.get("Manufacturer")
         if params.get("HsmTypes") is not None:
-            self.HsmTypes = []
+            self._HsmTypes = []
             for item in params.get("HsmTypes"):
                 obj = HsmInfo()
                 obj._deserialize(item)
-                self.HsmTypes.append(obj)
+                self._HsmTypes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -741,24 +1360,40 @@ class GetAlarmEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AlarmConfig: 用户所有的告警策略
+        :param _AlarmConfig: 用户所有的告警策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmConfig: list of AlarmPolicy
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AlarmConfig = None
-        self.RequestId = None
+        self._AlarmConfig = None
+        self._RequestId = None
+
+    @property
+    def AlarmConfig(self):
+        return self._AlarmConfig
+
+    @AlarmConfig.setter
+    def AlarmConfig(self, AlarmConfig):
+        self._AlarmConfig = AlarmConfig
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AlarmConfig") is not None:
-            self.AlarmConfig = []
+            self._AlarmConfig = []
             for item in params.get("AlarmConfig"):
                 obj = AlarmPolicy()
                 obj._deserialize(item)
-                self.AlarmConfig.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AlarmConfig.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetVsmMonitorInfoRequest(AbstractModel):
@@ -768,22 +1403,39 @@ class GetVsmMonitorInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源Id
+        :param _ResourceId: 资源Id
         :type ResourceId: str
-        :param ResourceName: 资源名称
+        :param _ResourceName: 资源名称
         :type ResourceName: str
         """
-        self.ResourceId = None
-        self.ResourceName = None
+        self._ResourceId = None
+        self._ResourceName = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceName = params.get("ResourceName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -796,18 +1448,34 @@ class GetVsmMonitorInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MonitorInfo: VSM监控信息
+        :param _MonitorInfo: VSM监控信息
         :type MonitorInfo: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MonitorInfo = None
-        self.RequestId = None
+        self._MonitorInfo = None
+        self._RequestId = None
+
+    @property
+    def MonitorInfo(self):
+        return self._MonitorInfo
+
+    @MonitorInfo.setter
+    def MonitorInfo(self, MonitorInfo):
+        self._MonitorInfo = MonitorInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MonitorInfo = params.get("MonitorInfo")
-        self.RequestId = params.get("RequestId")
+        self._MonitorInfo = params.get("MonitorInfo")
+        self._RequestId = params.get("RequestId")
 
 
 class HsmInfo(AbstractModel):
@@ -817,31 +1485,56 @@ class HsmInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Model: 加密机型号
+        :param _Model: 加密机型号
         :type Model: str
-        :param VsmTypes: 此类型的加密机所支持的VSM类型列表
+        :param _VsmTypes: 此类型的加密机所支持的VSM类型列表
         :type VsmTypes: list of VsmInfo
-        :param HsmType: 加密机母机类型：virtualization、GHSM、EHSM、SHSM
+        :param _HsmType: 加密机母机类型：virtualization、GHSM、EHSM、SHSM
         :type HsmType: str
         """
-        self.Model = None
-        self.VsmTypes = None
-        self.HsmType = None
+        self._Model = None
+        self._VsmTypes = None
+        self._HsmType = None
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def VsmTypes(self):
+        return self._VsmTypes
+
+    @VsmTypes.setter
+    def VsmTypes(self, VsmTypes):
+        self._VsmTypes = VsmTypes
+
+    @property
+    def HsmType(self):
+        return self._HsmType
+
+    @HsmType.setter
+    def HsmType(self, HsmType):
+        self._HsmType = HsmType
 
 
     def _deserialize(self, params):
-        self.Model = params.get("Model")
+        self._Model = params.get("Model")
         if params.get("VsmTypes") is not None:
-            self.VsmTypes = []
+            self._VsmTypes = []
             for item in params.get("VsmTypes"):
                 obj = VsmInfo()
                 obj._deserialize(item)
-                self.VsmTypes.append(obj)
-        self.HsmType = params.get("HsmType")
+                self._VsmTypes.append(obj)
+        self._HsmType = params.get("HsmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -854,42 +1547,99 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GoodsNum: 需购买实例的数量
+        :param _GoodsNum: 需购买实例的数量
         :type GoodsNum: int
-        :param PayMode: 付费模式：0表示按需计费/后付费，1表示预付费
+        :param _PayMode: 付费模式：0表示按需计费/后付费，1表示预付费
         :type PayMode: int
-        :param TimeSpan: 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
+        :param _TimeSpan: 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
         :type TimeSpan: str
-        :param TimeUnit: 商品的时间单位，m表示月，y表示年
+        :param _TimeUnit: 商品的时间单位，m表示月，y表示年
         :type TimeUnit: str
-        :param Currency: 货币类型，默认为CNY
+        :param _Currency: 货币类型，默认为CNY
         :type Currency: str
-        :param Type: 默认为CREATE，可选RENEW
+        :param _Type: 默认为CREATE，可选RENEW
         :type Type: str
-        :param HsmType: Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
+        :param _HsmType: Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
         :type HsmType: str
         """
-        self.GoodsNum = None
-        self.PayMode = None
-        self.TimeSpan = None
-        self.TimeUnit = None
-        self.Currency = None
-        self.Type = None
-        self.HsmType = None
+        self._GoodsNum = None
+        self._PayMode = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._Currency = None
+        self._Type = None
+        self._HsmType = None
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def HsmType(self):
+        return self._HsmType
+
+    @HsmType.setter
+    def HsmType(self, HsmType):
+        self._HsmType = HsmType
 
 
     def _deserialize(self, params):
-        self.GoodsNum = params.get("GoodsNum")
-        self.PayMode = params.get("PayMode")
-        self.TimeSpan = params.get("TimeSpan")
-        self.TimeUnit = params.get("TimeUnit")
-        self.Currency = params.get("Currency")
-        self.Type = params.get("Type")
-        self.HsmType = params.get("HsmType")
+        self._GoodsNum = params.get("GoodsNum")
+        self._PayMode = params.get("PayMode")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._Currency = params.get("Currency")
+        self._Type = params.get("Type")
+        self._HsmType = params.get("HsmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -902,39 +1652,87 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCost: 原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
+        :param _TotalCost: 原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
-        :param GoodsNum: 购买的实例数量
+        :param _GoodsNum: 购买的实例数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsNum: int
-        :param TimeSpan: 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
+        :param _TimeSpan: 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: str
-        :param TimeUnit: 商品的时间单位，m表示月，y表示年
+        :param _TimeUnit: 商品的时间单位，m表示月，y表示年
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
-        :param OriginalCost: 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
+        :param _OriginalCost: 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalCost: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCost = None
-        self.GoodsNum = None
-        self.TimeSpan = None
-        self.TimeUnit = None
-        self.OriginalCost = None
-        self.RequestId = None
+        self._TotalCost = None
+        self._GoodsNum = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._OriginalCost = None
+        self._RequestId = None
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCost = params.get("TotalCost")
-        self.GoodsNum = params.get("GoodsNum")
-        self.TimeSpan = params.get("TimeSpan")
-        self.TimeUnit = params.get("TimeUnit")
-        self.OriginalCost = params.get("OriginalCost")
-        self.RequestId = params.get("RequestId")
+        self._TotalCost = params.get("TotalCost")
+        self._GoodsNum = params.get("GoodsNum")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._OriginalCost = params.get("OriginalCost")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAlarmEventRequest(AbstractModel):
@@ -944,34 +1742,75 @@ class ModifyAlarmEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Event: 告警事件，支持CPU、MEM、TCP
+        :param _Event: 告警事件，支持CPU、MEM、TCP
         :type Event: str
-        :param Limit: 告警阈值
+        :param _Limit: 告警阈值
         :type Limit: int
-        :param Status: 告警状态，0表示停用，1表示启动
+        :param _Status: 告警状态，0表示停用，1表示启动
         :type Status: int
-        :param BeginTime: 告警开始时间，只有在这个时间后才会发送告警，当跟EndTime同时为空时表示全天告警
+        :param _BeginTime: 告警开始时间，只有在这个时间后才会发送告警，当跟EndTime同时为空时表示全天告警
         :type BeginTime: str
-        :param EndTime: 告警结束时间，只有在这个时间前才会发送告警，当跟BeginTime同时为空时表示全天告警
+        :param _EndTime: 告警结束时间，只有在这个时间前才会发送告警，当跟BeginTime同时为空时表示全天告警
         :type EndTime: str
         """
-        self.Event = None
-        self.Limit = None
-        self.Status = None
-        self.BeginTime = None
-        self.EndTime = None
+        self._Event = None
+        self._Limit = None
+        self._Status = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Event = params.get("Event")
-        self.Limit = params.get("Limit")
-        self.Status = params.get("Status")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
+        self._Event = params.get("Event")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -984,14 +1823,22 @@ class ModifyAlarmEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyVsmAttributesRequest(AbstractModel):
@@ -1001,45 +1848,102 @@ class ModifyVsmAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源Id
+        :param _ResourceId: 资源Id
         :type ResourceId: str
-        :param Type: UpdateResourceName-修改资源名称,
+        :param _Type: UpdateResourceName-修改资源名称,
 UpdateSgIds-修改安全组名称,
 UpdateNetWork-修改网络,
 Default-默认不修改
         :type Type: list of str
-        :param ResourceName: 资源名称
+        :param _ResourceName: 资源名称
         :type ResourceName: str
-        :param SgIds: 安全组Id
+        :param _SgIds: 安全组Id
         :type SgIds: list of str
-        :param VpcId: 虚拟专网Id
+        :param _VpcId: 虚拟专网Id
         :type VpcId: str
-        :param SubnetId: 子网Id
+        :param _SubnetId: 子网Id
         :type SubnetId: str
-        :param AlarmStatus: 告警开关，0表示关闭告警，1表示启用告警
+        :param _AlarmStatus: 告警开关，0表示关闭告警，1表示启用告警
         :type AlarmStatus: int
         """
-        self.ResourceId = None
-        self.Type = None
-        self.ResourceName = None
-        self.SgIds = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.AlarmStatus = None
+        self._ResourceId = None
+        self._Type = None
+        self._ResourceName = None
+        self._SgIds = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._AlarmStatus = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def SgIds(self):
+        return self._SgIds
+
+    @SgIds.setter
+    def SgIds(self, SgIds):
+        self._SgIds = SgIds
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AlarmStatus(self):
+        return self._AlarmStatus
+
+    @AlarmStatus.setter
+    def AlarmStatus(self, AlarmStatus):
+        self._AlarmStatus = AlarmStatus
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Type = params.get("Type")
-        self.ResourceName = params.get("ResourceName")
-        self.SgIds = params.get("SgIds")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.AlarmStatus = params.get("AlarmStatus")
+        self._ResourceId = params.get("ResourceId")
+        self._Type = params.get("Type")
+        self._ResourceName = params.get("ResourceName")
+        self._SgIds = params.get("SgIds")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._AlarmStatus = params.get("AlarmStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1052,14 +1956,22 @@ class ModifyVsmAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResourceInfo(AbstractModel):
@@ -1069,139 +1981,324 @@ class ResourceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源Id
+        :param _ResourceId: 资源Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param ResourceName: 资源名称
+        :param _ResourceName: 资源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
-        :param Status: 资源状态，1-正常，2-隔离，3-销毁
+        :param _Status: 资源状态，1-正常，2-隔离，3-销毁
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param Vip: 资源IP
+        :param _Vip: 资源IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
-        :param VpcId: 资源所属Vpc
+        :param _VpcId: 资源所属Vpc
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param SubnetId: 资源所属子网
+        :param _SubnetId: 资源所属子网
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param Model: 资源所属HSM规格
+        :param _Model: 资源所属HSM规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type Model: str
-        :param VsmType: 云加密机类型id
+        :param _VsmType: 云加密机类型id
 注意：此字段可能返回 null，表示取不到有效值。
         :type VsmType: int
-        :param RegionId: 地域Id
+        :param _RegionId: 地域Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
-        :param ZoneId: 区域Id
+        :param _ZoneId: 区域Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
-        :param ExpireTime: 过期时间（Epoch Unix Timestamp）
+        :param _ExpireTime: 过期时间（Epoch Unix Timestamp）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
-        :param RegionName: 地域名
+        :param _RegionName: 地域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
-        :param ZoneName: 区域名
+        :param _ZoneName: 区域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
-        :param SgList: 实例的安全组列表
+        :param _SgList: 实例的安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgList: list of SgUnit
-        :param SubnetName: 子网名称
+        :param _SubnetName: 子网名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
-        :param Expired: 当前实例是否已经过期
+        :param _Expired: 当前实例是否已经过期
 注意：此字段可能返回 null，表示取不到有效值。
         :type Expired: bool
-        :param RemainSeconds: 为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
+        :param _RemainSeconds: 为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemainSeconds: int
-        :param VpcName: Vpc名称
+        :param _VpcName: Vpc名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
-        :param CreateUin: 创建者Uin账号
+        :param _CreateUin: 创建者Uin账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUin: str
-        :param RenewFlag: 自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
+        :param _RenewFlag: 自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
-        :param Tags: 标签列表
+        :param _Tags: 标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param Manufacturer: 厂商
+        :param _Manufacturer: 厂商
 注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
-        :param AlarmStatus: 告警状态，0：停用，1：启用
+        :param _AlarmStatus: 告警状态，0：停用，1：启用
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmStatus: int
         """
-        self.ResourceId = None
-        self.ResourceName = None
-        self.Status = None
-        self.Vip = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.Model = None
-        self.VsmType = None
-        self.RegionId = None
-        self.ZoneId = None
-        self.ExpireTime = None
-        self.RegionName = None
-        self.ZoneName = None
-        self.SgList = None
-        self.SubnetName = None
-        self.Expired = None
-        self.RemainSeconds = None
-        self.VpcName = None
-        self.CreateUin = None
-        self.RenewFlag = None
-        self.Tags = None
-        self.Manufacturer = None
-        self.AlarmStatus = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Status = None
+        self._Vip = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Model = None
+        self._VsmType = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._ExpireTime = None
+        self._RegionName = None
+        self._ZoneName = None
+        self._SgList = None
+        self._SubnetName = None
+        self._Expired = None
+        self._RemainSeconds = None
+        self._VpcName = None
+        self._CreateUin = None
+        self._RenewFlag = None
+        self._Tags = None
+        self._Manufacturer = None
+        self._AlarmStatus = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def VsmType(self):
+        return self._VsmType
+
+    @VsmType.setter
+    def VsmType(self, VsmType):
+        self._VsmType = VsmType
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def SgList(self):
+        return self._SgList
+
+    @SgList.setter
+    def SgList(self, SgList):
+        self._SgList = SgList
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def Expired(self):
+        return self._Expired
+
+    @Expired.setter
+    def Expired(self, Expired):
+        self._Expired = Expired
+
+    @property
+    def RemainSeconds(self):
+        return self._RemainSeconds
+
+    @RemainSeconds.setter
+    def RemainSeconds(self, RemainSeconds):
+        self._RemainSeconds = RemainSeconds
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def CreateUin(self):
+        return self._CreateUin
+
+    @CreateUin.setter
+    def CreateUin(self, CreateUin):
+        self._CreateUin = CreateUin
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Manufacturer(self):
+        return self._Manufacturer
+
+    @Manufacturer.setter
+    def Manufacturer(self, Manufacturer):
+        self._Manufacturer = Manufacturer
+
+    @property
+    def AlarmStatus(self):
+        return self._AlarmStatus
+
+    @AlarmStatus.setter
+    def AlarmStatus(self, AlarmStatus):
+        self._AlarmStatus = AlarmStatus
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceName = params.get("ResourceName")
-        self.Status = params.get("Status")
-        self.Vip = params.get("Vip")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.Model = params.get("Model")
-        self.VsmType = params.get("VsmType")
-        self.RegionId = params.get("RegionId")
-        self.ZoneId = params.get("ZoneId")
-        self.ExpireTime = params.get("ExpireTime")
-        self.RegionName = params.get("RegionName")
-        self.ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._Status = params.get("Status")
+        self._Vip = params.get("Vip")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Model = params.get("Model")
+        self._VsmType = params.get("VsmType")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RegionName = params.get("RegionName")
+        self._ZoneName = params.get("ZoneName")
         if params.get("SgList") is not None:
-            self.SgList = []
+            self._SgList = []
             for item in params.get("SgList"):
                 obj = SgUnit()
                 obj._deserialize(item)
-                self.SgList.append(obj)
-        self.SubnetName = params.get("SubnetName")
-        self.Expired = params.get("Expired")
-        self.RemainSeconds = params.get("RemainSeconds")
-        self.VpcName = params.get("VpcName")
-        self.CreateUin = params.get("CreateUin")
-        self.RenewFlag = params.get("RenewFlag")
+                self._SgList.append(obj)
+        self._SubnetName = params.get("SubnetName")
+        self._Expired = params.get("Expired")
+        self._RemainSeconds = params.get("RemainSeconds")
+        self._VpcName = params.get("VpcName")
+        self._CreateUin = params.get("CreateUin")
+        self._RenewFlag = params.get("RenewFlag")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Manufacturer = params.get("Manufacturer")
-        self.AlarmStatus = params.get("AlarmStatus")
+                self._Tags.append(obj)
+        self._Manufacturer = params.get("Manufacturer")
+        self._AlarmStatus = params.get("AlarmStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1214,34 +2311,67 @@ class SgUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SgId: 安全组Id
+        :param _SgId: 安全组Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgId: str
-        :param SgName: 安全组名称
+        :param _SgName: 安全组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgName: str
-        :param SgRemark: 备注
+        :param _SgRemark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgRemark: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
-        self.SgId = None
-        self.SgName = None
-        self.SgRemark = None
-        self.CreateTime = None
+        self._SgId = None
+        self._SgName = None
+        self._SgRemark = None
+        self._CreateTime = None
+
+    @property
+    def SgId(self):
+        return self._SgId
+
+    @SgId.setter
+    def SgId(self, SgId):
+        self._SgId = SgId
+
+    @property
+    def SgName(self):
+        return self._SgName
+
+    @SgName.setter
+    def SgName(self, SgName):
+        self._SgName = SgName
+
+    @property
+    def SgRemark(self):
+        return self._SgRemark
+
+    @SgRemark.setter
+    def SgRemark(self, SgRemark):
+        self._SgRemark = SgRemark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.SgId = params.get("SgId")
-        self.SgName = params.get("SgName")
-        self.SgRemark = params.get("SgRemark")
-        self.CreateTime = params.get("CreateTime")
+        self._SgId = params.get("SgId")
+        self._SgName = params.get("SgName")
+        self._SgRemark = params.get("SgRemark")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1254,59 +2384,132 @@ class Subnet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。
+        :param _VpcId: VPC实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param SubnetId: 子网实例ID，例如：subnet-bthucmmy。
+        :param _SubnetId: 子网实例ID，例如：subnet-bthucmmy。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param SubnetName: 子网名称。
+        :param _SubnetName: 子网名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
-        :param CidrBlock: 子网的 IPv4 CIDR。
+        :param _CidrBlock: 子网的 IPv4 CIDR。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CidrBlock: str
-        :param CreatedTime: 创建时间。
+        :param _CreatedTime: 创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param AvailableIpAddressCount: 可用IP数。
+        :param _AvailableIpAddressCount: 可用IP数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableIpAddressCount: int
-        :param Ipv6CidrBlock: 子网的 IPv6 CIDR。
+        :param _Ipv6CidrBlock: 子网的 IPv6 CIDR。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6CidrBlock: str
-        :param TotalIpAddressCount: 总IP数
+        :param _TotalIpAddressCount: 总IP数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalIpAddressCount: int
-        :param IsDefault: 是否为默认Subnet
+        :param _IsDefault: 是否为默认Subnet
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefault: bool
         """
-        self.VpcId = None
-        self.SubnetId = None
-        self.SubnetName = None
-        self.CidrBlock = None
-        self.CreatedTime = None
-        self.AvailableIpAddressCount = None
-        self.Ipv6CidrBlock = None
-        self.TotalIpAddressCount = None
-        self.IsDefault = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._SubnetName = None
+        self._CidrBlock = None
+        self._CreatedTime = None
+        self._AvailableIpAddressCount = None
+        self._Ipv6CidrBlock = None
+        self._TotalIpAddressCount = None
+        self._IsDefault = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def AvailableIpAddressCount(self):
+        return self._AvailableIpAddressCount
+
+    @AvailableIpAddressCount.setter
+    def AvailableIpAddressCount(self, AvailableIpAddressCount):
+        self._AvailableIpAddressCount = AvailableIpAddressCount
+
+    @property
+    def Ipv6CidrBlock(self):
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
+    def TotalIpAddressCount(self):
+        return self._TotalIpAddressCount
+
+    @TotalIpAddressCount.setter
+    def TotalIpAddressCount(self, TotalIpAddressCount):
+        self._TotalIpAddressCount = TotalIpAddressCount
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.SubnetName = params.get("SubnetName")
-        self.CidrBlock = params.get("CidrBlock")
-        self.CreatedTime = params.get("CreatedTime")
-        self.AvailableIpAddressCount = params.get("AvailableIpAddressCount")
-        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
-        self.TotalIpAddressCount = params.get("TotalIpAddressCount")
-        self.IsDefault = params.get("IsDefault")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._CidrBlock = params.get("CidrBlock")
+        self._CreatedTime = params.get("CreatedTime")
+        self._AvailableIpAddressCount = params.get("AvailableIpAddressCount")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self._TotalIpAddressCount = params.get("TotalIpAddressCount")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1319,22 +2522,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param _TagKey: 标签键
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1347,22 +2567,39 @@ class TagFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param _TagKey: 标签键
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
         :type TagValue: list of str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1375,54 +2612,119 @@ class UsgPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: cidr格式地址
+        :param _Ip: cidr格式地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
-        :param Id: 安全组id代表的地址集合
+        :param _Id: 安全组id代表的地址集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param AddressModule: 地址组id代表的地址集合
+        :param _AddressModule: 地址组id代表的地址集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressModule: str
-        :param Proto: 协议
+        :param _Proto: 协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Proto: str
-        :param Port: 端口
+        :param _Port: 端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
-        :param ServiceModule: 服务组id代表的协议和端口集合
+        :param _ServiceModule: 服务组id代表的协议和端口集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceModule: str
-        :param Desc: 备注
+        :param _Desc: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
-        :param Action: 匹配后行为:ACCEPT/DROP
+        :param _Action: 匹配后行为:ACCEPT/DROP
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         """
-        self.Ip = None
-        self.Id = None
-        self.AddressModule = None
-        self.Proto = None
-        self.Port = None
-        self.ServiceModule = None
-        self.Desc = None
-        self.Action = None
+        self._Ip = None
+        self._Id = None
+        self._AddressModule = None
+        self._Proto = None
+        self._Port = None
+        self._ServiceModule = None
+        self._Desc = None
+        self._Action = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AddressModule(self):
+        return self._AddressModule
+
+    @AddressModule.setter
+    def AddressModule(self, AddressModule):
+        self._AddressModule = AddressModule
+
+    @property
+    def Proto(self):
+        return self._Proto
+
+    @Proto.setter
+    def Proto(self, Proto):
+        self._Proto = Proto
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def ServiceModule(self):
+        return self._ServiceModule
+
+    @ServiceModule.setter
+    def ServiceModule(self, ServiceModule):
+        self._ServiceModule = ServiceModule
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Id = params.get("Id")
-        self.AddressModule = params.get("AddressModule")
-        self.Proto = params.get("Proto")
-        self.Port = params.get("Port")
-        self.ServiceModule = params.get("ServiceModule")
-        self.Desc = params.get("Desc")
-        self.Action = params.get("Action")
+        self._Ip = params.get("Ip")
+        self._Id = params.get("Id")
+        self._AddressModule = params.get("AddressModule")
+        self._Proto = params.get("Proto")
+        self._Port = params.get("Port")
+        self._ServiceModule = params.get("ServiceModule")
+        self._Desc = params.get("Desc")
+        self._Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1435,59 +2737,116 @@ class UsgRuleDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InBound: 入站规则
+        :param _InBound: 入站规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type InBound: list of UsgPolicy
-        :param OutBound: 出站规则
+        :param _OutBound: 出站规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutBound: list of UsgPolicy
-        :param SgId: 安全组Id
+        :param _SgId: 安全组Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgId: str
-        :param SgName: 安全组名称
+        :param _SgName: 安全组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgName: str
-        :param SgRemark: 备注
+        :param _SgRemark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgRemark: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Version: 版本
+        :param _Version: 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
         """
-        self.InBound = None
-        self.OutBound = None
-        self.SgId = None
-        self.SgName = None
-        self.SgRemark = None
-        self.CreateTime = None
-        self.Version = None
+        self._InBound = None
+        self._OutBound = None
+        self._SgId = None
+        self._SgName = None
+        self._SgRemark = None
+        self._CreateTime = None
+        self._Version = None
+
+    @property
+    def InBound(self):
+        return self._InBound
+
+    @InBound.setter
+    def InBound(self, InBound):
+        self._InBound = InBound
+
+    @property
+    def OutBound(self):
+        return self._OutBound
+
+    @OutBound.setter
+    def OutBound(self, OutBound):
+        self._OutBound = OutBound
+
+    @property
+    def SgId(self):
+        return self._SgId
+
+    @SgId.setter
+    def SgId(self, SgId):
+        self._SgId = SgId
+
+    @property
+    def SgName(self):
+        return self._SgName
+
+    @SgName.setter
+    def SgName(self, SgName):
+        self._SgName = SgName
+
+    @property
+    def SgRemark(self):
+        return self._SgRemark
+
+    @SgRemark.setter
+    def SgRemark(self, SgRemark):
+        self._SgRemark = SgRemark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
         if params.get("InBound") is not None:
-            self.InBound = []
+            self._InBound = []
             for item in params.get("InBound"):
                 obj = UsgPolicy()
                 obj._deserialize(item)
-                self.InBound.append(obj)
+                self._InBound.append(obj)
         if params.get("OutBound") is not None:
-            self.OutBound = []
+            self._OutBound = []
             for item in params.get("OutBound"):
                 obj = UsgPolicy()
                 obj._deserialize(item)
-                self.OutBound.append(obj)
-        self.SgId = params.get("SgId")
-        self.SgName = params.get("SgName")
-        self.SgRemark = params.get("SgRemark")
-        self.CreateTime = params.get("CreateTime")
-        self.Version = params.get("Version")
+                self._OutBound.append(obj)
+        self._SgId = params.get("SgId")
+        self._SgName = params.get("SgName")
+        self._SgRemark = params.get("SgRemark")
+        self._CreateTime = params.get("CreateTime")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1500,34 +2859,67 @@ class Vpc(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcName: Vpc名称
+        :param _VpcName: Vpc名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
-        :param VpcId: VpcId
+        :param _VpcId: VpcId
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param IsDefault: 是否为默认VPC
+        :param _IsDefault: 是否为默认VPC
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefault: bool
         """
-        self.VpcName = None
-        self.VpcId = None
-        self.CreatedTime = None
-        self.IsDefault = None
+        self._VpcName = None
+        self._VpcId = None
+        self._CreatedTime = None
+        self._IsDefault = None
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
 
 
     def _deserialize(self, params):
-        self.VpcName = params.get("VpcName")
-        self.VpcId = params.get("VpcId")
-        self.CreatedTime = params.get("CreatedTime")
-        self.IsDefault = params.get("IsDefault")
+        self._VpcName = params.get("VpcName")
+        self._VpcId = params.get("VpcId")
+        self._CreatedTime = params.get("CreatedTime")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1540,22 +2932,39 @@ class VsmInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TypeName: VSM类型名称
+        :param _TypeName: VSM类型名称
         :type TypeName: str
-        :param TypeID: VSM类型值
+        :param _TypeID: VSM类型值
         :type TypeID: int
         """
-        self.TypeName = None
-        self.TypeID = None
+        self._TypeName = None
+        self._TypeID = None
+
+    @property
+    def TypeName(self):
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def TypeID(self):
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
 
 
     def _deserialize(self, params):
-        self.TypeName = params.get("TypeName")
-        self.TypeID = params.get("TypeID")
+        self._TypeName = params.get("TypeName")
+        self._TypeID = params.get("TypeID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

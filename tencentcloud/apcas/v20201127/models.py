@@ -25,26 +25,51 @@ class CallDetailItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataType: 数据类型 0 imei 1 qimei 2 qq 3 phone 7:IDFA 8:MD5(imei)
+        :param _DataType: 数据类型 0 imei 1 qimei 2 qq 3 phone 7:IDFA 8:MD5(imei)
         :type DataType: int
-        :param ValidAmount: 有效数据量
+        :param _ValidAmount: 有效数据量
         :type ValidAmount: int
-        :param Date: 调用时间
+        :param _Date: 调用时间
         :type Date: str
         """
-        self.DataType = None
-        self.ValidAmount = None
-        self.Date = None
+        self._DataType = None
+        self._ValidAmount = None
+        self._Date = None
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def ValidAmount(self):
+        return self._ValidAmount
+
+    @ValidAmount.setter
+    def ValidAmount(self, ValidAmount):
+        self._ValidAmount = ValidAmount
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
 
 
     def _deserialize(self, params):
-        self.DataType = params.get("DataType")
-        self.ValidAmount = params.get("ValidAmount")
-        self.Date = params.get("Date")
+        self._DataType = params.get("DataType")
+        self._ValidAmount = params.get("ValidAmount")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,27 +82,44 @@ class CallDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的总条数
+        :param _TotalCount: 符合条件的总条数
         :type TotalCount: int
-        :param CallDetailSet: 调用明细数组
+        :param _CallDetailSet: 调用明细数组
         :type CallDetailSet: list of CallDetailItem
         """
-        self.TotalCount = None
-        self.CallDetailSet = None
+        self._TotalCount = None
+        self._CallDetailSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CallDetailSet(self):
+        return self._CallDetailSet
+
+    @CallDetailSet.setter
+    def CallDetailSet(self, CallDetailSet):
+        self._CallDetailSet = CallDetailSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("CallDetailSet") is not None:
-            self.CallDetailSet = []
+            self._CallDetailSet = []
             for item in params.get("CallDetailSet"):
                 obj = CallDetailItem()
                 obj._deserialize(item)
-                self.CallDetailSet.append(obj)
+                self._CallDetailSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -90,22 +132,39 @@ class CallStatItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Date: 当前统计量的时间段
+        :param _Date: 当前统计量的时间段
         :type Date: str
-        :param Amount: 当前时间段的调用量
+        :param _Amount: 当前时间段的调用量
         :type Amount: int
         """
-        self.Date = None
-        self.Amount = None
+        self._Date = None
+        self._Amount = None
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
 
 
     def _deserialize(self, params):
-        self.Date = params.get("Date")
-        self.Amount = params.get("Amount")
+        self._Date = params.get("Date")
+        self._Amount = params.get("Amount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -118,30 +177,63 @@ class GeneralStat(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TodayAmount: 今日调用量
+        :param _TodayAmount: 今日调用量
         :type TodayAmount: int
-        :param WeekAmount: 本周调用量
+        :param _WeekAmount: 本周调用量
         :type WeekAmount: int
-        :param MonthAmount: 本月调用量
+        :param _MonthAmount: 本月调用量
         :type MonthAmount: int
-        :param TotalAmount: 总调用量
+        :param _TotalAmount: 总调用量
         :type TotalAmount: int
         """
-        self.TodayAmount = None
-        self.WeekAmount = None
-        self.MonthAmount = None
-        self.TotalAmount = None
+        self._TodayAmount = None
+        self._WeekAmount = None
+        self._MonthAmount = None
+        self._TotalAmount = None
+
+    @property
+    def TodayAmount(self):
+        return self._TodayAmount
+
+    @TodayAmount.setter
+    def TodayAmount(self, TodayAmount):
+        self._TodayAmount = TodayAmount
+
+    @property
+    def WeekAmount(self):
+        return self._WeekAmount
+
+    @WeekAmount.setter
+    def WeekAmount(self, WeekAmount):
+        self._WeekAmount = WeekAmount
+
+    @property
+    def MonthAmount(self):
+        return self._MonthAmount
+
+    @MonthAmount.setter
+    def MonthAmount(self, MonthAmount):
+        self._MonthAmount = MonthAmount
+
+    @property
+    def TotalAmount(self):
+        return self._TotalAmount
+
+    @TotalAmount.setter
+    def TotalAmount(self, TotalAmount):
+        self._TotalAmount = TotalAmount
 
 
     def _deserialize(self, params):
-        self.TodayAmount = params.get("TodayAmount")
-        self.WeekAmount = params.get("WeekAmount")
-        self.MonthAmount = params.get("MonthAmount")
-        self.TotalAmount = params.get("TotalAmount")
+        self._TodayAmount = params.get("TodayAmount")
+        self._WeekAmount = params.get("WeekAmount")
+        self._MonthAmount = params.get("MonthAmount")
+        self._TotalAmount = params.get("TotalAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -154,18 +246,27 @@ class GetTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 任务ID
+        :param _Id: 任务ID
         :type Id: int
         """
-        self.Id = None
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -178,23 +279,39 @@ class GetTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskDetailDataList: 画像洞察任务TAG详细数据列表
+        :param _TaskDetailDataList: 画像洞察任务TAG详细数据列表
         :type TaskDetailDataList: list of TaskDetailData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskDetailDataList = None
-        self.RequestId = None
+        self._TaskDetailDataList = None
+        self._RequestId = None
+
+    @property
+    def TaskDetailDataList(self):
+        return self._TaskDetailDataList
+
+    @TaskDetailDataList.setter
+    def TaskDetailDataList(self, TaskDetailDataList):
+        self._TaskDetailDataList = TaskDetailDataList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskDetailDataList") is not None:
-            self.TaskDetailDataList = []
+            self._TaskDetailDataList = []
             for item in params.get("TaskDetailDataList"):
                 obj = TaskDetailData()
                 obj._deserialize(item)
-                self.TaskDetailDataList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TaskDetailDataList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetTaskListRequest(AbstractModel):
@@ -204,38 +321,87 @@ class GetTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNumber: 查询分页页码
+        :param _PageNumber: 查询分页页码
         :type PageNumber: int
-        :param PageSize: 查询分页大小
+        :param _PageSize: 查询分页大小
         :type PageSize: int
-        :param StartTime: 查询起始时间（13位数字的UNIX时间戳，单位毫秒 ）
+        :param _StartTime: 查询起始时间（13位数字的UNIX时间戳，单位毫秒 ）
         :type StartTime: int
-        :param EndTime: 查询结束时间（13位数字的UNIX时间戳，单位毫秒 ）
+        :param _EndTime: 查询结束时间（13位数字的UNIX时间戳，单位毫秒 ）
         :type EndTime: int
-        :param TaskName: 任务名称
+        :param _TaskName: 任务名称
         :type TaskName: str
-        :param TaskStatus: 查询任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
+        :param _TaskStatus: 查询任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
         :type TaskStatus: int
         """
-        self.PageNumber = None
-        self.PageSize = None
-        self.StartTime = None
-        self.EndTime = None
-        self.TaskName = None
-        self.TaskStatus = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskName = None
+        self._TaskStatus = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
 
 
     def _deserialize(self, params):
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.TaskName = params.get("TaskName")
-        self.TaskStatus = params.get("TaskStatus")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskName = params.get("TaskName")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -248,20 +414,36 @@ class GetTaskListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskListData: 任务列表对象
+        :param _TaskListData: 任务列表对象
         :type TaskListData: :class:`tencentcloud.apcas.v20201127.models.TaskListData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskListData = None
-        self.RequestId = None
+        self._TaskListData = None
+        self._RequestId = None
+
+    @property
+    def TaskListData(self):
+        return self._TaskListData
+
+    @TaskListData.setter
+    def TaskListData(self, TaskListData):
+        self._TaskListData = TaskListData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskListData") is not None:
-            self.TaskListData = TaskListData()
-            self.TaskListData._deserialize(params.get("TaskListData"))
-        self.RequestId = params.get("RequestId")
+            self._TaskListData = TaskListData()
+            self._TaskListData._deserialize(params.get("TaskListData"))
+        self._RequestId = params.get("RequestId")
 
 
 class LabelDetailData(AbstractModel):
@@ -271,24 +453,41 @@ class LabelDetailData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Value: 标签数据对象
+        :param _Value: 标签数据对象
         :type Value: :class:`tencentcloud.apcas.v20201127.models.LabelValue`
-        :param Label: 标签表述，如"汽车资讯"、"游戏#手游"等
+        :param _Label: 标签表述，如"汽车资讯"、"游戏#手游"等
         :type Label: str
         """
-        self.Value = None
-        self.Label = None
+        self._Value = None
+        self._Label = None
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
 
 
     def _deserialize(self, params):
         if params.get("Value") is not None:
-            self.Value = LabelValue()
-            self.Value._deserialize(params.get("Value"))
-        self.Label = params.get("Label")
+            self._Value = LabelValue()
+            self._Value._deserialize(params.get("Value"))
+        self._Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -301,26 +500,51 @@ class LabelValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Proportion: 标签覆盖率占比（在整个上传的ID列表中的覆盖率）
+        :param _Proportion: 标签覆盖率占比（在整个上传的ID列表中的覆盖率）
         :type Proportion: float
-        :param Market: 标签大盘覆盖率占比
+        :param _Market: 标签大盘覆盖率占比
         :type Market: float
-        :param Tgi: TGI指数，由Proportion除以Market得到
+        :param _Tgi: TGI指数，由Proportion除以Market得到
         :type Tgi: float
         """
-        self.Proportion = None
-        self.Market = None
-        self.Tgi = None
+        self._Proportion = None
+        self._Market = None
+        self._Tgi = None
+
+    @property
+    def Proportion(self):
+        return self._Proportion
+
+    @Proportion.setter
+    def Proportion(self, Proportion):
+        self._Proportion = Proportion
+
+    @property
+    def Market(self):
+        return self._Market
+
+    @Market.setter
+    def Market(self, Market):
+        self._Market = Market
+
+    @property
+    def Tgi(self):
+        return self._Tgi
+
+    @Tgi.setter
+    def Tgi(self, Tgi):
+        self._Tgi = Tgi
 
 
     def _deserialize(self, params):
-        self.Proportion = params.get("Proportion")
-        self.Market = params.get("Market")
-        self.Tgi = params.get("Tgi")
+        self._Proportion = params.get("Proportion")
+        self._Market = params.get("Market")
+        self._Tgi = params.get("Tgi")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -333,38 +557,87 @@ class ListModel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 任务ID
+        :param _ID: 任务ID
         :type ID: int
-        :param TaskName: 任务名称
+        :param _TaskName: 任务名称
         :type TaskName: str
-        :param StartTime: 任务起始时间（13位数字的UNIX 时间戳，单位毫秒 ）
+        :param _StartTime: 任务起始时间（13位数字的UNIX 时间戳，单位毫秒 ）
         :type StartTime: int
-        :param Status: 任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
+        :param _Status: 任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
         :type Status: int
-        :param Available: 画像覆盖人数
+        :param _Available: 画像覆盖人数
         :type Available: int
-        :param ErrMsg: 任务失败描述信息
+        :param _ErrMsg: 任务失败描述信息
         :type ErrMsg: str
         """
-        self.ID = None
-        self.TaskName = None
-        self.StartTime = None
-        self.Status = None
-        self.Available = None
-        self.ErrMsg = None
+        self._ID = None
+        self._TaskName = None
+        self._StartTime = None
+        self._Status = None
+        self._Available = None
+        self._ErrMsg = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.TaskName = params.get("TaskName")
-        self.StartTime = params.get("StartTime")
-        self.Status = params.get("Status")
-        self.Available = params.get("Available")
-        self.ErrMsg = params.get("ErrMsg")
+        self._ID = params.get("ID")
+        self._TaskName = params.get("TaskName")
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._Available = params.get("Available")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -377,22 +650,39 @@ class PredictRatingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密
+        :param _Type: ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密
         :type Type: int
-        :param Id: 请求唯一标志ID
+        :param _Id: 请求唯一标志ID
         :type Id: str
         """
-        self.Type = None
-        self.Id = None
+        self._Type = None
+        self._Id = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -405,20 +695,36 @@ class PredictRatingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RatingData: 意向评级
+        :param _RatingData: 意向评级
         :type RatingData: :class:`tencentcloud.apcas.v20201127.models.RatingData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RatingData = None
-        self.RequestId = None
+        self._RatingData = None
+        self._RequestId = None
+
+    @property
+    def RatingData(self):
+        return self._RatingData
+
+    @RatingData.setter
+    def RatingData(self, RatingData):
+        self._RatingData = RatingData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RatingData") is not None:
-            self.RatingData = RatingData()
-            self.RatingData._deserialize(params.get("RatingData"))
-        self.RequestId = params.get("RequestId")
+            self._RatingData = RatingData()
+            self._RatingData._deserialize(params.get("RatingData"))
+        self._RequestId = params.get("RequestId")
 
 
 class QueryCallDetailsRequest(AbstractModel):
@@ -428,34 +734,75 @@ class QueryCallDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
+        :param _Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
         :type Type: int
-        :param StartTime: 开始时间戳（毫秒）
+        :param _StartTime: 开始时间戳（毫秒）
         :type StartTime: int
-        :param EndTime: 结束时间戳（毫秒）
+        :param _EndTime: 结束时间戳（毫秒）
         :type EndTime: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param PageSize: 每页个数
+        :param _PageSize: 每页个数
         :type PageSize: int
         """
-        self.Type = None
-        self.StartTime = None
-        self.EndTime = None
-        self.PageNumber = None
-        self.PageSize = None
+        self._Type = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
+        self._Type = params.get("Type")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -468,20 +815,36 @@ class QueryCallDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CallDetails: 调用明细
+        :param _CallDetails: 调用明细
         :type CallDetails: :class:`tencentcloud.apcas.v20201127.models.CallDetails`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CallDetails = None
-        self.RequestId = None
+        self._CallDetails = None
+        self._RequestId = None
+
+    @property
+    def CallDetails(self):
+        return self._CallDetails
+
+    @CallDetails.setter
+    def CallDetails(self, CallDetails):
+        self._CallDetails = CallDetails
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CallDetails") is not None:
-            self.CallDetails = CallDetails()
-            self.CallDetails._deserialize(params.get("CallDetails"))
-        self.RequestId = params.get("RequestId")
+            self._CallDetails = CallDetails()
+            self._CallDetails._deserialize(params.get("CallDetails"))
+        self._RequestId = params.get("RequestId")
 
 
 class QueryCallStatRequest(AbstractModel):
@@ -491,26 +854,51 @@ class QueryCallStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
+        :param _Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
         :type Type: int
-        :param StartTime: 开始时间戳（毫秒）
+        :param _StartTime: 开始时间戳（毫秒）
         :type StartTime: int
-        :param EndTime: 结束时间戳（毫秒）
+        :param _EndTime: 结束时间戳（毫秒）
         :type EndTime: int
         """
-        self.Type = None
-        self.StartTime = None
-        self.EndTime = None
+        self._Type = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -523,23 +911,39 @@ class QueryCallStatResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CallSet: 调用量数组
+        :param _CallSet: 调用量数组
         :type CallSet: list of CallStatItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CallSet = None
-        self.RequestId = None
+        self._CallSet = None
+        self._RequestId = None
+
+    @property
+    def CallSet(self):
+        return self._CallSet
+
+    @CallSet.setter
+    def CallSet(self, CallSet):
+        self._CallSet = CallSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CallSet") is not None:
-            self.CallSet = []
+            self._CallSet = []
             for item in params.get("CallSet"):
                 obj = CallStatItem()
                 obj._deserialize(item)
-                self.CallSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CallSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QueryGeneralStatRequest(AbstractModel):
@@ -549,18 +953,27 @@ class QueryGeneralStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 请求类型:1,人群特征洞察统计 2购车意向预测统计
+        :param _Type: 请求类型:1,人群特征洞察统计 2购车意向预测统计
         :type Type: int
         """
-        self.Type = None
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -573,20 +986,36 @@ class QueryGeneralStatResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GeneralStat: 调用量信息
+        :param _GeneralStat: 调用量信息
         :type GeneralStat: :class:`tencentcloud.apcas.v20201127.models.GeneralStat`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GeneralStat = None
-        self.RequestId = None
+        self._GeneralStat = None
+        self._RequestId = None
+
+    @property
+    def GeneralStat(self):
+        return self._GeneralStat
+
+    @GeneralStat.setter
+    def GeneralStat(self, GeneralStat):
+        self._GeneralStat = GeneralStat
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GeneralStat") is not None:
-            self.GeneralStat = GeneralStat()
-            self.GeneralStat._deserialize(params.get("GeneralStat"))
-        self.RequestId = params.get("RequestId")
+            self._GeneralStat = GeneralStat()
+            self._GeneralStat._deserialize(params.get("GeneralStat"))
+        self._RequestId = params.get("RequestId")
 
 
 class RatingData(AbstractModel):
@@ -596,18 +1025,27 @@ class RatingData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rank: 线索评级（取值：0、1、2、3分别代表无、低、中、高意愿）
+        :param _Rank: 线索评级（取值：0、1、2、3分别代表无、低、中、高意愿）
         :type Rank: int
         """
-        self.Rank = None
+        self._Rank = None
+
+    @property
+    def Rank(self):
+        return self._Rank
+
+    @Rank.setter
+    def Rank(self, Rank):
+        self._Rank = Rank
 
 
     def _deserialize(self, params):
-        self.Rank = params.get("Rank")
+        self._Rank = params.get("Rank")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -620,18 +1058,27 @@ class TaskData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 画像洞察任务ID
+        :param _Id: 画像洞察任务ID
         :type Id: int
         """
-        self.Id = None
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -644,31 +1091,56 @@ class TaskDetailData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagId: 画像TAG ID
+        :param _TagId: 画像TAG ID
         :type TagId: int
-        :param TagDesc: 画像TAG描述（如“省份分布”）
+        :param _TagDesc: 画像TAG描述（如“省份分布”）
         :type TagDesc: str
-        :param LabelDetailDataList: 画像Label对象列表（一个TAG对于N个Label，例如“省份分布”TAG对应“广东省”、“浙江省”等多个Label）
+        :param _LabelDetailDataList: 画像Label对象列表（一个TAG对于N个Label，例如“省份分布”TAG对应“广东省”、“浙江省”等多个Label）
         :type LabelDetailDataList: list of LabelDetailData
         """
-        self.TagId = None
-        self.TagDesc = None
-        self.LabelDetailDataList = None
+        self._TagId = None
+        self._TagDesc = None
+        self._LabelDetailDataList = None
+
+    @property
+    def TagId(self):
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def TagDesc(self):
+        return self._TagDesc
+
+    @TagDesc.setter
+    def TagDesc(self, TagDesc):
+        self._TagDesc = TagDesc
+
+    @property
+    def LabelDetailDataList(self):
+        return self._LabelDetailDataList
+
+    @LabelDetailDataList.setter
+    def LabelDetailDataList(self, LabelDetailDataList):
+        self._LabelDetailDataList = LabelDetailDataList
 
 
     def _deserialize(self, params):
-        self.TagId = params.get("TagId")
-        self.TagDesc = params.get("TagDesc")
+        self._TagId = params.get("TagId")
+        self._TagDesc = params.get("TagDesc")
         if params.get("LabelDetailDataList") is not None:
-            self.LabelDetailDataList = []
+            self._LabelDetailDataList = []
             for item in params.get("LabelDetailDataList"):
                 obj = LabelDetailData()
                 obj._deserialize(item)
-                self.LabelDetailDataList.append(obj)
+                self._LabelDetailDataList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -681,35 +1153,68 @@ class TaskListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNumber: 查询分页页码
+        :param _PageNumber: 查询分页页码
         :type PageNumber: int
-        :param PageSize: 查询分页大小
+        :param _PageSize: 查询分页大小
         :type PageSize: int
-        :param TotalCount: 任务列表总记录数
+        :param _TotalCount: 任务列表总记录数
         :type TotalCount: int
-        :param TaskList: 任务列表
+        :param _TaskList: 任务列表
         :type TaskList: list of ListModel
         """
-        self.PageNumber = None
-        self.PageSize = None
-        self.TotalCount = None
-        self.TaskList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TaskList = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskList(self):
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
 
 
     def _deserialize(self, params):
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        self.TotalCount = params.get("TotalCount")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TaskList") is not None:
-            self.TaskList = []
+            self._TaskList = []
             for item in params.get("TaskList"):
                 obj = ListModel()
                 obj._deserialize(item)
-                self.TaskList.append(obj)
+                self._TaskList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -722,26 +1227,51 @@ class UploadIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: id标志的类型: 0:imei 7:IDFA 8:MD5(imei)
+        :param _Type: id标志的类型: 0:imei 7:IDFA 8:MD5(imei)
         :type Type: int
-        :param TaskName: 任务名称
+        :param _TaskName: 任务名称
         :type TaskName: str
-        :param IdListBase64: ID列表（ID间使用换行符分割、然后使用Base64编码）
+        :param _IdListBase64: ID列表（ID间使用换行符分割、然后使用Base64编码）
         :type IdListBase64: str
         """
-        self.Type = None
-        self.TaskName = None
-        self.IdListBase64 = None
+        self._Type = None
+        self._TaskName = None
+        self._IdListBase64 = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def IdListBase64(self):
+        return self._IdListBase64
+
+    @IdListBase64.setter
+    def IdListBase64(self, IdListBase64):
+        self._IdListBase64 = IdListBase64
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.TaskName = params.get("TaskName")
-        self.IdListBase64 = params.get("IdListBase64")
+        self._Type = params.get("Type")
+        self._TaskName = params.get("TaskName")
+        self._IdListBase64 = params.get("IdListBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -754,17 +1284,33 @@ class UploadIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskData: 画像洞察任务ID等信息
+        :param _TaskData: 画像洞察任务ID等信息
         :type TaskData: :class:`tencentcloud.apcas.v20201127.models.TaskData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskData = None
-        self.RequestId = None
+        self._TaskData = None
+        self._RequestId = None
+
+    @property
+    def TaskData(self):
+        return self._TaskData
+
+    @TaskData.setter
+    def TaskData(self, TaskData):
+        self._TaskData = TaskData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskData") is not None:
-            self.TaskData = TaskData()
-            self.TaskData._deserialize(params.get("TaskData"))
-        self.RequestId = params.get("RequestId")
+            self._TaskData = TaskData()
+            self._TaskData._deserialize(params.get("TaskData"))
+        self._RequestId = params.get("RequestId")

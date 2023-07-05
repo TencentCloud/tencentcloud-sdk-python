@@ -25,22 +25,39 @@ class CbsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Size: cbs存储大小，单位TB
+        :param _Size: cbs存储大小，单位TB
         :type Size: int
-        :param Type: cbs存储类型，默认为SSD
+        :param _Type: cbs存储类型，默认为SSD
         :type Type: str
         """
-        self.Size = None
-        self.Type = None
+        self._Size = None
+        self._Type = None
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Size = params.get("Size")
-        self.Type = params.get("Type")
+        self._Size = params.get("Size")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,26 +70,51 @@ class CosCapacity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCapacity: 已购cos的总容量大小，单位GB
+        :param _TotalCapacity: 已购cos的总容量大小，单位GB
         :type TotalCapacity: float
-        :param TotalFreeCapacity: 剩余可用cos的容量大小，单位GB
+        :param _TotalFreeCapacity: 剩余可用cos的容量大小，单位GB
         :type TotalFreeCapacity: float
-        :param TotalUsedCapacity: 已用cos的容量大小，单位GB
+        :param _TotalUsedCapacity: 已用cos的容量大小，单位GB
         :type TotalUsedCapacity: float
         """
-        self.TotalCapacity = None
-        self.TotalFreeCapacity = None
-        self.TotalUsedCapacity = None
+        self._TotalCapacity = None
+        self._TotalFreeCapacity = None
+        self._TotalUsedCapacity = None
+
+    @property
+    def TotalCapacity(self):
+        return self._TotalCapacity
+
+    @TotalCapacity.setter
+    def TotalCapacity(self, TotalCapacity):
+        self._TotalCapacity = TotalCapacity
+
+    @property
+    def TotalFreeCapacity(self):
+        return self._TotalFreeCapacity
+
+    @TotalFreeCapacity.setter
+    def TotalFreeCapacity(self, TotalFreeCapacity):
+        self._TotalFreeCapacity = TotalFreeCapacity
+
+    @property
+    def TotalUsedCapacity(self):
+        return self._TotalUsedCapacity
+
+    @TotalUsedCapacity.setter
+    def TotalUsedCapacity(self, TotalUsedCapacity):
+        self._TotalUsedCapacity = TotalUsedCapacity
 
 
     def _deserialize(self, params):
-        self.TotalCapacity = params.get("TotalCapacity")
-        self.TotalFreeCapacity = params.get("TotalFreeCapacity")
-        self.TotalUsedCapacity = params.get("TotalUsedCapacity")
+        self._TotalCapacity = params.get("TotalCapacity")
+        self._TotalFreeCapacity = params.get("TotalFreeCapacity")
+        self._TotalUsedCapacity = params.get("TotalUsedCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -85,22 +127,39 @@ class CosInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Size: COS存储大小，单位TB
+        :param _Size: COS存储大小，单位TB
         :type Size: int
-        :param Type: COS存储类型，默认为cos
+        :param _Type: COS存储类型，默认为cos
         :type Type: str
         """
-        self.Size = None
-        self.Type = None
+        self._Size = None
+        self._Type = None
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Size = params.get("Size")
-        self.Type = params.get("Type")
+        self._Size = params.get("Size")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -113,47 +172,96 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 专用集群id
+        :param _DedicatedClusterId: 专用集群id
         :type DedicatedClusterId: str
-        :param DedicatedClusterTypes: order关联的专用集群类型数组
+        :param _DedicatedClusterTypes: order关联的专用集群类型数组
         :type DedicatedClusterTypes: list of DedicatedClusterTypeInfo
-        :param CosInfo: order关联的cos存储信息
+        :param _CosInfo: order关联的cos存储信息
         :type CosInfo: :class:`tencentcloud.cdc.v20201214.models.CosInfo`
-        :param CbsInfo: order关联的cbs存储信息
+        :param _CbsInfo: order关联的cbs存储信息
         :type CbsInfo: :class:`tencentcloud.cdc.v20201214.models.CbsInfo`
-        :param PurchaseSource: 购买来源，默认为cloudApi
+        :param _PurchaseSource: 购买来源，默认为cloudApi
         :type PurchaseSource: str
-        :param DedicatedClusterOrderId: 当调用API接口提交订单时，需要提交DedicatedClusterOrderId
+        :param _DedicatedClusterOrderId: 当调用API接口提交订单时，需要提交DedicatedClusterOrderId
         :type DedicatedClusterOrderId: str
         """
-        self.DedicatedClusterId = None
-        self.DedicatedClusterTypes = None
-        self.CosInfo = None
-        self.CbsInfo = None
-        self.PurchaseSource = None
-        self.DedicatedClusterOrderId = None
+        self._DedicatedClusterId = None
+        self._DedicatedClusterTypes = None
+        self._CosInfo = None
+        self._CbsInfo = None
+        self._PurchaseSource = None
+        self._DedicatedClusterOrderId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def DedicatedClusterTypes(self):
+        return self._DedicatedClusterTypes
+
+    @DedicatedClusterTypes.setter
+    def DedicatedClusterTypes(self, DedicatedClusterTypes):
+        self._DedicatedClusterTypes = DedicatedClusterTypes
+
+    @property
+    def CosInfo(self):
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+    @property
+    def CbsInfo(self):
+        return self._CbsInfo
+
+    @CbsInfo.setter
+    def CbsInfo(self, CbsInfo):
+        self._CbsInfo = CbsInfo
+
+    @property
+    def PurchaseSource(self):
+        return self._PurchaseSource
+
+    @PurchaseSource.setter
+    def PurchaseSource(self, PurchaseSource):
+        self._PurchaseSource = PurchaseSource
+
+    @property
+    def DedicatedClusterOrderId(self):
+        return self._DedicatedClusterOrderId
+
+    @DedicatedClusterOrderId.setter
+    def DedicatedClusterOrderId(self, DedicatedClusterOrderId):
+        self._DedicatedClusterOrderId = DedicatedClusterOrderId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         if params.get("DedicatedClusterTypes") is not None:
-            self.DedicatedClusterTypes = []
+            self._DedicatedClusterTypes = []
             for item in params.get("DedicatedClusterTypes"):
                 obj = DedicatedClusterTypeInfo()
                 obj._deserialize(item)
-                self.DedicatedClusterTypes.append(obj)
+                self._DedicatedClusterTypes.append(obj)
         if params.get("CosInfo") is not None:
-            self.CosInfo = CosInfo()
-            self.CosInfo._deserialize(params.get("CosInfo"))
+            self._CosInfo = CosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
         if params.get("CbsInfo") is not None:
-            self.CbsInfo = CbsInfo()
-            self.CbsInfo._deserialize(params.get("CbsInfo"))
-        self.PurchaseSource = params.get("PurchaseSource")
-        self.DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
+            self._CbsInfo = CbsInfo()
+            self._CbsInfo._deserialize(params.get("CbsInfo"))
+        self._PurchaseSource = params.get("PurchaseSource")
+        self._DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -166,19 +274,35 @@ class CreateDedicatedClusterOrderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterOrderId: 专用集群订单id
+        :param _DedicatedClusterOrderId: 专用集群订单id
 注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterOrderId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DedicatedClusterOrderId = None
-        self.RequestId = None
+        self._DedicatedClusterOrderId = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterOrderId(self):
+        return self._DedicatedClusterOrderId
+
+    @DedicatedClusterOrderId.setter
+    def DedicatedClusterOrderId(self, DedicatedClusterOrderId):
+        self._DedicatedClusterOrderId = DedicatedClusterOrderId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
-        self.RequestId = params.get("RequestId")
+        self._DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDedicatedClusterRequest(AbstractModel):
@@ -188,30 +312,63 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteId: 专用集群所属的SiteId
+        :param _SiteId: 专用集群所属的SiteId
         :type SiteId: str
-        :param Name: 专用集群的名称
+        :param _Name: 专用集群的名称
         :type Name: str
-        :param Zone: 专用集群所属的可用区
+        :param _Zone: 专用集群所属的可用区
         :type Zone: str
-        :param Description: 专用集群的描述
+        :param _Description: 专用集群的描述
         :type Description: str
         """
-        self.SiteId = None
-        self.Name = None
-        self.Zone = None
-        self.Description = None
+        self._SiteId = None
+        self._Name = None
+        self._Zone = None
+        self._Description = None
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.SiteId = params.get("SiteId")
-        self.Name = params.get("Name")
-        self.Zone = params.get("Zone")
-        self.Description = params.get("Description")
+        self._SiteId = params.get("SiteId")
+        self._Name = params.get("Name")
+        self._Zone = params.get("Zone")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -224,18 +381,34 @@ class CreateDedicatedClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 创建的专用集群id
+        :param _DedicatedClusterId: 创建的专用集群id
         :type DedicatedClusterId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DedicatedClusterId = None
-        self.RequestId = None
+        self._DedicatedClusterId = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
-        self.RequestId = params.get("RequestId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSiteRequest(AbstractModel):
@@ -245,114 +418,299 @@ class CreateSiteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 站点名称
+        :param _Name: 站点名称
         :type Name: str
-        :param Country: 站点所在国家
+        :param _Country: 站点所在国家
         :type Country: str
-        :param Province: 站点所在省份
+        :param _Province: 站点所在省份
         :type Province: str
-        :param City: 站点所在城市
+        :param _City: 站点所在城市
         :type City: str
-        :param AddressLine: 站点所在地区的详细地址信息
+        :param _AddressLine: 站点所在地区的详细地址信息
         :type AddressLine: str
-        :param Description: 站点描述
+        :param _Description: 站点描述
         :type Description: str
-        :param Note: 注意事项
+        :param _Note: 注意事项
         :type Note: str
-        :param FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        :param _FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
         :type FiberType: str
-        :param OpticalStandard: 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        :param _OpticalStandard: 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
         :type OpticalStandard: str
-        :param PowerConnectors: 电源连接器类型
+        :param _PowerConnectors: 电源连接器类型
         :type PowerConnectors: str
-        :param PowerFeedDrop: 从机架上方还是下方供电。
+        :param _PowerFeedDrop: 从机架上方还是下方供电。
         :type PowerFeedDrop: str
-        :param MaxWeight: 最大承重(KG)
+        :param _MaxWeight: 最大承重(KG)
         :type MaxWeight: int
-        :param PowerDrawKva: 功耗(KW)
+        :param _PowerDrawKva: 功耗(KW)
         :type PowerDrawKva: int
-        :param UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
+        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
         :type UplinkSpeedGbps: int
-        :param UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :param _UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
         :type UplinkCount: int
-        :param ConditionRequirement: 是否满足下面环境条件：
+        :param _ConditionRequirement: 是否满足下面环境条件：
 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
 2、确定的机架位置包含:
 温度范围为 41 到 104°F (5 到 40°C)。
 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
         :type ConditionRequirement: bool
-        :param DimensionRequirement: 是否满足下面的尺寸条件：
+        :param _DimensionRequirement: 是否满足下面的尺寸条件：
 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
         :type DimensionRequirement: bool
-        :param RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+        :param _RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
         :type RedundantNetworking: bool
-        :param PostalCode: 站点所在地区的邮编
+        :param _PostalCode: 站点所在地区的邮编
         :type PostalCode: int
-        :param OptionalAddressLine: 站点所在地区的详细地址信息（补充）
+        :param _OptionalAddressLine: 站点所在地区的详细地址信息（补充）
         :type OptionalAddressLine: str
-        :param NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
+        :param _NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
         :type NeedHelp: bool
-        :param RedundantPower: 是否电源冗余
+        :param _RedundantPower: 是否电源冗余
         :type RedundantPower: bool
-        :param BreakerRequirement: 上游断路器是否具备
+        :param _BreakerRequirement: 上游断路器是否具备
         :type BreakerRequirement: bool
         """
-        self.Name = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.AddressLine = None
-        self.Description = None
-        self.Note = None
-        self.FiberType = None
-        self.OpticalStandard = None
-        self.PowerConnectors = None
-        self.PowerFeedDrop = None
-        self.MaxWeight = None
-        self.PowerDrawKva = None
-        self.UplinkSpeedGbps = None
-        self.UplinkCount = None
-        self.ConditionRequirement = None
-        self.DimensionRequirement = None
-        self.RedundantNetworking = None
-        self.PostalCode = None
-        self.OptionalAddressLine = None
-        self.NeedHelp = None
-        self.RedundantPower = None
-        self.BreakerRequirement = None
+        self._Name = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._AddressLine = None
+        self._Description = None
+        self._Note = None
+        self._FiberType = None
+        self._OpticalStandard = None
+        self._PowerConnectors = None
+        self._PowerFeedDrop = None
+        self._MaxWeight = None
+        self._PowerDrawKva = None
+        self._UplinkSpeedGbps = None
+        self._UplinkCount = None
+        self._ConditionRequirement = None
+        self._DimensionRequirement = None
+        self._RedundantNetworking = None
+        self._PostalCode = None
+        self._OptionalAddressLine = None
+        self._NeedHelp = None
+        self._RedundantPower = None
+        self._BreakerRequirement = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def AddressLine(self):
+        return self._AddressLine
+
+    @AddressLine.setter
+    def AddressLine(self, AddressLine):
+        self._AddressLine = AddressLine
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def FiberType(self):
+        return self._FiberType
+
+    @FiberType.setter
+    def FiberType(self, FiberType):
+        self._FiberType = FiberType
+
+    @property
+    def OpticalStandard(self):
+        return self._OpticalStandard
+
+    @OpticalStandard.setter
+    def OpticalStandard(self, OpticalStandard):
+        self._OpticalStandard = OpticalStandard
+
+    @property
+    def PowerConnectors(self):
+        return self._PowerConnectors
+
+    @PowerConnectors.setter
+    def PowerConnectors(self, PowerConnectors):
+        self._PowerConnectors = PowerConnectors
+
+    @property
+    def PowerFeedDrop(self):
+        return self._PowerFeedDrop
+
+    @PowerFeedDrop.setter
+    def PowerFeedDrop(self, PowerFeedDrop):
+        self._PowerFeedDrop = PowerFeedDrop
+
+    @property
+    def MaxWeight(self):
+        return self._MaxWeight
+
+    @MaxWeight.setter
+    def MaxWeight(self, MaxWeight):
+        self._MaxWeight = MaxWeight
+
+    @property
+    def PowerDrawKva(self):
+        return self._PowerDrawKva
+
+    @PowerDrawKva.setter
+    def PowerDrawKva(self, PowerDrawKva):
+        self._PowerDrawKva = PowerDrawKva
+
+    @property
+    def UplinkSpeedGbps(self):
+        return self._UplinkSpeedGbps
+
+    @UplinkSpeedGbps.setter
+    def UplinkSpeedGbps(self, UplinkSpeedGbps):
+        self._UplinkSpeedGbps = UplinkSpeedGbps
+
+    @property
+    def UplinkCount(self):
+        return self._UplinkCount
+
+    @UplinkCount.setter
+    def UplinkCount(self, UplinkCount):
+        self._UplinkCount = UplinkCount
+
+    @property
+    def ConditionRequirement(self):
+        return self._ConditionRequirement
+
+    @ConditionRequirement.setter
+    def ConditionRequirement(self, ConditionRequirement):
+        self._ConditionRequirement = ConditionRequirement
+
+    @property
+    def DimensionRequirement(self):
+        return self._DimensionRequirement
+
+    @DimensionRequirement.setter
+    def DimensionRequirement(self, DimensionRequirement):
+        self._DimensionRequirement = DimensionRequirement
+
+    @property
+    def RedundantNetworking(self):
+        return self._RedundantNetworking
+
+    @RedundantNetworking.setter
+    def RedundantNetworking(self, RedundantNetworking):
+        self._RedundantNetworking = RedundantNetworking
+
+    @property
+    def PostalCode(self):
+        return self._PostalCode
+
+    @PostalCode.setter
+    def PostalCode(self, PostalCode):
+        self._PostalCode = PostalCode
+
+    @property
+    def OptionalAddressLine(self):
+        return self._OptionalAddressLine
+
+    @OptionalAddressLine.setter
+    def OptionalAddressLine(self, OptionalAddressLine):
+        self._OptionalAddressLine = OptionalAddressLine
+
+    @property
+    def NeedHelp(self):
+        return self._NeedHelp
+
+    @NeedHelp.setter
+    def NeedHelp(self, NeedHelp):
+        self._NeedHelp = NeedHelp
+
+    @property
+    def RedundantPower(self):
+        return self._RedundantPower
+
+    @RedundantPower.setter
+    def RedundantPower(self, RedundantPower):
+        self._RedundantPower = RedundantPower
+
+    @property
+    def BreakerRequirement(self):
+        return self._BreakerRequirement
+
+    @BreakerRequirement.setter
+    def BreakerRequirement(self, BreakerRequirement):
+        self._BreakerRequirement = BreakerRequirement
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.AddressLine = params.get("AddressLine")
-        self.Description = params.get("Description")
-        self.Note = params.get("Note")
-        self.FiberType = params.get("FiberType")
-        self.OpticalStandard = params.get("OpticalStandard")
-        self.PowerConnectors = params.get("PowerConnectors")
-        self.PowerFeedDrop = params.get("PowerFeedDrop")
-        self.MaxWeight = params.get("MaxWeight")
-        self.PowerDrawKva = params.get("PowerDrawKva")
-        self.UplinkSpeedGbps = params.get("UplinkSpeedGbps")
-        self.UplinkCount = params.get("UplinkCount")
-        self.ConditionRequirement = params.get("ConditionRequirement")
-        self.DimensionRequirement = params.get("DimensionRequirement")
-        self.RedundantNetworking = params.get("RedundantNetworking")
-        self.PostalCode = params.get("PostalCode")
-        self.OptionalAddressLine = params.get("OptionalAddressLine")
-        self.NeedHelp = params.get("NeedHelp")
-        self.RedundantPower = params.get("RedundantPower")
-        self.BreakerRequirement = params.get("BreakerRequirement")
+        self._Name = params.get("Name")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._AddressLine = params.get("AddressLine")
+        self._Description = params.get("Description")
+        self._Note = params.get("Note")
+        self._FiberType = params.get("FiberType")
+        self._OpticalStandard = params.get("OpticalStandard")
+        self._PowerConnectors = params.get("PowerConnectors")
+        self._PowerFeedDrop = params.get("PowerFeedDrop")
+        self._MaxWeight = params.get("MaxWeight")
+        self._PowerDrawKva = params.get("PowerDrawKva")
+        self._UplinkSpeedGbps = params.get("UplinkSpeedGbps")
+        self._UplinkCount = params.get("UplinkCount")
+        self._ConditionRequirement = params.get("ConditionRequirement")
+        self._DimensionRequirement = params.get("DimensionRequirement")
+        self._RedundantNetworking = params.get("RedundantNetworking")
+        self._PostalCode = params.get("PostalCode")
+        self._OptionalAddressLine = params.get("OptionalAddressLine")
+        self._NeedHelp = params.get("NeedHelp")
+        self._RedundantPower = params.get("RedundantPower")
+        self._BreakerRequirement = params.get("BreakerRequirement")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -365,18 +723,34 @@ class CreateSiteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteId: 创建Site生成的id
+        :param _SiteId: 创建Site生成的id
         :type SiteId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SiteId = None
-        self.RequestId = None
+        self._SiteId = None
+        self._RequestId = None
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SiteId = params.get("SiteId")
-        self.RequestId = params.get("RequestId")
+        self._SiteId = params.get("SiteId")
+        self._RequestId = params.get("RequestId")
 
 
 class DedicatedCluster(AbstractModel):
@@ -386,43 +760,100 @@ class DedicatedCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 专用集群id。如"cluster-xxxxx"。
+        :param _DedicatedClusterId: 专用集群id。如"cluster-xxxxx"。
         :type DedicatedClusterId: str
-        :param Zone: 专用集群所属可用区名称。
+        :param _Zone: 专用集群所属可用区名称。
         :type Zone: str
-        :param Description: 专用集群的描述。
+        :param _Description: 专用集群的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param Name: 专用集群的名称。
+        :param _Name: 专用集群的名称。
         :type Name: str
-        :param LifecycleStatus: 专用集群的生命周期。如"PENDING"。
+        :param _LifecycleStatus: 专用集群的生命周期。如"PENDING"。
         :type LifecycleStatus: str
-        :param CreateTime: 专用集群的创建时间。
+        :param _CreateTime: 专用集群的创建时间。
         :type CreateTime: str
-        :param SiteId: 专用集群所属的站点id。
+        :param _SiteId: 专用集群所属的站点id。
         :type SiteId: str
         """
-        self.DedicatedClusterId = None
-        self.Zone = None
-        self.Description = None
-        self.Name = None
-        self.LifecycleStatus = None
-        self.CreateTime = None
-        self.SiteId = None
+        self._DedicatedClusterId = None
+        self._Zone = None
+        self._Description = None
+        self._Name = None
+        self._LifecycleStatus = None
+        self._CreateTime = None
+        self._SiteId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LifecycleStatus(self):
+        return self._LifecycleStatus
+
+    @LifecycleStatus.setter
+    def LifecycleStatus(self, LifecycleStatus):
+        self._LifecycleStatus = LifecycleStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
-        self.Zone = params.get("Zone")
-        self.Description = params.get("Description")
-        self.Name = params.get("Name")
-        self.LifecycleStatus = params.get("LifecycleStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.SiteId = params.get("SiteId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._Zone = params.get("Zone")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._LifecycleStatus = params.get("LifecycleStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._SiteId = params.get("SiteId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -435,74 +866,195 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param InstanceType: 规格名称
+        :param _InstanceType: 规格名称
         :type InstanceType: str
-        :param NetworkCard: 网卡类型，例如：25代表25G网卡
+        :param _NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
-        :param Cpu: 实例的CPU核数，单位：核。
+        :param _Cpu: 实例的CPU核数，单位：核。
         :type Cpu: int
-        :param Memory: 实例内存容量，单位：`GB`。
+        :param _Memory: 实例内存容量，单位：`GB`。
         :type Memory: int
-        :param InstanceFamily: 实例机型系列。
+        :param _InstanceFamily: 实例机型系列。
         :type InstanceFamily: str
-        :param TypeName: 机型名称。
+        :param _TypeName: 机型名称。
         :type TypeName: str
-        :param StorageBlockAmount: 本地存储块数量。
+        :param _StorageBlockAmount: 本地存储块数量。
         :type StorageBlockAmount: int
-        :param InstanceBandwidth: 内网带宽，单位Gbps。
+        :param _InstanceBandwidth: 内网带宽，单位Gbps。
         :type InstanceBandwidth: float
-        :param InstancePps: 网络收发包能力，单位万PPS。
+        :param _InstancePps: 网络收发包能力，单位万PPS。
         :type InstancePps: int
-        :param CpuType: 处理器型号。
+        :param _CpuType: 处理器型号。
         :type CpuType: str
-        :param Gpu: 实例的GPU数量。
+        :param _Gpu: 实例的GPU数量。
         :type Gpu: int
-        :param Fpga: 实例的FPGA数量。
+        :param _Fpga: 实例的FPGA数量。
         :type Fpga: int
-        :param Remark: 机型描述
+        :param _Remark: 机型描述
         :type Remark: str
-        :param Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
+        :param _Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
         :type Status: str
         """
-        self.Zone = None
-        self.InstanceType = None
-        self.NetworkCard = None
-        self.Cpu = None
-        self.Memory = None
-        self.InstanceFamily = None
-        self.TypeName = None
-        self.StorageBlockAmount = None
-        self.InstanceBandwidth = None
-        self.InstancePps = None
-        self.CpuType = None
-        self.Gpu = None
-        self.Fpga = None
-        self.Remark = None
-        self.Status = None
+        self._Zone = None
+        self._InstanceType = None
+        self._NetworkCard = None
+        self._Cpu = None
+        self._Memory = None
+        self._InstanceFamily = None
+        self._TypeName = None
+        self._StorageBlockAmount = None
+        self._InstanceBandwidth = None
+        self._InstancePps = None
+        self._CpuType = None
+        self._Gpu = None
+        self._Fpga = None
+        self._Remark = None
+        self._Status = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def NetworkCard(self):
+        return self._NetworkCard
+
+    @NetworkCard.setter
+    def NetworkCard(self, NetworkCard):
+        self._NetworkCard = NetworkCard
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def InstanceFamily(self):
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def TypeName(self):
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def StorageBlockAmount(self):
+        return self._StorageBlockAmount
+
+    @StorageBlockAmount.setter
+    def StorageBlockAmount(self, StorageBlockAmount):
+        self._StorageBlockAmount = StorageBlockAmount
+
+    @property
+    def InstanceBandwidth(self):
+        return self._InstanceBandwidth
+
+    @InstanceBandwidth.setter
+    def InstanceBandwidth(self, InstanceBandwidth):
+        self._InstanceBandwidth = InstanceBandwidth
+
+    @property
+    def InstancePps(self):
+        return self._InstancePps
+
+    @InstancePps.setter
+    def InstancePps(self, InstancePps):
+        self._InstancePps = InstancePps
+
+    @property
+    def CpuType(self):
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def Gpu(self):
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+    @property
+    def Fpga(self):
+        return self._Fpga
+
+    @Fpga.setter
+    def Fpga(self, Fpga):
+        self._Fpga = Fpga
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.InstanceType = params.get("InstanceType")
-        self.NetworkCard = params.get("NetworkCard")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.InstanceFamily = params.get("InstanceFamily")
-        self.TypeName = params.get("TypeName")
-        self.StorageBlockAmount = params.get("StorageBlockAmount")
-        self.InstanceBandwidth = params.get("InstanceBandwidth")
-        self.InstancePps = params.get("InstancePps")
-        self.CpuType = params.get("CpuType")
-        self.Gpu = params.get("Gpu")
-        self.Fpga = params.get("Fpga")
-        self.Remark = params.get("Remark")
-        self.Status = params.get("Status")
+        self._Zone = params.get("Zone")
+        self._InstanceType = params.get("InstanceType")
+        self._NetworkCard = params.get("NetworkCard")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._TypeName = params.get("TypeName")
+        self._StorageBlockAmount = params.get("StorageBlockAmount")
+        self._InstanceBandwidth = params.get("InstanceBandwidth")
+        self._InstancePps = params.get("InstancePps")
+        self._CpuType = params.get("CpuType")
+        self._Gpu = params.get("Gpu")
+        self._Fpga = params.get("Fpga")
+        self._Remark = params.get("Remark")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -515,108 +1067,269 @@ class DedicatedClusterOrder(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 专用集群id
+        :param _DedicatedClusterId: 专用集群id
         :type DedicatedClusterId: str
-        :param DedicatedClusterTypeId: 专用集群类型id（移到下一层级，已经废弃，后续将删除）
+        :param _DedicatedClusterTypeId: 专用集群类型id（移到下一层级，已经废弃，后续将删除）
         :type DedicatedClusterTypeId: str
-        :param SupportedStorageType: 支持的存储类型列表（移到下一层级，已经废弃，后续将删除）
+        :param _SupportedStorageType: 支持的存储类型列表（移到下一层级，已经废弃，后续将删除）
         :type SupportedStorageType: list of str
-        :param SupportedUplinkSpeed: 支持的上连交换机的链路传输速率(GiB)（移到下一层级，已经废弃，后续将删除）
+        :param _SupportedUplinkSpeed: 支持的上连交换机的链路传输速率(GiB)（移到下一层级，已经废弃，后续将删除）
         :type SupportedUplinkSpeed: list of int
-        :param SupportedInstanceFamily: 支持的实例族列表（移到下一层级，已经废弃，后续将删除）
+        :param _SupportedInstanceFamily: 支持的实例族列表（移到下一层级，已经废弃，后续将删除）
         :type SupportedInstanceFamily: list of str
-        :param Weight: 地板承重要求(KG)
+        :param _Weight: 地板承重要求(KG)
         :type Weight: int
-        :param PowerDraw: 功率要求(KW)
+        :param _PowerDraw: 功率要求(KW)
         :type PowerDraw: float
-        :param OrderStatus: 订单状态
+        :param _OrderStatus: 订单状态
         :type OrderStatus: str
-        :param CreateTime: 订单创建的时间
+        :param _CreateTime: 订单创建的时间
         :type CreateTime: str
-        :param DedicatedClusterOrderId: 大订单ID
+        :param _DedicatedClusterOrderId: 大订单ID
         :type DedicatedClusterOrderId: str
-        :param Action: 订单类型，创建CREATE或扩容EXTEND
+        :param _Action: 订单类型，创建CREATE或扩容EXTEND
         :type Action: str
-        :param DedicatedClusterOrderItems: 子订单详情列表
+        :param _DedicatedClusterOrderItems: 子订单详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterOrderItems: list of DedicatedClusterOrderItem
-        :param Cpu: cpu值
+        :param _Cpu: cpu值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: int
-        :param Mem: mem值
+        :param _Mem: mem值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mem: int
-        :param Gpu: gpu值
+        :param _Gpu: gpu值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: int
-        :param PayStatus: 0代表未支付，1代表已支付
+        :param _PayStatus: 0代表未支付，1代表已支付
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayStatus: int
-        :param PayType: 支付方式，一次性、按月、按年
+        :param _PayType: 支付方式，一次性、按月、按年
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayType: str
-        :param TimeUnit: 购买时长的单位
+        :param _TimeUnit: 购买时长的单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
-        :param TimeSpan: 购买时长
+        :param _TimeSpan: 购买时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
-        :param OrderType: 订单类型
+        :param _OrderType: 订单类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderType: str
         """
-        self.DedicatedClusterId = None
-        self.DedicatedClusterTypeId = None
-        self.SupportedStorageType = None
-        self.SupportedUplinkSpeed = None
-        self.SupportedInstanceFamily = None
-        self.Weight = None
-        self.PowerDraw = None
-        self.OrderStatus = None
-        self.CreateTime = None
-        self.DedicatedClusterOrderId = None
-        self.Action = None
-        self.DedicatedClusterOrderItems = None
-        self.Cpu = None
-        self.Mem = None
-        self.Gpu = None
-        self.PayStatus = None
-        self.PayType = None
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.OrderType = None
+        self._DedicatedClusterId = None
+        self._DedicatedClusterTypeId = None
+        self._SupportedStorageType = None
+        self._SupportedUplinkSpeed = None
+        self._SupportedInstanceFamily = None
+        self._Weight = None
+        self._PowerDraw = None
+        self._OrderStatus = None
+        self._CreateTime = None
+        self._DedicatedClusterOrderId = None
+        self._Action = None
+        self._DedicatedClusterOrderItems = None
+        self._Cpu = None
+        self._Mem = None
+        self._Gpu = None
+        self._PayStatus = None
+        self._PayType = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._OrderType = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def DedicatedClusterTypeId(self):
+        return self._DedicatedClusterTypeId
+
+    @DedicatedClusterTypeId.setter
+    def DedicatedClusterTypeId(self, DedicatedClusterTypeId):
+        self._DedicatedClusterTypeId = DedicatedClusterTypeId
+
+    @property
+    def SupportedStorageType(self):
+        return self._SupportedStorageType
+
+    @SupportedStorageType.setter
+    def SupportedStorageType(self, SupportedStorageType):
+        self._SupportedStorageType = SupportedStorageType
+
+    @property
+    def SupportedUplinkSpeed(self):
+        return self._SupportedUplinkSpeed
+
+    @SupportedUplinkSpeed.setter
+    def SupportedUplinkSpeed(self, SupportedUplinkSpeed):
+        self._SupportedUplinkSpeed = SupportedUplinkSpeed
+
+    @property
+    def SupportedInstanceFamily(self):
+        return self._SupportedInstanceFamily
+
+    @SupportedInstanceFamily.setter
+    def SupportedInstanceFamily(self, SupportedInstanceFamily):
+        self._SupportedInstanceFamily = SupportedInstanceFamily
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def PowerDraw(self):
+        return self._PowerDraw
+
+    @PowerDraw.setter
+    def PowerDraw(self, PowerDraw):
+        self._PowerDraw = PowerDraw
+
+    @property
+    def OrderStatus(self):
+        return self._OrderStatus
+
+    @OrderStatus.setter
+    def OrderStatus(self, OrderStatus):
+        self._OrderStatus = OrderStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DedicatedClusterOrderId(self):
+        return self._DedicatedClusterOrderId
+
+    @DedicatedClusterOrderId.setter
+    def DedicatedClusterOrderId(self, DedicatedClusterOrderId):
+        self._DedicatedClusterOrderId = DedicatedClusterOrderId
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def DedicatedClusterOrderItems(self):
+        return self._DedicatedClusterOrderItems
+
+    @DedicatedClusterOrderItems.setter
+    def DedicatedClusterOrderItems(self, DedicatedClusterOrderItems):
+        self._DedicatedClusterOrderItems = DedicatedClusterOrderItems
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Gpu(self):
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+    @property
+    def PayStatus(self):
+        return self._PayStatus
+
+    @PayStatus.setter
+    def PayStatus(self, PayStatus):
+        self._PayStatus = PayStatus
+
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
-        self.DedicatedClusterTypeId = params.get("DedicatedClusterTypeId")
-        self.SupportedStorageType = params.get("SupportedStorageType")
-        self.SupportedUplinkSpeed = params.get("SupportedUplinkSpeed")
-        self.SupportedInstanceFamily = params.get("SupportedInstanceFamily")
-        self.Weight = params.get("Weight")
-        self.PowerDraw = params.get("PowerDraw")
-        self.OrderStatus = params.get("OrderStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
-        self.Action = params.get("Action")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DedicatedClusterTypeId = params.get("DedicatedClusterTypeId")
+        self._SupportedStorageType = params.get("SupportedStorageType")
+        self._SupportedUplinkSpeed = params.get("SupportedUplinkSpeed")
+        self._SupportedInstanceFamily = params.get("SupportedInstanceFamily")
+        self._Weight = params.get("Weight")
+        self._PowerDraw = params.get("PowerDraw")
+        self._OrderStatus = params.get("OrderStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
+        self._Action = params.get("Action")
         if params.get("DedicatedClusterOrderItems") is not None:
-            self.DedicatedClusterOrderItems = []
+            self._DedicatedClusterOrderItems = []
             for item in params.get("DedicatedClusterOrderItems"):
                 obj = DedicatedClusterOrderItem()
                 obj._deserialize(item)
-                self.DedicatedClusterOrderItems.append(obj)
-        self.Cpu = params.get("Cpu")
-        self.Mem = params.get("Mem")
-        self.Gpu = params.get("Gpu")
-        self.PayStatus = params.get("PayStatus")
-        self.PayType = params.get("PayType")
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
-        self.OrderType = params.get("OrderType")
+                self._DedicatedClusterOrderItems.append(obj)
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._Gpu = params.get("Gpu")
+        self._PayStatus = params.get("PayStatus")
+        self._PayType = params.get("PayType")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -629,93 +1342,246 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterTypeId: 专用集群类型id
+        :param _DedicatedClusterTypeId: 专用集群类型id
         :type DedicatedClusterTypeId: str
-        :param SupportedStorageType: 支持的存储类型列表
+        :param _SupportedStorageType: 支持的存储类型列表
         :type SupportedStorageType: list of str
-        :param SupportedUplinkSpeed: 支持的上连交换机的链路传输速率(GiB)
+        :param _SupportedUplinkSpeed: 支持的上连交换机的链路传输速率(GiB)
         :type SupportedUplinkSpeed: list of int
-        :param SupportedInstanceFamily: 支持的实例族列表
+        :param _SupportedInstanceFamily: 支持的实例族列表
         :type SupportedInstanceFamily: list of str
-        :param Weight: 地板承重要求(KG)
+        :param _Weight: 地板承重要求(KG)
         :type Weight: int
-        :param PowerDraw: 功率要求(KW)
+        :param _PowerDraw: 功率要求(KW)
         :type PowerDraw: float
-        :param SubOrderStatus: 订单状态
+        :param _SubOrderStatus: 订单状态
         :type SubOrderStatus: str
-        :param CreateTime: 订单创建的时间
+        :param _CreateTime: 订单创建的时间
         :type CreateTime: str
-        :param SubOrderId: 子订单ID
+        :param _SubOrderId: 子订单ID
         :type SubOrderId: str
-        :param Count: 关联的集群规格数量
+        :param _Count: 关联的集群规格数量
         :type Count: int
-        :param Name: 规格简单描述
+        :param _Name: 规格简单描述
         :type Name: str
-        :param Description: 规格详细描述
+        :param _Description: 规格详细描述
         :type Description: str
-        :param TotalCpu: CPU数
+        :param _TotalCpu: CPU数
         :type TotalCpu: int
-        :param TotalMem: 内存数
+        :param _TotalMem: 内存数
         :type TotalMem: int
-        :param TotalGpu: GPU数
+        :param _TotalGpu: GPU数
         :type TotalGpu: int
-        :param TypeName: 规格英文名
+        :param _TypeName: 规格英文名
         :type TypeName: str
-        :param ComputeFormat: 规格展示
+        :param _ComputeFormat: 规格展示
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeFormat: str
-        :param TypeFamily: 规格类型
+        :param _TypeFamily: 规格类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TypeFamily: str
-        :param SubOrderPayStatus: 0未支付，1已支付
+        :param _SubOrderPayStatus: 0未支付，1已支付
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubOrderPayStatus: int
         """
-        self.DedicatedClusterTypeId = None
-        self.SupportedStorageType = None
-        self.SupportedUplinkSpeed = None
-        self.SupportedInstanceFamily = None
-        self.Weight = None
-        self.PowerDraw = None
-        self.SubOrderStatus = None
-        self.CreateTime = None
-        self.SubOrderId = None
-        self.Count = None
-        self.Name = None
-        self.Description = None
-        self.TotalCpu = None
-        self.TotalMem = None
-        self.TotalGpu = None
-        self.TypeName = None
-        self.ComputeFormat = None
-        self.TypeFamily = None
-        self.SubOrderPayStatus = None
+        self._DedicatedClusterTypeId = None
+        self._SupportedStorageType = None
+        self._SupportedUplinkSpeed = None
+        self._SupportedInstanceFamily = None
+        self._Weight = None
+        self._PowerDraw = None
+        self._SubOrderStatus = None
+        self._CreateTime = None
+        self._SubOrderId = None
+        self._Count = None
+        self._Name = None
+        self._Description = None
+        self._TotalCpu = None
+        self._TotalMem = None
+        self._TotalGpu = None
+        self._TypeName = None
+        self._ComputeFormat = None
+        self._TypeFamily = None
+        self._SubOrderPayStatus = None
+
+    @property
+    def DedicatedClusterTypeId(self):
+        return self._DedicatedClusterTypeId
+
+    @DedicatedClusterTypeId.setter
+    def DedicatedClusterTypeId(self, DedicatedClusterTypeId):
+        self._DedicatedClusterTypeId = DedicatedClusterTypeId
+
+    @property
+    def SupportedStorageType(self):
+        return self._SupportedStorageType
+
+    @SupportedStorageType.setter
+    def SupportedStorageType(self, SupportedStorageType):
+        self._SupportedStorageType = SupportedStorageType
+
+    @property
+    def SupportedUplinkSpeed(self):
+        return self._SupportedUplinkSpeed
+
+    @SupportedUplinkSpeed.setter
+    def SupportedUplinkSpeed(self, SupportedUplinkSpeed):
+        self._SupportedUplinkSpeed = SupportedUplinkSpeed
+
+    @property
+    def SupportedInstanceFamily(self):
+        return self._SupportedInstanceFamily
+
+    @SupportedInstanceFamily.setter
+    def SupportedInstanceFamily(self, SupportedInstanceFamily):
+        self._SupportedInstanceFamily = SupportedInstanceFamily
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def PowerDraw(self):
+        return self._PowerDraw
+
+    @PowerDraw.setter
+    def PowerDraw(self, PowerDraw):
+        self._PowerDraw = PowerDraw
+
+    @property
+    def SubOrderStatus(self):
+        return self._SubOrderStatus
+
+    @SubOrderStatus.setter
+    def SubOrderStatus(self, SubOrderStatus):
+        self._SubOrderStatus = SubOrderStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SubOrderId(self):
+        return self._SubOrderId
+
+    @SubOrderId.setter
+    def SubOrderId(self, SubOrderId):
+        self._SubOrderId = SubOrderId
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TotalCpu(self):
+        return self._TotalCpu
+
+    @TotalCpu.setter
+    def TotalCpu(self, TotalCpu):
+        self._TotalCpu = TotalCpu
+
+    @property
+    def TotalMem(self):
+        return self._TotalMem
+
+    @TotalMem.setter
+    def TotalMem(self, TotalMem):
+        self._TotalMem = TotalMem
+
+    @property
+    def TotalGpu(self):
+        return self._TotalGpu
+
+    @TotalGpu.setter
+    def TotalGpu(self, TotalGpu):
+        self._TotalGpu = TotalGpu
+
+    @property
+    def TypeName(self):
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def ComputeFormat(self):
+        return self._ComputeFormat
+
+    @ComputeFormat.setter
+    def ComputeFormat(self, ComputeFormat):
+        self._ComputeFormat = ComputeFormat
+
+    @property
+    def TypeFamily(self):
+        return self._TypeFamily
+
+    @TypeFamily.setter
+    def TypeFamily(self, TypeFamily):
+        self._TypeFamily = TypeFamily
+
+    @property
+    def SubOrderPayStatus(self):
+        return self._SubOrderPayStatus
+
+    @SubOrderPayStatus.setter
+    def SubOrderPayStatus(self, SubOrderPayStatus):
+        self._SubOrderPayStatus = SubOrderPayStatus
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterTypeId = params.get("DedicatedClusterTypeId")
-        self.SupportedStorageType = params.get("SupportedStorageType")
-        self.SupportedUplinkSpeed = params.get("SupportedUplinkSpeed")
-        self.SupportedInstanceFamily = params.get("SupportedInstanceFamily")
-        self.Weight = params.get("Weight")
-        self.PowerDraw = params.get("PowerDraw")
-        self.SubOrderStatus = params.get("SubOrderStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.SubOrderId = params.get("SubOrderId")
-        self.Count = params.get("Count")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.TotalCpu = params.get("TotalCpu")
-        self.TotalMem = params.get("TotalMem")
-        self.TotalGpu = params.get("TotalGpu")
-        self.TypeName = params.get("TypeName")
-        self.ComputeFormat = params.get("ComputeFormat")
-        self.TypeFamily = params.get("TypeFamily")
-        self.SubOrderPayStatus = params.get("SubOrderPayStatus")
+        self._DedicatedClusterTypeId = params.get("DedicatedClusterTypeId")
+        self._SupportedStorageType = params.get("SupportedStorageType")
+        self._SupportedUplinkSpeed = params.get("SupportedUplinkSpeed")
+        self._SupportedInstanceFamily = params.get("SupportedInstanceFamily")
+        self._Weight = params.get("Weight")
+        self._PowerDraw = params.get("PowerDraw")
+        self._SubOrderStatus = params.get("SubOrderStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._SubOrderId = params.get("SubOrderId")
+        self._Count = params.get("Count")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._TotalCpu = params.get("TotalCpu")
+        self._TotalMem = params.get("TotalMem")
+        self._TotalGpu = params.get("TotalGpu")
+        self._TypeName = params.get("TypeName")
+        self._ComputeFormat = params.get("ComputeFormat")
+        self._TypeFamily = params.get("TypeFamily")
+        self._SubOrderPayStatus = params.get("SubOrderPayStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -728,55 +1594,136 @@ class DedicatedClusterType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterTypeId: 配置id
+        :param _DedicatedClusterTypeId: 配置id
         :type DedicatedClusterTypeId: str
-        :param Description: 配置描述，对应描述
+        :param _Description: 配置描述，对应描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param Name: 配置名称，对应计算资源类型
+        :param _Name: 配置名称，对应计算资源类型
         :type Name: str
-        :param CreateTime: 创建配置的时间
+        :param _CreateTime: 创建配置的时间
         :type CreateTime: str
-        :param SupportedStorageType: 支持的存储类型列表
+        :param _SupportedStorageType: 支持的存储类型列表
         :type SupportedStorageType: list of str
-        :param SupportedUplinkGiB: 支持的上连交换机的链路传输速率
+        :param _SupportedUplinkGiB: 支持的上连交换机的链路传输速率
         :type SupportedUplinkGiB: list of int
-        :param SupportedInstanceFamily: 支持的实例族列表
+        :param _SupportedInstanceFamily: 支持的实例族列表
         :type SupportedInstanceFamily: list of str
-        :param Weight: 地板承重要求(KG)
+        :param _Weight: 地板承重要求(KG)
         :type Weight: int
-        :param PowerDrawKva: 功率要求(KW)
+        :param _PowerDrawKva: 功率要求(KW)
         :type PowerDrawKva: float
-        :param ComputeFormatDesc: 显示计算资源规格详情，存储等资源不显示；对应规格
+        :param _ComputeFormatDesc: 显示计算资源规格详情，存储等资源不显示；对应规格
         :type ComputeFormatDesc: str
         """
-        self.DedicatedClusterTypeId = None
-        self.Description = None
-        self.Name = None
-        self.CreateTime = None
-        self.SupportedStorageType = None
-        self.SupportedUplinkGiB = None
-        self.SupportedInstanceFamily = None
-        self.Weight = None
-        self.PowerDrawKva = None
-        self.ComputeFormatDesc = None
+        self._DedicatedClusterTypeId = None
+        self._Description = None
+        self._Name = None
+        self._CreateTime = None
+        self._SupportedStorageType = None
+        self._SupportedUplinkGiB = None
+        self._SupportedInstanceFamily = None
+        self._Weight = None
+        self._PowerDrawKva = None
+        self._ComputeFormatDesc = None
+
+    @property
+    def DedicatedClusterTypeId(self):
+        return self._DedicatedClusterTypeId
+
+    @DedicatedClusterTypeId.setter
+    def DedicatedClusterTypeId(self, DedicatedClusterTypeId):
+        self._DedicatedClusterTypeId = DedicatedClusterTypeId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SupportedStorageType(self):
+        return self._SupportedStorageType
+
+    @SupportedStorageType.setter
+    def SupportedStorageType(self, SupportedStorageType):
+        self._SupportedStorageType = SupportedStorageType
+
+    @property
+    def SupportedUplinkGiB(self):
+        return self._SupportedUplinkGiB
+
+    @SupportedUplinkGiB.setter
+    def SupportedUplinkGiB(self, SupportedUplinkGiB):
+        self._SupportedUplinkGiB = SupportedUplinkGiB
+
+    @property
+    def SupportedInstanceFamily(self):
+        return self._SupportedInstanceFamily
+
+    @SupportedInstanceFamily.setter
+    def SupportedInstanceFamily(self, SupportedInstanceFamily):
+        self._SupportedInstanceFamily = SupportedInstanceFamily
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def PowerDrawKva(self):
+        return self._PowerDrawKva
+
+    @PowerDrawKva.setter
+    def PowerDrawKva(self, PowerDrawKva):
+        self._PowerDrawKva = PowerDrawKva
+
+    @property
+    def ComputeFormatDesc(self):
+        return self._ComputeFormatDesc
+
+    @ComputeFormatDesc.setter
+    def ComputeFormatDesc(self, ComputeFormatDesc):
+        self._ComputeFormatDesc = ComputeFormatDesc
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterTypeId = params.get("DedicatedClusterTypeId")
-        self.Description = params.get("Description")
-        self.Name = params.get("Name")
-        self.CreateTime = params.get("CreateTime")
-        self.SupportedStorageType = params.get("SupportedStorageType")
-        self.SupportedUplinkGiB = params.get("SupportedUplinkGiB")
-        self.SupportedInstanceFamily = params.get("SupportedInstanceFamily")
-        self.Weight = params.get("Weight")
-        self.PowerDrawKva = params.get("PowerDrawKva")
-        self.ComputeFormatDesc = params.get("ComputeFormatDesc")
+        self._DedicatedClusterTypeId = params.get("DedicatedClusterTypeId")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._CreateTime = params.get("CreateTime")
+        self._SupportedStorageType = params.get("SupportedStorageType")
+        self._SupportedUplinkGiB = params.get("SupportedUplinkGiB")
+        self._SupportedInstanceFamily = params.get("SupportedInstanceFamily")
+        self._Weight = params.get("Weight")
+        self._PowerDrawKva = params.get("PowerDrawKva")
+        self._ComputeFormatDesc = params.get("ComputeFormatDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -789,22 +1736,39 @@ class DedicatedClusterTypeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 集群类型Id
+        :param _Id: 集群类型Id
         :type Id: str
-        :param Count: 集群类型个数
+        :param _Count: 集群类型个数
         :type Count: int
         """
-        self.Id = None
-        self.Count = None
+        self._Id = None
+        self._Count = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Count = params.get("Count")
+        self._Id = params.get("Id")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -817,18 +1781,27 @@ class DeleteDedicatedClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterIds: 要删除的专用集群id
+        :param _DedicatedClusterIds: 要删除的专用集群id
         :type DedicatedClusterIds: list of str
         """
-        self.DedicatedClusterIds = None
+        self._DedicatedClusterIds = None
+
+    @property
+    def DedicatedClusterIds(self):
+        return self._DedicatedClusterIds
+
+    @DedicatedClusterIds.setter
+    def DedicatedClusterIds(self, DedicatedClusterIds):
+        self._DedicatedClusterIds = DedicatedClusterIds
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterIds = params.get("DedicatedClusterIds")
+        self._DedicatedClusterIds = params.get("DedicatedClusterIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -841,14 +1814,22 @@ class DeleteDedicatedClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSitesRequest(AbstractModel):
@@ -858,18 +1839,27 @@ class DeleteSitesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteIds: 要删除的站点id列表
+        :param _SiteIds: 要删除的站点id列表
         :type SiteIds: list of str
         """
-        self.SiteIds = None
+        self._SiteIds = None
+
+    @property
+    def SiteIds(self):
+        return self._SiteIds
+
+    @SiteIds.setter
+    def SiteIds(self, SiteIds):
+        self._SiteIds = SiteIds
 
 
     def _deserialize(self, params):
-        self.SiteIds = params.get("SiteIds")
+        self._SiteIds = params.get("SiteIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -882,14 +1872,22 @@ class DeleteSitesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClusterCosCapacityRequest(AbstractModel):
@@ -899,18 +1897,27 @@ class DescribeDedicatedClusterCosCapacityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 查询的专用集群id
+        :param _DedicatedClusterId: 查询的专用集群id
         :type DedicatedClusterId: str
         """
-        self.DedicatedClusterId = None
+        self._DedicatedClusterId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -923,20 +1930,36 @@ class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CosCapacity: 本集群内cos容量信息，单位：‘GB’
+        :param _CosCapacity: 本集群内cos容量信息，单位：‘GB’
         :type CosCapacity: :class:`tencentcloud.cdc.v20201214.models.CosCapacity`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CosCapacity = None
-        self.RequestId = None
+        self._CosCapacity = None
+        self._RequestId = None
+
+    @property
+    def CosCapacity(self):
+        return self._CosCapacity
+
+    @CosCapacity.setter
+    def CosCapacity(self, CosCapacity):
+        self._CosCapacity = CosCapacity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CosCapacity") is not None:
-            self.CosCapacity = CosCapacity()
-            self.CosCapacity._deserialize(params.get("CosCapacity"))
-        self.RequestId = params.get("RequestId")
+            self._CosCapacity = CosCapacity()
+            self._CosCapacity._deserialize(params.get("CosCapacity"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
@@ -946,18 +1969,27 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 查询的专用集群id
+        :param _DedicatedClusterId: 查询的专用集群id
         :type DedicatedClusterId: str
         """
-        self.DedicatedClusterId = None
+        self._DedicatedClusterId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -970,23 +2002,39 @@ class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HostStatisticSet: 该集群内宿主机的统计信息列表
+        :param _HostStatisticSet: 该集群内宿主机的统计信息列表
         :type HostStatisticSet: list of HostStatistic
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.HostStatisticSet = None
-        self.RequestId = None
+        self._HostStatisticSet = None
+        self._RequestId = None
+
+    @property
+    def HostStatisticSet(self):
+        return self._HostStatisticSet
+
+    @HostStatisticSet.setter
+    def HostStatisticSet(self, HostStatisticSet):
+        self._HostStatisticSet = HostStatisticSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("HostStatisticSet") is not None:
-            self.HostStatisticSet = []
+            self._HostStatisticSet = []
             for item in params.get("HostStatisticSet"):
                 obj = HostStatistic()
                 obj._deserialize(item)
-                self.HostStatisticSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._HostStatisticSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClusterHostsRequest(AbstractModel):
@@ -996,26 +2044,51 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 集群id
+        :param _DedicatedClusterId: 集群id
         :type DedicatedClusterId: str
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量，默认为20
+        :param _Limit: 返回数量，默认为20
         :type Limit: int
         """
-        self.DedicatedClusterId = None
-        self.Offset = None
-        self.Limit = None
+        self._DedicatedClusterId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1028,28 +2101,52 @@ class DescribeDedicatedClusterHostsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HostInfoSet: 宿主机信息
+        :param _HostInfoSet: 宿主机信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostInfoSet: list of HostInfo
-        :param TotalCount: 宿主机总数
+        :param _TotalCount: 宿主机总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.HostInfoSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._HostInfoSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HostInfoSet(self):
+        return self._HostInfoSet
+
+    @HostInfoSet.setter
+    def HostInfoSet(self, HostInfoSet):
+        self._HostInfoSet = HostInfoSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("HostInfoSet") is not None:
-            self.HostInfoSet = []
+            self._HostInfoSet = []
             for item in params.get("HostInfoSet"):
                 obj = HostInfo()
                 obj._deserialize(item)
-                self.HostInfoSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._HostInfoSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClusterInstanceTypesRequest(AbstractModel):
@@ -1059,18 +2156,27 @@ class DescribeDedicatedClusterInstanceTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 查询的专用集群id
+        :param _DedicatedClusterId: 查询的专用集群id
         :type DedicatedClusterId: str
         """
-        self.DedicatedClusterId = None
+        self._DedicatedClusterId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1083,23 +2189,39 @@ class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterInstanceTypeSet: 支持的实例规格列表
+        :param _DedicatedClusterInstanceTypeSet: 支持的实例规格列表
         :type DedicatedClusterInstanceTypeSet: list of DedicatedClusterInstanceType
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DedicatedClusterInstanceTypeSet = None
-        self.RequestId = None
+        self._DedicatedClusterInstanceTypeSet = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterInstanceTypeSet(self):
+        return self._DedicatedClusterInstanceTypeSet
+
+    @DedicatedClusterInstanceTypeSet.setter
+    def DedicatedClusterInstanceTypeSet(self, DedicatedClusterInstanceTypeSet):
+        self._DedicatedClusterInstanceTypeSet = DedicatedClusterInstanceTypeSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DedicatedClusterInstanceTypeSet") is not None:
-            self.DedicatedClusterInstanceTypeSet = []
+            self._DedicatedClusterInstanceTypeSet = []
             for item in params.get("DedicatedClusterInstanceTypeSet"):
                 obj = DedicatedClusterInstanceType()
                 obj._deserialize(item)
-                self.DedicatedClusterInstanceTypeSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DedicatedClusterInstanceTypeSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClusterOrdersRequest(AbstractModel):
@@ -1109,38 +2231,87 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterIds: 按照专用集群id过滤
+        :param _DedicatedClusterIds: 按照专用集群id过滤
         :type DedicatedClusterIds: list of str
-        :param DedicatedClusterOrderIds: 按照专用集群订单id过滤
+        :param _DedicatedClusterOrderIds: 按照专用集群订单id过滤
         :type DedicatedClusterOrderIds: str
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
-        :param Status: 订单状态为过滤条件：PENDING INCONSTRUCTION DELIVERING DELIVERED EXPIRED CANCELLED  OFFLINE
+        :param _Status: 订单状态为过滤条件：PENDING INCONSTRUCTION DELIVERING DELIVERED EXPIRED CANCELLED  OFFLINE
         :type Status: str
-        :param ActionType: 订单类型为过滤条件：CREATE  EXTEND
+        :param _ActionType: 订单类型为过滤条件：CREATE  EXTEND
         :type ActionType: str
         """
-        self.DedicatedClusterIds = None
-        self.DedicatedClusterOrderIds = None
-        self.Offset = None
-        self.Limit = None
-        self.Status = None
-        self.ActionType = None
+        self._DedicatedClusterIds = None
+        self._DedicatedClusterOrderIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+        self._ActionType = None
+
+    @property
+    def DedicatedClusterIds(self):
+        return self._DedicatedClusterIds
+
+    @DedicatedClusterIds.setter
+    def DedicatedClusterIds(self, DedicatedClusterIds):
+        self._DedicatedClusterIds = DedicatedClusterIds
+
+    @property
+    def DedicatedClusterOrderIds(self):
+        return self._DedicatedClusterOrderIds
+
+    @DedicatedClusterOrderIds.setter
+    def DedicatedClusterOrderIds(self, DedicatedClusterOrderIds):
+        self._DedicatedClusterOrderIds = DedicatedClusterOrderIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterIds = params.get("DedicatedClusterIds")
-        self.DedicatedClusterOrderIds = params.get("DedicatedClusterOrderIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Status = params.get("Status")
-        self.ActionType = params.get("ActionType")
+        self._DedicatedClusterIds = params.get("DedicatedClusterIds")
+        self._DedicatedClusterOrderIds = params.get("DedicatedClusterOrderIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._ActionType = params.get("ActionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1153,27 +2324,51 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterOrderSet: 专用集群订单列表
+        :param _DedicatedClusterOrderSet: 专用集群订单列表
         :type DedicatedClusterOrderSet: list of DedicatedClusterOrder
-        :param TotalCount: 符合条件的专用集群订单总数
+        :param _TotalCount: 符合条件的专用集群订单总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DedicatedClusterOrderSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DedicatedClusterOrderSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterOrderSet(self):
+        return self._DedicatedClusterOrderSet
+
+    @DedicatedClusterOrderSet.setter
+    def DedicatedClusterOrderSet(self, DedicatedClusterOrderSet):
+        self._DedicatedClusterOrderSet = DedicatedClusterOrderSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DedicatedClusterOrderSet") is not None:
-            self.DedicatedClusterOrderSet = []
+            self._DedicatedClusterOrderSet = []
             for item in params.get("DedicatedClusterOrderSet"):
                 obj = DedicatedClusterOrder()
                 obj._deserialize(item)
-                self.DedicatedClusterOrderSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DedicatedClusterOrderSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClusterOverviewRequest(AbstractModel):
@@ -1183,18 +2378,27 @@ class DescribeDedicatedClusterOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 集群id
+        :param _DedicatedClusterId: 集群id
         :type DedicatedClusterId: str
         """
-        self.DedicatedClusterId = None
+        self._DedicatedClusterId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1207,51 +2411,107 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CvmCount: 云服务器数量
+        :param _CvmCount: 云服务器数量
         :type CvmCount: int
-        :param HostCount: 宿主机数量
+        :param _HostCount: 宿主机数量
         :type HostCount: int
-        :param VpnConnectionState: vpn通道状态
+        :param _VpnConnectionState: vpn通道状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpnConnectionState: str
-        :param VpngwBandwidthData: vpn网关监控数据
+        :param _VpngwBandwidthData: vpn网关监控数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpngwBandwidthData: :class:`tencentcloud.cdc.v20201214.models.VpngwBandwidthData`
-        :param LocalNetInfo: 本地网关信息
+        :param _LocalNetInfo: 本地网关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalNetInfo: :class:`tencentcloud.cdc.v20201214.models.LocalNetInfo`
-        :param VpnConnectionBandwidthData: vpn网关通道监控数据
+        :param _VpnConnectionBandwidthData: vpn网关通道监控数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpnConnectionBandwidthData: list of VpngwBandwidthData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CvmCount = None
-        self.HostCount = None
-        self.VpnConnectionState = None
-        self.VpngwBandwidthData = None
-        self.LocalNetInfo = None
-        self.VpnConnectionBandwidthData = None
-        self.RequestId = None
+        self._CvmCount = None
+        self._HostCount = None
+        self._VpnConnectionState = None
+        self._VpngwBandwidthData = None
+        self._LocalNetInfo = None
+        self._VpnConnectionBandwidthData = None
+        self._RequestId = None
+
+    @property
+    def CvmCount(self):
+        return self._CvmCount
+
+    @CvmCount.setter
+    def CvmCount(self, CvmCount):
+        self._CvmCount = CvmCount
+
+    @property
+    def HostCount(self):
+        return self._HostCount
+
+    @HostCount.setter
+    def HostCount(self, HostCount):
+        self._HostCount = HostCount
+
+    @property
+    def VpnConnectionState(self):
+        return self._VpnConnectionState
+
+    @VpnConnectionState.setter
+    def VpnConnectionState(self, VpnConnectionState):
+        self._VpnConnectionState = VpnConnectionState
+
+    @property
+    def VpngwBandwidthData(self):
+        return self._VpngwBandwidthData
+
+    @VpngwBandwidthData.setter
+    def VpngwBandwidthData(self, VpngwBandwidthData):
+        self._VpngwBandwidthData = VpngwBandwidthData
+
+    @property
+    def LocalNetInfo(self):
+        return self._LocalNetInfo
+
+    @LocalNetInfo.setter
+    def LocalNetInfo(self, LocalNetInfo):
+        self._LocalNetInfo = LocalNetInfo
+
+    @property
+    def VpnConnectionBandwidthData(self):
+        return self._VpnConnectionBandwidthData
+
+    @VpnConnectionBandwidthData.setter
+    def VpnConnectionBandwidthData(self, VpnConnectionBandwidthData):
+        self._VpnConnectionBandwidthData = VpnConnectionBandwidthData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CvmCount = params.get("CvmCount")
-        self.HostCount = params.get("HostCount")
-        self.VpnConnectionState = params.get("VpnConnectionState")
+        self._CvmCount = params.get("CvmCount")
+        self._HostCount = params.get("HostCount")
+        self._VpnConnectionState = params.get("VpnConnectionState")
         if params.get("VpngwBandwidthData") is not None:
-            self.VpngwBandwidthData = VpngwBandwidthData()
-            self.VpngwBandwidthData._deserialize(params.get("VpngwBandwidthData"))
+            self._VpngwBandwidthData = VpngwBandwidthData()
+            self._VpngwBandwidthData._deserialize(params.get("VpngwBandwidthData"))
         if params.get("LocalNetInfo") is not None:
-            self.LocalNetInfo = LocalNetInfo()
-            self.LocalNetInfo._deserialize(params.get("LocalNetInfo"))
+            self._LocalNetInfo = LocalNetInfo()
+            self._LocalNetInfo._deserialize(params.get("LocalNetInfo"))
         if params.get("VpnConnectionBandwidthData") is not None:
-            self.VpnConnectionBandwidthData = []
+            self._VpnConnectionBandwidthData = []
             for item in params.get("VpnConnectionBandwidthData"):
                 obj = VpngwBandwidthData()
                 obj._deserialize(item)
-                self.VpnConnectionBandwidthData.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._VpnConnectionBandwidthData.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClusterTypesRequest(AbstractModel):
@@ -1261,34 +2521,75 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 模糊匹配专用集群配置名称
+        :param _Name: 模糊匹配专用集群配置名称
         :type Name: str
-        :param DedicatedClusterTypeIds: 待查询的专用集群配置id列表
+        :param _DedicatedClusterTypeIds: 待查询的专用集群配置id列表
         :type DedicatedClusterTypeIds: list of str
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
-        :param IsCompute: 是否只查询计算规格类型
+        :param _IsCompute: 是否只查询计算规格类型
         :type IsCompute: bool
         """
-        self.Name = None
-        self.DedicatedClusterTypeIds = None
-        self.Offset = None
-        self.Limit = None
-        self.IsCompute = None
+        self._Name = None
+        self._DedicatedClusterTypeIds = None
+        self._Offset = None
+        self._Limit = None
+        self._IsCompute = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DedicatedClusterTypeIds(self):
+        return self._DedicatedClusterTypeIds
+
+    @DedicatedClusterTypeIds.setter
+    def DedicatedClusterTypeIds(self, DedicatedClusterTypeIds):
+        self._DedicatedClusterTypeIds = DedicatedClusterTypeIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def IsCompute(self):
+        return self._IsCompute
+
+    @IsCompute.setter
+    def IsCompute(self, IsCompute):
+        self._IsCompute = IsCompute
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.DedicatedClusterTypeIds = params.get("DedicatedClusterTypeIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.IsCompute = params.get("IsCompute")
+        self._Name = params.get("Name")
+        self._DedicatedClusterTypeIds = params.get("DedicatedClusterTypeIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._IsCompute = params.get("IsCompute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1301,27 +2602,51 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterTypeSet: 专用集群配置列表
+        :param _DedicatedClusterTypeSet: 专用集群配置列表
         :type DedicatedClusterTypeSet: list of DedicatedClusterType
-        :param TotalCount: 符合条件的个数
+        :param _TotalCount: 符合条件的个数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DedicatedClusterTypeSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DedicatedClusterTypeSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterTypeSet(self):
+        return self._DedicatedClusterTypeSet
+
+    @DedicatedClusterTypeSet.setter
+    def DedicatedClusterTypeSet(self, DedicatedClusterTypeSet):
+        self._DedicatedClusterTypeSet = DedicatedClusterTypeSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DedicatedClusterTypeSet") is not None:
-            self.DedicatedClusterTypeSet = []
+            self._DedicatedClusterTypeSet = []
             for item in params.get("DedicatedClusterTypeSet"):
                 obj = DedicatedClusterType()
                 obj._deserialize(item)
-                self.DedicatedClusterTypeSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DedicatedClusterTypeSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedClustersRequest(AbstractModel):
@@ -1331,42 +2656,99 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterIds: 按照一个或者多个实例ID查询。实例ID形如：`cluster-xxxxxxxx`
+        :param _DedicatedClusterIds: 按照一个或者多个实例ID查询。实例ID形如：`cluster-xxxxxxxx`
         :type DedicatedClusterIds: list of str
-        :param Zones: 按照可用区名称过滤
+        :param _Zones: 按照可用区名称过滤
         :type Zones: list of str
-        :param SiteIds: 按照站点id过滤
+        :param _SiteIds: 按照站点id过滤
         :type SiteIds: list of str
-        :param LifecycleStatuses: 按照专用集群生命周期过滤
+        :param _LifecycleStatuses: 按照专用集群生命周期过滤
         :type LifecycleStatuses: list of str
-        :param Name: 模糊匹配专用集群名称
+        :param _Name: 模糊匹配专用集群名称
         :type Name: str
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
         """
-        self.DedicatedClusterIds = None
-        self.Zones = None
-        self.SiteIds = None
-        self.LifecycleStatuses = None
-        self.Name = None
-        self.Offset = None
-        self.Limit = None
+        self._DedicatedClusterIds = None
+        self._Zones = None
+        self._SiteIds = None
+        self._LifecycleStatuses = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def DedicatedClusterIds(self):
+        return self._DedicatedClusterIds
+
+    @DedicatedClusterIds.setter
+    def DedicatedClusterIds(self, DedicatedClusterIds):
+        self._DedicatedClusterIds = DedicatedClusterIds
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def SiteIds(self):
+        return self._SiteIds
+
+    @SiteIds.setter
+    def SiteIds(self, SiteIds):
+        self._SiteIds = SiteIds
+
+    @property
+    def LifecycleStatuses(self):
+        return self._LifecycleStatuses
+
+    @LifecycleStatuses.setter
+    def LifecycleStatuses(self, LifecycleStatuses):
+        self._LifecycleStatuses = LifecycleStatuses
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterIds = params.get("DedicatedClusterIds")
-        self.Zones = params.get("Zones")
-        self.SiteIds = params.get("SiteIds")
-        self.LifecycleStatuses = params.get("LifecycleStatuses")
-        self.Name = params.get("Name")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._DedicatedClusterIds = params.get("DedicatedClusterIds")
+        self._Zones = params.get("Zones")
+        self._SiteIds = params.get("SiteIds")
+        self._LifecycleStatuses = params.get("LifecycleStatuses")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1379,27 +2761,51 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterSet: 符合查询条件的专用集群列表
+        :param _DedicatedClusterSet: 符合查询条件的专用集群列表
         :type DedicatedClusterSet: list of DedicatedCluster
-        :param TotalCount: 符合条件的专用集群数量。
+        :param _TotalCount: 符合条件的专用集群数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DedicatedClusterSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DedicatedClusterSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterSet(self):
+        return self._DedicatedClusterSet
+
+    @DedicatedClusterSet.setter
+    def DedicatedClusterSet(self, DedicatedClusterSet):
+        self._DedicatedClusterSet = DedicatedClusterSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DedicatedClusterSet") is not None:
-            self.DedicatedClusterSet = []
+            self._DedicatedClusterSet = []
             for item in params.get("DedicatedClusterSet"):
                 obj = DedicatedCluster()
                 obj._deserialize(item)
-                self.DedicatedClusterSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DedicatedClusterSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDedicatedSupportedZonesRequest(AbstractModel):
@@ -1409,18 +2815,27 @@ class DescribeDedicatedSupportedZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Regions: 传入region列表
+        :param _Regions: 传入region列表
         :type Regions: list of int
         """
-        self.Regions = None
+        self._Regions = None
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
 
 
     def _deserialize(self, params):
-        self.Regions = params.get("Regions")
+        self._Regions = params.get("Regions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1433,23 +2848,39 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneSet: 支持的可用区列表
+        :param _ZoneSet: 支持的可用区列表
         :type ZoneSet: list of RegionZoneInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ZoneSet = None
-        self.RequestId = None
+        self._ZoneSet = None
+        self._RequestId = None
+
+    @property
+    def ZoneSet(self):
+        return self._ZoneSet
+
+    @ZoneSet.setter
+    def ZoneSet(self, ZoneSet):
+        self._ZoneSet = ZoneSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ZoneSet") is not None:
-            self.ZoneSet = []
+            self._ZoneSet = []
             for item in params.get("ZoneSet"):
                 obj = RegionZoneInfo()
                 obj._deserialize(item)
-                self.ZoneSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ZoneSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSitesDetailRequest(AbstractModel):
@@ -1459,30 +2890,63 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteIds: 按照站点id过滤
+        :param _SiteIds: 按照站点id过滤
         :type SiteIds: list of str
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
-        :param Name: 按照站定名称模糊匹配
+        :param _Name: 按照站定名称模糊匹配
         :type Name: str
         """
-        self.SiteIds = None
-        self.Offset = None
-        self.Limit = None
-        self.Name = None
+        self._SiteIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
+
+    @property
+    def SiteIds(self):
+        return self._SiteIds
+
+    @SiteIds.setter
+    def SiteIds(self, SiteIds):
+        self._SiteIds = SiteIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.SiteIds = params.get("SiteIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Name = params.get("Name")
+        self._SiteIds = params.get("SiteIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1495,27 +2959,51 @@ class DescribeSitesDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteDetailSet: 站点详情
+        :param _SiteDetailSet: 站点详情
         :type SiteDetailSet: list of SiteDetail
-        :param TotalCount: 符合条件的站点总数
+        :param _TotalCount: 符合条件的站点总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SiteDetailSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._SiteDetailSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SiteDetailSet(self):
+        return self._SiteDetailSet
+
+    @SiteDetailSet.setter
+    def SiteDetailSet(self, SiteDetailSet):
+        self._SiteDetailSet = SiteDetailSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SiteDetailSet") is not None:
-            self.SiteDetailSet = []
+            self._SiteDetailSet = []
             for item in params.get("SiteDetailSet"):
                 obj = SiteDetail()
                 obj._deserialize(item)
-                self.SiteDetailSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._SiteDetailSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSitesRequest(AbstractModel):
@@ -1525,30 +3013,63 @@ class DescribeSitesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteIds: 按照站点id过滤
+        :param _SiteIds: 按照站点id过滤
         :type SiteIds: list of str
-        :param Name: 模糊匹配站点名称
+        :param _Name: 模糊匹配站点名称
         :type Name: str
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
         """
-        self.SiteIds = None
-        self.Name = None
-        self.Offset = None
-        self.Limit = None
+        self._SiteIds = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SiteIds(self):
+        return self._SiteIds
+
+    @SiteIds.setter
+    def SiteIds(self, SiteIds):
+        self._SiteIds = SiteIds
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.SiteIds = params.get("SiteIds")
-        self.Name = params.get("Name")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._SiteIds = params.get("SiteIds")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1561,27 +3082,51 @@ class DescribeSitesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteSet: 符合查询条件的站点列表
+        :param _SiteSet: 符合查询条件的站点列表
         :type SiteSet: list of Site
-        :param TotalCount: 符合条件的站点数量。
+        :param _TotalCount: 符合条件的站点数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SiteSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._SiteSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SiteSet(self):
+        return self._SiteSet
+
+    @SiteSet.setter
+    def SiteSet(self, SiteSet):
+        self._SiteSet = SiteSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SiteSet") is not None:
-            self.SiteSet = []
+            self._SiteSet = []
             for item in params.get("SiteSet"):
                 obj = Site()
                 obj._deserialize(item)
-                self.SiteSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._SiteSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class HostInfo(AbstractModel):
@@ -1591,59 +3136,148 @@ class HostInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HostIp: 宿主机IP
+        :param _HostIp: 宿主机IP
         :type HostIp: str
-        :param ServiceType: 云服务类型
+        :param _ServiceType: 云服务类型
         :type ServiceType: str
-        :param HostStatus: 宿主机运行状态
+        :param _HostStatus: 宿主机运行状态
         :type HostStatus: str
-        :param HostType: 宿主机类型
+        :param _HostType: 宿主机类型
         :type HostType: str
-        :param CpuAvailable: cpu可用数
+        :param _CpuAvailable: cpu可用数
         :type CpuAvailable: int
-        :param CpuTotal: cpu总数
+        :param _CpuTotal: cpu总数
         :type CpuTotal: int
-        :param MemAvailable: 内存可用数
+        :param _MemAvailable: 内存可用数
         :type MemAvailable: int
-        :param MemTotal: 内存总数
+        :param _MemTotal: 内存总数
         :type MemTotal: int
-        :param RunTime: 运行时间
+        :param _RunTime: 运行时间
         :type RunTime: str
-        :param ExpireTime: 到期时间
+        :param _ExpireTime: 到期时间
         :type ExpireTime: str
-        :param HostId: 宿主机id
+        :param _HostId: 宿主机id
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostId: str
         """
-        self.HostIp = None
-        self.ServiceType = None
-        self.HostStatus = None
-        self.HostType = None
-        self.CpuAvailable = None
-        self.CpuTotal = None
-        self.MemAvailable = None
-        self.MemTotal = None
-        self.RunTime = None
-        self.ExpireTime = None
-        self.HostId = None
+        self._HostIp = None
+        self._ServiceType = None
+        self._HostStatus = None
+        self._HostType = None
+        self._CpuAvailable = None
+        self._CpuTotal = None
+        self._MemAvailable = None
+        self._MemTotal = None
+        self._RunTime = None
+        self._ExpireTime = None
+        self._HostId = None
+
+    @property
+    def HostIp(self):
+        return self._HostIp
+
+    @HostIp.setter
+    def HostIp(self, HostIp):
+        self._HostIp = HostIp
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def HostStatus(self):
+        return self._HostStatus
+
+    @HostStatus.setter
+    def HostStatus(self, HostStatus):
+        self._HostStatus = HostStatus
+
+    @property
+    def HostType(self):
+        return self._HostType
+
+    @HostType.setter
+    def HostType(self, HostType):
+        self._HostType = HostType
+
+    @property
+    def CpuAvailable(self):
+        return self._CpuAvailable
+
+    @CpuAvailable.setter
+    def CpuAvailable(self, CpuAvailable):
+        self._CpuAvailable = CpuAvailable
+
+    @property
+    def CpuTotal(self):
+        return self._CpuTotal
+
+    @CpuTotal.setter
+    def CpuTotal(self, CpuTotal):
+        self._CpuTotal = CpuTotal
+
+    @property
+    def MemAvailable(self):
+        return self._MemAvailable
+
+    @MemAvailable.setter
+    def MemAvailable(self, MemAvailable):
+        self._MemAvailable = MemAvailable
+
+    @property
+    def MemTotal(self):
+        return self._MemTotal
+
+    @MemTotal.setter
+    def MemTotal(self, MemTotal):
+        self._MemTotal = MemTotal
+
+    @property
+    def RunTime(self):
+        return self._RunTime
+
+    @RunTime.setter
+    def RunTime(self, RunTime):
+        self._RunTime = RunTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def HostId(self):
+        return self._HostId
+
+    @HostId.setter
+    def HostId(self, HostId):
+        self._HostId = HostId
 
 
     def _deserialize(self, params):
-        self.HostIp = params.get("HostIp")
-        self.ServiceType = params.get("ServiceType")
-        self.HostStatus = params.get("HostStatus")
-        self.HostType = params.get("HostType")
-        self.CpuAvailable = params.get("CpuAvailable")
-        self.CpuTotal = params.get("CpuTotal")
-        self.MemAvailable = params.get("MemAvailable")
-        self.MemTotal = params.get("MemTotal")
-        self.RunTime = params.get("RunTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.HostId = params.get("HostId")
+        self._HostIp = params.get("HostIp")
+        self._ServiceType = params.get("ServiceType")
+        self._HostStatus = params.get("HostStatus")
+        self._HostType = params.get("HostType")
+        self._CpuAvailable = params.get("CpuAvailable")
+        self._CpuTotal = params.get("CpuTotal")
+        self._MemAvailable = params.get("MemAvailable")
+        self._MemTotal = params.get("MemTotal")
+        self._RunTime = params.get("RunTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._HostId = params.get("HostId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1656,34 +3290,75 @@ class HostStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HostType: 宿主机规格
+        :param _HostType: 宿主机规格
         :type HostType: str
-        :param HostFamily: 宿主机机型系列
+        :param _HostFamily: 宿主机机型系列
         :type HostFamily: str
-        :param Cpu: 宿主机的CPU核数，单位：核
+        :param _Cpu: 宿主机的CPU核数，单位：核
         :type Cpu: int
-        :param Memory: 宿主机内存大小，单位：GB
+        :param _Memory: 宿主机内存大小，单位：GB
         :type Memory: int
-        :param Count: 该规格宿主机的数量
+        :param _Count: 该规格宿主机的数量
         :type Count: int
         """
-        self.HostType = None
-        self.HostFamily = None
-        self.Cpu = None
-        self.Memory = None
-        self.Count = None
+        self._HostType = None
+        self._HostFamily = None
+        self._Cpu = None
+        self._Memory = None
+        self._Count = None
+
+    @property
+    def HostType(self):
+        return self._HostType
+
+    @HostType.setter
+    def HostType(self, HostType):
+        self._HostType = HostType
+
+    @property
+    def HostFamily(self):
+        return self._HostFamily
+
+    @HostFamily.setter
+    def HostFamily(self, HostFamily):
+        self._HostFamily = HostFamily
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.HostType = params.get("HostType")
-        self.HostFamily = params.get("HostFamily")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.Count = params.get("Count")
+        self._HostType = params.get("HostType")
+        self._HostFamily = params.get("HostFamily")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1696,24 +3371,41 @@ class InBandwidth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamps: 时间戳
+        :param _Timestamps: 时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamps: list of float
-        :param Values: 时间对应的值
+        :param _Values: 时间对应的值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
-        self.Timestamps = None
-        self.Values = None
+        self._Timestamps = None
+        self._Values = None
+
+    @property
+    def Timestamps(self):
+        return self._Timestamps
+
+    @Timestamps.setter
+    def Timestamps(self, Timestamps):
+        self._Timestamps = Timestamps
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Timestamps = params.get("Timestamps")
-        self.Values = params.get("Values")
+        self._Timestamps = params.get("Timestamps")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1726,34 +3418,67 @@ class LocalNetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Protocol: 协议
+        :param _Protocol: 协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param VpcId: 网络id
+        :param _VpcId: 网络id
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param BGPRoute: 路由信息
+        :param _BGPRoute: 路由信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BGPRoute: str
-        :param LocalIp: 本地IP
+        :param _LocalIp: 本地IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalIp: str
         """
-        self.Protocol = None
-        self.VpcId = None
-        self.BGPRoute = None
-        self.LocalIp = None
+        self._Protocol = None
+        self._VpcId = None
+        self._BGPRoute = None
+        self._LocalIp = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def BGPRoute(self):
+        return self._BGPRoute
+
+    @BGPRoute.setter
+    def BGPRoute(self, BGPRoute):
+        self._BGPRoute = BGPRoute
+
+    @property
+    def LocalIp(self):
+        return self._LocalIp
+
+    @LocalIp.setter
+    def LocalIp(self, LocalIp):
+        self._LocalIp = LocalIp
 
 
     def _deserialize(self, params):
-        self.Protocol = params.get("Protocol")
-        self.VpcId = params.get("VpcId")
-        self.BGPRoute = params.get("BGPRoute")
-        self.LocalIp = params.get("LocalIp")
+        self._Protocol = params.get("Protocol")
+        self._VpcId = params.get("VpcId")
+        self._BGPRoute = params.get("BGPRoute")
+        self._LocalIp = params.get("LocalIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1766,34 +3491,75 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DedicatedClusterId: 本地专用集群ID
+        :param _DedicatedClusterId: 本地专用集群ID
         :type DedicatedClusterId: str
-        :param Name: 集群的新名称
+        :param _Name: 集群的新名称
         :type Name: str
-        :param Zone: 集群的新可用区
+        :param _Zone: 集群的新可用区
         :type Zone: str
-        :param Description: 集群的新描述信息
+        :param _Description: 集群的新描述信息
         :type Description: str
-        :param SiteId: 集群所在站点
+        :param _SiteId: 集群所在站点
         :type SiteId: str
         """
-        self.DedicatedClusterId = None
-        self.Name = None
-        self.Zone = None
-        self.Description = None
-        self.SiteId = None
+        self._DedicatedClusterId = None
+        self._Name = None
+        self._Zone = None
+        self._Description = None
+        self._SiteId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
 
 
     def _deserialize(self, params):
-        self.DedicatedClusterId = params.get("DedicatedClusterId")
-        self.Name = params.get("Name")
-        self.Zone = params.get("Zone")
-        self.Description = params.get("Description")
-        self.SiteId = params.get("SiteId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._Name = params.get("Name")
+        self._Zone = params.get("Zone")
+        self._Description = params.get("Description")
+        self._SiteId = params.get("SiteId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1806,14 +3572,22 @@ class ModifyDedicatedClusterInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyOrderStatusRequest(AbstractModel):
@@ -1823,26 +3597,51 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 要更新成的状态
+        :param _Status: 要更新成的状态
         :type Status: str
-        :param DedicatedClusterOrderId: 大订单ID
+        :param _DedicatedClusterOrderId: 大订单ID
         :type DedicatedClusterOrderId: str
-        :param SubOrderIds: 小订单ID
+        :param _SubOrderIds: 小订单ID
         :type SubOrderIds: list of str
         """
-        self.Status = None
-        self.DedicatedClusterOrderId = None
-        self.SubOrderIds = None
+        self._Status = None
+        self._DedicatedClusterOrderId = None
+        self._SubOrderIds = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DedicatedClusterOrderId(self):
+        return self._DedicatedClusterOrderId
+
+    @DedicatedClusterOrderId.setter
+    def DedicatedClusterOrderId(self, DedicatedClusterOrderId):
+        self._DedicatedClusterOrderId = DedicatedClusterOrderId
+
+    @property
+    def SubOrderIds(self):
+        return self._SubOrderIds
+
+    @SubOrderIds.setter
+    def SubOrderIds(self, SubOrderIds):
+        self._SubOrderIds = SubOrderIds
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
-        self.SubOrderIds = params.get("SubOrderIds")
+        self._Status = params.get("Status")
+        self._DedicatedClusterOrderId = params.get("DedicatedClusterOrderId")
+        self._SubOrderIds = params.get("SubOrderIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1855,14 +3654,22 @@ class ModifyOrderStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySiteDeviceInfoRequest(AbstractModel):
@@ -1872,82 +3679,203 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteId: 机房ID
+        :param _SiteId: 机房ID
         :type SiteId: str
-        :param FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        :param _FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
         :type FiberType: str
-        :param OpticalStandard: 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        :param _OpticalStandard: 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
         :type OpticalStandard: str
-        :param PowerConnectors: 电源连接器类型
+        :param _PowerConnectors: 电源连接器类型
         :type PowerConnectors: str
-        :param PowerFeedDrop: 从机架上方还是下方供电。
+        :param _PowerFeedDrop: 从机架上方还是下方供电。
         :type PowerFeedDrop: str
-        :param MaxWeight: 最大承重(KG)
+        :param _MaxWeight: 最大承重(KG)
         :type MaxWeight: int
-        :param PowerDrawKva: 功耗(KW)
+        :param _PowerDrawKva: 功耗(KW)
         :type PowerDrawKva: int
-        :param UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
+        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
         :type UplinkSpeedGbps: int
-        :param UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :param _UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
         :type UplinkCount: int
-        :param ConditionRequirement: 是否满足下面环境条件：
+        :param _ConditionRequirement: 是否满足下面环境条件：
 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
 2、确定的机架位置包含:
 温度范围为 41 到 104°F (5 到 40°C)。
 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
         :type ConditionRequirement: bool
-        :param DimensionRequirement: 是否满足下面的尺寸条件：
+        :param _DimensionRequirement: 是否满足下面的尺寸条件：
 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
         :type DimensionRequirement: bool
-        :param RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+        :param _RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
         :type RedundantNetworking: bool
-        :param NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
+        :param _NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
         :type NeedHelp: bool
-        :param RedundantPower: 是否电源冗余
+        :param _RedundantPower: 是否电源冗余
         :type RedundantPower: bool
-        :param BreakerRequirement: 上游断路器是否具备
+        :param _BreakerRequirement: 上游断路器是否具备
         :type BreakerRequirement: bool
         """
-        self.SiteId = None
-        self.FiberType = None
-        self.OpticalStandard = None
-        self.PowerConnectors = None
-        self.PowerFeedDrop = None
-        self.MaxWeight = None
-        self.PowerDrawKva = None
-        self.UplinkSpeedGbps = None
-        self.UplinkCount = None
-        self.ConditionRequirement = None
-        self.DimensionRequirement = None
-        self.RedundantNetworking = None
-        self.NeedHelp = None
-        self.RedundantPower = None
-        self.BreakerRequirement = None
+        self._SiteId = None
+        self._FiberType = None
+        self._OpticalStandard = None
+        self._PowerConnectors = None
+        self._PowerFeedDrop = None
+        self._MaxWeight = None
+        self._PowerDrawKva = None
+        self._UplinkSpeedGbps = None
+        self._UplinkCount = None
+        self._ConditionRequirement = None
+        self._DimensionRequirement = None
+        self._RedundantNetworking = None
+        self._NeedHelp = None
+        self._RedundantPower = None
+        self._BreakerRequirement = None
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
+
+    @property
+    def FiberType(self):
+        return self._FiberType
+
+    @FiberType.setter
+    def FiberType(self, FiberType):
+        self._FiberType = FiberType
+
+    @property
+    def OpticalStandard(self):
+        return self._OpticalStandard
+
+    @OpticalStandard.setter
+    def OpticalStandard(self, OpticalStandard):
+        self._OpticalStandard = OpticalStandard
+
+    @property
+    def PowerConnectors(self):
+        return self._PowerConnectors
+
+    @PowerConnectors.setter
+    def PowerConnectors(self, PowerConnectors):
+        self._PowerConnectors = PowerConnectors
+
+    @property
+    def PowerFeedDrop(self):
+        return self._PowerFeedDrop
+
+    @PowerFeedDrop.setter
+    def PowerFeedDrop(self, PowerFeedDrop):
+        self._PowerFeedDrop = PowerFeedDrop
+
+    @property
+    def MaxWeight(self):
+        return self._MaxWeight
+
+    @MaxWeight.setter
+    def MaxWeight(self, MaxWeight):
+        self._MaxWeight = MaxWeight
+
+    @property
+    def PowerDrawKva(self):
+        return self._PowerDrawKva
+
+    @PowerDrawKva.setter
+    def PowerDrawKva(self, PowerDrawKva):
+        self._PowerDrawKva = PowerDrawKva
+
+    @property
+    def UplinkSpeedGbps(self):
+        return self._UplinkSpeedGbps
+
+    @UplinkSpeedGbps.setter
+    def UplinkSpeedGbps(self, UplinkSpeedGbps):
+        self._UplinkSpeedGbps = UplinkSpeedGbps
+
+    @property
+    def UplinkCount(self):
+        return self._UplinkCount
+
+    @UplinkCount.setter
+    def UplinkCount(self, UplinkCount):
+        self._UplinkCount = UplinkCount
+
+    @property
+    def ConditionRequirement(self):
+        return self._ConditionRequirement
+
+    @ConditionRequirement.setter
+    def ConditionRequirement(self, ConditionRequirement):
+        self._ConditionRequirement = ConditionRequirement
+
+    @property
+    def DimensionRequirement(self):
+        return self._DimensionRequirement
+
+    @DimensionRequirement.setter
+    def DimensionRequirement(self, DimensionRequirement):
+        self._DimensionRequirement = DimensionRequirement
+
+    @property
+    def RedundantNetworking(self):
+        return self._RedundantNetworking
+
+    @RedundantNetworking.setter
+    def RedundantNetworking(self, RedundantNetworking):
+        self._RedundantNetworking = RedundantNetworking
+
+    @property
+    def NeedHelp(self):
+        return self._NeedHelp
+
+    @NeedHelp.setter
+    def NeedHelp(self, NeedHelp):
+        self._NeedHelp = NeedHelp
+
+    @property
+    def RedundantPower(self):
+        return self._RedundantPower
+
+    @RedundantPower.setter
+    def RedundantPower(self, RedundantPower):
+        self._RedundantPower = RedundantPower
+
+    @property
+    def BreakerRequirement(self):
+        return self._BreakerRequirement
+
+    @BreakerRequirement.setter
+    def BreakerRequirement(self, BreakerRequirement):
+        self._BreakerRequirement = BreakerRequirement
 
 
     def _deserialize(self, params):
-        self.SiteId = params.get("SiteId")
-        self.FiberType = params.get("FiberType")
-        self.OpticalStandard = params.get("OpticalStandard")
-        self.PowerConnectors = params.get("PowerConnectors")
-        self.PowerFeedDrop = params.get("PowerFeedDrop")
-        self.MaxWeight = params.get("MaxWeight")
-        self.PowerDrawKva = params.get("PowerDrawKva")
-        self.UplinkSpeedGbps = params.get("UplinkSpeedGbps")
-        self.UplinkCount = params.get("UplinkCount")
-        self.ConditionRequirement = params.get("ConditionRequirement")
-        self.DimensionRequirement = params.get("DimensionRequirement")
-        self.RedundantNetworking = params.get("RedundantNetworking")
-        self.NeedHelp = params.get("NeedHelp")
-        self.RedundantPower = params.get("RedundantPower")
-        self.BreakerRequirement = params.get("BreakerRequirement")
+        self._SiteId = params.get("SiteId")
+        self._FiberType = params.get("FiberType")
+        self._OpticalStandard = params.get("OpticalStandard")
+        self._PowerConnectors = params.get("PowerConnectors")
+        self._PowerFeedDrop = params.get("PowerFeedDrop")
+        self._MaxWeight = params.get("MaxWeight")
+        self._PowerDrawKva = params.get("PowerDrawKva")
+        self._UplinkSpeedGbps = params.get("UplinkSpeedGbps")
+        self._UplinkCount = params.get("UplinkCount")
+        self._ConditionRequirement = params.get("ConditionRequirement")
+        self._DimensionRequirement = params.get("DimensionRequirement")
+        self._RedundantNetworking = params.get("RedundantNetworking")
+        self._NeedHelp = params.get("NeedHelp")
+        self._RedundantPower = params.get("RedundantPower")
+        self._BreakerRequirement = params.get("BreakerRequirement")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1960,14 +3888,22 @@ class ModifySiteDeviceInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySiteInfoRequest(AbstractModel):
@@ -1977,50 +3913,123 @@ class ModifySiteInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteId: 机房ID
+        :param _SiteId: 机房ID
         :type SiteId: str
-        :param Name: 站点名称
+        :param _Name: 站点名称
         :type Name: str
-        :param Description: 站点描述
+        :param _Description: 站点描述
         :type Description: str
-        :param Note: 注意事项
+        :param _Note: 注意事项
         :type Note: str
-        :param Country: 站点所在国家
+        :param _Country: 站点所在国家
         :type Country: str
-        :param Province: 站点所在省份
+        :param _Province: 站点所在省份
         :type Province: str
-        :param City: 站点所在城市
+        :param _City: 站点所在城市
         :type City: str
-        :param PostalCode: 站点所在地区的邮编
+        :param _PostalCode: 站点所在地区的邮编
         :type PostalCode: str
-        :param AddressLine: 站点所在地区的详细地址信息
+        :param _AddressLine: 站点所在地区的详细地址信息
         :type AddressLine: str
         """
-        self.SiteId = None
-        self.Name = None
-        self.Description = None
-        self.Note = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.PostalCode = None
-        self.AddressLine = None
+        self._SiteId = None
+        self._Name = None
+        self._Description = None
+        self._Note = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._PostalCode = None
+        self._AddressLine = None
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def PostalCode(self):
+        return self._PostalCode
+
+    @PostalCode.setter
+    def PostalCode(self, PostalCode):
+        self._PostalCode = PostalCode
+
+    @property
+    def AddressLine(self):
+        return self._AddressLine
+
+    @AddressLine.setter
+    def AddressLine(self, AddressLine):
+        self._AddressLine = AddressLine
 
 
     def _deserialize(self, params):
-        self.SiteId = params.get("SiteId")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.Note = params.get("Note")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.PostalCode = params.get("PostalCode")
-        self.AddressLine = params.get("AddressLine")
+        self._SiteId = params.get("SiteId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Note = params.get("Note")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._PostalCode = params.get("PostalCode")
+        self._AddressLine = params.get("AddressLine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2033,14 +4042,22 @@ class ModifySiteInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OutBandwidth(AbstractModel):
@@ -2050,24 +4067,41 @@ class OutBandwidth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamps: 时间戳
+        :param _Timestamps: 时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamps: list of float
-        :param Values: 对应时间的值
+        :param _Values: 对应时间的值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
-        self.Timestamps = None
-        self.Values = None
+        self._Timestamps = None
+        self._Values = None
+
+    @property
+    def Timestamps(self):
+        return self._Timestamps
+
+    @Timestamps.setter
+    def Timestamps(self, Timestamps):
+        self._Timestamps = Timestamps
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Timestamps = params.get("Timestamps")
-        self.Values = params.get("Values")
+        self._Timestamps = params.get("Timestamps")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2080,27 +4114,44 @@ class RegionZoneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: Region id
+        :param _RegionId: Region id
         :type RegionId: int
-        :param Zones: ZoneInfo数组
+        :param _Zones: ZoneInfo数组
         :type Zones: list of ZoneInfo
         """
-        self.RegionId = None
-        self.Zones = None
+        self._RegionId = None
+        self._Zones = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
 
 
     def _deserialize(self, params):
-        self.RegionId = params.get("RegionId")
+        self._RegionId = params.get("RegionId")
         if params.get("Zones") is not None:
-            self.Zones = []
+            self._Zones = []
             for item in params.get("Zones"):
                 obj = ZoneInfo()
                 obj._deserialize(item)
-                self.Zones.append(obj)
+                self._Zones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2113,31 +4164,64 @@ class Site(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 站点名称
+        :param _Name: 站点名称
         :type Name: str
-        :param SiteId: 站点id
+        :param _SiteId: 站点id
         :type SiteId: str
-        :param Description: 站点描述
+        :param _Description: 站点描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param CreateTime: 站点创建时间
+        :param _CreateTime: 站点创建时间
         :type CreateTime: str
         """
-        self.Name = None
-        self.SiteId = None
-        self.Description = None
-        self.CreateTime = None
+        self._Name = None
+        self._SiteId = None
+        self._Description = None
+        self._CreateTime = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.SiteId = params.get("SiteId")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
+        self._Name = params.get("Name")
+        self._SiteId = params.get("SiteId")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2150,118 +4234,311 @@ class SiteDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SiteId: 站点id
+        :param _SiteId: 站点id
         :type SiteId: str
-        :param Name: 站点名称
+        :param _Name: 站点名称
         :type Name: str
-        :param Description: 站点描述
+        :param _Description: 站点描述
         :type Description: str
-        :param CreateTime: 站点创建时间
+        :param _CreateTime: 站点创建时间
         :type CreateTime: str
-        :param FiberType: 光纤类型
+        :param _FiberType: 光纤类型
         :type FiberType: str
-        :param UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
+        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
         :type UplinkSpeedGbps: int
-        :param UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :param _UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
         :type UplinkCount: int
-        :param OpticalStandard: 将CDC连接到网络时采用的光学标准
+        :param _OpticalStandard: 将CDC连接到网络时采用的光学标准
         :type OpticalStandard: str
-        :param RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+        :param _RedundantNetworking: 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
         :type RedundantNetworking: bool
-        :param PowerConnectors: 电源连接器类型
+        :param _PowerConnectors: 电源连接器类型
         :type PowerConnectors: str
-        :param PowerFeedDrop: 从机架上方还是下方供电。
+        :param _PowerFeedDrop: 从机架上方还是下方供电。
         :type PowerFeedDrop: str
-        :param PowerDrawKva: 功耗(KW)
+        :param _PowerDrawKva: 功耗(KW)
         :type PowerDrawKva: float
-        :param ConditionRequirement: 是否满足下面环境条件：
+        :param _ConditionRequirement: 是否满足下面环境条件：
 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
 2、确定的机架位置包含:
 温度范围为 41 到 104°F (5 到 40°C)。
 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
         :type ConditionRequirement: bool
-        :param DimensionRequirement: 是否满足下面的尺寸条件：
+        :param _DimensionRequirement: 是否满足下面的尺寸条件：
 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
         :type DimensionRequirement: bool
-        :param MaxWeight: 最大承重(KG)
+        :param _MaxWeight: 最大承重(KG)
         :type MaxWeight: int
-        :param AddressLine: 站点地址
+        :param _AddressLine: 站点地址
         :type AddressLine: str
-        :param OptionalAddressLine: 站点所在地区的详细地址信息（补充）
+        :param _OptionalAddressLine: 站点所在地区的详细地址信息（补充）
         :type OptionalAddressLine: str
-        :param NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
+        :param _NeedHelp: 是否需要腾讯云团队协助完成机架支撑工作
         :type NeedHelp: bool
-        :param BreakerRequirement: 上游断路器是否具备
+        :param _BreakerRequirement: 上游断路器是否具备
         :type BreakerRequirement: bool
-        :param RedundantPower: 是否电源冗余
+        :param _RedundantPower: 是否电源冗余
         :type RedundantPower: bool
-        :param Country: 站点所在国家
+        :param _Country: 站点所在国家
         :type Country: str
-        :param Province: 站点所在省份
+        :param _Province: 站点所在省份
         :type Province: str
-        :param City: 站点所在城市
+        :param _City: 站点所在城市
         :type City: str
-        :param PostalCode: 站点所在地区的邮编
+        :param _PostalCode: 站点所在地区的邮编
         :type PostalCode: int
         """
-        self.SiteId = None
-        self.Name = None
-        self.Description = None
-        self.CreateTime = None
-        self.FiberType = None
-        self.UplinkSpeedGbps = None
-        self.UplinkCount = None
-        self.OpticalStandard = None
-        self.RedundantNetworking = None
-        self.PowerConnectors = None
-        self.PowerFeedDrop = None
-        self.PowerDrawKva = None
-        self.ConditionRequirement = None
-        self.DimensionRequirement = None
-        self.MaxWeight = None
-        self.AddressLine = None
-        self.OptionalAddressLine = None
-        self.NeedHelp = None
-        self.BreakerRequirement = None
-        self.RedundantPower = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.PostalCode = None
+        self._SiteId = None
+        self._Name = None
+        self._Description = None
+        self._CreateTime = None
+        self._FiberType = None
+        self._UplinkSpeedGbps = None
+        self._UplinkCount = None
+        self._OpticalStandard = None
+        self._RedundantNetworking = None
+        self._PowerConnectors = None
+        self._PowerFeedDrop = None
+        self._PowerDrawKva = None
+        self._ConditionRequirement = None
+        self._DimensionRequirement = None
+        self._MaxWeight = None
+        self._AddressLine = None
+        self._OptionalAddressLine = None
+        self._NeedHelp = None
+        self._BreakerRequirement = None
+        self._RedundantPower = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._PostalCode = None
+
+    @property
+    def SiteId(self):
+        return self._SiteId
+
+    @SiteId.setter
+    def SiteId(self, SiteId):
+        self._SiteId = SiteId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def FiberType(self):
+        return self._FiberType
+
+    @FiberType.setter
+    def FiberType(self, FiberType):
+        self._FiberType = FiberType
+
+    @property
+    def UplinkSpeedGbps(self):
+        return self._UplinkSpeedGbps
+
+    @UplinkSpeedGbps.setter
+    def UplinkSpeedGbps(self, UplinkSpeedGbps):
+        self._UplinkSpeedGbps = UplinkSpeedGbps
+
+    @property
+    def UplinkCount(self):
+        return self._UplinkCount
+
+    @UplinkCount.setter
+    def UplinkCount(self, UplinkCount):
+        self._UplinkCount = UplinkCount
+
+    @property
+    def OpticalStandard(self):
+        return self._OpticalStandard
+
+    @OpticalStandard.setter
+    def OpticalStandard(self, OpticalStandard):
+        self._OpticalStandard = OpticalStandard
+
+    @property
+    def RedundantNetworking(self):
+        return self._RedundantNetworking
+
+    @RedundantNetworking.setter
+    def RedundantNetworking(self, RedundantNetworking):
+        self._RedundantNetworking = RedundantNetworking
+
+    @property
+    def PowerConnectors(self):
+        return self._PowerConnectors
+
+    @PowerConnectors.setter
+    def PowerConnectors(self, PowerConnectors):
+        self._PowerConnectors = PowerConnectors
+
+    @property
+    def PowerFeedDrop(self):
+        return self._PowerFeedDrop
+
+    @PowerFeedDrop.setter
+    def PowerFeedDrop(self, PowerFeedDrop):
+        self._PowerFeedDrop = PowerFeedDrop
+
+    @property
+    def PowerDrawKva(self):
+        return self._PowerDrawKva
+
+    @PowerDrawKva.setter
+    def PowerDrawKva(self, PowerDrawKva):
+        self._PowerDrawKva = PowerDrawKva
+
+    @property
+    def ConditionRequirement(self):
+        return self._ConditionRequirement
+
+    @ConditionRequirement.setter
+    def ConditionRequirement(self, ConditionRequirement):
+        self._ConditionRequirement = ConditionRequirement
+
+    @property
+    def DimensionRequirement(self):
+        return self._DimensionRequirement
+
+    @DimensionRequirement.setter
+    def DimensionRequirement(self, DimensionRequirement):
+        self._DimensionRequirement = DimensionRequirement
+
+    @property
+    def MaxWeight(self):
+        return self._MaxWeight
+
+    @MaxWeight.setter
+    def MaxWeight(self, MaxWeight):
+        self._MaxWeight = MaxWeight
+
+    @property
+    def AddressLine(self):
+        return self._AddressLine
+
+    @AddressLine.setter
+    def AddressLine(self, AddressLine):
+        self._AddressLine = AddressLine
+
+    @property
+    def OptionalAddressLine(self):
+        return self._OptionalAddressLine
+
+    @OptionalAddressLine.setter
+    def OptionalAddressLine(self, OptionalAddressLine):
+        self._OptionalAddressLine = OptionalAddressLine
+
+    @property
+    def NeedHelp(self):
+        return self._NeedHelp
+
+    @NeedHelp.setter
+    def NeedHelp(self, NeedHelp):
+        self._NeedHelp = NeedHelp
+
+    @property
+    def BreakerRequirement(self):
+        return self._BreakerRequirement
+
+    @BreakerRequirement.setter
+    def BreakerRequirement(self, BreakerRequirement):
+        self._BreakerRequirement = BreakerRequirement
+
+    @property
+    def RedundantPower(self):
+        return self._RedundantPower
+
+    @RedundantPower.setter
+    def RedundantPower(self, RedundantPower):
+        self._RedundantPower = RedundantPower
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def PostalCode(self):
+        return self._PostalCode
+
+    @PostalCode.setter
+    def PostalCode(self, PostalCode):
+        self._PostalCode = PostalCode
 
 
     def _deserialize(self, params):
-        self.SiteId = params.get("SiteId")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
-        self.FiberType = params.get("FiberType")
-        self.UplinkSpeedGbps = params.get("UplinkSpeedGbps")
-        self.UplinkCount = params.get("UplinkCount")
-        self.OpticalStandard = params.get("OpticalStandard")
-        self.RedundantNetworking = params.get("RedundantNetworking")
-        self.PowerConnectors = params.get("PowerConnectors")
-        self.PowerFeedDrop = params.get("PowerFeedDrop")
-        self.PowerDrawKva = params.get("PowerDrawKva")
-        self.ConditionRequirement = params.get("ConditionRequirement")
-        self.DimensionRequirement = params.get("DimensionRequirement")
-        self.MaxWeight = params.get("MaxWeight")
-        self.AddressLine = params.get("AddressLine")
-        self.OptionalAddressLine = params.get("OptionalAddressLine")
-        self.NeedHelp = params.get("NeedHelp")
-        self.BreakerRequirement = params.get("BreakerRequirement")
-        self.RedundantPower = params.get("RedundantPower")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.PostalCode = params.get("PostalCode")
+        self._SiteId = params.get("SiteId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._FiberType = params.get("FiberType")
+        self._UplinkSpeedGbps = params.get("UplinkSpeedGbps")
+        self._UplinkCount = params.get("UplinkCount")
+        self._OpticalStandard = params.get("OpticalStandard")
+        self._RedundantNetworking = params.get("RedundantNetworking")
+        self._PowerConnectors = params.get("PowerConnectors")
+        self._PowerFeedDrop = params.get("PowerFeedDrop")
+        self._PowerDrawKva = params.get("PowerDrawKva")
+        self._ConditionRequirement = params.get("ConditionRequirement")
+        self._DimensionRequirement = params.get("DimensionRequirement")
+        self._MaxWeight = params.get("MaxWeight")
+        self._AddressLine = params.get("AddressLine")
+        self._OptionalAddressLine = params.get("OptionalAddressLine")
+        self._NeedHelp = params.get("NeedHelp")
+        self._BreakerRequirement = params.get("BreakerRequirement")
+        self._RedundantPower = params.get("RedundantPower")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._PostalCode = params.get("PostalCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2274,27 +4551,44 @@ class VpngwBandwidthData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OutBandwidth: 出带宽流量
+        :param _OutBandwidth: 出带宽流量
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutBandwidth: :class:`tencentcloud.cdc.v20201214.models.OutBandwidth`
-        :param InBandwidth: 入带宽流量
+        :param _InBandwidth: 入带宽流量
         :type InBandwidth: :class:`tencentcloud.cdc.v20201214.models.InBandwidth`
         """
-        self.OutBandwidth = None
-        self.InBandwidth = None
+        self._OutBandwidth = None
+        self._InBandwidth = None
+
+    @property
+    def OutBandwidth(self):
+        return self._OutBandwidth
+
+    @OutBandwidth.setter
+    def OutBandwidth(self, OutBandwidth):
+        self._OutBandwidth = OutBandwidth
+
+    @property
+    def InBandwidth(self):
+        return self._InBandwidth
+
+    @InBandwidth.setter
+    def InBandwidth(self, InBandwidth):
+        self._InBandwidth = InBandwidth
 
 
     def _deserialize(self, params):
         if params.get("OutBandwidth") is not None:
-            self.OutBandwidth = OutBandwidth()
-            self.OutBandwidth._deserialize(params.get("OutBandwidth"))
+            self._OutBandwidth = OutBandwidth()
+            self._OutBandwidth._deserialize(params.get("OutBandwidth"))
         if params.get("InBandwidth") is not None:
-            self.InBandwidth = InBandwidth()
-            self.InBandwidth._deserialize(params.get("InBandwidth"))
+            self._InBandwidth = InBandwidth()
+            self._InBandwidth._deserialize(params.get("InBandwidth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2307,30 +4601,63 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 可用区名称
+        :param _Zone: 可用区名称
         :type Zone: str
-        :param ZoneName: 可用区描述
+        :param _ZoneName: 可用区描述
         :type ZoneName: str
-        :param ZoneId: 可用区ID
+        :param _ZoneId: 可用区ID
         :type ZoneId: int
-        :param ZoneState: 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
+        :param _ZoneState: 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
         :type ZoneState: str
         """
-        self.Zone = None
-        self.ZoneName = None
-        self.ZoneId = None
-        self.ZoneState = None
+        self._Zone = None
+        self._ZoneName = None
+        self._ZoneId = None
+        self._ZoneState = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneState(self):
+        return self._ZoneState
+
+    @ZoneState.setter
+    def ZoneState(self, ZoneState):
+        self._ZoneState = ZoneState
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.ZoneName = params.get("ZoneName")
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneState = params.get("ZoneState")
+        self._Zone = params.get("Zone")
+        self._ZoneName = params.get("ZoneName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneState = params.get("ZoneState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

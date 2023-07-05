@@ -25,54 +25,111 @@ class CheckStep(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StepNo: 步骤编号
+        :param _StepNo: 步骤编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepNo: int
-        :param StepId: 步骤Id， 如：ConnectDBCheck、VersionCheck、SrcPrivilegeCheck等，具体校验项和源目标实例相关
+        :param _StepId: 步骤Id， 如：ConnectDBCheck、VersionCheck、SrcPrivilegeCheck等，具体校验项和源目标实例相关
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepId: str
-        :param StepName: 步骤名称
+        :param _StepName: 步骤名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepName: str
-        :param StepStatus: 此检查步骤的结果，pass(校验通过)、failed(校验失败)、notStarted(校验还未开始进行)、blocked(检验阻塞)、warning(校验有告警，但仍通过)
+        :param _StepStatus: 此检查步骤的结果，pass(校验通过)、failed(校验失败)、notStarted(校验还未开始进行)、blocked(检验阻塞)、warning(校验有告警，但仍通过)
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepStatus: str
-        :param StepMessage: 此检查步骤的错误消息
+        :param _StepMessage: 此检查步骤的错误消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepMessage: str
-        :param DetailCheckItems: 每个检查步骤里的具体检查项
+        :param _DetailCheckItems: 每个检查步骤里的具体检查项
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailCheckItems: list of DetailCheckItem
-        :param HasSkipped: 是否已跳过
+        :param _HasSkipped: 是否已跳过
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasSkipped: bool
         """
-        self.StepNo = None
-        self.StepId = None
-        self.StepName = None
-        self.StepStatus = None
-        self.StepMessage = None
-        self.DetailCheckItems = None
-        self.HasSkipped = None
+        self._StepNo = None
+        self._StepId = None
+        self._StepName = None
+        self._StepStatus = None
+        self._StepMessage = None
+        self._DetailCheckItems = None
+        self._HasSkipped = None
+
+    @property
+    def StepNo(self):
+        return self._StepNo
+
+    @StepNo.setter
+    def StepNo(self, StepNo):
+        self._StepNo = StepNo
+
+    @property
+    def StepId(self):
+        return self._StepId
+
+    @StepId.setter
+    def StepId(self, StepId):
+        self._StepId = StepId
+
+    @property
+    def StepName(self):
+        return self._StepName
+
+    @StepName.setter
+    def StepName(self, StepName):
+        self._StepName = StepName
+
+    @property
+    def StepStatus(self):
+        return self._StepStatus
+
+    @StepStatus.setter
+    def StepStatus(self, StepStatus):
+        self._StepStatus = StepStatus
+
+    @property
+    def StepMessage(self):
+        return self._StepMessage
+
+    @StepMessage.setter
+    def StepMessage(self, StepMessage):
+        self._StepMessage = StepMessage
+
+    @property
+    def DetailCheckItems(self):
+        return self._DetailCheckItems
+
+    @DetailCheckItems.setter
+    def DetailCheckItems(self, DetailCheckItems):
+        self._DetailCheckItems = DetailCheckItems
+
+    @property
+    def HasSkipped(self):
+        return self._HasSkipped
+
+    @HasSkipped.setter
+    def HasSkipped(self, HasSkipped):
+        self._HasSkipped = HasSkipped
 
 
     def _deserialize(self, params):
-        self.StepNo = params.get("StepNo")
-        self.StepId = params.get("StepId")
-        self.StepName = params.get("StepName")
-        self.StepStatus = params.get("StepStatus")
-        self.StepMessage = params.get("StepMessage")
+        self._StepNo = params.get("StepNo")
+        self._StepId = params.get("StepId")
+        self._StepName = params.get("StepName")
+        self._StepStatus = params.get("StepStatus")
+        self._StepMessage = params.get("StepMessage")
         if params.get("DetailCheckItems") is not None:
-            self.DetailCheckItems = []
+            self._DetailCheckItems = []
             for item in params.get("DetailCheckItems"):
                 obj = DetailCheckItem()
                 obj._deserialize(item)
-                self.DetailCheckItems.append(obj)
-        self.HasSkipped = params.get("HasSkipped")
+                self._DetailCheckItems.append(obj)
+        self._HasSkipped = params.get("HasSkipped")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -85,31 +142,56 @@ class CheckStepInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartAt: 任务开始时间
+        :param _StartAt: 任务开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
-        :param EndAt: 任务结束时间
+        :param _EndAt: 任务结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndAt: str
-        :param Progress: 任务步骤信息
+        :param _Progress: 任务步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
-        self.StartAt = None
-        self.EndAt = None
-        self.Progress = None
+        self._StartAt = None
+        self._EndAt = None
+        self._Progress = None
+
+    @property
+    def StartAt(self):
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+    @property
+    def EndAt(self):
+        return self._EndAt
+
+    @EndAt.setter
+    def EndAt(self, EndAt):
+        self._EndAt = EndAt
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
 
 
     def _deserialize(self, params):
-        self.StartAt = params.get("StartAt")
-        self.EndAt = params.get("EndAt")
+        self._StartAt = params.get("StartAt")
+        self._EndAt = params.get("EndAt")
         if params.get("Progress") is not None:
-            self.Progress = ProcessProgress()
-            self.Progress._deserialize(params.get("Progress"))
+            self._Progress = ProcessProgress()
+            self._Progress._deserialize(params.get("Progress"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -122,88 +204,201 @@ class CompareAbstractInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Options: 校验配置参数
+        :param _Options: 校验配置参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
-        :param Objects: 一致性校验对比对象
+        :param _Objects: 一致性校验对比对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
-        :param Conclusion: 对比结论: same,different
+        :param _Conclusion: 对比结论: same,different
 注意：此字段可能返回 null，表示取不到有效值。
         :type Conclusion: str
-        :param Status: 任务状态: success,failed
+        :param _Status: 任务状态: success,failed
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param TotalTables: 总的表数量
+        :param _TotalTables: 总的表数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTables: int
-        :param CheckedTables: 已校验的表数量
+        :param _CheckedTables: 已校验的表数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckedTables: int
-        :param DifferentTables: 不一致的表数量
+        :param _DifferentTables: 不一致的表数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DifferentTables: int
-        :param SkippedTables: 跳过校验的表数量
+        :param _SkippedTables: 跳过校验的表数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkippedTables: int
-        :param NearlyTableCount: 预估表总数
+        :param _NearlyTableCount: 预估表总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type NearlyTableCount: int
-        :param DifferentRows: 不一致的数据行数量
+        :param _DifferentRows: 不一致的数据行数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DifferentRows: int
-        :param SrcSampleRows: 源库行数，当对比类型为**行数对比**时此项有意义
+        :param _SrcSampleRows: 源库行数，当对比类型为**行数对比**时此项有意义
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcSampleRows: int
-        :param DstSampleRows: 目标库行数，当对比类型为**行数对比**时此项有意义
+        :param _DstSampleRows: 目标库行数，当对比类型为**行数对比**时此项有意义
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstSampleRows: int
-        :param StartedAt: 开始时间
+        :param _StartedAt: 开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartedAt: str
-        :param FinishedAt: 结束时间
+        :param _FinishedAt: 结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
         """
-        self.Options = None
-        self.Objects = None
-        self.Conclusion = None
-        self.Status = None
-        self.TotalTables = None
-        self.CheckedTables = None
-        self.DifferentTables = None
-        self.SkippedTables = None
-        self.NearlyTableCount = None
-        self.DifferentRows = None
-        self.SrcSampleRows = None
-        self.DstSampleRows = None
-        self.StartedAt = None
-        self.FinishedAt = None
+        self._Options = None
+        self._Objects = None
+        self._Conclusion = None
+        self._Status = None
+        self._TotalTables = None
+        self._CheckedTables = None
+        self._DifferentTables = None
+        self._SkippedTables = None
+        self._NearlyTableCount = None
+        self._DifferentRows = None
+        self._SrcSampleRows = None
+        self._DstSampleRows = None
+        self._StartedAt = None
+        self._FinishedAt = None
+
+    @property
+    def Options(self):
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def Objects(self):
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Conclusion(self):
+        return self._Conclusion
+
+    @Conclusion.setter
+    def Conclusion(self, Conclusion):
+        self._Conclusion = Conclusion
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TotalTables(self):
+        return self._TotalTables
+
+    @TotalTables.setter
+    def TotalTables(self, TotalTables):
+        self._TotalTables = TotalTables
+
+    @property
+    def CheckedTables(self):
+        return self._CheckedTables
+
+    @CheckedTables.setter
+    def CheckedTables(self, CheckedTables):
+        self._CheckedTables = CheckedTables
+
+    @property
+    def DifferentTables(self):
+        return self._DifferentTables
+
+    @DifferentTables.setter
+    def DifferentTables(self, DifferentTables):
+        self._DifferentTables = DifferentTables
+
+    @property
+    def SkippedTables(self):
+        return self._SkippedTables
+
+    @SkippedTables.setter
+    def SkippedTables(self, SkippedTables):
+        self._SkippedTables = SkippedTables
+
+    @property
+    def NearlyTableCount(self):
+        return self._NearlyTableCount
+
+    @NearlyTableCount.setter
+    def NearlyTableCount(self, NearlyTableCount):
+        self._NearlyTableCount = NearlyTableCount
+
+    @property
+    def DifferentRows(self):
+        return self._DifferentRows
+
+    @DifferentRows.setter
+    def DifferentRows(self, DifferentRows):
+        self._DifferentRows = DifferentRows
+
+    @property
+    def SrcSampleRows(self):
+        return self._SrcSampleRows
+
+    @SrcSampleRows.setter
+    def SrcSampleRows(self, SrcSampleRows):
+        self._SrcSampleRows = SrcSampleRows
+
+    @property
+    def DstSampleRows(self):
+        return self._DstSampleRows
+
+    @DstSampleRows.setter
+    def DstSampleRows(self, DstSampleRows):
+        self._DstSampleRows = DstSampleRows
+
+    @property
+    def StartedAt(self):
+        return self._StartedAt
+
+    @StartedAt.setter
+    def StartedAt(self, StartedAt):
+        self._StartedAt = StartedAt
+
+    @property
+    def FinishedAt(self):
+        return self._FinishedAt
+
+    @FinishedAt.setter
+    def FinishedAt(self, FinishedAt):
+        self._FinishedAt = FinishedAt
 
 
     def _deserialize(self, params):
         if params.get("Options") is not None:
-            self.Options = CompareOptions()
-            self.Options._deserialize(params.get("Options"))
+            self._Options = CompareOptions()
+            self._Options._deserialize(params.get("Options"))
         if params.get("Objects") is not None:
-            self.Objects = CompareObject()
-            self.Objects._deserialize(params.get("Objects"))
-        self.Conclusion = params.get("Conclusion")
-        self.Status = params.get("Status")
-        self.TotalTables = params.get("TotalTables")
-        self.CheckedTables = params.get("CheckedTables")
-        self.DifferentTables = params.get("DifferentTables")
-        self.SkippedTables = params.get("SkippedTables")
-        self.NearlyTableCount = params.get("NearlyTableCount")
-        self.DifferentRows = params.get("DifferentRows")
-        self.SrcSampleRows = params.get("SrcSampleRows")
-        self.DstSampleRows = params.get("DstSampleRows")
-        self.StartedAt = params.get("StartedAt")
-        self.FinishedAt = params.get("FinishedAt")
+            self._Objects = CompareObject()
+            self._Objects._deserialize(params.get("Objects"))
+        self._Conclusion = params.get("Conclusion")
+        self._Status = params.get("Status")
+        self._TotalTables = params.get("TotalTables")
+        self._CheckedTables = params.get("CheckedTables")
+        self._DifferentTables = params.get("DifferentTables")
+        self._SkippedTables = params.get("SkippedTables")
+        self._NearlyTableCount = params.get("NearlyTableCount")
+        self._DifferentRows = params.get("DifferentRows")
+        self._SrcSampleRows = params.get("SrcSampleRows")
+        self._DstSampleRows = params.get("DstSampleRows")
+        self._StartedAt = params.get("StartedAt")
+        self._FinishedAt = params.get("FinishedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -216,28 +411,45 @@ class CompareDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Difference: 数据不一致的表详情
+        :param _Difference: 数据不一致的表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Difference: :class:`tencentcloud.dts.v20211206.models.DifferenceDetail`
-        :param Skipped: 跳过校验的表详情
+        :param _Skipped: 跳过校验的表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Skipped: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
         """
-        self.Difference = None
-        self.Skipped = None
+        self._Difference = None
+        self._Skipped = None
+
+    @property
+    def Difference(self):
+        return self._Difference
+
+    @Difference.setter
+    def Difference(self, Difference):
+        self._Difference = Difference
+
+    @property
+    def Skipped(self):
+        return self._Skipped
+
+    @Skipped.setter
+    def Skipped(self, Skipped):
+        self._Skipped = Skipped
 
 
     def _deserialize(self, params):
         if params.get("Difference") is not None:
-            self.Difference = DifferenceDetail()
-            self.Difference._deserialize(params.get("Difference"))
+            self._Difference = DifferenceDetail()
+            self._Difference._deserialize(params.get("Difference"))
         if params.get("Skipped") is not None:
-            self.Skipped = SkippedDetail()
-            self.Skipped._deserialize(params.get("Skipped"))
+            self._Skipped = SkippedDetail()
+            self._Skipped._deserialize(params.get("Skipped"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -250,34 +462,59 @@ class CompareObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ObjectMode: 对象模式 整实例-all,部分对象-partial
+        :param _ObjectMode: 对象模式 整实例-all,部分对象-partial
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectMode: str
-        :param ObjectItems: 对象列表
+        :param _ObjectItems: 对象列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectItems: list of CompareObjectItem
-        :param AdvancedObjects: 高级对象类型，如account(账号),index(索引),shardkey(片建，后面可能会调整),schema(库表结构)
+        :param _AdvancedObjects: 高级对象类型，如account(账号),index(索引),shardkey(片建，后面可能会调整),schema(库表结构)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         """
-        self.ObjectMode = None
-        self.ObjectItems = None
-        self.AdvancedObjects = None
+        self._ObjectMode = None
+        self._ObjectItems = None
+        self._AdvancedObjects = None
+
+    @property
+    def ObjectMode(self):
+        return self._ObjectMode
+
+    @ObjectMode.setter
+    def ObjectMode(self, ObjectMode):
+        self._ObjectMode = ObjectMode
+
+    @property
+    def ObjectItems(self):
+        return self._ObjectItems
+
+    @ObjectItems.setter
+    def ObjectItems(self, ObjectItems):
+        self._ObjectItems = ObjectItems
+
+    @property
+    def AdvancedObjects(self):
+        return self._AdvancedObjects
+
+    @AdvancedObjects.setter
+    def AdvancedObjects(self, AdvancedObjects):
+        self._AdvancedObjects = AdvancedObjects
 
 
     def _deserialize(self, params):
-        self.ObjectMode = params.get("ObjectMode")
+        self._ObjectMode = params.get("ObjectMode")
         if params.get("ObjectItems") is not None:
-            self.ObjectItems = []
+            self._ObjectItems = []
             for item in params.get("ObjectItems"):
                 obj = CompareObjectItem()
                 obj._deserialize(item)
-                self.ObjectItems.append(obj)
-        self.AdvancedObjects = params.get("AdvancedObjects")
+                self._ObjectItems.append(obj)
+        self._AdvancedObjects = params.get("AdvancedObjects")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -290,59 +527,116 @@ class CompareObjectItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DbName: 数据库名
+        :param _DbName: 数据库名
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
-        :param DbMode: 数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
+        :param _DbMode: 数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
-        :param SchemaName: schema名称
+        :param _SchemaName: schema名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param TableMode: 表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
+        :param _TableMode: 表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableMode: str
-        :param Tables: 用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
+        :param _Tables: 用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of CompareTableItem
-        :param ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
+        :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewMode: str
-        :param Views: 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写
+        :param _Views: 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of CompareViewItem
         """
-        self.DbName = None
-        self.DbMode = None
-        self.SchemaName = None
-        self.TableMode = None
-        self.Tables = None
-        self.ViewMode = None
-        self.Views = None
+        self._DbName = None
+        self._DbMode = None
+        self._SchemaName = None
+        self._TableMode = None
+        self._Tables = None
+        self._ViewMode = None
+        self._Views = None
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def DbMode(self):
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableMode(self):
+        return self._TableMode
+
+    @TableMode.setter
+    def TableMode(self, TableMode):
+        self._TableMode = TableMode
+
+    @property
+    def Tables(self):
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ViewMode(self):
+        return self._ViewMode
+
+    @ViewMode.setter
+    def ViewMode(self, ViewMode):
+        self._ViewMode = ViewMode
+
+    @property
+    def Views(self):
+        return self._Views
+
+    @Views.setter
+    def Views(self, Views):
+        self._Views = Views
 
 
     def _deserialize(self, params):
-        self.DbName = params.get("DbName")
-        self.DbMode = params.get("DbMode")
-        self.SchemaName = params.get("SchemaName")
-        self.TableMode = params.get("TableMode")
+        self._DbName = params.get("DbName")
+        self._DbMode = params.get("DbMode")
+        self._SchemaName = params.get("SchemaName")
+        self._TableMode = params.get("TableMode")
         if params.get("Tables") is not None:
-            self.Tables = []
+            self._Tables = []
             for item in params.get("Tables"):
                 obj = CompareTableItem()
                 obj._deserialize(item)
-                self.Tables.append(obj)
-        self.ViewMode = params.get("ViewMode")
+                self._Tables.append(obj)
+        self._ViewMode = params.get("ViewMode")
         if params.get("Views") is not None:
-            self.Views = []
+            self._Views = []
             for item in params.get("Views"):
                 obj = CompareViewItem()
                 obj._deserialize(item)
-                self.Views.append(obj)
+                self._Views.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -355,29 +649,54 @@ class CompareOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Method: 对比类型：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+        :param _Method: 对比类型：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
-        :param SampleRate: 抽样比例;范围0,100
+        :param _SampleRate: 抽样比例;范围0,100
 注意：此字段可能返回 null，表示取不到有效值。
         :type SampleRate: int
-        :param ThreadCount: 线程数，取值1-5，默认为1
+        :param _ThreadCount: 线程数，取值1-5，默认为1
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThreadCount: int
         """
-        self.Method = None
-        self.SampleRate = None
-        self.ThreadCount = None
+        self._Method = None
+        self._SampleRate = None
+        self._ThreadCount = None
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def ThreadCount(self):
+        return self._ThreadCount
+
+    @ThreadCount.setter
+    def ThreadCount(self, ThreadCount):
+        self._ThreadCount = ThreadCount
 
 
     def _deserialize(self, params):
-        self.Method = params.get("Method")
-        self.SampleRate = params.get("SampleRate")
-        self.ThreadCount = params.get("ThreadCount")
+        self._Method = params.get("Method")
+        self._SampleRate = params.get("SampleRate")
+        self._ThreadCount = params.get("ThreadCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -390,19 +709,28 @@ class CompareTableItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: 表名称
+        :param _TableName: 表名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         """
-        self.TableName = None
+        self._TableName = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
 
 
     def _deserialize(self, params):
-        self.TableName = params.get("TableName")
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -415,24 +743,41 @@ class CompareTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompareTaskId: 一致性校验任务Id
+        :param _CompareTaskId: 一致性校验任务Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTaskId: str
-        :param Status: 一致性校验结果，包括：unstart(未启动)、running(校验中)、canceled(已终止)、failed(校验任务失败)、inconsistent(不一致)、consistent(一致)、notexist(不存在校验任务)
+        :param _Status: 一致性校验结果，包括：unstart(未启动)、running(校验中)、canceled(已终止)、failed(校验任务失败)、inconsistent(不一致)、consistent(一致)、notexist(不存在校验任务)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
-        self.CompareTaskId = None
-        self.Status = None
+        self._CompareTaskId = None
+        self._Status = None
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.CompareTaskId = params.get("CompareTaskId")
-        self.Status = params.get("Status")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -445,92 +790,205 @@ class CompareTaskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id
+        :param _JobId: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param CompareTaskId: 对比任务 Id
+        :param _CompareTaskId: 对比任务 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTaskId: str
-        :param TaskName: 对比任务名称
+        :param _TaskName: 对比任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param Status: 对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :param _Status: 对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Config: 对比任务配置
+        :param _Config: 对比任务配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Config: :class:`tencentcloud.dts.v20211206.models.CompareObject`
-        :param CheckProcess: 对比任务校验详情
+        :param _CheckProcess: 对比任务校验详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckProcess: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
-        :param CompareProcess: 对比任务运行详情
+        :param _CompareProcess: 对比任务运行详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareProcess: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
-        :param Conclusion: 对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
+        :param _Conclusion: 对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Conclusion: str
-        :param CreatedAt: 任务创建时间
+        :param _CreatedAt: 任务创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param StartedAt: 任务启动时间
+        :param _StartedAt: 任务启动时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartedAt: str
-        :param FinishedAt: 对比结束时间
+        :param _FinishedAt: 对比结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
-        :param Method: 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+        :param _Method: 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
-        :param Options: 对比配置信息
+        :param _Options: 对比配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
-        :param Message: 一致性校验提示信息
+        :param _Message: 一致性校验提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
-        self.JobId = None
-        self.CompareTaskId = None
-        self.TaskName = None
-        self.Status = None
-        self.Config = None
-        self.CheckProcess = None
-        self.CompareProcess = None
-        self.Conclusion = None
-        self.CreatedAt = None
-        self.StartedAt = None
-        self.FinishedAt = None
-        self.Method = None
-        self.Options = None
-        self.Message = None
+        self._JobId = None
+        self._CompareTaskId = None
+        self._TaskName = None
+        self._Status = None
+        self._Config = None
+        self._CheckProcess = None
+        self._CompareProcess = None
+        self._Conclusion = None
+        self._CreatedAt = None
+        self._StartedAt = None
+        self._FinishedAt = None
+        self._Method = None
+        self._Options = None
+        self._Message = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def CheckProcess(self):
+        return self._CheckProcess
+
+    @CheckProcess.setter
+    def CheckProcess(self, CheckProcess):
+        self._CheckProcess = CheckProcess
+
+    @property
+    def CompareProcess(self):
+        return self._CompareProcess
+
+    @CompareProcess.setter
+    def CompareProcess(self, CompareProcess):
+        self._CompareProcess = CompareProcess
+
+    @property
+    def Conclusion(self):
+        return self._Conclusion
+
+    @Conclusion.setter
+    def Conclusion(self, Conclusion):
+        self._Conclusion = Conclusion
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def StartedAt(self):
+        return self._StartedAt
+
+    @StartedAt.setter
+    def StartedAt(self, StartedAt):
+        self._StartedAt = StartedAt
+
+    @property
+    def FinishedAt(self):
+        return self._FinishedAt
+
+    @FinishedAt.setter
+    def FinishedAt(self, FinishedAt):
+        self._FinishedAt = FinishedAt
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Options(self):
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompareTaskId = params.get("CompareTaskId")
-        self.TaskName = params.get("TaskName")
-        self.Status = params.get("Status")
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._TaskName = params.get("TaskName")
+        self._Status = params.get("Status")
         if params.get("Config") is not None:
-            self.Config = CompareObject()
-            self.Config._deserialize(params.get("Config"))
+            self._Config = CompareObject()
+            self._Config._deserialize(params.get("Config"))
         if params.get("CheckProcess") is not None:
-            self.CheckProcess = ProcessProgress()
-            self.CheckProcess._deserialize(params.get("CheckProcess"))
+            self._CheckProcess = ProcessProgress()
+            self._CheckProcess._deserialize(params.get("CheckProcess"))
         if params.get("CompareProcess") is not None:
-            self.CompareProcess = ProcessProgress()
-            self.CompareProcess._deserialize(params.get("CompareProcess"))
-        self.Conclusion = params.get("Conclusion")
-        self.CreatedAt = params.get("CreatedAt")
-        self.StartedAt = params.get("StartedAt")
-        self.FinishedAt = params.get("FinishedAt")
-        self.Method = params.get("Method")
+            self._CompareProcess = ProcessProgress()
+            self._CompareProcess._deserialize(params.get("CompareProcess"))
+        self._Conclusion = params.get("Conclusion")
+        self._CreatedAt = params.get("CreatedAt")
+        self._StartedAt = params.get("StartedAt")
+        self._FinishedAt = params.get("FinishedAt")
+        self._Method = params.get("Method")
         if params.get("Options") is not None:
-            self.Options = CompareOptions()
-            self.Options._deserialize(params.get("Options"))
-        self.Message = params.get("Message")
+            self._Options = CompareOptions()
+            self._Options._deserialize(params.get("Options"))
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -543,19 +1001,28 @@ class CompareViewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ViewName: 视图名
+        :param _ViewName: 视图名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewName: str
         """
-        self.ViewName = None
+        self._ViewName = None
+
+    @property
+    def ViewName(self):
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
 
 
     def _deserialize(self, params):
-        self.ViewName = params.get("ViewName")
+        self._ViewName = params.get("ViewName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -568,22 +1035,39 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
-        :param CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
+        :param _CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
         :type CompleteMode: str
         """
-        self.JobId = None
-        self.CompleteMode = None
+        self._JobId = None
+        self._CompleteMode = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompleteMode(self):
+        return self._CompleteMode
+
+    @CompleteMode.setter
+    def CompleteMode(self, CompleteMode):
+        self._CompleteMode = CompleteMode
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompleteMode = params.get("CompleteMode")
+        self._JobId = params.get("JobId")
+        self._CompleteMode = params.get("CompleteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -596,14 +1080,22 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ConfigureSyncJobRequest(AbstractModel):
@@ -613,90 +1105,219 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23
+        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23
         :type JobId: str
-        :param SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
+        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
         :type SrcAccessType: str
-        :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
+        :param _DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
         :type DstAccessType: str
-        :param Objects: 同步库表对象信息
+        :param _Objects: 同步库表对象信息
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
-        :param JobName: 同步任务名称
+        :param _JobName: 同步任务名称
         :type JobName: str
-        :param JobMode: 枚举值是 liteMode 和 fullMode ，分别对应精简模式或正常模式
+        :param _JobMode: 枚举值是 liteMode 和 fullMode ，分别对应精简模式或正常模式
         :type JobMode: str
-        :param RunMode: 运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
+        :param _RunMode: 运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
         :type RunMode: str
-        :param ExpectRunTime: 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
+        :param _ExpectRunTime: 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
         :type ExpectRunTime: str
-        :param SrcInfo: 源端信息，单节点数据库使用，且SrcNodeType传single
+        :param _SrcInfo: 源端信息，单节点数据库使用，且SrcNodeType传single
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param SrcInfos: 源端信息，多节点数据库使用，且SrcNodeType传cluster
+        :param _SrcInfos: 源端信息，多节点数据库使用，且SrcNodeType传cluster
         :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
-        :param SrcNodeType: 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+        :param _SrcNodeType: 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
         :type SrcNodeType: str
-        :param DstInfo: 目标端信息，单节点数据库使用
+        :param _DstInfo: 目标端信息，单节点数据库使用
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param DstInfos: 目标端信息，多节点数据库使用，且DstNodeType传cluster
+        :param _DstInfos: 目标端信息，多节点数据库使用，且DstNodeType传cluster
         :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
-        :param DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+        :param _DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
         :type DstNodeType: str
-        :param Options: 同步任务选项
+        :param _Options: 同步任务选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
-        :param AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
+        :param _AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
         :type AutoRetryTimeRangeMinutes: int
         """
-        self.JobId = None
-        self.SrcAccessType = None
-        self.DstAccessType = None
-        self.Objects = None
-        self.JobName = None
-        self.JobMode = None
-        self.RunMode = None
-        self.ExpectRunTime = None
-        self.SrcInfo = None
-        self.SrcInfos = None
-        self.SrcNodeType = None
-        self.DstInfo = None
-        self.DstInfos = None
-        self.DstNodeType = None
-        self.Options = None
-        self.AutoRetryTimeRangeMinutes = None
+        self._JobId = None
+        self._SrcAccessType = None
+        self._DstAccessType = None
+        self._Objects = None
+        self._JobName = None
+        self._JobMode = None
+        self._RunMode = None
+        self._ExpectRunTime = None
+        self._SrcInfo = None
+        self._SrcInfos = None
+        self._SrcNodeType = None
+        self._DstInfo = None
+        self._DstInfos = None
+        self._DstNodeType = None
+        self._Options = None
+        self._AutoRetryTimeRangeMinutes = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def SrcAccessType(self):
+        return self._SrcAccessType
+
+    @SrcAccessType.setter
+    def SrcAccessType(self, SrcAccessType):
+        self._SrcAccessType = SrcAccessType
+
+    @property
+    def DstAccessType(self):
+        return self._DstAccessType
+
+    @DstAccessType.setter
+    def DstAccessType(self, DstAccessType):
+        self._DstAccessType = DstAccessType
+
+    @property
+    def Objects(self):
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def JobMode(self):
+        return self._JobMode
+
+    @JobMode.setter
+    def JobMode(self, JobMode):
+        self._JobMode = JobMode
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def ExpectRunTime(self):
+        return self._ExpectRunTime
+
+    @ExpectRunTime.setter
+    def ExpectRunTime(self, ExpectRunTime):
+        self._ExpectRunTime = ExpectRunTime
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def SrcInfos(self):
+        return self._SrcInfos
+
+    @SrcInfos.setter
+    def SrcInfos(self, SrcInfos):
+        self._SrcInfos = SrcInfos
+
+    @property
+    def SrcNodeType(self):
+        return self._SrcNodeType
+
+    @SrcNodeType.setter
+    def SrcNodeType(self, SrcNodeType):
+        self._SrcNodeType = SrcNodeType
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def DstInfos(self):
+        return self._DstInfos
+
+    @DstInfos.setter
+    def DstInfos(self, DstInfos):
+        self._DstInfos = DstInfos
+
+    @property
+    def DstNodeType(self):
+        return self._DstNodeType
+
+    @DstNodeType.setter
+    def DstNodeType(self, DstNodeType):
+        self._DstNodeType = DstNodeType
+
+    @property
+    def Options(self):
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def AutoRetryTimeRangeMinutes(self):
+        return self._AutoRetryTimeRangeMinutes
+
+    @AutoRetryTimeRangeMinutes.setter
+    def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
+        self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.SrcAccessType = params.get("SrcAccessType")
-        self.DstAccessType = params.get("DstAccessType")
+        self._JobId = params.get("JobId")
+        self._SrcAccessType = params.get("SrcAccessType")
+        self._DstAccessType = params.get("DstAccessType")
         if params.get("Objects") is not None:
-            self.Objects = Objects()
-            self.Objects._deserialize(params.get("Objects"))
-        self.JobName = params.get("JobName")
-        self.JobMode = params.get("JobMode")
-        self.RunMode = params.get("RunMode")
-        self.ExpectRunTime = params.get("ExpectRunTime")
+            self._Objects = Objects()
+            self._Objects._deserialize(params.get("Objects"))
+        self._JobName = params.get("JobName")
+        self._JobMode = params.get("JobMode")
+        self._RunMode = params.get("RunMode")
+        self._ExpectRunTime = params.get("ExpectRunTime")
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = Endpoint()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
+            self._SrcInfo = Endpoint()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
         if params.get("SrcInfos") is not None:
-            self.SrcInfos = SyncDBEndpointInfos()
-            self.SrcInfos._deserialize(params.get("SrcInfos"))
-        self.SrcNodeType = params.get("SrcNodeType")
+            self._SrcInfos = SyncDBEndpointInfos()
+            self._SrcInfos._deserialize(params.get("SrcInfos"))
+        self._SrcNodeType = params.get("SrcNodeType")
         if params.get("DstInfo") is not None:
-            self.DstInfo = Endpoint()
-            self.DstInfo._deserialize(params.get("DstInfo"))
+            self._DstInfo = Endpoint()
+            self._DstInfo._deserialize(params.get("DstInfo"))
         if params.get("DstInfos") is not None:
-            self.DstInfos = SyncDBEndpointInfos()
-            self.DstInfos._deserialize(params.get("DstInfos"))
-        self.DstNodeType = params.get("DstNodeType")
+            self._DstInfos = SyncDBEndpointInfos()
+            self._DstInfos._deserialize(params.get("DstInfos"))
+        self._DstNodeType = params.get("DstNodeType")
         if params.get("Options") is not None:
-            self.Options = Options()
-            self.Options._deserialize(params.get("Options"))
-        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+            self._Options = Options()
+            self._Options._deserialize(params.get("Options"))
+        self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -709,14 +1330,22 @@ class ConfigureSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ConflictHandleOption(AbstractModel):
@@ -726,29 +1355,54 @@ class ConflictHandleOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConditionColumn: 条件覆盖的列
+        :param _ConditionColumn: 条件覆盖的列
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionColumn: str
-        :param ConditionOperator: 条件覆盖操作
+        :param _ConditionOperator: 条件覆盖操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionOperator: str
-        :param ConditionOrderInSrcAndDst: 条件覆盖优先级处理
+        :param _ConditionOrderInSrcAndDst: 条件覆盖优先级处理
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionOrderInSrcAndDst: str
         """
-        self.ConditionColumn = None
-        self.ConditionOperator = None
-        self.ConditionOrderInSrcAndDst = None
+        self._ConditionColumn = None
+        self._ConditionOperator = None
+        self._ConditionOrderInSrcAndDst = None
+
+    @property
+    def ConditionColumn(self):
+        return self._ConditionColumn
+
+    @ConditionColumn.setter
+    def ConditionColumn(self, ConditionColumn):
+        self._ConditionColumn = ConditionColumn
+
+    @property
+    def ConditionOperator(self):
+        return self._ConditionOperator
+
+    @ConditionOperator.setter
+    def ConditionOperator(self, ConditionOperator):
+        self._ConditionOperator = ConditionOperator
+
+    @property
+    def ConditionOrderInSrcAndDst(self):
+        return self._ConditionOrderInSrcAndDst
+
+    @ConditionOrderInSrcAndDst.setter
+    def ConditionOrderInSrcAndDst(self, ConditionOrderInSrcAndDst):
+        self._ConditionOrderInSrcAndDst = ConditionOrderInSrcAndDst
 
 
     def _deserialize(self, params):
-        self.ConditionColumn = params.get("ConditionColumn")
-        self.ConditionOperator = params.get("ConditionOperator")
-        self.ConditionOrderInSrcAndDst = params.get("ConditionOrderInSrcAndDst")
+        self._ConditionColumn = params.get("ConditionColumn")
+        self._ConditionOperator = params.get("ConditionOperator")
+        self._ConditionOrderInSrcAndDst = params.get("ConditionOrderInSrcAndDst")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -761,19 +1415,28 @@ class ConsistencyOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: 一致性检测类型: full(全量检测迁移对象)、noCheck(不检测)、notConfigured(未配置)
+        :param _Mode: 一致性检测类型: full(全量检测迁移对象)、noCheck(不检测)、notConfigured(未配置)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         """
-        self.Mode = None
+        self._Mode = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
 
     def _deserialize(self, params):
-        self.Mode = params.get("Mode")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -786,18 +1449,27 @@ class ContinueMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -810,14 +1482,22 @@ class ContinueMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ContinueSyncJobRequest(AbstractModel):
@@ -827,18 +1507,27 @@ class ContinueSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -851,14 +1540,22 @@ class ContinueSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCheckSyncJobRequest(AbstractModel):
@@ -868,18 +1565,27 @@ class CreateCheckSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -892,14 +1598,22 @@ class CreateCheckSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCompareTaskRequest(AbstractModel):
@@ -909,38 +1623,79 @@ class CreateCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务 Id
+        :param _JobId: 任务 Id
         :type JobId: str
-        :param TaskName: 数据对比任务名称，若为空则默认给CompareTaskId相同值
+        :param _TaskName: 数据对比任务名称，若为空则默认给CompareTaskId相同值
         :type TaskName: str
-        :param ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
+        :param _ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
         :type ObjectMode: str
-        :param Objects: 一致性对比对象配置
+        :param _Objects: 一致性对比对象配置
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
-        :param Options: 一致性校验选项
+        :param _Options: 一致性校验选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
-        self.JobId = None
-        self.TaskName = None
-        self.ObjectMode = None
-        self.Objects = None
-        self.Options = None
+        self._JobId = None
+        self._TaskName = None
+        self._ObjectMode = None
+        self._Objects = None
+        self._Options = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ObjectMode(self):
+        return self._ObjectMode
+
+    @ObjectMode.setter
+    def ObjectMode(self, ObjectMode):
+        self._ObjectMode = ObjectMode
+
+    @property
+    def Objects(self):
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Options(self):
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.TaskName = params.get("TaskName")
-        self.ObjectMode = params.get("ObjectMode")
+        self._JobId = params.get("JobId")
+        self._TaskName = params.get("TaskName")
+        self._ObjectMode = params.get("ObjectMode")
         if params.get("Objects") is not None:
-            self.Objects = CompareObject()
-            self.Objects._deserialize(params.get("Objects"))
+            self._Objects = CompareObject()
+            self._Objects._deserialize(params.get("Objects"))
         if params.get("Options") is not None:
-            self.Options = CompareOptions()
-            self.Options._deserialize(params.get("Options"))
+            self._Options = CompareOptions()
+            self._Options._deserialize(params.get("Options"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -953,19 +1708,35 @@ class CreateCompareTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompareTaskId: 数据对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 数据对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CompareTaskId = None
-        self.RequestId = None
+        self._CompareTaskId = None
+        self._RequestId = None
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CompareTaskId = params.get("CompareTaskId")
-        self.RequestId = params.get("RequestId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMigrateCheckJobRequest(AbstractModel):
@@ -975,18 +1746,27 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -999,14 +1779,22 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMigrationServiceRequest(AbstractModel):
@@ -1016,51 +1804,116 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SrcDatabaseType: 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
+        :param _SrcDatabaseType: 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
         :type SrcDatabaseType: str
-        :param DstDatabaseType: 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
+        :param _DstDatabaseType: 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
         :type DstDatabaseType: str
-        :param SrcRegion: 源实例地域，如：ap-guangzhou
+        :param _SrcRegion: 源实例地域，如：ap-guangzhou
         :type SrcRegion: str
-        :param DstRegion: 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
+        :param _DstRegion: 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
         :type DstRegion: str
-        :param InstanceClass: 实例规格，包括：small、medium、large、xlarge、2xlarge
+        :param _InstanceClass: 实例规格，包括：small、medium、large、xlarge、2xlarge
         :type InstanceClass: str
-        :param Count: 购买数量，范围为[1,15]，默认为1
+        :param _Count: 购买数量，范围为[1,15]，默认为1
         :type Count: int
-        :param JobName: 迁移服务名称，最大长度128
+        :param _JobName: 迁移服务名称，最大长度128
         :type JobName: str
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
         :type Tags: list of TagItem
         """
-        self.SrcDatabaseType = None
-        self.DstDatabaseType = None
-        self.SrcRegion = None
-        self.DstRegion = None
-        self.InstanceClass = None
-        self.Count = None
-        self.JobName = None
-        self.Tags = None
+        self._SrcDatabaseType = None
+        self._DstDatabaseType = None
+        self._SrcRegion = None
+        self._DstRegion = None
+        self._InstanceClass = None
+        self._Count = None
+        self._JobName = None
+        self._Tags = None
+
+    @property
+    def SrcDatabaseType(self):
+        return self._SrcDatabaseType
+
+    @SrcDatabaseType.setter
+    def SrcDatabaseType(self, SrcDatabaseType):
+        self._SrcDatabaseType = SrcDatabaseType
+
+    @property
+    def DstDatabaseType(self):
+        return self._DstDatabaseType
+
+    @DstDatabaseType.setter
+    def DstDatabaseType(self, DstDatabaseType):
+        self._DstDatabaseType = DstDatabaseType
+
+    @property
+    def SrcRegion(self):
+        return self._SrcRegion
+
+    @SrcRegion.setter
+    def SrcRegion(self, SrcRegion):
+        self._SrcRegion = SrcRegion
+
+    @property
+    def DstRegion(self):
+        return self._DstRegion
+
+    @DstRegion.setter
+    def DstRegion(self, DstRegion):
+        self._DstRegion = DstRegion
+
+    @property
+    def InstanceClass(self):
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        self.SrcRegion = params.get("SrcRegion")
-        self.DstRegion = params.get("DstRegion")
-        self.InstanceClass = params.get("InstanceClass")
-        self.Count = params.get("Count")
-        self.JobName = params.get("JobName")
+        self._SrcDatabaseType = params.get("SrcDatabaseType")
+        self._DstDatabaseType = params.get("DstDatabaseType")
+        self._SrcRegion = params.get("SrcRegion")
+        self._DstRegion = params.get("DstRegion")
+        self._InstanceClass = params.get("InstanceClass")
+        self._Count = params.get("Count")
+        self._JobName = params.get("JobName")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1073,19 +1926,35 @@ class CreateMigrationServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobIds: 下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21
+        :param _JobIds: 下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobIds = None
-        self.RequestId = None
+        self._JobIds = None
+        self._RequestId = None
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobIds = params.get("JobIds")
-        self.RequestId = params.get("RequestId")
+        self._JobIds = params.get("JobIds")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateModifyCheckSyncJobRequest(AbstractModel):
@@ -1095,18 +1964,27 @@ class CreateModifyCheckSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1119,14 +1997,22 @@ class CreateModifyCheckSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSyncJobRequest(AbstractModel):
@@ -1136,67 +2022,164 @@ class CreateSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PayMode: 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
+        :param _PayMode: 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
         :type PayMode: str
-        :param SrcDatabaseType: 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        :param _SrcDatabaseType: 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
         :type SrcDatabaseType: str
-        :param SrcRegion: 源端数据库所在地域,如ap-guangzhou
+        :param _SrcRegion: 源端数据库所在地域,如ap-guangzhou
         :type SrcRegion: str
-        :param DstDatabaseType: 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
+        :param _DstDatabaseType: 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
         :type DstDatabaseType: str
-        :param DstRegion: 目标端数据库所在地域,如ap-guangzhou
+        :param _DstRegion: 目标端数据库所在地域,如ap-guangzhou
         :type DstRegion: str
-        :param Specification: 同步任务规格，Standard:标准版
+        :param _Specification: 同步任务规格，Standard:标准版
         :type Specification: str
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
         :type Tags: list of TagItem
-        :param Count: 一次购买的同步任务数量，取值范围为[1, 10]，默认为1
+        :param _Count: 一次购买的同步任务数量，取值范围为[1, 10]，默认为1
         :type Count: int
-        :param AutoRenew: 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费，默认为此值）
+        :param _AutoRenew: 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费，默认为此值）
         :type AutoRenew: int
-        :param InstanceClass: 同步链路规格，如micro,small,medium,large，默认为medium
+        :param _InstanceClass: 同步链路规格，如micro,small,medium,large，默认为medium
         :type InstanceClass: str
-        :param JobName: 同步任务名称
+        :param _JobName: 同步任务名称
         :type JobName: str
-        :param ExistedJobId: 创建类似任务的现有任务Id
+        :param _ExistedJobId: 创建类似任务的现有任务Id
         :type ExistedJobId: str
         """
-        self.PayMode = None
-        self.SrcDatabaseType = None
-        self.SrcRegion = None
-        self.DstDatabaseType = None
-        self.DstRegion = None
-        self.Specification = None
-        self.Tags = None
-        self.Count = None
-        self.AutoRenew = None
-        self.InstanceClass = None
-        self.JobName = None
-        self.ExistedJobId = None
+        self._PayMode = None
+        self._SrcDatabaseType = None
+        self._SrcRegion = None
+        self._DstDatabaseType = None
+        self._DstRegion = None
+        self._Specification = None
+        self._Tags = None
+        self._Count = None
+        self._AutoRenew = None
+        self._InstanceClass = None
+        self._JobName = None
+        self._ExistedJobId = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def SrcDatabaseType(self):
+        return self._SrcDatabaseType
+
+    @SrcDatabaseType.setter
+    def SrcDatabaseType(self, SrcDatabaseType):
+        self._SrcDatabaseType = SrcDatabaseType
+
+    @property
+    def SrcRegion(self):
+        return self._SrcRegion
+
+    @SrcRegion.setter
+    def SrcRegion(self, SrcRegion):
+        self._SrcRegion = SrcRegion
+
+    @property
+    def DstDatabaseType(self):
+        return self._DstDatabaseType
+
+    @DstDatabaseType.setter
+    def DstDatabaseType(self, DstDatabaseType):
+        self._DstDatabaseType = DstDatabaseType
+
+    @property
+    def DstRegion(self):
+        return self._DstRegion
+
+    @DstRegion.setter
+    def DstRegion(self, DstRegion):
+        self._DstRegion = DstRegion
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def InstanceClass(self):
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def ExistedJobId(self):
+        return self._ExistedJobId
+
+    @ExistedJobId.setter
+    def ExistedJobId(self, ExistedJobId):
+        self._ExistedJobId = ExistedJobId
 
 
     def _deserialize(self, params):
-        self.PayMode = params.get("PayMode")
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.SrcRegion = params.get("SrcRegion")
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        self.DstRegion = params.get("DstRegion")
-        self.Specification = params.get("Specification")
+        self._PayMode = params.get("PayMode")
+        self._SrcDatabaseType = params.get("SrcDatabaseType")
+        self._SrcRegion = params.get("SrcRegion")
+        self._DstDatabaseType = params.get("DstDatabaseType")
+        self._DstRegion = params.get("DstRegion")
+        self._Specification = params.get("Specification")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Count = params.get("Count")
-        self.AutoRenew = params.get("AutoRenew")
-        self.InstanceClass = params.get("InstanceClass")
-        self.JobName = params.get("JobName")
-        self.ExistedJobId = params.get("ExistedJobId")
+                self._Tags.append(obj)
+        self._Count = params.get("Count")
+        self._AutoRenew = params.get("AutoRenew")
+        self._InstanceClass = params.get("InstanceClass")
+        self._JobName = params.get("JobName")
+        self._ExistedJobId = params.get("ExistedJobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1209,18 +2192,34 @@ class CreateSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobIds: 同步任务ids
+        :param _JobIds: 同步任务ids
         :type JobIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobIds = None
-        self.RequestId = None
+        self._JobIds = None
+        self._RequestId = None
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobIds = params.get("JobIds")
-        self.RequestId = params.get("RequestId")
+        self._JobIds = params.get("JobIds")
+        self._RequestId = params.get("RequestId")
 
 
 class DBEndpointInfo(AbstractModel):
@@ -1230,65 +2229,130 @@ class DBEndpointInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 实例所在地域
+        :param _Region: 实例所在地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param AccessType: 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
+        :param _AccessType: 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: str
-        :param DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
+        :param _DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseType: str
-        :param NodeType: 节点类型，为空或者"simple":表示普通节点，"cluster": 集群节点
+        :param _NodeType: 节点类型，为空或者"simple":表示普通节点，"cluster": 集群节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeType: str
-        :param Info: 数据库信息
+        :param _Info: 数据库信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: list of DBInfo
-        :param Supplier: 实例服务提供商，如:"aliyun","others"
+        :param _Supplier: 实例服务提供商，如:"aliyun","others"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Supplier: str
-        :param ExtraAttr: MongoDB可定义如下的参数: 	['AuthDatabase':'admin', 
+        :param _ExtraAttr: MongoDB可定义如下的参数: 	['AuthDatabase':'admin', 
 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
-        :param DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
+        :param _DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNetEnv: str
         """
-        self.Region = None
-        self.AccessType = None
-        self.DatabaseType = None
-        self.NodeType = None
-        self.Info = None
-        self.Supplier = None
-        self.ExtraAttr = None
-        self.DatabaseNetEnv = None
+        self._Region = None
+        self._AccessType = None
+        self._DatabaseType = None
+        self._NodeType = None
+        self._Info = None
+        self._Supplier = None
+        self._ExtraAttr = None
+        self._DatabaseNetEnv = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AccessType(self):
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def DatabaseType(self):
+        return self._DatabaseType
+
+    @DatabaseType.setter
+    def DatabaseType(self, DatabaseType):
+        self._DatabaseType = DatabaseType
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Supplier(self):
+        return self._Supplier
+
+    @Supplier.setter
+    def Supplier(self, Supplier):
+        self._Supplier = Supplier
+
+    @property
+    def ExtraAttr(self):
+        return self._ExtraAttr
+
+    @ExtraAttr.setter
+    def ExtraAttr(self, ExtraAttr):
+        self._ExtraAttr = ExtraAttr
+
+    @property
+    def DatabaseNetEnv(self):
+        return self._DatabaseNetEnv
+
+    @DatabaseNetEnv.setter
+    def DatabaseNetEnv(self, DatabaseNetEnv):
+        self._DatabaseNetEnv = DatabaseNetEnv
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.AccessType = params.get("AccessType")
-        self.DatabaseType = params.get("DatabaseType")
-        self.NodeType = params.get("NodeType")
+        self._Region = params.get("Region")
+        self._AccessType = params.get("AccessType")
+        self._DatabaseType = params.get("DatabaseType")
+        self._NodeType = params.get("NodeType")
         if params.get("Info") is not None:
-            self.Info = []
+            self._Info = []
             for item in params.get("Info"):
                 obj = DBInfo()
                 obj._deserialize(item)
-                self.Info.append(obj)
-        self.Supplier = params.get("Supplier")
+                self._Info.append(obj)
+        self._Supplier = params.get("Supplier")
         if params.get("ExtraAttr") is not None:
-            self.ExtraAttr = []
+            self._ExtraAttr = []
             for item in params.get("ExtraAttr"):
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
-                self.ExtraAttr.append(obj)
-        self.DatabaseNetEnv = params.get("DatabaseNetEnv")
+                self._ExtraAttr.append(obj)
+        self._DatabaseNetEnv = params.get("DatabaseNetEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1301,114 +2365,275 @@ class DBInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Role: 表示节点角色，针对分布式数据库，如mongodb中的mongos节点
+        :param _Role: 表示节点角色，针对分布式数据库，如mongodb中的mongos节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
-        :param DbKernel: 内核版本，针对mariadb的不同内核版本等
+        :param _DbKernel: 内核版本，针对mariadb的不同内核版本等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbKernel: str
-        :param Host: 实例的IP地址，对于公网、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
+        :param _Host: 实例的IP地址，对于公网、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
-        :param Port: 实例的端口，对于公网、云主机自建、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
+        :param _Port: 实例的端口，对于公网、云主机自建、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param User: 实例的用户名
+        :param _User: 实例的用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
-        :param Password: 实例的密码
+        :param _Password: 实例的密码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
-        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8；与云服务器控制台页面显示的实例ID相同；如果接入类型为云主机自建的方式，此项必填
+        :param _CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8；与云服务器控制台页面显示的实例ID相同；如果接入类型为云主机自建的方式，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type CvmInstanceId: str
-        :param UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q；如果接入类型为vpncloud的方式，此项必填
+        :param _UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q；如果接入类型为vpncloud的方式，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpnGwId: str
-        :param UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb；如果接入类型为专线接入的方式，此项必填
+        :param _UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb；如果接入类型为专线接入的方式，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type UniqDcgId: str
-        :param InstanceId: 数据库实例ID，格式如：cdb-powiqx8q；如果接入类型为云数据库的方式，此项必填
+        :param _InstanceId: 数据库实例ID，格式如：cdb-powiqx8q；如果接入类型为云数据库的方式，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param CcnGwId: 云联网ID，如：ccn-afp6kltc 注意：此字段可能返回 null，表示取不到有效值。
+        :param _CcnGwId: 云联网ID，如：ccn-afp6kltc 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnGwId: str
-        :param VpcId: 私有网络ID，格式如：vpc-92jblxto；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
+        :param _VpcId: 私有网络ID，格式如：vpc-92jblxto；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
+        :param _SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
+        :param _EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
-        :param Account: 实例所属账号
+        :param _Account: 实例所属账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Account: str
-        :param AccountRole: 跨账号迁移时的角色,只允许[a-zA-Z0-9\-\_]+
+        :param _AccountRole: 跨账号迁移时的角色,只允许[a-zA-Z0-9\-\_]+
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountRole: str
-        :param AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
+        :param _AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountMode: str
-        :param TmpSecretId: 临时密钥Id
+        :param _TmpSecretId: 临时密钥Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时密钥Key
+        :param _TmpSecretKey: 临时密钥Key
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
-        :param TmpToken: 临时Token
+        :param _TmpToken: 临时Token
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
         """
-        self.Role = None
-        self.DbKernel = None
-        self.Host = None
-        self.Port = None
-        self.User = None
-        self.Password = None
-        self.CvmInstanceId = None
-        self.UniqVpnGwId = None
-        self.UniqDcgId = None
-        self.InstanceId = None
-        self.CcnGwId = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.EngineVersion = None
-        self.Account = None
-        self.AccountRole = None
-        self.AccountMode = None
-        self.TmpSecretId = None
-        self.TmpSecretKey = None
-        self.TmpToken = None
+        self._Role = None
+        self._DbKernel = None
+        self._Host = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+        self._CvmInstanceId = None
+        self._UniqVpnGwId = None
+        self._UniqDcgId = None
+        self._InstanceId = None
+        self._CcnGwId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._EngineVersion = None
+        self._Account = None
+        self._AccountRole = None
+        self._AccountMode = None
+        self._TmpSecretId = None
+        self._TmpSecretKey = None
+        self._TmpToken = None
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def DbKernel(self):
+        return self._DbKernel
+
+    @DbKernel.setter
+    def DbKernel(self, DbKernel):
+        self._DbKernel = DbKernel
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def CvmInstanceId(self):
+        return self._CvmInstanceId
+
+    @CvmInstanceId.setter
+    def CvmInstanceId(self, CvmInstanceId):
+        self._CvmInstanceId = CvmInstanceId
+
+    @property
+    def UniqVpnGwId(self):
+        return self._UniqVpnGwId
+
+    @UniqVpnGwId.setter
+    def UniqVpnGwId(self, UniqVpnGwId):
+        self._UniqVpnGwId = UniqVpnGwId
+
+    @property
+    def UniqDcgId(self):
+        return self._UniqDcgId
+
+    @UniqDcgId.setter
+    def UniqDcgId(self, UniqDcgId):
+        self._UniqDcgId = UniqDcgId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CcnGwId(self):
+        return self._CcnGwId
+
+    @CcnGwId.setter
+    def CcnGwId(self, CcnGwId):
+        self._CcnGwId = CcnGwId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def EngineVersion(self):
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def AccountRole(self):
+        return self._AccountRole
+
+    @AccountRole.setter
+    def AccountRole(self, AccountRole):
+        self._AccountRole = AccountRole
+
+    @property
+    def AccountMode(self):
+        return self._AccountMode
+
+    @AccountMode.setter
+    def AccountMode(self, AccountMode):
+        self._AccountMode = AccountMode
+
+    @property
+    def TmpSecretId(self):
+        return self._TmpSecretId
+
+    @TmpSecretId.setter
+    def TmpSecretId(self, TmpSecretId):
+        self._TmpSecretId = TmpSecretId
+
+    @property
+    def TmpSecretKey(self):
+        return self._TmpSecretKey
+
+    @TmpSecretKey.setter
+    def TmpSecretKey(self, TmpSecretKey):
+        self._TmpSecretKey = TmpSecretKey
+
+    @property
+    def TmpToken(self):
+        return self._TmpToken
+
+    @TmpToken.setter
+    def TmpToken(self, TmpToken):
+        self._TmpToken = TmpToken
 
 
     def _deserialize(self, params):
-        self.Role = params.get("Role")
-        self.DbKernel = params.get("DbKernel")
-        self.Host = params.get("Host")
-        self.Port = params.get("Port")
-        self.User = params.get("User")
-        self.Password = params.get("Password")
-        self.CvmInstanceId = params.get("CvmInstanceId")
-        self.UniqVpnGwId = params.get("UniqVpnGwId")
-        self.UniqDcgId = params.get("UniqDcgId")
-        self.InstanceId = params.get("InstanceId")
-        self.CcnGwId = params.get("CcnGwId")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.EngineVersion = params.get("EngineVersion")
-        self.Account = params.get("Account")
-        self.AccountRole = params.get("AccountRole")
-        self.AccountMode = params.get("AccountMode")
-        self.TmpSecretId = params.get("TmpSecretId")
-        self.TmpSecretKey = params.get("TmpSecretKey")
-        self.TmpToken = params.get("TmpToken")
+        self._Role = params.get("Role")
+        self._DbKernel = params.get("DbKernel")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._CvmInstanceId = params.get("CvmInstanceId")
+        self._UniqVpnGwId = params.get("UniqVpnGwId")
+        self._UniqDcgId = params.get("UniqDcgId")
+        self._InstanceId = params.get("InstanceId")
+        self._CcnGwId = params.get("CcnGwId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._EngineVersion = params.get("EngineVersion")
+        self._Account = params.get("Account")
+        self._AccountRole = params.get("AccountRole")
+        self._AccountMode = params.get("AccountMode")
+        self._TmpSecretId = params.get("TmpSecretId")
+        self._TmpSecretKey = params.get("TmpSecretKey")
+        self._TmpToken = params.get("TmpToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1421,129 +2646,290 @@ class DBItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DbName: 需要迁移或同步的库名，当ObjectMode为partial时，此项必填
+        :param _DbName: 需要迁移或同步的库名，当ObjectMode为partial时，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
-        :param NewDbName: 迁移或同步后的库名，默认与源库相同
+        :param _NewDbName: 迁移或同步后的库名，默认与源库相同
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewDbName: str
-        :param SchemaName: 迁移或同步的 schema
+        :param _SchemaName: 迁移或同步的 schema
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param NewSchemaName: 迁移或同步后的 schema name
+        :param _NewSchemaName: 迁移或同步后的 schema name
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewSchemaName: str
-        :param DBMode: DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
+        :param _DBMode: DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBMode: str
-        :param SchemaMode: schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
+        :param _SchemaMode: schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaMode: str
-        :param TableMode: 表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
+        :param _TableMode: 表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableMode: str
-        :param Tables: 表图对象集合，当 TableMode 为 partial 时，此项需要填写
+        :param _Tables: 表图对象集合，当 TableMode 为 partial 时，此项需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of TableItem
-        :param ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
+        :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewMode: str
-        :param Views: 视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
+        :param _Views: 视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of ViewItem
-        :param RoleMode: postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
+        :param _RoleMode: postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleMode: str
-        :param Roles: postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
+        :param _Roles: postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Roles: list of RoleItem
-        :param FunctionMode: 选择要同步的模式，partial为部分，all为整选
+        :param _FunctionMode: 选择要同步的模式，partial为部分，all为整选
 注意：此字段可能返回 null，表示取不到有效值。
         :type FunctionMode: str
-        :param TriggerMode: 选择要同步的模式，partial为部分，all为整选
+        :param _TriggerMode: 选择要同步的模式，partial为部分，all为整选
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
-        :param EventMode: 选择要同步的模式，partial为部分，all为整选
+        :param _EventMode: 选择要同步的模式，partial为部分，all为整选
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventMode: str
-        :param ProcedureMode: 选择要同步的模式，partial为部分，all为整选
+        :param _ProcedureMode: 选择要同步的模式，partial为部分，all为整选
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureMode: str
-        :param Functions: FunctionMode取值为partial时需要填写
+        :param _Functions: FunctionMode取值为partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Functions: list of str
-        :param Procedures: ProcedureMode取值为partial时需要填写
+        :param _Procedures: ProcedureMode取值为partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Procedures: list of str
-        :param Events: EventMode取值为partial时需要填写
+        :param _Events: EventMode取值为partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of str
-        :param Triggers: TriggerMode取值为partial时需要填写
+        :param _Triggers: TriggerMode取值为partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Triggers: list of str
         """
-        self.DbName = None
-        self.NewDbName = None
-        self.SchemaName = None
-        self.NewSchemaName = None
-        self.DBMode = None
-        self.SchemaMode = None
-        self.TableMode = None
-        self.Tables = None
-        self.ViewMode = None
-        self.Views = None
-        self.RoleMode = None
-        self.Roles = None
-        self.FunctionMode = None
-        self.TriggerMode = None
-        self.EventMode = None
-        self.ProcedureMode = None
-        self.Functions = None
-        self.Procedures = None
-        self.Events = None
-        self.Triggers = None
+        self._DbName = None
+        self._NewDbName = None
+        self._SchemaName = None
+        self._NewSchemaName = None
+        self._DBMode = None
+        self._SchemaMode = None
+        self._TableMode = None
+        self._Tables = None
+        self._ViewMode = None
+        self._Views = None
+        self._RoleMode = None
+        self._Roles = None
+        self._FunctionMode = None
+        self._TriggerMode = None
+        self._EventMode = None
+        self._ProcedureMode = None
+        self._Functions = None
+        self._Procedures = None
+        self._Events = None
+        self._Triggers = None
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def NewDbName(self):
+        return self._NewDbName
+
+    @NewDbName.setter
+    def NewDbName(self, NewDbName):
+        self._NewDbName = NewDbName
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def NewSchemaName(self):
+        return self._NewSchemaName
+
+    @NewSchemaName.setter
+    def NewSchemaName(self, NewSchemaName):
+        self._NewSchemaName = NewSchemaName
+
+    @property
+    def DBMode(self):
+        return self._DBMode
+
+    @DBMode.setter
+    def DBMode(self, DBMode):
+        self._DBMode = DBMode
+
+    @property
+    def SchemaMode(self):
+        return self._SchemaMode
+
+    @SchemaMode.setter
+    def SchemaMode(self, SchemaMode):
+        self._SchemaMode = SchemaMode
+
+    @property
+    def TableMode(self):
+        return self._TableMode
+
+    @TableMode.setter
+    def TableMode(self, TableMode):
+        self._TableMode = TableMode
+
+    @property
+    def Tables(self):
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ViewMode(self):
+        return self._ViewMode
+
+    @ViewMode.setter
+    def ViewMode(self, ViewMode):
+        self._ViewMode = ViewMode
+
+    @property
+    def Views(self):
+        return self._Views
+
+    @Views.setter
+    def Views(self, Views):
+        self._Views = Views
+
+    @property
+    def RoleMode(self):
+        return self._RoleMode
+
+    @RoleMode.setter
+    def RoleMode(self, RoleMode):
+        self._RoleMode = RoleMode
+
+    @property
+    def Roles(self):
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def FunctionMode(self):
+        return self._FunctionMode
+
+    @FunctionMode.setter
+    def FunctionMode(self, FunctionMode):
+        self._FunctionMode = FunctionMode
+
+    @property
+    def TriggerMode(self):
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
+    @property
+    def EventMode(self):
+        return self._EventMode
+
+    @EventMode.setter
+    def EventMode(self, EventMode):
+        self._EventMode = EventMode
+
+    @property
+    def ProcedureMode(self):
+        return self._ProcedureMode
+
+    @ProcedureMode.setter
+    def ProcedureMode(self, ProcedureMode):
+        self._ProcedureMode = ProcedureMode
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def Procedures(self):
+        return self._Procedures
+
+    @Procedures.setter
+    def Procedures(self, Procedures):
+        self._Procedures = Procedures
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Triggers(self):
+        return self._Triggers
+
+    @Triggers.setter
+    def Triggers(self, Triggers):
+        self._Triggers = Triggers
 
 
     def _deserialize(self, params):
-        self.DbName = params.get("DbName")
-        self.NewDbName = params.get("NewDbName")
-        self.SchemaName = params.get("SchemaName")
-        self.NewSchemaName = params.get("NewSchemaName")
-        self.DBMode = params.get("DBMode")
-        self.SchemaMode = params.get("SchemaMode")
-        self.TableMode = params.get("TableMode")
+        self._DbName = params.get("DbName")
+        self._NewDbName = params.get("NewDbName")
+        self._SchemaName = params.get("SchemaName")
+        self._NewSchemaName = params.get("NewSchemaName")
+        self._DBMode = params.get("DBMode")
+        self._SchemaMode = params.get("SchemaMode")
+        self._TableMode = params.get("TableMode")
         if params.get("Tables") is not None:
-            self.Tables = []
+            self._Tables = []
             for item in params.get("Tables"):
                 obj = TableItem()
                 obj._deserialize(item)
-                self.Tables.append(obj)
-        self.ViewMode = params.get("ViewMode")
+                self._Tables.append(obj)
+        self._ViewMode = params.get("ViewMode")
         if params.get("Views") is not None:
-            self.Views = []
+            self._Views = []
             for item in params.get("Views"):
                 obj = ViewItem()
                 obj._deserialize(item)
-                self.Views.append(obj)
-        self.RoleMode = params.get("RoleMode")
+                self._Views.append(obj)
+        self._RoleMode = params.get("RoleMode")
         if params.get("Roles") is not None:
-            self.Roles = []
+            self._Roles = []
             for item in params.get("Roles"):
                 obj = RoleItem()
                 obj._deserialize(item)
-                self.Roles.append(obj)
-        self.FunctionMode = params.get("FunctionMode")
-        self.TriggerMode = params.get("TriggerMode")
-        self.EventMode = params.get("EventMode")
-        self.ProcedureMode = params.get("ProcedureMode")
-        self.Functions = params.get("Functions")
-        self.Procedures = params.get("Procedures")
-        self.Events = params.get("Events")
-        self.Triggers = params.get("Triggers")
+                self._Roles.append(obj)
+        self._FunctionMode = params.get("FunctionMode")
+        self._TriggerMode = params.get("TriggerMode")
+        self._EventMode = params.get("EventMode")
+        self._ProcedureMode = params.get("ProcedureMode")
+        self._Functions = params.get("Functions")
+        self._Procedures = params.get("Procedures")
+        self._Events = params.get("Events")
+        self._Triggers = params.get("Triggers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1556,109 +2942,246 @@ class Database(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DbName: 需要迁移或同步的库名，当ObjectMode为Partial时，此项必填
+        :param _DbName: 需要迁移或同步的库名，当ObjectMode为Partial时，此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
-        :param NewDbName: 迁移或同步后的库名，默认与源库相同
+        :param _NewDbName: 迁移或同步后的库名，默认与源库相同
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewDbName: str
-        :param DbMode: DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
+        :param _DbMode: DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
-        :param SchemaName: 迁移或同步的 schema
+        :param _SchemaName: 迁移或同步的 schema
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param NewSchemaName: 迁移或同步后的 schema name
+        :param _NewSchemaName: 迁移或同步后的 schema name
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewSchemaName: str
-        :param TableMode: 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
+        :param _TableMode: 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableMode: str
-        :param Tables: 表图对象集合，当 TableMode 为 Partial 时，此项需要填写
+        :param _Tables: 表图对象集合，当 TableMode 为 Partial 时，此项需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of Table
-        :param ViewMode: 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
+        :param _ViewMode: 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewMode: str
-        :param Views: 视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写
+        :param _Views: 视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of View
-        :param FunctionMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+        :param _FunctionMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FunctionMode: str
-        :param Functions: FunctionMode取值为Partial时需要填写
+        :param _Functions: FunctionMode取值为Partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Functions: list of str
-        :param ProcedureMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+        :param _ProcedureMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureMode: str
-        :param Procedures: ProcedureMode取值为Partial时需要填写
+        :param _Procedures: ProcedureMode取值为Partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Procedures: list of str
-        :param TriggerMode: 触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+        :param _TriggerMode: 触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
-        :param Triggers: 当TriggerMode为partial，指定要迁移的触发器名称
+        :param _Triggers: 当TriggerMode为partial，指定要迁移的触发器名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Triggers: list of str
-        :param EventMode: 事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+        :param _EventMode: 事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventMode: str
-        :param Events: 当EventMode为partial，指定要迁移的事件名称
+        :param _Events: 当EventMode为partial，指定要迁移的事件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of str
         """
-        self.DbName = None
-        self.NewDbName = None
-        self.DbMode = None
-        self.SchemaName = None
-        self.NewSchemaName = None
-        self.TableMode = None
-        self.Tables = None
-        self.ViewMode = None
-        self.Views = None
-        self.FunctionMode = None
-        self.Functions = None
-        self.ProcedureMode = None
-        self.Procedures = None
-        self.TriggerMode = None
-        self.Triggers = None
-        self.EventMode = None
-        self.Events = None
+        self._DbName = None
+        self._NewDbName = None
+        self._DbMode = None
+        self._SchemaName = None
+        self._NewSchemaName = None
+        self._TableMode = None
+        self._Tables = None
+        self._ViewMode = None
+        self._Views = None
+        self._FunctionMode = None
+        self._Functions = None
+        self._ProcedureMode = None
+        self._Procedures = None
+        self._TriggerMode = None
+        self._Triggers = None
+        self._EventMode = None
+        self._Events = None
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def NewDbName(self):
+        return self._NewDbName
+
+    @NewDbName.setter
+    def NewDbName(self, NewDbName):
+        self._NewDbName = NewDbName
+
+    @property
+    def DbMode(self):
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def NewSchemaName(self):
+        return self._NewSchemaName
+
+    @NewSchemaName.setter
+    def NewSchemaName(self, NewSchemaName):
+        self._NewSchemaName = NewSchemaName
+
+    @property
+    def TableMode(self):
+        return self._TableMode
+
+    @TableMode.setter
+    def TableMode(self, TableMode):
+        self._TableMode = TableMode
+
+    @property
+    def Tables(self):
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ViewMode(self):
+        return self._ViewMode
+
+    @ViewMode.setter
+    def ViewMode(self, ViewMode):
+        self._ViewMode = ViewMode
+
+    @property
+    def Views(self):
+        return self._Views
+
+    @Views.setter
+    def Views(self, Views):
+        self._Views = Views
+
+    @property
+    def FunctionMode(self):
+        return self._FunctionMode
+
+    @FunctionMode.setter
+    def FunctionMode(self, FunctionMode):
+        self._FunctionMode = FunctionMode
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def ProcedureMode(self):
+        return self._ProcedureMode
+
+    @ProcedureMode.setter
+    def ProcedureMode(self, ProcedureMode):
+        self._ProcedureMode = ProcedureMode
+
+    @property
+    def Procedures(self):
+        return self._Procedures
+
+    @Procedures.setter
+    def Procedures(self, Procedures):
+        self._Procedures = Procedures
+
+    @property
+    def TriggerMode(self):
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
+    @property
+    def Triggers(self):
+        return self._Triggers
+
+    @Triggers.setter
+    def Triggers(self, Triggers):
+        self._Triggers = Triggers
+
+    @property
+    def EventMode(self):
+        return self._EventMode
+
+    @EventMode.setter
+    def EventMode(self, EventMode):
+        self._EventMode = EventMode
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
 
 
     def _deserialize(self, params):
-        self.DbName = params.get("DbName")
-        self.NewDbName = params.get("NewDbName")
-        self.DbMode = params.get("DbMode")
-        self.SchemaName = params.get("SchemaName")
-        self.NewSchemaName = params.get("NewSchemaName")
-        self.TableMode = params.get("TableMode")
+        self._DbName = params.get("DbName")
+        self._NewDbName = params.get("NewDbName")
+        self._DbMode = params.get("DbMode")
+        self._SchemaName = params.get("SchemaName")
+        self._NewSchemaName = params.get("NewSchemaName")
+        self._TableMode = params.get("TableMode")
         if params.get("Tables") is not None:
-            self.Tables = []
+            self._Tables = []
             for item in params.get("Tables"):
                 obj = Table()
                 obj._deserialize(item)
-                self.Tables.append(obj)
-        self.ViewMode = params.get("ViewMode")
+                self._Tables.append(obj)
+        self._ViewMode = params.get("ViewMode")
         if params.get("Views") is not None:
-            self.Views = []
+            self._Views = []
             for item in params.get("Views"):
                 obj = View()
                 obj._deserialize(item)
-                self.Views.append(obj)
-        self.FunctionMode = params.get("FunctionMode")
-        self.Functions = params.get("Functions")
-        self.ProcedureMode = params.get("ProcedureMode")
-        self.Procedures = params.get("Procedures")
-        self.TriggerMode = params.get("TriggerMode")
-        self.Triggers = params.get("Triggers")
-        self.EventMode = params.get("EventMode")
-        self.Events = params.get("Events")
+                self._Views.append(obj)
+        self._FunctionMode = params.get("FunctionMode")
+        self._Functions = params.get("Functions")
+        self._ProcedureMode = params.get("ProcedureMode")
+        self._Procedures = params.get("Procedures")
+        self._TriggerMode = params.get("TriggerMode")
+        self._Triggers = params.get("Triggers")
+        self._EventMode = params.get("EventMode")
+        self._Events = params.get("Events")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1671,34 +3194,59 @@ class DatabaseTableObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ObjectMode: 迁移对象类型 all(全实例)，partial(部分对象)
+        :param _ObjectMode: 迁移对象类型 all(全实例)，partial(部分对象)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectMode: str
-        :param Databases: 迁移对象，当 ObjectMode 为 partial 时，不为空
+        :param _Databases: 迁移对象，当 ObjectMode 为 partial 时，不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of DBItem
-        :param AdvancedObjects: 高级对象类型，如trigger、function、procedure、event
+        :param _AdvancedObjects: 高级对象类型，如trigger、function、procedure、event
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         """
-        self.ObjectMode = None
-        self.Databases = None
-        self.AdvancedObjects = None
+        self._ObjectMode = None
+        self._Databases = None
+        self._AdvancedObjects = None
+
+    @property
+    def ObjectMode(self):
+        return self._ObjectMode
+
+    @ObjectMode.setter
+    def ObjectMode(self, ObjectMode):
+        self._ObjectMode = ObjectMode
+
+    @property
+    def Databases(self):
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+    @property
+    def AdvancedObjects(self):
+        return self._AdvancedObjects
+
+    @AdvancedObjects.setter
+    def AdvancedObjects(self, AdvancedObjects):
+        self._AdvancedObjects = AdvancedObjects
 
 
     def _deserialize(self, params):
-        self.ObjectMode = params.get("ObjectMode")
+        self._ObjectMode = params.get("ObjectMode")
         if params.get("Databases") is not None:
-            self.Databases = []
+            self._Databases = []
             for item in params.get("Databases"):
                 obj = DBItem()
                 obj._deserialize(item)
-                self.Databases.append(obj)
-        self.AdvancedObjects = params.get("AdvancedObjects")
+                self._Databases.append(obj)
+        self._AdvancedObjects = params.get("AdvancedObjects")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1711,24 +3259,41 @@ class DdlOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DdlObject: ddl类型，如Database,Table,View,Index等
+        :param _DdlObject: ddl类型，如Database,Table,View,Index等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdlObject: str
-        :param DdlValue: ddl具体值，对于Database可取值[Create,Drop,Alter]<br>对于Table可取值[Create,Drop,Alter,Truncate,Rename]<br/>对于View可取值[Create,Drop]<br/>对于Index可取值[Create,Drop]
+        :param _DdlValue: ddl具体值，对于Database可取值[Create,Drop,Alter]<br>对于Table可取值[Create,Drop,Alter,Truncate,Rename]<br/>对于View可取值[Create,Drop]<br/>对于Index可取值[Create,Drop]
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdlValue: list of str
         """
-        self.DdlObject = None
-        self.DdlValue = None
+        self._DdlObject = None
+        self._DdlValue = None
+
+    @property
+    def DdlObject(self):
+        return self._DdlObject
+
+    @DdlObject.setter
+    def DdlObject(self, DdlObject):
+        self._DdlObject = DdlObject
+
+    @property
+    def DdlValue(self):
+        return self._DdlValue
+
+    @DdlValue.setter
+    def DdlValue(self, DdlValue):
+        self._DdlValue = DdlValue
 
 
     def _deserialize(self, params):
-        self.DdlObject = params.get("DdlObject")
-        self.DdlValue = params.get("DdlValue")
+        self._DdlObject = params.get("DdlObject")
+        self._DdlValue = params.get("DdlValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1741,22 +3306,39 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id
         :type JobId: str
-        :param CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
         :type CompareTaskId: str
         """
-        self.JobId = None
-        self.CompareTaskId = None
+        self._JobId = None
+        self._CompareTaskId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompareTaskId = params.get("CompareTaskId")
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1769,14 +3351,22 @@ class DeleteCompareTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCheckSyncJobResultRequest(AbstractModel):
@@ -1786,18 +3376,27 @@ class DescribeCheckSyncJobResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填
+        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1810,44 +3409,92 @@ class DescribeCheckSyncJobResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
+        :param _Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param StepCount: 步骤总数
+        :param _StepCount: 步骤总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepCount: int
-        :param StepCur: 当前所在步骤
+        :param _StepCur: 当前所在步骤
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepCur: int
-        :param Progress: 总体进度，范围为[0,100]
+        :param _Progress: 总体进度，范围为[0,100]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
-        :param StepInfos: 步骤信息
+        :param _StepInfos: 步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfos: list of StepInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.StepCount = None
-        self.StepCur = None
-        self.Progress = None
-        self.StepInfos = None
-        self.RequestId = None
+        self._Status = None
+        self._StepCount = None
+        self._StepCur = None
+        self._Progress = None
+        self._StepInfos = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StepCount(self):
+        return self._StepCount
+
+    @StepCount.setter
+    def StepCount(self, StepCount):
+        self._StepCount = StepCount
+
+    @property
+    def StepCur(self):
+        return self._StepCur
+
+    @StepCur.setter
+    def StepCur(self, StepCur):
+        self._StepCur = StepCur
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def StepInfos(self):
+        return self._StepInfos
+
+    @StepInfos.setter
+    def StepInfos(self, StepInfos):
+        self._StepInfos = StepInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.StepCount = params.get("StepCount")
-        self.StepCur = params.get("StepCur")
-        self.Progress = params.get("Progress")
+        self._Status = params.get("Status")
+        self._StepCount = params.get("StepCount")
+        self._StepCur = params.get("StepCur")
+        self._Progress = params.get("Progress")
         if params.get("StepInfos") is not None:
-            self.StepInfos = []
+            self._StepInfos = []
             for item in params.get("StepInfos"):
                 obj = StepInfo()
                 obj._deserialize(item)
-                self.StepInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._StepInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCompareReportRequest(AbstractModel):
@@ -1857,54 +3504,135 @@ class DescribeCompareReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id
         :type JobId: str
-        :param CompareTaskId: 校验任务 Id
+        :param _CompareTaskId: 校验任务 Id
         :type CompareTaskId: str
-        :param DifferenceLimit: 校验不一致结果的 limit
+        :param _DifferenceLimit: 校验不一致结果的 limit
         :type DifferenceLimit: int
-        :param DifferenceOffset: 不一致的 Offset
+        :param _DifferenceOffset: 不一致的 Offset
         :type DifferenceOffset: int
-        :param DifferenceDB: 搜索条件，不一致的库名
+        :param _DifferenceDB: 搜索条件，不一致的库名
         :type DifferenceDB: str
-        :param DifferenceTable: 搜索条件，不一致的表名
+        :param _DifferenceTable: 搜索条件，不一致的表名
         :type DifferenceTable: str
-        :param SkippedLimit: 未校验的 Limit
+        :param _SkippedLimit: 未校验的 Limit
         :type SkippedLimit: int
-        :param SkippedOffset: 未校验的 Offset
+        :param _SkippedOffset: 未校验的 Offset
         :type SkippedOffset: int
-        :param SkippedDB: 搜索条件，未校验的库名
+        :param _SkippedDB: 搜索条件，未校验的库名
         :type SkippedDB: str
-        :param SkippedTable: 搜索条件，未校验的表名
+        :param _SkippedTable: 搜索条件，未校验的表名
         :type SkippedTable: str
         """
-        self.JobId = None
-        self.CompareTaskId = None
-        self.DifferenceLimit = None
-        self.DifferenceOffset = None
-        self.DifferenceDB = None
-        self.DifferenceTable = None
-        self.SkippedLimit = None
-        self.SkippedOffset = None
-        self.SkippedDB = None
-        self.SkippedTable = None
+        self._JobId = None
+        self._CompareTaskId = None
+        self._DifferenceLimit = None
+        self._DifferenceOffset = None
+        self._DifferenceDB = None
+        self._DifferenceTable = None
+        self._SkippedLimit = None
+        self._SkippedOffset = None
+        self._SkippedDB = None
+        self._SkippedTable = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def DifferenceLimit(self):
+        return self._DifferenceLimit
+
+    @DifferenceLimit.setter
+    def DifferenceLimit(self, DifferenceLimit):
+        self._DifferenceLimit = DifferenceLimit
+
+    @property
+    def DifferenceOffset(self):
+        return self._DifferenceOffset
+
+    @DifferenceOffset.setter
+    def DifferenceOffset(self, DifferenceOffset):
+        self._DifferenceOffset = DifferenceOffset
+
+    @property
+    def DifferenceDB(self):
+        return self._DifferenceDB
+
+    @DifferenceDB.setter
+    def DifferenceDB(self, DifferenceDB):
+        self._DifferenceDB = DifferenceDB
+
+    @property
+    def DifferenceTable(self):
+        return self._DifferenceTable
+
+    @DifferenceTable.setter
+    def DifferenceTable(self, DifferenceTable):
+        self._DifferenceTable = DifferenceTable
+
+    @property
+    def SkippedLimit(self):
+        return self._SkippedLimit
+
+    @SkippedLimit.setter
+    def SkippedLimit(self, SkippedLimit):
+        self._SkippedLimit = SkippedLimit
+
+    @property
+    def SkippedOffset(self):
+        return self._SkippedOffset
+
+    @SkippedOffset.setter
+    def SkippedOffset(self, SkippedOffset):
+        self._SkippedOffset = SkippedOffset
+
+    @property
+    def SkippedDB(self):
+        return self._SkippedDB
+
+    @SkippedDB.setter
+    def SkippedDB(self, SkippedDB):
+        self._SkippedDB = SkippedDB
+
+    @property
+    def SkippedTable(self):
+        return self._SkippedTable
+
+    @SkippedTable.setter
+    def SkippedTable(self, SkippedTable):
+        self._SkippedTable = SkippedTable
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompareTaskId = params.get("CompareTaskId")
-        self.DifferenceLimit = params.get("DifferenceLimit")
-        self.DifferenceOffset = params.get("DifferenceOffset")
-        self.DifferenceDB = params.get("DifferenceDB")
-        self.DifferenceTable = params.get("DifferenceTable")
-        self.SkippedLimit = params.get("SkippedLimit")
-        self.SkippedOffset = params.get("SkippedOffset")
-        self.SkippedDB = params.get("SkippedDB")
-        self.SkippedTable = params.get("SkippedTable")
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._DifferenceLimit = params.get("DifferenceLimit")
+        self._DifferenceOffset = params.get("DifferenceOffset")
+        self._DifferenceDB = params.get("DifferenceDB")
+        self._DifferenceTable = params.get("DifferenceTable")
+        self._SkippedLimit = params.get("SkippedLimit")
+        self._SkippedOffset = params.get("SkippedOffset")
+        self._SkippedDB = params.get("SkippedDB")
+        self._SkippedTable = params.get("SkippedTable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1917,28 +3645,52 @@ class DescribeCompareReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Abstract: 一致性校验摘要信息
+        :param _Abstract: 一致性校验摘要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Abstract: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
-        :param Detail: 一致性校验详细信息
+        :param _Detail: 一致性校验详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Abstract = None
-        self.Detail = None
-        self.RequestId = None
+        self._Abstract = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def Abstract(self):
+        return self._Abstract
+
+    @Abstract.setter
+    def Abstract(self, Abstract):
+        self._Abstract = Abstract
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Abstract") is not None:
-            self.Abstract = CompareAbstractInfo()
-            self.Abstract._deserialize(params.get("Abstract"))
+            self._Abstract = CompareAbstractInfo()
+            self._Abstract._deserialize(params.get("Abstract"))
         if params.get("Detail") is not None:
-            self.Detail = CompareDetailInfo()
-            self.Detail._deserialize(params.get("Detail"))
-        self.RequestId = params.get("RequestId")
+            self._Detail = CompareDetailInfo()
+            self._Detail._deserialize(params.get("Detail"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCompareTasksRequest(AbstractModel):
@@ -1948,34 +3700,75 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id
         :type JobId: str
-        :param Limit: 分页设置，表示每页显示多少条任务，默认为 20
+        :param _Limit: 分页设置，表示每页显示多少条任务，默认为 20
         :type Limit: int
-        :param Offset: 分页偏移量
+        :param _Offset: 分页偏移量
         :type Offset: int
-        :param CompareTaskId: 校验任务 ID
+        :param _CompareTaskId: 校验任务 ID
         :type CompareTaskId: str
-        :param Status: 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :param _Status: 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
         :type Status: list of str
         """
-        self.JobId = None
-        self.Limit = None
-        self.Offset = None
-        self.CompareTaskId = None
-        self.Status = None
+        self._JobId = None
+        self._Limit = None
+        self._Offset = None
+        self._CompareTaskId = None
+        self._Status = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.CompareTaskId = params.get("CompareTaskId")
-        self.Status = params.get("Status")
+        self._JobId = params.get("JobId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1988,29 +3781,53 @@ class DescribeCompareTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 数量
+        :param _TotalCount: 数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param Items: 一致性校验列表
+        :param _Items: 一致性校验列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of CompareTaskItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = CompareTaskItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMigrateDBInstancesRequest(AbstractModel):
@@ -2020,54 +3837,135 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DatabaseType: 数据库类型，如mysql
+        :param _DatabaseType: 数据库类型，如mysql
         :type DatabaseType: str
-        :param MigrateRole: 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
+        :param _MigrateRole: 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
         :type MigrateRole: str
-        :param InstanceId: 云数据库实例ID
+        :param _InstanceId: 云数据库实例ID
         :type InstanceId: str
-        :param InstanceName: 云数据库名称
+        :param _InstanceName: 云数据库名称
         :type InstanceName: str
-        :param Limit: 返回数量限制
+        :param _Limit: 返回数量限制
         :type Limit: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param AccountMode: 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
+        :param _AccountMode: 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
         :type AccountMode: str
-        :param TmpSecretId: 临时密钥Id，若为跨账号资源此项必填
+        :param _TmpSecretId: 临时密钥Id，若为跨账号资源此项必填
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时密钥Key，若为跨账号资源此项必填
+        :param _TmpSecretKey: 临时密钥Key，若为跨账号资源此项必填
         :type TmpSecretKey: str
-        :param TmpToken: 临时密钥Token，若为跨账号资源此项必填
+        :param _TmpToken: 临时密钥Token，若为跨账号资源此项必填
         :type TmpToken: str
         """
-        self.DatabaseType = None
-        self.MigrateRole = None
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Limit = None
-        self.Offset = None
-        self.AccountMode = None
-        self.TmpSecretId = None
-        self.TmpSecretKey = None
-        self.TmpToken = None
+        self._DatabaseType = None
+        self._MigrateRole = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Limit = None
+        self._Offset = None
+        self._AccountMode = None
+        self._TmpSecretId = None
+        self._TmpSecretKey = None
+        self._TmpToken = None
+
+    @property
+    def DatabaseType(self):
+        return self._DatabaseType
+
+    @DatabaseType.setter
+    def DatabaseType(self, DatabaseType):
+        self._DatabaseType = DatabaseType
+
+    @property
+    def MigrateRole(self):
+        return self._MigrateRole
+
+    @MigrateRole.setter
+    def MigrateRole(self, MigrateRole):
+        self._MigrateRole = MigrateRole
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def AccountMode(self):
+        return self._AccountMode
+
+    @AccountMode.setter
+    def AccountMode(self, AccountMode):
+        self._AccountMode = AccountMode
+
+    @property
+    def TmpSecretId(self):
+        return self._TmpSecretId
+
+    @TmpSecretId.setter
+    def TmpSecretId(self, TmpSecretId):
+        self._TmpSecretId = TmpSecretId
+
+    @property
+    def TmpSecretKey(self):
+        return self._TmpSecretKey
+
+    @TmpSecretKey.setter
+    def TmpSecretKey(self, TmpSecretKey):
+        self._TmpSecretKey = TmpSecretKey
+
+    @property
+    def TmpToken(self):
+        return self._TmpToken
+
+    @TmpToken.setter
+    def TmpToken(self, TmpToken):
+        self._TmpToken = TmpToken
 
 
     def _deserialize(self, params):
-        self.DatabaseType = params.get("DatabaseType")
-        self.MigrateRole = params.get("MigrateRole")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.AccountMode = params.get("AccountMode")
-        self.TmpSecretId = params.get("TmpSecretId")
-        self.TmpSecretKey = params.get("TmpSecretKey")
-        self.TmpToken = params.get("TmpToken")
+        self._DatabaseType = params.get("DatabaseType")
+        self._MigrateRole = params.get("MigrateRole")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._AccountMode = params.get("AccountMode")
+        self._TmpSecretId = params.get("TmpSecretId")
+        self._TmpSecretKey = params.get("TmpSecretKey")
+        self._TmpToken = params.get("TmpToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2080,29 +3978,53 @@ class DescribeMigrateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合筛选条件的数量
+        :param _TotalCount: 符合筛选条件的数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param Instances: 实例列表
+        :param _Instances: 实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Instances: list of MigrateDBItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Instances = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Instances = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Instances") is not None:
-            self.Instances = []
+            self._Instances = []
             for item in params.get("Instances"):
                 obj = MigrateDBItem()
                 obj._deserialize(item)
-                self.Instances.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Instances.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMigrationCheckJobRequest(AbstractModel):
@@ -2112,18 +4034,27 @@ class DescribeMigrationCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id
+        :param _JobId: 任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2136,38 +4067,78 @@ class DescribeMigrationCheckJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
+        :param _Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param BriefMsg: 校验任务结果输出简要信息
+        :param _BriefMsg: 校验任务结果输出简要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BriefMsg: str
-        :param StepInfo: 检查步骤
+        :param _StepInfo: 检查步骤
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: list of CheckStep
-        :param CheckFlag: 校验结果，如：checkPass(校验通过)、checkNotPass(校验未通过)
+        :param _CheckFlag: 校验结果，如：checkPass(校验通过)、checkNotPass(校验未通过)
         :type CheckFlag: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.BriefMsg = None
-        self.StepInfo = None
-        self.CheckFlag = None
-        self.RequestId = None
+        self._Status = None
+        self._BriefMsg = None
+        self._StepInfo = None
+        self._CheckFlag = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BriefMsg(self):
+        return self._BriefMsg
+
+    @BriefMsg.setter
+    def BriefMsg(self, BriefMsg):
+        self._BriefMsg = BriefMsg
+
+    @property
+    def StepInfo(self):
+        return self._StepInfo
+
+    @StepInfo.setter
+    def StepInfo(self, StepInfo):
+        self._StepInfo = StepInfo
+
+    @property
+    def CheckFlag(self):
+        return self._CheckFlag
+
+    @CheckFlag.setter
+    def CheckFlag(self, CheckFlag):
+        self._CheckFlag = CheckFlag
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.BriefMsg = params.get("BriefMsg")
+        self._Status = params.get("Status")
+        self._BriefMsg = params.get("BriefMsg")
         if params.get("StepInfo") is not None:
-            self.StepInfo = []
+            self._StepInfo = []
             for item in params.get("StepInfo"):
                 obj = CheckStep()
                 obj._deserialize(item)
-                self.StepInfo.append(obj)
-        self.CheckFlag = params.get("CheckFlag")
-        self.RequestId = params.get("RequestId")
+                self._StepInfo.append(obj)
+        self._CheckFlag = params.get("CheckFlag")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMigrationDetailRequest(AbstractModel):
@@ -2177,18 +4148,27 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2201,142 +4181,310 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param JobName: 数据迁移任务名称
+        :param _JobName: 数据迁移任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
-        :param CreateTime: 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _CreateTime: 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param UpdateTime: 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _UpdateTime: 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param StartTime: 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _StartTime: 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param EndTime: 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _EndTime: 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param BriefMsg: 迁移任务简要错误信息
+        :param _BriefMsg: 迁移任务简要错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BriefMsg: str
-        :param Status: 任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
+        :param _Status: 任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
 pausing(暂停中)、
 manualPaused(已暂停)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Action: 任务操作信息
+        :param _Action: 任务操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
-        :param StepInfo: 迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息
+        :param _StepInfo: 迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
-        :param SrcInfo: 源实例信息
+        :param _SrcInfo: 源实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param DstInfo: 目标端信息
+        :param _DstInfo: 目标端信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param CompareTask: 数据一致性校验结果
+        :param _CompareTask: 数据一致性校验结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTask: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param RunMode: 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
+        :param _RunMode: 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunMode: str
-        :param ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
+        :param _ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpectRunTime: str
-        :param MigrateOption: 迁移选项，描述任务如何执行迁移等一系列配置信息
+        :param _MigrateOption: 迁移选项，描述任务如何执行迁移等一系列配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MigrateOption: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
-        :param CheckStepInfo: 校验任务运行详情
+        :param _CheckStepInfo: 校验任务运行详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckStepInfo: :class:`tencentcloud.dts.v20211206.models.CheckStepInfo`
-        :param TradeInfo: 描述计费相关的信息
+        :param _TradeInfo: 描述计费相关的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TradeInfo: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
-        :param ErrorInfo: 任务错误信息
+        :param _ErrorInfo: 任务错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: list of ErrorInfoItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.JobName = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.StartTime = None
-        self.EndTime = None
-        self.BriefMsg = None
-        self.Status = None
-        self.Action = None
-        self.StepInfo = None
-        self.SrcInfo = None
-        self.DstInfo = None
-        self.CompareTask = None
-        self.Tags = None
-        self.RunMode = None
-        self.ExpectRunTime = None
-        self.MigrateOption = None
-        self.CheckStepInfo = None
-        self.TradeInfo = None
-        self.ErrorInfo = None
-        self.RequestId = None
+        self._JobId = None
+        self._JobName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._BriefMsg = None
+        self._Status = None
+        self._Action = None
+        self._StepInfo = None
+        self._SrcInfo = None
+        self._DstInfo = None
+        self._CompareTask = None
+        self._Tags = None
+        self._RunMode = None
+        self._ExpectRunTime = None
+        self._MigrateOption = None
+        self._CheckStepInfo = None
+        self._TradeInfo = None
+        self._ErrorInfo = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BriefMsg(self):
+        return self._BriefMsg
+
+    @BriefMsg.setter
+    def BriefMsg(self, BriefMsg):
+        self._BriefMsg = BriefMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def StepInfo(self):
+        return self._StepInfo
+
+    @StepInfo.setter
+    def StepInfo(self, StepInfo):
+        self._StepInfo = StepInfo
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def CompareTask(self):
+        return self._CompareTask
+
+    @CompareTask.setter
+    def CompareTask(self, CompareTask):
+        self._CompareTask = CompareTask
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def ExpectRunTime(self):
+        return self._ExpectRunTime
+
+    @ExpectRunTime.setter
+    def ExpectRunTime(self, ExpectRunTime):
+        self._ExpectRunTime = ExpectRunTime
+
+    @property
+    def MigrateOption(self):
+        return self._MigrateOption
+
+    @MigrateOption.setter
+    def MigrateOption(self, MigrateOption):
+        self._MigrateOption = MigrateOption
+
+    @property
+    def CheckStepInfo(self):
+        return self._CheckStepInfo
+
+    @CheckStepInfo.setter
+    def CheckStepInfo(self, CheckStepInfo):
+        self._CheckStepInfo = CheckStepInfo
+
+    @property
+    def TradeInfo(self):
+        return self._TradeInfo
+
+    @TradeInfo.setter
+    def TradeInfo(self, TradeInfo):
+        self._TradeInfo = TradeInfo
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.BriefMsg = params.get("BriefMsg")
-        self.Status = params.get("Status")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._BriefMsg = params.get("BriefMsg")
+        self._Status = params.get("Status")
         if params.get("Action") is not None:
-            self.Action = MigrateAction()
-            self.Action._deserialize(params.get("Action"))
+            self._Action = MigrateAction()
+            self._Action._deserialize(params.get("Action"))
         if params.get("StepInfo") is not None:
-            self.StepInfo = MigrateDetailInfo()
-            self.StepInfo._deserialize(params.get("StepInfo"))
+            self._StepInfo = MigrateDetailInfo()
+            self._StepInfo._deserialize(params.get("StepInfo"))
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = DBEndpointInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
+            self._SrcInfo = DBEndpointInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
         if params.get("DstInfo") is not None:
-            self.DstInfo = DBEndpointInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
+            self._DstInfo = DBEndpointInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
         if params.get("CompareTask") is not None:
-            self.CompareTask = CompareTaskInfo()
-            self.CompareTask._deserialize(params.get("CompareTask"))
+            self._CompareTask = CompareTaskInfo()
+            self._CompareTask._deserialize(params.get("CompareTask"))
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RunMode = params.get("RunMode")
-        self.ExpectRunTime = params.get("ExpectRunTime")
+                self._Tags.append(obj)
+        self._RunMode = params.get("RunMode")
+        self._ExpectRunTime = params.get("ExpectRunTime")
         if params.get("MigrateOption") is not None:
-            self.MigrateOption = MigrateOption()
-            self.MigrateOption._deserialize(params.get("MigrateOption"))
+            self._MigrateOption = MigrateOption()
+            self._MigrateOption._deserialize(params.get("MigrateOption"))
         if params.get("CheckStepInfo") is not None:
-            self.CheckStepInfo = CheckStepInfo()
-            self.CheckStepInfo._deserialize(params.get("CheckStepInfo"))
+            self._CheckStepInfo = CheckStepInfo()
+            self._CheckStepInfo._deserialize(params.get("CheckStepInfo"))
         if params.get("TradeInfo") is not None:
-            self.TradeInfo = TradeInfo()
-            self.TradeInfo._deserialize(params.get("TradeInfo"))
+            self._TradeInfo = TradeInfo()
+            self._TradeInfo._deserialize(params.get("TradeInfo"))
         if params.get("ErrorInfo") is not None:
-            self.ErrorInfo = []
+            self._ErrorInfo = []
             for item in params.get("ErrorInfo"):
                 obj = ErrorInfoItem()
                 obj._deserialize(item)
-                self.ErrorInfo.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ErrorInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMigrationJobsRequest(AbstractModel):
@@ -2346,83 +4494,212 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID，如：dts-amm1jw5q
+        :param _JobId: 数据迁移任务ID，如：dts-amm1jw5q
         :type JobId: str
-        :param JobName: 数据迁移任务名称
+        :param _JobName: 数据迁移任务名称
         :type JobName: str
-        :param Status: 数据迁移任务状态，可取值包括：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)
+        :param _Status: 数据迁移任务状态，可取值包括：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)
         :type Status: list of str
-        :param SrcInstanceId: 源实例ID，格式如：cdb-c1nl9rpv
+        :param _SrcInstanceId: 源实例ID，格式如：cdb-c1nl9rpv
         :type SrcInstanceId: str
-        :param SrcRegion: 源实例地域，如：ap-guangzhou
+        :param _SrcRegion: 源实例地域，如：ap-guangzhou
         :type SrcRegion: str
-        :param SrcDatabaseType: 源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
+        :param _SrcDatabaseType: 源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
         :type SrcDatabaseType: list of str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
+        :param _SrcAccessType: 源实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
         :type SrcAccessType: list of str
-        :param DstInstanceId: 目标实例ID，格式如：cdb-c1nl9rpv
+        :param _DstInstanceId: 目标实例ID，格式如：cdb-c1nl9rpv
         :type DstInstanceId: str
-        :param DstRegion: 目标实例地域，如：ap-guangzhou
+        :param _DstRegion: 目标实例地域，如：ap-guangzhou
         :type DstRegion: str
-        :param DstDatabaseType: 目标源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
+        :param _DstDatabaseType: 目标源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
         :type DstDatabaseType: list of str
-        :param DstAccessType: 目标实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
+        :param _DstAccessType: 目标实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
         :type DstAccessType: list of str
-        :param RunMode: 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
+        :param _RunMode: 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
         :type RunMode: str
-        :param OrderSeq: 排序方式，可能取值为asc、desc，默认按照创建时间倒序
+        :param _OrderSeq: 排序方式，可能取值为asc、desc，默认按照创建时间倒序
         :type OrderSeq: str
-        :param Limit: 返回实例数量，默认20，有效区间[1,100]
+        :param _Limit: 返回实例数量，默认20，有效区间[1,100]
         :type Limit: int
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param TagFilters: 标签过滤
+        :param _TagFilters: 标签过滤
         :type TagFilters: list of TagFilter
         """
-        self.JobId = None
-        self.JobName = None
-        self.Status = None
-        self.SrcInstanceId = None
-        self.SrcRegion = None
-        self.SrcDatabaseType = None
-        self.SrcAccessType = None
-        self.DstInstanceId = None
-        self.DstRegion = None
-        self.DstDatabaseType = None
-        self.DstAccessType = None
-        self.RunMode = None
-        self.OrderSeq = None
-        self.Limit = None
-        self.Offset = None
-        self.TagFilters = None
+        self._JobId = None
+        self._JobName = None
+        self._Status = None
+        self._SrcInstanceId = None
+        self._SrcRegion = None
+        self._SrcDatabaseType = None
+        self._SrcAccessType = None
+        self._DstInstanceId = None
+        self._DstRegion = None
+        self._DstDatabaseType = None
+        self._DstAccessType = None
+        self._RunMode = None
+        self._OrderSeq = None
+        self._Limit = None
+        self._Offset = None
+        self._TagFilters = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SrcInstanceId(self):
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def SrcRegion(self):
+        return self._SrcRegion
+
+    @SrcRegion.setter
+    def SrcRegion(self, SrcRegion):
+        self._SrcRegion = SrcRegion
+
+    @property
+    def SrcDatabaseType(self):
+        return self._SrcDatabaseType
+
+    @SrcDatabaseType.setter
+    def SrcDatabaseType(self, SrcDatabaseType):
+        self._SrcDatabaseType = SrcDatabaseType
+
+    @property
+    def SrcAccessType(self):
+        return self._SrcAccessType
+
+    @SrcAccessType.setter
+    def SrcAccessType(self, SrcAccessType):
+        self._SrcAccessType = SrcAccessType
+
+    @property
+    def DstInstanceId(self):
+        return self._DstInstanceId
+
+    @DstInstanceId.setter
+    def DstInstanceId(self, DstInstanceId):
+        self._DstInstanceId = DstInstanceId
+
+    @property
+    def DstRegion(self):
+        return self._DstRegion
+
+    @DstRegion.setter
+    def DstRegion(self, DstRegion):
+        self._DstRegion = DstRegion
+
+    @property
+    def DstDatabaseType(self):
+        return self._DstDatabaseType
+
+    @DstDatabaseType.setter
+    def DstDatabaseType(self, DstDatabaseType):
+        self._DstDatabaseType = DstDatabaseType
+
+    @property
+    def DstAccessType(self):
+        return self._DstAccessType
+
+    @DstAccessType.setter
+    def DstAccessType(self, DstAccessType):
+        self._DstAccessType = DstAccessType
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def OrderSeq(self):
+        return self._OrderSeq
+
+    @OrderSeq.setter
+    def OrderSeq(self, OrderSeq):
+        self._OrderSeq = OrderSeq
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.Status = params.get("Status")
-        self.SrcInstanceId = params.get("SrcInstanceId")
-        self.SrcRegion = params.get("SrcRegion")
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.SrcAccessType = params.get("SrcAccessType")
-        self.DstInstanceId = params.get("DstInstanceId")
-        self.DstRegion = params.get("DstRegion")
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        self.DstAccessType = params.get("DstAccessType")
-        self.RunMode = params.get("RunMode")
-        self.OrderSeq = params.get("OrderSeq")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._Status = params.get("Status")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._SrcRegion = params.get("SrcRegion")
+        self._SrcDatabaseType = params.get("SrcDatabaseType")
+        self._SrcAccessType = params.get("SrcAccessType")
+        self._DstInstanceId = params.get("DstInstanceId")
+        self._DstRegion = params.get("DstRegion")
+        self._DstDatabaseType = params.get("DstDatabaseType")
+        self._DstAccessType = params.get("DstAccessType")
+        self._RunMode = params.get("RunMode")
+        self._OrderSeq = params.get("OrderSeq")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("TagFilters") is not None:
-            self.TagFilters = []
+            self._TagFilters = []
             for item in params.get("TagFilters"):
                 obj = TagFilter()
                 obj._deserialize(item)
-                self.TagFilters.append(obj)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2435,29 +4712,53 @@ class DescribeMigrationJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 迁移任务数量
+        :param _TotalCount: 迁移任务数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param JobList: 迁移任务列表
+        :param _JobList: 迁移任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobList: list of JobItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.JobList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._JobList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JobList(self):
+        return self._JobList
+
+    @JobList.setter
+    def JobList(self, JobList):
+        self._JobList = JobList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("JobList") is not None:
-            self.JobList = []
+            self._JobList = []
             for item in params.get("JobList"):
                 obj = JobItem()
                 obj._deserialize(item)
-                self.JobList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._JobList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
@@ -2467,18 +4768,27 @@ class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2491,43 +4801,91 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
+        :param _Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
         :type Status: str
-        :param StepCount: 校验的步骤总数
+        :param _StepCount: 校验的步骤总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepCount: int
-        :param StepCur: 当前所在步骤
+        :param _StepCur: 当前所在步骤
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepCur: int
-        :param Progress: 总体进度，范围为[0,100]	
+        :param _Progress: 总体进度，范围为[0,100]	
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
-        :param StepInfos: 步骤详细信息
+        :param _StepInfos: 步骤详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfos: list of StepInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.StepCount = None
-        self.StepCur = None
-        self.Progress = None
-        self.StepInfos = None
-        self.RequestId = None
+        self._Status = None
+        self._StepCount = None
+        self._StepCur = None
+        self._Progress = None
+        self._StepInfos = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StepCount(self):
+        return self._StepCount
+
+    @StepCount.setter
+    def StepCount(self, StepCount):
+        self._StepCount = StepCount
+
+    @property
+    def StepCur(self):
+        return self._StepCur
+
+    @StepCur.setter
+    def StepCur(self, StepCur):
+        self._StepCur = StepCur
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def StepInfos(self):
+        return self._StepInfos
+
+    @StepInfos.setter
+    def StepInfos(self, StepInfos):
+        self._StepInfos = StepInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.StepCount = params.get("StepCount")
-        self.StepCur = params.get("StepCur")
-        self.Progress = params.get("Progress")
+        self._Status = params.get("Status")
+        self._StepCount = params.get("StepCount")
+        self._StepCur = params.get("StepCur")
+        self._Progress = params.get("Progress")
         if params.get("StepInfos") is not None:
-            self.StepInfos = []
+            self._StepInfos = []
             for item in params.get("StepInfos"):
                 obj = StepInfo()
                 obj._deserialize(item)
-                self.StepInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._StepInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSyncJobsRequest(AbstractModel):
@@ -2537,63 +4895,152 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id，如sync-werwfs23
+        :param _JobId: 同步任务id，如sync-werwfs23
         :type JobId: str
-        :param JobName: 同步任务名
+        :param _JobName: 同步任务名
         :type JobName: str
-        :param Order: 排序字段，可以取值为CreateTime
+        :param _Order: 排序字段，可以取值为CreateTime
         :type Order: str
-        :param OrderSeq: 排序方式，升序为ASC，降序为DESC，默认为CreateTime降序
+        :param _OrderSeq: 排序方式，升序为ASC，降序为DESC，默认为CreateTime降序
         :type OrderSeq: str
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param Limit: 返回同步任务实例数量，默认20，有效区间[1,100]
+        :param _Limit: 返回同步任务实例数量，默认20，有效区间[1,100]
         :type Limit: int
-        :param Status: 状态集合，如Initialized,CheckPass,Running,ResumableErr,Stopped
+        :param _Status: 状态集合，如Initialized,CheckPass,Running,ResumableErr,Stopped
         :type Status: list of str
-        :param RunMode: 运行模式，如Immediate:立即运行，Timed:定时运行
+        :param _RunMode: 运行模式，如Immediate:立即运行，Timed:定时运行
         :type RunMode: str
-        :param JobType: 任务类型，如mysql2mysql：msyql同步到mysql
+        :param _JobType: 任务类型，如mysql2mysql：msyql同步到mysql
         :type JobType: str
-        :param PayMode: 付费类型，PrePay：预付费，PostPay：后付费
+        :param _PayMode: 付费类型，PrePay：预付费，PostPay：后付费
         :type PayMode: str
-        :param TagFilters: tag
+        :param _TagFilters: tag
         :type TagFilters: list of TagFilter
         """
-        self.JobId = None
-        self.JobName = None
-        self.Order = None
-        self.OrderSeq = None
-        self.Offset = None
-        self.Limit = None
-        self.Status = None
-        self.RunMode = None
-        self.JobType = None
-        self.PayMode = None
-        self.TagFilters = None
+        self._JobId = None
+        self._JobName = None
+        self._Order = None
+        self._OrderSeq = None
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+        self._RunMode = None
+        self._JobType = None
+        self._PayMode = None
+        self._TagFilters = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderSeq(self):
+        return self._OrderSeq
+
+    @OrderSeq.setter
+    def OrderSeq(self, OrderSeq):
+        self._OrderSeq = OrderSeq
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.Order = params.get("Order")
-        self.OrderSeq = params.get("OrderSeq")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Status = params.get("Status")
-        self.RunMode = params.get("RunMode")
-        self.JobType = params.get("JobType")
-        self.PayMode = params.get("PayMode")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._Order = params.get("Order")
+        self._OrderSeq = params.get("OrderSeq")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._RunMode = params.get("RunMode")
+        self._JobType = params.get("JobType")
+        self._PayMode = params.get("PayMode")
         if params.get("TagFilters") is not None:
-            self.TagFilters = []
+            self._TagFilters = []
             for item in params.get("TagFilters"):
                 obj = TagFilter()
                 obj._deserialize(item)
-                self.TagFilters.append(obj)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2606,29 +5053,53 @@ class DescribeSyncJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 任务数目
+        :param _TotalCount: 任务数目
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param JobList: 任务详情数组
+        :param _JobList: 任务详情数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobList: list of SyncJobInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.JobList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._JobList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JobList(self):
+        return self._JobList
+
+    @JobList.setter
+    def JobList(self, JobList):
+        self._JobList = JobList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("JobList") is not None:
-            self.JobList = []
+            self._JobList = []
             for item in params.get("JobList"):
                 obj = SyncJobInfo()
                 obj._deserialize(item)
-                self.JobList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._JobList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DestroyMigrateJobRequest(AbstractModel):
@@ -2638,18 +5109,27 @@ class DestroyMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id
+        :param _JobId: 任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2662,14 +5142,22 @@ class DestroyMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DestroySyncJobRequest(AbstractModel):
@@ -2679,18 +5167,27 @@ class DestroySyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2703,14 +5200,22 @@ class DestroySyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DetailCheckItem(AbstractModel):
@@ -2720,54 +5225,119 @@ class DetailCheckItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CheckItemName: 检查项的名称，如：源实例权限检查
+        :param _CheckItemName: 检查项的名称，如：源实例权限检查
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckItemName: str
-        :param Description: 检查项详细内容
+        :param _Description: 检查项详细内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param CheckResult: pass(通过)，failed(失败), warning(校验有警告，但仍通过)
+        :param _CheckResult: pass(通过)，failed(失败), warning(校验有警告，但仍通过)
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: str
-        :param FailureReason: 检查项失败原因
+        :param _FailureReason: 检查项失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailureReason: str
-        :param Solution: 解决方案
+        :param _Solution: 解决方案
 注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
-        :param ErrorLog: 运行报错日志
+        :param _ErrorLog: 运行报错日志
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorLog: list of str
-        :param HelpDoc: 详细帮助的文档链接
+        :param _HelpDoc: 详细帮助的文档链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: list of str
-        :param SkipInfo: 跳过风险文案
+        :param _SkipInfo: 跳过风险文案
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkipInfo: str
         """
-        self.CheckItemName = None
-        self.Description = None
-        self.CheckResult = None
-        self.FailureReason = None
-        self.Solution = None
-        self.ErrorLog = None
-        self.HelpDoc = None
-        self.SkipInfo = None
+        self._CheckItemName = None
+        self._Description = None
+        self._CheckResult = None
+        self._FailureReason = None
+        self._Solution = None
+        self._ErrorLog = None
+        self._HelpDoc = None
+        self._SkipInfo = None
+
+    @property
+    def CheckItemName(self):
+        return self._CheckItemName
+
+    @CheckItemName.setter
+    def CheckItemName(self, CheckItemName):
+        self._CheckItemName = CheckItemName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CheckResult(self):
+        return self._CheckResult
+
+    @CheckResult.setter
+    def CheckResult(self, CheckResult):
+        self._CheckResult = CheckResult
+
+    @property
+    def FailureReason(self):
+        return self._FailureReason
+
+    @FailureReason.setter
+    def FailureReason(self, FailureReason):
+        self._FailureReason = FailureReason
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def ErrorLog(self):
+        return self._ErrorLog
+
+    @ErrorLog.setter
+    def ErrorLog(self, ErrorLog):
+        self._ErrorLog = ErrorLog
+
+    @property
+    def HelpDoc(self):
+        return self._HelpDoc
+
+    @HelpDoc.setter
+    def HelpDoc(self, HelpDoc):
+        self._HelpDoc = HelpDoc
+
+    @property
+    def SkipInfo(self):
+        return self._SkipInfo
+
+    @SkipInfo.setter
+    def SkipInfo(self, SkipInfo):
+        self._SkipInfo = SkipInfo
 
 
     def _deserialize(self, params):
-        self.CheckItemName = params.get("CheckItemName")
-        self.Description = params.get("Description")
-        self.CheckResult = params.get("CheckResult")
-        self.FailureReason = params.get("FailureReason")
-        self.Solution = params.get("Solution")
-        self.ErrorLog = params.get("ErrorLog")
-        self.HelpDoc = params.get("HelpDoc")
-        self.SkipInfo = params.get("SkipInfo")
+        self._CheckItemName = params.get("CheckItemName")
+        self._Description = params.get("Description")
+        self._CheckResult = params.get("CheckResult")
+        self._FailureReason = params.get("FailureReason")
+        self._Solution = params.get("Solution")
+        self._ErrorLog = params.get("ErrorLog")
+        self._HelpDoc = params.get("HelpDoc")
+        self._SkipInfo = params.get("SkipInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2780,29 +5350,46 @@ class DifferenceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 数据不一致的表数量
+        :param _TotalCount: 数据不一致的表数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param Items: 校验不一致的表详情
+        :param _Items: 校验不一致的表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DifferenceItem
         """
-        self.TotalCount = None
-        self.Items = None
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = DifferenceItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2815,64 +5402,145 @@ class DifferenceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Db: 数据库名
+        :param _Db: 数据库名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
-        :param Table: 表名
+        :param _Table: 表名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
-        :param Chunk: 分块号
+        :param _Chunk: 分块号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Chunk: int
-        :param SrcItem: 源库数值
+        :param _SrcItem: 源库数值
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcItem: str
-        :param DstItem: 目标库数值
+        :param _DstItem: 目标库数值
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstItem: str
-        :param IndexName: 索引名称
+        :param _IndexName: 索引名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
-        :param LowerBoundary: 索引下边界
+        :param _LowerBoundary: 索引下边界
 注意：此字段可能返回 null，表示取不到有效值。
         :type LowerBoundary: str
-        :param UpperBoundary: 索引上边界
+        :param _UpperBoundary: 索引上边界
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpperBoundary: str
-        :param CostTime: 对比消耗时间,单位为 ms
+        :param _CostTime: 对比消耗时间,单位为 ms
 注意：此字段可能返回 null，表示取不到有效值。
         :type CostTime: float
-        :param FinishedAt: 完成时间
+        :param _FinishedAt: 完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
         """
-        self.Db = None
-        self.Table = None
-        self.Chunk = None
-        self.SrcItem = None
-        self.DstItem = None
-        self.IndexName = None
-        self.LowerBoundary = None
-        self.UpperBoundary = None
-        self.CostTime = None
-        self.FinishedAt = None
+        self._Db = None
+        self._Table = None
+        self._Chunk = None
+        self._SrcItem = None
+        self._DstItem = None
+        self._IndexName = None
+        self._LowerBoundary = None
+        self._UpperBoundary = None
+        self._CostTime = None
+        self._FinishedAt = None
+
+    @property
+    def Db(self):
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Chunk(self):
+        return self._Chunk
+
+    @Chunk.setter
+    def Chunk(self, Chunk):
+        self._Chunk = Chunk
+
+    @property
+    def SrcItem(self):
+        return self._SrcItem
+
+    @SrcItem.setter
+    def SrcItem(self, SrcItem):
+        self._SrcItem = SrcItem
+
+    @property
+    def DstItem(self):
+        return self._DstItem
+
+    @DstItem.setter
+    def DstItem(self, DstItem):
+        self._DstItem = DstItem
+
+    @property
+    def IndexName(self):
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def LowerBoundary(self):
+        return self._LowerBoundary
+
+    @LowerBoundary.setter
+    def LowerBoundary(self, LowerBoundary):
+        self._LowerBoundary = LowerBoundary
+
+    @property
+    def UpperBoundary(self):
+        return self._UpperBoundary
+
+    @UpperBoundary.setter
+    def UpperBoundary(self, UpperBoundary):
+        self._UpperBoundary = UpperBoundary
+
+    @property
+    def CostTime(self):
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def FinishedAt(self):
+        return self._FinishedAt
+
+    @FinishedAt.setter
+    def FinishedAt(self, FinishedAt):
+        self._FinishedAt = FinishedAt
 
 
     def _deserialize(self, params):
-        self.Db = params.get("Db")
-        self.Table = params.get("Table")
-        self.Chunk = params.get("Chunk")
-        self.SrcItem = params.get("SrcItem")
-        self.DstItem = params.get("DstItem")
-        self.IndexName = params.get("IndexName")
-        self.LowerBoundary = params.get("LowerBoundary")
-        self.UpperBoundary = params.get("UpperBoundary")
-        self.CostTime = params.get("CostTime")
-        self.FinishedAt = params.get("FinishedAt")
+        self._Db = params.get("Db")
+        self._Table = params.get("Table")
+        self._Chunk = params.get("Chunk")
+        self._SrcItem = params.get("SrcItem")
+        self._DstItem = params.get("DstItem")
+        self._IndexName = params.get("IndexName")
+        self._LowerBoundary = params.get("LowerBoundary")
+        self._UpperBoundary = params.get("UpperBoundary")
+        self._CostTime = params.get("CostTime")
+        self._FinishedAt = params.get("FinishedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2885,41 +5553,74 @@ class DynamicOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpTypes: 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)，PartialDDL(自定义,和DdlOptions一起起作用 )；必填、dts会用该值覆盖原有的值
+        :param _OpTypes: 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)，PartialDDL(自定义,和DdlOptions一起起作用 )；必填、dts会用该值覆盖原有的值
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpTypes: list of str
-        :param DdlOptions: DDL同步选项，具体描述要同步那些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
+        :param _DdlOptions: DDL同步选项，具体描述要同步那些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdlOptions: list of DdlOption
-        :param ConflictHandleType: 冲突处理选项，ReportError(报错)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖); 目前目标端为kafka的链路不支持修改该配置
+        :param _ConflictHandleType: 冲突处理选项，ReportError(报错)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖); 目前目标端为kafka的链路不支持修改该配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConflictHandleType: str
-        :param ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作；不能部分更新该选项的内部字段；有更新时、需要全量更新该字段
+        :param _ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作；不能部分更新该选项的内部字段；有更新时、需要全量更新该字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
         """
-        self.OpTypes = None
-        self.DdlOptions = None
-        self.ConflictHandleType = None
-        self.ConflictHandleOption = None
+        self._OpTypes = None
+        self._DdlOptions = None
+        self._ConflictHandleType = None
+        self._ConflictHandleOption = None
+
+    @property
+    def OpTypes(self):
+        return self._OpTypes
+
+    @OpTypes.setter
+    def OpTypes(self, OpTypes):
+        self._OpTypes = OpTypes
+
+    @property
+    def DdlOptions(self):
+        return self._DdlOptions
+
+    @DdlOptions.setter
+    def DdlOptions(self, DdlOptions):
+        self._DdlOptions = DdlOptions
+
+    @property
+    def ConflictHandleType(self):
+        return self._ConflictHandleType
+
+    @ConflictHandleType.setter
+    def ConflictHandleType(self, ConflictHandleType):
+        self._ConflictHandleType = ConflictHandleType
+
+    @property
+    def ConflictHandleOption(self):
+        return self._ConflictHandleOption
+
+    @ConflictHandleOption.setter
+    def ConflictHandleOption(self, ConflictHandleOption):
+        self._ConflictHandleOption = ConflictHandleOption
 
 
     def _deserialize(self, params):
-        self.OpTypes = params.get("OpTypes")
+        self._OpTypes = params.get("OpTypes")
         if params.get("DdlOptions") is not None:
-            self.DdlOptions = []
+            self._DdlOptions = []
             for item in params.get("DdlOptions"):
                 obj = DdlOption()
                 obj._deserialize(item)
-                self.DdlOptions.append(obj)
-        self.ConflictHandleType = params.get("ConflictHandleType")
+                self._DdlOptions.append(obj)
+        self._ConflictHandleType = params.get("ConflictHandleType")
         if params.get("ConflictHandleOption") is not None:
-            self.ConflictHandleOption = ConflictHandleOption()
-            self.ConflictHandleOption._deserialize(params.get("ConflictHandleOption"))
+            self._ConflictHandleOption = ConflictHandleOption()
+            self._ConflictHandleOption._deserialize(params.get("ConflictHandleOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2932,144 +5633,353 @@ class Endpoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 地域英文名，如：ap-guangzhou
+        :param _Region: 地域英文名，如：ap-guangzhou
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param Role: tdsql mysql版的节点类型，枚举值为proxy、set
+        :param _Role: tdsql mysql版的节点类型，枚举值为proxy、set
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
-        :param DbKernel: 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql
+        :param _DbKernel: 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbKernel: str
-        :param InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
+        :param _InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param Ip: 实例的IP地址，接入类型为非cdb时此项必填
+        :param _Ip: 实例的IP地址，接入类型为非cdb时此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
-        :param Port: 实例端口，接入类型为非cdb时此项必填
+        :param _Port: 实例端口，接入类型为非cdb时此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param User: 用户名，对于访问需要用户名密码认证的实例必填
+        :param _User: 用户名，对于访问需要用户名密码认证的实例必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
-        :param Password: 密码，对于访问需要用户名密码认证的实例必填
+        :param _Password: 密码，对于访问需要用户名密码认证的实例必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
-        :param DbName: 数据库名，数据库为cdwpg时，需要提供
+        :param _DbName: 数据库名，数据库为cdwpg时，需要提供
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
-        :param VpcId: 私有网络ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：vpc-92jblxto
+        :param _VpcId: 私有网络ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：vpc-92jblxto
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param SubnetId: 私有网络下的子网ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：subnet-3paxmkdz
+        :param _SubnetId: 私有网络下的子网ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：subnet-3paxmkdz
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
+        :param _CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type CvmInstanceId: str
-        :param UniqDcgId: 专线网关ID，对于专线接入类型此项必填，格式如：dcg-0rxtqqxb
+        :param _UniqDcgId: 专线网关ID，对于专线接入类型此项必填，格式如：dcg-0rxtqqxb
 注意：此字段可能返回 null，表示取不到有效值。
         :type UniqDcgId: str
-        :param UniqVpnGwId: VPN网关ID，对于vpn接入类型此项必填，格式如：vpngw-9ghexg7q
+        :param _UniqVpnGwId: VPN网关ID，对于vpn接入类型此项必填，格式如：vpngw-9ghexg7q
 注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpnGwId: str
-        :param CcnId: 云联网ID，对于云联网接入类型此项必填，如：ccn-afp6kltc
+        :param _CcnId: 云联网ID，对于云联网接入类型此项必填，如：ccn-afp6kltc
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
-        :param Supplier: 云厂商类型，当实例为RDS实例时，填写为aliyun, 其他情况均填写others，默认为others
+        :param _Supplier: 云厂商类型，当实例为RDS实例时，填写为aliyun, 其他情况均填写others，默认为others
 注意：此字段可能返回 null，表示取不到有效值。
         :type Supplier: str
-        :param EngineVersion: 数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6
+        :param _EngineVersion: 数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
-        :param Account: 实例所属账号，如果为跨账号实例此项必填
+        :param _Account: 实例所属账号，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Account: str
-        :param AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
+        :param _AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountMode: str
-        :param AccountRole: 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
+        :param _AccountRole: 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountRole: str
-        :param RoleExternalId: 外部角色id
+        :param _RoleExternalId: 外部角色id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleExternalId: str
-        :param TmpSecretId: 临时密钥Id，如果为跨账号实例此项必填
+        :param _TmpSecretId: 临时密钥Id，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时密钥Key，如果为跨账号实例此项必填
+        :param _TmpSecretKey: 临时密钥Key，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
-        :param TmpToken: 临时Token，如果为跨账号实例此项必填
+        :param _TmpToken: 临时Token，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
-        :param EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
+        :param _EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptConn: str
-        :param DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
+        :param _DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNetEnv: str
         """
-        self.Region = None
-        self.Role = None
-        self.DbKernel = None
-        self.InstanceId = None
-        self.Ip = None
-        self.Port = None
-        self.User = None
-        self.Password = None
-        self.DbName = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.CvmInstanceId = None
-        self.UniqDcgId = None
-        self.UniqVpnGwId = None
-        self.CcnId = None
-        self.Supplier = None
-        self.EngineVersion = None
-        self.Account = None
-        self.AccountMode = None
-        self.AccountRole = None
-        self.RoleExternalId = None
-        self.TmpSecretId = None
-        self.TmpSecretKey = None
-        self.TmpToken = None
-        self.EncryptConn = None
-        self.DatabaseNetEnv = None
+        self._Region = None
+        self._Role = None
+        self._DbKernel = None
+        self._InstanceId = None
+        self._Ip = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+        self._DbName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._CvmInstanceId = None
+        self._UniqDcgId = None
+        self._UniqVpnGwId = None
+        self._CcnId = None
+        self._Supplier = None
+        self._EngineVersion = None
+        self._Account = None
+        self._AccountMode = None
+        self._AccountRole = None
+        self._RoleExternalId = None
+        self._TmpSecretId = None
+        self._TmpSecretKey = None
+        self._TmpToken = None
+        self._EncryptConn = None
+        self._DatabaseNetEnv = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def DbKernel(self):
+        return self._DbKernel
+
+    @DbKernel.setter
+    def DbKernel(self, DbKernel):
+        self._DbKernel = DbKernel
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def CvmInstanceId(self):
+        return self._CvmInstanceId
+
+    @CvmInstanceId.setter
+    def CvmInstanceId(self, CvmInstanceId):
+        self._CvmInstanceId = CvmInstanceId
+
+    @property
+    def UniqDcgId(self):
+        return self._UniqDcgId
+
+    @UniqDcgId.setter
+    def UniqDcgId(self, UniqDcgId):
+        self._UniqDcgId = UniqDcgId
+
+    @property
+    def UniqVpnGwId(self):
+        return self._UniqVpnGwId
+
+    @UniqVpnGwId.setter
+    def UniqVpnGwId(self, UniqVpnGwId):
+        self._UniqVpnGwId = UniqVpnGwId
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def Supplier(self):
+        return self._Supplier
+
+    @Supplier.setter
+    def Supplier(self, Supplier):
+        self._Supplier = Supplier
+
+    @property
+    def EngineVersion(self):
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def AccountMode(self):
+        return self._AccountMode
+
+    @AccountMode.setter
+    def AccountMode(self, AccountMode):
+        self._AccountMode = AccountMode
+
+    @property
+    def AccountRole(self):
+        return self._AccountRole
+
+    @AccountRole.setter
+    def AccountRole(self, AccountRole):
+        self._AccountRole = AccountRole
+
+    @property
+    def RoleExternalId(self):
+        return self._RoleExternalId
+
+    @RoleExternalId.setter
+    def RoleExternalId(self, RoleExternalId):
+        self._RoleExternalId = RoleExternalId
+
+    @property
+    def TmpSecretId(self):
+        return self._TmpSecretId
+
+    @TmpSecretId.setter
+    def TmpSecretId(self, TmpSecretId):
+        self._TmpSecretId = TmpSecretId
+
+    @property
+    def TmpSecretKey(self):
+        return self._TmpSecretKey
+
+    @TmpSecretKey.setter
+    def TmpSecretKey(self, TmpSecretKey):
+        self._TmpSecretKey = TmpSecretKey
+
+    @property
+    def TmpToken(self):
+        return self._TmpToken
+
+    @TmpToken.setter
+    def TmpToken(self, TmpToken):
+        self._TmpToken = TmpToken
+
+    @property
+    def EncryptConn(self):
+        return self._EncryptConn
+
+    @EncryptConn.setter
+    def EncryptConn(self, EncryptConn):
+        self._EncryptConn = EncryptConn
+
+    @property
+    def DatabaseNetEnv(self):
+        return self._DatabaseNetEnv
+
+    @DatabaseNetEnv.setter
+    def DatabaseNetEnv(self, DatabaseNetEnv):
+        self._DatabaseNetEnv = DatabaseNetEnv
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.Role = params.get("Role")
-        self.DbKernel = params.get("DbKernel")
-        self.InstanceId = params.get("InstanceId")
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        self.User = params.get("User")
-        self.Password = params.get("Password")
-        self.DbName = params.get("DbName")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.CvmInstanceId = params.get("CvmInstanceId")
-        self.UniqDcgId = params.get("UniqDcgId")
-        self.UniqVpnGwId = params.get("UniqVpnGwId")
-        self.CcnId = params.get("CcnId")
-        self.Supplier = params.get("Supplier")
-        self.EngineVersion = params.get("EngineVersion")
-        self.Account = params.get("Account")
-        self.AccountMode = params.get("AccountMode")
-        self.AccountRole = params.get("AccountRole")
-        self.RoleExternalId = params.get("RoleExternalId")
-        self.TmpSecretId = params.get("TmpSecretId")
-        self.TmpSecretKey = params.get("TmpSecretKey")
-        self.TmpToken = params.get("TmpToken")
-        self.EncryptConn = params.get("EncryptConn")
-        self.DatabaseNetEnv = params.get("DatabaseNetEnv")
+        self._Region = params.get("Region")
+        self._Role = params.get("Role")
+        self._DbKernel = params.get("DbKernel")
+        self._InstanceId = params.get("InstanceId")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._DbName = params.get("DbName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._CvmInstanceId = params.get("CvmInstanceId")
+        self._UniqDcgId = params.get("UniqDcgId")
+        self._UniqVpnGwId = params.get("UniqVpnGwId")
+        self._CcnId = params.get("CcnId")
+        self._Supplier = params.get("Supplier")
+        self._EngineVersion = params.get("EngineVersion")
+        self._Account = params.get("Account")
+        self._AccountMode = params.get("AccountMode")
+        self._AccountRole = params.get("AccountRole")
+        self._RoleExternalId = params.get("RoleExternalId")
+        self._TmpSecretId = params.get("TmpSecretId")
+        self._TmpSecretKey = params.get("TmpSecretKey")
+        self._TmpToken = params.get("TmpToken")
+        self._EncryptConn = params.get("EncryptConn")
+        self._DatabaseNetEnv = params.get("DatabaseNetEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3082,34 +5992,67 @@ class ErrorInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 错误码
+        :param _Code: 错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Solution: 解决方案
+        :param _Solution: 解决方案
 注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
-        :param ErrorLog: 错误日志信息
+        :param _ErrorLog: 错误日志信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorLog: str
-        :param HelpDoc: 文档提示
+        :param _HelpDoc: 文档提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
         """
-        self.Code = None
-        self.Solution = None
-        self.ErrorLog = None
-        self.HelpDoc = None
+        self._Code = None
+        self._Solution = None
+        self._ErrorLog = None
+        self._HelpDoc = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def ErrorLog(self):
+        return self._ErrorLog
+
+    @ErrorLog.setter
+    def ErrorLog(self, ErrorLog):
+        self._ErrorLog = ErrorLog
+
+    @property
+    def HelpDoc(self):
+        return self._HelpDoc
+
+    @HelpDoc.setter
+    def HelpDoc(self, HelpDoc):
+        self._HelpDoc = HelpDoc
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Solution = params.get("Solution")
-        self.ErrorLog = params.get("ErrorLog")
-        self.HelpDoc = params.get("HelpDoc")
+        self._Code = params.get("Code")
+        self._Solution = params.get("Solution")
+        self._ErrorLog = params.get("ErrorLog")
+        self._HelpDoc = params.get("HelpDoc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3122,18 +6065,27 @@ class IsolateMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id
+        :param _JobId: 任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3146,14 +6098,22 @@ class IsolateMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class IsolateSyncJobRequest(AbstractModel):
@@ -3163,18 +6123,27 @@ class IsolateSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3187,14 +6156,22 @@ class IsolateSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class JobItem(AbstractModel):
@@ -3204,123 +6181,268 @@ class JobItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param JobName: 数据迁移任务名称
+        :param _JobName: 数据迁移任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
-        :param CreateTime: 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _CreateTime: 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param UpdateTime: 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _UpdateTime: 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param StartTime: 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _StartTime: 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param EndTime: 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _EndTime: 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param BriefMsg: 迁移任务错误信息
+        :param _BriefMsg: 迁移任务错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BriefMsg: str
-        :param Status: 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
+        :param _Status: 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
 pausing(暂停中)、
 manualPaused(已暂停)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param RunMode: 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
+        :param _RunMode: 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunMode: str
-        :param ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
+        :param _ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpectRunTime: str
-        :param Action: 任务操作信息
+        :param _Action: 任务操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
-        :param StepInfo: 迁移执行过程信息
+        :param _StepInfo: 迁移执行过程信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
-        :param SrcInfo: 源实例信息
+        :param _SrcInfo: 源实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param DstInfo: 目标端信息
+        :param _DstInfo: 目标端信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param CompareTask: 数据一致性校验结果
+        :param _CompareTask: 数据一致性校验结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTask: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
-        :param TradeInfo: 计费状态信息
+        :param _TradeInfo: 计费状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TradeInfo: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param AutoRetryTimeRangeMinutes: 自动重试时间段信息
+        :param _AutoRetryTimeRangeMinutes: 自动重试时间段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
         """
-        self.JobId = None
-        self.JobName = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.StartTime = None
-        self.EndTime = None
-        self.BriefMsg = None
-        self.Status = None
-        self.RunMode = None
-        self.ExpectRunTime = None
-        self.Action = None
-        self.StepInfo = None
-        self.SrcInfo = None
-        self.DstInfo = None
-        self.CompareTask = None
-        self.TradeInfo = None
-        self.Tags = None
-        self.AutoRetryTimeRangeMinutes = None
+        self._JobId = None
+        self._JobName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._BriefMsg = None
+        self._Status = None
+        self._RunMode = None
+        self._ExpectRunTime = None
+        self._Action = None
+        self._StepInfo = None
+        self._SrcInfo = None
+        self._DstInfo = None
+        self._CompareTask = None
+        self._TradeInfo = None
+        self._Tags = None
+        self._AutoRetryTimeRangeMinutes = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BriefMsg(self):
+        return self._BriefMsg
+
+    @BriefMsg.setter
+    def BriefMsg(self, BriefMsg):
+        self._BriefMsg = BriefMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def ExpectRunTime(self):
+        return self._ExpectRunTime
+
+    @ExpectRunTime.setter
+    def ExpectRunTime(self, ExpectRunTime):
+        self._ExpectRunTime = ExpectRunTime
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def StepInfo(self):
+        return self._StepInfo
+
+    @StepInfo.setter
+    def StepInfo(self, StepInfo):
+        self._StepInfo = StepInfo
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def CompareTask(self):
+        return self._CompareTask
+
+    @CompareTask.setter
+    def CompareTask(self, CompareTask):
+        self._CompareTask = CompareTask
+
+    @property
+    def TradeInfo(self):
+        return self._TradeInfo
+
+    @TradeInfo.setter
+    def TradeInfo(self, TradeInfo):
+        self._TradeInfo = TradeInfo
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRetryTimeRangeMinutes(self):
+        return self._AutoRetryTimeRangeMinutes
+
+    @AutoRetryTimeRangeMinutes.setter
+    def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
+        self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.BriefMsg = params.get("BriefMsg")
-        self.Status = params.get("Status")
-        self.RunMode = params.get("RunMode")
-        self.ExpectRunTime = params.get("ExpectRunTime")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._BriefMsg = params.get("BriefMsg")
+        self._Status = params.get("Status")
+        self._RunMode = params.get("RunMode")
+        self._ExpectRunTime = params.get("ExpectRunTime")
         if params.get("Action") is not None:
-            self.Action = MigrateAction()
-            self.Action._deserialize(params.get("Action"))
+            self._Action = MigrateAction()
+            self._Action._deserialize(params.get("Action"))
         if params.get("StepInfo") is not None:
-            self.StepInfo = MigrateDetailInfo()
-            self.StepInfo._deserialize(params.get("StepInfo"))
+            self._StepInfo = MigrateDetailInfo()
+            self._StepInfo._deserialize(params.get("StepInfo"))
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = DBEndpointInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
+            self._SrcInfo = DBEndpointInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
         if params.get("DstInfo") is not None:
-            self.DstInfo = DBEndpointInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
+            self._DstInfo = DBEndpointInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
         if params.get("CompareTask") is not None:
-            self.CompareTask = CompareTaskInfo()
-            self.CompareTask._deserialize(params.get("CompareTask"))
+            self._CompareTask = CompareTaskInfo()
+            self._CompareTask._deserialize(params.get("CompareTask"))
         if params.get("TradeInfo") is not None:
-            self.TradeInfo = TradeInfo()
-            self.TradeInfo._deserialize(params.get("TradeInfo"))
+            self._TradeInfo = TradeInfo()
+            self._TradeInfo._deserialize(params.get("TradeInfo"))
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+                self._Tags.append(obj)
+        self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3333,35 +6455,68 @@ class KafkaOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataType: 投递到kafka的数据类型，如Avro,Json
+        :param _DataType: 投递到kafka的数据类型，如Avro,Json
         :type DataType: str
-        :param TopicType: 同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
+        :param _TopicType: 同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
         :type TopicType: str
-        :param DDLTopicName: 用于存储ddl的topic
+        :param _DDLTopicName: 用于存储ddl的topic
         :type DDLTopicName: str
-        :param TopicRules: 单topic和自定义topic的描述
+        :param _TopicRules: 单topic和自定义topic的描述
         :type TopicRules: list of TopicRule
         """
-        self.DataType = None
-        self.TopicType = None
-        self.DDLTopicName = None
-        self.TopicRules = None
+        self._DataType = None
+        self._TopicType = None
+        self._DDLTopicName = None
+        self._TopicRules = None
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def TopicType(self):
+        return self._TopicType
+
+    @TopicType.setter
+    def TopicType(self, TopicType):
+        self._TopicType = TopicType
+
+    @property
+    def DDLTopicName(self):
+        return self._DDLTopicName
+
+    @DDLTopicName.setter
+    def DDLTopicName(self, DDLTopicName):
+        self._DDLTopicName = DDLTopicName
+
+    @property
+    def TopicRules(self):
+        return self._TopicRules
+
+    @TopicRules.setter
+    def TopicRules(self, TopicRules):
+        self._TopicRules = TopicRules
 
 
     def _deserialize(self, params):
-        self.DataType = params.get("DataType")
-        self.TopicType = params.get("TopicType")
-        self.DDLTopicName = params.get("DDLTopicName")
+        self._DataType = params.get("DataType")
+        self._TopicType = params.get("TopicType")
+        self._DDLTopicName = params.get("DDLTopicName")
         if params.get("TopicRules") is not None:
-            self.TopicRules = []
+            self._TopicRules = []
             for item in params.get("TopicRules"):
                 obj = TopicRule()
                 obj._deserialize(item)
-                self.TopicRules.append(obj)
+                self._TopicRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3374,24 +6529,41 @@ class KeyValuePairOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 选项key
+        :param _Key: 选项key
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
-        :param Value: 选项value
+        :param _Value: 选项value
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3404,24 +6576,41 @@ class MigrateAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllAction: 任务的所有操作列表
+        :param _AllAction: 任务的所有操作列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllAction: list of str
-        :param AllowedAction: 任务在当前状态下允许的操作列表
+        :param _AllowedAction: 任务在当前状态下允许的操作列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowedAction: list of str
         """
-        self.AllAction = None
-        self.AllowedAction = None
+        self._AllAction = None
+        self._AllowedAction = None
+
+    @property
+    def AllAction(self):
+        return self._AllAction
+
+    @AllAction.setter
+    def AllAction(self, AllAction):
+        self._AllAction = AllAction
+
+    @property
+    def AllowedAction(self):
+        return self._AllowedAction
+
+    @AllowedAction.setter
+    def AllowedAction(self, AllowedAction):
+        self._AllowedAction = AllowedAction
 
 
     def _deserialize(self, params):
-        self.AllAction = params.get("AllAction")
-        self.AllowedAction = params.get("AllowedAction")
+        self._AllAction = params.get("AllAction")
+        self._AllowedAction = params.get("AllowedAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3434,38 +6623,87 @@ class MigrateDBItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param InstanceName: 实例名称
+        :param _InstanceName: 实例名称
         :type InstanceName: str
-        :param Vip: 实例Vip
+        :param _Vip: 实例Vip
         :type Vip: str
-        :param Vport: 实例Vport
+        :param _Vport: 实例Vport
         :type Vport: int
-        :param Usable: 是否可以作为迁移对象，1-可以，0-不可以
+        :param _Usable: 是否可以作为迁移对象，1-可以，0-不可以
         :type Usable: int
-        :param Hint: 不可以作为迁移对象的原因
+        :param _Hint: 不可以作为迁移对象的原因
         :type Hint: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Vip = None
-        self.Vport = None
-        self.Usable = None
-        self.Hint = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Vip = None
+        self._Vport = None
+        self._Usable = None
+        self._Hint = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def Usable(self):
+        return self._Usable
+
+    @Usable.setter
+    def Usable(self, Usable):
+        self._Usable = Usable
+
+    @property
+    def Hint(self):
+        return self._Hint
+
+    @Hint.setter
+    def Hint(self, Hint):
+        self._Hint = Hint
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Vip = params.get("Vip")
-        self.Vport = params.get("Vport")
-        self.Usable = params.get("Usable")
-        self.Hint = params.get("Hint")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._Usable = params.get("Usable")
+        self._Hint = params.get("Hint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3478,44 +6716,85 @@ class MigrateDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StepAll: 总步骤数
+        :param _StepAll: 总步骤数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepAll: int
-        :param StepNow: 当前步骤
+        :param _StepNow: 当前步骤
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepNow: int
-        :param MasterSlaveDistance: 主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+        :param _MasterSlaveDistance: 主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
 注意：此字段可能返回 null，表示取不到有效值。
         :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: 主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+        :param _SecondsBehindMaster: 主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondsBehindMaster: int
-        :param StepInfo: 步骤信息
+        :param _StepInfo: 步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: list of StepDetailInfo
         """
-        self.StepAll = None
-        self.StepNow = None
-        self.MasterSlaveDistance = None
-        self.SecondsBehindMaster = None
-        self.StepInfo = None
+        self._StepAll = None
+        self._StepNow = None
+        self._MasterSlaveDistance = None
+        self._SecondsBehindMaster = None
+        self._StepInfo = None
+
+    @property
+    def StepAll(self):
+        return self._StepAll
+
+    @StepAll.setter
+    def StepAll(self, StepAll):
+        self._StepAll = StepAll
+
+    @property
+    def StepNow(self):
+        return self._StepNow
+
+    @StepNow.setter
+    def StepNow(self, StepNow):
+        self._StepNow = StepNow
+
+    @property
+    def MasterSlaveDistance(self):
+        return self._MasterSlaveDistance
+
+    @MasterSlaveDistance.setter
+    def MasterSlaveDistance(self, MasterSlaveDistance):
+        self._MasterSlaveDistance = MasterSlaveDistance
+
+    @property
+    def SecondsBehindMaster(self):
+        return self._SecondsBehindMaster
+
+    @SecondsBehindMaster.setter
+    def SecondsBehindMaster(self, SecondsBehindMaster):
+        self._SecondsBehindMaster = SecondsBehindMaster
+
+    @property
+    def StepInfo(self):
+        return self._StepInfo
+
+    @StepInfo.setter
+    def StepInfo(self, StepInfo):
+        self._StepInfo = StepInfo
 
 
     def _deserialize(self, params):
-        self.StepAll = params.get("StepAll")
-        self.StepNow = params.get("StepNow")
-        self.MasterSlaveDistance = params.get("MasterSlaveDistance")
-        self.SecondsBehindMaster = params.get("SecondsBehindMaster")
+        self._StepAll = params.get("StepAll")
+        self._StepNow = params.get("StepNow")
+        self._MasterSlaveDistance = params.get("MasterSlaveDistance")
+        self._SecondsBehindMaster = params.get("SecondsBehindMaster")
         if params.get("StepInfo") is not None:
-            self.StepInfo = []
+            self._StepInfo = []
             for item in params.get("StepInfo"):
                 obj = StepDetailInfo()
                 obj._deserialize(item)
-                self.StepInfo.append(obj)
+                self._StepInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3528,59 +6807,116 @@ class MigrateOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DatabaseTable: 迁移对象选项，需要告知迁移服务迁移哪些库表对象
+        :param _DatabaseTable: 迁移对象选项，需要告知迁移服务迁移哪些库表对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseTable: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
-        :param MigrateType: 迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement
+        :param _MigrateType: 迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement
 注意：此字段可能返回 null，表示取不到有效值。
         :type MigrateType: str
-        :param Consistency: 数据一致性校验选项， 默认为不开启一致性校验
+        :param _Consistency: 数据一致性校验选项， 默认为不开启一致性校验
 注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
-        :param IsMigrateAccount: 是否迁移账号，yes(迁移账号)，no(不迁移账号)
+        :param _IsMigrateAccount: 是否迁移账号，yes(迁移账号)，no(不迁移账号)
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMigrateAccount: bool
-        :param IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
+        :param _IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsOverrideRoot: bool
-        :param IsDstReadOnly: 是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)
+        :param _IsDstReadOnly: 是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDstReadOnly: bool
-        :param ExtraAttr: 其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
+        :param _ExtraAttr: 其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
 ["ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) ]
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
         """
-        self.DatabaseTable = None
-        self.MigrateType = None
-        self.Consistency = None
-        self.IsMigrateAccount = None
-        self.IsOverrideRoot = None
-        self.IsDstReadOnly = None
-        self.ExtraAttr = None
+        self._DatabaseTable = None
+        self._MigrateType = None
+        self._Consistency = None
+        self._IsMigrateAccount = None
+        self._IsOverrideRoot = None
+        self._IsDstReadOnly = None
+        self._ExtraAttr = None
+
+    @property
+    def DatabaseTable(self):
+        return self._DatabaseTable
+
+    @DatabaseTable.setter
+    def DatabaseTable(self, DatabaseTable):
+        self._DatabaseTable = DatabaseTable
+
+    @property
+    def MigrateType(self):
+        return self._MigrateType
+
+    @MigrateType.setter
+    def MigrateType(self, MigrateType):
+        self._MigrateType = MigrateType
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+    @property
+    def IsMigrateAccount(self):
+        return self._IsMigrateAccount
+
+    @IsMigrateAccount.setter
+    def IsMigrateAccount(self, IsMigrateAccount):
+        self._IsMigrateAccount = IsMigrateAccount
+
+    @property
+    def IsOverrideRoot(self):
+        return self._IsOverrideRoot
+
+    @IsOverrideRoot.setter
+    def IsOverrideRoot(self, IsOverrideRoot):
+        self._IsOverrideRoot = IsOverrideRoot
+
+    @property
+    def IsDstReadOnly(self):
+        return self._IsDstReadOnly
+
+    @IsDstReadOnly.setter
+    def IsDstReadOnly(self, IsDstReadOnly):
+        self._IsDstReadOnly = IsDstReadOnly
+
+    @property
+    def ExtraAttr(self):
+        return self._ExtraAttr
+
+    @ExtraAttr.setter
+    def ExtraAttr(self, ExtraAttr):
+        self._ExtraAttr = ExtraAttr
 
 
     def _deserialize(self, params):
         if params.get("DatabaseTable") is not None:
-            self.DatabaseTable = DatabaseTableObject()
-            self.DatabaseTable._deserialize(params.get("DatabaseTable"))
-        self.MigrateType = params.get("MigrateType")
+            self._DatabaseTable = DatabaseTableObject()
+            self._DatabaseTable._deserialize(params.get("DatabaseTable"))
+        self._MigrateType = params.get("MigrateType")
         if params.get("Consistency") is not None:
-            self.Consistency = ConsistencyOption()
-            self.Consistency._deserialize(params.get("Consistency"))
-        self.IsMigrateAccount = params.get("IsMigrateAccount")
-        self.IsOverrideRoot = params.get("IsOverrideRoot")
-        self.IsDstReadOnly = params.get("IsDstReadOnly")
+            self._Consistency = ConsistencyOption()
+            self._Consistency._deserialize(params.get("Consistency"))
+        self._IsMigrateAccount = params.get("IsMigrateAccount")
+        self._IsOverrideRoot = params.get("IsOverrideRoot")
+        self._IsDstReadOnly = params.get("IsDstReadOnly")
         if params.get("ExtraAttr") is not None:
-            self.ExtraAttr = []
+            self._ExtraAttr = []
             for item in params.get("ExtraAttr"):
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
-                self.ExtraAttr.append(obj)
+                self._ExtraAttr.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3593,26 +6929,51 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id
         :type JobId: str
-        :param CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
         :type CompareTaskId: str
-        :param TaskName: 一致性校验任务名称
+        :param _TaskName: 一致性校验任务名称
         :type TaskName: str
         """
-        self.JobId = None
-        self.CompareTaskId = None
-        self.TaskName = None
+        self._JobId = None
+        self._CompareTaskId = None
+        self._TaskName = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompareTaskId = params.get("CompareTaskId")
-        self.TaskName = params.get("TaskName")
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._TaskName = params.get("TaskName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3625,14 +6986,22 @@ class ModifyCompareTaskNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCompareTaskRequest(AbstractModel):
@@ -3642,42 +7011,91 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务 Id
+        :param _JobId: 任务 Id
         :type JobId: str
-        :param CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
         :type CompareTaskId: str
-        :param TaskName: 任务名称
+        :param _TaskName: 任务名称
         :type TaskName: str
-        :param ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
+        :param _ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
         :type ObjectMode: str
-        :param Objects: 对比对象，若CompareObjectMode取值为custom，则此项必填
+        :param _Objects: 对比对象，若CompareObjectMode取值为custom，则此项必填
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
-        :param Options: 一致性校验选项
+        :param _Options: 一致性校验选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
-        self.JobId = None
-        self.CompareTaskId = None
-        self.TaskName = None
-        self.ObjectMode = None
-        self.Objects = None
-        self.Options = None
+        self._JobId = None
+        self._CompareTaskId = None
+        self._TaskName = None
+        self._ObjectMode = None
+        self._Objects = None
+        self._Options = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ObjectMode(self):
+        return self._ObjectMode
+
+    @ObjectMode.setter
+    def ObjectMode(self, ObjectMode):
+        self._ObjectMode = ObjectMode
+
+    @property
+    def Objects(self):
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Options(self):
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompareTaskId = params.get("CompareTaskId")
-        self.TaskName = params.get("TaskName")
-        self.ObjectMode = params.get("ObjectMode")
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._TaskName = params.get("TaskName")
+        self._ObjectMode = params.get("ObjectMode")
         if params.get("Objects") is not None:
-            self.Objects = CompareObject()
-            self.Objects._deserialize(params.get("Objects"))
+            self._Objects = CompareObject()
+            self._Objects._deserialize(params.get("Objects"))
         if params.get("Options") is not None:
-            self.Options = CompareOptions()
-            self.Options._deserialize(params.get("Options"))
+            self._Options = CompareOptions()
+            self._Options._deserialize(params.get("Options"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3690,14 +7108,22 @@ class ModifyCompareTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyMigrateJobSpecRequest(AbstractModel):
@@ -3707,22 +7133,39 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id
+        :param _JobId: 任务id
         :type JobId: str
-        :param NewInstanceClass: 新实例规格大小，包括：micro、small、medium、large、xlarge、2xlarge
+        :param _NewInstanceClass: 新实例规格大小，包括：micro、small、medium、large、xlarge、2xlarge
         :type NewInstanceClass: str
         """
-        self.JobId = None
-        self.NewInstanceClass = None
+        self._JobId = None
+        self._NewInstanceClass = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def NewInstanceClass(self):
+        return self._NewInstanceClass
+
+    @NewInstanceClass.setter
+    def NewInstanceClass(self, NewInstanceClass):
+        self._NewInstanceClass = NewInstanceClass
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.NewInstanceClass = params.get("NewInstanceClass")
+        self._JobId = params.get("JobId")
+        self._NewInstanceClass = params.get("NewInstanceClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3735,14 +7178,22 @@ class ModifyMigrateJobSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyMigrateNameRequest(AbstractModel):
@@ -3752,22 +7203,39 @@ class ModifyMigrateNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务id
+        :param _JobId: 迁移任务id
         :type JobId: str
-        :param JobName: 修改后的迁移任务名
+        :param _JobName: 修改后的迁移任务名
         :type JobName: str
         """
-        self.JobId = None
-        self.JobName = None
+        self._JobId = None
+        self._JobName = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3780,14 +7248,22 @@ class ModifyMigrateNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyMigrationJobRequest(AbstractModel):
@@ -3797,61 +7273,134 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id
+        :param _JobId: 任务id
         :type JobId: str
-        :param RunMode: 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
+        :param _RunMode: 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
         :type RunMode: str
-        :param MigrateOption: 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息
+        :param _MigrateOption: 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息
         :type MigrateOption: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
-        :param SrcInfo: 源实例信息
+        :param _SrcInfo: 源实例信息
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param DstInfo: 目标实例信息
+        :param _DstInfo: 目标实例信息
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param JobName: 迁移任务名称，最大长度128
+        :param _JobName: 迁移任务名称，最大长度128
         :type JobName: str
-        :param ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
+        :param _ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
         :type ExpectRunTime: str
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
         :type Tags: list of TagItem
-        :param AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
+        :param _AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
         :type AutoRetryTimeRangeMinutes: int
         """
-        self.JobId = None
-        self.RunMode = None
-        self.MigrateOption = None
-        self.SrcInfo = None
-        self.DstInfo = None
-        self.JobName = None
-        self.ExpectRunTime = None
-        self.Tags = None
-        self.AutoRetryTimeRangeMinutes = None
+        self._JobId = None
+        self._RunMode = None
+        self._MigrateOption = None
+        self._SrcInfo = None
+        self._DstInfo = None
+        self._JobName = None
+        self._ExpectRunTime = None
+        self._Tags = None
+        self._AutoRetryTimeRangeMinutes = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def MigrateOption(self):
+        return self._MigrateOption
+
+    @MigrateOption.setter
+    def MigrateOption(self, MigrateOption):
+        self._MigrateOption = MigrateOption
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def ExpectRunTime(self):
+        return self._ExpectRunTime
+
+    @ExpectRunTime.setter
+    def ExpectRunTime(self, ExpectRunTime):
+        self._ExpectRunTime = ExpectRunTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRetryTimeRangeMinutes(self):
+        return self._AutoRetryTimeRangeMinutes
+
+    @AutoRetryTimeRangeMinutes.setter
+    def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
+        self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RunMode = params.get("RunMode")
+        self._JobId = params.get("JobId")
+        self._RunMode = params.get("RunMode")
         if params.get("MigrateOption") is not None:
-            self.MigrateOption = MigrateOption()
-            self.MigrateOption._deserialize(params.get("MigrateOption"))
+            self._MigrateOption = MigrateOption()
+            self._MigrateOption._deserialize(params.get("MigrateOption"))
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = DBEndpointInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
+            self._SrcInfo = DBEndpointInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
         if params.get("DstInfo") is not None:
-            self.DstInfo = DBEndpointInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.JobName = params.get("JobName")
-        self.ExpectRunTime = params.get("ExpectRunTime")
+            self._DstInfo = DBEndpointInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
+        self._JobName = params.get("JobName")
+        self._ExpectRunTime = params.get("ExpectRunTime")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+                self._Tags.append(obj)
+        self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3864,14 +7413,22 @@ class ModifyMigrationJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySyncJobConfigRequest(AbstractModel):
@@ -3881,30 +7438,55 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
-        :param DynamicObjects: 修改后的同步对象
+        :param _DynamicObjects: 修改后的同步对象
         :type DynamicObjects: :class:`tencentcloud.dts.v20211206.models.Objects`
-        :param DynamicOptions: 修改后的同步任务选项
+        :param _DynamicOptions: 修改后的同步任务选项
         :type DynamicOptions: :class:`tencentcloud.dts.v20211206.models.DynamicOptions`
         """
-        self.JobId = None
-        self.DynamicObjects = None
-        self.DynamicOptions = None
+        self._JobId = None
+        self._DynamicObjects = None
+        self._DynamicOptions = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def DynamicObjects(self):
+        return self._DynamicObjects
+
+    @DynamicObjects.setter
+    def DynamicObjects(self, DynamicObjects):
+        self._DynamicObjects = DynamicObjects
+
+    @property
+    def DynamicOptions(self):
+        return self._DynamicOptions
+
+    @DynamicOptions.setter
+    def DynamicOptions(self, DynamicOptions):
+        self._DynamicOptions = DynamicOptions
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         if params.get("DynamicObjects") is not None:
-            self.DynamicObjects = Objects()
-            self.DynamicObjects._deserialize(params.get("DynamicObjects"))
+            self._DynamicObjects = Objects()
+            self._DynamicObjects._deserialize(params.get("DynamicObjects"))
         if params.get("DynamicOptions") is not None:
-            self.DynamicOptions = DynamicOptions()
-            self.DynamicOptions._deserialize(params.get("DynamicOptions"))
+            self._DynamicOptions = DynamicOptions()
+            self._DynamicOptions._deserialize(params.get("DynamicOptions"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3917,14 +7499,22 @@ class ModifySyncJobConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Objects(AbstractModel):
@@ -3934,41 +7524,74 @@ class Objects(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: 同步对象类型 Partial(部分对象)
+        :param _Mode: 同步对象类型 Partial(部分对象)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
-        :param Databases: 同步对象，当 Mode 为 Partial 时，不为空
+        :param _Databases: 同步对象，当 Mode 为 Partial 时，不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of Database
-        :param AdvancedObjects: 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
+        :param _AdvancedObjects: 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
-        :param OnlineDDL: OnlineDDL类型，冗余字段不做配置用途
+        :param _OnlineDDL: OnlineDDL类型，冗余字段不做配置用途
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
-        self.Mode = None
-        self.Databases = None
-        self.AdvancedObjects = None
-        self.OnlineDDL = None
+        self._Mode = None
+        self._Databases = None
+        self._AdvancedObjects = None
+        self._OnlineDDL = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Databases(self):
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+    @property
+    def AdvancedObjects(self):
+        return self._AdvancedObjects
+
+    @AdvancedObjects.setter
+    def AdvancedObjects(self, AdvancedObjects):
+        self._AdvancedObjects = AdvancedObjects
+
+    @property
+    def OnlineDDL(self):
+        return self._OnlineDDL
+
+    @OnlineDDL.setter
+    def OnlineDDL(self, OnlineDDL):
+        self._OnlineDDL = OnlineDDL
 
 
     def _deserialize(self, params):
-        self.Mode = params.get("Mode")
+        self._Mode = params.get("Mode")
         if params.get("Databases") is not None:
-            self.Databases = []
+            self._Databases = []
             for item in params.get("Databases"):
                 obj = Database()
                 obj._deserialize(item)
-                self.Databases.append(obj)
-        self.AdvancedObjects = params.get("AdvancedObjects")
+                self._Databases.append(obj)
+        self._AdvancedObjects = params.get("AdvancedObjects")
         if params.get("OnlineDDL") is not None:
-            self.OnlineDDL = OnlineDDL()
-            self.OnlineDDL._deserialize(params.get("OnlineDDL"))
+            self._OnlineDDL = OnlineDDL()
+            self._OnlineDDL._deserialize(params.get("OnlineDDL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3981,19 +7604,28 @@ class OnlineDDL(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 状态
+        :param _Status: 状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
-        self.Status = None
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4006,63 +7638,128 @@ class Options(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InitType: 同步初始化选项，Data(全量数据初始化)、Structure(结构初始化)、Full(全量数据且结构初始化，默认)、None(仅增量)
+        :param _InitType: 同步初始化选项，Data(全量数据初始化)、Structure(结构初始化)、Full(全量数据且结构初始化，默认)、None(仅增量)
 注意：此字段可能返回 null，表示取不到有效值。
         :type InitType: str
-        :param DealOfExistSameTable: 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、InitializeAfterDelete(删除并重新初始化)、ExecuteAfterIgnore(忽略并继续执行)
+        :param _DealOfExistSameTable: 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、InitializeAfterDelete(删除并重新初始化)、ExecuteAfterIgnore(忽略并继续执行)
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealOfExistSameTable: str
-        :param ConflictHandleType: 冲突处理选项，ReportError(报错，默认为该值)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖)
+        :param _ConflictHandleType: 冲突处理选项，ReportError(报错，默认为该值)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConflictHandleType: str
-        :param AddAdditionalColumn: 是否添加附加列
+        :param _AddAdditionalColumn: 是否添加附加列
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddAdditionalColumn: bool
-        :param OpTypes: 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， 不填（不选），PartialDDL(自定义,和DdlOptions一起起作用 )
+        :param _OpTypes: 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， 不填（不选），PartialDDL(自定义,和DdlOptions一起起作用 )
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpTypes: list of str
-        :param ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作
+        :param _ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
-        :param DdlOptions: DDL同步选项，具体描述要同步那些DDL
+        :param _DdlOptions: DDL同步选项，具体描述要同步那些DDL
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdlOptions: list of DdlOption
-        :param KafkaOption: kafka同步选项
+        :param _KafkaOption: kafka同步选项
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
         """
-        self.InitType = None
-        self.DealOfExistSameTable = None
-        self.ConflictHandleType = None
-        self.AddAdditionalColumn = None
-        self.OpTypes = None
-        self.ConflictHandleOption = None
-        self.DdlOptions = None
-        self.KafkaOption = None
+        self._InitType = None
+        self._DealOfExistSameTable = None
+        self._ConflictHandleType = None
+        self._AddAdditionalColumn = None
+        self._OpTypes = None
+        self._ConflictHandleOption = None
+        self._DdlOptions = None
+        self._KafkaOption = None
+
+    @property
+    def InitType(self):
+        return self._InitType
+
+    @InitType.setter
+    def InitType(self, InitType):
+        self._InitType = InitType
+
+    @property
+    def DealOfExistSameTable(self):
+        return self._DealOfExistSameTable
+
+    @DealOfExistSameTable.setter
+    def DealOfExistSameTable(self, DealOfExistSameTable):
+        self._DealOfExistSameTable = DealOfExistSameTable
+
+    @property
+    def ConflictHandleType(self):
+        return self._ConflictHandleType
+
+    @ConflictHandleType.setter
+    def ConflictHandleType(self, ConflictHandleType):
+        self._ConflictHandleType = ConflictHandleType
+
+    @property
+    def AddAdditionalColumn(self):
+        return self._AddAdditionalColumn
+
+    @AddAdditionalColumn.setter
+    def AddAdditionalColumn(self, AddAdditionalColumn):
+        self._AddAdditionalColumn = AddAdditionalColumn
+
+    @property
+    def OpTypes(self):
+        return self._OpTypes
+
+    @OpTypes.setter
+    def OpTypes(self, OpTypes):
+        self._OpTypes = OpTypes
+
+    @property
+    def ConflictHandleOption(self):
+        return self._ConflictHandleOption
+
+    @ConflictHandleOption.setter
+    def ConflictHandleOption(self, ConflictHandleOption):
+        self._ConflictHandleOption = ConflictHandleOption
+
+    @property
+    def DdlOptions(self):
+        return self._DdlOptions
+
+    @DdlOptions.setter
+    def DdlOptions(self, DdlOptions):
+        self._DdlOptions = DdlOptions
+
+    @property
+    def KafkaOption(self):
+        return self._KafkaOption
+
+    @KafkaOption.setter
+    def KafkaOption(self, KafkaOption):
+        self._KafkaOption = KafkaOption
 
 
     def _deserialize(self, params):
-        self.InitType = params.get("InitType")
-        self.DealOfExistSameTable = params.get("DealOfExistSameTable")
-        self.ConflictHandleType = params.get("ConflictHandleType")
-        self.AddAdditionalColumn = params.get("AddAdditionalColumn")
-        self.OpTypes = params.get("OpTypes")
+        self._InitType = params.get("InitType")
+        self._DealOfExistSameTable = params.get("DealOfExistSameTable")
+        self._ConflictHandleType = params.get("ConflictHandleType")
+        self._AddAdditionalColumn = params.get("AddAdditionalColumn")
+        self._OpTypes = params.get("OpTypes")
         if params.get("ConflictHandleOption") is not None:
-            self.ConflictHandleOption = ConflictHandleOption()
-            self.ConflictHandleOption._deserialize(params.get("ConflictHandleOption"))
+            self._ConflictHandleOption = ConflictHandleOption()
+            self._ConflictHandleOption._deserialize(params.get("ConflictHandleOption"))
         if params.get("DdlOptions") is not None:
-            self.DdlOptions = []
+            self._DdlOptions = []
             for item in params.get("DdlOptions"):
                 obj = DdlOption()
                 obj._deserialize(item)
-                self.DdlOptions.append(obj)
+                self._DdlOptions.append(obj)
         if params.get("KafkaOption") is not None:
-            self.KafkaOption = KafkaOption()
-            self.KafkaOption._deserialize(params.get("KafkaOption"))
+            self._KafkaOption = KafkaOption()
+            self._KafkaOption._deserialize(params.get("KafkaOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4075,18 +7772,27 @@ class PauseMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4099,14 +7805,22 @@ class PauseMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class PauseSyncJobRequest(AbstractModel):
@@ -4116,18 +7830,27 @@ class PauseSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4140,14 +7863,22 @@ class PauseSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ProcessProgress(AbstractModel):
@@ -4157,49 +7888,98 @@ class ProcessProgress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 步骤的状态， 包括：notStarted(未开始)、running(运行中)、success(成功)、failed(失败)等
+        :param _Status: 步骤的状态， 包括：notStarted(未开始)、running(运行中)、success(成功)、failed(失败)等
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Percent: 进度信息
+        :param _Percent: 进度信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
-        :param StepAll: 总的步骤数
+        :param _StepAll: 总的步骤数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepAll: int
-        :param StepNow: 当前进行的步骤
+        :param _StepNow: 当前进行的步骤
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepNow: int
-        :param Message: 当前步骤输出提示信息
+        :param _Message: 当前步骤输出提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Steps: 步骤信息
+        :param _Steps: 步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Steps: list of StepDetailInfo
         """
-        self.Status = None
-        self.Percent = None
-        self.StepAll = None
-        self.StepNow = None
-        self.Message = None
-        self.Steps = None
+        self._Status = None
+        self._Percent = None
+        self._StepAll = None
+        self._StepNow = None
+        self._Message = None
+        self._Steps = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def StepAll(self):
+        return self._StepAll
+
+    @StepAll.setter
+    def StepAll(self, StepAll):
+        self._StepAll = StepAll
+
+    @property
+    def StepNow(self):
+        return self._StepNow
+
+    @StepNow.setter
+    def StepNow(self, StepNow):
+        self._StepNow = StepNow
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Steps(self):
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Percent = params.get("Percent")
-        self.StepAll = params.get("StepAll")
-        self.StepNow = params.get("StepNow")
-        self.Message = params.get("Message")
+        self._Status = params.get("Status")
+        self._Percent = params.get("Percent")
+        self._StepAll = params.get("StepAll")
+        self._StepNow = params.get("StepNow")
+        self._Message = params.get("Message")
         if params.get("Steps") is not None:
-            self.Steps = []
+            self._Steps = []
             for item in params.get("Steps"):
                 obj = StepDetailInfo()
                 obj._deserialize(item)
-                self.Steps.append(obj)
+                self._Steps.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4212,29 +7992,54 @@ class ProcessStepTip(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Message: 提示信息
+        :param _Message: 提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Solution: 解决方案
+        :param _Solution: 解决方案
 注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
-        :param HelpDoc: 文档提示
+        :param _HelpDoc: 文档提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
         """
-        self.Message = None
-        self.Solution = None
-        self.HelpDoc = None
+        self._Message = None
+        self._Solution = None
+        self._HelpDoc = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def HelpDoc(self):
+        return self._HelpDoc
+
+    @HelpDoc.setter
+    def HelpDoc(self, HelpDoc):
+        self._HelpDoc = HelpDoc
 
 
     def _deserialize(self, params):
-        self.Message = params.get("Message")
-        self.Solution = params.get("Solution")
-        self.HelpDoc = params.get("HelpDoc")
+        self._Message = params.get("Message")
+        self._Solution = params.get("Solution")
+        self._HelpDoc = params.get("HelpDoc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4247,18 +8052,27 @@ class RecoverMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id
+        :param _JobId: 任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4271,14 +8085,22 @@ class RecoverMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RecoverSyncJobRequest(AbstractModel):
@@ -4288,18 +8110,27 @@ class RecoverSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23
+        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4312,14 +8143,22 @@ class RecoverSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResizeSyncJobRequest(AbstractModel):
@@ -4329,22 +8168,39 @@ class ResizeSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
-        :param NewInstanceClass: 任务规格
+        :param _NewInstanceClass: 任务规格
         :type NewInstanceClass: str
         """
-        self.JobId = None
-        self.NewInstanceClass = None
+        self._JobId = None
+        self._NewInstanceClass = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def NewInstanceClass(self):
+        return self._NewInstanceClass
+
+    @NewInstanceClass.setter
+    def NewInstanceClass(self, NewInstanceClass):
+        self._NewInstanceClass = NewInstanceClass
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.NewInstanceClass = params.get("NewInstanceClass")
+        self._JobId = params.get("JobId")
+        self._NewInstanceClass = params.get("NewInstanceClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4357,14 +8213,22 @@ class ResizeSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResumeMigrateJobRequest(AbstractModel):
@@ -4374,22 +8238,39 @@ class ResumeMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
-        :param ResumeOption: 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作；注意，clearData、overwrite仅对redis生效，normal仅针对非redis链路生效
+        :param _ResumeOption: 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作；注意，clearData、overwrite仅对redis生效，normal仅针对非redis链路生效
         :type ResumeOption: str
         """
-        self.JobId = None
-        self.ResumeOption = None
+        self._JobId = None
+        self._ResumeOption = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def ResumeOption(self):
+        return self._ResumeOption
+
+    @ResumeOption.setter
+    def ResumeOption(self, ResumeOption):
+        self._ResumeOption = ResumeOption
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.ResumeOption = params.get("ResumeOption")
+        self._JobId = params.get("JobId")
+        self._ResumeOption = params.get("ResumeOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4402,14 +8283,22 @@ class ResumeMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResumeSyncJobRequest(AbstractModel):
@@ -4419,18 +8308,27 @@ class ResumeSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4443,14 +8341,22 @@ class ResumeSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RoleItem(AbstractModel):
@@ -4460,24 +8366,41 @@ class RoleItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleName: 角色名称
+        :param _RoleName: 角色名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
-        :param NewRoleName: 迁移后的角色名称
+        :param _NewRoleName: 迁移后的角色名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewRoleName: str
         """
-        self.RoleName = None
-        self.NewRoleName = None
+        self._RoleName = None
+        self._NewRoleName = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def NewRoleName(self):
+        return self._NewRoleName
+
+    @NewRoleName.setter
+    def NewRoleName(self, NewRoleName):
+        self._NewRoleName = NewRoleName
 
 
     def _deserialize(self, params):
-        self.RoleName = params.get("RoleName")
-        self.NewRoleName = params.get("NewRoleName")
+        self._RoleName = params.get("RoleName")
+        self._NewRoleName = params.get("NewRoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4490,26 +8413,51 @@ class SkipCheckItemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
-        :param StepIds: 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
+        :param _StepIds: 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
         :type StepIds: list of str
-        :param ForeignKeyFlag: 当出现外键依赖检查导致校验不通过时、可以通过该字段选择是否迁移外键依赖，当StepIds包含ConstraintCheck且该字段值为shield时表示不迁移外键依赖、当StepIds包含ConstraintCheck且值为migrate时表示迁移外键依赖
+        :param _ForeignKeyFlag: 当出现外键依赖检查导致校验不通过时、可以通过该字段选择是否迁移外键依赖，当StepIds包含ConstraintCheck且该字段值为shield时表示不迁移外键依赖、当StepIds包含ConstraintCheck且值为migrate时表示迁移外键依赖
         :type ForeignKeyFlag: str
         """
-        self.JobId = None
-        self.StepIds = None
-        self.ForeignKeyFlag = None
+        self._JobId = None
+        self._StepIds = None
+        self._ForeignKeyFlag = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def StepIds(self):
+        return self._StepIds
+
+    @StepIds.setter
+    def StepIds(self, StepIds):
+        self._StepIds = StepIds
+
+    @property
+    def ForeignKeyFlag(self):
+        return self._ForeignKeyFlag
+
+    @ForeignKeyFlag.setter
+    def ForeignKeyFlag(self, ForeignKeyFlag):
+        self._ForeignKeyFlag = ForeignKeyFlag
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.StepIds = params.get("StepIds")
-        self.ForeignKeyFlag = params.get("ForeignKeyFlag")
+        self._JobId = params.get("JobId")
+        self._StepIds = params.get("StepIds")
+        self._ForeignKeyFlag = params.get("ForeignKeyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4522,19 +8470,35 @@ class SkipCheckItemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Message: 跳过的提示信息
+        :param _Message: 跳过的提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Message = None
-        self.RequestId = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Message = params.get("Message")
-        self.RequestId = params.get("RequestId")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
 
 
 class SkipSyncCheckItemRequest(AbstractModel):
@@ -4544,22 +8508,39 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务id，如：sync-4ddgid2
+        :param _JobId: 任务id，如：sync-4ddgid2
         :type JobId: str
-        :param StepIds: 需要跳过校验项的步骤id，需要通过`DescribeCheckSyncJobResult`接口返回StepInfos[i].StepId字段获取，例如：["OptimizeCheck"]
+        :param _StepIds: 需要跳过校验项的步骤id，需要通过`DescribeCheckSyncJobResult`接口返回StepInfos[i].StepId字段获取，例如：["OptimizeCheck"]
         :type StepIds: list of str
         """
-        self.JobId = None
-        self.StepIds = None
+        self._JobId = None
+        self._StepIds = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def StepIds(self):
+        return self._StepIds
+
+    @StepIds.setter
+    def StepIds(self, StepIds):
+        self._StepIds = StepIds
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.StepIds = params.get("StepIds")
+        self._JobId = params.get("JobId")
+        self._StepIds = params.get("StepIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4572,14 +8553,22 @@ class SkipSyncCheckItemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SkippedDetail(AbstractModel):
@@ -4589,29 +8578,46 @@ class SkippedDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 跳过的表数量
+        :param _TotalCount: 跳过的表数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param Items: 跳过校验的表详情
+        :param _Items: 跳过校验的表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of SkippedItem
         """
-        self.TotalCount = None
-        self.Items = None
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = SkippedItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4624,29 +8630,54 @@ class SkippedItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Db: 数据库名
+        :param _Db: 数据库名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
-        :param Table: 表名
+        :param _Table: 表名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
-        :param Reason: 未发起检查的原因
+        :param _Reason: 未发起检查的原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         """
-        self.Db = None
-        self.Table = None
-        self.Reason = None
+        self._Db = None
+        self._Table = None
+        self._Reason = None
+
+    @property
+    def Db(self):
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
 
 
     def _deserialize(self, params):
-        self.Db = params.get("Db")
-        self.Table = params.get("Table")
-        self.Reason = params.get("Reason")
+        self._Db = params.get("Db")
+        self._Table = params.get("Table")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4659,22 +8690,39 @@ class StartCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id
         :type JobId: str
-        :param CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
         :type CompareTaskId: str
         """
-        self.JobId = None
-        self.CompareTaskId = None
+        self._JobId = None
+        self._CompareTaskId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompareTaskId = params.get("CompareTaskId")
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4687,14 +8735,22 @@ class StartCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartMigrateJobRequest(AbstractModel):
@@ -4704,18 +8760,27 @@ class StartMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4728,14 +8793,22 @@ class StartMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartModifySyncJobRequest(AbstractModel):
@@ -4745,18 +8818,27 @@ class StartModifySyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4769,14 +8851,22 @@ class StartModifySyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartSyncJobRequest(AbstractModel):
@@ -4786,18 +8876,27 @@ class StartSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4810,14 +8909,22 @@ class StartSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StepDetailInfo(AbstractModel):
@@ -4827,69 +8934,142 @@ class StepDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StepNo: 步骤序列
+        :param _StepNo: 步骤序列
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepNo: int
-        :param StepName: 步骤展现名称
+        :param _StepName: 步骤展现名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepName: str
-        :param StepId: 步骤英文标识
+        :param _StepId: 步骤英文标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepId: str
-        :param Status: 步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
+        :param _Status: 步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
+        :param _StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param StepMessage: 步骤错误信息
+        :param _StepMessage: 步骤错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepMessage: str
-        :param Percent: 执行进度
+        :param _Percent: 执行进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
-        :param Errors: 错误信息
+        :param _Errors: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of ProcessStepTip
-        :param Warnings: 告警提示
+        :param _Warnings: 告警提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Warnings: list of ProcessStepTip
         """
-        self.StepNo = None
-        self.StepName = None
-        self.StepId = None
-        self.Status = None
-        self.StartTime = None
-        self.StepMessage = None
-        self.Percent = None
-        self.Errors = None
-        self.Warnings = None
+        self._StepNo = None
+        self._StepName = None
+        self._StepId = None
+        self._Status = None
+        self._StartTime = None
+        self._StepMessage = None
+        self._Percent = None
+        self._Errors = None
+        self._Warnings = None
+
+    @property
+    def StepNo(self):
+        return self._StepNo
+
+    @StepNo.setter
+    def StepNo(self, StepNo):
+        self._StepNo = StepNo
+
+    @property
+    def StepName(self):
+        return self._StepName
+
+    @StepName.setter
+    def StepName(self, StepName):
+        self._StepName = StepName
+
+    @property
+    def StepId(self):
+        return self._StepId
+
+    @StepId.setter
+    def StepId(self, StepId):
+        self._StepId = StepId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StepMessage(self):
+        return self._StepMessage
+
+    @StepMessage.setter
+    def StepMessage(self, StepMessage):
+        self._StepMessage = StepMessage
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Errors(self):
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def Warnings(self):
+        return self._Warnings
+
+    @Warnings.setter
+    def Warnings(self, Warnings):
+        self._Warnings = Warnings
 
 
     def _deserialize(self, params):
-        self.StepNo = params.get("StepNo")
-        self.StepName = params.get("StepName")
-        self.StepId = params.get("StepId")
-        self.Status = params.get("Status")
-        self.StartTime = params.get("StartTime")
-        self.StepMessage = params.get("StepMessage")
-        self.Percent = params.get("Percent")
+        self._StepNo = params.get("StepNo")
+        self._StepName = params.get("StepName")
+        self._StepId = params.get("StepId")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._StepMessage = params.get("StepMessage")
+        self._Percent = params.get("Percent")
         if params.get("Errors") is not None:
-            self.Errors = []
+            self._Errors = []
             for item in params.get("Errors"):
                 obj = ProcessStepTip()
                 obj._deserialize(item)
-                self.Errors.append(obj)
+                self._Errors.append(obj)
         if params.get("Warnings") is not None:
-            self.Warnings = []
+            self._Warnings = []
             for item in params.get("Warnings"):
                 obj = ProcessStepTip()
                 obj._deserialize(item)
-                self.Warnings.append(obj)
+                self._Warnings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4902,64 +9082,129 @@ class StepInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StepNo: 步骤编号
+        :param _StepNo: 步骤编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepNo: int
-        :param StepName: 步骤名
+        :param _StepName: 步骤名
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepName: str
-        :param StepId: 步骤标号
+        :param _StepId: 步骤标号
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepId: str
-        :param Status: 当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)
+        :param _Status: 当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param StartTime: 步骤开始时间，可能为空
+        :param _StartTime: 步骤开始时间，可能为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param Errors: 错误信息
+        :param _Errors: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of StepTip
-        :param Warnings: 警告信息
+        :param _Warnings: 警告信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Warnings: list of StepTip
-        :param Progress: 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
+        :param _Progress: 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         """
-        self.StepNo = None
-        self.StepName = None
-        self.StepId = None
-        self.Status = None
-        self.StartTime = None
-        self.Errors = None
-        self.Warnings = None
-        self.Progress = None
+        self._StepNo = None
+        self._StepName = None
+        self._StepId = None
+        self._Status = None
+        self._StartTime = None
+        self._Errors = None
+        self._Warnings = None
+        self._Progress = None
+
+    @property
+    def StepNo(self):
+        return self._StepNo
+
+    @StepNo.setter
+    def StepNo(self, StepNo):
+        self._StepNo = StepNo
+
+    @property
+    def StepName(self):
+        return self._StepName
+
+    @StepName.setter
+    def StepName(self, StepName):
+        self._StepName = StepName
+
+    @property
+    def StepId(self):
+        return self._StepId
+
+    @StepId.setter
+    def StepId(self, StepId):
+        self._StepId = StepId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Errors(self):
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def Warnings(self):
+        return self._Warnings
+
+    @Warnings.setter
+    def Warnings(self, Warnings):
+        self._Warnings = Warnings
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
 
 
     def _deserialize(self, params):
-        self.StepNo = params.get("StepNo")
-        self.StepName = params.get("StepName")
-        self.StepId = params.get("StepId")
-        self.Status = params.get("Status")
-        self.StartTime = params.get("StartTime")
+        self._StepNo = params.get("StepNo")
+        self._StepName = params.get("StepName")
+        self._StepId = params.get("StepId")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
         if params.get("Errors") is not None:
-            self.Errors = []
+            self._Errors = []
             for item in params.get("Errors"):
                 obj = StepTip()
                 obj._deserialize(item)
-                self.Errors.append(obj)
+                self._Errors.append(obj)
         if params.get("Warnings") is not None:
-            self.Warnings = []
+            self._Warnings = []
             for item in params.get("Warnings"):
                 obj = StepTip()
                 obj._deserialize(item)
-                self.Warnings.append(obj)
-        self.Progress = params.get("Progress")
+                self._Warnings.append(obj)
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4972,39 +9217,80 @@ class StepTip(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 错误码
+        :param _Code: 错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Message: 错误信息
+        :param _Message: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Solution: 解决方式
+        :param _Solution: 解决方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
-        :param HelpDoc: 帮助文档
+        :param _HelpDoc: 帮助文档
 注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
-        :param SkipInfo: 当前步骤跳过信息
+        :param _SkipInfo: 当前步骤跳过信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkipInfo: str
         """
-        self.Code = None
-        self.Message = None
-        self.Solution = None
-        self.HelpDoc = None
-        self.SkipInfo = None
+        self._Code = None
+        self._Message = None
+        self._Solution = None
+        self._HelpDoc = None
+        self._SkipInfo = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def HelpDoc(self):
+        return self._HelpDoc
+
+    @HelpDoc.setter
+    def HelpDoc(self, HelpDoc):
+        self._HelpDoc = HelpDoc
+
+    @property
+    def SkipInfo(self):
+        return self._SkipInfo
+
+    @SkipInfo.setter
+    def SkipInfo(self, SkipInfo):
+        self._SkipInfo = SkipInfo
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
-        self.Solution = params.get("Solution")
-        self.HelpDoc = params.get("HelpDoc")
-        self.SkipInfo = params.get("SkipInfo")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Solution = params.get("Solution")
+        self._HelpDoc = params.get("HelpDoc")
+        self._SkipInfo = params.get("SkipInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5017,22 +9303,39 @@ class StopCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param _JobId: 迁移任务 Id
         :type JobId: str
-        :param CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
+        :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
         :type CompareTaskId: str
         """
-        self.JobId = None
-        self.CompareTaskId = None
+        self._JobId = None
+        self._CompareTaskId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompareTaskId = params.get("CompareTaskId")
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5045,14 +9348,22 @@ class StopCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopMigrateJobRequest(AbstractModel):
@@ -5062,18 +9373,27 @@ class StopMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5086,14 +9406,22 @@ class StopMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopSyncJobRequest(AbstractModel):
@@ -5103,18 +9431,27 @@ class StopSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param _JobId: 同步任务id
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5127,14 +9464,22 @@ class StopSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SyncDBEndpointInfos(AbstractModel):
@@ -5144,39 +9489,72 @@ class SyncDBEndpointInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 数据库所在地域
+        :param _Region: 数据库所在地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param AccessType: 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
+        :param _AccessType: 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: str
-        :param DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
+        :param _DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseType: str
-        :param Info: 数据库信息
+        :param _Info: 数据库信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: list of Endpoint
         """
-        self.Region = None
-        self.AccessType = None
-        self.DatabaseType = None
-        self.Info = None
+        self._Region = None
+        self._AccessType = None
+        self._DatabaseType = None
+        self._Info = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AccessType(self):
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def DatabaseType(self):
+        return self._DatabaseType
+
+    @DatabaseType.setter
+    def DatabaseType(self, DatabaseType):
+        self._DatabaseType = DatabaseType
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.AccessType = params.get("AccessType")
-        self.DatabaseType = params.get("DatabaseType")
+        self._Region = params.get("Region")
+        self._AccessType = params.get("AccessType")
+        self._DatabaseType = params.get("DatabaseType")
         if params.get("Info") is not None:
-            self.Info = []
+            self._Info = []
             for item in params.get("Info"):
                 obj = Endpoint()
                 obj._deserialize(item)
-                self.Info.append(obj)
+                self._Info.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5189,64 +9567,137 @@ class SyncDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StepAll: 总步骤数
+        :param _StepAll: 总步骤数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepAll: int
-        :param StepNow: 当前步骤
+        :param _StepNow: 当前步骤
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepNow: int
-        :param Progress: 总体进度
+        :param _Progress: 总体进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
-        :param CurrentStepProgress: 当前步骤进度
+        :param _CurrentStepProgress: 当前步骤进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentStepProgress: int
-        :param MasterSlaveDistance: 同步两端数据量差距
+        :param _MasterSlaveDistance: 同步两端数据量差距
 注意：此字段可能返回 null，表示取不到有效值。
         :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: 同步两端时间差距
+        :param _SecondsBehindMaster: 同步两端时间差距
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondsBehindMaster: int
-        :param Message: 总体描述信息
+        :param _Message: 总体描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param StepInfos: 详细步骤信息
+        :param _StepInfos: 详细步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfos: list of StepInfo
-        :param CauseOfCompareDisable: 不能发起一致性校验的原因
+        :param _CauseOfCompareDisable: 不能发起一致性校验的原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type CauseOfCompareDisable: str
         """
-        self.StepAll = None
-        self.StepNow = None
-        self.Progress = None
-        self.CurrentStepProgress = None
-        self.MasterSlaveDistance = None
-        self.SecondsBehindMaster = None
-        self.Message = None
-        self.StepInfos = None
-        self.CauseOfCompareDisable = None
+        self._StepAll = None
+        self._StepNow = None
+        self._Progress = None
+        self._CurrentStepProgress = None
+        self._MasterSlaveDistance = None
+        self._SecondsBehindMaster = None
+        self._Message = None
+        self._StepInfos = None
+        self._CauseOfCompareDisable = None
+
+    @property
+    def StepAll(self):
+        return self._StepAll
+
+    @StepAll.setter
+    def StepAll(self, StepAll):
+        self._StepAll = StepAll
+
+    @property
+    def StepNow(self):
+        return self._StepNow
+
+    @StepNow.setter
+    def StepNow(self, StepNow):
+        self._StepNow = StepNow
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def CurrentStepProgress(self):
+        return self._CurrentStepProgress
+
+    @CurrentStepProgress.setter
+    def CurrentStepProgress(self, CurrentStepProgress):
+        self._CurrentStepProgress = CurrentStepProgress
+
+    @property
+    def MasterSlaveDistance(self):
+        return self._MasterSlaveDistance
+
+    @MasterSlaveDistance.setter
+    def MasterSlaveDistance(self, MasterSlaveDistance):
+        self._MasterSlaveDistance = MasterSlaveDistance
+
+    @property
+    def SecondsBehindMaster(self):
+        return self._SecondsBehindMaster
+
+    @SecondsBehindMaster.setter
+    def SecondsBehindMaster(self, SecondsBehindMaster):
+        self._SecondsBehindMaster = SecondsBehindMaster
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def StepInfos(self):
+        return self._StepInfos
+
+    @StepInfos.setter
+    def StepInfos(self, StepInfos):
+        self._StepInfos = StepInfos
+
+    @property
+    def CauseOfCompareDisable(self):
+        return self._CauseOfCompareDisable
+
+    @CauseOfCompareDisable.setter
+    def CauseOfCompareDisable(self, CauseOfCompareDisable):
+        self._CauseOfCompareDisable = CauseOfCompareDisable
 
 
     def _deserialize(self, params):
-        self.StepAll = params.get("StepAll")
-        self.StepNow = params.get("StepNow")
-        self.Progress = params.get("Progress")
-        self.CurrentStepProgress = params.get("CurrentStepProgress")
-        self.MasterSlaveDistance = params.get("MasterSlaveDistance")
-        self.SecondsBehindMaster = params.get("SecondsBehindMaster")
-        self.Message = params.get("Message")
+        self._StepAll = params.get("StepAll")
+        self._StepNow = params.get("StepNow")
+        self._Progress = params.get("Progress")
+        self._CurrentStepProgress = params.get("CurrentStepProgress")
+        self._MasterSlaveDistance = params.get("MasterSlaveDistance")
+        self._SecondsBehindMaster = params.get("SecondsBehindMaster")
+        self._Message = params.get("Message")
         if params.get("StepInfos") is not None:
-            self.StepInfos = []
+            self._StepInfos = []
             for item in params.get("StepInfos"):
                 obj = StepInfo()
                 obj._deserialize(item)
-                self.StepInfos.append(obj)
-        self.CauseOfCompareDisable = params.get("CauseOfCompareDisable")
+                self._StepInfos.append(obj)
+        self._CauseOfCompareDisable = params.get("CauseOfCompareDisable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5259,179 +9710,420 @@ class SyncJobInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id，如：sync-btso140
+        :param _JobId: 同步任务id，如：sync-btso140
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param JobName: 同步任务名
+        :param _JobName: 同步任务名
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
-        :param PayMode: 付款方式，PostPay(按量付费)、PrePay(包年包月)
+        :param _PayMode: 付款方式，PostPay(按量付费)、PrePay(包年包月)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
-        :param RunMode: 运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
+        :param _RunMode: 运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunMode: str
-        :param ExpectRunTime: 期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _ExpectRunTime: 期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpectRunTime: str
-        :param AllActions: 支持的所有操作
+        :param _AllActions: 支持的所有操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllActions: list of str
-        :param Actions: 当前状态能进行的操作
+        :param _Actions: 当前状态能进行的操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type Actions: list of str
-        :param Options: 同步选项
+        :param _Options: 同步选项
 注意：此字段可能返回 null，表示取不到有效值。
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
-        :param Objects: 同步库表对象
+        :param _Objects: 同步库表对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
-        :param Specification: 任务规格
+        :param _Specification: 任务规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
-        :param ExpireTime: 过期时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _ExpireTime: 过期时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param SrcRegion: 源端地域，如：ap-guangzhou等
+        :param _SrcRegion: 源端地域，如：ap-guangzhou等
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcRegion: str
-        :param SrcDatabaseType: 源端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        :param _SrcDatabaseType: 源端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcDatabaseType: str
-        :param SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcAccessType: str
-        :param SrcInfo: 源端信息，单节点数据库使用
+        :param _SrcInfo: 源端信息，单节点数据库使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param DstRegion: 目标端地域，如：ap-guangzhou等
+        :param _DstRegion: 目标端地域，如：ap-guangzhou等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstRegion: str
-        :param DstDatabaseType: 目标端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        :param _DstDatabaseType: 目标端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstDatabaseType: str
-        :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        :param _DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstAccessType: str
-        :param DstInfo: 目标端信息，单节点数据库使用
+        :param _DstInfo: 目标端信息，单节点数据库使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param CreateTime: 创建时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _CreateTime: 创建时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param StartTime: 开始时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _StartTime: 开始时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param Status: 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
+        :param _Status: 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param EndTime: 结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _EndTime: 结束时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param Tags: 标签相关信息
+        :param _Tags: 标签相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param Detail: 同步任务运行步骤信息
+        :param _Detail: 同步任务运行步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.dts.v20211206.models.SyncDetailInfo`
-        :param TradeStatus: 用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
+        :param _TradeStatus: 用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TradeStatus: str
-        :param InstanceClass: 同步链路规格，如micro,small,medium,large
+        :param _InstanceClass: 同步链路规格，如micro,small,medium,large
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceClass: str
-        :param AutoRenew: 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
+        :param _AutoRenew: 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenew: int
-        :param OfflineTime: 下线时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _OfflineTime: 下线时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTime: str
-        :param AutoRetryTimeRangeMinutes: 自动重试时间段设置
+        :param _AutoRetryTimeRangeMinutes: 自动重试时间段设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
         """
-        self.JobId = None
-        self.JobName = None
-        self.PayMode = None
-        self.RunMode = None
-        self.ExpectRunTime = None
-        self.AllActions = None
-        self.Actions = None
-        self.Options = None
-        self.Objects = None
-        self.Specification = None
-        self.ExpireTime = None
-        self.SrcRegion = None
-        self.SrcDatabaseType = None
-        self.SrcAccessType = None
-        self.SrcInfo = None
-        self.DstRegion = None
-        self.DstDatabaseType = None
-        self.DstAccessType = None
-        self.DstInfo = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.Status = None
-        self.EndTime = None
-        self.Tags = None
-        self.Detail = None
-        self.TradeStatus = None
-        self.InstanceClass = None
-        self.AutoRenew = None
-        self.OfflineTime = None
-        self.AutoRetryTimeRangeMinutes = None
+        self._JobId = None
+        self._JobName = None
+        self._PayMode = None
+        self._RunMode = None
+        self._ExpectRunTime = None
+        self._AllActions = None
+        self._Actions = None
+        self._Options = None
+        self._Objects = None
+        self._Specification = None
+        self._ExpireTime = None
+        self._SrcRegion = None
+        self._SrcDatabaseType = None
+        self._SrcAccessType = None
+        self._SrcInfo = None
+        self._DstRegion = None
+        self._DstDatabaseType = None
+        self._DstAccessType = None
+        self._DstInfo = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._Status = None
+        self._EndTime = None
+        self._Tags = None
+        self._Detail = None
+        self._TradeStatus = None
+        self._InstanceClass = None
+        self._AutoRenew = None
+        self._OfflineTime = None
+        self._AutoRetryTimeRangeMinutes = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def ExpectRunTime(self):
+        return self._ExpectRunTime
+
+    @ExpectRunTime.setter
+    def ExpectRunTime(self, ExpectRunTime):
+        self._ExpectRunTime = ExpectRunTime
+
+    @property
+    def AllActions(self):
+        return self._AllActions
+
+    @AllActions.setter
+    def AllActions(self, AllActions):
+        self._AllActions = AllActions
+
+    @property
+    def Actions(self):
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def Options(self):
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def Objects(self):
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SrcRegion(self):
+        return self._SrcRegion
+
+    @SrcRegion.setter
+    def SrcRegion(self, SrcRegion):
+        self._SrcRegion = SrcRegion
+
+    @property
+    def SrcDatabaseType(self):
+        return self._SrcDatabaseType
+
+    @SrcDatabaseType.setter
+    def SrcDatabaseType(self, SrcDatabaseType):
+        self._SrcDatabaseType = SrcDatabaseType
+
+    @property
+    def SrcAccessType(self):
+        return self._SrcAccessType
+
+    @SrcAccessType.setter
+    def SrcAccessType(self, SrcAccessType):
+        self._SrcAccessType = SrcAccessType
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstRegion(self):
+        return self._DstRegion
+
+    @DstRegion.setter
+    def DstRegion(self, DstRegion):
+        self._DstRegion = DstRegion
+
+    @property
+    def DstDatabaseType(self):
+        return self._DstDatabaseType
+
+    @DstDatabaseType.setter
+    def DstDatabaseType(self, DstDatabaseType):
+        self._DstDatabaseType = DstDatabaseType
+
+    @property
+    def DstAccessType(self):
+        return self._DstAccessType
+
+    @DstAccessType.setter
+    def DstAccessType(self, DstAccessType):
+        self._DstAccessType = DstAccessType
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def TradeStatus(self):
+        return self._TradeStatus
+
+    @TradeStatus.setter
+    def TradeStatus(self, TradeStatus):
+        self._TradeStatus = TradeStatus
+
+    @property
+    def InstanceClass(self):
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def OfflineTime(self):
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def AutoRetryTimeRangeMinutes(self):
+        return self._AutoRetryTimeRangeMinutes
+
+    @AutoRetryTimeRangeMinutes.setter
+    def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
+        self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.PayMode = params.get("PayMode")
-        self.RunMode = params.get("RunMode")
-        self.ExpectRunTime = params.get("ExpectRunTime")
-        self.AllActions = params.get("AllActions")
-        self.Actions = params.get("Actions")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._PayMode = params.get("PayMode")
+        self._RunMode = params.get("RunMode")
+        self._ExpectRunTime = params.get("ExpectRunTime")
+        self._AllActions = params.get("AllActions")
+        self._Actions = params.get("Actions")
         if params.get("Options") is not None:
-            self.Options = Options()
-            self.Options._deserialize(params.get("Options"))
+            self._Options = Options()
+            self._Options._deserialize(params.get("Options"))
         if params.get("Objects") is not None:
-            self.Objects = Objects()
-            self.Objects._deserialize(params.get("Objects"))
-        self.Specification = params.get("Specification")
-        self.ExpireTime = params.get("ExpireTime")
-        self.SrcRegion = params.get("SrcRegion")
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.SrcAccessType = params.get("SrcAccessType")
+            self._Objects = Objects()
+            self._Objects._deserialize(params.get("Objects"))
+        self._Specification = params.get("Specification")
+        self._ExpireTime = params.get("ExpireTime")
+        self._SrcRegion = params.get("SrcRegion")
+        self._SrcDatabaseType = params.get("SrcDatabaseType")
+        self._SrcAccessType = params.get("SrcAccessType")
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = Endpoint()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
-        self.DstRegion = params.get("DstRegion")
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        self.DstAccessType = params.get("DstAccessType")
+            self._SrcInfo = Endpoint()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
+        self._DstRegion = params.get("DstRegion")
+        self._DstDatabaseType = params.get("DstDatabaseType")
+        self._DstAccessType = params.get("DstAccessType")
         if params.get("DstInfo") is not None:
-            self.DstInfo = Endpoint()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.Status = params.get("Status")
-        self.EndTime = params.get("EndTime")
+            self._DstInfo = Endpoint()
+            self._DstInfo._deserialize(params.get("DstInfo"))
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._EndTime = params.get("EndTime")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("Detail") is not None:
-            self.Detail = SyncDetailInfo()
-            self.Detail._deserialize(params.get("Detail"))
-        self.TradeStatus = params.get("TradeStatus")
-        self.InstanceClass = params.get("InstanceClass")
-        self.AutoRenew = params.get("AutoRenew")
-        self.OfflineTime = params.get("OfflineTime")
-        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+            self._Detail = SyncDetailInfo()
+            self._Detail._deserialize(params.get("Detail"))
+        self._TradeStatus = params.get("TradeStatus")
+        self._InstanceClass = params.get("InstanceClass")
+        self._AutoRenew = params.get("AutoRenew")
+        self._OfflineTime = params.get("OfflineTime")
+        self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5444,39 +10136,80 @@ class Table(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: 表名
+        :param _TableName: 表名
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param NewTableName: 新表名
+        :param _NewTableName: 新表名
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewTableName: str
-        :param FilterCondition: 过滤条件
+        :param _FilterCondition: 过滤条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterCondition: str
-        :param TmpTables: 同步临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在同步过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
+        :param _TmpTables: 同步临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在同步过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpTables: list of str
-        :param TableEditMode: 编辑表类型，rename(表映射)，pt(同步附加表)
+        :param _TableEditMode: 编辑表类型，rename(表映射)，pt(同步附加表)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableEditMode: str
         """
-        self.TableName = None
-        self.NewTableName = None
-        self.FilterCondition = None
-        self.TmpTables = None
-        self.TableEditMode = None
+        self._TableName = None
+        self._NewTableName = None
+        self._FilterCondition = None
+        self._TmpTables = None
+        self._TableEditMode = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def NewTableName(self):
+        return self._NewTableName
+
+    @NewTableName.setter
+    def NewTableName(self, NewTableName):
+        self._NewTableName = NewTableName
+
+    @property
+    def FilterCondition(self):
+        return self._FilterCondition
+
+    @FilterCondition.setter
+    def FilterCondition(self, FilterCondition):
+        self._FilterCondition = FilterCondition
+
+    @property
+    def TmpTables(self):
+        return self._TmpTables
+
+    @TmpTables.setter
+    def TmpTables(self, TmpTables):
+        self._TmpTables = TmpTables
+
+    @property
+    def TableEditMode(self):
+        return self._TableEditMode
+
+    @TableEditMode.setter
+    def TableEditMode(self, TableEditMode):
+        self._TableEditMode = TableEditMode
 
 
     def _deserialize(self, params):
-        self.TableName = params.get("TableName")
-        self.NewTableName = params.get("NewTableName")
-        self.FilterCondition = params.get("FilterCondition")
-        self.TmpTables = params.get("TmpTables")
-        self.TableEditMode = params.get("TableEditMode")
+        self._TableName = params.get("TableName")
+        self._NewTableName = params.get("NewTableName")
+        self._FilterCondition = params.get("FilterCondition")
+        self._TmpTables = params.get("TmpTables")
+        self._TableEditMode = params.get("TableEditMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5489,34 +10222,67 @@ class TableItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: 迁移的表名，大小写敏感
+        :param _TableName: 迁移的表名，大小写敏感
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param NewTableName: 迁移后的表名，当TableEditMode为rename时此项必填，注意此配置与TmpTables互斥，只能使用其中一种
+        :param _NewTableName: 迁移后的表名，当TableEditMode为rename时此项必填，注意此配置与TmpTables互斥，只能使用其中一种
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewTableName: str
-        :param TmpTables: 迁移临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在迁移过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
+        :param _TmpTables: 迁移临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在迁移过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpTables: list of str
-        :param TableEditMode: 编辑表类型，rename(表映射)，pt(同步附加表)
+        :param _TableEditMode: 编辑表类型，rename(表映射)，pt(同步附加表)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableEditMode: str
         """
-        self.TableName = None
-        self.NewTableName = None
-        self.TmpTables = None
-        self.TableEditMode = None
+        self._TableName = None
+        self._NewTableName = None
+        self._TmpTables = None
+        self._TableEditMode = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def NewTableName(self):
+        return self._NewTableName
+
+    @NewTableName.setter
+    def NewTableName(self, NewTableName):
+        self._NewTableName = NewTableName
+
+    @property
+    def TmpTables(self):
+        return self._TmpTables
+
+    @TmpTables.setter
+    def TmpTables(self, TmpTables):
+        self._TmpTables = TmpTables
+
+    @property
+    def TableEditMode(self):
+        return self._TableEditMode
+
+    @TableEditMode.setter
+    def TableEditMode(self, TableEditMode):
+        self._TableEditMode = TableEditMode
 
 
     def _deserialize(self, params):
-        self.TableName = params.get("TableName")
-        self.NewTableName = params.get("NewTableName")
-        self.TmpTables = params.get("TmpTables")
-        self.TableEditMode = params.get("TableEditMode")
+        self._TableName = params.get("TableName")
+        self._NewTableName = params.get("NewTableName")
+        self._TmpTables = params.get("TmpTables")
+        self._TableEditMode = params.get("TableEditMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5529,22 +10295,39 @@ class TagFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键值
+        :param _TagKey: 标签键值
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
         :type TagValue: list of str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5557,24 +10340,41 @@ class TagItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param _TagKey: 标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5587,38 +10387,87 @@ class TopicRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicName: topic名
+        :param _TopicName: topic名
         :type TopicName: str
-        :param PartitionType: topic分区策略，如 自定义topic：Random（随机投递），集中投递到单Topic：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)
+        :param _PartitionType: topic分区策略，如 自定义topic：Random（随机投递），集中投递到单Topic：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)
         :type PartitionType: str
-        :param DbMatchMode: 库名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中必须有一项为‘Default’
+        :param _DbMatchMode: 库名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中必须有一项为‘Default’
         :type DbMatchMode: str
-        :param DbName: 库名，仅“自定义topic”时，DbMatchMode=Regular生效
+        :param _DbName: 库名，仅“自定义topic”时，DbMatchMode=Regular生效
         :type DbName: str
-        :param TableMatchMode: 表名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中必须有一项为‘Default’
+        :param _TableMatchMode: 表名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中必须有一项为‘Default’
         :type TableMatchMode: str
-        :param TableName: 表名，仅“自定义topic”时，TableMatchMode=Regular生效
+        :param _TableName: 表名，仅“自定义topic”时，TableMatchMode=Regular生效
         :type TableName: str
         """
-        self.TopicName = None
-        self.PartitionType = None
-        self.DbMatchMode = None
-        self.DbName = None
-        self.TableMatchMode = None
-        self.TableName = None
+        self._TopicName = None
+        self._PartitionType = None
+        self._DbMatchMode = None
+        self._DbName = None
+        self._TableMatchMode = None
+        self._TableName = None
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def PartitionType(self):
+        return self._PartitionType
+
+    @PartitionType.setter
+    def PartitionType(self, PartitionType):
+        self._PartitionType = PartitionType
+
+    @property
+    def DbMatchMode(self):
+        return self._DbMatchMode
+
+    @DbMatchMode.setter
+    def DbMatchMode(self, DbMatchMode):
+        self._DbMatchMode = DbMatchMode
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableMatchMode(self):
+        return self._TableMatchMode
+
+    @TableMatchMode.setter
+    def TableMatchMode(self, TableMatchMode):
+        self._TableMatchMode = TableMatchMode
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
 
 
     def _deserialize(self, params):
-        self.TopicName = params.get("TopicName")
-        self.PartitionType = params.get("PartitionType")
-        self.DbMatchMode = params.get("DbMatchMode")
-        self.DbName = params.get("DbName")
-        self.TableMatchMode = params.get("TableMatchMode")
-        self.TableName = params.get("TableName")
+        self._TopicName = params.get("TopicName")
+        self._PartitionType = params.get("PartitionType")
+        self._DbMatchMode = params.get("DbMatchMode")
+        self._DbName = params.get("DbName")
+        self._TableMatchMode = params.get("TableMatchMode")
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5631,69 +10480,158 @@ class TradeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealName: 交易订单号
+        :param _DealName: 交易订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
-        :param LastDealName: 上一次交易订单号
+        :param _LastDealName: 上一次交易订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastDealName: str
-        :param InstanceClass: 实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
+        :param _InstanceClass: 实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceClass: str
-        :param TradeStatus: 计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
+        :param _TradeStatus: 计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TradeStatus: str
-        :param ExpireTime: 到期时间，格式为"yyyy-mm-dd hh:mm:ss"
+        :param _ExpireTime: 到期时间，格式为"yyyy-mm-dd hh:mm:ss"
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param OfflineTime: 下线时间，格式为"yyyy-mm-dd hh:mm:ss"
+        :param _OfflineTime: 下线时间，格式为"yyyy-mm-dd hh:mm:ss"
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTime: str
-        :param IsolateTime: 隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
+        :param _IsolateTime: 隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
-        :param OfflineReason: 下线原因
+        :param _OfflineReason: 下线原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineReason: str
-        :param IsolateReason: 隔离原因
+        :param _IsolateReason: 隔离原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateReason: str
-        :param PayType: 付费类型，包括：postpay(后付费)、prepay(预付费)
+        :param _PayType: 付费类型，包括：postpay(后付费)、prepay(预付费)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayType: str
-        :param BillingType: 任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
+        :param _BillingType: 任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingType: str
         """
-        self.DealName = None
-        self.LastDealName = None
-        self.InstanceClass = None
-        self.TradeStatus = None
-        self.ExpireTime = None
-        self.OfflineTime = None
-        self.IsolateTime = None
-        self.OfflineReason = None
-        self.IsolateReason = None
-        self.PayType = None
-        self.BillingType = None
+        self._DealName = None
+        self._LastDealName = None
+        self._InstanceClass = None
+        self._TradeStatus = None
+        self._ExpireTime = None
+        self._OfflineTime = None
+        self._IsolateTime = None
+        self._OfflineReason = None
+        self._IsolateReason = None
+        self._PayType = None
+        self._BillingType = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def LastDealName(self):
+        return self._LastDealName
+
+    @LastDealName.setter
+    def LastDealName(self, LastDealName):
+        self._LastDealName = LastDealName
+
+    @property
+    def InstanceClass(self):
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
+    def TradeStatus(self):
+        return self._TradeStatus
+
+    @TradeStatus.setter
+    def TradeStatus(self, TradeStatus):
+        self._TradeStatus = TradeStatus
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OfflineTime(self):
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def IsolateTime(self):
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def OfflineReason(self):
+        return self._OfflineReason
+
+    @OfflineReason.setter
+    def OfflineReason(self, OfflineReason):
+        self._OfflineReason = OfflineReason
+
+    @property
+    def IsolateReason(self):
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def BillingType(self):
+        return self._BillingType
+
+    @BillingType.setter
+    def BillingType(self, BillingType):
+        self._BillingType = BillingType
 
 
     def _deserialize(self, params):
-        self.DealName = params.get("DealName")
-        self.LastDealName = params.get("LastDealName")
-        self.InstanceClass = params.get("InstanceClass")
-        self.TradeStatus = params.get("TradeStatus")
-        self.ExpireTime = params.get("ExpireTime")
-        self.OfflineTime = params.get("OfflineTime")
-        self.IsolateTime = params.get("IsolateTime")
-        self.OfflineReason = params.get("OfflineReason")
-        self.IsolateReason = params.get("IsolateReason")
-        self.PayType = params.get("PayType")
-        self.BillingType = params.get("BillingType")
+        self._DealName = params.get("DealName")
+        self._LastDealName = params.get("LastDealName")
+        self._InstanceClass = params.get("InstanceClass")
+        self._TradeStatus = params.get("TradeStatus")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OfflineTime = params.get("OfflineTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._OfflineReason = params.get("OfflineReason")
+        self._IsolateReason = params.get("IsolateReason")
+        self._PayType = params.get("PayType")
+        self._BillingType = params.get("BillingType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5706,24 +10644,41 @@ class View(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ViewName: view名
+        :param _ViewName: view名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewName: str
-        :param NewViewName: 预留字段、目前暂时不支持view的重命名
+        :param _NewViewName: 预留字段、目前暂时不支持view的重命名
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewViewName: str
         """
-        self.ViewName = None
-        self.NewViewName = None
+        self._ViewName = None
+        self._NewViewName = None
+
+    @property
+    def ViewName(self):
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def NewViewName(self):
+        return self._NewViewName
+
+    @NewViewName.setter
+    def NewViewName(self, NewViewName):
+        self._NewViewName = NewViewName
 
 
     def _deserialize(self, params):
-        self.ViewName = params.get("ViewName")
-        self.NewViewName = params.get("NewViewName")
+        self._ViewName = params.get("ViewName")
+        self._NewViewName = params.get("NewViewName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5736,24 +10691,41 @@ class ViewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ViewName: 视图名称
+        :param _ViewName: 视图名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewName: str
-        :param NewViewName: 迁移后的视图名称
+        :param _NewViewName: 迁移后的视图名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewViewName: str
         """
-        self.ViewName = None
-        self.NewViewName = None
+        self._ViewName = None
+        self._NewViewName = None
+
+    @property
+    def ViewName(self):
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def NewViewName(self):
+        return self._NewViewName
+
+    @NewViewName.setter
+    def NewViewName(self, NewViewName):
+        self._NewViewName = NewViewName
 
 
     def _deserialize(self, params):
-        self.ViewName = params.get("ViewName")
-        self.NewViewName = params.get("NewViewName")
+        self._ViewName = params.get("ViewName")
+        self._NewViewName = params.get("NewViewName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

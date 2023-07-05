@@ -25,81 +25,210 @@ class AgentAuditedClient(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 代理商账号ID
+        :param _Uin: 代理商账号ID
         :type Uin: str
-        :param ClientUin: 代客账号ID
+        :param _ClientUin: 代客账号ID
         :type ClientUin: str
-        :param AgentTime: 代客审核通过时间戳
+        :param _AgentTime: 代客审核通过时间戳
         :type AgentTime: str
-        :param ClientFlag: 代客类型，可能值为a/b/c
+        :param _ClientFlag: 代客类型，可能值为a/b/c
         :type ClientFlag: str
-        :param ClientRemark: 代客备注
+        :param _ClientRemark: 代客备注
         :type ClientRemark: str
-        :param ClientName: 代客名称（首选实名认证名称）
+        :param _ClientName: 代客名称（首选实名认证名称）
         :type ClientName: str
-        :param AuthType: 认证类型, 0：个人，1：企业；其他：未认证或无效值
+        :param _AuthType: 认证类型, 0：个人，1：企业；其他：未认证或无效值
         :type AuthType: str
-        :param AppId: 代客APPID
+        :param _AppId: 代客APPID
         :type AppId: str
-        :param LastMonthAmt: 上月消费金额
+        :param _LastMonthAmt: 上月消费金额
         :type LastMonthAmt: int
-        :param ThisMonthAmt: 本月消费金额
+        :param _ThisMonthAmt: 本月消费金额
         :type ThisMonthAmt: int
-        :param HasOverdueBill: 是否欠费,0：不欠费；1：欠费
+        :param _HasOverdueBill: 是否欠费,0：不欠费；1：欠费
         :type HasOverdueBill: int
-        :param ClientType: 客户类型：可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
+        :param _ClientType: 客户类型：可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
         :type ClientType: str
-        :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :param _ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
         :type ProjectType: str
-        :param SalesUin: 业务员ID
+        :param _SalesUin: 业务员ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
-        :param SalesName: 业务员姓名
+        :param _SalesName: 业务员姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
-        :param Mail: 代客邮箱
+        :param _Mail: 代客邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mail: str
         """
-        self.Uin = None
-        self.ClientUin = None
-        self.AgentTime = None
-        self.ClientFlag = None
-        self.ClientRemark = None
-        self.ClientName = None
-        self.AuthType = None
-        self.AppId = None
-        self.LastMonthAmt = None
-        self.ThisMonthAmt = None
-        self.HasOverdueBill = None
-        self.ClientType = None
-        self.ProjectType = None
-        self.SalesUin = None
-        self.SalesName = None
-        self.Mail = None
+        self._Uin = None
+        self._ClientUin = None
+        self._AgentTime = None
+        self._ClientFlag = None
+        self._ClientRemark = None
+        self._ClientName = None
+        self._AuthType = None
+        self._AppId = None
+        self._LastMonthAmt = None
+        self._ThisMonthAmt = None
+        self._HasOverdueBill = None
+        self._ClientType = None
+        self._ProjectType = None
+        self._SalesUin = None
+        self._SalesName = None
+        self._Mail = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def AgentTime(self):
+        return self._AgentTime
+
+    @AgentTime.setter
+    def AgentTime(self, AgentTime):
+        self._AgentTime = AgentTime
+
+    @property
+    def ClientFlag(self):
+        return self._ClientFlag
+
+    @ClientFlag.setter
+    def ClientFlag(self, ClientFlag):
+        self._ClientFlag = ClientFlag
+
+    @property
+    def ClientRemark(self):
+        return self._ClientRemark
+
+    @ClientRemark.setter
+    def ClientRemark(self, ClientRemark):
+        self._ClientRemark = ClientRemark
+
+    @property
+    def ClientName(self):
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def LastMonthAmt(self):
+        return self._LastMonthAmt
+
+    @LastMonthAmt.setter
+    def LastMonthAmt(self, LastMonthAmt):
+        self._LastMonthAmt = LastMonthAmt
+
+    @property
+    def ThisMonthAmt(self):
+        return self._ThisMonthAmt
+
+    @ThisMonthAmt.setter
+    def ThisMonthAmt(self, ThisMonthAmt):
+        self._ThisMonthAmt = ThisMonthAmt
+
+    @property
+    def HasOverdueBill(self):
+        return self._HasOverdueBill
+
+    @HasOverdueBill.setter
+    def HasOverdueBill(self, HasOverdueBill):
+        self._HasOverdueBill = HasOverdueBill
+
+    @property
+    def ClientType(self):
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def ProjectType(self):
+        return self._ProjectType
+
+    @ProjectType.setter
+    def ProjectType(self, ProjectType):
+        self._ProjectType = ProjectType
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def SalesName(self):
+        return self._SalesName
+
+    @SalesName.setter
+    def SalesName(self, SalesName):
+        self._SalesName = SalesName
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.ClientUin = params.get("ClientUin")
-        self.AgentTime = params.get("AgentTime")
-        self.ClientFlag = params.get("ClientFlag")
-        self.ClientRemark = params.get("ClientRemark")
-        self.ClientName = params.get("ClientName")
-        self.AuthType = params.get("AuthType")
-        self.AppId = params.get("AppId")
-        self.LastMonthAmt = params.get("LastMonthAmt")
-        self.ThisMonthAmt = params.get("ThisMonthAmt")
-        self.HasOverdueBill = params.get("HasOverdueBill")
-        self.ClientType = params.get("ClientType")
-        self.ProjectType = params.get("ProjectType")
-        self.SalesUin = params.get("SalesUin")
-        self.SalesName = params.get("SalesName")
-        self.Mail = params.get("Mail")
+        self._Uin = params.get("Uin")
+        self._ClientUin = params.get("ClientUin")
+        self._AgentTime = params.get("AgentTime")
+        self._ClientFlag = params.get("ClientFlag")
+        self._ClientRemark = params.get("ClientRemark")
+        self._ClientName = params.get("ClientName")
+        self._AuthType = params.get("AuthType")
+        self._AppId = params.get("AppId")
+        self._LastMonthAmt = params.get("LastMonthAmt")
+        self._ThisMonthAmt = params.get("ThisMonthAmt")
+        self._HasOverdueBill = params.get("HasOverdueBill")
+        self._ClientType = params.get("ClientType")
+        self._ProjectType = params.get("ProjectType")
+        self._SalesUin = params.get("SalesUin")
+        self._SalesName = params.get("SalesName")
+        self._Mail = params.get("Mail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -112,69 +241,174 @@ class AgentBillElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 代理商账号ID
+        :param _Uin: 代理商账号ID
         :type Uin: str
-        :param OrderId: 订单号，仅对预付费账单有意义
+        :param _OrderId: 订单号，仅对预付费账单有意义
         :type OrderId: str
-        :param ClientUin: 代客账号ID
+        :param _ClientUin: 代客账号ID
         :type ClientUin: str
-        :param ClientRemark: 代客备注名称
+        :param _ClientRemark: 代客备注名称
         :type ClientRemark: str
-        :param PayTime: 支付时间
+        :param _PayTime: 支付时间
         :type PayTime: str
-        :param GoodsType: 云产品名称
+        :param _GoodsType: 云产品名称
         :type GoodsType: str
-        :param PayMode: 预付费/后付费
+        :param _PayMode: 预付费/后付费
         :type PayMode: str
-        :param SettleMonth: 支付月份
+        :param _SettleMonth: 支付月份
         :type SettleMonth: str
-        :param Amt: 支付金额，单位分
+        :param _Amt: 支付金额，单位分
         :type Amt: int
-        :param PayerMode: agentpay：代付；selfpay：自付
+        :param _PayerMode: agentpay：代付；selfpay：自付
         :type PayerMode: str
-        :param ClientType: 客户类型：可以为new(自拓)/assign(指定)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
+        :param _ClientType: 客户类型：可以为new(自拓)/assign(指定)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientType: str
-        :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :param _ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectType: str
-        :param ActivityId: 活动ID
+        :param _ActivityId: 活动ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
         """
-        self.Uin = None
-        self.OrderId = None
-        self.ClientUin = None
-        self.ClientRemark = None
-        self.PayTime = None
-        self.GoodsType = None
-        self.PayMode = None
-        self.SettleMonth = None
-        self.Amt = None
-        self.PayerMode = None
-        self.ClientType = None
-        self.ProjectType = None
-        self.ActivityId = None
+        self._Uin = None
+        self._OrderId = None
+        self._ClientUin = None
+        self._ClientRemark = None
+        self._PayTime = None
+        self._GoodsType = None
+        self._PayMode = None
+        self._SettleMonth = None
+        self._Amt = None
+        self._PayerMode = None
+        self._ClientType = None
+        self._ProjectType = None
+        self._ActivityId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def ClientRemark(self):
+        return self._ClientRemark
+
+    @ClientRemark.setter
+    def ClientRemark(self, ClientRemark):
+        self._ClientRemark = ClientRemark
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def GoodsType(self):
+        return self._GoodsType
+
+    @GoodsType.setter
+    def GoodsType(self, GoodsType):
+        self._GoodsType = GoodsType
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def SettleMonth(self):
+        return self._SettleMonth
+
+    @SettleMonth.setter
+    def SettleMonth(self, SettleMonth):
+        self._SettleMonth = SettleMonth
+
+    @property
+    def Amt(self):
+        return self._Amt
+
+    @Amt.setter
+    def Amt(self, Amt):
+        self._Amt = Amt
+
+    @property
+    def PayerMode(self):
+        return self._PayerMode
+
+    @PayerMode.setter
+    def PayerMode(self, PayerMode):
+        self._PayerMode = PayerMode
+
+    @property
+    def ClientType(self):
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def ProjectType(self):
+        return self._ProjectType
+
+    @ProjectType.setter
+    def ProjectType(self, ProjectType):
+        self._ProjectType = ProjectType
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.OrderId = params.get("OrderId")
-        self.ClientUin = params.get("ClientUin")
-        self.ClientRemark = params.get("ClientRemark")
-        self.PayTime = params.get("PayTime")
-        self.GoodsType = params.get("GoodsType")
-        self.PayMode = params.get("PayMode")
-        self.SettleMonth = params.get("SettleMonth")
-        self.Amt = params.get("Amt")
-        self.PayerMode = params.get("PayerMode")
-        self.ClientType = params.get("ClientType")
-        self.ProjectType = params.get("ProjectType")
-        self.ActivityId = params.get("ActivityId")
+        self._Uin = params.get("Uin")
+        self._OrderId = params.get("OrderId")
+        self._ClientUin = params.get("ClientUin")
+        self._ClientRemark = params.get("ClientRemark")
+        self._PayTime = params.get("PayTime")
+        self._GoodsType = params.get("GoodsType")
+        self._PayMode = params.get("PayMode")
+        self._SettleMonth = params.get("SettleMonth")
+        self._Amt = params.get("Amt")
+        self._PayerMode = params.get("PayerMode")
+        self._ClientType = params.get("ClientType")
+        self._ProjectType = params.get("ProjectType")
+        self._ActivityId = params.get("ActivityId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -187,61 +421,150 @@ class AgentClientElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 代理商账号ID
+        :param _Uin: 代理商账号ID
         :type Uin: str
-        :param ClientUin: 代客账号ID
+        :param _ClientUin: 代客账号ID
         :type ClientUin: str
-        :param ApplyTime: 代客申请时间戳
+        :param _ApplyTime: 代客申请时间戳
         :type ApplyTime: int
-        :param ClientFlag: 代客类型，可能值为a/b/c
+        :param _ClientFlag: 代客类型，可能值为a/b/c
         :type ClientFlag: str
-        :param Mail: 代客邮箱，打码显示
+        :param _Mail: 代客邮箱，打码显示
         :type Mail: str
-        :param Phone: 代客手机，打码显示
+        :param _Phone: 代客手机，打码显示
         :type Phone: str
-        :param HasOverdueBill: 0表示不欠费，1表示欠费
+        :param _HasOverdueBill: 0表示不欠费，1表示欠费
         :type HasOverdueBill: int
-        :param Status: 1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
+        :param _Status: 1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
         :type Status: int
-        :param SalesUin: 业务员ID
+        :param _SalesUin: 业务员ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
-        :param SalesName: 业务员姓名
+        :param _SalesName: 业务员姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
-        :param ClientName: 客户名称，此字段和控制台返回一致。
+        :param _ClientName: 客户名称，此字段和控制台返回一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientName: str
         """
-        self.Uin = None
-        self.ClientUin = None
-        self.ApplyTime = None
-        self.ClientFlag = None
-        self.Mail = None
-        self.Phone = None
-        self.HasOverdueBill = None
-        self.Status = None
-        self.SalesUin = None
-        self.SalesName = None
-        self.ClientName = None
+        self._Uin = None
+        self._ClientUin = None
+        self._ApplyTime = None
+        self._ClientFlag = None
+        self._Mail = None
+        self._Phone = None
+        self._HasOverdueBill = None
+        self._Status = None
+        self._SalesUin = None
+        self._SalesName = None
+        self._ClientName = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def ApplyTime(self):
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def ClientFlag(self):
+        return self._ClientFlag
+
+    @ClientFlag.setter
+    def ClientFlag(self, ClientFlag):
+        self._ClientFlag = ClientFlag
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def HasOverdueBill(self):
+        return self._HasOverdueBill
+
+    @HasOverdueBill.setter
+    def HasOverdueBill(self, HasOverdueBill):
+        self._HasOverdueBill = HasOverdueBill
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def SalesName(self):
+        return self._SalesName
+
+    @SalesName.setter
+    def SalesName(self, SalesName):
+        self._SalesName = SalesName
+
+    @property
+    def ClientName(self):
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.ClientUin = params.get("ClientUin")
-        self.ApplyTime = params.get("ApplyTime")
-        self.ClientFlag = params.get("ClientFlag")
-        self.Mail = params.get("Mail")
-        self.Phone = params.get("Phone")
-        self.HasOverdueBill = params.get("HasOverdueBill")
-        self.Status = params.get("Status")
-        self.SalesUin = params.get("SalesUin")
-        self.SalesName = params.get("SalesName")
-        self.ClientName = params.get("ClientName")
+        self._Uin = params.get("Uin")
+        self._ClientUin = params.get("ClientUin")
+        self._ApplyTime = params.get("ApplyTime")
+        self._ClientFlag = params.get("ClientFlag")
+        self._Mail = params.get("Mail")
+        self._Phone = params.get("Phone")
+        self._HasOverdueBill = params.get("HasOverdueBill")
+        self._Status = params.get("Status")
+        self._SalesUin = params.get("SalesUin")
+        self._SalesName = params.get("SalesName")
+        self._ClientName = params.get("ClientName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -254,162 +577,395 @@ class AgentDealNewElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单自增 ID【请勿依赖该字段作为唯一标识】
+        :param _DealId: 订单自增 ID【请勿依赖该字段作为唯一标识】
         :type DealId: str
-        :param DealName: 订单号【订单唯一键】
+        :param _DealName: 订单号【订单唯一键】
         :type DealName: str
-        :param GoodsCategoryId: 商品类型 ID
+        :param _GoodsCategoryId: 商品类型 ID
         :type GoodsCategoryId: str
-        :param OwnerUin: 订单所有者
+        :param _OwnerUin: 订单所有者
         :type OwnerUin: str
-        :param AppId: 订单所有者对应 appId
+        :param _AppId: 订单所有者对应 appId
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param GoodsNum: 商品数量
+        :param _GoodsNum: 商品数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsNum: str
-        :param GoodsPrice: 价格详情
+        :param _GoodsPrice: 价格详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsPrice: :class:`tencentcloud.partners.v20180321.models.DealGoodsPriceNewElem`
-        :param Creater: 下单人
+        :param _Creater: 下单人
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creater: str
-        :param CreatTime: 下单时间
+        :param _CreatTime: 下单时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatTime: str
-        :param PayEndTime: 支付结束时间
+        :param _PayEndTime: 支付结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayEndTime: str
-        :param BillId: 扣费流水号
+        :param _BillId: 扣费流水号
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillId: str
-        :param Payer: 支付人
+        :param _Payer: 支付人
 注意：此字段可能返回 null，表示取不到有效值。
         :type Payer: str
-        :param DealStatus: 订单状态，中文描述
+        :param _DealStatus: 订单状态，中文描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealStatus: str
-        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param GoodsName: 产品名称
+        :param _GoodsName: 产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsName: str
-        :param ClientRemark: 客户备注
+        :param _ClientRemark: 客户备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientRemark: str
-        :param ActionType: 订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
+        :param _ActionType: 订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
-        :param VoucherDecline: 代金券抵扣金额，单位分
+        :param _VoucherDecline: 代金券抵扣金额，单位分
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherDecline: str
-        :param BigDealId: 大订单号
+        :param _BigDealId: 大订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealId: str
-        :param ClientType: 客户类型（new：自拓；old：官网；assign：指派；direct：直销；direct_newopp：直销(新商机)）
+        :param _ClientType: 客户类型（new：自拓；old：官网；assign：指派；direct：直销；direct_newopp：直销(新商机)）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientType: str
-        :param ProjectType: 项目类型（self：自拓；repeat：直销；platform：官网合作）
+        :param _ProjectType: 项目类型（self：自拓；repeat：直销；platform：官网合作）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectType: str
-        :param SalesUin: 业务员账号ID
+        :param _SalesUin: 业务员账号ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
-        :param PayerMode: 支付方式，0：自付；1：代付
+        :param _PayerMode: 支付方式，0：自付；1：代付
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayerMode: str
-        :param ActivityId: 活动ID
+        :param _ActivityId: 活动ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
-        :param OverdueTime: 订单过期时间
+        :param _OverdueTime: 订单过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type OverdueTime: str
-        :param ProductInfo: 产品详情
+        :param _ProductInfo: 产品详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: list of ProductInfoElem
-        :param PaymentMethod: 付款方式
+        :param _PaymentMethod: 付款方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentMethod: str
-        :param UpdateTime: 订单更新时间
+        :param _UpdateTime: 订单更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param ResourceIds: 资源id
+        :param _ResourceIds: 资源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         """
-        self.DealId = None
-        self.DealName = None
-        self.GoodsCategoryId = None
-        self.OwnerUin = None
-        self.AppId = None
-        self.GoodsNum = None
-        self.GoodsPrice = None
-        self.Creater = None
-        self.CreatTime = None
-        self.PayEndTime = None
-        self.BillId = None
-        self.Payer = None
-        self.DealStatus = None
-        self.Status = None
-        self.GoodsName = None
-        self.ClientRemark = None
-        self.ActionType = None
-        self.VoucherDecline = None
-        self.BigDealId = None
-        self.ClientType = None
-        self.ProjectType = None
-        self.SalesUin = None
-        self.PayerMode = None
-        self.ActivityId = None
-        self.OverdueTime = None
-        self.ProductInfo = None
-        self.PaymentMethod = None
-        self.UpdateTime = None
-        self.ResourceIds = None
+        self._DealId = None
+        self._DealName = None
+        self._GoodsCategoryId = None
+        self._OwnerUin = None
+        self._AppId = None
+        self._GoodsNum = None
+        self._GoodsPrice = None
+        self._Creater = None
+        self._CreatTime = None
+        self._PayEndTime = None
+        self._BillId = None
+        self._Payer = None
+        self._DealStatus = None
+        self._Status = None
+        self._GoodsName = None
+        self._ClientRemark = None
+        self._ActionType = None
+        self._VoucherDecline = None
+        self._BigDealId = None
+        self._ClientType = None
+        self._ProjectType = None
+        self._SalesUin = None
+        self._PayerMode = None
+        self._ActivityId = None
+        self._OverdueTime = None
+        self._ProductInfo = None
+        self._PaymentMethod = None
+        self._UpdateTime = None
+        self._ResourceIds = None
+
+    @property
+    def DealId(self):
+        return self._DealId
+
+    @DealId.setter
+    def DealId(self, DealId):
+        self._DealId = DealId
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def GoodsCategoryId(self):
+        return self._GoodsCategoryId
+
+    @GoodsCategoryId.setter
+    def GoodsCategoryId(self, GoodsCategoryId):
+        self._GoodsCategoryId = GoodsCategoryId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def GoodsPrice(self):
+        return self._GoodsPrice
+
+    @GoodsPrice.setter
+    def GoodsPrice(self, GoodsPrice):
+        self._GoodsPrice = GoodsPrice
+
+    @property
+    def Creater(self):
+        return self._Creater
+
+    @Creater.setter
+    def Creater(self, Creater):
+        self._Creater = Creater
+
+    @property
+    def CreatTime(self):
+        return self._CreatTime
+
+    @CreatTime.setter
+    def CreatTime(self, CreatTime):
+        self._CreatTime = CreatTime
+
+    @property
+    def PayEndTime(self):
+        return self._PayEndTime
+
+    @PayEndTime.setter
+    def PayEndTime(self, PayEndTime):
+        self._PayEndTime = PayEndTime
+
+    @property
+    def BillId(self):
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def Payer(self):
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def DealStatus(self):
+        return self._DealStatus
+
+    @DealStatus.setter
+    def DealStatus(self, DealStatus):
+        self._DealStatus = DealStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def GoodsName(self):
+        return self._GoodsName
+
+    @GoodsName.setter
+    def GoodsName(self, GoodsName):
+        self._GoodsName = GoodsName
+
+    @property
+    def ClientRemark(self):
+        return self._ClientRemark
+
+    @ClientRemark.setter
+    def ClientRemark(self, ClientRemark):
+        self._ClientRemark = ClientRemark
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def VoucherDecline(self):
+        return self._VoucherDecline
+
+    @VoucherDecline.setter
+    def VoucherDecline(self, VoucherDecline):
+        self._VoucherDecline = VoucherDecline
+
+    @property
+    def BigDealId(self):
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def ClientType(self):
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def ProjectType(self):
+        return self._ProjectType
+
+    @ProjectType.setter
+    def ProjectType(self, ProjectType):
+        self._ProjectType = ProjectType
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def PayerMode(self):
+        return self._PayerMode
+
+    @PayerMode.setter
+    def PayerMode(self, PayerMode):
+        self._PayerMode = PayerMode
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def OverdueTime(self):
+        return self._OverdueTime
+
+    @OverdueTime.setter
+    def OverdueTime(self, OverdueTime):
+        self._OverdueTime = OverdueTime
+
+    @property
+    def ProductInfo(self):
+        return self._ProductInfo
+
+    @ProductInfo.setter
+    def ProductInfo(self, ProductInfo):
+        self._ProductInfo = ProductInfo
+
+    @property
+    def PaymentMethod(self):
+        return self._PaymentMethod
+
+    @PaymentMethod.setter
+    def PaymentMethod(self, PaymentMethod):
+        self._PaymentMethod = PaymentMethod
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
 
 
     def _deserialize(self, params):
-        self.DealId = params.get("DealId")
-        self.DealName = params.get("DealName")
-        self.GoodsCategoryId = params.get("GoodsCategoryId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.AppId = params.get("AppId")
-        self.GoodsNum = params.get("GoodsNum")
+        self._DealId = params.get("DealId")
+        self._DealName = params.get("DealName")
+        self._GoodsCategoryId = params.get("GoodsCategoryId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._AppId = params.get("AppId")
+        self._GoodsNum = params.get("GoodsNum")
         if params.get("GoodsPrice") is not None:
-            self.GoodsPrice = DealGoodsPriceNewElem()
-            self.GoodsPrice._deserialize(params.get("GoodsPrice"))
-        self.Creater = params.get("Creater")
-        self.CreatTime = params.get("CreatTime")
-        self.PayEndTime = params.get("PayEndTime")
-        self.BillId = params.get("BillId")
-        self.Payer = params.get("Payer")
-        self.DealStatus = params.get("DealStatus")
-        self.Status = params.get("Status")
-        self.GoodsName = params.get("GoodsName")
-        self.ClientRemark = params.get("ClientRemark")
-        self.ActionType = params.get("ActionType")
-        self.VoucherDecline = params.get("VoucherDecline")
-        self.BigDealId = params.get("BigDealId")
-        self.ClientType = params.get("ClientType")
-        self.ProjectType = params.get("ProjectType")
-        self.SalesUin = params.get("SalesUin")
-        self.PayerMode = params.get("PayerMode")
-        self.ActivityId = params.get("ActivityId")
-        self.OverdueTime = params.get("OverdueTime")
+            self._GoodsPrice = DealGoodsPriceNewElem()
+            self._GoodsPrice._deserialize(params.get("GoodsPrice"))
+        self._Creater = params.get("Creater")
+        self._CreatTime = params.get("CreatTime")
+        self._PayEndTime = params.get("PayEndTime")
+        self._BillId = params.get("BillId")
+        self._Payer = params.get("Payer")
+        self._DealStatus = params.get("DealStatus")
+        self._Status = params.get("Status")
+        self._GoodsName = params.get("GoodsName")
+        self._ClientRemark = params.get("ClientRemark")
+        self._ActionType = params.get("ActionType")
+        self._VoucherDecline = params.get("VoucherDecline")
+        self._BigDealId = params.get("BigDealId")
+        self._ClientType = params.get("ClientType")
+        self._ProjectType = params.get("ProjectType")
+        self._SalesUin = params.get("SalesUin")
+        self._PayerMode = params.get("PayerMode")
+        self._ActivityId = params.get("ActivityId")
+        self._OverdueTime = params.get("OverdueTime")
         if params.get("ProductInfo") is not None:
-            self.ProductInfo = []
+            self._ProductInfo = []
             for item in params.get("ProductInfo"):
                 obj = ProductInfoElem()
                 obj._deserialize(item)
-                self.ProductInfo.append(obj)
-        self.PaymentMethod = params.get("PaymentMethod")
-        self.UpdateTime = params.get("UpdateTime")
-        self.ResourceIds = params.get("ResourceIds")
+                self._ProductInfo.append(obj)
+        self._PaymentMethod = params.get("PaymentMethod")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ResourceIds = params.get("ResourceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -422,26 +978,51 @@ class AgentPayDealsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OwnerUin: 订单所有者uin
+        :param _OwnerUin: 订单所有者uin
         :type OwnerUin: str
-        :param AgentPay: 代付标志，1：代付；0：自付
+        :param _AgentPay: 代付标志，1：代付；0：自付
         :type AgentPay: int
-        :param DealNames: 订单号数组
+        :param _DealNames: 订单号数组
         :type DealNames: list of str
         """
-        self.OwnerUin = None
-        self.AgentPay = None
-        self.DealNames = None
+        self._OwnerUin = None
+        self._AgentPay = None
+        self._DealNames = None
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def AgentPay(self):
+        return self._AgentPay
+
+    @AgentPay.setter
+    def AgentPay(self, AgentPay):
+        self._AgentPay = AgentPay
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
 
 
     def _deserialize(self, params):
-        self.OwnerUin = params.get("OwnerUin")
-        self.AgentPay = params.get("AgentPay")
-        self.DealNames = params.get("DealNames")
+        self._OwnerUin = params.get("OwnerUin")
+        self._AgentPay = params.get("AgentPay")
+        self._DealNames = params.get("DealNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -454,14 +1035,22 @@ class AgentPayDealsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AgentSalesmanElem(AbstractModel):
@@ -471,30 +1060,63 @@ class AgentSalesmanElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 代理商账号ID
+        :param _Uin: 代理商账号ID
         :type Uin: str
-        :param SalesUin: 业务员ID
+        :param _SalesUin: 业务员ID
         :type SalesUin: str
-        :param SalesName: 业务员姓名
+        :param _SalesName: 业务员姓名
         :type SalesName: str
-        :param CreateTime: 业务员创建时间
+        :param _CreateTime: 业务员创建时间
         :type CreateTime: str
         """
-        self.Uin = None
-        self.SalesUin = None
-        self.SalesName = None
-        self.CreateTime = None
+        self._Uin = None
+        self._SalesUin = None
+        self._SalesName = None
+        self._CreateTime = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def SalesName(self):
+        return self._SalesName
+
+    @SalesName.setter
+    def SalesName(self, SalesName):
+        self._SalesName = SalesName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.SalesUin = params.get("SalesUin")
-        self.SalesName = params.get("SalesName")
-        self.CreateTime = params.get("CreateTime")
+        self._Uin = params.get("Uin")
+        self._SalesUin = params.get("SalesUin")
+        self._SalesName = params.get("SalesName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -507,22 +1129,39 @@ class AgentTransferMoneyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
-        :param Amount: 转账金额，单位分
+        :param _Amount: 转账金额，单位分
         :type Amount: int
         """
-        self.ClientUin = None
-        self.Amount = None
+        self._ClientUin = None
+        self._Amount = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        self.Amount = params.get("Amount")
+        self._ClientUin = params.get("ClientUin")
+        self._Amount = params.get("Amount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -535,14 +1174,22 @@ class AgentTransferMoneyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AssignClientsToSalesRequest(AbstractModel):
@@ -552,30 +1199,63 @@ class AssignClientsToSalesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUins: 代客/申请中代客uin列表，最大50条
+        :param _ClientUins: 代客/申请中代客uin列表，最大50条
         :type ClientUins: list of str
-        :param SalesUin: 业务员uin
+        :param _SalesUin: 业务员uin
         :type SalesUin: str
-        :param AssignClientStatus: 代客类型:normal-代客 apply-申请中代客
+        :param _AssignClientStatus: 代客类型:normal-代客 apply-申请中代客
         :type AssignClientStatus: str
-        :param AssignActionType: 操作类型:assign-执行分派 cancel-取消分派
+        :param _AssignActionType: 操作类型:assign-执行分派 cancel-取消分派
         :type AssignActionType: str
         """
-        self.ClientUins = None
-        self.SalesUin = None
-        self.AssignClientStatus = None
-        self.AssignActionType = None
+        self._ClientUins = None
+        self._SalesUin = None
+        self._AssignClientStatus = None
+        self._AssignActionType = None
+
+    @property
+    def ClientUins(self):
+        return self._ClientUins
+
+    @ClientUins.setter
+    def ClientUins(self, ClientUins):
+        self._ClientUins = ClientUins
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def AssignClientStatus(self):
+        return self._AssignClientStatus
+
+    @AssignClientStatus.setter
+    def AssignClientStatus(self, AssignClientStatus):
+        self._AssignClientStatus = AssignClientStatus
+
+    @property
+    def AssignActionType(self):
+        return self._AssignActionType
+
+    @AssignActionType.setter
+    def AssignActionType(self, AssignActionType):
+        self._AssignActionType = AssignActionType
 
 
     def _deserialize(self, params):
-        self.ClientUins = params.get("ClientUins")
-        self.SalesUin = params.get("SalesUin")
-        self.AssignClientStatus = params.get("AssignClientStatus")
-        self.AssignActionType = params.get("AssignActionType")
+        self._ClientUins = params.get("ClientUins")
+        self._SalesUin = params.get("SalesUin")
+        self._AssignClientStatus = params.get("AssignClientStatus")
+        self._AssignActionType = params.get("AssignActionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -588,24 +1268,48 @@ class AssignClientsToSalesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SucceedUins: 处理成功的代客uin列表
+        :param _SucceedUins: 处理成功的代客uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SucceedUins: list of str
-        :param FailedUins: 处理失败的代客uin列表
+        :param _FailedUins: 处理失败的代客uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedUins: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SucceedUins = None
-        self.FailedUins = None
-        self.RequestId = None
+        self._SucceedUins = None
+        self._FailedUins = None
+        self._RequestId = None
+
+    @property
+    def SucceedUins(self):
+        return self._SucceedUins
+
+    @SucceedUins.setter
+    def SucceedUins(self, SucceedUins):
+        self._SucceedUins = SucceedUins
+
+    @property
+    def FailedUins(self):
+        return self._FailedUins
+
+    @FailedUins.setter
+    def FailedUins(self, FailedUins):
+        self._FailedUins = FailedUins
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SucceedUins = params.get("SucceedUins")
-        self.FailedUins = params.get("FailedUins")
-        self.RequestId = params.get("RequestId")
+        self._SucceedUins = params.get("SucceedUins")
+        self._FailedUins = params.get("FailedUins")
+        self._RequestId = params.get("RequestId")
 
 
 class AuditApplyClientRequest(AbstractModel):
@@ -615,26 +1319,51 @@ class AuditApplyClientRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 待审核客户账号ID
+        :param _ClientUin: 待审核客户账号ID
         :type ClientUin: str
-        :param AuditResult: 审核结果，可能的取值：accept/reject
+        :param _AuditResult: 审核结果，可能的取值：accept/reject
         :type AuditResult: str
-        :param Note: 申请理由，B类客户审核通过时必须填写申请理由
+        :param _Note: 申请理由，B类客户审核通过时必须填写申请理由
         :type Note: str
         """
-        self.ClientUin = None
-        self.AuditResult = None
-        self.Note = None
+        self._ClientUin = None
+        self._AuditResult = None
+        self._Note = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def AuditResult(self):
+        return self._AuditResult
+
+    @AuditResult.setter
+    def AuditResult(self, AuditResult):
+        self._AuditResult = AuditResult
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        self.AuditResult = params.get("AuditResult")
-        self.Note = params.get("Note")
+        self._ClientUin = params.get("ClientUin")
+        self._AuditResult = params.get("AuditResult")
+        self._Note = params.get("Note")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -647,31 +1376,71 @@ class AuditApplyClientResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 代理商账号ID
+        :param _Uin: 代理商账号ID
         :type Uin: str
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
-        :param AuditResult: 审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
+        :param _AuditResult: 审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
         :type AuditResult: str
-        :param AgentTime: 关联时间对应的时间戳
+        :param _AgentTime: 关联时间对应的时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentTime: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Uin = None
-        self.ClientUin = None
-        self.AuditResult = None
-        self.AgentTime = None
-        self.RequestId = None
+        self._Uin = None
+        self._ClientUin = None
+        self._AuditResult = None
+        self._AgentTime = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def AuditResult(self):
+        return self._AuditResult
+
+    @AuditResult.setter
+    def AuditResult(self, AuditResult):
+        self._AuditResult = AuditResult
+
+    @property
+    def AgentTime(self):
+        return self._AgentTime
+
+    @AgentTime.setter
+    def AgentTime(self, AgentTime):
+        self._AgentTime = AgentTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.ClientUin = params.get("ClientUin")
-        self.AuditResult = params.get("AuditResult")
-        self.AgentTime = params.get("AgentTime")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._ClientUin = params.get("ClientUin")
+        self._AuditResult = params.get("AuditResult")
+        self._AgentTime = params.get("AgentTime")
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePayRelationForClientRequest(AbstractModel):
@@ -681,18 +1450,27 @@ class CreatePayRelationForClientRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
         """
-        self.ClientUin = None
+        self._ClientUin = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
+        self._ClientUin = params.get("ClientUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -705,14 +1483,22 @@ class CreatePayRelationForClientResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DealGoodsPriceNewElem(AbstractModel):
@@ -722,22 +1508,39 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RealTotalCost: 实付金额（单位：分）
+        :param _RealTotalCost: 实付金额（单位：分）
         :type RealTotalCost: int
-        :param OriginalTotalCost: 原始金额（不含折扣，单位：分）
+        :param _OriginalTotalCost: 原始金额（不含折扣，单位：分）
         :type OriginalTotalCost: int
         """
-        self.RealTotalCost = None
-        self.OriginalTotalCost = None
+        self._RealTotalCost = None
+        self._OriginalTotalCost = None
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def OriginalTotalCost(self):
+        return self._OriginalTotalCost
+
+    @OriginalTotalCost.setter
+    def OriginalTotalCost(self, OriginalTotalCost):
+        self._OriginalTotalCost = OriginalTotalCost
 
 
     def _deserialize(self, params):
-        self.RealTotalCost = params.get("RealTotalCost")
-        self.OriginalTotalCost = params.get("OriginalTotalCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._OriginalTotalCost = params.get("OriginalTotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -750,66 +1553,171 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
-        :param ClientName: 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+        :param _ClientName: 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
         :type ClientName: str
-        :param ClientFlag: 客户类型，a/b，类型定义参考代理商相关政策文档
+        :param _ClientFlag: 客户类型，a/b，类型定义参考代理商相关政策文档
         :type ClientFlag: str
-        :param OrderDirection: ASC/DESC， 不区分大小写，按审核通过时间排序
+        :param _OrderDirection: ASC/DESC， 不区分大小写，按审核通过时间排序
         :type OrderDirection: str
-        :param ClientUins: 客户账号ID列表
+        :param _ClientUins: 客户账号ID列表
         :type ClientUins: list of str
-        :param HasOverdueBill: 是否欠费。0：不欠费；1：欠费
+        :param _HasOverdueBill: 是否欠费。0：不欠费；1：欠费
         :type HasOverdueBill: int
-        :param ClientRemark: 客户备注
+        :param _ClientRemark: 客户备注
         :type ClientRemark: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param ClientType: 可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
+        :param _ClientType: 可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
         :type ClientType: str
-        :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :param _ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
         :type ProjectType: str
-        :param SalesUin: 业务员ID
+        :param _SalesUin: 业务员ID
         :type SalesUin: str
-        :param SalesName: 业务员姓名（模糊查询）
+        :param _SalesName: 业务员姓名（模糊查询）
         :type SalesName: str
         """
-        self.ClientUin = None
-        self.ClientName = None
-        self.ClientFlag = None
-        self.OrderDirection = None
-        self.ClientUins = None
-        self.HasOverdueBill = None
-        self.ClientRemark = None
-        self.Offset = None
-        self.Limit = None
-        self.ClientType = None
-        self.ProjectType = None
-        self.SalesUin = None
-        self.SalesName = None
+        self._ClientUin = None
+        self._ClientName = None
+        self._ClientFlag = None
+        self._OrderDirection = None
+        self._ClientUins = None
+        self._HasOverdueBill = None
+        self._ClientRemark = None
+        self._Offset = None
+        self._Limit = None
+        self._ClientType = None
+        self._ProjectType = None
+        self._SalesUin = None
+        self._SalesName = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def ClientName(self):
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
+
+    @property
+    def ClientFlag(self):
+        return self._ClientFlag
+
+    @ClientFlag.setter
+    def ClientFlag(self, ClientFlag):
+        self._ClientFlag = ClientFlag
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def ClientUins(self):
+        return self._ClientUins
+
+    @ClientUins.setter
+    def ClientUins(self, ClientUins):
+        self._ClientUins = ClientUins
+
+    @property
+    def HasOverdueBill(self):
+        return self._HasOverdueBill
+
+    @HasOverdueBill.setter
+    def HasOverdueBill(self, HasOverdueBill):
+        self._HasOverdueBill = HasOverdueBill
+
+    @property
+    def ClientRemark(self):
+        return self._ClientRemark
+
+    @ClientRemark.setter
+    def ClientRemark(self, ClientRemark):
+        self._ClientRemark = ClientRemark
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ClientType(self):
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def ProjectType(self):
+        return self._ProjectType
+
+    @ProjectType.setter
+    def ProjectType(self, ProjectType):
+        self._ProjectType = ProjectType
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def SalesName(self):
+        return self._SalesName
+
+    @SalesName.setter
+    def SalesName(self, SalesName):
+        self._SalesName = SalesName
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        self.ClientName = params.get("ClientName")
-        self.ClientFlag = params.get("ClientFlag")
-        self.OrderDirection = params.get("OrderDirection")
-        self.ClientUins = params.get("ClientUins")
-        self.HasOverdueBill = params.get("HasOverdueBill")
-        self.ClientRemark = params.get("ClientRemark")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ClientType = params.get("ClientType")
-        self.ProjectType = params.get("ProjectType")
-        self.SalesUin = params.get("SalesUin")
-        self.SalesName = params.get("SalesName")
+        self._ClientUin = params.get("ClientUin")
+        self._ClientName = params.get("ClientName")
+        self._ClientFlag = params.get("ClientFlag")
+        self._OrderDirection = params.get("OrderDirection")
+        self._ClientUins = params.get("ClientUins")
+        self._HasOverdueBill = params.get("HasOverdueBill")
+        self._ClientRemark = params.get("ClientRemark")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ClientType = params.get("ClientType")
+        self._ProjectType = params.get("ProjectType")
+        self._SalesUin = params.get("SalesUin")
+        self._SalesName = params.get("SalesName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -822,27 +1730,51 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentClientSet: 已审核代客列表
+        :param _AgentClientSet: 已审核代客列表
         :type AgentClientSet: list of AgentAuditedClient
-        :param TotalCount: 符合条件的代客总数
+        :param _TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AgentClientSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AgentClientSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AgentClientSet(self):
+        return self._AgentClientSet
+
+    @AgentClientSet.setter
+    def AgentClientSet(self, AgentClientSet):
+        self._AgentClientSet = AgentClientSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AgentClientSet") is not None:
-            self.AgentClientSet = []
+            self._AgentClientSet = []
             for item in params.get("AgentClientSet"):
                 obj = AgentAuditedClient()
                 obj._deserialize(item)
-                self.AgentClientSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AgentClientSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgentBillsRequest(AbstractModel):
@@ -852,42 +1784,99 @@ class DescribeAgentBillsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SettleMonth: 支付月份，如2018-02
+        :param _SettleMonth: 支付月份，如2018-02
         :type SettleMonth: str
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
-        :param PayMode: 支付方式，prepay/postpay
+        :param _PayMode: 支付方式，prepay/postpay
         :type PayMode: str
-        :param OrderId: 预付费订单号
+        :param _OrderId: 预付费订单号
         :type OrderId: str
-        :param ClientRemark: 客户备注名称
+        :param _ClientRemark: 客户备注名称
         :type ClientRemark: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
         """
-        self.SettleMonth = None
-        self.ClientUin = None
-        self.PayMode = None
-        self.OrderId = None
-        self.ClientRemark = None
-        self.Offset = None
-        self.Limit = None
+        self._SettleMonth = None
+        self._ClientUin = None
+        self._PayMode = None
+        self._OrderId = None
+        self._ClientRemark = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SettleMonth(self):
+        return self._SettleMonth
+
+    @SettleMonth.setter
+    def SettleMonth(self, SettleMonth):
+        self._SettleMonth = SettleMonth
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def ClientRemark(self):
+        return self._ClientRemark
+
+    @ClientRemark.setter
+    def ClientRemark(self, ClientRemark):
+        self._ClientRemark = ClientRemark
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.SettleMonth = params.get("SettleMonth")
-        self.ClientUin = params.get("ClientUin")
-        self.PayMode = params.get("PayMode")
-        self.OrderId = params.get("OrderId")
-        self.ClientRemark = params.get("ClientRemark")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._SettleMonth = params.get("SettleMonth")
+        self._ClientUin = params.get("ClientUin")
+        self._PayMode = params.get("PayMode")
+        self._OrderId = params.get("OrderId")
+        self._ClientRemark = params.get("ClientRemark")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -900,27 +1889,51 @@ class DescribeAgentBillsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合查询条件列表总数量
+        :param _TotalCount: 符合查询条件列表总数量
         :type TotalCount: int
-        :param AgentBillSet: 业务明细列表
+        :param _AgentBillSet: 业务明细列表
         :type AgentBillSet: list of AgentBillElem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.AgentBillSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._AgentBillSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AgentBillSet(self):
+        return self._AgentBillSet
+
+    @AgentBillSet.setter
+    def AgentBillSet(self, AgentBillSet):
+        self._AgentBillSet = AgentBillSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("AgentBillSet") is not None:
-            self.AgentBillSet = []
+            self._AgentBillSet = []
             for item in params.get("AgentBillSet"):
                 obj = AgentBillElem()
                 obj._deserialize(item)
-                self.AgentBillSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AgentBillSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgentClientGradeRequest(AbstractModel):
@@ -930,18 +1943,27 @@ class DescribeAgentClientGradeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 代客uin
+        :param _ClientUin: 代客uin
         :type ClientUin: str
         """
-        self.ClientUin = None
+        self._ClientUin = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
+        self._ClientUin = params.get("ClientUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -954,30 +1976,70 @@ class DescribeAgentClientGradeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditStatus: 审核状态：0待审核，1，已审核
+        :param _AuditStatus: 审核状态：0待审核，1，已审核
         :type AuditStatus: int
-        :param AuthState: 实名认证状态：0，未实名认证，1实名认证
+        :param _AuthState: 实名认证状态：0，未实名认证，1实名认证
         :type AuthState: int
-        :param ClientGrade: 客户级别
+        :param _ClientGrade: 客户级别
         :type ClientGrade: str
-        :param ClientType: 客户类型：1，个人；2，企业；3，其他
+        :param _ClientType: 客户类型：1，个人；2，企业；3，其他
         :type ClientType: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AuditStatus = None
-        self.AuthState = None
-        self.ClientGrade = None
-        self.ClientType = None
-        self.RequestId = None
+        self._AuditStatus = None
+        self._AuthState = None
+        self._ClientGrade = None
+        self._ClientType = None
+        self._RequestId = None
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def AuthState(self):
+        return self._AuthState
+
+    @AuthState.setter
+    def AuthState(self, AuthState):
+        self._AuthState = AuthState
+
+    @property
+    def ClientGrade(self):
+        return self._ClientGrade
+
+    @ClientGrade.setter
+    def ClientGrade(self, ClientGrade):
+        self._ClientGrade = ClientGrade
+
+    @property
+    def ClientType(self):
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AuditStatus = params.get("AuditStatus")
-        self.AuthState = params.get("AuthState")
-        self.ClientGrade = params.get("ClientGrade")
-        self.ClientType = params.get("ClientType")
-        self.RequestId = params.get("RequestId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._AuthState = params.get("AuthState")
+        self._ClientGrade = params.get("ClientGrade")
+        self._ClientType = params.get("ClientType")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgentClientsRequest(AbstractModel):
@@ -987,46 +2049,111 @@ class DescribeAgentClientsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
-        :param ClientName: 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+        :param _ClientName: 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
         :type ClientName: str
-        :param ClientFlag: 客户类型，a/b，类型定义参考代理商相关政策文档
+        :param _ClientFlag: 客户类型，a/b，类型定义参考代理商相关政策文档
         :type ClientFlag: str
-        :param OrderDirection: ASC/DESC， 不区分大小写，按申请时间排序
+        :param _OrderDirection: ASC/DESC， 不区分大小写，按申请时间排序
         :type OrderDirection: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param SalesUin: 业务员ID
+        :param _SalesUin: 业务员ID
         :type SalesUin: str
-        :param SalesName: 业务员姓名（模糊查询）
+        :param _SalesName: 业务员姓名（模糊查询）
         :type SalesName: str
         """
-        self.ClientUin = None
-        self.ClientName = None
-        self.ClientFlag = None
-        self.OrderDirection = None
-        self.Offset = None
-        self.Limit = None
-        self.SalesUin = None
-        self.SalesName = None
+        self._ClientUin = None
+        self._ClientName = None
+        self._ClientFlag = None
+        self._OrderDirection = None
+        self._Offset = None
+        self._Limit = None
+        self._SalesUin = None
+        self._SalesName = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def ClientName(self):
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
+
+    @property
+    def ClientFlag(self):
+        return self._ClientFlag
+
+    @ClientFlag.setter
+    def ClientFlag(self, ClientFlag):
+        self._ClientFlag = ClientFlag
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def SalesName(self):
+        return self._SalesName
+
+    @SalesName.setter
+    def SalesName(self, SalesName):
+        self._SalesName = SalesName
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        self.ClientName = params.get("ClientName")
-        self.ClientFlag = params.get("ClientFlag")
-        self.OrderDirection = params.get("OrderDirection")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SalesUin = params.get("SalesUin")
-        self.SalesName = params.get("SalesName")
+        self._ClientUin = params.get("ClientUin")
+        self._ClientName = params.get("ClientName")
+        self._ClientFlag = params.get("ClientFlag")
+        self._OrderDirection = params.get("OrderDirection")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SalesUin = params.get("SalesUin")
+        self._SalesName = params.get("SalesName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1039,27 +2166,51 @@ class DescribeAgentClientsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentClientSet: 待审核代客列表
+        :param _AgentClientSet: 待审核代客列表
         :type AgentClientSet: list of AgentClientElem
-        :param TotalCount: 符合条件的代客总数
+        :param _TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AgentClientSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AgentClientSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AgentClientSet(self):
+        return self._AgentClientSet
+
+    @AgentClientSet.setter
+    def AgentClientSet(self, AgentClientSet):
+        self._AgentClientSet = AgentClientSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AgentClientSet") is not None:
-            self.AgentClientSet = []
+            self._AgentClientSet = []
             for item in params.get("AgentClientSet"):
                 obj = AgentClientElem()
                 obj._deserialize(item)
-                self.AgentClientSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AgentClientSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgentDealsByCacheRequest(AbstractModel):
@@ -1069,54 +2220,135 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目 最大200
+        :param _Limit: 限制数目 最大200
         :type Limit: int
-        :param CreatTimeRangeStart: 下单时间范围起始点【请保持时间范围最大90天】
+        :param _CreatTimeRangeStart: 下单时间范围起始点【请保持时间范围最大90天】
         :type CreatTimeRangeStart: str
-        :param CreatTimeRangeEnd: 下单时间范围终止点【请保持时间范围最大90天】
+        :param _CreatTimeRangeEnd: 下单时间范围终止点【请保持时间范围最大90天】
         :type CreatTimeRangeEnd: str
-        :param Order: 0:下单时间降序；其他：下单时间升序
+        :param _Order: 0:下单时间降序；其他：下单时间升序
         :type Order: int
-        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
         :type Status: int
-        :param OwnerUins: 下单人账号ID列表
+        :param _OwnerUins: 下单人账号ID列表
         :type OwnerUins: list of str
-        :param DealNames: 子订单号列表
+        :param _DealNames: 子订单号列表
         :type DealNames: list of str
-        :param BigDealIds: 大订单号列表
+        :param _BigDealIds: 大订单号列表
         :type BigDealIds: list of str
-        :param PayerMode: 支付方式，0：自付；1：代付
+        :param _PayerMode: 支付方式，0：自付；1：代付
         :type PayerMode: int
         """
-        self.Offset = None
-        self.Limit = None
-        self.CreatTimeRangeStart = None
-        self.CreatTimeRangeEnd = None
-        self.Order = None
-        self.Status = None
-        self.OwnerUins = None
-        self.DealNames = None
-        self.BigDealIds = None
-        self.PayerMode = None
+        self._Offset = None
+        self._Limit = None
+        self._CreatTimeRangeStart = None
+        self._CreatTimeRangeEnd = None
+        self._Order = None
+        self._Status = None
+        self._OwnerUins = None
+        self._DealNames = None
+        self._BigDealIds = None
+        self._PayerMode = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CreatTimeRangeStart(self):
+        return self._CreatTimeRangeStart
+
+    @CreatTimeRangeStart.setter
+    def CreatTimeRangeStart(self, CreatTimeRangeStart):
+        self._CreatTimeRangeStart = CreatTimeRangeStart
+
+    @property
+    def CreatTimeRangeEnd(self):
+        return self._CreatTimeRangeEnd
+
+    @CreatTimeRangeEnd.setter
+    def CreatTimeRangeEnd(self, CreatTimeRangeEnd):
+        self._CreatTimeRangeEnd = CreatTimeRangeEnd
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def BigDealIds(self):
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def PayerMode(self):
+        return self._PayerMode
+
+    @PayerMode.setter
+    def PayerMode(self, PayerMode):
+        self._PayerMode = PayerMode
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
-        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
-        self.Order = params.get("Order")
-        self.Status = params.get("Status")
-        self.OwnerUins = params.get("OwnerUins")
-        self.DealNames = params.get("DealNames")
-        self.BigDealIds = params.get("BigDealIds")
-        self.PayerMode = params.get("PayerMode")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self._CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self._Order = params.get("Order")
+        self._Status = params.get("Status")
+        self._OwnerUins = params.get("OwnerUins")
+        self._DealNames = params.get("DealNames")
+        self._BigDealIds = params.get("BigDealIds")
+        self._PayerMode = params.get("PayerMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1129,27 +2361,51 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentDealSet: 订单数组
+        :param _AgentDealSet: 订单数组
         :type AgentDealSet: list of AgentDealNewElem
-        :param TotalCount: 符合条件的订单总数量
+        :param _TotalCount: 符合条件的订单总数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AgentDealSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AgentDealSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AgentDealSet(self):
+        return self._AgentDealSet
+
+    @AgentDealSet.setter
+    def AgentDealSet(self, AgentDealSet):
+        self._AgentDealSet = AgentDealSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AgentDealSet") is not None:
-            self.AgentDealSet = []
+            self._AgentDealSet = []
             for item in params.get("AgentDealSet"):
                 obj = AgentDealNewElem()
                 obj._deserialize(item)
-                self.AgentDealSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AgentDealSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgentPayDealsV2Request(AbstractModel):
@@ -1159,50 +2415,123 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目 最大100
+        :param _Limit: 限制数目 最大100
         :type Limit: int
-        :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
         :type CreatTimeRangeStart: str
-        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :param _CreatTimeRangeEnd: 下单时间范围终止点
         :type CreatTimeRangeEnd: str
-        :param Order: 0:下单时间降序；其他：下单时间升序
+        :param _Order: 0:下单时间降序；其他：下单时间升序
         :type Order: int
-        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
         :type Status: int
-        :param OwnerUins: 下单人账号ID列表
+        :param _OwnerUins: 下单人账号ID列表
         :type OwnerUins: list of str
-        :param DealNames: 子订单号列表
+        :param _DealNames: 子订单号列表
         :type DealNames: list of str
-        :param BigDealIds: 大订单号列表
+        :param _BigDealIds: 大订单号列表
         :type BigDealIds: list of str
         """
-        self.Offset = None
-        self.Limit = None
-        self.CreatTimeRangeStart = None
-        self.CreatTimeRangeEnd = None
-        self.Order = None
-        self.Status = None
-        self.OwnerUins = None
-        self.DealNames = None
-        self.BigDealIds = None
+        self._Offset = None
+        self._Limit = None
+        self._CreatTimeRangeStart = None
+        self._CreatTimeRangeEnd = None
+        self._Order = None
+        self._Status = None
+        self._OwnerUins = None
+        self._DealNames = None
+        self._BigDealIds = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CreatTimeRangeStart(self):
+        return self._CreatTimeRangeStart
+
+    @CreatTimeRangeStart.setter
+    def CreatTimeRangeStart(self, CreatTimeRangeStart):
+        self._CreatTimeRangeStart = CreatTimeRangeStart
+
+    @property
+    def CreatTimeRangeEnd(self):
+        return self._CreatTimeRangeEnd
+
+    @CreatTimeRangeEnd.setter
+    def CreatTimeRangeEnd(self, CreatTimeRangeEnd):
+        self._CreatTimeRangeEnd = CreatTimeRangeEnd
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def BigDealIds(self):
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
-        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
-        self.Order = params.get("Order")
-        self.Status = params.get("Status")
-        self.OwnerUins = params.get("OwnerUins")
-        self.DealNames = params.get("DealNames")
-        self.BigDealIds = params.get("BigDealIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self._CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self._Order = params.get("Order")
+        self._Status = params.get("Status")
+        self._OwnerUins = params.get("OwnerUins")
+        self._DealNames = params.get("DealNames")
+        self._BigDealIds = params.get("BigDealIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1215,27 +2544,51 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentPayDealSet: 订单数组
+        :param _AgentPayDealSet: 订单数组
         :type AgentPayDealSet: list of AgentDealNewElem
-        :param TotalCount: 符合条件的订单总数量
+        :param _TotalCount: 符合条件的订单总数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AgentPayDealSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AgentPayDealSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AgentPayDealSet(self):
+        return self._AgentPayDealSet
+
+    @AgentPayDealSet.setter
+    def AgentPayDealSet(self, AgentPayDealSet):
+        self._AgentPayDealSet = AgentPayDealSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AgentPayDealSet") is not None:
-            self.AgentPayDealSet = []
+            self._AgentPayDealSet = []
             for item in params.get("AgentPayDealSet"):
                 obj = AgentDealNewElem()
                 obj._deserialize(item)
-                self.AgentPayDealSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AgentPayDealSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgentSelfPayDealsV2Request(AbstractModel):
@@ -1245,50 +2598,123 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OwnerUin: 下单人账号ID
+        :param _OwnerUin: 下单人账号ID
         :type OwnerUin: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目 最大100
+        :param _Limit: 限制数目 最大100
         :type Limit: int
-        :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
         :type CreatTimeRangeStart: str
-        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :param _CreatTimeRangeEnd: 下单时间范围终止点
         :type CreatTimeRangeEnd: str
-        :param Order: 0:下单时间降序；其他：下单时间升序
+        :param _Order: 0:下单时间降序；其他：下单时间升序
         :type Order: int
-        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
         :type Status: int
-        :param DealNames: 子订单号列表
+        :param _DealNames: 子订单号列表
         :type DealNames: list of str
-        :param BigDealIds: 大订单号列表
+        :param _BigDealIds: 大订单号列表
         :type BigDealIds: list of str
         """
-        self.OwnerUin = None
-        self.Offset = None
-        self.Limit = None
-        self.CreatTimeRangeStart = None
-        self.CreatTimeRangeEnd = None
-        self.Order = None
-        self.Status = None
-        self.DealNames = None
-        self.BigDealIds = None
+        self._OwnerUin = None
+        self._Offset = None
+        self._Limit = None
+        self._CreatTimeRangeStart = None
+        self._CreatTimeRangeEnd = None
+        self._Order = None
+        self._Status = None
+        self._DealNames = None
+        self._BigDealIds = None
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CreatTimeRangeStart(self):
+        return self._CreatTimeRangeStart
+
+    @CreatTimeRangeStart.setter
+    def CreatTimeRangeStart(self, CreatTimeRangeStart):
+        self._CreatTimeRangeStart = CreatTimeRangeStart
+
+    @property
+    def CreatTimeRangeEnd(self):
+        return self._CreatTimeRangeEnd
+
+    @CreatTimeRangeEnd.setter
+    def CreatTimeRangeEnd(self, CreatTimeRangeEnd):
+        self._CreatTimeRangeEnd = CreatTimeRangeEnd
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def BigDealIds(self):
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
 
 
     def _deserialize(self, params):
-        self.OwnerUin = params.get("OwnerUin")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
-        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
-        self.Order = params.get("Order")
-        self.Status = params.get("Status")
-        self.DealNames = params.get("DealNames")
-        self.BigDealIds = params.get("BigDealIds")
+        self._OwnerUin = params.get("OwnerUin")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self._CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self._Order = params.get("Order")
+        self._Status = params.get("Status")
+        self._DealNames = params.get("DealNames")
+        self._BigDealIds = params.get("BigDealIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1301,27 +2727,51 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentPayDealSet: 订单数组
+        :param _AgentPayDealSet: 订单数组
         :type AgentPayDealSet: list of AgentDealNewElem
-        :param TotalCount: 符合条件的订单总数量
+        :param _TotalCount: 符合条件的订单总数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AgentPayDealSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AgentPayDealSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AgentPayDealSet(self):
+        return self._AgentPayDealSet
+
+    @AgentPayDealSet.setter
+    def AgentPayDealSet(self, AgentPayDealSet):
+        self._AgentPayDealSet = AgentPayDealSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AgentPayDealSet") is not None:
-            self.AgentPayDealSet = []
+            self._AgentPayDealSet = []
             for item in params.get("AgentPayDealSet"):
                 obj = AgentDealNewElem()
                 obj._deserialize(item)
-                self.AgentPayDealSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AgentPayDealSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClientBalanceNewRequest(AbstractModel):
@@ -1331,18 +2781,27 @@ class DescribeClientBalanceNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 客户(代客)账号ID
+        :param _ClientUin: 客户(代客)账号ID
         :type ClientUin: str
         """
-        self.ClientUin = None
+        self._ClientUin = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
+        self._ClientUin = params.get("ClientUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1355,22 +2814,46 @@ class DescribeClientBalanceNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Balance: 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
+        :param _Balance: 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
         :type Balance: int
-        :param Cash: 账户现金余额，单位分
+        :param _Cash: 账户现金余额，单位分
         :type Cash: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Balance = None
-        self.Cash = None
-        self.RequestId = None
+        self._Balance = None
+        self._Cash = None
+        self._RequestId = None
+
+    @property
+    def Balance(self):
+        return self._Balance
+
+    @Balance.setter
+    def Balance(self, Balance):
+        self._Balance = Balance
+
+    @property
+    def Cash(self):
+        return self._Cash
+
+    @Cash.setter
+    def Cash(self, Cash):
+        self._Cash = Cash
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Balance = params.get("Balance")
-        self.Cash = params.get("Cash")
-        self.RequestId = params.get("RequestId")
+        self._Balance = params.get("Balance")
+        self._Cash = params.get("Cash")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRebateInfosNewRequest(AbstractModel):
@@ -1380,26 +2863,51 @@ class DescribeRebateInfosNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RebateMonth: 返佣月份，如2018-02
+        :param _RebateMonth: 返佣月份，如2018-02
         :type RebateMonth: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
         """
-        self.RebateMonth = None
-        self.Offset = None
-        self.Limit = None
+        self._RebateMonth = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def RebateMonth(self):
+        return self._RebateMonth
+
+    @RebateMonth.setter
+    def RebateMonth(self, RebateMonth):
+        self._RebateMonth = RebateMonth
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.RebateMonth = params.get("RebateMonth")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._RebateMonth = params.get("RebateMonth")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1412,27 +2920,51 @@ class DescribeRebateInfosNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RebateInfoSet: 返佣信息列表
+        :param _RebateInfoSet: 返佣信息列表
         :type RebateInfoSet: list of RebateInfoElemNew
-        :param TotalCount: 符合查询条件返佣信息数目
+        :param _TotalCount: 符合查询条件返佣信息数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RebateInfoSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._RebateInfoSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RebateInfoSet(self):
+        return self._RebateInfoSet
+
+    @RebateInfoSet.setter
+    def RebateInfoSet(self, RebateInfoSet):
+        self._RebateInfoSet = RebateInfoSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RebateInfoSet") is not None:
-            self.RebateInfoSet = []
+            self._RebateInfoSet = []
             for item in params.get("RebateInfoSet"):
                 obj = RebateInfoElemNew()
                 obj._deserialize(item)
-                self.RebateInfoSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._RebateInfoSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRebateInfosRequest(AbstractModel):
@@ -1442,26 +2974,51 @@ class DescribeRebateInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RebateMonth: 返佣月份，如2018-02
+        :param _RebateMonth: 返佣月份，如2018-02
         :type RebateMonth: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
         """
-        self.RebateMonth = None
-        self.Offset = None
-        self.Limit = None
+        self._RebateMonth = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def RebateMonth(self):
+        return self._RebateMonth
+
+    @RebateMonth.setter
+    def RebateMonth(self, RebateMonth):
+        self._RebateMonth = RebateMonth
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.RebateMonth = params.get("RebateMonth")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._RebateMonth = params.get("RebateMonth")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1474,27 +3031,51 @@ class DescribeRebateInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RebateInfoSet: 返佣信息列表
+        :param _RebateInfoSet: 返佣信息列表
         :type RebateInfoSet: list of RebateInfoElem
-        :param TotalCount: 符合查询条件返佣信息数目
+        :param _TotalCount: 符合查询条件返佣信息数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RebateInfoSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._RebateInfoSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RebateInfoSet(self):
+        return self._RebateInfoSet
+
+    @RebateInfoSet.setter
+    def RebateInfoSet(self, RebateInfoSet):
+        self._RebateInfoSet = RebateInfoSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RebateInfoSet") is not None:
-            self.RebateInfoSet = []
+            self._RebateInfoSet = []
             for item in params.get("RebateInfoSet"):
                 obj = RebateInfoElem()
                 obj._deserialize(item)
-                self.RebateInfoSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._RebateInfoSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSalesmansRequest(AbstractModel):
@@ -1504,34 +3085,75 @@ class DescribeSalesmansRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param SalesName: 业务员姓名(模糊查询)
+        :param _SalesName: 业务员姓名(模糊查询)
         :type SalesName: str
-        :param SalesUin: 业务员ID
+        :param _SalesUin: 业务员ID
         :type SalesUin: str
-        :param OrderDirection: ASC/DESC， 不区分大小写，按创建通过时间排序
+        :param _OrderDirection: ASC/DESC， 不区分大小写，按创建通过时间排序
         :type OrderDirection: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.SalesName = None
-        self.SalesUin = None
-        self.OrderDirection = None
+        self._Offset = None
+        self._Limit = None
+        self._SalesName = None
+        self._SalesUin = None
+        self._OrderDirection = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SalesName(self):
+        return self._SalesName
+
+    @SalesName.setter
+    def SalesName(self, SalesName):
+        self._SalesName = SalesName
+
+    @property
+    def SalesUin(self):
+        return self._SalesUin
+
+    @SalesUin.setter
+    def SalesUin(self, SalesUin):
+        self._SalesUin = SalesUin
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SalesName = params.get("SalesName")
-        self.SalesUin = params.get("SalesUin")
-        self.OrderDirection = params.get("OrderDirection")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SalesName = params.get("SalesName")
+        self._SalesUin = params.get("SalesUin")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1544,27 +3166,51 @@ class DescribeSalesmansResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentSalesmanSet: 业务员列表
+        :param _AgentSalesmanSet: 业务员列表
         :type AgentSalesmanSet: list of AgentSalesmanElem
-        :param TotalCount: 符合条件的代客总数
+        :param _TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AgentSalesmanSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AgentSalesmanSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AgentSalesmanSet(self):
+        return self._AgentSalesmanSet
+
+    @AgentSalesmanSet.setter
+    def AgentSalesmanSet(self, AgentSalesmanSet):
+        self._AgentSalesmanSet = AgentSalesmanSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AgentSalesmanSet") is not None:
-            self.AgentSalesmanSet = []
+            self._AgentSalesmanSet = []
             for item in params.get("AgentSalesmanSet"):
                 obj = AgentSalesmanElem()
                 obj._deserialize(item)
-                self.AgentSalesmanSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AgentSalesmanSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUnbindClientListRequest(AbstractModel):
@@ -1574,42 +3220,99 @@ class DescribeUnbindClientListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 解绑状态：0:所有,1:审核中,2已解绑
+        :param _Status: 解绑状态：0:所有,1:审核中,2已解绑
         :type Status: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param UnbindUin: 解绑账号ID
+        :param _UnbindUin: 解绑账号ID
         :type UnbindUin: str
-        :param ApplyTimeStart: 解绑申请时间范围起始点
+        :param _ApplyTimeStart: 解绑申请时间范围起始点
         :type ApplyTimeStart: str
-        :param ApplyTimeEnd: 解绑申请时间范围终止点
+        :param _ApplyTimeEnd: 解绑申请时间范围终止点
         :type ApplyTimeEnd: str
-        :param OrderDirection: 对申请时间的升序降序，值：asc，desc
+        :param _OrderDirection: 对申请时间的升序降序，值：asc，desc
         :type OrderDirection: str
         """
-        self.Status = None
-        self.Offset = None
-        self.Limit = None
-        self.UnbindUin = None
-        self.ApplyTimeStart = None
-        self.ApplyTimeEnd = None
-        self.OrderDirection = None
+        self._Status = None
+        self._Offset = None
+        self._Limit = None
+        self._UnbindUin = None
+        self._ApplyTimeStart = None
+        self._ApplyTimeEnd = None
+        self._OrderDirection = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def UnbindUin(self):
+        return self._UnbindUin
+
+    @UnbindUin.setter
+    def UnbindUin(self, UnbindUin):
+        self._UnbindUin = UnbindUin
+
+    @property
+    def ApplyTimeStart(self):
+        return self._ApplyTimeStart
+
+    @ApplyTimeStart.setter
+    def ApplyTimeStart(self, ApplyTimeStart):
+        self._ApplyTimeStart = ApplyTimeStart
+
+    @property
+    def ApplyTimeEnd(self):
+        return self._ApplyTimeEnd
+
+    @ApplyTimeEnd.setter
+    def ApplyTimeEnd(self, ApplyTimeEnd):
+        self._ApplyTimeEnd = ApplyTimeEnd
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.UnbindUin = params.get("UnbindUin")
-        self.ApplyTimeStart = params.get("ApplyTimeStart")
-        self.ApplyTimeEnd = params.get("ApplyTimeEnd")
-        self.OrderDirection = params.get("OrderDirection")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._UnbindUin = params.get("UnbindUin")
+        self._ApplyTimeStart = params.get("ApplyTimeStart")
+        self._ApplyTimeEnd = params.get("ApplyTimeEnd")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1622,27 +3325,51 @@ class DescribeUnbindClientListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的解绑客户数量
+        :param _TotalCount: 符合条件的解绑客户数量
         :type TotalCount: int
-        :param UnbindClientList: 符合条件的解绑客户列表
+        :param _UnbindClientList: 符合条件的解绑客户列表
         :type UnbindClientList: list of UnbindClientElem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.UnbindClientList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._UnbindClientList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def UnbindClientList(self):
+        return self._UnbindClientList
+
+    @UnbindClientList.setter
+    def UnbindClientList(self, UnbindClientList):
+        self._UnbindClientList = UnbindClientList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("UnbindClientList") is not None:
-            self.UnbindClientList = []
+            self._UnbindClientList = []
             for item in params.get("UnbindClientList"):
                 obj = UnbindClientElem()
                 obj._deserialize(item)
-                self.UnbindClientList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._UnbindClientList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyClientRemarkRequest(AbstractModel):
@@ -1652,22 +3379,39 @@ class ModifyClientRemarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientRemark: 客户备注名称
+        :param _ClientRemark: 客户备注名称
         :type ClientRemark: str
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
         """
-        self.ClientRemark = None
-        self.ClientUin = None
+        self._ClientRemark = None
+        self._ClientUin = None
+
+    @property
+    def ClientRemark(self):
+        return self._ClientRemark
+
+    @ClientRemark.setter
+    def ClientRemark(self, ClientRemark):
+        self._ClientRemark = ClientRemark
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
 
 
     def _deserialize(self, params):
-        self.ClientRemark = params.get("ClientRemark")
-        self.ClientUin = params.get("ClientUin")
+        self._ClientRemark = params.get("ClientRemark")
+        self._ClientUin = params.get("ClientUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1680,14 +3424,22 @@ class ModifyClientRemarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ProductInfoElem(AbstractModel):
@@ -1697,22 +3449,39 @@ class ProductInfoElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 产品属性
+        :param _Name: 产品属性
         :type Name: str
-        :param Value: 产品属性值
+        :param _Value: 产品属性值
         :type Value: str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1725,38 +3494,87 @@ class RebateInfoElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 代理商账号ID
+        :param _Uin: 代理商账号ID
         :type Uin: str
-        :param RebateMonth: 返佣月份，如2018-02
+        :param _RebateMonth: 返佣月份，如2018-02
         :type RebateMonth: str
-        :param Amt: 返佣金额，单位分
+        :param _Amt: 返佣金额，单位分
         :type Amt: int
-        :param MonthSales: 月度业绩，单位分
+        :param _MonthSales: 月度业绩，单位分
         :type MonthSales: int
-        :param QuarterSales: 季度业绩，单位分
+        :param _QuarterSales: 季度业绩，单位分
         :type QuarterSales: int
-        :param ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+        :param _ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
         :type ExceptionFlag: str
         """
-        self.Uin = None
-        self.RebateMonth = None
-        self.Amt = None
-        self.MonthSales = None
-        self.QuarterSales = None
-        self.ExceptionFlag = None
+        self._Uin = None
+        self._RebateMonth = None
+        self._Amt = None
+        self._MonthSales = None
+        self._QuarterSales = None
+        self._ExceptionFlag = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def RebateMonth(self):
+        return self._RebateMonth
+
+    @RebateMonth.setter
+    def RebateMonth(self, RebateMonth):
+        self._RebateMonth = RebateMonth
+
+    @property
+    def Amt(self):
+        return self._Amt
+
+    @Amt.setter
+    def Amt(self, Amt):
+        self._Amt = Amt
+
+    @property
+    def MonthSales(self):
+        return self._MonthSales
+
+    @MonthSales.setter
+    def MonthSales(self, MonthSales):
+        self._MonthSales = MonthSales
+
+    @property
+    def QuarterSales(self):
+        return self._QuarterSales
+
+    @QuarterSales.setter
+    def QuarterSales(self, QuarterSales):
+        self._QuarterSales = QuarterSales
+
+    @property
+    def ExceptionFlag(self):
+        return self._ExceptionFlag
+
+    @ExceptionFlag.setter
+    def ExceptionFlag(self, ExceptionFlag):
+        self._ExceptionFlag = ExceptionFlag
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.RebateMonth = params.get("RebateMonth")
-        self.Amt = params.get("Amt")
-        self.MonthSales = params.get("MonthSales")
-        self.QuarterSales = params.get("QuarterSales")
-        self.ExceptionFlag = params.get("ExceptionFlag")
+        self._Uin = params.get("Uin")
+        self._RebateMonth = params.get("RebateMonth")
+        self._Amt = params.get("Amt")
+        self._MonthSales = params.get("MonthSales")
+        self._QuarterSales = params.get("QuarterSales")
+        self._ExceptionFlag = params.get("ExceptionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1769,38 +3587,87 @@ class RebateInfoElemNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 代理商账号ID
+        :param _Uin: 代理商账号ID
         :type Uin: str
-        :param RebateMonth: 返佣月份，如2018-02
+        :param _RebateMonth: 返佣月份，如2018-02
         :type RebateMonth: str
-        :param Amt: 返佣金额，单位分
+        :param _Amt: 返佣金额，单位分
         :type Amt: int
-        :param MonthSales: 月度业绩，单位分
+        :param _MonthSales: 月度业绩，单位分
         :type MonthSales: int
-        :param QuarterSales: 季度业绩，单位分
+        :param _QuarterSales: 季度业绩，单位分
         :type QuarterSales: int
-        :param ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+        :param _ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
         :type ExceptionFlag: str
         """
-        self.Uin = None
-        self.RebateMonth = None
-        self.Amt = None
-        self.MonthSales = None
-        self.QuarterSales = None
-        self.ExceptionFlag = None
+        self._Uin = None
+        self._RebateMonth = None
+        self._Amt = None
+        self._MonthSales = None
+        self._QuarterSales = None
+        self._ExceptionFlag = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def RebateMonth(self):
+        return self._RebateMonth
+
+    @RebateMonth.setter
+    def RebateMonth(self, RebateMonth):
+        self._RebateMonth = RebateMonth
+
+    @property
+    def Amt(self):
+        return self._Amt
+
+    @Amt.setter
+    def Amt(self, Amt):
+        self._Amt = Amt
+
+    @property
+    def MonthSales(self):
+        return self._MonthSales
+
+    @MonthSales.setter
+    def MonthSales(self, MonthSales):
+        self._MonthSales = MonthSales
+
+    @property
+    def QuarterSales(self):
+        return self._QuarterSales
+
+    @QuarterSales.setter
+    def QuarterSales(self, QuarterSales):
+        self._QuarterSales = QuarterSales
+
+    @property
+    def ExceptionFlag(self):
+        return self._ExceptionFlag
+
+    @ExceptionFlag.setter
+    def ExceptionFlag(self, ExceptionFlag):
+        self._ExceptionFlag = ExceptionFlag
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.RebateMonth = params.get("RebateMonth")
-        self.Amt = params.get("Amt")
-        self.MonthSales = params.get("MonthSales")
-        self.QuarterSales = params.get("QuarterSales")
-        self.ExceptionFlag = params.get("ExceptionFlag")
+        self._Uin = params.get("Uin")
+        self._RebateMonth = params.get("RebateMonth")
+        self._Amt = params.get("Amt")
+        self._MonthSales = params.get("MonthSales")
+        self._QuarterSales = params.get("QuarterSales")
+        self._ExceptionFlag = params.get("ExceptionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1813,18 +3680,27 @@ class RemovePayRelationForClientRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: 客户账号ID
+        :param _ClientUin: 客户账号ID
         :type ClientUin: str
         """
-        self.ClientUin = None
+        self._ClientUin = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
+        self._ClientUin = params.get("ClientUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1837,14 +3713,22 @@ class RemovePayRelationForClientResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindClientElem(AbstractModel):
@@ -1854,36 +3738,77 @@ class UnbindClientElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 解绑账号ID
+        :param _Uin: 解绑账号ID
         :type Uin: str
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Status: 状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
+        :param _Status: 状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
         :type Status: int
-        :param ApplyTime: 申请时间
+        :param _ApplyTime: 申请时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyTime: str
-        :param ActionTime: 解绑/撤销时间
+        :param _ActionTime: 解绑/撤销时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTime: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Status = None
-        self.ApplyTime = None
-        self.ActionTime = None
+        self._Uin = None
+        self._Name = None
+        self._Status = None
+        self._ApplyTime = None
+        self._ActionTime = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApplyTime(self):
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def ActionTime(self):
+        return self._ActionTime
+
+    @ActionTime.setter
+    def ActionTime(self, ActionTime):
+        self._ActionTime = ActionTime
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.ApplyTime = params.get("ApplyTime")
-        self.ActionTime = params.get("ActionTime")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._ApplyTime = params.get("ApplyTime")
+        self._ActionTime = params.get("ActionTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

@@ -25,24 +25,41 @@ class Admin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 超管名
+        :param _Name: 超管名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Mobile: 超管手机号
+        :param _Mobile: 超管手机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
         """
-        self.Name = None
-        self.Mobile = None
+        self._Name = None
+        self._Mobile = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Mobile = params.get("Mobile")
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -55,30 +72,75 @@ class Agent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: 代理机构的应用编号,32位字符串，一般不用传
+        :param _AppId: 代理机构的应用编号,32位字符串，一般不用传
         :type AppId: str
-        :param ProxyAppId: 被代理机构的应用号，一般不用传
+        :param _ProxyAppId: 被代理机构的应用号，一般不用传
         :type ProxyAppId: str
-        :param ProxyOrganizationId: 被代理机构在电子签平台的机构编号，集团代理下场景必传
+        :param _ProxyOrganizationId: 被代理机构在电子签平台的机构编号，集团代理下场景必传
         :type ProxyOrganizationId: str
-        :param ProxyOperator: 被代理机构的经办人，一般不用传
+        :param _ProxyOperator: 被代理机构的经办人，一般不用传
         :type ProxyOperator: str
         """
-        self.AppId = None
-        self.ProxyAppId = None
-        self.ProxyOrganizationId = None
-        self.ProxyOperator = None
+        self._AppId = None
+        self._ProxyAppId = None
+        self._ProxyOrganizationId = None
+        self._ProxyOperator = None
+
+    @property
+    def AppId(self):
+        warnings.warn("parameter `AppId` is deprecated", DeprecationWarning) 
+
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        warnings.warn("parameter `AppId` is deprecated", DeprecationWarning) 
+
+        self._AppId = AppId
+
+    @property
+    def ProxyAppId(self):
+        warnings.warn("parameter `ProxyAppId` is deprecated", DeprecationWarning) 
+
+        return self._ProxyAppId
+
+    @ProxyAppId.setter
+    def ProxyAppId(self, ProxyAppId):
+        warnings.warn("parameter `ProxyAppId` is deprecated", DeprecationWarning) 
+
+        self._ProxyAppId = ProxyAppId
+
+    @property
+    def ProxyOrganizationId(self):
+        return self._ProxyOrganizationId
+
+    @ProxyOrganizationId.setter
+    def ProxyOrganizationId(self, ProxyOrganizationId):
+        self._ProxyOrganizationId = ProxyOrganizationId
+
+    @property
+    def ProxyOperator(self):
+        warnings.warn("parameter `ProxyOperator` is deprecated", DeprecationWarning) 
+
+        return self._ProxyOperator
+
+    @ProxyOperator.setter
+    def ProxyOperator(self, ProxyOperator):
+        warnings.warn("parameter `ProxyOperator` is deprecated", DeprecationWarning) 
+
+        self._ProxyOperator = ProxyOperator
 
 
     def _deserialize(self, params):
-        self.AppId = params.get("AppId")
-        self.ProxyAppId = params.get("ProxyAppId")
-        self.ProxyOrganizationId = params.get("ProxyOrganizationId")
-        self.ProxyOperator = params.get("ProxyOperator")
+        self._AppId = params.get("AppId")
+        self._ProxyAppId = params.get("ProxyAppId")
+        self._ProxyOrganizationId = params.get("ProxyOrganizationId")
+        self._ProxyOperator = params.get("ProxyOperator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -91,104 +153,249 @@ class ApproverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApproverType: 参与者类型：
+        :param _ApproverType: 参与者类型：
 0：企业
 1：个人
 3：企业静默签署
 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
         :type ApproverType: int
-        :param ApproverName: 签署人的姓名
+        :param _ApproverName: 签署人的姓名
         :type ApproverName: str
-        :param ApproverMobile: 签署人的手机号，11位数字
+        :param _ApproverMobile: 签署人的手机号，11位数字
         :type ApproverMobile: str
-        :param SignComponents: 签署人的签署控件列表
+        :param _SignComponents: 签署人的签署控件列表
         :type SignComponents: list of Component
-        :param OrganizationName: 如果签署方是企业签署方，则为企业名
+        :param _OrganizationName: 如果签署方是企业签署方，则为企业名
         :type OrganizationName: str
-        :param ApproverIdCardNumber: 签署人的身份证号
+        :param _ApproverIdCardNumber: 签署人的身份证号
         :type ApproverIdCardNumber: str
-        :param ApproverIdCardType: 签署人的身份证件类型 
+        :param _ApproverIdCardType: 签署人的身份证件类型 
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type ApproverIdCardType: str
-        :param NotifyType: 签署通知类型：sms--短信，none--不通知
+        :param _NotifyType: 签署通知类型：sms--短信，none--不通知
         :type NotifyType: str
-        :param ApproverRole: 签署人角色类型：1--收款人、2--开具人、3--见证人
+        :param _ApproverRole: 签署人角色类型：1--收款人、2--开具人、3--见证人
         :type ApproverRole: int
-        :param VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
+        :param _VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
         :type VerifyChannel: list of str
-        :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
+        :param _PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
-        :param UserId: 签署人userId，传此字段则不用传姓名、手机号
+        :param _UserId: 签署人userId，传此字段则不用传姓名、手机号
         :type UserId: str
-        :param ApproverSource: 签署人用户来源，企微侧用户请传入：WEWORKAPP
+        :param _ApproverSource: 签署人用户来源，企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
-        :param CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+        :param _CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
         :type CustomApproverTag: str
-        :param ApproverOption: 签署人个性化能力值
+        :param _ApproverOption: 签署人个性化能力值
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
-        :param ApproverVerifyTypes: 签署人查看合同时认证方式, 
+        :param _ApproverVerifyTypes: 签署人查看合同时认证方式, 
 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 如果不传默认为1
         :type ApproverVerifyTypes: list of int
-        :param ApproverSignTypes: 签署人签署合同时的认证方式
+        :param _ApproverSignTypes: 签署人签署合同时的认证方式
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
         :type ApproverSignTypes: list of int
-        :param ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
+        :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
         :type ApproverNeedSignReview: bool
         """
-        self.ApproverType = None
-        self.ApproverName = None
-        self.ApproverMobile = None
-        self.SignComponents = None
-        self.OrganizationName = None
-        self.ApproverIdCardNumber = None
-        self.ApproverIdCardType = None
-        self.NotifyType = None
-        self.ApproverRole = None
-        self.VerifyChannel = None
-        self.PreReadTime = None
-        self.UserId = None
-        self.ApproverSource = None
-        self.CustomApproverTag = None
-        self.ApproverOption = None
-        self.ApproverVerifyTypes = None
-        self.ApproverSignTypes = None
-        self.ApproverNeedSignReview = None
+        self._ApproverType = None
+        self._ApproverName = None
+        self._ApproverMobile = None
+        self._SignComponents = None
+        self._OrganizationName = None
+        self._ApproverIdCardNumber = None
+        self._ApproverIdCardType = None
+        self._NotifyType = None
+        self._ApproverRole = None
+        self._VerifyChannel = None
+        self._PreReadTime = None
+        self._UserId = None
+        self._ApproverSource = None
+        self._CustomApproverTag = None
+        self._ApproverOption = None
+        self._ApproverVerifyTypes = None
+        self._ApproverSignTypes = None
+        self._ApproverNeedSignReview = None
+
+    @property
+    def ApproverType(self):
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def ApproverName(self):
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def ApproverIdCardNumber(self):
+        return self._ApproverIdCardNumber
+
+    @ApproverIdCardNumber.setter
+    def ApproverIdCardNumber(self, ApproverIdCardNumber):
+        self._ApproverIdCardNumber = ApproverIdCardNumber
+
+    @property
+    def ApproverIdCardType(self):
+        return self._ApproverIdCardType
+
+    @ApproverIdCardType.setter
+    def ApproverIdCardType(self, ApproverIdCardType):
+        self._ApproverIdCardType = ApproverIdCardType
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
+    @property
+    def ApproverRole(self):
+        return self._ApproverRole
+
+    @ApproverRole.setter
+    def ApproverRole(self, ApproverRole):
+        self._ApproverRole = ApproverRole
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def PreReadTime(self):
+        return self._PreReadTime
+
+    @PreReadTime.setter
+    def PreReadTime(self, PreReadTime):
+        self._PreReadTime = PreReadTime
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def ApproverSource(self):
+        return self._ApproverSource
+
+    @ApproverSource.setter
+    def ApproverSource(self, ApproverSource):
+        self._ApproverSource = ApproverSource
+
+    @property
+    def CustomApproverTag(self):
+        return self._CustomApproverTag
+
+    @CustomApproverTag.setter
+    def CustomApproverTag(self, CustomApproverTag):
+        self._CustomApproverTag = CustomApproverTag
+
+    @property
+    def ApproverOption(self):
+        return self._ApproverOption
+
+    @ApproverOption.setter
+    def ApproverOption(self, ApproverOption):
+        self._ApproverOption = ApproverOption
+
+    @property
+    def ApproverVerifyTypes(self):
+        return self._ApproverVerifyTypes
+
+    @ApproverVerifyTypes.setter
+    def ApproverVerifyTypes(self, ApproverVerifyTypes):
+        self._ApproverVerifyTypes = ApproverVerifyTypes
+
+    @property
+    def ApproverSignTypes(self):
+        return self._ApproverSignTypes
+
+    @ApproverSignTypes.setter
+    def ApproverSignTypes(self, ApproverSignTypes):
+        self._ApproverSignTypes = ApproverSignTypes
+
+    @property
+    def ApproverNeedSignReview(self):
+        return self._ApproverNeedSignReview
+
+    @ApproverNeedSignReview.setter
+    def ApproverNeedSignReview(self, ApproverNeedSignReview):
+        self._ApproverNeedSignReview = ApproverNeedSignReview
 
 
     def _deserialize(self, params):
-        self.ApproverType = params.get("ApproverType")
-        self.ApproverName = params.get("ApproverName")
-        self.ApproverMobile = params.get("ApproverMobile")
+        self._ApproverType = params.get("ApproverType")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
         if params.get("SignComponents") is not None:
-            self.SignComponents = []
+            self._SignComponents = []
             for item in params.get("SignComponents"):
                 obj = Component()
                 obj._deserialize(item)
-                self.SignComponents.append(obj)
-        self.OrganizationName = params.get("OrganizationName")
-        self.ApproverIdCardNumber = params.get("ApproverIdCardNumber")
-        self.ApproverIdCardType = params.get("ApproverIdCardType")
-        self.NotifyType = params.get("NotifyType")
-        self.ApproverRole = params.get("ApproverRole")
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.PreReadTime = params.get("PreReadTime")
-        self.UserId = params.get("UserId")
-        self.ApproverSource = params.get("ApproverSource")
-        self.CustomApproverTag = params.get("CustomApproverTag")
+                self._SignComponents.append(obj)
+        self._OrganizationName = params.get("OrganizationName")
+        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self._ApproverIdCardType = params.get("ApproverIdCardType")
+        self._NotifyType = params.get("NotifyType")
+        self._ApproverRole = params.get("ApproverRole")
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._PreReadTime = params.get("PreReadTime")
+        self._UserId = params.get("UserId")
+        self._ApproverSource = params.get("ApproverSource")
+        self._CustomApproverTag = params.get("CustomApproverTag")
         if params.get("ApproverOption") is not None:
-            self.ApproverOption = ApproverOption()
-            self.ApproverOption._deserialize(params.get("ApproverOption"))
-        self.ApproverVerifyTypes = params.get("ApproverVerifyTypes")
-        self.ApproverSignTypes = params.get("ApproverSignTypes")
-        self.ApproverNeedSignReview = params.get("ApproverNeedSignReview")
+            self._ApproverOption = ApproverOption()
+            self._ApproverOption._deserialize(params.get("ApproverOption"))
+        self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
+        self._ApproverSignTypes = params.get("ApproverSignTypes")
+        self._ApproverNeedSignReview = params.get("ApproverNeedSignReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -201,22 +408,39 @@ class ApproverOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NoRefuse: 是否可以拒签 默认false-可以拒签 true-不可以拒签
+        :param _NoRefuse: 是否可以拒签 默认false-可以拒签 true-不可以拒签
         :type NoRefuse: bool
-        :param NoTransfer: 是否可以转发 默认false-可以转发 true-不可以转发
+        :param _NoTransfer: 是否可以转发 默认false-可以转发 true-不可以转发
         :type NoTransfer: bool
         """
-        self.NoRefuse = None
-        self.NoTransfer = None
+        self._NoRefuse = None
+        self._NoTransfer = None
+
+    @property
+    def NoRefuse(self):
+        return self._NoRefuse
+
+    @NoRefuse.setter
+    def NoRefuse(self, NoRefuse):
+        self._NoRefuse = NoRefuse
+
+    @property
+    def NoTransfer(self):
+        return self._NoTransfer
+
+    @NoTransfer.setter
+    def NoTransfer(self, NoTransfer):
+        self._NoTransfer = NoTransfer
 
 
     def _deserialize(self, params):
-        self.NoRefuse = params.get("NoRefuse")
-        self.NoTransfer = params.get("NoTransfer")
+        self._NoRefuse = params.get("NoRefuse")
+        self._NoTransfer = params.get("NoTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -229,30 +453,63 @@ class ApproverRestriction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 指定签署人名字
+        :param _Name: 指定签署人名字
         :type Name: str
-        :param Mobile: 指定签署人手机号，11位数字
+        :param _Mobile: 指定签署人手机号，11位数字
         :type Mobile: str
-        :param IdCardType: 指定签署人证件类型，ID_CARD-身份证
+        :param _IdCardType: 指定签署人证件类型，ID_CARD-身份证
         :type IdCardType: str
-        :param IdCardNumber: 指定签署人证件号码，字母大写
+        :param _IdCardNumber: 指定签署人证件号码，字母大写
         :type IdCardNumber: str
         """
-        self.Name = None
-        self.Mobile = None
-        self.IdCardType = None
-        self.IdCardNumber = None
+        self._Name = None
+        self._Mobile = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Mobile = params.get("Mobile")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -265,18 +522,27 @@ class AuthorizedUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 电子签系统中的用户id
+        :param _UserId: 电子签系统中的用户id
         :type UserId: str
         """
-        self.UserId = None
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -289,40 +555,89 @@ class AutoSignConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserInfo: 自动签开通个人用户的三要素
+        :param _UserInfo: 自动签开通个人用户的三要素
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
-        :param CallbackUrl: 接受自动签开启的回调地址。需要保证post返回200
+        :param _CallbackUrl: 接受自动签开启的回调地址。需要保证post返回200
         :type CallbackUrl: str
-        :param CertInfoCallback: 是否回调证书信息，默认false-不需要
+        :param _CertInfoCallback: 是否回调证书信息，默认false-不需要
         :type CertInfoCallback: bool
-        :param UserDefineSeal: 是否支持用户自定义签名印章，默认false-不需要
+        :param _UserDefineSeal: 是否支持用户自定义签名印章，默认false-不需要
         :type UserDefineSeal: bool
-        :param SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64，默认false-不需要
+        :param _SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64，默认false-不需要
         :type SealImgCallback: bool
-        :param VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
+        :param _VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
         :type VerifyChannels: list of str
         """
-        self.UserInfo = None
-        self.CallbackUrl = None
-        self.CertInfoCallback = None
-        self.UserDefineSeal = None
-        self.SealImgCallback = None
-        self.VerifyChannels = None
+        self._UserInfo = None
+        self._CallbackUrl = None
+        self._CertInfoCallback = None
+        self._UserDefineSeal = None
+        self._SealImgCallback = None
+        self._VerifyChannels = None
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def CertInfoCallback(self):
+        return self._CertInfoCallback
+
+    @CertInfoCallback.setter
+    def CertInfoCallback(self, CertInfoCallback):
+        self._CertInfoCallback = CertInfoCallback
+
+    @property
+    def UserDefineSeal(self):
+        return self._UserDefineSeal
+
+    @UserDefineSeal.setter
+    def UserDefineSeal(self, UserDefineSeal):
+        self._UserDefineSeal = UserDefineSeal
+
+    @property
+    def SealImgCallback(self):
+        return self._SealImgCallback
+
+    @SealImgCallback.setter
+    def SealImgCallback(self, SealImgCallback):
+        self._SealImgCallback = SealImgCallback
+
+    @property
+    def VerifyChannels(self):
+        return self._VerifyChannels
+
+    @VerifyChannels.setter
+    def VerifyChannels(self, VerifyChannels):
+        self._VerifyChannels = VerifyChannels
 
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
-            self.UserInfo = UserThreeFactor()
-            self.UserInfo._deserialize(params.get("UserInfo"))
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.CertInfoCallback = params.get("CertInfoCallback")
-        self.UserDefineSeal = params.get("UserDefineSeal")
-        self.SealImgCallback = params.get("SealImgCallback")
-        self.VerifyChannels = params.get("VerifyChannels")
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._CertInfoCallback = params.get("CertInfoCallback")
+        self._UserDefineSeal = params.get("UserDefineSeal")
+        self._SealImgCallback = params.get("SealImgCallback")
+        self._VerifyChannels = params.get("VerifyChannels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -335,28 +650,53 @@ class BindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定。（参数参考示例）
+        :param _Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定。（参数参考示例）
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param UserId: 电子签系统员工UserId
+        :param _UserId: 电子签系统员工UserId
         :type UserId: str
-        :param OpenId: 客户系统OpenId
+        :param _OpenId: 客户系统OpenId
         :type OpenId: str
         """
-        self.Operator = None
-        self.UserId = None
-        self.OpenId = None
+        self._Operator = None
+        self._UserId = None
+        self._OpenId = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.UserId = params.get("UserId")
-        self.OpenId = params.get("OpenId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._UserId = params.get("UserId")
+        self._OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -369,18 +709,34 @@ class BindEmployeeUserIdWithClientOpenIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 绑定是否成功，1表示成功，0表示失败
+        :param _Status: 绑定是否成功，1表示成功，0表示失败
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class CallbackInfo(AbstractModel):
@@ -390,30 +746,67 @@ class CallbackInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CallbackUrl: 回调url
+        :param _CallbackUrl: 回调url
         :type CallbackUrl: str
-        :param Token: 回调加密key，已废弃
+        :param _Token: 回调加密key，已废弃
         :type Token: str
-        :param CallbackKey: 回调加密key
+        :param _CallbackKey: 回调加密key
         :type CallbackKey: str
-        :param CallbackToken: 回调验签token
+        :param _CallbackToken: 回调验签token
         :type CallbackToken: str
         """
-        self.CallbackUrl = None
-        self.Token = None
-        self.CallbackKey = None
-        self.CallbackToken = None
+        self._CallbackUrl = None
+        self._Token = None
+        self._CallbackKey = None
+        self._CallbackToken = None
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def Token(self):
+        warnings.warn("parameter `Token` is deprecated", DeprecationWarning) 
+
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        warnings.warn("parameter `Token` is deprecated", DeprecationWarning) 
+
+        self._Token = Token
+
+    @property
+    def CallbackKey(self):
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def CallbackToken(self):
+        return self._CallbackToken
+
+    @CallbackToken.setter
+    def CallbackToken(self, CallbackToken):
+        self._CallbackToken = CallbackToken
 
 
     def _deserialize(self, params):
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.Token = params.get("Token")
-        self.CallbackKey = params.get("CallbackKey")
-        self.CallbackToken = params.get("CallbackToken")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._Token = params.get("Token")
+        self._CallbackKey = params.get("CallbackKey")
+        self._CallbackToken = params.get("CallbackToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -426,30 +819,75 @@ class Caller(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: 应用号
+        :param _ApplicationId: 应用号
         :type ApplicationId: str
-        :param OrganizationId: 主机构ID
+        :param _OrganizationId: 主机构ID
         :type OrganizationId: str
-        :param OperatorId: 经办人的用户ID，同UserId
+        :param _OperatorId: 经办人的用户ID，同UserId
         :type OperatorId: str
-        :param SubOrganizationId: 下属机构ID
+        :param _SubOrganizationId: 下属机构ID
         :type SubOrganizationId: str
         """
-        self.ApplicationId = None
-        self.OrganizationId = None
-        self.OperatorId = None
-        self.SubOrganizationId = None
+        self._ApplicationId = None
+        self._OrganizationId = None
+        self._OperatorId = None
+        self._SubOrganizationId = None
+
+    @property
+    def ApplicationId(self):
+        warnings.warn("parameter `ApplicationId` is deprecated", DeprecationWarning) 
+
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        warnings.warn("parameter `ApplicationId` is deprecated", DeprecationWarning) 
+
+        self._ApplicationId = ApplicationId
+
+    @property
+    def OrganizationId(self):
+        warnings.warn("parameter `OrganizationId` is deprecated", DeprecationWarning) 
+
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        warnings.warn("parameter `OrganizationId` is deprecated", DeprecationWarning) 
+
+        self._OrganizationId = OrganizationId
+
+    @property
+    def OperatorId(self):
+        return self._OperatorId
+
+    @OperatorId.setter
+    def OperatorId(self, OperatorId):
+        self._OperatorId = OperatorId
+
+    @property
+    def SubOrganizationId(self):
+        warnings.warn("parameter `SubOrganizationId` is deprecated", DeprecationWarning) 
+
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        warnings.warn("parameter `SubOrganizationId` is deprecated", DeprecationWarning) 
+
+        self._SubOrganizationId = SubOrganizationId
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.OrganizationId = params.get("OrganizationId")
-        self.OperatorId = params.get("OperatorId")
-        self.SubOrganizationId = params.get("SubOrganizationId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._OrganizationId = params.get("OrganizationId")
+        self._OperatorId = params.get("OperatorId")
+        self._SubOrganizationId = params.get("SubOrganizationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -462,34 +900,67 @@ class CancelFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowId: 签署流程id
+        :param _FlowId: 签署流程id
         :type FlowId: str
-        :param CancelMessage: 撤销原因，最长200个字符；
+        :param _CancelMessage: 撤销原因，最长200个字符；
         :type CancelMessage: str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.FlowId = None
-        self.CancelMessage = None
-        self.Agent = None
+        self._Operator = None
+        self._FlowId = None
+        self._CancelMessage = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def CancelMessage(self):
+        return self._CancelMessage
+
+    @CancelMessage.setter
+    def CancelMessage(self, CancelMessage):
+        self._CancelMessage = CancelMessage
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowId = params.get("FlowId")
-        self.CancelMessage = params.get("CancelMessage")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
+        self._CancelMessage = params.get("CancelMessage")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -502,14 +973,22 @@ class CancelFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CancelMultiFlowSignQRCodeRequest(AbstractModel):
@@ -519,30 +998,55 @@ class CancelMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param QrCodeId: 二维码id
+        :param _QrCodeId: 二维码id
         :type QrCodeId: str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.QrCodeId = None
-        self.Agent = None
+        self._Operator = None
+        self._QrCodeId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def QrCodeId(self):
+        return self._QrCodeId
+
+    @QrCodeId.setter
+    def QrCodeId(self, QrCodeId):
+        self._QrCodeId = QrCodeId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.QrCodeId = params.get("QrCodeId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._QrCodeId = params.get("QrCodeId")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -555,14 +1059,22 @@ class CancelMultiFlowSignQRCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CancelUserAutoSignEnableUrlRequest(AbstractModel):
@@ -572,31 +1084,56 @@ class CancelUserAutoSignEnableUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UseId必填	
+        :param _Operator: 操作人信息，UseId必填	
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param SceneKey: 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :param _SceneKey: 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
-        :param UserInfo: 指定撤销链接的用户指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+        :param _UserInfo: 指定撤销链接的用户指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
 
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         """
-        self.Operator = None
-        self.SceneKey = None
-        self.UserInfo = None
+        self._Operator = None
+        self._SceneKey = None
+        self._UserInfo = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.SceneKey = params.get("SceneKey")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SceneKey = params.get("SceneKey")
         if params.get("UserInfo") is not None:
-            self.UserInfo = UserThreeFactor()
-            self.UserInfo._deserialize(params.get("UserInfo"))
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -609,14 +1146,22 @@ class CancelUserAutoSignEnableUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CcInfo(AbstractModel):
@@ -626,38 +1171,79 @@ class CcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mobile: 被抄送人手机号，11位数字
+        :param _Mobile: 被抄送人手机号，11位数字
         :type Mobile: str
-        :param Name: 被抄送人姓名
+        :param _Name: 被抄送人姓名
         :type Name: str
-        :param CcType: 被抄送人类型,
+        :param _CcType: 被抄送人类型,
 0--个人
 1--员工
         :type CcType: int
-        :param CcPermission: 被抄送人权限
+        :param _CcPermission: 被抄送人权限
 0--可查看
 1--可查看也可下载
         :type CcPermission: int
-        :param NotifyType: 关注方通知类型：sms--短信，none--不通知
+        :param _NotifyType: 关注方通知类型：sms--短信，none--不通知
         :type NotifyType: str
         """
-        self.Mobile = None
-        self.Name = None
-        self.CcType = None
-        self.CcPermission = None
-        self.NotifyType = None
+        self._Mobile = None
+        self._Name = None
+        self._CcType = None
+        self._CcPermission = None
+        self._NotifyType = None
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CcType(self):
+        return self._CcType
+
+    @CcType.setter
+    def CcType(self, CcType):
+        self._CcType = CcType
+
+    @property
+    def CcPermission(self):
+        return self._CcPermission
+
+    @CcPermission.setter
+    def CcPermission(self, CcPermission):
+        self._CcPermission = CcPermission
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
 
 
     def _deserialize(self, params):
-        self.Mobile = params.get("Mobile")
-        self.Name = params.get("Name")
-        self.CcType = params.get("CcType")
-        self.CcPermission = params.get("CcPermission")
-        self.NotifyType = params.get("NotifyType")
+        self._Mobile = params.get("Mobile")
+        self._Name = params.get("Name")
+        self._CcType = params.get("CcType")
+        self._CcPermission = params.get("CcPermission")
+        self._NotifyType = params.get("NotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -670,7 +1256,7 @@ class Component(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentType: 如果是Component填写控件类型，则可选的字段为：
+        :param _ComponentType: 如果是Component填写控件类型，则可选的字段为：
 TEXT - 普通文本控件，输入文本字符串；
 MULTI_LINE_TEXT - 多行文本控件，输入文本字符串；
 CHECK_BOX - 勾选框控件，若选中填写ComponentValue 填写 true或者 false 字符串；
@@ -692,27 +1278,27 @@ SIGN_LEGAL_PERSON_SEAL - 企业法定代表人控件。
 
 表单域的控件不能作为印章和签名控件
         :type ComponentType: str
-        :param FileIndex: 控件所属文件的序号（取值为：0-N）。目前单文件的情况下，值是0
+        :param _FileIndex: 控件所属文件的序号（取值为：0-N）。目前单文件的情况下，值是0
         :type FileIndex: int
-        :param ComponentHeight: 参数控件高度，单位pt
+        :param _ComponentHeight: 参数控件高度，单位pt
         :type ComponentHeight: float
-        :param ComponentWidth: 参数控件宽度，单位pt
+        :param _ComponentWidth: 参数控件宽度，单位pt
         :type ComponentWidth: float
-        :param ComponentPage: 参数控件所在页码，取值为：1-N
+        :param _ComponentPage: 参数控件所在页码，取值为：1-N
         :type ComponentPage: int
-        :param ComponentPosX: 参数控件X位置，单位pt
+        :param _ComponentPosX: 参数控件X位置，单位pt
         :type ComponentPosX: float
-        :param ComponentPosY: 参数控件Y位置，单位pt
+        :param _ComponentPosY: 参数控件Y位置，单位pt
         :type ComponentPosY: float
-        :param ComponentId: 查询时返回控件唯一Id。使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
+        :param _ComponentId: 查询时返回控件唯一Id。使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
         :type ComponentId: str
-        :param ComponentName: 查询时返回控件名。使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
+        :param _ComponentName: 查询时返回控件名。使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
         :type ComponentName: str
-        :param ComponentRequired: 是否必选，默认为false
+        :param _ComponentRequired: 是否必选，默认为false
         :type ComponentRequired: bool
-        :param ComponentRecipientId: 控件关联的签署人ID
+        :param _ComponentRecipientId: 控件关联的签署人ID
         :type ComponentRecipientId: str
-        :param ComponentExtra: 扩展参数：
+        :param _ComponentExtra: 扩展参数：
 为JSON格式。
 
 ComponentType为FILL_IMAGE时，支持以下参数：
@@ -742,10 +1328,10 @@ ComponentType为SIGN_SEAL类型时，支持以下参数：
 1.PageRanges：PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）
 参数样例："ComponentExtra":"{\"PageRanges\":[{\"BeginPage\":1,\"EndPage\":-1}]}"
         :type ComponentExtra: str
-        :param IsFormType: 是否是表单域类型，默认不false-不是
+        :param _IsFormType: 是否是表单域类型，默认不false-不是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsFormType: bool
-        :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
+        :param _ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 TEXT - 文本内容
 MULTI_LINE_TEXT - 文本内容
 CHECK_BOX - true/false
@@ -822,87 +1408,280 @@ SIGN_PAGING_SEAL - 可以指定印章ID，于控制台查询获取
 学历控件：
   同单行文本控件约束，填写选择值中的字符串
         :type ComponentValue: str
-        :param GenerateMode: NORMAL 正常模式，使用坐标制定签署控件位置
+        :param _GenerateMode: NORMAL 正常模式，使用坐标制定签署控件位置
 FIELD 表单域，需使用ComponentName指定表单域名称
 KEYWORD 关键字，使用ComponentId指定关键字
         :type GenerateMode: str
-        :param ComponentDateFontSize: 日期签署控件的字号，默认为 12
+        :param _ComponentDateFontSize: 日期签署控件的字号，默认为 12
         :type ComponentDateFontSize: int
-        :param ChannelComponentId: 第三方应用集成平台模板控件 id 标识
+        :param _ChannelComponentId: 第三方应用集成平台模板控件 id 标识
         :type ChannelComponentId: str
-        :param OffsetX: 指定关键字时横坐标偏移量，单位pt
+        :param _OffsetX: 指定关键字时横坐标偏移量，单位pt
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetX: float
-        :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
+        :param _OffsetY: 指定关键字时纵坐标偏移量，单位pt
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetY: float
-        :param ChannelComponentSource: 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
+        :param _ChannelComponentSource: 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
         :type ChannelComponentSource: int
-        :param KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
+        :param _KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
         :type KeywordOrder: str
-        :param KeywordPage: 指定关键字页码，可选参数，指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
+        :param _KeywordPage: 指定关键字页码，可选参数，指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
         :type KeywordPage: int
-        :param RelativeLocation: 关键字位置模式，Middle-居中，Below-正下方，Right-正右方，LowerRight-右上角，UpperRight-右下角。示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
+        :param _RelativeLocation: 关键字位置模式，Middle-居中，Below-正下方，Right-正右方，LowerRight-右上角，UpperRight-右下角。示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
         :type RelativeLocation: str
-        :param KeywordIndexes: 关键字索引，可选参数，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。示例：[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
+        :param _KeywordIndexes: 关键字索引，可选参数，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。示例：[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
         :type KeywordIndexes: list of int
         """
-        self.ComponentType = None
-        self.FileIndex = None
-        self.ComponentHeight = None
-        self.ComponentWidth = None
-        self.ComponentPage = None
-        self.ComponentPosX = None
-        self.ComponentPosY = None
-        self.ComponentId = None
-        self.ComponentName = None
-        self.ComponentRequired = None
-        self.ComponentRecipientId = None
-        self.ComponentExtra = None
-        self.IsFormType = None
-        self.ComponentValue = None
-        self.GenerateMode = None
-        self.ComponentDateFontSize = None
-        self.ChannelComponentId = None
-        self.OffsetX = None
-        self.OffsetY = None
-        self.ChannelComponentSource = None
-        self.KeywordOrder = None
-        self.KeywordPage = None
-        self.RelativeLocation = None
-        self.KeywordIndexes = None
+        self._ComponentType = None
+        self._FileIndex = None
+        self._ComponentHeight = None
+        self._ComponentWidth = None
+        self._ComponentPage = None
+        self._ComponentPosX = None
+        self._ComponentPosY = None
+        self._ComponentId = None
+        self._ComponentName = None
+        self._ComponentRequired = None
+        self._ComponentRecipientId = None
+        self._ComponentExtra = None
+        self._IsFormType = None
+        self._ComponentValue = None
+        self._GenerateMode = None
+        self._ComponentDateFontSize = None
+        self._ChannelComponentId = None
+        self._OffsetX = None
+        self._OffsetY = None
+        self._ChannelComponentSource = None
+        self._KeywordOrder = None
+        self._KeywordPage = None
+        self._RelativeLocation = None
+        self._KeywordIndexes = None
+
+    @property
+    def ComponentType(self):
+        return self._ComponentType
+
+    @ComponentType.setter
+    def ComponentType(self, ComponentType):
+        self._ComponentType = ComponentType
+
+    @property
+    def FileIndex(self):
+        return self._FileIndex
+
+    @FileIndex.setter
+    def FileIndex(self, FileIndex):
+        self._FileIndex = FileIndex
+
+    @property
+    def ComponentHeight(self):
+        return self._ComponentHeight
+
+    @ComponentHeight.setter
+    def ComponentHeight(self, ComponentHeight):
+        self._ComponentHeight = ComponentHeight
+
+    @property
+    def ComponentWidth(self):
+        return self._ComponentWidth
+
+    @ComponentWidth.setter
+    def ComponentWidth(self, ComponentWidth):
+        self._ComponentWidth = ComponentWidth
+
+    @property
+    def ComponentPage(self):
+        return self._ComponentPage
+
+    @ComponentPage.setter
+    def ComponentPage(self, ComponentPage):
+        self._ComponentPage = ComponentPage
+
+    @property
+    def ComponentPosX(self):
+        return self._ComponentPosX
+
+    @ComponentPosX.setter
+    def ComponentPosX(self, ComponentPosX):
+        self._ComponentPosX = ComponentPosX
+
+    @property
+    def ComponentPosY(self):
+        return self._ComponentPosY
+
+    @ComponentPosY.setter
+    def ComponentPosY(self, ComponentPosY):
+        self._ComponentPosY = ComponentPosY
+
+    @property
+    def ComponentId(self):
+        return self._ComponentId
+
+    @ComponentId.setter
+    def ComponentId(self, ComponentId):
+        self._ComponentId = ComponentId
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def ComponentRequired(self):
+        return self._ComponentRequired
+
+    @ComponentRequired.setter
+    def ComponentRequired(self, ComponentRequired):
+        self._ComponentRequired = ComponentRequired
+
+    @property
+    def ComponentRecipientId(self):
+        return self._ComponentRecipientId
+
+    @ComponentRecipientId.setter
+    def ComponentRecipientId(self, ComponentRecipientId):
+        self._ComponentRecipientId = ComponentRecipientId
+
+    @property
+    def ComponentExtra(self):
+        return self._ComponentExtra
+
+    @ComponentExtra.setter
+    def ComponentExtra(self, ComponentExtra):
+        self._ComponentExtra = ComponentExtra
+
+    @property
+    def IsFormType(self):
+        return self._IsFormType
+
+    @IsFormType.setter
+    def IsFormType(self, IsFormType):
+        self._IsFormType = IsFormType
+
+    @property
+    def ComponentValue(self):
+        return self._ComponentValue
+
+    @ComponentValue.setter
+    def ComponentValue(self, ComponentValue):
+        self._ComponentValue = ComponentValue
+
+    @property
+    def GenerateMode(self):
+        return self._GenerateMode
+
+    @GenerateMode.setter
+    def GenerateMode(self, GenerateMode):
+        self._GenerateMode = GenerateMode
+
+    @property
+    def ComponentDateFontSize(self):
+        return self._ComponentDateFontSize
+
+    @ComponentDateFontSize.setter
+    def ComponentDateFontSize(self, ComponentDateFontSize):
+        self._ComponentDateFontSize = ComponentDateFontSize
+
+    @property
+    def ChannelComponentId(self):
+        return self._ChannelComponentId
+
+    @ChannelComponentId.setter
+    def ChannelComponentId(self, ChannelComponentId):
+        self._ChannelComponentId = ChannelComponentId
+
+    @property
+    def OffsetX(self):
+        return self._OffsetX
+
+    @OffsetX.setter
+    def OffsetX(self, OffsetX):
+        self._OffsetX = OffsetX
+
+    @property
+    def OffsetY(self):
+        return self._OffsetY
+
+    @OffsetY.setter
+    def OffsetY(self, OffsetY):
+        self._OffsetY = OffsetY
+
+    @property
+    def ChannelComponentSource(self):
+        return self._ChannelComponentSource
+
+    @ChannelComponentSource.setter
+    def ChannelComponentSource(self, ChannelComponentSource):
+        self._ChannelComponentSource = ChannelComponentSource
+
+    @property
+    def KeywordOrder(self):
+        return self._KeywordOrder
+
+    @KeywordOrder.setter
+    def KeywordOrder(self, KeywordOrder):
+        self._KeywordOrder = KeywordOrder
+
+    @property
+    def KeywordPage(self):
+        return self._KeywordPage
+
+    @KeywordPage.setter
+    def KeywordPage(self, KeywordPage):
+        self._KeywordPage = KeywordPage
+
+    @property
+    def RelativeLocation(self):
+        return self._RelativeLocation
+
+    @RelativeLocation.setter
+    def RelativeLocation(self, RelativeLocation):
+        self._RelativeLocation = RelativeLocation
+
+    @property
+    def KeywordIndexes(self):
+        return self._KeywordIndexes
+
+    @KeywordIndexes.setter
+    def KeywordIndexes(self, KeywordIndexes):
+        self._KeywordIndexes = KeywordIndexes
 
 
     def _deserialize(self, params):
-        self.ComponentType = params.get("ComponentType")
-        self.FileIndex = params.get("FileIndex")
-        self.ComponentHeight = params.get("ComponentHeight")
-        self.ComponentWidth = params.get("ComponentWidth")
-        self.ComponentPage = params.get("ComponentPage")
-        self.ComponentPosX = params.get("ComponentPosX")
-        self.ComponentPosY = params.get("ComponentPosY")
-        self.ComponentId = params.get("ComponentId")
-        self.ComponentName = params.get("ComponentName")
-        self.ComponentRequired = params.get("ComponentRequired")
-        self.ComponentRecipientId = params.get("ComponentRecipientId")
-        self.ComponentExtra = params.get("ComponentExtra")
-        self.IsFormType = params.get("IsFormType")
-        self.ComponentValue = params.get("ComponentValue")
-        self.GenerateMode = params.get("GenerateMode")
-        self.ComponentDateFontSize = params.get("ComponentDateFontSize")
-        self.ChannelComponentId = params.get("ChannelComponentId")
-        self.OffsetX = params.get("OffsetX")
-        self.OffsetY = params.get("OffsetY")
-        self.ChannelComponentSource = params.get("ChannelComponentSource")
-        self.KeywordOrder = params.get("KeywordOrder")
-        self.KeywordPage = params.get("KeywordPage")
-        self.RelativeLocation = params.get("RelativeLocation")
-        self.KeywordIndexes = params.get("KeywordIndexes")
+        self._ComponentType = params.get("ComponentType")
+        self._FileIndex = params.get("FileIndex")
+        self._ComponentHeight = params.get("ComponentHeight")
+        self._ComponentWidth = params.get("ComponentWidth")
+        self._ComponentPage = params.get("ComponentPage")
+        self._ComponentPosX = params.get("ComponentPosX")
+        self._ComponentPosY = params.get("ComponentPosY")
+        self._ComponentId = params.get("ComponentId")
+        self._ComponentName = params.get("ComponentName")
+        self._ComponentRequired = params.get("ComponentRequired")
+        self._ComponentRecipientId = params.get("ComponentRecipientId")
+        self._ComponentExtra = params.get("ComponentExtra")
+        self._IsFormType = params.get("IsFormType")
+        self._ComponentValue = params.get("ComponentValue")
+        self._GenerateMode = params.get("GenerateMode")
+        self._ComponentDateFontSize = params.get("ComponentDateFontSize")
+        self._ChannelComponentId = params.get("ChannelComponentId")
+        self._OffsetX = params.get("OffsetX")
+        self._OffsetY = params.get("OffsetY")
+        self._ChannelComponentSource = params.get("ChannelComponentSource")
+        self._KeywordOrder = params.get("KeywordOrder")
+        self._KeywordPage = params.get("KeywordPage")
+        self._RelativeLocation = params.get("RelativeLocation")
+        self._KeywordIndexes = params.get("KeywordIndexes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -915,31 +1694,56 @@ class CreateBatchCancelFlowUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowIds: 需要执行撤回的签署流程id数组，最多100个
+        :param _FlowIds: 需要执行撤回的签署流程id数组，最多100个
         :type FlowIds: list of str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.FlowIds = None
-        self.Agent = None
+        self._Operator = None
+        self._FlowIds = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowIds = params.get("FlowIds")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowIds = params.get("FlowIds")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -952,26 +1756,58 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchCancelFlowUrl: 批量撤回签署流程链接
+        :param _BatchCancelFlowUrl: 批量撤回签署流程链接
         :type BatchCancelFlowUrl: str
-        :param FailMessages: 签署流程撤回失败信息
+        :param _FailMessages: 签署流程撤回失败信息
         :type FailMessages: list of str
-        :param UrlExpireOn: 签署连接过期时间字符串：年月日-时分秒
+        :param _UrlExpireOn: 签署连接过期时间字符串：年月日-时分秒
         :type UrlExpireOn: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BatchCancelFlowUrl = None
-        self.FailMessages = None
-        self.UrlExpireOn = None
-        self.RequestId = None
+        self._BatchCancelFlowUrl = None
+        self._FailMessages = None
+        self._UrlExpireOn = None
+        self._RequestId = None
+
+    @property
+    def BatchCancelFlowUrl(self):
+        return self._BatchCancelFlowUrl
+
+    @BatchCancelFlowUrl.setter
+    def BatchCancelFlowUrl(self, BatchCancelFlowUrl):
+        self._BatchCancelFlowUrl = BatchCancelFlowUrl
+
+    @property
+    def FailMessages(self):
+        return self._FailMessages
+
+    @FailMessages.setter
+    def FailMessages(self, FailMessages):
+        self._FailMessages = FailMessages
+
+    @property
+    def UrlExpireOn(self):
+        return self._UrlExpireOn
+
+    @UrlExpireOn.setter
+    def UrlExpireOn(self, UrlExpireOn):
+        self._UrlExpireOn = UrlExpireOn
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BatchCancelFlowUrl = params.get("BatchCancelFlowUrl")
-        self.FailMessages = params.get("FailMessages")
-        self.UrlExpireOn = params.get("UrlExpireOn")
-        self.RequestId = params.get("RequestId")
+        self._BatchCancelFlowUrl = params.get("BatchCancelFlowUrl")
+        self._FailMessages = params.get("FailMessages")
+        self._UrlExpireOn = params.get("UrlExpireOn")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateChannelSubOrganizationModifyQrCodeRequest(AbstractModel):
@@ -981,24 +1817,41 @@ class CreateChannelSubOrganizationModifyQrCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param ApplicationId: 应用编号
+        :param _ApplicationId: 应用编号
         :type ApplicationId: str
         """
-        self.Operator = None
-        self.ApplicationId = None
+        self._Operator = None
+        self._ApplicationId = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.ApplicationId = params.get("ApplicationId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1011,22 +1864,46 @@ class CreateChannelSubOrganizationModifyQrCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QrCodeUrl: 二维码下载链接
+        :param _QrCodeUrl: 二维码下载链接
         :type QrCodeUrl: str
-        :param ExpiredTime: 二维码失效时间 UNIX 时间戳 精确到秒
+        :param _ExpiredTime: 二维码失效时间 UNIX 时间戳 精确到秒
         :type ExpiredTime: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.QrCodeUrl = None
-        self.ExpiredTime = None
-        self.RequestId = None
+        self._QrCodeUrl = None
+        self._ExpiredTime = None
+        self._RequestId = None
+
+    @property
+    def QrCodeUrl(self):
+        return self._QrCodeUrl
+
+    @QrCodeUrl.setter
+    def QrCodeUrl(self, QrCodeUrl):
+        self._QrCodeUrl = QrCodeUrl
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.QrCodeUrl = params.get("QrCodeUrl")
-        self.ExpiredTime = params.get("ExpiredTime")
-        self.RequestId = params.get("RequestId")
+        self._QrCodeUrl = params.get("QrCodeUrl")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateConvertTaskApiRequest(AbstractModel):
@@ -1036,44 +1913,101 @@ class CreateConvertTaskApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型 支持doc,docx,html,xls,xlsx,jpg,jpeg,png,bmp文件类型
+        :param _ResourceType: 资源类型 支持doc,docx,html,xls,xlsx,jpg,jpeg,png,bmp文件类型
         :type ResourceType: str
-        :param ResourceName: 资源名称，长度限制为256字符
+        :param _ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str
-        :param ResourceId: 资源Id，通过UploadFiles获取
+        :param _ResourceId: 资源Id，通过UploadFiles获取
         :type ResourceId: str
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用号信息
+        :param _Agent: 应用号信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param Organization: 暂未开放
+        :param _Organization: 暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         """
-        self.ResourceType = None
-        self.ResourceName = None
-        self.ResourceId = None
-        self.Operator = None
-        self.Agent = None
-        self.Organization = None
+        self._ResourceType = None
+        self._ResourceName = None
+        self._ResourceId = None
+        self._Operator = None
+        self._Agent = None
+        self._Organization = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        self._Agent = Agent
+
+    @property
+    def Organization(self):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        self._Organization = Organization
 
 
     def _deserialize(self, params):
-        self.ResourceType = params.get("ResourceType")
-        self.ResourceName = params.get("ResourceName")
-        self.ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceId = params.get("ResourceId")
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("Organization") is not None:
-            self.Organization = OrganizationInfo()
-            self.Organization._deserialize(params.get("Organization"))
+            self._Organization = OrganizationInfo()
+            self._Organization._deserialize(params.get("Organization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1086,18 +2020,34 @@ class CreateConvertTaskApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 转换任务Id
+        :param _TaskId: 转换任务Id
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDocumentRequest(AbstractModel):
@@ -1107,60 +2057,133 @@ class CreateDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+        :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowId: 签署流程编号,由CreateFlow接口返回
+        :param _FlowId: 签署流程编号,由CreateFlow接口返回
         :type FlowId: str
-        :param TemplateId: 用户上传的模板ID
+        :param _TemplateId: 用户上传的模板ID
         :type TemplateId: str
-        :param FileNames: 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
+        :param _FileNames: 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
         :type FileNames: list of str
-        :param FormFields: 内容控件信息数组
+        :param _FormFields: 内容控件信息数组
         :type FormFields: list of FormField
-        :param NeedPreview: 是否需要生成预览文件 默认不生成；
+        :param _NeedPreview: 是否需要生成预览文件 默认不生成；
 预览链接有效期300秒；
         :type NeedPreview: bool
-        :param PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+        :param _PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
         :type PreviewType: int
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
+        :param _ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
         """
-        self.Operator = None
-        self.FlowId = None
-        self.TemplateId = None
-        self.FileNames = None
-        self.FormFields = None
-        self.NeedPreview = None
-        self.PreviewType = None
-        self.Agent = None
-        self.ClientToken = None
+        self._Operator = None
+        self._FlowId = None
+        self._TemplateId = None
+        self._FileNames = None
+        self._FormFields = None
+        self._NeedPreview = None
+        self._PreviewType = None
+        self._Agent = None
+        self._ClientToken = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def FileNames(self):
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+    @property
+    def FormFields(self):
+        return self._FormFields
+
+    @FormFields.setter
+    def FormFields(self, FormFields):
+        self._FormFields = FormFields
+
+    @property
+    def NeedPreview(self):
+        return self._NeedPreview
+
+    @NeedPreview.setter
+    def NeedPreview(self, NeedPreview):
+        self._NeedPreview = NeedPreview
+
+    @property
+    def PreviewType(self):
+        return self._PreviewType
+
+    @PreviewType.setter
+    def PreviewType(self, PreviewType):
+        self._PreviewType = PreviewType
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowId = params.get("FlowId")
-        self.TemplateId = params.get("TemplateId")
-        self.FileNames = params.get("FileNames")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
+        self._TemplateId = params.get("TemplateId")
+        self._FileNames = params.get("FileNames")
         if params.get("FormFields") is not None:
-            self.FormFields = []
+            self._FormFields = []
             for item in params.get("FormFields"):
                 obj = FormField()
                 obj._deserialize(item)
-                self.FormFields.append(obj)
-        self.NeedPreview = params.get("NeedPreview")
-        self.PreviewType = params.get("PreviewType")
+                self._FormFields.append(obj)
+        self._NeedPreview = params.get("NeedPreview")
+        self._PreviewType = params.get("PreviewType")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.ClientToken = params.get("ClientToken")
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1173,23 +2196,47 @@ class CreateDocumentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DocumentId: 签署流程电子文档ID
+        :param _DocumentId: 签署流程电子文档ID
         :type DocumentId: str
-        :param PreviewFileUrl: 签署流程文件的预览地址, 5分钟内有效。仅当NeedPreview为true 时返回
+        :param _PreviewFileUrl: 签署流程文件的预览地址, 5分钟内有效。仅当NeedPreview为true 时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewFileUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DocumentId = None
-        self.PreviewFileUrl = None
-        self.RequestId = None
+        self._DocumentId = None
+        self._PreviewFileUrl = None
+        self._RequestId = None
+
+    @property
+    def DocumentId(self):
+        return self._DocumentId
+
+    @DocumentId.setter
+    def DocumentId(self, DocumentId):
+        self._DocumentId = DocumentId
+
+    @property
+    def PreviewFileUrl(self):
+        return self._PreviewFileUrl
+
+    @PreviewFileUrl.setter
+    def PreviewFileUrl(self, PreviewFileUrl):
+        self._PreviewFileUrl = PreviewFileUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DocumentId = params.get("DocumentId")
-        self.PreviewFileUrl = params.get("PreviewFileUrl")
-        self.RequestId = params.get("RequestId")
+        self._DocumentId = params.get("DocumentId")
+        self._PreviewFileUrl = params.get("PreviewFileUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowApproversRequest(AbstractModel):
@@ -1199,37 +2246,70 @@ class CreateFlowApproversRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowId: 签署流程编号
+        :param _FlowId: 签署流程编号
         :type FlowId: str
-        :param Approvers: 补充签署人信息
+        :param _Approvers: 补充签署人信息
         :type Approvers: list of FillApproverInfo
-        :param Initiator: 企微消息中的发起人
+        :param _Initiator: 企微消息中的发起人
         :type Initiator: str
         """
-        self.Operator = None
-        self.FlowId = None
-        self.Approvers = None
-        self.Initiator = None
+        self._Operator = None
+        self._FlowId = None
+        self._Approvers = None
+        self._Initiator = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def Initiator(self):
+        return self._Initiator
+
+    @Initiator.setter
+    def Initiator(self, Initiator):
+        self._Initiator = Initiator
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowId = params.get("FlowId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
         if params.get("Approvers") is not None:
-            self.Approvers = []
+            self._Approvers = []
             for item in params.get("Approvers"):
                 obj = FillApproverInfo()
                 obj._deserialize(item)
-                self.Approvers.append(obj)
-        self.Initiator = params.get("Initiator")
+                self._Approvers.append(obj)
+        self._Initiator = params.get("Initiator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1242,14 +2322,22 @@ class CreateFlowApproversResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowByFilesRequest(AbstractModel):
@@ -1259,131 +2347,300 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+        :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowName: 签署流程名称,最大长度200个字符
+        :param _FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
-        :param Approvers: 签署参与者信息，最大限制50方
+        :param _Approvers: 签署参与者信息，最大限制50方
         :type Approvers: list of ApproverInfo
-        :param FileIds: 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
+        :param _FileIds: 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
         :type FileIds: list of str
-        :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+        :param _FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
         :type FlowType: str
-        :param Components: 经办人内容控件配置
+        :param _Components: 经办人内容控件配置
         :type Components: list of Component
-        :param CcInfos: 被抄送人的信息列表。
+        :param _CcInfos: 被抄送人的信息列表。
 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
         :type CcInfos: list of CcInfo
-        :param NeedPreview: 是否需要预览，true：预览模式，false：非预览（默认）；
+        :param _NeedPreview: 是否需要预览，true：预览模式，false：非预览（默认）；
 预览链接有效期300秒；
 
 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
         :type NeedPreview: bool
-        :param PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+        :param _PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
         :type PreviewType: int
-        :param Deadline: 签署流程的签署截止时间。
+        :param _Deadline: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type Deadline: int
-        :param RemindedOn: 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
+        :param _RemindedOn: 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
         :type RemindedOn: int
-        :param Unordered: 发送类型：
+        :param _Unordered: 发送类型：
 true：无序签
 false：有序签
 注：默认为false（有序签）
         :type Unordered: bool
-        :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+        :param _CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
-        :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+        :param _NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
 若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
 
 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
         :type NeedSignReview: bool
-        :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+        :param _UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
         :type UserData: str
-        :param ApproverVerifyType: 签署人校验方式
+        :param _ApproverVerifyType: 签署人校验方式
 VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
         :type ApproverVerifyType: str
-        :param FlowDescription: 签署流程描述,最大长度1000个字符
+        :param _FlowDescription: 签署流程描述,最大长度1000个字符
         :type FlowDescription: str
-        :param SignBeanTag: 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+        :param _SignBeanTag: 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
         :type SignBeanTag: int
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+        :param _CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
         :type CcNotifyType: int
-        :param AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type AutoSignScene: str
         """
-        self.Operator = None
-        self.FlowName = None
-        self.Approvers = None
-        self.FileIds = None
-        self.FlowType = None
-        self.Components = None
-        self.CcInfos = None
-        self.NeedPreview = None
-        self.PreviewType = None
-        self.Deadline = None
-        self.RemindedOn = None
-        self.Unordered = None
-        self.CustomShowMap = None
-        self.NeedSignReview = None
-        self.UserData = None
-        self.ApproverVerifyType = None
-        self.FlowDescription = None
-        self.SignBeanTag = None
-        self.Agent = None
-        self.CcNotifyType = None
-        self.AutoSignScene = None
+        self._Operator = None
+        self._FlowName = None
+        self._Approvers = None
+        self._FileIds = None
+        self._FlowType = None
+        self._Components = None
+        self._CcInfos = None
+        self._NeedPreview = None
+        self._PreviewType = None
+        self._Deadline = None
+        self._RemindedOn = None
+        self._Unordered = None
+        self._CustomShowMap = None
+        self._NeedSignReview = None
+        self._UserData = None
+        self._ApproverVerifyType = None
+        self._FlowDescription = None
+        self._SignBeanTag = None
+        self._Agent = None
+        self._CcNotifyType = None
+        self._AutoSignScene = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def FileIds(self):
+        return self._FileIds
+
+    @FileIds.setter
+    def FileIds(self, FileIds):
+        self._FileIds = FileIds
+
+    @property
+    def FlowType(self):
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def CcInfos(self):
+        return self._CcInfos
+
+    @CcInfos.setter
+    def CcInfos(self, CcInfos):
+        self._CcInfos = CcInfos
+
+    @property
+    def NeedPreview(self):
+        return self._NeedPreview
+
+    @NeedPreview.setter
+    def NeedPreview(self, NeedPreview):
+        self._NeedPreview = NeedPreview
+
+    @property
+    def PreviewType(self):
+        return self._PreviewType
+
+    @PreviewType.setter
+    def PreviewType(self, PreviewType):
+        self._PreviewType = PreviewType
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def RemindedOn(self):
+        return self._RemindedOn
+
+    @RemindedOn.setter
+    def RemindedOn(self, RemindedOn):
+        self._RemindedOn = RemindedOn
+
+    @property
+    def Unordered(self):
+        return self._Unordered
+
+    @Unordered.setter
+    def Unordered(self, Unordered):
+        self._Unordered = Unordered
+
+    @property
+    def CustomShowMap(self):
+        return self._CustomShowMap
+
+    @CustomShowMap.setter
+    def CustomShowMap(self, CustomShowMap):
+        self._CustomShowMap = CustomShowMap
+
+    @property
+    def NeedSignReview(self):
+        return self._NeedSignReview
+
+    @NeedSignReview.setter
+    def NeedSignReview(self, NeedSignReview):
+        self._NeedSignReview = NeedSignReview
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def ApproverVerifyType(self):
+        return self._ApproverVerifyType
+
+    @ApproverVerifyType.setter
+    def ApproverVerifyType(self, ApproverVerifyType):
+        self._ApproverVerifyType = ApproverVerifyType
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
+
+    @property
+    def SignBeanTag(self):
+        return self._SignBeanTag
+
+    @SignBeanTag.setter
+    def SignBeanTag(self, SignBeanTag):
+        self._SignBeanTag = SignBeanTag
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def CcNotifyType(self):
+        return self._CcNotifyType
+
+    @CcNotifyType.setter
+    def CcNotifyType(self, CcNotifyType):
+        self._CcNotifyType = CcNotifyType
+
+    @property
+    def AutoSignScene(self):
+        return self._AutoSignScene
+
+    @AutoSignScene.setter
+    def AutoSignScene(self, AutoSignScene):
+        self._AutoSignScene = AutoSignScene
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowName = params.get("FlowName")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowName = params.get("FlowName")
         if params.get("Approvers") is not None:
-            self.Approvers = []
+            self._Approvers = []
             for item in params.get("Approvers"):
                 obj = ApproverInfo()
                 obj._deserialize(item)
-                self.Approvers.append(obj)
-        self.FileIds = params.get("FileIds")
-        self.FlowType = params.get("FlowType")
+                self._Approvers.append(obj)
+        self._FileIds = params.get("FileIds")
+        self._FlowType = params.get("FlowType")
         if params.get("Components") is not None:
-            self.Components = []
+            self._Components = []
             for item in params.get("Components"):
                 obj = Component()
                 obj._deserialize(item)
-                self.Components.append(obj)
+                self._Components.append(obj)
         if params.get("CcInfos") is not None:
-            self.CcInfos = []
+            self._CcInfos = []
             for item in params.get("CcInfos"):
                 obj = CcInfo()
                 obj._deserialize(item)
-                self.CcInfos.append(obj)
-        self.NeedPreview = params.get("NeedPreview")
-        self.PreviewType = params.get("PreviewType")
-        self.Deadline = params.get("Deadline")
-        self.RemindedOn = params.get("RemindedOn")
-        self.Unordered = params.get("Unordered")
-        self.CustomShowMap = params.get("CustomShowMap")
-        self.NeedSignReview = params.get("NeedSignReview")
-        self.UserData = params.get("UserData")
-        self.ApproverVerifyType = params.get("ApproverVerifyType")
-        self.FlowDescription = params.get("FlowDescription")
-        self.SignBeanTag = params.get("SignBeanTag")
+                self._CcInfos.append(obj)
+        self._NeedPreview = params.get("NeedPreview")
+        self._PreviewType = params.get("PreviewType")
+        self._Deadline = params.get("Deadline")
+        self._RemindedOn = params.get("RemindedOn")
+        self._Unordered = params.get("Unordered")
+        self._CustomShowMap = params.get("CustomShowMap")
+        self._NeedSignReview = params.get("NeedSignReview")
+        self._UserData = params.get("UserData")
+        self._ApproverVerifyType = params.get("ApproverVerifyType")
+        self._FlowDescription = params.get("FlowDescription")
+        self._SignBeanTag = params.get("SignBeanTag")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.CcNotifyType = params.get("CcNotifyType")
-        self.AutoSignScene = params.get("AutoSignScene")
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._CcNotifyType = params.get("CcNotifyType")
+        self._AutoSignScene = params.get("AutoSignScene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1396,27 +2653,51 @@ class CreateFlowByFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 签署流程编号。
+        :param _FlowId: 签署流程编号。
 
 注：如入参 是否需要预览 NeedPreview 设置为 true，不会正式发起合同，此处不会有值返回；如入参 是否需要预览 NeedPreview 设置为 false，此处会正常返回签署流程编号 FlowId。
         :type FlowId: str
-        :param PreviewUrl: 合同预览链接。
+        :param _PreviewUrl: 合同预览链接。
 
 注：如入参 是否需要预览 NeedPreview 设置为 true，会开启“预览模式”，此处会返回预览链接；如入参 是否需要预览 NeedPreview 设置为 false，此处不会有值返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowId = None
-        self.PreviewUrl = None
-        self.RequestId = None
+        self._FlowId = None
+        self._PreviewUrl = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def PreviewUrl(self):
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.PreviewUrl = params.get("PreviewUrl")
-        self.RequestId = params.get("RequestId")
+        self._FlowId = params.get("FlowId")
+        self._PreviewUrl = params.get("PreviewUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowEvidenceReportRequest(AbstractModel):
@@ -1426,31 +2707,56 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowId: 签署流程编号
+        :param _FlowId: 签署流程编号
         :type FlowId: str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.FlowId = None
-        self.Agent = None
+        self._Operator = None
+        self._FlowId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowId = params.get("FlowId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1463,30 +2769,62 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportId: 出证报告 ID，用于查询出证报告DescribeFlowEvidenceReport接口时用到
+        :param _ReportId: 出证报告 ID，用于查询出证报告DescribeFlowEvidenceReport接口时用到
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
-        :param Status: 执行中：EvidenceStatusExecuting
+        :param _Status: 执行中：EvidenceStatusExecuting
 成功：EvidenceStatusSuccess
 失败：EvidenceStatusFailed
         :type Status: str
-        :param ReportUrl: 废除，字段无效
+        :param _ReportUrl: 废除，字段无效
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ReportId = None
-        self.Status = None
-        self.ReportUrl = None
-        self.RequestId = None
+        self._ReportId = None
+        self._Status = None
+        self._ReportUrl = None
+        self._RequestId = None
+
+    @property
+    def ReportId(self):
+        return self._ReportId
+
+    @ReportId.setter
+    def ReportId(self, ReportId):
+        self._ReportId = ReportId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ReportUrl(self):
+        return self._ReportUrl
+
+    @ReportUrl.setter
+    def ReportUrl(self, ReportUrl):
+        self._ReportUrl = ReportUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ReportId = params.get("ReportId")
-        self.Status = params.get("Status")
-        self.ReportUrl = params.get("ReportUrl")
-        self.RequestId = params.get("RequestId")
+        self._ReportId = params.get("ReportId")
+        self._Status = params.get("Status")
+        self._ReportUrl = params.get("ReportUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowRemindsRequest(AbstractModel):
@@ -1496,30 +2834,55 @@ class CreateFlowRemindsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowIds: 需要执行催办的签署流程id数组，最多100个
+        :param _FlowIds: 需要执行催办的签署流程id数组，最多100个
         :type FlowIds: list of str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.FlowIds = None
-        self.Agent = None
+        self._Operator = None
+        self._FlowIds = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowIds = params.get("FlowIds")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowIds = params.get("FlowIds")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1532,23 +2895,39 @@ class CreateFlowRemindsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RemindFlowRecords: 催办合同详情列表
+        :param _RemindFlowRecords: 催办合同详情列表
         :type RemindFlowRecords: list of RemindFlowRecords
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RemindFlowRecords = None
-        self.RequestId = None
+        self._RemindFlowRecords = None
+        self._RequestId = None
+
+    @property
+    def RemindFlowRecords(self):
+        return self._RemindFlowRecords
+
+    @RemindFlowRecords.setter
+    def RemindFlowRecords(self, RemindFlowRecords):
+        self._RemindFlowRecords = RemindFlowRecords
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RemindFlowRecords") is not None:
-            self.RemindFlowRecords = []
+            self._RemindFlowRecords = []
             for item in params.get("RemindFlowRecords"):
                 obj = RemindFlowRecords()
                 obj._deserialize(item)
-                self.RemindFlowRecords.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RemindFlowRecords.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowRequest(AbstractModel):
@@ -1558,104 +2937,249 @@ class CreateFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+        :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowName: 签署流程名称,最大长度200个字符
+        :param _FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
-        :param Approvers: 签署流程参与者信息，最大限制50方
+        :param _Approvers: 签署流程参与者信息，最大限制50方
         :type Approvers: list of FlowCreateApprover
-        :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+        :param _FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
         :type FlowType: str
-        :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
+        :param _ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
-        :param DeadLine: 签署流程的签署截止时间。
+        :param _DeadLine: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type DeadLine: int
-        :param RemindedOn: 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
+        :param _RemindedOn: 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
         :type RemindedOn: int
-        :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+        :param _UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
         :type UserData: str
-        :param FlowDescription: 签署流程描述,最大长度1000个字符
+        :param _FlowDescription: 签署流程描述,最大长度1000个字符
         :type FlowDescription: str
-        :param Unordered: 发送类型：
+        :param _Unordered: 发送类型：
 true：无序签
 false：有序签
 注：默认为false（有序签），请和模板中的配置保持一致
         :type Unordered: bool
-        :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+        :param _CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
-        :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+        :param _NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
 若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
 
 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
         :type NeedSignReview: bool
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param CcInfos: 被抄送人的信息列表。
+        :param _CcInfos: 被抄送人的信息列表。
 注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
         :type CcInfos: list of CcInfo
-        :param AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type AutoSignScene: str
-        :param RelatedFlowId: 暂未开放
+        :param _RelatedFlowId: 暂未开放
         :type RelatedFlowId: str
-        :param CallbackUrl: 暂未开放
+        :param _CallbackUrl: 暂未开放
         :type CallbackUrl: str
         """
-        self.Operator = None
-        self.FlowName = None
-        self.Approvers = None
-        self.FlowType = None
-        self.ClientToken = None
-        self.DeadLine = None
-        self.RemindedOn = None
-        self.UserData = None
-        self.FlowDescription = None
-        self.Unordered = None
-        self.CustomShowMap = None
-        self.NeedSignReview = None
-        self.Agent = None
-        self.CcInfos = None
-        self.AutoSignScene = None
-        self.RelatedFlowId = None
-        self.CallbackUrl = None
+        self._Operator = None
+        self._FlowName = None
+        self._Approvers = None
+        self._FlowType = None
+        self._ClientToken = None
+        self._DeadLine = None
+        self._RemindedOn = None
+        self._UserData = None
+        self._FlowDescription = None
+        self._Unordered = None
+        self._CustomShowMap = None
+        self._NeedSignReview = None
+        self._Agent = None
+        self._CcInfos = None
+        self._AutoSignScene = None
+        self._RelatedFlowId = None
+        self._CallbackUrl = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def FlowType(self):
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def DeadLine(self):
+        return self._DeadLine
+
+    @DeadLine.setter
+    def DeadLine(self, DeadLine):
+        self._DeadLine = DeadLine
+
+    @property
+    def RemindedOn(self):
+        return self._RemindedOn
+
+    @RemindedOn.setter
+    def RemindedOn(self, RemindedOn):
+        self._RemindedOn = RemindedOn
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
+
+    @property
+    def Unordered(self):
+        return self._Unordered
+
+    @Unordered.setter
+    def Unordered(self, Unordered):
+        self._Unordered = Unordered
+
+    @property
+    def CustomShowMap(self):
+        return self._CustomShowMap
+
+    @CustomShowMap.setter
+    def CustomShowMap(self, CustomShowMap):
+        self._CustomShowMap = CustomShowMap
+
+    @property
+    def NeedSignReview(self):
+        return self._NeedSignReview
+
+    @NeedSignReview.setter
+    def NeedSignReview(self, NeedSignReview):
+        self._NeedSignReview = NeedSignReview
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def CcInfos(self):
+        return self._CcInfos
+
+    @CcInfos.setter
+    def CcInfos(self, CcInfos):
+        self._CcInfos = CcInfos
+
+    @property
+    def AutoSignScene(self):
+        return self._AutoSignScene
+
+    @AutoSignScene.setter
+    def AutoSignScene(self, AutoSignScene):
+        self._AutoSignScene = AutoSignScene
+
+    @property
+    def RelatedFlowId(self):
+        warnings.warn("parameter `RelatedFlowId` is deprecated", DeprecationWarning) 
+
+        return self._RelatedFlowId
+
+    @RelatedFlowId.setter
+    def RelatedFlowId(self, RelatedFlowId):
+        warnings.warn("parameter `RelatedFlowId` is deprecated", DeprecationWarning) 
+
+        self._RelatedFlowId = RelatedFlowId
+
+    @property
+    def CallbackUrl(self):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
+        self._CallbackUrl = CallbackUrl
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowName = params.get("FlowName")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowName = params.get("FlowName")
         if params.get("Approvers") is not None:
-            self.Approvers = []
+            self._Approvers = []
             for item in params.get("Approvers"):
                 obj = FlowCreateApprover()
                 obj._deserialize(item)
-                self.Approvers.append(obj)
-        self.FlowType = params.get("FlowType")
-        self.ClientToken = params.get("ClientToken")
-        self.DeadLine = params.get("DeadLine")
-        self.RemindedOn = params.get("RemindedOn")
-        self.UserData = params.get("UserData")
-        self.FlowDescription = params.get("FlowDescription")
-        self.Unordered = params.get("Unordered")
-        self.CustomShowMap = params.get("CustomShowMap")
-        self.NeedSignReview = params.get("NeedSignReview")
+                self._Approvers.append(obj)
+        self._FlowType = params.get("FlowType")
+        self._ClientToken = params.get("ClientToken")
+        self._DeadLine = params.get("DeadLine")
+        self._RemindedOn = params.get("RemindedOn")
+        self._UserData = params.get("UserData")
+        self._FlowDescription = params.get("FlowDescription")
+        self._Unordered = params.get("Unordered")
+        self._CustomShowMap = params.get("CustomShowMap")
+        self._NeedSignReview = params.get("NeedSignReview")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("CcInfos") is not None:
-            self.CcInfos = []
+            self._CcInfos = []
             for item in params.get("CcInfos"):
                 obj = CcInfo()
                 obj._deserialize(item)
-                self.CcInfos.append(obj)
-        self.AutoSignScene = params.get("AutoSignScene")
-        self.RelatedFlowId = params.get("RelatedFlowId")
-        self.CallbackUrl = params.get("CallbackUrl")
+                self._CcInfos.append(obj)
+        self._AutoSignScene = params.get("AutoSignScene")
+        self._RelatedFlowId = params.get("RelatedFlowId")
+        self._CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1668,18 +3192,34 @@ class CreateFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 签署流程编号
+        :param _FlowId: 签署流程编号
         :type FlowId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowId = None
-        self.RequestId = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.RequestId = params.get("RequestId")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowSignReviewRequest(AbstractModel):
@@ -1689,41 +3229,110 @@ class CreateFlowSignReviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowId: 签署流程编号
+        :param _FlowId: 签署流程编号
         :type FlowId: str
-        :param ReviewType: 企业内部审核结果
+        :param _ReviewType: 企业内部审核结果
 PASS: 通过 
 REJECT: 拒绝
         :type ReviewType: str
-        :param ReviewMessage: 审核原因 
+        :param _ReviewMessage: 审核原因 
 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
         :type ReviewMessage: str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _RecipientId: 审核签署节点使用 非必填 如果填写则审核该签署节点。给个人审核时必填。
+        :type RecipientId: str
+        :param _OperateType: 操作类型：
+操作类型，默认：SignReview；SignReview:签署审核
+注：接口通过该字段区分操作类型
+该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
+若发起个人审核，则指定该字段为：SignReview（注意，给个人审核时，需联系客户经理开白使用）
+        :type OperateType: str
         """
-        self.Operator = None
-        self.FlowId = None
-        self.ReviewType = None
-        self.ReviewMessage = None
-        self.Agent = None
+        self._Operator = None
+        self._FlowId = None
+        self._ReviewType = None
+        self._ReviewMessage = None
+        self._Agent = None
+        self._RecipientId = None
+        self._OperateType = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ReviewType(self):
+        return self._ReviewType
+
+    @ReviewType.setter
+    def ReviewType(self, ReviewType):
+        self._ReviewType = ReviewType
+
+    @property
+    def ReviewMessage(self):
+        return self._ReviewMessage
+
+    @ReviewMessage.setter
+    def ReviewMessage(self, ReviewMessage):
+        self._ReviewMessage = ReviewMessage
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def OperateType(self):
+        return self._OperateType
+
+    @OperateType.setter
+    def OperateType(self, OperateType):
+        self._OperateType = OperateType
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowId = params.get("FlowId")
-        self.ReviewType = params.get("ReviewType")
-        self.ReviewMessage = params.get("ReviewMessage")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
+        self._ReviewType = params.get("ReviewType")
+        self._ReviewMessage = params.get("ReviewMessage")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._RecipientId = params.get("RecipientId")
+        self._OperateType = params.get("OperateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1736,14 +3345,22 @@ class CreateFlowSignReviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowSignUrlRequest(AbstractModel):
@@ -1753,45 +3370,90 @@ class CreateFlowSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程编号
+        :param _FlowId: 流程编号
         :type FlowId: str
-        :param FlowApproverInfos: 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+        :param _FlowApproverInfos: 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
         :type FlowApproverInfos: list of FlowCreateApprover
-        :param Operator: 用户信息，此结构体UserId必填
+        :param _Operator: 用户信息，此结构体UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param Organization: 机构信息，暂未开放
+        :param _Organization: 机构信息，暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         """
-        self.FlowId = None
-        self.FlowApproverInfos = None
-        self.Operator = None
-        self.Agent = None
-        self.Organization = None
+        self._FlowId = None
+        self._FlowApproverInfos = None
+        self._Operator = None
+        self._Agent = None
+        self._Organization = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowApproverInfos(self):
+        return self._FlowApproverInfos
+
+    @FlowApproverInfos.setter
+    def FlowApproverInfos(self, FlowApproverInfos):
+        self._FlowApproverInfos = FlowApproverInfos
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Organization(self):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        self._Organization = Organization
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("FlowApproverInfos") is not None:
-            self.FlowApproverInfos = []
+            self._FlowApproverInfos = []
             for item in params.get("FlowApproverInfos"):
                 obj = FlowCreateApprover()
                 obj._deserialize(item)
-                self.FlowApproverInfos.append(obj)
+                self._FlowApproverInfos.append(obj)
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("Organization") is not None:
-            self.Organization = OrganizationInfo()
-            self.Organization._deserialize(params.get("Organization"))
+            self._Organization = OrganizationInfo()
+            self._Organization._deserialize(params.get("Organization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1804,23 +3466,39 @@ class CreateFlowSignUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowApproverUrlInfos: 签署人签署链接信息
+        :param _FlowApproverUrlInfos: 签署人签署链接信息
         :type FlowApproverUrlInfos: list of FlowApproverUrlInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowApproverUrlInfos = None
-        self.RequestId = None
+        self._FlowApproverUrlInfos = None
+        self._RequestId = None
+
+    @property
+    def FlowApproverUrlInfos(self):
+        return self._FlowApproverUrlInfos
+
+    @FlowApproverUrlInfos.setter
+    def FlowApproverUrlInfos(self, FlowApproverUrlInfos):
+        self._FlowApproverUrlInfos = FlowApproverUrlInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FlowApproverUrlInfos") is not None:
-            self.FlowApproverUrlInfos = []
+            self._FlowApproverUrlInfos = []
             for item in params.get("FlowApproverUrlInfos"):
                 obj = FlowApproverUrlInfo()
                 obj._deserialize(item)
-                self.FlowApproverUrlInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FlowApproverUrlInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIntegrationDepartmentRequest(AbstractModel):
@@ -1830,40 +3508,89 @@ class CreateIntegrationDepartmentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :param _Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param DeptName: 部门名称，不超过50个字符
+        :param _DeptName: 部门名称，不超过50个字符
         :type DeptName: str
-        :param ParentDeptId: 电子签父部门ID，与ParentDeptOpenId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+        :param _ParentDeptId: 电子签父部门ID，与ParentDeptOpenId二选一,优先ParentDeptId,都为空时自动填充至根节点下
         :type ParentDeptId: str
-        :param ParentDeptOpenId: 第三方平台中父部门ID,与ParentDeptId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+        :param _ParentDeptOpenId: 第三方平台中父部门ID,与ParentDeptId二选一,优先ParentDeptId,都为空时自动填充至根节点下
         :type ParentDeptOpenId: str
-        :param DeptOpenId: 客户系统部门ID，不超过64个字符
+        :param _DeptOpenId: 客户系统部门ID，不超过64个字符
         :type DeptOpenId: str
-        :param OrderNo: 排序号,1~30000范围内
+        :param _OrderNo: 排序号,1~30000范围内
         :type OrderNo: int
         """
-        self.Operator = None
-        self.DeptName = None
-        self.ParentDeptId = None
-        self.ParentDeptOpenId = None
-        self.DeptOpenId = None
-        self.OrderNo = None
+        self._Operator = None
+        self._DeptName = None
+        self._ParentDeptId = None
+        self._ParentDeptOpenId = None
+        self._DeptOpenId = None
+        self._OrderNo = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def DeptName(self):
+        return self._DeptName
+
+    @DeptName.setter
+    def DeptName(self, DeptName):
+        self._DeptName = DeptName
+
+    @property
+    def ParentDeptId(self):
+        return self._ParentDeptId
+
+    @ParentDeptId.setter
+    def ParentDeptId(self, ParentDeptId):
+        self._ParentDeptId = ParentDeptId
+
+    @property
+    def ParentDeptOpenId(self):
+        return self._ParentDeptOpenId
+
+    @ParentDeptOpenId.setter
+    def ParentDeptOpenId(self, ParentDeptOpenId):
+        self._ParentDeptOpenId = ParentDeptOpenId
+
+    @property
+    def DeptOpenId(self):
+        return self._DeptOpenId
+
+    @DeptOpenId.setter
+    def DeptOpenId(self, DeptOpenId):
+        self._DeptOpenId = DeptOpenId
+
+    @property
+    def OrderNo(self):
+        return self._OrderNo
+
+    @OrderNo.setter
+    def OrderNo(self, OrderNo):
+        self._OrderNo = OrderNo
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.DeptName = params.get("DeptName")
-        self.ParentDeptId = params.get("ParentDeptId")
-        self.ParentDeptOpenId = params.get("ParentDeptOpenId")
-        self.DeptOpenId = params.get("DeptOpenId")
-        self.OrderNo = params.get("OrderNo")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._DeptName = params.get("DeptName")
+        self._ParentDeptId = params.get("ParentDeptId")
+        self._ParentDeptOpenId = params.get("ParentDeptOpenId")
+        self._DeptOpenId = params.get("DeptOpenId")
+        self._OrderNo = params.get("OrderNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1876,18 +3603,34 @@ class CreateIntegrationDepartmentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeptId: 电子签部门ID
+        :param _DeptId: 电子签部门ID
         :type DeptId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DeptId = None
-        self.RequestId = None
+        self._DeptId = None
+        self._RequestId = None
+
+    @property
+    def DeptId(self):
+        return self._DeptId
+
+    @DeptId.setter
+    def DeptId(self, DeptId):
+        self._DeptId = DeptId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DeptId = params.get("DeptId")
-        self.RequestId = params.get("RequestId")
+        self._DeptId = params.get("DeptId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIntegrationEmployeesRequest(AbstractModel):
@@ -1897,36 +3640,62 @@ class CreateIntegrationEmployeesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Employees: 待创建员工的信息，不超过20个。
-Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
+        :param _Employees: 待创建员工的信息，不超过20个。
+所有类型的企业支持的入参：Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
+企微类型的企业特有支持的入参：WeworkOpenId，传入此字段无需在传入其他信息
         :type Employees: list of Staff
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.Employees = None
-        self.Agent = None
+        self._Operator = None
+        self._Employees = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Employees(self):
+        return self._Employees
+
+    @Employees.setter
+    def Employees(self, Employees):
+        self._Employees = Employees
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Employees") is not None:
-            self.Employees = []
+            self._Employees = []
             for item in params.get("Employees"):
                 obj = Staff()
                 obj._deserialize(item)
-                self.Employees.append(obj)
+                self._Employees.append(obj)
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1939,20 +3708,36 @@ class CreateIntegrationEmployeesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreateEmployeeResult: 创建员工的结果
+        :param _CreateEmployeeResult: 创建员工的结果
         :type CreateEmployeeResult: :class:`tencentcloud.ess.v20201111.models.CreateStaffResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CreateEmployeeResult = None
-        self.RequestId = None
+        self._CreateEmployeeResult = None
+        self._RequestId = None
+
+    @property
+    def CreateEmployeeResult(self):
+        return self._CreateEmployeeResult
+
+    @CreateEmployeeResult.setter
+    def CreateEmployeeResult(self, CreateEmployeeResult):
+        self._CreateEmployeeResult = CreateEmployeeResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CreateEmployeeResult") is not None:
-            self.CreateEmployeeResult = CreateStaffResult()
-            self.CreateEmployeeResult._deserialize(params.get("CreateEmployeeResult"))
-        self.RequestId = params.get("RequestId")
+            self._CreateEmployeeResult = CreateStaffResult()
+            self._CreateEmployeeResult._deserialize(params.get("CreateEmployeeResult"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIntegrationUserRolesRequest(AbstractModel):
@@ -1962,34 +3747,67 @@ class CreateIntegrationUserRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UserId必填
+        :param _Operator: 操作人信息，UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param UserIds: 绑定角色的用户id列表
+        :param _UserIds: 绑定角色的用户id列表
         :type UserIds: list of str
-        :param RoleIds: 绑定角色的角色id列表
+        :param _RoleIds: 绑定角色的角色id列表
         :type RoleIds: list of str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.UserIds = None
-        self.RoleIds = None
-        self.Agent = None
+        self._Operator = None
+        self._UserIds = None
+        self._RoleIds = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def RoleIds(self):
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.UserIds = params.get("UserIds")
-        self.RoleIds = params.get("RoleIds")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._UserIds = params.get("UserIds")
+        self._RoleIds = params.get("RoleIds")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2002,23 +3820,39 @@ class CreateIntegrationUserRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FailedCreateRoleData: 绑定角色失败列表信息
+        :param _FailedCreateRoleData: 绑定角色失败列表信息
         :type FailedCreateRoleData: list of FailedCreateRoleData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FailedCreateRoleData = None
-        self.RequestId = None
+        self._FailedCreateRoleData = None
+        self._RequestId = None
+
+    @property
+    def FailedCreateRoleData(self):
+        return self._FailedCreateRoleData
+
+    @FailedCreateRoleData.setter
+    def FailedCreateRoleData(self, FailedCreateRoleData):
+        self._FailedCreateRoleData = FailedCreateRoleData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FailedCreateRoleData") is not None:
-            self.FailedCreateRoleData = []
+            self._FailedCreateRoleData = []
             for item in params.get("FailedCreateRoleData"):
                 obj = FailedCreateRoleData()
                 obj._deserialize(item)
-                self.FailedCreateRoleData.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FailedCreateRoleData.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMultiFlowSignQRCodeRequest(AbstractModel):
@@ -2028,72 +3862,169 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 用户信息，其中UserId为必填参数
+        :param _Operator: 用户信息，其中UserId为必填参数
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param TemplateId: 模板ID
+        :param _TemplateId: 模板ID
         :type TemplateId: str
-        :param FlowName: 签署流程名称，最大长度不超过200字符
+        :param _FlowName: 签署流程名称，最大长度不超过200字符
         :type FlowName: str
-        :param MaxFlowNum: 最大可发起签署流程份数，默认5份 
+        :param _MaxFlowNum: 最大可发起签署流程份数，默认5份 
 发起流程数量超过此上限后二维码自动失效
         :type MaxFlowNum: int
-        :param FlowEffectiveDay: 签署流程有效天数 默认7天 最高设置不超过30天
+        :param _FlowEffectiveDay: 签署流程有效天数 默认7天 最高设置不超过30天
         :type FlowEffectiveDay: int
-        :param QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
+        :param _QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
         :type QrEffectiveDay: int
-        :param Restrictions: 限制二维码用户条件
+        :param _Restrictions: 限制二维码用户条件
         :type Restrictions: list of ApproverRestriction
-        :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+        :param _UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
         :type UserData: str
-        :param CallbackUrl: 回调地址,最大长度1000字符串
+        :param _CallbackUrl: 回调地址,最大长度1000字符串
 回调时机：
 用户通过签署二维码发起签署流程时，企业额度不足导致失败
         :type CallbackUrl: str
-        :param Agent: 应用信息
+        :param _Agent: 应用信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param ApproverRestrictions: 限制二维码用户条件（已弃用）
+        :param _ApproverRestrictions: 限制二维码用户条件（已弃用）
         :type ApproverRestrictions: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
         """
-        self.Operator = None
-        self.TemplateId = None
-        self.FlowName = None
-        self.MaxFlowNum = None
-        self.FlowEffectiveDay = None
-        self.QrEffectiveDay = None
-        self.Restrictions = None
-        self.UserData = None
-        self.CallbackUrl = None
-        self.Agent = None
-        self.ApproverRestrictions = None
+        self._Operator = None
+        self._TemplateId = None
+        self._FlowName = None
+        self._MaxFlowNum = None
+        self._FlowEffectiveDay = None
+        self._QrEffectiveDay = None
+        self._Restrictions = None
+        self._UserData = None
+        self._CallbackUrl = None
+        self._Agent = None
+        self._ApproverRestrictions = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def MaxFlowNum(self):
+        return self._MaxFlowNum
+
+    @MaxFlowNum.setter
+    def MaxFlowNum(self, MaxFlowNum):
+        self._MaxFlowNum = MaxFlowNum
+
+    @property
+    def FlowEffectiveDay(self):
+        return self._FlowEffectiveDay
+
+    @FlowEffectiveDay.setter
+    def FlowEffectiveDay(self, FlowEffectiveDay):
+        self._FlowEffectiveDay = FlowEffectiveDay
+
+    @property
+    def QrEffectiveDay(self):
+        return self._QrEffectiveDay
+
+    @QrEffectiveDay.setter
+    def QrEffectiveDay(self, QrEffectiveDay):
+        self._QrEffectiveDay = QrEffectiveDay
+
+    @property
+    def Restrictions(self):
+        return self._Restrictions
+
+    @Restrictions.setter
+    def Restrictions(self, Restrictions):
+        self._Restrictions = Restrictions
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def Agent(self):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        self._Agent = Agent
+
+    @property
+    def ApproverRestrictions(self):
+        warnings.warn("parameter `ApproverRestrictions` is deprecated", DeprecationWarning) 
+
+        return self._ApproverRestrictions
+
+    @ApproverRestrictions.setter
+    def ApproverRestrictions(self, ApproverRestrictions):
+        warnings.warn("parameter `ApproverRestrictions` is deprecated", DeprecationWarning) 
+
+        self._ApproverRestrictions = ApproverRestrictions
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.TemplateId = params.get("TemplateId")
-        self.FlowName = params.get("FlowName")
-        self.MaxFlowNum = params.get("MaxFlowNum")
-        self.FlowEffectiveDay = params.get("FlowEffectiveDay")
-        self.QrEffectiveDay = params.get("QrEffectiveDay")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TemplateId = params.get("TemplateId")
+        self._FlowName = params.get("FlowName")
+        self._MaxFlowNum = params.get("MaxFlowNum")
+        self._FlowEffectiveDay = params.get("FlowEffectiveDay")
+        self._QrEffectiveDay = params.get("QrEffectiveDay")
         if params.get("Restrictions") is not None:
-            self.Restrictions = []
+            self._Restrictions = []
             for item in params.get("Restrictions"):
                 obj = ApproverRestriction()
                 obj._deserialize(item)
-                self.Restrictions.append(obj)
-        self.UserData = params.get("UserData")
-        self.CallbackUrl = params.get("CallbackUrl")
+                self._Restrictions.append(obj)
+        self._UserData = params.get("UserData")
+        self._CallbackUrl = params.get("CallbackUrl")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("ApproverRestrictions") is not None:
-            self.ApproverRestrictions = ApproverRestriction()
-            self.ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))
+            self._ApproverRestrictions = ApproverRestriction()
+            self._ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2106,26 +4037,50 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QrCode: 签署二维码对象
+        :param _QrCode: 签署二维码对象
         :type QrCode: :class:`tencentcloud.ess.v20201111.models.SignQrCode`
-        :param SignUrls: 签署链接对象
+        :param _SignUrls: 签署链接对象
         :type SignUrls: :class:`tencentcloud.ess.v20201111.models.SignUrl`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.QrCode = None
-        self.SignUrls = None
-        self.RequestId = None
+        self._QrCode = None
+        self._SignUrls = None
+        self._RequestId = None
+
+    @property
+    def QrCode(self):
+        return self._QrCode
+
+    @QrCode.setter
+    def QrCode(self, QrCode):
+        self._QrCode = QrCode
+
+    @property
+    def SignUrls(self):
+        return self._SignUrls
+
+    @SignUrls.setter
+    def SignUrls(self, SignUrls):
+        self._SignUrls = SignUrls
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("QrCode") is not None:
-            self.QrCode = SignQrCode()
-            self.QrCode._deserialize(params.get("QrCode"))
+            self._QrCode = SignQrCode()
+            self._QrCode._deserialize(params.get("QrCode"))
         if params.get("SignUrls") is not None:
-            self.SignUrls = SignUrl()
-            self.SignUrls._deserialize(params.get("SignUrls"))
-        self.RequestId = params.get("RequestId")
+            self._SignUrls = SignUrl()
+            self._SignUrls._deserialize(params.get("SignUrls"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePrepareFlowRequest(AbstractModel):
@@ -2135,54 +4090,119 @@ class CreatePrepareFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param ResourceId: 资源Id，通过多文件上传（UploadFiles）接口获得
+        :param _ResourceId: 资源Id，通过多文件上传（UploadFiles）接口获得
         :type ResourceId: str
-        :param FlowName: 合同名称
+        :param _FlowName: 合同名称
         :type FlowName: str
-        :param Unordered: 是否顺序签署(true:无序签,false:顺序签)
+        :param _Unordered: 是否顺序签署(true:无序签,false:顺序签)
         :type Unordered: bool
-        :param Deadline: 签署流程的签署截止时间。
+        :param _Deadline: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type Deadline: int
-        :param UserFlowTypeId: 用户自定义合同类型
+        :param _UserFlowTypeId: 用户自定义合同类型
         :type UserFlowTypeId: str
-        :param Approvers: 签署流程参与者信息，最大限制50方
+        :param _Approvers: 签署流程参与者信息，最大限制50方
         :type Approvers: list of FlowCreateApprover
-        :param IntelligentStatus: 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+        :param _IntelligentStatus: 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
         :type IntelligentStatus: str
         """
-        self.Operator = None
-        self.ResourceId = None
-        self.FlowName = None
-        self.Unordered = None
-        self.Deadline = None
-        self.UserFlowTypeId = None
-        self.Approvers = None
-        self.IntelligentStatus = None
+        self._Operator = None
+        self._ResourceId = None
+        self._FlowName = None
+        self._Unordered = None
+        self._Deadline = None
+        self._UserFlowTypeId = None
+        self._Approvers = None
+        self._IntelligentStatus = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def Unordered(self):
+        return self._Unordered
+
+    @Unordered.setter
+    def Unordered(self, Unordered):
+        self._Unordered = Unordered
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def UserFlowTypeId(self):
+        return self._UserFlowTypeId
+
+    @UserFlowTypeId.setter
+    def UserFlowTypeId(self, UserFlowTypeId):
+        self._UserFlowTypeId = UserFlowTypeId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def IntelligentStatus(self):
+        return self._IntelligentStatus
+
+    @IntelligentStatus.setter
+    def IntelligentStatus(self, IntelligentStatus):
+        self._IntelligentStatus = IntelligentStatus
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.ResourceId = params.get("ResourceId")
-        self.FlowName = params.get("FlowName")
-        self.Unordered = params.get("Unordered")
-        self.Deadline = params.get("Deadline")
-        self.UserFlowTypeId = params.get("UserFlowTypeId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceId = params.get("ResourceId")
+        self._FlowName = params.get("FlowName")
+        self._Unordered = params.get("Unordered")
+        self._Deadline = params.get("Deadline")
+        self._UserFlowTypeId = params.get("UserFlowTypeId")
         if params.get("Approvers") is not None:
-            self.Approvers = []
+            self._Approvers = []
             for item in params.get("Approvers"):
                 obj = FlowCreateApprover()
                 obj._deserialize(item)
-                self.Approvers.append(obj)
-        self.IntelligentStatus = params.get("IntelligentStatus")
+                self._Approvers.append(obj)
+        self._IntelligentStatus = params.get("IntelligentStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2195,18 +4215,34 @@ class CreatePrepareFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 快速发起预览链接，有效期5分钟
+        :param _Url: 快速发起预览链接，有效期5分钟
         :type Url: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Url = None
-        self.RequestId = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.RequestId = params.get("RequestId")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePreparedPersonalEsignRequest(AbstractModel):
@@ -2216,81 +4252,182 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: 个人用户姓名
+        :param _UserName: 个人用户姓名
         :type UserName: str
-        :param IdCardNumber: 身份证件号码
+        :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param SealName: 印章名称
+        :param _SealName: 印章名称
         :type SealName: str
-        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+        :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param IdCardType: 身份证件类型:
+        :param _IdCardType: 身份证件类型:
 ID_CARD 身份证
 PASSPORT 护照
 HONGKONG_AND_MACAO 中国香港
 FOREIGN_ID_CARD 境外身份
 HONGKONG_MACAO_AND_TAIWAN 中国台湾
         :type IdCardType: str
-        :param SealImage: 印章图片的base64
+        :param _SealImage: 印章图片的base64
 注：已废弃
 请先通过UploadFiles接口上传文件，获取 FileId
         :type SealImage: str
-        :param SealImageCompress: 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+        :param _SealImageCompress: 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
         :type SealImageCompress: bool
-        :param Mobile: 手机号码；当需要开通自动签时，该参数必传
+        :param _Mobile: 手机号码；当需要开通自动签时，该参数必传
         :type Mobile: str
-        :param EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
+        :param _EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
         :type EnableAutoSign: bool
-        :param SealColor: 印章颜色（参数ProcessSeal=true时生效）
+        :param _SealColor: 印章颜色（参数ProcessSeal=true时生效）
 默认值：BLACK黑色
 取值: 
 BLACK 黑色,
 RED 红色,
 BLUE 蓝色。
         :type SealColor: str
-        :param ProcessSeal: 是否处理印章
+        :param _ProcessSeal: 是否处理印章
 默认不做印章处理。
 取值：false：不做任何处理；
 true：做透明化处理和颜色增强。
         :type ProcessSeal: bool
-        :param FileId: 印章图片文件 id
+        :param _FileId: 印章图片文件 id
 取值：
 填写的FileId通过UploadFiles接口上传文件获取。
         :type FileId: str
         """
-        self.UserName = None
-        self.IdCardNumber = None
-        self.SealName = None
-        self.Operator = None
-        self.IdCardType = None
-        self.SealImage = None
-        self.SealImageCompress = None
-        self.Mobile = None
-        self.EnableAutoSign = None
-        self.SealColor = None
-        self.ProcessSeal = None
-        self.FileId = None
+        self._UserName = None
+        self._IdCardNumber = None
+        self._SealName = None
+        self._Operator = None
+        self._IdCardType = None
+        self._SealImage = None
+        self._SealImageCompress = None
+        self._Mobile = None
+        self._EnableAutoSign = None
+        self._SealColor = None
+        self._ProcessSeal = None
+        self._FileId = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def SealImage(self):
+        warnings.warn("parameter `SealImage` is deprecated", DeprecationWarning) 
+
+        return self._SealImage
+
+    @SealImage.setter
+    def SealImage(self, SealImage):
+        warnings.warn("parameter `SealImage` is deprecated", DeprecationWarning) 
+
+        self._SealImage = SealImage
+
+    @property
+    def SealImageCompress(self):
+        return self._SealImageCompress
+
+    @SealImageCompress.setter
+    def SealImageCompress(self, SealImageCompress):
+        self._SealImageCompress = SealImageCompress
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def EnableAutoSign(self):
+        return self._EnableAutoSign
+
+    @EnableAutoSign.setter
+    def EnableAutoSign(self, EnableAutoSign):
+        self._EnableAutoSign = EnableAutoSign
+
+    @property
+    def SealColor(self):
+        return self._SealColor
+
+    @SealColor.setter
+    def SealColor(self, SealColor):
+        self._SealColor = SealColor
+
+    @property
+    def ProcessSeal(self):
+        return self._ProcessSeal
+
+    @ProcessSeal.setter
+    def ProcessSeal(self, ProcessSeal):
+        self._ProcessSeal = ProcessSeal
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.SealName = params.get("SealName")
+        self._UserName = params.get("UserName")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._SealName = params.get("SealName")
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.IdCardType = params.get("IdCardType")
-        self.SealImage = params.get("SealImage")
-        self.SealImageCompress = params.get("SealImageCompress")
-        self.Mobile = params.get("Mobile")
-        self.EnableAutoSign = params.get("EnableAutoSign")
-        self.SealColor = params.get("SealColor")
-        self.ProcessSeal = params.get("ProcessSeal")
-        self.FileId = params.get("FileId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._IdCardType = params.get("IdCardType")
+        self._SealImage = params.get("SealImage")
+        self._SealImageCompress = params.get("SealImageCompress")
+        self._Mobile = params.get("Mobile")
+        self._EnableAutoSign = params.get("EnableAutoSign")
+        self._SealColor = params.get("SealColor")
+        self._ProcessSeal = params.get("ProcessSeal")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2303,18 +4440,34 @@ class CreatePreparedPersonalEsignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SealId: 导入生成的印章ID
+        :param _SealId: 导入生成的印章ID
         :type SealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SealId = None
-        self.RequestId = None
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SealId = params.get("SealId")
-        self.RequestId = params.get("RequestId")
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateReleaseFlowRequest(AbstractModel):
@@ -2324,45 +4477,86 @@ class CreateReleaseFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param NeedRelievedFlowId: 待解除的签署流程编号（即原签署流程的编号）
+        :param _NeedRelievedFlowId: 待解除的签署流程编号（即原签署流程的编号）
         :type NeedRelievedFlowId: str
-        :param ReliveInfo: 解除协议内容
+        :param _ReliveInfo: 解除协议内容
         :type ReliveInfo: :class:`tencentcloud.ess.v20201111.models.RelieveInfo`
-        :param ReleasedApprovers: 非必须，解除协议的本企业签署人列表，
+        :param _ReleasedApprovers: 非必须，解除协议的本企业签署人列表，
 默认使用原流程的签署人列表,当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业其他已实名员工来替换原流程中的原签署人，注意需要指明原签署人的编号(ReceiptId,通过DescribeFlowInfo接口获取)来代表需要替换哪一个签署人
 解除协议的签署人数量不能多于原流程的签署人数量
         :type ReleasedApprovers: list of ReleasedApprover
-        :param Deadline: 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
+        :param _Deadline: 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
         :type Deadline: int
         """
-        self.Operator = None
-        self.NeedRelievedFlowId = None
-        self.ReliveInfo = None
-        self.ReleasedApprovers = None
-        self.Deadline = None
+        self._Operator = None
+        self._NeedRelievedFlowId = None
+        self._ReliveInfo = None
+        self._ReleasedApprovers = None
+        self._Deadline = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def NeedRelievedFlowId(self):
+        return self._NeedRelievedFlowId
+
+    @NeedRelievedFlowId.setter
+    def NeedRelievedFlowId(self, NeedRelievedFlowId):
+        self._NeedRelievedFlowId = NeedRelievedFlowId
+
+    @property
+    def ReliveInfo(self):
+        return self._ReliveInfo
+
+    @ReliveInfo.setter
+    def ReliveInfo(self, ReliveInfo):
+        self._ReliveInfo = ReliveInfo
+
+    @property
+    def ReleasedApprovers(self):
+        return self._ReleasedApprovers
+
+    @ReleasedApprovers.setter
+    def ReleasedApprovers(self, ReleasedApprovers):
+        self._ReleasedApprovers = ReleasedApprovers
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.NeedRelievedFlowId = params.get("NeedRelievedFlowId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._NeedRelievedFlowId = params.get("NeedRelievedFlowId")
         if params.get("ReliveInfo") is not None:
-            self.ReliveInfo = RelieveInfo()
-            self.ReliveInfo._deserialize(params.get("ReliveInfo"))
+            self._ReliveInfo = RelieveInfo()
+            self._ReliveInfo._deserialize(params.get("ReliveInfo"))
         if params.get("ReleasedApprovers") is not None:
-            self.ReleasedApprovers = []
+            self._ReleasedApprovers = []
             for item in params.get("ReleasedApprovers"):
                 obj = ReleasedApprover()
                 obj._deserialize(item)
-                self.ReleasedApprovers.append(obj)
-        self.Deadline = params.get("Deadline")
+                self._ReleasedApprovers.append(obj)
+        self._Deadline = params.get("Deadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2375,19 +4569,35 @@ class CreateReleaseFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 解除协议流程编号
+        :param _FlowId: 解除协议流程编号
 
         :type FlowId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowId = None
-        self.RequestId = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.RequestId = params.get("RequestId")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSchemeUrlRequest(AbstractModel):
@@ -2397,57 +4607,130 @@ class CreateSchemeUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param OrganizationName: 企业名称
+        :param _OrganizationName: 企业名称
         :type OrganizationName: str
-        :param Name: 姓名,最大长度50个字符
+        :param _Name: 姓名,最大长度50个字符
         :type Name: str
-        :param Mobile: 手机号，大陆手机号11位
+        :param _Mobile: 手机号，大陆手机号11位
         :type Mobile: str
-        :param EndPoint: 链接类型
+        :param _EndPoint: 链接类型
 HTTP：跳转电子签小程序的http_url，
 APP：第三方APP或小程序跳转电子签小程序的path。
 默认为HTTP类型
         :type EndPoint: str
-        :param FlowId: 签署流程编号 (PathType=1时必传)
+        :param _FlowId: 签署流程编号 (PathType=1时必传)
         :type FlowId: str
-        :param PathType: 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
+        :param _PathType: 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
         :type PathType: int
-        :param AutoJumpBack: 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
+        :param _AutoJumpBack: 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
         :type AutoJumpBack: bool
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.OrganizationName = None
-        self.Name = None
-        self.Mobile = None
-        self.EndPoint = None
-        self.FlowId = None
-        self.PathType = None
-        self.AutoJumpBack = None
-        self.Agent = None
+        self._Operator = None
+        self._OrganizationName = None
+        self._Name = None
+        self._Mobile = None
+        self._EndPoint = None
+        self._FlowId = None
+        self._PathType = None
+        self._AutoJumpBack = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def EndPoint(self):
+        return self._EndPoint
+
+    @EndPoint.setter
+    def EndPoint(self, EndPoint):
+        self._EndPoint = EndPoint
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def PathType(self):
+        return self._PathType
+
+    @PathType.setter
+    def PathType(self, PathType):
+        self._PathType = PathType
+
+    @property
+    def AutoJumpBack(self):
+        return self._AutoJumpBack
+
+    @AutoJumpBack.setter
+    def AutoJumpBack(self, AutoJumpBack):
+        self._AutoJumpBack = AutoJumpBack
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.OrganizationName = params.get("OrganizationName")
-        self.Name = params.get("Name")
-        self.Mobile = params.get("Mobile")
-        self.EndPoint = params.get("EndPoint")
-        self.FlowId = params.get("FlowId")
-        self.PathType = params.get("PathType")
-        self.AutoJumpBack = params.get("AutoJumpBack")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._OrganizationName = params.get("OrganizationName")
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        self._EndPoint = params.get("EndPoint")
+        self._FlowId = params.get("FlowId")
+        self._PathType = params.get("PathType")
+        self._AutoJumpBack = params.get("AutoJumpBack")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2460,18 +4743,34 @@ class CreateSchemeUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SchemeUrl: 小程序链接地址，有效期5分钟
+        :param _SchemeUrl: 小程序链接地址，有效期5分钟
         :type SchemeUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SchemeUrl = None
-        self.RequestId = None
+        self._SchemeUrl = None
+        self._RequestId = None
+
+    @property
+    def SchemeUrl(self):
+        return self._SchemeUrl
+
+    @SchemeUrl.setter
+    def SchemeUrl(self, SchemeUrl):
+        self._SchemeUrl = SchemeUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SchemeUrl = params.get("SchemeUrl")
-        self.RequestId = params.get("RequestId")
+        self._SchemeUrl = params.get("SchemeUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSealPolicyRequest(AbstractModel):
@@ -2481,51 +4780,108 @@ class CreateSealPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Users: 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+        :param _Users: 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
         :type Users: list of UserInfo
-        :param SealId: 印章ID
+        :param _SealId: 印章ID
         :type SealId: str
-        :param Expired: 授权有效期。时间戳秒级
+        :param _Expired: 授权有效期。时间戳秒级
         :type Expired: int
-        :param UserIds: 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+        :param _UserIds: 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
         :type UserIds: list of str
-        :param Policy: 印章授权内容
+        :param _Policy: 印章授权内容
         :type Policy: str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.Users = None
-        self.SealId = None
-        self.Expired = None
-        self.UserIds = None
-        self.Policy = None
-        self.Agent = None
+        self._Operator = None
+        self._Users = None
+        self._SealId = None
+        self._Expired = None
+        self._UserIds = None
+        self._Policy = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def Expired(self):
+        return self._Expired
+
+    @Expired.setter
+    def Expired(self, Expired):
+        self._Expired = Expired
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Users") is not None:
-            self.Users = []
+            self._Users = []
             for item in params.get("Users"):
                 obj = UserInfo()
                 obj._deserialize(item)
-                self.Users.append(obj)
-        self.SealId = params.get("SealId")
-        self.Expired = params.get("Expired")
-        self.UserIds = params.get("UserIds")
-        self.Policy = params.get("Policy")
+                self._Users.append(obj)
+        self._SealId = params.get("SealId")
+        self._Expired = params.get("Expired")
+        self._UserIds = params.get("UserIds")
+        self._Policy = params.get("Policy")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2538,18 +4894,34 @@ class CreateSealPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserIds: 最终授权成功的。其他的跳过的是已经授权了的
+        :param _UserIds: 最终授权成功的。其他的跳过的是已经授权了的
         :type UserIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UserIds = None
-        self.RequestId = None
+        self._UserIds = None
+        self._RequestId = None
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserIds = params.get("UserIds")
-        self.RequestId = params.get("RequestId")
+        self._UserIds = params.get("UserIds")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSealRequest(AbstractModel):
@@ -2559,83 +4931,196 @@ class CreateSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息
+        :param _Operator: 操作人信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param SealName: 电子印章名字
+        :param _SealName: 电子印章名字
         :type SealName: str
-        :param Agent: 应用相关信息
+        :param _Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param SealType: 电子印章类型，PERSONAL-个人私章,OFFICIAL-公章,SPECIAL_FINANCIAL-财务专用章,CONTRACT-合同专用章,LEGAL_REPRESENTATIVE-法定代表人章,SPECIAL_NATIONWIDE_INVOICE-发票专用章
+        :param _SealType: 电子印章类型，PERSONAL-个人私章,OFFICIAL-公章,SPECIAL_FINANCIAL-财务专用章,CONTRACT-合同专用章,LEGAL_REPRESENTATIVE-法定代表人章,SPECIAL_NATIONWIDE_INVOICE-发票专用章
         :type SealType: str
-        :param FileName: 电子印章图片文件名称
+        :param _FileName: 电子印章图片文件名称
         :type FileName: str
-        :param Image: 电子印章图片base64编码
+        :param _Image: 电子印章图片base64编码
 参数Image,FileToken或GenerateSource=SealGenerateSourceSystem三选一。
         :type Image: str
-        :param Width: 电子印章宽度,单位px
+        :param _Width: 电子印章宽度,单位px
 参数不再启用，系统会设置印章大小为标准尺寸。
         :type Width: int
-        :param Height: 电子印章高度,单位px
+        :param _Height: 电子印章高度,单位px
 参数不再启用，系统会设置印章大小为标准尺寸。
         :type Height: int
-        :param Color: 电子印章印章颜色(默认红色RED),RED-红色
+        :param _Color: 电子印章印章颜色(默认红色RED),RED-红色
 
 系统目前只支持红色印章创建。
         :type Color: str
-        :param SealHorizontalText: 电子印章生成时的横向文字。
+        :param _SealHorizontalText: 电子印章生成时的横向文字。
         :type SealHorizontalText: str
-        :param SealChordText: 电子印章下弦文字
+        :param _SealChordText: 电子印章下弦文字
         :type SealChordText: str
-        :param SealCentralType: 电子印章中心图案类型,STAR-圆形有五角星,NONE-圆形无五角星
+        :param _SealCentralType: 电子印章中心图案类型,STAR-圆形有五角星,NONE-圆形无五角星
 系统生成的印章只支持STAR
         :type SealCentralType: str
-        :param FileToken: 通过文件上传时，服务端生成的电子印章上传图片的token
+        :param _FileToken: 通过文件上传时，服务端生成的电子印章上传图片的token
 
         :type FileToken: str
-        :param GenerateSource: 印章生成来源方式
+        :param _GenerateSource: 印章生成来源方式
 取值：
 SealGenerateSourceSystem 表示系统生成企业印章
         :type GenerateSource: str
         """
-        self.Operator = None
-        self.SealName = None
-        self.Agent = None
-        self.SealType = None
-        self.FileName = None
-        self.Image = None
-        self.Width = None
-        self.Height = None
-        self.Color = None
-        self.SealHorizontalText = None
-        self.SealChordText = None
-        self.SealCentralType = None
-        self.FileToken = None
-        self.GenerateSource = None
+        self._Operator = None
+        self._SealName = None
+        self._Agent = None
+        self._SealType = None
+        self._FileName = None
+        self._Image = None
+        self._Width = None
+        self._Height = None
+        self._Color = None
+        self._SealHorizontalText = None
+        self._SealChordText = None
+        self._SealCentralType = None
+        self._FileToken = None
+        self._GenerateSource = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def SealHorizontalText(self):
+        return self._SealHorizontalText
+
+    @SealHorizontalText.setter
+    def SealHorizontalText(self, SealHorizontalText):
+        self._SealHorizontalText = SealHorizontalText
+
+    @property
+    def SealChordText(self):
+        return self._SealChordText
+
+    @SealChordText.setter
+    def SealChordText(self, SealChordText):
+        self._SealChordText = SealChordText
+
+    @property
+    def SealCentralType(self):
+        return self._SealCentralType
+
+    @SealCentralType.setter
+    def SealCentralType(self, SealCentralType):
+        self._SealCentralType = SealCentralType
+
+    @property
+    def FileToken(self):
+        return self._FileToken
+
+    @FileToken.setter
+    def FileToken(self, FileToken):
+        self._FileToken = FileToken
+
+    @property
+    def GenerateSource(self):
+        return self._GenerateSource
+
+    @GenerateSource.setter
+    def GenerateSource(self, GenerateSource):
+        self._GenerateSource = GenerateSource
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.SealName = params.get("SealName")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SealName = params.get("SealName")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.SealType = params.get("SealType")
-        self.FileName = params.get("FileName")
-        self.Image = params.get("Image")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.Color = params.get("Color")
-        self.SealHorizontalText = params.get("SealHorizontalText")
-        self.SealChordText = params.get("SealChordText")
-        self.SealCentralType = params.get("SealCentralType")
-        self.FileToken = params.get("FileToken")
-        self.GenerateSource = params.get("GenerateSource")
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SealType = params.get("SealType")
+        self._FileName = params.get("FileName")
+        self._Image = params.get("Image")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Color = params.get("Color")
+        self._SealHorizontalText = params.get("SealHorizontalText")
+        self._SealChordText = params.get("SealChordText")
+        self._SealCentralType = params.get("SealCentralType")
+        self._FileToken = params.get("FileToken")
+        self._GenerateSource = params.get("GenerateSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2648,18 +5133,34 @@ class CreateSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SealId: 电子印章编号
+        :param _SealId: 电子印章编号
         :type SealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SealId = None
-        self.RequestId = None
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SealId = params.get("SealId")
-        self.RequestId = params.get("RequestId")
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateStaffResult(AbstractModel):
@@ -2669,34 +5170,51 @@ class CreateStaffResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SuccessEmployeeData: 创建员工的成功列表
+        :param _SuccessEmployeeData: 创建员工的成功列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessEmployeeData: list of SuccessCreateStaffData
-        :param FailedEmployeeData: 创建员工的失败列表
+        :param _FailedEmployeeData: 创建员工的失败列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedEmployeeData: list of FailedCreateStaffData
         """
-        self.SuccessEmployeeData = None
-        self.FailedEmployeeData = None
+        self._SuccessEmployeeData = None
+        self._FailedEmployeeData = None
+
+    @property
+    def SuccessEmployeeData(self):
+        return self._SuccessEmployeeData
+
+    @SuccessEmployeeData.setter
+    def SuccessEmployeeData(self, SuccessEmployeeData):
+        self._SuccessEmployeeData = SuccessEmployeeData
+
+    @property
+    def FailedEmployeeData(self):
+        return self._FailedEmployeeData
+
+    @FailedEmployeeData.setter
+    def FailedEmployeeData(self, FailedEmployeeData):
+        self._FailedEmployeeData = FailedEmployeeData
 
 
     def _deserialize(self, params):
         if params.get("SuccessEmployeeData") is not None:
-            self.SuccessEmployeeData = []
+            self._SuccessEmployeeData = []
             for item in params.get("SuccessEmployeeData"):
                 obj = SuccessCreateStaffData()
                 obj._deserialize(item)
-                self.SuccessEmployeeData.append(obj)
+                self._SuccessEmployeeData.append(obj)
         if params.get("FailedEmployeeData") is not None:
-            self.FailedEmployeeData = []
+            self._FailedEmployeeData = []
             for item in params.get("FailedEmployeeData"):
                 obj = FailedCreateStaffData()
                 obj._deserialize(item)
-                self.FailedEmployeeData.append(obj)
+                self._FailedEmployeeData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2709,47 +5227,104 @@ class CreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息,UserId必填
+        :param _Operator: 操作人信息,UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param SceneKey: 自动签场景:
+        :param _SceneKey: 自动签场景:
 E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
-        :param AutoSignConfig: 自动签开通，签署相关配置
+        :param _AutoSignConfig: 自动签开通，签署相关配置
         :type AutoSignConfig: :class:`tencentcloud.ess.v20201111.models.AutoSignConfig`
-        :param UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+        :param _UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
         :type UrlType: str
-        :param NotifyType: 通知类型，默认不填为不通知开通方，填写 SMS 为短信通知。
+        :param _NotifyType: 通知类型，默认不填为不通知开通方，填写 SMS 为短信通知。
         :type NotifyType: str
-        :param NotifyAddress: 若上方填写为 SMS，则此处为手机号
+        :param _NotifyAddress: 若上方填写为 SMS，则此处为手机号
         :type NotifyAddress: str
-        :param ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
+        :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
         :type ExpiredTime: int
         """
-        self.Operator = None
-        self.SceneKey = None
-        self.AutoSignConfig = None
-        self.UrlType = None
-        self.NotifyType = None
-        self.NotifyAddress = None
-        self.ExpiredTime = None
+        self._Operator = None
+        self._SceneKey = None
+        self._AutoSignConfig = None
+        self._UrlType = None
+        self._NotifyType = None
+        self._NotifyAddress = None
+        self._ExpiredTime = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def AutoSignConfig(self):
+        return self._AutoSignConfig
+
+    @AutoSignConfig.setter
+    def AutoSignConfig(self, AutoSignConfig):
+        self._AutoSignConfig = AutoSignConfig
+
+    @property
+    def UrlType(self):
+        return self._UrlType
+
+    @UrlType.setter
+    def UrlType(self, UrlType):
+        self._UrlType = UrlType
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
+    @property
+    def NotifyAddress(self):
+        return self._NotifyAddress
+
+    @NotifyAddress.setter
+    def NotifyAddress(self, NotifyAddress):
+        self._NotifyAddress = NotifyAddress
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.SceneKey = params.get("SceneKey")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SceneKey = params.get("SceneKey")
         if params.get("AutoSignConfig") is not None:
-            self.AutoSignConfig = AutoSignConfig()
-            self.AutoSignConfig._deserialize(params.get("AutoSignConfig"))
-        self.UrlType = params.get("UrlType")
-        self.NotifyType = params.get("NotifyType")
-        self.NotifyAddress = params.get("NotifyAddress")
-        self.ExpiredTime = params.get("ExpiredTime")
+            self._AutoSignConfig = AutoSignConfig()
+            self._AutoSignConfig._deserialize(params.get("AutoSignConfig"))
+        self._UrlType = params.get("UrlType")
+        self._NotifyType = params.get("NotifyType")
+        self._NotifyAddress = params.get("NotifyAddress")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2762,38 +5337,94 @@ class CreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 跳转短链
+        :param _Url: 跳转短链
         :type Url: str
-        :param AppId: 小程序AppId
+        :param _AppId: 小程序AppId
         :type AppId: str
-        :param AppOriginalId: 小程序 原始 Id
+        :param _AppOriginalId: 小程序 原始 Id
         :type AppOriginalId: str
-        :param Path: 跳转路径
+        :param _Path: 跳转路径
         :type Path: str
-        :param QrCode: base64格式跳转二维码
+        :param _QrCode: base64格式跳转二维码
         :type QrCode: str
-        :param UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+        :param _UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
         :type UrlType: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Url = None
-        self.AppId = None
-        self.AppOriginalId = None
-        self.Path = None
-        self.QrCode = None
-        self.UrlType = None
-        self.RequestId = None
+        self._Url = None
+        self._AppId = None
+        self._AppOriginalId = None
+        self._Path = None
+        self._QrCode = None
+        self._UrlType = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppOriginalId(self):
+        return self._AppOriginalId
+
+    @AppOriginalId.setter
+    def AppOriginalId(self, AppOriginalId):
+        self._AppOriginalId = AppOriginalId
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def QrCode(self):
+        return self._QrCode
+
+    @QrCode.setter
+    def QrCode(self, QrCode):
+        self._QrCode = QrCode
+
+    @property
+    def UrlType(self):
+        return self._UrlType
+
+    @UrlType.setter
+    def UrlType(self, UrlType):
+        self._UrlType = UrlType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.AppId = params.get("AppId")
-        self.AppOriginalId = params.get("AppOriginalId")
-        self.Path = params.get("Path")
-        self.QrCode = params.get("QrCode")
-        self.UrlType = params.get("UrlType")
-        self.RequestId = params.get("RequestId")
+        self._Url = params.get("Url")
+        self._AppId = params.get("AppId")
+        self._AppOriginalId = params.get("AppOriginalId")
+        self._Path = params.get("Path")
+        self._QrCode = params.get("QrCode")
+        self._UrlType = params.get("UrlType")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteIntegrationDepartmentRequest(AbstractModel):
@@ -2803,28 +5434,53 @@ class DeleteIntegrationDepartmentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :param _Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param DeptId: 电子签中的部门id
+        :param _DeptId: 电子签中的部门id
         :type DeptId: str
-        :param ReceiveDeptId: 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
+        :param _ReceiveDeptId: 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
         :type ReceiveDeptId: str
         """
-        self.Operator = None
-        self.DeptId = None
-        self.ReceiveDeptId = None
+        self._Operator = None
+        self._DeptId = None
+        self._ReceiveDeptId = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def DeptId(self):
+        return self._DeptId
+
+    @DeptId.setter
+    def DeptId(self, DeptId):
+        self._DeptId = DeptId
+
+    @property
+    def ReceiveDeptId(self):
+        return self._ReceiveDeptId
+
+    @ReceiveDeptId.setter
+    def ReceiveDeptId(self, ReceiveDeptId):
+        self._ReceiveDeptId = ReceiveDeptId
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.DeptId = params.get("DeptId")
-        self.ReceiveDeptId = params.get("ReceiveDeptId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._DeptId = params.get("DeptId")
+        self._ReceiveDeptId = params.get("ReceiveDeptId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2837,14 +5493,22 @@ class DeleteIntegrationDepartmentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteIntegrationEmployeesRequest(AbstractModel):
@@ -2854,35 +5518,60 @@ class DeleteIntegrationEmployeesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Employees: 待移除员工的信息，userId和openId二选一，必填一个
+        :param _Employees: 待移除员工的信息，userId和openId二选一，必填一个
         :type Employees: list of Staff
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.Employees = None
-        self.Agent = None
+        self._Operator = None
+        self._Employees = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Employees(self):
+        return self._Employees
+
+    @Employees.setter
+    def Employees(self, Employees):
+        self._Employees = Employees
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Employees") is not None:
-            self.Employees = []
+            self._Employees = []
             for item in params.get("Employees"):
                 obj = Staff()
                 obj._deserialize(item)
-                self.Employees.append(obj)
+                self._Employees.append(obj)
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2895,20 +5584,36 @@ class DeleteIntegrationEmployeesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteEmployeeResult: 员工删除数据
+        :param _DeleteEmployeeResult: 员工删除数据
         :type DeleteEmployeeResult: :class:`tencentcloud.ess.v20201111.models.DeleteStaffsResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DeleteEmployeeResult = None
-        self.RequestId = None
+        self._DeleteEmployeeResult = None
+        self._RequestId = None
+
+    @property
+    def DeleteEmployeeResult(self):
+        return self._DeleteEmployeeResult
+
+    @DeleteEmployeeResult.setter
+    def DeleteEmployeeResult(self, DeleteEmployeeResult):
+        self._DeleteEmployeeResult = DeleteEmployeeResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DeleteEmployeeResult") is not None:
-            self.DeleteEmployeeResult = DeleteStaffsResult()
-            self.DeleteEmployeeResult._deserialize(params.get("DeleteEmployeeResult"))
-        self.RequestId = params.get("RequestId")
+            self._DeleteEmployeeResult = DeleteStaffsResult()
+            self._DeleteEmployeeResult._deserialize(params.get("DeleteEmployeeResult"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteIntegrationRoleUsersRequest(AbstractModel):
@@ -2918,39 +5623,72 @@ class DeleteIntegrationRoleUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param RoleId: 角色id
+        :param _RoleId: 角色id
         :type RoleId: str
-        :param Users: 用户信息
+        :param _Users: 用户信息
         :type Users: list of UserInfo
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.RoleId = None
-        self.Users = None
-        self.Agent = None
+        self._Operator = None
+        self._RoleId = None
+        self._Users = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.RoleId = params.get("RoleId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._RoleId = params.get("RoleId")
         if params.get("Users") is not None:
-            self.Users = []
+            self._Users = []
             for item in params.get("Users"):
                 obj = UserInfo()
                 obj._deserialize(item)
-                self.Users.append(obj)
+                self._Users.append(obj)
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2963,18 +5701,34 @@ class DeleteIntegrationRoleUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色id
+        :param _RoleId: 角色id
         :type RoleId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RoleId = None
-        self.RequestId = None
+        self._RoleId = None
+        self._RequestId = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RequestId = params.get("RequestId")
+        self._RoleId = params.get("RoleId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSealPoliciesRequest(AbstractModel):
@@ -2984,38 +5738,79 @@ class DeleteSealPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param PolicyIds: 印章授权编码数组。这个参数跟下面的SealId其中一个必填，另外一个可选填
+        :param _PolicyIds: 印章授权编码数组。这个参数跟下面的SealId其中一个必填，另外一个可选填
         :type PolicyIds: list of str
-        :param SealId: 印章ID。这个参数跟上面的PolicyIds其中一个必填，另外一个可选填
+        :param _SealId: 印章ID。这个参数跟上面的PolicyIds其中一个必填，另外一个可选填
         :type SealId: str
-        :param UserIds: 待授权的员工ID
+        :param _UserIds: 待授权的员工ID
         :type UserIds: list of str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.PolicyIds = None
-        self.SealId = None
-        self.UserIds = None
-        self.Agent = None
+        self._Operator = None
+        self._PolicyIds = None
+        self._SealId = None
+        self._UserIds = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def PolicyIds(self):
+        return self._PolicyIds
+
+    @PolicyIds.setter
+    def PolicyIds(self, PolicyIds):
+        self._PolicyIds = PolicyIds
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.PolicyIds = params.get("PolicyIds")
-        self.SealId = params.get("SealId")
-        self.UserIds = params.get("UserIds")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._PolicyIds = params.get("PolicyIds")
+        self._SealId = params.get("SealId")
+        self._UserIds = params.get("UserIds")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3028,14 +5823,22 @@ class DeleteSealPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteStaffsResult(AbstractModel):
@@ -3045,34 +5848,51 @@ class DeleteStaffsResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SuccessEmployeeData: 删除员工的成功数据
+        :param _SuccessEmployeeData: 删除员工的成功数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessEmployeeData: list of SuccessDeleteStaffData
-        :param FailedEmployeeData: 删除员工的失败数据
+        :param _FailedEmployeeData: 删除员工的失败数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedEmployeeData: list of FailedDeleteStaffData
         """
-        self.SuccessEmployeeData = None
-        self.FailedEmployeeData = None
+        self._SuccessEmployeeData = None
+        self._FailedEmployeeData = None
+
+    @property
+    def SuccessEmployeeData(self):
+        return self._SuccessEmployeeData
+
+    @SuccessEmployeeData.setter
+    def SuccessEmployeeData(self, SuccessEmployeeData):
+        self._SuccessEmployeeData = SuccessEmployeeData
+
+    @property
+    def FailedEmployeeData(self):
+        return self._FailedEmployeeData
+
+    @FailedEmployeeData.setter
+    def FailedEmployeeData(self, FailedEmployeeData):
+        self._FailedEmployeeData = FailedEmployeeData
 
 
     def _deserialize(self, params):
         if params.get("SuccessEmployeeData") is not None:
-            self.SuccessEmployeeData = []
+            self._SuccessEmployeeData = []
             for item in params.get("SuccessEmployeeData"):
                 obj = SuccessDeleteStaffData()
                 obj._deserialize(item)
-                self.SuccessEmployeeData.append(obj)
+                self._SuccessEmployeeData.append(obj)
         if params.get("FailedEmployeeData") is not None:
-            self.FailedEmployeeData = []
+            self._FailedEmployeeData = []
             for item in params.get("FailedEmployeeData"):
                 obj = FailedDeleteStaffData()
                 obj._deserialize(item)
-                self.FailedEmployeeData.append(obj)
+                self._FailedEmployeeData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3085,22 +5905,39 @@ class Department(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DepartmentId: 部门id
+        :param _DepartmentId: 部门id
         :type DepartmentId: str
-        :param DepartmentName: 部门名称
+        :param _DepartmentName: 部门名称
         :type DepartmentName: str
         """
-        self.DepartmentId = None
-        self.DepartmentName = None
+        self._DepartmentId = None
+        self._DepartmentName = None
+
+    @property
+    def DepartmentId(self):
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def DepartmentName(self):
+        return self._DepartmentName
+
+    @DepartmentName.setter
+    def DepartmentName(self, DepartmentName):
+        self._DepartmentName = DepartmentName
 
 
     def _deserialize(self, params):
-        self.DepartmentId = params.get("DepartmentId")
-        self.DepartmentName = params.get("DepartmentName")
+        self._DepartmentId = params.get("DepartmentId")
+        self._DepartmentName = params.get("DepartmentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3113,11 +5950,11 @@ class DescribeExtendedServiceAuthInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息
+        :param _Operator: 操作人信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param ExtendServiceType: 扩展服务类型，默认为空，查询目前支持的所有扩展服务信息，单个指定则查询单个扩展服务开通信息，取值：
+        :param _ExtendServiceType: 扩展服务类型，默认为空，查询目前支持的所有扩展服务信息，单个指定则查询单个扩展服务开通信息，取值：
 OPEN_SERVER_SIGN：开通企业静默签署
 OVERSEA_SIGN：企业与港澳台居民签署合同
 MOBILE_CHECK_APPROVER：使用手机号验证签署方身份
@@ -3125,23 +5962,48 @@ PAGING_SEAL：骑缝章
 BATCH_SIGN：批量签署
         :type ExtendServiceType: str
         """
-        self.Operator = None
-        self.Agent = None
-        self.ExtendServiceType = None
+        self._Operator = None
+        self._Agent = None
+        self._ExtendServiceType = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ExtendServiceType(self):
+        return self._ExtendServiceType
+
+    @ExtendServiceType.setter
+    def ExtendServiceType(self, ExtendServiceType):
+        self._ExtendServiceType = ExtendServiceType
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.ExtendServiceType = params.get("ExtendServiceType")
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ExtendServiceType = params.get("ExtendServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3154,23 +6016,39 @@ class DescribeExtendedServiceAuthInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuthInfoList: 授权服务信息列表
+        :param _AuthInfoList: 授权服务信息列表
         :type AuthInfoList: list of ExtendAuthInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AuthInfoList = None
-        self.RequestId = None
+        self._AuthInfoList = None
+        self._RequestId = None
+
+    @property
+    def AuthInfoList(self):
+        return self._AuthInfoList
+
+    @AuthInfoList.setter
+    def AuthInfoList(self, AuthInfoList):
+        self._AuthInfoList = AuthInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AuthInfoList") is not None:
-            self.AuthInfoList = []
+            self._AuthInfoList = []
             for item in params.get("AuthInfoList"):
                 obj = ExtendAuthInfo()
                 obj._deserialize(item)
-                self.AuthInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AuthInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFileUrlsRequest(AbstractModel):
@@ -3180,67 +6058,168 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，UserId 必填
+        :param _Operator: 调用方用户信息，UserId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param BusinessType: 文件对应的业务类型，目前支持：
+        :param _BusinessType: 文件对应的业务类型，目前支持：
 - 流程 "FLOW"，如需下载合同文件请选择此项
 - 模板 "TEMPLATE"
 - 文档 "DOCUMENT"
 - 印章  “SEAL”
         :type BusinessType: str
-        :param BusinessIds: 业务编号的数组，如流程编号、模板编号、文档编号、印章编号。如需下载合同文件请传入FlowId
+        :param _BusinessIds: 业务编号的数组，如流程编号、模板编号、文档编号、印章编号。如需下载合同文件请传入FlowId
 最大支持20个资源
         :type BusinessIds: list of str
-        :param FileName: 下载后的文件命名，只有FileType为zip的时候生效
+        :param _FileName: 下载后的文件命名，只有FileType为zip的时候生效
         :type FileName: str
-        :param FileType: 文件类型，"JPG", "PDF","ZIP"等
+        :param _FileType: 文件类型，"JPG", "PDF","ZIP"等
         :type FileType: str
-        :param Offset: 指定资源起始偏移量，默认0
+        :param _Offset: 指定资源起始偏移量，默认0
         :type Offset: int
-        :param Limit: 指定资源数量，查询全部资源则传入-1
+        :param _Limit: 指定资源数量，查询全部资源则传入-1
         :type Limit: int
-        :param UrlTtl: 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
+        :param _UrlTtl: 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
         :type UrlTtl: int
-        :param CcToken: 暂不开放
+        :param _CcToken: 暂不开放
         :type CcToken: str
-        :param Scene: 暂不开放
+        :param _Scene: 暂不开放
         :type Scene: str
-        :param Agent: 应用相关信息
+        :param _Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.BusinessType = None
-        self.BusinessIds = None
-        self.FileName = None
-        self.FileType = None
-        self.Offset = None
-        self.Limit = None
-        self.UrlTtl = None
-        self.CcToken = None
-        self.Scene = None
-        self.Agent = None
+        self._Operator = None
+        self._BusinessType = None
+        self._BusinessIds = None
+        self._FileName = None
+        self._FileType = None
+        self._Offset = None
+        self._Limit = None
+        self._UrlTtl = None
+        self._CcToken = None
+        self._Scene = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def BusinessType(self):
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
+    @property
+    def BusinessIds(self):
+        return self._BusinessIds
+
+    @BusinessIds.setter
+    def BusinessIds(self, BusinessIds):
+        self._BusinessIds = BusinessIds
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def UrlTtl(self):
+        return self._UrlTtl
+
+    @UrlTtl.setter
+    def UrlTtl(self, UrlTtl):
+        self._UrlTtl = UrlTtl
+
+    @property
+    def CcToken(self):
+        warnings.warn("parameter `CcToken` is deprecated", DeprecationWarning) 
+
+        return self._CcToken
+
+    @CcToken.setter
+    def CcToken(self, CcToken):
+        warnings.warn("parameter `CcToken` is deprecated", DeprecationWarning) 
+
+        self._CcToken = CcToken
+
+    @property
+    def Scene(self):
+        warnings.warn("parameter `Scene` is deprecated", DeprecationWarning) 
+
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        warnings.warn("parameter `Scene` is deprecated", DeprecationWarning) 
+
+        self._Scene = Scene
+
+    @property
+    def Agent(self):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.BusinessType = params.get("BusinessType")
-        self.BusinessIds = params.get("BusinessIds")
-        self.FileName = params.get("FileName")
-        self.FileType = params.get("FileType")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.UrlTtl = params.get("UrlTtl")
-        self.CcToken = params.get("CcToken")
-        self.Scene = params.get("Scene")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._BusinessType = params.get("BusinessType")
+        self._BusinessIds = params.get("BusinessIds")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._UrlTtl = params.get("UrlTtl")
+        self._CcToken = params.get("CcToken")
+        self._Scene = params.get("Scene")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3253,28 +6232,52 @@ class DescribeFileUrlsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileUrls: 文件URL信息；
+        :param _FileUrls: 文件URL信息；
 链接不是永久链接，有效期5分钟后链接失效。
         :type FileUrls: list of FileUrl
-        :param TotalCount: URL数量
+        :param _TotalCount: URL数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FileUrls = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FileUrls = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FileUrls(self):
+        return self._FileUrls
+
+    @FileUrls.setter
+    def FileUrls(self, FileUrls):
+        self._FileUrls = FileUrls
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FileUrls") is not None:
-            self.FileUrls = []
+            self._FileUrls = []
             for item in params.get("FileUrls"):
                 obj = FileUrl()
                 obj._deserialize(item)
-                self.FileUrls.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FileUrls.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowBriefsRequest(AbstractModel):
@@ -3284,30 +6287,55 @@ class DescribeFlowBriefsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowIds: 需要查询的流程ID列表，限制最大100个
+        :param _FlowIds: 需要查询的流程ID列表，限制最大100个
         :type FlowIds: list of str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.FlowIds = None
-        self.Agent = None
+        self._Operator = None
+        self._FlowIds = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowIds = params.get("FlowIds")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowIds = params.get("FlowIds")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3320,23 +6348,39 @@ class DescribeFlowBriefsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowBriefs: 流程列表
+        :param _FlowBriefs: 流程列表
         :type FlowBriefs: list of FlowBrief
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowBriefs = None
-        self.RequestId = None
+        self._FlowBriefs = None
+        self._RequestId = None
+
+    @property
+    def FlowBriefs(self):
+        return self._FlowBriefs
+
+    @FlowBriefs.setter
+    def FlowBriefs(self, FlowBriefs):
+        self._FlowBriefs = FlowBriefs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FlowBriefs") is not None:
-            self.FlowBriefs = []
+            self._FlowBriefs = []
             for item in params.get("FlowBriefs"):
                 obj = FlowBrief()
                 obj._deserialize(item)
-                self.FlowBriefs.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FlowBriefs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowComponentsRequest(AbstractModel):
@@ -3346,30 +6390,55 @@ class DescribeFlowComponentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作者信息
+        :param _Operator: 操作者信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowId: 电子签流程的Id
+        :param _FlowId: 电子签流程的Id
         :type FlowId: str
-        :param Agent: 应用相关信息
+        :param _Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.FlowId = None
-        self.Agent = None
+        self._Operator = None
+        self._FlowId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowId = params.get("FlowId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3382,24 +6451,40 @@ class DescribeFlowComponentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecipientComponentInfos: 流程关联的填写控件信息
+        :param _RecipientComponentInfos: 流程关联的填写控件信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientComponentInfos: list of RecipientComponentInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RecipientComponentInfos = None
-        self.RequestId = None
+        self._RecipientComponentInfos = None
+        self._RequestId = None
+
+    @property
+    def RecipientComponentInfos(self):
+        return self._RecipientComponentInfos
+
+    @RecipientComponentInfos.setter
+    def RecipientComponentInfos(self, RecipientComponentInfos):
+        self._RecipientComponentInfos = RecipientComponentInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RecipientComponentInfos") is not None:
-            self.RecipientComponentInfos = []
+            self._RecipientComponentInfos = []
             for item in params.get("RecipientComponentInfos"):
                 obj = RecipientComponentInfo()
                 obj._deserialize(item)
-                self.RecipientComponentInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RecipientComponentInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowEvidenceReportRequest(AbstractModel):
@@ -3409,31 +6494,56 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param ReportId: 出证报告编号
+        :param _ReportId: 出证报告编号
         :type ReportId: str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.ReportId = None
-        self.Agent = None
+        self._Operator = None
+        self._ReportId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ReportId(self):
+        return self._ReportId
+
+    @ReportId.setter
+    def ReportId(self, ReportId):
+        self._ReportId = ReportId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.ReportId = params.get("ReportId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ReportId = params.get("ReportId")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3446,25 +6556,49 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportUrl: 报告 URL
+        :param _ReportUrl: 报告 URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param Status: 执行中：EvidenceStatusExecuting
+        :param _Status: 执行中：EvidenceStatusExecuting
 成功：EvidenceStatusSuccess
 失败：EvidenceStatusFailed
         :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ReportUrl = None
-        self.Status = None
-        self.RequestId = None
+        self._ReportUrl = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ReportUrl(self):
+        return self._ReportUrl
+
+    @ReportUrl.setter
+    def ReportUrl(self, ReportUrl):
+        self._ReportUrl = ReportUrl
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ReportUrl = params.get("ReportUrl")
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._ReportUrl = params.get("ReportUrl")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowInfoRequest(AbstractModel):
@@ -3474,30 +6608,55 @@ class DescribeFlowInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowIds: 需要查询的流程ID列表，限制最大100个
+        :param _FlowIds: 需要查询的流程ID列表，限制最大100个
         :type FlowIds: list of str
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.FlowIds = None
-        self.Operator = None
-        self.Agent = None
+        self._FlowIds = None
+        self._Operator = None
+        self._Agent = None
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
-        self.FlowIds = params.get("FlowIds")
+        self._FlowIds = params.get("FlowIds")
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3510,23 +6669,39 @@ class DescribeFlowInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowDetailInfos: 签署流程信息
+        :param _FlowDetailInfos: 签署流程信息
         :type FlowDetailInfos: list of FlowDetailInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowDetailInfos = None
-        self.RequestId = None
+        self._FlowDetailInfos = None
+        self._RequestId = None
+
+    @property
+    def FlowDetailInfos(self):
+        return self._FlowDetailInfos
+
+    @FlowDetailInfos.setter
+    def FlowDetailInfos(self, FlowDetailInfos):
+        self._FlowDetailInfos = FlowDetailInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FlowDetailInfos") is not None:
-            self.FlowDetailInfos = []
+            self._FlowDetailInfos = []
             for item in params.get("FlowDetailInfos"):
                 obj = FlowDetailInfo()
                 obj._deserialize(item)
-                self.FlowDetailInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FlowDetailInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowTemplatesRequest(AbstractModel):
@@ -3536,67 +6711,160 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
+        :param _ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int
-        :param Filters: 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+        :param _Filters: 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
         :type Filters: list of Filter
-        :param Offset: 查询偏移位置，默认0
+        :param _Offset: 查询偏移位置，默认0
         :type Offset: int
-        :param Limit: 查询个数，默认20，最大200
+        :param _Limit: 查询个数，默认20，最大200
         :type Limit: int
-        :param ApplicationId: ApplicationId不为空，查询指定应用下的模板列表
+        :param _ApplicationId: ApplicationId不为空，查询指定应用下的模板列表
 ApplicationId为空，查询所有应用下的模板列表
         :type ApplicationId: str
-        :param IsChannel: 默认为false，查询SaaS模板库列表；
+        :param _IsChannel: 默认为false，查询SaaS模板库列表；
 为true，查询第三方应用集成平台企业模板库管理列表
         :type IsChannel: bool
-        :param Organization: 暂未开放
+        :param _Organization: 暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
-        :param GenerateSource: 暂未开放
+        :param _GenerateSource: 暂未开放
         :type GenerateSource: int
         """
-        self.Operator = None
-        self.Agent = None
-        self.ContentType = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.ApplicationId = None
-        self.IsChannel = None
-        self.Organization = None
-        self.GenerateSource = None
+        self._Operator = None
+        self._Agent = None
+        self._ContentType = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._ApplicationId = None
+        self._IsChannel = None
+        self._Organization = None
+        self._GenerateSource = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def IsChannel(self):
+        warnings.warn("parameter `IsChannel` is deprecated", DeprecationWarning) 
+
+        return self._IsChannel
+
+    @IsChannel.setter
+    def IsChannel(self, IsChannel):
+        warnings.warn("parameter `IsChannel` is deprecated", DeprecationWarning) 
+
+        self._IsChannel = IsChannel
+
+    @property
+    def Organization(self):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        self._Organization = Organization
+
+    @property
+    def GenerateSource(self):
+        warnings.warn("parameter `GenerateSource` is deprecated", DeprecationWarning) 
+
+        return self._GenerateSource
+
+    @GenerateSource.setter
+    def GenerateSource(self, GenerateSource):
+        warnings.warn("parameter `GenerateSource` is deprecated", DeprecationWarning) 
+
+        self._GenerateSource = GenerateSource
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.ContentType = params.get("ContentType")
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ContentType = params.get("ContentType")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ApplicationId = params.get("ApplicationId")
-        self.IsChannel = params.get("IsChannel")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ApplicationId = params.get("ApplicationId")
+        self._IsChannel = params.get("IsChannel")
         if params.get("Organization") is not None:
-            self.Organization = OrganizationInfo()
-            self.Organization._deserialize(params.get("Organization"))
-        self.GenerateSource = params.get("GenerateSource")
+            self._Organization = OrganizationInfo()
+            self._Organization._deserialize(params.get("Organization"))
+        self._GenerateSource = params.get("GenerateSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3609,27 +6877,51 @@ class DescribeFlowTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Templates: 模板详情列表
+        :param _Templates: 模板详情列表
         :type Templates: list of TemplateInfo
-        :param TotalCount: 查询到的总数
+        :param _TotalCount: 查询到的总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Templates = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Templates = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Templates(self):
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Templates") is not None:
-            self.Templates = []
+            self._Templates = []
             for item in params.get("Templates"):
                 obj = TemplateInfo()
                 obj._deserialize(item)
-                self.Templates.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Templates.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntegrationDepartmentsRequest(AbstractModel):
@@ -3639,32 +6931,65 @@ class DescribeIntegrationDepartmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :param _Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param QueryType: 查询类型 0-查询单个部门节点 1-单个部门节点及一级子节点部门列表
+        :param _QueryType: 查询类型 0-查询单个部门节点 1-单个部门节点及一级子节点部门列表
         :type QueryType: int
-        :param DeptId: 部门ID,与DeptOpenId二选一,优先DeptId,都为空时获取根节点数据
+        :param _DeptId: 部门ID,与DeptOpenId二选一,优先DeptId,都为空时获取根节点数据
         :type DeptId: str
-        :param DeptOpenId: 客户系统部门ID,与DeptId二选一,优先DeptId,都为空时获取根节点数据
+        :param _DeptOpenId: 客户系统部门ID,与DeptId二选一,优先DeptId,都为空时获取根节点数据
         :type DeptOpenId: str
         """
-        self.Operator = None
-        self.QueryType = None
-        self.DeptId = None
-        self.DeptOpenId = None
+        self._Operator = None
+        self._QueryType = None
+        self._DeptId = None
+        self._DeptOpenId = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def QueryType(self):
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+    @property
+    def DeptId(self):
+        return self._DeptId
+
+    @DeptId.setter
+    def DeptId(self, DeptId):
+        self._DeptId = DeptId
+
+    @property
+    def DeptOpenId(self):
+        return self._DeptOpenId
+
+    @DeptOpenId.setter
+    def DeptOpenId(self, DeptOpenId):
+        self._DeptOpenId = DeptOpenId
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.QueryType = params.get("QueryType")
-        self.DeptId = params.get("DeptId")
-        self.DeptOpenId = params.get("DeptOpenId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._QueryType = params.get("QueryType")
+        self._DeptId = params.get("DeptId")
+        self._DeptOpenId = params.get("DeptOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3677,23 +7002,39 @@ class DescribeIntegrationDepartmentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Departments: 部门列表
+        :param _Departments: 部门列表
         :type Departments: list of IntegrationDepartment
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Departments = None
-        self.RequestId = None
+        self._Departments = None
+        self._RequestId = None
+
+    @property
+    def Departments(self):
+        return self._Departments
+
+    @Departments.setter
+    def Departments(self, Departments):
+        self._Departments = Departments
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Departments") is not None:
-            self.Departments = []
+            self._Departments = []
             for item in params.get("Departments"):
                 obj = IntegrationDepartment()
                 obj._deserialize(item)
-                self.Departments.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Departments.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntegrationEmployeesRequest(AbstractModel):
@@ -3703,44 +7044,85 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Limit: 返回最大数量，最大为20
+        :param _Limit: 返回最大数量，最大为20
         :type Limit: int
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param Filters: 查询过滤实名用户，Key为Status，Values为["IsVerified"]
+        :param _Filters: 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 偏移量，默认为0，最大为20000
         :type Offset: int
         """
-        self.Operator = None
-        self.Limit = None
-        self.Agent = None
-        self.Filters = None
-        self.Offset = None
+        self._Operator = None
+        self._Limit = None
+        self._Agent = None
+        self._Filters = None
+        self._Offset = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.Limit = params.get("Limit")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Limit = params.get("Limit")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3753,37 +7135,77 @@ class DescribeIntegrationEmployeesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Employees: 员工数据列表
+        :param _Employees: 员工数据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Employees: list of Staff
-        :param Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 偏移量，默认为0，最大为20000
 注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
-        :param Limit: 返回最大数量，最大为20
+        :param _Limit: 返回最大数量，最大为20
         :type Limit: int
-        :param TotalCount: 符合条件的员工数量
+        :param _TotalCount: 符合条件的员工数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Employees = None
-        self.Offset = None
-        self.Limit = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Employees = None
+        self._Offset = None
+        self._Limit = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Employees(self):
+        return self._Employees
+
+    @Employees.setter
+    def Employees(self, Employees):
+        self._Employees = Employees
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Employees") is not None:
-            self.Employees = []
+            self._Employees = []
             for item in params.get("Employees"):
                 obj = Staff()
                 obj._deserialize(item)
-                self.Employees.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Employees.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntegrationMainOrganizationUserRequest(AbstractModel):
@@ -3793,20 +7215,29 @@ class DescribeIntegrationMainOrganizationUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
-        self.Operator = None
+        self._Operator = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3819,21 +7250,37 @@ class DescribeIntegrationMainOrganizationUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IntegrationMainOrganizationUser: 主企业员工账号信息
+        :param _IntegrationMainOrganizationUser: 主企业员工账号信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrationMainOrganizationUser: :class:`tencentcloud.ess.v20201111.models.IntegrationMainOrganizationUser`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IntegrationMainOrganizationUser = None
-        self.RequestId = None
+        self._IntegrationMainOrganizationUser = None
+        self._RequestId = None
+
+    @property
+    def IntegrationMainOrganizationUser(self):
+        return self._IntegrationMainOrganizationUser
+
+    @IntegrationMainOrganizationUser.setter
+    def IntegrationMainOrganizationUser(self, IntegrationMainOrganizationUser):
+        self._IntegrationMainOrganizationUser = IntegrationMainOrganizationUser
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("IntegrationMainOrganizationUser") is not None:
-            self.IntegrationMainOrganizationUser = IntegrationMainOrganizationUser()
-            self.IntegrationMainOrganizationUser._deserialize(params.get("IntegrationMainOrganizationUser"))
-        self.RequestId = params.get("RequestId")
+            self._IntegrationMainOrganizationUser = IntegrationMainOrganizationUser()
+            self._IntegrationMainOrganizationUser._deserialize(params.get("IntegrationMainOrganizationUser"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntegrationRolesRequest(AbstractModel):
@@ -3843,46 +7290,87 @@ class DescribeIntegrationRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UserId必填
+        :param _Operator: 操作人信息，UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Limit: 返回最大数量，最大为200
+        :param _Limit: 返回最大数量，最大为200
         :type Limit: int
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param Filters: 查询的关键字段:
+        :param _Filters: 查询的关键字段:
 Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
 Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0，最大为2000
+        :param _Offset: 偏移量，默认为0，最大为2000
         :type Offset: int
         """
-        self.Operator = None
-        self.Limit = None
-        self.Agent = None
-        self.Filters = None
-        self.Offset = None
+        self._Operator = None
+        self._Limit = None
+        self._Agent = None
+        self._Filters = None
+        self._Offset = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.Limit = params.get("Limit")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Limit = params.get("Limit")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3895,35 +7383,75 @@ class DescribeIntegrationRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量，默认为0，最大为2000
+        :param _Offset: 偏移量，默认为0，最大为2000
         :type Offset: int
-        :param Limit: 返回最大数量，最大为200
+        :param _Limit: 返回最大数量，最大为200
         :type Limit: int
-        :param TotalCount: 符合查询条件的总的角色数
+        :param _TotalCount: 符合查询条件的总的角色数
         :type TotalCount: int
-        :param IntegrateRoles: 企业角色信息列表
+        :param _IntegrateRoles: 企业角色信息列表
         :type IntegrateRoles: list of IntegrateRole
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.TotalCount = None
-        self.IntegrateRoles = None
-        self.RequestId = None
+        self._Offset = None
+        self._Limit = None
+        self._TotalCount = None
+        self._IntegrateRoles = None
+        self._RequestId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IntegrateRoles(self):
+        return self._IntegrateRoles
+
+    @IntegrateRoles.setter
+    def IntegrateRoles(self, IntegrateRoles):
+        self._IntegrateRoles = IntegrateRoles
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.TotalCount = params.get("TotalCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TotalCount = params.get("TotalCount")
         if params.get("IntegrateRoles") is not None:
-            self.IntegrateRoles = []
+            self._IntegrateRoles = []
             for item in params.get("IntegrateRoles"):
                 obj = IntegrateRole()
                 obj._deserialize(item)
-                self.IntegrateRoles.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._IntegrateRoles.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
@@ -3933,44 +7461,101 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Limit: 单次查询成员企业最大返回数量
+        :param _Limit: 单次查询成员企业最大返回数量
         :type Limit: int
-        :param Offset: 页面偏移量
+        :param _Offset: 页面偏移量
         :type Offset: int
-        :param Name: 查询成员企业的企业名，模糊匹配
+        :param _Name: 查询成员企业的企业名，模糊匹配
         :type Name: str
-        :param Status: 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+        :param _Status: 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
         :type Status: int
-        :param Export: 是否导出当前成员企业数据
+        :param _Export: 是否导出当前成员企业数据
         :type Export: bool
-        :param Id: 成员企业id
+        :param _Id: 成员企业id
         :type Id: str
         """
-        self.Operator = None
-        self.Limit = None
-        self.Offset = None
-        self.Name = None
-        self.Status = None
-        self.Export = None
-        self.Id = None
+        self._Operator = None
+        self._Limit = None
+        self._Offset = None
+        self._Name = None
+        self._Status = None
+        self._Export = None
+        self._Id = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Export(self):
+        return self._Export
+
+    @Export.setter
+    def Export(self, Export):
+        self._Export = Export
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.Export = params.get("Export")
-        self.Id = params.get("Id")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Export = params.get("Export")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3983,44 +7568,92 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 查询到的符合条件的成员企业总数量
+        :param _Total: 查询到的符合条件的成员企业总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param JoinedTotal: 已授权待激活的企业数量
+        :param _JoinedTotal: 已授权待激活的企业数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type JoinedTotal: int
-        :param ActivedTotal: 已加入的企业数量
+        :param _ActivedTotal: 已加入的企业数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivedTotal: int
-        :param ExportUrl: 导出文件的url
+        :param _ExportUrl: 导出文件的url
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExportUrl: str
-        :param List: 成员企业信息列表
+        :param _List: 成员企业信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of GroupOrganization
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Total = None
-        self.JoinedTotal = None
-        self.ActivedTotal = None
-        self.ExportUrl = None
-        self.List = None
-        self.RequestId = None
+        self._Total = None
+        self._JoinedTotal = None
+        self._ActivedTotal = None
+        self._ExportUrl = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def JoinedTotal(self):
+        return self._JoinedTotal
+
+    @JoinedTotal.setter
+    def JoinedTotal(self, JoinedTotal):
+        self._JoinedTotal = JoinedTotal
+
+    @property
+    def ActivedTotal(self):
+        return self._ActivedTotal
+
+    @ActivedTotal.setter
+    def ActivedTotal(self, ActivedTotal):
+        self._ActivedTotal = ActivedTotal
+
+    @property
+    def ExportUrl(self):
+        return self._ExportUrl
+
+    @ExportUrl.setter
+    def ExportUrl(self, ExportUrl):
+        self._ExportUrl = ExportUrl
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
-        self.JoinedTotal = params.get("JoinedTotal")
-        self.ActivedTotal = params.get("ActivedTotal")
-        self.ExportUrl = params.get("ExportUrl")
+        self._Total = params.get("Total")
+        self._JoinedTotal = params.get("JoinedTotal")
+        self._ActivedTotal = params.get("ActivedTotal")
+        self._ExportUrl = params.get("ExportUrl")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = GroupOrganization()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationSealsRequest(AbstractModel):
@@ -4030,17 +7663,17 @@ class DescribeOrganizationSealsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Limit: 返回最大数量，最大为100
+        :param _Limit: 返回最大数量，最大为100
         :type Limit: int
-        :param Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 偏移量，默认为0，最大为20000
         :type Offset: int
-        :param InfoType: 查询信息类型，为0时不返回授权用户，为1时返回
+        :param _InfoType: 查询信息类型，为0时不返回授权用户，为1时返回
         :type InfoType: int
-        :param SealId: 印章id（没有输入返回所有）
+        :param _SealId: 印章id（没有输入返回所有）
         :type SealId: str
-        :param SealTypes: 印章类型列表（都是组织机构印章）。
+        :param _SealTypes: 印章类型列表（都是组织机构印章）。
 为空时查询所有类型的印章。
 目前支持以下类型：
 OFFICIAL：企业公章；
@@ -4048,34 +7681,91 @@ CONTRACT：合同专用章；
 ORGANIZATION_SEAL：企业印章(图片上传创建)；
 LEGAL_PERSON_SEAL：法定代表人章
         :type SealTypes: list of str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.Limit = None
-        self.Offset = None
-        self.InfoType = None
-        self.SealId = None
-        self.SealTypes = None
-        self.Agent = None
+        self._Operator = None
+        self._Limit = None
+        self._Offset = None
+        self._InfoType = None
+        self._SealId = None
+        self._SealTypes = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def InfoType(self):
+        return self._InfoType
+
+    @InfoType.setter
+    def InfoType(self, InfoType):
+        self._InfoType = InfoType
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SealTypes(self):
+        return self._SealTypes
+
+    @SealTypes.setter
+    def SealTypes(self, SealTypes):
+        self._SealTypes = SealTypes
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.InfoType = params.get("InfoType")
-        self.SealId = params.get("SealId")
-        self.SealTypes = params.get("SealTypes")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._InfoType = params.get("InfoType")
+        self._SealId = params.get("SealId")
+        self._SealTypes = params.get("SealTypes")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4088,27 +7778,51 @@ class DescribeOrganizationSealsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 在设置了SealId时返回0或1，没有设置时返回公司的总印章数量，可能比返回的印章数组数量多
+        :param _TotalCount: 在设置了SealId时返回0或1，没有设置时返回公司的总印章数量，可能比返回的印章数组数量多
         :type TotalCount: int
-        :param Seals: 查询到的印章结果数组
+        :param _Seals: 查询到的印章结果数组
         :type Seals: list of OccupiedSeal
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Seals = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Seals = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Seals(self):
+        return self._Seals
+
+    @Seals.setter
+    def Seals(self, Seals):
+        self._Seals = Seals
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Seals") is not None:
-            self.Seals = []
+            self._Seals = []
             for item in params.get("Seals"):
                 obj = OccupiedSeal()
                 obj._deserialize(item)
-                self.Seals.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Seals.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeThirdPartyAuthCodeRequest(AbstractModel):
@@ -4118,18 +7832,27 @@ class DescribeThirdPartyAuthCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuthCode: 电子签小程序跳转客户小程序时携带的授权查看码
+        :param _AuthCode: 电子签小程序跳转客户小程序时携带的授权查看码
         :type AuthCode: str
         """
-        self.AuthCode = None
+        self._AuthCode = None
+
+    @property
+    def AuthCode(self):
+        return self._AuthCode
+
+    @AuthCode.setter
+    def AuthCode(self, AuthCode):
+        self._AuthCode = AuthCode
 
 
     def _deserialize(self, params):
-        self.AuthCode = params.get("AuthCode")
+        self._AuthCode = params.get("AuthCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4142,18 +7865,34 @@ class DescribeThirdPartyAuthCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VerifyStatus: 用户是否实名，VERIFIED 为实名，UNVERIFIED 未实名
+        :param _VerifyStatus: 用户是否实名，VERIFIED 为实名，UNVERIFIED 未实名
         :type VerifyStatus: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VerifyStatus = None
-        self.RequestId = None
+        self._VerifyStatus = None
+        self._RequestId = None
+
+    @property
+    def VerifyStatus(self):
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VerifyStatus = params.get("VerifyStatus")
-        self.RequestId = params.get("RequestId")
+        self._VerifyStatus = params.get("VerifyStatus")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserAutoSignStatusRequest(AbstractModel):
@@ -4163,31 +7902,56 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UserId必填
+        :param _Operator: 操作人信息，UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param SceneKey: 自动签场景:
+        :param _SceneKey: 自动签场景:
 E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
-        :param UserInfo: 查询开启状态的用户信息
+        :param _UserInfo: 查询开启状态的用户信息
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         """
-        self.Operator = None
-        self.SceneKey = None
-        self.UserInfo = None
+        self._Operator = None
+        self._SceneKey = None
+        self._UserInfo = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.SceneKey = params.get("SceneKey")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SceneKey = params.get("SceneKey")
         if params.get("UserInfo") is not None:
-            self.UserInfo = UserThreeFactor()
-            self.UserInfo._deserialize(params.get("UserInfo"))
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4200,26 +7964,58 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsOpen: 是否已开通自动签
+        :param _IsOpen: 是否已开通自动签
         :type IsOpen: bool
-        :param LicenseFrom: 自动签许可生效时间。当且仅当已开通自动签时有值。
+        :param _LicenseFrom: 自动签许可生效时间。当且仅当已开通自动签时有值。
         :type LicenseFrom: int
-        :param LicenseTo: 自动签许可到期时间。当且仅当已开通自动签时有值。
+        :param _LicenseTo: 自动签许可到期时间。当且仅当已开通自动签时有值。
         :type LicenseTo: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsOpen = None
-        self.LicenseFrom = None
-        self.LicenseTo = None
-        self.RequestId = None
+        self._IsOpen = None
+        self._LicenseFrom = None
+        self._LicenseTo = None
+        self._RequestId = None
+
+    @property
+    def IsOpen(self):
+        return self._IsOpen
+
+    @IsOpen.setter
+    def IsOpen(self, IsOpen):
+        self._IsOpen = IsOpen
+
+    @property
+    def LicenseFrom(self):
+        return self._LicenseFrom
+
+    @LicenseFrom.setter
+    def LicenseFrom(self, LicenseFrom):
+        self._LicenseFrom = LicenseFrom
+
+    @property
+    def LicenseTo(self):
+        return self._LicenseTo
+
+    @LicenseTo.setter
+    def LicenseTo(self, LicenseTo):
+        self._LicenseTo = LicenseTo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsOpen = params.get("IsOpen")
-        self.LicenseFrom = params.get("LicenseFrom")
-        self.LicenseTo = params.get("LicenseTo")
-        self.RequestId = params.get("RequestId")
+        self._IsOpen = params.get("IsOpen")
+        self._LicenseFrom = params.get("LicenseFrom")
+        self._LicenseTo = params.get("LicenseTo")
+        self._RequestId = params.get("RequestId")
 
 
 class DisableUserAutoSignRequest(AbstractModel):
@@ -4229,31 +8025,56 @@ class DisableUserAutoSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息,UserId必填
+        :param _Operator: 操作人信息,UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param SceneKey: 自动签场景:
+        :param _SceneKey: 自动签场景:
 E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
-        :param UserInfo: 关闭自动签的个人的三要素
+        :param _UserInfo: 关闭自动签的个人的三要素
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         """
-        self.Operator = None
-        self.SceneKey = None
-        self.UserInfo = None
+        self._Operator = None
+        self._SceneKey = None
+        self._UserInfo = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.SceneKey = params.get("SceneKey")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SceneKey = params.get("SceneKey")
         if params.get("UserInfo") is not None:
-            self.UserInfo = UserThreeFactor()
-            self.UserInfo._deserialize(params.get("UserInfo"))
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4266,14 +8087,22 @@ class DisableUserAutoSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ExtendAuthInfo(AbstractModel):
@@ -4283,52 +8112,101 @@ class ExtendAuthInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 授权服务类型
+        :param _Type: 授权服务类型
 OPEN_SERVER_SIGN：开通企业静默签署
 OVERSEA_SIGN：企业与港澳台居民签署合同
 MOBILE_CHECK_APPROVER：使用手机号验证签署方身份
 PAGING_SEAL：骑缝章
 BATCH_SIGN：批量签署
         :type Type: str
-        :param Name: 授权服务名称
+        :param _Name: 授权服务名称
         :type Name: str
-        :param Status: 授权服务状态，ENABLE：开通
+        :param _Status: 授权服务状态，ENABLE：开通
 DISABLE：未开通
         :type Status: str
-        :param OperatorUserId: 授权人用户id
+        :param _OperatorUserId: 授权人用户id
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorUserId: str
-        :param OperateOn: 授权时间戳，单位秒
+        :param _OperateOn: 授权时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateOn: int
-        :param HasAuthUserList: 被授权用户列表
+        :param _HasAuthUserList: 被授权用户列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasAuthUserList: list of HasAuthUser
         """
-        self.Type = None
-        self.Name = None
-        self.Status = None
-        self.OperatorUserId = None
-        self.OperateOn = None
-        self.HasAuthUserList = None
+        self._Type = None
+        self._Name = None
+        self._Status = None
+        self._OperatorUserId = None
+        self._OperateOn = None
+        self._HasAuthUserList = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OperatorUserId(self):
+        return self._OperatorUserId
+
+    @OperatorUserId.setter
+    def OperatorUserId(self, OperatorUserId):
+        self._OperatorUserId = OperatorUserId
+
+    @property
+    def OperateOn(self):
+        return self._OperateOn
+
+    @OperateOn.setter
+    def OperateOn(self, OperateOn):
+        self._OperateOn = OperateOn
+
+    @property
+    def HasAuthUserList(self):
+        return self._HasAuthUserList
+
+    @HasAuthUserList.setter
+    def HasAuthUserList(self, HasAuthUserList):
+        self._HasAuthUserList = HasAuthUserList
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.OperatorUserId = params.get("OperatorUserId")
-        self.OperateOn = params.get("OperateOn")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._OperatorUserId = params.get("OperatorUserId")
+        self._OperateOn = params.get("OperateOn")
         if params.get("HasAuthUserList") is not None:
-            self.HasAuthUserList = []
+            self._HasAuthUserList = []
             for item in params.get("HasAuthUserList"):
                 obj = HasAuthUser()
                 obj._deserialize(item)
-                self.HasAuthUserList.append(obj)
+                self._HasAuthUserList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4341,24 +8219,41 @@ class FailedCreateRoleData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户userId
+        :param _UserId: 用户userId
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param RoleIds: 角色id列表
+        :param _RoleIds: 角色id列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleIds: list of str
         """
-        self.UserId = None
-        self.RoleIds = None
+        self._UserId = None
+        self._RoleIds = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoleIds(self):
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.RoleIds = params.get("RoleIds")
+        self._UserId = params.get("UserId")
+        self._RoleIds = params.get("RoleIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4371,26 +8266,63 @@ class FailedCreateStaffData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: 员工名
+        :param _DisplayName: 员工名
         :type DisplayName: str
-        :param Mobile: 员工手机号
+        :param _Mobile: 员工手机号
         :type Mobile: str
-        :param Reason: 失败原因
+        :param _WeworkOpenId: 传入的企微账号id
+        :type WeworkOpenId: str
+        :param _Reason: 失败原因
         :type Reason: str
         """
-        self.DisplayName = None
-        self.Mobile = None
-        self.Reason = None
+        self._DisplayName = None
+        self._Mobile = None
+        self._WeworkOpenId = None
+        self._Reason = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def WeworkOpenId(self):
+        return self._WeworkOpenId
+
+    @WeworkOpenId.setter
+    def WeworkOpenId(self, WeworkOpenId):
+        self._WeworkOpenId = WeworkOpenId
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.Mobile = params.get("Mobile")
-        self.Reason = params.get("Reason")
+        self._DisplayName = params.get("DisplayName")
+        self._Mobile = params.get("Mobile")
+        self._WeworkOpenId = params.get("WeworkOpenId")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4403,28 +8335,53 @@ class FailedDeleteStaffData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 员工在电子签的userId
+        :param _UserId: 员工在电子签的userId
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param OpenId: 员工在第三方平台的openId
+        :param _OpenId: 员工在第三方平台的openId
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
-        :param Reason: 失败原因
+        :param _Reason: 失败原因
         :type Reason: str
         """
-        self.UserId = None
-        self.OpenId = None
-        self.Reason = None
+        self._UserId = None
+        self._OpenId = None
+        self._Reason = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.OpenId = params.get("OpenId")
-        self.Reason = params.get("Reason")
+        self._UserId = params.get("UserId")
+        self._OpenId = params.get("OpenId")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4437,34 +8394,75 @@ class FailedUpdateStaffData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: 用户传入的名称
+        :param _DisplayName: 用户传入的名称
         :type DisplayName: str
-        :param Mobile: 用户传入的手机号
+        :param _Mobile: 用户传入的手机号
         :type Mobile: str
-        :param Reason: 失败原因
+        :param _Reason: 失败原因
         :type Reason: str
-        :param UserId: 用户Id
+        :param _UserId: 用户Id
         :type UserId: str
-        :param OpenId: 员工在第三方平台的openId
+        :param _OpenId: 员工在第三方平台的openId
         :type OpenId: str
         """
-        self.DisplayName = None
-        self.Mobile = None
-        self.Reason = None
-        self.UserId = None
-        self.OpenId = None
+        self._DisplayName = None
+        self._Mobile = None
+        self._Reason = None
+        self._UserId = None
+        self._OpenId = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.Mobile = params.get("Mobile")
-        self.Reason = params.get("Reason")
-        self.UserId = params.get("UserId")
-        self.OpenId = params.get("OpenId")
+        self._DisplayName = params.get("DisplayName")
+        self._Mobile = params.get("Mobile")
+        self._Reason = params.get("Reason")
+        self._UserId = params.get("UserId")
+        self._OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4477,30 +8475,63 @@ class FileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileId: 文件Id
+        :param _FileId: 文件Id
         :type FileId: str
-        :param FileName: 文件名
+        :param _FileName: 文件名
         :type FileName: str
-        :param FileSize: 文件大小，单位为Byte
+        :param _FileSize: 文件大小，单位为Byte
         :type FileSize: int
-        :param CreatedOn: 文件上传时间，10位时间戳（精确到秒）
+        :param _CreatedOn: 文件上传时间，10位时间戳（精确到秒）
         :type CreatedOn: int
         """
-        self.FileId = None
-        self.FileName = None
-        self.FileSize = None
-        self.CreatedOn = None
+        self._FileId = None
+        self._FileName = None
+        self._FileSize = None
+        self._CreatedOn = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
 
 
     def _deserialize(self, params):
-        self.FileId = params.get("FileId")
-        self.FileName = params.get("FileName")
-        self.FileSize = params.get("FileSize")
-        self.CreatedOn = params.get("CreatedOn")
+        self._FileId = params.get("FileId")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._CreatedOn = params.get("CreatedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4513,23 +8544,40 @@ class FileUrl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 下载文件的URL，有效期为输入的UrlTtl，默认5分钟
+        :param _Url: 下载文件的URL，有效期为输入的UrlTtl，默认5分钟
         :type Url: str
-        :param Option: 下载文件的附加信息。如果是pdf文件，会返回pdf文件每页的有效高宽
+        :param _Option: 下载文件的附加信息。如果是pdf文件，会返回pdf文件每页的有效高宽
 注意：此字段可能返回 null，表示取不到有效值。
         :type Option: str
         """
-        self.Url = None
-        self.Option = None
+        self._Url = None
+        self._Option = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Option(self):
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.Option = params.get("Option")
+        self._Url = params.get("Url")
+        self._Option = params.get("Option")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4542,28 +8590,53 @@ class FillApproverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecipientId: 对应模板中的参与方ID
+        :param _RecipientId: 对应模板中的参与方ID
         :type RecipientId: str
-        :param ApproverSource: 签署人来源
+        :param _ApproverSource: 签署人来源
 WEWORKAPP: 企业微信
         :type ApproverSource: str
-        :param CustomUserId: 企业自定义账号ID
+        :param _CustomUserId: 企业自定义账号ID
 WEWORKAPP场景下指企业自有应用获取企微明文的userid
         :type CustomUserId: str
         """
-        self.RecipientId = None
-        self.ApproverSource = None
-        self.CustomUserId = None
+        self._RecipientId = None
+        self._ApproverSource = None
+        self._CustomUserId = None
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def ApproverSource(self):
+        return self._ApproverSource
+
+    @ApproverSource.setter
+    def ApproverSource(self, ApproverSource):
+        self._ApproverSource = ApproverSource
+
+    @property
+    def CustomUserId(self):
+        return self._CustomUserId
+
+    @CustomUserId.setter
+    def CustomUserId(self, CustomUserId):
+        self._CustomUserId = CustomUserId
 
 
     def _deserialize(self, params):
-        self.RecipientId = params.get("RecipientId")
-        self.ApproverSource = params.get("ApproverSource")
-        self.CustomUserId = params.get("CustomUserId")
+        self._RecipientId = params.get("RecipientId")
+        self._ApproverSource = params.get("ApproverSource")
+        self._CustomUserId = params.get("CustomUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4576,44 +8649,93 @@ class FilledComponent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentId: 控件Id
+        :param _ComponentId: 控件Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentId: str
-        :param ComponentName: 控件名称
+        :param _ComponentName: 控件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentName: str
-        :param ComponentFillStatus: 控件填写状态；0-未填写；1-已填写
+        :param _ComponentFillStatus: 控件填写状态；0-未填写；1-已填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentFillStatus: str
-        :param ComponentValue: 控件填写内容
+        :param _ComponentValue: 控件填写内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentValue: str
-        :param ComponentRecipientId: 控件所属参与方Id
+        :param _ComponentRecipientId: 控件所属参与方Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentRecipientId: str
-        :param ImageUrl: 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
+        :param _ImageUrl: 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
         """
-        self.ComponentId = None
-        self.ComponentName = None
-        self.ComponentFillStatus = None
-        self.ComponentValue = None
-        self.ComponentRecipientId = None
-        self.ImageUrl = None
+        self._ComponentId = None
+        self._ComponentName = None
+        self._ComponentFillStatus = None
+        self._ComponentValue = None
+        self._ComponentRecipientId = None
+        self._ImageUrl = None
+
+    @property
+    def ComponentId(self):
+        return self._ComponentId
+
+    @ComponentId.setter
+    def ComponentId(self, ComponentId):
+        self._ComponentId = ComponentId
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def ComponentFillStatus(self):
+        return self._ComponentFillStatus
+
+    @ComponentFillStatus.setter
+    def ComponentFillStatus(self, ComponentFillStatus):
+        self._ComponentFillStatus = ComponentFillStatus
+
+    @property
+    def ComponentValue(self):
+        return self._ComponentValue
+
+    @ComponentValue.setter
+    def ComponentValue(self, ComponentValue):
+        self._ComponentValue = ComponentValue
+
+    @property
+    def ComponentRecipientId(self):
+        return self._ComponentRecipientId
+
+    @ComponentRecipientId.setter
+    def ComponentRecipientId(self, ComponentRecipientId):
+        self._ComponentRecipientId = ComponentRecipientId
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
 
 
     def _deserialize(self, params):
-        self.ComponentId = params.get("ComponentId")
-        self.ComponentName = params.get("ComponentName")
-        self.ComponentFillStatus = params.get("ComponentFillStatus")
-        self.ComponentValue = params.get("ComponentValue")
-        self.ComponentRecipientId = params.get("ComponentRecipientId")
-        self.ImageUrl = params.get("ImageUrl")
+        self._ComponentId = params.get("ComponentId")
+        self._ComponentName = params.get("ComponentName")
+        self._ComponentFillStatus = params.get("ComponentFillStatus")
+        self._ComponentValue = params.get("ComponentValue")
+        self._ComponentRecipientId = params.get("ComponentRecipientId")
+        self._ImageUrl = params.get("ImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4626,22 +8748,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 查询过滤条件的Key
+        :param _Key: 查询过滤条件的Key
         :type Key: str
-        :param Values: 查询过滤条件的Value列表
+        :param _Values: 查询过滤条件的Value列表
         :type Values: list of str
         """
-        self.Key = None
-        self.Values = None
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Values = params.get("Values")
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4654,12 +8793,12 @@ class FlowApproverDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApproveMessage: 签署时的相关信息
+        :param _ApproveMessage: 签署时的相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveMessage: str
-        :param ApproveName: 签署方姓名
+        :param _ApproveName: 签署方姓名
         :type ApproveName: str
-        :param ApproveStatus: 签署方的签署状态
+        :param _ApproveStatus: 签署方的签署状态
 0：还没有发起
 1：流程中 没有开始处理
 2：待签署
@@ -4674,66 +8813,171 @@ class FlowApproverDetail(AbstractModel):
 15：已解除
 19：转他人处理
         :type ApproveStatus: int
-        :param ReceiptId: 模板配置中的参与方ID,与控件绑定
+        :param _ReceiptId: 模板配置中的参与方ID,与控件绑定
         :type ReceiptId: str
-        :param CustomUserId: 客户自定义的用户ID
+        :param _CustomUserId: 客户自定义的用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomUserId: str
-        :param Mobile: 签署人手机号
+        :param _Mobile: 签署人手机号
         :type Mobile: str
-        :param SignOrder: 签署顺序，如果是有序签署，签署顺序从小到大
+        :param _SignOrder: 签署顺序，如果是有序签署，签署顺序从小到大
         :type SignOrder: int
-        :param ApproveTime: 签署人签署时间，时间戳，单位秒
+        :param _ApproveTime: 签署人签署时间，时间戳，单位秒
         :type ApproveTime: int
-        :param ApproveType: 签署方类型，ORGANIZATION-企业员工，PERSON-个人，ENTERPRISESERVER-企业静默签
+        :param _ApproveType: 签署方类型，ORGANIZATION-企业员工，PERSON-个人，ENTERPRISESERVER-企业静默签
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveType: str
-        :param ApproverSource: 签署方侧用户来源，如WEWORKAPP-企业微信等
+        :param _ApproverSource: 签署方侧用户来源，如WEWORKAPP-企业微信等
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverSource: str
-        :param CustomApproverTag: 客户自定义签署方标识
+        :param _CustomApproverTag: 客户自定义签署方标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomApproverTag: str
-        :param OrganizationId: 签署方企业Id
+        :param _OrganizationId: 签署方企业Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: str
-        :param OrganizationName: 签署方企业名称
+        :param _OrganizationName: 签署方企业名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationName: str
         """
-        self.ApproveMessage = None
-        self.ApproveName = None
-        self.ApproveStatus = None
-        self.ReceiptId = None
-        self.CustomUserId = None
-        self.Mobile = None
-        self.SignOrder = None
-        self.ApproveTime = None
-        self.ApproveType = None
-        self.ApproverSource = None
-        self.CustomApproverTag = None
-        self.OrganizationId = None
-        self.OrganizationName = None
+        self._ApproveMessage = None
+        self._ApproveName = None
+        self._ApproveStatus = None
+        self._ReceiptId = None
+        self._CustomUserId = None
+        self._Mobile = None
+        self._SignOrder = None
+        self._ApproveTime = None
+        self._ApproveType = None
+        self._ApproverSource = None
+        self._CustomApproverTag = None
+        self._OrganizationId = None
+        self._OrganizationName = None
+
+    @property
+    def ApproveMessage(self):
+        return self._ApproveMessage
+
+    @ApproveMessage.setter
+    def ApproveMessage(self, ApproveMessage):
+        self._ApproveMessage = ApproveMessage
+
+    @property
+    def ApproveName(self):
+        return self._ApproveName
+
+    @ApproveName.setter
+    def ApproveName(self, ApproveName):
+        self._ApproveName = ApproveName
+
+    @property
+    def ApproveStatus(self):
+        return self._ApproveStatus
+
+    @ApproveStatus.setter
+    def ApproveStatus(self, ApproveStatus):
+        self._ApproveStatus = ApproveStatus
+
+    @property
+    def ReceiptId(self):
+        return self._ReceiptId
+
+    @ReceiptId.setter
+    def ReceiptId(self, ReceiptId):
+        self._ReceiptId = ReceiptId
+
+    @property
+    def CustomUserId(self):
+        return self._CustomUserId
+
+    @CustomUserId.setter
+    def CustomUserId(self, CustomUserId):
+        self._CustomUserId = CustomUserId
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def SignOrder(self):
+        return self._SignOrder
+
+    @SignOrder.setter
+    def SignOrder(self, SignOrder):
+        self._SignOrder = SignOrder
+
+    @property
+    def ApproveTime(self):
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+    @property
+    def ApproveType(self):
+        return self._ApproveType
+
+    @ApproveType.setter
+    def ApproveType(self, ApproveType):
+        self._ApproveType = ApproveType
+
+    @property
+    def ApproverSource(self):
+        return self._ApproverSource
+
+    @ApproverSource.setter
+    def ApproverSource(self, ApproverSource):
+        self._ApproverSource = ApproverSource
+
+    @property
+    def CustomApproverTag(self):
+        return self._CustomApproverTag
+
+    @CustomApproverTag.setter
+    def CustomApproverTag(self, CustomApproverTag):
+        self._CustomApproverTag = CustomApproverTag
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
 
 
     def _deserialize(self, params):
-        self.ApproveMessage = params.get("ApproveMessage")
-        self.ApproveName = params.get("ApproveName")
-        self.ApproveStatus = params.get("ApproveStatus")
-        self.ReceiptId = params.get("ReceiptId")
-        self.CustomUserId = params.get("CustomUserId")
-        self.Mobile = params.get("Mobile")
-        self.SignOrder = params.get("SignOrder")
-        self.ApproveTime = params.get("ApproveTime")
-        self.ApproveType = params.get("ApproveType")
-        self.ApproverSource = params.get("ApproverSource")
-        self.CustomApproverTag = params.get("CustomApproverTag")
-        self.OrganizationId = params.get("OrganizationId")
-        self.OrganizationName = params.get("OrganizationName")
+        self._ApproveMessage = params.get("ApproveMessage")
+        self._ApproveName = params.get("ApproveName")
+        self._ApproveStatus = params.get("ApproveStatus")
+        self._ReceiptId = params.get("ReceiptId")
+        self._CustomUserId = params.get("CustomUserId")
+        self._Mobile = params.get("Mobile")
+        self._SignOrder = params.get("SignOrder")
+        self._ApproveTime = params.get("ApproveTime")
+        self._ApproveType = params.get("ApproveType")
+        self._ApproverSource = params.get("ApproverSource")
+        self._CustomApproverTag = params.get("CustomApproverTag")
+        self._OrganizationId = params.get("OrganizationId")
+        self._OrganizationName = params.get("OrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4746,39 +8990,80 @@ class FlowApproverUrlInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignUrl: 签署链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+        :param _SignUrl: 签署链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignUrl: str
-        :param ApproverType: 签署人类型 1-个人
+        :param _ApproverType: 签署人类型 1-个人
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverType: int
-        :param ApproverName: 签署人姓名
+        :param _ApproverName: 签署人姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverName: str
-        :param ApproverMobile: 签署人手机号
+        :param _ApproverMobile: 签署人手机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverMobile: str
-        :param LongUrl: 签署长链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+        :param _LongUrl: 签署长链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LongUrl: str
         """
-        self.SignUrl = None
-        self.ApproverType = None
-        self.ApproverName = None
-        self.ApproverMobile = None
-        self.LongUrl = None
+        self._SignUrl = None
+        self._ApproverType = None
+        self._ApproverName = None
+        self._ApproverMobile = None
+        self._LongUrl = None
+
+    @property
+    def SignUrl(self):
+        return self._SignUrl
+
+    @SignUrl.setter
+    def SignUrl(self, SignUrl):
+        self._SignUrl = SignUrl
+
+    @property
+    def ApproverType(self):
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def ApproverName(self):
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def LongUrl(self):
+        return self._LongUrl
+
+    @LongUrl.setter
+    def LongUrl(self, LongUrl):
+        self._LongUrl = LongUrl
 
 
     def _deserialize(self, params):
-        self.SignUrl = params.get("SignUrl")
-        self.ApproverType = params.get("ApproverType")
-        self.ApproverName = params.get("ApproverName")
-        self.ApproverMobile = params.get("ApproverMobile")
-        self.LongUrl = params.get("LongUrl")
+        self._SignUrl = params.get("SignUrl")
+        self._ApproverType = params.get("ApproverType")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
+        self._LongUrl = params.get("LongUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4791,16 +9076,16 @@ class FlowBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程的编号ID
+        :param _FlowId: 流程的编号ID
         :type FlowId: str
-        :param FlowName: 流程的名称
+        :param _FlowName: 流程的名称
         :type FlowName: str
-        :param FlowDescription: 流程的描述信息
+        :param _FlowDescription: 流程的描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowDescription: str
-        :param FlowType: 流程的类型
+        :param _FlowType: 流程的类型
         :type FlowType: str
-        :param FlowStatus: 流程状态
+        :param _FlowStatus: 流程状态
 - 0 还没有发起
 - 1 待签署
 - 2 部分签署
@@ -4815,44 +9100,117 @@ class FlowBrief(AbstractModel):
 - 21 已解除
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowStatus: int
-        :param CreatedOn: 流程创建的时间戳，单位秒
+        :param _CreatedOn: 流程创建的时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: int
-        :param FlowMessage: 拒签或者取消的原因描述
+        :param _FlowMessage: 拒签或者取消的原因描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMessage: str
-        :param Creator:  合同发起人userId
+        :param _Creator:  合同发起人userId
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
-        :param Deadline: 合同过期时间，时间戳，单位秒
+        :param _Deadline: 合同过期时间，时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deadline: int
         """
-        self.FlowId = None
-        self.FlowName = None
-        self.FlowDescription = None
-        self.FlowType = None
-        self.FlowStatus = None
-        self.CreatedOn = None
-        self.FlowMessage = None
-        self.Creator = None
-        self.Deadline = None
+        self._FlowId = None
+        self._FlowName = None
+        self._FlowDescription = None
+        self._FlowType = None
+        self._FlowStatus = None
+        self._CreatedOn = None
+        self._FlowMessage = None
+        self._Creator = None
+        self._Deadline = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
+
+    @property
+    def FlowType(self):
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
+    def FlowStatus(self):
+        return self._FlowStatus
+
+    @FlowStatus.setter
+    def FlowStatus(self, FlowStatus):
+        self._FlowStatus = FlowStatus
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def FlowMessage(self):
+        return self._FlowMessage
+
+    @FlowMessage.setter
+    def FlowMessage(self, FlowMessage):
+        self._FlowMessage = FlowMessage
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.FlowName = params.get("FlowName")
-        self.FlowDescription = params.get("FlowDescription")
-        self.FlowType = params.get("FlowType")
-        self.FlowStatus = params.get("FlowStatus")
-        self.CreatedOn = params.get("CreatedOn")
-        self.FlowMessage = params.get("FlowMessage")
-        self.Creator = params.get("Creator")
-        self.Deadline = params.get("Deadline")
+        self._FlowId = params.get("FlowId")
+        self._FlowName = params.get("FlowName")
+        self._FlowDescription = params.get("FlowDescription")
+        self._FlowType = params.get("FlowType")
+        self._FlowStatus = params.get("FlowStatus")
+        self._CreatedOn = params.get("CreatedOn")
+        self._FlowMessage = params.get("FlowMessage")
+        self._Creator = params.get("Creator")
+        self._Deadline = params.get("Deadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4865,106 +9223,271 @@ class FlowCreateApprover(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApproverType: 参与者类型：
+        :param _ApproverType: 参与者类型：
 0：企业
 1：个人
 3：企业静默签署
 注：类型为3（企业静默签署）时，会默认完成该签署方的签署。静默签署仅进行盖章操作，不能是手写签名。
         :type ApproverType: int
-        :param OrganizationName: 如果签署方为企业，需要填入企业全称
+        :param _OrganizationName: 如果签署方为企业，需要填入企业全称
         :type OrganizationName: str
-        :param ApproverName: 签署方经办人姓名
+        :param _ApproverName: 签署方经办人姓名
         :type ApproverName: str
-        :param ApproverMobile: 签署方经办人手机号码
+        :param _ApproverMobile: 签署方经办人手机号码
         :type ApproverMobile: str
-        :param ApproverIdCardType: 签署方经办人证件类型ID_CARD 身份证
+        :param _ApproverIdCardType: 签署方经办人证件类型ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type ApproverIdCardType: str
-        :param ApproverIdCardNumber: 签署方经办人证件号码
+        :param _ApproverIdCardNumber: 签署方经办人证件号码
         :type ApproverIdCardNumber: str
-        :param RecipientId: 签署方经办人在模板中的参与方ID
+        :param _RecipientId: 签署方经办人在模板中的参与方ID
         :type RecipientId: str
-        :param VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
+        :param _VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
         :type VerifyChannel: list of str
-        :param NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
+        :param _NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
         :type NotifyType: str
-        :param IsFullText: 合同强制需要阅读全文，无需传此参数
+        :param _IsFullText: 合同强制需要阅读全文，无需传此参数
         :type IsFullText: bool
-        :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
+        :param _PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
-        :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
+        :param _UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
         :type UserId: str
-        :param Required: 当前只支持true，默认为true
+        :param _Required: 当前只支持true，默认为true
         :type Required: bool
-        :param ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
+        :param _ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
-        :param CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
+        :param _CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
         :type CustomApproverTag: str
-        :param RegisterInfo: 快速注册相关信息，目前暂未开放！
+        :param _RegisterInfo: 快速注册相关信息，目前暂未开放！
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
-        :param ApproverOption: 签署人个性化能力值
+        :param _ApproverOption: 签署人个性化能力值
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
-        :param JumpUrl: 签署完前端跳转的url，暂未使用
+        :param _JumpUrl: 签署完前端跳转的url，暂未使用
         :type JumpUrl: str
-        :param SignId: 签署ID
+        :param _SignId: 签署ID
 - 发起流程时系统自动补充
 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
         :type SignId: str
-        :param ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。
+        :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。
         :type ApproverNeedSignReview: bool
         """
-        self.ApproverType = None
-        self.OrganizationName = None
-        self.ApproverName = None
-        self.ApproverMobile = None
-        self.ApproverIdCardType = None
-        self.ApproverIdCardNumber = None
-        self.RecipientId = None
-        self.VerifyChannel = None
-        self.NotifyType = None
-        self.IsFullText = None
-        self.PreReadTime = None
-        self.UserId = None
-        self.Required = None
-        self.ApproverSource = None
-        self.CustomApproverTag = None
-        self.RegisterInfo = None
-        self.ApproverOption = None
-        self.JumpUrl = None
-        self.SignId = None
-        self.ApproverNeedSignReview = None
+        self._ApproverType = None
+        self._OrganizationName = None
+        self._ApproverName = None
+        self._ApproverMobile = None
+        self._ApproverIdCardType = None
+        self._ApproverIdCardNumber = None
+        self._RecipientId = None
+        self._VerifyChannel = None
+        self._NotifyType = None
+        self._IsFullText = None
+        self._PreReadTime = None
+        self._UserId = None
+        self._Required = None
+        self._ApproverSource = None
+        self._CustomApproverTag = None
+        self._RegisterInfo = None
+        self._ApproverOption = None
+        self._JumpUrl = None
+        self._SignId = None
+        self._ApproverNeedSignReview = None
+
+    @property
+    def ApproverType(self):
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def ApproverName(self):
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def ApproverIdCardType(self):
+        return self._ApproverIdCardType
+
+    @ApproverIdCardType.setter
+    def ApproverIdCardType(self, ApproverIdCardType):
+        self._ApproverIdCardType = ApproverIdCardType
+
+    @property
+    def ApproverIdCardNumber(self):
+        return self._ApproverIdCardNumber
+
+    @ApproverIdCardNumber.setter
+    def ApproverIdCardNumber(self, ApproverIdCardNumber):
+        self._ApproverIdCardNumber = ApproverIdCardNumber
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
+    @property
+    def IsFullText(self):
+        return self._IsFullText
+
+    @IsFullText.setter
+    def IsFullText(self, IsFullText):
+        self._IsFullText = IsFullText
+
+    @property
+    def PreReadTime(self):
+        return self._PreReadTime
+
+    @PreReadTime.setter
+    def PreReadTime(self, PreReadTime):
+        self._PreReadTime = PreReadTime
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Required(self):
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def ApproverSource(self):
+        return self._ApproverSource
+
+    @ApproverSource.setter
+    def ApproverSource(self, ApproverSource):
+        self._ApproverSource = ApproverSource
+
+    @property
+    def CustomApproverTag(self):
+        return self._CustomApproverTag
+
+    @CustomApproverTag.setter
+    def CustomApproverTag(self, CustomApproverTag):
+        self._CustomApproverTag = CustomApproverTag
+
+    @property
+    def RegisterInfo(self):
+        return self._RegisterInfo
+
+    @RegisterInfo.setter
+    def RegisterInfo(self, RegisterInfo):
+        self._RegisterInfo = RegisterInfo
+
+    @property
+    def ApproverOption(self):
+        return self._ApproverOption
+
+    @ApproverOption.setter
+    def ApproverOption(self, ApproverOption):
+        self._ApproverOption = ApproverOption
+
+    @property
+    def JumpUrl(self):
+        warnings.warn("parameter `JumpUrl` is deprecated", DeprecationWarning) 
+
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        warnings.warn("parameter `JumpUrl` is deprecated", DeprecationWarning) 
+
+        self._JumpUrl = JumpUrl
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def ApproverNeedSignReview(self):
+        return self._ApproverNeedSignReview
+
+    @ApproverNeedSignReview.setter
+    def ApproverNeedSignReview(self, ApproverNeedSignReview):
+        self._ApproverNeedSignReview = ApproverNeedSignReview
 
 
     def _deserialize(self, params):
-        self.ApproverType = params.get("ApproverType")
-        self.OrganizationName = params.get("OrganizationName")
-        self.ApproverName = params.get("ApproverName")
-        self.ApproverMobile = params.get("ApproverMobile")
-        self.ApproverIdCardType = params.get("ApproverIdCardType")
-        self.ApproverIdCardNumber = params.get("ApproverIdCardNumber")
-        self.RecipientId = params.get("RecipientId")
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.NotifyType = params.get("NotifyType")
-        self.IsFullText = params.get("IsFullText")
-        self.PreReadTime = params.get("PreReadTime")
-        self.UserId = params.get("UserId")
-        self.Required = params.get("Required")
-        self.ApproverSource = params.get("ApproverSource")
-        self.CustomApproverTag = params.get("CustomApproverTag")
+        self._ApproverType = params.get("ApproverType")
+        self._OrganizationName = params.get("OrganizationName")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
+        self._ApproverIdCardType = params.get("ApproverIdCardType")
+        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self._RecipientId = params.get("RecipientId")
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._NotifyType = params.get("NotifyType")
+        self._IsFullText = params.get("IsFullText")
+        self._PreReadTime = params.get("PreReadTime")
+        self._UserId = params.get("UserId")
+        self._Required = params.get("Required")
+        self._ApproverSource = params.get("ApproverSource")
+        self._CustomApproverTag = params.get("CustomApproverTag")
         if params.get("RegisterInfo") is not None:
-            self.RegisterInfo = RegisterInfo()
-            self.RegisterInfo._deserialize(params.get("RegisterInfo"))
+            self._RegisterInfo = RegisterInfo()
+            self._RegisterInfo._deserialize(params.get("RegisterInfo"))
         if params.get("ApproverOption") is not None:
-            self.ApproverOption = ApproverOption()
-            self.ApproverOption._deserialize(params.get("ApproverOption"))
-        self.JumpUrl = params.get("JumpUrl")
-        self.SignId = params.get("SignId")
-        self.ApproverNeedSignReview = params.get("ApproverNeedSignReview")
+            self._ApproverOption = ApproverOption()
+            self._ApproverOption._deserialize(params.get("ApproverOption"))
+        self._JumpUrl = params.get("JumpUrl")
+        self._SignId = params.get("SignId")
+        self._ApproverNeedSignReview = params.get("ApproverNeedSignReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4977,14 +9500,14 @@ class FlowDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 合同(流程)的ID
+        :param _FlowId: 合同(流程)的ID
         :type FlowId: str
-        :param FlowName: 合同(流程)的名字
+        :param _FlowName: 合同(流程)的名字
         :type FlowName: str
-        :param FlowType: 合同(流程)的类型
+        :param _FlowType: 合同(流程)的类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowType: str
-        :param FlowStatus: 流程状态
+        :param _FlowStatus: 流程状态
 - 0 还没有发起
 - 1 待签署
 - 2 部分签署
@@ -4998,59 +9521,140 @@ class FlowDetailInfo(AbstractModel):
 - 10 拒填
 - 21 已解除
         :type FlowStatus: int
-        :param FlowMessage: 合同(流程)的信息
+        :param _FlowMessage: 合同(流程)的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMessage: str
-        :param FlowDescription: 流程的描述
+        :param _FlowDescription: 流程的描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowDescription: str
-        :param CreatedOn: 合同(流程)的创建时间戳，单位秒
+        :param _CreatedOn: 合同(流程)的创建时间戳，单位秒
         :type CreatedOn: int
-        :param FlowApproverInfos: 合同(流程)的签署方数组
+        :param _FlowApproverInfos: 合同(流程)的签署方数组
         :type FlowApproverInfos: list of FlowApproverDetail
-        :param CcInfos: 合同(流程)的关注方信息列表
+        :param _CcInfos: 合同(流程)的关注方信息列表
         :type CcInfos: list of FlowApproverDetail
-        :param Creator: 合同发起人UserId
+        :param _Creator: 合同发起人UserId
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
         """
-        self.FlowId = None
-        self.FlowName = None
-        self.FlowType = None
-        self.FlowStatus = None
-        self.FlowMessage = None
-        self.FlowDescription = None
-        self.CreatedOn = None
-        self.FlowApproverInfos = None
-        self.CcInfos = None
-        self.Creator = None
+        self._FlowId = None
+        self._FlowName = None
+        self._FlowType = None
+        self._FlowStatus = None
+        self._FlowMessage = None
+        self._FlowDescription = None
+        self._CreatedOn = None
+        self._FlowApproverInfos = None
+        self._CcInfos = None
+        self._Creator = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowType(self):
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
+    def FlowStatus(self):
+        return self._FlowStatus
+
+    @FlowStatus.setter
+    def FlowStatus(self, FlowStatus):
+        self._FlowStatus = FlowStatus
+
+    @property
+    def FlowMessage(self):
+        return self._FlowMessage
+
+    @FlowMessage.setter
+    def FlowMessage(self, FlowMessage):
+        self._FlowMessage = FlowMessage
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def FlowApproverInfos(self):
+        return self._FlowApproverInfos
+
+    @FlowApproverInfos.setter
+    def FlowApproverInfos(self, FlowApproverInfos):
+        self._FlowApproverInfos = FlowApproverInfos
+
+    @property
+    def CcInfos(self):
+        return self._CcInfos
+
+    @CcInfos.setter
+    def CcInfos(self, CcInfos):
+        self._CcInfos = CcInfos
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.FlowName = params.get("FlowName")
-        self.FlowType = params.get("FlowType")
-        self.FlowStatus = params.get("FlowStatus")
-        self.FlowMessage = params.get("FlowMessage")
-        self.FlowDescription = params.get("FlowDescription")
-        self.CreatedOn = params.get("CreatedOn")
+        self._FlowId = params.get("FlowId")
+        self._FlowName = params.get("FlowName")
+        self._FlowType = params.get("FlowType")
+        self._FlowStatus = params.get("FlowStatus")
+        self._FlowMessage = params.get("FlowMessage")
+        self._FlowDescription = params.get("FlowDescription")
+        self._CreatedOn = params.get("CreatedOn")
         if params.get("FlowApproverInfos") is not None:
-            self.FlowApproverInfos = []
+            self._FlowApproverInfos = []
             for item in params.get("FlowApproverInfos"):
                 obj = FlowApproverDetail()
                 obj._deserialize(item)
-                self.FlowApproverInfos.append(obj)
+                self._FlowApproverInfos.append(obj)
         if params.get("CcInfos") is not None:
-            self.CcInfos = []
+            self._CcInfos = []
             for item in params.get("CcInfos"):
                 obj = FlowApproverDetail()
                 obj._deserialize(item)
-                self.CcInfos.append(obj)
-        self.Creator = params.get("Creator")
+                self._CcInfos.append(obj)
+        self._Creator = params.get("Creator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5173,7 +9777,7 @@ class FormField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
+        :param _ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 TEXT - 文本内容
 MULTI_LINE_TEXT - 文本内容
 CHECK_BOX - true/false
@@ -5181,24 +9785,49 @@ FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传�
 SELECTOR - 选项值
 DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
         :type ComponentValue: str
-        :param ComponentId: 控件id，和ComponentName选择一项传入即可
+        :param _ComponentId: 控件id，和ComponentName选择一项传入即可
         :type ComponentId: str
-        :param ComponentName: 控件名字，最大长度不超过30字符，和ComponentId选择一项传入即可
+        :param _ComponentName: 控件名字，最大长度不超过30字符，和ComponentId选择一项传入即可
         :type ComponentName: str
         """
-        self.ComponentValue = None
-        self.ComponentId = None
-        self.ComponentName = None
+        self._ComponentValue = None
+        self._ComponentId = None
+        self._ComponentName = None
+
+    @property
+    def ComponentValue(self):
+        return self._ComponentValue
+
+    @ComponentValue.setter
+    def ComponentValue(self, ComponentValue):
+        self._ComponentValue = ComponentValue
+
+    @property
+    def ComponentId(self):
+        return self._ComponentId
+
+    @ComponentId.setter
+    def ComponentId(self, ComponentId):
+        self._ComponentId = ComponentId
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
 
 
     def _deserialize(self, params):
-        self.ComponentValue = params.get("ComponentValue")
-        self.ComponentId = params.get("ComponentId")
-        self.ComponentName = params.get("ComponentName")
+        self._ComponentValue = params.get("ComponentValue")
+        self._ComponentId = params.get("ComponentId")
+        self._ComponentName = params.get("ComponentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5211,36 +9840,77 @@ class GetTaskResultApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务Id，通过CreateConvertTaskApi得到
+        :param _TaskId: 任务Id，通过CreateConvertTaskApi得到
         :type TaskId: str
-        :param Operator: 操作人信息,UserId必填
+        :param _Operator: 操作人信息,UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用号信息
+        :param _Agent: 应用号信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param Organization: 暂未开放
+        :param _Organization: 暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         """
-        self.TaskId = None
-        self.Operator = None
-        self.Agent = None
-        self.Organization = None
+        self._TaskId = None
+        self._Operator = None
+        self._Agent = None
+        self._Organization = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
+
+        self._Agent = Agent
+
+    @property
+    def Organization(self):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
+        self._Organization = Organization
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("Organization") is not None:
-            self.Organization = OrganizationInfo()
-            self.Organization._deserialize(params.get("Organization"))
+            self._Organization = OrganizationInfo()
+            self._Organization._deserialize(params.get("Organization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5253,9 +9923,9 @@ class GetTaskResultApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务Id
+        :param _TaskId: 任务Id
         :type TaskId: str
-        :param TaskStatus: 任务状态，需要关注的状态
+        :param _TaskStatus: 任务状态，需要关注的状态
 0  :NeedTranform   - 任务已提交
 4  :Processing     - 文档转换中
 8  :TaskEnd        - 任务处理完成
@@ -5263,7 +9933,7 @@ class GetTaskResultApiResponse(AbstractModel):
 -6 :ProcessFailed  - 转换失败
 -13:ProcessTimeout - 转换文件超时
         :type TaskStatus: int
-        :param TaskMessage: 状态描述，需要关注的状态
+        :param _TaskMessage: 状态描述，需要关注的状态
 NeedTranform   - 任务已提交
 Processing     - 文档转换中
 TaskEnd        - 任务处理完成
@@ -5271,24 +9941,64 @@ DownloadFailed - 下载失败
 ProcessFailed  - 转换失败
 ProcessTimeout - 转换文件超时
         :type TaskMessage: str
-        :param ResourceId: 资源Id，也是FileId，用于文件发起使用
+        :param _ResourceId: 资源Id，也是FileId，用于文件发起使用
         :type ResourceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.TaskStatus = None
-        self.TaskMessage = None
-        self.ResourceId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._TaskStatus = None
+        self._TaskMessage = None
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def TaskMessage(self):
+        return self._TaskMessage
+
+    @TaskMessage.setter
+    def TaskMessage(self, TaskMessage):
+        self._TaskMessage = TaskMessage
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.TaskStatus = params.get("TaskStatus")
-        self.TaskMessage = params.get("TaskMessage")
-        self.ResourceId = params.get("ResourceId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._TaskMessage = params.get("TaskMessage")
+        self._ResourceId = params.get("ResourceId")
+        self._RequestId = params.get("RequestId")
 
 
 class GroupOrganization(AbstractModel):
@@ -5298,76 +10008,173 @@ class GroupOrganization(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 成员企业名
+        :param _Name: 成员企业名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Alias: 成员企业别名
+        :param _Alias: 成员企业别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
-        :param OrganizationId: 成员企业id
+        :param _OrganizationId: 成员企业id
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: str
-        :param UpdateTime: 更新时间，时间戳，单位秒
+        :param _UpdateTime: 更新时间，时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
-        :param Status: 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+        :param _Status: 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param IsMainOrganization: 是否为集团主企业
+        :param _IsMainOrganization: 是否为集团主企业
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMainOrganization: bool
-        :param IdCardNumber: 企业社会信用代码
+        :param _IdCardNumber: 企业社会信用代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardNumber: str
-        :param AdminInfo: 企业超管信息
+        :param _AdminInfo: 企业超管信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdminInfo: :class:`tencentcloud.ess.v20201111.models.Admin`
-        :param License: 企业许可证
+        :param _License: 企业许可证
 注意：此字段可能返回 null，表示取不到有效值。
         :type License: str
-        :param LicenseExpireTime: 企业许可证过期时间，时间戳，单位秒
+        :param _LicenseExpireTime: 企业许可证过期时间，时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseExpireTime: int
-        :param JoinTime: 成员企业加入集团时间，时间戳，单位秒
+        :param _JoinTime: 成员企业加入集团时间，时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type JoinTime: int
-        :param FlowEngineEnable: 是否使用审批流引擎，true-是，false-否
+        :param _FlowEngineEnable: 是否使用审批流引擎，true-是，false-否
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowEngineEnable: bool
         """
-        self.Name = None
-        self.Alias = None
-        self.OrganizationId = None
-        self.UpdateTime = None
-        self.Status = None
-        self.IsMainOrganization = None
-        self.IdCardNumber = None
-        self.AdminInfo = None
-        self.License = None
-        self.LicenseExpireTime = None
-        self.JoinTime = None
-        self.FlowEngineEnable = None
+        self._Name = None
+        self._Alias = None
+        self._OrganizationId = None
+        self._UpdateTime = None
+        self._Status = None
+        self._IsMainOrganization = None
+        self._IdCardNumber = None
+        self._AdminInfo = None
+        self._License = None
+        self._LicenseExpireTime = None
+        self._JoinTime = None
+        self._FlowEngineEnable = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsMainOrganization(self):
+        return self._IsMainOrganization
+
+    @IsMainOrganization.setter
+    def IsMainOrganization(self, IsMainOrganization):
+        self._IsMainOrganization = IsMainOrganization
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def AdminInfo(self):
+        return self._AdminInfo
+
+    @AdminInfo.setter
+    def AdminInfo(self, AdminInfo):
+        self._AdminInfo = AdminInfo
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def LicenseExpireTime(self):
+        return self._LicenseExpireTime
+
+    @LicenseExpireTime.setter
+    def LicenseExpireTime(self, LicenseExpireTime):
+        self._LicenseExpireTime = LicenseExpireTime
+
+    @property
+    def JoinTime(self):
+        return self._JoinTime
+
+    @JoinTime.setter
+    def JoinTime(self, JoinTime):
+        self._JoinTime = JoinTime
+
+    @property
+    def FlowEngineEnable(self):
+        return self._FlowEngineEnable
+
+    @FlowEngineEnable.setter
+    def FlowEngineEnable(self, FlowEngineEnable):
+        self._FlowEngineEnable = FlowEngineEnable
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Alias = params.get("Alias")
-        self.OrganizationId = params.get("OrganizationId")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Status = params.get("Status")
-        self.IsMainOrganization = params.get("IsMainOrganization")
-        self.IdCardNumber = params.get("IdCardNumber")
+        self._Name = params.get("Name")
+        self._Alias = params.get("Alias")
+        self._OrganizationId = params.get("OrganizationId")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._IsMainOrganization = params.get("IsMainOrganization")
+        self._IdCardNumber = params.get("IdCardNumber")
         if params.get("AdminInfo") is not None:
-            self.AdminInfo = Admin()
-            self.AdminInfo._deserialize(params.get("AdminInfo"))
-        self.License = params.get("License")
-        self.LicenseExpireTime = params.get("LicenseExpireTime")
-        self.JoinTime = params.get("JoinTime")
-        self.FlowEngineEnable = params.get("FlowEngineEnable")
+            self._AdminInfo = Admin()
+            self._AdminInfo._deserialize(params.get("AdminInfo"))
+        self._License = params.get("License")
+        self._LicenseExpireTime = params.get("LicenseExpireTime")
+        self._JoinTime = params.get("JoinTime")
+        self._FlowEngineEnable = params.get("FlowEngineEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5380,26 +10187,43 @@ class HasAuthUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户id
+        :param _UserId: 用户id
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param BelongTo: 用户归属
+        :param _BelongTo: 用户归属
 MainOrg：主企业
 CurrentOrg：当前企业
 注意：此字段可能返回 null，表示取不到有效值。
         :type BelongTo: str
         """
-        self.UserId = None
-        self.BelongTo = None
+        self._UserId = None
+        self._BelongTo = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def BelongTo(self):
+        return self._BelongTo
+
+    @BelongTo.setter
+    def BelongTo(self, BelongTo):
+        self._BelongTo = BelongTo
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.BelongTo = params.get("BelongTo")
+        self._UserId = params.get("UserId")
+        self._BelongTo = params.get("BelongTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5412,39 +10236,80 @@ class IntegrateRole(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色id
+        :param _RoleId: 角色id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleId: str
-        :param RoleName: 角色名
+        :param _RoleName: 角色名
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
-        :param RoleStatus: 角色状态，1-启用，2-禁用
+        :param _RoleStatus: 角色状态，1-启用，2-禁用
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleStatus: int
-        :param IsGroupRole: 是否是集团角色，true-是，false-否
+        :param _IsGroupRole: 是否是集团角色，true-是，false-否
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsGroupRole: bool
-        :param SubOrgIdList: 管辖的子企业列表
+        :param _SubOrgIdList: 管辖的子企业列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubOrgIdList: list of str
         """
-        self.RoleId = None
-        self.RoleName = None
-        self.RoleStatus = None
-        self.IsGroupRole = None
-        self.SubOrgIdList = None
+        self._RoleId = None
+        self._RoleName = None
+        self._RoleStatus = None
+        self._IsGroupRole = None
+        self._SubOrgIdList = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleStatus(self):
+        return self._RoleStatus
+
+    @RoleStatus.setter
+    def RoleStatus(self, RoleStatus):
+        self._RoleStatus = RoleStatus
+
+    @property
+    def IsGroupRole(self):
+        return self._IsGroupRole
+
+    @IsGroupRole.setter
+    def IsGroupRole(self, IsGroupRole):
+        self._IsGroupRole = IsGroupRole
+
+    @property
+    def SubOrgIdList(self):
+        return self._SubOrgIdList
+
+    @SubOrgIdList.setter
+    def SubOrgIdList(self, SubOrgIdList):
+        self._SubOrgIdList = SubOrgIdList
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
-        self.RoleStatus = params.get("RoleStatus")
-        self.IsGroupRole = params.get("IsGroupRole")
-        self.SubOrgIdList = params.get("SubOrgIdList")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._RoleStatus = params.get("RoleStatus")
+        self._IsGroupRole = params.get("IsGroupRole")
+        self._SubOrgIdList = params.get("SubOrgIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5457,39 +10322,80 @@ class IntegrationDepartment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeptId: 部门ID
+        :param _DeptId: 部门ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeptId: str
-        :param DeptName: 部门名
+        :param _DeptName: 部门名
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeptName: str
-        :param ParentDeptId: 父部门ID
+        :param _ParentDeptId: 父部门ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentDeptId: str
-        :param DeptOpenId: 客户系统部门ID
+        :param _DeptOpenId: 客户系统部门ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeptOpenId: str
-        :param OrderNo: 序列号
+        :param _OrderNo: 序列号
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderNo: int
         """
-        self.DeptId = None
-        self.DeptName = None
-        self.ParentDeptId = None
-        self.DeptOpenId = None
-        self.OrderNo = None
+        self._DeptId = None
+        self._DeptName = None
+        self._ParentDeptId = None
+        self._DeptOpenId = None
+        self._OrderNo = None
+
+    @property
+    def DeptId(self):
+        return self._DeptId
+
+    @DeptId.setter
+    def DeptId(self, DeptId):
+        self._DeptId = DeptId
+
+    @property
+    def DeptName(self):
+        return self._DeptName
+
+    @DeptName.setter
+    def DeptName(self, DeptName):
+        self._DeptName = DeptName
+
+    @property
+    def ParentDeptId(self):
+        return self._ParentDeptId
+
+    @ParentDeptId.setter
+    def ParentDeptId(self, ParentDeptId):
+        self._ParentDeptId = ParentDeptId
+
+    @property
+    def DeptOpenId(self):
+        return self._DeptOpenId
+
+    @DeptOpenId.setter
+    def DeptOpenId(self, DeptOpenId):
+        self._DeptOpenId = DeptOpenId
+
+    @property
+    def OrderNo(self):
+        return self._OrderNo
+
+    @OrderNo.setter
+    def OrderNo(self, OrderNo):
+        self._OrderNo = OrderNo
 
 
     def _deserialize(self, params):
-        self.DeptId = params.get("DeptId")
-        self.DeptName = params.get("DeptName")
-        self.ParentDeptId = params.get("ParentDeptId")
-        self.DeptOpenId = params.get("DeptOpenId")
-        self.OrderNo = params.get("OrderNo")
+        self._DeptId = params.get("DeptId")
+        self._DeptName = params.get("DeptName")
+        self._ParentDeptId = params.get("ParentDeptId")
+        self._DeptOpenId = params.get("DeptOpenId")
+        self._OrderNo = params.get("OrderNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5502,29 +10408,54 @@ class IntegrationMainOrganizationUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MainOrganizationId: 主企业id
+        :param _MainOrganizationId: 主企业id
 注意：此字段可能返回 null，表示取不到有效值。
         :type MainOrganizationId: str
-        :param MainUserId: 主企业员工UserId
+        :param _MainUserId: 主企业员工UserId
 注意：此字段可能返回 null，表示取不到有效值。
         :type MainUserId: str
-        :param UserName: 主企业员工名
+        :param _UserName: 主企业员工名
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         """
-        self.MainOrganizationId = None
-        self.MainUserId = None
-        self.UserName = None
+        self._MainOrganizationId = None
+        self._MainUserId = None
+        self._UserName = None
+
+    @property
+    def MainOrganizationId(self):
+        return self._MainOrganizationId
+
+    @MainOrganizationId.setter
+    def MainOrganizationId(self, MainOrganizationId):
+        self._MainOrganizationId = MainOrganizationId
+
+    @property
+    def MainUserId(self):
+        return self._MainUserId
+
+    @MainUserId.setter
+    def MainUserId(self, MainUserId):
+        self._MainUserId = MainUserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
 
 
     def _deserialize(self, params):
-        self.MainOrganizationId = params.get("MainOrganizationId")
-        self.MainUserId = params.get("MainUserId")
-        self.UserName = params.get("UserName")
+        self._MainOrganizationId = params.get("MainOrganizationId")
+        self._MainUserId = params.get("MainUserId")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5537,30 +10468,55 @@ class ModifyApplicationCallbackInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param OperateType: 操作类型：1-新增，2-删除
+        :param _OperateType: 操作类型：1-新增，2-删除
         :type OperateType: int
-        :param CallbackInfo: 回调信息
+        :param _CallbackInfo: 回调信息
         :type CallbackInfo: :class:`tencentcloud.ess.v20201111.models.CallbackInfo`
         """
-        self.Operator = None
-        self.OperateType = None
-        self.CallbackInfo = None
+        self._Operator = None
+        self._OperateType = None
+        self._CallbackInfo = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OperateType(self):
+        return self._OperateType
+
+    @OperateType.setter
+    def OperateType(self, OperateType):
+        self._OperateType = OperateType
+
+    @property
+    def CallbackInfo(self):
+        return self._CallbackInfo
+
+    @CallbackInfo.setter
+    def CallbackInfo(self, CallbackInfo):
+        self._CallbackInfo = CallbackInfo
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.OperateType = params.get("OperateType")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._OperateType = params.get("OperateType")
         if params.get("CallbackInfo") is not None:
-            self.CallbackInfo = CallbackInfo()
-            self.CallbackInfo._deserialize(params.get("CallbackInfo"))
+            self._CallbackInfo = CallbackInfo()
+            self._CallbackInfo._deserialize(params.get("CallbackInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5573,14 +10529,22 @@ class ModifyApplicationCallbackInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyIntegrationDepartmentRequest(AbstractModel):
@@ -5590,40 +10554,89 @@ class ModifyIntegrationDepartmentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :param _Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param DeptId: 电子签部门ID
+        :param _DeptId: 电子签部门ID
         :type DeptId: str
-        :param ParentDeptId: 电子签父部门ID
+        :param _ParentDeptId: 电子签父部门ID
         :type ParentDeptId: str
-        :param DeptName: 部门名称，不超过50个字符
+        :param _DeptName: 部门名称，不超过50个字符
         :type DeptName: str
-        :param DeptOpenId: 客户系统部门ID，不超过64个字符
+        :param _DeptOpenId: 客户系统部门ID，不超过64个字符
         :type DeptOpenId: str
-        :param OrderNo: 排序号,1~30000范围内
+        :param _OrderNo: 排序号,1~30000范围内
         :type OrderNo: int
         """
-        self.Operator = None
-        self.DeptId = None
-        self.ParentDeptId = None
-        self.DeptName = None
-        self.DeptOpenId = None
-        self.OrderNo = None
+        self._Operator = None
+        self._DeptId = None
+        self._ParentDeptId = None
+        self._DeptName = None
+        self._DeptOpenId = None
+        self._OrderNo = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def DeptId(self):
+        return self._DeptId
+
+    @DeptId.setter
+    def DeptId(self, DeptId):
+        self._DeptId = DeptId
+
+    @property
+    def ParentDeptId(self):
+        return self._ParentDeptId
+
+    @ParentDeptId.setter
+    def ParentDeptId(self, ParentDeptId):
+        self._ParentDeptId = ParentDeptId
+
+    @property
+    def DeptName(self):
+        return self._DeptName
+
+    @DeptName.setter
+    def DeptName(self, DeptName):
+        self._DeptName = DeptName
+
+    @property
+    def DeptOpenId(self):
+        return self._DeptOpenId
+
+    @DeptOpenId.setter
+    def DeptOpenId(self, DeptOpenId):
+        self._DeptOpenId = DeptOpenId
+
+    @property
+    def OrderNo(self):
+        return self._OrderNo
+
+    @OrderNo.setter
+    def OrderNo(self, OrderNo):
+        self._OrderNo = OrderNo
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.DeptId = params.get("DeptId")
-        self.ParentDeptId = params.get("ParentDeptId")
-        self.DeptName = params.get("DeptName")
-        self.DeptOpenId = params.get("DeptOpenId")
-        self.OrderNo = params.get("OrderNo")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._DeptId = params.get("DeptId")
+        self._ParentDeptId = params.get("ParentDeptId")
+        self._DeptName = params.get("DeptName")
+        self._DeptOpenId = params.get("DeptOpenId")
+        self._OrderNo = params.get("OrderNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5636,14 +10649,22 @@ class ModifyIntegrationDepartmentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OccupiedSeal(AbstractModel):
@@ -5653,65 +10674,154 @@ class OccupiedSeal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SealId: 电子印章编号
+        :param _SealId: 电子印章编号
         :type SealId: str
-        :param SealName: 电子印章名称
+        :param _SealName: 电子印章名称
         :type SealName: str
-        :param CreateOn: 电子印章授权时间戳，单位秒
+        :param _CreateOn: 电子印章授权时间戳，单位秒
         :type CreateOn: int
-        :param Creator: 电子印章授权人的UserId
+        :param _Creator: 电子印章授权人的UserId
         :type Creator: str
-        :param SealPolicyId: 电子印章策略Id
+        :param _SealPolicyId: 电子印章策略Id
         :type SealPolicyId: str
-        :param SealStatus: 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+        :param _SealStatus: 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
         :type SealStatus: str
-        :param FailReason: 审核失败原因
+        :param _FailReason: 审核失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
-        :param Url: 印章图片url，5分钟内有效
+        :param _Url: 印章图片url，5分钟内有效
         :type Url: str
-        :param SealType: 印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章
+        :param _SealType: 印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章
         :type SealType: str
-        :param IsAllTime: 用印申请是否为永久授权，true-是，false-否
+        :param _IsAllTime: 用印申请是否为永久授权，true-是，false-否
         :type IsAllTime: bool
-        :param AuthorizedUsers: 授权人列表
+        :param _AuthorizedUsers: 授权人列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedUsers: list of AuthorizedUser
         """
-        self.SealId = None
-        self.SealName = None
-        self.CreateOn = None
-        self.Creator = None
-        self.SealPolicyId = None
-        self.SealStatus = None
-        self.FailReason = None
-        self.Url = None
-        self.SealType = None
-        self.IsAllTime = None
-        self.AuthorizedUsers = None
+        self._SealId = None
+        self._SealName = None
+        self._CreateOn = None
+        self._Creator = None
+        self._SealPolicyId = None
+        self._SealStatus = None
+        self._FailReason = None
+        self._Url = None
+        self._SealType = None
+        self._IsAllTime = None
+        self._AuthorizedUsers = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def CreateOn(self):
+        return self._CreateOn
+
+    @CreateOn.setter
+    def CreateOn(self, CreateOn):
+        self._CreateOn = CreateOn
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def SealPolicyId(self):
+        return self._SealPolicyId
+
+    @SealPolicyId.setter
+    def SealPolicyId(self, SealPolicyId):
+        self._SealPolicyId = SealPolicyId
+
+    @property
+    def SealStatus(self):
+        return self._SealStatus
+
+    @SealStatus.setter
+    def SealStatus(self, SealStatus):
+        self._SealStatus = SealStatus
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def IsAllTime(self):
+        return self._IsAllTime
+
+    @IsAllTime.setter
+    def IsAllTime(self, IsAllTime):
+        self._IsAllTime = IsAllTime
+
+    @property
+    def AuthorizedUsers(self):
+        return self._AuthorizedUsers
+
+    @AuthorizedUsers.setter
+    def AuthorizedUsers(self, AuthorizedUsers):
+        self._AuthorizedUsers = AuthorizedUsers
 
 
     def _deserialize(self, params):
-        self.SealId = params.get("SealId")
-        self.SealName = params.get("SealName")
-        self.CreateOn = params.get("CreateOn")
-        self.Creator = params.get("Creator")
-        self.SealPolicyId = params.get("SealPolicyId")
-        self.SealStatus = params.get("SealStatus")
-        self.FailReason = params.get("FailReason")
-        self.Url = params.get("Url")
-        self.SealType = params.get("SealType")
-        self.IsAllTime = params.get("IsAllTime")
+        self._SealId = params.get("SealId")
+        self._SealName = params.get("SealName")
+        self._CreateOn = params.get("CreateOn")
+        self._Creator = params.get("Creator")
+        self._SealPolicyId = params.get("SealPolicyId")
+        self._SealStatus = params.get("SealStatus")
+        self._FailReason = params.get("FailReason")
+        self._Url = params.get("Url")
+        self._SealType = params.get("SealType")
+        self._IsAllTime = params.get("IsAllTime")
         if params.get("AuthorizedUsers") is not None:
-            self.AuthorizedUsers = []
+            self._AuthorizedUsers = []
             for item in params.get("AuthorizedUsers"):
                 obj = AuthorizedUser()
                 obj._deserialize(item)
-                self.AuthorizedUsers.append(obj)
+                self._AuthorizedUsers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5724,34 +10834,95 @@ class OrganizationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrganizationId: 机构在平台的编号，内部字段，暂未开放
+        :param _OrganizationId: 机构在平台的编号，内部字段，暂未开放
         :type OrganizationId: str
-        :param Channel: 用户渠道，内部字段，暂未开放
+        :param _Channel: 用户渠道，内部字段，暂未开放
         :type Channel: str
-        :param OrganizationOpenId: 用户在渠道的机构编号，内部字段，暂未开放
+        :param _OrganizationOpenId: 用户在渠道的机构编号，内部字段，暂未开放
         :type OrganizationOpenId: str
-        :param ClientIp: 用户真实的IP，内部字段，暂未开放
+        :param _ClientIp: 用户真实的IP，内部字段，暂未开放
         :type ClientIp: str
-        :param ProxyIp: 机构的代理IP，内部字段，暂未开放
+        :param _ProxyIp: 机构的代理IP，内部字段，暂未开放
         :type ProxyIp: str
         """
-        self.OrganizationId = None
-        self.Channel = None
-        self.OrganizationOpenId = None
-        self.ClientIp = None
-        self.ProxyIp = None
+        self._OrganizationId = None
+        self._Channel = None
+        self._OrganizationOpenId = None
+        self._ClientIp = None
+        self._ProxyIp = None
+
+    @property
+    def OrganizationId(self):
+        warnings.warn("parameter `OrganizationId` is deprecated", DeprecationWarning) 
+
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        warnings.warn("parameter `OrganizationId` is deprecated", DeprecationWarning) 
+
+        self._OrganizationId = OrganizationId
+
+    @property
+    def Channel(self):
+        warnings.warn("parameter `Channel` is deprecated", DeprecationWarning) 
+
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        warnings.warn("parameter `Channel` is deprecated", DeprecationWarning) 
+
+        self._Channel = Channel
+
+    @property
+    def OrganizationOpenId(self):
+        warnings.warn("parameter `OrganizationOpenId` is deprecated", DeprecationWarning) 
+
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        warnings.warn("parameter `OrganizationOpenId` is deprecated", DeprecationWarning) 
+
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def ClientIp(self):
+        warnings.warn("parameter `ClientIp` is deprecated", DeprecationWarning) 
+
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        warnings.warn("parameter `ClientIp` is deprecated", DeprecationWarning) 
+
+        self._ClientIp = ClientIp
+
+    @property
+    def ProxyIp(self):
+        warnings.warn("parameter `ProxyIp` is deprecated", DeprecationWarning) 
+
+        return self._ProxyIp
+
+    @ProxyIp.setter
+    def ProxyIp(self, ProxyIp):
+        warnings.warn("parameter `ProxyIp` is deprecated", DeprecationWarning) 
+
+        self._ProxyIp = ProxyIp
 
 
     def _deserialize(self, params):
-        self.OrganizationId = params.get("OrganizationId")
-        self.Channel = params.get("Channel")
-        self.OrganizationOpenId = params.get("OrganizationOpenId")
-        self.ClientIp = params.get("ClientIp")
-        self.ProxyIp = params.get("ProxyIp")
+        self._OrganizationId = params.get("OrganizationId")
+        self._Channel = params.get("Channel")
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._ClientIp = params.get("ClientIp")
+        self._ProxyIp = params.get("ProxyIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5764,66 +10935,171 @@ class PdfVerifyResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VerifyResult: 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
+        :param _VerifyResult: 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
         :type VerifyResult: int
-        :param SignPlatform: 签署平台，如果文件是在腾讯电子签平台签署，则返回腾讯电子签，如果文件不在腾讯电子签平台签署，则返回其他平台。
+        :param _SignPlatform: 签署平台，如果文件是在腾讯电子签平台签署，则返回腾讯电子签，如果文件不在腾讯电子签平台签署，则返回其他平台。
         :type SignPlatform: str
-        :param SignerName: 签署人名称
+        :param _SignerName: 签署人名称
         :type SignerName: str
-        :param SignTime: 签署时间戳，单位秒
+        :param _SignTime: 签署时间戳，单位秒
         :type SignTime: int
-        :param SignAlgorithm: 签名算法
+        :param _SignAlgorithm: 签名算法
         :type SignAlgorithm: str
-        :param CertSn: 签名证书序列号
+        :param _CertSn: 签名证书序列号
         :type CertSn: str
-        :param CertNotBefore: 证书起始时间戳，单位秒
+        :param _CertNotBefore: 证书起始时间戳，单位秒
         :type CertNotBefore: int
-        :param CertNotAfter: 证书过期时间戳，单位秒
+        :param _CertNotAfter: 证书过期时间戳，单位秒
         :type CertNotAfter: int
-        :param ComponentPosX: 签名域横坐标，单位pt
+        :param _ComponentPosX: 签名域横坐标，单位pt
         :type ComponentPosX: float
-        :param ComponentPosY: 签名域纵坐标，单位pt
+        :param _ComponentPosY: 签名域纵坐标，单位pt
         :type ComponentPosY: float
-        :param ComponentWidth: 签名域宽度，单位pt
+        :param _ComponentWidth: 签名域宽度，单位pt
         :type ComponentWidth: float
-        :param ComponentHeight: 签名域高度，单位pt
+        :param _ComponentHeight: 签名域高度，单位pt
         :type ComponentHeight: float
-        :param ComponentPage: 签名域所在页码，1～N
+        :param _ComponentPage: 签名域所在页码，1～N
         :type ComponentPage: int
         """
-        self.VerifyResult = None
-        self.SignPlatform = None
-        self.SignerName = None
-        self.SignTime = None
-        self.SignAlgorithm = None
-        self.CertSn = None
-        self.CertNotBefore = None
-        self.CertNotAfter = None
-        self.ComponentPosX = None
-        self.ComponentPosY = None
-        self.ComponentWidth = None
-        self.ComponentHeight = None
-        self.ComponentPage = None
+        self._VerifyResult = None
+        self._SignPlatform = None
+        self._SignerName = None
+        self._SignTime = None
+        self._SignAlgorithm = None
+        self._CertSn = None
+        self._CertNotBefore = None
+        self._CertNotAfter = None
+        self._ComponentPosX = None
+        self._ComponentPosY = None
+        self._ComponentWidth = None
+        self._ComponentHeight = None
+        self._ComponentPage = None
+
+    @property
+    def VerifyResult(self):
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def SignPlatform(self):
+        return self._SignPlatform
+
+    @SignPlatform.setter
+    def SignPlatform(self, SignPlatform):
+        self._SignPlatform = SignPlatform
+
+    @property
+    def SignerName(self):
+        return self._SignerName
+
+    @SignerName.setter
+    def SignerName(self, SignerName):
+        self._SignerName = SignerName
+
+    @property
+    def SignTime(self):
+        return self._SignTime
+
+    @SignTime.setter
+    def SignTime(self, SignTime):
+        self._SignTime = SignTime
+
+    @property
+    def SignAlgorithm(self):
+        return self._SignAlgorithm
+
+    @SignAlgorithm.setter
+    def SignAlgorithm(self, SignAlgorithm):
+        self._SignAlgorithm = SignAlgorithm
+
+    @property
+    def CertSn(self):
+        return self._CertSn
+
+    @CertSn.setter
+    def CertSn(self, CertSn):
+        self._CertSn = CertSn
+
+    @property
+    def CertNotBefore(self):
+        return self._CertNotBefore
+
+    @CertNotBefore.setter
+    def CertNotBefore(self, CertNotBefore):
+        self._CertNotBefore = CertNotBefore
+
+    @property
+    def CertNotAfter(self):
+        return self._CertNotAfter
+
+    @CertNotAfter.setter
+    def CertNotAfter(self, CertNotAfter):
+        self._CertNotAfter = CertNotAfter
+
+    @property
+    def ComponentPosX(self):
+        return self._ComponentPosX
+
+    @ComponentPosX.setter
+    def ComponentPosX(self, ComponentPosX):
+        self._ComponentPosX = ComponentPosX
+
+    @property
+    def ComponentPosY(self):
+        return self._ComponentPosY
+
+    @ComponentPosY.setter
+    def ComponentPosY(self, ComponentPosY):
+        self._ComponentPosY = ComponentPosY
+
+    @property
+    def ComponentWidth(self):
+        return self._ComponentWidth
+
+    @ComponentWidth.setter
+    def ComponentWidth(self, ComponentWidth):
+        self._ComponentWidth = ComponentWidth
+
+    @property
+    def ComponentHeight(self):
+        return self._ComponentHeight
+
+    @ComponentHeight.setter
+    def ComponentHeight(self, ComponentHeight):
+        self._ComponentHeight = ComponentHeight
+
+    @property
+    def ComponentPage(self):
+        return self._ComponentPage
+
+    @ComponentPage.setter
+    def ComponentPage(self, ComponentPage):
+        self._ComponentPage = ComponentPage
 
 
     def _deserialize(self, params):
-        self.VerifyResult = params.get("VerifyResult")
-        self.SignPlatform = params.get("SignPlatform")
-        self.SignerName = params.get("SignerName")
-        self.SignTime = params.get("SignTime")
-        self.SignAlgorithm = params.get("SignAlgorithm")
-        self.CertSn = params.get("CertSn")
-        self.CertNotBefore = params.get("CertNotBefore")
-        self.CertNotAfter = params.get("CertNotAfter")
-        self.ComponentPosX = params.get("ComponentPosX")
-        self.ComponentPosY = params.get("ComponentPosY")
-        self.ComponentWidth = params.get("ComponentWidth")
-        self.ComponentHeight = params.get("ComponentHeight")
-        self.ComponentPage = params.get("ComponentPage")
+        self._VerifyResult = params.get("VerifyResult")
+        self._SignPlatform = params.get("SignPlatform")
+        self._SignerName = params.get("SignerName")
+        self._SignTime = params.get("SignTime")
+        self._SignAlgorithm = params.get("SignAlgorithm")
+        self._CertSn = params.get("CertSn")
+        self._CertNotBefore = params.get("CertNotBefore")
+        self._CertNotAfter = params.get("CertNotAfter")
+        self._ComponentPosX = params.get("ComponentPosX")
+        self._ComponentPosY = params.get("ComponentPosY")
+        self._ComponentWidth = params.get("ComponentWidth")
+        self._ComponentHeight = params.get("ComponentHeight")
+        self._ComponentPage = params.get("ComponentPage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5836,66 +11112,171 @@ class Recipient(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecipientId: 签署参与者ID
+        :param _RecipientId: 签署参与者ID
         :type RecipientId: str
-        :param RecipientType: 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
+        :param _RecipientType: 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
         :type RecipientType: str
-        :param Description: 描述信息
+        :param _Description: 描述信息
         :type Description: str
-        :param RoleName: 角色名称
+        :param _RoleName: 角色名称
         :type RoleName: str
-        :param RequireValidation: 是否需要验证，默认为false
+        :param _RequireValidation: 是否需要验证，默认为false
         :type RequireValidation: bool
-        :param RequireSign: 是否需要签署，默认为true
+        :param _RequireSign: 是否需要签署，默认为true
         :type RequireSign: bool
-        :param RoutingOrder: 添加序列，0～N
+        :param _RoutingOrder: 添加序列，0～N
         :type RoutingOrder: int
-        :param RequireDelivery: 是否需要发送，默认为true
+        :param _RequireDelivery: 是否需要发送，默认为true
         :type RequireDelivery: bool
-        :param Email: 邮箱地址
+        :param _Email: 邮箱地址
         :type Email: str
-        :param Mobile: 电话号码
+        :param _Mobile: 电话号码
         :type Mobile: str
-        :param UserId: 关联的用户ID
+        :param _UserId: 关联的用户ID
         :type UserId: str
-        :param DeliveryMethod: 发送方式。默认为EMAIL。EMAIL-邮件；MOBILE-手机短信；WECHAT-微信通知
+        :param _DeliveryMethod: 发送方式。默认为EMAIL。EMAIL-邮件；MOBILE-手机短信；WECHAT-微信通知
         :type DeliveryMethod: str
-        :param RecipientExtra: 附属信息
+        :param _RecipientExtra: 附属信息
         :type RecipientExtra: str
         """
-        self.RecipientId = None
-        self.RecipientType = None
-        self.Description = None
-        self.RoleName = None
-        self.RequireValidation = None
-        self.RequireSign = None
-        self.RoutingOrder = None
-        self.RequireDelivery = None
-        self.Email = None
-        self.Mobile = None
-        self.UserId = None
-        self.DeliveryMethod = None
-        self.RecipientExtra = None
+        self._RecipientId = None
+        self._RecipientType = None
+        self._Description = None
+        self._RoleName = None
+        self._RequireValidation = None
+        self._RequireSign = None
+        self._RoutingOrder = None
+        self._RequireDelivery = None
+        self._Email = None
+        self._Mobile = None
+        self._UserId = None
+        self._DeliveryMethod = None
+        self._RecipientExtra = None
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def RecipientType(self):
+        return self._RecipientType
+
+    @RecipientType.setter
+    def RecipientType(self, RecipientType):
+        self._RecipientType = RecipientType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RequireValidation(self):
+        return self._RequireValidation
+
+    @RequireValidation.setter
+    def RequireValidation(self, RequireValidation):
+        self._RequireValidation = RequireValidation
+
+    @property
+    def RequireSign(self):
+        return self._RequireSign
+
+    @RequireSign.setter
+    def RequireSign(self, RequireSign):
+        self._RequireSign = RequireSign
+
+    @property
+    def RoutingOrder(self):
+        return self._RoutingOrder
+
+    @RoutingOrder.setter
+    def RoutingOrder(self, RoutingOrder):
+        self._RoutingOrder = RoutingOrder
+
+    @property
+    def RequireDelivery(self):
+        return self._RequireDelivery
+
+    @RequireDelivery.setter
+    def RequireDelivery(self, RequireDelivery):
+        self._RequireDelivery = RequireDelivery
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def DeliveryMethod(self):
+        return self._DeliveryMethod
+
+    @DeliveryMethod.setter
+    def DeliveryMethod(self, DeliveryMethod):
+        self._DeliveryMethod = DeliveryMethod
+
+    @property
+    def RecipientExtra(self):
+        return self._RecipientExtra
+
+    @RecipientExtra.setter
+    def RecipientExtra(self, RecipientExtra):
+        self._RecipientExtra = RecipientExtra
 
 
     def _deserialize(self, params):
-        self.RecipientId = params.get("RecipientId")
-        self.RecipientType = params.get("RecipientType")
-        self.Description = params.get("Description")
-        self.RoleName = params.get("RoleName")
-        self.RequireValidation = params.get("RequireValidation")
-        self.RequireSign = params.get("RequireSign")
-        self.RoutingOrder = params.get("RoutingOrder")
-        self.RequireDelivery = params.get("RequireDelivery")
-        self.Email = params.get("Email")
-        self.Mobile = params.get("Mobile")
-        self.UserId = params.get("UserId")
-        self.DeliveryMethod = params.get("DeliveryMethod")
-        self.RecipientExtra = params.get("RecipientExtra")
+        self._RecipientId = params.get("RecipientId")
+        self._RecipientType = params.get("RecipientType")
+        self._Description = params.get("Description")
+        self._RoleName = params.get("RoleName")
+        self._RequireValidation = params.get("RequireValidation")
+        self._RequireSign = params.get("RequireSign")
+        self._RoutingOrder = params.get("RoutingOrder")
+        self._RequireDelivery = params.get("RequireDelivery")
+        self._Email = params.get("Email")
+        self._Mobile = params.get("Mobile")
+        self._UserId = params.get("UserId")
+        self._DeliveryMethod = params.get("DeliveryMethod")
+        self._RecipientExtra = params.get("RecipientExtra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5908,39 +11289,72 @@ class RecipientComponentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecipientId: 参与方Id
+        :param _RecipientId: 参与方Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
-        :param RecipientFillStatus: 参与方填写状态
+        :param _RecipientFillStatus: 参与方填写状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientFillStatus: str
-        :param IsPromoter: 是否发起方
+        :param _IsPromoter: 是否发起方
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPromoter: bool
-        :param Components: 填写控件内容
+        :param _Components: 填写控件内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of FilledComponent
         """
-        self.RecipientId = None
-        self.RecipientFillStatus = None
-        self.IsPromoter = None
-        self.Components = None
+        self._RecipientId = None
+        self._RecipientFillStatus = None
+        self._IsPromoter = None
+        self._Components = None
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def RecipientFillStatus(self):
+        return self._RecipientFillStatus
+
+    @RecipientFillStatus.setter
+    def RecipientFillStatus(self, RecipientFillStatus):
+        self._RecipientFillStatus = RecipientFillStatus
+
+    @property
+    def IsPromoter(self):
+        return self._IsPromoter
+
+    @IsPromoter.setter
+    def IsPromoter(self, IsPromoter):
+        self._IsPromoter = IsPromoter
+
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
 
 
     def _deserialize(self, params):
-        self.RecipientId = params.get("RecipientId")
-        self.RecipientFillStatus = params.get("RecipientFillStatus")
-        self.IsPromoter = params.get("IsPromoter")
+        self._RecipientId = params.get("RecipientId")
+        self._RecipientFillStatus = params.get("RecipientFillStatus")
+        self._IsPromoter = params.get("IsPromoter")
         if params.get("Components") is not None:
-            self.Components = []
+            self._Components = []
             for item in params.get("Components"):
                 obj = FilledComponent()
                 obj._deserialize(item)
-                self.Components.append(obj)
+                self._Components.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5953,22 +11367,39 @@ class RegisterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LegalName: 法人姓名
+        :param _LegalName: 法人姓名
         :type LegalName: str
-        :param Uscc: 社会统一信用代码
+        :param _Uscc: 社会统一信用代码
         :type Uscc: str
         """
-        self.LegalName = None
-        self.Uscc = None
+        self._LegalName = None
+        self._Uscc = None
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def Uscc(self):
+        return self._Uscc
+
+    @Uscc.setter
+    def Uscc(self, Uscc):
+        self._Uscc = Uscc
 
 
     def _deserialize(self, params):
-        self.LegalName = params.get("LegalName")
-        self.Uscc = params.get("Uscc")
+        self._LegalName = params.get("LegalName")
+        self._Uscc = params.get("Uscc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5984,43 +11415,92 @@ class ReleasedApprover(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 签署人姓名，最大长度50个字符
+        :param _Name: 签署人姓名，最大长度50个字符
 
         :type Name: str
-        :param Mobile: 签署人手机号
+        :param _Mobile: 签署人手机号
         :type Mobile: str
-        :param RelievedApproverReceiptId: 要替换的参与人在原合同参与人列表中的签署人编号,通过DescribeFlowInfo 接口获取（即FlowDetailInfos. FlowApproverInfos 结构中的ReceiptId ）
+        :param _RelievedApproverReceiptId: 要替换的参与人在原合同参与人列表中的签署人编号,通过DescribeFlowInfo 接口获取（即FlowDetailInfos. FlowApproverInfos 结构中的ReceiptId ）
         :type RelievedApproverReceiptId: str
-        :param ApproverType: 指定签署人类型，目前仅支持
+        :param _ApproverType: 指定签署人类型，目前仅支持
 ORGANIZATION-企业
 ENTERPRISESERVER-企业静默签
         :type ApproverType: str
-        :param ApproverSignComponentType: 签署控件类型，支持自定义企业签署方的签署控件为“印章”或“签名”
+        :param _ApproverSignComponentType: 签署控件类型，支持自定义企业签署方的签署控件为“印章”或“签名”
 - SIGN_SEAL-默认为印章控件类型
 - SIGN_SIGNATURE-手写签名控件类型
         :type ApproverSignComponentType: str
-        :param ApproverSignRole: 签署方自定义控件别名，最大长度20个字符
+        :param _ApproverSignRole: 签署方自定义控件别名，最大长度20个字符
         :type ApproverSignRole: str
         """
-        self.Name = None
-        self.Mobile = None
-        self.RelievedApproverReceiptId = None
-        self.ApproverType = None
-        self.ApproverSignComponentType = None
-        self.ApproverSignRole = None
+        self._Name = None
+        self._Mobile = None
+        self._RelievedApproverReceiptId = None
+        self._ApproverType = None
+        self._ApproverSignComponentType = None
+        self._ApproverSignRole = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def RelievedApproverReceiptId(self):
+        return self._RelievedApproverReceiptId
+
+    @RelievedApproverReceiptId.setter
+    def RelievedApproverReceiptId(self, RelievedApproverReceiptId):
+        self._RelievedApproverReceiptId = RelievedApproverReceiptId
+
+    @property
+    def ApproverType(self):
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def ApproverSignComponentType(self):
+        return self._ApproverSignComponentType
+
+    @ApproverSignComponentType.setter
+    def ApproverSignComponentType(self, ApproverSignComponentType):
+        self._ApproverSignComponentType = ApproverSignComponentType
+
+    @property
+    def ApproverSignRole(self):
+        return self._ApproverSignRole
+
+    @ApproverSignRole.setter
+    def ApproverSignRole(self, ApproverSignRole):
+        self._ApproverSignRole = ApproverSignRole
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Mobile = params.get("Mobile")
-        self.RelievedApproverReceiptId = params.get("RelievedApproverReceiptId")
-        self.ApproverType = params.get("ApproverType")
-        self.ApproverSignComponentType = params.get("ApproverSignComponentType")
-        self.ApproverSignRole = params.get("ApproverSignRole")
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        self._RelievedApproverReceiptId = params.get("RelievedApproverReceiptId")
+        self._ApproverType = params.get("ApproverType")
+        self._ApproverSignComponentType = params.get("ApproverSignComponentType")
+        self._ApproverSignRole = params.get("ApproverSignRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6033,38 +11513,79 @@ class RelieveInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Reason: 解除理由，最大支持200个字
+        :param _Reason: 解除理由，最大支持200个字
         :type Reason: str
-        :param RemainInForceItem: 解除后仍然有效的条款，保留条款，最大支持200个字
+        :param _RemainInForceItem: 解除后仍然有效的条款，保留条款，最大支持200个字
 
         :type RemainInForceItem: str
-        :param OriginalExpenseSettlement: 原合同事项处理-费用结算，最大支持200个字
+        :param _OriginalExpenseSettlement: 原合同事项处理-费用结算，最大支持200个字
 
         :type OriginalExpenseSettlement: str
-        :param OriginalOtherSettlement: 原合同事项处理-其他事项，最大支持200个字
+        :param _OriginalOtherSettlement: 原合同事项处理-其他事项，最大支持200个字
 
         :type OriginalOtherSettlement: str
-        :param OtherDeals: 其他约定，最大支持200个字
+        :param _OtherDeals: 其他约定，最大支持200个字
 
         :type OtherDeals: str
         """
-        self.Reason = None
-        self.RemainInForceItem = None
-        self.OriginalExpenseSettlement = None
-        self.OriginalOtherSettlement = None
-        self.OtherDeals = None
+        self._Reason = None
+        self._RemainInForceItem = None
+        self._OriginalExpenseSettlement = None
+        self._OriginalOtherSettlement = None
+        self._OtherDeals = None
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def RemainInForceItem(self):
+        return self._RemainInForceItem
+
+    @RemainInForceItem.setter
+    def RemainInForceItem(self, RemainInForceItem):
+        self._RemainInForceItem = RemainInForceItem
+
+    @property
+    def OriginalExpenseSettlement(self):
+        return self._OriginalExpenseSettlement
+
+    @OriginalExpenseSettlement.setter
+    def OriginalExpenseSettlement(self, OriginalExpenseSettlement):
+        self._OriginalExpenseSettlement = OriginalExpenseSettlement
+
+    @property
+    def OriginalOtherSettlement(self):
+        return self._OriginalOtherSettlement
+
+    @OriginalOtherSettlement.setter
+    def OriginalOtherSettlement(self, OriginalOtherSettlement):
+        self._OriginalOtherSettlement = OriginalOtherSettlement
+
+    @property
+    def OtherDeals(self):
+        return self._OtherDeals
+
+    @OtherDeals.setter
+    def OtherDeals(self, OtherDeals):
+        self._OtherDeals = OtherDeals
 
 
     def _deserialize(self, params):
-        self.Reason = params.get("Reason")
-        self.RemainInForceItem = params.get("RemainInForceItem")
-        self.OriginalExpenseSettlement = params.get("OriginalExpenseSettlement")
-        self.OriginalOtherSettlement = params.get("OriginalOtherSettlement")
-        self.OtherDeals = params.get("OtherDeals")
+        self._Reason = params.get("Reason")
+        self._RemainInForceItem = params.get("RemainInForceItem")
+        self._OriginalExpenseSettlement = params.get("OriginalExpenseSettlement")
+        self._OriginalOtherSettlement = params.get("OriginalOtherSettlement")
+        self._OtherDeals = params.get("OtherDeals")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6077,26 +11598,51 @@ class RemindFlowRecords(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CanRemind: 是否能够催办，true-是，false-否
+        :param _CanRemind: 是否能够催办，true-是，false-否
         :type CanRemind: bool
-        :param FlowId: 合同id
+        :param _FlowId: 合同id
         :type FlowId: str
-        :param RemindMessage: 催办详情信息
+        :param _RemindMessage: 催办详情信息
         :type RemindMessage: str
         """
-        self.CanRemind = None
-        self.FlowId = None
-        self.RemindMessage = None
+        self._CanRemind = None
+        self._FlowId = None
+        self._RemindMessage = None
+
+    @property
+    def CanRemind(self):
+        return self._CanRemind
+
+    @CanRemind.setter
+    def CanRemind(self, CanRemind):
+        self._CanRemind = CanRemind
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RemindMessage(self):
+        return self._RemindMessage
+
+    @RemindMessage.setter
+    def RemindMessage(self, RemindMessage):
+        self._RemindMessage = RemindMessage
 
 
     def _deserialize(self, params):
-        self.CanRemind = params.get("CanRemind")
-        self.FlowId = params.get("FlowId")
-        self.RemindMessage = params.get("RemindMessage")
+        self._CanRemind = params.get("CanRemind")
+        self._FlowId = params.get("FlowId")
+        self._RemindMessage = params.get("RemindMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6115,26 +11661,51 @@ class SignQrCode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QrCodeId: 二维码id
+        :param _QrCodeId: 二维码id
         :type QrCodeId: str
-        :param QrCodeUrl: 二维码url
+        :param _QrCodeUrl: 二维码url
         :type QrCodeUrl: str
-        :param ExpiredTime: 二维码过期时间戳，单位秒
+        :param _ExpiredTime: 二维码过期时间戳，单位秒
         :type ExpiredTime: int
         """
-        self.QrCodeId = None
-        self.QrCodeUrl = None
-        self.ExpiredTime = None
+        self._QrCodeId = None
+        self._QrCodeUrl = None
+        self._ExpiredTime = None
+
+    @property
+    def QrCodeId(self):
+        return self._QrCodeId
+
+    @QrCodeId.setter
+    def QrCodeId(self, QrCodeId):
+        self._QrCodeId = QrCodeId
+
+    @property
+    def QrCodeUrl(self):
+        return self._QrCodeUrl
+
+    @QrCodeUrl.setter
+    def QrCodeUrl(self, QrCodeUrl):
+        self._QrCodeUrl = QrCodeUrl
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
 
 
     def _deserialize(self, params):
-        self.QrCodeId = params.get("QrCodeId")
-        self.QrCodeUrl = params.get("QrCodeUrl")
-        self.ExpiredTime = params.get("ExpiredTime")
+        self._QrCodeId = params.get("QrCodeId")
+        self._QrCodeUrl = params.get("QrCodeUrl")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6147,26 +11718,51 @@ class SignUrl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppSignUrl: 小程序签署链接
+        :param _AppSignUrl: 小程序签署链接
         :type AppSignUrl: str
-        :param EffectiveTime: 签署链接有效时间
+        :param _EffectiveTime: 签署链接有效时间
         :type EffectiveTime: str
-        :param HttpSignUrl: 移动端签署链接
+        :param _HttpSignUrl: 移动端签署链接
         :type HttpSignUrl: str
         """
-        self.AppSignUrl = None
-        self.EffectiveTime = None
-        self.HttpSignUrl = None
+        self._AppSignUrl = None
+        self._EffectiveTime = None
+        self._HttpSignUrl = None
+
+    @property
+    def AppSignUrl(self):
+        return self._AppSignUrl
+
+    @AppSignUrl.setter
+    def AppSignUrl(self, AppSignUrl):
+        self._AppSignUrl = AppSignUrl
+
+    @property
+    def EffectiveTime(self):
+        return self._EffectiveTime
+
+    @EffectiveTime.setter
+    def EffectiveTime(self, EffectiveTime):
+        self._EffectiveTime = EffectiveTime
+
+    @property
+    def HttpSignUrl(self):
+        return self._HttpSignUrl
+
+    @HttpSignUrl.setter
+    def HttpSignUrl(self, HttpSignUrl):
+        self._HttpSignUrl = HttpSignUrl
 
 
     def _deserialize(self, params):
-        self.AppSignUrl = params.get("AppSignUrl")
-        self.EffectiveTime = params.get("EffectiveTime")
-        self.HttpSignUrl = params.get("HttpSignUrl")
+        self._AppSignUrl = params.get("AppSignUrl")
+        self._EffectiveTime = params.get("EffectiveTime")
+        self._HttpSignUrl = params.get("HttpSignUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6179,79 +11775,206 @@ class Staff(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户在电子签平台的id
+        :param _UserId: 用户在电子签平台的id
+注：创建和更新场景无需填写
         :type UserId: str
-        :param DisplayName: 显示的用户名/昵称
+        :param _DisplayName: 显示的用户名/昵称
         :type DisplayName: str
-        :param Mobile: 用户手机号
+        :param _Mobile: 用户手机号
         :type Mobile: str
-        :param Email: 用户邮箱
+        :param _Email: 用户邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param OpenId: 用户在第三方平台id，如需在此接口提醒员工实名，该参数不传
+        :param _OpenId: 用户在第三方平台id，如需在此接口提醒员工实名，该参数不传
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
-        :param Roles: 员工角色
+        :param _Roles: 员工角色
+注：创建和更新场景无需填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Roles: list of StaffRole
-        :param Department: 员工部门
+        :param _Department: 员工部门
 注意：此字段可能返回 null，表示取不到有效值。
         :type Department: :class:`tencentcloud.ess.v20201111.models.Department`
-        :param Verified: 员工是否实名
+        :param _Verified: 员工是否实名
+注：创建和更新场景无需填写
         :type Verified: bool
-        :param CreatedOn: 员工创建时间戳，单位秒
+        :param _CreatedOn: 员工创建时间戳，单位秒
+注：创建和更新场景无需填写
         :type CreatedOn: int
-        :param VerifiedOn: 员工实名时间戳，单位秒
+        :param _VerifiedOn: 员工实名时间戳，单位秒
+注：创建和更新场景无需填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifiedOn: int
-        :param QuiteJob: 员工是否离职：0-未离职，1-离职
+        :param _QuiteJob: 员工是否离职：0-未离职，1-离职
+注：创建和更新场景无需填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuiteJob: int
-        :param ReceiveUserId: 员工离职交接人用户id
+        :param _ReceiveUserId: 员工离职交接人用户id
+注：创建和更新场景无需填写
         :type ReceiveUserId: str
-        :param ReceiveOpenId: 员工离职交接人用户OpenId
+        :param _ReceiveOpenId: 员工离职交接人用户OpenId
+注：创建和更新场景无需填写
         :type ReceiveOpenId: str
+        :param _WeworkOpenId: 企业微信用户账号ID
+注：仅企微类型的企业创建员工接口支持该字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeworkOpenId: str
         """
-        self.UserId = None
-        self.DisplayName = None
-        self.Mobile = None
-        self.Email = None
-        self.OpenId = None
-        self.Roles = None
-        self.Department = None
-        self.Verified = None
-        self.CreatedOn = None
-        self.VerifiedOn = None
-        self.QuiteJob = None
-        self.ReceiveUserId = None
-        self.ReceiveOpenId = None
+        self._UserId = None
+        self._DisplayName = None
+        self._Mobile = None
+        self._Email = None
+        self._OpenId = None
+        self._Roles = None
+        self._Department = None
+        self._Verified = None
+        self._CreatedOn = None
+        self._VerifiedOn = None
+        self._QuiteJob = None
+        self._ReceiveUserId = None
+        self._ReceiveOpenId = None
+        self._WeworkOpenId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Roles(self):
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Verified(self):
+        return self._Verified
+
+    @Verified.setter
+    def Verified(self, Verified):
+        self._Verified = Verified
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def VerifiedOn(self):
+        return self._VerifiedOn
+
+    @VerifiedOn.setter
+    def VerifiedOn(self, VerifiedOn):
+        self._VerifiedOn = VerifiedOn
+
+    @property
+    def QuiteJob(self):
+        return self._QuiteJob
+
+    @QuiteJob.setter
+    def QuiteJob(self, QuiteJob):
+        self._QuiteJob = QuiteJob
+
+    @property
+    def ReceiveUserId(self):
+        return self._ReceiveUserId
+
+    @ReceiveUserId.setter
+    def ReceiveUserId(self, ReceiveUserId):
+        self._ReceiveUserId = ReceiveUserId
+
+    @property
+    def ReceiveOpenId(self):
+        return self._ReceiveOpenId
+
+    @ReceiveOpenId.setter
+    def ReceiveOpenId(self, ReceiveOpenId):
+        self._ReceiveOpenId = ReceiveOpenId
+
+    @property
+    def WeworkOpenId(self):
+        return self._WeworkOpenId
+
+    @WeworkOpenId.setter
+    def WeworkOpenId(self, WeworkOpenId):
+        self._WeworkOpenId = WeworkOpenId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.DisplayName = params.get("DisplayName")
-        self.Mobile = params.get("Mobile")
-        self.Email = params.get("Email")
-        self.OpenId = params.get("OpenId")
+        self._UserId = params.get("UserId")
+        self._DisplayName = params.get("DisplayName")
+        self._Mobile = params.get("Mobile")
+        self._Email = params.get("Email")
+        self._OpenId = params.get("OpenId")
         if params.get("Roles") is not None:
-            self.Roles = []
+            self._Roles = []
             for item in params.get("Roles"):
                 obj = StaffRole()
                 obj._deserialize(item)
-                self.Roles.append(obj)
+                self._Roles.append(obj)
         if params.get("Department") is not None:
-            self.Department = Department()
-            self.Department._deserialize(params.get("Department"))
-        self.Verified = params.get("Verified")
-        self.CreatedOn = params.get("CreatedOn")
-        self.VerifiedOn = params.get("VerifiedOn")
-        self.QuiteJob = params.get("QuiteJob")
-        self.ReceiveUserId = params.get("ReceiveUserId")
-        self.ReceiveOpenId = params.get("ReceiveOpenId")
+            self._Department = Department()
+            self._Department._deserialize(params.get("Department"))
+        self._Verified = params.get("Verified")
+        self._CreatedOn = params.get("CreatedOn")
+        self._VerifiedOn = params.get("VerifiedOn")
+        self._QuiteJob = params.get("QuiteJob")
+        self._ReceiveUserId = params.get("ReceiveUserId")
+        self._ReceiveOpenId = params.get("ReceiveOpenId")
+        self._WeworkOpenId = params.get("WeworkOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6264,24 +11987,41 @@ class StaffRole(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色id
+        :param _RoleId: 角色id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleId: str
-        :param RoleName: 角色名称
+        :param _RoleName: 角色名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
         """
-        self.RoleId = None
-        self.RoleName = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6294,38 +12034,79 @@ class StartFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+        :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowId: 签署流程编号，由CreateFlow接口返回
+        :param _FlowId: 签署流程编号，由CreateFlow接口返回
         :type FlowId: str
-        :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
+        :param _ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+        :param _CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
         :type CcNotifyType: int
         """
-        self.Operator = None
-        self.FlowId = None
-        self.ClientToken = None
-        self.Agent = None
-        self.CcNotifyType = None
+        self._Operator = None
+        self._FlowId = None
+        self._ClientToken = None
+        self._Agent = None
+        self._CcNotifyType = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def CcNotifyType(self):
+        return self._CcNotifyType
+
+    @CcNotifyType.setter
+    def CcNotifyType(self, CcNotifyType):
+        self._CcNotifyType = CcNotifyType
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.FlowId = params.get("FlowId")
-        self.ClientToken = params.get("ClientToken")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
+        self._ClientToken = params.get("ClientToken")
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.CcNotifyType = params.get("CcNotifyType")
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._CcNotifyType = params.get("CcNotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6338,18 +12119,34 @@ class StartFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 返回描述，START-发起成功， REVIEW-提交审核成功，EXECUTING-已提交发起任务
+        :param _Status: 返回描述，START-发起成功， REVIEW-提交审核成功，EXECUTING-已提交发起任务
         :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class SuccessCreateStaffData(AbstractModel):
@@ -6359,31 +12156,76 @@ class SuccessCreateStaffData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: 员工名
+        :param _DisplayName: 员工名
         :type DisplayName: str
-        :param Mobile: 员工手机号
+        :param _Mobile: 员工手机号
         :type Mobile: str
-        :param UserId: 员工在电子签平台的id
+        :param _UserId: 员工在电子签平台的id
         :type UserId: str
-        :param Note: 提示，当创建已存在未实名用户时，该字段有值
+        :param _Note: 提示，当创建已存在未实名用户时，该字段有值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
+        :param _WeworkOpenId: 传入的企微账号id
+        :type WeworkOpenId: str
         """
-        self.DisplayName = None
-        self.Mobile = None
-        self.UserId = None
-        self.Note = None
+        self._DisplayName = None
+        self._Mobile = None
+        self._UserId = None
+        self._Note = None
+        self._WeworkOpenId = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def WeworkOpenId(self):
+        return self._WeworkOpenId
+
+    @WeworkOpenId.setter
+    def WeworkOpenId(self, WeworkOpenId):
+        self._WeworkOpenId = WeworkOpenId
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.Mobile = params.get("Mobile")
-        self.UserId = params.get("UserId")
-        self.Note = params.get("Note")
+        self._DisplayName = params.get("DisplayName")
+        self._Mobile = params.get("Mobile")
+        self._UserId = params.get("UserId")
+        self._Note = params.get("Note")
+        self._WeworkOpenId = params.get("WeworkOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6396,26 +12238,51 @@ class SuccessDeleteStaffData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: 员工名
+        :param _DisplayName: 员工名
         :type DisplayName: str
-        :param Mobile: 员工手机号
+        :param _Mobile: 员工手机号
         :type Mobile: str
-        :param UserId: 员工在电子签平台的id
+        :param _UserId: 员工在电子签平台的id
         :type UserId: str
         """
-        self.DisplayName = None
-        self.Mobile = None
-        self.UserId = None
+        self._DisplayName = None
+        self._Mobile = None
+        self._UserId = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.Mobile = params.get("Mobile")
-        self.UserId = params.get("UserId")
+        self._DisplayName = params.get("DisplayName")
+        self._Mobile = params.get("Mobile")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6428,26 +12295,51 @@ class SuccessUpdateStaffData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: 传入的用户名称
+        :param _DisplayName: 传入的用户名称
         :type DisplayName: str
-        :param Mobile: 传入的手机号
+        :param _Mobile: 传入的手机号
         :type Mobile: str
-        :param UserId: 用户Id
+        :param _UserId: 用户Id
         :type UserId: str
         """
-        self.DisplayName = None
-        self.Mobile = None
-        self.UserId = None
+        self._DisplayName = None
+        self._Mobile = None
+        self._UserId = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.Mobile = params.get("Mobile")
-        self.UserId = params.get("UserId")
+        self._DisplayName = params.get("DisplayName")
+        self._Mobile = params.get("Mobile")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6460,142 +12352,323 @@ class TemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 模板ID
+        :param _TemplateId: 模板ID
         :type TemplateId: str
-        :param TemplateName: 模板名字
+        :param _TemplateName: 模板名字
         :type TemplateName: str
-        :param Description: 模板描述信息
+        :param _Description: 模板描述信息
         :type Description: str
-        :param DocumentResourceIds: 模板关联的资源ID列表
+        :param _DocumentResourceIds: 模板关联的资源ID列表
         :type DocumentResourceIds: list of str
-        :param FileInfos: 返回的文件信息结构
+        :param _FileInfos: 返回的文件信息结构
         :type FileInfos: list of FileInfo
-        :param AttachmentResourceIds: 附件关联的资源ID
+        :param _AttachmentResourceIds: 附件关联的资源ID
         :type AttachmentResourceIds: list of str
-        :param SignOrder: 签署顺序
+        :param _SignOrder: 签署顺序
         :type SignOrder: list of int
-        :param Recipients: 签署参与者的信息
+        :param _Recipients: 签署参与者的信息
         :type Recipients: list of Recipient
-        :param Components: 模板信息结构
+        :param _Components: 模板信息结构
         :type Components: list of Component
-        :param SignComponents: 签署区模板信息结构
+        :param _SignComponents: 签署区模板信息结构
         :type SignComponents: list of Component
-        :param Status: 模板状态(-1:不可用；0:草稿态；1:正式态)
+        :param _Status: 模板状态(-1:不可用；0:草稿态；1:正式态)
         :type Status: int
-        :param Creator: 模板的创建人UserId
+        :param _Creator: 模板的创建人UserId
         :type Creator: str
-        :param CreatedOn: 模板创建的时间戳，单位秒
+        :param _CreatedOn: 模板创建的时间戳，单位秒
         :type CreatedOn: int
-        :param Promoter: 发起人角色信息
+        :param _Promoter: 发起人角色信息
         :type Promoter: :class:`tencentcloud.ess.v20201111.models.Recipient`
-        :param TemplateType: 模板类型
+        :param _TemplateType: 模板类型
 取值：
 1  静默签,
 3  普通模板
         :type TemplateType: int
-        :param Available: 模板可用状态，取值：1启用（默认），2停用
+        :param _Available: 模板可用状态，取值：1启用（默认），2停用
         :type Available: int
-        :param OrganizationId: 创建模板的机构id
+        :param _OrganizationId: 创建模板的机构id
         :type OrganizationId: str
-        :param PreviewUrl: 模板预览链接，有效时间5分钟
+        :param _PreviewUrl: 模板预览链接，有效时间5分钟
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
-        :param TemplateVersion: 模板版本。默认为空时，全数字字符，初始版本为yyyyMMdd001。
+        :param _TemplateVersion: 模板版本。默认为空时，全数字字符，初始版本为yyyyMMdd001。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateVersion: str
-        :param Published: 模板是否已发布。true-已发布；false-未发布
+        :param _Published: 模板是否已发布。true-已发布；false-未发布
 注意：此字段可能返回 null，表示取不到有效值。
         :type Published: bool
-        :param TemplateSeals: 模板内部指定的印章列表
+        :param _TemplateSeals: 模板内部指定的印章列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateSeals: list of SealInfo
-        :param Seals: 模板内部指定的印章列表
+        :param _Seals: 模板内部指定的印章列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seals: list of SealInfo
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.Description = None
-        self.DocumentResourceIds = None
-        self.FileInfos = None
-        self.AttachmentResourceIds = None
-        self.SignOrder = None
-        self.Recipients = None
-        self.Components = None
-        self.SignComponents = None
-        self.Status = None
-        self.Creator = None
-        self.CreatedOn = None
-        self.Promoter = None
-        self.TemplateType = None
-        self.Available = None
-        self.OrganizationId = None
-        self.PreviewUrl = None
-        self.TemplateVersion = None
-        self.Published = None
-        self.TemplateSeals = None
-        self.Seals = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._DocumentResourceIds = None
+        self._FileInfos = None
+        self._AttachmentResourceIds = None
+        self._SignOrder = None
+        self._Recipients = None
+        self._Components = None
+        self._SignComponents = None
+        self._Status = None
+        self._Creator = None
+        self._CreatedOn = None
+        self._Promoter = None
+        self._TemplateType = None
+        self._Available = None
+        self._OrganizationId = None
+        self._PreviewUrl = None
+        self._TemplateVersion = None
+        self._Published = None
+        self._TemplateSeals = None
+        self._Seals = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DocumentResourceIds(self):
+        return self._DocumentResourceIds
+
+    @DocumentResourceIds.setter
+    def DocumentResourceIds(self, DocumentResourceIds):
+        self._DocumentResourceIds = DocumentResourceIds
+
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def AttachmentResourceIds(self):
+        return self._AttachmentResourceIds
+
+    @AttachmentResourceIds.setter
+    def AttachmentResourceIds(self, AttachmentResourceIds):
+        self._AttachmentResourceIds = AttachmentResourceIds
+
+    @property
+    def SignOrder(self):
+        return self._SignOrder
+
+    @SignOrder.setter
+    def SignOrder(self, SignOrder):
+        self._SignOrder = SignOrder
+
+    @property
+    def Recipients(self):
+        return self._Recipients
+
+    @Recipients.setter
+    def Recipients(self, Recipients):
+        self._Recipients = Recipients
+
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def Promoter(self):
+        return self._Promoter
+
+    @Promoter.setter
+    def Promoter(self, Promoter):
+        self._Promoter = Promoter
+
+    @property
+    def TemplateType(self):
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def PreviewUrl(self):
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
+    @property
+    def TemplateVersion(self):
+        return self._TemplateVersion
+
+    @TemplateVersion.setter
+    def TemplateVersion(self, TemplateVersion):
+        self._TemplateVersion = TemplateVersion
+
+    @property
+    def Published(self):
+        return self._Published
+
+    @Published.setter
+    def Published(self, Published):
+        self._Published = Published
+
+    @property
+    def TemplateSeals(self):
+        return self._TemplateSeals
+
+    @TemplateSeals.setter
+    def TemplateSeals(self, TemplateSeals):
+        self._TemplateSeals = TemplateSeals
+
+    @property
+    def Seals(self):
+        warnings.warn("parameter `Seals` is deprecated", DeprecationWarning) 
+
+        return self._Seals
+
+    @Seals.setter
+    def Seals(self, Seals):
+        warnings.warn("parameter `Seals` is deprecated", DeprecationWarning) 
+
+        self._Seals = Seals
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
-        self.DocumentResourceIds = params.get("DocumentResourceIds")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._DocumentResourceIds = params.get("DocumentResourceIds")
         if params.get("FileInfos") is not None:
-            self.FileInfos = []
+            self._FileInfos = []
             for item in params.get("FileInfos"):
                 obj = FileInfo()
                 obj._deserialize(item)
-                self.FileInfos.append(obj)
-        self.AttachmentResourceIds = params.get("AttachmentResourceIds")
-        self.SignOrder = params.get("SignOrder")
+                self._FileInfos.append(obj)
+        self._AttachmentResourceIds = params.get("AttachmentResourceIds")
+        self._SignOrder = params.get("SignOrder")
         if params.get("Recipients") is not None:
-            self.Recipients = []
+            self._Recipients = []
             for item in params.get("Recipients"):
                 obj = Recipient()
                 obj._deserialize(item)
-                self.Recipients.append(obj)
+                self._Recipients.append(obj)
         if params.get("Components") is not None:
-            self.Components = []
+            self._Components = []
             for item in params.get("Components"):
                 obj = Component()
                 obj._deserialize(item)
-                self.Components.append(obj)
+                self._Components.append(obj)
         if params.get("SignComponents") is not None:
-            self.SignComponents = []
+            self._SignComponents = []
             for item in params.get("SignComponents"):
                 obj = Component()
                 obj._deserialize(item)
-                self.SignComponents.append(obj)
-        self.Status = params.get("Status")
-        self.Creator = params.get("Creator")
-        self.CreatedOn = params.get("CreatedOn")
+                self._SignComponents.append(obj)
+        self._Status = params.get("Status")
+        self._Creator = params.get("Creator")
+        self._CreatedOn = params.get("CreatedOn")
         if params.get("Promoter") is not None:
-            self.Promoter = Recipient()
-            self.Promoter._deserialize(params.get("Promoter"))
-        self.TemplateType = params.get("TemplateType")
-        self.Available = params.get("Available")
-        self.OrganizationId = params.get("OrganizationId")
-        self.PreviewUrl = params.get("PreviewUrl")
-        self.TemplateVersion = params.get("TemplateVersion")
-        self.Published = params.get("Published")
+            self._Promoter = Recipient()
+            self._Promoter._deserialize(params.get("Promoter"))
+        self._TemplateType = params.get("TemplateType")
+        self._Available = params.get("Available")
+        self._OrganizationId = params.get("OrganizationId")
+        self._PreviewUrl = params.get("PreviewUrl")
+        self._TemplateVersion = params.get("TemplateVersion")
+        self._Published = params.get("Published")
         if params.get("TemplateSeals") is not None:
-            self.TemplateSeals = []
+            self._TemplateSeals = []
             for item in params.get("TemplateSeals"):
                 obj = SealInfo()
                 obj._deserialize(item)
-                self.TemplateSeals.append(obj)
+                self._TemplateSeals.append(obj)
         if params.get("Seals") is not None:
-            self.Seals = []
+            self._Seals = []
             for item in params.get("Seals"):
                 obj = SealInfo()
                 obj._deserialize(item)
-                self.Seals.append(obj)
+                self._Seals.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6608,28 +12681,53 @@ class UnbindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定(参数用法参考示例)
+        :param _Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定(参数用法参考示例)
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param UserId: 电子签系统员工UserId
+        :param _UserId: 电子签系统员工UserId
         :type UserId: str
-        :param OpenId: 客户系统OpenId
+        :param _OpenId: 客户系统OpenId
         :type OpenId: str
         """
-        self.Operator = None
-        self.UserId = None
-        self.OpenId = None
+        self._Operator = None
+        self._UserId = None
+        self._OpenId = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.UserId = params.get("UserId")
-        self.OpenId = params.get("OpenId")
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._UserId = params.get("UserId")
+        self._OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6642,18 +12740,34 @@ class UnbindEmployeeUserIdWithClientOpenIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 解绑是否成功，1表示成功，0表示失败
+        :param _Status: 解绑是否成功，1表示成功，0表示失败
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateIntegrationEmployeesRequest(AbstractModel):
@@ -6663,37 +12777,62 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息，userId必填
+        :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Employees: 员工信息，不超过100个。
+        :param _Employees: 员工信息，不超过100个。
 根据UserId或OpenId更新员工，必填一个，优先UserId。
 可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
         :type Employees: list of Staff
-        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.Operator = None
-        self.Employees = None
-        self.Agent = None
+        self._Operator = None
+        self._Employees = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Employees(self):
+        return self._Employees
+
+    @Employees.setter
+    def Employees(self, Employees):
+        self._Employees = Employees
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         if params.get("Employees") is not None:
-            self.Employees = []
+            self._Employees = []
             for item in params.get("Employees"):
                 obj = Staff()
                 obj._deserialize(item)
-                self.Employees.append(obj)
+                self._Employees.append(obj)
         if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6706,32 +12845,56 @@ class UpdateIntegrationEmployeesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SuccessEmployeeData: 更新成功的用户列表
+        :param _SuccessEmployeeData: 更新成功的用户列表
         :type SuccessEmployeeData: list of SuccessUpdateStaffData
-        :param FailedEmployeeData: 更新失败的用户列表
+        :param _FailedEmployeeData: 更新失败的用户列表
         :type FailedEmployeeData: list of FailedUpdateStaffData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SuccessEmployeeData = None
-        self.FailedEmployeeData = None
-        self.RequestId = None
+        self._SuccessEmployeeData = None
+        self._FailedEmployeeData = None
+        self._RequestId = None
+
+    @property
+    def SuccessEmployeeData(self):
+        return self._SuccessEmployeeData
+
+    @SuccessEmployeeData.setter
+    def SuccessEmployeeData(self, SuccessEmployeeData):
+        self._SuccessEmployeeData = SuccessEmployeeData
+
+    @property
+    def FailedEmployeeData(self):
+        return self._FailedEmployeeData
+
+    @FailedEmployeeData.setter
+    def FailedEmployeeData(self, FailedEmployeeData):
+        self._FailedEmployeeData = FailedEmployeeData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SuccessEmployeeData") is not None:
-            self.SuccessEmployeeData = []
+            self._SuccessEmployeeData = []
             for item in params.get("SuccessEmployeeData"):
                 obj = SuccessUpdateStaffData()
                 obj._deserialize(item)
-                self.SuccessEmployeeData.append(obj)
+                self._SuccessEmployeeData.append(obj)
         if params.get("FailedEmployeeData") is not None:
-            self.FailedEmployeeData = []
+            self._FailedEmployeeData = []
             for item in params.get("FailedEmployeeData"):
                 obj = FailedUpdateStaffData()
                 obj._deserialize(item)
-                self.FailedEmployeeData.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FailedEmployeeData.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class UploadFile(AbstractModel):
@@ -6741,22 +12904,39 @@ class UploadFile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileBody: Base64编码后的文件内容
+        :param _FileBody: Base64编码后的文件内容
         :type FileBody: str
-        :param FileName: 文件名，最大长度不超过200字符
+        :param _FileName: 文件名，最大长度不超过200字符
         :type FileName: str
         """
-        self.FileBody = None
-        self.FileName = None
+        self._FileBody = None
+        self._FileName = None
+
+    @property
+    def FileBody(self):
+        return self._FileBody
+
+    @FileBody.setter
+    def FileBody(self, FileBody):
+        self._FileBody = FileBody
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
 
 
     def _deserialize(self, params):
-        self.FileBody = params.get("FileBody")
-        self.FileName = params.get("FileName")
+        self._FileBody = params.get("FileBody")
+        self._FileName = params.get("FileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6769,55 +12949,116 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessType: 文件对应业务类型
+        :param _BusinessType: 文件对应业务类型
 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
         :type BusinessType: str
-        :param Caller: 调用方信息，其中OperatorId为必填字段，即用户的UserId
+        :param _Caller: 调用方信息，其中OperatorId为必填字段，即用户的UserId
         :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
-        :param FileInfos: 上传文件内容数组，最多支持20个文件
+        :param _FileInfos: 上传文件内容数组，最多支持20个文件
         :type FileInfos: list of UploadFile
-        :param FileType: 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
+        :param _FileType: 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
 如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
         :type FileType: str
-        :param CoverRect: 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
+        :param _CoverRect: 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
 true--是，处理置白
 默认为false--否，不处理
         :type CoverRect: bool
-        :param CustomIds: 用户自定义ID数组，与上传文件一一对应
+        :param _CustomIds: 用户自定义ID数组，与上传文件一一对应
         :type CustomIds: list of str
-        :param FileUrls: 不再使用，上传文件链接数组，最多支持20个URL
+        :param _FileUrls: 不再使用，上传文件链接数组，最多支持20个URL
         :type FileUrls: str
         """
-        self.BusinessType = None
-        self.Caller = None
-        self.FileInfos = None
-        self.FileType = None
-        self.CoverRect = None
-        self.CustomIds = None
-        self.FileUrls = None
+        self._BusinessType = None
+        self._Caller = None
+        self._FileInfos = None
+        self._FileType = None
+        self._CoverRect = None
+        self._CustomIds = None
+        self._FileUrls = None
+
+    @property
+    def BusinessType(self):
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def CoverRect(self):
+        return self._CoverRect
+
+    @CoverRect.setter
+    def CoverRect(self, CoverRect):
+        self._CoverRect = CoverRect
+
+    @property
+    def CustomIds(self):
+        return self._CustomIds
+
+    @CustomIds.setter
+    def CustomIds(self, CustomIds):
+        self._CustomIds = CustomIds
+
+    @property
+    def FileUrls(self):
+        warnings.warn("parameter `FileUrls` is deprecated", DeprecationWarning) 
+
+        return self._FileUrls
+
+    @FileUrls.setter
+    def FileUrls(self, FileUrls):
+        warnings.warn("parameter `FileUrls` is deprecated", DeprecationWarning) 
+
+        self._FileUrls = FileUrls
 
 
     def _deserialize(self, params):
-        self.BusinessType = params.get("BusinessType")
+        self._BusinessType = params.get("BusinessType")
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
         if params.get("FileInfos") is not None:
-            self.FileInfos = []
+            self._FileInfos = []
             for item in params.get("FileInfos"):
                 obj = UploadFile()
                 obj._deserialize(item)
-                self.FileInfos.append(obj)
-        self.FileType = params.get("FileType")
-        self.CoverRect = params.get("CoverRect")
-        self.CustomIds = params.get("CustomIds")
-        self.FileUrls = params.get("FileUrls")
+                self._FileInfos.append(obj)
+        self._FileType = params.get("FileType")
+        self._CoverRect = params.get("CoverRect")
+        self._CustomIds = params.get("CustomIds")
+        self._FileUrls = params.get("FileUrls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6830,22 +13071,46 @@ class UploadFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileIds: 文件id数组
+        :param _FileIds: 文件id数组
         :type FileIds: list of str
-        :param TotalCount: 上传成功文件数量
+        :param _TotalCount: 上传成功文件数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FileIds = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FileIds = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FileIds(self):
+        return self._FileIds
+
+    @FileIds.setter
+    def FileIds(self, FileIds):
+        self._FileIds = FileIds
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FileIds = params.get("FileIds")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+        self._FileIds = params.get("FileIds")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class UserInfo(AbstractModel):
@@ -6855,34 +13120,91 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户在平台的编号
+        :param _UserId: 用户在平台的编号
         :type UserId: str
-        :param Channel: 用户的来源渠道，一般不用传，特定场景根据接口说明传值
+        :param _Channel: 用户的来源渠道，一般不用传，特定场景根据接口说明传值
         :type Channel: str
-        :param OpenId: 用户在渠道的编号，一般不用传，特定场景根据接口说明传值
+        :param _OpenId: 用户在渠道的编号，一般不用传，特定场景根据接口说明传值
         :type OpenId: str
-        :param ClientIp: 用户真实IP，内部字段，暂未开放
+        :param _ClientIp: 用户真实IP，内部字段，暂未开放
         :type ClientIp: str
-        :param ProxyIp: 用户代理IP，内部字段，暂未开放
+        :param _ProxyIp: 用户代理IP，内部字段，暂未开放
         :type ProxyIp: str
         """
-        self.UserId = None
-        self.Channel = None
-        self.OpenId = None
-        self.ClientIp = None
-        self.ProxyIp = None
+        self._UserId = None
+        self._Channel = None
+        self._OpenId = None
+        self._ClientIp = None
+        self._ProxyIp = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Channel(self):
+        warnings.warn("parameter `Channel` is deprecated", DeprecationWarning) 
+
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        warnings.warn("parameter `Channel` is deprecated", DeprecationWarning) 
+
+        self._Channel = Channel
+
+    @property
+    def OpenId(self):
+        warnings.warn("parameter `OpenId` is deprecated", DeprecationWarning) 
+
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        warnings.warn("parameter `OpenId` is deprecated", DeprecationWarning) 
+
+        self._OpenId = OpenId
+
+    @property
+    def ClientIp(self):
+        warnings.warn("parameter `ClientIp` is deprecated", DeprecationWarning) 
+
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        warnings.warn("parameter `ClientIp` is deprecated", DeprecationWarning) 
+
+        self._ClientIp = ClientIp
+
+    @property
+    def ProxyIp(self):
+        warnings.warn("parameter `ProxyIp` is deprecated", DeprecationWarning) 
+
+        return self._ProxyIp
+
+    @ProxyIp.setter
+    def ProxyIp(self, ProxyIp):
+        warnings.warn("parameter `ProxyIp` is deprecated", DeprecationWarning) 
+
+        self._ProxyIp = ProxyIp
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.Channel = params.get("Channel")
-        self.OpenId = params.get("OpenId")
-        self.ClientIp = params.get("ClientIp")
-        self.ProxyIp = params.get("ProxyIp")
+        self._UserId = params.get("UserId")
+        self._Channel = params.get("Channel")
+        self._OpenId = params.get("OpenId")
+        self._ClientIp = params.get("ClientIp")
+        self._ProxyIp = params.get("ProxyIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6895,29 +13217,54 @@ class UserThreeFactor(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param IdCardType: 证件类型: 
+        :param _IdCardType: 证件类型: 
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type IdCardType: str
-        :param IdCardNumber: 证件号，如果有 X 请大写
+        :param _IdCardNumber: 证件号，如果有 X 请大写
         :type IdCardNumber: str
         """
-        self.Name = None
-        self.IdCardType = None
-        self.IdCardNumber = None
+        self._Name = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
+        self._Name = params.get("Name")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6930,24 +13277,41 @@ class VerifyPdfRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
-        :param Operator: 调用方用户信息，userId 必填
+        :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
-        self.FlowId = None
-        self.Operator = None
+        self._FlowId = None
+        self._Operator = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6960,28 +13324,60 @@ class VerifyPdfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VerifyResult: 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
+        :param _VerifyResult: 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
         :type VerifyResult: int
-        :param PdfVerifyResults: 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
+        :param _PdfVerifyResults: 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
         :type PdfVerifyResults: list of PdfVerifyResult
-        :param VerifySerialNo: 验签序列号
+        :param _VerifySerialNo: 验签序列号
         :type VerifySerialNo: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VerifyResult = None
-        self.PdfVerifyResults = None
-        self.VerifySerialNo = None
-        self.RequestId = None
+        self._VerifyResult = None
+        self._PdfVerifyResults = None
+        self._VerifySerialNo = None
+        self._RequestId = None
+
+    @property
+    def VerifyResult(self):
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def PdfVerifyResults(self):
+        return self._PdfVerifyResults
+
+    @PdfVerifyResults.setter
+    def PdfVerifyResults(self, PdfVerifyResults):
+        self._PdfVerifyResults = PdfVerifyResults
+
+    @property
+    def VerifySerialNo(self):
+        return self._VerifySerialNo
+
+    @VerifySerialNo.setter
+    def VerifySerialNo(self, VerifySerialNo):
+        self._VerifySerialNo = VerifySerialNo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VerifyResult = params.get("VerifyResult")
+        self._VerifyResult = params.get("VerifyResult")
         if params.get("PdfVerifyResults") is not None:
-            self.PdfVerifyResults = []
+            self._PdfVerifyResults = []
             for item in params.get("PdfVerifyResults"):
                 obj = PdfVerifyResult()
                 obj._deserialize(item)
-                self.PdfVerifyResults.append(obj)
-        self.VerifySerialNo = params.get("VerifySerialNo")
-        self.RequestId = params.get("RequestId")
+                self._PdfVerifyResults.append(obj)
+        self._VerifySerialNo = params.get("VerifySerialNo")
+        self._RequestId = params.get("RequestId")

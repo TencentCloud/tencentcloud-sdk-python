@@ -25,70 +25,159 @@ class CreateProbeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchTasks: 批量任务名-地址
+        :param _BatchTasks: 批量任务名-地址
         :type BatchTasks: list of ProbeTaskBasicConfiguration
-        :param TaskType: 任务类型
+        :param _TaskType: 任务类型
         :type TaskType: int
-        :param Nodes: 拨测节点
+        :param _Nodes: 拨测节点
         :type Nodes: list of str
-        :param Interval: 拨测间隔
+        :param _Interval: 拨测间隔
         :type Interval: int
-        :param Parameters: 拨测参数
+        :param _Parameters: 拨测参数
         :type Parameters: str
-        :param TaskCategory: 任务分类
+        :param _TaskCategory: 任务分类
 <li>1 = PC</li>
 <li> 2 = Mobile </li>
         :type TaskCategory: int
-        :param Cron: 定时任务cron表达式
+        :param _Cron: 定时任务cron表达式
         :type Cron: str
-        :param Tag: 资源标签值
+        :param _Tag: 资源标签值
         :type Tag: list of Tag
-        :param ProbeType: 测试类型，包含定时测试与即时测试
+        :param _ProbeType: 测试类型，包含定时测试与即时测试
         :type ProbeType: int
-        :param PluginSource: 插件类型
+        :param _PluginSource: 插件类型
         :type PluginSource: str
-        :param ClientNum: 客户端ID
+        :param _ClientNum: 客户端ID
         :type ClientNum: str
         """
-        self.BatchTasks = None
-        self.TaskType = None
-        self.Nodes = None
-        self.Interval = None
-        self.Parameters = None
-        self.TaskCategory = None
-        self.Cron = None
-        self.Tag = None
-        self.ProbeType = None
-        self.PluginSource = None
-        self.ClientNum = None
+        self._BatchTasks = None
+        self._TaskType = None
+        self._Nodes = None
+        self._Interval = None
+        self._Parameters = None
+        self._TaskCategory = None
+        self._Cron = None
+        self._Tag = None
+        self._ProbeType = None
+        self._PluginSource = None
+        self._ClientNum = None
+
+    @property
+    def BatchTasks(self):
+        return self._BatchTasks
+
+    @BatchTasks.setter
+    def BatchTasks(self, BatchTasks):
+        self._BatchTasks = BatchTasks
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def TaskCategory(self):
+        return self._TaskCategory
+
+    @TaskCategory.setter
+    def TaskCategory(self, TaskCategory):
+        self._TaskCategory = TaskCategory
+
+    @property
+    def Cron(self):
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ProbeType(self):
+        return self._ProbeType
+
+    @ProbeType.setter
+    def ProbeType(self, ProbeType):
+        self._ProbeType = ProbeType
+
+    @property
+    def PluginSource(self):
+        return self._PluginSource
+
+    @PluginSource.setter
+    def PluginSource(self, PluginSource):
+        self._PluginSource = PluginSource
+
+    @property
+    def ClientNum(self):
+        return self._ClientNum
+
+    @ClientNum.setter
+    def ClientNum(self, ClientNum):
+        self._ClientNum = ClientNum
 
 
     def _deserialize(self, params):
         if params.get("BatchTasks") is not None:
-            self.BatchTasks = []
+            self._BatchTasks = []
             for item in params.get("BatchTasks"):
                 obj = ProbeTaskBasicConfiguration()
                 obj._deserialize(item)
-                self.BatchTasks.append(obj)
-        self.TaskType = params.get("TaskType")
-        self.Nodes = params.get("Nodes")
-        self.Interval = params.get("Interval")
-        self.Parameters = params.get("Parameters")
-        self.TaskCategory = params.get("TaskCategory")
-        self.Cron = params.get("Cron")
+                self._BatchTasks.append(obj)
+        self._TaskType = params.get("TaskType")
+        self._Nodes = params.get("Nodes")
+        self._Interval = params.get("Interval")
+        self._Parameters = params.get("Parameters")
+        self._TaskCategory = params.get("TaskCategory")
+        self._Cron = params.get("Cron")
         if params.get("Tag") is not None:
-            self.Tag = []
+            self._Tag = []
             for item in params.get("Tag"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tag.append(obj)
-        self.ProbeType = params.get("ProbeType")
-        self.PluginSource = params.get("PluginSource")
-        self.ClientNum = params.get("ClientNum")
+                self._Tag.append(obj)
+        self._ProbeType = params.get("ProbeType")
+        self._PluginSource = params.get("PluginSource")
+        self._ClientNum = params.get("ClientNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -101,18 +190,34 @@ class CreateProbeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIDs: 任务ID列表
+        :param _TaskIDs: 任务ID列表
         :type TaskIDs: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskIDs = None
-        self.RequestId = None
+        self._TaskIDs = None
+        self._RequestId = None
+
+    @property
+    def TaskIDs(self):
+        return self._TaskIDs
+
+    @TaskIDs.setter
+    def TaskIDs(self, TaskIDs):
+        self._TaskIDs = TaskIDs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskIDs = params.get("TaskIDs")
-        self.RequestId = params.get("RequestId")
+        self._TaskIDs = params.get("TaskIDs")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteProbeTaskRequest(AbstractModel):
@@ -122,18 +227,27 @@ class DeleteProbeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIds: 任务 ID
+        :param _TaskIds: 任务 ID
         :type TaskIds: list of str
         """
-        self.TaskIds = None
+        self._TaskIds = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
 
 
     def _deserialize(self, params):
-        self.TaskIds = params.get("TaskIds")
+        self._TaskIds = params.get("TaskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -146,33 +260,65 @@ class DeleteProbeTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 任务总量
+        :param _Total: 任务总量
         :type Total: int
-        :param SuccessCount: 任务成功量
+        :param _SuccessCount: 任务成功量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCount: int
-        :param Results: 任务执行结果
+        :param _Results: 任务执行结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Total = None
-        self.SuccessCount = None
-        self.Results = None
-        self.RequestId = None
+        self._Total = None
+        self._SuccessCount = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SuccessCount(self):
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
-        self.SuccessCount = params.get("SuccessCount")
+        self._Total = params.get("Total")
+        self._SuccessCount = params.get("SuccessCount")
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = TaskResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDetailedSingleProbeDataRequest(AbstractModel):
@@ -182,32 +328,32 @@ class DescribeDetailedSingleProbeDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BeginTime: 开始时间戳（毫秒级）
+        :param _BeginTime: 开始时间戳（毫秒级）
         :type BeginTime: int
-        :param EndTime: 结束时间戳（毫秒级）
+        :param _EndTime: 结束时间戳（毫秒级）
         :type EndTime: int
-        :param TaskType: 任务类型
+        :param _TaskType: 任务类型
 AnalyzeTaskType_Network：网络质量
 AnalyzeTaskType_Browse：页面性能
 AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
 AnalyzeTaskType_Transport：端口性能
 AnalyzeTaskType_MediaStream：音视频体验
         :type TaskType: str
-        :param SortField: 待排序字段
+        :param _SortField: 待排序字段
 可以填写 ProbeTime 拨测时间排序
 也可填写SelectedFields 中的选中字段
         :type SortField: str
-        :param Ascending: true表示升序
+        :param _Ascending: true表示升序
         :type Ascending: bool
-        :param SelectedFields: 选中字段
+        :param _SelectedFields: 选中字段
         :type SelectedFields: list of str
-        :param Offset: 起始取数位置
+        :param _Offset: 起始取数位置
         :type Offset: int
-        :param Limit: 取数数量
+        :param _Limit: 取数数量
         :type Limit: int
-        :param TaskID: 任务ID
+        :param _TaskID: 任务ID
         :type TaskID: list of str
-        :param Operators: 拨测点运营商
+        :param _Operators: 拨测点运营商
 	
 这里实际按拨测结果中的运营商来填写即可
 
@@ -215,7 +361,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 移动：中国移动
 联通：中国联通
         :type Operators: list of str
-        :param Districts: 拨测点地区
+        :param _Districts: 拨测点地区
 	
 这里实际按拨测结果中的地区来填写即可
 
@@ -223,9 +369,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 
 境外一般是国家名，如澳大利亚、新加坡
         :type Districts: list of str
-        :param ErrorTypes: 错误类型
+        :param _ErrorTypes: 错误类型
         :type ErrorTypes: list of str
-        :param City: 城市
+        :param _City: 城市
 这里实际按拨测结果中的城市来填写即可
 
 示例：
@@ -236,39 +382,144 @@ AnalyzeTaskType_MediaStream：音视频体验
 多伦多
         :type City: list of str
         """
-        self.BeginTime = None
-        self.EndTime = None
-        self.TaskType = None
-        self.SortField = None
-        self.Ascending = None
-        self.SelectedFields = None
-        self.Offset = None
-        self.Limit = None
-        self.TaskID = None
-        self.Operators = None
-        self.Districts = None
-        self.ErrorTypes = None
-        self.City = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._TaskType = None
+        self._SortField = None
+        self._Ascending = None
+        self._SelectedFields = None
+        self._Offset = None
+        self._Limit = None
+        self._TaskID = None
+        self._Operators = None
+        self._Districts = None
+        self._ErrorTypes = None
+        self._City = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def SortField(self):
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def Ascending(self):
+        return self._Ascending
+
+    @Ascending.setter
+    def Ascending(self, Ascending):
+        self._Ascending = Ascending
+
+    @property
+    def SelectedFields(self):
+        return self._SelectedFields
+
+    @SelectedFields.setter
+    def SelectedFields(self, SelectedFields):
+        self._SelectedFields = SelectedFields
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def Operators(self):
+        return self._Operators
+
+    @Operators.setter
+    def Operators(self, Operators):
+        self._Operators = Operators
+
+    @property
+    def Districts(self):
+        return self._Districts
+
+    @Districts.setter
+    def Districts(self, Districts):
+        self._Districts = Districts
+
+    @property
+    def ErrorTypes(self):
+        return self._ErrorTypes
+
+    @ErrorTypes.setter
+    def ErrorTypes(self, ErrorTypes):
+        self._ErrorTypes = ErrorTypes
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
 
 
     def _deserialize(self, params):
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.TaskType = params.get("TaskType")
-        self.SortField = params.get("SortField")
-        self.Ascending = params.get("Ascending")
-        self.SelectedFields = params.get("SelectedFields")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.TaskID = params.get("TaskID")
-        self.Operators = params.get("Operators")
-        self.Districts = params.get("Districts")
-        self.ErrorTypes = params.get("ErrorTypes")
-        self.City = params.get("City")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskType = params.get("TaskType")
+        self._SortField = params.get("SortField")
+        self._Ascending = params.get("Ascending")
+        self._SelectedFields = params.get("SelectedFields")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TaskID = params.get("TaskID")
+        self._Operators = params.get("Operators")
+        self._Districts = params.get("Districts")
+        self._ErrorTypes = params.get("ErrorTypes")
+        self._City = params.get("City")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -281,27 +532,51 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataSet: 单次详情数据
+        :param _DataSet: 单次详情数据
         :type DataSet: list of DetailedSingleDataDefine
-        :param TotalNumber: 符合条件的数据总数
+        :param _TotalNumber: 符合条件的数据总数
         :type TotalNumber: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DataSet = None
-        self.TotalNumber = None
-        self.RequestId = None
+        self._DataSet = None
+        self._TotalNumber = None
+        self._RequestId = None
+
+    @property
+    def DataSet(self):
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def TotalNumber(self):
+        return self._TotalNumber
+
+    @TotalNumber.setter
+    def TotalNumber(self, TotalNumber):
+        self._TotalNumber = TotalNumber
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataSet") is not None:
-            self.DataSet = []
+            self._DataSet = []
             for item in params.get("DataSet"):
                 obj = DetailedSingleDataDefine()
                 obj._deserialize(item)
-                self.DataSet.append(obj)
-        self.TotalNumber = params.get("TotalNumber")
-        self.RequestId = params.get("RequestId")
+                self._DataSet.append(obj)
+        self._TotalNumber = params.get("TotalNumber")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeNodesRequest(AbstractModel):
@@ -311,25 +586,25 @@ class DescribeNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeType: 节点类型
+        :param _NodeType: 节点类型
 <li> 1 = IDC </li>
 <li> 2 = LastMile </li>
 <li> 3 = Mobile </li>
         :type NodeType: int
-        :param Location: 节点区域
+        :param _Location: 节点区域
 <li> 1 = 中国大陆 </li>
 <li> 2 = 港澳台 </li>
 <li> 3 = 境外</li>
         :type Location: int
-        :param IsIPv6: 是否IPv6
+        :param _IsIPv6: 是否IPv6
         :type IsIPv6: bool
-        :param NodeName: 名字模糊搜索
+        :param _NodeName: 名字模糊搜索
         :type NodeName: str
-        :param PayMode: 付费模式
+        :param _PayMode: 付费模式
 <li>1 = 试用版本</li>
 <li> 2 = 付费版本 </li>
         :type PayMode: int
-        :param TaskType: 任务类型
+        :param _TaskType: 任务类型
 <li>1 = 页面性能</li>
 <li>2 = 文件上传</li>
 <li>3 = 文件下载</li>
@@ -338,25 +613,74 @@ class DescribeNodesRequest(AbstractModel):
 <li>6 = 音视频体验</li>
         :type TaskType: int
         """
-        self.NodeType = None
-        self.Location = None
-        self.IsIPv6 = None
-        self.NodeName = None
-        self.PayMode = None
-        self.TaskType = None
+        self._NodeType = None
+        self._Location = None
+        self._IsIPv6 = None
+        self._NodeName = None
+        self._PayMode = None
+        self._TaskType = None
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def IsIPv6(self):
+        return self._IsIPv6
+
+    @IsIPv6.setter
+    def IsIPv6(self, IsIPv6):
+        self._IsIPv6 = IsIPv6
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
 
 
     def _deserialize(self, params):
-        self.NodeType = params.get("NodeType")
-        self.Location = params.get("Location")
-        self.IsIPv6 = params.get("IsIPv6")
-        self.NodeName = params.get("NodeName")
-        self.PayMode = params.get("PayMode")
-        self.TaskType = params.get("TaskType")
+        self._NodeType = params.get("NodeType")
+        self._Location = params.get("Location")
+        self._IsIPv6 = params.get("IsIPv6")
+        self._NodeName = params.get("NodeName")
+        self._PayMode = params.get("PayMode")
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -369,24 +693,40 @@ class DescribeNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeSet: 节点列表
+        :param _NodeSet: 节点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeSet: list of NodeDefineExt
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NodeSet = None
-        self.RequestId = None
+        self._NodeSet = None
+        self._RequestId = None
+
+    @property
+    def NodeSet(self):
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("NodeSet") is not None:
-            self.NodeSet = []
+            self._NodeSet = []
             for item in params.get("NodeSet"):
                 obj = NodeDefineExt()
                 obj._deserialize(item)
-                self.NodeSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._NodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProbeMetricDataRequest(AbstractModel):
@@ -396,44 +736,93 @@ class DescribeProbeMetricDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AnalyzeTaskType: 分析任务类型，支持以下几种类型：
+        :param _AnalyzeTaskType: 分析任务类型，支持以下几种类型：
 AnalyzeTaskType_Network：网络质量
 AnalyzeTaskType_Browse：页面性能
 AnalyzeTaskType_Transport：端口性能
 AnalyzeTaskType_UploadDownload：文件传输
 AnalyzeTaskType_MediaStream：音视频体验
         :type AnalyzeTaskType: str
-        :param MetricType: 指标类型，指标查询默认传gauge
+        :param _MetricType: 指标类型，指标查询默认传gauge
         :type MetricType: str
-        :param Field: 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)
+        :param _Field: 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)
         :type Field: str
-        :param Filter: 过滤条件可以传单个过滤条件也可以拼接多个参数
+        :param _Filter: 过滤条件可以传单个过滤条件也可以拼接多个参数
         :type Filter: str
-        :param GroupBy: 聚合时间, 1m、1d、30d 等等
+        :param _GroupBy: 聚合时间, 1m、1d、30d 等等
         :type GroupBy: str
-        :param Filters: 多条件过滤，支持多个过滤条件组合查询
+        :param _Filters: 多条件过滤，支持多个过滤条件组合查询
 例如：[""host" = 'www.test.com'", "time >= now()-1h"]
         :type Filters: list of str
         """
-        self.AnalyzeTaskType = None
-        self.MetricType = None
-        self.Field = None
-        self.Filter = None
-        self.GroupBy = None
-        self.Filters = None
+        self._AnalyzeTaskType = None
+        self._MetricType = None
+        self._Field = None
+        self._Filter = None
+        self._GroupBy = None
+        self._Filters = None
+
+    @property
+    def AnalyzeTaskType(self):
+        return self._AnalyzeTaskType
+
+    @AnalyzeTaskType.setter
+    def AnalyzeTaskType(self, AnalyzeTaskType):
+        self._AnalyzeTaskType = AnalyzeTaskType
+
+    @property
+    def MetricType(self):
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def Field(self):
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def GroupBy(self):
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.AnalyzeTaskType = params.get("AnalyzeTaskType")
-        self.MetricType = params.get("MetricType")
-        self.Field = params.get("Field")
-        self.Filter = params.get("Filter")
-        self.GroupBy = params.get("GroupBy")
-        self.Filters = params.get("Filters")
+        self._AnalyzeTaskType = params.get("AnalyzeTaskType")
+        self._MetricType = params.get("MetricType")
+        self._Field = params.get("Field")
+        self._Filter = params.get("Filter")
+        self._GroupBy = params.get("GroupBy")
+        self._Filters = params.get("Filters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -446,19 +835,35 @@ class DescribeProbeMetricDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MetricSet: 返回指标 JSON 序列化后的字符串,具体如下所示：
+        :param _MetricSet: 返回指标 JSON 序列化后的字符串,具体如下所示：
 "[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
         :type MetricSet: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MetricSet = None
-        self.RequestId = None
+        self._MetricSet = None
+        self._RequestId = None
+
+    @property
+    def MetricSet(self):
+        return self._MetricSet
+
+    @MetricSet.setter
+    def MetricSet(self, MetricSet):
+        self._MetricSet = MetricSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MetricSet = params.get("MetricSet")
-        self.RequestId = params.get("RequestId")
+        self._MetricSet = params.get("MetricSet")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProbeNodesRequest(AbstractModel):
@@ -468,42 +873,83 @@ class DescribeProbeNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeType: 节点类型
+        :param _NodeType: 节点类型
 <li> 1 = IDC </li>
 <li> 2 = LastMile </li>
 <li> 3 = Mobile </li>
         :type NodeType: int
-        :param Location: 节点区域
+        :param _Location: 节点区域
 <li> 1 = 中国大陆 </li>
 <li> 2 = 港澳台 </li>
 <li> 3 = 海外 </li>
         :type Location: int
-        :param IsIPv6: 是否IPv6
+        :param _IsIPv6: 是否IPv6
         :type IsIPv6: bool
-        :param NodeName: 名字模糊搜索
+        :param _NodeName: 名字模糊搜索
         :type NodeName: str
-        :param PayMode: 付费模式
+        :param _PayMode: 付费模式
 <li>1 = 试用版本</li>
 <li> 2 = 付费版本 </li>
         :type PayMode: int
         """
-        self.NodeType = None
-        self.Location = None
-        self.IsIPv6 = None
-        self.NodeName = None
-        self.PayMode = None
+        self._NodeType = None
+        self._Location = None
+        self._IsIPv6 = None
+        self._NodeName = None
+        self._PayMode = None
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def IsIPv6(self):
+        return self._IsIPv6
+
+    @IsIPv6.setter
+    def IsIPv6(self, IsIPv6):
+        self._IsIPv6 = IsIPv6
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
 
 
     def _deserialize(self, params):
-        self.NodeType = params.get("NodeType")
-        self.Location = params.get("Location")
-        self.IsIPv6 = params.get("IsIPv6")
-        self.NodeName = params.get("NodeName")
-        self.PayMode = params.get("PayMode")
+        self._NodeType = params.get("NodeType")
+        self._Location = params.get("Location")
+        self._IsIPv6 = params.get("IsIPv6")
+        self._NodeName = params.get("NodeName")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -516,24 +962,40 @@ class DescribeProbeNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeSet: 节点列表
+        :param _NodeSet: 节点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeSet: list of NodeDefine
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NodeSet = None
-        self.RequestId = None
+        self._NodeSet = None
+        self._RequestId = None
+
+    @property
+    def NodeSet(self):
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("NodeSet") is not None:
-            self.NodeSet = []
+            self._NodeSet = []
             for item in params.get("NodeSet"):
                 obj = NodeDefine()
                 obj._deserialize(item)
-                self.NodeSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._NodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProbeTasksRequest(AbstractModel):
@@ -543,13 +1005,13 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIDs: 任务 ID  列表
+        :param _TaskIDs: 任务 ID  列表
         :type TaskIDs: list of str
-        :param TaskName: 任务名
+        :param _TaskName: 任务名
         :type TaskName: str
-        :param TargetAddress: 拨测目标
+        :param _TargetAddress: 拨测目标
         :type TargetAddress: str
-        :param TaskStatus: 任务状态列表
+        :param _TaskStatus: 任务状态列表
 <li>1 = 创建中</li>
 <li> 2 = 运行中 </li>
 <li> 3 = 运行异常 </li>
@@ -561,19 +1023,19 @@ class DescribeProbeTasksRequest(AbstractModel):
 <li> 9 = 任务删除</li>
 <li> 10 = 定时任务暂停中 </li>
         :type TaskStatus: list of int
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: 返回数量，默认为20，最大值为100
         :type Limit: int
-        :param PayMode: 付费模式
+        :param _PayMode: 付费模式
 <li>1 = 试用版本</li>
 <li> 2 = 付费版本 </li>
         :type PayMode: int
-        :param OrderState: 订单状态
+        :param _OrderState: 订单状态
 <li>1 = 正常</li>
 <li> 2 = 欠费 </li>
         :type OrderState: int
-        :param TaskType: 拨测类型
+        :param _TaskType: 拨测类型
 <li>1 = 页面浏览</li>
 <li> 2 =文件上传 </li>
 <li> 3 = 文件下载</li>
@@ -583,53 +1045,158 @@ class DescribeProbeTasksRequest(AbstractModel):
 
 即使拨测只支持页面浏览，网络质量，文件下载
         :type TaskType: list of int
-        :param TaskCategory: 节点类型
+        :param _TaskCategory: 节点类型
         :type TaskCategory: list of int
-        :param OrderBy: 排序的列
+        :param _OrderBy: 排序的列
         :type OrderBy: str
-        :param Ascend: 是否正序
+        :param _Ascend: 是否正序
         :type Ascend: bool
-        :param TagFilters: 资源标签值
+        :param _TagFilters: 资源标签值
         :type TagFilters: list of KeyValuePair
         """
-        self.TaskIDs = None
-        self.TaskName = None
-        self.TargetAddress = None
-        self.TaskStatus = None
-        self.Offset = None
-        self.Limit = None
-        self.PayMode = None
-        self.OrderState = None
-        self.TaskType = None
-        self.TaskCategory = None
-        self.OrderBy = None
-        self.Ascend = None
-        self.TagFilters = None
+        self._TaskIDs = None
+        self._TaskName = None
+        self._TargetAddress = None
+        self._TaskStatus = None
+        self._Offset = None
+        self._Limit = None
+        self._PayMode = None
+        self._OrderState = None
+        self._TaskType = None
+        self._TaskCategory = None
+        self._OrderBy = None
+        self._Ascend = None
+        self._TagFilters = None
+
+    @property
+    def TaskIDs(self):
+        return self._TaskIDs
+
+    @TaskIDs.setter
+    def TaskIDs(self, TaskIDs):
+        self._TaskIDs = TaskIDs
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TargetAddress(self):
+        return self._TargetAddress
+
+    @TargetAddress.setter
+    def TargetAddress(self, TargetAddress):
+        self._TargetAddress = TargetAddress
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def OrderState(self):
+        return self._OrderState
+
+    @OrderState.setter
+    def OrderState(self, OrderState):
+        self._OrderState = OrderState
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskCategory(self):
+        return self._TaskCategory
+
+    @TaskCategory.setter
+    def TaskCategory(self, TaskCategory):
+        self._TaskCategory = TaskCategory
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Ascend(self):
+        return self._Ascend
+
+    @Ascend.setter
+    def Ascend(self, Ascend):
+        self._Ascend = Ascend
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
 
 
     def _deserialize(self, params):
-        self.TaskIDs = params.get("TaskIDs")
-        self.TaskName = params.get("TaskName")
-        self.TargetAddress = params.get("TargetAddress")
-        self.TaskStatus = params.get("TaskStatus")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.PayMode = params.get("PayMode")
-        self.OrderState = params.get("OrderState")
-        self.TaskType = params.get("TaskType")
-        self.TaskCategory = params.get("TaskCategory")
-        self.OrderBy = params.get("OrderBy")
-        self.Ascend = params.get("Ascend")
+        self._TaskIDs = params.get("TaskIDs")
+        self._TaskName = params.get("TaskName")
+        self._TargetAddress = params.get("TargetAddress")
+        self._TaskStatus = params.get("TaskStatus")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._PayMode = params.get("PayMode")
+        self._OrderState = params.get("OrderState")
+        self._TaskType = params.get("TaskType")
+        self._TaskCategory = params.get("TaskCategory")
+        self._OrderBy = params.get("OrderBy")
+        self._Ascend = params.get("Ascend")
         if params.get("TagFilters") is not None:
-            self.TagFilters = []
+            self._TagFilters = []
             for item in params.get("TagFilters"):
                 obj = KeyValuePair()
                 obj._deserialize(item)
-                self.TagFilters.append(obj)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -642,28 +1209,52 @@ class DescribeProbeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskSet: 任务列表
+        :param _TaskSet: 任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of ProbeTask
-        :param Total: 任务总数
+        :param _Total: 任务总数
         :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskSet = None
-        self.Total = None
-        self.RequestId = None
+        self._TaskSet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskSet") is not None:
-            self.TaskSet = []
+            self._TaskSet = []
             for item in params.get("TaskSet"):
                 obj = ProbeTask()
                 obj._deserialize(item)
-                self.TaskSet.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._TaskSet.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DetailedSingleDataDefine(AbstractModel):
@@ -673,36 +1264,61 @@ class DetailedSingleDataDefine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProbeTime: 拨测时间戳
+        :param _ProbeTime: 拨测时间戳
         :type ProbeTime: int
-        :param Labels: 储存所有string类型字段
+        :param _Labels: 储存所有string类型字段
         :type Labels: list of Label
-        :param Fields: 储存所有float类型字段
+        :param _Fields: 储存所有float类型字段
         :type Fields: list of Field
         """
-        self.ProbeTime = None
-        self.Labels = None
-        self.Fields = None
+        self._ProbeTime = None
+        self._Labels = None
+        self._Fields = None
+
+    @property
+    def ProbeTime(self):
+        return self._ProbeTime
+
+    @ProbeTime.setter
+    def ProbeTime(self, ProbeTime):
+        self._ProbeTime = ProbeTime
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
 
 
     def _deserialize(self, params):
-        self.ProbeTime = params.get("ProbeTime")
+        self._ProbeTime = params.get("ProbeTime")
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = Label()
                 obj._deserialize(item)
-                self.Labels.append(obj)
+                self._Labels.append(obj)
         if params.get("Fields") is not None:
-            self.Fields = []
+            self._Fields = []
             for item in params.get("Fields"):
                 obj = Field()
                 obj._deserialize(item)
-                self.Fields.append(obj)
+                self._Fields.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -715,26 +1331,51 @@ class Field(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 自定义字段编号
+        :param _ID: 自定义字段编号
         :type ID: int
-        :param Name: 自定义字段名称/说明
+        :param _Name: 自定义字段名称/说明
         :type Name: str
-        :param Value: 字段值
+        :param _Value: 字段值
         :type Value: float
         """
-        self.ID = None
-        self.Name = None
-        self.Value = None
+        self._ID = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -747,22 +1388,39 @@ class KeyValuePair(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 健
+        :param _Key: 健
         :type Key: str
-        :param Value: 值
+        :param _Value: 值
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -775,26 +1433,51 @@ class Label(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 自定义字段编号
+        :param _ID: 自定义字段编号
         :type ID: int
-        :param Name: 自定义字段名称/说明
+        :param _Name: 自定义字段名称/说明
         :type Name: str
-        :param Value: 字段值
+        :param _Value: 字段值
         :type Value: str
         """
-        self.ID = None
-        self.Name = None
-        self.Value = None
+        self._ID = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -807,66 +1490,147 @@ class NodeDefine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 节点名称
+        :param _Name: 节点名称
         :type Name: str
-        :param Code: 节点代码
+        :param _Code: 节点代码
         :type Code: str
-        :param Type: 节点类型
+        :param _Type: 节点类型
 <li> 1 = IDC </li>
 <li> 2 = LastMile </li>
 <li> 3 = Mobile </li>
         :type Type: int
-        :param NetService: 网络服务商
+        :param _NetService: 网络服务商
         :type NetService: str
-        :param District: 区域
+        :param _District: 区域
         :type District: str
-        :param City: 城市
+        :param _City: 城市
         :type City: str
-        :param IPType: IP 类型
+        :param _IPType: IP 类型
 <li> 1 = IPv4 </li>
 <li> 2 = IPv6 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPType: int
-        :param Location: 区域
+        :param _Location: 区域
 <li> 1 = 中国大陆 </li>
 <li> 2 = 港澳台 </li>
 <li> 3 = 国外 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: int
-        :param CodeType: 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
+        :param _CodeType: 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeType: str
-        :param NodeDefineStatus: 节点状态：1-运行,2-下线
+        :param _NodeDefineStatus: 节点状态：1-运行,2-下线
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeDefineStatus: int
         """
-        self.Name = None
-        self.Code = None
-        self.Type = None
-        self.NetService = None
-        self.District = None
-        self.City = None
-        self.IPType = None
-        self.Location = None
-        self.CodeType = None
-        self.NodeDefineStatus = None
+        self._Name = None
+        self._Code = None
+        self._Type = None
+        self._NetService = None
+        self._District = None
+        self._City = None
+        self._IPType = None
+        self._Location = None
+        self._CodeType = None
+        self._NodeDefineStatus = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NetService(self):
+        return self._NetService
+
+    @NetService.setter
+    def NetService(self, NetService):
+        self._NetService = NetService
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def IPType(self):
+        return self._IPType
+
+    @IPType.setter
+    def IPType(self, IPType):
+        self._IPType = IPType
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def NodeDefineStatus(self):
+        return self._NodeDefineStatus
+
+    @NodeDefineStatus.setter
+    def NodeDefineStatus(self, NodeDefineStatus):
+        self._NodeDefineStatus = NodeDefineStatus
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Code = params.get("Code")
-        self.Type = params.get("Type")
-        self.NetService = params.get("NetService")
-        self.District = params.get("District")
-        self.City = params.get("City")
-        self.IPType = params.get("IPType")
-        self.Location = params.get("Location")
-        self.CodeType = params.get("CodeType")
-        self.NodeDefineStatus = params.get("NodeDefineStatus")
+        self._Name = params.get("Name")
+        self._Code = params.get("Code")
+        self._Type = params.get("Type")
+        self._NetService = params.get("NetService")
+        self._District = params.get("District")
+        self._City = params.get("City")
+        self._IPType = params.get("IPType")
+        self._Location = params.get("Location")
+        self._CodeType = params.get("CodeType")
+        self._NodeDefineStatus = params.get("NodeDefineStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -879,66 +1643,147 @@ class NodeDefineExt(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 节点名称
+        :param _Name: 节点名称
         :type Name: str
-        :param Code: 节点代码
+        :param _Code: 节点代码
         :type Code: str
-        :param Type: 节点类型
+        :param _Type: 节点类型
 <li> 1 = IDC </li>
 <li> 2 = LastMile </li>
 <li> 3 = Mobile </li>
         :type Type: int
-        :param NetService: 网络服务商
+        :param _NetService: 网络服务商
         :type NetService: str
-        :param District: 区域
+        :param _District: 区域
         :type District: str
-        :param City: 城市
+        :param _City: 城市
         :type City: str
-        :param IPType: IP 类型
+        :param _IPType: IP 类型
 <li> 1 = IPv4 </li>
 <li> 2 = IPv6 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPType: int
-        :param Location: 区域
+        :param _Location: 区域
 <li> 1 = 中国大陆 </li>
 <li> 2 = 港澳台 </li>
 <li> 3 = 境外 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: int
-        :param CodeType: 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
+        :param _CodeType: 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeType: str
-        :param TaskTypes: 节点支持的任务类型。1: 页面性能 2: 文件上传 3: 文件下载 4: 端口性能 5: 网络质量 6: 音视频体验
+        :param _TaskTypes: 节点支持的任务类型。1: 页面性能 2: 文件上传 3: 文件下载 4: 端口性能 5: 网络质量 6: 音视频体验
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypes: list of int
         """
-        self.Name = None
-        self.Code = None
-        self.Type = None
-        self.NetService = None
-        self.District = None
-        self.City = None
-        self.IPType = None
-        self.Location = None
-        self.CodeType = None
-        self.TaskTypes = None
+        self._Name = None
+        self._Code = None
+        self._Type = None
+        self._NetService = None
+        self._District = None
+        self._City = None
+        self._IPType = None
+        self._Location = None
+        self._CodeType = None
+        self._TaskTypes = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NetService(self):
+        return self._NetService
+
+    @NetService.setter
+    def NetService(self, NetService):
+        self._NetService = NetService
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def IPType(self):
+        return self._IPType
+
+    @IPType.setter
+    def IPType(self, IPType):
+        self._IPType = IPType
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def TaskTypes(self):
+        return self._TaskTypes
+
+    @TaskTypes.setter
+    def TaskTypes(self, TaskTypes):
+        self._TaskTypes = TaskTypes
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Code = params.get("Code")
-        self.Type = params.get("Type")
-        self.NetService = params.get("NetService")
-        self.District = params.get("District")
-        self.City = params.get("City")
-        self.IPType = params.get("IPType")
-        self.Location = params.get("Location")
-        self.CodeType = params.get("CodeType")
-        self.TaskTypes = params.get("TaskTypes")
+        self._Name = params.get("Name")
+        self._Code = params.get("Code")
+        self._Type = params.get("Type")
+        self._NetService = params.get("NetService")
+        self._District = params.get("District")
+        self._City = params.get("City")
+        self._IPType = params.get("IPType")
+        self._Location = params.get("Location")
+        self._CodeType = params.get("CodeType")
+        self._TaskTypes = params.get("TaskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -951,12 +1796,12 @@ class ProbeTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 任务名
+        :param _Name: 任务名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param TaskId: 任务 ID
+        :param _TaskId: 任务 ID
         :type TaskId: str
-        :param TaskType: 拨测类型
+        :param _TaskType: 拨测类型
 <li>1 = 页面浏览</li>
 <li> 2 =文件上传 </li>
 <li> 3 = 文件下载</li>
@@ -966,13 +1811,13 @@ class ProbeTask(AbstractModel):
 
 即时拨测只支持页面浏览，网络质量，文件下载
         :type TaskType: int
-        :param Nodes: 拨测节点列表
+        :param _Nodes: 拨测节点列表
         :type Nodes: list of str
-        :param Interval: 拨测间隔
+        :param _Interval: 拨测间隔
         :type Interval: int
-        :param Parameters: 拨测参数
+        :param _Parameters: 拨测参数
         :type Parameters: str
-        :param Status: 任务状态
+        :param _Status: 任务状态
 <li>1 = 创建中</li>
 <li> 2 = 运行中 </li>
 <li> 3 = 运行异常 </li>
@@ -984,76 +1829,197 @@ class ProbeTask(AbstractModel):
 <li> 9 = 任务删除</li>
 <li> 10 = 定时任务暂停中 </li>
         :type Status: int
-        :param TargetAddress: 目标地址
+        :param _TargetAddress: 目标地址
         :type TargetAddress: str
-        :param PayMode: 付费模式
+        :param _PayMode: 付费模式
 <li>1 = 试用版本</li>
 <li> 2 = 付费版本 </li>
         :type PayMode: int
-        :param OrderState: 订单状态
+        :param _OrderState: 订单状态
 <li>1 = 正常</li>
 <li> 2 = 欠费 </li>
         :type OrderState: int
-        :param TaskCategory: 任务分类
+        :param _TaskCategory: 任务分类
 <li>1 = PC</li>
 <li> 2 = Mobile </li>
         :type TaskCategory: int
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
         :type CreatedAt: str
-        :param Cron: 定时任务cron表达式
+        :param _Cron: 定时任务cron表达式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cron: str
-        :param CronState: 定时任务启动状态
+        :param _CronState: 定时任务启动状态
 <li>1 = 定时任务表达式生效</li>
 <li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CronState: int
-        :param TagInfoList: 任务当前绑定的标签
+        :param _TagInfoList: 任务当前绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInfoList: list of KeyValuePair
         """
-        self.Name = None
-        self.TaskId = None
-        self.TaskType = None
-        self.Nodes = None
-        self.Interval = None
-        self.Parameters = None
-        self.Status = None
-        self.TargetAddress = None
-        self.PayMode = None
-        self.OrderState = None
-        self.TaskCategory = None
-        self.CreatedAt = None
-        self.Cron = None
-        self.CronState = None
-        self.TagInfoList = None
+        self._Name = None
+        self._TaskId = None
+        self._TaskType = None
+        self._Nodes = None
+        self._Interval = None
+        self._Parameters = None
+        self._Status = None
+        self._TargetAddress = None
+        self._PayMode = None
+        self._OrderState = None
+        self._TaskCategory = None
+        self._CreatedAt = None
+        self._Cron = None
+        self._CronState = None
+        self._TagInfoList = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TargetAddress(self):
+        return self._TargetAddress
+
+    @TargetAddress.setter
+    def TargetAddress(self, TargetAddress):
+        self._TargetAddress = TargetAddress
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def OrderState(self):
+        return self._OrderState
+
+    @OrderState.setter
+    def OrderState(self, OrderState):
+        self._OrderState = OrderState
+
+    @property
+    def TaskCategory(self):
+        return self._TaskCategory
+
+    @TaskCategory.setter
+    def TaskCategory(self, TaskCategory):
+        self._TaskCategory = TaskCategory
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Cron(self):
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def CronState(self):
+        return self._CronState
+
+    @CronState.setter
+    def CronState(self, CronState):
+        self._CronState = CronState
+
+    @property
+    def TagInfoList(self):
+        return self._TagInfoList
+
+    @TagInfoList.setter
+    def TagInfoList(self, TagInfoList):
+        self._TagInfoList = TagInfoList
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.TaskId = params.get("TaskId")
-        self.TaskType = params.get("TaskType")
-        self.Nodes = params.get("Nodes")
-        self.Interval = params.get("Interval")
-        self.Parameters = params.get("Parameters")
-        self.Status = params.get("Status")
-        self.TargetAddress = params.get("TargetAddress")
-        self.PayMode = params.get("PayMode")
-        self.OrderState = params.get("OrderState")
-        self.TaskCategory = params.get("TaskCategory")
-        self.CreatedAt = params.get("CreatedAt")
-        self.Cron = params.get("Cron")
-        self.CronState = params.get("CronState")
+        self._Name = params.get("Name")
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._Nodes = params.get("Nodes")
+        self._Interval = params.get("Interval")
+        self._Parameters = params.get("Parameters")
+        self._Status = params.get("Status")
+        self._TargetAddress = params.get("TargetAddress")
+        self._PayMode = params.get("PayMode")
+        self._OrderState = params.get("OrderState")
+        self._TaskCategory = params.get("TaskCategory")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Cron = params.get("Cron")
+        self._CronState = params.get("CronState")
         if params.get("TagInfoList") is not None:
-            self.TagInfoList = []
+            self._TagInfoList = []
             for item in params.get("TagInfoList"):
                 obj = KeyValuePair()
                 obj._deserialize(item)
-                self.TagInfoList.append(obj)
+                self._TagInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1066,22 +2032,39 @@ class ProbeTaskBasicConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 拨测任务名称
+        :param _Name: 拨测任务名称
         :type Name: str
-        :param TargetAddress: 拨测目标地址
+        :param _TargetAddress: 拨测目标地址
         :type TargetAddress: str
         """
-        self.Name = None
-        self.TargetAddress = None
+        self._Name = None
+        self._TargetAddress = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TargetAddress(self):
+        return self._TargetAddress
+
+    @TargetAddress.setter
+    def TargetAddress(self, TargetAddress):
+        self._TargetAddress = TargetAddress
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.TargetAddress = params.get("TargetAddress")
+        self._Name = params.get("Name")
+        self._TargetAddress = params.get("TargetAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1094,18 +2077,27 @@ class ResumeProbeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIds: 任务 ID
+        :param _TaskIds: 任务 ID
         :type TaskIds: list of str
         """
-        self.TaskIds = None
+        self._TaskIds = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
 
 
     def _deserialize(self, params):
-        self.TaskIds = params.get("TaskIds")
+        self._TaskIds = params.get("TaskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1118,33 +2110,65 @@ class ResumeProbeTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 任务总量
+        :param _Total: 任务总量
         :type Total: int
-        :param SuccessCount: 任务成功量
+        :param _SuccessCount: 任务成功量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCount: int
-        :param Results: 任务执行详情
+        :param _Results: 任务执行详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Total = None
-        self.SuccessCount = None
-        self.Results = None
-        self.RequestId = None
+        self._Total = None
+        self._SuccessCount = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SuccessCount(self):
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
-        self.SuccessCount = params.get("SuccessCount")
+        self._Total = params.get("Total")
+        self._SuccessCount = params.get("SuccessCount")
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = TaskResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SuspendProbeTaskRequest(AbstractModel):
@@ -1154,18 +2178,27 @@ class SuspendProbeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIds: 任务 ID
+        :param _TaskIds: 任务 ID
         :type TaskIds: list of str
         """
-        self.TaskIds = None
+        self._TaskIds = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
 
 
     def _deserialize(self, params):
-        self.TaskIds = params.get("TaskIds")
+        self._TaskIds = params.get("TaskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1178,33 +2211,65 @@ class SuspendProbeTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 任务总量
+        :param _Total: 任务总量
         :type Total: int
-        :param SuccessCount: 任务成功量
+        :param _SuccessCount: 任务成功量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCount: int
-        :param Results: 任务执行结果
+        :param _Results: 任务执行结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Total = None
-        self.SuccessCount = None
-        self.Results = None
-        self.RequestId = None
+        self._Total = None
+        self._SuccessCount = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SuccessCount(self):
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
-        self.SuccessCount = params.get("SuccessCount")
+        self._Total = params.get("Total")
+        self._SuccessCount = params.get("SuccessCount")
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = TaskResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class Tag(AbstractModel):
@@ -1214,22 +2279,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: key
+        :param _TagKey: key
         :type TagKey: str
-        :param TagValue: value
+        :param _TagValue: value
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1242,28 +2324,53 @@ class TaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务 ID
+        :param _TaskId: 任务 ID
         :type TaskId: str
-        :param Success: 是否成功
+        :param _Success: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Success: bool
-        :param ErrorMessage: 错误信息
+        :param _ErrorMessage: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
         """
-        self.TaskId = None
-        self.Success = None
-        self.ErrorMessage = None
+        self._TaskId = None
+        self._Success = None
+        self._ErrorMessage = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Success = params.get("Success")
-        self.ErrorMessage = params.get("ErrorMessage")
+        self._TaskId = params.get("TaskId")
+        self._Success = params.get("Success")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1276,22 +2383,39 @@ class UpdateProbeTaskAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务 ID
+        :param _TaskId: 任务 ID
         :type TaskId: str
-        :param Name: 任务名
+        :param _Name: 任务名
         :type Name: str
         """
-        self.TaskId = None
-        self.Name = None
+        self._TaskId = None
+        self._Name = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Name = params.get("Name")
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1304,14 +2428,22 @@ class UpdateProbeTaskAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateProbeTaskConfigurationListRequest(AbstractModel):
@@ -1321,39 +2453,88 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIds: 任务 ID
+        :param _TaskIds: 任务 ID
         :type TaskIds: list of str
-        :param Nodes: 拨测节点
+        :param _Nodes: 拨测节点
         :type Nodes: list of str
-        :param Interval: 拨测间隔
+        :param _Interval: 拨测间隔
         :type Interval: int
-        :param Parameters: 拨测参数
+        :param _Parameters: 拨测参数
         :type Parameters: str
-        :param Cron: 定时任务cron表达式
+        :param _Cron: 定时任务cron表达式
         :type Cron: str
-        :param ResourceIDs: 预付费套餐id
+        :param _ResourceIDs: 预付费套餐id
 需要与taskId对应
         :type ResourceIDs: list of str
         """
-        self.TaskIds = None
-        self.Nodes = None
-        self.Interval = None
-        self.Parameters = None
-        self.Cron = None
-        self.ResourceIDs = None
+        self._TaskIds = None
+        self._Nodes = None
+        self._Interval = None
+        self._Parameters = None
+        self._Cron = None
+        self._ResourceIDs = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Cron(self):
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def ResourceIDs(self):
+        return self._ResourceIDs
+
+    @ResourceIDs.setter
+    def ResourceIDs(self, ResourceIDs):
+        self._ResourceIDs = ResourceIDs
 
 
     def _deserialize(self, params):
-        self.TaskIds = params.get("TaskIds")
-        self.Nodes = params.get("Nodes")
-        self.Interval = params.get("Interval")
-        self.Parameters = params.get("Parameters")
-        self.Cron = params.get("Cron")
-        self.ResourceIDs = params.get("ResourceIDs")
+        self._TaskIds = params.get("TaskIds")
+        self._Nodes = params.get("Nodes")
+        self._Interval = params.get("Interval")
+        self._Parameters = params.get("Parameters")
+        self._Cron = params.get("Cron")
+        self._ResourceIDs = params.get("ResourceIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1366,11 +2547,19 @@ class UpdateProbeTaskConfigurationListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

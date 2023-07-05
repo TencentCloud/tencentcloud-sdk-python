@@ -25,54 +25,119 @@ class AgentShell(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Token: 鉴权token
+        :param _Token: 鉴权token
 注意：此字段可能返回 null，表示取不到有效值。
         :type Token: str
-        :param EtlIp: 数据接收Ip
+        :param _EtlIp: 数据接收Ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type EtlIp: str
-        :param EtlPort: 数据接收port
+        :param _EtlPort: 数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :type EtlPort: str
-        :param ByHandAccess: 手动接入脚本串
+        :param _ByHandAccess: 手动接入脚本串
 注意：此字段可能返回 null，表示取不到有效值。
         :type ByHandAccess: str
-        :param ByShellAccess: 自动接入脚本串
+        :param _ByShellAccess: 自动接入脚本串
 注意：此字段可能返回 null，表示取不到有效值。
         :type ByShellAccess: str
-        :param SkyWalkingPort: SkyWalking数据接收port
+        :param _SkyWalkingPort: SkyWalking数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkyWalkingPort: str
-        :param ZipkinPort: Zipkin数据接收port
+        :param _ZipkinPort: Zipkin数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZipkinPort: str
-        :param JaegerPort: Jaeger数据接收port
+        :param _JaegerPort: Jaeger数据接收port
 注意：此字段可能返回 null，表示取不到有效值。
         :type JaegerPort: str
         """
-        self.Token = None
-        self.EtlIp = None
-        self.EtlPort = None
-        self.ByHandAccess = None
-        self.ByShellAccess = None
-        self.SkyWalkingPort = None
-        self.ZipkinPort = None
-        self.JaegerPort = None
+        self._Token = None
+        self._EtlIp = None
+        self._EtlPort = None
+        self._ByHandAccess = None
+        self._ByShellAccess = None
+        self._SkyWalkingPort = None
+        self._ZipkinPort = None
+        self._JaegerPort = None
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def EtlIp(self):
+        return self._EtlIp
+
+    @EtlIp.setter
+    def EtlIp(self, EtlIp):
+        self._EtlIp = EtlIp
+
+    @property
+    def EtlPort(self):
+        return self._EtlPort
+
+    @EtlPort.setter
+    def EtlPort(self, EtlPort):
+        self._EtlPort = EtlPort
+
+    @property
+    def ByHandAccess(self):
+        return self._ByHandAccess
+
+    @ByHandAccess.setter
+    def ByHandAccess(self, ByHandAccess):
+        self._ByHandAccess = ByHandAccess
+
+    @property
+    def ByShellAccess(self):
+        return self._ByShellAccess
+
+    @ByShellAccess.setter
+    def ByShellAccess(self, ByShellAccess):
+        self._ByShellAccess = ByShellAccess
+
+    @property
+    def SkyWalkingPort(self):
+        return self._SkyWalkingPort
+
+    @SkyWalkingPort.setter
+    def SkyWalkingPort(self, SkyWalkingPort):
+        self._SkyWalkingPort = SkyWalkingPort
+
+    @property
+    def ZipkinPort(self):
+        return self._ZipkinPort
+
+    @ZipkinPort.setter
+    def ZipkinPort(self, ZipkinPort):
+        self._ZipkinPort = ZipkinPort
+
+    @property
+    def JaegerPort(self):
+        return self._JaegerPort
+
+    @JaegerPort.setter
+    def JaegerPort(self, JaegerPort):
+        self._JaegerPort = JaegerPort
 
 
     def _deserialize(self, params):
-        self.Token = params.get("Token")
-        self.EtlIp = params.get("EtlIp")
-        self.EtlPort = params.get("EtlPort")
-        self.ByHandAccess = params.get("ByHandAccess")
-        self.ByShellAccess = params.get("ByShellAccess")
-        self.SkyWalkingPort = params.get("SkyWalkingPort")
-        self.ZipkinPort = params.get("ZipkinPort")
-        self.JaegerPort = params.get("JaegerPort")
+        self._Token = params.get("Token")
+        self._EtlIp = params.get("EtlIp")
+        self._EtlPort = params.get("EtlPort")
+        self._ByHandAccess = params.get("ByHandAccess")
+        self._ByShellAccess = params.get("ByShellAccess")
+        self._SkyWalkingPort = params.get("SkyWalkingPort")
+        self._ZipkinPort = params.get("ZipkinPort")
+        self._JaegerPort = params.get("JaegerPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -91,18 +156,34 @@ class DescribeAgentShellResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 接入信息
+        :param _Result: 接入信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsw.v20200924.models.AgentShell`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = AgentShell()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = AgentShell()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")

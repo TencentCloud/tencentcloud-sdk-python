@@ -25,42 +25,99 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportedAccount: 被举报账号，长度低于 128 个字符
+        :param _ReportedAccount: 被举报账号，长度低于 128 个字符
         :type ReportedAccount: str
-        :param ReportedAccountType: 被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
+        :param _ReportedAccountType: 被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
         :type ReportedAccountType: int
-        :param EvilType: 被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
+        :param _EvilType: 被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
         :type EvilType: int
-        :param SenderAccount: 举报者账号，长度低于 128 个字符
+        :param _SenderAccount: 举报者账号，长度低于 128 个字符
         :type SenderAccount: str
-        :param SenderAccountType: 举报者账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
+        :param _SenderAccountType: 举报者账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
         :type SenderAccountType: int
-        :param SenderIP: 举报者IP地址
+        :param _SenderIP: 举报者IP地址
         :type SenderIP: str
-        :param EvilContent: 包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）
+        :param _EvilContent: 包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）
         :type EvilContent: str
         """
-        self.ReportedAccount = None
-        self.ReportedAccountType = None
-        self.EvilType = None
-        self.SenderAccount = None
-        self.SenderAccountType = None
-        self.SenderIP = None
-        self.EvilContent = None
+        self._ReportedAccount = None
+        self._ReportedAccountType = None
+        self._EvilType = None
+        self._SenderAccount = None
+        self._SenderAccountType = None
+        self._SenderIP = None
+        self._EvilContent = None
+
+    @property
+    def ReportedAccount(self):
+        return self._ReportedAccount
+
+    @ReportedAccount.setter
+    def ReportedAccount(self, ReportedAccount):
+        self._ReportedAccount = ReportedAccount
+
+    @property
+    def ReportedAccountType(self):
+        return self._ReportedAccountType
+
+    @ReportedAccountType.setter
+    def ReportedAccountType(self, ReportedAccountType):
+        self._ReportedAccountType = ReportedAccountType
+
+    @property
+    def EvilType(self):
+        return self._EvilType
+
+    @EvilType.setter
+    def EvilType(self, EvilType):
+        self._EvilType = EvilType
+
+    @property
+    def SenderAccount(self):
+        return self._SenderAccount
+
+    @SenderAccount.setter
+    def SenderAccount(self, SenderAccount):
+        self._SenderAccount = SenderAccount
+
+    @property
+    def SenderAccountType(self):
+        return self._SenderAccountType
+
+    @SenderAccountType.setter
+    def SenderAccountType(self, SenderAccountType):
+        self._SenderAccountType = SenderAccountType
+
+    @property
+    def SenderIP(self):
+        return self._SenderIP
+
+    @SenderIP.setter
+    def SenderIP(self, SenderIP):
+        self._SenderIP = SenderIP
+
+    @property
+    def EvilContent(self):
+        return self._EvilContent
+
+    @EvilContent.setter
+    def EvilContent(self, EvilContent):
+        self._EvilContent = EvilContent
 
 
     def _deserialize(self, params):
-        self.ReportedAccount = params.get("ReportedAccount")
-        self.ReportedAccountType = params.get("ReportedAccountType")
-        self.EvilType = params.get("EvilType")
-        self.SenderAccount = params.get("SenderAccount")
-        self.SenderAccountType = params.get("SenderAccountType")
-        self.SenderIP = params.get("SenderIP")
-        self.EvilContent = params.get("EvilContent")
+        self._ReportedAccount = params.get("ReportedAccount")
+        self._ReportedAccountType = params.get("ReportedAccountType")
+        self._EvilType = params.get("EvilType")
+        self._SenderAccount = params.get("SenderAccount")
+        self._SenderAccountType = params.get("SenderAccountType")
+        self._SenderIP = params.get("SenderIP")
+        self._EvilContent = params.get("EvilContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -73,21 +130,37 @@ class AccountTipoffAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 举报接口响应数据
+        :param _Data: 举报接口响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.tms.v20200713.models.TipoffResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = TipoffResponse()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = TipoffResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTextLibRequest(AbstractModel):
@@ -97,18 +170,27 @@ class DescribeTextLibRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StrategyType: 内容类型 text: 1; image: 2; audio: 3; video: 4
+        :param _StrategyType: 内容类型 text: 1; image: 2; audio: 3; video: 4
         :type StrategyType: int
         """
-        self.StrategyType = None
+        self._StrategyType = None
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
 
 
     def _deserialize(self, params):
-        self.StrategyType = params.get("StrategyType")
+        self._StrategyType = params.get("StrategyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -121,23 +203,39 @@ class DescribeTextLibResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TextLib: 文本库id和name列表
+        :param _TextLib: 文本库id和name列表
         :type TextLib: list of TextLib
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TextLib = None
-        self.RequestId = None
+        self._TextLib = None
+        self._RequestId = None
+
+    @property
+    def TextLib(self):
+        return self._TextLib
+
+    @TextLib.setter
+    def TextLib(self, TextLib):
+        self._TextLib = TextLib
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TextLib") is not None:
-            self.TextLib = []
+            self._TextLib = []
             for item in params.get("TextLib"):
                 obj = TextLib()
                 obj._deserialize(item)
-                self.TextLib.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TextLib.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTextStatRequest(AbstractModel):
@@ -147,27 +245,44 @@ class DescribeTextStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
+        :param _AuditType: 审核类型 1: 机器审核; 2: 人工审核
         :type AuditType: int
-        :param Filters: 查询条件
+        :param _Filters: 查询条件
         :type Filters: list of Filters
         """
-        self.AuditType = None
-        self.Filters = None
+        self._AuditType = None
+        self._Filters = None
+
+    @property
+    def AuditType(self):
+        return self._AuditType
+
+    @AuditType.setter
+    def AuditType(self, AuditType):
+        self._AuditType = AuditType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.AuditType = params.get("AuditType")
+        self._AuditType = params.get("AuditType")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filters()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -180,39 +295,71 @@ class DescribeTextStatResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Overview: 识别结果统计
+        :param _Overview: 识别结果统计
         :type Overview: :class:`tencentcloud.tms.v20200713.models.Overview`
-        :param TrendCount: 识别量统计
+        :param _TrendCount: 识别量统计
         :type TrendCount: list of TrendCount
-        :param EvilCount: 违规数据分布
+        :param _EvilCount: 违规数据分布
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvilCount: list of EvilCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Overview = None
-        self.TrendCount = None
-        self.EvilCount = None
-        self.RequestId = None
+        self._Overview = None
+        self._TrendCount = None
+        self._EvilCount = None
+        self._RequestId = None
+
+    @property
+    def Overview(self):
+        return self._Overview
+
+    @Overview.setter
+    def Overview(self, Overview):
+        self._Overview = Overview
+
+    @property
+    def TrendCount(self):
+        return self._TrendCount
+
+    @TrendCount.setter
+    def TrendCount(self, TrendCount):
+        self._TrendCount = TrendCount
+
+    @property
+    def EvilCount(self):
+        return self._EvilCount
+
+    @EvilCount.setter
+    def EvilCount(self, EvilCount):
+        self._EvilCount = EvilCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Overview") is not None:
-            self.Overview = Overview()
-            self.Overview._deserialize(params.get("Overview"))
+            self._Overview = Overview()
+            self._Overview._deserialize(params.get("Overview"))
         if params.get("TrendCount") is not None:
-            self.TrendCount = []
+            self._TrendCount = []
             for item in params.get("TrendCount"):
                 obj = TrendCount()
                 obj._deserialize(item)
-                self.TrendCount.append(obj)
+                self._TrendCount.append(obj)
         if params.get("EvilCount") is not None:
-            self.EvilCount = []
+            self._EvilCount = []
             for item in params.get("EvilCount"):
                 obj = EvilCount()
                 obj._deserialize(item)
-                self.EvilCount.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EvilCount.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetailResults(AbstractModel):
@@ -222,50 +369,107 @@ class DetailResults(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        :param _Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+        :param _Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Keywords: 该标签下命中的关键词
+        :param _Keywords: 该标签下命中的关键词
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param Score: 该标签模型命中的分值
+        :param _Score: 该标签模型命中的分值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param LibType: 仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
+        :param _LibType: 仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibType: int
-        :param LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
+        :param _LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param LibName: 仅当Labe为Custom自定义关键词时有效，表示自定义库名称
+        :param _LibName: 仅当Labe为Custom自定义关键词时有效，表示自定义库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
         """
-        self.Label = None
-        self.Suggestion = None
-        self.Keywords = None
-        self.Score = None
-        self.LibType = None
-        self.LibId = None
-        self.LibName = None
+        self._Label = None
+        self._Suggestion = None
+        self._Keywords = None
+        self._Score = None
+        self._LibType = None
+        self._LibId = None
+        self._LibName = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def LibType(self):
+        return self._LibType
+
+    @LibType.setter
+    def LibType(self, LibType):
+        self._LibType = LibType
+
+    @property
+    def LibId(self):
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Suggestion = params.get("Suggestion")
-        self.Keywords = params.get("Keywords")
-        self.Score = params.get("Score")
-        self.LibType = params.get("LibType")
-        self.LibId = params.get("LibId")
-        self.LibName = params.get("LibName")
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        self._Keywords = params.get("Keywords")
+        self._Score = params.get("Score")
+        self._LibType = params.get("LibType")
+        self._LibId = params.get("LibId")
+        self._LibName = params.get("LibName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -278,42 +482,99 @@ class Device(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IP: 用户IP
+        :param _IP: 用户IP
         :type IP: str
-        :param Mac: Mac地址
+        :param _Mac: Mac地址
         :type Mac: str
-        :param TokenId: 设备指纹Token
+        :param _TokenId: 设备指纹Token
         :type TokenId: str
-        :param DeviceId: 设备指纹ID
+        :param _DeviceId: 设备指纹ID
         :type DeviceId: str
-        :param IMEI: 设备序列号
+        :param _IMEI: 设备序列号
         :type IMEI: str
-        :param IDFA: IOS设备，Identifier For Advertising（广告标识符）
+        :param _IDFA: IOS设备，Identifier For Advertising（广告标识符）
         :type IDFA: str
-        :param IDFV: IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
+        :param _IDFV: IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
         :type IDFV: str
         """
-        self.IP = None
-        self.Mac = None
-        self.TokenId = None
-        self.DeviceId = None
-        self.IMEI = None
-        self.IDFA = None
-        self.IDFV = None
+        self._IP = None
+        self._Mac = None
+        self._TokenId = None
+        self._DeviceId = None
+        self._IMEI = None
+        self._IDFA = None
+        self._IDFV = None
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Mac(self):
+        return self._Mac
+
+    @Mac.setter
+    def Mac(self, Mac):
+        self._Mac = Mac
+
+    @property
+    def TokenId(self):
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def IMEI(self):
+        return self._IMEI
+
+    @IMEI.setter
+    def IMEI(self, IMEI):
+        self._IMEI = IMEI
+
+    @property
+    def IDFA(self):
+        return self._IDFA
+
+    @IDFA.setter
+    def IDFA(self, IDFA):
+        self._IDFA = IDFA
+
+    @property
+    def IDFV(self):
+        return self._IDFV
+
+    @IDFV.setter
+    def IDFV(self, IDFV):
+        self._IDFV = IDFV
 
 
     def _deserialize(self, params):
-        self.IP = params.get("IP")
-        self.Mac = params.get("Mac")
-        self.TokenId = params.get("TokenId")
-        self.DeviceId = params.get("DeviceId")
-        self.IMEI = params.get("IMEI")
-        self.IDFA = params.get("IDFA")
-        self.IDFV = params.get("IDFV")
+        self._IP = params.get("IP")
+        self._Mac = params.get("Mac")
+        self._TokenId = params.get("TokenId")
+        self._DeviceId = params.get("DeviceId")
+        self._IMEI = params.get("IMEI")
+        self._IDFA = params.get("IDFA")
+        self._IDFV = params.get("IDFV")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -326,22 +587,39 @@ class EvilCount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvilType: ----非必选，该参数功能暂未对外开放
+        :param _EvilType: ----非必选，该参数功能暂未对外开放
         :type EvilType: str
-        :param Count: 分布类型总量
+        :param _Count: 分布类型总量
         :type Count: int
         """
-        self.EvilType = None
-        self.Count = None
+        self._EvilType = None
+        self._Count = None
+
+    @property
+    def EvilType(self):
+        return self._EvilType
+
+    @EvilType.setter
+    def EvilType(self, EvilType):
+        self._EvilType = EvilType
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.EvilType = params.get("EvilType")
-        self.Count = params.get("Count")
+        self._EvilType = params.get("EvilType")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -354,25 +632,42 @@ class Filters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 查询字段：
+        :param _Name: 查询字段：
 策略BizType
 子账号SubUin
 日期区间DateRange
         :type Name: str
-        :param Values: 查询值
+        :param _Values: 查询值
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -385,46 +680,111 @@ class Overview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总调用量
+        :param _TotalCount: 总调用量
         :type TotalCount: int
-        :param TotalHour: 总调用时长
+        :param _TotalHour: 总调用时长
         :type TotalHour: int
-        :param PassCount: 通过量
+        :param _PassCount: 通过量
         :type PassCount: int
-        :param PassHour: 通过时长
+        :param _PassHour: 通过时长
         :type PassHour: int
-        :param EvilCount: 违规量
+        :param _EvilCount: 违规量
         :type EvilCount: int
-        :param EvilHour: 违规时长
+        :param _EvilHour: 违规时长
         :type EvilHour: int
-        :param SuspectCount: 疑似违规量
+        :param _SuspectCount: 疑似违规量
         :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
+        :param _SuspectHour: 疑似违规时长
         :type SuspectHour: int
         """
-        self.TotalCount = None
-        self.TotalHour = None
-        self.PassCount = None
-        self.PassHour = None
-        self.EvilCount = None
-        self.EvilHour = None
-        self.SuspectCount = None
-        self.SuspectHour = None
+        self._TotalCount = None
+        self._TotalHour = None
+        self._PassCount = None
+        self._PassHour = None
+        self._EvilCount = None
+        self._EvilHour = None
+        self._SuspectCount = None
+        self._SuspectHour = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalHour(self):
+        return self._TotalHour
+
+    @TotalHour.setter
+    def TotalHour(self, TotalHour):
+        self._TotalHour = TotalHour
+
+    @property
+    def PassCount(self):
+        return self._PassCount
+
+    @PassCount.setter
+    def PassCount(self, PassCount):
+        self._PassCount = PassCount
+
+    @property
+    def PassHour(self):
+        return self._PassHour
+
+    @PassHour.setter
+    def PassHour(self, PassHour):
+        self._PassHour = PassHour
+
+    @property
+    def EvilCount(self):
+        return self._EvilCount
+
+    @EvilCount.setter
+    def EvilCount(self, EvilCount):
+        self._EvilCount = EvilCount
+
+    @property
+    def EvilHour(self):
+        return self._EvilHour
+
+    @EvilHour.setter
+    def EvilHour(self, EvilHour):
+        self._EvilHour = EvilHour
+
+    @property
+    def SuspectCount(self):
+        return self._SuspectCount
+
+    @SuspectCount.setter
+    def SuspectCount(self, SuspectCount):
+        self._SuspectCount = SuspectCount
+
+    @property
+    def SuspectHour(self):
+        return self._SuspectHour
+
+    @SuspectHour.setter
+    def SuspectHour(self, SuspectHour):
+        self._SuspectHour = SuspectHour
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.TotalHour = params.get("TotalHour")
-        self.PassCount = params.get("PassCount")
-        self.PassHour = params.get("PassHour")
-        self.EvilCount = params.get("EvilCount")
-        self.EvilHour = params.get("EvilHour")
-        self.SuspectCount = params.get("SuspectCount")
-        self.SuspectHour = params.get("SuspectHour")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalHour = params.get("TotalHour")
+        self._PassCount = params.get("PassCount")
+        self._PassHour = params.get("PassHour")
+        self._EvilCount = params.get("EvilCount")
+        self._EvilHour = params.get("EvilHour")
+        self._SuspectCount = params.get("SuspectCount")
+        self._SuspectHour = params.get("SuspectHour")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -437,22 +797,39 @@ class RiskDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI
+        :param _Label: 风险类别，RiskAccount，RiskIP, RiskIMEI
         :type Label: str
-        :param Level: 风险等级，1:疑似，2：恶意
+        :param _Level: 风险等级，1:疑似，2：恶意
         :type Level: int
         """
-        self.Label = None
-        self.Level = None
+        self._Label = None
+        self._Level = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Level = params.get("Level")
+        self._Label = params.get("Label")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -465,22 +842,39 @@ class TextLib(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibId: 库id
+        :param _LibId: 库id
         :type LibId: int
-        :param LibName: 库名
+        :param _LibName: 库名
         :type LibName: str
         """
-        self.LibId = None
-        self.LibName = None
+        self._LibId = None
+        self._LibName = None
+
+    @property
+    def LibId(self):
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
 
 
     def _deserialize(self, params):
-        self.LibId = params.get("LibId")
-        self.LibName = params.get("LibName")
+        self._LibId = params.get("LibId")
+        self._LibName = params.get("LibName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -493,38 +887,79 @@ class TextModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Content: 文本内容Base64编码。限制原文长度不能超过10000个unicode字符
+        :param _Content: 文本内容Base64编码。限制原文长度不能超过10000个unicode字符
         :type Content: str
-        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+        :param _BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
         :type BizType: str
-        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
+        :param _DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
         :type DataId: str
-        :param User: 账号相关信息字段，填入后可识别违规风险账号
+        :param _User: 账号相关信息字段，填入后可识别违规风险账号
         :type User: :class:`tencentcloud.tms.v20200713.models.User`
-        :param Device: 设备相关信息字段，填入后可识别违规风险设备
+        :param _Device: 设备相关信息字段，填入后可识别违规风险设备
         :type Device: :class:`tencentcloud.tms.v20200713.models.Device`
         """
-        self.Content = None
-        self.BizType = None
-        self.DataId = None
-        self.User = None
-        self.Device = None
+        self._Content = None
+        self._BizType = None
+        self._DataId = None
+        self._User = None
+        self._Device = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Device(self):
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
 
 
     def _deserialize(self, params):
-        self.Content = params.get("Content")
-        self.BizType = params.get("BizType")
-        self.DataId = params.get("DataId")
+        self._Content = params.get("Content")
+        self._BizType = params.get("BizType")
+        self._DataId = params.get("DataId")
         if params.get("User") is not None:
-            self.User = User()
-            self.User._deserialize(params.get("User"))
+            self._User = User()
+            self._User._deserialize(params.get("User"))
         if params.get("Device") is not None:
-            self.Device = Device()
-            self.Device._deserialize(params.get("Device"))
+            self._Device = Device()
+            self._Device._deserialize(params.get("Device"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -537,72 +972,160 @@ class TextModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizType: 您在入参时所填入的Biztype参数
+        :param _BizType: 您在入参时所填入的Biztype参数
         :type BizType: str
-        :param EvilFlag: 数据是否属于恶意类型，0：正常 1：可疑
+        :param _EvilFlag: 数据是否属于恶意类型，0：正常 1：可疑
         :type EvilFlag: int
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
+        :param _Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
         :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作
+        :param _Suggestion: 建议您拿到判断结果后的执行操作
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
-        :param Keywords: 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
+        :param _Keywords: 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param Score: 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
+        :param _Score: 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 （如：色情 99.99，则该样本属于色情的置信度非常高。）
         :type Score: int
-        :param DetailResults: 接口识别样本后返回的详细结果
+        :param _DetailResults: 接口识别样本后返回的详细结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailResults: list of DetailResults
-        :param RiskDetails: 接口识别样本中存在违规账号风险的检测结果
+        :param _RiskDetails: 接口识别样本中存在违规账号风险的检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDetails: list of RiskDetails
-        :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
+        :param _Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param DataId: 请求参数中的DataId
+        :param _DataId: 请求参数中的DataId
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BizType = None
-        self.EvilFlag = None
-        self.Label = None
-        self.Suggestion = None
-        self.Keywords = None
-        self.Score = None
-        self.DetailResults = None
-        self.RiskDetails = None
-        self.Extra = None
-        self.DataId = None
-        self.RequestId = None
+        self._BizType = None
+        self._EvilFlag = None
+        self._Label = None
+        self._Suggestion = None
+        self._Keywords = None
+        self._Score = None
+        self._DetailResults = None
+        self._RiskDetails = None
+        self._Extra = None
+        self._DataId = None
+        self._RequestId = None
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def EvilFlag(self):
+        return self._EvilFlag
+
+    @EvilFlag.setter
+    def EvilFlag(self, EvilFlag):
+        self._EvilFlag = EvilFlag
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def DetailResults(self):
+        return self._DetailResults
+
+    @DetailResults.setter
+    def DetailResults(self, DetailResults):
+        self._DetailResults = DetailResults
+
+    @property
+    def RiskDetails(self):
+        return self._RiskDetails
+
+    @RiskDetails.setter
+    def RiskDetails(self, RiskDetails):
+        self._RiskDetails = RiskDetails
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BizType = params.get("BizType")
-        self.EvilFlag = params.get("EvilFlag")
-        self.Label = params.get("Label")
-        self.Suggestion = params.get("Suggestion")
-        self.Keywords = params.get("Keywords")
-        self.Score = params.get("Score")
+        self._BizType = params.get("BizType")
+        self._EvilFlag = params.get("EvilFlag")
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        self._Keywords = params.get("Keywords")
+        self._Score = params.get("Score")
         if params.get("DetailResults") is not None:
-            self.DetailResults = []
+            self._DetailResults = []
             for item in params.get("DetailResults"):
                 obj = DetailResults()
                 obj._deserialize(item)
-                self.DetailResults.append(obj)
+                self._DetailResults.append(obj)
         if params.get("RiskDetails") is not None:
-            self.RiskDetails = []
+            self._RiskDetails = []
             for item in params.get("RiskDetails"):
                 obj = RiskDetails()
                 obj._deserialize(item)
-                self.RiskDetails.append(obj)
-        self.Extra = params.get("Extra")
-        self.DataId = params.get("DataId")
-        self.RequestId = params.get("RequestId")
+                self._RiskDetails.append(obj)
+        self._Extra = params.get("Extra")
+        self._DataId = params.get("DataId")
+        self._RequestId = params.get("RequestId")
 
 
 class TipoffResponse(AbstractModel):
@@ -612,22 +1135,39 @@ class TipoffResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultCode: 举报结果， "0-举报数据提交成功  99-举报数据提交失败"
+        :param _ResultCode: 举报结果， "0-举报数据提交成功  99-举报数据提交失败"
         :type ResultCode: int
-        :param ResultMsg: 结果描述
+        :param _ResultMsg: 结果描述
         :type ResultMsg: str
         """
-        self.ResultCode = None
-        self.ResultMsg = None
+        self._ResultCode = None
+        self._ResultMsg = None
+
+    @property
+    def ResultCode(self):
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def ResultMsg(self):
+        return self._ResultMsg
+
+    @ResultMsg.setter
+    def ResultMsg(self, ResultMsg):
+        self._ResultMsg = ResultMsg
 
 
     def _deserialize(self, params):
-        self.ResultCode = params.get("ResultCode")
-        self.ResultMsg = params.get("ResultMsg")
+        self._ResultCode = params.get("ResultCode")
+        self._ResultMsg = params.get("ResultMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -640,59 +1180,132 @@ class TrendCount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总调用量
+        :param _TotalCount: 总调用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param TotalHour: 总调用时长
+        :param _TotalHour: 总调用时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalHour: int
-        :param PassCount: 通过量
+        :param _PassCount: 通过量
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassCount: int
-        :param PassHour: 通过时长
+        :param _PassHour: 通过时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassHour: int
-        :param EvilCount: 违规量
+        :param _EvilCount: 违规量
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvilCount: int
-        :param EvilHour: 违规时长
+        :param _EvilHour: 违规时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvilHour: int
-        :param SuspectCount: 疑似违规量
+        :param _SuspectCount: 疑似违规量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
+        :param _SuspectHour: 疑似违规时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuspectHour: int
-        :param Date: 日期
+        :param _Date: 日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
         """
-        self.TotalCount = None
-        self.TotalHour = None
-        self.PassCount = None
-        self.PassHour = None
-        self.EvilCount = None
-        self.EvilHour = None
-        self.SuspectCount = None
-        self.SuspectHour = None
-        self.Date = None
+        self._TotalCount = None
+        self._TotalHour = None
+        self._PassCount = None
+        self._PassHour = None
+        self._EvilCount = None
+        self._EvilHour = None
+        self._SuspectCount = None
+        self._SuspectHour = None
+        self._Date = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalHour(self):
+        return self._TotalHour
+
+    @TotalHour.setter
+    def TotalHour(self, TotalHour):
+        self._TotalHour = TotalHour
+
+    @property
+    def PassCount(self):
+        return self._PassCount
+
+    @PassCount.setter
+    def PassCount(self, PassCount):
+        self._PassCount = PassCount
+
+    @property
+    def PassHour(self):
+        return self._PassHour
+
+    @PassHour.setter
+    def PassHour(self, PassHour):
+        self._PassHour = PassHour
+
+    @property
+    def EvilCount(self):
+        return self._EvilCount
+
+    @EvilCount.setter
+    def EvilCount(self, EvilCount):
+        self._EvilCount = EvilCount
+
+    @property
+    def EvilHour(self):
+        return self._EvilHour
+
+    @EvilHour.setter
+    def EvilHour(self, EvilHour):
+        self._EvilHour = EvilHour
+
+    @property
+    def SuspectCount(self):
+        return self._SuspectCount
+
+    @SuspectCount.setter
+    def SuspectCount(self, SuspectCount):
+        self._SuspectCount = SuspectCount
+
+    @property
+    def SuspectHour(self):
+        return self._SuspectHour
+
+    @SuspectHour.setter
+    def SuspectHour(self, SuspectHour):
+        self._SuspectHour = SuspectHour
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.TotalHour = params.get("TotalHour")
-        self.PassCount = params.get("PassCount")
-        self.PassHour = params.get("PassHour")
-        self.EvilCount = params.get("EvilCount")
-        self.EvilHour = params.get("EvilHour")
-        self.SuspectCount = params.get("SuspectCount")
-        self.SuspectHour = params.get("SuspectHour")
-        self.Date = params.get("Date")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalHour = params.get("TotalHour")
+        self._PassCount = params.get("PassCount")
+        self._PassHour = params.get("PassHour")
+        self._EvilCount = params.get("EvilCount")
+        self._EvilHour = params.get("EvilHour")
+        self._SuspectCount = params.get("SuspectCount")
+        self._SuspectHour = params.get("SuspectHour")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -705,42 +1318,99 @@ class User(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        :param _UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
         :type UserId: str
-        :param Nickname: 用户昵称
+        :param _Nickname: 用户昵称
         :type Nickname: str
-        :param AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+        :param _AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
         :type AccountType: int
-        :param Gender: 性别 默认0 未知 1 男性 2 女性
+        :param _Gender: 性别 默认0 未知 1 男性 2 女性
         :type Gender: int
-        :param Age: 年龄 默认0 未知
+        :param _Age: 年龄 默认0 未知
         :type Age: int
-        :param Level: 用户等级，默认0 未知 1 低 2 中 3 高
+        :param _Level: 用户等级，默认0 未知 1 低 2 中 3 高
         :type Level: int
-        :param Phone: 手机号
+        :param _Phone: 手机号
         :type Phone: str
         """
-        self.UserId = None
-        self.Nickname = None
-        self.AccountType = None
-        self.Gender = None
-        self.Age = None
-        self.Level = None
-        self.Phone = None
+        self._UserId = None
+        self._Nickname = None
+        self._AccountType = None
+        self._Gender = None
+        self._Age = None
+        self._Level = None
+        self._Phone = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.Nickname = params.get("Nickname")
-        self.AccountType = params.get("AccountType")
-        self.Gender = params.get("Gender")
-        self.Age = params.get("Age")
-        self.Level = params.get("Level")
-        self.Phone = params.get("Phone")
+        self._UserId = params.get("UserId")
+        self._Nickname = params.get("Nickname")
+        self._AccountType = params.get("AccountType")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Level = params.get("Level")
+        self._Phone = params.get("Phone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

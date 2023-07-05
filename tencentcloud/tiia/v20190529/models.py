@@ -25,7 +25,7 @@ class AssessQualityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -34,21 +34,38 @@ class AssessQualityRequest(AbstractModel):
 • 长宽比：长边：短边<5。
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要Base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -61,42 +78,106 @@ class AssessQualityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LongImage: 取值为TRUE或FALSE，TRUE为长图，FALSE为正常图，长图定义为长宽比大于等于3或小于等于1/3的图片。
+        :param _LongImage: 取值为TRUE或FALSE，TRUE为长图，FALSE为正常图，长图定义为长宽比大于等于3或小于等于1/3的图片。
         :type LongImage: bool
-        :param BlackAndWhite: 取值为TRUE或FALSE，TRUE为黑白图，FALSE为否。黑白图即灰度图，指红绿蓝三个通道都是以灰度色阶显示的图片，并非视觉上的“黑白图片”。
+        :param _BlackAndWhite: 取值为TRUE或FALSE，TRUE为黑白图，FALSE为否。黑白图即灰度图，指红绿蓝三个通道都是以灰度色阶显示的图片，并非视觉上的“黑白图片”。
         :type BlackAndWhite: bool
-        :param SmallImage: 取值为TRUE或FALSE，TRUE为小图，FALSE为否, 小图定义为最长边小于179像素的图片。当一张图片被判断为小图时，不建议做推荐和展示，其他字段统一输出为0或FALSE。
+        :param _SmallImage: 取值为TRUE或FALSE，TRUE为小图，FALSE为否, 小图定义为最长边小于179像素的图片。当一张图片被判断为小图时，不建议做推荐和展示，其他字段统一输出为0或FALSE。
         :type SmallImage: bool
-        :param BigImage: 取值为TRUE或FALSE，TRUE为大图，FALSE为否，定义为最短边大于1000像素的图片
+        :param _BigImage: 取值为TRUE或FALSE，TRUE为大图，FALSE为否，定义为最短边大于1000像素的图片
         :type BigImage: bool
-        :param PureImage: 取值为TRUE或FALSE，TRUE为纯色图或纯文字图，即没有内容或只有简单内容的图片，FALSE为正常图片。
+        :param _PureImage: 取值为TRUE或FALSE，TRUE为纯色图或纯文字图，即没有内容或只有简单内容的图片，FALSE为正常图片。
         :type PureImage: bool
-        :param ClarityScore: 综合评分。图像清晰度的得分，对图片的噪声、曝光、模糊、压缩等因素进行综合评估，取值为[0, 100]，值越大，越清晰。一般大于50为较清晰图片，标准可以自行把握。
+        :param _ClarityScore: 综合评分。图像清晰度的得分，对图片的噪声、曝光、模糊、压缩等因素进行综合评估，取值为[0, 100]，值越大，越清晰。一般大于50为较清晰图片，标准可以自行把握。
         :type ClarityScore: int
-        :param AestheticScore: 综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
+        :param _AestheticScore: 综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
         :type AestheticScore: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LongImage = None
-        self.BlackAndWhite = None
-        self.SmallImage = None
-        self.BigImage = None
-        self.PureImage = None
-        self.ClarityScore = None
-        self.AestheticScore = None
-        self.RequestId = None
+        self._LongImage = None
+        self._BlackAndWhite = None
+        self._SmallImage = None
+        self._BigImage = None
+        self._PureImage = None
+        self._ClarityScore = None
+        self._AestheticScore = None
+        self._RequestId = None
+
+    @property
+    def LongImage(self):
+        return self._LongImage
+
+    @LongImage.setter
+    def LongImage(self, LongImage):
+        self._LongImage = LongImage
+
+    @property
+    def BlackAndWhite(self):
+        return self._BlackAndWhite
+
+    @BlackAndWhite.setter
+    def BlackAndWhite(self, BlackAndWhite):
+        self._BlackAndWhite = BlackAndWhite
+
+    @property
+    def SmallImage(self):
+        return self._SmallImage
+
+    @SmallImage.setter
+    def SmallImage(self, SmallImage):
+        self._SmallImage = SmallImage
+
+    @property
+    def BigImage(self):
+        return self._BigImage
+
+    @BigImage.setter
+    def BigImage(self, BigImage):
+        self._BigImage = BigImage
+
+    @property
+    def PureImage(self):
+        return self._PureImage
+
+    @PureImage.setter
+    def PureImage(self, PureImage):
+        self._PureImage = PureImage
+
+    @property
+    def ClarityScore(self):
+        return self._ClarityScore
+
+    @ClarityScore.setter
+    def ClarityScore(self, ClarityScore):
+        self._ClarityScore = ClarityScore
+
+    @property
+    def AestheticScore(self):
+        return self._AestheticScore
+
+    @AestheticScore.setter
+    def AestheticScore(self, AestheticScore):
+        self._AestheticScore = AestheticScore
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LongImage = params.get("LongImage")
-        self.BlackAndWhite = params.get("BlackAndWhite")
-        self.SmallImage = params.get("SmallImage")
-        self.BigImage = params.get("BigImage")
-        self.PureImage = params.get("PureImage")
-        self.ClarityScore = params.get("ClarityScore")
-        self.AestheticScore = params.get("AestheticScore")
-        self.RequestId = params.get("RequestId")
+        self._LongImage = params.get("LongImage")
+        self._BlackAndWhite = params.get("BlackAndWhite")
+        self._SmallImage = params.get("SmallImage")
+        self._BigImage = params.get("BigImage")
+        self._PureImage = params.get("PureImage")
+        self._ClarityScore = params.get("ClarityScore")
+        self._AestheticScore = params.get("AestheticScore")
+        self._RequestId = params.get("RequestId")
 
 
 class Attribute(AbstractModel):
@@ -106,22 +187,39 @@ class Attribute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 属性
+        :param _Type: 属性
         :type Type: str
-        :param Details: 属性详情
+        :param _Details: 属性详情
         :type Details: str
         """
-        self.Type = None
-        self.Details = None
+        self._Type = None
+        self._Details = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Details = params.get("Details")
+        self._Type = params.get("Type")
+        self._Details = params.get("Details")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -134,36 +232,61 @@ class AttributesForBody(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rect: 人体框。当不开启人体检测时，内部参数默认为0。
+        :param _Rect: 人体框。当不开启人体检测时，内部参数默认为0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
-        :param DetectConfidence: 人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
+        :param _DetectConfidence: 人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetectConfidence: float
-        :param Attributes: 属性信息。
+        :param _Attributes: 属性信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Attributes: list of BodyAttributes
         """
-        self.Rect = None
-        self.DetectConfidence = None
-        self.Attributes = None
+        self._Rect = None
+        self._DetectConfidence = None
+        self._Attributes = None
+
+    @property
+    def Rect(self):
+        return self._Rect
+
+    @Rect.setter
+    def Rect(self, Rect):
+        self._Rect = Rect
+
+    @property
+    def DetectConfidence(self):
+        return self._DetectConfidence
+
+    @DetectConfidence.setter
+    def DetectConfidence(self, DetectConfidence):
+        self._DetectConfidence = DetectConfidence
+
+    @property
+    def Attributes(self):
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
 
 
     def _deserialize(self, params):
         if params.get("Rect") is not None:
-            self.Rect = ImageRect()
-            self.Rect._deserialize(params.get("Rect"))
-        self.DetectConfidence = params.get("DetectConfidence")
+            self._Rect = ImageRect()
+            self._Rect._deserialize(params.get("Rect"))
+        self._DetectConfidence = params.get("DetectConfidence")
         if params.get("Attributes") is not None:
-            self.Attributes = []
+            self._Attributes = []
             for item in params.get("Attributes"):
                 obj = BodyAttributes()
                 obj._deserialize(item)
-                self.Attributes.append(obj)
+                self._Attributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -176,29 +299,54 @@ class BodyAttributes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 属性值。
+        :param _Label: 属性值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Confidence: 置信度，取值0-1之间。
+        :param _Confidence: 置信度，取值0-1之间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
-        :param Name: 属性名称。
+        :param _Name: 属性名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
-        self.Label = None
-        self.Confidence = None
-        self.Name = None
+        self._Label = None
+        self._Confidence = None
+        self._Name = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Confidence = params.get("Confidence")
-        self.Name = params.get("Name")
+        self._Label = params.get("Label")
+        self._Confidence = params.get("Confidence")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -211,28 +359,53 @@ class Box(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rect: 图像主体区域。
+        :param _Rect: 图像主体区域。
         :type Rect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
-        :param Score: 置信度。
+        :param _Score: 置信度。
         :type Score: float
-        :param CategoryId: 主体区域类目ID
+        :param _CategoryId: 主体区域类目ID
         :type CategoryId: int
         """
-        self.Rect = None
-        self.Score = None
-        self.CategoryId = None
+        self._Rect = None
+        self._Score = None
+        self._CategoryId = None
+
+    @property
+    def Rect(self):
+        return self._Rect
+
+    @Rect.setter
+    def Rect(self, Rect):
+        self._Rect = Rect
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def CategoryId(self):
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
 
 
     def _deserialize(self, params):
         if params.get("Rect") is not None:
-            self.Rect = ImageRect()
-            self.Rect._deserialize(params.get("Rect"))
-        self.Score = params.get("Score")
-        self.CategoryId = params.get("CategoryId")
+            self._Rect = ImageRect()
+            self._Rect._deserialize(params.get("Rect"))
+        self._Score = params.get("Score")
+        self._CategoryId = params.get("CategoryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -245,57 +418,114 @@ class CarPlateContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Plate: 车牌信息。
+        :param _Plate: 车牌信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Plate: str
-        :param Color: 车牌颜色。
+        :param _Color: 车牌颜色。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Color: str
-        :param Type: 车牌类型，包含：0普通蓝牌，1双层黄牌，2单层黄牌，3新能源车牌，4使馆车牌，5领馆车牌，6澳门车牌，7香港车牌，8警用车牌，9教练车牌，10武警车牌，11军用车牌   -2遮挡污损模糊车牌/异常   其他无牌
+        :param _Type: 车牌类型，包含：0普通蓝牌，1双层黄牌，2单层黄牌，3新能源车牌，4使馆车牌，5领馆车牌，6澳门车牌，7香港车牌，8警用车牌，9教练车牌，10武警车牌，11军用车牌   -2遮挡污损模糊车牌/异常   其他无牌
 注意：
 此字段可能返回 null，表示取不到有效值。
 此字段结果遮挡污损模糊车牌/异常：包含PlateStatus参数的“遮挡污损模糊车牌”，针对车牌异常，建议参考此字段，更全面
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param PlateLocation: 车牌在图片中的坐标信息。
+        :param _PlateLocation: 车牌在图片中的坐标信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateLocation: list of Coord
-        :param PlateStatus: 判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
+        :param _PlateStatus: 判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateStatus: str
-        :param PlateStatusConfidence: 车牌遮挡的置信度，0-100。
+        :param _PlateStatusConfidence: 车牌遮挡的置信度，0-100。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateStatusConfidence: int
-        :param PlateAngle: 车牌角度。
+        :param _PlateAngle: 车牌角度。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateAngle: float
         """
-        self.Plate = None
-        self.Color = None
-        self.Type = None
-        self.PlateLocation = None
-        self.PlateStatus = None
-        self.PlateStatusConfidence = None
-        self.PlateAngle = None
+        self._Plate = None
+        self._Color = None
+        self._Type = None
+        self._PlateLocation = None
+        self._PlateStatus = None
+        self._PlateStatusConfidence = None
+        self._PlateAngle = None
+
+    @property
+    def Plate(self):
+        return self._Plate
+
+    @Plate.setter
+    def Plate(self, Plate):
+        self._Plate = Plate
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PlateLocation(self):
+        return self._PlateLocation
+
+    @PlateLocation.setter
+    def PlateLocation(self, PlateLocation):
+        self._PlateLocation = PlateLocation
+
+    @property
+    def PlateStatus(self):
+        return self._PlateStatus
+
+    @PlateStatus.setter
+    def PlateStatus(self, PlateStatus):
+        self._PlateStatus = PlateStatus
+
+    @property
+    def PlateStatusConfidence(self):
+        return self._PlateStatusConfidence
+
+    @PlateStatusConfidence.setter
+    def PlateStatusConfidence(self, PlateStatusConfidence):
+        self._PlateStatusConfidence = PlateStatusConfidence
+
+    @property
+    def PlateAngle(self):
+        return self._PlateAngle
+
+    @PlateAngle.setter
+    def PlateAngle(self, PlateAngle):
+        self._PlateAngle = PlateAngle
 
 
     def _deserialize(self, params):
-        self.Plate = params.get("Plate")
-        self.Color = params.get("Color")
-        self.Type = params.get("Type")
+        self._Plate = params.get("Plate")
+        self._Color = params.get("Color")
+        self._Type = params.get("Type")
         if params.get("PlateLocation") is not None:
-            self.PlateLocation = []
+            self._PlateLocation = []
             for item in params.get("PlateLocation"):
                 obj = Coord()
                 obj._deserialize(item)
-                self.PlateLocation.append(obj)
-        self.PlateStatus = params.get("PlateStatus")
-        self.PlateStatusConfidence = params.get("PlateStatusConfidence")
-        self.PlateAngle = params.get("PlateAngle")
+                self._PlateLocation.append(obj)
+        self._PlateStatus = params.get("PlateStatus")
+        self._PlateStatusConfidence = params.get("PlateStatusConfidence")
+        self._PlateAngle = params.get("PlateAngle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -308,79 +538,184 @@ class CarTagItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Serial: 车系
+        :param _Serial: 车系
         :type Serial: str
-        :param Brand: 车辆品牌
+        :param _Brand: 车辆品牌
         :type Brand: str
-        :param Type: 车辆类型
+        :param _Type: 车辆类型
         :type Type: str
-        :param Color: 车辆颜色
+        :param _Color: 车辆颜色
         :type Color: str
-        :param Confidence: 车系置信度，0-100
+        :param _Confidence: 车系置信度，0-100
         :type Confidence: int
-        :param Year: 年份，没识别出年份的时候返回0
+        :param _Year: 年份，没识别出年份的时候返回0
         :type Year: int
-        :param CarLocation: 车辆在图片中的坐标信息
+        :param _CarLocation: 车辆在图片中的坐标信息
         :type CarLocation: list of Coord
-        :param PlateContent: 车牌信息，仅车辆识别（增强版）支持
+        :param _PlateContent: 车牌信息，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateContent: :class:`tencentcloud.tiia.v20190529.models.CarPlateContent`
-        :param PlateConfidence: 车牌信息置信度，0-100，仅车辆识别（增强版）支持
+        :param _PlateConfidence: 车牌信息置信度，0-100，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateConfidence: int
-        :param TypeConfidence: 车辆类型置信度，0-100，仅车辆识别（增强版）支持
+        :param _TypeConfidence: 车辆类型置信度，0-100，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type TypeConfidence: int
-        :param ColorConfidence: 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
+        :param _ColorConfidence: 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorConfidence: int
-        :param Orientation: 车辆朝向，仅车辆识别（增强版）支持
+        :param _Orientation: 车辆朝向，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type Orientation: str
-        :param OrientationConfidence: 车辆朝向置信度，0-100，仅车辆识别（增强版）支持
+        :param _OrientationConfidence: 车辆朝向置信度，0-100，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrientationConfidence: int
         """
-        self.Serial = None
-        self.Brand = None
-        self.Type = None
-        self.Color = None
-        self.Confidence = None
-        self.Year = None
-        self.CarLocation = None
-        self.PlateContent = None
-        self.PlateConfidence = None
-        self.TypeConfidence = None
-        self.ColorConfidence = None
-        self.Orientation = None
-        self.OrientationConfidence = None
+        self._Serial = None
+        self._Brand = None
+        self._Type = None
+        self._Color = None
+        self._Confidence = None
+        self._Year = None
+        self._CarLocation = None
+        self._PlateContent = None
+        self._PlateConfidence = None
+        self._TypeConfidence = None
+        self._ColorConfidence = None
+        self._Orientation = None
+        self._OrientationConfidence = None
+
+    @property
+    def Serial(self):
+        return self._Serial
+
+    @Serial.setter
+    def Serial(self, Serial):
+        self._Serial = Serial
+
+    @property
+    def Brand(self):
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Year(self):
+        return self._Year
+
+    @Year.setter
+    def Year(self, Year):
+        self._Year = Year
+
+    @property
+    def CarLocation(self):
+        return self._CarLocation
+
+    @CarLocation.setter
+    def CarLocation(self, CarLocation):
+        self._CarLocation = CarLocation
+
+    @property
+    def PlateContent(self):
+        return self._PlateContent
+
+    @PlateContent.setter
+    def PlateContent(self, PlateContent):
+        self._PlateContent = PlateContent
+
+    @property
+    def PlateConfidence(self):
+        return self._PlateConfidence
+
+    @PlateConfidence.setter
+    def PlateConfidence(self, PlateConfidence):
+        self._PlateConfidence = PlateConfidence
+
+    @property
+    def TypeConfidence(self):
+        return self._TypeConfidence
+
+    @TypeConfidence.setter
+    def TypeConfidence(self, TypeConfidence):
+        self._TypeConfidence = TypeConfidence
+
+    @property
+    def ColorConfidence(self):
+        return self._ColorConfidence
+
+    @ColorConfidence.setter
+    def ColorConfidence(self, ColorConfidence):
+        self._ColorConfidence = ColorConfidence
+
+    @property
+    def Orientation(self):
+        return self._Orientation
+
+    @Orientation.setter
+    def Orientation(self, Orientation):
+        self._Orientation = Orientation
+
+    @property
+    def OrientationConfidence(self):
+        return self._OrientationConfidence
+
+    @OrientationConfidence.setter
+    def OrientationConfidence(self, OrientationConfidence):
+        self._OrientationConfidence = OrientationConfidence
 
 
     def _deserialize(self, params):
-        self.Serial = params.get("Serial")
-        self.Brand = params.get("Brand")
-        self.Type = params.get("Type")
-        self.Color = params.get("Color")
-        self.Confidence = params.get("Confidence")
-        self.Year = params.get("Year")
+        self._Serial = params.get("Serial")
+        self._Brand = params.get("Brand")
+        self._Type = params.get("Type")
+        self._Color = params.get("Color")
+        self._Confidence = params.get("Confidence")
+        self._Year = params.get("Year")
         if params.get("CarLocation") is not None:
-            self.CarLocation = []
+            self._CarLocation = []
             for item in params.get("CarLocation"):
                 obj = Coord()
                 obj._deserialize(item)
-                self.CarLocation.append(obj)
+                self._CarLocation.append(obj)
         if params.get("PlateContent") is not None:
-            self.PlateContent = CarPlateContent()
-            self.PlateContent._deserialize(params.get("PlateContent"))
-        self.PlateConfidence = params.get("PlateConfidence")
-        self.TypeConfidence = params.get("TypeConfidence")
-        self.ColorConfidence = params.get("ColorConfidence")
-        self.Orientation = params.get("Orientation")
-        self.OrientationConfidence = params.get("OrientationConfidence")
+            self._PlateContent = CarPlateContent()
+            self._PlateContent._deserialize(params.get("PlateContent"))
+        self._PlateConfidence = params.get("PlateConfidence")
+        self._TypeConfidence = params.get("TypeConfidence")
+        self._ColorConfidence = params.get("ColorConfidence")
+        self._Orientation = params.get("Orientation")
+        self._OrientationConfidence = params.get("OrientationConfidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -393,26 +728,51 @@ class ColorInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Color: RGB颜色值（16进制），例如：291A18。
+        :param _Color: RGB颜色值（16进制），例如：291A18。
         :type Color: str
-        :param Percentage: 当前颜色标签所占比例。
+        :param _Percentage: 当前颜色标签所占比例。
         :type Percentage: float
-        :param Label: 颜色标签。蜜柚色，米驼色等。
+        :param _Label: 颜色标签。蜜柚色，米驼色等。
         :type Label: str
         """
-        self.Color = None
-        self.Percentage = None
-        self.Label = None
+        self._Color = None
+        self._Percentage = None
+        self._Label = None
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Percentage(self):
+        return self._Percentage
+
+    @Percentage.setter
+    def Percentage(self, Percentage):
+        self._Percentage = Percentage
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
 
 
     def _deserialize(self, params):
-        self.Color = params.get("Color")
-        self.Percentage = params.get("Percentage")
-        self.Label = params.get("Label")
+        self._Color = params.get("Color")
+        self._Percentage = params.get("Percentage")
+        self._Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -425,22 +785,39 @@ class Coord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: 横坐标x
+        :param _X: 横坐标x
         :type X: int
-        :param Y: 纵坐标y
+        :param _Y: 纵坐标y
         :type Y: int
         """
-        self.X = None
-        self.Y = None
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -453,19 +830,19 @@ class CreateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库ID，不可重复，仅支持字母、数字和下划线。图库数量单个用户上限为30。
+        :param _GroupId: 图库ID，不可重复，仅支持字母、数字和下划线。图库数量单个用户上限为30。
         :type GroupId: str
-        :param GroupName: 图库名称描述。
+        :param _GroupName: 图库名称描述。
         :type GroupName: str
-        :param MaxCapacity: 图片库可容纳的最大图片特征条数，一张图片对应一条图片特征数据，不支持修改。
+        :param _MaxCapacity: 图片库可容纳的最大图片特征条数，一张图片对应一条图片特征数据，不支持修改。
 单个图片库容量最大可达亿级，达到容量限制后继续创建图片将会报错。
 注意，包月计费下支持绑定的最小库容量为500万。
         :type MaxCapacity: int
-        :param Brief: 图库简介。
+        :param _Brief: 图库简介。
         :type Brief: str
-        :param MaxQps: 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
+        :param _MaxQps: 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
         :type MaxQps: int
-        :param GroupType: 图库类型，用于决定图像搜索的服务类型和算法版本，默认为4。
+        :param _GroupType: 图库类型，用于决定图像搜索的服务类型和算法版本，默认为4。
 GroupType不支持修改，若不确定适用的服务类型，建议先对不同类型分别小规模测试后再开始正式使用。
 参数取值：
 4：通用图像搜索1.0版。
@@ -475,25 +852,74 @@ GroupType不支持修改，若不确定适用的服务类型，建议先对不�
 1 - 3：通用图像搜索旧版，不推荐使用。
         :type GroupType: int
         """
-        self.GroupId = None
-        self.GroupName = None
-        self.MaxCapacity = None
-        self.Brief = None
-        self.MaxQps = None
-        self.GroupType = None
+        self._GroupId = None
+        self._GroupName = None
+        self._MaxCapacity = None
+        self._Brief = None
+        self._MaxQps = None
+        self._GroupType = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def MaxCapacity(self):
+        return self._MaxCapacity
+
+    @MaxCapacity.setter
+    def MaxCapacity(self, MaxCapacity):
+        self._MaxCapacity = MaxCapacity
+
+    @property
+    def Brief(self):
+        return self._Brief
+
+    @Brief.setter
+    def Brief(self, Brief):
+        self._Brief = Brief
+
+    @property
+    def MaxQps(self):
+        return self._MaxQps
+
+    @MaxQps.setter
+    def MaxQps(self, MaxQps):
+        self._MaxQps = MaxQps
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.MaxCapacity = params.get("MaxCapacity")
-        self.Brief = params.get("Brief")
-        self.MaxQps = params.get("MaxQps")
-        self.GroupType = params.get("GroupType")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._MaxCapacity = params.get("MaxCapacity")
+        self._Brief = params.get("Brief")
+        self._MaxQps = params.get("MaxQps")
+        self._GroupType = params.get("GroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -506,14 +932,22 @@ class CreateGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateImageRequest(AbstractModel):
@@ -523,15 +957,15 @@ class CreateImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库ID。
+        :param _GroupId: 图库ID。
         :type GroupId: str
-        :param EntityId: 物品ID，最多支持64个字符。 
+        :param _EntityId: 物品ID，最多支持64个字符。 
 一个物品ID可以包含多张图片，若EntityId已存在，则对其追加图片。同一个EntityId，最大支持10张图。
         :type EntityId: str
-        :param PicName: 图片名称，最多支持64个字符， 
+        :param _PicName: 图片名称，最多支持64个字符， 
 PicName唯一确定一张图片，具有唯一性。
         :type PicName: str
-        :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
+        :param _ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
 ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -540,22 +974,22 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 建议：
 • 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param CustomContent: 图片自定义备注内容，最多支持4096个字符，查询时原样带回。
+        :param _CustomContent: 图片自定义备注内容，最多支持4096个字符，查询时原样带回。
         :type CustomContent: str
-        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过5M。 
+        :param _ImageBase64: 图片 base64 数据，base64 编码后大小不可超过5M。 
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 • 图片大小：base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
 • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
         :type ImageBase64: str
-        :param Tags: 图片自定义标签，最多不超过10个，格式为JSON。
+        :param _Tags: 图片自定义标签，最多不超过10个，格式为JSON。
         :type Tags: str
-        :param EnableDetect: 是否需要启用主体识别，默认为**TRUE**。
+        :param _EnableDetect: 是否需要启用主体识别，默认为**TRUE**。
 • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
 • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
         :type EnableDetect: bool
-        :param CategoryId: 图像类目ID。
+        :param _CategoryId: 图像类目ID。
 若设置类目ID，提取以下类目的主体创建图片。
 类目取值说明：
 0：上衣。
@@ -566,39 +1000,120 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 5：配饰。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
         :type CategoryId: int
-        :param ImageRect: 图像主体区域。
+        :param _ImageRect: 图像主体区域。
 若设置主体区域，提取指定的区域创建图片。
         :type ImageRect: :class:`tencentcloud.tiia.v20190529.models.Rect`
         """
-        self.GroupId = None
-        self.EntityId = None
-        self.PicName = None
-        self.ImageUrl = None
-        self.CustomContent = None
-        self.ImageBase64 = None
-        self.Tags = None
-        self.EnableDetect = None
-        self.CategoryId = None
-        self.ImageRect = None
+        self._GroupId = None
+        self._EntityId = None
+        self._PicName = None
+        self._ImageUrl = None
+        self._CustomContent = None
+        self._ImageBase64 = None
+        self._Tags = None
+        self._EnableDetect = None
+        self._CategoryId = None
+        self._ImageRect = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def EntityId(self):
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def PicName(self):
+        return self._PicName
+
+    @PicName.setter
+    def PicName(self, PicName):
+        self._PicName = PicName
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def CustomContent(self):
+        return self._CustomContent
+
+    @CustomContent.setter
+    def CustomContent(self, CustomContent):
+        self._CustomContent = CustomContent
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def EnableDetect(self):
+        return self._EnableDetect
+
+    @EnableDetect.setter
+    def EnableDetect(self, EnableDetect):
+        self._EnableDetect = EnableDetect
+
+    @property
+    def CategoryId(self):
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def ImageRect(self):
+        return self._ImageRect
+
+    @ImageRect.setter
+    def ImageRect(self, ImageRect):
+        self._ImageRect = ImageRect
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.EntityId = params.get("EntityId")
-        self.PicName = params.get("PicName")
-        self.ImageUrl = params.get("ImageUrl")
-        self.CustomContent = params.get("CustomContent")
-        self.ImageBase64 = params.get("ImageBase64")
-        self.Tags = params.get("Tags")
-        self.EnableDetect = params.get("EnableDetect")
-        self.CategoryId = params.get("CategoryId")
+        self._GroupId = params.get("GroupId")
+        self._EntityId = params.get("EntityId")
+        self._PicName = params.get("PicName")
+        self._ImageUrl = params.get("ImageUrl")
+        self._CustomContent = params.get("CustomContent")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._Tags = params.get("Tags")
+        self._EnableDetect = params.get("EnableDetect")
+        self._CategoryId = params.get("CategoryId")
         if params.get("ImageRect") is not None:
-            self.ImageRect = Rect()
-            self.ImageRect._deserialize(params.get("ImageRect"))
+            self._ImageRect = Rect()
+            self._ImageRect._deserialize(params.get("ImageRect"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -611,23 +1126,39 @@ class CreateImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Object: 输入图的主体信息。
+        :param _Object: 输入图的主体信息。
 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 注意：此字段可能返回 null，表示取不到有效值。
         :type Object: :class:`tencentcloud.tiia.v20190529.models.ObjectInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Object = None
-        self.RequestId = None
+        self._Object = None
+        self._RequestId = None
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Object") is not None:
-            self.Object = ObjectInfo()
-            self.Object._deserialize(params.get("Object"))
-        self.RequestId = params.get("RequestId")
+            self._Object = ObjectInfo()
+            self._Object._deserialize(params.get("Object"))
+        self._RequestId = params.get("RequestId")
 
 
 class CropImageRequest(AbstractModel):
@@ -637,15 +1168,15 @@ class CropImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Width: 需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例。
+        :param _Width: 需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例。
 输入数字请大于0、小于图片宽度的像素值。
         :type Width: int
-        :param Height: 需要裁剪区域的高度，与Width共同组成所需裁剪的图片宽高比例。
+        :param _Height: 需要裁剪区域的高度，与Width共同组成所需裁剪的图片宽高比例。
 输入数字请大于0、小于图片高度的像素值。
 宽高比例（Width : Height）会简化为最简分数，即如果Width输入10、Height输入20，会简化为1：2。
 Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响效果。
         :type Height: int
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -654,25 +1185,58 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
 • 长宽比：长边：短边<5。 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要Base64编码，并且要去掉编码头部。
         :type ImageBase64: str
         """
-        self.Width = None
-        self.Height = None
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._Width = None
+        self._Height = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -685,19 +1249,19 @@ class CropImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: 裁剪区域左上角X坐标值
+        :param _X: 裁剪区域左上角X坐标值
         :type X: int
-        :param Y: 裁剪区域左上角Y坐标值
+        :param _Y: 裁剪区域左上角Y坐标值
         :type Y: int
-        :param Width: 裁剪区域的宽度，单位为像素
+        :param _Width: 裁剪区域的宽度，单位为像素
         :type Width: int
-        :param Height: 裁剪区域的高度，单位为像素
+        :param _Height: 裁剪区域的高度，单位为像素
         :type Height: int
-        :param OriginalWidth: 原图宽度，单位为像素
+        :param _OriginalWidth: 原图宽度，单位为像素
         :type OriginalWidth: int
-        :param OriginalHeight: 原图高度，单位为像素
+        :param _OriginalHeight: 原图高度，单位为像素
         :type OriginalHeight: int
-        :param CropResult: 0：抠图正常；
+        :param _CropResult: 0：抠图正常；
 1：原图过长，指原图的高度是宽度的1.8倍以上；
 2：原图过宽，指原图的宽度是高度的1.8倍以上；
 3：抠图区域过长，指抠图的高度是主体备选框高度的1.6倍以上；
@@ -707,28 +1271,92 @@ class CropImageResponse(AbstractModel):
 
 以上是辅助决策的参考建议，可以根据业务需求选择采纳或忽视。
         :type CropResult: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
-        self.OriginalWidth = None
-        self.OriginalHeight = None
-        self.CropResult = None
-        self.RequestId = None
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+        self._OriginalWidth = None
+        self._OriginalHeight = None
+        self._CropResult = None
+        self._RequestId = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def OriginalWidth(self):
+        return self._OriginalWidth
+
+    @OriginalWidth.setter
+    def OriginalWidth(self, OriginalWidth):
+        self._OriginalWidth = OriginalWidth
+
+    @property
+    def OriginalHeight(self):
+        return self._OriginalHeight
+
+    @OriginalHeight.setter
+    def OriginalHeight(self, OriginalHeight):
+        self._OriginalHeight = OriginalHeight
+
+    @property
+    def CropResult(self):
+        return self._CropResult
+
+    @CropResult.setter
+    def CropResult(self, CropResult):
+        self._CropResult = CropResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.OriginalWidth = params.get("OriginalWidth")
-        self.OriginalHeight = params.get("OriginalHeight")
-        self.CropResult = params.get("CropResult")
-        self.RequestId = params.get("RequestId")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._OriginalWidth = params.get("OriginalWidth")
+        self._OriginalHeight = params.get("OriginalHeight")
+        self._CropResult = params.get("CropResult")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteImagesRequest(AbstractModel):
@@ -738,26 +1366,51 @@ class DeleteImagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库名称。
+        :param _GroupId: 图库名称。
         :type GroupId: str
-        :param EntityId: 物品ID。
+        :param _EntityId: 物品ID。
         :type EntityId: str
-        :param PicName: 图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
+        :param _PicName: 图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
         :type PicName: str
         """
-        self.GroupId = None
-        self.EntityId = None
-        self.PicName = None
+        self._GroupId = None
+        self._EntityId = None
+        self._PicName = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def EntityId(self):
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def PicName(self):
+        return self._PicName
+
+    @PicName.setter
+    def PicName(self, PicName):
+        self._PicName = PicName
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.EntityId = params.get("EntityId")
-        self.PicName = params.get("PicName")
+        self._GroupId = params.get("GroupId")
+        self._EntityId = params.get("EntityId")
+        self._PicName = params.get("PicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -770,14 +1423,22 @@ class DeleteImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGroupsRequest(AbstractModel):
@@ -787,26 +1448,51 @@ class DescribeGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 起始序号，默认值为0。
+        :param _Offset: 起始序号，默认值为0。
         :type Offset: int
-        :param Limit: 返回数量，默认值为10，最大值为100。
+        :param _Limit: 返回数量，默认值为10，最大值为100。
         :type Limit: int
-        :param GroupId: 图库ID，如果不为空，则返回指定库信息。
+        :param _GroupId: 图库ID，如果不为空，则返回指定库信息。
         :type GroupId: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.GroupId = None
+        self._Offset = None
+        self._Limit = None
+        self._GroupId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.GroupId = params.get("GroupId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -819,24 +1505,40 @@ class DescribeGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Groups: 图库信息
+        :param _Groups: 图库信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Groups = None
-        self.RequestId = None
+        self._Groups = None
+        self._RequestId = None
+
+    @property
+    def Groups(self):
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Groups") is not None:
-            self.Groups = []
+            self._Groups = []
             for item in params.get("Groups"):
                 obj = GroupInfo()
                 obj._deserialize(item)
-                self.Groups.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Groups.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImagesRequest(AbstractModel):
@@ -846,26 +1548,51 @@ class DescribeImagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库名称。
+        :param _GroupId: 图库名称。
         :type GroupId: str
-        :param EntityId: 物品ID。
+        :param _EntityId: 物品ID。
         :type EntityId: str
-        :param PicName: 图片名称。
+        :param _PicName: 图片名称。
         :type PicName: str
         """
-        self.GroupId = None
-        self.EntityId = None
-        self.PicName = None
+        self._GroupId = None
+        self._EntityId = None
+        self._PicName = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def EntityId(self):
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def PicName(self):
+        return self._PicName
+
+    @PicName.setter
+    def PicName(self, PicName):
+        self._PicName = PicName
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.EntityId = params.get("EntityId")
-        self.PicName = params.get("PicName")
+        self._GroupId = params.get("GroupId")
+        self._EntityId = params.get("EntityId")
+        self._PicName = params.get("PicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -878,31 +1605,63 @@ class DescribeImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库名称。
+        :param _GroupId: 图库名称。
         :type GroupId: str
-        :param EntityId: 物品ID。
+        :param _EntityId: 物品ID。
         :type EntityId: str
-        :param ImageInfos: 图片信息。
+        :param _ImageInfos: 图片信息。
         :type ImageInfos: list of ImageInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GroupId = None
-        self.EntityId = None
-        self.ImageInfos = None
-        self.RequestId = None
+        self._GroupId = None
+        self._EntityId = None
+        self._ImageInfos = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def EntityId(self):
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def ImageInfos(self):
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.EntityId = params.get("EntityId")
+        self._GroupId = params.get("GroupId")
+        self._EntityId = params.get("EntityId")
         if params.get("ImageInfos") is not None:
-            self.ImageInfos = []
+            self._ImageInfos = []
             for item in params.get("ImageInfos"):
                 obj = ImageInfo()
                 obj._deserialize(item)
-                self.ImageInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ImageInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectChefDressRequest(AbstractModel):
@@ -912,7 +1671,7 @@ class DetectChefDressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片的 Url 。
+        :param _ImageUrl: 图片的 Url 。
 ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
@@ -920,35 +1679,68 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 建议：
 • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要base64编码，并且要去掉编码头部。
 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
 支持的图片大小：所下载图片经Base64编码后不超过5M。
         :type ImageBase64: str
-        :param EnableDetect: 人体检测模型开关，“true”为开启，“false”为关闭
+        :param _EnableDetect: 人体检测模型开关，“true”为开启，“false”为关闭
 默认为开启，开启后可先对图片中的人体进行检测之后再进行属性识别
         :type EnableDetect: bool
-        :param EnablePreferred: 人体优选开关，“true”为开启，“false”为关闭
+        :param _EnablePreferred: 人体优选开关，“true”为开启，“false”为关闭
 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
 人体优选开启时，检测到的人体分辨率不超过1920*1080 pixel
         :type EnablePreferred: bool
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
-        self.EnableDetect = None
-        self.EnablePreferred = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._EnableDetect = None
+        self._EnablePreferred = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def EnableDetect(self):
+        return self._EnableDetect
+
+    @EnableDetect.setter
+    def EnableDetect(self, EnableDetect):
+        self._EnableDetect = EnableDetect
+
+    @property
+    def EnablePreferred(self):
+        return self._EnablePreferred
+
+    @EnablePreferred.setter
+    def EnablePreferred(self, EnablePreferred):
+        self._EnablePreferred = EnablePreferred
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
-        self.EnableDetect = params.get("EnableDetect")
-        self.EnablePreferred = params.get("EnablePreferred")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._EnableDetect = params.get("EnableDetect")
+        self._EnablePreferred = params.get("EnablePreferred")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -961,24 +1753,40 @@ class DetectChefDressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+        :param _Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bodies: list of AttributesForBody
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Bodies = None
-        self.RequestId = None
+        self._Bodies = None
+        self._RequestId = None
+
+    @property
+    def Bodies(self):
+        return self._Bodies
+
+    @Bodies.setter
+    def Bodies(self, Bodies):
+        self._Bodies = Bodies
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Bodies") is not None:
-            self.Bodies = []
+            self._Bodies = []
             for item in params.get("Bodies"):
                 obj = AttributesForBody()
                 obj._deserialize(item)
-                self.Bodies.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Bodies.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectDisgustRequest(AbstractModel):
@@ -988,7 +1796,7 @@ class DetectDisgustRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -997,21 +1805,38 @@ class DetectDisgustRequest(AbstractModel):
 • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1024,22 +1849,46 @@ class DetectDisgustResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Confidence: 对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
+        :param _Confidence: 对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
         :type Confidence: float
-        :param Type: 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
+        :param _Type: 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
         :type Type: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Confidence = None
-        self.Type = None
-        self.RequestId = None
+        self._Confidence = None
+        self._Type = None
+        self._RequestId = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Type = params.get("Type")
-        self.RequestId = params.get("RequestId")
+        self._Confidence = params.get("Confidence")
+        self._Type = params.get("Type")
+        self._RequestId = params.get("RequestId")
 
 
 class DetectEnvelopeRequest(AbstractModel):
@@ -1049,26 +1898,43 @@ class DetectEnvelopeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+        :param _ImageUrl: 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 图片大小的限制为4M，图片像素的限制为4k。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+        :param _ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
 图片大小的限制为4M，图片像素的限制为4k。
 **注意：图片需要base64编码，并且要去掉编码头部。
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1081,34 +1947,58 @@ class DetectEnvelopeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstTags: 一级标签结果数组。识别是否文件封。
+        :param _FirstTags: 一级标签结果数组。识别是否文件封。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstTags: list of ImageTag
-        :param SecondTags: 二级标签结果数组。识别文件封正反面。
+        :param _SecondTags: 二级标签结果数组。识别文件封正反面。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondTags: list of ImageTag
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FirstTags = None
-        self.SecondTags = None
-        self.RequestId = None
+        self._FirstTags = None
+        self._SecondTags = None
+        self._RequestId = None
+
+    @property
+    def FirstTags(self):
+        return self._FirstTags
+
+    @FirstTags.setter
+    def FirstTags(self, FirstTags):
+        self._FirstTags = FirstTags
+
+    @property
+    def SecondTags(self):
+        return self._SecondTags
+
+    @SecondTags.setter
+    def SecondTags(self, SecondTags):
+        self._SecondTags = SecondTags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FirstTags") is not None:
-            self.FirstTags = []
+            self._FirstTags = []
             for item in params.get("FirstTags"):
                 obj = ImageTag()
                 obj._deserialize(item)
-                self.FirstTags.append(obj)
+                self._FirstTags.append(obj)
         if params.get("SecondTags") is not None:
-            self.SecondTags = []
+            self._SecondTags = []
             for item in params.get("SecondTags"):
                 obj = ImageTag()
                 obj._deserialize(item)
-                self.SecondTags.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SecondTags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectLabelBetaRequest(AbstractModel):
@@ -1118,7 +2008,7 @@ class DetectLabelBetaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -1127,10 +2017,10 @@ class DetectLabelBetaRequest(AbstractModel):
 • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
-        :param Scenes: 本次调用支持的识别场景，可选值如下：
+        :param _Scenes: 本次调用支持的识别场景，可选值如下：
 WEB，针对网络图片优化;
 CAMERA，针对手机摄像头拍摄图片优化;
 ALBUM，针对手机相册、网盘产品优化;
@@ -1142,19 +2032,44 @@ LOCATION，主体位置识别；
 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
         :type Scenes: list of str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
-        self.Scenes = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._Scenes = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def Scenes(self):
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
-        self.Scenes = params.get("Scenes")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._Scenes = params.get("Scenes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1167,75 +2082,131 @@ class DetectLabelBetaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
+        :param _Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
-        :param CameraLabels: Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+        :param _CameraLabels: Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CameraLabels: list of DetectLabelItem
-        :param AlbumLabels: Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+        :param _AlbumLabels: Album相册版标签结果数组。如未选择ALBUM场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlbumLabels: list of DetectLabelItem
-        :param NewsLabels: News新闻版标签结果数组。如未选择NEWS场景，则为空。
+        :param _NewsLabels: News新闻版标签结果数组。如未选择NEWS场景，则为空。
 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewsLabels: list of DetectLabelItem
-        :param NoneCamLabels: 非实拍标签
+        :param _NoneCamLabels: 非实拍标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoneCamLabels: list of DetectLabelItem
-        :param LocationLabels: 识别结果
+        :param _LocationLabels: 识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocationLabels: list of Product
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Labels = None
-        self.CameraLabels = None
-        self.AlbumLabels = None
-        self.NewsLabels = None
-        self.NoneCamLabels = None
-        self.LocationLabels = None
-        self.RequestId = None
+        self._Labels = None
+        self._CameraLabels = None
+        self._AlbumLabels = None
+        self._NewsLabels = None
+        self._NoneCamLabels = None
+        self._LocationLabels = None
+        self._RequestId = None
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def CameraLabels(self):
+        return self._CameraLabels
+
+    @CameraLabels.setter
+    def CameraLabels(self, CameraLabels):
+        self._CameraLabels = CameraLabels
+
+    @property
+    def AlbumLabels(self):
+        return self._AlbumLabels
+
+    @AlbumLabels.setter
+    def AlbumLabels(self, AlbumLabels):
+        self._AlbumLabels = AlbumLabels
+
+    @property
+    def NewsLabels(self):
+        return self._NewsLabels
+
+    @NewsLabels.setter
+    def NewsLabels(self, NewsLabels):
+        self._NewsLabels = NewsLabels
+
+    @property
+    def NoneCamLabels(self):
+        return self._NoneCamLabels
+
+    @NoneCamLabels.setter
+    def NoneCamLabels(self, NoneCamLabels):
+        self._NoneCamLabels = NoneCamLabels
+
+    @property
+    def LocationLabels(self):
+        return self._LocationLabels
+
+    @LocationLabels.setter
+    def LocationLabels(self, LocationLabels):
+        self._LocationLabels = LocationLabels
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.Labels.append(obj)
+                self._Labels.append(obj)
         if params.get("CameraLabels") is not None:
-            self.CameraLabels = []
+            self._CameraLabels = []
             for item in params.get("CameraLabels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.CameraLabels.append(obj)
+                self._CameraLabels.append(obj)
         if params.get("AlbumLabels") is not None:
-            self.AlbumLabels = []
+            self._AlbumLabels = []
             for item in params.get("AlbumLabels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.AlbumLabels.append(obj)
+                self._AlbumLabels.append(obj)
         if params.get("NewsLabels") is not None:
-            self.NewsLabels = []
+            self._NewsLabels = []
             for item in params.get("NewsLabels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.NewsLabels.append(obj)
+                self._NewsLabels.append(obj)
         if params.get("NoneCamLabels") is not None:
-            self.NoneCamLabels = []
+            self._NoneCamLabels = []
             for item in params.get("NoneCamLabels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.NoneCamLabels.append(obj)
+                self._NoneCamLabels.append(obj)
         if params.get("LocationLabels") is not None:
-            self.LocationLabels = []
+            self._LocationLabels = []
             for item in params.get("LocationLabels"):
                 obj = Product()
                 obj._deserialize(item)
-                self.LocationLabels.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._LocationLabels.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectLabelItem(AbstractModel):
@@ -1245,30 +2216,63 @@ class DetectLabelItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 图片中的物体名称。
+        :param _Name: 图片中的物体名称。
         :type Name: str
-        :param Confidence: 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定。
+        :param _Confidence: 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定。
         :type Confidence: int
-        :param FirstCategory: 标签的一级分类
+        :param _FirstCategory: 标签的一级分类
         :type FirstCategory: str
-        :param SecondCategory: 标签的二级分类
+        :param _SecondCategory: 标签的二级分类
         :type SecondCategory: str
         """
-        self.Name = None
-        self.Confidence = None
-        self.FirstCategory = None
-        self.SecondCategory = None
+        self._Name = None
+        self._Confidence = None
+        self._FirstCategory = None
+        self._SecondCategory = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def FirstCategory(self):
+        return self._FirstCategory
+
+    @FirstCategory.setter
+    def FirstCategory(self, FirstCategory):
+        self._FirstCategory = FirstCategory
+
+    @property
+    def SecondCategory(self):
+        return self._SecondCategory
+
+    @SecondCategory.setter
+    def SecondCategory(self, SecondCategory):
+        self._SecondCategory = SecondCategory
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Confidence = params.get("Confidence")
-        self.FirstCategory = params.get("FirstCategory")
-        self.SecondCategory = params.get("SecondCategory")
+        self._Name = params.get("Name")
+        self._Confidence = params.get("Confidence")
+        self._FirstCategory = params.get("FirstCategory")
+        self._SecondCategory = params.get("SecondCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1281,7 +2285,7 @@ class DetectLabelProRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片 URL 地址。 
+        :param _ImageUrl: 图片 URL 地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG、BMP。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -1290,7 +2294,7 @@ class DetectLabelProRequest(AbstractModel):
 • 长宽比：长边:短边<5； 
 • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片 Base64 编码数据。
+        :param _ImageBase64: 图片 Base64 编码数据。
 与ImageUrl同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：PNG、JPG、JPEG、BMP。 
@@ -1298,17 +2302,34 @@ class DetectLabelProRequest(AbstractModel):
 **<font color=#1E90FF>注意：图片需要Base64编码，并且要去掉编码头部。</font>**
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1321,24 +2342,40 @@ class DetectLabelProResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Labels: 返回标签数组。
+        :param _Labels: 返回标签数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Labels = None
-        self.RequestId = None
+        self._Labels = None
+        self._RequestId = None
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.Labels.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Labels.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectLabelRequest(AbstractModel):
@@ -1348,14 +2385,14 @@ class DetectLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageBase64: 图片 Base64 编码数据。
+        :param _ImageBase64: 图片 Base64 编码数据。
 与ImageUrl同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：PNG、JPG、JPEG、BMP。 
 • 图片大小：经Base64编码后不超过4M。
 **<font color=#1E90FF>注意：图片需要Base64编码，并且要去掉编码头部。</font>**
         :type ImageBase64: str
-        :param ImageUrl: 图片 URL 地址。 
+        :param _ImageUrl: 图片 URL 地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG、BMP。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -1364,7 +2401,7 @@ class DetectLabelRequest(AbstractModel):
 • 长宽比：长边:短边<5； 
 • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param Scenes: 本次调用支持的识别场景，可选值如下：
+        :param _Scenes: 本次调用支持的识别场景，可选值如下：
 • WEB，针对网络图片优化;
 • CAMERA，针对手机摄像头拍摄图片优化;
 • ALBUM，针对手机相册、网盘产品优化;
@@ -1374,19 +2411,44 @@ class DetectLabelRequest(AbstractModel):
 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
         :type Scenes: list of str
         """
-        self.ImageBase64 = None
-        self.ImageUrl = None
-        self.Scenes = None
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._Scenes = None
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Scenes(self):
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
 
 
     def _deserialize(self, params):
-        self.ImageBase64 = params.get("ImageBase64")
-        self.ImageUrl = params.get("ImageUrl")
-        self.Scenes = params.get("Scenes")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._Scenes = params.get("Scenes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1399,55 +2461,95 @@ class DetectLabelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
+        :param _Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
-        :param CameraLabels: Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+        :param _CameraLabels: Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CameraLabels: list of DetectLabelItem
-        :param AlbumLabels: Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+        :param _AlbumLabels: Album相册版标签结果数组。如未选择ALBUM场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlbumLabels: list of DetectLabelItem
-        :param NewsLabels: News新闻版标签结果数组。如未选择NEWS场景，则为空。
+        :param _NewsLabels: News新闻版标签结果数组。如未选择NEWS场景，则为空。
 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewsLabels: list of DetectLabelItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Labels = None
-        self.CameraLabels = None
-        self.AlbumLabels = None
-        self.NewsLabels = None
-        self.RequestId = None
+        self._Labels = None
+        self._CameraLabels = None
+        self._AlbumLabels = None
+        self._NewsLabels = None
+        self._RequestId = None
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def CameraLabels(self):
+        return self._CameraLabels
+
+    @CameraLabels.setter
+    def CameraLabels(self, CameraLabels):
+        self._CameraLabels = CameraLabels
+
+    @property
+    def AlbumLabels(self):
+        return self._AlbumLabels
+
+    @AlbumLabels.setter
+    def AlbumLabels(self, AlbumLabels):
+        self._AlbumLabels = AlbumLabels
+
+    @property
+    def NewsLabels(self):
+        return self._NewsLabels
+
+    @NewsLabels.setter
+    def NewsLabels(self, NewsLabels):
+        self._NewsLabels = NewsLabels
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.Labels.append(obj)
+                self._Labels.append(obj)
         if params.get("CameraLabels") is not None:
-            self.CameraLabels = []
+            self._CameraLabels = []
             for item in params.get("CameraLabels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.CameraLabels.append(obj)
+                self._CameraLabels.append(obj)
         if params.get("AlbumLabels") is not None:
-            self.AlbumLabels = []
+            self._AlbumLabels = []
             for item in params.get("AlbumLabels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.AlbumLabels.append(obj)
+                self._AlbumLabels.append(obj)
         if params.get("NewsLabels") is not None:
-            self.NewsLabels = []
+            self._NewsLabels = []
             for item in params.get("NewsLabels"):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
-                self.NewsLabels.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._NewsLabels.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectMisbehaviorRequest(AbstractModel):
@@ -1457,7 +2559,7 @@ class DetectMisbehaviorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -1466,21 +2568,38 @@ class DetectMisbehaviorRequest(AbstractModel):
 • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1493,22 +2612,46 @@ class DetectMisbehaviorResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Confidence: 对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
+        :param _Confidence: 对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
         :type Confidence: float
-        :param Type: 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
+        :param _Type: 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
         :type Type: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Confidence = None
-        self.Type = None
-        self.RequestId = None
+        self._Confidence = None
+        self._Type = None
+        self._RequestId = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Type = params.get("Type")
-        self.RequestId = params.get("RequestId")
+        self._Confidence = params.get("Confidence")
+        self._Type = params.get("Type")
+        self._RequestId = params.get("RequestId")
 
 
 class DetectPetRequest(AbstractModel):
@@ -1518,26 +2661,43 @@ class DetectPetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+        :param _ImageUrl: 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 图片大小的限制为4M，图片像素的限制为4k。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+        :param _ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
 图片大小的限制为4M，图片像素的限制为4k。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1550,23 +2710,39 @@ class DetectPetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Pets: 识别出图片中的宠物信息列表。
+        :param _Pets: 识别出图片中的宠物信息列表。
         :type Pets: list of Pet
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Pets = None
-        self.RequestId = None
+        self._Pets = None
+        self._RequestId = None
+
+    @property
+    def Pets(self):
+        return self._Pets
+
+    @Pets.setter
+    def Pets(self, Pets):
+        self._Pets = Pets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Pets") is not None:
-            self.Pets = []
+            self._Pets = []
             for item in params.get("Pets"):
                 obj = Pet()
                 obj._deserialize(item)
-                self.Pets.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Pets.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectProductBetaRequest(AbstractModel):
@@ -1576,28 +2752,53 @@ class DetectProductBetaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
+        :param _ImageUrl: 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
 建议先对图片进行压缩，以便提升处理速度。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
+        :param _ImageBase64: 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
 与ImageUrl同时存在时优先使用ImageUrl字段。
         :type ImageBase64: str
-        :param NeedLemma: 是否需要百科信息 1：是，0: 否，默认是0
+        :param _NeedLemma: 是否需要百科信息 1：是，0: 否，默认是0
         :type NeedLemma: int
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
-        self.NeedLemma = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._NeedLemma = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def NeedLemma(self):
+        return self._NeedLemma
+
+    @NeedLemma.setter
+    def NeedLemma(self, NeedLemma):
+        self._NeedLemma = NeedLemma
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
-        self.NeedLemma = params.get("NeedLemma")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._NeedLemma = params.get("NeedLemma")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1610,42 +2811,74 @@ class DetectProductBetaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionDetected: 检测到的图片中的商品位置和品类预测。 
+        :param _RegionDetected: 检测到的图片中的商品位置和品类预测。 
 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 最多可以输出__3组__检测结果。
         :type RegionDetected: list of RegionDetected
-        :param ProductInfo: 图像识别出的商品的详细信息。 
+        :param _ProductInfo: 图像识别出的商品的详细信息。 
 当图像中检测到多个物品时，会对显著性最高的进行识别。
         :type ProductInfo: :class:`tencentcloud.tiia.v20190529.models.ProductInfo`
-        :param ProductInfoList: 相似商品信息列表
+        :param _ProductInfoList: 相似商品信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfoList: list of ProductInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RegionDetected = None
-        self.ProductInfo = None
-        self.ProductInfoList = None
-        self.RequestId = None
+        self._RegionDetected = None
+        self._ProductInfo = None
+        self._ProductInfoList = None
+        self._RequestId = None
+
+    @property
+    def RegionDetected(self):
+        return self._RegionDetected
+
+    @RegionDetected.setter
+    def RegionDetected(self, RegionDetected):
+        self._RegionDetected = RegionDetected
+
+    @property
+    def ProductInfo(self):
+        return self._ProductInfo
+
+    @ProductInfo.setter
+    def ProductInfo(self, ProductInfo):
+        self._ProductInfo = ProductInfo
+
+    @property
+    def ProductInfoList(self):
+        return self._ProductInfoList
+
+    @ProductInfoList.setter
+    def ProductInfoList(self, ProductInfoList):
+        self._ProductInfoList = ProductInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RegionDetected") is not None:
-            self.RegionDetected = []
+            self._RegionDetected = []
             for item in params.get("RegionDetected"):
                 obj = RegionDetected()
                 obj._deserialize(item)
-                self.RegionDetected.append(obj)
+                self._RegionDetected.append(obj)
         if params.get("ProductInfo") is not None:
-            self.ProductInfo = ProductInfo()
-            self.ProductInfo._deserialize(params.get("ProductInfo"))
+            self._ProductInfo = ProductInfo()
+            self._ProductInfo._deserialize(params.get("ProductInfo"))
         if params.get("ProductInfoList") is not None:
-            self.ProductInfoList = []
+            self._ProductInfoList = []
             for item in params.get("ProductInfoList"):
                 obj = ProductInfo()
                 obj._deserialize(item)
-                self.ProductInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ProductInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectProductRequest(AbstractModel):
@@ -1655,7 +2888,7 @@ class DetectProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -1664,21 +2897,38 @@ class DetectProductRequest(AbstractModel):
 • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1691,23 +2941,39 @@ class DetectProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Products: 商品识别结果数组
+        :param _Products: 商品识别结果数组
         :type Products: list of Product
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Products = None
-        self.RequestId = None
+        self._Products = None
+        self._RequestId = None
+
+    @property
+    def Products(self):
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Products") is not None:
-            self.Products = []
+            self._Products = []
             for item in params.get("Products"):
                 obj = Product()
                 obj._deserialize(item)
-                self.Products.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Products.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetectSecurityRequest(AbstractModel):
@@ -1717,7 +2983,7 @@ class DetectSecurityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片的 Url 。
+        :param _ImageUrl: 图片的 Url 。
 ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
@@ -1725,36 +2991,69 @@ ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl�
 建议：
 • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。
+        :param _ImageBase64: 图片经过base64编码的内容。
 最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要base64编码，并且要去掉编码头部。
 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
 支持的图片大小：所下载图片经Base64编码后不超过5M。
         :type ImageBase64: str
-        :param EnableDetect: 人体检测模型开关，“true”为开启，“false”为关闭
+        :param _EnableDetect: 人体检测模型开关，“true”为开启，“false”为关闭
 开启后可先对图片中的人体进行检测之后再进行属性识别，默认为开启
         :type EnableDetect: bool
-        :param EnablePreferred: 人体优选开关，“true”为开启，“false”为关闭
+        :param _EnablePreferred: 人体优选开关，“true”为开启，“false”为关闭
 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
 如开启人体优选，检测到的人体分辨率需不大于1920*1080 pixel
         :type EnablePreferred: bool
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
-        self.EnableDetect = None
-        self.EnablePreferred = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._EnableDetect = None
+        self._EnablePreferred = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def EnableDetect(self):
+        return self._EnableDetect
+
+    @EnableDetect.setter
+    def EnableDetect(self, EnableDetect):
+        self._EnableDetect = EnableDetect
+
+    @property
+    def EnablePreferred(self):
+        return self._EnablePreferred
+
+    @EnablePreferred.setter
+    def EnablePreferred(self, EnablePreferred):
+        self._EnablePreferred = EnablePreferred
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
-        self.EnableDetect = params.get("EnableDetect")
-        self.EnablePreferred = params.get("EnablePreferred")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._EnableDetect = params.get("EnableDetect")
+        self._EnablePreferred = params.get("EnablePreferred")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1767,24 +3066,40 @@ class DetectSecurityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+        :param _Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bodies: list of AttributesForBody
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Bodies = None
-        self.RequestId = None
+        self._Bodies = None
+        self._RequestId = None
+
+    @property
+    def Bodies(self):
+        return self._Bodies
+
+    @Bodies.setter
+    def Bodies(self, Bodies):
+        self._Bodies = Bodies
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Bodies") is not None:
-            self.Bodies = []
+            self._Bodies = []
             for item in params.get("Bodies"):
                 obj = AttributesForBody()
                 obj._deserialize(item)
-                self.Bodies.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Bodies.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class EnhanceImageRequest(AbstractModel):
@@ -1794,7 +3109,7 @@ class EnhanceImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -1803,21 +3118,38 @@ class EnhanceImageRequest(AbstractModel):
 • 长宽比：长边：短边<5。 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过Base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 注意：图片需要Base64编码，并且要去掉编码头部。
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1830,18 +3162,34 @@ class EnhanceImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnhancedImage: 增强后图片的base64编码。
+        :param _EnhancedImage: 增强后图片的base64编码。
         :type EnhancedImage: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EnhancedImage = None
-        self.RequestId = None
+        self._EnhancedImage = None
+        self._RequestId = None
+
+    @property
+    def EnhancedImage(self):
+        return self._EnhancedImage
+
+    @EnhancedImage.setter
+    def EnhancedImage(self, EnhancedImage):
+        self._EnhancedImage = EnhancedImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EnhancedImage = params.get("EnhancedImage")
-        self.RequestId = params.get("RequestId")
+        self._EnhancedImage = params.get("EnhancedImage")
+        self._RequestId = params.get("RequestId")
 
 
 class GroupInfo(AbstractModel):
@@ -1851,54 +3199,127 @@ class GroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库Id。
+        :param _GroupId: 图库Id。
         :type GroupId: str
-        :param GroupName: 图库名称。
+        :param _GroupName: 图库名称。
         :type GroupName: str
-        :param Brief: 图库简介。
+        :param _Brief: 图库简介。
         :type Brief: str
-        :param MaxCapacity: 图库容量。
+        :param _MaxCapacity: 图库容量。
         :type MaxCapacity: int
-        :param MaxQps: 该库的访问限频 。
+        :param _MaxQps: 该库的访问限频 。
         :type MaxQps: int
-        :param GroupType: 图库类型，对应不同服务类型，默认为1。建议手动调整为4～6，1～3为历史版本，不推荐。
+        :param _GroupType: 图库类型，对应不同服务类型，默认为1。建议手动调整为4～6，1～3为历史版本，不推荐。
 参数值：
 4：在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。
 5：在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。
 6：在自建图片库中搜索与输入图片高度相似的图片，适用于相似图案、logo、纹理等图像元素的搜索。
         :type GroupType: int
-        :param PicCount: 图库图片数量。
+        :param _PicCount: 图库图片数量。
         :type PicCount: int
-        :param CreateTime: 图库创建时间。
+        :param _CreateTime: 图库创建时间。
         :type CreateTime: str
-        :param UpdateTime: 图库更新时间。
+        :param _UpdateTime: 图库更新时间。
         :type UpdateTime: str
         """
-        self.GroupId = None
-        self.GroupName = None
-        self.Brief = None
-        self.MaxCapacity = None
-        self.MaxQps = None
-        self.GroupType = None
-        self.PicCount = None
-        self.CreateTime = None
-        self.UpdateTime = None
+        self._GroupId = None
+        self._GroupName = None
+        self._Brief = None
+        self._MaxCapacity = None
+        self._MaxQps = None
+        self._GroupType = None
+        self._PicCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Brief(self):
+        return self._Brief
+
+    @Brief.setter
+    def Brief(self, Brief):
+        self._Brief = Brief
+
+    @property
+    def MaxCapacity(self):
+        return self._MaxCapacity
+
+    @MaxCapacity.setter
+    def MaxCapacity(self, MaxCapacity):
+        self._MaxCapacity = MaxCapacity
+
+    @property
+    def MaxQps(self):
+        return self._MaxQps
+
+    @MaxQps.setter
+    def MaxQps(self, MaxQps):
+        self._MaxQps = MaxQps
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def PicCount(self):
+        return self._PicCount
+
+    @PicCount.setter
+    def PicCount(self, PicCount):
+        self._PicCount = PicCount
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.Brief = params.get("Brief")
-        self.MaxCapacity = params.get("MaxCapacity")
-        self.MaxQps = params.get("MaxQps")
-        self.GroupType = params.get("GroupType")
-        self.PicCount = params.get("PicCount")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._Brief = params.get("Brief")
+        self._MaxCapacity = params.get("MaxCapacity")
+        self._MaxQps = params.get("MaxQps")
+        self._GroupType = params.get("GroupType")
+        self._PicCount = params.get("PicCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1911,34 +3332,75 @@ class ImageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EntityId: 图片名称。
+        :param _EntityId: 图片名称。
         :type EntityId: str
-        :param CustomContent: 用户自定义的内容。
+        :param _CustomContent: 用户自定义的内容。
         :type CustomContent: str
-        :param Tags: 图片自定义标签，JSON格式。
+        :param _Tags: 图片自定义标签，JSON格式。
         :type Tags: str
-        :param PicName: 图片名称。
+        :param _PicName: 图片名称。
         :type PicName: str
-        :param Score: 相似度。
+        :param _Score: 相似度。
         :type Score: int
         """
-        self.EntityId = None
-        self.CustomContent = None
-        self.Tags = None
-        self.PicName = None
-        self.Score = None
+        self._EntityId = None
+        self._CustomContent = None
+        self._Tags = None
+        self._PicName = None
+        self._Score = None
+
+    @property
+    def EntityId(self):
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def CustomContent(self):
+        return self._CustomContent
+
+    @CustomContent.setter
+    def CustomContent(self, CustomContent):
+        self._CustomContent = CustomContent
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PicName(self):
+        return self._PicName
+
+    @PicName.setter
+    def PicName(self, PicName):
+        self._PicName = PicName
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
 
 
     def _deserialize(self, params):
-        self.EntityId = params.get("EntityId")
-        self.CustomContent = params.get("CustomContent")
-        self.Tags = params.get("Tags")
-        self.PicName = params.get("PicName")
-        self.Score = params.get("Score")
+        self._EntityId = params.get("EntityId")
+        self._CustomContent = params.get("CustomContent")
+        self._Tags = params.get("Tags")
+        self._PicName = params.get("PicName")
+        self._Score = params.get("Score")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1951,30 +3413,63 @@ class ImageRect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: 左上角横坐标。
+        :param _X: 左上角横坐标。
         :type X: int
-        :param Y: 左上角纵坐标。
+        :param _Y: 左上角纵坐标。
         :type Y: int
-        :param Width: 宽度。
+        :param _Width: 宽度。
         :type Width: int
-        :param Height: 高度。
+        :param _Height: 高度。
         :type Height: int
         """
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1987,22 +3482,39 @@ class ImageTag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 标签内容。
+        :param _Name: 标签内容。
         :type Name: str
-        :param Confidence: 置信度范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+        :param _Confidence: 置信度范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
         :type Confidence: float
         """
-        self.Name = None
-        self.Confidence = None
+        self._Name = None
+        self._Confidence = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Confidence = params.get("Confidence")
+        self._Name = params.get("Name")
+        self._Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2015,29 +3527,54 @@ class LemmaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LemmaTitle: 词条
+        :param _LemmaTitle: 词条
 注意：此字段可能返回 null，表示取不到有效值。
         :type LemmaTitle: str
-        :param LemmaAbstract: 词条描述
+        :param _LemmaAbstract: 词条描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type LemmaAbstract: str
-        :param Tag: 标签
+        :param _Tag: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         """
-        self.LemmaTitle = None
-        self.LemmaAbstract = None
-        self.Tag = None
+        self._LemmaTitle = None
+        self._LemmaAbstract = None
+        self._Tag = None
+
+    @property
+    def LemmaTitle(self):
+        return self._LemmaTitle
+
+    @LemmaTitle.setter
+    def LemmaTitle(self, LemmaTitle):
+        self._LemmaTitle = LemmaTitle
+
+    @property
+    def LemmaAbstract(self):
+        return self._LemmaAbstract
+
+    @LemmaAbstract.setter
+    def LemmaAbstract(self, LemmaAbstract):
+        self._LemmaAbstract = LemmaAbstract
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
 
 
     def _deserialize(self, params):
-        self.LemmaTitle = params.get("LemmaTitle")
-        self.LemmaAbstract = params.get("LemmaAbstract")
-        self.Tag = params.get("Tag")
+        self._LemmaTitle = params.get("LemmaTitle")
+        self._LemmaAbstract = params.get("LemmaAbstract")
+        self._Tag = params.get("Tag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2050,30 +3587,63 @@ class Location(AbstractModel):
 
     def __init__(self):
         r"""
-        :param XMin: 位置矩形框的左上角横坐标
+        :param _XMin: 位置矩形框的左上角横坐标
         :type XMin: int
-        :param YMin: 位置矩形框的左上角纵坐标
+        :param _YMin: 位置矩形框的左上角纵坐标
         :type YMin: int
-        :param XMax: 位置矩形框的右下角横坐标
+        :param _XMax: 位置矩形框的右下角横坐标
         :type XMax: int
-        :param YMax: 位置矩形框的右下角纵坐标
+        :param _YMax: 位置矩形框的右下角纵坐标
         :type YMax: int
         """
-        self.XMin = None
-        self.YMin = None
-        self.XMax = None
-        self.YMax = None
+        self._XMin = None
+        self._YMin = None
+        self._XMax = None
+        self._YMax = None
+
+    @property
+    def XMin(self):
+        return self._XMin
+
+    @XMin.setter
+    def XMin(self, XMin):
+        self._XMin = XMin
+
+    @property
+    def YMin(self):
+        return self._YMin
+
+    @YMin.setter
+    def YMin(self, YMin):
+        self._YMin = YMin
+
+    @property
+    def XMax(self):
+        return self._XMax
+
+    @XMax.setter
+    def XMax(self, XMax):
+        self._XMax = XMax
+
+    @property
+    def YMax(self):
+        return self._YMax
+
+    @YMax.setter
+    def YMax(self, YMax):
+        self._YMax = YMax
 
 
     def _deserialize(self, params):
-        self.XMin = params.get("XMin")
-        self.YMin = params.get("YMin")
-        self.XMax = params.get("XMax")
-        self.YMax = params.get("YMax")
+        self._XMin = params.get("XMin")
+        self._YMin = params.get("YMin")
+        self._XMax = params.get("XMax")
+        self._YMax = params.get("YMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2086,52 +3656,93 @@ class ObjectInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Box: 图像主体区域。
+        :param _Box: 图像主体区域。
         :type Box: :class:`tencentcloud.tiia.v20190529.models.Box`
-        :param CategoryId: 主体类别ID。
+        :param _CategoryId: 主体类别ID。
         :type CategoryId: int
-        :param Colors: 整张图颜色信息。
+        :param _Colors: 整张图颜色信息。
         :type Colors: list of ColorInfo
-        :param Attributes: 属性信息。
+        :param _Attributes: 属性信息。
         :type Attributes: list of Attribute
-        :param AllBox: 图像的所有主体区域，置信度，以及主体区域类别ID。
+        :param _AllBox: 图像的所有主体区域，置信度，以及主体区域类别ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllBox: list of Box
         """
-        self.Box = None
-        self.CategoryId = None
-        self.Colors = None
-        self.Attributes = None
-        self.AllBox = None
+        self._Box = None
+        self._CategoryId = None
+        self._Colors = None
+        self._Attributes = None
+        self._AllBox = None
+
+    @property
+    def Box(self):
+        return self._Box
+
+    @Box.setter
+    def Box(self, Box):
+        self._Box = Box
+
+    @property
+    def CategoryId(self):
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def Colors(self):
+        return self._Colors
+
+    @Colors.setter
+    def Colors(self, Colors):
+        self._Colors = Colors
+
+    @property
+    def Attributes(self):
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def AllBox(self):
+        return self._AllBox
+
+    @AllBox.setter
+    def AllBox(self, AllBox):
+        self._AllBox = AllBox
 
 
     def _deserialize(self, params):
         if params.get("Box") is not None:
-            self.Box = Box()
-            self.Box._deserialize(params.get("Box"))
-        self.CategoryId = params.get("CategoryId")
+            self._Box = Box()
+            self._Box._deserialize(params.get("Box"))
+        self._CategoryId = params.get("CategoryId")
         if params.get("Colors") is not None:
-            self.Colors = []
+            self._Colors = []
             for item in params.get("Colors"):
                 obj = ColorInfo()
                 obj._deserialize(item)
-                self.Colors.append(obj)
+                self._Colors.append(obj)
         if params.get("Attributes") is not None:
-            self.Attributes = []
+            self._Attributes = []
             for item in params.get("Attributes"):
                 obj = Attribute()
                 obj._deserialize(item)
-                self.Attributes.append(obj)
+                self._Attributes.append(obj)
         if params.get("AllBox") is not None:
-            self.AllBox = []
+            self._AllBox = []
             for item in params.get("AllBox"):
                 obj = Box()
                 obj._deserialize(item)
-                self.AllBox.append(obj)
+                self._AllBox.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2144,28 +3755,53 @@ class Pet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 识别出的宠物类型（猫或者狗，暂不支持识别猫狗品种）。
+        :param _Name: 识别出的宠物类型（猫或者狗，暂不支持识别猫狗品种）。
         :type Name: str
-        :param Score: 识别服务给识别目标打出的置信度，范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+        :param _Score: 识别服务给识别目标打出的置信度，范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
         :type Score: int
-        :param Location: 识别目标在图片中的坐标。
+        :param _Location: 识别目标在图片中的坐标。
         :type Location: :class:`tencentcloud.tiia.v20190529.models.Rect`
         """
-        self.Name = None
-        self.Score = None
-        self.Location = None
+        self._Name = None
+        self._Score = None
+        self._Location = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Score = params.get("Score")
+        self._Name = params.get("Name")
+        self._Score = params.get("Score")
         if params.get("Location") is not None:
-            self.Location = Rect()
-            self.Location._deserialize(params.get("Location"))
+            self._Location = Rect()
+            self._Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2178,42 +3814,99 @@ class Product(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
+        :param _Name: 图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
         :type Name: str
-        :param Parents: 三级商品分类对应的一级分类和二级分类，两级之间用“-”（中划线）隔开，例如商品名称是“硬盘”，那么Parents输出为“电脑、办公-电脑配件”
+        :param _Parents: 三级商品分类对应的一级分类和二级分类，两级之间用“-”（中划线）隔开，例如商品名称是“硬盘”，那么Parents输出为“电脑、办公-电脑配件”
         :type Parents: str
-        :param Confidence: 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定
+        :param _Confidence: 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定
         :type Confidence: int
-        :param XMin: 商品坐标X轴的最小值
+        :param _XMin: 商品坐标X轴的最小值
         :type XMin: int
-        :param YMin: 商品坐标Y轴的最小值
+        :param _YMin: 商品坐标Y轴的最小值
         :type YMin: int
-        :param XMax: 商品坐标X轴的最大值
+        :param _XMax: 商品坐标X轴的最大值
         :type XMax: int
-        :param YMax: 商品坐标Y轴的最大值
+        :param _YMax: 商品坐标Y轴的最大值
         :type YMax: int
         """
-        self.Name = None
-        self.Parents = None
-        self.Confidence = None
-        self.XMin = None
-        self.YMin = None
-        self.XMax = None
-        self.YMax = None
+        self._Name = None
+        self._Parents = None
+        self._Confidence = None
+        self._XMin = None
+        self._YMin = None
+        self._XMax = None
+        self._YMax = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Parents(self):
+        return self._Parents
+
+    @Parents.setter
+    def Parents(self, Parents):
+        self._Parents = Parents
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def XMin(self):
+        return self._XMin
+
+    @XMin.setter
+    def XMin(self, XMin):
+        self._XMin = XMin
+
+    @property
+    def YMin(self):
+        return self._YMin
+
+    @YMin.setter
+    def YMin(self, YMin):
+        self._YMin = YMin
+
+    @property
+    def XMax(self):
+        return self._XMax
+
+    @XMax.setter
+    def XMax(self, XMax):
+        self._XMax = XMax
+
+    @property
+    def YMax(self):
+        return self._YMax
+
+    @YMax.setter
+    def YMax(self, YMax):
+        self._YMax = YMax
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Parents = params.get("Parents")
-        self.Confidence = params.get("Confidence")
-        self.XMin = params.get("XMin")
-        self.YMin = params.get("YMin")
-        self.XMax = params.get("XMax")
-        self.YMax = params.get("YMax")
+        self._Name = params.get("Name")
+        self._Parents = params.get("Parents")
+        self._Confidence = params.get("Confidence")
+        self._XMin = params.get("XMin")
+        self._YMin = params.get("YMin")
+        self._XMax = params.get("XMax")
+        self._YMax = params.get("YMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2227,62 +3920,135 @@ class ProductInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FindSKU: 1表示找到同款商品，以下字段为同款商品信息； 
+        :param _FindSKU: 1表示找到同款商品，以下字段为同款商品信息； 
 0表示未找到同款商品， 具体商品信息为空（参考价格、名称、品牌等），仅提供商品类目和参考图片（商品库中找到的最相似图片，供参考）。  
 是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。
         :type FindSKU: int
-        :param Location: 本商品在图片中的坐标，表示为矩形框的四个顶点坐标。
+        :param _Location: 本商品在图片中的坐标，表示为矩形框的四个顶点坐标。
         :type Location: :class:`tencentcloud.tiia.v20190529.models.Location`
-        :param Name: 商品名称
+        :param _Name: 商品名称
         :type Name: str
-        :param Brand: 商品品牌
+        :param _Brand: 商品品牌
         :type Brand: str
-        :param Price: 参考价格，综合多个信息源，仅供参考。
+        :param _Price: 参考价格，综合多个信息源，仅供参考。
         :type Price: str
-        :param ProductCategory: 识别结果的商品类目。 
+        :param _ProductCategory: 识别结果的商品类目。 
 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。 
 当类别为“非商品”时，除Location、Score和本字段之外的商品信息为空。
         :type ProductCategory: str
-        :param Score: 输入图片中的主体物品和输出结果的相似度。分值越大，输出结果与输入图片是同款的可能性越高。
+        :param _Score: 输入图片中的主体物品和输出结果的相似度。分值越大，输出结果与输入图片是同款的可能性越高。
         :type Score: float
-        :param Image: 搜索到的商品配图URL。
+        :param _Image: 搜索到的商品配图URL。
         :type Image: str
-        :param LemmaInfoList: 百科词条列表
+        :param _LemmaInfoList: 百科词条列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type LemmaInfoList: list of LemmaInfo
         """
-        self.FindSKU = None
-        self.Location = None
-        self.Name = None
-        self.Brand = None
-        self.Price = None
-        self.ProductCategory = None
-        self.Score = None
-        self.Image = None
-        self.LemmaInfoList = None
+        self._FindSKU = None
+        self._Location = None
+        self._Name = None
+        self._Brand = None
+        self._Price = None
+        self._ProductCategory = None
+        self._Score = None
+        self._Image = None
+        self._LemmaInfoList = None
+
+    @property
+    def FindSKU(self):
+        return self._FindSKU
+
+    @FindSKU.setter
+    def FindSKU(self, FindSKU):
+        self._FindSKU = FindSKU
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Brand(self):
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def ProductCategory(self):
+        return self._ProductCategory
+
+    @ProductCategory.setter
+    def ProductCategory(self, ProductCategory):
+        self._ProductCategory = ProductCategory
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def LemmaInfoList(self):
+        return self._LemmaInfoList
+
+    @LemmaInfoList.setter
+    def LemmaInfoList(self, LemmaInfoList):
+        self._LemmaInfoList = LemmaInfoList
 
 
     def _deserialize(self, params):
-        self.FindSKU = params.get("FindSKU")
+        self._FindSKU = params.get("FindSKU")
         if params.get("Location") is not None:
-            self.Location = Location()
-            self.Location._deserialize(params.get("Location"))
-        self.Name = params.get("Name")
-        self.Brand = params.get("Brand")
-        self.Price = params.get("Price")
-        self.ProductCategory = params.get("ProductCategory")
-        self.Score = params.get("Score")
-        self.Image = params.get("Image")
+            self._Location = Location()
+            self._Location._deserialize(params.get("Location"))
+        self._Name = params.get("Name")
+        self._Brand = params.get("Brand")
+        self._Price = params.get("Price")
+        self._ProductCategory = params.get("ProductCategory")
+        self._Score = params.get("Score")
+        self._Image = params.get("Image")
         if params.get("LemmaInfoList") is not None:
-            self.LemmaInfoList = []
+            self._LemmaInfoList = []
             for item in params.get("LemmaInfoList"):
                 obj = LemmaInfo()
                 obj._deserialize(item)
-                self.LemmaInfoList.append(obj)
+                self._LemmaInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2295,7 +4061,7 @@ class RecognizeCarProRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -2304,22 +4070,39 @@ class RecognizeCarProRequest(AbstractModel):
 • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2332,33 +4115,57 @@ class RecognizeCarProResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+        :param _CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
         :type CarCoords: list of Coord
-        :param CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+        :param _CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
 注意：置信度是指车牌信息置信度。
         :type CarTags: list of CarTagItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CarCoords = None
-        self.CarTags = None
-        self.RequestId = None
+        self._CarCoords = None
+        self._CarTags = None
+        self._RequestId = None
+
+    @property
+    def CarCoords(self):
+        return self._CarCoords
+
+    @CarCoords.setter
+    def CarCoords(self, CarCoords):
+        self._CarCoords = CarCoords
+
+    @property
+    def CarTags(self):
+        return self._CarTags
+
+    @CarTags.setter
+    def CarTags(self, CarTags):
+        self._CarTags = CarTags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CarCoords") is not None:
-            self.CarCoords = []
+            self._CarCoords = []
             for item in params.get("CarCoords"):
                 obj = Coord()
                 obj._deserialize(item)
-                self.CarCoords.append(obj)
+                self._CarCoords.append(obj)
         if params.get("CarTags") is not None:
-            self.CarTags = []
+            self._CarTags = []
             for item in params.get("CarTags"):
                 obj = CarTagItem()
                 obj._deserialize(item)
-                self.CarTags.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CarTags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class RecognizeCarRequest(AbstractModel):
@@ -2368,7 +4175,7 @@ class RecognizeCarRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: 图片URL地址。 
+        :param _ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
 • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
@@ -2377,22 +4184,39 @@ class RecognizeCarRequest(AbstractModel):
 • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :param _ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 **注意：图片需要base64编码，并且要去掉编码头部。**
 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
         :type ImageBase64: str
         """
-        self.ImageUrl = None
-        self.ImageBase64 = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2405,32 +4229,56 @@ class RecognizeCarResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+        :param _CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
         :type CarCoords: list of Coord
-        :param CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+        :param _CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
         :type CarTags: list of CarTagItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CarCoords = None
-        self.CarTags = None
-        self.RequestId = None
+        self._CarCoords = None
+        self._CarTags = None
+        self._RequestId = None
+
+    @property
+    def CarCoords(self):
+        return self._CarCoords
+
+    @CarCoords.setter
+    def CarCoords(self, CarCoords):
+        self._CarCoords = CarCoords
+
+    @property
+    def CarTags(self):
+        return self._CarTags
+
+    @CarTags.setter
+    def CarTags(self, CarTags):
+        self._CarTags = CarTags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CarCoords") is not None:
-            self.CarCoords = []
+            self._CarCoords = []
             for item in params.get("CarCoords"):
                 obj = Coord()
                 obj._deserialize(item)
-                self.CarCoords.append(obj)
+                self._CarCoords.append(obj)
         if params.get("CarTags") is not None:
-            self.CarTags = []
+            self._CarTags = []
             for item in params.get("CarTags"):
                 obj = CarTagItem()
                 obj._deserialize(item)
-                self.CarTags.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CarTags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class Rect(AbstractModel):
@@ -2440,30 +4288,63 @@ class Rect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: x轴坐标
+        :param _X: x轴坐标
         :type X: int
-        :param Y: y轴坐标
+        :param _Y: y轴坐标
         :type Y: int
-        :param Width: (x,y)坐标距离长度
+        :param _Width: (x,y)坐标距离长度
         :type Width: int
-        :param Height: (x,y)坐标距离高度
+        :param _Height: (x,y)坐标距离高度
         :type Height: int
         """
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2478,29 +4359,54 @@ class RegionDetected(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Category: 商品的品类预测结果。 
+        :param _Category: 商品的品类预测结果。 
 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。
         :type Category: str
-        :param CategoryScore: 商品品类预测的置信度
+        :param _CategoryScore: 商品品类预测的置信度
         :type CategoryScore: float
-        :param Location: 检测到的主体在图片中的坐标，表示为矩形框的四个顶点坐标
+        :param _Location: 检测到的主体在图片中的坐标，表示为矩形框的四个顶点坐标
         :type Location: :class:`tencentcloud.tiia.v20190529.models.Location`
         """
-        self.Category = None
-        self.CategoryScore = None
-        self.Location = None
+        self._Category = None
+        self._CategoryScore = None
+        self._Location = None
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def CategoryScore(self):
+        return self._CategoryScore
+
+    @CategoryScore.setter
+    def CategoryScore(self, CategoryScore):
+        self._CategoryScore = CategoryScore
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
 
 
     def _deserialize(self, params):
-        self.Category = params.get("Category")
-        self.CategoryScore = params.get("CategoryScore")
+        self._Category = params.get("Category")
+        self._CategoryScore = params.get("CategoryScore")
         if params.get("Location") is not None:
-            self.Location = Location()
-            self.Location._deserialize(params.get("Location"))
+            self._Location = Location()
+            self._Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2513,9 +4419,9 @@ class SearchImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库名称。
+        :param _GroupId: 图库名称。
         :type GroupId: str
-        :param ImageUrl: 图片的 Url 。
+        :param _ImageUrl: 图片的 Url 。
 ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2524,20 +4430,20 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 建议：
 • 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param ImageBase64: 图片 base64 数据。
+        :param _ImageBase64: 图片 base64 数据。
 ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
 图片限制：
 • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 • 图片大小：base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
 • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
         :type ImageBase64: str
-        :param Limit: 返回结果的数量，默认值为10，最大值为100。
+        :param _Limit: 返回结果的数量，默认值为10，最大值为100。
 按照相似度分数由高到低排序。
 **<font color=#1E90FF>服务类型为图案花纹搜索时Limit = 1，最多只能返回1个结果。</font>**
         :type Limit: int
-        :param Offset: 返回结果的起始序号，默认值为0。
+        :param _Offset: 返回结果的起始序号，默认值为0。
         :type Offset: int
-        :param MatchThreshold: 匹配阈值。
+        :param _MatchThreshold: 匹配阈值。
 只有图片相似度分数超过匹配阈值的结果才会返回。
 当MatchThreshold为0（默认值）时，各服务类型将按照以下默认的匹配阈值进行结果过滤：
 • 通用图像搜索1.0版：50。
@@ -2547,18 +4453,18 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 建议：
 可以手动调整MatchThreshold值来控制输出结果的范围。如果发现无检索结果，可能是因为图片相似度较低导致检索结果被匹配阈值过滤，建议调整为较低的阈值后再次尝试检索。
         :type MatchThreshold: int
-        :param Filter: 标签过滤条件。
+        :param _Filter: 标签过滤条件。
 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
         :type Filter: str
-        :param ImageRect: 图像主体区域。
+        :param _ImageRect: 图像主体区域。
 若设置主体区域，提取指定的区域进行检索。
         :type ImageRect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
-        :param EnableDetect: 是否需要启用主体识别，默认为**TRUE** 。
+        :param _EnableDetect: 是否需要启用主体识别，默认为**TRUE** 。
 • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
 • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
         :type EnableDetect: bool
-        :param CategoryId: 图像类目ID。
+        :param _CategoryId: 图像类目ID。
 若设置类目ID，提取以下类目的主体进行检索。
 类目取值说明：
 0：上衣。
@@ -2570,35 +4476,116 @@ ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl�
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
         :type CategoryId: int
         """
-        self.GroupId = None
-        self.ImageUrl = None
-        self.ImageBase64 = None
-        self.Limit = None
-        self.Offset = None
-        self.MatchThreshold = None
-        self.Filter = None
-        self.ImageRect = None
-        self.EnableDetect = None
-        self.CategoryId = None
+        self._GroupId = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._Limit = None
+        self._Offset = None
+        self._MatchThreshold = None
+        self._Filter = None
+        self._ImageRect = None
+        self._EnableDetect = None
+        self._CategoryId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def MatchThreshold(self):
+        return self._MatchThreshold
+
+    @MatchThreshold.setter
+    def MatchThreshold(self, MatchThreshold):
+        self._MatchThreshold = MatchThreshold
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def ImageRect(self):
+        return self._ImageRect
+
+    @ImageRect.setter
+    def ImageRect(self, ImageRect):
+        self._ImageRect = ImageRect
+
+    @property
+    def EnableDetect(self):
+        return self._EnableDetect
+
+    @EnableDetect.setter
+    def EnableDetect(self, EnableDetect):
+        self._EnableDetect = EnableDetect
+
+    @property
+    def CategoryId(self):
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.MatchThreshold = params.get("MatchThreshold")
-        self.Filter = params.get("Filter")
+        self._GroupId = params.get("GroupId")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._MatchThreshold = params.get("MatchThreshold")
+        self._Filter = params.get("Filter")
         if params.get("ImageRect") is not None:
-            self.ImageRect = ImageRect()
-            self.ImageRect._deserialize(params.get("ImageRect"))
-        self.EnableDetect = params.get("EnableDetect")
-        self.CategoryId = params.get("CategoryId")
+            self._ImageRect = ImageRect()
+            self._ImageRect._deserialize(params.get("ImageRect"))
+        self._EnableDetect = params.get("EnableDetect")
+        self._CategoryId = params.get("CategoryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2611,37 +4598,69 @@ class SearchImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Count: 返回结果数量。
+        :param _Count: 返回结果数量。
         :type Count: int
-        :param ImageInfos: 图片信息。
+        :param _ImageInfos: 图片信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageInfos: list of ImageInfo
-        :param Object: 输入图的主体信息。
+        :param _Object: 输入图的主体信息。
 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 注意：此字段可能返回 null，表示取不到有效值。
         :type Object: :class:`tencentcloud.tiia.v20190529.models.ObjectInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Count = None
-        self.ImageInfos = None
-        self.Object = None
-        self.RequestId = None
+        self._Count = None
+        self._ImageInfos = None
+        self._Object = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def ImageInfos(self):
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Count = params.get("Count")
+        self._Count = params.get("Count")
         if params.get("ImageInfos") is not None:
-            self.ImageInfos = []
+            self._ImageInfos = []
             for item in params.get("ImageInfos"):
                 obj = ImageInfo()
                 obj._deserialize(item)
-                self.ImageInfos.append(obj)
+                self._ImageInfos.append(obj)
         if params.get("Object") is not None:
-            self.Object = ObjectInfo()
-            self.Object._deserialize(params.get("Object"))
-        self.RequestId = params.get("RequestId")
+            self._Object = ObjectInfo()
+            self._Object._deserialize(params.get("Object"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateImageRequest(AbstractModel):
@@ -2651,30 +4670,63 @@ class UpdateImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库ID。
+        :param _GroupId: 图库ID。
         :type GroupId: str
-        :param EntityId: 物品ID，最多支持64个字符。
+        :param _EntityId: 物品ID，最多支持64个字符。
         :type EntityId: str
-        :param PicName: 图片名称，最多支持64个字符。
+        :param _PicName: 图片名称，最多支持64个字符。
         :type PicName: str
-        :param Tags: 新的自定义标签，最多不超过10个，格式为JSON。
+        :param _Tags: 新的自定义标签，最多不超过10个，格式为JSON。
         :type Tags: str
         """
-        self.GroupId = None
-        self.EntityId = None
-        self.PicName = None
-        self.Tags = None
+        self._GroupId = None
+        self._EntityId = None
+        self._PicName = None
+        self._Tags = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def EntityId(self):
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def PicName(self):
+        return self._PicName
+
+    @PicName.setter
+    def PicName(self, PicName):
+        self._PicName = PicName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.EntityId = params.get("EntityId")
-        self.PicName = params.get("PicName")
-        self.Tags = params.get("Tags")
+        self._GroupId = params.get("GroupId")
+        self._EntityId = params.get("EntityId")
+        self._PicName = params.get("PicName")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2687,11 +4739,19 @@ class UpdateImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

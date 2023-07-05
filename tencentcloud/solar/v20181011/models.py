@@ -25,49 +25,106 @@ class ActivityInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 活动使用模板id
+        :param _TemplateId: 活动使用模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
-        :param ActivityTitle: 活动标题
+        :param _ActivityTitle: 活动标题
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityTitle: str
-        :param ActivityDesc: 活动描述
+        :param _ActivityDesc: 活动描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityDesc: str
-        :param ActivityCover: 活动封面地址
+        :param _ActivityCover: 活动封面地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityCover: str
-        :param ActivityType: 活动类型
+        :param _ActivityType: 活动类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityType: str
-        :param ActivityId: 活动id
+        :param _ActivityId: 活动id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
-        :param PersonalConfig: 活动模板自定义配置
+        :param _PersonalConfig: 活动模板自定义配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PersonalConfig: str
         """
-        self.TemplateId = None
-        self.ActivityTitle = None
-        self.ActivityDesc = None
-        self.ActivityCover = None
-        self.ActivityType = None
-        self.ActivityId = None
-        self.PersonalConfig = None
+        self._TemplateId = None
+        self._ActivityTitle = None
+        self._ActivityDesc = None
+        self._ActivityCover = None
+        self._ActivityType = None
+        self._ActivityId = None
+        self._PersonalConfig = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ActivityTitle(self):
+        return self._ActivityTitle
+
+    @ActivityTitle.setter
+    def ActivityTitle(self, ActivityTitle):
+        self._ActivityTitle = ActivityTitle
+
+    @property
+    def ActivityDesc(self):
+        return self._ActivityDesc
+
+    @ActivityDesc.setter
+    def ActivityDesc(self, ActivityDesc):
+        self._ActivityDesc = ActivityDesc
+
+    @property
+    def ActivityCover(self):
+        return self._ActivityCover
+
+    @ActivityCover.setter
+    def ActivityCover(self, ActivityCover):
+        self._ActivityCover = ActivityCover
+
+    @property
+    def ActivityType(self):
+        return self._ActivityType
+
+    @ActivityType.setter
+    def ActivityType(self, ActivityType):
+        self._ActivityType = ActivityType
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def PersonalConfig(self):
+        return self._PersonalConfig
+
+    @PersonalConfig.setter
+    def PersonalConfig(self, PersonalConfig):
+        self._PersonalConfig = PersonalConfig
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.ActivityTitle = params.get("ActivityTitle")
-        self.ActivityDesc = params.get("ActivityDesc")
-        self.ActivityCover = params.get("ActivityCover")
-        self.ActivityType = params.get("ActivityType")
-        self.ActivityId = params.get("ActivityId")
-        self.PersonalConfig = params.get("PersonalConfig")
+        self._TemplateId = params.get("TemplateId")
+        self._ActivityTitle = params.get("ActivityTitle")
+        self._ActivityDesc = params.get("ActivityDesc")
+        self._ActivityCover = params.get("ActivityCover")
+        self._ActivityType = params.get("ActivityType")
+        self._ActivityId = params.get("ActivityId")
+        self._PersonalConfig = params.get("PersonalConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -80,22 +137,39 @@ class CheckStaffChUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 员工ID
+        :param _UserId: 员工ID
         :type UserId: list of str
-        :param OperateType: 渠道状态：checkpass审核通过, checkreject审核拒绝, enableoperate启用, stopoperate停用
+        :param _OperateType: 渠道状态：checkpass审核通过, checkreject审核拒绝, enableoperate启用, stopoperate停用
         :type OperateType: str
         """
-        self.UserId = None
-        self.OperateType = None
+        self._UserId = None
+        self._OperateType = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def OperateType(self):
+        return self._OperateType
+
+    @OperateType.setter
+    def OperateType(self, OperateType):
+        self._OperateType = OperateType
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.OperateType = params.get("OperateType")
+        self._UserId = params.get("UserId")
+        self._OperateType = params.get("OperateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -108,14 +182,22 @@ class CheckStaffChUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CopyActivityChannelRequest(AbstractModel):
@@ -125,26 +207,51 @@ class CopyActivityChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActivityId: 活动ID
+        :param _ActivityId: 活动ID
         :type ActivityId: str
-        :param ChannelFrom: 来源渠道ID
+        :param _ChannelFrom: 来源渠道ID
         :type ChannelFrom: str
-        :param ChannelTo: 目的渠道id
+        :param _ChannelTo: 目的渠道id
         :type ChannelTo: list of str
         """
-        self.ActivityId = None
-        self.ChannelFrom = None
-        self.ChannelTo = None
+        self._ActivityId = None
+        self._ChannelFrom = None
+        self._ChannelTo = None
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def ChannelFrom(self):
+        return self._ChannelFrom
+
+    @ChannelFrom.setter
+    def ChannelFrom(self, ChannelFrom):
+        self._ChannelFrom = ChannelFrom
+
+    @property
+    def ChannelTo(self):
+        return self._ChannelTo
+
+    @ChannelTo.setter
+    def ChannelTo(self, ChannelTo):
+        self._ChannelTo = ChannelTo
 
 
     def _deserialize(self, params):
-        self.ActivityId = params.get("ActivityId")
-        self.ChannelFrom = params.get("ChannelFrom")
-        self.ChannelTo = params.get("ChannelTo")
+        self._ActivityId = params.get("ActivityId")
+        self._ChannelFrom = params.get("ChannelFrom")
+        self._ChannelTo = params.get("ChannelTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -157,14 +264,22 @@ class CopyActivityChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateProjectRequest(AbstractModel):
@@ -174,34 +289,75 @@ class CreateProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectName: 项目名称
+        :param _ProjectName: 项目名称
         :type ProjectName: str
-        :param ProjectOrg: 项目机构
+        :param _ProjectOrg: 项目机构
         :type ProjectOrg: str
-        :param ProjectBudget: 项目预算
+        :param _ProjectBudget: 项目预算
         :type ProjectBudget: str
-        :param ProjectIntroduction: 项目简介
+        :param _ProjectIntroduction: 项目简介
         :type ProjectIntroduction: str
-        :param ProjectOrgId: 所属部门ID
+        :param _ProjectOrgId: 所属部门ID
         :type ProjectOrgId: str
         """
-        self.ProjectName = None
-        self.ProjectOrg = None
-        self.ProjectBudget = None
-        self.ProjectIntroduction = None
-        self.ProjectOrgId = None
+        self._ProjectName = None
+        self._ProjectOrg = None
+        self._ProjectBudget = None
+        self._ProjectIntroduction = None
+        self._ProjectOrgId = None
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProjectOrg(self):
+        return self._ProjectOrg
+
+    @ProjectOrg.setter
+    def ProjectOrg(self, ProjectOrg):
+        self._ProjectOrg = ProjectOrg
+
+    @property
+    def ProjectBudget(self):
+        return self._ProjectBudget
+
+    @ProjectBudget.setter
+    def ProjectBudget(self, ProjectBudget):
+        self._ProjectBudget = ProjectBudget
+
+    @property
+    def ProjectIntroduction(self):
+        return self._ProjectIntroduction
+
+    @ProjectIntroduction.setter
+    def ProjectIntroduction(self, ProjectIntroduction):
+        self._ProjectIntroduction = ProjectIntroduction
+
+    @property
+    def ProjectOrgId(self):
+        return self._ProjectOrgId
+
+    @ProjectOrgId.setter
+    def ProjectOrgId(self, ProjectOrgId):
+        self._ProjectOrgId = ProjectOrgId
 
 
     def _deserialize(self, params):
-        self.ProjectName = params.get("ProjectName")
-        self.ProjectOrg = params.get("ProjectOrg")
-        self.ProjectBudget = params.get("ProjectBudget")
-        self.ProjectIntroduction = params.get("ProjectIntroduction")
-        self.ProjectOrgId = params.get("ProjectOrgId")
+        self._ProjectName = params.get("ProjectName")
+        self._ProjectOrg = params.get("ProjectOrg")
+        self._ProjectBudget = params.get("ProjectBudget")
+        self._ProjectIntroduction = params.get("ProjectIntroduction")
+        self._ProjectOrgId = params.get("ProjectOrgId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -214,18 +370,34 @@ class CreateProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProjectId = None
-        self.RequestId = None
+        self._ProjectId = None
+        self._RequestId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.RequestId = params.get("RequestId")
+        self._ProjectId = params.get("ProjectId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSubProjectRequest(AbstractModel):
@@ -235,22 +407,39 @@ class CreateSubProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 所属项目id
+        :param _ProjectId: 所属项目id
         :type ProjectId: str
-        :param SubProjectName: 子项目名称
+        :param _SubProjectName: 子项目名称
         :type SubProjectName: str
         """
-        self.ProjectId = None
-        self.SubProjectName = None
+        self._ProjectId = None
+        self._SubProjectName = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def SubProjectName(self):
+        return self._SubProjectName
+
+    @SubProjectName.setter
+    def SubProjectName(self, SubProjectName):
+        self._SubProjectName = SubProjectName
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.SubProjectName = params.get("SubProjectName")
+        self._ProjectId = params.get("ProjectId")
+        self._SubProjectName = params.get("SubProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -263,18 +452,34 @@ class CreateSubProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubProjectId: 子项目id
+        :param _SubProjectId: 子项目id
         :type SubProjectId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubProjectId = None
-        self.RequestId = None
+        self._SubProjectId = None
+        self._RequestId = None
+
+    @property
+    def SubProjectId(self):
+        return self._SubProjectId
+
+    @SubProjectId.setter
+    def SubProjectId(self, SubProjectId):
+        self._SubProjectId = SubProjectId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SubProjectId = params.get("SubProjectId")
-        self.RequestId = params.get("RequestId")
+        self._SubProjectId = params.get("SubProjectId")
+        self._RequestId = params.get("RequestId")
 
 
 class CustomerInfo(AbstractModel):
@@ -284,113 +489,274 @@ class CustomerInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Activity: 总活跃度
+        :param _Activity: 总活跃度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Activity: int
-        :param AudienceUserId: 客户ID
+        :param _AudienceUserId: 客户ID
         :type AudienceUserId: str
-        :param Avatar: 头像
+        :param _Avatar: 头像
 注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
-        :param City: 最近记录城市
+        :param _City: 最近记录城市
 注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
-        :param LastActiveTime: 最活跃时间
+        :param _LastActiveTime: 最活跃时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastActiveTime: str
-        :param MarkFlag: 是否星标客户
+        :param _MarkFlag: 是否星标客户
 注意：此字段可能返回 null，表示取不到有效值。
         :type MarkFlag: str
-        :param MonthActive: 30天活跃度
+        :param _MonthActive: 30天活跃度
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonthActive: int
-        :param MonthRecommend: 30天推荐度
+        :param _MonthRecommend: 30天推荐度
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonthRecommend: int
-        :param Phone: 手机号
+        :param _Phone: 手机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
-        :param Province: 最近记录省份
+        :param _Province: 最近记录省份
 注意：此字段可能返回 null，表示取不到有效值。
         :type Province: str
-        :param RealName: 姓名
+        :param _RealName: 姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealName: str
-        :param RelChannelFlag: 员工标识 0 未关联 1 已关联
+        :param _RelChannelFlag: 员工标识 0 未关联 1 已关联
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelChannelFlag: int
-        :param Sex: 性别 1男 2女
+        :param _Sex: 性别 1男 2女
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sex: int
-        :param Spread: 传播力（好友数）
+        :param _Spread: 传播力（好友数）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Spread: int
-        :param WeekActive: 7天活跃度
+        :param _WeekActive: 7天活跃度
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeekActive: int
-        :param WeekRecommend: 7天推荐度
+        :param _WeekRecommend: 7天推荐度
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeekRecommend: int
-        :param WxCity: 微信城市
+        :param _WxCity: 微信城市
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxCity: str
-        :param WxCountry: 微信国家或地区
+        :param _WxCountry: 微信国家或地区
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxCountry: str
-        :param WxNickname: 微信呢称
+        :param _WxNickname: 微信呢称
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxNickname: str
-        :param WxProvince: 微信省份
+        :param _WxProvince: 微信省份
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxProvince: str
         """
-        self.Activity = None
-        self.AudienceUserId = None
-        self.Avatar = None
-        self.City = None
-        self.LastActiveTime = None
-        self.MarkFlag = None
-        self.MonthActive = None
-        self.MonthRecommend = None
-        self.Phone = None
-        self.Province = None
-        self.RealName = None
-        self.RelChannelFlag = None
-        self.Sex = None
-        self.Spread = None
-        self.WeekActive = None
-        self.WeekRecommend = None
-        self.WxCity = None
-        self.WxCountry = None
-        self.WxNickname = None
-        self.WxProvince = None
+        self._Activity = None
+        self._AudienceUserId = None
+        self._Avatar = None
+        self._City = None
+        self._LastActiveTime = None
+        self._MarkFlag = None
+        self._MonthActive = None
+        self._MonthRecommend = None
+        self._Phone = None
+        self._Province = None
+        self._RealName = None
+        self._RelChannelFlag = None
+        self._Sex = None
+        self._Spread = None
+        self._WeekActive = None
+        self._WeekRecommend = None
+        self._WxCity = None
+        self._WxCountry = None
+        self._WxNickname = None
+        self._WxProvince = None
+
+    @property
+    def Activity(self):
+        return self._Activity
+
+    @Activity.setter
+    def Activity(self, Activity):
+        self._Activity = Activity
+
+    @property
+    def AudienceUserId(self):
+        return self._AudienceUserId
+
+    @AudienceUserId.setter
+    def AudienceUserId(self, AudienceUserId):
+        self._AudienceUserId = AudienceUserId
+
+    @property
+    def Avatar(self):
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def LastActiveTime(self):
+        return self._LastActiveTime
+
+    @LastActiveTime.setter
+    def LastActiveTime(self, LastActiveTime):
+        self._LastActiveTime = LastActiveTime
+
+    @property
+    def MarkFlag(self):
+        return self._MarkFlag
+
+    @MarkFlag.setter
+    def MarkFlag(self, MarkFlag):
+        self._MarkFlag = MarkFlag
+
+    @property
+    def MonthActive(self):
+        return self._MonthActive
+
+    @MonthActive.setter
+    def MonthActive(self, MonthActive):
+        self._MonthActive = MonthActive
+
+    @property
+    def MonthRecommend(self):
+        return self._MonthRecommend
+
+    @MonthRecommend.setter
+    def MonthRecommend(self, MonthRecommend):
+        self._MonthRecommend = MonthRecommend
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def RealName(self):
+        return self._RealName
+
+    @RealName.setter
+    def RealName(self, RealName):
+        self._RealName = RealName
+
+    @property
+    def RelChannelFlag(self):
+        return self._RelChannelFlag
+
+    @RelChannelFlag.setter
+    def RelChannelFlag(self, RelChannelFlag):
+        self._RelChannelFlag = RelChannelFlag
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def Spread(self):
+        return self._Spread
+
+    @Spread.setter
+    def Spread(self, Spread):
+        self._Spread = Spread
+
+    @property
+    def WeekActive(self):
+        return self._WeekActive
+
+    @WeekActive.setter
+    def WeekActive(self, WeekActive):
+        self._WeekActive = WeekActive
+
+    @property
+    def WeekRecommend(self):
+        return self._WeekRecommend
+
+    @WeekRecommend.setter
+    def WeekRecommend(self, WeekRecommend):
+        self._WeekRecommend = WeekRecommend
+
+    @property
+    def WxCity(self):
+        return self._WxCity
+
+    @WxCity.setter
+    def WxCity(self, WxCity):
+        self._WxCity = WxCity
+
+    @property
+    def WxCountry(self):
+        return self._WxCountry
+
+    @WxCountry.setter
+    def WxCountry(self, WxCountry):
+        self._WxCountry = WxCountry
+
+    @property
+    def WxNickname(self):
+        return self._WxNickname
+
+    @WxNickname.setter
+    def WxNickname(self, WxNickname):
+        self._WxNickname = WxNickname
+
+    @property
+    def WxProvince(self):
+        return self._WxProvince
+
+    @WxProvince.setter
+    def WxProvince(self, WxProvince):
+        self._WxProvince = WxProvince
 
 
     def _deserialize(self, params):
-        self.Activity = params.get("Activity")
-        self.AudienceUserId = params.get("AudienceUserId")
-        self.Avatar = params.get("Avatar")
-        self.City = params.get("City")
-        self.LastActiveTime = params.get("LastActiveTime")
-        self.MarkFlag = params.get("MarkFlag")
-        self.MonthActive = params.get("MonthActive")
-        self.MonthRecommend = params.get("MonthRecommend")
-        self.Phone = params.get("Phone")
-        self.Province = params.get("Province")
-        self.RealName = params.get("RealName")
-        self.RelChannelFlag = params.get("RelChannelFlag")
-        self.Sex = params.get("Sex")
-        self.Spread = params.get("Spread")
-        self.WeekActive = params.get("WeekActive")
-        self.WeekRecommend = params.get("WeekRecommend")
-        self.WxCity = params.get("WxCity")
-        self.WxCountry = params.get("WxCountry")
-        self.WxNickname = params.get("WxNickname")
-        self.WxProvince = params.get("WxProvince")
+        self._Activity = params.get("Activity")
+        self._AudienceUserId = params.get("AudienceUserId")
+        self._Avatar = params.get("Avatar")
+        self._City = params.get("City")
+        self._LastActiveTime = params.get("LastActiveTime")
+        self._MarkFlag = params.get("MarkFlag")
+        self._MonthActive = params.get("MonthActive")
+        self._MonthRecommend = params.get("MonthRecommend")
+        self._Phone = params.get("Phone")
+        self._Province = params.get("Province")
+        self._RealName = params.get("RealName")
+        self._RelChannelFlag = params.get("RelChannelFlag")
+        self._Sex = params.get("Sex")
+        self._Spread = params.get("Spread")
+        self._WeekActive = params.get("WeekActive")
+        self._WeekRecommend = params.get("WeekRecommend")
+        self._WxCity = params.get("WxCity")
+        self._WxCountry = params.get("WxCountry")
+        self._WxNickname = params.get("WxNickname")
+        self._WxProvince = params.get("WxProvince")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -403,18 +769,27 @@ class DeleteProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: str
         """
-        self.ProjectId = None
+        self._ProjectId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -427,14 +802,22 @@ class DeleteProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomerRequest(AbstractModel):
@@ -444,18 +827,27 @@ class DescribeCustomerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户ID
+        :param _UserId: 用户ID
         :type UserId: str
         """
-        self.UserId = None
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -468,159 +860,399 @@ class DescribeCustomerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressList: 地址列表
+        :param _AddressList: 地址列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressList: list of str
-        :param UserId: 用户id
+        :param _UserId: 用户id
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param Avatar: 头像
+        :param _Avatar: 头像
 注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
-        :param Birthday: 生日
+        :param _Birthday: 生日
 注意：此字段可能返回 null，表示取不到有效值。
         :type Birthday: str
-        :param City: 城市
+        :param _City: 城市
 注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Device: 设备
+        :param _Device: 设备
 注意：此字段可能返回 null，表示取不到有效值。
         :type Device: str
-        :param Industrys: 行业
+        :param _Industrys: 行业
 注意：此字段可能返回 null，表示取不到有效值。
         :type Industrys: list of str
-        :param LastActiveTime: 上次登录时间
+        :param _LastActiveTime: 上次登录时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastActiveTime: str
-        :param MarkFlag: 是否星标 1是 0否
+        :param _MarkFlag: 是否星标 1是 0否
 注意：此字段可能返回 null，表示取不到有效值。
         :type MarkFlag: str
-        :param Model: 手机型号
+        :param _Model: 手机型号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Model: str
-        :param OpenId: 微信openid
+        :param _OpenId: 微信openid
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
-        :param PayFeature: 消费特点
+        :param _PayFeature: 消费特点
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayFeature: str
-        :param Phone: 手机号
+        :param _Phone: 手机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
-        :param PhoneList: 手机号码列表
+        :param _PhoneList: 手机号码列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneList: str
-        :param Province: 最近记录省份
+        :param _Province: 最近记录省份
 注意：此字段可能返回 null，表示取不到有效值。
         :type Province: str
-        :param RealName: 姓名
+        :param _RealName: 姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealName: str
-        :param RelChannelFlag: 员工标识 0：非员工 1：员工
+        :param _RelChannelFlag: 员工标识 0：非员工 1：员工
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelChannelFlag: str
-        :param Remark: 备注
+        :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param Sex: 性别 1男 2女
+        :param _Sex: 性别 1男 2女
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sex: str
-        :param SourceAudienceVo: 最初来源
+        :param _SourceAudienceVo: 最初来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceAudienceVo: str
-        :param SubWechats: 关注公众号列表
+        :param _SubWechats: 关注公众号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubWechats: list of str
-        :param UnionId: 微信unionid
+        :param _UnionId: 微信unionid
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnionId: str
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param UserTypes: 用户类型
+        :param _UserTypes: 用户类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserTypes: list of str
-        :param WxCity: 城市
+        :param _WxCity: 城市
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxCity: str
-        :param WxCountry: 国家
+        :param _WxCountry: 国家
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxCountry: str
-        :param WxNickname: 昵称
+        :param _WxNickname: 昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxNickname: str
-        :param WxProvince: 省份
+        :param _WxProvince: 省份
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxProvince: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AddressList = None
-        self.UserId = None
-        self.Avatar = None
-        self.Birthday = None
-        self.City = None
-        self.CreateTime = None
-        self.Device = None
-        self.Industrys = None
-        self.LastActiveTime = None
-        self.MarkFlag = None
-        self.Model = None
-        self.OpenId = None
-        self.PayFeature = None
-        self.Phone = None
-        self.PhoneList = None
-        self.Province = None
-        self.RealName = None
-        self.RelChannelFlag = None
-        self.Remark = None
-        self.Sex = None
-        self.SourceAudienceVo = None
-        self.SubWechats = None
-        self.UnionId = None
-        self.UpdateTime = None
-        self.UserTypes = None
-        self.WxCity = None
-        self.WxCountry = None
-        self.WxNickname = None
-        self.WxProvince = None
-        self.RequestId = None
+        self._AddressList = None
+        self._UserId = None
+        self._Avatar = None
+        self._Birthday = None
+        self._City = None
+        self._CreateTime = None
+        self._Device = None
+        self._Industrys = None
+        self._LastActiveTime = None
+        self._MarkFlag = None
+        self._Model = None
+        self._OpenId = None
+        self._PayFeature = None
+        self._Phone = None
+        self._PhoneList = None
+        self._Province = None
+        self._RealName = None
+        self._RelChannelFlag = None
+        self._Remark = None
+        self._Sex = None
+        self._SourceAudienceVo = None
+        self._SubWechats = None
+        self._UnionId = None
+        self._UpdateTime = None
+        self._UserTypes = None
+        self._WxCity = None
+        self._WxCountry = None
+        self._WxNickname = None
+        self._WxProvince = None
+        self._RequestId = None
+
+    @property
+    def AddressList(self):
+        return self._AddressList
+
+    @AddressList.setter
+    def AddressList(self, AddressList):
+        self._AddressList = AddressList
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Avatar(self):
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def Birthday(self):
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Device(self):
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def Industrys(self):
+        return self._Industrys
+
+    @Industrys.setter
+    def Industrys(self, Industrys):
+        self._Industrys = Industrys
+
+    @property
+    def LastActiveTime(self):
+        return self._LastActiveTime
+
+    @LastActiveTime.setter
+    def LastActiveTime(self, LastActiveTime):
+        self._LastActiveTime = LastActiveTime
+
+    @property
+    def MarkFlag(self):
+        return self._MarkFlag
+
+    @MarkFlag.setter
+    def MarkFlag(self, MarkFlag):
+        self._MarkFlag = MarkFlag
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def PayFeature(self):
+        return self._PayFeature
+
+    @PayFeature.setter
+    def PayFeature(self, PayFeature):
+        self._PayFeature = PayFeature
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def PhoneList(self):
+        return self._PhoneList
+
+    @PhoneList.setter
+    def PhoneList(self, PhoneList):
+        self._PhoneList = PhoneList
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def RealName(self):
+        return self._RealName
+
+    @RealName.setter
+    def RealName(self, RealName):
+        self._RealName = RealName
+
+    @property
+    def RelChannelFlag(self):
+        return self._RelChannelFlag
+
+    @RelChannelFlag.setter
+    def RelChannelFlag(self, RelChannelFlag):
+        self._RelChannelFlag = RelChannelFlag
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def SourceAudienceVo(self):
+        return self._SourceAudienceVo
+
+    @SourceAudienceVo.setter
+    def SourceAudienceVo(self, SourceAudienceVo):
+        self._SourceAudienceVo = SourceAudienceVo
+
+    @property
+    def SubWechats(self):
+        return self._SubWechats
+
+    @SubWechats.setter
+    def SubWechats(self, SubWechats):
+        self._SubWechats = SubWechats
+
+    @property
+    def UnionId(self):
+        return self._UnionId
+
+    @UnionId.setter
+    def UnionId(self, UnionId):
+        self._UnionId = UnionId
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def UserTypes(self):
+        return self._UserTypes
+
+    @UserTypes.setter
+    def UserTypes(self, UserTypes):
+        self._UserTypes = UserTypes
+
+    @property
+    def WxCity(self):
+        return self._WxCity
+
+    @WxCity.setter
+    def WxCity(self, WxCity):
+        self._WxCity = WxCity
+
+    @property
+    def WxCountry(self):
+        return self._WxCountry
+
+    @WxCountry.setter
+    def WxCountry(self, WxCountry):
+        self._WxCountry = WxCountry
+
+    @property
+    def WxNickname(self):
+        return self._WxNickname
+
+    @WxNickname.setter
+    def WxNickname(self, WxNickname):
+        self._WxNickname = WxNickname
+
+    @property
+    def WxProvince(self):
+        return self._WxProvince
+
+    @WxProvince.setter
+    def WxProvince(self, WxProvince):
+        self._WxProvince = WxProvince
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AddressList = params.get("AddressList")
-        self.UserId = params.get("UserId")
-        self.Avatar = params.get("Avatar")
-        self.Birthday = params.get("Birthday")
-        self.City = params.get("City")
-        self.CreateTime = params.get("CreateTime")
-        self.Device = params.get("Device")
-        self.Industrys = params.get("Industrys")
-        self.LastActiveTime = params.get("LastActiveTime")
-        self.MarkFlag = params.get("MarkFlag")
-        self.Model = params.get("Model")
-        self.OpenId = params.get("OpenId")
-        self.PayFeature = params.get("PayFeature")
-        self.Phone = params.get("Phone")
-        self.PhoneList = params.get("PhoneList")
-        self.Province = params.get("Province")
-        self.RealName = params.get("RealName")
-        self.RelChannelFlag = params.get("RelChannelFlag")
-        self.Remark = params.get("Remark")
-        self.Sex = params.get("Sex")
-        self.SourceAudienceVo = params.get("SourceAudienceVo")
-        self.SubWechats = params.get("SubWechats")
-        self.UnionId = params.get("UnionId")
-        self.UpdateTime = params.get("UpdateTime")
-        self.UserTypes = params.get("UserTypes")
-        self.WxCity = params.get("WxCity")
-        self.WxCountry = params.get("WxCountry")
-        self.WxNickname = params.get("WxNickname")
-        self.WxProvince = params.get("WxProvince")
-        self.RequestId = params.get("RequestId")
+        self._AddressList = params.get("AddressList")
+        self._UserId = params.get("UserId")
+        self._Avatar = params.get("Avatar")
+        self._Birthday = params.get("Birthday")
+        self._City = params.get("City")
+        self._CreateTime = params.get("CreateTime")
+        self._Device = params.get("Device")
+        self._Industrys = params.get("Industrys")
+        self._LastActiveTime = params.get("LastActiveTime")
+        self._MarkFlag = params.get("MarkFlag")
+        self._Model = params.get("Model")
+        self._OpenId = params.get("OpenId")
+        self._PayFeature = params.get("PayFeature")
+        self._Phone = params.get("Phone")
+        self._PhoneList = params.get("PhoneList")
+        self._Province = params.get("Province")
+        self._RealName = params.get("RealName")
+        self._RelChannelFlag = params.get("RelChannelFlag")
+        self._Remark = params.get("Remark")
+        self._Sex = params.get("Sex")
+        self._SourceAudienceVo = params.get("SourceAudienceVo")
+        self._SubWechats = params.get("SubWechats")
+        self._UnionId = params.get("UnionId")
+        self._UpdateTime = params.get("UpdateTime")
+        self._UserTypes = params.get("UserTypes")
+        self._WxCity = params.get("WxCity")
+        self._WxCountry = params.get("WxCountry")
+        self._WxNickname = params.get("WxNickname")
+        self._WxProvince = params.get("WxProvince")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomersRequest(AbstractModel):
@@ -630,66 +1262,171 @@ class DescribeCustomersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QueryType: 查询类型，0.个人，1负责部门，2.指定部门
+        :param _QueryType: 查询类型，0.个人，1负责部门，2.指定部门
         :type QueryType: str
-        :param GroupId: 分组ID
+        :param _GroupId: 分组ID
         :type GroupId: str
-        :param MarkFlag: 是否星级标记 1是 0否
+        :param _MarkFlag: 是否星级标记 1是 0否
         :type MarkFlag: int
-        :param TagIds: 客户标签，多个标签用逗号隔开
+        :param _TagIds: 客户标签，多个标签用逗号隔开
         :type TagIds: str
-        :param RelChannelFlag: 员工标识筛选，0：非员工，1：员工
+        :param _RelChannelFlag: 员工标识筛选，0：非员工，1：员工
         :type RelChannelFlag: str
-        :param NeedPhoneFlag: 必须存在手机 1是 0否
+        :param _NeedPhoneFlag: 必须存在手机 1是 0否
         :type NeedPhoneFlag: int
-        :param Province: 省份
+        :param _Province: 省份
         :type Province: str
-        :param City: 城市
+        :param _City: 城市
         :type City: str
-        :param Sex: 性别 1男 2女
+        :param _Sex: 性别 1男 2女
         :type Sex: str
-        :param KeyWord: 城市
+        :param _KeyWord: 城市
         :type KeyWord: str
-        :param Offset: 查询开始位置
+        :param _Offset: 查询开始位置
         :type Offset: int
-        :param Limit: 每页记录条数
+        :param _Limit: 每页记录条数
         :type Limit: int
-        :param SubProjectId: 子项目ID
+        :param _SubProjectId: 子项目ID
         :type SubProjectId: str
         """
-        self.QueryType = None
-        self.GroupId = None
-        self.MarkFlag = None
-        self.TagIds = None
-        self.RelChannelFlag = None
-        self.NeedPhoneFlag = None
-        self.Province = None
-        self.City = None
-        self.Sex = None
-        self.KeyWord = None
-        self.Offset = None
-        self.Limit = None
-        self.SubProjectId = None
+        self._QueryType = None
+        self._GroupId = None
+        self._MarkFlag = None
+        self._TagIds = None
+        self._RelChannelFlag = None
+        self._NeedPhoneFlag = None
+        self._Province = None
+        self._City = None
+        self._Sex = None
+        self._KeyWord = None
+        self._Offset = None
+        self._Limit = None
+        self._SubProjectId = None
+
+    @property
+    def QueryType(self):
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def MarkFlag(self):
+        return self._MarkFlag
+
+    @MarkFlag.setter
+    def MarkFlag(self, MarkFlag):
+        self._MarkFlag = MarkFlag
+
+    @property
+    def TagIds(self):
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+    @property
+    def RelChannelFlag(self):
+        return self._RelChannelFlag
+
+    @RelChannelFlag.setter
+    def RelChannelFlag(self, RelChannelFlag):
+        self._RelChannelFlag = RelChannelFlag
+
+    @property
+    def NeedPhoneFlag(self):
+        return self._NeedPhoneFlag
+
+    @NeedPhoneFlag.setter
+    def NeedPhoneFlag(self, NeedPhoneFlag):
+        self._NeedPhoneFlag = NeedPhoneFlag
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SubProjectId(self):
+        return self._SubProjectId
+
+    @SubProjectId.setter
+    def SubProjectId(self, SubProjectId):
+        self._SubProjectId = SubProjectId
 
 
     def _deserialize(self, params):
-        self.QueryType = params.get("QueryType")
-        self.GroupId = params.get("GroupId")
-        self.MarkFlag = params.get("MarkFlag")
-        self.TagIds = params.get("TagIds")
-        self.RelChannelFlag = params.get("RelChannelFlag")
-        self.NeedPhoneFlag = params.get("NeedPhoneFlag")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.Sex = params.get("Sex")
-        self.KeyWord = params.get("KeyWord")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SubProjectId = params.get("SubProjectId")
+        self._QueryType = params.get("QueryType")
+        self._GroupId = params.get("GroupId")
+        self._MarkFlag = params.get("MarkFlag")
+        self._TagIds = params.get("TagIds")
+        self._RelChannelFlag = params.get("RelChannelFlag")
+        self._NeedPhoneFlag = params.get("NeedPhoneFlag")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Sex = params.get("Sex")
+        self._KeyWord = params.get("KeyWord")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SubProjectId = params.get("SubProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -702,28 +1439,52 @@ class DescribeCustomersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总记录条数
+        :param _TotalCount: 总记录条数
         :type TotalCount: int
-        :param UserList: 数据列表
+        :param _UserList: 数据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserList: list of CustomerInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.UserList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._UserList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def UserList(self):
+        return self._UserList
+
+    @UserList.setter
+    def UserList(self, UserList):
+        self._UserList = UserList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("UserList") is not None:
-            self.UserList = []
+            self._UserList = []
             for item in params.get("UserList"):
                 obj = CustomerInfo()
                 obj._deserialize(item)
-                self.UserList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._UserList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProjectRequest(AbstractModel):
@@ -733,18 +1494,27 @@ class DescribeProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: str
         """
-        self.ProjectId = None
+        self._ProjectId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -757,52 +1527,124 @@ class DescribeProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目id
+        :param _ProjectId: 项目id
         :type ProjectId: str
-        :param ProjectName: 项目名称
+        :param _ProjectName: 项目名称
         :type ProjectName: str
-        :param ProjectBudget: 项目预算
+        :param _ProjectBudget: 项目预算
         :type ProjectBudget: float
-        :param ProjectOrg: 项目机构
+        :param _ProjectOrg: 项目机构
         :type ProjectOrg: str
-        :param ProjectIntroduction: 项目简介
+        :param _ProjectIntroduction: 项目简介
         :type ProjectIntroduction: str
-        :param SubProjectList: 子项目列表
+        :param _SubProjectList: 子项目列表
         :type SubProjectList: list of SubProjectInfo
-        :param ProjectStatus: 项目状态
+        :param _ProjectStatus: 项目状态
         :type ProjectStatus: str
-        :param ProjectOrgId: 项目机构Id
+        :param _ProjectOrgId: 项目机构Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectOrgId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProjectId = None
-        self.ProjectName = None
-        self.ProjectBudget = None
-        self.ProjectOrg = None
-        self.ProjectIntroduction = None
-        self.SubProjectList = None
-        self.ProjectStatus = None
-        self.ProjectOrgId = None
-        self.RequestId = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._ProjectBudget = None
+        self._ProjectOrg = None
+        self._ProjectIntroduction = None
+        self._SubProjectList = None
+        self._ProjectStatus = None
+        self._ProjectOrgId = None
+        self._RequestId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProjectBudget(self):
+        return self._ProjectBudget
+
+    @ProjectBudget.setter
+    def ProjectBudget(self, ProjectBudget):
+        self._ProjectBudget = ProjectBudget
+
+    @property
+    def ProjectOrg(self):
+        return self._ProjectOrg
+
+    @ProjectOrg.setter
+    def ProjectOrg(self, ProjectOrg):
+        self._ProjectOrg = ProjectOrg
+
+    @property
+    def ProjectIntroduction(self):
+        return self._ProjectIntroduction
+
+    @ProjectIntroduction.setter
+    def ProjectIntroduction(self, ProjectIntroduction):
+        self._ProjectIntroduction = ProjectIntroduction
+
+    @property
+    def SubProjectList(self):
+        return self._SubProjectList
+
+    @SubProjectList.setter
+    def SubProjectList(self, SubProjectList):
+        self._SubProjectList = SubProjectList
+
+    @property
+    def ProjectStatus(self):
+        return self._ProjectStatus
+
+    @ProjectStatus.setter
+    def ProjectStatus(self, ProjectStatus):
+        self._ProjectStatus = ProjectStatus
+
+    @property
+    def ProjectOrgId(self):
+        return self._ProjectOrgId
+
+    @ProjectOrgId.setter
+    def ProjectOrgId(self, ProjectOrgId):
+        self._ProjectOrgId = ProjectOrgId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.ProjectName = params.get("ProjectName")
-        self.ProjectBudget = params.get("ProjectBudget")
-        self.ProjectOrg = params.get("ProjectOrg")
-        self.ProjectIntroduction = params.get("ProjectIntroduction")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._ProjectBudget = params.get("ProjectBudget")
+        self._ProjectOrg = params.get("ProjectOrg")
+        self._ProjectIntroduction = params.get("ProjectIntroduction")
         if params.get("SubProjectList") is not None:
-            self.SubProjectList = []
+            self._SubProjectList = []
             for item in params.get("SubProjectList"):
                 obj = SubProjectInfo()
                 obj._deserialize(item)
-                self.SubProjectList.append(obj)
-        self.ProjectStatus = params.get("ProjectStatus")
-        self.ProjectOrgId = params.get("ProjectOrgId")
-        self.RequestId = params.get("RequestId")
+                self._SubProjectList.append(obj)
+        self._ProjectStatus = params.get("ProjectStatus")
+        self._ProjectOrgId = params.get("ProjectOrgId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProjectStockRequest(AbstractModel):
@@ -812,18 +1654,27 @@ class DescribeProjectStockRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubProjectId: 子项目id
+        :param _SubProjectId: 子项目id
         :type SubProjectId: str
         """
-        self.SubProjectId = None
+        self._SubProjectId = None
+
+    @property
+    def SubProjectId(self):
+        return self._SubProjectId
+
+    @SubProjectId.setter
+    def SubProjectId(self, SubProjectId):
+        self._SubProjectId = SubProjectId
 
 
     def _deserialize(self, params):
-        self.SubProjectId = params.get("SubProjectId")
+        self._SubProjectId = params.get("SubProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -836,23 +1687,39 @@ class DescribeProjectStockResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectStocks: 项目库存列表
+        :param _ProjectStocks: 项目库存列表
         :type ProjectStocks: list of ProjectStock
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProjectStocks = None
-        self.RequestId = None
+        self._ProjectStocks = None
+        self._RequestId = None
+
+    @property
+    def ProjectStocks(self):
+        return self._ProjectStocks
+
+    @ProjectStocks.setter
+    def ProjectStocks(self, ProjectStocks):
+        self._ProjectStocks = ProjectStocks
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ProjectStocks") is not None:
-            self.ProjectStocks = []
+            self._ProjectStocks = []
             for item in params.get("ProjectStocks"):
                 obj = ProjectStock()
                 obj._deserialize(item)
-                self.ProjectStocks.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ProjectStocks.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProjectsRequest(AbstractModel):
@@ -862,36 +1729,77 @@ class DescribeProjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNo: 页码
+        :param _PageNo: 页码
         :type PageNo: int
-        :param PageSize: 页面大小
+        :param _PageSize: 页面大小
         :type PageSize: int
-        :param SearchWord: 过滤规则
+        :param _SearchWord: 过滤规则
         :type SearchWord: str
-        :param Filters: 部门范围过滤
+        :param _Filters: 部门范围过滤
         :type Filters: :class:`tencentcloud.solar.v20181011.models.Filters`
-        :param ProjectStatus: 项目状态, 0:编辑中 1:运营中 2:已下线 3:已删除 4:审批中
+        :param _ProjectStatus: 项目状态, 0:编辑中 1:运营中 2:已下线 3:已删除 4:审批中
         :type ProjectStatus: int
         """
-        self.PageNo = None
-        self.PageSize = None
-        self.SearchWord = None
-        self.Filters = None
-        self.ProjectStatus = None
+        self._PageNo = None
+        self._PageSize = None
+        self._SearchWord = None
+        self._Filters = None
+        self._ProjectStatus = None
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def ProjectStatus(self):
+        return self._ProjectStatus
+
+    @ProjectStatus.setter
+    def ProjectStatus(self, ProjectStatus):
+        self._ProjectStatus = ProjectStatus
 
 
     def _deserialize(self, params):
-        self.PageNo = params.get("PageNo")
-        self.PageSize = params.get("PageSize")
-        self.SearchWord = params.get("SearchWord")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._SearchWord = params.get("SearchWord")
         if params.get("Filters") is not None:
-            self.Filters = Filters()
-            self.Filters._deserialize(params.get("Filters"))
-        self.ProjectStatus = params.get("ProjectStatus")
+            self._Filters = Filters()
+            self._Filters._deserialize(params.get("Filters"))
+        self._ProjectStatus = params.get("ProjectStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -904,27 +1812,51 @@ class DescribeProjectsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectList: 项目列表
+        :param _ProjectList: 项目列表
         :type ProjectList: list of ProjectInfo
-        :param TotalCount: 项目数
+        :param _TotalCount: 项目数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProjectList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ProjectList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ProjectList(self):
+        return self._ProjectList
+
+    @ProjectList.setter
+    def ProjectList(self, ProjectList):
+        self._ProjectList = ProjectList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ProjectList") is not None:
-            self.ProjectList = []
+            self._ProjectList = []
             for item in params.get("ProjectList"):
                 obj = ProjectInfo()
                 obj._deserialize(item)
-                self.ProjectList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ProjectList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeResourceTemplateHeadersRequest(AbstractModel):
@@ -934,18 +1866,27 @@ class DescribeResourceTemplateHeadersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WxAppId: 微信公众号appId
+        :param _WxAppId: 微信公众号appId
         :type WxAppId: str
         """
-        self.WxAppId = None
+        self._WxAppId = None
+
+    @property
+    def WxAppId(self):
+        return self._WxAppId
+
+    @WxAppId.setter
+    def WxAppId(self, WxAppId):
+        self._WxAppId = WxAppId
 
 
     def _deserialize(self, params):
-        self.WxAppId = params.get("WxAppId")
+        self._WxAppId = params.get("WxAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -958,28 +1899,52 @@ class DescribeResourceTemplateHeadersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 记录条数
+        :param _TotalCount: 记录条数
         :type TotalCount: int
-        :param TmplList: 模板列表
+        :param _TmplList: 模板列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmplList: list of ResourceTemplateHeader
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TmplList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TmplList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TmplList(self):
+        return self._TmplList
+
+    @TmplList.setter
+    def TmplList(self, TmplList):
+        self._TmplList = TmplList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TmplList") is not None:
-            self.TmplList = []
+            self._TmplList = []
             for item in params.get("TmplList"):
                 obj = ResourceTemplateHeader()
                 obj._deserialize(item)
-                self.TmplList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TmplList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSubProjectRequest(AbstractModel):
@@ -989,18 +1954,27 @@ class DescribeSubProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubProjectId: 子项目id
+        :param _SubProjectId: 子项目id
         :type SubProjectId: str
         """
-        self.SubProjectId = None
+        self._SubProjectId = None
+
+    @property
+    def SubProjectId(self):
+        return self._SubProjectId
+
+    @SubProjectId.setter
+    def SubProjectId(self, SubProjectId):
+        self._SubProjectId = SubProjectId
 
 
     def _deserialize(self, params):
-        self.SubProjectId = params.get("SubProjectId")
+        self._SubProjectId = params.get("SubProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1013,63 +1987,143 @@ class DescribeSubProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductInfo: 作品信息
+        :param _ProductInfo: 作品信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: :class:`tencentcloud.solar.v20181011.models.ProductInfo`
-        :param ActivityInfo: 活动信息
+        :param _ActivityInfo: 活动信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityInfo: :class:`tencentcloud.solar.v20181011.models.ActivityInfo`
-        :param ShareTitle: 分享标题
+        :param _ShareTitle: 分享标题
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareTitle: str
-        :param ShareDesc: 分享描述
+        :param _ShareDesc: 分享描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareDesc: str
-        :param ShareImg: 分享图标
+        :param _ShareImg: 分享图标
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareImg: str
-        :param HasStrategy: 是否已创建策略
+        :param _HasStrategy: 是否已创建策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasStrategy: int
-        :param SubProjectStatus: 子项目状态
+        :param _SubProjectStatus: 子项目状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubProjectStatus: str
-        :param ShareAppId: 分享公众号的appId
+        :param _ShareAppId: 分享公众号的appId
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareAppId: str
-        :param ShareWsId: 分享公众号的wsId
+        :param _ShareWsId: 分享公众号的wsId
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareWsId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProductInfo = None
-        self.ActivityInfo = None
-        self.ShareTitle = None
-        self.ShareDesc = None
-        self.ShareImg = None
-        self.HasStrategy = None
-        self.SubProjectStatus = None
-        self.ShareAppId = None
-        self.ShareWsId = None
-        self.RequestId = None
+        self._ProductInfo = None
+        self._ActivityInfo = None
+        self._ShareTitle = None
+        self._ShareDesc = None
+        self._ShareImg = None
+        self._HasStrategy = None
+        self._SubProjectStatus = None
+        self._ShareAppId = None
+        self._ShareWsId = None
+        self._RequestId = None
+
+    @property
+    def ProductInfo(self):
+        return self._ProductInfo
+
+    @ProductInfo.setter
+    def ProductInfo(self, ProductInfo):
+        self._ProductInfo = ProductInfo
+
+    @property
+    def ActivityInfo(self):
+        return self._ActivityInfo
+
+    @ActivityInfo.setter
+    def ActivityInfo(self, ActivityInfo):
+        self._ActivityInfo = ActivityInfo
+
+    @property
+    def ShareTitle(self):
+        return self._ShareTitle
+
+    @ShareTitle.setter
+    def ShareTitle(self, ShareTitle):
+        self._ShareTitle = ShareTitle
+
+    @property
+    def ShareDesc(self):
+        return self._ShareDesc
+
+    @ShareDesc.setter
+    def ShareDesc(self, ShareDesc):
+        self._ShareDesc = ShareDesc
+
+    @property
+    def ShareImg(self):
+        return self._ShareImg
+
+    @ShareImg.setter
+    def ShareImg(self, ShareImg):
+        self._ShareImg = ShareImg
+
+    @property
+    def HasStrategy(self):
+        return self._HasStrategy
+
+    @HasStrategy.setter
+    def HasStrategy(self, HasStrategy):
+        self._HasStrategy = HasStrategy
+
+    @property
+    def SubProjectStatus(self):
+        return self._SubProjectStatus
+
+    @SubProjectStatus.setter
+    def SubProjectStatus(self, SubProjectStatus):
+        self._SubProjectStatus = SubProjectStatus
+
+    @property
+    def ShareAppId(self):
+        return self._ShareAppId
+
+    @ShareAppId.setter
+    def ShareAppId(self, ShareAppId):
+        self._ShareAppId = ShareAppId
+
+    @property
+    def ShareWsId(self):
+        return self._ShareWsId
+
+    @ShareWsId.setter
+    def ShareWsId(self, ShareWsId):
+        self._ShareWsId = ShareWsId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ProductInfo") is not None:
-            self.ProductInfo = ProductInfo()
-            self.ProductInfo._deserialize(params.get("ProductInfo"))
+            self._ProductInfo = ProductInfo()
+            self._ProductInfo._deserialize(params.get("ProductInfo"))
         if params.get("ActivityInfo") is not None:
-            self.ActivityInfo = ActivityInfo()
-            self.ActivityInfo._deserialize(params.get("ActivityInfo"))
-        self.ShareTitle = params.get("ShareTitle")
-        self.ShareDesc = params.get("ShareDesc")
-        self.ShareImg = params.get("ShareImg")
-        self.HasStrategy = params.get("HasStrategy")
-        self.SubProjectStatus = params.get("SubProjectStatus")
-        self.ShareAppId = params.get("ShareAppId")
-        self.ShareWsId = params.get("ShareWsId")
-        self.RequestId = params.get("RequestId")
+            self._ActivityInfo = ActivityInfo()
+            self._ActivityInfo._deserialize(params.get("ActivityInfo"))
+        self._ShareTitle = params.get("ShareTitle")
+        self._ShareDesc = params.get("ShareDesc")
+        self._ShareImg = params.get("ShareImg")
+        self._HasStrategy = params.get("HasStrategy")
+        self._SubProjectStatus = params.get("SubProjectStatus")
+        self._ShareAppId = params.get("ShareAppId")
+        self._ShareWsId = params.get("ShareWsId")
+        self._RequestId = params.get("RequestId")
 
 
 class ExpireFlowRequest(AbstractModel):
@@ -1079,18 +2133,27 @@ class ExpireFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 工单ID
+        :param _FlowId: 工单ID
         :type FlowId: str
         """
-        self.FlowId = None
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1103,14 +2166,22 @@ class ExpireFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Filters(AbstractModel):
@@ -1120,26 +2191,51 @@ class Filters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 过滤类型, 0: 默认(可见部门+自创) 1: 自创 2: 指定部门(部门在可见范围内)
+        :param _Type: 过滤类型, 0: 默认(可见部门+自创) 1: 自创 2: 指定部门(部门在可见范围内)
         :type Type: int
-        :param DeptIds: 指定部门Id, 类型2使用
+        :param _DeptIds: 指定部门Id, 类型2使用
         :type DeptIds: list of str
-        :param UserIds: 用户Id列表
+        :param _UserIds: 用户Id列表
         :type UserIds: list of str
         """
-        self.Type = None
-        self.DeptIds = None
-        self.UserIds = None
+        self._Type = None
+        self._DeptIds = None
+        self._UserIds = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DeptIds(self):
+        return self._DeptIds
+
+    @DeptIds.setter
+    def DeptIds(self, DeptIds):
+        self._DeptIds = DeptIds
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.DeptIds = params.get("DeptIds")
-        self.UserIds = params.get("UserIds")
+        self._Type = params.get("Type")
+        self._DeptIds = params.get("DeptIds")
+        self._UserIds = params.get("UserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1152,38 +2248,87 @@ class ModifyProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param ProjectName: 项目名称
+        :param _ProjectName: 项目名称
         :type ProjectName: str
-        :param ProjectBudget: 项目预算
+        :param _ProjectBudget: 项目预算
         :type ProjectBudget: str
-        :param ProjectOrg: 项目机构
+        :param _ProjectOrg: 项目机构
         :type ProjectOrg: str
-        :param ProjectIntroduction: 项目简介
+        :param _ProjectIntroduction: 项目简介
         :type ProjectIntroduction: str
-        :param ProjectOrgId: 项目机构Id
+        :param _ProjectOrgId: 项目机构Id
         :type ProjectOrgId: str
         """
-        self.ProjectId = None
-        self.ProjectName = None
-        self.ProjectBudget = None
-        self.ProjectOrg = None
-        self.ProjectIntroduction = None
-        self.ProjectOrgId = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._ProjectBudget = None
+        self._ProjectOrg = None
+        self._ProjectIntroduction = None
+        self._ProjectOrgId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProjectBudget(self):
+        return self._ProjectBudget
+
+    @ProjectBudget.setter
+    def ProjectBudget(self, ProjectBudget):
+        self._ProjectBudget = ProjectBudget
+
+    @property
+    def ProjectOrg(self):
+        return self._ProjectOrg
+
+    @ProjectOrg.setter
+    def ProjectOrg(self, ProjectOrg):
+        self._ProjectOrg = ProjectOrg
+
+    @property
+    def ProjectIntroduction(self):
+        return self._ProjectIntroduction
+
+    @ProjectIntroduction.setter
+    def ProjectIntroduction(self, ProjectIntroduction):
+        self._ProjectIntroduction = ProjectIntroduction
+
+    @property
+    def ProjectOrgId(self):
+        return self._ProjectOrgId
+
+    @ProjectOrgId.setter
+    def ProjectOrgId(self, ProjectOrgId):
+        self._ProjectOrgId = ProjectOrgId
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.ProjectName = params.get("ProjectName")
-        self.ProjectBudget = params.get("ProjectBudget")
-        self.ProjectOrg = params.get("ProjectOrg")
-        self.ProjectIntroduction = params.get("ProjectIntroduction")
-        self.ProjectOrgId = params.get("ProjectOrgId")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._ProjectBudget = params.get("ProjectBudget")
+        self._ProjectOrg = params.get("ProjectOrg")
+        self._ProjectIntroduction = params.get("ProjectIntroduction")
+        self._ProjectOrgId = params.get("ProjectOrgId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1196,14 +2341,22 @@ class ModifyProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OffLineProjectRequest(AbstractModel):
@@ -1213,18 +2366,27 @@ class OffLineProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: str
         """
-        self.ProjectId = None
+        self._ProjectId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1237,14 +2399,22 @@ class OffLineProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ProductInfo(AbstractModel):
@@ -1254,49 +2424,106 @@ class ProductInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 模板id
+        :param _TemplateId: 模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
-        :param ProductTitle: 模板主题
+        :param _ProductTitle: 模板主题
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductTitle: str
-        :param ProductDesc: 模板描述
+        :param _ProductDesc: 模板描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductDesc: str
-        :param ProductCover: 模板封面地址
+        :param _ProductCover: 模板封面地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCover: str
-        :param ProductId: 内容作品id
+        :param _ProductId: 内容作品id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param ProductUrl: 作品预览链接
+        :param _ProductUrl: 作品预览链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductUrl: str
-        :param ProductName: 作品名称
+        :param _ProductName: 作品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         """
-        self.TemplateId = None
-        self.ProductTitle = None
-        self.ProductDesc = None
-        self.ProductCover = None
-        self.ProductId = None
-        self.ProductUrl = None
-        self.ProductName = None
+        self._TemplateId = None
+        self._ProductTitle = None
+        self._ProductDesc = None
+        self._ProductCover = None
+        self._ProductId = None
+        self._ProductUrl = None
+        self._ProductName = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ProductTitle(self):
+        return self._ProductTitle
+
+    @ProductTitle.setter
+    def ProductTitle(self, ProductTitle):
+        self._ProductTitle = ProductTitle
+
+    @property
+    def ProductDesc(self):
+        return self._ProductDesc
+
+    @ProductDesc.setter
+    def ProductDesc(self, ProductDesc):
+        self._ProductDesc = ProductDesc
+
+    @property
+    def ProductCover(self):
+        return self._ProductCover
+
+    @ProductCover.setter
+    def ProductCover(self, ProductCover):
+        self._ProductCover = ProductCover
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ProductUrl(self):
+        return self._ProductUrl
+
+    @ProductUrl.setter
+    def ProductUrl(self, ProductUrl):
+        self._ProductUrl = ProductUrl
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.ProductTitle = params.get("ProductTitle")
-        self.ProductDesc = params.get("ProductDesc")
-        self.ProductCover = params.get("ProductCover")
-        self.ProductId = params.get("ProductId")
-        self.ProductUrl = params.get("ProductUrl")
-        self.ProductName = params.get("ProductName")
+        self._TemplateId = params.get("TemplateId")
+        self._ProductTitle = params.get("ProductTitle")
+        self._ProductDesc = params.get("ProductDesc")
+        self._ProductCover = params.get("ProductCover")
+        self._ProductId = params.get("ProductId")
+        self._ProductUrl = params.get("ProductUrl")
+        self._ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1309,47 +2536,112 @@ class ProjectInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param ProjectName: 项目名称
+        :param _ProjectName: 项目名称
         :type ProjectName: str
-        :param ProjectOrg: 项目所属机构
+        :param _ProjectOrg: 项目所属机构
         :type ProjectOrg: str
-        :param ProjectBudget: 项目预算
+        :param _ProjectBudget: 项目预算
         :type ProjectBudget: float
-        :param ProjectStatus: 项目状态
+        :param _ProjectStatus: 项目状态
         :type ProjectStatus: str
-        :param CreateTime: 项目创建时间
+        :param _CreateTime: 项目创建时间
         :type CreateTime: str
-        :param ProjectIntroduction: 项目简介
+        :param _ProjectIntroduction: 项目简介
         :type ProjectIntroduction: str
-        :param ProjectOrgId: 项目所属机构Id
+        :param _ProjectOrgId: 项目所属机构Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectOrgId: str
         """
-        self.ProjectId = None
-        self.ProjectName = None
-        self.ProjectOrg = None
-        self.ProjectBudget = None
-        self.ProjectStatus = None
-        self.CreateTime = None
-        self.ProjectIntroduction = None
-        self.ProjectOrgId = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._ProjectOrg = None
+        self._ProjectBudget = None
+        self._ProjectStatus = None
+        self._CreateTime = None
+        self._ProjectIntroduction = None
+        self._ProjectOrgId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProjectOrg(self):
+        return self._ProjectOrg
+
+    @ProjectOrg.setter
+    def ProjectOrg(self, ProjectOrg):
+        self._ProjectOrg = ProjectOrg
+
+    @property
+    def ProjectBudget(self):
+        return self._ProjectBudget
+
+    @ProjectBudget.setter
+    def ProjectBudget(self, ProjectBudget):
+        self._ProjectBudget = ProjectBudget
+
+    @property
+    def ProjectStatus(self):
+        return self._ProjectStatus
+
+    @ProjectStatus.setter
+    def ProjectStatus(self, ProjectStatus):
+        self._ProjectStatus = ProjectStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ProjectIntroduction(self):
+        return self._ProjectIntroduction
+
+    @ProjectIntroduction.setter
+    def ProjectIntroduction(self, ProjectIntroduction):
+        self._ProjectIntroduction = ProjectIntroduction
+
+    @property
+    def ProjectOrgId(self):
+        return self._ProjectOrgId
+
+    @ProjectOrgId.setter
+    def ProjectOrgId(self, ProjectOrgId):
+        self._ProjectOrgId = ProjectOrgId
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.ProjectName = params.get("ProjectName")
-        self.ProjectOrg = params.get("ProjectOrg")
-        self.ProjectBudget = params.get("ProjectBudget")
-        self.ProjectStatus = params.get("ProjectStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.ProjectIntroduction = params.get("ProjectIntroduction")
-        self.ProjectOrgId = params.get("ProjectOrgId")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._ProjectOrg = params.get("ProjectOrg")
+        self._ProjectBudget = params.get("ProjectBudget")
+        self._ProjectStatus = params.get("ProjectStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._ProjectIntroduction = params.get("ProjectIntroduction")
+        self._ProjectOrgId = params.get("ProjectOrgId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1362,42 +2654,99 @@ class ProjectStock(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PrizeId: 奖品id
+        :param _PrizeId: 奖品id
         :type PrizeId: str
-        :param PrizeBat: 奖品批次
+        :param _PrizeBat: 奖品批次
         :type PrizeBat: int
-        :param PrizeName: 奖品名称
+        :param _PrizeName: 奖品名称
         :type PrizeName: str
-        :param UsedStock: 已分配奖品数量
+        :param _UsedStock: 已分配奖品数量
         :type UsedStock: int
-        :param RemainStock: 该奖品剩余库存数量
+        :param _RemainStock: 该奖品剩余库存数量
         :type RemainStock: int
-        :param PoolIdx: 奖品所在奖池index
+        :param _PoolIdx: 奖品所在奖池index
         :type PoolIdx: int
-        :param PoolName: 奖品所在奖池名称
+        :param _PoolName: 奖品所在奖池名称
         :type PoolName: str
         """
-        self.PrizeId = None
-        self.PrizeBat = None
-        self.PrizeName = None
-        self.UsedStock = None
-        self.RemainStock = None
-        self.PoolIdx = None
-        self.PoolName = None
+        self._PrizeId = None
+        self._PrizeBat = None
+        self._PrizeName = None
+        self._UsedStock = None
+        self._RemainStock = None
+        self._PoolIdx = None
+        self._PoolName = None
+
+    @property
+    def PrizeId(self):
+        return self._PrizeId
+
+    @PrizeId.setter
+    def PrizeId(self, PrizeId):
+        self._PrizeId = PrizeId
+
+    @property
+    def PrizeBat(self):
+        return self._PrizeBat
+
+    @PrizeBat.setter
+    def PrizeBat(self, PrizeBat):
+        self._PrizeBat = PrizeBat
+
+    @property
+    def PrizeName(self):
+        return self._PrizeName
+
+    @PrizeName.setter
+    def PrizeName(self, PrizeName):
+        self._PrizeName = PrizeName
+
+    @property
+    def UsedStock(self):
+        return self._UsedStock
+
+    @UsedStock.setter
+    def UsedStock(self, UsedStock):
+        self._UsedStock = UsedStock
+
+    @property
+    def RemainStock(self):
+        return self._RemainStock
+
+    @RemainStock.setter
+    def RemainStock(self, RemainStock):
+        self._RemainStock = RemainStock
+
+    @property
+    def PoolIdx(self):
+        return self._PoolIdx
+
+    @PoolIdx.setter
+    def PoolIdx(self, PoolIdx):
+        self._PoolIdx = PoolIdx
+
+    @property
+    def PoolName(self):
+        return self._PoolName
+
+    @PoolName.setter
+    def PoolName(self, PoolName):
+        self._PoolName = PoolName
 
 
     def _deserialize(self, params):
-        self.PrizeId = params.get("PrizeId")
-        self.PrizeBat = params.get("PrizeBat")
-        self.PrizeName = params.get("PrizeName")
-        self.UsedStock = params.get("UsedStock")
-        self.RemainStock = params.get("RemainStock")
-        self.PoolIdx = params.get("PoolIdx")
-        self.PoolName = params.get("PoolName")
+        self._PrizeId = params.get("PrizeId")
+        self._PrizeBat = params.get("PrizeBat")
+        self._PrizeName = params.get("PrizeName")
+        self._UsedStock = params.get("UsedStock")
+        self._RemainStock = params.get("RemainStock")
+        self._PoolIdx = params.get("PoolIdx")
+        self._PoolName = params.get("PoolName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1410,34 +2759,75 @@ class ReplenishProjectStockRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubProjectId: 项目id
+        :param _SubProjectId: 项目id
         :type SubProjectId: str
-        :param PrizeId: 奖品id
+        :param _PrizeId: 奖品id
         :type PrizeId: str
-        :param PrizeNum: 奖品数量
+        :param _PrizeNum: 奖品数量
         :type PrizeNum: int
-        :param PoolIndex: 奖池索引
+        :param _PoolIndex: 奖池索引
         :type PoolIndex: int
-        :param PoolName: 奖池名称
+        :param _PoolName: 奖池名称
         :type PoolName: str
         """
-        self.SubProjectId = None
-        self.PrizeId = None
-        self.PrizeNum = None
-        self.PoolIndex = None
-        self.PoolName = None
+        self._SubProjectId = None
+        self._PrizeId = None
+        self._PrizeNum = None
+        self._PoolIndex = None
+        self._PoolName = None
+
+    @property
+    def SubProjectId(self):
+        return self._SubProjectId
+
+    @SubProjectId.setter
+    def SubProjectId(self, SubProjectId):
+        self._SubProjectId = SubProjectId
+
+    @property
+    def PrizeId(self):
+        return self._PrizeId
+
+    @PrizeId.setter
+    def PrizeId(self, PrizeId):
+        self._PrizeId = PrizeId
+
+    @property
+    def PrizeNum(self):
+        return self._PrizeNum
+
+    @PrizeNum.setter
+    def PrizeNum(self, PrizeNum):
+        self._PrizeNum = PrizeNum
+
+    @property
+    def PoolIndex(self):
+        return self._PoolIndex
+
+    @PoolIndex.setter
+    def PoolIndex(self, PoolIndex):
+        self._PoolIndex = PoolIndex
+
+    @property
+    def PoolName(self):
+        return self._PoolName
+
+    @PoolName.setter
+    def PoolName(self, PoolName):
+        self._PoolName = PoolName
 
 
     def _deserialize(self, params):
-        self.SubProjectId = params.get("SubProjectId")
-        self.PrizeId = params.get("PrizeId")
-        self.PrizeNum = params.get("PrizeNum")
-        self.PoolIndex = params.get("PoolIndex")
-        self.PoolName = params.get("PoolName")
+        self._SubProjectId = params.get("SubProjectId")
+        self._PrizeId = params.get("PrizeId")
+        self._PrizeNum = params.get("PrizeNum")
+        self._PoolIndex = params.get("PoolIndex")
+        self._PoolName = params.get("PoolName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1450,14 +2840,22 @@ class ReplenishProjectStockResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResourceTemplateHeader(AbstractModel):
@@ -1467,38 +2865,79 @@ class ResourceTemplateHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Content: 模板预览区内容
+        :param _Content: 模板预览区内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
-        :param Example: 模板预览示例
+        :param _Example: 模板预览示例
 注意：此字段可能返回 null，表示取不到有效值。
         :type Example: str
-        :param KeyArray: 模板预览区域键数组
+        :param _KeyArray: 模板预览区域键数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyArray: str
-        :param TemplateId: 模板id
+        :param _TemplateId: 模板id
         :type TemplateId: str
-        :param Title: 模板标题
+        :param _Title: 模板标题
 注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
         """
-        self.Content = None
-        self.Example = None
-        self.KeyArray = None
-        self.TemplateId = None
-        self.Title = None
+        self._Content = None
+        self._Example = None
+        self._KeyArray = None
+        self._TemplateId = None
+        self._Title = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Example(self):
+        return self._Example
+
+    @Example.setter
+    def Example(self, Example):
+        self._Example = Example
+
+    @property
+    def KeyArray(self):
+        return self._KeyArray
+
+    @KeyArray.setter
+    def KeyArray(self, KeyArray):
+        self._KeyArray = KeyArray
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
 
 
     def _deserialize(self, params):
-        self.Content = params.get("Content")
-        self.Example = params.get("Example")
-        self.KeyArray = params.get("KeyArray")
-        self.TemplateId = params.get("TemplateId")
-        self.Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._Example = params.get("Example")
+        self._KeyArray = params.get("KeyArray")
+        self._TemplateId = params.get("TemplateId")
+        self._Title = params.get("Title")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1511,62 +2950,159 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 客户分组ID
+        :param _GroupId: 客户分组ID
         :type GroupId: str
-        :param DistinctFlag: 去除今日已发送的客户
+        :param _DistinctFlag: 去除今日已发送的客户
         :type DistinctFlag: bool
-        :param IsSendNow: 是否立马发送
+        :param _IsSendNow: 是否立马发送
         :type IsSendNow: bool
-        :param SendDate: 发送时间，一般为0
+        :param _SendDate: 发送时间，一般为0
         :type SendDate: int
-        :param TaskName: 任务名称
+        :param _TaskName: 任务名称
         :type TaskName: str
-        :param WxTouchType: 微信触达类型，text, news, smallapp, tmplmsg
+        :param _WxTouchType: 微信触达类型，text, news, smallapp, tmplmsg
         :type WxTouchType: str
-        :param Title: 标题
+        :param _Title: 标题
         :type Title: str
-        :param Content: 文本内容
+        :param _Content: 文本内容
         :type Content: str
-        :param NewsId: 图文素材ID
+        :param _NewsId: 图文素材ID
         :type NewsId: str
-        :param SmallProgramId: 小程序卡片ID
+        :param _SmallProgramId: 小程序卡片ID
         :type SmallProgramId: str
-        :param TemplateId: 模板消息ID
+        :param _TemplateId: 模板消息ID
         :type TemplateId: str
-        :param WxAppId: 微信公众号appId
+        :param _WxAppId: 微信公众号appId
         :type WxAppId: str
         """
-        self.GroupId = None
-        self.DistinctFlag = None
-        self.IsSendNow = None
-        self.SendDate = None
-        self.TaskName = None
-        self.WxTouchType = None
-        self.Title = None
-        self.Content = None
-        self.NewsId = None
-        self.SmallProgramId = None
-        self.TemplateId = None
-        self.WxAppId = None
+        self._GroupId = None
+        self._DistinctFlag = None
+        self._IsSendNow = None
+        self._SendDate = None
+        self._TaskName = None
+        self._WxTouchType = None
+        self._Title = None
+        self._Content = None
+        self._NewsId = None
+        self._SmallProgramId = None
+        self._TemplateId = None
+        self._WxAppId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DistinctFlag(self):
+        return self._DistinctFlag
+
+    @DistinctFlag.setter
+    def DistinctFlag(self, DistinctFlag):
+        self._DistinctFlag = DistinctFlag
+
+    @property
+    def IsSendNow(self):
+        return self._IsSendNow
+
+    @IsSendNow.setter
+    def IsSendNow(self, IsSendNow):
+        self._IsSendNow = IsSendNow
+
+    @property
+    def SendDate(self):
+        return self._SendDate
+
+    @SendDate.setter
+    def SendDate(self, SendDate):
+        self._SendDate = SendDate
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WxTouchType(self):
+        return self._WxTouchType
+
+    @WxTouchType.setter
+    def WxTouchType(self, WxTouchType):
+        self._WxTouchType = WxTouchType
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def NewsId(self):
+        return self._NewsId
+
+    @NewsId.setter
+    def NewsId(self, NewsId):
+        self._NewsId = NewsId
+
+    @property
+    def SmallProgramId(self):
+        return self._SmallProgramId
+
+    @SmallProgramId.setter
+    def SmallProgramId(self, SmallProgramId):
+        self._SmallProgramId = SmallProgramId
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def WxAppId(self):
+        return self._WxAppId
+
+    @WxAppId.setter
+    def WxAppId(self, WxAppId):
+        self._WxAppId = WxAppId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.DistinctFlag = params.get("DistinctFlag")
-        self.IsSendNow = params.get("IsSendNow")
-        self.SendDate = params.get("SendDate")
-        self.TaskName = params.get("TaskName")
-        self.WxTouchType = params.get("WxTouchType")
-        self.Title = params.get("Title")
-        self.Content = params.get("Content")
-        self.NewsId = params.get("NewsId")
-        self.SmallProgramId = params.get("SmallProgramId")
-        self.TemplateId = params.get("TemplateId")
-        self.WxAppId = params.get("WxAppId")
+        self._GroupId = params.get("GroupId")
+        self._DistinctFlag = params.get("DistinctFlag")
+        self._IsSendNow = params.get("IsSendNow")
+        self._SendDate = params.get("SendDate")
+        self._TaskName = params.get("TaskName")
+        self._WxTouchType = params.get("WxTouchType")
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._NewsId = params.get("NewsId")
+        self._SmallProgramId = params.get("SmallProgramId")
+        self._TemplateId = params.get("TemplateId")
+        self._WxAppId = params.get("WxAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1579,14 +3115,22 @@ class SendWxTouchTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubProjectInfo(AbstractModel):
@@ -1596,26 +3140,51 @@ class SubProjectInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubProjectId: 子项目id
+        :param _SubProjectId: 子项目id
         :type SubProjectId: str
-        :param SubProjectName: 子项目名称
+        :param _SubProjectName: 子项目名称
         :type SubProjectName: str
-        :param SubProjectStatus: 子项目状态
+        :param _SubProjectStatus: 子项目状态
         :type SubProjectStatus: str
         """
-        self.SubProjectId = None
-        self.SubProjectName = None
-        self.SubProjectStatus = None
+        self._SubProjectId = None
+        self._SubProjectName = None
+        self._SubProjectStatus = None
+
+    @property
+    def SubProjectId(self):
+        return self._SubProjectId
+
+    @SubProjectId.setter
+    def SubProjectId(self, SubProjectId):
+        self._SubProjectId = SubProjectId
+
+    @property
+    def SubProjectName(self):
+        return self._SubProjectName
+
+    @SubProjectName.setter
+    def SubProjectName(self, SubProjectName):
+        self._SubProjectName = SubProjectName
+
+    @property
+    def SubProjectStatus(self):
+        return self._SubProjectStatus
+
+    @SubProjectStatus.setter
+    def SubProjectStatus(self, SubProjectStatus):
+        self._SubProjectStatus = SubProjectStatus
 
 
     def _deserialize(self, params):
-        self.SubProjectId = params.get("SubProjectId")
-        self.SubProjectName = params.get("SubProjectName")
-        self.SubProjectStatus = params.get("SubProjectStatus")
+        self._SubProjectId = params.get("SubProjectId")
+        self._SubProjectName = params.get("SubProjectName")
+        self._SubProjectStatus = params.get("SubProjectStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

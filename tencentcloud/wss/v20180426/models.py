@@ -25,22 +25,39 @@ class DeleteCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
+        :param _Id: 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
         :type Id: str
-        :param ModuleType: 模块名称，应填 ssl。
+        :param _ModuleType: 模块名称，应填 ssl。
         :type ModuleType: str
         """
-        self.Id = None
-        self.ModuleType = None
+        self._Id = None
+        self._ModuleType = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ModuleType(self):
+        return self._ModuleType
+
+    @ModuleType.setter
+    def ModuleType(self, ModuleType):
+        self._ModuleType = ModuleType
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.ModuleType = params.get("ModuleType")
+        self._Id = params.get("Id")
+        self._ModuleType = params.get("ModuleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,14 +70,22 @@ class DeleteCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCertListRequest(AbstractModel):
@@ -70,46 +95,111 @@ class DescribeCertListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleType: 模块名称，应填 ssl。
+        :param _ModuleType: 模块名称，应填 ssl。
         :type ModuleType: str
-        :param Offset: 页数，默认第一页。
+        :param _Offset: 页数，默认第一页。
         :type Offset: int
-        :param Limit: 每页条数，默认每页20条。
+        :param _Limit: 每页条数，默认每页20条。
         :type Limit: int
-        :param SearchKey: 搜索关键字。
+        :param _SearchKey: 搜索关键字。
         :type SearchKey: str
-        :param CertType: 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
+        :param _CertType: 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
         :type CertType: str
-        :param Id: 证书ID。
+        :param _Id: 证书ID。
         :type Id: str
-        :param WithCert: 是否同时获取证书内容。
+        :param _WithCert: 是否同时获取证书内容。
         :type WithCert: str
-        :param AltDomain: 如传，则只返回可以给该域名使用的证书。
+        :param _AltDomain: 如传，则只返回可以给该域名使用的证书。
         :type AltDomain: str
         """
-        self.ModuleType = None
-        self.Offset = None
-        self.Limit = None
-        self.SearchKey = None
-        self.CertType = None
-        self.Id = None
-        self.WithCert = None
-        self.AltDomain = None
+        self._ModuleType = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+        self._CertType = None
+        self._Id = None
+        self._WithCert = None
+        self._AltDomain = None
+
+    @property
+    def ModuleType(self):
+        return self._ModuleType
+
+    @ModuleType.setter
+    def ModuleType(self, ModuleType):
+        self._ModuleType = ModuleType
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def WithCert(self):
+        return self._WithCert
+
+    @WithCert.setter
+    def WithCert(self, WithCert):
+        self._WithCert = WithCert
+
+    @property
+    def AltDomain(self):
+        return self._AltDomain
+
+    @AltDomain.setter
+    def AltDomain(self, AltDomain):
+        self._AltDomain = AltDomain
 
 
     def _deserialize(self, params):
-        self.ModuleType = params.get("ModuleType")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchKey = params.get("SearchKey")
-        self.CertType = params.get("CertType")
-        self.Id = params.get("Id")
-        self.WithCert = params.get("WithCert")
-        self.AltDomain = params.get("AltDomain")
+        self._ModuleType = params.get("ModuleType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
+        self._CertType = params.get("CertType")
+        self._Id = params.get("Id")
+        self._WithCert = params.get("WithCert")
+        self._AltDomain = params.get("AltDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -122,27 +212,51 @@ class DescribeCertListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总数量。
+        :param _TotalCount: 总数量。
         :type TotalCount: int
-        :param CertificateSet: 列表。
+        :param _CertificateSet: 列表。
         :type CertificateSet: list of SSLCertificate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.CertificateSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._CertificateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CertificateSet(self):
+        return self._CertificateSet
+
+    @CertificateSet.setter
+    def CertificateSet(self, CertificateSet):
+        self._CertificateSet = CertificateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("CertificateSet") is not None:
-            self.CertificateSet = []
+            self._CertificateSet = []
             for item in params.get("CertificateSet"):
                 obj = SSLCertificate()
                 obj._deserialize(item)
-                self.CertificateSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CertificateSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SSLCertificate(AbstractModel):
@@ -152,146 +266,355 @@ class SSLCertificate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OwnerUin: 所属账户
+        :param _OwnerUin: 所属账户
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param From: 证书来源：trustasia = 亚洲诚信， upload = 用户上传
+        :param _From: 证书来源：trustasia = 亚洲诚信， upload = 用户上传
 注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
-        :param Type: 证书类型
+        :param _Type: 证书类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param CertType: 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+        :param _CertType: 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertType: str
-        :param ProductZhName: 证书办法者名称
+        :param _ProductZhName: 证书办法者名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductZhName: str
-        :param Domain: 主域名
+        :param _Domain: 主域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
-        :param Alias: 别名
+        :param _Alias: 别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
-        :param Status: 状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函
+        :param _Status: 状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param VulnerabilityStatus: 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
+        :param _VulnerabilityStatus: 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityStatus: str
-        :param StatusMsg: 状态信息
+        :param _StatusMsg: 状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusMsg: str
-        :param VerifyType: 验证类型
+        :param _VerifyType: 验证类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
-        :param CertBeginTime: 证书生效时间
+        :param _CertBeginTime: 证书生效时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
-        :param CertEndTime: 证书过期时间
+        :param _CertEndTime: 证书过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
-        :param ValidityPeriod: 证书过期时间
+        :param _ValidityPeriod: 证书过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
-        :param InsertTime: 创建时间
+        :param _InsertTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
-        :param ProjectInfo: 项目信息，ProjectId：项目ID，OwnerUin：项目所属的 uin（默认项目为0），Name：项目名称，CreatorUin：创建项目的 uin，CreateTime：项目创建时间，Info：项目说明
+        :param _ProjectInfo: 项目信息，ProjectId：项目ID，OwnerUin：项目所属的 uin（默认项目为0），Name：项目名称，CreatorUin：创建项目的 uin，CreateTime：项目创建时间，Info：项目说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectInfo: :class:`tencentcloud.wss.v20180426.models.SSLProjectInfo`
-        :param Id: 证书ID
+        :param _Id: 证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param SubjectAltName: 证书包含的多个域名（包含主域名）
+        :param _SubjectAltName: 证书包含的多个域名（包含主域名）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectAltName: list of str
-        :param TypeName: 证书类型名称
+        :param _TypeName: 证书类型名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TypeName: str
-        :param StatusName: 状态名称
+        :param _StatusName: 状态名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusName: str
-        :param IsVip: 是否为 VIP 客户
+        :param _IsVip: 是否为 VIP 客户
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsVip: bool
-        :param IsDv: 是否我 DV 版证书
+        :param _IsDv: 是否我 DV 版证书
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDv: bool
-        :param IsWildcard: 是否为泛域名证书
+        :param _IsWildcard: 是否为泛域名证书
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsWildcard: bool
-        :param IsVulnerability: 是否启用了漏洞扫描功能
+        :param _IsVulnerability: 是否启用了漏洞扫描功能
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsVulnerability: bool
-        :param Cert: 证书
+        :param _Cert: 证书
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cert: str
         """
-        self.OwnerUin = None
-        self.ProjectId = None
-        self.From = None
-        self.Type = None
-        self.CertType = None
-        self.ProductZhName = None
-        self.Domain = None
-        self.Alias = None
-        self.Status = None
-        self.VulnerabilityStatus = None
-        self.StatusMsg = None
-        self.VerifyType = None
-        self.CertBeginTime = None
-        self.CertEndTime = None
-        self.ValidityPeriod = None
-        self.InsertTime = None
-        self.ProjectInfo = None
-        self.Id = None
-        self.SubjectAltName = None
-        self.TypeName = None
-        self.StatusName = None
-        self.IsVip = None
-        self.IsDv = None
-        self.IsWildcard = None
-        self.IsVulnerability = None
-        self.Cert = None
+        self._OwnerUin = None
+        self._ProjectId = None
+        self._From = None
+        self._Type = None
+        self._CertType = None
+        self._ProductZhName = None
+        self._Domain = None
+        self._Alias = None
+        self._Status = None
+        self._VulnerabilityStatus = None
+        self._StatusMsg = None
+        self._VerifyType = None
+        self._CertBeginTime = None
+        self._CertEndTime = None
+        self._ValidityPeriod = None
+        self._InsertTime = None
+        self._ProjectInfo = None
+        self._Id = None
+        self._SubjectAltName = None
+        self._TypeName = None
+        self._StatusName = None
+        self._IsVip = None
+        self._IsDv = None
+        self._IsWildcard = None
+        self._IsVulnerability = None
+        self._Cert = None
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def ProductZhName(self):
+        return self._ProductZhName
+
+    @ProductZhName.setter
+    def ProductZhName(self, ProductZhName):
+        self._ProductZhName = ProductZhName
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VulnerabilityStatus(self):
+        return self._VulnerabilityStatus
+
+    @VulnerabilityStatus.setter
+    def VulnerabilityStatus(self, VulnerabilityStatus):
+        self._VulnerabilityStatus = VulnerabilityStatus
+
+    @property
+    def StatusMsg(self):
+        return self._StatusMsg
+
+    @StatusMsg.setter
+    def StatusMsg(self, StatusMsg):
+        self._StatusMsg = StatusMsg
+
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+    @property
+    def CertBeginTime(self):
+        return self._CertBeginTime
+
+    @CertBeginTime.setter
+    def CertBeginTime(self, CertBeginTime):
+        self._CertBeginTime = CertBeginTime
+
+    @property
+    def CertEndTime(self):
+        return self._CertEndTime
+
+    @CertEndTime.setter
+    def CertEndTime(self, CertEndTime):
+        self._CertEndTime = CertEndTime
+
+    @property
+    def ValidityPeriod(self):
+        return self._ValidityPeriod
+
+    @ValidityPeriod.setter
+    def ValidityPeriod(self, ValidityPeriod):
+        self._ValidityPeriod = ValidityPeriod
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def ProjectInfo(self):
+        return self._ProjectInfo
+
+    @ProjectInfo.setter
+    def ProjectInfo(self, ProjectInfo):
+        self._ProjectInfo = ProjectInfo
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SubjectAltName(self):
+        return self._SubjectAltName
+
+    @SubjectAltName.setter
+    def SubjectAltName(self, SubjectAltName):
+        self._SubjectAltName = SubjectAltName
+
+    @property
+    def TypeName(self):
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def StatusName(self):
+        return self._StatusName
+
+    @StatusName.setter
+    def StatusName(self, StatusName):
+        self._StatusName = StatusName
+
+    @property
+    def IsVip(self):
+        return self._IsVip
+
+    @IsVip.setter
+    def IsVip(self, IsVip):
+        self._IsVip = IsVip
+
+    @property
+    def IsDv(self):
+        return self._IsDv
+
+    @IsDv.setter
+    def IsDv(self, IsDv):
+        self._IsDv = IsDv
+
+    @property
+    def IsWildcard(self):
+        return self._IsWildcard
+
+    @IsWildcard.setter
+    def IsWildcard(self, IsWildcard):
+        self._IsWildcard = IsWildcard
+
+    @property
+    def IsVulnerability(self):
+        return self._IsVulnerability
+
+    @IsVulnerability.setter
+    def IsVulnerability(self, IsVulnerability):
+        self._IsVulnerability = IsVulnerability
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
 
 
     def _deserialize(self, params):
-        self.OwnerUin = params.get("OwnerUin")
-        self.ProjectId = params.get("ProjectId")
-        self.From = params.get("From")
-        self.Type = params.get("Type")
-        self.CertType = params.get("CertType")
-        self.ProductZhName = params.get("ProductZhName")
-        self.Domain = params.get("Domain")
-        self.Alias = params.get("Alias")
-        self.Status = params.get("Status")
-        self.VulnerabilityStatus = params.get("VulnerabilityStatus")
-        self.StatusMsg = params.get("StatusMsg")
-        self.VerifyType = params.get("VerifyType")
-        self.CertBeginTime = params.get("CertBeginTime")
-        self.CertEndTime = params.get("CertEndTime")
-        self.ValidityPeriod = params.get("ValidityPeriod")
-        self.InsertTime = params.get("InsertTime")
+        self._OwnerUin = params.get("OwnerUin")
+        self._ProjectId = params.get("ProjectId")
+        self._From = params.get("From")
+        self._Type = params.get("Type")
+        self._CertType = params.get("CertType")
+        self._ProductZhName = params.get("ProductZhName")
+        self._Domain = params.get("Domain")
+        self._Alias = params.get("Alias")
+        self._Status = params.get("Status")
+        self._VulnerabilityStatus = params.get("VulnerabilityStatus")
+        self._StatusMsg = params.get("StatusMsg")
+        self._VerifyType = params.get("VerifyType")
+        self._CertBeginTime = params.get("CertBeginTime")
+        self._CertEndTime = params.get("CertEndTime")
+        self._ValidityPeriod = params.get("ValidityPeriod")
+        self._InsertTime = params.get("InsertTime")
         if params.get("ProjectInfo") is not None:
-            self.ProjectInfo = SSLProjectInfo()
-            self.ProjectInfo._deserialize(params.get("ProjectInfo"))
-        self.Id = params.get("Id")
-        self.SubjectAltName = params.get("SubjectAltName")
-        self.TypeName = params.get("TypeName")
-        self.StatusName = params.get("StatusName")
-        self.IsVip = params.get("IsVip")
-        self.IsDv = params.get("IsDv")
-        self.IsWildcard = params.get("IsWildcard")
-        self.IsVulnerability = params.get("IsVulnerability")
-        self.Cert = params.get("Cert")
+            self._ProjectInfo = SSLProjectInfo()
+            self._ProjectInfo._deserialize(params.get("ProjectInfo"))
+        self._Id = params.get("Id")
+        self._SubjectAltName = params.get("SubjectAltName")
+        self._TypeName = params.get("TypeName")
+        self._StatusName = params.get("StatusName")
+        self._IsVip = params.get("IsVip")
+        self._IsDv = params.get("IsDv")
+        self._IsWildcard = params.get("IsWildcard")
+        self._IsVulnerability = params.get("IsVulnerability")
+        self._Cert = params.get("Cert")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -304,44 +627,93 @@ class SSLProjectInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param OwnerUin: 项目所属的 uin（默认项目为0）
+        :param _OwnerUin: 项目所属的 uin（默认项目为0）
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: int
-        :param Name: 项目名称
+        :param _Name: 项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param CreatorUin: 创建项目的 uin
+        :param _CreatorUin: 创建项目的 uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: int
-        :param CreateTime: 项目创建时间
+        :param _CreateTime: 项目创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Info: 项目说明
+        :param _Info: 项目说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: str
         """
-        self.ProjectId = None
-        self.OwnerUin = None
-        self.Name = None
-        self.CreatorUin = None
-        self.CreateTime = None
-        self.Info = None
+        self._ProjectId = None
+        self._OwnerUin = None
+        self._Name = None
+        self._CreatorUin = None
+        self._CreateTime = None
+        self._Info = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.Name = params.get("Name")
-        self.CreatorUin = params.get("CreatorUin")
-        self.CreateTime = params.get("CreateTime")
-        self.Info = params.get("Info")
+        self._ProjectId = params.get("ProjectId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._Name = params.get("Name")
+        self._CreatorUin = params.get("CreatorUin")
+        self._CreateTime = params.get("CreateTime")
+        self._Info = params.get("Info")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -354,38 +726,87 @@ class UploadCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cert: 证书内容。
+        :param _Cert: 证书内容。
         :type Cert: str
-        :param CertType: 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
+        :param _CertType: 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
         :type CertType: str
-        :param ProjectId: 项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
+        :param _ProjectId: 项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
         :type ProjectId: str
-        :param ModuleType: 模块名称，应填 ssl。
+        :param _ModuleType: 模块名称，应填 ssl。
         :type ModuleType: str
-        :param Key: 证书私钥，certType=SVR 时必填。
+        :param _Key: 证书私钥，certType=SVR 时必填。
         :type Key: str
-        :param Alias: 证书备注。
+        :param _Alias: 证书备注。
         :type Alias: str
         """
-        self.Cert = None
-        self.CertType = None
-        self.ProjectId = None
-        self.ModuleType = None
-        self.Key = None
-        self.Alias = None
+        self._Cert = None
+        self._CertType = None
+        self._ProjectId = None
+        self._ModuleType = None
+        self._Key = None
+        self._Alias = None
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ModuleType(self):
+        return self._ModuleType
+
+    @ModuleType.setter
+    def ModuleType(self, ModuleType):
+        self._ModuleType = ModuleType
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
 
 
     def _deserialize(self, params):
-        self.Cert = params.get("Cert")
-        self.CertType = params.get("CertType")
-        self.ProjectId = params.get("ProjectId")
-        self.ModuleType = params.get("ModuleType")
-        self.Key = params.get("Key")
-        self.Alias = params.get("Alias")
+        self._Cert = params.get("Cert")
+        self._CertType = params.get("CertType")
+        self._ProjectId = params.get("ProjectId")
+        self._ModuleType = params.get("ModuleType")
+        self._Key = params.get("Key")
+        self._Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -398,15 +819,31 @@ class UploadCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 证书ID。
+        :param _Id: 证书ID。
         :type Id: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Id = None
-        self.RequestId = None
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.RequestId = params.get("RequestId")
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")

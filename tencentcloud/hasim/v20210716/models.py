@@ -25,66 +25,171 @@ class CreateRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 自动化规则名称
+        :param _Name: 自动化规则名称
         :type Name: str
-        :param Type: 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
+        :param _Type: 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
         :type Type: int
-        :param IsActive: 是否激活
+        :param _IsActive: 是否激活
         :type IsActive: bool
-        :param Notice: 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
+        :param _Notice: 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
         :type Notice: int
-        :param Email: 邮箱
+        :param _Email: 邮箱
         :type Email: str
-        :param Url: 推送的API地址
+        :param _Url: 推送的API地址
         :type Url: str
-        :param DataThreshold: 用量阈值
+        :param _DataThreshold: 用量阈值
         :type DataThreshold: int
-        :param District: 行政区类型：1. 省份 2. 城市 3. 区
+        :param _District: 行政区类型：1. 省份 2. 城市 3. 区
         :type District: int
-        :param Distance: 心跳移动距离阈值
+        :param _Distance: 心跳移动距离阈值
         :type Distance: int
-        :param SignalStrength: 信号强度阈值
+        :param _SignalStrength: 信号强度阈值
         :type SignalStrength: int
-        :param LostDay: 盲点时间阈值，天
+        :param _LostDay: 盲点时间阈值，天
         :type LostDay: int
-        :param TagIDs: 标签ID集合
+        :param _TagIDs: 标签ID集合
         :type TagIDs: list of int
-        :param SalePlan: 资费计划
+        :param _SalePlan: 资费计划
         :type SalePlan: str
         """
-        self.Name = None
-        self.Type = None
-        self.IsActive = None
-        self.Notice = None
-        self.Email = None
-        self.Url = None
-        self.DataThreshold = None
-        self.District = None
-        self.Distance = None
-        self.SignalStrength = None
-        self.LostDay = None
-        self.TagIDs = None
-        self.SalePlan = None
+        self._Name = None
+        self._Type = None
+        self._IsActive = None
+        self._Notice = None
+        self._Email = None
+        self._Url = None
+        self._DataThreshold = None
+        self._District = None
+        self._Distance = None
+        self._SignalStrength = None
+        self._LostDay = None
+        self._TagIDs = None
+        self._SalePlan = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def Notice(self):
+        return self._Notice
+
+    @Notice.setter
+    def Notice(self, Notice):
+        self._Notice = Notice
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def DataThreshold(self):
+        return self._DataThreshold
+
+    @DataThreshold.setter
+    def DataThreshold(self, DataThreshold):
+        self._DataThreshold = DataThreshold
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def Distance(self):
+        return self._Distance
+
+    @Distance.setter
+    def Distance(self, Distance):
+        self._Distance = Distance
+
+    @property
+    def SignalStrength(self):
+        return self._SignalStrength
+
+    @SignalStrength.setter
+    def SignalStrength(self, SignalStrength):
+        self._SignalStrength = SignalStrength
+
+    @property
+    def LostDay(self):
+        return self._LostDay
+
+    @LostDay.setter
+    def LostDay(self, LostDay):
+        self._LostDay = LostDay
+
+    @property
+    def TagIDs(self):
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def SalePlan(self):
+        return self._SalePlan
+
+    @SalePlan.setter
+    def SalePlan(self, SalePlan):
+        self._SalePlan = SalePlan
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.IsActive = params.get("IsActive")
-        self.Notice = params.get("Notice")
-        self.Email = params.get("Email")
-        self.Url = params.get("Url")
-        self.DataThreshold = params.get("DataThreshold")
-        self.District = params.get("District")
-        self.Distance = params.get("Distance")
-        self.SignalStrength = params.get("SignalStrength")
-        self.LostDay = params.get("LostDay")
-        self.TagIDs = params.get("TagIDs")
-        self.SalePlan = params.get("SalePlan")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._IsActive = params.get("IsActive")
+        self._Notice = params.get("Notice")
+        self._Email = params.get("Email")
+        self._Url = params.get("Url")
+        self._DataThreshold = params.get("DataThreshold")
+        self._District = params.get("District")
+        self._Distance = params.get("Distance")
+        self._SignalStrength = params.get("SignalStrength")
+        self._LostDay = params.get("LostDay")
+        self._TagIDs = params.get("TagIDs")
+        self._SalePlan = params.get("SalePlan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -97,14 +202,22 @@ class CreateRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTacticRequest(AbstractModel):
@@ -114,86 +227,231 @@ class CreateTacticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 策略名称
+        :param _Name: 策略名称
         :type Name: str
-        :param IsAuto: 是否自动执行
+        :param _IsAuto: 是否自动执行
         :type IsAuto: int
-        :param PingInterval: 心跳上报间隔(s)
+        :param _PingInterval: 心跳上报间隔(s)
         :type PingInterval: int
-        :param IsWeak: 是否开启弱信号检测
+        :param _IsWeak: 是否开启弱信号检测
         :type IsWeak: int
-        :param WeakThreshold: 弱信号阈值（-dbm）
+        :param _WeakThreshold: 弱信号阈值（-dbm）
         :type WeakThreshold: int
-        :param IsDelay: 是否开启时延切换
+        :param _IsDelay: 是否开启时延切换
         :type IsDelay: int
-        :param DelayThreshold: 网络时延阈值（ms）
+        :param _DelayThreshold: 网络时延阈值（ms）
         :type DelayThreshold: int
-        :param IsFake: 是否开启假信号检测
+        :param _IsFake: 是否开启假信号检测
         :type IsFake: int
-        :param FakeIP: 假信号检测IP字符串，用逗号分隔
+        :param _FakeIP: 假信号检测IP字符串，用逗号分隔
         :type FakeIP: str
-        :param FakeInterval: 假信号检测间隔（s）
+        :param _FakeInterval: 假信号检测间隔（s）
         :type FakeInterval: int
-        :param IsNet: 是否开启网络制式检测
+        :param _IsNet: 是否开启网络制式检测
         :type IsNet: int
-        :param Network: 网络回落制式 1 2G、 2 3G 、 3 2/3G
+        :param _Network: 网络回落制式 1 2G、 2 3G 、 3 2/3G
         :type Network: int
-        :param IsMove: 是否开启移动检测
+        :param _IsMove: 是否开启移动检测
         :type IsMove: int
-        :param IsPriorityTele: 是否开启最优先运营商
+        :param _IsPriorityTele: 是否开启最优先运营商
         :type IsPriorityTele: int
-        :param PriorityTele: 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
+        :param _PriorityTele: 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
         :type PriorityTele: int
-        :param IsBottomTele: 是否开启最不优先运营商
+        :param _IsBottomTele: 是否开启最不优先运营商
         :type IsBottomTele: int
-        :param BottomTele: 最不优先运营商 1 移动、 2 联通、 3 电信
+        :param _BottomTele: 最不优先运营商 1 移动、 2 联通、 3 电信
         :type BottomTele: int
-        :param IsBestSignal: 最优先信号选取策略
+        :param _IsBestSignal: 最优先信号选取策略
         :type IsBestSignal: int
         """
-        self.Name = None
-        self.IsAuto = None
-        self.PingInterval = None
-        self.IsWeak = None
-        self.WeakThreshold = None
-        self.IsDelay = None
-        self.DelayThreshold = None
-        self.IsFake = None
-        self.FakeIP = None
-        self.FakeInterval = None
-        self.IsNet = None
-        self.Network = None
-        self.IsMove = None
-        self.IsPriorityTele = None
-        self.PriorityTele = None
-        self.IsBottomTele = None
-        self.BottomTele = None
-        self.IsBestSignal = None
+        self._Name = None
+        self._IsAuto = None
+        self._PingInterval = None
+        self._IsWeak = None
+        self._WeakThreshold = None
+        self._IsDelay = None
+        self._DelayThreshold = None
+        self._IsFake = None
+        self._FakeIP = None
+        self._FakeInterval = None
+        self._IsNet = None
+        self._Network = None
+        self._IsMove = None
+        self._IsPriorityTele = None
+        self._PriorityTele = None
+        self._IsBottomTele = None
+        self._BottomTele = None
+        self._IsBestSignal = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IsAuto(self):
+        return self._IsAuto
+
+    @IsAuto.setter
+    def IsAuto(self, IsAuto):
+        self._IsAuto = IsAuto
+
+    @property
+    def PingInterval(self):
+        return self._PingInterval
+
+    @PingInterval.setter
+    def PingInterval(self, PingInterval):
+        self._PingInterval = PingInterval
+
+    @property
+    def IsWeak(self):
+        return self._IsWeak
+
+    @IsWeak.setter
+    def IsWeak(self, IsWeak):
+        self._IsWeak = IsWeak
+
+    @property
+    def WeakThreshold(self):
+        return self._WeakThreshold
+
+    @WeakThreshold.setter
+    def WeakThreshold(self, WeakThreshold):
+        self._WeakThreshold = WeakThreshold
+
+    @property
+    def IsDelay(self):
+        return self._IsDelay
+
+    @IsDelay.setter
+    def IsDelay(self, IsDelay):
+        self._IsDelay = IsDelay
+
+    @property
+    def DelayThreshold(self):
+        return self._DelayThreshold
+
+    @DelayThreshold.setter
+    def DelayThreshold(self, DelayThreshold):
+        self._DelayThreshold = DelayThreshold
+
+    @property
+    def IsFake(self):
+        return self._IsFake
+
+    @IsFake.setter
+    def IsFake(self, IsFake):
+        self._IsFake = IsFake
+
+    @property
+    def FakeIP(self):
+        return self._FakeIP
+
+    @FakeIP.setter
+    def FakeIP(self, FakeIP):
+        self._FakeIP = FakeIP
+
+    @property
+    def FakeInterval(self):
+        return self._FakeInterval
+
+    @FakeInterval.setter
+    def FakeInterval(self, FakeInterval):
+        self._FakeInterval = FakeInterval
+
+    @property
+    def IsNet(self):
+        return self._IsNet
+
+    @IsNet.setter
+    def IsNet(self, IsNet):
+        self._IsNet = IsNet
+
+    @property
+    def Network(self):
+        return self._Network
+
+    @Network.setter
+    def Network(self, Network):
+        self._Network = Network
+
+    @property
+    def IsMove(self):
+        return self._IsMove
+
+    @IsMove.setter
+    def IsMove(self, IsMove):
+        self._IsMove = IsMove
+
+    @property
+    def IsPriorityTele(self):
+        return self._IsPriorityTele
+
+    @IsPriorityTele.setter
+    def IsPriorityTele(self, IsPriorityTele):
+        self._IsPriorityTele = IsPriorityTele
+
+    @property
+    def PriorityTele(self):
+        return self._PriorityTele
+
+    @PriorityTele.setter
+    def PriorityTele(self, PriorityTele):
+        self._PriorityTele = PriorityTele
+
+    @property
+    def IsBottomTele(self):
+        return self._IsBottomTele
+
+    @IsBottomTele.setter
+    def IsBottomTele(self, IsBottomTele):
+        self._IsBottomTele = IsBottomTele
+
+    @property
+    def BottomTele(self):
+        return self._BottomTele
+
+    @BottomTele.setter
+    def BottomTele(self, BottomTele):
+        self._BottomTele = BottomTele
+
+    @property
+    def IsBestSignal(self):
+        return self._IsBestSignal
+
+    @IsBestSignal.setter
+    def IsBestSignal(self, IsBestSignal):
+        self._IsBestSignal = IsBestSignal
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.IsAuto = params.get("IsAuto")
-        self.PingInterval = params.get("PingInterval")
-        self.IsWeak = params.get("IsWeak")
-        self.WeakThreshold = params.get("WeakThreshold")
-        self.IsDelay = params.get("IsDelay")
-        self.DelayThreshold = params.get("DelayThreshold")
-        self.IsFake = params.get("IsFake")
-        self.FakeIP = params.get("FakeIP")
-        self.FakeInterval = params.get("FakeInterval")
-        self.IsNet = params.get("IsNet")
-        self.Network = params.get("Network")
-        self.IsMove = params.get("IsMove")
-        self.IsPriorityTele = params.get("IsPriorityTele")
-        self.PriorityTele = params.get("PriorityTele")
-        self.IsBottomTele = params.get("IsBottomTele")
-        self.BottomTele = params.get("BottomTele")
-        self.IsBestSignal = params.get("IsBestSignal")
+        self._Name = params.get("Name")
+        self._IsAuto = params.get("IsAuto")
+        self._PingInterval = params.get("PingInterval")
+        self._IsWeak = params.get("IsWeak")
+        self._WeakThreshold = params.get("WeakThreshold")
+        self._IsDelay = params.get("IsDelay")
+        self._DelayThreshold = params.get("DelayThreshold")
+        self._IsFake = params.get("IsFake")
+        self._FakeIP = params.get("FakeIP")
+        self._FakeInterval = params.get("FakeInterval")
+        self._IsNet = params.get("IsNet")
+        self._Network = params.get("Network")
+        self._IsMove = params.get("IsMove")
+        self._IsPriorityTele = params.get("IsPriorityTele")
+        self._PriorityTele = params.get("PriorityTele")
+        self._IsBottomTele = params.get("IsBottomTele")
+        self._BottomTele = params.get("BottomTele")
+        self._IsBestSignal = params.get("IsBestSignal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -206,14 +464,22 @@ class CreateTacticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTagRequest(AbstractModel):
@@ -223,22 +489,39 @@ class CreateTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Comment: 备注
+        :param _Comment: 备注
         :type Comment: str
         """
-        self.Name = None
-        self.Comment = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Comment = params.get("Comment")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -251,14 +534,22 @@ class CreateTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteRuleRequest(AbstractModel):
@@ -268,18 +559,27 @@ class DeleteRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleID: 自动化规则ID
+        :param _RuleID: 自动化规则ID
         :type RuleID: int
         """
-        self.RuleID = None
+        self._RuleID = None
+
+    @property
+    def RuleID(self):
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
 
 
     def _deserialize(self, params):
-        self.RuleID = params.get("RuleID")
+        self._RuleID = params.get("RuleID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -292,14 +592,22 @@ class DeleteRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTacticRequest(AbstractModel):
@@ -309,18 +617,27 @@ class DeleteTacticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TacticID: 策略ID
+        :param _TacticID: 策略ID
         :type TacticID: int
         """
-        self.TacticID = None
+        self._TacticID = None
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
 
 
     def _deserialize(self, params):
-        self.TacticID = params.get("TacticID")
+        self._TacticID = params.get("TacticID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -333,14 +650,22 @@ class DeleteTacticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTagRequest(AbstractModel):
@@ -350,18 +675,27 @@ class DeleteTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagID: 标签ID
+        :param _TagID: 标签ID
         :type TagID: int
         """
-        self.TagID = None
+        self._TagID = None
+
+    @property
+    def TagID(self):
+        return self._TagID
+
+    @TagID.setter
+    def TagID(self, TagID):
+        self._TagID = TagID
 
 
     def _deserialize(self, params):
-        self.TagID = params.get("TagID")
+        self._TagID = params.get("TagID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -374,14 +708,22 @@ class DeleteTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLinkRequest(AbstractModel):
@@ -391,22 +733,39 @@ class DescribeLinkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LinkID: 云兔卡ID
+        :param _LinkID: 云兔卡ID
         :type LinkID: int
-        :param UinAccount: 具体的账号
+        :param _UinAccount: 具体的账号
         :type UinAccount: str
         """
-        self.LinkID = None
-        self.UinAccount = None
+        self._LinkID = None
+        self._UinAccount = None
+
+    @property
+    def LinkID(self):
+        return self._LinkID
+
+    @LinkID.setter
+    def LinkID(self, LinkID):
+        self._LinkID = LinkID
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
 
 
     def _deserialize(self, params):
-        self.LinkID = params.get("LinkID")
-        self.UinAccount = params.get("UinAccount")
+        self._LinkID = params.get("LinkID")
+        self._UinAccount = params.get("UinAccount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -419,20 +778,36 @@ class DescribeLinkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 云兔连接详细信息
+        :param _Data: 云兔连接详细信息
         :type Data: :class:`tencentcloud.hasim.v20210716.models.LinkDetailInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = LinkDetailInfo()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = LinkDetailInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLinksRequest(AbstractModel):
@@ -442,58 +817,147 @@ class DescribeLinksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LinkID: 云兔卡ID
+        :param _LinkID: 云兔卡ID
         :type LinkID: int
-        :param ICCID: 运营商ICCID
+        :param _ICCID: 运营商ICCID
         :type ICCID: str
-        :param IMEI: 设备码
+        :param _IMEI: 设备码
         :type IMEI: str
-        :param Status: 卡片状态
+        :param _Status: 卡片状态
         :type Status: int
-        :param TeleOperator: 运营商 1移动 2联通 3电信
+        :param _TeleOperator: 运营商 1移动 2联通 3电信
         :type TeleOperator: int
-        :param TagID: 标签ID
+        :param _TagID: 标签ID
         :type TagID: int
-        :param TacticID: 策略ID
+        :param _TacticID: 策略ID
         :type TacticID: int
-        :param LinkedState: 设备在线状态 0 未激活 1 在线 2 离线
+        :param _LinkedState: 设备在线状态 0 未激活 1 在线 2 离线
         :type LinkedState: int
-        :param TagIDs: 标签ID 集合
+        :param _TagIDs: 标签ID 集合
         :type TagIDs: list of int
-        :param Limit: 翻页大小, 默认翻页大小为10，最大数量为500
+        :param _Limit: 翻页大小, 默认翻页大小为10，最大数量为500
         :type Limit: int
-        :param Offset: 翻页起始
+        :param _Offset: 翻页起始
         :type Offset: int
         """
-        self.LinkID = None
-        self.ICCID = None
-        self.IMEI = None
-        self.Status = None
-        self.TeleOperator = None
-        self.TagID = None
-        self.TacticID = None
-        self.LinkedState = None
-        self.TagIDs = None
-        self.Limit = None
-        self.Offset = None
+        self._LinkID = None
+        self._ICCID = None
+        self._IMEI = None
+        self._Status = None
+        self._TeleOperator = None
+        self._TagID = None
+        self._TacticID = None
+        self._LinkedState = None
+        self._TagIDs = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def LinkID(self):
+        return self._LinkID
+
+    @LinkID.setter
+    def LinkID(self, LinkID):
+        self._LinkID = LinkID
+
+    @property
+    def ICCID(self):
+        return self._ICCID
+
+    @ICCID.setter
+    def ICCID(self, ICCID):
+        self._ICCID = ICCID
+
+    @property
+    def IMEI(self):
+        return self._IMEI
+
+    @IMEI.setter
+    def IMEI(self, IMEI):
+        self._IMEI = IMEI
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TeleOperator(self):
+        return self._TeleOperator
+
+    @TeleOperator.setter
+    def TeleOperator(self, TeleOperator):
+        self._TeleOperator = TeleOperator
+
+    @property
+    def TagID(self):
+        return self._TagID
+
+    @TagID.setter
+    def TagID(self, TagID):
+        self._TagID = TagID
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
+
+    @property
+    def LinkedState(self):
+        return self._LinkedState
+
+    @LinkedState.setter
+    def LinkedState(self, LinkedState):
+        self._LinkedState = LinkedState
+
+    @property
+    def TagIDs(self):
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.LinkID = params.get("LinkID")
-        self.ICCID = params.get("ICCID")
-        self.IMEI = params.get("IMEI")
-        self.Status = params.get("Status")
-        self.TeleOperator = params.get("TeleOperator")
-        self.TagID = params.get("TagID")
-        self.TacticID = params.get("TacticID")
-        self.LinkedState = params.get("LinkedState")
-        self.TagIDs = params.get("TagIDs")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._LinkID = params.get("LinkID")
+        self._ICCID = params.get("ICCID")
+        self._IMEI = params.get("IMEI")
+        self._Status = params.get("Status")
+        self._TeleOperator = params.get("TeleOperator")
+        self._TagID = params.get("TagID")
+        self._TacticID = params.get("TacticID")
+        self._LinkedState = params.get("LinkedState")
+        self._TagIDs = params.get("TagIDs")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -506,21 +970,37 @@ class DescribeLinksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 云兔连接响应信息
+        :param _Data: 云兔连接响应信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.hasim.v20210716.models.LinkInfos`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = LinkInfos()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = LinkInfos()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrdersRequest(AbstractModel):
@@ -530,38 +1010,87 @@ class DescribeOrdersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealName: 子订单ID
+        :param _DealName: 子订单ID
         :type DealName: str
-        :param AuditStatus: 审批状态 0全部 1通过 2驳回 3待审核
+        :param _AuditStatus: 审批状态 0全部 1通过 2驳回 3待审核
         :type AuditStatus: int
-        :param Limit: 翻页大小
+        :param _Limit: 翻页大小
         :type Limit: int
-        :param Offset: 翻页偏移
+        :param _Offset: 翻页偏移
         :type Offset: int
-        :param BeginTime: 开始时间,例如2022-06-30 00:00:00
+        :param _BeginTime: 开始时间,例如2022-06-30 00:00:00
         :type BeginTime: str
-        :param EndTime: 结束时间,例如2022-06-30 00:00:00
+        :param _EndTime: 结束时间,例如2022-06-30 00:00:00
         :type EndTime: str
         """
-        self.DealName = None
-        self.AuditStatus = None
-        self.Limit = None
-        self.Offset = None
-        self.BeginTime = None
-        self.EndTime = None
+        self._DealName = None
+        self._AuditStatus = None
+        self._Limit = None
+        self._Offset = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.DealName = params.get("DealName")
-        self.AuditStatus = params.get("AuditStatus")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
+        self._DealName = params.get("DealName")
+        self._AuditStatus = params.get("AuditStatus")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -574,20 +1103,36 @@ class DescribeOrdersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 订单列表
+        :param _Data: 订单列表
         :type Data: :class:`tencentcloud.hasim.v20210716.models.Orders`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = Orders()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = Orders()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRuleRequest(AbstractModel):
@@ -597,18 +1142,27 @@ class DescribeRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleID: 自动化规则ID
+        :param _RuleID: 自动化规则ID
         :type RuleID: int
         """
-        self.RuleID = None
+        self._RuleID = None
+
+    @property
+    def RuleID(self):
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
 
 
     def _deserialize(self, params):
-        self.RuleID = params.get("RuleID")
+        self._RuleID = params.get("RuleID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -621,20 +1175,36 @@ class DescribeRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 策略信息
+        :param _Data: 策略信息
         :type Data: :class:`tencentcloud.hasim.v20210716.models.RuleDetail`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = RuleDetail()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = RuleDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRulesRequest(AbstractModel):
@@ -644,42 +1214,99 @@ class DescribeRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleID: 自动化规则ID
+        :param _RuleID: 自动化规则ID
         :type RuleID: int
-        :param RuleIDs: 自动化规则ID
+        :param _RuleIDs: 自动化规则ID
         :type RuleIDs: list of int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Type: 类型
+        :param _Type: 类型
         :type Type: int
-        :param IsActive: 是否激活
+        :param _IsActive: 是否激活
         :type IsActive: int
-        :param Limit: 翻页大小
+        :param _Limit: 翻页大小
         :type Limit: int
-        :param Offset: 翻页偏移
+        :param _Offset: 翻页偏移
         :type Offset: int
         """
-        self.RuleID = None
-        self.RuleIDs = None
-        self.Name = None
-        self.Type = None
-        self.IsActive = None
-        self.Limit = None
-        self.Offset = None
+        self._RuleID = None
+        self._RuleIDs = None
+        self._Name = None
+        self._Type = None
+        self._IsActive = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def RuleID(self):
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleIDs(self):
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.RuleID = params.get("RuleID")
-        self.RuleIDs = params.get("RuleIDs")
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.IsActive = params.get("IsActive")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._RuleID = params.get("RuleID")
+        self._RuleIDs = params.get("RuleIDs")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._IsActive = params.get("IsActive")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -692,21 +1319,37 @@ class DescribeRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 自动化规则列表集合
+        :param _Data: 自动化规则列表集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.hasim.v20210716.models.RuleInfos`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = RuleInfos()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = RuleInfos()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTacticRequest(AbstractModel):
@@ -716,18 +1359,27 @@ class DescribeTacticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TacticID: 策略ID
+        :param _TacticID: 策略ID
         :type TacticID: int
         """
-        self.TacticID = None
+        self._TacticID = None
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
 
 
     def _deserialize(self, params):
-        self.TacticID = params.get("TacticID")
+        self._TacticID = params.get("TacticID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -740,20 +1392,36 @@ class DescribeTacticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 策略信息
+        :param _Data: 策略信息
         :type Data: :class:`tencentcloud.hasim.v20210716.models.Tactic`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = Tactic()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = Tactic()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTacticsRequest(AbstractModel):
@@ -763,22 +1431,39 @@ class DescribeTacticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TacticID: 策略ID
+        :param _TacticID: 策略ID
         :type TacticID: int
-        :param Name: 策略名称
+        :param _Name: 策略名称
         :type Name: str
         """
-        self.TacticID = None
-        self.Name = None
+        self._TacticID = None
+        self._Name = None
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.TacticID = params.get("TacticID")
-        self.Name = params.get("Name")
+        self._TacticID = params.get("TacticID")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -791,20 +1476,36 @@ class DescribeTacticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 策略集合信息
+        :param _Data: 策略集合信息
         :type Data: :class:`tencentcloud.hasim.v20210716.models.TacticInfos`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = TacticInfos()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = TacticInfos()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTagsRequest(AbstractModel):
@@ -814,18 +1515,27 @@ class DescribeTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 标签名称
+        :param _Name: 标签名称
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -838,20 +1548,36 @@ class DescribeTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 列表
+        :param _Data: 列表
         :type Data: :class:`tencentcloud.hasim.v20210716.models.TagInfos`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = TagInfos()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = TagInfos()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeviceReport(AbstractModel):
@@ -861,103 +1587,248 @@ class DeviceReport(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Imei: 移动设备ID
+        :param _Imei: 移动设备ID
         :type Imei: str
-        :param Lng: 经度
+        :param _Lng: 经度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Lng: str
-        :param Lat: 维度
+        :param _Lat: 维度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Lat: str
-        :param Lac: 运营商基站ID
+        :param _Lac: 运营商基站ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Lac: str
-        :param Cell: 小区CellID
+        :param _Cell: 小区CellID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cell: str
-        :param Iccid: 当前上报运营商ID
+        :param _Iccid: 当前上报运营商ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Iccid: str
-        :param Rss: 信号强度
+        :param _Rss: 信号强度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rss: int
-        :param Tele: 运营商: 1 移动 2 联通 3 电信
+        :param _Tele: 运营商: 1 移动 2 联通 3 电信
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tele: int
-        :param Tid: 当前设备策略ID
+        :param _Tid: 当前设备策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tid: int
-        :param Ping: 心跳间隔,单位秒
+        :param _Ping: 心跳间隔,单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ping: int
-        :param Delay: 网络延迟,单位毫秒
+        :param _Delay: 网络延迟,单位毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Delay: int
-        :param Log: 高级日志启停状态
+        :param _Log: 高级日志启停状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Log: int
-        :param DevType: 设备型号
+        :param _DevType: 设备型号
 注意：此字段可能返回 null，表示取不到有效值。
         :type DevType: str
-        :param DevModel: 设备型号
+        :param _DevModel: 设备型号
 注意：此字段可能返回 null，表示取不到有效值。
         :type DevModel: str
-        :param Version: 设备版本
+        :param _Version: 设备版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
-        :param UploadTime: 设备刷新时间戳
+        :param _UploadTime: 设备刷新时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type UploadTime: str
-        :param Status: 网络环境: 0 正常 1 弱网
+        :param _Status: 网络环境: 0 正常 1 弱网
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param MonthFirstTime: 每月第一次上报心跳时间
+        :param _MonthFirstTime: 每月第一次上报心跳时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonthFirstTime: str
         """
-        self.Imei = None
-        self.Lng = None
-        self.Lat = None
-        self.Lac = None
-        self.Cell = None
-        self.Iccid = None
-        self.Rss = None
-        self.Tele = None
-        self.Tid = None
-        self.Ping = None
-        self.Delay = None
-        self.Log = None
-        self.DevType = None
-        self.DevModel = None
-        self.Version = None
-        self.UploadTime = None
-        self.Status = None
-        self.MonthFirstTime = None
+        self._Imei = None
+        self._Lng = None
+        self._Lat = None
+        self._Lac = None
+        self._Cell = None
+        self._Iccid = None
+        self._Rss = None
+        self._Tele = None
+        self._Tid = None
+        self._Ping = None
+        self._Delay = None
+        self._Log = None
+        self._DevType = None
+        self._DevModel = None
+        self._Version = None
+        self._UploadTime = None
+        self._Status = None
+        self._MonthFirstTime = None
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def Lng(self):
+        return self._Lng
+
+    @Lng.setter
+    def Lng(self, Lng):
+        self._Lng = Lng
+
+    @property
+    def Lat(self):
+        return self._Lat
+
+    @Lat.setter
+    def Lat(self, Lat):
+        self._Lat = Lat
+
+    @property
+    def Lac(self):
+        return self._Lac
+
+    @Lac.setter
+    def Lac(self, Lac):
+        self._Lac = Lac
+
+    @property
+    def Cell(self):
+        return self._Cell
+
+    @Cell.setter
+    def Cell(self, Cell):
+        self._Cell = Cell
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Rss(self):
+        return self._Rss
+
+    @Rss.setter
+    def Rss(self, Rss):
+        self._Rss = Rss
+
+    @property
+    def Tele(self):
+        return self._Tele
+
+    @Tele.setter
+    def Tele(self, Tele):
+        self._Tele = Tele
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+    @property
+    def Ping(self):
+        return self._Ping
+
+    @Ping.setter
+    def Ping(self, Ping):
+        self._Ping = Ping
+
+    @property
+    def Delay(self):
+        return self._Delay
+
+    @Delay.setter
+    def Delay(self, Delay):
+        self._Delay = Delay
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def DevType(self):
+        return self._DevType
+
+    @DevType.setter
+    def DevType(self, DevType):
+        self._DevType = DevType
+
+    @property
+    def DevModel(self):
+        return self._DevModel
+
+    @DevModel.setter
+    def DevModel(self, DevModel):
+        self._DevModel = DevModel
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def UploadTime(self):
+        return self._UploadTime
+
+    @UploadTime.setter
+    def UploadTime(self, UploadTime):
+        self._UploadTime = UploadTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MonthFirstTime(self):
+        return self._MonthFirstTime
+
+    @MonthFirstTime.setter
+    def MonthFirstTime(self, MonthFirstTime):
+        self._MonthFirstTime = MonthFirstTime
 
 
     def _deserialize(self, params):
-        self.Imei = params.get("Imei")
-        self.Lng = params.get("Lng")
-        self.Lat = params.get("Lat")
-        self.Lac = params.get("Lac")
-        self.Cell = params.get("Cell")
-        self.Iccid = params.get("Iccid")
-        self.Rss = params.get("Rss")
-        self.Tele = params.get("Tele")
-        self.Tid = params.get("Tid")
-        self.Ping = params.get("Ping")
-        self.Delay = params.get("Delay")
-        self.Log = params.get("Log")
-        self.DevType = params.get("DevType")
-        self.DevModel = params.get("DevModel")
-        self.Version = params.get("Version")
-        self.UploadTime = params.get("UploadTime")
-        self.Status = params.get("Status")
-        self.MonthFirstTime = params.get("MonthFirstTime")
+        self._Imei = params.get("Imei")
+        self._Lng = params.get("Lng")
+        self._Lat = params.get("Lat")
+        self._Lac = params.get("Lac")
+        self._Cell = params.get("Cell")
+        self._Iccid = params.get("Iccid")
+        self._Rss = params.get("Rss")
+        self._Tele = params.get("Tele")
+        self._Tid = params.get("Tid")
+        self._Ping = params.get("Ping")
+        self._Delay = params.get("Delay")
+        self._Log = params.get("Log")
+        self._DevType = params.get("DevType")
+        self._DevModel = params.get("DevModel")
+        self._Version = params.get("Version")
+        self._UploadTime = params.get("UploadTime")
+        self._Status = params.get("Status")
+        self._MonthFirstTime = params.get("MonthFirstTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -970,111 +1841,248 @@ class LinkDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 云兔连接ID
+        :param _ID: 云兔连接ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ID: int
-        :param Status: 卡片状态
+        :param _Status: 卡片状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param ActiveTime: 激活时间
+        :param _ActiveTime: 激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTime: str
-        :param ExpireTime: 过期时间
+        :param _ExpireTime: 过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param DataUse: 数据用量
+        :param _DataUse: 数据用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataUse: float
-        :param AudioUse: 语音用量
+        :param _AudioUse: 语音用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioUse: int
-        :param SmsUse: 短信用量
+        :param _SmsUse: 短信用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmsUse: int
-        :param LinkedState: 在线状态 0 未激活 1 在线 2 离线
+        :param _LinkedState: 在线状态 0 未激活 1 在线 2 离线
 注意：此字段可能返回 null，表示取不到有效值。
         :type LinkedState: int
-        :param TacticID: 预期策略ID
+        :param _TacticID: 预期策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TacticID: int
-        :param TacticStatus: 策略下发状态
+        :param _TacticStatus: 策略下发状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type TacticStatus: int
-        :param TacticExpireTime: 策略下发成功过期时间
+        :param _TacticExpireTime: 策略下发成功过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TacticExpireTime: str
-        :param IsActiveLog: 高级日志预期状态
+        :param _IsActiveLog: 高级日志预期状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsActiveLog: bool
-        :param TeleOperator: 运营商 1移动 2联通 3电信
+        :param _TeleOperator: 运营商 1移动 2联通 3电信
 注意：此字段可能返回 null，表示取不到有效值。
         :type TeleOperator: int
-        :param Report: 设备最新上报信息
+        :param _Report: 设备最新上报信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Report: :class:`tencentcloud.hasim.v20210716.models.DeviceReport`
-        :param Tags: 标签列表
+        :param _Tags: 标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param Cards: 运营商ICCID信息集合
+        :param _Cards: 运营商ICCID信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cards: list of TeleOperatorCard
-        :param CardID: 云兔实际卡片ID
+        :param _CardID: 云兔实际卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CardID: str
         """
-        self.ID = None
-        self.Status = None
-        self.ActiveTime = None
-        self.ExpireTime = None
-        self.DataUse = None
-        self.AudioUse = None
-        self.SmsUse = None
-        self.LinkedState = None
-        self.TacticID = None
-        self.TacticStatus = None
-        self.TacticExpireTime = None
-        self.IsActiveLog = None
-        self.TeleOperator = None
-        self.Report = None
-        self.Tags = None
-        self.Cards = None
-        self.CardID = None
+        self._ID = None
+        self._Status = None
+        self._ActiveTime = None
+        self._ExpireTime = None
+        self._DataUse = None
+        self._AudioUse = None
+        self._SmsUse = None
+        self._LinkedState = None
+        self._TacticID = None
+        self._TacticStatus = None
+        self._TacticExpireTime = None
+        self._IsActiveLog = None
+        self._TeleOperator = None
+        self._Report = None
+        self._Tags = None
+        self._Cards = None
+        self._CardID = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ActiveTime(self):
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DataUse(self):
+        return self._DataUse
+
+    @DataUse.setter
+    def DataUse(self, DataUse):
+        self._DataUse = DataUse
+
+    @property
+    def AudioUse(self):
+        return self._AudioUse
+
+    @AudioUse.setter
+    def AudioUse(self, AudioUse):
+        self._AudioUse = AudioUse
+
+    @property
+    def SmsUse(self):
+        return self._SmsUse
+
+    @SmsUse.setter
+    def SmsUse(self, SmsUse):
+        self._SmsUse = SmsUse
+
+    @property
+    def LinkedState(self):
+        return self._LinkedState
+
+    @LinkedState.setter
+    def LinkedState(self, LinkedState):
+        self._LinkedState = LinkedState
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
+
+    @property
+    def TacticStatus(self):
+        return self._TacticStatus
+
+    @TacticStatus.setter
+    def TacticStatus(self, TacticStatus):
+        self._TacticStatus = TacticStatus
+
+    @property
+    def TacticExpireTime(self):
+        return self._TacticExpireTime
+
+    @TacticExpireTime.setter
+    def TacticExpireTime(self, TacticExpireTime):
+        self._TacticExpireTime = TacticExpireTime
+
+    @property
+    def IsActiveLog(self):
+        return self._IsActiveLog
+
+    @IsActiveLog.setter
+    def IsActiveLog(self, IsActiveLog):
+        self._IsActiveLog = IsActiveLog
+
+    @property
+    def TeleOperator(self):
+        return self._TeleOperator
+
+    @TeleOperator.setter
+    def TeleOperator(self, TeleOperator):
+        self._TeleOperator = TeleOperator
+
+    @property
+    def Report(self):
+        return self._Report
+
+    @Report.setter
+    def Report(self, Report):
+        self._Report = Report
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Cards(self):
+        return self._Cards
+
+    @Cards.setter
+    def Cards(self, Cards):
+        self._Cards = Cards
+
+    @property
+    def CardID(self):
+        return self._CardID
+
+    @CardID.setter
+    def CardID(self, CardID):
+        self._CardID = CardID
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.Status = params.get("Status")
-        self.ActiveTime = params.get("ActiveTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.DataUse = params.get("DataUse")
-        self.AudioUse = params.get("AudioUse")
-        self.SmsUse = params.get("SmsUse")
-        self.LinkedState = params.get("LinkedState")
-        self.TacticID = params.get("TacticID")
-        self.TacticStatus = params.get("TacticStatus")
-        self.TacticExpireTime = params.get("TacticExpireTime")
-        self.IsActiveLog = params.get("IsActiveLog")
-        self.TeleOperator = params.get("TeleOperator")
+        self._ID = params.get("ID")
+        self._Status = params.get("Status")
+        self._ActiveTime = params.get("ActiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DataUse = params.get("DataUse")
+        self._AudioUse = params.get("AudioUse")
+        self._SmsUse = params.get("SmsUse")
+        self._LinkedState = params.get("LinkedState")
+        self._TacticID = params.get("TacticID")
+        self._TacticStatus = params.get("TacticStatus")
+        self._TacticExpireTime = params.get("TacticExpireTime")
+        self._IsActiveLog = params.get("IsActiveLog")
+        self._TeleOperator = params.get("TeleOperator")
         if params.get("Report") is not None:
-            self.Report = DeviceReport()
-            self.Report._deserialize(params.get("Report"))
+            self._Report = DeviceReport()
+            self._Report._deserialize(params.get("Report"))
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("Cards") is not None:
-            self.Cards = []
+            self._Cards = []
             for item in params.get("Cards"):
                 obj = TeleOperatorCard()
                 obj._deserialize(item)
-                self.Cards.append(obj)
-        self.CardID = params.get("CardID")
+                self._Cards.append(obj)
+        self._CardID = params.get("CardID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1087,86 +2095,199 @@ class LinkInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 云兔连接ID
+        :param _ID: 云兔连接ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ID: int
-        :param Status: 卡片状态
+        :param _Status: 卡片状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param ActiveTime: 激活时间
+        :param _ActiveTime: 激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTime: str
-        :param ExpireTime: 过期时间
+        :param _ExpireTime: 过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param DataUse: 数据用量
+        :param _DataUse: 数据用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataUse: float
-        :param AudioUse: 语音用量
+        :param _AudioUse: 语音用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioUse: int
-        :param SmsUse: 短信用量
+        :param _SmsUse: 短信用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmsUse: int
-        :param LinkedState: 在线状态 0 未激活 1 在线 2 离线
+        :param _LinkedState: 在线状态 0 未激活 1 在线 2 离线
 注意：此字段可能返回 null，表示取不到有效值。
         :type LinkedState: int
-        :param TacticID: 预期策略ID
+        :param _TacticID: 预期策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TacticID: int
-        :param TacticStatus: 策略下发状态
+        :param _TacticStatus: 策略下发状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type TacticStatus: int
-        :param TacticExpireTime: 策略下发成功过期时间
+        :param _TacticExpireTime: 策略下发成功过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TacticExpireTime: str
-        :param IsActiveLog: 高级日志预期状态
+        :param _IsActiveLog: 高级日志预期状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsActiveLog: bool
-        :param TeleOperator: 运营商 1移动 2联通 3电信
+        :param _TeleOperator: 运营商 1移动 2联通 3电信
 注意：此字段可能返回 null，表示取不到有效值。
         :type TeleOperator: int
-        :param Report: 设备最新上报信息
+        :param _Report: 设备最新上报信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Report: :class:`tencentcloud.hasim.v20210716.models.DeviceReport`
         """
-        self.ID = None
-        self.Status = None
-        self.ActiveTime = None
-        self.ExpireTime = None
-        self.DataUse = None
-        self.AudioUse = None
-        self.SmsUse = None
-        self.LinkedState = None
-        self.TacticID = None
-        self.TacticStatus = None
-        self.TacticExpireTime = None
-        self.IsActiveLog = None
-        self.TeleOperator = None
-        self.Report = None
+        self._ID = None
+        self._Status = None
+        self._ActiveTime = None
+        self._ExpireTime = None
+        self._DataUse = None
+        self._AudioUse = None
+        self._SmsUse = None
+        self._LinkedState = None
+        self._TacticID = None
+        self._TacticStatus = None
+        self._TacticExpireTime = None
+        self._IsActiveLog = None
+        self._TeleOperator = None
+        self._Report = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ActiveTime(self):
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DataUse(self):
+        return self._DataUse
+
+    @DataUse.setter
+    def DataUse(self, DataUse):
+        self._DataUse = DataUse
+
+    @property
+    def AudioUse(self):
+        return self._AudioUse
+
+    @AudioUse.setter
+    def AudioUse(self, AudioUse):
+        self._AudioUse = AudioUse
+
+    @property
+    def SmsUse(self):
+        return self._SmsUse
+
+    @SmsUse.setter
+    def SmsUse(self, SmsUse):
+        self._SmsUse = SmsUse
+
+    @property
+    def LinkedState(self):
+        return self._LinkedState
+
+    @LinkedState.setter
+    def LinkedState(self, LinkedState):
+        self._LinkedState = LinkedState
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
+
+    @property
+    def TacticStatus(self):
+        return self._TacticStatus
+
+    @TacticStatus.setter
+    def TacticStatus(self, TacticStatus):
+        self._TacticStatus = TacticStatus
+
+    @property
+    def TacticExpireTime(self):
+        return self._TacticExpireTime
+
+    @TacticExpireTime.setter
+    def TacticExpireTime(self, TacticExpireTime):
+        self._TacticExpireTime = TacticExpireTime
+
+    @property
+    def IsActiveLog(self):
+        return self._IsActiveLog
+
+    @IsActiveLog.setter
+    def IsActiveLog(self, IsActiveLog):
+        self._IsActiveLog = IsActiveLog
+
+    @property
+    def TeleOperator(self):
+        return self._TeleOperator
+
+    @TeleOperator.setter
+    def TeleOperator(self, TeleOperator):
+        self._TeleOperator = TeleOperator
+
+    @property
+    def Report(self):
+        return self._Report
+
+    @Report.setter
+    def Report(self, Report):
+        self._Report = Report
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.Status = params.get("Status")
-        self.ActiveTime = params.get("ActiveTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.DataUse = params.get("DataUse")
-        self.AudioUse = params.get("AudioUse")
-        self.SmsUse = params.get("SmsUse")
-        self.LinkedState = params.get("LinkedState")
-        self.TacticID = params.get("TacticID")
-        self.TacticStatus = params.get("TacticStatus")
-        self.TacticExpireTime = params.get("TacticExpireTime")
-        self.IsActiveLog = params.get("IsActiveLog")
-        self.TeleOperator = params.get("TeleOperator")
+        self._ID = params.get("ID")
+        self._Status = params.get("Status")
+        self._ActiveTime = params.get("ActiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DataUse = params.get("DataUse")
+        self._AudioUse = params.get("AudioUse")
+        self._SmsUse = params.get("SmsUse")
+        self._LinkedState = params.get("LinkedState")
+        self._TacticID = params.get("TacticID")
+        self._TacticStatus = params.get("TacticStatus")
+        self._TacticExpireTime = params.get("TacticExpireTime")
+        self._IsActiveLog = params.get("IsActiveLog")
+        self._TeleOperator = params.get("TeleOperator")
         if params.get("Report") is not None:
-            self.Report = DeviceReport()
-            self.Report._deserialize(params.get("Report"))
+            self._Report = DeviceReport()
+            self._Report._deserialize(params.get("Report"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1179,28 +2300,45 @@ class LinkInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 总量
+        :param _Total: 总量
         :type Total: int
-        :param List: 云兔连接列表
+        :param _List: 云兔连接列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of LinkInfo
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = LinkInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1213,22 +2351,39 @@ class ModifyLinkAdvancedLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LinkID: 云兔ID
+        :param _LinkID: 云兔ID
         :type LinkID: int
-        :param IsAdLog: 是否激活高级日志 0 关闭 1激活
+        :param _IsAdLog: 是否激活高级日志 0 关闭 1激活
         :type IsAdLog: int
         """
-        self.LinkID = None
-        self.IsAdLog = None
+        self._LinkID = None
+        self._IsAdLog = None
+
+    @property
+    def LinkID(self):
+        return self._LinkID
+
+    @LinkID.setter
+    def LinkID(self, LinkID):
+        self._LinkID = LinkID
+
+    @property
+    def IsAdLog(self):
+        return self._IsAdLog
+
+    @IsAdLog.setter
+    def IsAdLog(self, IsAdLog):
+        self._IsAdLog = IsAdLog
 
 
     def _deserialize(self, params):
-        self.LinkID = params.get("LinkID")
-        self.IsAdLog = params.get("IsAdLog")
+        self._LinkID = params.get("LinkID")
+        self._IsAdLog = params.get("IsAdLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1241,14 +2396,22 @@ class ModifyLinkAdvancedLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLinkTacticRequest(AbstractModel):
@@ -1258,22 +2421,39 @@ class ModifyLinkTacticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LinkID: 云兔ID
+        :param _LinkID: 云兔ID
         :type LinkID: int
-        :param TacticID: 策略ID
+        :param _TacticID: 策略ID
         :type TacticID: int
         """
-        self.LinkID = None
-        self.TacticID = None
+        self._LinkID = None
+        self._TacticID = None
+
+    @property
+    def LinkID(self):
+        return self._LinkID
+
+    @LinkID.setter
+    def LinkID(self, LinkID):
+        self._LinkID = LinkID
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
 
 
     def _deserialize(self, params):
-        self.LinkID = params.get("LinkID")
-        self.TacticID = params.get("TacticID")
+        self._LinkID = params.get("LinkID")
+        self._TacticID = params.get("TacticID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1286,14 +2466,22 @@ class ModifyLinkTacticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLinkTeleRequest(AbstractModel):
@@ -1303,22 +2491,39 @@ class ModifyLinkTeleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LinkID: 云兔ID
+        :param _LinkID: 云兔ID
         :type LinkID: int
-        :param TeleOperator: 运营商 1 移动 2 联通 3 电信
+        :param _TeleOperator: 运营商 1 移动 2 联通 3 电信
         :type TeleOperator: int
         """
-        self.LinkID = None
-        self.TeleOperator = None
+        self._LinkID = None
+        self._TeleOperator = None
+
+    @property
+    def LinkID(self):
+        return self._LinkID
+
+    @LinkID.setter
+    def LinkID(self, LinkID):
+        self._LinkID = LinkID
+
+    @property
+    def TeleOperator(self):
+        return self._TeleOperator
+
+    @TeleOperator.setter
+    def TeleOperator(self, TeleOperator):
+        self._TeleOperator = TeleOperator
 
 
     def _deserialize(self, params):
-        self.LinkID = params.get("LinkID")
-        self.TeleOperator = params.get("TeleOperator")
+        self._LinkID = params.get("LinkID")
+        self._TeleOperator = params.get("TeleOperator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1331,14 +2536,22 @@ class ModifyLinkTeleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyRuleRequest(AbstractModel):
@@ -1348,70 +2561,183 @@ class ModifyRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 自动化规则名称
+        :param _Name: 自动化规则名称
         :type Name: str
-        :param Type: 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
+        :param _Type: 规则类型：用量类(101 当月|102有效期内)、位置类(201行政区|202移动距离)、网络质量类(301网络盲点)
         :type Type: int
-        :param IsActive: 是否激活
+        :param _IsActive: 是否激活
         :type IsActive: bool
-        :param Notice: 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
+        :param _Notice: 触发动作：1 邮件 2 API请求 3 微信 4 停卡 5 地图标识为盲点
         :type Notice: int
-        :param RuleID: 自动化规则ID
+        :param _RuleID: 自动化规则ID
         :type RuleID: int
-        :param Email: 邮箱
+        :param _Email: 邮箱
         :type Email: str
-        :param Url: 推送的API地址
+        :param _Url: 推送的API地址
         :type Url: str
-        :param DataThreshold: 用量阈值
+        :param _DataThreshold: 用量阈值
         :type DataThreshold: int
-        :param District: 行政区类型：1. 省份 2. 城市 3. 区
+        :param _District: 行政区类型：1. 省份 2. 城市 3. 区
         :type District: int
-        :param Distance: 心跳移动距离阈值
+        :param _Distance: 心跳移动距离阈值
         :type Distance: int
-        :param SignalStrength: 信号强度阈值
+        :param _SignalStrength: 信号强度阈值
         :type SignalStrength: int
-        :param TagIDs: 标签ID集合
+        :param _TagIDs: 标签ID集合
         :type TagIDs: list of int
-        :param SalePlan: 资费计划
+        :param _SalePlan: 资费计划
         :type SalePlan: str
-        :param UinAccount: 具体的账号
+        :param _UinAccount: 具体的账号
         :type UinAccount: str
         """
-        self.Name = None
-        self.Type = None
-        self.IsActive = None
-        self.Notice = None
-        self.RuleID = None
-        self.Email = None
-        self.Url = None
-        self.DataThreshold = None
-        self.District = None
-        self.Distance = None
-        self.SignalStrength = None
-        self.TagIDs = None
-        self.SalePlan = None
-        self.UinAccount = None
+        self._Name = None
+        self._Type = None
+        self._IsActive = None
+        self._Notice = None
+        self._RuleID = None
+        self._Email = None
+        self._Url = None
+        self._DataThreshold = None
+        self._District = None
+        self._Distance = None
+        self._SignalStrength = None
+        self._TagIDs = None
+        self._SalePlan = None
+        self._UinAccount = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def Notice(self):
+        return self._Notice
+
+    @Notice.setter
+    def Notice(self, Notice):
+        self._Notice = Notice
+
+    @property
+    def RuleID(self):
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def DataThreshold(self):
+        return self._DataThreshold
+
+    @DataThreshold.setter
+    def DataThreshold(self, DataThreshold):
+        self._DataThreshold = DataThreshold
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def Distance(self):
+        return self._Distance
+
+    @Distance.setter
+    def Distance(self, Distance):
+        self._Distance = Distance
+
+    @property
+    def SignalStrength(self):
+        return self._SignalStrength
+
+    @SignalStrength.setter
+    def SignalStrength(self, SignalStrength):
+        self._SignalStrength = SignalStrength
+
+    @property
+    def TagIDs(self):
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def SalePlan(self):
+        return self._SalePlan
+
+    @SalePlan.setter
+    def SalePlan(self, SalePlan):
+        self._SalePlan = SalePlan
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.IsActive = params.get("IsActive")
-        self.Notice = params.get("Notice")
-        self.RuleID = params.get("RuleID")
-        self.Email = params.get("Email")
-        self.Url = params.get("Url")
-        self.DataThreshold = params.get("DataThreshold")
-        self.District = params.get("District")
-        self.Distance = params.get("Distance")
-        self.SignalStrength = params.get("SignalStrength")
-        self.TagIDs = params.get("TagIDs")
-        self.SalePlan = params.get("SalePlan")
-        self.UinAccount = params.get("UinAccount")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._IsActive = params.get("IsActive")
+        self._Notice = params.get("Notice")
+        self._RuleID = params.get("RuleID")
+        self._Email = params.get("Email")
+        self._Url = params.get("Url")
+        self._DataThreshold = params.get("DataThreshold")
+        self._District = params.get("District")
+        self._Distance = params.get("Distance")
+        self._SignalStrength = params.get("SignalStrength")
+        self._TagIDs = params.get("TagIDs")
+        self._SalePlan = params.get("SalePlan")
+        self._UinAccount = params.get("UinAccount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1424,14 +2750,22 @@ class ModifyRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyRuleStatusRequest(AbstractModel):
@@ -1441,22 +2775,39 @@ class ModifyRuleStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleID: 自动化规则ID
+        :param _RuleID: 自动化规则ID
         :type RuleID: int
-        :param IsActive: 是否激活
+        :param _IsActive: 是否激活
         :type IsActive: bool
         """
-        self.RuleID = None
-        self.IsActive = None
+        self._RuleID = None
+        self._IsActive = None
+
+    @property
+    def RuleID(self):
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
 
 
     def _deserialize(self, params):
-        self.RuleID = params.get("RuleID")
-        self.IsActive = params.get("IsActive")
+        self._RuleID = params.get("RuleID")
+        self._IsActive = params.get("IsActive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1469,14 +2820,22 @@ class ModifyRuleStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTacticRequest(AbstractModel):
@@ -1486,90 +2845,243 @@ class ModifyTacticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 策略名称
+        :param _Name: 策略名称
         :type Name: str
-        :param IsAuto: 是否自动执行
+        :param _IsAuto: 是否自动执行
         :type IsAuto: int
-        :param PingInterval: 心跳上报间隔(s)
+        :param _PingInterval: 心跳上报间隔(s)
         :type PingInterval: int
-        :param IsWeak: 是否开启弱信号检测
+        :param _IsWeak: 是否开启弱信号检测
         :type IsWeak: int
-        :param WeakThreshold: 弱信号阈值（-dbm）
+        :param _WeakThreshold: 弱信号阈值（-dbm）
         :type WeakThreshold: int
-        :param IsDelay: 是否开启时延切换
+        :param _IsDelay: 是否开启时延切换
         :type IsDelay: int
-        :param DelayThreshold: 网络时延阈值（ms）
+        :param _DelayThreshold: 网络时延阈值（ms）
         :type DelayThreshold: int
-        :param IsFake: 是否开启假信号检测
+        :param _IsFake: 是否开启假信号检测
         :type IsFake: int
-        :param FakeInterval: 假信号检测间隔（s）
+        :param _FakeInterval: 假信号检测间隔（s）
         :type FakeInterval: int
-        :param IsNet: 是否开启网络制式检测
+        :param _IsNet: 是否开启网络制式检测
         :type IsNet: int
-        :param Network: 网络回落制式 1 2G、 2 3G 、 3 2/3G
+        :param _Network: 网络回落制式 1 2G、 2 3G 、 3 2/3G
         :type Network: int
-        :param IsMove: 是否开启移动检测
+        :param _IsMove: 是否开启移动检测
         :type IsMove: int
-        :param TacticID: 策略ID
+        :param _TacticID: 策略ID
         :type TacticID: int
-        :param IsPriorityTele: 是否开启最优先运营商
+        :param _IsPriorityTele: 是否开启最优先运营商
         :type IsPriorityTele: int
-        :param PriorityTele: 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
+        :param _PriorityTele: 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
         :type PriorityTele: int
-        :param IsBottomTele: 是否开启最不优先运营商
+        :param _IsBottomTele: 是否开启最不优先运营商
         :type IsBottomTele: int
-        :param BottomTele: 最不优先运营商 1 移动、 2 联通、 3 电信
+        :param _BottomTele: 最不优先运营商 1 移动、 2 联通、 3 电信
         :type BottomTele: int
-        :param IsBestSignal: 是否最优先信号选取策略
+        :param _IsBestSignal: 是否最优先信号选取策略
         :type IsBestSignal: int
-        :param FakeIP: 假信号检测IP字符串，用逗号分隔
+        :param _FakeIP: 假信号检测IP字符串，用逗号分隔
         :type FakeIP: str
         """
-        self.Name = None
-        self.IsAuto = None
-        self.PingInterval = None
-        self.IsWeak = None
-        self.WeakThreshold = None
-        self.IsDelay = None
-        self.DelayThreshold = None
-        self.IsFake = None
-        self.FakeInterval = None
-        self.IsNet = None
-        self.Network = None
-        self.IsMove = None
-        self.TacticID = None
-        self.IsPriorityTele = None
-        self.PriorityTele = None
-        self.IsBottomTele = None
-        self.BottomTele = None
-        self.IsBestSignal = None
-        self.FakeIP = None
+        self._Name = None
+        self._IsAuto = None
+        self._PingInterval = None
+        self._IsWeak = None
+        self._WeakThreshold = None
+        self._IsDelay = None
+        self._DelayThreshold = None
+        self._IsFake = None
+        self._FakeInterval = None
+        self._IsNet = None
+        self._Network = None
+        self._IsMove = None
+        self._TacticID = None
+        self._IsPriorityTele = None
+        self._PriorityTele = None
+        self._IsBottomTele = None
+        self._BottomTele = None
+        self._IsBestSignal = None
+        self._FakeIP = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IsAuto(self):
+        return self._IsAuto
+
+    @IsAuto.setter
+    def IsAuto(self, IsAuto):
+        self._IsAuto = IsAuto
+
+    @property
+    def PingInterval(self):
+        return self._PingInterval
+
+    @PingInterval.setter
+    def PingInterval(self, PingInterval):
+        self._PingInterval = PingInterval
+
+    @property
+    def IsWeak(self):
+        return self._IsWeak
+
+    @IsWeak.setter
+    def IsWeak(self, IsWeak):
+        self._IsWeak = IsWeak
+
+    @property
+    def WeakThreshold(self):
+        return self._WeakThreshold
+
+    @WeakThreshold.setter
+    def WeakThreshold(self, WeakThreshold):
+        self._WeakThreshold = WeakThreshold
+
+    @property
+    def IsDelay(self):
+        return self._IsDelay
+
+    @IsDelay.setter
+    def IsDelay(self, IsDelay):
+        self._IsDelay = IsDelay
+
+    @property
+    def DelayThreshold(self):
+        return self._DelayThreshold
+
+    @DelayThreshold.setter
+    def DelayThreshold(self, DelayThreshold):
+        self._DelayThreshold = DelayThreshold
+
+    @property
+    def IsFake(self):
+        return self._IsFake
+
+    @IsFake.setter
+    def IsFake(self, IsFake):
+        self._IsFake = IsFake
+
+    @property
+    def FakeInterval(self):
+        return self._FakeInterval
+
+    @FakeInterval.setter
+    def FakeInterval(self, FakeInterval):
+        self._FakeInterval = FakeInterval
+
+    @property
+    def IsNet(self):
+        return self._IsNet
+
+    @IsNet.setter
+    def IsNet(self, IsNet):
+        self._IsNet = IsNet
+
+    @property
+    def Network(self):
+        return self._Network
+
+    @Network.setter
+    def Network(self, Network):
+        self._Network = Network
+
+    @property
+    def IsMove(self):
+        return self._IsMove
+
+    @IsMove.setter
+    def IsMove(self, IsMove):
+        self._IsMove = IsMove
+
+    @property
+    def TacticID(self):
+        return self._TacticID
+
+    @TacticID.setter
+    def TacticID(self, TacticID):
+        self._TacticID = TacticID
+
+    @property
+    def IsPriorityTele(self):
+        return self._IsPriorityTele
+
+    @IsPriorityTele.setter
+    def IsPriorityTele(self, IsPriorityTele):
+        self._IsPriorityTele = IsPriorityTele
+
+    @property
+    def PriorityTele(self):
+        return self._PriorityTele
+
+    @PriorityTele.setter
+    def PriorityTele(self, PriorityTele):
+        self._PriorityTele = PriorityTele
+
+    @property
+    def IsBottomTele(self):
+        return self._IsBottomTele
+
+    @IsBottomTele.setter
+    def IsBottomTele(self, IsBottomTele):
+        self._IsBottomTele = IsBottomTele
+
+    @property
+    def BottomTele(self):
+        return self._BottomTele
+
+    @BottomTele.setter
+    def BottomTele(self, BottomTele):
+        self._BottomTele = BottomTele
+
+    @property
+    def IsBestSignal(self):
+        return self._IsBestSignal
+
+    @IsBestSignal.setter
+    def IsBestSignal(self, IsBestSignal):
+        self._IsBestSignal = IsBestSignal
+
+    @property
+    def FakeIP(self):
+        return self._FakeIP
+
+    @FakeIP.setter
+    def FakeIP(self, FakeIP):
+        self._FakeIP = FakeIP
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.IsAuto = params.get("IsAuto")
-        self.PingInterval = params.get("PingInterval")
-        self.IsWeak = params.get("IsWeak")
-        self.WeakThreshold = params.get("WeakThreshold")
-        self.IsDelay = params.get("IsDelay")
-        self.DelayThreshold = params.get("DelayThreshold")
-        self.IsFake = params.get("IsFake")
-        self.FakeInterval = params.get("FakeInterval")
-        self.IsNet = params.get("IsNet")
-        self.Network = params.get("Network")
-        self.IsMove = params.get("IsMove")
-        self.TacticID = params.get("TacticID")
-        self.IsPriorityTele = params.get("IsPriorityTele")
-        self.PriorityTele = params.get("PriorityTele")
-        self.IsBottomTele = params.get("IsBottomTele")
-        self.BottomTele = params.get("BottomTele")
-        self.IsBestSignal = params.get("IsBestSignal")
-        self.FakeIP = params.get("FakeIP")
+        self._Name = params.get("Name")
+        self._IsAuto = params.get("IsAuto")
+        self._PingInterval = params.get("PingInterval")
+        self._IsWeak = params.get("IsWeak")
+        self._WeakThreshold = params.get("WeakThreshold")
+        self._IsDelay = params.get("IsDelay")
+        self._DelayThreshold = params.get("DelayThreshold")
+        self._IsFake = params.get("IsFake")
+        self._FakeInterval = params.get("FakeInterval")
+        self._IsNet = params.get("IsNet")
+        self._Network = params.get("Network")
+        self._IsMove = params.get("IsMove")
+        self._TacticID = params.get("TacticID")
+        self._IsPriorityTele = params.get("IsPriorityTele")
+        self._PriorityTele = params.get("PriorityTele")
+        self._IsBottomTele = params.get("IsBottomTele")
+        self._BottomTele = params.get("BottomTele")
+        self._IsBestSignal = params.get("IsBestSignal")
+        self._FakeIP = params.get("FakeIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1582,14 +3094,22 @@ class ModifyTacticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTagRequest(AbstractModel):
@@ -1599,26 +3119,51 @@ class ModifyTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param TagID: 标签ID
+        :param _TagID: 标签ID
         :type TagID: int
-        :param Comment: 备注
+        :param _Comment: 备注
         :type Comment: str
         """
-        self.Name = None
-        self.TagID = None
-        self.Comment = None
+        self._Name = None
+        self._TagID = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TagID(self):
+        return self._TagID
+
+    @TagID.setter
+    def TagID(self, TagID):
+        self._TagID = TagID
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.TagID = params.get("TagID")
-        self.Comment = params.get("Comment")
+        self._Name = params.get("Name")
+        self._TagID = params.get("TagID")
+        self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1631,14 +3176,22 @@ class ModifyTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OrderInfo(AbstractModel):
@@ -1648,87 +3201,208 @@ class OrderInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealName: 子订单ID
+        :param _DealName: 子订单ID
         :type DealName: str
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param Uin: 订单账户
+        :param _Uin: 订单账户
         :type Uin: str
-        :param BuyNum: 购买数量
+        :param _BuyNum: 购买数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type BuyNum: int
-        :param IndustryCode: 行业代码
+        :param _IndustryCode: 行业代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndustryCode: str
-        :param Address: 地址
+        :param _Address: 地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
-        :param Contact: 联系人
+        :param _Contact: 联系人
 注意：此字段可能返回 null，表示取不到有效值。
         :type Contact: str
-        :param Msisdn: 电话号码
+        :param _Msisdn: 电话号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msisdn: str
-        :param Specification: 卡片规格
+        :param _Specification: 卡片规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
-        :param Comment: 用户订单备注
+        :param _Comment: 用户订单备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
-        :param BigDealId: 大订单号
+        :param _BigDealId: 大订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealId: str
-        :param AuditStatus: 审批状态
+        :param _AuditStatus: 审批状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditStatus: str
-        :param FlowStatus: 发货状态
+        :param _FlowStatus: 发货状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowStatus: str
-        :param Remark: 审批备注
+        :param _Remark: 审批备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param RefundBigDealId: 退费订单
+        :param _RefundBigDealId: 退费订单
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefundBigDealId: str
         """
-        self.DealName = None
-        self.CreatedAt = None
-        self.Uin = None
-        self.BuyNum = None
-        self.IndustryCode = None
-        self.Address = None
-        self.Contact = None
-        self.Msisdn = None
-        self.Specification = None
-        self.Comment = None
-        self.BigDealId = None
-        self.AuditStatus = None
-        self.FlowStatus = None
-        self.Remark = None
-        self.RefundBigDealId = None
+        self._DealName = None
+        self._CreatedAt = None
+        self._Uin = None
+        self._BuyNum = None
+        self._IndustryCode = None
+        self._Address = None
+        self._Contact = None
+        self._Msisdn = None
+        self._Specification = None
+        self._Comment = None
+        self._BigDealId = None
+        self._AuditStatus = None
+        self._FlowStatus = None
+        self._Remark = None
+        self._RefundBigDealId = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def BuyNum(self):
+        return self._BuyNum
+
+    @BuyNum.setter
+    def BuyNum(self, BuyNum):
+        self._BuyNum = BuyNum
+
+    @property
+    def IndustryCode(self):
+        return self._IndustryCode
+
+    @IndustryCode.setter
+    def IndustryCode(self, IndustryCode):
+        self._IndustryCode = IndustryCode
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Contact(self):
+        return self._Contact
+
+    @Contact.setter
+    def Contact(self, Contact):
+        self._Contact = Contact
+
+    @property
+    def Msisdn(self):
+        return self._Msisdn
+
+    @Msisdn.setter
+    def Msisdn(self, Msisdn):
+        self._Msisdn = Msisdn
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def BigDealId(self):
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def FlowStatus(self):
+        return self._FlowStatus
+
+    @FlowStatus.setter
+    def FlowStatus(self, FlowStatus):
+        self._FlowStatus = FlowStatus
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RefundBigDealId(self):
+        return self._RefundBigDealId
+
+    @RefundBigDealId.setter
+    def RefundBigDealId(self, RefundBigDealId):
+        self._RefundBigDealId = RefundBigDealId
 
 
     def _deserialize(self, params):
-        self.DealName = params.get("DealName")
-        self.CreatedAt = params.get("CreatedAt")
-        self.Uin = params.get("Uin")
-        self.BuyNum = params.get("BuyNum")
-        self.IndustryCode = params.get("IndustryCode")
-        self.Address = params.get("Address")
-        self.Contact = params.get("Contact")
-        self.Msisdn = params.get("Msisdn")
-        self.Specification = params.get("Specification")
-        self.Comment = params.get("Comment")
-        self.BigDealId = params.get("BigDealId")
-        self.AuditStatus = params.get("AuditStatus")
-        self.FlowStatus = params.get("FlowStatus")
-        self.Remark = params.get("Remark")
-        self.RefundBigDealId = params.get("RefundBigDealId")
+        self._DealName = params.get("DealName")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Uin = params.get("Uin")
+        self._BuyNum = params.get("BuyNum")
+        self._IndustryCode = params.get("IndustryCode")
+        self._Address = params.get("Address")
+        self._Contact = params.get("Contact")
+        self._Msisdn = params.get("Msisdn")
+        self._Specification = params.get("Specification")
+        self._Comment = params.get("Comment")
+        self._BigDealId = params.get("BigDealId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._FlowStatus = params.get("FlowStatus")
+        self._Remark = params.get("Remark")
+        self._RefundBigDealId = params.get("RefundBigDealId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1741,28 +3415,45 @@ class Orders(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 总数
+        :param _Total: 总数
         :type Total: int
-        :param List: 订单集合
+        :param _List: 订单集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of OrderInfo
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = OrderInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1775,22 +3466,39 @@ class RenewLinkInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LinkID: 云兔ID
+        :param _LinkID: 云兔ID
         :type LinkID: int
-        :param UinAccount: 具体的账号
+        :param _UinAccount: 具体的账号
         :type UinAccount: str
         """
-        self.LinkID = None
-        self.UinAccount = None
+        self._LinkID = None
+        self._UinAccount = None
+
+    @property
+    def LinkID(self):
+        return self._LinkID
+
+    @LinkID.setter
+    def LinkID(self, LinkID):
+        self._LinkID = LinkID
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
 
 
     def _deserialize(self, params):
-        self.LinkID = params.get("LinkID")
-        self.UinAccount = params.get("UinAccount")
+        self._LinkID = params.get("LinkID")
+        self._UinAccount = params.get("UinAccount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1803,14 +3511,22 @@ class RenewLinkInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Rule(AbstractModel):
@@ -1820,97 +3536,234 @@ class Rule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 规则名称
+        :param _Name: 规则名称
         :type Name: str
-        :param ID: 规则ID
+        :param _ID: 规则ID
         :type ID: int
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 更新时间
+        :param _UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param DeletedAt: 删除时间
+        :param _DeletedAt: 删除时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletedAt: str
-        :param Type: 规则类型
+        :param _Type: 规则类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param IsActive: 是否激活
+        :param _IsActive: 是否激活
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsActive: bool
-        :param Notice: 触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
+        :param _Notice: 触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Notice: int
-        :param Email: 邮箱
+        :param _Email: 邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param Url: 回调API地址
+        :param _Url: 回调API地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param DataThreshold: 用量类：用量阈值,单位MB
+        :param _DataThreshold: 用量类：用量阈值,单位MB
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataThreshold: int
-        :param District: 行政区类型：1. 省份 2. 城市 3. 区
+        :param _District: 行政区类型：1. 省份 2. 城市 3. 区
 注意：此字段可能返回 null，表示取不到有效值。
         :type District: int
-        :param Distance: 移动距离阈值，单位KM
+        :param _Distance: 移动距离阈值，单位KM
 注意：此字段可能返回 null，表示取不到有效值。
         :type Distance: int
-        :param SignalStrength: 信号强度阈值(-dbm）
+        :param _SignalStrength: 信号强度阈值(-dbm）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignalStrength: int
-        :param LostDay: 盲点阈值天数
+        :param _LostDay: 盲点阈值天数
 注意：此字段可能返回 null，表示取不到有效值。
         :type LostDay: int
-        :param TagIDs: 绑定的标签ID集合
+        :param _TagIDs: 绑定的标签ID集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagIDs: list of int non-negative
-        :param SalePlan: 绑定的资费计划
+        :param _SalePlan: 绑定的资费计划
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalePlan: str
         """
-        self.Name = None
-        self.ID = None
-        self.CreatedAt = None
-        self.UpdatedAt = None
-        self.DeletedAt = None
-        self.Type = None
-        self.IsActive = None
-        self.Notice = None
-        self.Email = None
-        self.Url = None
-        self.DataThreshold = None
-        self.District = None
-        self.Distance = None
-        self.SignalStrength = None
-        self.LostDay = None
-        self.TagIDs = None
-        self.SalePlan = None
+        self._Name = None
+        self._ID = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._DeletedAt = None
+        self._Type = None
+        self._IsActive = None
+        self._Notice = None
+        self._Email = None
+        self._Url = None
+        self._DataThreshold = None
+        self._District = None
+        self._Distance = None
+        self._SignalStrength = None
+        self._LostDay = None
+        self._TagIDs = None
+        self._SalePlan = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def DeletedAt(self):
+        return self._DeletedAt
+
+    @DeletedAt.setter
+    def DeletedAt(self, DeletedAt):
+        self._DeletedAt = DeletedAt
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def Notice(self):
+        return self._Notice
+
+    @Notice.setter
+    def Notice(self, Notice):
+        self._Notice = Notice
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def DataThreshold(self):
+        return self._DataThreshold
+
+    @DataThreshold.setter
+    def DataThreshold(self, DataThreshold):
+        self._DataThreshold = DataThreshold
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def Distance(self):
+        return self._Distance
+
+    @Distance.setter
+    def Distance(self, Distance):
+        self._Distance = Distance
+
+    @property
+    def SignalStrength(self):
+        return self._SignalStrength
+
+    @SignalStrength.setter
+    def SignalStrength(self, SignalStrength):
+        self._SignalStrength = SignalStrength
+
+    @property
+    def LostDay(self):
+        return self._LostDay
+
+    @LostDay.setter
+    def LostDay(self, LostDay):
+        self._LostDay = LostDay
+
+    @property
+    def TagIDs(self):
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def SalePlan(self):
+        return self._SalePlan
+
+    @SalePlan.setter
+    def SalePlan(self, SalePlan):
+        self._SalePlan = SalePlan
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ID = params.get("ID")
-        self.CreatedAt = params.get("CreatedAt")
-        self.UpdatedAt = params.get("UpdatedAt")
-        self.DeletedAt = params.get("DeletedAt")
-        self.Type = params.get("Type")
-        self.IsActive = params.get("IsActive")
-        self.Notice = params.get("Notice")
-        self.Email = params.get("Email")
-        self.Url = params.get("Url")
-        self.DataThreshold = params.get("DataThreshold")
-        self.District = params.get("District")
-        self.Distance = params.get("Distance")
-        self.SignalStrength = params.get("SignalStrength")
-        self.LostDay = params.get("LostDay")
-        self.TagIDs = params.get("TagIDs")
-        self.SalePlan = params.get("SalePlan")
+        self._Name = params.get("Name")
+        self._ID = params.get("ID")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._DeletedAt = params.get("DeletedAt")
+        self._Type = params.get("Type")
+        self._IsActive = params.get("IsActive")
+        self._Notice = params.get("Notice")
+        self._Email = params.get("Email")
+        self._Url = params.get("Url")
+        self._DataThreshold = params.get("DataThreshold")
+        self._District = params.get("District")
+        self._Distance = params.get("Distance")
+        self._SignalStrength = params.get("SignalStrength")
+        self._LostDay = params.get("LostDay")
+        self._TagIDs = params.get("TagIDs")
+        self._SalePlan = params.get("SalePlan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1923,97 +3776,234 @@ class RuleDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 规则名称
+        :param _Name: 规则名称
         :type Name: str
-        :param ID: 规则ID
+        :param _ID: 规则ID
         :type ID: int
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 更新时间
+        :param _UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param DeletedAt: 删除时间
+        :param _DeletedAt: 删除时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletedAt: str
-        :param Type: 规则类型
+        :param _Type: 规则类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param IsActive: 是否激活
+        :param _IsActive: 是否激活
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsActive: bool
-        :param Notice: 触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
+        :param _Notice: 触发动作：1 邮件 2 API请求 5 停卡 6 地图标识为盲点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Notice: int
-        :param Email: 邮箱
+        :param _Email: 邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param Url: 回调API地址
+        :param _Url: 回调API地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param DataThreshold: 用量类：用量阈值,单位MB
+        :param _DataThreshold: 用量类：用量阈值,单位MB
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataThreshold: int
-        :param District: 行政区类型：1. 省份 2. 城市 3. 区
+        :param _District: 行政区类型：1. 省份 2. 城市 3. 区
 注意：此字段可能返回 null，表示取不到有效值。
         :type District: int
-        :param Distance: 移动距离阈值，单位KM
+        :param _Distance: 移动距离阈值，单位KM
 注意：此字段可能返回 null，表示取不到有效值。
         :type Distance: int
-        :param SignalStrength: 信号强度阈值(-dbm）
+        :param _SignalStrength: 信号强度阈值(-dbm）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignalStrength: int
-        :param LostDay: 盲点阈值天数
+        :param _LostDay: 盲点阈值天数
 注意：此字段可能返回 null，表示取不到有效值。
         :type LostDay: int
-        :param TagIDs: 标签ID集合
+        :param _TagIDs: 标签ID集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagIDs: list of int
-        :param SalePlan: 资费信息
+        :param _SalePlan: 资费信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalePlan: str
         """
-        self.Name = None
-        self.ID = None
-        self.CreatedAt = None
-        self.UpdatedAt = None
-        self.DeletedAt = None
-        self.Type = None
-        self.IsActive = None
-        self.Notice = None
-        self.Email = None
-        self.Url = None
-        self.DataThreshold = None
-        self.District = None
-        self.Distance = None
-        self.SignalStrength = None
-        self.LostDay = None
-        self.TagIDs = None
-        self.SalePlan = None
+        self._Name = None
+        self._ID = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._DeletedAt = None
+        self._Type = None
+        self._IsActive = None
+        self._Notice = None
+        self._Email = None
+        self._Url = None
+        self._DataThreshold = None
+        self._District = None
+        self._Distance = None
+        self._SignalStrength = None
+        self._LostDay = None
+        self._TagIDs = None
+        self._SalePlan = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def DeletedAt(self):
+        return self._DeletedAt
+
+    @DeletedAt.setter
+    def DeletedAt(self, DeletedAt):
+        self._DeletedAt = DeletedAt
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def Notice(self):
+        return self._Notice
+
+    @Notice.setter
+    def Notice(self, Notice):
+        self._Notice = Notice
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def DataThreshold(self):
+        return self._DataThreshold
+
+    @DataThreshold.setter
+    def DataThreshold(self, DataThreshold):
+        self._DataThreshold = DataThreshold
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def Distance(self):
+        return self._Distance
+
+    @Distance.setter
+    def Distance(self, Distance):
+        self._Distance = Distance
+
+    @property
+    def SignalStrength(self):
+        return self._SignalStrength
+
+    @SignalStrength.setter
+    def SignalStrength(self, SignalStrength):
+        self._SignalStrength = SignalStrength
+
+    @property
+    def LostDay(self):
+        return self._LostDay
+
+    @LostDay.setter
+    def LostDay(self, LostDay):
+        self._LostDay = LostDay
+
+    @property
+    def TagIDs(self):
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def SalePlan(self):
+        return self._SalePlan
+
+    @SalePlan.setter
+    def SalePlan(self, SalePlan):
+        self._SalePlan = SalePlan
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ID = params.get("ID")
-        self.CreatedAt = params.get("CreatedAt")
-        self.UpdatedAt = params.get("UpdatedAt")
-        self.DeletedAt = params.get("DeletedAt")
-        self.Type = params.get("Type")
-        self.IsActive = params.get("IsActive")
-        self.Notice = params.get("Notice")
-        self.Email = params.get("Email")
-        self.Url = params.get("Url")
-        self.DataThreshold = params.get("DataThreshold")
-        self.District = params.get("District")
-        self.Distance = params.get("Distance")
-        self.SignalStrength = params.get("SignalStrength")
-        self.LostDay = params.get("LostDay")
-        self.TagIDs = params.get("TagIDs")
-        self.SalePlan = params.get("SalePlan")
+        self._Name = params.get("Name")
+        self._ID = params.get("ID")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._DeletedAt = params.get("DeletedAt")
+        self._Type = params.get("Type")
+        self._IsActive = params.get("IsActive")
+        self._Notice = params.get("Notice")
+        self._Email = params.get("Email")
+        self._Url = params.get("Url")
+        self._DataThreshold = params.get("DataThreshold")
+        self._District = params.get("District")
+        self._Distance = params.get("Distance")
+        self._SignalStrength = params.get("SignalStrength")
+        self._LostDay = params.get("LostDay")
+        self._TagIDs = params.get("TagIDs")
+        self._SalePlan = params.get("SalePlan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2026,28 +4016,45 @@ class RuleInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 总量
+        :param _Total: 总量
         :type Total: int
-        :param List: 列表
+        :param _List: 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of Rule
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = Rule()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2060,111 +4067,272 @@ class Tactic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 策略ID
+        :param _ID: 策略ID
         :type ID: int
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param IsAuto: 是否自动执行策略
+        :param _IsAuto: 是否自动执行策略
         :type IsAuto: int
-        :param PingInterval: 设备上报信息间隔
+        :param _PingInterval: 设备上报信息间隔
 注意：此字段可能返回 null，表示取不到有效值。
         :type PingInterval: int
-        :param IsWeak: 是否开启弱信号检查
+        :param _IsWeak: 是否开启弱信号检查
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsWeak: int
-        :param WeakThreshold: 弱信号阈值（-dbm）
+        :param _WeakThreshold: 弱信号阈值（-dbm）
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeakThreshold: int
-        :param IsDelay: 忘了时延切换
+        :param _IsDelay: 忘了时延切换
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDelay: int
-        :param DelayThreshold: 时延阈值（ms）
+        :param _DelayThreshold: 时延阈值（ms）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayThreshold: int
-        :param IsFake: 是否开启假信号检测
+        :param _IsFake: 是否开启假信号检测
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsFake: int
-        :param FakeIP: 假信号检测IP字符串，用逗号分隔
+        :param _FakeIP: 假信号检测IP字符串，用逗号分隔
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeIP: str
-        :param FakeInterval: 假信号检测间隔（s）
+        :param _FakeInterval: 假信号检测间隔（s）
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeInterval: int
-        :param IsNet: 是否开启网络制式检测
+        :param _IsNet: 是否开启网络制式检测
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNet: int
-        :param Network: 网络回落制式 1: 2G、 2: 3G 、 3: 2/3G
+        :param _Network: 网络回落制式 1: 2G、 2: 3G 、 3: 2/3G
 注意：此字段可能返回 null，表示取不到有效值。
         :type Network: int
-        :param IsMove: 是否开启移动检测
+        :param _IsMove: 是否开启移动检测
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMove: int
-        :param Name: 策略名称
+        :param _Name: 策略名称
         :type Name: str
-        :param IsPriorityTele: 是否开启最优先运营商
+        :param _IsPriorityTele: 是否开启最优先运营商
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPriorityTele: int
-        :param PriorityTele: 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
+        :param _PriorityTele: 最优先运营商 1 移动、 2 联通、 3 电信 4 上次在线运营商
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriorityTele: int
-        :param IsBottomTele: 是否开启最不优先运营商
+        :param _IsBottomTele: 是否开启最不优先运营商
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsBottomTele: int
-        :param BottomTele: 最不优先运营商 1 移动、 2 联通、 3 电信
+        :param _BottomTele: 最不优先运营商 1 移动、 2 联通、 3 电信
 注意：此字段可能返回 null，表示取不到有效值。
         :type BottomTele: int
-        :param IsBestSignal: 是否开启最优先信号选取策略
+        :param _IsBestSignal: 是否开启最优先信号选取策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsBestSignal: int
         """
-        self.ID = None
-        self.CreatedAt = None
-        self.IsAuto = None
-        self.PingInterval = None
-        self.IsWeak = None
-        self.WeakThreshold = None
-        self.IsDelay = None
-        self.DelayThreshold = None
-        self.IsFake = None
-        self.FakeIP = None
-        self.FakeInterval = None
-        self.IsNet = None
-        self.Network = None
-        self.IsMove = None
-        self.Name = None
-        self.IsPriorityTele = None
-        self.PriorityTele = None
-        self.IsBottomTele = None
-        self.BottomTele = None
-        self.IsBestSignal = None
+        self._ID = None
+        self._CreatedAt = None
+        self._IsAuto = None
+        self._PingInterval = None
+        self._IsWeak = None
+        self._WeakThreshold = None
+        self._IsDelay = None
+        self._DelayThreshold = None
+        self._IsFake = None
+        self._FakeIP = None
+        self._FakeInterval = None
+        self._IsNet = None
+        self._Network = None
+        self._IsMove = None
+        self._Name = None
+        self._IsPriorityTele = None
+        self._PriorityTele = None
+        self._IsBottomTele = None
+        self._BottomTele = None
+        self._IsBestSignal = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def IsAuto(self):
+        return self._IsAuto
+
+    @IsAuto.setter
+    def IsAuto(self, IsAuto):
+        self._IsAuto = IsAuto
+
+    @property
+    def PingInterval(self):
+        return self._PingInterval
+
+    @PingInterval.setter
+    def PingInterval(self, PingInterval):
+        self._PingInterval = PingInterval
+
+    @property
+    def IsWeak(self):
+        return self._IsWeak
+
+    @IsWeak.setter
+    def IsWeak(self, IsWeak):
+        self._IsWeak = IsWeak
+
+    @property
+    def WeakThreshold(self):
+        return self._WeakThreshold
+
+    @WeakThreshold.setter
+    def WeakThreshold(self, WeakThreshold):
+        self._WeakThreshold = WeakThreshold
+
+    @property
+    def IsDelay(self):
+        return self._IsDelay
+
+    @IsDelay.setter
+    def IsDelay(self, IsDelay):
+        self._IsDelay = IsDelay
+
+    @property
+    def DelayThreshold(self):
+        return self._DelayThreshold
+
+    @DelayThreshold.setter
+    def DelayThreshold(self, DelayThreshold):
+        self._DelayThreshold = DelayThreshold
+
+    @property
+    def IsFake(self):
+        return self._IsFake
+
+    @IsFake.setter
+    def IsFake(self, IsFake):
+        self._IsFake = IsFake
+
+    @property
+    def FakeIP(self):
+        return self._FakeIP
+
+    @FakeIP.setter
+    def FakeIP(self, FakeIP):
+        self._FakeIP = FakeIP
+
+    @property
+    def FakeInterval(self):
+        return self._FakeInterval
+
+    @FakeInterval.setter
+    def FakeInterval(self, FakeInterval):
+        self._FakeInterval = FakeInterval
+
+    @property
+    def IsNet(self):
+        return self._IsNet
+
+    @IsNet.setter
+    def IsNet(self, IsNet):
+        self._IsNet = IsNet
+
+    @property
+    def Network(self):
+        return self._Network
+
+    @Network.setter
+    def Network(self, Network):
+        self._Network = Network
+
+    @property
+    def IsMove(self):
+        return self._IsMove
+
+    @IsMove.setter
+    def IsMove(self, IsMove):
+        self._IsMove = IsMove
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IsPriorityTele(self):
+        return self._IsPriorityTele
+
+    @IsPriorityTele.setter
+    def IsPriorityTele(self, IsPriorityTele):
+        self._IsPriorityTele = IsPriorityTele
+
+    @property
+    def PriorityTele(self):
+        return self._PriorityTele
+
+    @PriorityTele.setter
+    def PriorityTele(self, PriorityTele):
+        self._PriorityTele = PriorityTele
+
+    @property
+    def IsBottomTele(self):
+        return self._IsBottomTele
+
+    @IsBottomTele.setter
+    def IsBottomTele(self, IsBottomTele):
+        self._IsBottomTele = IsBottomTele
+
+    @property
+    def BottomTele(self):
+        return self._BottomTele
+
+    @BottomTele.setter
+    def BottomTele(self, BottomTele):
+        self._BottomTele = BottomTele
+
+    @property
+    def IsBestSignal(self):
+        return self._IsBestSignal
+
+    @IsBestSignal.setter
+    def IsBestSignal(self, IsBestSignal):
+        self._IsBestSignal = IsBestSignal
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.CreatedAt = params.get("CreatedAt")
-        self.IsAuto = params.get("IsAuto")
-        self.PingInterval = params.get("PingInterval")
-        self.IsWeak = params.get("IsWeak")
-        self.WeakThreshold = params.get("WeakThreshold")
-        self.IsDelay = params.get("IsDelay")
-        self.DelayThreshold = params.get("DelayThreshold")
-        self.IsFake = params.get("IsFake")
-        self.FakeIP = params.get("FakeIP")
-        self.FakeInterval = params.get("FakeInterval")
-        self.IsNet = params.get("IsNet")
-        self.Network = params.get("Network")
-        self.IsMove = params.get("IsMove")
-        self.Name = params.get("Name")
-        self.IsPriorityTele = params.get("IsPriorityTele")
-        self.PriorityTele = params.get("PriorityTele")
-        self.IsBottomTele = params.get("IsBottomTele")
-        self.BottomTele = params.get("BottomTele")
-        self.IsBestSignal = params.get("IsBestSignal")
+        self._ID = params.get("ID")
+        self._CreatedAt = params.get("CreatedAt")
+        self._IsAuto = params.get("IsAuto")
+        self._PingInterval = params.get("PingInterval")
+        self._IsWeak = params.get("IsWeak")
+        self._WeakThreshold = params.get("WeakThreshold")
+        self._IsDelay = params.get("IsDelay")
+        self._DelayThreshold = params.get("DelayThreshold")
+        self._IsFake = params.get("IsFake")
+        self._FakeIP = params.get("FakeIP")
+        self._FakeInterval = params.get("FakeInterval")
+        self._IsNet = params.get("IsNet")
+        self._Network = params.get("Network")
+        self._IsMove = params.get("IsMove")
+        self._Name = params.get("Name")
+        self._IsPriorityTele = params.get("IsPriorityTele")
+        self._PriorityTele = params.get("PriorityTele")
+        self._IsBottomTele = params.get("IsBottomTele")
+        self._BottomTele = params.get("BottomTele")
+        self._IsBestSignal = params.get("IsBestSignal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2177,28 +4345,45 @@ class TacticInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 总量
+        :param _Total: 总量
         :type Total: int
-        :param List: 策略列表
+        :param _List: 策略列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of Tactic
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = Tactic()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2211,37 +4396,78 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 标签名称
+        :param _Name: 标签名称
         :type Name: str
-        :param ID: 标签ID
+        :param _ID: 标签ID
         :type ID: int
-        :param Comment: 备注信息
+        :param _Comment: 备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 更改时间
+        :param _UpdatedAt: 更改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         """
-        self.Name = None
-        self.ID = None
-        self.Comment = None
-        self.CreatedAt = None
-        self.UpdatedAt = None
+        self._Name = None
+        self._ID = None
+        self._Comment = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ID = params.get("ID")
-        self.Comment = params.get("Comment")
-        self.CreatedAt = params.get("CreatedAt")
-        self.UpdatedAt = params.get("UpdatedAt")
+        self._Name = params.get("Name")
+        self._ID = params.get("ID")
+        self._Comment = params.get("Comment")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2254,28 +4480,45 @@ class TagInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 总量
+        :param _Total: 总量
         :type Total: int
-        :param List: 列表
+        :param _List: 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of Tag
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2288,46 +4531,103 @@ class TeleOperatorCard(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountTime: 开户时间
+        :param _AccountTime: 开户时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountTime: str
-        :param ActiveTime: 激活时间
+        :param _ActiveTime: 激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTime: str
-        :param ICCID: 运营商ICCID
+        :param _ICCID: 运营商ICCID
         :type ICCID: str
-        :param LinkID: 云兔卡ID
+        :param _LinkID: 云兔卡ID
         :type LinkID: int
-        :param Msisdn: 电话号码
+        :param _Msisdn: 电话号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msisdn: str
-        :param IMSI: 移动用户识别码
+        :param _IMSI: 移动用户识别码
 注意：此字段可能返回 null，表示取不到有效值。
         :type IMSI: str
-        :param TeleOperator: 运营商: 1 移动 2 联通 3 电信
+        :param _TeleOperator: 运营商: 1 移动 2 联通 3 电信
         :type TeleOperator: int
         """
-        self.AccountTime = None
-        self.ActiveTime = None
-        self.ICCID = None
-        self.LinkID = None
-        self.Msisdn = None
-        self.IMSI = None
-        self.TeleOperator = None
+        self._AccountTime = None
+        self._ActiveTime = None
+        self._ICCID = None
+        self._LinkID = None
+        self._Msisdn = None
+        self._IMSI = None
+        self._TeleOperator = None
+
+    @property
+    def AccountTime(self):
+        return self._AccountTime
+
+    @AccountTime.setter
+    def AccountTime(self, AccountTime):
+        self._AccountTime = AccountTime
+
+    @property
+    def ActiveTime(self):
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def ICCID(self):
+        return self._ICCID
+
+    @ICCID.setter
+    def ICCID(self, ICCID):
+        self._ICCID = ICCID
+
+    @property
+    def LinkID(self):
+        return self._LinkID
+
+    @LinkID.setter
+    def LinkID(self, LinkID):
+        self._LinkID = LinkID
+
+    @property
+    def Msisdn(self):
+        return self._Msisdn
+
+    @Msisdn.setter
+    def Msisdn(self, Msisdn):
+        self._Msisdn = Msisdn
+
+    @property
+    def IMSI(self):
+        return self._IMSI
+
+    @IMSI.setter
+    def IMSI(self, IMSI):
+        self._IMSI = IMSI
+
+    @property
+    def TeleOperator(self):
+        return self._TeleOperator
+
+    @TeleOperator.setter
+    def TeleOperator(self, TeleOperator):
+        self._TeleOperator = TeleOperator
 
 
     def _deserialize(self, params):
-        self.AccountTime = params.get("AccountTime")
-        self.ActiveTime = params.get("ActiveTime")
-        self.ICCID = params.get("ICCID")
-        self.LinkID = params.get("LinkID")
-        self.Msisdn = params.get("Msisdn")
-        self.IMSI = params.get("IMSI")
-        self.TeleOperator = params.get("TeleOperator")
+        self._AccountTime = params.get("AccountTime")
+        self._ActiveTime = params.get("ActiveTime")
+        self._ICCID = params.get("ICCID")
+        self._LinkID = params.get("LinkID")
+        self._Msisdn = params.get("Msisdn")
+        self._IMSI = params.get("IMSI")
+        self._TeleOperator = params.get("TeleOperator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

@@ -25,12 +25,12 @@ class AlgorithmResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AlgoId: 算法ID
+        :param _AlgoId: 算法ID
         :type AlgoId: str
-        :param AlgoName: 算法名称
+        :param _AlgoName: 算法名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlgoName: str
-        :param Result: 算法返回的结果。
+        :param _Result: 算法返回的结果。
 - 当算法类型为“OCR（1）”时，结果为文本字符串
 - 当算法类型为“文本分类（2）”时，结果字符串为json对象数组：
   Class：分类结果
@@ -48,10 +48,10 @@ class AlgorithmResult(AbstractModel):
   - Content：实体文本内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param Error: 算法调用错误信息
+        :param _Error: 算法调用错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
-        :param AlgoType: 算法类型：
+        :param _AlgoType: 算法类型：
 1：OCR算法
 2：文本分类算法
 3：情感分析算法
@@ -60,23 +60,64 @@ class AlgorithmResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlgoType: int
         """
-        self.AlgoId = None
-        self.AlgoName = None
-        self.Result = None
-        self.Error = None
-        self.AlgoType = None
+        self._AlgoId = None
+        self._AlgoName = None
+        self._Result = None
+        self._Error = None
+        self._AlgoType = None
+
+    @property
+    def AlgoId(self):
+        return self._AlgoId
+
+    @AlgoId.setter
+    def AlgoId(self, AlgoId):
+        self._AlgoId = AlgoId
+
+    @property
+    def AlgoName(self):
+        return self._AlgoName
+
+    @AlgoName.setter
+    def AlgoName(self, AlgoName):
+        self._AlgoName = AlgoName
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def AlgoType(self):
+        return self._AlgoType
+
+    @AlgoType.setter
+    def AlgoType(self, AlgoType):
+        self._AlgoType = AlgoType
 
 
     def _deserialize(self, params):
-        self.AlgoId = params.get("AlgoId")
-        self.AlgoName = params.get("AlgoName")
-        self.Result = params.get("Result")
-        self.Error = params.get("Error")
-        self.AlgoType = params.get("AlgoType")
+        self._AlgoId = params.get("AlgoId")
+        self._AlgoName = params.get("AlgoName")
+        self._Result = params.get("Result")
+        self._Error = params.get("Error")
+        self._AlgoType = params.get("AlgoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -89,18 +130,27 @@ class DescribeInvocationResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokeId: 调用id，为调用InvokeService接口返回的RequestId
+        :param _InvokeId: 调用id，为调用InvokeService接口返回的RequestId
         :type InvokeId: str
         """
-        self.InvokeId = None
+        self._InvokeId = None
+
+    @property
+    def InvokeId(self):
+        return self._InvokeId
+
+    @InvokeId.setter
+    def InvokeId(self, InvokeId):
+        self._InvokeId = InvokeId
 
 
     def _deserialize(self, params):
-        self.InvokeId = params.get("InvokeId")
+        self._InvokeId = params.get("InvokeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -113,29 +163,53 @@ class DescribeInvocationResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Results: 服务的调用结果
+        :param _Results: 服务的调用结果
         :type Results: list of AlgorithmResult
-        :param Status: 0:获取结果失败
+        :param _Status: 0:获取结果失败
 1：结果还没有生成，继续轮询
 2：获取结果成功
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Results = None
-        self.Status = None
-        self.RequestId = None
+        self._Results = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = AlgorithmResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class InvokeServiceRequest(AbstractModel):
@@ -145,30 +219,63 @@ class InvokeServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: 待调用的服务ID。
+        :param _ServiceId: 待调用的服务ID。
         :type ServiceId: str
-        :param ServiceStatus: 要调用服务的状态：0表示调试版本，1表示上线版本
+        :param _ServiceStatus: 要调用服务的状态：0表示调试版本，1表示上线版本
         :type ServiceStatus: int
-        :param FileUrl: 用于测试的文档的URL。
+        :param _FileUrl: 用于测试的文档的URL。
         :type FileUrl: str
-        :param Input: 用于测试的文本，当此值不为空时，调用内容以此参数的值为准。
+        :param _Input: 用于测试的文本，当此值不为空时，调用内容以此参数的值为准。
         :type Input: str
         """
-        self.ServiceId = None
-        self.ServiceStatus = None
-        self.FileUrl = None
-        self.Input = None
+        self._ServiceId = None
+        self._ServiceStatus = None
+        self._FileUrl = None
+        self._Input = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceStatus(self):
+        return self._ServiceStatus
+
+    @ServiceStatus.setter
+    def ServiceStatus(self, ServiceStatus):
+        self._ServiceStatus = ServiceStatus
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceStatus = params.get("ServiceStatus")
-        self.FileUrl = params.get("FileUrl")
-        self.Input = params.get("Input")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceStatus = params.get("ServiceStatus")
+        self._FileUrl = params.get("FileUrl")
+        self._Input = params.get("Input")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -181,11 +288,19 @@ class InvokeServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

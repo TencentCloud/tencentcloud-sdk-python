@@ -25,28 +25,45 @@ class AccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountType: 用户账号类型：
+        :param _AccountType: 用户账号类型：
 1-手机号；
 2-IMEI；
 3-IDFA；
 100-SSID类型
         :type AccountType: int
-        :param UniversalAccount: 通用账号信息，当AccountType为1、2、3、100时必填
+        :param _UniversalAccount: 通用账号信息，当AccountType为1、2、3、100时必填
         :type UniversalAccount: :class:`tencentcloud.trdp.v20220726.models.UniversalAccountInfo`
         """
-        self.AccountType = None
-        self.UniversalAccount = None
+        self._AccountType = None
+        self._UniversalAccount = None
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def UniversalAccount(self):
+        return self._UniversalAccount
+
+    @UniversalAccount.setter
+    def UniversalAccount(self, UniversalAccount):
+        self._UniversalAccount = UniversalAccount
 
 
     def _deserialize(self, params):
-        self.AccountType = params.get("AccountType")
+        self._AccountType = params.get("AccountType")
         if params.get("UniversalAccount") is not None:
-            self.UniversalAccount = UniversalAccountInfo()
-            self.UniversalAccount._deserialize(params.get("UniversalAccount"))
+            self._UniversalAccount = UniversalAccountInfo()
+            self._UniversalAccount._deserialize(params.get("UniversalAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -59,215 +76,576 @@ class DeviceDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MacAddress: mac地址或唯一设备标识
+        :param _MacAddress: mac地址或唯一设备标识
         :type MacAddress: str
-        :param Model: 手机型号
+        :param _Model: 手机型号
         :type Model: str
-        :param OsSystem: 操作系统(unknown，android，ios，windows)
+        :param _OsSystem: 操作系统(unknown，android，ios，windows)
         :type OsSystem: str
-        :param OsSystemVersion: 操作系统版本
+        :param _OsSystemVersion: 操作系统版本
         :type OsSystemVersion: str
-        :param BidFloor: 竞价底价
+        :param _BidFloor: 竞价底价
         :type BidFloor: int
-        :param DeviceVersion: 设备版本
+        :param _DeviceVersion: 设备版本
         :type DeviceVersion: str
-        :param Maker: 设备制造商
+        :param _Maker: 设备制造商
         :type Maker: str
-        :param DeviceType: 设备类型（PHONE,TABLET）
+        :param _DeviceType: 设备类型（PHONE,TABLET）
         :type DeviceType: str
-        :param Carrier: 运营商；-1: 获取失败，0: 其他，1: 移动，2: 联通，3: 电信，4: 铁通
+        :param _Carrier: 运营商；-1: 获取失败，0: 其他，1: 移动，2: 联通，3: 电信，4: 铁通
         :type Carrier: str
-        :param AccessMode: 入网方式(wifi,5g,4g,3g,2g)
+        :param _AccessMode: 入网方式(wifi,5g,4g,3g,2g)
         :type AccessMode: str
-        :param PhoneChipInfo: 手机芯片信息
+        :param _PhoneChipInfo: 手机芯片信息
         :type PhoneChipInfo: str
-        :param CpuModel: CPU 型号
+        :param _CpuModel: CPU 型号
         :type CpuModel: str
-        :param CpuCore: CPU 核数
+        :param _CpuCore: CPU 核数
         :type CpuCore: str
-        :param Memory: 内存容量，单位转换为 GB
+        :param _Memory: 内存容量，单位转换为 GB
         :type Memory: str
-        :param Language: 系统语言
+        :param _Language: 系统语言
         :type Language: str
-        :param Volume: 手机音量
+        :param _Volume: 手机音量
         :type Volume: str
-        :param BatteryPower: 电池电量
+        :param _BatteryPower: 电池电量
         :type BatteryPower: str
-        :param ResolutionWidth: 屏幕分辨率宽，保留整数
+        :param _ResolutionWidth: 屏幕分辨率宽，保留整数
         :type ResolutionWidth: int
-        :param ResolutionHeight: 屏幕分辨率高，保留整数
+        :param _ResolutionHeight: 屏幕分辨率高，保留整数
         :type ResolutionHeight: int
-        :param Ua: 浏览器类型
+        :param _Ua: 浏览器类型
         :type Ua: str
-        :param App: 客户端应用
+        :param _App: 客户端应用
         :type App: str
-        :param AppPackageName: 应用包名
+        :param _AppPackageName: 应用包名
         :type AppPackageName: str
-        :param SerialNumber: 设备序列号
+        :param _SerialNumber: 设备序列号
 Android设备
         :type SerialNumber: str
-        :param MobileCountryAndNetworkCode: netOperator MCC+MNC
+        :param _MobileCountryAndNetworkCode: netOperator MCC+MNC
 Android设备
         :type MobileCountryAndNetworkCode: str
-        :param VendorId: 设备品牌 “华为”“oppo”“小米”
+        :param _VendorId: 设备品牌 “华为”“oppo”“小米”
 Android设备
         :type VendorId: str
-        :param AndroidApiLevel: Android API等级
+        :param _AndroidApiLevel: Android API等级
 Android设备
         :type AndroidApiLevel: str
-        :param Brightness: 屏幕亮度
+        :param _Brightness: 屏幕亮度
 Android设备
         :type Brightness: str
-        :param BluetoothAddress: 蓝牙地址
+        :param _BluetoothAddress: 蓝牙地址
 Android设备
         :type BluetoothAddress: str
-        :param BaseBandVersion: 基带版本
+        :param _BaseBandVersion: 基带版本
 Android设备
         :type BaseBandVersion: str
-        :param KernelVersion: kernel 版本
+        :param _KernelVersion: kernel 版本
 Android设备
         :type KernelVersion: str
-        :param Storage: 存储容量，单位转换为 GB
+        :param _Storage: 存储容量，单位转换为 GB
 Android设备
         :type Storage: str
-        :param PackageName: 软件包名
+        :param _PackageName: 软件包名
 Android设备
         :type PackageName: str
-        :param AppVersion: app 版本号
+        :param _AppVersion: app 版本号
 Android设备
         :type AppVersion: str
-        :param AppName: app 显示名称
+        :param _AppName: app 显示名称
 Android设备
         :type AppName: str
-        :param IsDebug: 是否 debug；0 为正常模式，1 为 debug 模式；其他值无效
+        :param _IsDebug: 是否 debug；0 为正常模式，1 为 debug 模式；其他值无效
 Android设备
         :type IsDebug: str
-        :param IsRoot: 是否越狱；0 为正常，1 为越狱；其他值无效
+        :param _IsRoot: 是否越狱；0 为正常，1 为越狱；其他值无效
 Android设备
         :type IsRoot: str
-        :param IsProxy: 是否启动代理；0 为未开启，1 为开启；其他值无效
+        :param _IsProxy: 是否启动代理；0 为未开启，1 为开启；其他值无效
 Android设备
         :type IsProxy: str
-        :param IsEmulator: 是否模拟器；0 为未开启，1 为开启；其他值无效
+        :param _IsEmulator: 是否模拟器；0 为未开启，1 为开启；其他值无效
 Android设备
         :type IsEmulator: str
-        :param ChargeStatus: 充电状态；1-不在充电，2-USB充电，3-电源充电
+        :param _ChargeStatus: 充电状态；1-不在充电，2-USB充电，3-电源充电
 Android设备
         :type ChargeStatus: str
-        :param NetworkType: 网络类型：2G/3G/4G/5G/Wi-Fi/WWAN/other
+        :param _NetworkType: 网络类型：2G/3G/4G/5G/Wi-Fi/WWAN/other
 Android设备
         :type NetworkType: str
-        :param WifiMac: Wi-Fi MAC地址
+        :param _WifiMac: Wi-Fi MAC地址
 Android设备
         :type WifiMac: str
-        :param DeviceName: 设备名称 "xxx 的 iPhone"，"xxx's IPhone" 等等
+        :param _DeviceName: 设备名称 "xxx 的 iPhone"，"xxx's IPhone" 等等
 IOS设备
         :type DeviceName: str
-        :param StartupTime: 开机时间
+        :param _StartupTime: 开机时间
 IOS设备
         :type StartupTime: str
-        :param Lon: 所在经度
+        :param _Lon: 所在经度
         :type Lon: str
-        :param Lat: 所在纬度
+        :param _Lat: 所在纬度
         :type Lat: str
         """
-        self.MacAddress = None
-        self.Model = None
-        self.OsSystem = None
-        self.OsSystemVersion = None
-        self.BidFloor = None
-        self.DeviceVersion = None
-        self.Maker = None
-        self.DeviceType = None
-        self.Carrier = None
-        self.AccessMode = None
-        self.PhoneChipInfo = None
-        self.CpuModel = None
-        self.CpuCore = None
-        self.Memory = None
-        self.Language = None
-        self.Volume = None
-        self.BatteryPower = None
-        self.ResolutionWidth = None
-        self.ResolutionHeight = None
-        self.Ua = None
-        self.App = None
-        self.AppPackageName = None
-        self.SerialNumber = None
-        self.MobileCountryAndNetworkCode = None
-        self.VendorId = None
-        self.AndroidApiLevel = None
-        self.Brightness = None
-        self.BluetoothAddress = None
-        self.BaseBandVersion = None
-        self.KernelVersion = None
-        self.Storage = None
-        self.PackageName = None
-        self.AppVersion = None
-        self.AppName = None
-        self.IsDebug = None
-        self.IsRoot = None
-        self.IsProxy = None
-        self.IsEmulator = None
-        self.ChargeStatus = None
-        self.NetworkType = None
-        self.WifiMac = None
-        self.DeviceName = None
-        self.StartupTime = None
-        self.Lon = None
-        self.Lat = None
+        self._MacAddress = None
+        self._Model = None
+        self._OsSystem = None
+        self._OsSystemVersion = None
+        self._BidFloor = None
+        self._DeviceVersion = None
+        self._Maker = None
+        self._DeviceType = None
+        self._Carrier = None
+        self._AccessMode = None
+        self._PhoneChipInfo = None
+        self._CpuModel = None
+        self._CpuCore = None
+        self._Memory = None
+        self._Language = None
+        self._Volume = None
+        self._BatteryPower = None
+        self._ResolutionWidth = None
+        self._ResolutionHeight = None
+        self._Ua = None
+        self._App = None
+        self._AppPackageName = None
+        self._SerialNumber = None
+        self._MobileCountryAndNetworkCode = None
+        self._VendorId = None
+        self._AndroidApiLevel = None
+        self._Brightness = None
+        self._BluetoothAddress = None
+        self._BaseBandVersion = None
+        self._KernelVersion = None
+        self._Storage = None
+        self._PackageName = None
+        self._AppVersion = None
+        self._AppName = None
+        self._IsDebug = None
+        self._IsRoot = None
+        self._IsProxy = None
+        self._IsEmulator = None
+        self._ChargeStatus = None
+        self._NetworkType = None
+        self._WifiMac = None
+        self._DeviceName = None
+        self._StartupTime = None
+        self._Lon = None
+        self._Lat = None
+
+    @property
+    def MacAddress(self):
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def OsSystem(self):
+        return self._OsSystem
+
+    @OsSystem.setter
+    def OsSystem(self, OsSystem):
+        self._OsSystem = OsSystem
+
+    @property
+    def OsSystemVersion(self):
+        return self._OsSystemVersion
+
+    @OsSystemVersion.setter
+    def OsSystemVersion(self, OsSystemVersion):
+        self._OsSystemVersion = OsSystemVersion
+
+    @property
+    def BidFloor(self):
+        return self._BidFloor
+
+    @BidFloor.setter
+    def BidFloor(self, BidFloor):
+        self._BidFloor = BidFloor
+
+    @property
+    def DeviceVersion(self):
+        return self._DeviceVersion
+
+    @DeviceVersion.setter
+    def DeviceVersion(self, DeviceVersion):
+        self._DeviceVersion = DeviceVersion
+
+    @property
+    def Maker(self):
+        return self._Maker
+
+    @Maker.setter
+    def Maker(self, Maker):
+        self._Maker = Maker
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Carrier(self):
+        return self._Carrier
+
+    @Carrier.setter
+    def Carrier(self, Carrier):
+        self._Carrier = Carrier
+
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def PhoneChipInfo(self):
+        return self._PhoneChipInfo
+
+    @PhoneChipInfo.setter
+    def PhoneChipInfo(self, PhoneChipInfo):
+        self._PhoneChipInfo = PhoneChipInfo
+
+    @property
+    def CpuModel(self):
+        return self._CpuModel
+
+    @CpuModel.setter
+    def CpuModel(self, CpuModel):
+        self._CpuModel = CpuModel
+
+    @property
+    def CpuCore(self):
+        return self._CpuCore
+
+    @CpuCore.setter
+    def CpuCore(self, CpuCore):
+        self._CpuCore = CpuCore
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def BatteryPower(self):
+        return self._BatteryPower
+
+    @BatteryPower.setter
+    def BatteryPower(self, BatteryPower):
+        self._BatteryPower = BatteryPower
+
+    @property
+    def ResolutionWidth(self):
+        return self._ResolutionWidth
+
+    @ResolutionWidth.setter
+    def ResolutionWidth(self, ResolutionWidth):
+        self._ResolutionWidth = ResolutionWidth
+
+    @property
+    def ResolutionHeight(self):
+        return self._ResolutionHeight
+
+    @ResolutionHeight.setter
+    def ResolutionHeight(self, ResolutionHeight):
+        self._ResolutionHeight = ResolutionHeight
+
+    @property
+    def Ua(self):
+        return self._Ua
+
+    @Ua.setter
+    def Ua(self, Ua):
+        self._Ua = Ua
+
+    @property
+    def App(self):
+        return self._App
+
+    @App.setter
+    def App(self, App):
+        self._App = App
+
+    @property
+    def AppPackageName(self):
+        return self._AppPackageName
+
+    @AppPackageName.setter
+    def AppPackageName(self, AppPackageName):
+        self._AppPackageName = AppPackageName
+
+    @property
+    def SerialNumber(self):
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def MobileCountryAndNetworkCode(self):
+        return self._MobileCountryAndNetworkCode
+
+    @MobileCountryAndNetworkCode.setter
+    def MobileCountryAndNetworkCode(self, MobileCountryAndNetworkCode):
+        self._MobileCountryAndNetworkCode = MobileCountryAndNetworkCode
+
+    @property
+    def VendorId(self):
+        return self._VendorId
+
+    @VendorId.setter
+    def VendorId(self, VendorId):
+        self._VendorId = VendorId
+
+    @property
+    def AndroidApiLevel(self):
+        return self._AndroidApiLevel
+
+    @AndroidApiLevel.setter
+    def AndroidApiLevel(self, AndroidApiLevel):
+        self._AndroidApiLevel = AndroidApiLevel
+
+    @property
+    def Brightness(self):
+        return self._Brightness
+
+    @Brightness.setter
+    def Brightness(self, Brightness):
+        self._Brightness = Brightness
+
+    @property
+    def BluetoothAddress(self):
+        return self._BluetoothAddress
+
+    @BluetoothAddress.setter
+    def BluetoothAddress(self, BluetoothAddress):
+        self._BluetoothAddress = BluetoothAddress
+
+    @property
+    def BaseBandVersion(self):
+        return self._BaseBandVersion
+
+    @BaseBandVersion.setter
+    def BaseBandVersion(self, BaseBandVersion):
+        self._BaseBandVersion = BaseBandVersion
+
+    @property
+    def KernelVersion(self):
+        return self._KernelVersion
+
+    @KernelVersion.setter
+    def KernelVersion(self, KernelVersion):
+        self._KernelVersion = KernelVersion
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def PackageName(self):
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def AppVersion(self):
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def IsDebug(self):
+        return self._IsDebug
+
+    @IsDebug.setter
+    def IsDebug(self, IsDebug):
+        self._IsDebug = IsDebug
+
+    @property
+    def IsRoot(self):
+        return self._IsRoot
+
+    @IsRoot.setter
+    def IsRoot(self, IsRoot):
+        self._IsRoot = IsRoot
+
+    @property
+    def IsProxy(self):
+        return self._IsProxy
+
+    @IsProxy.setter
+    def IsProxy(self, IsProxy):
+        self._IsProxy = IsProxy
+
+    @property
+    def IsEmulator(self):
+        return self._IsEmulator
+
+    @IsEmulator.setter
+    def IsEmulator(self, IsEmulator):
+        self._IsEmulator = IsEmulator
+
+    @property
+    def ChargeStatus(self):
+        return self._ChargeStatus
+
+    @ChargeStatus.setter
+    def ChargeStatus(self, ChargeStatus):
+        self._ChargeStatus = ChargeStatus
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def WifiMac(self):
+        return self._WifiMac
+
+    @WifiMac.setter
+    def WifiMac(self, WifiMac):
+        self._WifiMac = WifiMac
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def StartupTime(self):
+        return self._StartupTime
+
+    @StartupTime.setter
+    def StartupTime(self, StartupTime):
+        self._StartupTime = StartupTime
+
+    @property
+    def Lon(self):
+        return self._Lon
+
+    @Lon.setter
+    def Lon(self, Lon):
+        self._Lon = Lon
+
+    @property
+    def Lat(self):
+        return self._Lat
+
+    @Lat.setter
+    def Lat(self, Lat):
+        self._Lat = Lat
 
 
     def _deserialize(self, params):
-        self.MacAddress = params.get("MacAddress")
-        self.Model = params.get("Model")
-        self.OsSystem = params.get("OsSystem")
-        self.OsSystemVersion = params.get("OsSystemVersion")
-        self.BidFloor = params.get("BidFloor")
-        self.DeviceVersion = params.get("DeviceVersion")
-        self.Maker = params.get("Maker")
-        self.DeviceType = params.get("DeviceType")
-        self.Carrier = params.get("Carrier")
-        self.AccessMode = params.get("AccessMode")
-        self.PhoneChipInfo = params.get("PhoneChipInfo")
-        self.CpuModel = params.get("CpuModel")
-        self.CpuCore = params.get("CpuCore")
-        self.Memory = params.get("Memory")
-        self.Language = params.get("Language")
-        self.Volume = params.get("Volume")
-        self.BatteryPower = params.get("BatteryPower")
-        self.ResolutionWidth = params.get("ResolutionWidth")
-        self.ResolutionHeight = params.get("ResolutionHeight")
-        self.Ua = params.get("Ua")
-        self.App = params.get("App")
-        self.AppPackageName = params.get("AppPackageName")
-        self.SerialNumber = params.get("SerialNumber")
-        self.MobileCountryAndNetworkCode = params.get("MobileCountryAndNetworkCode")
-        self.VendorId = params.get("VendorId")
-        self.AndroidApiLevel = params.get("AndroidApiLevel")
-        self.Brightness = params.get("Brightness")
-        self.BluetoothAddress = params.get("BluetoothAddress")
-        self.BaseBandVersion = params.get("BaseBandVersion")
-        self.KernelVersion = params.get("KernelVersion")
-        self.Storage = params.get("Storage")
-        self.PackageName = params.get("PackageName")
-        self.AppVersion = params.get("AppVersion")
-        self.AppName = params.get("AppName")
-        self.IsDebug = params.get("IsDebug")
-        self.IsRoot = params.get("IsRoot")
-        self.IsProxy = params.get("IsProxy")
-        self.IsEmulator = params.get("IsEmulator")
-        self.ChargeStatus = params.get("ChargeStatus")
-        self.NetworkType = params.get("NetworkType")
-        self.WifiMac = params.get("WifiMac")
-        self.DeviceName = params.get("DeviceName")
-        self.StartupTime = params.get("StartupTime")
-        self.Lon = params.get("Lon")
-        self.Lat = params.get("Lat")
+        self._MacAddress = params.get("MacAddress")
+        self._Model = params.get("Model")
+        self._OsSystem = params.get("OsSystem")
+        self._OsSystemVersion = params.get("OsSystemVersion")
+        self._BidFloor = params.get("BidFloor")
+        self._DeviceVersion = params.get("DeviceVersion")
+        self._Maker = params.get("Maker")
+        self._DeviceType = params.get("DeviceType")
+        self._Carrier = params.get("Carrier")
+        self._AccessMode = params.get("AccessMode")
+        self._PhoneChipInfo = params.get("PhoneChipInfo")
+        self._CpuModel = params.get("CpuModel")
+        self._CpuCore = params.get("CpuCore")
+        self._Memory = params.get("Memory")
+        self._Language = params.get("Language")
+        self._Volume = params.get("Volume")
+        self._BatteryPower = params.get("BatteryPower")
+        self._ResolutionWidth = params.get("ResolutionWidth")
+        self._ResolutionHeight = params.get("ResolutionHeight")
+        self._Ua = params.get("Ua")
+        self._App = params.get("App")
+        self._AppPackageName = params.get("AppPackageName")
+        self._SerialNumber = params.get("SerialNumber")
+        self._MobileCountryAndNetworkCode = params.get("MobileCountryAndNetworkCode")
+        self._VendorId = params.get("VendorId")
+        self._AndroidApiLevel = params.get("AndroidApiLevel")
+        self._Brightness = params.get("Brightness")
+        self._BluetoothAddress = params.get("BluetoothAddress")
+        self._BaseBandVersion = params.get("BaseBandVersion")
+        self._KernelVersion = params.get("KernelVersion")
+        self._Storage = params.get("Storage")
+        self._PackageName = params.get("PackageName")
+        self._AppVersion = params.get("AppVersion")
+        self._AppName = params.get("AppName")
+        self._IsDebug = params.get("IsDebug")
+        self._IsRoot = params.get("IsRoot")
+        self._IsProxy = params.get("IsProxy")
+        self._IsEmulator = params.get("IsEmulator")
+        self._ChargeStatus = params.get("ChargeStatus")
+        self._NetworkType = params.get("NetworkType")
+        self._WifiMac = params.get("WifiMac")
+        self._DeviceName = params.get("DeviceName")
+        self._StartupTime = params.get("StartupTime")
+        self._Lon = params.get("Lon")
+        self._Lat = params.get("Lat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -280,22 +658,39 @@ class DeviceFingerprintInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceToken: 设备指纹Token
+        :param _DeviceToken: 设备指纹Token
         :type DeviceToken: str
-        :param SdkChannel: 设备指纹的客户端SDK对应渠道
+        :param _SdkChannel: 设备指纹的客户端SDK对应渠道
         :type SdkChannel: str
         """
-        self.DeviceToken = None
-        self.SdkChannel = None
+        self._DeviceToken = None
+        self._SdkChannel = None
+
+    @property
+    def DeviceToken(self):
+        return self._DeviceToken
+
+    @DeviceToken.setter
+    def DeviceToken(self, DeviceToken):
+        self._DeviceToken = DeviceToken
+
+    @property
+    def SdkChannel(self):
+        return self._SdkChannel
+
+    @SdkChannel.setter
+    def SdkChannel(self, SdkChannel):
+        self._SdkChannel = SdkChannel
 
 
     def _deserialize(self, params):
-        self.DeviceToken = params.get("DeviceToken")
-        self.SdkChannel = params.get("SdkChannel")
+        self._DeviceToken = params.get("DeviceToken")
+        self._SdkChannel = params.get("SdkChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -308,55 +703,112 @@ class EvaluateUserRiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Account: 账号信息
+        :param _Account: 账号信息
         :type Account: :class:`tencentcloud.trdp.v20220726.models.AccountInfo`
-        :param User: 用户信息
+        :param _User: 用户信息
         :type User: :class:`tencentcloud.trdp.v20220726.models.UserInfo`
-        :param ModelId: 模型ID
+        :param _ModelId: 模型ID
         :type ModelId: str
-        :param DeviceFingerprint: 设备指纹信息
+        :param _DeviceFingerprint: 设备指纹信息
         :type DeviceFingerprint: :class:`tencentcloud.trdp.v20220726.models.DeviceFingerprintInfo`
-        :param SceneCode: 场景Code，不传默认活动防刷；
+        :param _SceneCode: 场景Code，不传默认活动防刷；
 e_activity_antirush；活动防刷场景
 e_login_protection；登录保护场景
 e_register_protection：注册保护场景
         :type SceneCode: str
-        :param DeviceDetail: 设备详情
+        :param _DeviceDetail: 设备详情
         :type DeviceDetail: :class:`tencentcloud.trdp.v20220726.models.DeviceDetailInfo`
-        :param Marketing: 营销信息
+        :param _Marketing: 营销信息
         :type Marketing: :class:`tencentcloud.trdp.v20220726.models.MarketingInfo`
         """
-        self.Account = None
-        self.User = None
-        self.ModelId = None
-        self.DeviceFingerprint = None
-        self.SceneCode = None
-        self.DeviceDetail = None
-        self.Marketing = None
+        self._Account = None
+        self._User = None
+        self._ModelId = None
+        self._DeviceFingerprint = None
+        self._SceneCode = None
+        self._DeviceDetail = None
+        self._Marketing = None
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def DeviceFingerprint(self):
+        return self._DeviceFingerprint
+
+    @DeviceFingerprint.setter
+    def DeviceFingerprint(self, DeviceFingerprint):
+        self._DeviceFingerprint = DeviceFingerprint
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+    @property
+    def DeviceDetail(self):
+        return self._DeviceDetail
+
+    @DeviceDetail.setter
+    def DeviceDetail(self, DeviceDetail):
+        self._DeviceDetail = DeviceDetail
+
+    @property
+    def Marketing(self):
+        return self._Marketing
+
+    @Marketing.setter
+    def Marketing(self, Marketing):
+        self._Marketing = Marketing
 
 
     def _deserialize(self, params):
         if params.get("Account") is not None:
-            self.Account = AccountInfo()
-            self.Account._deserialize(params.get("Account"))
+            self._Account = AccountInfo()
+            self._Account._deserialize(params.get("Account"))
         if params.get("User") is not None:
-            self.User = UserInfo()
-            self.User._deserialize(params.get("User"))
-        self.ModelId = params.get("ModelId")
+            self._User = UserInfo()
+            self._User._deserialize(params.get("User"))
+        self._ModelId = params.get("ModelId")
         if params.get("DeviceFingerprint") is not None:
-            self.DeviceFingerprint = DeviceFingerprintInfo()
-            self.DeviceFingerprint._deserialize(params.get("DeviceFingerprint"))
-        self.SceneCode = params.get("SceneCode")
+            self._DeviceFingerprint = DeviceFingerprintInfo()
+            self._DeviceFingerprint._deserialize(params.get("DeviceFingerprint"))
+        self._SceneCode = params.get("SceneCode")
         if params.get("DeviceDetail") is not None:
-            self.DeviceDetail = DeviceDetailInfo()
-            self.DeviceDetail._deserialize(params.get("DeviceDetail"))
+            self._DeviceDetail = DeviceDetailInfo()
+            self._DeviceDetail._deserialize(params.get("DeviceDetail"))
         if params.get("Marketing") is not None:
-            self.Marketing = MarketingInfo()
-            self.Marketing._deserialize(params.get("Marketing"))
+            self._Marketing = MarketingInfo()
+            self._Marketing._deserialize(params.get("Marketing"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -369,21 +821,37 @@ class EvaluateUserRiskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvaluationResult: 评估结果
+        :param _EvaluationResult: 评估结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvaluationResult: :class:`tencentcloud.trdp.v20220726.models.EvaluationResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EvaluationResult = None
-        self.RequestId = None
+        self._EvaluationResult = None
+        self._RequestId = None
+
+    @property
+    def EvaluationResult(self):
+        return self._EvaluationResult
+
+    @EvaluationResult.setter
+    def EvaluationResult(self, EvaluationResult):
+        self._EvaluationResult = EvaluationResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EvaluationResult") is not None:
-            self.EvaluationResult = EvaluationResult()
-            self.EvaluationResult._deserialize(params.get("EvaluationResult"))
-        self.RequestId = params.get("RequestId")
+            self._EvaluationResult = EvaluationResult()
+            self._EvaluationResult._deserialize(params.get("EvaluationResult"))
+        self._RequestId = params.get("RequestId")
 
 
 class EvaluationResult(AbstractModel):
@@ -393,12 +861,12 @@ class EvaluationResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SSID: SSID值
+        :param _SSID: SSID值
         :type SSID: str
-        :param Score: 风险价值分
+        :param _Score: 风险价值分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: float
-        :param RiskLabels: 风险标签，请参考官网风险类型
+        :param _RiskLabels: 风险标签，请参考官网风险类型
 账号风险
 1 账号信用低 账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 11 疑似低活跃账号 账号活跃度与正常用户有差异
@@ -480,19 +948,44 @@ class EvaluationResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLabels: list of int
         """
-        self.SSID = None
-        self.Score = None
-        self.RiskLabels = None
+        self._SSID = None
+        self._Score = None
+        self._RiskLabels = None
+
+    @property
+    def SSID(self):
+        return self._SSID
+
+    @SSID.setter
+    def SSID(self, SSID):
+        self._SSID = SSID
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def RiskLabels(self):
+        return self._RiskLabels
+
+    @RiskLabels.setter
+    def RiskLabels(self, RiskLabels):
+        self._RiskLabels = RiskLabels
 
 
     def _deserialize(self, params):
-        self.SSID = params.get("SSID")
-        self.Score = params.get("Score")
-        self.RiskLabels = params.get("RiskLabels")
+        self._SSID = params.get("SSID")
+        self._Score = params.get("Score")
+        self._RiskLabels = params.get("RiskLabels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -505,38 +998,87 @@ class MarketingInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeliveryMode: 投放模式（0=PDB，1=PD，2=RTB，10=其他）
+        :param _DeliveryMode: 投放模式（0=PDB，1=PD，2=RTB，10=其他）
         :type DeliveryMode: int
-        :param AdvertisingType: 广告位类型 （0=前贴片，1=开屏广告，2=网页头部广告、3=网页中部广告、4=网页底部广告、5=悬浮广告、10=其它）
+        :param _AdvertisingType: 广告位类型 （0=前贴片，1=开屏广告，2=网页头部广告、3=网页中部广告、4=网页底部广告、5=悬浮广告、10=其它）
         :type AdvertisingType: int
-        :param FullScreen: 是否全屏插广告（0-否，1-是）
+        :param _FullScreen: 是否全屏插广告（0-否，1-是）
         :type FullScreen: int
-        :param AdvertisingSpaceWidth: 广告位宽度
+        :param _AdvertisingSpaceWidth: 广告位宽度
         :type AdvertisingSpaceWidth: int
-        :param AdvertisingSpaceHeight: 广告位高度
+        :param _AdvertisingSpaceHeight: 广告位高度
         :type AdvertisingSpaceHeight: int
-        :param Url: 网址
+        :param _Url: 网址
         :type Url: str
         """
-        self.DeliveryMode = None
-        self.AdvertisingType = None
-        self.FullScreen = None
-        self.AdvertisingSpaceWidth = None
-        self.AdvertisingSpaceHeight = None
-        self.Url = None
+        self._DeliveryMode = None
+        self._AdvertisingType = None
+        self._FullScreen = None
+        self._AdvertisingSpaceWidth = None
+        self._AdvertisingSpaceHeight = None
+        self._Url = None
+
+    @property
+    def DeliveryMode(self):
+        return self._DeliveryMode
+
+    @DeliveryMode.setter
+    def DeliveryMode(self, DeliveryMode):
+        self._DeliveryMode = DeliveryMode
+
+    @property
+    def AdvertisingType(self):
+        return self._AdvertisingType
+
+    @AdvertisingType.setter
+    def AdvertisingType(self, AdvertisingType):
+        self._AdvertisingType = AdvertisingType
+
+    @property
+    def FullScreen(self):
+        return self._FullScreen
+
+    @FullScreen.setter
+    def FullScreen(self, FullScreen):
+        self._FullScreen = FullScreen
+
+    @property
+    def AdvertisingSpaceWidth(self):
+        return self._AdvertisingSpaceWidth
+
+    @AdvertisingSpaceWidth.setter
+    def AdvertisingSpaceWidth(self, AdvertisingSpaceWidth):
+        self._AdvertisingSpaceWidth = AdvertisingSpaceWidth
+
+    @property
+    def AdvertisingSpaceHeight(self):
+        return self._AdvertisingSpaceHeight
+
+    @AdvertisingSpaceHeight.setter
+    def AdvertisingSpaceHeight(self, AdvertisingSpaceHeight):
+        self._AdvertisingSpaceHeight = AdvertisingSpaceHeight
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
 
 
     def _deserialize(self, params):
-        self.DeliveryMode = params.get("DeliveryMode")
-        self.AdvertisingType = params.get("AdvertisingType")
-        self.FullScreen = params.get("FullScreen")
-        self.AdvertisingSpaceWidth = params.get("AdvertisingSpaceWidth")
-        self.AdvertisingSpaceHeight = params.get("AdvertisingSpaceHeight")
-        self.Url = params.get("Url")
+        self._DeliveryMode = params.get("DeliveryMode")
+        self._AdvertisingType = params.get("AdvertisingType")
+        self._FullScreen = params.get("FullScreen")
+        self._AdvertisingSpaceWidth = params.get("AdvertisingSpaceWidth")
+        self._AdvertisingSpaceHeight = params.get("AdvertisingSpaceHeight")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -549,20 +1091,29 @@ class UniversalAccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: 账号值：
+        :param _AccountId: 账号值：
 当账户类型为1时，填入手机号，如135****3695；
 当账户类型为2、3或100时，填入对应的值。
         :type AccountId: str
         """
-        self.AccountId = None
+        self._AccountId = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
+        self._AccountId = params.get("AccountId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -575,56 +1126,137 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: 用户外网IP地址
+        :param _Ip: 用户外网IP地址
         :type Ip: str
-        :param ChannelSource: 来源渠道编码
+        :param _ChannelSource: 来源渠道编码
         :type ChannelSource: str
-        :param Platform: 用户登录平台。1：Android 2：iOS 3：H5 4：小程序
+        :param _Platform: 用户登录平台。1：Android 2：iOS 3：H5 4：小程序
         :type Platform: int
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param Age: 年龄
+        :param _Age: 年龄
         :type Age: int
-        :param Gender: 性别：
+        :param _Gender: 性别：
 male（男）
 female（女）
         :type Gender: str
-        :param ResidentIdentityCard: 身份证号
+        :param _ResidentIdentityCard: 身份证号
         :type ResidentIdentityCard: str
-        :param Email: 邮箱地址
+        :param _Email: 邮箱地址
         :type Email: str
-        :param Address: 用户地址
+        :param _Address: 用户地址
         :type Address: str
-        :param Nickname: 用户昵称
+        :param _Nickname: 用户昵称
         :type Nickname: str
         """
-        self.Ip = None
-        self.ChannelSource = None
-        self.Platform = None
-        self.Name = None
-        self.Age = None
-        self.Gender = None
-        self.ResidentIdentityCard = None
-        self.Email = None
-        self.Address = None
-        self.Nickname = None
+        self._Ip = None
+        self._ChannelSource = None
+        self._Platform = None
+        self._Name = None
+        self._Age = None
+        self._Gender = None
+        self._ResidentIdentityCard = None
+        self._Email = None
+        self._Address = None
+        self._Nickname = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def ChannelSource(self):
+        return self._ChannelSource
+
+    @ChannelSource.setter
+    def ChannelSource(self, ChannelSource):
+        self._ChannelSource = ChannelSource
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def ResidentIdentityCard(self):
+        return self._ResidentIdentityCard
+
+    @ResidentIdentityCard.setter
+    def ResidentIdentityCard(self, ResidentIdentityCard):
+        self._ResidentIdentityCard = ResidentIdentityCard
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.ChannelSource = params.get("ChannelSource")
-        self.Platform = params.get("Platform")
-        self.Name = params.get("Name")
-        self.Age = params.get("Age")
-        self.Gender = params.get("Gender")
-        self.ResidentIdentityCard = params.get("ResidentIdentityCard")
-        self.Email = params.get("Email")
-        self.Address = params.get("Address")
-        self.Nickname = params.get("Nickname")
+        self._Ip = params.get("Ip")
+        self._ChannelSource = params.get("ChannelSource")
+        self._Platform = params.get("Platform")
+        self._Name = params.get("Name")
+        self._Age = params.get("Age")
+        self._Gender = params.get("Gender")
+        self._ResidentIdentityCard = params.get("ResidentIdentityCard")
+        self._Email = params.get("Email")
+        self._Address = params.get("Address")
+        self._Nickname = params.get("Nickname")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

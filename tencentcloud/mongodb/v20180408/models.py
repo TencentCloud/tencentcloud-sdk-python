@@ -25,22 +25,39 @@ class AssignProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: int
         """
-        self.InstanceIds = None
-        self.ProjectId = None
+        self._InstanceIds = None
+        self._ProjectId = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
 
     def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        self.ProjectId = params.get("ProjectId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,18 +70,34 @@ class AssignProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowIds: 返回的异步任务ID列表
+        :param _FlowIds: 返回的异步任务ID列表
         :type FlowIds: list of int non-negative
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowIds = None
-        self.RequestId = None
+        self._FlowIds = None
+        self._RequestId = None
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowIds = params.get("FlowIds")
-        self.RequestId = params.get("RequestId")
+        self._FlowIds = params.get("FlowIds")
+        self._RequestId = params.get("RequestId")
 
 
 class ClientConnection(AbstractModel):
@@ -74,22 +107,39 @@ class ClientConnection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IP: 连接的客户端IP
+        :param _IP: 连接的客户端IP
         :type IP: str
-        :param Count: 对应客户端IP的连接数
+        :param _Count: 对应客户端IP的连接数
         :type Count: int
         """
-        self.IP = None
-        self.Count = None
+        self._IP = None
+        self._Count = None
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.IP = params.get("IP")
-        self.Count = params.get("Count")
+        self._IP = params.get("IP")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -102,74 +152,195 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Memory: 实例内存大小，单位：GB
+        :param _Memory: 实例内存大小，单位：GB
         :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB
+        :param _Volume: 实例硬盘大小，单位：GB
         :type Volume: int
-        :param ReplicateSetNum: 副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10
+        :param _ReplicateSetNum: 副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10
         :type ReplicateSetNum: int
-        :param SecondaryNum: 每个副本集内从节点个数，目前只支持从节点数为2
+        :param _SecondaryNum: 每个副本集内从节点个数，目前只支持从节点数为2
         :type SecondaryNum: int
-        :param EngineVersion: MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
+        :param _EngineVersion: MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
         :type EngineVersion: str
-        :param Machine: 实例类型，GIO：高IO版；TGIO：高IO万兆
+        :param _Machine: 实例类型，GIO：高IO版；TGIO：高IO万兆
         :type Machine: str
-        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10
+        :param _GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10
         :type GoodsNum: int
-        :param Zone: 可用区信息，格式如：ap-guangzhou-2
+        :param _Zone: 可用区信息，格式如：ap-guangzhou-2
         :type Zone: str
-        :param InstanceRole: 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
+        :param _InstanceRole: 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
         :type InstanceRole: str
-        :param InstanceType: 实例类型，REPLSET-副本集，SHARD-分片集群
+        :param _InstanceType: 实例类型，REPLSET-副本集，SHARD-分片集群
         :type InstanceType: str
-        :param Encrypt: 数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密
+        :param _Encrypt: 数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密
         :type Encrypt: int
-        :param VpcId: 私有网络ID，如果不传则默认选择基础网络
+        :param _VpcId: 私有网络ID，如果不传则默认选择基础网络
         :type VpcId: str
-        :param SubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        :param _SubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
         :type SubnetId: str
-        :param ProjectId: 项目ID，不填为默认项目
+        :param _ProjectId: 项目ID，不填为默认项目
         :type ProjectId: int
-        :param SecurityGroup: 安全组参数
+        :param _SecurityGroup: 安全组参数
         :type SecurityGroup: list of str
         """
-        self.Memory = None
-        self.Volume = None
-        self.ReplicateSetNum = None
-        self.SecondaryNum = None
-        self.EngineVersion = None
-        self.Machine = None
-        self.GoodsNum = None
-        self.Zone = None
-        self.InstanceRole = None
-        self.InstanceType = None
-        self.Encrypt = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.ProjectId = None
-        self.SecurityGroup = None
+        self._Memory = None
+        self._Volume = None
+        self._ReplicateSetNum = None
+        self._SecondaryNum = None
+        self._EngineVersion = None
+        self._Machine = None
+        self._GoodsNum = None
+        self._Zone = None
+        self._InstanceRole = None
+        self._InstanceType = None
+        self._Encrypt = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._ProjectId = None
+        self._SecurityGroup = None
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def ReplicateSetNum(self):
+        return self._ReplicateSetNum
+
+    @ReplicateSetNum.setter
+    def ReplicateSetNum(self, ReplicateSetNum):
+        self._ReplicateSetNum = ReplicateSetNum
+
+    @property
+    def SecondaryNum(self):
+        return self._SecondaryNum
+
+    @SecondaryNum.setter
+    def SecondaryNum(self, SecondaryNum):
+        self._SecondaryNum = SecondaryNum
+
+    @property
+    def EngineVersion(self):
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def Machine(self):
+        return self._Machine
+
+    @Machine.setter
+    def Machine(self, Machine):
+        self._Machine = Machine
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceRole(self):
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def SecurityGroup(self):
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
 
 
     def _deserialize(self, params):
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.ReplicateSetNum = params.get("ReplicateSetNum")
-        self.SecondaryNum = params.get("SecondaryNum")
-        self.EngineVersion = params.get("EngineVersion")
-        self.Machine = params.get("Machine")
-        self.GoodsNum = params.get("GoodsNum")
-        self.Zone = params.get("Zone")
-        self.InstanceRole = params.get("InstanceRole")
-        self.InstanceType = params.get("InstanceType")
-        self.Encrypt = params.get("Encrypt")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.ProjectId = params.get("ProjectId")
-        self.SecurityGroup = params.get("SecurityGroup")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._ReplicateSetNum = params.get("ReplicateSetNum")
+        self._SecondaryNum = params.get("SecondaryNum")
+        self._EngineVersion = params.get("EngineVersion")
+        self._Machine = params.get("Machine")
+        self._GoodsNum = params.get("GoodsNum")
+        self._Zone = params.get("Zone")
+        self._InstanceRole = params.get("InstanceRole")
+        self._InstanceType = params.get("InstanceType")
+        self._Encrypt = params.get("Encrypt")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._ProjectId = params.get("ProjectId")
+        self._SecurityGroup = params.get("SecurityGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -182,22 +353,46 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单ID
+        :param _DealId: 订单ID
         :type DealId: str
-        :param InstanceIds: 创建的实例ID列表
+        :param _InstanceIds: 创建的实例ID列表
         :type InstanceIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DealId = None
-        self.InstanceIds = None
-        self.RequestId = None
+        self._DealId = None
+        self._InstanceIds = None
+        self._RequestId = None
+
+    @property
+    def DealId(self):
+        return self._DealId
+
+    @DealId.setter
+    def DealId(self, DealId):
+        self._DealId = DealId
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DealId = params.get("DealId")
-        self.InstanceIds = params.get("InstanceIds")
-        self.RequestId = params.get("RequestId")
+        self._DealId = params.get("DealId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDBInstanceRequest(AbstractModel):
@@ -207,66 +402,171 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecondaryNum: 每个副本集内从节点个数
+        :param _SecondaryNum: 每个副本集内从节点个数
         :type SecondaryNum: int
-        :param Memory: 实例内存大小，单位：GB
+        :param _Memory: 实例内存大小，单位：GB
         :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB
+        :param _Volume: 实例硬盘大小，单位：GB
         :type Volume: int
-        :param MongoVersion: 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
+        :param _MongoVersion: 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
         :type MongoVersion: str
-        :param MachineCode: 机器类型，GIO：高IO版；TGIO：高IO万兆
+        :param _MachineCode: 机器类型，GIO：高IO版；TGIO：高IO万兆
         :type MachineCode: str
-        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10
+        :param _GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10
         :type GoodsNum: int
-        :param Zone: 实例所属区域名称，格式如：ap-guangzhou-2
+        :param _Zone: 实例所属区域名称，格式如：ap-guangzhou-2
         :type Zone: str
-        :param TimeSpan: 时长，购买月数
+        :param _TimeSpan: 时长，购买月数
         :type TimeSpan: int
-        :param Password: 实例密码
+        :param _Password: 实例密码
         :type Password: str
-        :param ProjectId: 项目ID，不填为默认项目
+        :param _ProjectId: 项目ID，不填为默认项目
         :type ProjectId: int
-        :param SecurityGroup: 安全组参数
+        :param _SecurityGroup: 安全组参数
         :type SecurityGroup: list of str
-        :param UniqVpcId: 私有网络ID，如果不传则默认选择基础网络
+        :param _UniqVpcId: 私有网络ID，如果不传则默认选择基础网络
         :type UniqVpcId: str
-        :param UniqSubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        :param _UniqSubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
         :type UniqSubnetId: str
         """
-        self.SecondaryNum = None
-        self.Memory = None
-        self.Volume = None
-        self.MongoVersion = None
-        self.MachineCode = None
-        self.GoodsNum = None
-        self.Zone = None
-        self.TimeSpan = None
-        self.Password = None
-        self.ProjectId = None
-        self.SecurityGroup = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
+        self._SecondaryNum = None
+        self._Memory = None
+        self._Volume = None
+        self._MongoVersion = None
+        self._MachineCode = None
+        self._GoodsNum = None
+        self._Zone = None
+        self._TimeSpan = None
+        self._Password = None
+        self._ProjectId = None
+        self._SecurityGroup = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+
+    @property
+    def SecondaryNum(self):
+        return self._SecondaryNum
+
+    @SecondaryNum.setter
+    def SecondaryNum(self, SecondaryNum):
+        self._SecondaryNum = SecondaryNum
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def MongoVersion(self):
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def MachineCode(self):
+        return self._MachineCode
+
+    @MachineCode.setter
+    def MachineCode(self, MachineCode):
+        self._MachineCode = MachineCode
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def SecurityGroup(self):
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
 
 
     def _deserialize(self, params):
-        self.SecondaryNum = params.get("SecondaryNum")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.MongoVersion = params.get("MongoVersion")
-        self.MachineCode = params.get("MachineCode")
-        self.GoodsNum = params.get("GoodsNum")
-        self.Zone = params.get("Zone")
-        self.TimeSpan = params.get("TimeSpan")
-        self.Password = params.get("Password")
-        self.ProjectId = params.get("ProjectId")
-        self.SecurityGroup = params.get("SecurityGroup")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
+        self._SecondaryNum = params.get("SecondaryNum")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._MongoVersion = params.get("MongoVersion")
+        self._MachineCode = params.get("MachineCode")
+        self._GoodsNum = params.get("GoodsNum")
+        self._Zone = params.get("Zone")
+        self._TimeSpan = params.get("TimeSpan")
+        self._Password = params.get("Password")
+        self._ProjectId = params.get("ProjectId")
+        self._SecurityGroup = params.get("SecurityGroup")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -279,22 +579,46 @@ class CreateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单ID
+        :param _DealId: 订单ID
         :type DealId: str
-        :param InstanceIds: 创建的实例ID列表
+        :param _InstanceIds: 创建的实例ID列表
         :type InstanceIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DealId = None
-        self.InstanceIds = None
-        self.RequestId = None
+        self._DealId = None
+        self._InstanceIds = None
+        self._RequestId = None
+
+    @property
+    def DealId(self):
+        return self._DealId
+
+    @DealId.setter
+    def DealId(self, DealId):
+        self._DealId = DealId
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DealId = params.get("DealId")
-        self.InstanceIds = params.get("InstanceIds")
-        self.RequestId = params.get("RequestId")
+        self._DealId = params.get("DealId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClientConnectionsRequest(AbstractModel):
@@ -304,18 +628,27 @@ class DescribeClientConnectionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -328,24 +661,40 @@ class DescribeClientConnectionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
+        :param _Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Clients: list of ClientConnection
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Clients = None
-        self.RequestId = None
+        self._Clients = None
+        self._RequestId = None
+
+    @property
+    def Clients(self):
+        return self._Clients
+
+    @Clients.setter
+    def Clients(self, Clients):
+        self._Clients = Clients
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Clients") is not None:
-            self.Clients = []
+            self._Clients = []
             for item in params.get("Clients"):
                 obj = ClientConnection()
                 obj._deserialize(item)
-                self.Clients.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Clients.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBInstancesRequest(AbstractModel):
@@ -355,58 +704,147 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
-        :param InstanceType: 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
+        :param _InstanceType: 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
         :type InstanceType: int
-        :param ClusterType: 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
+        :param _ClusterType: 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
         :type ClusterType: int
-        :param Status: 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
+        :param _Status: 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
         :type Status: list of int
-        :param VpcId: 私有网络的ID，基础网络则不传该参数
+        :param _VpcId: 私有网络的ID，基础网络则不传该参数
         :type VpcId: str
-        :param SubnetId: 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
+        :param _SubnetId: 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
         :type SubnetId: str
-        :param PayMode: 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
+        :param _PayMode: 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
         :type PayMode: int
-        :param Limit: 单次请求返回的数量，最小值为1，最大值为100，默认值为20
+        :param _Limit: 单次请求返回的数量，最小值为1，最大值为100，默认值为20
         :type Limit: int
-        :param Offset: 偏移量，默认值为0
+        :param _Offset: 偏移量，默认值为0
         :type Offset: int
-        :param OrderBy: 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
+        :param _OrderBy: 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
         :type OrderBy: str
-        :param OrderByType: 返回结果集排序方式，目前支持："ASC"或者"DESC"
+        :param _OrderByType: 返回结果集排序方式，目前支持："ASC"或者"DESC"
         :type OrderByType: str
         """
-        self.InstanceIds = None
-        self.InstanceType = None
-        self.ClusterType = None
-        self.Status = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.PayMode = None
-        self.Limit = None
-        self.Offset = None
-        self.OrderBy = None
-        self.OrderByType = None
+        self._InstanceIds = None
+        self._InstanceType = None
+        self._ClusterType = None
+        self._Status = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._PayMode = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
 
 
     def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        self.InstanceType = params.get("InstanceType")
-        self.ClusterType = params.get("ClusterType")
-        self.Status = params.get("Status")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.PayMode = params.get("PayMode")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.OrderBy = params.get("OrderBy")
-        self.OrderByType = params.get("OrderByType")
+        self._InstanceIds = params.get("InstanceIds")
+        self._InstanceType = params.get("InstanceType")
+        self._ClusterType = params.get("ClusterType")
+        self._Status = params.get("Status")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._PayMode = params.get("PayMode")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -419,27 +857,51 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合查询条件的实例总数
+        :param _TotalCount: 符合查询条件的实例总数
         :type TotalCount: int
-        :param InstanceDetails: 实例详细信息
+        :param _InstanceDetails: 实例详细信息
         :type InstanceDetails: list of MongoDBInstanceDetail
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InstanceDetails = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InstanceDetails = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceDetails(self):
+        return self._InstanceDetails
+
+    @InstanceDetails.setter
+    def InstanceDetails(self, InstanceDetails):
+        self._InstanceDetails = InstanceDetails
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InstanceDetails") is not None:
-            self.InstanceDetails = []
+            self._InstanceDetails = []
             for item in params.get("InstanceDetails"):
                 obj = MongoDBInstanceDetail()
                 obj._deserialize(item)
-                self.InstanceDetails.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceDetails.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSlowLogRequest(AbstractModel):
@@ -449,38 +911,87 @@ class DescribeSlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :param _StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type StartTime: str
-        :param EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :param _EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
         :type EndTime: str
-        :param SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
+        :param _SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
         :type SlowMS: int
-        :param Offset: 偏移量，最小值为0，最大值为10000，默认值为0。
+        :param _Offset: 偏移量，最小值为0，最大值为10000，默认值为0。
         :type Offset: int
-        :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。
+        :param _Limit: 分页大小，最小值为1，最大值为100，默认值为20。
         :type Limit: int
         """
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SlowMS = None
-        self.Offset = None
-        self.Limit = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SlowMS = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SlowMS(self):
+        return self._SlowMS
+
+    @SlowMS.setter
+    def SlowMS(self, SlowMS):
+        self._SlowMS = SlowMS
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SlowMS = params.get("SlowMS")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SlowMS = params.get("SlowMS")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -493,22 +1004,46 @@ class DescribeSlowLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合查询条件的慢查询日志总数。
+        :param _TotalCount: 符合查询条件的慢查询日志总数。
         :type TotalCount: int
-        :param SlowLogList: 符合查询条件的慢查询日志详情。
+        :param _SlowLogList: 符合查询条件的慢查询日志详情。
         :type SlowLogList: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SlowLogList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SlowLogList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SlowLogList(self):
+        return self._SlowLogList
+
+    @SlowLogList.setter
+    def SlowLogList(self, SlowLogList):
+        self._SlowLogList = SlowLogList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.SlowLogList = params.get("SlowLogList")
-        self.RequestId = params.get("RequestId")
+        self._TotalCount = params.get("TotalCount")
+        self._SlowLogList = params.get("SlowLogList")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSpecInfoRequest(AbstractModel):
@@ -518,18 +1053,27 @@ class DescribeSpecInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
         """
-        self.Zone = None
+        self._Zone = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -542,23 +1086,39 @@ class DescribeSpecInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpecInfoList: 实例售卖规格信息列表
+        :param _SpecInfoList: 实例售卖规格信息列表
         :type SpecInfoList: list of SpecificationInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SpecInfoList = None
-        self.RequestId = None
+        self._SpecInfoList = None
+        self._RequestId = None
+
+    @property
+    def SpecInfoList(self):
+        return self._SpecInfoList
+
+    @SpecInfoList.setter
+    def SpecInfoList(self, SpecInfoList):
+        self._SpecInfoList = SpecInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SpecInfoList") is not None:
-            self.SpecInfoList = []
+            self._SpecInfoList = []
             for item in params.get("SpecInfoList"):
                 obj = SpecificationInfo()
                 obj._deserialize(item)
-                self.SpecInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SpecInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class MongoDBInstance(AbstractModel):
@@ -568,22 +1128,39 @@ class MongoDBInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param Region: 地域信息
+        :param _Region: 地域信息
         :type Region: str
         """
-        self.InstanceId = None
-        self.Region = None
+        self._InstanceId = None
+        self._Region = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Region = params.get("Region")
+        self._InstanceId = params.get("InstanceId")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -596,198 +1173,503 @@ class MongoDBInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param InstanceName: 实例名称
+        :param _InstanceName: 实例名称
         :type InstanceName: str
-        :param PayMode: 付费类型，可能的返回值：1-包年包月；0-按量计费
+        :param _PayMode: 付费类型，可能的返回值：1-包年包月；0-按量计费
         :type PayMode: int
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: int
-        :param ClusterType: 集群类型，可能的返回值：0-副本集实例，1-分片实例，
+        :param _ClusterType: 集群类型，可能的返回值：0-副本集实例，1-分片实例，
         :type ClusterType: int
-        :param Region: 地域信息
+        :param _Region: 地域信息
         :type Region: str
-        :param Zone: 可用区信息
+        :param _Zone: 可用区信息
         :type Zone: str
-        :param NetType: 网络类型，可能的返回值：0-基础网络，1-私有网络
+        :param _NetType: 网络类型，可能的返回值：0-基础网络，1-私有网络
         :type NetType: int
-        :param VpcId: 私有网络的ID
+        :param _VpcId: 私有网络的ID
         :type VpcId: str
-        :param SubnetId: 私有网络的子网ID
+        :param _SubnetId: 私有网络的子网ID
         :type SubnetId: str
-        :param Status: 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期
+        :param _Status: 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期
         :type Status: int
-        :param Vip: 实例IP
+        :param _Vip: 实例IP
         :type Vip: str
-        :param Vport: 端口号
+        :param _Vport: 端口号
         :type Vport: int
-        :param CreateTime: 实例创建时间
+        :param _CreateTime: 实例创建时间
         :type CreateTime: str
-        :param DeadLine: 实例到期时间
+        :param _DeadLine: 实例到期时间
         :type DeadLine: str
-        :param MongoVersion: 实例版本信息
+        :param _MongoVersion: 实例版本信息
         :type MongoVersion: str
-        :param Memory: 实例内存规格，单位为MB
+        :param _Memory: 实例内存规格，单位为MB
         :type Memory: int
-        :param Volume: 实例磁盘规格，单位为MB
+        :param _Volume: 实例磁盘规格，单位为MB
         :type Volume: int
-        :param CpuNum: 实例CPU核心数
+        :param _CpuNum: 实例CPU核心数
         :type CpuNum: int
-        :param MachineType: 实例机器类型
+        :param _MachineType: 实例机器类型
         :type MachineType: str
-        :param SecondaryNum: 实例从节点数
+        :param _SecondaryNum: 实例从节点数
         :type SecondaryNum: int
-        :param ReplicationSetNum: 实例分片数
+        :param _ReplicationSetNum: 实例分片数
         :type ReplicationSetNum: int
-        :param AutoRenewFlag: 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费
+        :param _AutoRenewFlag: 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费
         :type AutoRenewFlag: int
-        :param UsedVolume: 已用容量，单位MB
+        :param _UsedVolume: 已用容量，单位MB
         :type UsedVolume: int
-        :param MaintenanceStart: 维护窗口起始时间
+        :param _MaintenanceStart: 维护窗口起始时间
         :type MaintenanceStart: str
-        :param MaintenanceEnd: 维护窗口结束时间
+        :param _MaintenanceEnd: 维护窗口结束时间
         :type MaintenanceEnd: str
-        :param ReplicaSets: 分片信息
+        :param _ReplicaSets: 分片信息
         :type ReplicaSets: list of MongodbShardInfo
-        :param ReadonlyInstances: 只读实例信息
+        :param _ReadonlyInstances: 只读实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadonlyInstances: list of MongoDBInstance
-        :param StandbyInstances: 灾备实例信息
+        :param _StandbyInstances: 灾备实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StandbyInstances: list of MongoDBInstance
-        :param CloneInstances: 临时实例信息
+        :param _CloneInstances: 临时实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloneInstances: list of MongoDBInstance
-        :param RelatedInstance: 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
+        :param _RelatedInstance: 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedInstance: :class:`tencentcloud.mongodb.v20180408.models.MongoDBInstance`
-        :param Tags: 实例标签信息集合
+        :param _Tags: 实例标签信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
-        :param InstanceVer: 实例标记
+        :param _InstanceVer: 实例标记
         :type InstanceVer: int
-        :param ClusterVer: 实例标记
+        :param _ClusterVer: 实例标记
         :type ClusterVer: int
-        :param Protocol: 协议信息，可能的返回值：1-mongodb，2-dynamodb
+        :param _Protocol: 协议信息，可能的返回值：1-mongodb，2-dynamodb
         :type Protocol: int
-        :param InstanceType: 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
+        :param _InstanceType: 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
         :type InstanceType: int
-        :param InstanceStatusDesc: 实例状态描述
+        :param _InstanceStatusDesc: 实例状态描述
         :type InstanceStatusDesc: str
-        :param RealInstanceId: 实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+        :param _RealInstanceId: 实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
         :type RealInstanceId: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.PayMode = None
-        self.ProjectId = None
-        self.ClusterType = None
-        self.Region = None
-        self.Zone = None
-        self.NetType = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.Status = None
-        self.Vip = None
-        self.Vport = None
-        self.CreateTime = None
-        self.DeadLine = None
-        self.MongoVersion = None
-        self.Memory = None
-        self.Volume = None
-        self.CpuNum = None
-        self.MachineType = None
-        self.SecondaryNum = None
-        self.ReplicationSetNum = None
-        self.AutoRenewFlag = None
-        self.UsedVolume = None
-        self.MaintenanceStart = None
-        self.MaintenanceEnd = None
-        self.ReplicaSets = None
-        self.ReadonlyInstances = None
-        self.StandbyInstances = None
-        self.CloneInstances = None
-        self.RelatedInstance = None
-        self.Tags = None
-        self.InstanceVer = None
-        self.ClusterVer = None
-        self.Protocol = None
-        self.InstanceType = None
-        self.InstanceStatusDesc = None
-        self.RealInstanceId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._PayMode = None
+        self._ProjectId = None
+        self._ClusterType = None
+        self._Region = None
+        self._Zone = None
+        self._NetType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Status = None
+        self._Vip = None
+        self._Vport = None
+        self._CreateTime = None
+        self._DeadLine = None
+        self._MongoVersion = None
+        self._Memory = None
+        self._Volume = None
+        self._CpuNum = None
+        self._MachineType = None
+        self._SecondaryNum = None
+        self._ReplicationSetNum = None
+        self._AutoRenewFlag = None
+        self._UsedVolume = None
+        self._MaintenanceStart = None
+        self._MaintenanceEnd = None
+        self._ReplicaSets = None
+        self._ReadonlyInstances = None
+        self._StandbyInstances = None
+        self._CloneInstances = None
+        self._RelatedInstance = None
+        self._Tags = None
+        self._InstanceVer = None
+        self._ClusterVer = None
+        self._Protocol = None
+        self._InstanceType = None
+        self._InstanceStatusDesc = None
+        self._RealInstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NetType(self):
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DeadLine(self):
+        return self._DeadLine
+
+    @DeadLine.setter
+    def DeadLine(self, DeadLine):
+        self._DeadLine = DeadLine
+
+    @property
+    def MongoVersion(self):
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def CpuNum(self):
+        return self._CpuNum
+
+    @CpuNum.setter
+    def CpuNum(self, CpuNum):
+        self._CpuNum = CpuNum
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def SecondaryNum(self):
+        return self._SecondaryNum
+
+    @SecondaryNum.setter
+    def SecondaryNum(self, SecondaryNum):
+        self._SecondaryNum = SecondaryNum
+
+    @property
+    def ReplicationSetNum(self):
+        return self._ReplicationSetNum
+
+    @ReplicationSetNum.setter
+    def ReplicationSetNum(self, ReplicationSetNum):
+        self._ReplicationSetNum = ReplicationSetNum
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def UsedVolume(self):
+        return self._UsedVolume
+
+    @UsedVolume.setter
+    def UsedVolume(self, UsedVolume):
+        self._UsedVolume = UsedVolume
+
+    @property
+    def MaintenanceStart(self):
+        return self._MaintenanceStart
+
+    @MaintenanceStart.setter
+    def MaintenanceStart(self, MaintenanceStart):
+        self._MaintenanceStart = MaintenanceStart
+
+    @property
+    def MaintenanceEnd(self):
+        return self._MaintenanceEnd
+
+    @MaintenanceEnd.setter
+    def MaintenanceEnd(self, MaintenanceEnd):
+        self._MaintenanceEnd = MaintenanceEnd
+
+    @property
+    def ReplicaSets(self):
+        return self._ReplicaSets
+
+    @ReplicaSets.setter
+    def ReplicaSets(self, ReplicaSets):
+        self._ReplicaSets = ReplicaSets
+
+    @property
+    def ReadonlyInstances(self):
+        return self._ReadonlyInstances
+
+    @ReadonlyInstances.setter
+    def ReadonlyInstances(self, ReadonlyInstances):
+        self._ReadonlyInstances = ReadonlyInstances
+
+    @property
+    def StandbyInstances(self):
+        return self._StandbyInstances
+
+    @StandbyInstances.setter
+    def StandbyInstances(self, StandbyInstances):
+        self._StandbyInstances = StandbyInstances
+
+    @property
+    def CloneInstances(self):
+        return self._CloneInstances
+
+    @CloneInstances.setter
+    def CloneInstances(self, CloneInstances):
+        self._CloneInstances = CloneInstances
+
+    @property
+    def RelatedInstance(self):
+        return self._RelatedInstance
+
+    @RelatedInstance.setter
+    def RelatedInstance(self, RelatedInstance):
+        self._RelatedInstance = RelatedInstance
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceVer(self):
+        return self._InstanceVer
+
+    @InstanceVer.setter
+    def InstanceVer(self, InstanceVer):
+        self._InstanceVer = InstanceVer
+
+    @property
+    def ClusterVer(self):
+        return self._ClusterVer
+
+    @ClusterVer.setter
+    def ClusterVer(self, ClusterVer):
+        self._ClusterVer = ClusterVer
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceStatusDesc(self):
+        return self._InstanceStatusDesc
+
+    @InstanceStatusDesc.setter
+    def InstanceStatusDesc(self, InstanceStatusDesc):
+        self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def RealInstanceId(self):
+        return self._RealInstanceId
+
+    @RealInstanceId.setter
+    def RealInstanceId(self, RealInstanceId):
+        self._RealInstanceId = RealInstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.PayMode = params.get("PayMode")
-        self.ProjectId = params.get("ProjectId")
-        self.ClusterType = params.get("ClusterType")
-        self.Region = params.get("Region")
-        self.Zone = params.get("Zone")
-        self.NetType = params.get("NetType")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.Status = params.get("Status")
-        self.Vip = params.get("Vip")
-        self.Vport = params.get("Vport")
-        self.CreateTime = params.get("CreateTime")
-        self.DeadLine = params.get("DeadLine")
-        self.MongoVersion = params.get("MongoVersion")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.CpuNum = params.get("CpuNum")
-        self.MachineType = params.get("MachineType")
-        self.SecondaryNum = params.get("SecondaryNum")
-        self.ReplicationSetNum = params.get("ReplicationSetNum")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.UsedVolume = params.get("UsedVolume")
-        self.MaintenanceStart = params.get("MaintenanceStart")
-        self.MaintenanceEnd = params.get("MaintenanceEnd")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._ProjectId = params.get("ProjectId")
+        self._ClusterType = params.get("ClusterType")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Status = params.get("Status")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._CreateTime = params.get("CreateTime")
+        self._DeadLine = params.get("DeadLine")
+        self._MongoVersion = params.get("MongoVersion")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._CpuNum = params.get("CpuNum")
+        self._MachineType = params.get("MachineType")
+        self._SecondaryNum = params.get("SecondaryNum")
+        self._ReplicationSetNum = params.get("ReplicationSetNum")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._UsedVolume = params.get("UsedVolume")
+        self._MaintenanceStart = params.get("MaintenanceStart")
+        self._MaintenanceEnd = params.get("MaintenanceEnd")
         if params.get("ReplicaSets") is not None:
-            self.ReplicaSets = []
+            self._ReplicaSets = []
             for item in params.get("ReplicaSets"):
                 obj = MongodbShardInfo()
                 obj._deserialize(item)
-                self.ReplicaSets.append(obj)
+                self._ReplicaSets.append(obj)
         if params.get("ReadonlyInstances") is not None:
-            self.ReadonlyInstances = []
+            self._ReadonlyInstances = []
             for item in params.get("ReadonlyInstances"):
                 obj = MongoDBInstance()
                 obj._deserialize(item)
-                self.ReadonlyInstances.append(obj)
+                self._ReadonlyInstances.append(obj)
         if params.get("StandbyInstances") is not None:
-            self.StandbyInstances = []
+            self._StandbyInstances = []
             for item in params.get("StandbyInstances"):
                 obj = MongoDBInstance()
                 obj._deserialize(item)
-                self.StandbyInstances.append(obj)
+                self._StandbyInstances.append(obj)
         if params.get("CloneInstances") is not None:
-            self.CloneInstances = []
+            self._CloneInstances = []
             for item in params.get("CloneInstances"):
                 obj = MongoDBInstance()
                 obj._deserialize(item)
-                self.CloneInstances.append(obj)
+                self._CloneInstances.append(obj)
         if params.get("RelatedInstance") is not None:
-            self.RelatedInstance = MongoDBInstance()
-            self.RelatedInstance._deserialize(params.get("RelatedInstance"))
+            self._RelatedInstance = MongoDBInstance()
+            self._RelatedInstance._deserialize(params.get("RelatedInstance"))
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfo()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceVer = params.get("InstanceVer")
-        self.ClusterVer = params.get("ClusterVer")
-        self.Protocol = params.get("Protocol")
-        self.InstanceType = params.get("InstanceType")
-        self.InstanceStatusDesc = params.get("InstanceStatusDesc")
-        self.RealInstanceId = params.get("RealInstanceId")
+                self._Tags.append(obj)
+        self._InstanceVer = params.get("InstanceVer")
+        self._ClusterVer = params.get("ClusterVer")
+        self._Protocol = params.get("Protocol")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceStatusDesc = params.get("InstanceStatusDesc")
+        self._RealInstanceId = params.get("RealInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -800,46 +1682,111 @@ class MongodbShardInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsedVolume: 分片已使用容量
+        :param _UsedVolume: 分片已使用容量
         :type UsedVolume: float
-        :param ReplicaSetId: 分片ID
+        :param _ReplicaSetId: 分片ID
         :type ReplicaSetId: str
-        :param ReplicaSetName: 分片名
+        :param _ReplicaSetName: 分片名
         :type ReplicaSetName: str
-        :param Memory: 分片内存规格，单位为MB
+        :param _Memory: 分片内存规格，单位为MB
         :type Memory: int
-        :param Volume: 分片磁盘规格，单位为MB
+        :param _Volume: 分片磁盘规格，单位为MB
         :type Volume: int
-        :param OplogSize: 分片Oplog大小，单位为MB
+        :param _OplogSize: 分片Oplog大小，单位为MB
         :type OplogSize: int
-        :param SecondaryNum: 分片从节点数
+        :param _SecondaryNum: 分片从节点数
         :type SecondaryNum: int
-        :param RealReplicaSetId: 分片物理ID
+        :param _RealReplicaSetId: 分片物理ID
         :type RealReplicaSetId: str
         """
-        self.UsedVolume = None
-        self.ReplicaSetId = None
-        self.ReplicaSetName = None
-        self.Memory = None
-        self.Volume = None
-        self.OplogSize = None
-        self.SecondaryNum = None
-        self.RealReplicaSetId = None
+        self._UsedVolume = None
+        self._ReplicaSetId = None
+        self._ReplicaSetName = None
+        self._Memory = None
+        self._Volume = None
+        self._OplogSize = None
+        self._SecondaryNum = None
+        self._RealReplicaSetId = None
+
+    @property
+    def UsedVolume(self):
+        return self._UsedVolume
+
+    @UsedVolume.setter
+    def UsedVolume(self, UsedVolume):
+        self._UsedVolume = UsedVolume
+
+    @property
+    def ReplicaSetId(self):
+        return self._ReplicaSetId
+
+    @ReplicaSetId.setter
+    def ReplicaSetId(self, ReplicaSetId):
+        self._ReplicaSetId = ReplicaSetId
+
+    @property
+    def ReplicaSetName(self):
+        return self._ReplicaSetName
+
+    @ReplicaSetName.setter
+    def ReplicaSetName(self, ReplicaSetName):
+        self._ReplicaSetName = ReplicaSetName
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def OplogSize(self):
+        return self._OplogSize
+
+    @OplogSize.setter
+    def OplogSize(self, OplogSize):
+        self._OplogSize = OplogSize
+
+    @property
+    def SecondaryNum(self):
+        return self._SecondaryNum
+
+    @SecondaryNum.setter
+    def SecondaryNum(self, SecondaryNum):
+        self._SecondaryNum = SecondaryNum
+
+    @property
+    def RealReplicaSetId(self):
+        return self._RealReplicaSetId
+
+    @RealReplicaSetId.setter
+    def RealReplicaSetId(self, RealReplicaSetId):
+        self._RealReplicaSetId = RealReplicaSetId
 
 
     def _deserialize(self, params):
-        self.UsedVolume = params.get("UsedVolume")
-        self.ReplicaSetId = params.get("ReplicaSetId")
-        self.ReplicaSetName = params.get("ReplicaSetName")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.OplogSize = params.get("OplogSize")
-        self.SecondaryNum = params.get("SecondaryNum")
-        self.RealReplicaSetId = params.get("RealReplicaSetId")
+        self._UsedVolume = params.get("UsedVolume")
+        self._ReplicaSetId = params.get("ReplicaSetId")
+        self._ReplicaSetName = params.get("ReplicaSetName")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._OplogSize = params.get("OplogSize")
+        self._SecondaryNum = params.get("SecondaryNum")
+        self._RealReplicaSetId = params.get("RealReplicaSetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -852,22 +1799,39 @@ class RenameInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param NewName: 实例名称
+        :param _NewName: 实例名称
         :type NewName: str
         """
-        self.InstanceId = None
-        self.NewName = None
+        self._InstanceId = None
+        self._NewName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NewName(self):
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.NewName = params.get("NewName")
+        self._InstanceId = params.get("InstanceId")
+        self._NewName = params.get("NewName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -880,14 +1844,22 @@ class RenameInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetAutoRenewRequest(AbstractModel):
@@ -897,22 +1869,39 @@ class SetAutoRenewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
-        :param AutoRenewFlag: 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
+        :param _AutoRenewFlag: 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
         :type AutoRenewFlag: int
         """
-        self.InstanceIds = None
-        self.AutoRenewFlag = None
+        self._InstanceIds = None
+        self._AutoRenewFlag = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
 
 
     def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self._InstanceIds = params.get("InstanceIds")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -925,14 +1914,22 @@ class SetAutoRenewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetPasswordRequest(AbstractModel):
@@ -942,26 +1939,51 @@ class SetPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param UserName: 实例账户名称
+        :param _UserName: 实例账户名称
         :type UserName: str
-        :param Password: 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
+        :param _Password: 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
         :type Password: str
         """
-        self.InstanceId = None
-        self.UserName = None
-        self.Password = None
+        self._InstanceId = None
+        self._UserName = None
+        self._Password = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.UserName = params.get("UserName")
-        self.Password = params.get("Password")
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -974,18 +1996,34 @@ class SetPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 返回的异步任务ID
+        :param _FlowId: 返回的异步任务ID
         :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowId = None
-        self.RequestId = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.RequestId = params.get("RequestId")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class SpecItem(AbstractModel):
@@ -995,98 +2033,267 @@ class SpecItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpecCode: 规格信息标识
+        :param _SpecCode: 规格信息标识
         :type SpecCode: str
-        :param Status: 规格有效标志，取值：0-停止售卖，1-开放售卖
+        :param _Status: 规格有效标志，取值：0-停止售卖，1-开放售卖
         :type Status: int
-        :param MachineType: 机器类型，取值：0-HIO，4-HIO10G
+        :param _MachineType: 机器类型，取值：0-HIO，4-HIO10G
         :type MachineType: str
-        :param Cpu: cpu核心数
+        :param _Cpu: cpu核心数
         :type Cpu: int
-        :param Memory: 内存规格，单位为MB
+        :param _Memory: 内存规格，单位为MB
         :type Memory: int
-        :param DefaultStorage: 默认磁盘规格，单位MB
+        :param _DefaultStorage: 默认磁盘规格，单位MB
         :type DefaultStorage: int
-        :param MaxStorage: 最大磁盘规格，单位MB
+        :param _MaxStorage: 最大磁盘规格，单位MB
         :type MaxStorage: int
-        :param MinStorage: 最小磁盘规格，单位MB
+        :param _MinStorage: 最小磁盘规格，单位MB
         :type MinStorage: int
-        :param Qps: 可承载qps信息
+        :param _Qps: 可承载qps信息
         :type Qps: int
-        :param Conns: 连接数限制
+        :param _Conns: 连接数限制
         :type Conns: int
-        :param MongoVersionCode: 实例mongodb版本信息
+        :param _MongoVersionCode: 实例mongodb版本信息
         :type MongoVersionCode: str
-        :param MongoVersionValue: 实例mongodb版本号
+        :param _MongoVersionValue: 实例mongodb版本号
         :type MongoVersionValue: int
-        :param Version: 实例mongodb版本号（短）
+        :param _Version: 实例mongodb版本号（短）
         :type Version: str
-        :param EngineName: 存储引擎
+        :param _EngineName: 存储引擎
         :type EngineName: str
-        :param ClusterType: 集群类型，取值：1-分片集群，0-副本集集群
+        :param _ClusterType: 集群类型，取值：1-分片集群，0-副本集集群
         :type ClusterType: int
-        :param MinNodeNum: 最小副本集从节点数
+        :param _MinNodeNum: 最小副本集从节点数
         :type MinNodeNum: int
-        :param MaxNodeNum: 最大副本集从节点数
+        :param _MaxNodeNum: 最大副本集从节点数
         :type MaxNodeNum: int
-        :param MinReplicateSetNum: 最小分片数
+        :param _MinReplicateSetNum: 最小分片数
         :type MinReplicateSetNum: int
-        :param MaxReplicateSetNum: 最大分片数
+        :param _MaxReplicateSetNum: 最大分片数
         :type MaxReplicateSetNum: int
-        :param MinReplicateSetNodeNum: 最小分片从节点数
+        :param _MinReplicateSetNodeNum: 最小分片从节点数
         :type MinReplicateSetNodeNum: int
-        :param MaxReplicateSetNodeNum: 最大分片从节点数
+        :param _MaxReplicateSetNodeNum: 最大分片从节点数
         :type MaxReplicateSetNodeNum: int
         """
-        self.SpecCode = None
-        self.Status = None
-        self.MachineType = None
-        self.Cpu = None
-        self.Memory = None
-        self.DefaultStorage = None
-        self.MaxStorage = None
-        self.MinStorage = None
-        self.Qps = None
-        self.Conns = None
-        self.MongoVersionCode = None
-        self.MongoVersionValue = None
-        self.Version = None
-        self.EngineName = None
-        self.ClusterType = None
-        self.MinNodeNum = None
-        self.MaxNodeNum = None
-        self.MinReplicateSetNum = None
-        self.MaxReplicateSetNum = None
-        self.MinReplicateSetNodeNum = None
-        self.MaxReplicateSetNodeNum = None
+        self._SpecCode = None
+        self._Status = None
+        self._MachineType = None
+        self._Cpu = None
+        self._Memory = None
+        self._DefaultStorage = None
+        self._MaxStorage = None
+        self._MinStorage = None
+        self._Qps = None
+        self._Conns = None
+        self._MongoVersionCode = None
+        self._MongoVersionValue = None
+        self._Version = None
+        self._EngineName = None
+        self._ClusterType = None
+        self._MinNodeNum = None
+        self._MaxNodeNum = None
+        self._MinReplicateSetNum = None
+        self._MaxReplicateSetNum = None
+        self._MinReplicateSetNodeNum = None
+        self._MaxReplicateSetNodeNum = None
+
+    @property
+    def SpecCode(self):
+        return self._SpecCode
+
+    @SpecCode.setter
+    def SpecCode(self, SpecCode):
+        self._SpecCode = SpecCode
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def DefaultStorage(self):
+        return self._DefaultStorage
+
+    @DefaultStorage.setter
+    def DefaultStorage(self, DefaultStorage):
+        self._DefaultStorage = DefaultStorage
+
+    @property
+    def MaxStorage(self):
+        return self._MaxStorage
+
+    @MaxStorage.setter
+    def MaxStorage(self, MaxStorage):
+        self._MaxStorage = MaxStorage
+
+    @property
+    def MinStorage(self):
+        return self._MinStorage
+
+    @MinStorage.setter
+    def MinStorage(self, MinStorage):
+        self._MinStorage = MinStorage
+
+    @property
+    def Qps(self):
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
+
+    @property
+    def Conns(self):
+        return self._Conns
+
+    @Conns.setter
+    def Conns(self, Conns):
+        self._Conns = Conns
+
+    @property
+    def MongoVersionCode(self):
+        return self._MongoVersionCode
+
+    @MongoVersionCode.setter
+    def MongoVersionCode(self, MongoVersionCode):
+        self._MongoVersionCode = MongoVersionCode
+
+    @property
+    def MongoVersionValue(self):
+        return self._MongoVersionValue
+
+    @MongoVersionValue.setter
+    def MongoVersionValue(self, MongoVersionValue):
+        self._MongoVersionValue = MongoVersionValue
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def EngineName(self):
+        return self._EngineName
+
+    @EngineName.setter
+    def EngineName(self, EngineName):
+        self._EngineName = EngineName
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def MinNodeNum(self):
+        return self._MinNodeNum
+
+    @MinNodeNum.setter
+    def MinNodeNum(self, MinNodeNum):
+        self._MinNodeNum = MinNodeNum
+
+    @property
+    def MaxNodeNum(self):
+        return self._MaxNodeNum
+
+    @MaxNodeNum.setter
+    def MaxNodeNum(self, MaxNodeNum):
+        self._MaxNodeNum = MaxNodeNum
+
+    @property
+    def MinReplicateSetNum(self):
+        return self._MinReplicateSetNum
+
+    @MinReplicateSetNum.setter
+    def MinReplicateSetNum(self, MinReplicateSetNum):
+        self._MinReplicateSetNum = MinReplicateSetNum
+
+    @property
+    def MaxReplicateSetNum(self):
+        return self._MaxReplicateSetNum
+
+    @MaxReplicateSetNum.setter
+    def MaxReplicateSetNum(self, MaxReplicateSetNum):
+        self._MaxReplicateSetNum = MaxReplicateSetNum
+
+    @property
+    def MinReplicateSetNodeNum(self):
+        return self._MinReplicateSetNodeNum
+
+    @MinReplicateSetNodeNum.setter
+    def MinReplicateSetNodeNum(self, MinReplicateSetNodeNum):
+        self._MinReplicateSetNodeNum = MinReplicateSetNodeNum
+
+    @property
+    def MaxReplicateSetNodeNum(self):
+        return self._MaxReplicateSetNodeNum
+
+    @MaxReplicateSetNodeNum.setter
+    def MaxReplicateSetNodeNum(self, MaxReplicateSetNodeNum):
+        self._MaxReplicateSetNodeNum = MaxReplicateSetNodeNum
 
 
     def _deserialize(self, params):
-        self.SpecCode = params.get("SpecCode")
-        self.Status = params.get("Status")
-        self.MachineType = params.get("MachineType")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.DefaultStorage = params.get("DefaultStorage")
-        self.MaxStorage = params.get("MaxStorage")
-        self.MinStorage = params.get("MinStorage")
-        self.Qps = params.get("Qps")
-        self.Conns = params.get("Conns")
-        self.MongoVersionCode = params.get("MongoVersionCode")
-        self.MongoVersionValue = params.get("MongoVersionValue")
-        self.Version = params.get("Version")
-        self.EngineName = params.get("EngineName")
-        self.ClusterType = params.get("ClusterType")
-        self.MinNodeNum = params.get("MinNodeNum")
-        self.MaxNodeNum = params.get("MaxNodeNum")
-        self.MinReplicateSetNum = params.get("MinReplicateSetNum")
-        self.MaxReplicateSetNum = params.get("MaxReplicateSetNum")
-        self.MinReplicateSetNodeNum = params.get("MinReplicateSetNodeNum")
-        self.MaxReplicateSetNodeNum = params.get("MaxReplicateSetNodeNum")
+        self._SpecCode = params.get("SpecCode")
+        self._Status = params.get("Status")
+        self._MachineType = params.get("MachineType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._DefaultStorage = params.get("DefaultStorage")
+        self._MaxStorage = params.get("MaxStorage")
+        self._MinStorage = params.get("MinStorage")
+        self._Qps = params.get("Qps")
+        self._Conns = params.get("Conns")
+        self._MongoVersionCode = params.get("MongoVersionCode")
+        self._MongoVersionValue = params.get("MongoVersionValue")
+        self._Version = params.get("Version")
+        self._EngineName = params.get("EngineName")
+        self._ClusterType = params.get("ClusterType")
+        self._MinNodeNum = params.get("MinNodeNum")
+        self._MaxNodeNum = params.get("MaxNodeNum")
+        self._MinReplicateSetNum = params.get("MinReplicateSetNum")
+        self._MaxReplicateSetNum = params.get("MaxReplicateSetNum")
+        self._MinReplicateSetNodeNum = params.get("MinReplicateSetNodeNum")
+        self._MaxReplicateSetNodeNum = params.get("MaxReplicateSetNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1099,31 +2306,56 @@ class SpecificationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 地域信息
+        :param _Region: 地域信息
         :type Region: str
-        :param Zone: 可用区信息
+        :param _Zone: 可用区信息
         :type Zone: str
-        :param SpecItems: 售卖规格信息
+        :param _SpecItems: 售卖规格信息
         :type SpecItems: list of SpecItem
         """
-        self.Region = None
-        self.Zone = None
-        self.SpecItems = None
+        self._Region = None
+        self._Zone = None
+        self._SpecItems = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SpecItems(self):
+        return self._SpecItems
+
+    @SpecItems.setter
+    def SpecItems(self, SpecItems):
+        self._SpecItems = SpecItems
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.Zone = params.get("Zone")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
         if params.get("SpecItems") is not None:
-            self.SpecItems = []
+            self._SpecItems = []
             for item in params.get("SpecItems"):
                 obj = SpecItem()
                 obj._deserialize(item)
-                self.SpecItems.append(obj)
+                self._SpecItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1136,22 +2368,39 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签Key值
+        :param _TagKey: 标签Key值
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1164,18 +2413,27 @@ class TerminateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1188,18 +2446,34 @@ class TerminateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 订单ID，表示注销实例成功
+        :param _AsyncRequestId: 订单ID，表示注销实例成功
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsyncRequestId = None
-        self.RequestId = None
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpgradeDBInstanceHourRequest(AbstractModel):
@@ -1209,30 +2483,63 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5
         :type InstanceId: str
-        :param Memory: 升级后的内存大小，单位：GB
+        :param _Memory: 升级后的内存大小，单位：GB
         :type Memory: int
-        :param Volume: 升级后的硬盘大小，单位：GB
+        :param _Volume: 升级后的硬盘大小，单位：GB
         :type Volume: int
-        :param OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+        :param _OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
         :type OplogSize: int
         """
-        self.InstanceId = None
-        self.Memory = None
-        self.Volume = None
-        self.OplogSize = None
+        self._InstanceId = None
+        self._Memory = None
+        self._Volume = None
+        self._OplogSize = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def OplogSize(self):
+        return self._OplogSize
+
+    @OplogSize.setter
+    def OplogSize(self, OplogSize):
+        self._OplogSize = OplogSize
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.OplogSize = params.get("OplogSize")
+        self._InstanceId = params.get("InstanceId")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._OplogSize = params.get("OplogSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1245,18 +2552,34 @@ class UpgradeDBInstanceHourResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单ID
+        :param _DealId: 订单ID
         :type DealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DealId = None
-        self.RequestId = None
+        self._DealId = None
+        self._RequestId = None
+
+    @property
+    def DealId(self):
+        return self._DealId
+
+    @DealId.setter
+    def DealId(self, DealId):
+        self._DealId = DealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DealId = params.get("DealId")
-        self.RequestId = params.get("RequestId")
+        self._DealId = params.get("DealId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpgradeDBInstanceRequest(AbstractModel):
@@ -1266,30 +2589,63 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param Memory: 升级后的内存大小，单位：GB
+        :param _Memory: 升级后的内存大小，单位：GB
         :type Memory: int
-        :param Volume: 升级后的硬盘大小，单位：GB
+        :param _Volume: 升级后的硬盘大小，单位：GB
         :type Volume: int
-        :param OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+        :param _OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
         :type OplogSize: int
         """
-        self.InstanceId = None
-        self.Memory = None
-        self.Volume = None
-        self.OplogSize = None
+        self._InstanceId = None
+        self._Memory = None
+        self._Volume = None
+        self._OplogSize = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def OplogSize(self):
+        return self._OplogSize
+
+    @OplogSize.setter
+    def OplogSize(self, OplogSize):
+        self._OplogSize = OplogSize
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.OplogSize = params.get("OplogSize")
+        self._InstanceId = params.get("InstanceId")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._OplogSize = params.get("OplogSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1302,15 +2658,31 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单ID
+        :param _DealId: 订单ID
         :type DealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DealId = None
-        self.RequestId = None
+        self._DealId = None
+        self._RequestId = None
+
+    @property
+    def DealId(self):
+        return self._DealId
+
+    @DealId.setter
+    def DealId(self, DealId):
+        self._DealId = DealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DealId = params.get("DealId")
-        self.RequestId = params.get("RequestId")
+        self._DealId = params.get("DealId")
+        self._RequestId = params.get("RequestId")

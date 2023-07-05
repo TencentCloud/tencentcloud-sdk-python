@@ -25,38 +25,87 @@ class FlowProductRemindRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProviderUin: 服务商uin
+        :param _ProviderUin: 服务商uin
         :type ProviderUin: str
-        :param SignId: 服务商实例ID
+        :param _SignId: 服务商实例ID
         :type SignId: str
-        :param ResourceId: 云市场实例ID
+        :param _ResourceId: 云市场实例ID
         :type ResourceId: str
-        :param TotalFlow: 实例总流量
+        :param _TotalFlow: 实例总流量
         :type TotalFlow: str
-        :param LeftFlow: 剩余流量
+        :param _LeftFlow: 剩余流量
         :type LeftFlow: str
-        :param FlowUnit: 流量单位
+        :param _FlowUnit: 流量单位
         :type FlowUnit: str
         """
-        self.ProviderUin = None
-        self.SignId = None
-        self.ResourceId = None
-        self.TotalFlow = None
-        self.LeftFlow = None
-        self.FlowUnit = None
+        self._ProviderUin = None
+        self._SignId = None
+        self._ResourceId = None
+        self._TotalFlow = None
+        self._LeftFlow = None
+        self._FlowUnit = None
+
+    @property
+    def ProviderUin(self):
+        return self._ProviderUin
+
+    @ProviderUin.setter
+    def ProviderUin(self, ProviderUin):
+        self._ProviderUin = ProviderUin
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def TotalFlow(self):
+        return self._TotalFlow
+
+    @TotalFlow.setter
+    def TotalFlow(self, TotalFlow):
+        self._TotalFlow = TotalFlow
+
+    @property
+    def LeftFlow(self):
+        return self._LeftFlow
+
+    @LeftFlow.setter
+    def LeftFlow(self, LeftFlow):
+        self._LeftFlow = LeftFlow
+
+    @property
+    def FlowUnit(self):
+        return self._FlowUnit
+
+    @FlowUnit.setter
+    def FlowUnit(self, FlowUnit):
+        self._FlowUnit = FlowUnit
 
 
     def _deserialize(self, params):
-        self.ProviderUin = params.get("ProviderUin")
-        self.SignId = params.get("SignId")
-        self.ResourceId = params.get("ResourceId")
-        self.TotalFlow = params.get("TotalFlow")
-        self.LeftFlow = params.get("LeftFlow")
-        self.FlowUnit = params.get("FlowUnit")
+        self._ProviderUin = params.get("ProviderUin")
+        self._SignId = params.get("SignId")
+        self._ResourceId = params.get("ResourceId")
+        self._TotalFlow = params.get("TotalFlow")
+        self._LeftFlow = params.get("LeftFlow")
+        self._FlowUnit = params.get("FlowUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -69,27 +118,59 @@ class FlowProductRemindResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Success: 是否成功
+        :param _Success: 是否成功
         :type Success: str
-        :param FlowId: 流水号
+        :param _FlowId: 流水号
         :type FlowId: str
-        :param Info: 消息
+        :param _Info: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Success = None
-        self.FlowId = None
-        self.Info = None
-        self.RequestId = None
+        self._Success = None
+        self._FlowId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Success = params.get("Success")
-        self.FlowId = params.get("FlowId")
-        self.Info = params.get("Info")
-        self.RequestId = params.get("RequestId")
+        self._Success = params.get("Success")
+        self._FlowId = params.get("FlowId")
+        self._Info = params.get("Info")
+        self._RequestId = params.get("RequestId")
 
 
 class GetUsagePlanUsageAmountRequest(AbstractModel):
@@ -99,18 +180,27 @@ class GetUsagePlanUsageAmountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 用于查询实例的Id
+        :param _InstanceId: 用于查询实例的Id
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -123,23 +213,55 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaxRequestNum: 最大调用量
+        :param _MaxRequestNum: 最大调用量
         :type MaxRequestNum: int
-        :param InUseRequestNum: 已经调用量
+        :param _InUseRequestNum: 已经调用量
         :type InUseRequestNum: int
-        :param RemainingRequestNum: 剩余调用量
+        :param _RemainingRequestNum: 剩余调用量
         :type RemainingRequestNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MaxRequestNum = None
-        self.InUseRequestNum = None
-        self.RemainingRequestNum = None
-        self.RequestId = None
+        self._MaxRequestNum = None
+        self._InUseRequestNum = None
+        self._RemainingRequestNum = None
+        self._RequestId = None
+
+    @property
+    def MaxRequestNum(self):
+        return self._MaxRequestNum
+
+    @MaxRequestNum.setter
+    def MaxRequestNum(self, MaxRequestNum):
+        self._MaxRequestNum = MaxRequestNum
+
+    @property
+    def InUseRequestNum(self):
+        return self._InUseRequestNum
+
+    @InUseRequestNum.setter
+    def InUseRequestNum(self, InUseRequestNum):
+        self._InUseRequestNum = InUseRequestNum
+
+    @property
+    def RemainingRequestNum(self):
+        return self._RemainingRequestNum
+
+    @RemainingRequestNum.setter
+    def RemainingRequestNum(self, RemainingRequestNum):
+        self._RemainingRequestNum = RemainingRequestNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MaxRequestNum = params.get("MaxRequestNum")
-        self.InUseRequestNum = params.get("InUseRequestNum")
-        self.RemainingRequestNum = params.get("RemainingRequestNum")
-        self.RequestId = params.get("RequestId")
+        self._MaxRequestNum = params.get("MaxRequestNum")
+        self._InUseRequestNum = params.get("InUseRequestNum")
+        self._RemainingRequestNum = params.get("RemainingRequestNum")
+        self._RequestId = params.get("RequestId")

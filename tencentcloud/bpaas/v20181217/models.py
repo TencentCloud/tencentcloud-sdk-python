@@ -25,29 +25,54 @@ class ApplyParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 审批流中表单唯一标识
+        :param _Key: 审批流中表单唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
-        :param Value: 表单value
+        :param _Value: 表单value
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of str
-        :param Name: 表单参数描述
+        :param _Name: 表单参数描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
-        self.Key = None
-        self.Value = None
-        self.Name = None
+        self._Key = None
+        self._Value = None
+        self._Name = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
-        self.Name = params.get("Name")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -60,23 +85,40 @@ class ApproveOpinion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 方式 1:输入文字反馈  2:预设选项
+        :param _Type: 方式 1:输入文字反馈  2:预设选项
         :type Type: int
-        :param Content: 审批意见
+        :param _Content: 审批意见
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of str
         """
-        self.Type = None
-        self.Content = None
+        self._Type = None
+        self._Content = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Content = params.get("Content")
+        self._Type = params.get("Type")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -89,39 +131,80 @@ class ApproveUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 用户uin
+        :param _Uin: 用户uin
         :type Uin: int
-        :param Type: 用户类型 (1:用户  2:用户组)
+        :param _Type: 用户类型 (1:用户  2:用户组)
         :type Type: int
-        :param Desc: 用户描述
+        :param _Desc: 用户描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
-        :param Nick: 用户昵称
+        :param _Nick: 用户昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
-        :param Scf: 动态获取Scf
+        :param _Scf: 动态获取Scf
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scf: :class:`tencentcloud.bpaas.v20181217.models.Scf`
         """
-        self.Uin = None
-        self.Type = None
-        self.Desc = None
-        self.Nick = None
-        self.Scf = None
+        self._Uin = None
+        self._Type = None
+        self._Desc = None
+        self._Nick = None
+        self._Scf = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Scf(self):
+        return self._Scf
+
+    @Scf.setter
+    def Scf(self, Scf):
+        self._Scf = Scf
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Type = params.get("Type")
-        self.Desc = params.get("Desc")
-        self.Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        self._Type = params.get("Type")
+        self._Desc = params.get("Desc")
+        self._Nick = params.get("Nick")
         if params.get("Scf") is not None:
-            self.Scf = Scf()
-            self.Scf._deserialize(params.get("Scf"))
+            self._Scf = Scf()
+            self._Scf._deserialize(params.get("Scf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -134,18 +217,27 @@ class GetBpaasApproveDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApproveId: 审批id
+        :param _ApproveId: 审批id
         :type ApproveId: int
         """
-        self.ApproveId = None
+        self._ApproveId = None
+
+    @property
+    def ApproveId(self):
+        return self._ApproveId
+
+    @ApproveId.setter
+    def ApproveId(self, ApproveId):
+        self._ApproveId = ApproveId
 
 
     def _deserialize(self, params):
-        self.ApproveId = params.get("ApproveId")
+        self._ApproveId = params.get("ApproveId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -158,80 +250,184 @@ class GetBpaasApproveDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplyUin: 申请人uin
+        :param _ApplyUin: 申请人uin
         :type ApplyUin: int
-        :param ApplyOwnUin: 申请人主账号
+        :param _ApplyOwnUin: 申请人主账号
         :type ApplyOwnUin: int
-        :param ApplyUinNick: 申请人昵称
+        :param _ApplyUinNick: 申请人昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyUinNick: str
-        :param BpaasId: 审批流id
+        :param _BpaasId: 审批流id
         :type BpaasId: int
-        :param BpaasName: 审批流名称
+        :param _BpaasName: 审批流名称
         :type BpaasName: str
-        :param ApplicationParams: 申请参数
+        :param _ApplicationParams: 申请参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationParams: list of ApplyParam
-        :param Reason: 申请原因
+        :param _Reason: 申请原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
-        :param CreateTime: 申请时间
+        :param _CreateTime: 申请时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Status: 申请单状态
+        :param _Status: 申请单状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param Nodes: 节点信息
+        :param _Nodes: 节点信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nodes: list of StatusNode
-        :param ApprovingNodeId: 正在审批的节点id
+        :param _ApprovingNodeId: 正在审批的节点id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApprovingNodeId: str
-        :param ModifyTime: 更新时间，时间格式：2021-12-12 10:12:10	
+        :param _ModifyTime: 更新时间，时间格式：2021-12-12 10:12:10	
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ApplyUin = None
-        self.ApplyOwnUin = None
-        self.ApplyUinNick = None
-        self.BpaasId = None
-        self.BpaasName = None
-        self.ApplicationParams = None
-        self.Reason = None
-        self.CreateTime = None
-        self.Status = None
-        self.Nodes = None
-        self.ApprovingNodeId = None
-        self.ModifyTime = None
-        self.RequestId = None
+        self._ApplyUin = None
+        self._ApplyOwnUin = None
+        self._ApplyUinNick = None
+        self._BpaasId = None
+        self._BpaasName = None
+        self._ApplicationParams = None
+        self._Reason = None
+        self._CreateTime = None
+        self._Status = None
+        self._Nodes = None
+        self._ApprovingNodeId = None
+        self._ModifyTime = None
+        self._RequestId = None
+
+    @property
+    def ApplyUin(self):
+        return self._ApplyUin
+
+    @ApplyUin.setter
+    def ApplyUin(self, ApplyUin):
+        self._ApplyUin = ApplyUin
+
+    @property
+    def ApplyOwnUin(self):
+        return self._ApplyOwnUin
+
+    @ApplyOwnUin.setter
+    def ApplyOwnUin(self, ApplyOwnUin):
+        self._ApplyOwnUin = ApplyOwnUin
+
+    @property
+    def ApplyUinNick(self):
+        return self._ApplyUinNick
+
+    @ApplyUinNick.setter
+    def ApplyUinNick(self, ApplyUinNick):
+        self._ApplyUinNick = ApplyUinNick
+
+    @property
+    def BpaasId(self):
+        return self._BpaasId
+
+    @BpaasId.setter
+    def BpaasId(self, BpaasId):
+        self._BpaasId = BpaasId
+
+    @property
+    def BpaasName(self):
+        return self._BpaasName
+
+    @BpaasName.setter
+    def BpaasName(self, BpaasName):
+        self._BpaasName = BpaasName
+
+    @property
+    def ApplicationParams(self):
+        return self._ApplicationParams
+
+    @ApplicationParams.setter
+    def ApplicationParams(self, ApplicationParams):
+        self._ApplicationParams = ApplicationParams
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def ApprovingNodeId(self):
+        return self._ApprovingNodeId
+
+    @ApprovingNodeId.setter
+    def ApprovingNodeId(self, ApprovingNodeId):
+        self._ApprovingNodeId = ApprovingNodeId
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ApplyUin = params.get("ApplyUin")
-        self.ApplyOwnUin = params.get("ApplyOwnUin")
-        self.ApplyUinNick = params.get("ApplyUinNick")
-        self.BpaasId = params.get("BpaasId")
-        self.BpaasName = params.get("BpaasName")
+        self._ApplyUin = params.get("ApplyUin")
+        self._ApplyOwnUin = params.get("ApplyOwnUin")
+        self._ApplyUinNick = params.get("ApplyUinNick")
+        self._BpaasId = params.get("BpaasId")
+        self._BpaasName = params.get("BpaasName")
         if params.get("ApplicationParams") is not None:
-            self.ApplicationParams = []
+            self._ApplicationParams = []
             for item in params.get("ApplicationParams"):
                 obj = ApplyParam()
                 obj._deserialize(item)
-                self.ApplicationParams.append(obj)
-        self.Reason = params.get("Reason")
-        self.CreateTime = params.get("CreateTime")
-        self.Status = params.get("Status")
+                self._ApplicationParams.append(obj)
+        self._Reason = params.get("Reason")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
         if params.get("Nodes") is not None:
-            self.Nodes = []
+            self._Nodes = []
             for item in params.get("Nodes"):
                 obj = StatusNode()
                 obj._deserialize(item)
-                self.Nodes.append(obj)
-        self.ApprovingNodeId = params.get("ApprovingNodeId")
-        self.ModifyTime = params.get("ModifyTime")
-        self.RequestId = params.get("RequestId")
+                self._Nodes.append(obj)
+        self._ApprovingNodeId = params.get("ApprovingNodeId")
+        self._ModifyTime = params.get("ModifyTime")
+        self._RequestId = params.get("RequestId")
 
 
 class OutApproveBpaasApplicationRequest(AbstractModel):
@@ -241,26 +437,51 @@ class OutApproveBpaasApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 状态  1:通过  2:拒绝
+        :param _Status: 状态  1:通过  2:拒绝
         :type Status: int
-        :param ApproveId: 审批单id
+        :param _ApproveId: 审批单id
         :type ApproveId: int
-        :param Msg: 审批意见
+        :param _Msg: 审批意见
         :type Msg: str
         """
-        self.Status = None
-        self.ApproveId = None
-        self.Msg = None
+        self._Status = None
+        self._ApproveId = None
+        self._Msg = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApproveId(self):
+        return self._ApproveId
+
+    @ApproveId.setter
+    def ApproveId(self, ApproveId):
+        self._ApproveId = ApproveId
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ApproveId = params.get("ApproveId")
-        self.Msg = params.get("Msg")
+        self._Status = params.get("Status")
+        self._ApproveId = params.get("ApproveId")
+        self._Msg = params.get("Msg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -273,14 +494,22 @@ class OutApproveBpaasApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Scf(AbstractModel):
@@ -290,37 +519,70 @@ class Scf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ScfRegion: Scf函数地域id
+        :param _ScfRegion: Scf函数地域id
         :type ScfRegion: str
-        :param ScfRegionName: Scf函数地域
+        :param _ScfRegionName: Scf函数地域
         :type ScfRegionName: str
-        :param ScfName: Scf函数名称
+        :param _ScfName: Scf函数名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScfName: str
-        :param Params: Scf函数入参
+        :param _Params: Scf函数入参
 注意：此字段可能返回 null，表示取不到有效值。
         :type Params: list of ScfParam
         """
-        self.ScfRegion = None
-        self.ScfRegionName = None
-        self.ScfName = None
-        self.Params = None
+        self._ScfRegion = None
+        self._ScfRegionName = None
+        self._ScfName = None
+        self._Params = None
+
+    @property
+    def ScfRegion(self):
+        return self._ScfRegion
+
+    @ScfRegion.setter
+    def ScfRegion(self, ScfRegion):
+        self._ScfRegion = ScfRegion
+
+    @property
+    def ScfRegionName(self):
+        return self._ScfRegionName
+
+    @ScfRegionName.setter
+    def ScfRegionName(self, ScfRegionName):
+        self._ScfRegionName = ScfRegionName
+
+    @property
+    def ScfName(self):
+        return self._ScfName
+
+    @ScfName.setter
+    def ScfName(self, ScfName):
+        self._ScfName = ScfName
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
 
 
     def _deserialize(self, params):
-        self.ScfRegion = params.get("ScfRegion")
-        self.ScfRegionName = params.get("ScfRegionName")
-        self.ScfName = params.get("ScfName")
+        self._ScfRegion = params.get("ScfRegion")
+        self._ScfRegionName = params.get("ScfRegionName")
+        self._ScfName = params.get("ScfName")
         if params.get("Params") is not None:
-            self.Params = []
+            self._Params = []
             for item in params.get("Params"):
                 obj = ScfParam()
                 obj._deserialize(item)
-                self.Params.append(obj)
+                self._Params.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -333,31 +595,64 @@ class ScfParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 参数Key
+        :param _Key: 参数Key
         :type Key: str
-        :param Type: 参数类型 1用户输入 2预设参数 3表单参数
+        :param _Type: 参数类型 1用户输入 2预设参数 3表单参数
         :type Type: int
-        :param Values: 参数值
+        :param _Values: 参数值
         :type Values: list of str
-        :param Name: 参数描述
+        :param _Name: 参数描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
-        self.Key = None
-        self.Type = None
-        self.Values = None
-        self.Name = None
+        self._Key = None
+        self._Type = None
+        self._Values = None
+        self._Name = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Type = params.get("Type")
-        self.Values = params.get("Values")
-        self.Name = params.get("Name")
+        self._Key = params.get("Key")
+        self._Type = params.get("Type")
+        self._Values = params.get("Values")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -370,129 +665,314 @@ class StatusNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: 节点id
+        :param _NodeId: 节点id
         :type NodeId: str
-        :param NodeName: 节点名称
+        :param _NodeName: 节点名称
         :type NodeName: str
-        :param NodeType: 节点类型 1:审批节点 2:执行节点 3:条件节点
+        :param _NodeType: 节点类型 1:审批节点 2:执行节点 3:条件节点
         :type NodeType: int
-        :param NextNode: 下一个节点
+        :param _NextNode: 下一个节点
         :type NextNode: str
-        :param Opinion: 审批意见模型
+        :param _Opinion: 审批意见模型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Opinion: :class:`tencentcloud.bpaas.v20181217.models.ApproveOpinion`
-        :param ScfName: scf函数名称
+        :param _ScfName: scf函数名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScfName: str
-        :param SubStatus: 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
+        :param _SubStatus: 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubStatus: int
-        :param ApprovedUin: 审批节点审批人
+        :param _ApprovedUin: 审批节点审批人
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApprovedUin: list of int non-negative
-        :param CreateTime: 审批时间
+        :param _CreateTime: 审批时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Msg: 审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
+        :param _Msg: 审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param Users: 有权限审批该节点的uin
+        :param _Users: 有权限审批该节点的uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type Users: :class:`tencentcloud.bpaas.v20181217.models.ApproveUser`
-        :param IsApprove: 是否有权限审批该节点
+        :param _IsApprove: 是否有权限审批该节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsApprove: bool
-        :param ApproveId: 审批id
+        :param _ApproveId: 审批id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveId: str
-        :param ApproveMethod: 审批方式 0或签 1会签
+        :param _ApproveMethod: 审批方式 0或签 1会签
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveMethod: int
-        :param ApproveType: 审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
+        :param _ApproveType: 审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveType: int
-        :param CallMethod: 外部审批类型 scf:0或null ; CKafka:1
+        :param _CallMethod: 外部审批类型 scf:0或null ; CKafka:1
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallMethod: int
-        :param DataHubId: CKafka - 接入资源ID
+        :param _DataHubId: CKafka - 接入资源ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataHubId: str
-        :param TaskName: CKafka - 任务名称
+        :param _TaskName: CKafka - 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param CKafkaRegion: CKafka - 地域
+        :param _CKafkaRegion: CKafka - 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type CKafkaRegion: str
-        :param ExternalUrl: 外部审批Url
+        :param _ExternalUrl: 外部审批Url
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalUrl: str
-        :param ParallelNodes: 并行节点 3-4
+        :param _ParallelNodes: 并行节点 3-4
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParallelNodes: str
-        :param RejectedCloudFunctionMsg: scf拒绝时返回信息
+        :param _RejectedCloudFunctionMsg: scf拒绝时返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RejectedCloudFunctionMsg: str
-        :param PrevNode: 上一个节点
+        :param _PrevNode: 上一个节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrevNode: str
         """
-        self.NodeId = None
-        self.NodeName = None
-        self.NodeType = None
-        self.NextNode = None
-        self.Opinion = None
-        self.ScfName = None
-        self.SubStatus = None
-        self.ApprovedUin = None
-        self.CreateTime = None
-        self.Msg = None
-        self.Users = None
-        self.IsApprove = None
-        self.ApproveId = None
-        self.ApproveMethod = None
-        self.ApproveType = None
-        self.CallMethod = None
-        self.DataHubId = None
-        self.TaskName = None
-        self.CKafkaRegion = None
-        self.ExternalUrl = None
-        self.ParallelNodes = None
-        self.RejectedCloudFunctionMsg = None
-        self.PrevNode = None
+        self._NodeId = None
+        self._NodeName = None
+        self._NodeType = None
+        self._NextNode = None
+        self._Opinion = None
+        self._ScfName = None
+        self._SubStatus = None
+        self._ApprovedUin = None
+        self._CreateTime = None
+        self._Msg = None
+        self._Users = None
+        self._IsApprove = None
+        self._ApproveId = None
+        self._ApproveMethod = None
+        self._ApproveType = None
+        self._CallMethod = None
+        self._DataHubId = None
+        self._TaskName = None
+        self._CKafkaRegion = None
+        self._ExternalUrl = None
+        self._ParallelNodes = None
+        self._RejectedCloudFunctionMsg = None
+        self._PrevNode = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NextNode(self):
+        return self._NextNode
+
+    @NextNode.setter
+    def NextNode(self, NextNode):
+        self._NextNode = NextNode
+
+    @property
+    def Opinion(self):
+        return self._Opinion
+
+    @Opinion.setter
+    def Opinion(self, Opinion):
+        self._Opinion = Opinion
+
+    @property
+    def ScfName(self):
+        return self._ScfName
+
+    @ScfName.setter
+    def ScfName(self, ScfName):
+        self._ScfName = ScfName
+
+    @property
+    def SubStatus(self):
+        return self._SubStatus
+
+    @SubStatus.setter
+    def SubStatus(self, SubStatus):
+        self._SubStatus = SubStatus
+
+    @property
+    def ApprovedUin(self):
+        return self._ApprovedUin
+
+    @ApprovedUin.setter
+    def ApprovedUin(self, ApprovedUin):
+        self._ApprovedUin = ApprovedUin
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def IsApprove(self):
+        return self._IsApprove
+
+    @IsApprove.setter
+    def IsApprove(self, IsApprove):
+        self._IsApprove = IsApprove
+
+    @property
+    def ApproveId(self):
+        return self._ApproveId
+
+    @ApproveId.setter
+    def ApproveId(self, ApproveId):
+        self._ApproveId = ApproveId
+
+    @property
+    def ApproveMethod(self):
+        return self._ApproveMethod
+
+    @ApproveMethod.setter
+    def ApproveMethod(self, ApproveMethod):
+        self._ApproveMethod = ApproveMethod
+
+    @property
+    def ApproveType(self):
+        return self._ApproveType
+
+    @ApproveType.setter
+    def ApproveType(self, ApproveType):
+        self._ApproveType = ApproveType
+
+    @property
+    def CallMethod(self):
+        return self._CallMethod
+
+    @CallMethod.setter
+    def CallMethod(self, CallMethod):
+        self._CallMethod = CallMethod
+
+    @property
+    def DataHubId(self):
+        return self._DataHubId
+
+    @DataHubId.setter
+    def DataHubId(self, DataHubId):
+        self._DataHubId = DataHubId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def CKafkaRegion(self):
+        return self._CKafkaRegion
+
+    @CKafkaRegion.setter
+    def CKafkaRegion(self, CKafkaRegion):
+        self._CKafkaRegion = CKafkaRegion
+
+    @property
+    def ExternalUrl(self):
+        return self._ExternalUrl
+
+    @ExternalUrl.setter
+    def ExternalUrl(self, ExternalUrl):
+        self._ExternalUrl = ExternalUrl
+
+    @property
+    def ParallelNodes(self):
+        return self._ParallelNodes
+
+    @ParallelNodes.setter
+    def ParallelNodes(self, ParallelNodes):
+        self._ParallelNodes = ParallelNodes
+
+    @property
+    def RejectedCloudFunctionMsg(self):
+        return self._RejectedCloudFunctionMsg
+
+    @RejectedCloudFunctionMsg.setter
+    def RejectedCloudFunctionMsg(self, RejectedCloudFunctionMsg):
+        self._RejectedCloudFunctionMsg = RejectedCloudFunctionMsg
+
+    @property
+    def PrevNode(self):
+        return self._PrevNode
+
+    @PrevNode.setter
+    def PrevNode(self, PrevNode):
+        self._PrevNode = PrevNode
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.NodeName = params.get("NodeName")
-        self.NodeType = params.get("NodeType")
-        self.NextNode = params.get("NextNode")
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
+        self._NodeType = params.get("NodeType")
+        self._NextNode = params.get("NextNode")
         if params.get("Opinion") is not None:
-            self.Opinion = ApproveOpinion()
-            self.Opinion._deserialize(params.get("Opinion"))
-        self.ScfName = params.get("ScfName")
-        self.SubStatus = params.get("SubStatus")
-        self.ApprovedUin = params.get("ApprovedUin")
-        self.CreateTime = params.get("CreateTime")
-        self.Msg = params.get("Msg")
+            self._Opinion = ApproveOpinion()
+            self._Opinion._deserialize(params.get("Opinion"))
+        self._ScfName = params.get("ScfName")
+        self._SubStatus = params.get("SubStatus")
+        self._ApprovedUin = params.get("ApprovedUin")
+        self._CreateTime = params.get("CreateTime")
+        self._Msg = params.get("Msg")
         if params.get("Users") is not None:
-            self.Users = ApproveUser()
-            self.Users._deserialize(params.get("Users"))
-        self.IsApprove = params.get("IsApprove")
-        self.ApproveId = params.get("ApproveId")
-        self.ApproveMethod = params.get("ApproveMethod")
-        self.ApproveType = params.get("ApproveType")
-        self.CallMethod = params.get("CallMethod")
-        self.DataHubId = params.get("DataHubId")
-        self.TaskName = params.get("TaskName")
-        self.CKafkaRegion = params.get("CKafkaRegion")
-        self.ExternalUrl = params.get("ExternalUrl")
-        self.ParallelNodes = params.get("ParallelNodes")
-        self.RejectedCloudFunctionMsg = params.get("RejectedCloudFunctionMsg")
-        self.PrevNode = params.get("PrevNode")
+            self._Users = ApproveUser()
+            self._Users._deserialize(params.get("Users"))
+        self._IsApprove = params.get("IsApprove")
+        self._ApproveId = params.get("ApproveId")
+        self._ApproveMethod = params.get("ApproveMethod")
+        self._ApproveType = params.get("ApproveType")
+        self._CallMethod = params.get("CallMethod")
+        self._DataHubId = params.get("DataHubId")
+        self._TaskName = params.get("TaskName")
+        self._CKafkaRegion = params.get("CKafkaRegion")
+        self._ExternalUrl = params.get("ExternalUrl")
+        self._ParallelNodes = params.get("ParallelNodes")
+        self._RejectedCloudFunctionMsg = params.get("RejectedCloudFunctionMsg")
+        self._PrevNode = params.get("PrevNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

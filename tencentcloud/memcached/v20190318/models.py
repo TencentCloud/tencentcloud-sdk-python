@@ -25,58 +25,147 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderBy: 枚举范围： AddTimeStamp, InstanceName, ProjectId
+        :param _OrderBy: 枚举范围： AddTimeStamp, InstanceName, ProjectId
         :type OrderBy: str
-        :param SearchKeys: 查找的关键字
+        :param _SearchKeys: 查找的关键字
         :type SearchKeys: list of str
-        :param UniqSubnetIds: 子网ID列表
+        :param _UniqSubnetIds: 子网ID列表
         :type UniqSubnetIds: list of str
-        :param Vips: VIP列表
+        :param _Vips: VIP列表
         :type Vips: list of str
-        :param OrderType: 0倒序，1正序，默认倒序
+        :param _OrderType: 0倒序，1正序，默认倒序
         :type OrderType: int
-        :param InstanceNames: 实例名称列表
+        :param _InstanceNames: 实例名称列表
         :type InstanceNames: list of str
-        :param UniqVpcIds: VPC ID列表
+        :param _UniqVpcIds: VPC ID列表
         :type UniqVpcIds: list of str
-        :param ProjectIds: 项目ID列表
+        :param _ProjectIds: 项目ID列表
         :type ProjectIds: list of int
-        :param Offset: 偏移量，取Limit整数倍
+        :param _Offset: 偏移量，取Limit整数倍
         :type Offset: int
-        :param Limit: 实例列表的大小，参数默认值100
+        :param _Limit: 实例列表的大小，参数默认值100
         :type Limit: int
-        :param InstanceIds: 实例ID列表
+        :param _InstanceIds: 实例ID列表
         :type InstanceIds: list of str
         """
-        self.OrderBy = None
-        self.SearchKeys = None
-        self.UniqSubnetIds = None
-        self.Vips = None
-        self.OrderType = None
-        self.InstanceNames = None
-        self.UniqVpcIds = None
-        self.ProjectIds = None
-        self.Offset = None
-        self.Limit = None
-        self.InstanceIds = None
+        self._OrderBy = None
+        self._SearchKeys = None
+        self._UniqSubnetIds = None
+        self._Vips = None
+        self._OrderType = None
+        self._InstanceNames = None
+        self._UniqVpcIds = None
+        self._ProjectIds = None
+        self._Offset = None
+        self._Limit = None
+        self._InstanceIds = None
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def SearchKeys(self):
+        return self._SearchKeys
+
+    @SearchKeys.setter
+    def SearchKeys(self, SearchKeys):
+        self._SearchKeys = SearchKeys
+
+    @property
+    def UniqSubnetIds(self):
+        return self._UniqSubnetIds
+
+    @UniqSubnetIds.setter
+    def UniqSubnetIds(self, UniqSubnetIds):
+        self._UniqSubnetIds = UniqSubnetIds
+
+    @property
+    def Vips(self):
+        return self._Vips
+
+    @Vips.setter
+    def Vips(self, Vips):
+        self._Vips = Vips
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def InstanceNames(self):
+        return self._InstanceNames
+
+    @InstanceNames.setter
+    def InstanceNames(self, InstanceNames):
+        self._InstanceNames = InstanceNames
+
+    @property
+    def UniqVpcIds(self):
+        return self._UniqVpcIds
+
+    @UniqVpcIds.setter
+    def UniqVpcIds(self, UniqVpcIds):
+        self._UniqVpcIds = UniqVpcIds
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
 
     def _deserialize(self, params):
-        self.OrderBy = params.get("OrderBy")
-        self.SearchKeys = params.get("SearchKeys")
-        self.UniqSubnetIds = params.get("UniqSubnetIds")
-        self.Vips = params.get("Vips")
-        self.OrderType = params.get("OrderType")
-        self.InstanceNames = params.get("InstanceNames")
-        self.UniqVpcIds = params.get("UniqVpcIds")
-        self.ProjectIds = params.get("ProjectIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.InstanceIds = params.get("InstanceIds")
+        self._OrderBy = params.get("OrderBy")
+        self._SearchKeys = params.get("SearchKeys")
+        self._UniqSubnetIds = params.get("UniqSubnetIds")
+        self._Vips = params.get("Vips")
+        self._OrderType = params.get("OrderType")
+        self._InstanceNames = params.get("InstanceNames")
+        self._UniqVpcIds = params.get("UniqVpcIds")
+        self._ProjectIds = params.get("ProjectIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -89,27 +178,51 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceList: 实例详细信息列表
+        :param _InstanceList: 实例详细信息列表
         :type InstanceList: list of InstanceListInfo
-        :param TotalNum: 实例数量
+        :param _TotalNum: 实例数量
         :type TotalNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstanceList = None
-        self.TotalNum = None
-        self.RequestId = None
+        self._InstanceList = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstanceList") is not None:
-            self.InstanceList = []
+            self._InstanceList = []
             for item in params.get("InstanceList"):
                 obj = InstanceListInfo()
                 obj._deserialize(item)
-                self.InstanceList.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.RequestId = params.get("RequestId")
+                self._InstanceList.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
 
 
 class InstanceListInfo(AbstractModel):
@@ -119,116 +232,309 @@ class InstanceListInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModTimeStamp: 实例修改时间
+        :param _ModTimeStamp: 实例修改时间
         :type ModTimeStamp: str
-        :param IsolateTimeStamp: 实例隔离时间
+        :param _IsolateTimeStamp: 实例隔离时间
         :type IsolateTimeStamp: str
-        :param AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
+        :param _AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
         :type AutoRenewFlag: int
-        :param SetId: 仓库ID
+        :param _SetId: 仓库ID
         :type SetId: int
-        :param Status: 实例当前状态，0：发货中；1：运行中；2：创建失败；4：销毁中；5：隔离中；6：下线中
+        :param _Status: 实例当前状态，0：发货中；1：运行中；2：创建失败；4：销毁中；5：隔离中；6：下线中
         :type Status: int
-        :param CmemId: 实例内置ID
+        :param _CmemId: 实例内置ID
         :type CmemId: int
-        :param Tags: 实例关联的标签信息
+        :param _Tags: 实例关联的标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+        :param _RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
         :type RegionId: int
-        :param InstanceDesc: 实例描述信息
+        :param _InstanceDesc: 实例描述信息
         :type InstanceDesc: str
-        :param Expire: 过期策略
+        :param _Expire: 过期策略
         :type Expire: int
-        :param SubnetId: vpc网络下子网id 如：46315
+        :param _SubnetId: vpc网络下子网id 如：46315
         :type SubnetId: int
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: int
-        :param AddTimeStamp: 实例创建时间
+        :param _AddTimeStamp: 实例创建时间
         :type AddTimeStamp: str
-        :param ZoneId: 区域ID
+        :param _ZoneId: 区域ID
         :type ZoneId: int
-        :param PayMode: 计费模式：0-按量计费，1-包年包月
+        :param _PayMode: 计费模式：0-按量计费，1-包年包月
         :type PayMode: int
-        :param VpcId: vpc网络id 如：75101
+        :param _VpcId: vpc网络id 如：75101
         :type VpcId: int
-        :param InstanceName: 实例名称
+        :param _InstanceName: 实例名称
         :type InstanceName: str
-        :param DeadlineTimeStamp: 实例截止时间
+        :param _DeadlineTimeStamp: 实例截止时间
         :type DeadlineTimeStamp: str
-        :param UniqVpcId: vpc网络id 如：vpc-fk33jsf43kgv
+        :param _UniqVpcId: vpc网络id 如：vpc-fk33jsf43kgv
         :type UniqVpcId: str
-        :param Vip: 实例vip
+        :param _Vip: 实例vip
         :type Vip: str
-        :param UniqSubnetId: vpc网络下子网id 如：subnet-fd3j6l35mm0
+        :param _UniqSubnetId: vpc网络下子网id 如：subnet-fd3j6l35mm0
         :type UniqSubnetId: str
-        :param AppId: 用户AppID
+        :param _AppId: 用户AppID
         :type AppId: int
-        :param Vport: 实例端口号
+        :param _Vport: 实例端口号
         :type Vport: int
         """
-        self.ModTimeStamp = None
-        self.IsolateTimeStamp = None
-        self.AutoRenewFlag = None
-        self.SetId = None
-        self.Status = None
-        self.CmemId = None
-        self.Tags = None
-        self.InstanceId = None
-        self.RegionId = None
-        self.InstanceDesc = None
-        self.Expire = None
-        self.SubnetId = None
-        self.ProjectId = None
-        self.AddTimeStamp = None
-        self.ZoneId = None
-        self.PayMode = None
-        self.VpcId = None
-        self.InstanceName = None
-        self.DeadlineTimeStamp = None
-        self.UniqVpcId = None
-        self.Vip = None
-        self.UniqSubnetId = None
-        self.AppId = None
-        self.Vport = None
+        self._ModTimeStamp = None
+        self._IsolateTimeStamp = None
+        self._AutoRenewFlag = None
+        self._SetId = None
+        self._Status = None
+        self._CmemId = None
+        self._Tags = None
+        self._InstanceId = None
+        self._RegionId = None
+        self._InstanceDesc = None
+        self._Expire = None
+        self._SubnetId = None
+        self._ProjectId = None
+        self._AddTimeStamp = None
+        self._ZoneId = None
+        self._PayMode = None
+        self._VpcId = None
+        self._InstanceName = None
+        self._DeadlineTimeStamp = None
+        self._UniqVpcId = None
+        self._Vip = None
+        self._UniqSubnetId = None
+        self._AppId = None
+        self._Vport = None
+
+    @property
+    def ModTimeStamp(self):
+        return self._ModTimeStamp
+
+    @ModTimeStamp.setter
+    def ModTimeStamp(self, ModTimeStamp):
+        self._ModTimeStamp = ModTimeStamp
+
+    @property
+    def IsolateTimeStamp(self):
+        return self._IsolateTimeStamp
+
+    @IsolateTimeStamp.setter
+    def IsolateTimeStamp(self, IsolateTimeStamp):
+        self._IsolateTimeStamp = IsolateTimeStamp
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def SetId(self):
+        return self._SetId
+
+    @SetId.setter
+    def SetId(self, SetId):
+        self._SetId = SetId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CmemId(self):
+        return self._CmemId
+
+    @CmemId.setter
+    def CmemId(self, CmemId):
+        self._CmemId = CmemId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceDesc(self):
+        return self._InstanceDesc
+
+    @InstanceDesc.setter
+    def InstanceDesc(self, InstanceDesc):
+        self._InstanceDesc = InstanceDesc
+
+    @property
+    def Expire(self):
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AddTimeStamp(self):
+        return self._AddTimeStamp
+
+    @AddTimeStamp.setter
+    def AddTimeStamp(self, AddTimeStamp):
+        self._AddTimeStamp = AddTimeStamp
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def DeadlineTimeStamp(self):
+        return self._DeadlineTimeStamp
+
+    @DeadlineTimeStamp.setter
+    def DeadlineTimeStamp(self, DeadlineTimeStamp):
+        self._DeadlineTimeStamp = DeadlineTimeStamp
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
 
 
     def _deserialize(self, params):
-        self.ModTimeStamp = params.get("ModTimeStamp")
-        self.IsolateTimeStamp = params.get("IsolateTimeStamp")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.SetId = params.get("SetId")
-        self.Status = params.get("Status")
-        self.CmemId = params.get("CmemId")
+        self._ModTimeStamp = params.get("ModTimeStamp")
+        self._IsolateTimeStamp = params.get("IsolateTimeStamp")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._SetId = params.get("SetId")
+        self._Status = params.get("Status")
+        self._CmemId = params.get("CmemId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfo()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceId = params.get("InstanceId")
-        self.RegionId = params.get("RegionId")
-        self.InstanceDesc = params.get("InstanceDesc")
-        self.Expire = params.get("Expire")
-        self.SubnetId = params.get("SubnetId")
-        self.ProjectId = params.get("ProjectId")
-        self.AddTimeStamp = params.get("AddTimeStamp")
-        self.ZoneId = params.get("ZoneId")
-        self.PayMode = params.get("PayMode")
-        self.VpcId = params.get("VpcId")
-        self.InstanceName = params.get("InstanceName")
-        self.DeadlineTimeStamp = params.get("DeadlineTimeStamp")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.Vip = params.get("Vip")
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.AppId = params.get("AppId")
-        self.Vport = params.get("Vport")
+                self._Tags.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._RegionId = params.get("RegionId")
+        self._InstanceDesc = params.get("InstanceDesc")
+        self._Expire = params.get("Expire")
+        self._SubnetId = params.get("SubnetId")
+        self._ProjectId = params.get("ProjectId")
+        self._AddTimeStamp = params.get("AddTimeStamp")
+        self._ZoneId = params.get("ZoneId")
+        self._PayMode = params.get("PayMode")
+        self._VpcId = params.get("VpcId")
+        self._InstanceName = params.get("InstanceName")
+        self._DeadlineTimeStamp = params.get("DeadlineTimeStamp")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Vip = params.get("Vip")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._AppId = params.get("AppId")
+        self._Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -241,22 +547,39 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param _TagKey: 标签键
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

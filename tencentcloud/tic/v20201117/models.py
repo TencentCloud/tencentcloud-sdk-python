@@ -25,22 +25,39 @@ class ApplyStackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 资源栈ID
+        :param _StackId: 资源栈ID
         :type StackId: str
-        :param VersionId: 待执行apply事件的版本ID
+        :param _VersionId: 待执行apply事件的版本ID
         :type VersionId: str
         """
-        self.StackId = None
-        self.VersionId = None
+        self._StackId = None
+        self._VersionId = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
-        self.VersionId = params.get("VersionId")
+        self._StackId = params.get("StackId")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,18 +70,34 @@ class ApplyStackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 执行的事件ID
+        :param _EventId: 执行的事件ID
         :type EventId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EventId = None
-        self.RequestId = None
+        self._EventId = None
+        self._RequestId = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.RequestId = params.get("RequestId")
+        self._EventId = params.get("EventId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateStackRequest(AbstractModel):
@@ -74,30 +107,63 @@ class CreateStackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackName: 资源栈名称，不得超过60个字符
+        :param _StackName: 资源栈名称，不得超过60个字符
         :type StackName: str
-        :param StackRegion: 资源栈所在地域
+        :param _StackRegion: 资源栈所在地域
         :type StackRegion: str
-        :param TemplateUrl: HCL模板URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :param _TemplateUrl: HCL模板URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
         :type TemplateUrl: str
-        :param Description: 资源栈描述，不得超过200个字符
+        :param _Description: 资源栈描述，不得超过200个字符
         :type Description: str
         """
-        self.StackName = None
-        self.StackRegion = None
-        self.TemplateUrl = None
-        self.Description = None
+        self._StackName = None
+        self._StackRegion = None
+        self._TemplateUrl = None
+        self._Description = None
+
+    @property
+    def StackName(self):
+        return self._StackName
+
+    @StackName.setter
+    def StackName(self, StackName):
+        self._StackName = StackName
+
+    @property
+    def StackRegion(self):
+        return self._StackRegion
+
+    @StackRegion.setter
+    def StackRegion(self, StackRegion):
+        self._StackRegion = StackRegion
+
+    @property
+    def TemplateUrl(self):
+        return self._TemplateUrl
+
+    @TemplateUrl.setter
+    def TemplateUrl(self, TemplateUrl):
+        self._TemplateUrl = TemplateUrl
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.StackName = params.get("StackName")
-        self.StackRegion = params.get("StackRegion")
-        self.TemplateUrl = params.get("TemplateUrl")
-        self.Description = params.get("Description")
+        self._StackName = params.get("StackName")
+        self._StackRegion = params.get("StackRegion")
+        self._TemplateUrl = params.get("TemplateUrl")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -110,22 +176,46 @@ class CreateStackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 创建得到的资源栈ID
+        :param _StackId: 创建得到的资源栈ID
         :type StackId: str
-        :param VersionId: 资源栈版本ID
+        :param _VersionId: 资源栈版本ID
         :type VersionId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.StackId = None
-        self.VersionId = None
-        self.RequestId = None
+        self._StackId = None
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
-        self.VersionId = params.get("VersionId")
-        self.RequestId = params.get("RequestId")
+        self._StackId = params.get("StackId")
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateStackVersionRequest(AbstractModel):
@@ -135,30 +225,63 @@ class CreateStackVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 待增加版本的资源栈ID
+        :param _StackId: 待增加版本的资源栈ID
         :type StackId: str
-        :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :param _TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
         :type TemplateUrl: str
-        :param VersionName: 版本名称，不得超过60个字符
+        :param _VersionName: 版本名称，不得超过60个字符
         :type VersionName: str
-        :param Description: 版本描述，不得超过200个字符
+        :param _Description: 版本描述，不得超过200个字符
         :type Description: str
         """
-        self.StackId = None
-        self.TemplateUrl = None
-        self.VersionName = None
-        self.Description = None
+        self._StackId = None
+        self._TemplateUrl = None
+        self._VersionName = None
+        self._Description = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def TemplateUrl(self):
+        return self._TemplateUrl
+
+    @TemplateUrl.setter
+    def TemplateUrl(self, TemplateUrl):
+        self._TemplateUrl = TemplateUrl
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
-        self.TemplateUrl = params.get("TemplateUrl")
-        self.VersionName = params.get("VersionName")
-        self.Description = params.get("Description")
+        self._StackId = params.get("StackId")
+        self._TemplateUrl = params.get("TemplateUrl")
+        self._VersionName = params.get("VersionName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -171,18 +294,34 @@ class CreateStackVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: 新创建的版本ID
+        :param _VersionId: 新创建的版本ID
         :type VersionId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VersionId = None
-        self.RequestId = None
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
-        self.RequestId = params.get("RequestId")
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteStackRequest(AbstractModel):
@@ -192,18 +331,27 @@ class DeleteStackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 待删除的资源栈ID
+        :param _StackId: 待删除的资源栈ID
         :type StackId: str
         """
-        self.StackId = None
+        self._StackId = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
+        self._StackId = params.get("StackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -216,14 +364,22 @@ class DeleteStackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteStackVersionRequest(AbstractModel):
@@ -233,18 +389,27 @@ class DeleteStackVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: 待删除的版本ID
+        :param _VersionId: 待删除的版本ID
         :type VersionId: str
         """
-        self.VersionId = None
+        self._VersionId = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -257,14 +422,22 @@ class DeleteStackVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStackEventRequest(AbstractModel):
@@ -274,18 +447,27 @@ class DescribeStackEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 事件ID
+        :param _EventId: 事件ID
         :type EventId: str
         """
-        self.EventId = None
+        self._EventId = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
+        self._EventId = params.get("EventId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -298,46 +480,118 @@ class DescribeStackEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 事件ID
+        :param _EventId: 事件ID
         :type EventId: str
-        :param VersionId: 版本ID
+        :param _VersionId: 版本ID
         :type VersionId: str
-        :param StackId: 资源栈ID
+        :param _StackId: 资源栈ID
         :type StackId: str
-        :param Type: 事件类型
+        :param _Type: 事件类型
         :type Type: str
-        :param Status: 事件状态
+        :param _Status: 事件状态
         :type Status: str
-        :param EventMessage: 状态信息
+        :param _EventMessage: 状态信息
         :type EventMessage: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param ConsoleLog: 控制台输出文本
+        :param _ConsoleLog: 控制台输出文本
         :type ConsoleLog: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EventId = None
-        self.VersionId = None
-        self.StackId = None
-        self.Type = None
-        self.Status = None
-        self.EventMessage = None
-        self.CreateTime = None
-        self.ConsoleLog = None
-        self.RequestId = None
+        self._EventId = None
+        self._VersionId = None
+        self._StackId = None
+        self._Type = None
+        self._Status = None
+        self._EventMessage = None
+        self._CreateTime = None
+        self._ConsoleLog = None
+        self._RequestId = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventMessage(self):
+        return self._EventMessage
+
+    @EventMessage.setter
+    def EventMessage(self, EventMessage):
+        self._EventMessage = EventMessage
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ConsoleLog(self):
+        return self._ConsoleLog
+
+    @ConsoleLog.setter
+    def ConsoleLog(self, ConsoleLog):
+        self._ConsoleLog = ConsoleLog
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.VersionId = params.get("VersionId")
-        self.StackId = params.get("StackId")
-        self.Type = params.get("Type")
-        self.Status = params.get("Status")
-        self.EventMessage = params.get("EventMessage")
-        self.CreateTime = params.get("CreateTime")
-        self.ConsoleLog = params.get("ConsoleLog")
-        self.RequestId = params.get("RequestId")
+        self._EventId = params.get("EventId")
+        self._VersionId = params.get("VersionId")
+        self._StackId = params.get("StackId")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._EventMessage = params.get("EventMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._ConsoleLog = params.get("ConsoleLog")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStackEventsRequest(AbstractModel):
@@ -347,9 +601,9 @@ class DescribeStackEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventIds: 按照⼀个或者多个事件ID查询
+        :param _EventIds: 按照⼀个或者多个事件ID查询
         :type EventIds: list of str
-        :param Filters: <li>**VersionId**</li>
+        :param _Filters: <li>**VersionId**</li>
 按照【**版本ID**】过滤，VersionId形如 `ver-kg8hn58h`
 类型：string
 
@@ -365,31 +619,64 @@ class DescribeStackEventsRequest(AbstractModel):
 按照【**事件状态**】过滤，Status形如 queueing, running, success, failed
 类型：string
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
         :type Limit: int
         """
-        self.EventIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._EventIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EventIds(self):
+        return self._EventIds
+
+    @EventIds.setter
+    def EventIds(self, EventIds):
+        self._EventIds = EventIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.EventIds = params.get("EventIds")
+        self._EventIds = params.get("EventIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -402,27 +689,51 @@ class DescribeStackEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的事件数量
+        :param _TotalCount: 符合条件的事件数量
         :type TotalCount: int
-        :param Events: 事件详细信息列表
+        :param _Events: 事件详细信息列表
         :type Events: list of EventInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Events = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Events = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Events") is not None:
-            self.Events = []
+            self._Events = []
             for item in params.get("Events"):
                 obj = EventInfo()
                 obj._deserialize(item)
-                self.Events.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Events.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStackVersionsRequest(AbstractModel):
@@ -432,13 +743,13 @@ class DescribeStackVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionIds: 按照⼀个或者多个版本ID查询
+        :param _VersionIds: 按照⼀个或者多个版本ID查询
         :type VersionIds: list of str
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
         :type Limit: int
-        :param Filters: <li>**Name**</li>
+        :param _Filters: <li>**Name**</li>
 按照【**版本名称**】进行过滤
 类型：string
 
@@ -451,26 +762,59 @@ class DescribeStackVersionsRequest(AbstractModel):
 类型：string
         :type Filters: list of Filter
         """
-        self.VersionIds = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
+        self._VersionIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def VersionIds(self):
+        return self._VersionIds
+
+    @VersionIds.setter
+    def VersionIds(self, VersionIds):
+        self._VersionIds = VersionIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.VersionIds = params.get("VersionIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._VersionIds = params.get("VersionIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -483,27 +827,51 @@ class DescribeStackVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的版本数量
+        :param _TotalCount: 符合条件的版本数量
         :type TotalCount: int
-        :param Versions: 版本详细信息列表
+        :param _Versions: 版本详细信息列表
         :type Versions: list of VersionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Versions = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Versions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Versions(self):
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Versions") is not None:
-            self.Versions = []
+            self._Versions = []
             for item in params.get("Versions"):
                 obj = VersionInfo()
                 obj._deserialize(item)
-                self.Versions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Versions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStacksRequest(AbstractModel):
@@ -513,26 +881,51 @@ class DescribeStacksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackIds: 按照⼀个或者多个资源栈ID查询
+        :param _StackIds: 按照⼀个或者多个资源栈ID查询
         :type StackIds: list of str
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
         """
-        self.StackIds = None
-        self.Offset = None
-        self.Limit = None
+        self._StackIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def StackIds(self):
+        return self._StackIds
+
+    @StackIds.setter
+    def StackIds(self, StackIds):
+        self._StackIds = StackIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.StackIds = params.get("StackIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._StackIds = params.get("StackIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -545,27 +938,51 @@ class DescribeStacksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的资源栈数量
+        :param _TotalCount: 符合条件的资源栈数量
         :type TotalCount: int
-        :param Stacks: 资源栈详细信息列表
+        :param _Stacks: 资源栈详细信息列表
         :type Stacks: list of StackInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Stacks = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Stacks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Stacks(self):
+        return self._Stacks
+
+    @Stacks.setter
+    def Stacks(self, Stacks):
+        self._Stacks = Stacks
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Stacks") is not None:
-            self.Stacks = []
+            self._Stacks = []
             for item in params.get("Stacks"):
                 obj = StackInfo()
                 obj._deserialize(item)
-                self.Stacks.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Stacks.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DestroyStackRequest(AbstractModel):
@@ -575,22 +992,39 @@ class DestroyStackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 资源栈ID
+        :param _StackId: 资源栈ID
         :type StackId: str
-        :param VersionId: 待执行destroy事件的版本ID
+        :param _VersionId: 待执行destroy事件的版本ID
         :type VersionId: str
         """
-        self.StackId = None
-        self.VersionId = None
+        self._StackId = None
+        self._VersionId = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
-        self.VersionId = params.get("VersionId")
+        self._StackId = params.get("StackId")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -603,18 +1037,34 @@ class DestroyStackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 事件ID
+        :param _EventId: 事件ID
         :type EventId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EventId = None
-        self.RequestId = None
+        self._EventId = None
+        self._RequestId = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.RequestId = params.get("RequestId")
+        self._EventId = params.get("EventId")
+        self._RequestId = params.get("RequestId")
 
 
 class EventInfo(AbstractModel):
@@ -624,42 +1074,99 @@ class EventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 事件ID
+        :param _EventId: 事件ID
         :type EventId: str
-        :param VersionId: 版本ID
+        :param _VersionId: 版本ID
         :type VersionId: str
-        :param StackId: 资源栈ID
+        :param _StackId: 资源栈ID
         :type StackId: str
-        :param Type: 事件类型
+        :param _Type: 事件类型
         :type Type: str
-        :param Status: 版本状态
+        :param _Status: 版本状态
         :type Status: str
-        :param Message: 状态信息
+        :param _Message: 状态信息
         :type Message: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.EventId = None
-        self.VersionId = None
-        self.StackId = None
-        self.Type = None
-        self.Status = None
-        self.Message = None
-        self.CreateTime = None
+        self._EventId = None
+        self._VersionId = None
+        self._StackId = None
+        self._Type = None
+        self._Status = None
+        self._Message = None
+        self._CreateTime = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.VersionId = params.get("VersionId")
-        self.StackId = params.get("StackId")
-        self.Type = params.get("Type")
-        self.Status = params.get("Status")
-        self.Message = params.get("Message")
-        self.CreateTime = params.get("CreateTime")
+        self._EventId = params.get("EventId")
+        self._VersionId = params.get("VersionId")
+        self._StackId = params.get("StackId")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -672,22 +1179,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 条件名字
+        :param _Name: 条件名字
         :type Name: str
-        :param Values: 匹配的值，可以有多个
+        :param _Values: 匹配的值，可以有多个
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -700,22 +1224,39 @@ class PlanStackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 资源栈ID
+        :param _StackId: 资源栈ID
         :type StackId: str
-        :param VersionId: 待执行plan事件的版本ID
+        :param _VersionId: 待执行plan事件的版本ID
         :type VersionId: str
         """
-        self.StackId = None
-        self.VersionId = None
+        self._StackId = None
+        self._VersionId = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
-        self.VersionId = params.get("VersionId")
+        self._StackId = params.get("StackId")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -728,18 +1269,34 @@ class PlanStackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 执行的事件ID
+        :param _EventId: 执行的事件ID
         :type EventId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EventId = None
-        self.RequestId = None
+        self._EventId = None
+        self._RequestId = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.RequestId = params.get("RequestId")
+        self._EventId = params.get("EventId")
+        self._RequestId = params.get("RequestId")
 
 
 class StackInfo(AbstractModel):
@@ -749,38 +1306,87 @@ class StackInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 资源栈ID
+        :param _StackId: 资源栈ID
         :type StackId: str
-        :param StackName: 资源栈名称
+        :param _StackName: 资源栈名称
         :type StackName: str
-        :param Description: 资源栈描述
+        :param _Description: 资源栈描述
         :type Description: str
-        :param Region: 所处地域
+        :param _Region: 所处地域
         :type Region: str
-        :param Status: 资源栈状态
+        :param _Status: 资源栈状态
         :type Status: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.StackId = None
-        self.StackName = None
-        self.Description = None
-        self.Region = None
-        self.Status = None
-        self.CreateTime = None
+        self._StackId = None
+        self._StackName = None
+        self._Description = None
+        self._Region = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def StackName(self):
+        return self._StackName
+
+    @StackName.setter
+    def StackName(self, StackName):
+        self._StackName = StackName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
-        self.StackName = params.get("StackName")
-        self.Description = params.get("Description")
-        self.Region = params.get("Region")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
+        self._StackId = params.get("StackId")
+        self._StackName = params.get("StackName")
+        self._Description = params.get("Description")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -793,26 +1399,51 @@ class UpdateStackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StackId: 待更新的资源栈ID
+        :param _StackId: 待更新的资源栈ID
         :type StackId: str
-        :param StackName: 资源栈名称，不得超过60个字符
+        :param _StackName: 资源栈名称，不得超过60个字符
         :type StackName: str
-        :param Description: 资源栈描述，不得超过200个字符
+        :param _Description: 资源栈描述，不得超过200个字符
         :type Description: str
         """
-        self.StackId = None
-        self.StackName = None
-        self.Description = None
+        self._StackId = None
+        self._StackName = None
+        self._Description = None
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def StackName(self):
+        return self._StackName
+
+    @StackName.setter
+    def StackName(self, StackName):
+        self._StackName = StackName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.StackId = params.get("StackId")
-        self.StackName = params.get("StackName")
-        self.Description = params.get("Description")
+        self._StackId = params.get("StackId")
+        self._StackName = params.get("StackName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -825,14 +1456,22 @@ class UpdateStackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateStackVersionRequest(AbstractModel):
@@ -842,30 +1481,63 @@ class UpdateStackVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: 待更新的版本ID
+        :param _VersionId: 待更新的版本ID
         :type VersionId: str
-        :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :param _TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
         :type TemplateUrl: str
-        :param VersionName: 版本名称，不得超过60个字符
+        :param _VersionName: 版本名称，不得超过60个字符
         :type VersionName: str
-        :param Description: 版本描述，不得超过200个字符
+        :param _Description: 版本描述，不得超过200个字符
         :type Description: str
         """
-        self.VersionId = None
-        self.TemplateUrl = None
-        self.VersionName = None
-        self.Description = None
+        self._VersionId = None
+        self._TemplateUrl = None
+        self._VersionName = None
+        self._Description = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def TemplateUrl(self):
+        return self._TemplateUrl
+
+    @TemplateUrl.setter
+    def TemplateUrl(self, TemplateUrl):
+        self._TemplateUrl = TemplateUrl
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
-        self.TemplateUrl = params.get("TemplateUrl")
-        self.VersionName = params.get("VersionName")
-        self.Description = params.get("Description")
+        self._VersionId = params.get("VersionId")
+        self._TemplateUrl = params.get("TemplateUrl")
+        self._VersionName = params.get("VersionName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -878,14 +1550,22 @@ class UpdateStackVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class VersionInfo(AbstractModel):
@@ -895,38 +1575,87 @@ class VersionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: 版本ID
+        :param _VersionId: 版本ID
         :type VersionId: str
-        :param VersionName: 版本名称
+        :param _VersionName: 版本名称
         :type VersionName: str
-        :param Description: 版本描述
+        :param _Description: 版本描述
         :type Description: str
-        :param StackId: 资源栈ID
+        :param _StackId: 资源栈ID
         :type StackId: str
-        :param Status: 版本状态
+        :param _Status: 版本状态
         :type Status: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.VersionId = None
-        self.VersionName = None
-        self.Description = None
-        self.StackId = None
-        self.Status = None
-        self.CreateTime = None
+        self._VersionId = None
+        self._VersionName = None
+        self._Description = None
+        self._StackId = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StackId(self):
+        return self._StackId
+
+    @StackId.setter
+    def StackId(self, StackId):
+        self._StackId = StackId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
-        self.VersionName = params.get("VersionName")
-        self.Description = params.get("Description")
-        self.StackId = params.get("StackId")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
+        self._VersionId = params.get("VersionId")
+        self._VersionName = params.get("VersionName")
+        self._Description = params.get("Description")
+        self._StackId = params.get("StackId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

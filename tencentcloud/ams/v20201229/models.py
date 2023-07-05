@@ -25,95 +25,200 @@ class AudioResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HitFlag: 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
+        :param _HitFlag: 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
+        :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        :param _Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
+        :param _Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param Url: 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
+        :param _Url: 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param Duration: 该字段用于返回音频文件的时长，单位为秒。
+        :param _Duration: 该字段用于返回音频文件的时长，单位为秒。
         :type Duration: str
-        :param Extra: 该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。
+        :param _Extra: 该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。
         :type Extra: str
-        :param TextResults: 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        :param _TextResults: 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :type TextResults: list of AudioResultDetailTextResult
-        :param MoanResults: 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
+        :param _MoanResults: 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
         :type MoanResults: list of AudioResultDetailMoanResult
-        :param LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        :param _LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :type LanguageResults: list of AudioResultDetailLanguageResult
-        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
-        :param RecognitionResults: 识别类标签结果信息列表
+        :param _RecognitionResults: 识别类标签结果信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecognitionResults: list of RecognitionResult
         """
-        self.HitFlag = None
-        self.Label = None
-        self.Suggestion = None
-        self.Score = None
-        self.Text = None
-        self.Url = None
-        self.Duration = None
-        self.Extra = None
-        self.TextResults = None
-        self.MoanResults = None
-        self.LanguageResults = None
-        self.SubLabel = None
-        self.RecognitionResults = None
+        self._HitFlag = None
+        self._Label = None
+        self._Suggestion = None
+        self._Score = None
+        self._Text = None
+        self._Url = None
+        self._Duration = None
+        self._Extra = None
+        self._TextResults = None
+        self._MoanResults = None
+        self._LanguageResults = None
+        self._SubLabel = None
+        self._RecognitionResults = None
+
+    @property
+    def HitFlag(self):
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def TextResults(self):
+        return self._TextResults
+
+    @TextResults.setter
+    def TextResults(self, TextResults):
+        self._TextResults = TextResults
+
+    @property
+    def MoanResults(self):
+        return self._MoanResults
+
+    @MoanResults.setter
+    def MoanResults(self, MoanResults):
+        self._MoanResults = MoanResults
+
+    @property
+    def LanguageResults(self):
+        return self._LanguageResults
+
+    @LanguageResults.setter
+    def LanguageResults(self, LanguageResults):
+        self._LanguageResults = LanguageResults
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def RecognitionResults(self):
+        return self._RecognitionResults
+
+    @RecognitionResults.setter
+    def RecognitionResults(self, RecognitionResults):
+        self._RecognitionResults = RecognitionResults
 
 
     def _deserialize(self, params):
-        self.HitFlag = params.get("HitFlag")
-        self.Label = params.get("Label")
-        self.Suggestion = params.get("Suggestion")
-        self.Score = params.get("Score")
-        self.Text = params.get("Text")
-        self.Url = params.get("Url")
-        self.Duration = params.get("Duration")
-        self.Extra = params.get("Extra")
+        self._HitFlag = params.get("HitFlag")
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        self._Score = params.get("Score")
+        self._Text = params.get("Text")
+        self._Url = params.get("Url")
+        self._Duration = params.get("Duration")
+        self._Extra = params.get("Extra")
         if params.get("TextResults") is not None:
-            self.TextResults = []
+            self._TextResults = []
             for item in params.get("TextResults"):
                 obj = AudioResultDetailTextResult()
                 obj._deserialize(item)
-                self.TextResults.append(obj)
+                self._TextResults.append(obj)
         if params.get("MoanResults") is not None:
-            self.MoanResults = []
+            self._MoanResults = []
             for item in params.get("MoanResults"):
                 obj = AudioResultDetailMoanResult()
                 obj._deserialize(item)
-                self.MoanResults.append(obj)
+                self._MoanResults.append(obj)
         if params.get("LanguageResults") is not None:
-            self.LanguageResults = []
+            self._LanguageResults = []
             for item in params.get("LanguageResults"):
                 obj = AudioResultDetailLanguageResult()
                 obj._deserialize(item)
-                self.LanguageResults.append(obj)
-        self.SubLabel = params.get("SubLabel")
+                self._LanguageResults.append(obj)
+        self._SubLabel = params.get("SubLabel")
         if params.get("RecognitionResults") is not None:
-            self.RecognitionResults = []
+            self._RecognitionResults = []
             for item in params.get("RecognitionResults"):
                 obj = RecognitionResult()
                 obj._deserialize(item)
-                self.RecognitionResults.append(obj)
+                self._RecognitionResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -126,39 +231,80 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 该字段用于返回对应的语言种类信息。
+        :param _Label: 该字段用于返回对应的语言种类信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
+        :param _Score: 该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param StartTime: 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
+        :param _StartTime: 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
-        :param EndTime: 该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
+        :param _EndTime: 该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
-        :param SubLabelCode: *内测中，敬请期待*
+        :param _SubLabelCode: *内测中，敬请期待*
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabelCode: str
         """
-        self.Label = None
-        self.Score = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SubLabelCode = None
+        self._Label = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubLabelCode = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubLabelCode(self):
+        return self._SubLabelCode
+
+    @SubLabelCode.setter
+    def SubLabelCode(self, SubLabelCode):
+        self._SubLabelCode = SubLabelCode
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Score = params.get("Score")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SubLabelCode = params.get("SubLabelCode")
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubLabelCode = params.get("SubLabelCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -171,44 +317,101 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
+        :param _Label: 该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
+        :param _Score: 该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
         :type Score: int
-        :param StartTime: 该字段用于返回对应呻吟标签的片段在音频文件内的开始时间，单位为秒。
+        :param _StartTime: 该字段用于返回对应呻吟标签的片段在音频文件内的开始时间，单位为秒。
         :type StartTime: float
-        :param EndTime: 该字段用于返回对应呻吟标签的片段在音频文件内的结束时间，单位为秒。
+        :param _EndTime: 该字段用于返回对应呻吟标签的片段在音频文件内的结束时间，单位为秒。
         :type EndTime: float
-        :param SubLabelCode: *内测中，敬请期待*
+        :param _SubLabelCode: *内测中，敬请期待*
         :type SubLabelCode: str
-        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
-        :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :type Suggestion: str
         """
-        self.Label = None
-        self.Score = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SubLabelCode = None
-        self.SubLabel = None
-        self.Suggestion = None
+        self._Label = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubLabelCode = None
+        self._SubLabel = None
+        self._Suggestion = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubLabelCode(self):
+        return self._SubLabelCode
+
+    @SubLabelCode.setter
+    def SubLabelCode(self, SubLabelCode):
+        self._SubLabelCode = SubLabelCode
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Score = params.get("Score")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SubLabelCode = params.get("SubLabelCode")
-        self.SubLabel = params.get("SubLabel")
-        self.Suggestion = params.get("Suggestion")
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubLabelCode = params.get("SubLabelCode")
+        self._SubLabel = params.get("SubLabel")
+        self._Suggestion = params.get("Suggestion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -221,34 +424,67 @@ class AudioResultDetailSpeakerResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 该字段用于返回检测结果需要检测的内容类型。
+        :param _Label: 该字段用于返回检测结果需要检测的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
+        :param _Score: 该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param StartTime: 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
+        :param _StartTime: 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
-        :param EndTime: 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
+        :param _EndTime: 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
         """
-        self.Label = None
-        self.Score = None
-        self.StartTime = None
-        self.EndTime = None
+        self._Label = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Score = params.get("Score")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -261,54 +497,119 @@ class AudioResultDetailTextResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Keywords: 该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
+        :param _Keywords: 该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param LibId: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
+        :param _LibId: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param LibName: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
+        :param _LibName: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
-        :param Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        :param _Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
+        :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param LibType: 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+        :param _LibType: 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
         :type LibType: int
-        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
-        self.Label = None
-        self.Keywords = None
-        self.LibId = None
-        self.LibName = None
-        self.Score = None
-        self.Suggestion = None
-        self.LibType = None
-        self.SubLabel = None
+        self._Label = None
+        self._Keywords = None
+        self._LibId = None
+        self._LibName = None
+        self._Score = None
+        self._Suggestion = None
+        self._LibType = None
+        self._SubLabel = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def LibId(self):
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def LibType(self):
+        return self._LibType
+
+    @LibType.setter
+    def LibType(self, LibType):
+        self._LibType = LibType
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Keywords = params.get("Keywords")
-        self.LibId = params.get("LibId")
-        self.LibName = params.get("LibName")
-        self.Score = params.get("Score")
-        self.Suggestion = params.get("Suggestion")
-        self.LibType = params.get("LibType")
-        self.SubLabel = params.get("SubLabel")
+        self._Label = params.get("Label")
+        self._Keywords = params.get("Keywords")
+        self._LibId = params.get("LibId")
+        self._LibName = params.get("LibName")
+        self._Score = params.get("Score")
+        self._Suggestion = params.get("Suggestion")
+        self._LibType = params.get("LibType")
+        self._SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -321,26 +622,43 @@ class AudioSegments(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OffsetTime: 该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
+        :param _OffsetTime: 该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetTime: str
-        :param Result: 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
+        :param _Result: 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ams.v20201229.models.AudioResult`
         """
-        self.OffsetTime = None
-        self.Result = None
+        self._OffsetTime = None
+        self._Result = None
+
+    @property
+    def OffsetTime(self):
+        return self._OffsetTime
+
+    @OffsetTime.setter
+    def OffsetTime(self, OffsetTime):
+        self._OffsetTime = OffsetTime
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
 
     def _deserialize(self, params):
-        self.OffsetTime = params.get("OffsetTime")
+        self._OffsetTime = params.get("OffsetTime")
         if params.get("Result") is not None:
-            self.Result = AudioResult()
-            self.Result._deserialize(params.get("Result"))
+            self._Result = AudioResult()
+            self._Result._deserialize(params.get("Result"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -354,26 +672,51 @@ class BucketInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bucket: 该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
+        :param _Bucket: 该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
         :type Bucket: str
-        :param Region: 该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
+        :param _Region: 该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
         :type Region: str
-        :param Object: 该字段用于标识腾讯云对象存储的对象Key,对象z作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
+        :param _Object: 该字段用于标识腾讯云对象存储的对象Key,对象z作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
         :type Object: str
         """
-        self.Bucket = None
-        self.Region = None
-        self.Object = None
+        self._Bucket = None
+        self._Region = None
+        self._Object = None
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
 
 
     def _deserialize(self, params):
-        self.Bucket = params.get("Bucket")
-        self.Region = params.get("Region")
-        self.Object = params.get("Object")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._Object = params.get("Object")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -386,18 +729,27 @@ class CancelTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
+        :param _TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
         :type TaskId: str
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -410,14 +762,22 @@ class CancelTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAudioModerationSyncTaskRequest(AbstractModel):
@@ -427,41 +787,90 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizType: Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+        :param _BizType: Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
         :type BizType: str
-        :param DataId: 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        :param _DataId: 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
         :type DataId: str
-        :param FileFormat: 音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。
+        :param _FileFormat: 音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。
         :type FileFormat: str
-        :param Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        :param _Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
         :type Name: str
-        :param FileContent: 数据Base64编码，短音频同步接口仅传入可音频内容；
+        :param _FileContent: 数据Base64编码，短音频同步接口仅传入可音频内容；
 支持范围：文件大小不能超过5M，时长不可超过60s；
 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。
         :type FileContent: str
-        :param FileUrl: 音频资源访问链接，与FileContent参数必须二选一输入；
+        :param _FileUrl: 音频资源访问链接，与FileContent参数必须二选一输入；
 支持范围及格式：同FileContent；
         :type FileUrl: str
         """
-        self.BizType = None
-        self.DataId = None
-        self.FileFormat = None
-        self.Name = None
-        self.FileContent = None
-        self.FileUrl = None
+        self._BizType = None
+        self._DataId = None
+        self._FileFormat = None
+        self._Name = None
+        self._FileContent = None
+        self._FileUrl = None
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def FileFormat(self):
+        return self._FileFormat
+
+    @FileFormat.setter
+    def FileFormat(self, FileFormat):
+        self._FileFormat = FileFormat
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
 
 
     def _deserialize(self, params):
-        self.BizType = params.get("BizType")
-        self.DataId = params.get("DataId")
-        self.FileFormat = params.get("FileFormat")
-        self.Name = params.get("Name")
-        self.FileContent = params.get("FileContent")
-        self.FileUrl = params.get("FileUrl")
+        self._BizType = params.get("BizType")
+        self._DataId = params.get("DataId")
+        self._FileFormat = params.get("FileFormat")
+        self._Name = params.get("Name")
+        self._FileContent = params.get("FileContent")
+        self._FileUrl = params.get("FileUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -474,107 +883,219 @@ class CreateAudioModerationSyncTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 请求接口时传入的数据标识
+        :param _DataId: 请求接口时传入的数据标识
         :type DataId: str
-        :param Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        :param _Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param BizType: Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+        :param _BizType: Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
         :type BizType: str
-        :param Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
+        :param _Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
 Pass 建议通过；
 Reveiw 建议复审；
 Block 建议屏蔽；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Label: 智能审核服务对于内容违规类型的判断，详见返回值列表
+        :param _Label: 智能审核服务对于内容违规类型的判断，详见返回值列表
 如：Label：Porn（色情）；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param AsrText: 音频文本，备注：这里的文本最大只返回前1000个字符
+        :param _AsrText: 音频文本，备注：这里的文本最大只返回前1000个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrText: str
-        :param TextResults: 音频中对话内容审核结果；
+        :param _TextResults: 音频中对话内容审核结果；
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextResults: list of TextResult
-        :param MoanResults: 音频中低俗内容审核结果；
+        :param _MoanResults: 音频中低俗内容审核结果；
 注意：此字段可能返回 null，表示取不到有效值。
         :type MoanResults: list of MoanResult
-        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
-        :param LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        :param _LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LanguageResults: list of AudioResultDetailLanguageResult
-        :param SpeakerResults: 音频中说话人识别返回结果；
+        :param _SpeakerResults: 音频中说话人识别返回结果；
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpeakerResults: list of AudioResultDetailSpeakerResult
-        :param RecognitionResults: 识别类标签结果信息列表
+        :param _RecognitionResults: 识别类标签结果信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecognitionResults: list of RecognitionResult
-        :param Duration: 识别音频时长，单位为毫秒；
+        :param _Duration: 识别音频时长，单位为毫秒；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DataId = None
-        self.Name = None
-        self.BizType = None
-        self.Suggestion = None
-        self.Label = None
-        self.AsrText = None
-        self.TextResults = None
-        self.MoanResults = None
-        self.SubLabel = None
-        self.LanguageResults = None
-        self.SpeakerResults = None
-        self.RecognitionResults = None
-        self.Duration = None
-        self.RequestId = None
+        self._DataId = None
+        self._Name = None
+        self._BizType = None
+        self._Suggestion = None
+        self._Label = None
+        self._AsrText = None
+        self._TextResults = None
+        self._MoanResults = None
+        self._SubLabel = None
+        self._LanguageResults = None
+        self._SpeakerResults = None
+        self._RecognitionResults = None
+        self._Duration = None
+        self._RequestId = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def AsrText(self):
+        return self._AsrText
+
+    @AsrText.setter
+    def AsrText(self, AsrText):
+        self._AsrText = AsrText
+
+    @property
+    def TextResults(self):
+        return self._TextResults
+
+    @TextResults.setter
+    def TextResults(self, TextResults):
+        self._TextResults = TextResults
+
+    @property
+    def MoanResults(self):
+        return self._MoanResults
+
+    @MoanResults.setter
+    def MoanResults(self, MoanResults):
+        self._MoanResults = MoanResults
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def LanguageResults(self):
+        return self._LanguageResults
+
+    @LanguageResults.setter
+    def LanguageResults(self, LanguageResults):
+        self._LanguageResults = LanguageResults
+
+    @property
+    def SpeakerResults(self):
+        return self._SpeakerResults
+
+    @SpeakerResults.setter
+    def SpeakerResults(self, SpeakerResults):
+        self._SpeakerResults = SpeakerResults
+
+    @property
+    def RecognitionResults(self):
+        return self._RecognitionResults
+
+    @RecognitionResults.setter
+    def RecognitionResults(self, RecognitionResults):
+        self._RecognitionResults = RecognitionResults
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.Name = params.get("Name")
-        self.BizType = params.get("BizType")
-        self.Suggestion = params.get("Suggestion")
-        self.Label = params.get("Label")
-        self.AsrText = params.get("AsrText")
+        self._DataId = params.get("DataId")
+        self._Name = params.get("Name")
+        self._BizType = params.get("BizType")
+        self._Suggestion = params.get("Suggestion")
+        self._Label = params.get("Label")
+        self._AsrText = params.get("AsrText")
         if params.get("TextResults") is not None:
-            self.TextResults = []
+            self._TextResults = []
             for item in params.get("TextResults"):
                 obj = TextResult()
                 obj._deserialize(item)
-                self.TextResults.append(obj)
+                self._TextResults.append(obj)
         if params.get("MoanResults") is not None:
-            self.MoanResults = []
+            self._MoanResults = []
             for item in params.get("MoanResults"):
                 obj = MoanResult()
                 obj._deserialize(item)
-                self.MoanResults.append(obj)
-        self.SubLabel = params.get("SubLabel")
+                self._MoanResults.append(obj)
+        self._SubLabel = params.get("SubLabel")
         if params.get("LanguageResults") is not None:
-            self.LanguageResults = []
+            self._LanguageResults = []
             for item in params.get("LanguageResults"):
                 obj = AudioResultDetailLanguageResult()
                 obj._deserialize(item)
-                self.LanguageResults.append(obj)
+                self._LanguageResults.append(obj)
         if params.get("SpeakerResults") is not None:
-            self.SpeakerResults = []
+            self._SpeakerResults = []
             for item in params.get("SpeakerResults"):
                 obj = AudioResultDetailSpeakerResult()
                 obj._deserialize(item)
-                self.SpeakerResults.append(obj)
+                self._SpeakerResults.append(obj)
         if params.get("RecognitionResults") is not None:
-            self.RecognitionResults = []
+            self._RecognitionResults = []
             for item in params.get("RecognitionResults"):
                 obj = RecognitionResult()
                 obj._deserialize(item)
-                self.RecognitionResults.append(obj)
-        self.Duration = params.get("Duration")
-        self.RequestId = params.get("RequestId")
+                self._RecognitionResults.append(obj)
+        self._Duration = params.get("Duration")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAudioModerationTaskRequest(AbstractModel):
@@ -584,39 +1105,80 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tasks: 该字段表示输入的音频审核任务信息，具体输入内容请参见TaskInput数据结构的详细描述。<br> 备注：最多同时可创建**10个任务**。
+        :param _Tasks: 该字段表示输入的音频审核任务信息，具体输入内容请参见TaskInput数据结构的详细描述。<br> 备注：最多同时可创建**10个任务**。
         :type Tasks: list of TaskInput
-        :param BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+        :param _BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :type BizType: str
-        :param Type: 该字段表示输入的音频审核类型，取值为：**AUDIO**（点播音频）和 **LIVE_AUDIO**（直播音频），默认值为AUDIO。
+        :param _Type: 该字段表示输入的音频审核类型，取值为：**AUDIO**（点播音频）和 **LIVE_AUDIO**（直播音频），默认值为AUDIO。
         :type Type: str
-        :param Seed: 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53263)。
+        :param _Seed: 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53263)。
         :type Seed: str
-        :param CallbackUrl: 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53257#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)
+        :param _CallbackUrl: 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53257#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)
         :type CallbackUrl: str
         """
-        self.Tasks = None
-        self.BizType = None
-        self.Type = None
-        self.Seed = None
-        self.CallbackUrl = None
+        self._Tasks = None
+        self._BizType = None
+        self._Type = None
+        self._Seed = None
+        self._CallbackUrl = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Seed(self):
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
 
 
     def _deserialize(self, params):
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = TaskInput()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.BizType = params.get("BizType")
-        self.Type = params.get("Type")
-        self.Seed = params.get("Seed")
-        self.CallbackUrl = params.get("CallbackUrl")
+                self._Tasks.append(obj)
+        self._BizType = params.get("BizType")
+        self._Type = params.get("Type")
+        self._Seed = params.get("Seed")
+        self._CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -629,24 +1191,40 @@ class CreateAudioModerationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Results: 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
+        :param _Results: 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Results = None
-        self.RequestId = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = TaskResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskDetailRequest(AbstractModel):
@@ -656,23 +1234,40 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        :param _TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
 <br>备注：查询接口单次最大查询量为**20条每次**。
         :type TaskId: str
-        :param ShowAllSegments: 该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
+        :param _ShowAllSegments: 该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
         :type ShowAllSegments: bool
         """
-        self.TaskId = None
-        self.ShowAllSegments = None
+        self._TaskId = None
+        self._ShowAllSegments = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ShowAllSegments(self):
+        return self._ShowAllSegments
+
+    @ShowAllSegments.setter
+    def ShowAllSegments(self, ShowAllSegments):
+        self._ShowAllSegments = ShowAllSegments
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.ShowAllSegments = params.get("ShowAllSegments")
+        self._TaskId = params.get("TaskId")
+        self._ShowAllSegments = params.get("ShowAllSegments")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -685,107 +1280,243 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        :param _TaskId: 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param DataId: 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
+        :param _DataId: 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        :param _BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
-        :param Name: 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+        :param _Name: 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Status: 该字段用于返回所查询内容的任务状态。
+        :param _Status: 该字段用于返回所查询内容的任务状态。
 <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
+        :param _Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
-        :param InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+        :param _InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
-        :param AudioText: 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
+        :param _AudioText: 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioText: str
-        :param AudioSegments: 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
+        :param _AudioSegments: 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
-        :param ErrorType: 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
+        :param _ErrorType: 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorType: str
-        :param ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+        :param _ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDescription: str
-        :param CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        :param _CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+        :param _Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.DataId = None
-        self.BizType = None
-        self.Name = None
-        self.Status = None
-        self.Type = None
-        self.Suggestion = None
-        self.Labels = None
-        self.InputInfo = None
-        self.AudioText = None
-        self.AudioSegments = None
-        self.ErrorType = None
-        self.ErrorDescription = None
-        self.CreatedAt = None
-        self.UpdatedAt = None
-        self.Label = None
-        self.RequestId = None
+        self._TaskId = None
+        self._DataId = None
+        self._BizType = None
+        self._Name = None
+        self._Status = None
+        self._Type = None
+        self._Suggestion = None
+        self._Labels = None
+        self._InputInfo = None
+        self._AudioText = None
+        self._AudioSegments = None
+        self._ErrorType = None
+        self._ErrorDescription = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._Label = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def InputInfo(self):
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def AudioText(self):
+        return self._AudioText
+
+    @AudioText.setter
+    def AudioText(self, AudioText):
+        self._AudioText = AudioText
+
+    @property
+    def AudioSegments(self):
+        return self._AudioSegments
+
+    @AudioSegments.setter
+    def AudioSegments(self, AudioSegments):
+        self._AudioSegments = AudioSegments
+
+    @property
+    def ErrorType(self):
+        return self._ErrorType
+
+    @ErrorType.setter
+    def ErrorType(self, ErrorType):
+        self._ErrorType = ErrorType
+
+    @property
+    def ErrorDescription(self):
+        return self._ErrorDescription
+
+    @ErrorDescription.setter
+    def ErrorDescription(self, ErrorDescription):
+        self._ErrorDescription = ErrorDescription
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.DataId = params.get("DataId")
-        self.BizType = params.get("BizType")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.Type = params.get("Type")
-        self.Suggestion = params.get("Suggestion")
+        self._TaskId = params.get("TaskId")
+        self._DataId = params.get("DataId")
+        self._BizType = params.get("BizType")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._Suggestion = params.get("Suggestion")
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = TaskLabel()
                 obj._deserialize(item)
-                self.Labels.append(obj)
+                self._Labels.append(obj)
         if params.get("InputInfo") is not None:
-            self.InputInfo = InputInfo()
-            self.InputInfo._deserialize(params.get("InputInfo"))
-        self.AudioText = params.get("AudioText")
+            self._InputInfo = InputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._AudioText = params.get("AudioText")
         if params.get("AudioSegments") is not None:
-            self.AudioSegments = []
+            self._AudioSegments = []
             for item in params.get("AudioSegments"):
                 obj = AudioSegments()
                 obj._deserialize(item)
-                self.AudioSegments.append(obj)
-        self.ErrorType = params.get("ErrorType")
-        self.ErrorDescription = params.get("ErrorDescription")
-        self.CreatedAt = params.get("CreatedAt")
-        self.UpdatedAt = params.get("UpdatedAt")
-        self.Label = params.get("Label")
-        self.RequestId = params.get("RequestId")
+                self._AudioSegments.append(obj)
+        self._ErrorType = params.get("ErrorType")
+        self._ErrorDescription = params.get("ErrorDescription")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._Label = params.get("Label")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTasksRequest(AbstractModel):
@@ -795,36 +1526,77 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
+        :param _Limit: 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
         :type Limit: int
-        :param Filter: 该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
+        :param _Filter: 该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
         :type Filter: :class:`tencentcloud.ams.v20201229.models.TaskFilter`
-        :param PageToken: 该参数表示翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
+        :param _PageToken: 该参数表示翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
         :type PageToken: str
-        :param StartTime: 该参数表示任务列表的开始时间，格式为ISO8601标准的时间戳。**默认值为最近3天**，若传入该参数，则在这一时间到EndTime之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
+        :param _StartTime: 该参数表示任务列表的开始时间，格式为ISO8601标准的时间戳。**默认值为最近3天**，若传入该参数，则在这一时间到EndTime之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :type StartTime: str
-        :param EndTime: 该参数表示任务列表的结束时间，格式为ISO8601标准的时间戳。**默认值为空**，若传入该参数，则在这StartTime到这一时间之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
+        :param _EndTime: 该参数表示任务列表的结束时间，格式为ISO8601标准的时间戳。**默认值为空**，若传入该参数，则在这StartTime到这一时间之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :type EndTime: str
         """
-        self.Limit = None
-        self.Filter = None
-        self.PageToken = None
-        self.StartTime = None
-        self.EndTime = None
+        self._Limit = None
+        self._Filter = None
+        self._PageToken = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def PageToken(self):
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
+        self._Limit = params.get("Limit")
         if params.get("Filter") is not None:
-            self.Filter = TaskFilter()
-            self.Filter._deserialize(params.get("Filter"))
-        self.PageToken = params.get("PageToken")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+            self._Filter = TaskFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._PageToken = params.get("PageToken")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -837,34 +1609,66 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 该字段用于返回当前查询的任务总量，格式为int字符串。
+        :param _Total: 该字段用于返回当前查询的任务总量，格式为int字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: str
-        :param Data: 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
+        :param _Data: 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TaskData
-        :param PageToken: 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
+        :param _PageToken: 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Total = None
-        self.Data = None
-        self.PageToken = None
-        self.RequestId = None
+        self._Total = None
+        self._Data = None
+        self._PageToken = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def PageToken(self):
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = TaskData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.PageToken = params.get("PageToken")
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._PageToken = params.get("PageToken")
+        self._RequestId = params.get("RequestId")
 
 
 class InputInfo(AbstractModel):
@@ -874,31 +1678,56 @@ class InputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
+        :param _Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
+        :param _Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
+        :param _BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketInfo: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
         """
-        self.Type = None
-        self.Url = None
-        self.BucketInfo = None
+        self._Type = None
+        self._Url = None
+        self._BucketInfo = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def BucketInfo(self):
+        return self._BucketInfo
+
+    @BucketInfo.setter
+    def BucketInfo(self, BucketInfo):
+        self._BucketInfo = BucketInfo
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Url = params.get("Url")
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
         if params.get("BucketInfo") is not None:
-            self.BucketInfo = BucketInfo()
-            self.BucketInfo._deserialize(params.get("BucketInfo"))
+            self._BucketInfo = BucketInfo()
+            self._BucketInfo._deserialize(params.get("BucketInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -911,34 +1740,75 @@ class MediaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codecs: 该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
+        :param _Codecs: 该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
         :type Codecs: str
-        :param Duration: 该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为秒。**默认值为15秒**，支持用户自定义配置。
+        :param _Duration: 该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为秒。**默认值为15秒**，支持用户自定义配置。
         :type Duration: int
-        :param Width: *内测中，敬请期待*
+        :param _Width: *内测中，敬请期待*
         :type Width: int
-        :param Height: *内测中，敬请期待*
+        :param _Height: *内测中，敬请期待*
         :type Height: int
-        :param Thumbnail: *内测中，敬请期待*
+        :param _Thumbnail: *内测中，敬请期待*
         :type Thumbnail: str
         """
-        self.Codecs = None
-        self.Duration = None
-        self.Width = None
-        self.Height = None
-        self.Thumbnail = None
+        self._Codecs = None
+        self._Duration = None
+        self._Width = None
+        self._Height = None
+        self._Thumbnail = None
+
+    @property
+    def Codecs(self):
+        return self._Codecs
+
+    @Codecs.setter
+    def Codecs(self, Codecs):
+        self._Codecs = Codecs
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Thumbnail(self):
+        return self._Thumbnail
+
+    @Thumbnail.setter
+    def Thumbnail(self, Thumbnail):
+        self._Thumbnail = Thumbnail
 
 
     def _deserialize(self, params):
-        self.Codecs = params.get("Codecs")
-        self.Duration = params.get("Duration")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.Thumbnail = params.get("Thumbnail")
+        self._Codecs = params.get("Codecs")
+        self._Duration = params.get("Duration")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Thumbnail = params.get("Thumbnail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -951,43 +1821,92 @@ class MoanResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表改音频中无呻吟/娇喘相关违规内容；
+        :param _Label: 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表改音频中无呻吟/娇喘相关违规内容；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+        :param _Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 （如：Moan 99，则该样本属于呻吟/娇喘的置信度非常高。）
         :type Score: int
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+        :param _Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
-        :param StartTime: 违规事件开始时间，单位为秒（s）；
+        :param _StartTime: 违规事件开始时间，单位为秒（s）；
         :type StartTime: float
-        :param EndTime: 违规事件结束时间，单位为秒（s）；
+        :param _EndTime: 违规事件结束时间，单位为秒（s）；
         :type EndTime: float
-        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
-        self.Label = None
-        self.Score = None
-        self.Suggestion = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SubLabel = None
+        self._Label = None
+        self._Score = None
+        self._Suggestion = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubLabel = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Score = params.get("Score")
-        self.Suggestion = params.get("Suggestion")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SubLabel = params.get("SubLabel")
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._Suggestion = params.get("Suggestion")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1000,29 +1919,46 @@ class RecognitionResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 可能的取值有：Teenager 、Gender
+        :param _Label: 可能的取值有：Teenager 、Gender
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Tags: 识别标签列表
+        :param _Tags: 识别标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
-        self.Label = None
-        self.Tags = None
+        self._Label = None
+        self._Tags = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
+        self._Label = params.get("Label")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1035,28 +1971,53 @@ class StorageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)；该字段应当与传入的访问类型相对应，可用于强校验并方便系统快速识别访问地址；若不传入此参数，则默认值为URL，此时系统将自动判定访问地址类型。
+        :param _Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)；该字段应当与传入的访问类型相对应，可用于强校验并方便系统快速识别访问地址；若不传入此参数，则默认值为URL，此时系统将自动判定访问地址类型。
         :type Type: str
-        :param Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空，该参数与BucketInfo参数须传入其中之一
+        :param _Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空，该参数与BucketInfo参数须传入其中之一
         :type Url: str
-        :param BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空，该参数与Url参数须传入其中之一。
+        :param _BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空，该参数与Url参数须传入其中之一。
         :type BucketInfo: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
         """
-        self.Type = None
-        self.Url = None
-        self.BucketInfo = None
+        self._Type = None
+        self._Url = None
+        self._BucketInfo = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def BucketInfo(self):
+        return self._BucketInfo
+
+    @BucketInfo.setter
+    def BucketInfo(self, BucketInfo):
+        self._BucketInfo = BucketInfo
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Url = params.get("Url")
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
         if params.get("BucketInfo") is not None:
-            self.BucketInfo = BucketInfo()
-            self.BucketInfo._deserialize(params.get("BucketInfo"))
+            self._BucketInfo = BucketInfo()
+            self._BucketInfo._deserialize(params.get("BucketInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1069,36 +2030,69 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 根据Label字段确定具体名称：
+        :param _Name: 根据Label字段确定具体名称：
 当Label 为Teenager 时 Name可能取值有：Teenager 
 当Label 为Gender 时 Name可能取值有：Male 、Female
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Score: 置信分：0～100，数值越大表示置信度越高
+        :param _Score: 置信分：0～100，数值越大表示置信度越高
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param StartTime: 识别开始偏移时间，单位：毫秒
+        :param _StartTime: 识别开始偏移时间，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
-        :param EndTime: 识别结束偏移时间，单位：毫秒
+        :param _EndTime: 识别结束偏移时间，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
         """
-        self.Name = None
-        self.Score = None
-        self.StartTime = None
-        self.EndTime = None
+        self._Name = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Score = params.get("Score")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._Name = params.get("Name")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1111,74 +2105,163 @@ class TaskData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
+        :param _DataId: 该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
+        :param _TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
         :type TaskId: str
-        :param Status: 该字段用于返回所查询内容的任务状态。
+        :param _Status: 该字段用于返回所查询内容的任务状态。
 <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
         :type Status: str
-        :param Name: 该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
+        :param _Name: 该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        :param _BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
-        :param Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
+        :param _Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param MediaInfo: 输入信息
+        :param _MediaInfo: 输入信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfo: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
-        :param Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
-        :param CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        :param _CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
         :type CreatedAt: str
-        :param UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         """
-        self.DataId = None
-        self.TaskId = None
-        self.Status = None
-        self.Name = None
-        self.BizType = None
-        self.Type = None
-        self.Suggestion = None
-        self.MediaInfo = None
-        self.Labels = None
-        self.CreatedAt = None
-        self.UpdatedAt = None
+        self._DataId = None
+        self._TaskId = None
+        self._Status = None
+        self._Name = None
+        self._BizType = None
+        self._Type = None
+        self._Suggestion = None
+        self._MediaInfo = None
+        self._Labels = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def MediaInfo(self):
+        return self._MediaInfo
+
+    @MediaInfo.setter
+    def MediaInfo(self, MediaInfo):
+        self._MediaInfo = MediaInfo
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.TaskId = params.get("TaskId")
-        self.Status = params.get("Status")
-        self.Name = params.get("Name")
-        self.BizType = params.get("BizType")
-        self.Type = params.get("Type")
-        self.Suggestion = params.get("Suggestion")
+        self._DataId = params.get("DataId")
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        self._BizType = params.get("BizType")
+        self._Type = params.get("Type")
+        self._Suggestion = params.get("Suggestion")
         if params.get("MediaInfo") is not None:
-            self.MediaInfo = MediaInfo()
-            self.MediaInfo._deserialize(params.get("MediaInfo"))
+            self._MediaInfo = MediaInfo()
+            self._MediaInfo._deserialize(params.get("MediaInfo"))
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = TaskLabel()
                 obj._deserialize(item)
-                self.Labels.append(obj)
-        self.CreatedAt = params.get("CreatedAt")
-        self.UpdatedAt = params.get("UpdatedAt")
+                self._Labels.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1191,30 +2274,63 @@ class TaskFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizType: 该字段用于传入任务对应的业务类型供筛选器进行筛选。Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与审核策略，调用前请确认正确的Biztype。Biztype仅为**数字、字母与下划线的组合**，长度为3-32个字符。<br>备注：在不传入该参数时筛选器默认不筛选业务类型。
+        :param _BizType: 该字段用于传入任务对应的业务类型供筛选器进行筛选。Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与审核策略，调用前请确认正确的Biztype。Biztype仅为**数字、字母与下划线的组合**，长度为3-32个字符。<br>备注：在不传入该参数时筛选器默认不筛选业务类型。
         :type BizType: str
-        :param Type: 该字段用于传入音频审核对应的任务类型供筛选器进行筛选，取值为：**VIDEO**（点播视频审核），**AUDIO**（点播音频审核）， **LIVE_VIDEO**（直播视频审核）, **LIVE_AUDIO**（直播音频审核）。<br>备注：在不传入该参数时筛选器默认不筛选任务类型。
+        :param _Type: 该字段用于传入音频审核对应的任务类型供筛选器进行筛选，取值为：**VIDEO**（点播视频审核），**AUDIO**（点播音频审核）， **LIVE_VIDEO**（直播视频审核）, **LIVE_AUDIO**（直播音频审核）。<br>备注：在不传入该参数时筛选器默认不筛选任务类型。
         :type Type: str
-        :param Suggestion: 该字段用于传入音频审核对应的建议操作供筛选器进行筛选，取值为：**Block**：建议屏蔽，**Review**：建议人工复审，**Pass**：建议通过。<br>备注：在不传入该参数时筛选器默认不筛选建议操作。
+        :param _Suggestion: 该字段用于传入音频审核对应的建议操作供筛选器进行筛选，取值为：**Block**：建议屏蔽，**Review**：建议人工复审，**Pass**：建议通过。<br>备注：在不传入该参数时筛选器默认不筛选建议操作。
         :type Suggestion: str
-        :param TaskStatus: 该字段用于传入审核任务的任务状态供筛选器进行筛选，取值为：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。<br>备注：在不传入该参数时筛选器默认不筛选任务状态。
+        :param _TaskStatus: 该字段用于传入审核任务的任务状态供筛选器进行筛选，取值为：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。<br>备注：在不传入该参数时筛选器默认不筛选任务状态。
         :type TaskStatus: str
         """
-        self.BizType = None
-        self.Type = None
-        self.Suggestion = None
-        self.TaskStatus = None
+        self._BizType = None
+        self._Type = None
+        self._Suggestion = None
+        self._TaskStatus = None
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
 
 
     def _deserialize(self, params):
-        self.BizType = params.get("BizType")
-        self.Type = params.get("Type")
-        self.Suggestion = params.get("Suggestion")
-        self.TaskStatus = params.get("TaskStatus")
+        self._BizType = params.get("BizType")
+        self._Type = params.get("Type")
+        self._Suggestion = params.get("Suggestion")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1227,28 +2343,53 @@ class TaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 选填参数，该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+        :param _DataId: 选填参数，该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
         :type DataId: str
-        :param Name: 选填参数，该字段表示音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
+        :param _Name: 选填参数，该字段表示音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
         :type Name: str
-        :param Input: 必填参数，该字段表示审核文件的访问参数，用于获取审核媒体文件，该参数内包括访问类型和访问地址。
+        :param _Input: 必填参数，该字段表示审核文件的访问参数，用于获取审核媒体文件，该参数内包括访问类型和访问地址。
         :type Input: :class:`tencentcloud.ams.v20201229.models.StorageInfo`
         """
-        self.DataId = None
-        self.Name = None
-        self.Input = None
+        self._DataId = None
+        self._Name = None
+        self._Input = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.Name = params.get("Name")
+        self._DataId = params.get("DataId")
+        self._Name = params.get("Name")
         if params.get("Input") is not None:
-            self.Input = StorageInfo()
-            self.Input._deserialize(params.get("Input"))
+            self._Input = StorageInfo()
+            self._Input._deserialize(params.get("Input"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1261,34 +2402,67 @@ class TaskLabel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: 该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+        :param _Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
-        self.Label = None
-        self.Suggestion = None
-        self.Score = None
-        self.SubLabel = None
+        self._Label = None
+        self._Suggestion = None
+        self._Score = None
+        self._SubLabel = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Suggestion = params.get("Suggestion")
-        self.Score = params.get("Score")
-        self.SubLabel = params.get("SubLabel")
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        self._Score = params.get("Score")
+        self._SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1301,34 +2475,67 @@ class TaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
+        :param _DataId: 该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
+        :param _TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param Code: 该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
+        :param _Code: 该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Message: **仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
+        :param _Message: **仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
-        self.DataId = None
-        self.TaskId = None
-        self.Code = None
-        self.Message = None
+        self._DataId = None
+        self._TaskId = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.TaskId = params.get("TaskId")
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._DataId = params.get("DataId")
+        self._TaskId = params.get("TaskId")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1341,63 +2548,128 @@ class TextResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        :param _Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及其他令人反感、不安全或不适宜的内容类型。
 
 如音频中无复杂类型「TextResults」的返回则代表改音频中无相关违规内容；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Keywords: 命中的关键词，为空则代表该违规内容出自于模型的判断；
+        :param _Keywords: 命中的关键词，为空则代表该违规内容出自于模型的判断；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param LibId: 命中关键词库的库标识；
+        :param _LibId: 命中关键词库的库标识；
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param LibName: 命中关键词库的名字；
+        :param _LibName: 命中关键词库的名字；
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
-        :param Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+        :param _Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 （如：Porn 99，则该样本属于色情的置信度非常高。）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+        :param _Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param LibType: 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
+        :param _LibType: 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
 
 1：自定义黑白库；
 
 2：自定义库；
         :type LibType: int
-        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
-        self.Label = None
-        self.Keywords = None
-        self.LibId = None
-        self.LibName = None
-        self.Score = None
-        self.Suggestion = None
-        self.LibType = None
-        self.SubLabel = None
+        self._Label = None
+        self._Keywords = None
+        self._LibId = None
+        self._LibName = None
+        self._Score = None
+        self._Suggestion = None
+        self._LibType = None
+        self._SubLabel = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def LibId(self):
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def LibType(self):
+        return self._LibType
+
+    @LibType.setter
+    def LibType(self, LibType):
+        self._LibType = LibType
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Keywords = params.get("Keywords")
-        self.LibId = params.get("LibId")
-        self.LibName = params.get("LibName")
-        self.Score = params.get("Score")
-        self.Suggestion = params.get("Suggestion")
-        self.LibType = params.get("LibType")
-        self.SubLabel = params.get("SubLabel")
+        self._Label = params.get("Label")
+        self._Keywords = params.get("Keywords")
+        self._LibId = params.get("LibId")
+        self._LibName = params.get("LibName")
+        self._Score = params.get("Score")
+        self._Suggestion = params.get("Suggestion")
+        self._LibType = params.get("LibType")
+        self._SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

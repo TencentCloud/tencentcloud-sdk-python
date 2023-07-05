@@ -25,26 +25,51 @@ class BunkZone(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
-        :param ZoneName: 点位名称
+        :param _ZoneName: 点位名称
         :type ZoneName: str
-        :param BunkCodes: 铺位编码
+        :param _BunkCodes: 铺位编码
         :type BunkCodes: str
         """
-        self.ZoneId = None
-        self.ZoneName = None
-        self.BunkCodes = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._BunkCodes = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def BunkCodes(self):
+        return self._BunkCodes
+
+    @BunkCodes.setter
+    def BunkCodes(self, BunkCodes):
+        self._BunkCodes = BunkCodes
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneName = params.get("ZoneName")
-        self.BunkCodes = params.get("BunkCodes")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._BunkCodes = params.get("BunkCodes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,33 +82,33 @@ class CameraConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param FloorId: 楼层ID
+        :param _FloorId: 楼层ID
         :type FloorId: int
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
-        :param CameraIp: 摄像头IP
+        :param _CameraIp: 摄像头IP
         :type CameraIp: str
-        :param CameraMac: 摄像头Mac
+        :param _CameraMac: 摄像头Mac
         :type CameraMac: str
-        :param CameraType: 摄像头类型:
+        :param _CameraType: 摄像头类型:
 1: 码流机
 2: AI相机
         :type CameraType: int
-        :param CameraFeature: 摄像头功能:
+        :param _CameraFeature: 摄像头功能:
 1: 人脸
 2: 人体
         :type CameraFeature: int
-        :param CameraState: 摄像头是否启用:
+        :param _CameraState: 摄像头是否启用:
 0: 下线
 1: 启用
         :type CameraState: int
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
-        :param ZoneType: 点位类型:
+        :param _ZoneType: 点位类型:
 1: 场门
 3: 层门
 5: 特殊区域
@@ -93,50 +118,163 @@ class CameraConfig(AbstractModel):
 11: 品类区
 12: 公共区
         :type ZoneType: int
-        :param Config: 配置
+        :param _Config: 配置
         :type Config: :class:`tencentcloud.ump.v20200918.models.Config`
-        :param Width: 宽
+        :param _Width: 宽
         :type Width: int
-        :param Height: 高
+        :param _Height: 高
         :type Height: int
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.FloorId = None
-        self.CameraId = None
-        self.CameraIp = None
-        self.CameraMac = None
-        self.CameraType = None
-        self.CameraFeature = None
-        self.CameraState = None
-        self.ZoneId = None
-        self.ZoneType = None
-        self.Config = None
-        self.Width = None
-        self.Height = None
+        self._GroupCode = None
+        self._MallId = None
+        self._FloorId = None
+        self._CameraId = None
+        self._CameraIp = None
+        self._CameraMac = None
+        self._CameraType = None
+        self._CameraFeature = None
+        self._CameraState = None
+        self._ZoneId = None
+        self._ZoneType = None
+        self._Config = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def FloorId(self):
+        return self._FloorId
+
+    @FloorId.setter
+    def FloorId(self, FloorId):
+        self._FloorId = FloorId
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def CameraIp(self):
+        return self._CameraIp
+
+    @CameraIp.setter
+    def CameraIp(self, CameraIp):
+        self._CameraIp = CameraIp
+
+    @property
+    def CameraMac(self):
+        return self._CameraMac
+
+    @CameraMac.setter
+    def CameraMac(self, CameraMac):
+        self._CameraMac = CameraMac
+
+    @property
+    def CameraType(self):
+        return self._CameraType
+
+    @CameraType.setter
+    def CameraType(self, CameraType):
+        self._CameraType = CameraType
+
+    @property
+    def CameraFeature(self):
+        return self._CameraFeature
+
+    @CameraFeature.setter
+    def CameraFeature(self, CameraFeature):
+        self._CameraFeature = CameraFeature
+
+    @property
+    def CameraState(self):
+        return self._CameraState
+
+    @CameraState.setter
+    def CameraState(self, CameraState):
+        self._CameraState = CameraState
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneType(self):
+        return self._ZoneType
+
+    @ZoneType.setter
+    def ZoneType(self, ZoneType):
+        self._ZoneType = ZoneType
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.FloorId = params.get("FloorId")
-        self.CameraId = params.get("CameraId")
-        self.CameraIp = params.get("CameraIp")
-        self.CameraMac = params.get("CameraMac")
-        self.CameraType = params.get("CameraType")
-        self.CameraFeature = params.get("CameraFeature")
-        self.CameraState = params.get("CameraState")
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneType = params.get("ZoneType")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._FloorId = params.get("FloorId")
+        self._CameraId = params.get("CameraId")
+        self._CameraIp = params.get("CameraIp")
+        self._CameraMac = params.get("CameraMac")
+        self._CameraType = params.get("CameraType")
+        self._CameraFeature = params.get("CameraFeature")
+        self._CameraState = params.get("CameraState")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneType = params.get("ZoneType")
         if params.get("Config") is not None:
-            self.Config = Config()
-            self.Config._deserialize(params.get("Config"))
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+            self._Config = Config()
+            self._Config._deserialize(params.get("Config"))
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -149,9 +287,9 @@ class CameraState(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CameraId: 相机ID
+        :param _CameraId: 相机ID
         :type CameraId: int
-        :param State: 相机状态:
+        :param _State: 相机状态:
 10: 初始化
 11: 未知状态
 12: 网络异常
@@ -161,17 +299,34 @@ class CameraState(AbstractModel):
 16: 状态正常
         :type State: int
         """
-        self.CameraId = None
-        self.State = None
+        self._CameraId = None
+        self._State = None
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
-        self.CameraId = params.get("CameraId")
-        self.State = params.get("State")
+        self._CameraId = params.get("CameraId")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -184,17 +339,17 @@ class CameraZones(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
-        :param CameraName: 摄像头名称
+        :param _CameraName: 摄像头名称
         :type CameraName: str
-        :param CameraFeature: 摄像头功能:
+        :param _CameraFeature: 摄像头功能:
 1: 人脸
 2: 人体
         :type CameraFeature: int
-        :param CameraIp: 摄像头IP
+        :param _CameraIp: 摄像头IP
         :type CameraIp: str
-        :param CameraState: 摄像头状态:
+        :param _CameraState: 摄像头状态:
 0: 异常 (不再使用)
 1: 正常 (不再使用)
 10: 初始化
@@ -205,45 +360,110 @@ class CameraZones(AbstractModel):
 15: 相机取流异常
 16: 正常
         :type CameraState: int
-        :param Zones: 点位列表
+        :param _Zones: 点位列表
         :type Zones: list of BunkZone
-        :param Pixel: 像素:
+        :param _Pixel: 像素:
 130W(1280*960)
 200W(1920*1080)
 400W(2560*1440)
         :type Pixel: str
-        :param RTSP: 相机Rtsp地址
+        :param _RTSP: 相机Rtsp地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type RTSP: str
         """
-        self.CameraId = None
-        self.CameraName = None
-        self.CameraFeature = None
-        self.CameraIp = None
-        self.CameraState = None
-        self.Zones = None
-        self.Pixel = None
-        self.RTSP = None
+        self._CameraId = None
+        self._CameraName = None
+        self._CameraFeature = None
+        self._CameraIp = None
+        self._CameraState = None
+        self._Zones = None
+        self._Pixel = None
+        self._RTSP = None
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def CameraName(self):
+        return self._CameraName
+
+    @CameraName.setter
+    def CameraName(self, CameraName):
+        self._CameraName = CameraName
+
+    @property
+    def CameraFeature(self):
+        return self._CameraFeature
+
+    @CameraFeature.setter
+    def CameraFeature(self, CameraFeature):
+        self._CameraFeature = CameraFeature
+
+    @property
+    def CameraIp(self):
+        return self._CameraIp
+
+    @CameraIp.setter
+    def CameraIp(self, CameraIp):
+        self._CameraIp = CameraIp
+
+    @property
+    def CameraState(self):
+        return self._CameraState
+
+    @CameraState.setter
+    def CameraState(self, CameraState):
+        self._CameraState = CameraState
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def Pixel(self):
+        return self._Pixel
+
+    @Pixel.setter
+    def Pixel(self, Pixel):
+        self._Pixel = Pixel
+
+    @property
+    def RTSP(self):
+        return self._RTSP
+
+    @RTSP.setter
+    def RTSP(self, RTSP):
+        self._RTSP = RTSP
 
 
     def _deserialize(self, params):
-        self.CameraId = params.get("CameraId")
-        self.CameraName = params.get("CameraName")
-        self.CameraFeature = params.get("CameraFeature")
-        self.CameraIp = params.get("CameraIp")
-        self.CameraState = params.get("CameraState")
+        self._CameraId = params.get("CameraId")
+        self._CameraName = params.get("CameraName")
+        self._CameraFeature = params.get("CameraFeature")
+        self._CameraIp = params.get("CameraIp")
+        self._CameraState = params.get("CameraState")
         if params.get("Zones") is not None:
-            self.Zones = []
+            self._Zones = []
             for item in params.get("Zones"):
                 obj = BunkZone()
                 obj._deserialize(item)
-                self.Zones.append(obj)
-        self.Pixel = params.get("Pixel")
-        self.RTSP = params.get("RTSP")
+                self._Zones.append(obj)
+        self._Pixel = params.get("Pixel")
+        self._RTSP = params.get("RTSP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -256,82 +476,163 @@ class Config(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CameraProducer: 摄像头厂商:
+        :param _CameraProducer: 摄像头厂商:
 H: 海康
 D: 大华
 Y: 英飞拓
 L: 联纵
         :type CameraProducer: str
-        :param RTSP: rtsp 地址
+        :param _RTSP: rtsp 地址
         :type RTSP: str
-        :param Fps: 摄像头帧率
+        :param _Fps: 摄像头帧率
         :type Fps: int
-        :param DecodeFps: 解码帧率
+        :param _DecodeFps: 解码帧率
         :type DecodeFps: int
-        :param PassengerFlow: 是否做客流计算:
+        :param _PassengerFlow: 是否做客流计算:
 0: 否
 1: 是
         :type PassengerFlow: int
-        :param FaceExpose: 是否打开人脸曝光:
+        :param _FaceExpose: 是否打开人脸曝光:
 0: 关闭
 1: 开启
         :type FaceExpose: int
-        :param MallArea: 门线标注
+        :param _MallArea: 门线标注
         :type MallArea: list of Point
-        :param ShopArea: 店门标注
+        :param _ShopArea: 店门标注
         :type ShopArea: list of Point
-        :param TrackAreas: 检测区标注
+        :param _TrackAreas: 检测区标注
         :type TrackAreas: list of Polygon
-        :param Zones: 点位列表（品类区）
+        :param _Zones: 点位列表（品类区）
         :type Zones: list of ZoneArea
         """
-        self.CameraProducer = None
-        self.RTSP = None
-        self.Fps = None
-        self.DecodeFps = None
-        self.PassengerFlow = None
-        self.FaceExpose = None
-        self.MallArea = None
-        self.ShopArea = None
-        self.TrackAreas = None
-        self.Zones = None
+        self._CameraProducer = None
+        self._RTSP = None
+        self._Fps = None
+        self._DecodeFps = None
+        self._PassengerFlow = None
+        self._FaceExpose = None
+        self._MallArea = None
+        self._ShopArea = None
+        self._TrackAreas = None
+        self._Zones = None
+
+    @property
+    def CameraProducer(self):
+        return self._CameraProducer
+
+    @CameraProducer.setter
+    def CameraProducer(self, CameraProducer):
+        self._CameraProducer = CameraProducer
+
+    @property
+    def RTSP(self):
+        return self._RTSP
+
+    @RTSP.setter
+    def RTSP(self, RTSP):
+        self._RTSP = RTSP
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def DecodeFps(self):
+        return self._DecodeFps
+
+    @DecodeFps.setter
+    def DecodeFps(self, DecodeFps):
+        self._DecodeFps = DecodeFps
+
+    @property
+    def PassengerFlow(self):
+        return self._PassengerFlow
+
+    @PassengerFlow.setter
+    def PassengerFlow(self, PassengerFlow):
+        self._PassengerFlow = PassengerFlow
+
+    @property
+    def FaceExpose(self):
+        return self._FaceExpose
+
+    @FaceExpose.setter
+    def FaceExpose(self, FaceExpose):
+        self._FaceExpose = FaceExpose
+
+    @property
+    def MallArea(self):
+        return self._MallArea
+
+    @MallArea.setter
+    def MallArea(self, MallArea):
+        self._MallArea = MallArea
+
+    @property
+    def ShopArea(self):
+        return self._ShopArea
+
+    @ShopArea.setter
+    def ShopArea(self, ShopArea):
+        self._ShopArea = ShopArea
+
+    @property
+    def TrackAreas(self):
+        return self._TrackAreas
+
+    @TrackAreas.setter
+    def TrackAreas(self, TrackAreas):
+        self._TrackAreas = TrackAreas
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
 
 
     def _deserialize(self, params):
-        self.CameraProducer = params.get("CameraProducer")
-        self.RTSP = params.get("RTSP")
-        self.Fps = params.get("Fps")
-        self.DecodeFps = params.get("DecodeFps")
-        self.PassengerFlow = params.get("PassengerFlow")
-        self.FaceExpose = params.get("FaceExpose")
+        self._CameraProducer = params.get("CameraProducer")
+        self._RTSP = params.get("RTSP")
+        self._Fps = params.get("Fps")
+        self._DecodeFps = params.get("DecodeFps")
+        self._PassengerFlow = params.get("PassengerFlow")
+        self._FaceExpose = params.get("FaceExpose")
         if params.get("MallArea") is not None:
-            self.MallArea = []
+            self._MallArea = []
             for item in params.get("MallArea"):
                 obj = Point()
                 obj._deserialize(item)
-                self.MallArea.append(obj)
+                self._MallArea.append(obj)
         if params.get("ShopArea") is not None:
-            self.ShopArea = []
+            self._ShopArea = []
             for item in params.get("ShopArea"):
                 obj = Point()
                 obj._deserialize(item)
-                self.ShopArea.append(obj)
+                self._ShopArea.append(obj)
         if params.get("TrackAreas") is not None:
-            self.TrackAreas = []
+            self._TrackAreas = []
             for item in params.get("TrackAreas"):
                 obj = Polygon()
                 obj._deserialize(item)
-                self.TrackAreas.append(obj)
+                self._TrackAreas.append(obj)
         if params.get("Zones") is not None:
-            self.Zones = []
+            self._Zones = []
             for item in params.get("Zones"):
                 obj = ZoneArea()
                 obj._deserialize(item)
-                self.Zones.append(obj)
+                self._Zones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -344,46 +645,103 @@ class CreateCameraAlertAlert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param CameraId: 相机ID
+        :param _CameraId: 相机ID
         :type CameraId: int
-        :param CaptureTime: 时间戳,ms,默认为告警请求到达时间
+        :param _CaptureTime: 时间戳,ms,默认为告警请求到达时间
         :type CaptureTime: int
-        :param Image: 图片base64编码
+        :param _Image: 图片base64编码
         :type Image: str
-        :param MoveAlert: 移动告警
+        :param _MoveAlert: 移动告警
         :type MoveAlert: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsMoveAlert`
-        :param CoverAlert: 遮挡告警
+        :param _CoverAlert: 遮挡告警
         :type CoverAlert: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsCoverAlert`
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.CameraId = None
-        self.CaptureTime = None
-        self.Image = None
-        self.MoveAlert = None
-        self.CoverAlert = None
+        self._GroupCode = None
+        self._MallId = None
+        self._CameraId = None
+        self._CaptureTime = None
+        self._Image = None
+        self._MoveAlert = None
+        self._CoverAlert = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def CaptureTime(self):
+        return self._CaptureTime
+
+    @CaptureTime.setter
+    def CaptureTime(self, CaptureTime):
+        self._CaptureTime = CaptureTime
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def MoveAlert(self):
+        return self._MoveAlert
+
+    @MoveAlert.setter
+    def MoveAlert(self, MoveAlert):
+        self._MoveAlert = MoveAlert
+
+    @property
+    def CoverAlert(self):
+        return self._CoverAlert
+
+    @CoverAlert.setter
+    def CoverAlert(self, CoverAlert):
+        self._CoverAlert = CoverAlert
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.CameraId = params.get("CameraId")
-        self.CaptureTime = params.get("CaptureTime")
-        self.Image = params.get("Image")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._CameraId = params.get("CameraId")
+        self._CaptureTime = params.get("CaptureTime")
+        self._Image = params.get("Image")
         if params.get("MoveAlert") is not None:
-            self.MoveAlert = CreateCameraAlertsMoveAlert()
-            self.MoveAlert._deserialize(params.get("MoveAlert"))
+            self._MoveAlert = CreateCameraAlertsMoveAlert()
+            self._MoveAlert._deserialize(params.get("MoveAlert"))
         if params.get("CoverAlert") is not None:
-            self.CoverAlert = CreateCameraAlertsCoverAlert()
-            self.CoverAlert._deserialize(params.get("CoverAlert"))
+            self._CoverAlert = CreateCameraAlertsCoverAlert()
+            self._CoverAlert._deserialize(params.get("CoverAlert"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -396,22 +754,39 @@ class CreateCameraAlertsCoverAlert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cover: 是否遮挡
+        :param _Cover: 是否遮挡
         :type Cover: bool
-        :param CoverConfidence: 是否移动置信度
+        :param _CoverConfidence: 是否移动置信度
         :type CoverConfidence: float
         """
-        self.Cover = None
-        self.CoverConfidence = None
+        self._Cover = None
+        self._CoverConfidence = None
+
+    @property
+    def Cover(self):
+        return self._Cover
+
+    @Cover.setter
+    def Cover(self, Cover):
+        self._Cover = Cover
+
+    @property
+    def CoverConfidence(self):
+        return self._CoverConfidence
+
+    @CoverConfidence.setter
+    def CoverConfidence(self, CoverConfidence):
+        self._CoverConfidence = CoverConfidence
 
 
     def _deserialize(self, params):
-        self.Cover = params.get("Cover")
-        self.CoverConfidence = params.get("CoverConfidence")
+        self._Cover = params.get("Cover")
+        self._CoverConfidence = params.get("CoverConfidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -424,22 +799,39 @@ class CreateCameraAlertsMoveAlert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Move: 是否移动
+        :param _Move: 是否移动
         :type Move: bool
-        :param MoveConfidence: 是否移动置信度
+        :param _MoveConfidence: 是否移动置信度
         :type MoveConfidence: float
         """
-        self.Move = None
-        self.MoveConfidence = None
+        self._Move = None
+        self._MoveConfidence = None
+
+    @property
+    def Move(self):
+        return self._Move
+
+    @Move.setter
+    def Move(self, Move):
+        self._Move = Move
+
+    @property
+    def MoveConfidence(self):
+        return self._MoveConfidence
+
+    @MoveConfidence.setter
+    def MoveConfidence(self, MoveConfidence):
+        self._MoveConfidence = MoveConfidence
 
 
     def _deserialize(self, params):
-        self.Move = params.get("Move")
-        self.MoveConfidence = params.get("MoveConfidence")
+        self._Move = params.get("Move")
+        self._MoveConfidence = params.get("MoveConfidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -452,23 +844,32 @@ class CreateCameraAlertsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Alerts: 告警信息列表
+        :param _Alerts: 告警信息列表
         :type Alerts: list of CreateCameraAlertAlert
         """
-        self.Alerts = None
+        self._Alerts = None
+
+    @property
+    def Alerts(self):
+        return self._Alerts
+
+    @Alerts.setter
+    def Alerts(self, Alerts):
+        self._Alerts = Alerts
 
 
     def _deserialize(self, params):
         if params.get("Alerts") is not None:
-            self.Alerts = []
+            self._Alerts = []
             for item in params.get("Alerts"):
                 obj = CreateCameraAlertAlert()
                 obj._deserialize(item)
-                self.Alerts.append(obj)
+                self._Alerts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -481,14 +882,22 @@ class CreateCameraAlertsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCameraStateRequest(AbstractModel):
@@ -498,31 +907,56 @@ class CreateCameraStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param CameraStates: 场内所有相机的状态值
+        :param _CameraStates: 场内所有相机的状态值
         :type CameraStates: list of CameraState
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.CameraStates = None
+        self._GroupCode = None
+        self._MallId = None
+        self._CameraStates = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def CameraStates(self):
+        return self._CameraStates
+
+    @CameraStates.setter
+    def CameraStates(self, CameraStates):
+        self._CameraStates = CameraStates
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
         if params.get("CameraStates") is not None:
-            self.CameraStates = []
+            self._CameraStates = []
             for item in params.get("CameraStates"):
                 obj = CameraState()
                 obj._deserialize(item)
-                self.CameraStates.append(obj)
+                self._CameraStates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -535,14 +969,22 @@ class CreateCameraStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCaptureRequest(AbstractModel):
@@ -552,18 +994,27 @@ class CreateCaptureRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 原始抓拍报文
+        :param _Data: 原始抓拍报文
         :type Data: str
         """
-        self.Data = None
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -576,19 +1027,35 @@ class CreateCaptureResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RspData: 原始应答报文
+        :param _RspData: 原始应答报文
 注意：此字段可能返回 null，表示取不到有效值。
         :type RspData: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RspData = None
-        self.RequestId = None
+        self._RspData = None
+        self._RequestId = None
+
+    @property
+    def RspData(self):
+        return self._RspData
+
+    @RspData.setter
+    def RspData(self, RspData):
+        self._RspData = RspData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RspData = params.get("RspData")
-        self.RequestId = params.get("RequestId")
+        self._RspData = params.get("RspData")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMultiBizAlertRequest(AbstractModel):
@@ -598,54 +1065,119 @@ class CreateMultiBizAlertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
-        :param CaptureTime: 时间戳，毫秒
+        :param _CaptureTime: 时间戳，毫秒
         :type CaptureTime: int
-        :param State: 状态: 
+        :param _State: 状态: 
 1: 侵占
 2: 消失
 3: 即侵占又消失
         :type State: int
-        :param Image: 图片base64字符串
+        :param _Image: 图片base64字符串
         :type Image: str
-        :param Warnings: 告警列表
+        :param _Warnings: 告警列表
         :type Warnings: list of MultiBizWarning
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.ZoneId = None
-        self.CameraId = None
-        self.CaptureTime = None
-        self.State = None
-        self.Image = None
-        self.Warnings = None
+        self._GroupCode = None
+        self._MallId = None
+        self._ZoneId = None
+        self._CameraId = None
+        self._CaptureTime = None
+        self._State = None
+        self._Image = None
+        self._Warnings = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def CaptureTime(self):
+        return self._CaptureTime
+
+    @CaptureTime.setter
+    def CaptureTime(self, CaptureTime):
+        self._CaptureTime = CaptureTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Warnings(self):
+        return self._Warnings
+
+    @Warnings.setter
+    def Warnings(self, Warnings):
+        self._Warnings = Warnings
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.ZoneId = params.get("ZoneId")
-        self.CameraId = params.get("CameraId")
-        self.CaptureTime = params.get("CaptureTime")
-        self.State = params.get("State")
-        self.Image = params.get("Image")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._ZoneId = params.get("ZoneId")
+        self._CameraId = params.get("CameraId")
+        self._CaptureTime = params.get("CaptureTime")
+        self._State = params.get("State")
+        self._Image = params.get("Image")
         if params.get("Warnings") is not None:
-            self.Warnings = []
+            self._Warnings = []
             for item in params.get("Warnings"):
                 obj = MultiBizWarning()
                 obj._deserialize(item)
-                self.Warnings.append(obj)
+                self._Warnings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -658,14 +1190,22 @@ class CreateMultiBizAlertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateProgramStateRequest(AbstractModel):
@@ -675,31 +1215,56 @@ class CreateProgramStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param ProgramStateItems: 进程监控信息列表
+        :param _ProgramStateItems: 进程监控信息列表
         :type ProgramStateItems: list of ProgramStateItem
-        :param MallId: 商场ID
+        :param _MallId: 商场ID
         :type MallId: int
         """
-        self.GroupCode = None
-        self.ProgramStateItems = None
-        self.MallId = None
+        self._GroupCode = None
+        self._ProgramStateItems = None
+        self._MallId = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def ProgramStateItems(self):
+        return self._ProgramStateItems
+
+    @ProgramStateItems.setter
+    def ProgramStateItems(self, ProgramStateItems):
+        self._ProgramStateItems = ProgramStateItems
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
+        self._GroupCode = params.get("GroupCode")
         if params.get("ProgramStateItems") is not None:
-            self.ProgramStateItems = []
+            self._ProgramStateItems = []
             for item in params.get("ProgramStateItems"):
                 obj = ProgramStateItem()
                 obj._deserialize(item)
-                self.ProgramStateItems.append(obj)
-        self.MallId = params.get("MallId")
+                self._ProgramStateItems.append(obj)
+        self._MallId = params.get("MallId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -712,14 +1277,22 @@ class CreateProgramStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateServerStateRequest(AbstractModel):
@@ -729,35 +1302,68 @@ class CreateServerStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param ServerStateItems: 服务器监控信息列表
+        :param _ServerStateItems: 服务器监控信息列表
         :type ServerStateItems: list of ServerStateItem
-        :param MallId: 商场ID
+        :param _MallId: 商场ID
         :type MallId: int
-        :param ReportTime: 服务器监控信息上报时间戳，单位毫秒
+        :param _ReportTime: 服务器监控信息上报时间戳，单位毫秒
         :type ReportTime: int
         """
-        self.GroupCode = None
-        self.ServerStateItems = None
-        self.MallId = None
-        self.ReportTime = None
+        self._GroupCode = None
+        self._ServerStateItems = None
+        self._MallId = None
+        self._ReportTime = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def ServerStateItems(self):
+        return self._ServerStateItems
+
+    @ServerStateItems.setter
+    def ServerStateItems(self, ServerStateItems):
+        self._ServerStateItems = ServerStateItems
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def ReportTime(self):
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
+        self._GroupCode = params.get("GroupCode")
         if params.get("ServerStateItems") is not None:
-            self.ServerStateItems = []
+            self._ServerStateItems = []
             for item in params.get("ServerStateItems"):
                 obj = ServerStateItem()
                 obj._deserialize(item)
-                self.ServerStateItems.append(obj)
-        self.MallId = params.get("MallId")
-        self.ReportTime = params.get("ReportTime")
+                self._ServerStateItems.append(obj)
+        self._MallId = params.get("MallId")
+        self._ReportTime = params.get("ReportTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -770,14 +1376,22 @@ class CreateServerStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteMultiBizAlertRequest(AbstractModel):
@@ -787,41 +1401,90 @@ class DeleteMultiBizAlertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
-        :param ActionType: 消警动作:
+        :param _ActionType: 消警动作:
 1: 误报
 2: 正报合规
 3: 正报不合规，整改完成
         :type ActionType: int
-        :param Image: 图片base64字符串
+        :param _Image: 图片base64字符串
         :type Image: str
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.ZoneId = None
-        self.CameraId = None
-        self.ActionType = None
-        self.Image = None
+        self._GroupCode = None
+        self._MallId = None
+        self._ZoneId = None
+        self._CameraId = None
+        self._ActionType = None
+        self._Image = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.ZoneId = params.get("ZoneId")
-        self.CameraId = params.get("CameraId")
-        self.ActionType = params.get("ActionType")
-        self.Image = params.get("Image")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._ZoneId = params.get("ZoneId")
+        self._CameraId = params.get("CameraId")
+        self._ActionType = params.get("ActionType")
+        self._Image = params.get("Image")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -834,14 +1497,22 @@ class DeleteMultiBizAlertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTaskRequest(AbstractModel):
@@ -851,26 +1522,51 @@ class DeleteTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.TaskId = None
+        self._GroupCode = None
+        self._MallId = None
+        self._TaskId = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.TaskId = params.get("TaskId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -883,14 +1579,22 @@ class DeleteTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCamerasRequest(AbstractModel):
@@ -900,22 +1604,39 @@ class DescribeCamerasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
         """
-        self.GroupCode = None
-        self.MallId = None
+        self._GroupCode = None
+        self._MallId = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -928,23 +1649,39 @@ class DescribeCamerasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cameras: 摄像头列表
+        :param _Cameras: 摄像头列表
         :type Cameras: list of CameraZones
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Cameras = None
-        self.RequestId = None
+        self._Cameras = None
+        self._RequestId = None
+
+    @property
+    def Cameras(self):
+        return self._Cameras
+
+    @Cameras.setter
+    def Cameras(self, Cameras):
+        self._Cameras = Cameras
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Cameras") is not None:
-            self.Cameras = []
+            self._Cameras = []
             for item in params.get("Cameras"):
                 obj = CameraZones()
                 obj._deserialize(item)
-                self.Cameras.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Cameras.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeConfigRequest(AbstractModel):
@@ -954,42 +1691,99 @@ class DescribeConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SessionId: 会话ID
+        :param _SessionId: 会话ID
         :type SessionId: str
-        :param CameraSign: 摄像头签名
+        :param _CameraSign: 摄像头签名
         :type CameraSign: str
-        :param CameraAppId: 摄像头app id
+        :param _CameraAppId: 摄像头app id
         :type CameraAppId: str
-        :param CameraTimestamp: 摄像头时间戳，毫秒
+        :param _CameraTimestamp: 摄像头时间戳，毫秒
         :type CameraTimestamp: int
-        :param ServerMac: MAC地址，字母大写
+        :param _ServerMac: MAC地址，字母大写
         :type ServerMac: str
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
         """
-        self.SessionId = None
-        self.CameraSign = None
-        self.CameraAppId = None
-        self.CameraTimestamp = None
-        self.ServerMac = None
-        self.GroupCode = None
-        self.MallId = None
+        self._SessionId = None
+        self._CameraSign = None
+        self._CameraAppId = None
+        self._CameraTimestamp = None
+        self._ServerMac = None
+        self._GroupCode = None
+        self._MallId = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def CameraSign(self):
+        return self._CameraSign
+
+    @CameraSign.setter
+    def CameraSign(self, CameraSign):
+        self._CameraSign = CameraSign
+
+    @property
+    def CameraAppId(self):
+        return self._CameraAppId
+
+    @CameraAppId.setter
+    def CameraAppId(self, CameraAppId):
+        self._CameraAppId = CameraAppId
+
+    @property
+    def CameraTimestamp(self):
+        return self._CameraTimestamp
+
+    @CameraTimestamp.setter
+    def CameraTimestamp(self, CameraTimestamp):
+        self._CameraTimestamp = CameraTimestamp
+
+    @property
+    def ServerMac(self):
+        return self._ServerMac
+
+    @ServerMac.setter
+    def ServerMac(self, ServerMac):
+        self._ServerMac = ServerMac
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
 
 
     def _deserialize(self, params):
-        self.SessionId = params.get("SessionId")
-        self.CameraSign = params.get("CameraSign")
-        self.CameraAppId = params.get("CameraAppId")
-        self.CameraTimestamp = params.get("CameraTimestamp")
-        self.ServerMac = params.get("ServerMac")
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
+        self._SessionId = params.get("SessionId")
+        self._CameraSign = params.get("CameraSign")
+        self._CameraAppId = params.get("CameraAppId")
+        self._CameraTimestamp = params.get("CameraTimestamp")
+        self._ServerMac = params.get("ServerMac")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1002,31 +1796,63 @@ class DescribeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SessionId: 会话ID
+        :param _SessionId: 会话ID
         :type SessionId: str
-        :param Version: 配置版本号
+        :param _Version: 配置版本号
         :type Version: int
-        :param Cameras: 摄像头列表
+        :param _Cameras: 摄像头列表
         :type Cameras: list of CameraConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SessionId = None
-        self.Version = None
-        self.Cameras = None
-        self.RequestId = None
+        self._SessionId = None
+        self._Version = None
+        self._Cameras = None
+        self._RequestId = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Cameras(self):
+        return self._Cameras
+
+    @Cameras.setter
+    def Cameras(self, Cameras):
+        self._Cameras = Cameras
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SessionId = params.get("SessionId")
-        self.Version = params.get("Version")
+        self._SessionId = params.get("SessionId")
+        self._Version = params.get("Version")
         if params.get("Cameras") is not None:
-            self.Cameras = []
+            self._Cameras = []
             for item in params.get("Cameras"):
                 obj = CameraConfig()
                 obj._deserialize(item)
-                self.Cameras.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Cameras.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImageRequest(AbstractModel):
@@ -1036,26 +1862,51 @@ class DescribeImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.CameraId = None
+        self._GroupCode = None
+        self._MallId = None
+        self._CameraId = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.CameraId = params.get("CameraId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._CameraId = params.get("CameraId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1068,18 +1919,34 @@ class DescribeImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: cos 临时 url，异步上传图片，client需要轮询
+        :param _ImageUrl: cos 临时 url，异步上传图片，client需要轮询
         :type ImageUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageUrl = None
-        self.RequestId = None
+        self._ImageUrl = None
+        self._RequestId = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.RequestId = params.get("RequestId")
+        self._ImageUrl = params.get("ImageUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMultiBizBaseImageRequest(AbstractModel):
@@ -1089,30 +1956,63 @@ class DescribeMultiBizBaseImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.CameraId = None
-        self.ZoneId = None
+        self._GroupCode = None
+        self._MallId = None
+        self._CameraId = None
+        self._ZoneId = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.CameraId = params.get("CameraId")
-        self.ZoneId = params.get("ZoneId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._CameraId = params.get("CameraId")
+        self._ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1125,18 +2025,34 @@ class DescribeMultiBizBaseImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: cos 临时 url
+        :param _ImageUrl: cos 临时 url
         :type ImageUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageUrl = None
-        self.RequestId = None
+        self._ImageUrl = None
+        self._RequestId = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.RequestId = params.get("RequestId")
+        self._ImageUrl = params.get("ImageUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTasksRequest(AbstractModel):
@@ -1146,27 +2062,52 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param TaskType: 任务类型:
+        :param _TaskType: 任务类型:
 1: 底图拉取
         :type TaskType: int
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.TaskType = None
+        self._GroupCode = None
+        self._MallId = None
+        self._TaskType = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.TaskType = params.get("TaskType")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1179,23 +2120,39 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tasks: 任务列表
+        :param _Tasks: 任务列表
         :type Tasks: list of Task
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Tasks = None
-        self.RequestId = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = Task()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeZonesRequest(AbstractModel):
@@ -1205,22 +2162,39 @@ class DescribeZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
         """
-        self.GroupCode = None
-        self.MallId = None
+        self._GroupCode = None
+        self._MallId = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1233,23 +2207,39 @@ class DescribeZonesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zones: 点位列表
+        :param _Zones: 点位列表
         :type Zones: list of ZoneConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Zones = None
-        self.RequestId = None
+        self._Zones = None
+        self._RequestId = None
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Zones") is not None:
-            self.Zones = []
+            self._Zones = []
             for item in params.get("Zones"):
                 obj = ZoneConfig()
                 obj._deserialize(item)
-                self.Zones.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Zones.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DiskInfo(AbstractModel):
@@ -1259,22 +2249,39 @@ class DiskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskName: 硬盘名字
+        :param _DiskName: 硬盘名字
         :type DiskName: str
-        :param Usage: 硬盘使用率
+        :param _Usage: 硬盘使用率
         :type Usage: float
         """
-        self.DiskName = None
-        self.Usage = None
+        self._DiskName = None
+        self._Usage = None
+
+    @property
+    def DiskName(self):
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
 
 
     def _deserialize(self, params):
-        self.DiskName = params.get("DiskName")
-        self.Usage = params.get("Usage")
+        self._DiskName = params.get("DiskName")
+        self._Usage = params.get("Usage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1287,39 +2294,80 @@ class ModifyMultiBizConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
-        :param MonitoringAreas: 监控区域
+        :param _MonitoringAreas: 监控区域
         :type MonitoringAreas: list of Polygon
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.ZoneId = None
-        self.CameraId = None
-        self.MonitoringAreas = None
+        self._GroupCode = None
+        self._MallId = None
+        self._ZoneId = None
+        self._CameraId = None
+        self._MonitoringAreas = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def MonitoringAreas(self):
+        return self._MonitoringAreas
+
+    @MonitoringAreas.setter
+    def MonitoringAreas(self, MonitoringAreas):
+        self._MonitoringAreas = MonitoringAreas
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.ZoneId = params.get("ZoneId")
-        self.CameraId = params.get("CameraId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._ZoneId = params.get("ZoneId")
+        self._CameraId = params.get("CameraId")
         if params.get("MonitoringAreas") is not None:
-            self.MonitoringAreas = []
+            self._MonitoringAreas = []
             for item in params.get("MonitoringAreas"):
                 obj = Polygon()
                 obj._deserialize(item)
-                self.MonitoringAreas.append(obj)
+                self._MonitoringAreas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1332,14 +2380,22 @@ class ModifyMultiBizConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class MultiBizWarning(AbstractModel):
@@ -1349,36 +2405,61 @@ class MultiBizWarning(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 编号
+        :param _Id: 编号
         :type Id: int
-        :param MonitoringArea: 监控区域
+        :param _MonitoringArea: 监控区域
         :type MonitoringArea: list of Point
-        :param WarningInfos: 告警列表
+        :param _WarningInfos: 告警列表
         :type WarningInfos: list of MultiBizWarningInfo
         """
-        self.Id = None
-        self.MonitoringArea = None
-        self.WarningInfos = None
+        self._Id = None
+        self._MonitoringArea = None
+        self._WarningInfos = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MonitoringArea(self):
+        return self._MonitoringArea
+
+    @MonitoringArea.setter
+    def MonitoringArea(self, MonitoringArea):
+        self._MonitoringArea = MonitoringArea
+
+    @property
+    def WarningInfos(self):
+        return self._WarningInfos
+
+    @WarningInfos.setter
+    def WarningInfos(self, WarningInfos):
+        self._WarningInfos = WarningInfos
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self._Id = params.get("Id")
         if params.get("MonitoringArea") is not None:
-            self.MonitoringArea = []
+            self._MonitoringArea = []
             for item in params.get("MonitoringArea"):
                 obj = Point()
                 obj._deserialize(item)
-                self.MonitoringArea.append(obj)
+                self._MonitoringArea.append(obj)
         if params.get("WarningInfos") is not None:
-            self.WarningInfos = []
+            self._WarningInfos = []
             for item in params.get("WarningInfos"):
                 obj = MultiBizWarningInfo()
                 obj._deserialize(item)
-                self.WarningInfos.append(obj)
+                self._WarningInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1391,40 +2472,73 @@ class MultiBizWarningInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WarningType: 告警类型：
+        :param _WarningType: 告警类型：
 0: 无变化
 1: 侵占
 2: 消失
         :type WarningType: int
-        :param WarningAreaSize: 告警侵占或消失面积
+        :param _WarningAreaSize: 告警侵占或消失面积
         :type WarningAreaSize: float
-        :param WarningLocation: 告警侵占或消失坐标
+        :param _WarningLocation: 告警侵占或消失坐标
         :type WarningLocation: :class:`tencentcloud.ump.v20200918.models.Point`
-        :param WarningAreaContour: 告警侵占或消失轮廓
+        :param _WarningAreaContour: 告警侵占或消失轮廓
         :type WarningAreaContour: list of Point
         """
-        self.WarningType = None
-        self.WarningAreaSize = None
-        self.WarningLocation = None
-        self.WarningAreaContour = None
+        self._WarningType = None
+        self._WarningAreaSize = None
+        self._WarningLocation = None
+        self._WarningAreaContour = None
+
+    @property
+    def WarningType(self):
+        return self._WarningType
+
+    @WarningType.setter
+    def WarningType(self, WarningType):
+        self._WarningType = WarningType
+
+    @property
+    def WarningAreaSize(self):
+        return self._WarningAreaSize
+
+    @WarningAreaSize.setter
+    def WarningAreaSize(self, WarningAreaSize):
+        self._WarningAreaSize = WarningAreaSize
+
+    @property
+    def WarningLocation(self):
+        return self._WarningLocation
+
+    @WarningLocation.setter
+    def WarningLocation(self, WarningLocation):
+        self._WarningLocation = WarningLocation
+
+    @property
+    def WarningAreaContour(self):
+        return self._WarningAreaContour
+
+    @WarningAreaContour.setter
+    def WarningAreaContour(self, WarningAreaContour):
+        self._WarningAreaContour = WarningAreaContour
 
 
     def _deserialize(self, params):
-        self.WarningType = params.get("WarningType")
-        self.WarningAreaSize = params.get("WarningAreaSize")
+        self._WarningType = params.get("WarningType")
+        self._WarningAreaSize = params.get("WarningAreaSize")
         if params.get("WarningLocation") is not None:
-            self.WarningLocation = Point()
-            self.WarningLocation._deserialize(params.get("WarningLocation"))
+            self._WarningLocation = Point()
+            self._WarningLocation._deserialize(params.get("WarningLocation"))
         if params.get("WarningAreaContour") is not None:
-            self.WarningAreaContour = []
+            self._WarningAreaContour = []
             for item in params.get("WarningAreaContour"):
                 obj = Point()
                 obj._deserialize(item)
-                self.WarningAreaContour.append(obj)
+                self._WarningAreaContour.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1437,22 +2551,39 @@ class Point(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: X坐标
+        :param _X: X坐标
         :type X: int
-        :param Y: Y坐标
+        :param _Y: Y坐标
         :type Y: int
         """
-        self.X = None
-        self.Y = None
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1465,23 +2596,32 @@ class Polygon(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Points: 标注列表
+        :param _Points: 标注列表
         :type Points: list of Point
         """
-        self.Points = None
+        self._Points = None
+
+    @property
+    def Points(self):
+        return self._Points
+
+    @Points.setter
+    def Points(self, Points):
+        self._Points = Points
 
 
     def _deserialize(self, params):
         if params.get("Points") is not None:
-            self.Points = []
+            self._Points = []
             for item in params.get("Points"):
                 obj = Point()
                 obj._deserialize(item)
-                self.Points.append(obj)
+                self._Points.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1494,37 +2634,78 @@ class ProgramStateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerIp: 服务器IP
+        :param _ServerIp: 服务器IP
         :type ServerIp: str
-        :param ProgramName: 进程名字
+        :param _ProgramName: 进程名字
         :type ProgramName: str
-        :param OnlineCount: 在线个数
+        :param _OnlineCount: 在线个数
         :type OnlineCount: int
-        :param OfflineCount: 离线个数
+        :param _OfflineCount: 离线个数
         :type OfflineCount: int
-        :param State: 上报状态:
+        :param _State: 上报状态:
 1: 正常上报
 2: 异常上报
 注：此处异常上报是指本次上报由于场内服务内部原因导致上报数据不可信等。此时离线个数重置为1，在线个数重置为0
         :type State: int
         """
-        self.ServerIp = None
-        self.ProgramName = None
-        self.OnlineCount = None
-        self.OfflineCount = None
-        self.State = None
+        self._ServerIp = None
+        self._ProgramName = None
+        self._OnlineCount = None
+        self._OfflineCount = None
+        self._State = None
+
+    @property
+    def ServerIp(self):
+        return self._ServerIp
+
+    @ServerIp.setter
+    def ServerIp(self, ServerIp):
+        self._ServerIp = ServerIp
+
+    @property
+    def ProgramName(self):
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def OnlineCount(self):
+        return self._OnlineCount
+
+    @OnlineCount.setter
+    def OnlineCount(self, OnlineCount):
+        self._OnlineCount = OnlineCount
+
+    @property
+    def OfflineCount(self):
+        return self._OfflineCount
+
+    @OfflineCount.setter
+    def OfflineCount(self, OfflineCount):
+        self._OfflineCount = OfflineCount
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
-        self.ServerIp = params.get("ServerIp")
-        self.ProgramName = params.get("ProgramName")
-        self.OnlineCount = params.get("OnlineCount")
-        self.OfflineCount = params.get("OfflineCount")
-        self.State = params.get("State")
+        self._ServerIp = params.get("ServerIp")
+        self._ProgramName = params.get("ProgramName")
+        self._OnlineCount = params.get("OnlineCount")
+        self._OfflineCount = params.get("OfflineCount")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1537,43 +2718,92 @@ class ReportServiceRegisterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param ServiceRegisterInfos: 服务上报当前的服务能力信息
+        :param _ServiceRegisterInfos: 服务上报当前的服务能力信息
         :type ServiceRegisterInfos: list of ServiceRegisterInfo
-        :param ServerIp: 服务内网Ip
+        :param _ServerIp: 服务内网Ip
         :type ServerIp: str
-        :param ServerNodeId: 上报服务所在服务器的唯一ID
+        :param _ServerNodeId: 上报服务所在服务器的唯一ID
         :type ServerNodeId: str
-        :param ReportTime: 上报时间戳, 单位毫秒
+        :param _ReportTime: 上报时间戳, 单位毫秒
         :type ReportTime: int
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.ServiceRegisterInfos = None
-        self.ServerIp = None
-        self.ServerNodeId = None
-        self.ReportTime = None
+        self._GroupCode = None
+        self._MallId = None
+        self._ServiceRegisterInfos = None
+        self._ServerIp = None
+        self._ServerNodeId = None
+        self._ReportTime = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def ServiceRegisterInfos(self):
+        return self._ServiceRegisterInfos
+
+    @ServiceRegisterInfos.setter
+    def ServiceRegisterInfos(self, ServiceRegisterInfos):
+        self._ServiceRegisterInfos = ServiceRegisterInfos
+
+    @property
+    def ServerIp(self):
+        return self._ServerIp
+
+    @ServerIp.setter
+    def ServerIp(self, ServerIp):
+        self._ServerIp = ServerIp
+
+    @property
+    def ServerNodeId(self):
+        return self._ServerNodeId
+
+    @ServerNodeId.setter
+    def ServerNodeId(self, ServerNodeId):
+        self._ServerNodeId = ServerNodeId
+
+    @property
+    def ReportTime(self):
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
         if params.get("ServiceRegisterInfos") is not None:
-            self.ServiceRegisterInfos = []
+            self._ServiceRegisterInfos = []
             for item in params.get("ServiceRegisterInfos"):
                 obj = ServiceRegisterInfo()
                 obj._deserialize(item)
-                self.ServiceRegisterInfos.append(obj)
-        self.ServerIp = params.get("ServerIp")
-        self.ServerNodeId = params.get("ServerNodeId")
-        self.ReportTime = params.get("ReportTime")
+                self._ServiceRegisterInfos.append(obj)
+        self._ServerIp = params.get("ServerIp")
+        self._ServerNodeId = params.get("ServerNodeId")
+        self._ReportTime = params.get("ReportTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1586,14 +2816,22 @@ class ReportServiceRegisterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SearchImageRequest(AbstractModel):
@@ -1603,30 +2841,63 @@ class SearchImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param Image: 图片base64字符串
+        :param _Image: 图片base64字符串
         :type Image: str
-        :param ImageTime: 时间戳，毫秒
+        :param _ImageTime: 时间戳，毫秒
         :type ImageTime: int
         """
-        self.GroupCode = None
-        self.MallId = None
-        self.Image = None
-        self.ImageTime = None
+        self._GroupCode = None
+        self._MallId = None
+        self._Image = None
+        self._ImageTime = None
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageTime(self):
+        return self._ImageTime
+
+    @ImageTime.setter
+    def ImageTime(self, ImageTime):
+        self._ImageTime = ImageTime
 
 
     def _deserialize(self, params):
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
-        self.Image = params.get("Image")
-        self.ImageTime = params.get("ImageTime")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
+        self._Image = params.get("Image")
+        self._ImageTime = params.get("ImageTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1639,27 +2910,51 @@ class SearchImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceId: face id
+        :param _FaceId: face id
         :type FaceId: str
-        :param Results: 搜索结果列表
+        :param _Results: 搜索结果列表
         :type Results: list of SearchResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FaceId = None
-        self.Results = None
-        self.RequestId = None
+        self._FaceId = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def FaceId(self):
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FaceId = params.get("FaceId")
+        self._FaceId = params.get("FaceId")
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = SearchResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SearchResult(AbstractModel):
@@ -1669,26 +2964,51 @@ class SearchResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Image: 图片base64数据
+        :param _Image: 图片base64数据
         :type Image: str
-        :param PersonId: 身份ID
+        :param _PersonId: 身份ID
         :type PersonId: str
-        :param Similarity: 相似度
+        :param _Similarity: 相似度
         :type Similarity: float
         """
-        self.Image = None
-        self.PersonId = None
-        self.Similarity = None
+        self._Image = None
+        self._PersonId = None
+        self._Similarity = None
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
 
 
     def _deserialize(self, params):
-        self.Image = params.get("Image")
-        self.PersonId = params.get("PersonId")
-        self.Similarity = params.get("Similarity")
+        self._Image = params.get("Image")
+        self._PersonId = params.get("PersonId")
+        self._Similarity = params.get("Similarity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1701,34 +3021,59 @@ class ServerStateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerState: 服务器状态
+        :param _ServerState: 服务器状态
 1: 在线
 2: 离线
 3: 重启
         :type ServerState: int
-        :param ServerIp: 服务器IP
+        :param _ServerIp: 服务器IP
         :type ServerIp: str
-        :param DiskInfos: 硬盘监控信息列表
+        :param _DiskInfos: 硬盘监控信息列表
         :type DiskInfos: list of DiskInfo
         """
-        self.ServerState = None
-        self.ServerIp = None
-        self.DiskInfos = None
+        self._ServerState = None
+        self._ServerIp = None
+        self._DiskInfos = None
+
+    @property
+    def ServerState(self):
+        return self._ServerState
+
+    @ServerState.setter
+    def ServerState(self, ServerState):
+        self._ServerState = ServerState
+
+    @property
+    def ServerIp(self):
+        return self._ServerIp
+
+    @ServerIp.setter
+    def ServerIp(self, ServerIp):
+        self._ServerIp = ServerIp
+
+    @property
+    def DiskInfos(self):
+        return self._DiskInfos
+
+    @DiskInfos.setter
+    def DiskInfos(self, DiskInfos):
+        self._DiskInfos = DiskInfos
 
 
     def _deserialize(self, params):
-        self.ServerState = params.get("ServerState")
-        self.ServerIp = params.get("ServerIp")
+        self._ServerState = params.get("ServerState")
+        self._ServerIp = params.get("ServerIp")
         if params.get("DiskInfos") is not None:
-            self.DiskInfos = []
+            self._DiskInfos = []
             for item in params.get("DiskInfos"):
                 obj = DiskInfo()
                 obj._deserialize(item)
-                self.DiskInfos.append(obj)
+                self._DiskInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1741,25 +3086,42 @@ class ServiceRegisterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CgiUrl: 当前服务的回调地址
+        :param _CgiUrl: 当前服务的回调地址
         :type CgiUrl: str
-        :param ServiceType: 当前服务类型:
+        :param _ServiceType: 当前服务类型:
 1: 多经服务
 2: 相机误报警确认
 3: 底图更新
         :type ServiceType: int
         """
-        self.CgiUrl = None
-        self.ServiceType = None
+        self._CgiUrl = None
+        self._ServiceType = None
+
+    @property
+    def CgiUrl(self):
+        return self._CgiUrl
+
+    @CgiUrl.setter
+    def CgiUrl(self, CgiUrl):
+        self._CgiUrl = CgiUrl
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
 
 
     def _deserialize(self, params):
-        self.CgiUrl = params.get("CgiUrl")
-        self.ServiceType = params.get("ServiceType")
+        self._CgiUrl = params.get("CgiUrl")
+        self._ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1772,37 +3134,78 @@ class Task(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param GroupCode: 集团编码
+        :param _GroupCode: 集团编码
         :type GroupCode: str
-        :param MallId: 广场ID
+        :param _MallId: 广场ID
         :type MallId: int
-        :param TaskContent: 任务内容
+        :param _TaskContent: 任务内容
         :type TaskContent: :class:`tencentcloud.ump.v20200918.models.TaskContent`
-        :param TaskType: 任务类型:
+        :param _TaskType: 任务类型:
 1: 底图拉取
         :type TaskType: int
         """
-        self.TaskId = None
-        self.GroupCode = None
-        self.MallId = None
-        self.TaskContent = None
-        self.TaskType = None
+        self._TaskId = None
+        self._GroupCode = None
+        self._MallId = None
+        self._TaskContent = None
+        self._TaskType = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def GroupCode(self):
+        return self._GroupCode
+
+    @GroupCode.setter
+    def GroupCode(self, GroupCode):
+        self._GroupCode = GroupCode
+
+    @property
+    def MallId(self):
+        return self._MallId
+
+    @MallId.setter
+    def MallId(self, MallId):
+        self._MallId = MallId
+
+    @property
+    def TaskContent(self):
+        return self._TaskContent
+
+    @TaskContent.setter
+    def TaskContent(self, TaskContent):
+        self._TaskContent = TaskContent
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.GroupCode = params.get("GroupCode")
-        self.MallId = params.get("MallId")
+        self._TaskId = params.get("TaskId")
+        self._GroupCode = params.get("GroupCode")
+        self._MallId = params.get("MallId")
         if params.get("TaskContent") is not None:
-            self.TaskContent = TaskContent()
-            self.TaskContent._deserialize(params.get("TaskContent"))
-        self.TaskType = params.get("TaskType")
+            self._TaskContent = TaskContent()
+            self._TaskContent._deserialize(params.get("TaskContent"))
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1815,26 +3218,51 @@ class TaskContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CameraId: 摄像头ID
+        :param _CameraId: 摄像头ID
         :type CameraId: int
-        :param RTSP: rtsp 地址
+        :param _RTSP: rtsp 地址
         :type RTSP: str
-        :param Url: 图片上传地址
+        :param _Url: 图片上传地址
         :type Url: str
         """
-        self.CameraId = None
-        self.RTSP = None
-        self.Url = None
+        self._CameraId = None
+        self._RTSP = None
+        self._Url = None
+
+    @property
+    def CameraId(self):
+        return self._CameraId
+
+    @CameraId.setter
+    def CameraId(self, CameraId):
+        self._CameraId = CameraId
+
+    @property
+    def RTSP(self):
+        return self._RTSP
+
+    @RTSP.setter
+    def RTSP(self, RTSP):
+        self._RTSP = RTSP
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
 
 
     def _deserialize(self, params):
-        self.CameraId = params.get("CameraId")
-        self.RTSP = params.get("RTSP")
-        self.Url = params.get("Url")
+        self._CameraId = params.get("CameraId")
+        self._RTSP = params.get("RTSP")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1847,27 +3275,44 @@ class ZoneArea(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
-        :param ShopArea: 店门标注
+        :param _ShopArea: 店门标注
         :type ShopArea: list of Point
         """
-        self.ZoneId = None
-        self.ShopArea = None
+        self._ZoneId = None
+        self._ShopArea = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ShopArea(self):
+        return self._ShopArea
+
+    @ShopArea.setter
+    def ShopArea(self, ShopArea):
+        self._ShopArea = ShopArea
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
+        self._ZoneId = params.get("ZoneId")
         if params.get("ShopArea") is not None:
-            self.ShopArea = []
+            self._ShopArea = []
             for item in params.get("ShopArea"):
                 obj = Point()
                 obj._deserialize(item)
-                self.ShopArea.append(obj)
+                self._ShopArea.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1880,11 +3325,11 @@ class ZoneConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 点位ID
+        :param _ZoneId: 点位ID
         :type ZoneId: int
-        :param ZoneName: 点位名称
+        :param _ZoneName: 点位名称
         :type ZoneName: str
-        :param ZoneType: 点位类型:
+        :param _ZoneType: 点位类型:
 1: 场门
 3: 层门
 5: 特殊区域
@@ -1894,47 +3339,120 @@ class ZoneConfig(AbstractModel):
 11: 品类区
 12: 公共区
         :type ZoneType: int
-        :param BunkCodes: 铺位编码
+        :param _BunkCodes: 铺位编码
         :type BunkCodes: str
-        :param FloorName: 楼层名称
+        :param _FloorName: 楼层名称
         :type FloorName: str
-        :param FloorId: 楼层ID
+        :param _FloorId: 楼层ID
         :type FloorId: int
-        :param BindNum: 绑定数
+        :param _BindNum: 绑定数
         :type BindNum: int
-        :param DebugNum: 调试数
+        :param _DebugNum: 调试数
         :type DebugNum: int
-        :param State: 下发状态:
+        :param _State: 下发状态:
 1: 不可下发
 2: 可下发
 3: 已下发
         :type State: int
         """
-        self.ZoneId = None
-        self.ZoneName = None
-        self.ZoneType = None
-        self.BunkCodes = None
-        self.FloorName = None
-        self.FloorId = None
-        self.BindNum = None
-        self.DebugNum = None
-        self.State = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._ZoneType = None
+        self._BunkCodes = None
+        self._FloorName = None
+        self._FloorId = None
+        self._BindNum = None
+        self._DebugNum = None
+        self._State = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ZoneType(self):
+        return self._ZoneType
+
+    @ZoneType.setter
+    def ZoneType(self, ZoneType):
+        self._ZoneType = ZoneType
+
+    @property
+    def BunkCodes(self):
+        return self._BunkCodes
+
+    @BunkCodes.setter
+    def BunkCodes(self, BunkCodes):
+        self._BunkCodes = BunkCodes
+
+    @property
+    def FloorName(self):
+        return self._FloorName
+
+    @FloorName.setter
+    def FloorName(self, FloorName):
+        self._FloorName = FloorName
+
+    @property
+    def FloorId(self):
+        return self._FloorId
+
+    @FloorId.setter
+    def FloorId(self, FloorId):
+        self._FloorId = FloorId
+
+    @property
+    def BindNum(self):
+        return self._BindNum
+
+    @BindNum.setter
+    def BindNum(self, BindNum):
+        self._BindNum = BindNum
+
+    @property
+    def DebugNum(self):
+        return self._DebugNum
+
+    @DebugNum.setter
+    def DebugNum(self, DebugNum):
+        self._DebugNum = DebugNum
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneName = params.get("ZoneName")
-        self.ZoneType = params.get("ZoneType")
-        self.BunkCodes = params.get("BunkCodes")
-        self.FloorName = params.get("FloorName")
-        self.FloorId = params.get("FloorId")
-        self.BindNum = params.get("BindNum")
-        self.DebugNum = params.get("DebugNum")
-        self.State = params.get("State")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._ZoneType = params.get("ZoneType")
+        self._BunkCodes = params.get("BunkCodes")
+        self._FloorName = params.get("FloorName")
+        self._FloorId = params.get("FloorId")
+        self._BindNum = params.get("BindNum")
+        self._DebugNum = params.get("DebugNum")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

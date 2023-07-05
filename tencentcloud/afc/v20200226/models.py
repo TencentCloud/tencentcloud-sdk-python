@@ -25,22 +25,39 @@ class AntiFraudVipCryptoFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CryptoType: 约定用入参，默认不涉及默认BusinessSecurityData 与BusinessCrptoData 不传
+        :param _CryptoType: 约定用入参，默认不涉及默认BusinessSecurityData 与BusinessCrptoData 不传
         :type CryptoType: str
-        :param CryptoContent: 约定用入参，默认不涉及
+        :param _CryptoContent: 约定用入参，默认不涉及
         :type CryptoContent: str
         """
-        self.CryptoType = None
-        self.CryptoContent = None
+        self._CryptoType = None
+        self._CryptoContent = None
+
+    @property
+    def CryptoType(self):
+        return self._CryptoType
+
+    @CryptoType.setter
+    def CryptoType(self, CryptoType):
+        self._CryptoType = CryptoType
+
+    @property
+    def CryptoContent(self):
+        return self._CryptoContent
+
+    @CryptoContent.setter
+    def CryptoContent(self, CryptoContent):
+        self._CryptoContent = CryptoContent
 
 
     def _deserialize(self, params):
-        self.CryptoType = params.get("CryptoType")
-        self.CryptoContent = params.get("CryptoContent")
+        self._CryptoType = params.get("CryptoType")
+        self._CryptoContent = params.get("CryptoContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,78 +70,78 @@ class AntiFraudVipFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerUin: 业务方账号 ID
+        :param _CustomerUin: 业务方账号 ID
         :type CustomerUin: str
-        :param CustomerAppid: 业务方APPID
+        :param _CustomerAppid: 业务方APPID
         :type CustomerAppid: str
-        :param IdNumber: 身份证号
+        :param _IdNumber: 身份证号
 注 1：下方 idCryptoType 为指定
 加密方式
 注 2：若 idNumber 加密则必传加
 密方式
         :type IdNumber: str
-        :param PhoneNumber: 手机号码（注：不需要带国家代码
+        :param _PhoneNumber: 手机号码（注：不需要带国家代码
 例如：13430421011）
 注 1：下方 phoneCryptoType 为
 指定加密方式:
 注 2：若 phoneNumber 加密则必
 传加密方式
         :type PhoneNumber: str
-        :param Scene: 业务场景 ID
+        :param _Scene: 业务场景 ID
         :type Scene: str
-        :param CustomerSubUin: 默认不使用，业务方子
+        :param _CustomerSubUin: 默认不使用，业务方子
 账号，若接口使用密钥对应是子账
 号则必填
         :type CustomerSubUin: str
-        :param Authorization: 已获取约定标识则传 1；
+        :param _Authorization: 已获取约定标识则传 1；
 用于基于特定需求而传的标识字段
 注：有约定则是必传，若未传则查
 询接口失败
         :type Authorization: str
-        :param Name: 姓名
+        :param _Name: 姓名
 注 ：不支持加密
         :type Name: str
-        :param BankCardNumber: 银行卡号
+        :param _BankCardNumber: 银行卡号
         :type BankCardNumber: str
-        :param UserIp: 用户请求来源 IP
+        :param _UserIp: 用户请求来源 IP
         :type UserIp: str
-        :param Imei: 国际移动设备识别码
+        :param _Imei: 国际移动设备识别码
         :type Imei: str
-        :param Idfa: ios 系统广告标示符
+        :param _Idfa: ios 系统广告标示符
         :type Idfa: str
-        :param EmailAddress: 用户邮箱地址
+        :param _EmailAddress: 用户邮箱地址
         :type EmailAddress: str
-        :param Address: 用户住址
+        :param _Address: 用户住址
         :type Address: str
-        :param Mac: MAC 地址
+        :param _Mac: MAC 地址
         :type Mac: str
-        :param Imsi: 国际移动用户识别码
+        :param _Imsi: 国际移动用户识别码
         :type Imsi: str
-        :param AccountType: 关联的腾讯帐号 QQ：1；
+        :param _AccountType: 关联的腾讯帐号 QQ：1；
 开放帐号微信： 2；
         :type AccountType: str
-        :param Uid: 可选的 QQ 或微信 openid
+        :param _Uid: 可选的 QQ 或微信 openid
         :type Uid: str
-        :param AppIdU: qq 或微信分配给网站或应用的
+        :param _AppIdU: qq 或微信分配给网站或应用的
 appid，用来唯一标识网站或应用
         :type AppIdU: str
-        :param WifiMac: ＷＩＦＩＭＡＣ
+        :param _WifiMac: ＷＩＦＩＭＡＣ
         :type WifiMac: str
-        :param WifiSSID: WIFI 服务集标识
+        :param _WifiSSID: WIFI 服务集标识
         :type WifiSSID: str
-        :param WifiBSSID: WIFI-BSSID
+        :param _WifiBSSID: WIFI-BSSID
         :type WifiBSSID: str
-        :param ExtensionId: 拓展字段类型 ID
+        :param _ExtensionId: 拓展字段类型 ID
 注：默认不填写，需要时天御侧将
 提供
         :type ExtensionId: str
-        :param ExtensionIn: 拓展字段内容
+        :param _ExtensionIn: 拓展字段内容
 注：默认不填，需要时天御侧将提
 供
         :type ExtensionIn: str
-        :param BusinessId: 业务 ID，默认不传
+        :param _BusinessId: 业务 ID，默认不传
         :type BusinessId: str
-        :param IdCryptoType: 身份证加密类型
+        :param _IdCryptoType: 身份证加密类型
 0：不加密（默认值）
 1：md5
 2：sha256
@@ -132,7 +149,7 @@ appid，用来唯一标识网站或应用
 注：若 idNumber 加密则必传加密
 方式
         :type IdCryptoType: str
-        :param PhoneCryptoType: 手机号加密类型
+        :param _PhoneCryptoType: 手机号加密类型
 0：不加密（默认值）
 1：md5,
 2：sha256
@@ -140,76 +157,301 @@ appid，用来唯一标识网站或应用
 注：若 phoneNumber 加密则必传
 加密方式
         :type PhoneCryptoType: str
-        :param NameCryptoType: 姓名加密类型：——注：已经不支持加
+        :param _NameCryptoType: 姓名加密类型：——注：已经不支持加
 密，该字段存在是为了兼容可能历史客户
 版本；
 0：不加密（默认值）
 1：md5
         :type NameCryptoType: str
         """
-        self.CustomerUin = None
-        self.CustomerAppid = None
-        self.IdNumber = None
-        self.PhoneNumber = None
-        self.Scene = None
-        self.CustomerSubUin = None
-        self.Authorization = None
-        self.Name = None
-        self.BankCardNumber = None
-        self.UserIp = None
-        self.Imei = None
-        self.Idfa = None
-        self.EmailAddress = None
-        self.Address = None
-        self.Mac = None
-        self.Imsi = None
-        self.AccountType = None
-        self.Uid = None
-        self.AppIdU = None
-        self.WifiMac = None
-        self.WifiSSID = None
-        self.WifiBSSID = None
-        self.ExtensionId = None
-        self.ExtensionIn = None
-        self.BusinessId = None
-        self.IdCryptoType = None
-        self.PhoneCryptoType = None
-        self.NameCryptoType = None
+        self._CustomerUin = None
+        self._CustomerAppid = None
+        self._IdNumber = None
+        self._PhoneNumber = None
+        self._Scene = None
+        self._CustomerSubUin = None
+        self._Authorization = None
+        self._Name = None
+        self._BankCardNumber = None
+        self._UserIp = None
+        self._Imei = None
+        self._Idfa = None
+        self._EmailAddress = None
+        self._Address = None
+        self._Mac = None
+        self._Imsi = None
+        self._AccountType = None
+        self._Uid = None
+        self._AppIdU = None
+        self._WifiMac = None
+        self._WifiSSID = None
+        self._WifiBSSID = None
+        self._ExtensionId = None
+        self._ExtensionIn = None
+        self._BusinessId = None
+        self._IdCryptoType = None
+        self._PhoneCryptoType = None
+        self._NameCryptoType = None
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+    @property
+    def CustomerAppid(self):
+        return self._CustomerAppid
+
+    @CustomerAppid.setter
+    def CustomerAppid(self, CustomerAppid):
+        self._CustomerAppid = CustomerAppid
+
+    @property
+    def IdNumber(self):
+        return self._IdNumber
+
+    @IdNumber.setter
+    def IdNumber(self, IdNumber):
+        self._IdNumber = IdNumber
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def CustomerSubUin(self):
+        return self._CustomerSubUin
+
+    @CustomerSubUin.setter
+    def CustomerSubUin(self, CustomerSubUin):
+        self._CustomerSubUin = CustomerSubUin
+
+    @property
+    def Authorization(self):
+        return self._Authorization
+
+    @Authorization.setter
+    def Authorization(self, Authorization):
+        self._Authorization = Authorization
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BankCardNumber(self):
+        return self._BankCardNumber
+
+    @BankCardNumber.setter
+    def BankCardNumber(self, BankCardNumber):
+        self._BankCardNumber = BankCardNumber
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def Idfa(self):
+        return self._Idfa
+
+    @Idfa.setter
+    def Idfa(self, Idfa):
+        self._Idfa = Idfa
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Mac(self):
+        return self._Mac
+
+    @Mac.setter
+    def Mac(self, Mac):
+        self._Mac = Mac
+
+    @property
+    def Imsi(self):
+        return self._Imsi
+
+    @Imsi.setter
+    def Imsi(self, Imsi):
+        self._Imsi = Imsi
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def AppIdU(self):
+        return self._AppIdU
+
+    @AppIdU.setter
+    def AppIdU(self, AppIdU):
+        self._AppIdU = AppIdU
+
+    @property
+    def WifiMac(self):
+        return self._WifiMac
+
+    @WifiMac.setter
+    def WifiMac(self, WifiMac):
+        self._WifiMac = WifiMac
+
+    @property
+    def WifiSSID(self):
+        return self._WifiSSID
+
+    @WifiSSID.setter
+    def WifiSSID(self, WifiSSID):
+        self._WifiSSID = WifiSSID
+
+    @property
+    def WifiBSSID(self):
+        return self._WifiBSSID
+
+    @WifiBSSID.setter
+    def WifiBSSID(self, WifiBSSID):
+        self._WifiBSSID = WifiBSSID
+
+    @property
+    def ExtensionId(self):
+        return self._ExtensionId
+
+    @ExtensionId.setter
+    def ExtensionId(self, ExtensionId):
+        self._ExtensionId = ExtensionId
+
+    @property
+    def ExtensionIn(self):
+        return self._ExtensionIn
+
+    @ExtensionIn.setter
+    def ExtensionIn(self, ExtensionIn):
+        self._ExtensionIn = ExtensionIn
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def IdCryptoType(self):
+        return self._IdCryptoType
+
+    @IdCryptoType.setter
+    def IdCryptoType(self, IdCryptoType):
+        self._IdCryptoType = IdCryptoType
+
+    @property
+    def PhoneCryptoType(self):
+        return self._PhoneCryptoType
+
+    @PhoneCryptoType.setter
+    def PhoneCryptoType(self, PhoneCryptoType):
+        self._PhoneCryptoType = PhoneCryptoType
+
+    @property
+    def NameCryptoType(self):
+        return self._NameCryptoType
+
+    @NameCryptoType.setter
+    def NameCryptoType(self, NameCryptoType):
+        self._NameCryptoType = NameCryptoType
 
 
     def _deserialize(self, params):
-        self.CustomerUin = params.get("CustomerUin")
-        self.CustomerAppid = params.get("CustomerAppid")
-        self.IdNumber = params.get("IdNumber")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Scene = params.get("Scene")
-        self.CustomerSubUin = params.get("CustomerSubUin")
-        self.Authorization = params.get("Authorization")
-        self.Name = params.get("Name")
-        self.BankCardNumber = params.get("BankCardNumber")
-        self.UserIp = params.get("UserIp")
-        self.Imei = params.get("Imei")
-        self.Idfa = params.get("Idfa")
-        self.EmailAddress = params.get("EmailAddress")
-        self.Address = params.get("Address")
-        self.Mac = params.get("Mac")
-        self.Imsi = params.get("Imsi")
-        self.AccountType = params.get("AccountType")
-        self.Uid = params.get("Uid")
-        self.AppIdU = params.get("AppIdU")
-        self.WifiMac = params.get("WifiMac")
-        self.WifiSSID = params.get("WifiSSID")
-        self.WifiBSSID = params.get("WifiBSSID")
-        self.ExtensionId = params.get("ExtensionId")
-        self.ExtensionIn = params.get("ExtensionIn")
-        self.BusinessId = params.get("BusinessId")
-        self.IdCryptoType = params.get("IdCryptoType")
-        self.PhoneCryptoType = params.get("PhoneCryptoType")
-        self.NameCryptoType = params.get("NameCryptoType")
+        self._CustomerUin = params.get("CustomerUin")
+        self._CustomerAppid = params.get("CustomerAppid")
+        self._IdNumber = params.get("IdNumber")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Scene = params.get("Scene")
+        self._CustomerSubUin = params.get("CustomerSubUin")
+        self._Authorization = params.get("Authorization")
+        self._Name = params.get("Name")
+        self._BankCardNumber = params.get("BankCardNumber")
+        self._UserIp = params.get("UserIp")
+        self._Imei = params.get("Imei")
+        self._Idfa = params.get("Idfa")
+        self._EmailAddress = params.get("EmailAddress")
+        self._Address = params.get("Address")
+        self._Mac = params.get("Mac")
+        self._Imsi = params.get("Imsi")
+        self._AccountType = params.get("AccountType")
+        self._Uid = params.get("Uid")
+        self._AppIdU = params.get("AppIdU")
+        self._WifiMac = params.get("WifiMac")
+        self._WifiSSID = params.get("WifiSSID")
+        self._WifiBSSID = params.get("WifiBSSID")
+        self._ExtensionId = params.get("ExtensionId")
+        self._ExtensionIn = params.get("ExtensionIn")
+        self._BusinessId = params.get("BusinessId")
+        self._IdCryptoType = params.get("IdCryptoType")
+        self._PhoneCryptoType = params.get("PhoneCryptoType")
+        self._NameCryptoType = params.get("NameCryptoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -222,81 +464,162 @@ class AntiFraudVipRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 公共错误码
+        :param _Code: 公共错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param CodeDesc: 业务侧错误码。
+        :param _CodeDesc: 业务侧错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeDesc: str
-        :param Message: 业务侧错误信息。
+        :param _Message: 业务侧错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Found: 表示该条记录能否查到：1 为能查到；-1 为查不到，此时 RiskScore 返回-1；
+        :param _Found: 表示该条记录能否查到：1 为能查到；-1 为查不到，此时 RiskScore 返回-1；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Found: str
-        :param IdFound: 表示该条记录中的身份 ID 能否查到
+        :param _IdFound: 表示该条记录中的身份 ID 能否查到
 1 为能查到
 -1 为查不到
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdFound: str
-        :param RiskScore: 当可查到时，返回 0~100 区间，值越高 欺诈可
+        :param _RiskScore: 当可查到时，返回 0~100 区间，值越高 欺诈可
 能性越大。
 当查不到时（即 found=-1），返回-1
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskScore: str
-        :param RiskInfo: 扩展字段，对风险类型的说明。扩展字段并非必
+        :param _RiskInfo: 扩展字段，对风险类型的说明。扩展字段并非必
 然出现。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskInfo: list of SimpleKindRiskDetail
-        :param OtherModelScores: 默认出现，提供模型版本号说明及多模型返回需
+        :param _OtherModelScores: 默认出现，提供模型版本号说明及多模型返回需
 要时用到；
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherModelScores: list of OtherModelScores
-        :param PostTime: 表示请求时间，标准 sunix 时间戳，非必然出现
+        :param _PostTime: 表示请求时间，标准 sunix 时间戳，非必然出现
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostTime: str
-        :param ExtensionOut: 拓展字段，非必然出现，和 ExtensionIn 对应；
+        :param _ExtensionOut: 拓展字段，非必然出现，和 ExtensionIn 对应；
 注：非必然出现，需要返回时天御侧将说明；
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtensionOut: str
         """
-        self.Code = None
-        self.CodeDesc = None
-        self.Message = None
-        self.Found = None
-        self.IdFound = None
-        self.RiskScore = None
-        self.RiskInfo = None
-        self.OtherModelScores = None
-        self.PostTime = None
-        self.ExtensionOut = None
+        self._Code = None
+        self._CodeDesc = None
+        self._Message = None
+        self._Found = None
+        self._IdFound = None
+        self._RiskScore = None
+        self._RiskInfo = None
+        self._OtherModelScores = None
+        self._PostTime = None
+        self._ExtensionOut = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CodeDesc(self):
+        return self._CodeDesc
+
+    @CodeDesc.setter
+    def CodeDesc(self, CodeDesc):
+        self._CodeDesc = CodeDesc
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Found(self):
+        return self._Found
+
+    @Found.setter
+    def Found(self, Found):
+        self._Found = Found
+
+    @property
+    def IdFound(self):
+        return self._IdFound
+
+    @IdFound.setter
+    def IdFound(self, IdFound):
+        self._IdFound = IdFound
+
+    @property
+    def RiskScore(self):
+        return self._RiskScore
+
+    @RiskScore.setter
+    def RiskScore(self, RiskScore):
+        self._RiskScore = RiskScore
+
+    @property
+    def RiskInfo(self):
+        return self._RiskInfo
+
+    @RiskInfo.setter
+    def RiskInfo(self, RiskInfo):
+        self._RiskInfo = RiskInfo
+
+    @property
+    def OtherModelScores(self):
+        return self._OtherModelScores
+
+    @OtherModelScores.setter
+    def OtherModelScores(self, OtherModelScores):
+        self._OtherModelScores = OtherModelScores
+
+    @property
+    def PostTime(self):
+        return self._PostTime
+
+    @PostTime.setter
+    def PostTime(self, PostTime):
+        self._PostTime = PostTime
+
+    @property
+    def ExtensionOut(self):
+        return self._ExtensionOut
+
+    @ExtensionOut.setter
+    def ExtensionOut(self, ExtensionOut):
+        self._ExtensionOut = ExtensionOut
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.CodeDesc = params.get("CodeDesc")
-        self.Message = params.get("Message")
-        self.Found = params.get("Found")
-        self.IdFound = params.get("IdFound")
-        self.RiskScore = params.get("RiskScore")
+        self._Code = params.get("Code")
+        self._CodeDesc = params.get("CodeDesc")
+        self._Message = params.get("Message")
+        self._Found = params.get("Found")
+        self._IdFound = params.get("IdFound")
+        self._RiskScore = params.get("RiskScore")
         if params.get("RiskInfo") is not None:
-            self.RiskInfo = []
+            self._RiskInfo = []
             for item in params.get("RiskInfo"):
                 obj = SimpleKindRiskDetail()
                 obj._deserialize(item)
-                self.RiskInfo.append(obj)
+                self._RiskInfo.append(obj)
         if params.get("OtherModelScores") is not None:
-            self.OtherModelScores = []
+            self._OtherModelScores = []
             for item in params.get("OtherModelScores"):
                 obj = OtherModelScores()
                 obj._deserialize(item)
-                self.OtherModelScores.append(obj)
-        self.PostTime = params.get("PostTime")
-        self.ExtensionOut = params.get("ExtensionOut")
+                self._OtherModelScores.append(obj)
+        self._PostTime = params.get("PostTime")
+        self._ExtensionOut = params.get("ExtensionOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -309,31 +632,48 @@ class GetAntiFraudVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessSecurityData: 默认不传，约定用原始业务
+        :param _BusinessSecurityData: 默认不传，约定用原始业务
 入参(二选一BusinessSecurityData 或
 BusinessCryptoData)。
         :type BusinessSecurityData: :class:`tencentcloud.afc.v20200226.models.AntiFraudVipFilter`
-        :param BusinessCryptoData: 默认不传，约定用密文业务
+        :param _BusinessCryptoData: 默认不传，约定用密文业务
 入参(二选一
 BusinessSecurityData 或
 BusinessCryptoData)。
         :type BusinessCryptoData: :class:`tencentcloud.afc.v20200226.models.AntiFraudVipCryptoFilter`
         """
-        self.BusinessSecurityData = None
-        self.BusinessCryptoData = None
+        self._BusinessSecurityData = None
+        self._BusinessCryptoData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+    @property
+    def BusinessCryptoData(self):
+        return self._BusinessCryptoData
+
+    @BusinessCryptoData.setter
+    def BusinessCryptoData(self, BusinessCryptoData):
+        self._BusinessCryptoData = BusinessCryptoData
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = AntiFraudVipFilter()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+            self._BusinessSecurityData = AntiFraudVipFilter()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
         if params.get("BusinessCryptoData") is not None:
-            self.BusinessCryptoData = AntiFraudVipCryptoFilter()
-            self.BusinessCryptoData._deserialize(params.get("BusinessCryptoData"))
+            self._BusinessCryptoData = AntiFraudVipCryptoFilter()
+            self._BusinessCryptoData._deserialize(params.get("BusinessCryptoData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -346,20 +686,36 @@ class GetAntiFraudVipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 反欺诈评分接口结果
+        :param _Data: 反欺诈评分接口结果
         :type Data: :class:`tencentcloud.afc.v20200226.models.AntiFraudVipRecord`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = AntiFraudVipRecord()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = AntiFraudVipRecord()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class OtherModelScores(AbstractModel):
@@ -369,22 +725,39 @@ class OtherModelScores(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 模型类型
+        :param _ModelId: 模型类型
         :type ModelId: str
-        :param ModelScore: 该模型评分
+        :param _ModelScore: 该模型评分
         :type ModelScore: str
         """
-        self.ModelId = None
-        self.ModelScore = None
+        self._ModelId = None
+        self._ModelScore = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelScore(self):
+        return self._ModelScore
+
+    @ModelScore.setter
+    def ModelScore(self, ModelScore):
+        self._ModelScore = ModelScore
 
 
     def _deserialize(self, params):
-        self.ModelId = params.get("ModelId")
-        self.ModelScore = params.get("ModelScore")
+        self._ModelId = params.get("ModelId")
+        self._ModelScore = params.get("ModelScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -397,116 +770,293 @@ class QueryAntiFraudVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumber: 电话号码(五选二)
+        :param _PhoneNumber: 电话号码(五选二)
         :type PhoneNumber: str
-        :param IdNumber: Id号(五选二)
+        :param _IdNumber: Id号(五选二)
         :type IdNumber: str
-        :param BankCardNumber: 银行卡号(五选二)
+        :param _BankCardNumber: 银行卡号(五选二)
         :type BankCardNumber: str
-        :param UserIp: 用户请求来源 IP(五选二)
+        :param _UserIp: 用户请求来源 IP(五选二)
         :type UserIp: str
-        :param Imei: 国际移动设备识别码(五选二)
+        :param _Imei: 国际移动设备识别码(五选二)
         :type Imei: str
-        :param Idfa: ios 系统广告标示符(五选二)
+        :param _Idfa: ios 系统广告标示符(五选二)
         :type Idfa: str
-        :param Scene: 业务场景 ID，需要找技术对接
+        :param _Scene: 业务场景 ID，需要找技术对接
         :type Scene: str
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param EmailAddress: 用户邮箱地址
+        :param _EmailAddress: 用户邮箱地址
         :type EmailAddress: str
-        :param Address: 用户住址
+        :param _Address: 用户住址
         :type Address: str
-        :param AccountType: 关联的腾讯帐号 QQ：1；
+        :param _AccountType: 关联的腾讯帐号 QQ：1；
 开放帐号微信： 2；
         :type AccountType: str
-        :param Uid: 可选的 QQ 或微信 openid
+        :param _Uid: 可选的 QQ 或微信 openid
         :type Uid: str
-        :param AppIdU: qq 或微信分配给网站或应用的 appid，用来
+        :param _AppIdU: qq 或微信分配给网站或应用的 appid，用来
 唯一标识网站或应用
         :type AppIdU: str
-        :param WifiMac: WIFI MAC
+        :param _WifiMac: WIFI MAC
         :type WifiMac: str
-        :param WifiSSID: WIFI 服务集标识
+        :param _WifiSSID: WIFI 服务集标识
         :type WifiSSID: str
-        :param WifiBSSID: WIFI-BSSID
+        :param _WifiBSSID: WIFI-BSSID
         :type WifiBSSID: str
-        :param BusinessId: 业务 ID，在多个业务中使用此服务，通过此
+        :param _BusinessId: 业务 ID，在多个业务中使用此服务，通过此
 ID 区分统计数据
         :type BusinessId: str
-        :param IdCryptoType: Id加密类型
+        :param _IdCryptoType: Id加密类型
 0：不加密（默认值）
 1：md5
 2：sha256
 3：SM3
         :type IdCryptoType: str
-        :param PhoneCryptoType: 手机号加密类型
+        :param _PhoneCryptoType: 手机号加密类型
 0：不加密（默认值）
 1：md5, 2：sha256
 3：SM3
         :type PhoneCryptoType: str
-        :param Mac: MAC 地址
+        :param _Mac: MAC 地址
         :type Mac: str
-        :param Imsi: 国际移动用户识别码
+        :param _Imsi: 国际移动用户识别码
         :type Imsi: str
-        :param NameCryptoType: 姓名加密类型
+        :param _NameCryptoType: 姓名加密类型
 0：不加密（默认值）
 1：md5
 2：sha256
 3：SM3
         :type NameCryptoType: str
         """
-        self.PhoneNumber = None
-        self.IdNumber = None
-        self.BankCardNumber = None
-        self.UserIp = None
-        self.Imei = None
-        self.Idfa = None
-        self.Scene = None
-        self.Name = None
-        self.EmailAddress = None
-        self.Address = None
-        self.AccountType = None
-        self.Uid = None
-        self.AppIdU = None
-        self.WifiMac = None
-        self.WifiSSID = None
-        self.WifiBSSID = None
-        self.BusinessId = None
-        self.IdCryptoType = None
-        self.PhoneCryptoType = None
-        self.Mac = None
-        self.Imsi = None
-        self.NameCryptoType = None
+        self._PhoneNumber = None
+        self._IdNumber = None
+        self._BankCardNumber = None
+        self._UserIp = None
+        self._Imei = None
+        self._Idfa = None
+        self._Scene = None
+        self._Name = None
+        self._EmailAddress = None
+        self._Address = None
+        self._AccountType = None
+        self._Uid = None
+        self._AppIdU = None
+        self._WifiMac = None
+        self._WifiSSID = None
+        self._WifiBSSID = None
+        self._BusinessId = None
+        self._IdCryptoType = None
+        self._PhoneCryptoType = None
+        self._Mac = None
+        self._Imsi = None
+        self._NameCryptoType = None
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def IdNumber(self):
+        return self._IdNumber
+
+    @IdNumber.setter
+    def IdNumber(self, IdNumber):
+        self._IdNumber = IdNumber
+
+    @property
+    def BankCardNumber(self):
+        return self._BankCardNumber
+
+    @BankCardNumber.setter
+    def BankCardNumber(self, BankCardNumber):
+        self._BankCardNumber = BankCardNumber
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def Idfa(self):
+        return self._Idfa
+
+    @Idfa.setter
+    def Idfa(self, Idfa):
+        self._Idfa = Idfa
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def AppIdU(self):
+        return self._AppIdU
+
+    @AppIdU.setter
+    def AppIdU(self, AppIdU):
+        self._AppIdU = AppIdU
+
+    @property
+    def WifiMac(self):
+        return self._WifiMac
+
+    @WifiMac.setter
+    def WifiMac(self, WifiMac):
+        self._WifiMac = WifiMac
+
+    @property
+    def WifiSSID(self):
+        return self._WifiSSID
+
+    @WifiSSID.setter
+    def WifiSSID(self, WifiSSID):
+        self._WifiSSID = WifiSSID
+
+    @property
+    def WifiBSSID(self):
+        return self._WifiBSSID
+
+    @WifiBSSID.setter
+    def WifiBSSID(self, WifiBSSID):
+        self._WifiBSSID = WifiBSSID
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def IdCryptoType(self):
+        return self._IdCryptoType
+
+    @IdCryptoType.setter
+    def IdCryptoType(self, IdCryptoType):
+        self._IdCryptoType = IdCryptoType
+
+    @property
+    def PhoneCryptoType(self):
+        return self._PhoneCryptoType
+
+    @PhoneCryptoType.setter
+    def PhoneCryptoType(self, PhoneCryptoType):
+        self._PhoneCryptoType = PhoneCryptoType
+
+    @property
+    def Mac(self):
+        return self._Mac
+
+    @Mac.setter
+    def Mac(self, Mac):
+        self._Mac = Mac
+
+    @property
+    def Imsi(self):
+        return self._Imsi
+
+    @Imsi.setter
+    def Imsi(self, Imsi):
+        self._Imsi = Imsi
+
+    @property
+    def NameCryptoType(self):
+        return self._NameCryptoType
+
+    @NameCryptoType.setter
+    def NameCryptoType(self, NameCryptoType):
+        self._NameCryptoType = NameCryptoType
 
 
     def _deserialize(self, params):
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.IdNumber = params.get("IdNumber")
-        self.BankCardNumber = params.get("BankCardNumber")
-        self.UserIp = params.get("UserIp")
-        self.Imei = params.get("Imei")
-        self.Idfa = params.get("Idfa")
-        self.Scene = params.get("Scene")
-        self.Name = params.get("Name")
-        self.EmailAddress = params.get("EmailAddress")
-        self.Address = params.get("Address")
-        self.AccountType = params.get("AccountType")
-        self.Uid = params.get("Uid")
-        self.AppIdU = params.get("AppIdU")
-        self.WifiMac = params.get("WifiMac")
-        self.WifiSSID = params.get("WifiSSID")
-        self.WifiBSSID = params.get("WifiBSSID")
-        self.BusinessId = params.get("BusinessId")
-        self.IdCryptoType = params.get("IdCryptoType")
-        self.PhoneCryptoType = params.get("PhoneCryptoType")
-        self.Mac = params.get("Mac")
-        self.Imsi = params.get("Imsi")
-        self.NameCryptoType = params.get("NameCryptoType")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._IdNumber = params.get("IdNumber")
+        self._BankCardNumber = params.get("BankCardNumber")
+        self._UserIp = params.get("UserIp")
+        self._Imei = params.get("Imei")
+        self._Idfa = params.get("Idfa")
+        self._Scene = params.get("Scene")
+        self._Name = params.get("Name")
+        self._EmailAddress = params.get("EmailAddress")
+        self._Address = params.get("Address")
+        self._AccountType = params.get("AccountType")
+        self._Uid = params.get("Uid")
+        self._AppIdU = params.get("AppIdU")
+        self._WifiMac = params.get("WifiMac")
+        self._WifiSSID = params.get("WifiSSID")
+        self._WifiBSSID = params.get("WifiBSSID")
+        self._BusinessId = params.get("BusinessId")
+        self._IdCryptoType = params.get("IdCryptoType")
+        self._PhoneCryptoType = params.get("PhoneCryptoType")
+        self._Mac = params.get("Mac")
+        self._Imsi = params.get("Imsi")
+        self._NameCryptoType = params.get("NameCryptoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -519,41 +1069,89 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Found: 表示该条记录能否查到：1为能查到，-1为查不到
+        :param _Found: 表示该条记录能否查到：1为能查到，-1为查不到
         :type Found: int
-        :param IdFound: 表示该条Id能否查到：1为能查到，-1为查不到
+        :param _IdFound: 表示该条Id能否查到：1为能查到，-1为查不到
         :type IdFound: int
-        :param RiskScore: 0~100;值越高 欺诈可能性越大
+        :param _RiskScore: 0~100;值越高 欺诈可能性越大
         :type RiskScore: int
-        :param RiskInfo: 扩展字段，对风险类型的说明
+        :param _RiskInfo: 扩展字段，对风险类型的说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskInfo: list of RiskDetail
-        :param CodeDesc: 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
+        :param _CodeDesc: 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeDesc: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Found = None
-        self.IdFound = None
-        self.RiskScore = None
-        self.RiskInfo = None
-        self.CodeDesc = None
-        self.RequestId = None
+        self._Found = None
+        self._IdFound = None
+        self._RiskScore = None
+        self._RiskInfo = None
+        self._CodeDesc = None
+        self._RequestId = None
+
+    @property
+    def Found(self):
+        return self._Found
+
+    @Found.setter
+    def Found(self, Found):
+        self._Found = Found
+
+    @property
+    def IdFound(self):
+        return self._IdFound
+
+    @IdFound.setter
+    def IdFound(self, IdFound):
+        self._IdFound = IdFound
+
+    @property
+    def RiskScore(self):
+        return self._RiskScore
+
+    @RiskScore.setter
+    def RiskScore(self, RiskScore):
+        self._RiskScore = RiskScore
+
+    @property
+    def RiskInfo(self):
+        return self._RiskInfo
+
+    @RiskInfo.setter
+    def RiskInfo(self, RiskInfo):
+        self._RiskInfo = RiskInfo
+
+    @property
+    def CodeDesc(self):
+        return self._CodeDesc
+
+    @CodeDesc.setter
+    def CodeDesc(self, CodeDesc):
+        self._CodeDesc = CodeDesc
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Found = params.get("Found")
-        self.IdFound = params.get("IdFound")
-        self.RiskScore = params.get("RiskScore")
+        self._Found = params.get("Found")
+        self._IdFound = params.get("IdFound")
+        self._RiskScore = params.get("RiskScore")
         if params.get("RiskInfo") is not None:
-            self.RiskInfo = []
+            self._RiskInfo = []
             for item in params.get("RiskInfo"):
                 obj = RiskDetail()
                 obj._deserialize(item)
-                self.RiskInfo.append(obj)
-        self.CodeDesc = params.get("CodeDesc")
-        self.RequestId = params.get("RequestId")
+                self._RiskInfo.append(obj)
+        self._CodeDesc = params.get("CodeDesc")
+        self._RequestId = params.get("RequestId")
 
 
 class RiskDetail(AbstractModel):
@@ -563,18 +1161,27 @@ class RiskDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RiskCode: 风险码
+        :param _RiskCode: 风险码
         :type RiskCode: int
         """
-        self.RiskCode = None
+        self._RiskCode = None
+
+    @property
+    def RiskCode(self):
+        return self._RiskCode
+
+    @RiskCode.setter
+    def RiskCode(self, RiskCode):
+        self._RiskCode = RiskCode
 
 
     def _deserialize(self, params):
-        self.RiskCode = params.get("RiskCode")
+        self._RiskCode = params.get("RiskCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -587,24 +1194,41 @@ class SimpleKindRiskDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RiskCode: 风险码
+        :param _RiskCode: 风险码
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCode: str
-        :param RiskCodeValue: 风险码详情
+        :param _RiskCodeValue: 风险码详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCodeValue: str
         """
-        self.RiskCode = None
-        self.RiskCodeValue = None
+        self._RiskCode = None
+        self._RiskCodeValue = None
+
+    @property
+    def RiskCode(self):
+        return self._RiskCode
+
+    @RiskCode.setter
+    def RiskCode(self, RiskCode):
+        self._RiskCode = RiskCode
+
+    @property
+    def RiskCodeValue(self):
+        return self._RiskCodeValue
+
+    @RiskCodeValue.setter
+    def RiskCodeValue(self, RiskCodeValue):
+        self._RiskCodeValue = RiskCodeValue
 
 
     def _deserialize(self, params):
-        self.RiskCode = params.get("RiskCode")
-        self.RiskCodeValue = params.get("RiskCodeValue")
+        self._RiskCode = params.get("RiskCode")
+        self._RiskCodeValue = params.get("RiskCodeValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -617,26 +1241,51 @@ class TransportGeneralInterfaceInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InterfaceName: 公证处请求接口名
+        :param _InterfaceName: 公证处请求接口名
         :type InterfaceName: str
-        :param NotarizationInput: 公证处业务详情二层入参
+        :param _NotarizationInput: 公证处业务详情二层入参
         :type NotarizationInput: str
-        :param NotarizationSign: 业务二层详情入参的哈希签名
+        :param _NotarizationSign: 业务二层详情入参的哈希签名
         :type NotarizationSign: str
         """
-        self.InterfaceName = None
-        self.NotarizationInput = None
-        self.NotarizationSign = None
+        self._InterfaceName = None
+        self._NotarizationInput = None
+        self._NotarizationSign = None
+
+    @property
+    def InterfaceName(self):
+        return self._InterfaceName
+
+    @InterfaceName.setter
+    def InterfaceName(self, InterfaceName):
+        self._InterfaceName = InterfaceName
+
+    @property
+    def NotarizationInput(self):
+        return self._NotarizationInput
+
+    @NotarizationInput.setter
+    def NotarizationInput(self, NotarizationInput):
+        self._NotarizationInput = NotarizationInput
+
+    @property
+    def NotarizationSign(self):
+        return self._NotarizationSign
+
+    @NotarizationSign.setter
+    def NotarizationSign(self, NotarizationSign):
+        self._NotarizationSign = NotarizationSign
 
 
     def _deserialize(self, params):
-        self.InterfaceName = params.get("InterfaceName")
-        self.NotarizationInput = params.get("NotarizationInput")
-        self.NotarizationSign = params.get("NotarizationSign")
+        self._InterfaceName = params.get("InterfaceName")
+        self._NotarizationInput = params.get("NotarizationInput")
+        self._NotarizationSign = params.get("NotarizationSign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -649,29 +1298,54 @@ class TransportGeneralInterfaceOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 错误码
+        :param _Code: 错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Message: 回包信息
+        :param _Message: 回包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param NotarizationData: 公证处业务回包
+        :param _NotarizationData: 公证处业务回包
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotarizationData: str
         """
-        self.Code = None
-        self.Message = None
-        self.NotarizationData = None
+        self._Code = None
+        self._Message = None
+        self._NotarizationData = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def NotarizationData(self):
+        return self._NotarizationData
+
+    @NotarizationData.setter
+    def NotarizationData(self, NotarizationData):
+        self._NotarizationData = NotarizationData
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
-        self.NotarizationData = params.get("NotarizationData")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._NotarizationData = params.get("NotarizationData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -684,20 +1358,29 @@ class TransportGeneralInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessSecurityData: 业务入参
+        :param _BusinessSecurityData: 业务入参
         :type BusinessSecurityData: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceInput`
         """
-        self.BusinessSecurityData = None
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = TransportGeneralInterfaceInput()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+            self._BusinessSecurityData = TransportGeneralInterfaceInput()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -710,18 +1393,34 @@ class TransportGeneralInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 业务出参
+        :param _Data: 业务出参
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceOutput`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = TransportGeneralInterfaceOutput()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = TransportGeneralInterfaceOutput()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")

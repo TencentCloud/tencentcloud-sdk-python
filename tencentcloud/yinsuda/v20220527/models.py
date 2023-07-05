@@ -25,26 +25,51 @@ class AMEMusicBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MusicId: 歌曲 Id。
+        :param _MusicId: 歌曲 Id。
         :type MusicId: str
-        :param Name: 歌曲名称。
+        :param _Name: 歌曲名称。
         :type Name: str
-        :param SingerSet: 歌手列表。
+        :param _SingerSet: 歌手列表。
         :type SingerSet: list of str
         """
-        self.MusicId = None
-        self.Name = None
-        self.SingerSet = None
+        self._MusicId = None
+        self._Name = None
+        self._SingerSet = None
+
+    @property
+    def MusicId(self):
+        return self._MusicId
+
+    @MusicId.setter
+    def MusicId(self, MusicId):
+        self._MusicId = MusicId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SingerSet(self):
+        return self._SingerSet
+
+    @SingerSet.setter
+    def SingerSet(self, SingerSet):
+        self._SingerSet = SingerSet
 
 
     def _deserialize(self, params):
-        self.MusicId = params.get("MusicId")
-        self.Name = params.get("Name")
-        self.SingerSet = params.get("SingerSet")
+        self._MusicId = params.get("MusicId")
+        self._Name = params.get("Name")
+        self._SingerSet = params.get("SingerSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,38 +82,87 @@ class ApplyChorusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param RoomId: 房间号。
+        :param _RoomId: 房间号。
         :type RoomId: str
-        :param MusicId: 歌曲 Id。
+        :param _MusicId: 歌曲 Id。
         :type MusicId: str
-        :param MaxChorusNum: 最大合唱人数，默认值为 8，最大值为 20。
+        :param _MaxChorusNum: 最大合唱人数，默认值为 8，最大值为 20。
         :type MaxChorusNum: int
-        :param ChorusUserIds: 合唱用户标识列表。
+        :param _ChorusUserIds: 合唱用户标识列表。
         :type ChorusUserIds: list of str
         """
-        self.AppName = None
-        self.UserId = None
-        self.RoomId = None
-        self.MusicId = None
-        self.MaxChorusNum = None
-        self.ChorusUserIds = None
+        self._AppName = None
+        self._UserId = None
+        self._RoomId = None
+        self._MusicId = None
+        self._MaxChorusNum = None
+        self._ChorusUserIds = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def MusicId(self):
+        return self._MusicId
+
+    @MusicId.setter
+    def MusicId(self, MusicId):
+        self._MusicId = MusicId
+
+    @property
+    def MaxChorusNum(self):
+        return self._MaxChorusNum
+
+    @MaxChorusNum.setter
+    def MaxChorusNum(self, MaxChorusNum):
+        self._MaxChorusNum = MaxChorusNum
+
+    @property
+    def ChorusUserIds(self):
+        return self._ChorusUserIds
+
+    @ChorusUserIds.setter
+    def ChorusUserIds(self, ChorusUserIds):
+        self._ChorusUserIds = ChorusUserIds
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.RoomId = params.get("RoomId")
-        self.MusicId = params.get("MusicId")
-        self.MaxChorusNum = params.get("MaxChorusNum")
-        self.ChorusUserIds = params.get("ChorusUserIds")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._RoomId = params.get("RoomId")
+        self._MusicId = params.get("MusicId")
+        self._MaxChorusNum = params.get("MaxChorusNum")
+        self._ChorusUserIds = params.get("ChorusUserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -101,18 +175,34 @@ class ApplyChorusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChorusToken: 合唱 Token。
+        :param _ChorusToken: 合唱 Token。
         :type ChorusToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ChorusToken = None
-        self.RequestId = None
+        self._ChorusToken = None
+        self._RequestId = None
+
+    @property
+    def ChorusToken(self):
+        return self._ChorusToken
+
+    @ChorusToken.setter
+    def ChorusToken(self, ChorusToken):
+        self._ChorusToken = ChorusToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ChorusToken = params.get("ChorusToken")
-        self.RequestId = params.get("RequestId")
+        self._ChorusToken = params.get("ChorusToken")
+        self._RequestId = params.get("RequestId")
 
 
 class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
@@ -122,39 +212,88 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param MusicIds: 歌曲 Id 列表。
+        :param _MusicIds: 歌曲 Id 列表。
         :type MusicIds: list of str
-        :param PlayScene: 播放场景。默认为Chat
+        :param _PlayScene: 播放场景。默认为Chat
 <li>Live：直播</li><li>Chat：语聊</li>
         :type PlayScene: str
-        :param GuestUserId: 玩家用户标识
+        :param _GuestUserId: 玩家用户标识
         :type GuestUserId: str
-        :param RoomId: 房间Id
+        :param _RoomId: 房间Id
         :type RoomId: str
         """
-        self.AppName = None
-        self.UserId = None
-        self.MusicIds = None
-        self.PlayScene = None
-        self.GuestUserId = None
-        self.RoomId = None
+        self._AppName = None
+        self._UserId = None
+        self._MusicIds = None
+        self._PlayScene = None
+        self._GuestUserId = None
+        self._RoomId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def MusicIds(self):
+        return self._MusicIds
+
+    @MusicIds.setter
+    def MusicIds(self, MusicIds):
+        self._MusicIds = MusicIds
+
+    @property
+    def PlayScene(self):
+        return self._PlayScene
+
+    @PlayScene.setter
+    def PlayScene(self, PlayScene):
+        self._PlayScene = PlayScene
+
+    @property
+    def GuestUserId(self):
+        return self._GuestUserId
+
+    @GuestUserId.setter
+    def GuestUserId(self, GuestUserId):
+        self._GuestUserId = GuestUserId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.MusicIds = params.get("MusicIds")
-        self.PlayScene = params.get("PlayScene")
-        self.GuestUserId = params.get("GuestUserId")
-        self.RoomId = params.get("RoomId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._MusicIds = params.get("MusicIds")
+        self._PlayScene = params.get("PlayScene")
+        self._GuestUserId = params.get("GuestUserId")
+        self._RoomId = params.get("RoomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -167,27 +306,51 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KTVMusicDetailInfoSet: 歌曲详细信息列表。
+        :param _KTVMusicDetailInfoSet: 歌曲详细信息列表。
         :type KTVMusicDetailInfoSet: list of KTVMusicDetailInfo
-        :param NotExistMusicIdSet: 不存在歌曲Id列表。
+        :param _NotExistMusicIdSet: 不存在歌曲Id列表。
         :type NotExistMusicIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KTVMusicDetailInfoSet = None
-        self.NotExistMusicIdSet = None
-        self.RequestId = None
+        self._KTVMusicDetailInfoSet = None
+        self._NotExistMusicIdSet = None
+        self._RequestId = None
+
+    @property
+    def KTVMusicDetailInfoSet(self):
+        return self._KTVMusicDetailInfoSet
+
+    @KTVMusicDetailInfoSet.setter
+    def KTVMusicDetailInfoSet(self, KTVMusicDetailInfoSet):
+        self._KTVMusicDetailInfoSet = KTVMusicDetailInfoSet
+
+    @property
+    def NotExistMusicIdSet(self):
+        return self._NotExistMusicIdSet
+
+    @NotExistMusicIdSet.setter
+    def NotExistMusicIdSet(self, NotExistMusicIdSet):
+        self._NotExistMusicIdSet = NotExistMusicIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("KTVMusicDetailInfoSet") is not None:
-            self.KTVMusicDetailInfoSet = []
+            self._KTVMusicDetailInfoSet = []
             for item in params.get("KTVMusicDetailInfoSet"):
                 obj = KTVMusicDetailInfo()
                 obj._deserialize(item)
-                self.KTVMusicDetailInfoSet.append(obj)
-        self.NotExistMusicIdSet = params.get("NotExistMusicIdSet")
-        self.RequestId = params.get("RequestId")
+                self._KTVMusicDetailInfoSet.append(obj)
+        self._NotExistMusicIdSet = params.get("NotExistMusicIdSet")
+        self._RequestId = params.get("RequestId")
 
 
 class ChorusClip(AbstractModel):
@@ -197,22 +360,39 @@ class ChorusClip(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间，单位：毫秒。
+        :param _StartTime: 开始时间，单位：毫秒。
         :type StartTime: int
-        :param EndTime: 结束时间，单位：毫秒。
+        :param _EndTime: 结束时间，单位：毫秒。
         :type EndTime: int
         """
-        self.StartTime = None
-        self.EndTime = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -225,42 +405,83 @@ class CreateKTVRobotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param RTCSystem: RTC厂商类型，取值有：
+        :param _RTCSystem: RTC厂商类型，取值有：
 <li>TRTC</li>
         :type RTCSystem: str
-        :param JoinRoomInput: 进房参数。
+        :param _JoinRoomInput: 进房参数。
         :type JoinRoomInput: :class:`tencentcloud.yinsuda.v20220527.models.JoinRoomInput`
-        :param SyncRobotCommands: 创建机器人时初始化参数。
+        :param _SyncRobotCommands: 创建机器人时初始化参数。
         :type SyncRobotCommands: list of SyncRobotCommand
         """
-        self.AppName = None
-        self.UserId = None
-        self.RTCSystem = None
-        self.JoinRoomInput = None
-        self.SyncRobotCommands = None
+        self._AppName = None
+        self._UserId = None
+        self._RTCSystem = None
+        self._JoinRoomInput = None
+        self._SyncRobotCommands = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RTCSystem(self):
+        return self._RTCSystem
+
+    @RTCSystem.setter
+    def RTCSystem(self, RTCSystem):
+        self._RTCSystem = RTCSystem
+
+    @property
+    def JoinRoomInput(self):
+        return self._JoinRoomInput
+
+    @JoinRoomInput.setter
+    def JoinRoomInput(self, JoinRoomInput):
+        self._JoinRoomInput = JoinRoomInput
+
+    @property
+    def SyncRobotCommands(self):
+        return self._SyncRobotCommands
+
+    @SyncRobotCommands.setter
+    def SyncRobotCommands(self, SyncRobotCommands):
+        self._SyncRobotCommands = SyncRobotCommands
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.RTCSystem = params.get("RTCSystem")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._RTCSystem = params.get("RTCSystem")
         if params.get("JoinRoomInput") is not None:
-            self.JoinRoomInput = JoinRoomInput()
-            self.JoinRoomInput._deserialize(params.get("JoinRoomInput"))
+            self._JoinRoomInput = JoinRoomInput()
+            self._JoinRoomInput._deserialize(params.get("JoinRoomInput"))
         if params.get("SyncRobotCommands") is not None:
-            self.SyncRobotCommands = []
+            self._SyncRobotCommands = []
             for item in params.get("SyncRobotCommands"):
                 obj = SyncRobotCommand()
                 obj._deserialize(item)
-                self.SyncRobotCommands.append(obj)
+                self._SyncRobotCommands.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -273,18 +494,34 @@ class CreateKTVRobotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RobotId: 机器人Id。
+        :param _RobotId: 机器人Id。
         :type RobotId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RobotId = None
-        self.RequestId = None
+        self._RobotId = None
+        self._RequestId = None
+
+    @property
+    def RobotId(self):
+        return self._RobotId
+
+    @RobotId.setter
+    def RobotId(self, RobotId):
+        self._RobotId = RobotId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RobotId = params.get("RobotId")
-        self.RequestId = params.get("RequestId")
+        self._RobotId = params.get("RobotId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVMatchMusicsRequest(AbstractModel):
@@ -294,31 +531,56 @@ class DescribeKTVMatchMusicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param Rules: 匹配规则列表。
+        :param _Rules: 匹配规则列表。
         :type Rules: list of KTVMatchRule
         """
-        self.AppName = None
-        self.UserId = None
-        self.Rules = None
+        self._AppName = None
+        self._UserId = None
+        self._Rules = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = KTVMatchRule()
                 obj._deserialize(item)
-                self.Rules.append(obj)
+                self._Rules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -331,32 +593,56 @@ class DescribeKTVMatchMusicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MatchMusicSet: 匹配到的歌曲列表。
+        :param _MatchMusicSet: 匹配到的歌曲列表。
         :type MatchMusicSet: list of KTVMatchMusic
-        :param NotMatchRuleSet: 未匹配的规则列表。
+        :param _NotMatchRuleSet: 未匹配的规则列表。
         :type NotMatchRuleSet: list of KTVMatchRule
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MatchMusicSet = None
-        self.NotMatchRuleSet = None
-        self.RequestId = None
+        self._MatchMusicSet = None
+        self._NotMatchRuleSet = None
+        self._RequestId = None
+
+    @property
+    def MatchMusicSet(self):
+        return self._MatchMusicSet
+
+    @MatchMusicSet.setter
+    def MatchMusicSet(self, MatchMusicSet):
+        self._MatchMusicSet = MatchMusicSet
+
+    @property
+    def NotMatchRuleSet(self):
+        return self._NotMatchRuleSet
+
+    @NotMatchRuleSet.setter
+    def NotMatchRuleSet(self, NotMatchRuleSet):
+        self._NotMatchRuleSet = NotMatchRuleSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("MatchMusicSet") is not None:
-            self.MatchMusicSet = []
+            self._MatchMusicSet = []
             for item in params.get("MatchMusicSet"):
                 obj = KTVMatchMusic()
                 obj._deserialize(item)
-                self.MatchMusicSet.append(obj)
+                self._MatchMusicSet.append(obj)
         if params.get("NotMatchRuleSet") is not None:
-            self.NotMatchRuleSet = []
+            self._NotMatchRuleSet = []
             for item in params.get("NotMatchRuleSet"):
                 obj = KTVMatchRule()
                 obj._deserialize(item)
-                self.NotMatchRuleSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._NotMatchRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
@@ -366,35 +652,76 @@ class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param MusicId: 歌曲 Id 。
+        :param _MusicId: 歌曲 Id 。
         :type MusicId: str
-        :param PlayScene: 播放场景。默认为Chat
+        :param _PlayScene: 播放场景。默认为Chat
 <li>Live：直播</li><li>Chat：语聊</li>
         :type PlayScene: str
-        :param RoomId: 房间Id
+        :param _RoomId: 房间Id
         :type RoomId: str
         """
-        self.AppName = None
-        self.UserId = None
-        self.MusicId = None
-        self.PlayScene = None
-        self.RoomId = None
+        self._AppName = None
+        self._UserId = None
+        self._MusicId = None
+        self._PlayScene = None
+        self._RoomId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def MusicId(self):
+        return self._MusicId
+
+    @MusicId.setter
+    def MusicId(self, MusicId):
+        self._MusicId = MusicId
+
+    @property
+    def PlayScene(self):
+        return self._PlayScene
+
+    @PlayScene.setter
+    def PlayScene(self, PlayScene):
+        self._PlayScene = PlayScene
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.MusicId = params.get("MusicId")
-        self.PlayScene = params.get("PlayScene")
-        self.RoomId = params.get("RoomId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._MusicId = params.get("MusicId")
+        self._PlayScene = params.get("PlayScene")
+        self._RoomId = params.get("RoomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -407,53 +734,117 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 歌曲状态。
+        :param _Status: 歌曲状态。
 0：可用
 1：下线
 2：没权限
 3：没伴奏
 当返回2时，其他参数有可能全部为空
         :type Status: int
-        :param Url: 伴奏链接
+        :param _Url: 伴奏链接
         :type Url: str
-        :param ExtName: 伴奏类型，如mkv，mp3等
+        :param _ExtName: 伴奏类型，如mkv，mp3等
         :type ExtName: str
-        :param SegmentBegin: 高潮开始时间
+        :param _SegmentBegin: 高潮开始时间
         :type SegmentBegin: int
-        :param SegmentEnd: 高潮结束时间
+        :param _SegmentEnd: 高潮结束时间
         :type SegmentEnd: int
-        :param FileSize: 链接文件大小 单位 字节
+        :param _FileSize: 链接文件大小 单位 字节
         :type FileSize: int
-        :param OtherSegments: 其它片段时间（可用于抢唱）
+        :param _OtherSegments: 其它片段时间（可用于抢唱）
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherSegments: list of KTVOtherSegments
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.Url = None
-        self.ExtName = None
-        self.SegmentBegin = None
-        self.SegmentEnd = None
-        self.FileSize = None
-        self.OtherSegments = None
-        self.RequestId = None
+        self._Status = None
+        self._Url = None
+        self._ExtName = None
+        self._SegmentBegin = None
+        self._SegmentEnd = None
+        self._FileSize = None
+        self._OtherSegments = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExtName(self):
+        return self._ExtName
+
+    @ExtName.setter
+    def ExtName(self, ExtName):
+        self._ExtName = ExtName
+
+    @property
+    def SegmentBegin(self):
+        return self._SegmentBegin
+
+    @SegmentBegin.setter
+    def SegmentBegin(self, SegmentBegin):
+        self._SegmentBegin = SegmentBegin
+
+    @property
+    def SegmentEnd(self):
+        return self._SegmentEnd
+
+    @SegmentEnd.setter
+    def SegmentEnd(self, SegmentEnd):
+        self._SegmentEnd = SegmentEnd
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def OtherSegments(self):
+        return self._OtherSegments
+
+    @OtherSegments.setter
+    def OtherSegments(self, OtherSegments):
+        self._OtherSegments = OtherSegments
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Url = params.get("Url")
-        self.ExtName = params.get("ExtName")
-        self.SegmentBegin = params.get("SegmentBegin")
-        self.SegmentEnd = params.get("SegmentEnd")
-        self.FileSize = params.get("FileSize")
+        self._Status = params.get("Status")
+        self._Url = params.get("Url")
+        self._ExtName = params.get("ExtName")
+        self._SegmentBegin = params.get("SegmentBegin")
+        self._SegmentEnd = params.get("SegmentEnd")
+        self._FileSize = params.get("FileSize")
         if params.get("OtherSegments") is not None:
-            self.OtherSegments = []
+            self._OtherSegments = []
             for item in params.get("OtherSegments"):
                 obj = KTVOtherSegments()
                 obj._deserialize(item)
-                self.OtherSegments.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._OtherSegments.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVMusicsByTagRequest(AbstractModel):
@@ -463,46 +854,103 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param TagId: 标签 Id。
+        :param _TagId: 标签 Id。
         :type TagId: str
-        :param ScrollToken: 滚动标记。
+        :param _ScrollToken: 滚动标记。
         :type ScrollToken: str
-        :param Limit: 返回条数限制，默认 20，最大 50。
+        :param _Limit: 返回条数限制，默认 20，最大 50。
         :type Limit: int
-        :param RightFilters: 权益过滤，取值有：
+        :param _RightFilters: 权益过滤，取值有：
 <li>Play：可播；</li>
 <li>Sing：可唱。</li>
         :type RightFilters: list of str
-        :param MaterialFilters: 物料过滤，取值有：
+        :param _MaterialFilters: 物料过滤，取值有：
 <li>Lyrics：含有歌词；</li>
 <li>Midi：含有音高线。</li>
         :type MaterialFilters: list of str
         """
-        self.AppName = None
-        self.UserId = None
-        self.TagId = None
-        self.ScrollToken = None
-        self.Limit = None
-        self.RightFilters = None
-        self.MaterialFilters = None
+        self._AppName = None
+        self._UserId = None
+        self._TagId = None
+        self._ScrollToken = None
+        self._Limit = None
+        self._RightFilters = None
+        self._MaterialFilters = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TagId(self):
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RightFilters(self):
+        return self._RightFilters
+
+    @RightFilters.setter
+    def RightFilters(self, RightFilters):
+        self._RightFilters = RightFilters
+
+    @property
+    def MaterialFilters(self):
+        return self._MaterialFilters
+
+    @MaterialFilters.setter
+    def MaterialFilters(self, MaterialFilters):
+        self._MaterialFilters = MaterialFilters
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.TagId = params.get("TagId")
-        self.ScrollToken = params.get("ScrollToken")
-        self.Limit = params.get("Limit")
-        self.RightFilters = params.get("RightFilters")
-        self.MaterialFilters = params.get("MaterialFilters")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._TagId = params.get("TagId")
+        self._ScrollToken = params.get("ScrollToken")
+        self._Limit = params.get("Limit")
+        self._RightFilters = params.get("RightFilters")
+        self._MaterialFilters = params.get("MaterialFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -515,27 +963,51 @@ class DescribeKTVMusicsByTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KTVMusicInfoSet: 歌曲信息列表。
+        :param _KTVMusicInfoSet: 歌曲信息列表。
         :type KTVMusicInfoSet: list of KTVMusicBaseInfo
-        :param ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
+        :param _ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
         :type ScrollToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KTVMusicInfoSet = None
-        self.ScrollToken = None
-        self.RequestId = None
+        self._KTVMusicInfoSet = None
+        self._ScrollToken = None
+        self._RequestId = None
+
+    @property
+    def KTVMusicInfoSet(self):
+        return self._KTVMusicInfoSet
+
+    @KTVMusicInfoSet.setter
+    def KTVMusicInfoSet(self, KTVMusicInfoSet):
+        self._KTVMusicInfoSet = KTVMusicInfoSet
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("KTVMusicInfoSet") is not None:
-            self.KTVMusicInfoSet = []
+            self._KTVMusicInfoSet = []
             for item in params.get("KTVMusicInfoSet"):
                 obj = KTVMusicBaseInfo()
                 obj._deserialize(item)
-                self.KTVMusicInfoSet.append(obj)
-        self.ScrollToken = params.get("ScrollToken")
-        self.RequestId = params.get("RequestId")
+                self._KTVMusicInfoSet.append(obj)
+        self._ScrollToken = params.get("ScrollToken")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVPlaylistDetailRequest(AbstractModel):
@@ -545,51 +1017,116 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param PlaylistId: 歌单 Id。
+        :param _PlaylistId: 歌单 Id。
         :type PlaylistId: str
-        :param ScrollToken: 滚动标记。
+        :param _ScrollToken: 滚动标记。
         :type ScrollToken: str
-        :param Limit: 返回条数，默认：20，最大：50。
+        :param _Limit: 返回条数，默认：20，最大：50。
         :type Limit: int
-        :param RightFilters: 权益过滤，取值有：
+        :param _RightFilters: 权益过滤，取值有：
 <li>Play：可播；</li>
 <li>Sing：可唱。</li>
         :type RightFilters: list of str
-        :param PlayScene: 播放场景。默认为Chat
+        :param _PlayScene: 播放场景。默认为Chat
 <li>Live：直播</li><li>Chat：语聊</li>
         :type PlayScene: str
-        :param MaterialFilters: 物料过滤，取值有：
+        :param _MaterialFilters: 物料过滤，取值有：
 <li>Lyrics：含有歌词；</li>
 <li>Midi：含有音高线。</li>
         :type MaterialFilters: list of str
         """
-        self.AppName = None
-        self.UserId = None
-        self.PlaylistId = None
-        self.ScrollToken = None
-        self.Limit = None
-        self.RightFilters = None
-        self.PlayScene = None
-        self.MaterialFilters = None
+        self._AppName = None
+        self._UserId = None
+        self._PlaylistId = None
+        self._ScrollToken = None
+        self._Limit = None
+        self._RightFilters = None
+        self._PlayScene = None
+        self._MaterialFilters = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PlaylistId(self):
+        return self._PlaylistId
+
+    @PlaylistId.setter
+    def PlaylistId(self, PlaylistId):
+        self._PlaylistId = PlaylistId
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RightFilters(self):
+        return self._RightFilters
+
+    @RightFilters.setter
+    def RightFilters(self, RightFilters):
+        self._RightFilters = RightFilters
+
+    @property
+    def PlayScene(self):
+        return self._PlayScene
+
+    @PlayScene.setter
+    def PlayScene(self, PlayScene):
+        self._PlayScene = PlayScene
+
+    @property
+    def MaterialFilters(self):
+        return self._MaterialFilters
+
+    @MaterialFilters.setter
+    def MaterialFilters(self, MaterialFilters):
+        self._MaterialFilters = MaterialFilters
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.PlaylistId = params.get("PlaylistId")
-        self.ScrollToken = params.get("ScrollToken")
-        self.Limit = params.get("Limit")
-        self.RightFilters = params.get("RightFilters")
-        self.PlayScene = params.get("PlayScene")
-        self.MaterialFilters = params.get("MaterialFilters")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._PlaylistId = params.get("PlaylistId")
+        self._ScrollToken = params.get("ScrollToken")
+        self._Limit = params.get("Limit")
+        self._RightFilters = params.get("RightFilters")
+        self._PlayScene = params.get("PlayScene")
+        self._MaterialFilters = params.get("MaterialFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -602,27 +1139,51 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KTVMusicInfoSet: 歌曲信息列表。
+        :param _KTVMusicInfoSet: 歌曲信息列表。
         :type KTVMusicInfoSet: list of KTVMusicBaseInfo
-        :param ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
+        :param _ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
         :type ScrollToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KTVMusicInfoSet = None
-        self.ScrollToken = None
-        self.RequestId = None
+        self._KTVMusicInfoSet = None
+        self._ScrollToken = None
+        self._RequestId = None
+
+    @property
+    def KTVMusicInfoSet(self):
+        return self._KTVMusicInfoSet
+
+    @KTVMusicInfoSet.setter
+    def KTVMusicInfoSet(self, KTVMusicInfoSet):
+        self._KTVMusicInfoSet = KTVMusicInfoSet
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("KTVMusicInfoSet") is not None:
-            self.KTVMusicInfoSet = []
+            self._KTVMusicInfoSet = []
             for item in params.get("KTVMusicInfoSet"):
                 obj = KTVMusicBaseInfo()
                 obj._deserialize(item)
-                self.KTVMusicInfoSet.append(obj)
-        self.ScrollToken = params.get("ScrollToken")
-        self.RequestId = params.get("RequestId")
+                self._KTVMusicInfoSet.append(obj)
+        self._ScrollToken = params.get("ScrollToken")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVPlaylistsRequest(AbstractModel):
@@ -632,37 +1193,78 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param Types: 类型列表，取值有：
+        :param _Types: 类型列表，取值有：
 <li>OfficialRec：官方推荐；</li>
 <li>Customize：自定义。</li>
 默认值为 OfficialRec。
         :type Types: list of str
-        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :param _Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
         :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：20，最大值：50。
+        :param _Limit: 分页返回的记录条数，默认值：20，最大值：50。
         :type Limit: int
         """
-        self.AppName = None
-        self.UserId = None
-        self.Types = None
-        self.Offset = None
-        self.Limit = None
+        self._AppName = None
+        self._UserId = None
+        self._Types = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Types(self):
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.Types = params.get("Types")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._Types = params.get("Types")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -675,27 +1277,51 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlaylistBaseInfoSet: 歌单基础信息。
+        :param _PlaylistBaseInfoSet: 歌单基础信息。
         :type PlaylistBaseInfoSet: list of KTVPlaylistBaseInfo
-        :param TotalCount: 歌单总数。
+        :param _TotalCount: 歌单总数。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PlaylistBaseInfoSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._PlaylistBaseInfoSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PlaylistBaseInfoSet(self):
+        return self._PlaylistBaseInfoSet
+
+    @PlaylistBaseInfoSet.setter
+    def PlaylistBaseInfoSet(self, PlaylistBaseInfoSet):
+        self._PlaylistBaseInfoSet = PlaylistBaseInfoSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PlaylistBaseInfoSet") is not None:
-            self.PlaylistBaseInfoSet = []
+            self._PlaylistBaseInfoSet = []
             for item in params.get("PlaylistBaseInfoSet"):
                 obj = KTVPlaylistBaseInfo()
                 obj._deserialize(item)
-                self.PlaylistBaseInfoSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._PlaylistBaseInfoSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVRobotsRequest(AbstractModel):
@@ -705,48 +1331,105 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param RobotIds: 机器人Id列表。
+        :param _RobotIds: 机器人Id列表。
         :type RobotIds: list of str
-        :param Statuses: 机器人状态，取值有：
+        :param _Statuses: 机器人状态，取值有：
 <li>Play：播放</li>
 <li>Pause：暂停</li>
 <li>Destroy：销毁</li>
         :type Statuses: list of str
-        :param CreateTime: 匹配创建时间在此时间段内的机器人。
+        :param _CreateTime: 匹配创建时间在此时间段内的机器人。
 <li>包含所指定的头尾时间点。</li>
         :type CreateTime: :class:`tencentcloud.yinsuda.v20220527.models.TimeRange`
-        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :param _Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
         :type Offset: int
-        :param Limit: 分页返回的起始偏移量，默认值：10。
+        :param _Limit: 分页返回的起始偏移量，默认值：10。
         :type Limit: int
         """
-        self.AppName = None
-        self.UserId = None
-        self.RobotIds = None
-        self.Statuses = None
-        self.CreateTime = None
-        self.Offset = None
-        self.Limit = None
+        self._AppName = None
+        self._UserId = None
+        self._RobotIds = None
+        self._Statuses = None
+        self._CreateTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RobotIds(self):
+        return self._RobotIds
+
+    @RobotIds.setter
+    def RobotIds(self, RobotIds):
+        self._RobotIds = RobotIds
+
+    @property
+    def Statuses(self):
+        return self._Statuses
+
+    @Statuses.setter
+    def Statuses(self, Statuses):
+        self._Statuses = Statuses
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.RobotIds = params.get("RobotIds")
-        self.Statuses = params.get("Statuses")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._RobotIds = params.get("RobotIds")
+        self._Statuses = params.get("Statuses")
         if params.get("CreateTime") is not None:
-            self.CreateTime = TimeRange()
-            self.CreateTime._deserialize(params.get("CreateTime"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._CreateTime = TimeRange()
+            self._CreateTime._deserialize(params.get("CreateTime"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -759,27 +1442,51 @@ class DescribeKTVRobotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 机器人总数。
+        :param _TotalCount: 机器人总数。
         :type TotalCount: int
-        :param KTVRobotInfoSet: 机器人信息集合。
+        :param _KTVRobotInfoSet: 机器人信息集合。
         :type KTVRobotInfoSet: list of KTVRobotInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.KTVRobotInfoSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._KTVRobotInfoSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def KTVRobotInfoSet(self):
+        return self._KTVRobotInfoSet
+
+    @KTVRobotInfoSet.setter
+    def KTVRobotInfoSet(self, KTVRobotInfoSet):
+        self._KTVRobotInfoSet = KTVRobotInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("KTVRobotInfoSet") is not None:
-            self.KTVRobotInfoSet = []
+            self._KTVRobotInfoSet = []
             for item in params.get("KTVRobotInfoSet"):
                 obj = KTVRobotInfo()
                 obj._deserialize(item)
-                self.KTVRobotInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._KTVRobotInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVSuggestionsRequest(AbstractModel):
@@ -789,26 +1496,51 @@ class DescribeKTVSuggestionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param KeyWord: 搜索词。
+        :param _KeyWord: 搜索词。
         :type KeyWord: str
         """
-        self.AppName = None
-        self.UserId = None
-        self.KeyWord = None
+        self._AppName = None
+        self._UserId = None
+        self._KeyWord = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.KeyWord = params.get("KeyWord")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._KeyWord = params.get("KeyWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -821,23 +1553,39 @@ class DescribeKTVSuggestionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KTVSuggestionInfoSet: 联想词信息列表。
+        :param _KTVSuggestionInfoSet: 联想词信息列表。
         :type KTVSuggestionInfoSet: list of KTVSuggestionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KTVSuggestionInfoSet = None
-        self.RequestId = None
+        self._KTVSuggestionInfoSet = None
+        self._RequestId = None
+
+    @property
+    def KTVSuggestionInfoSet(self):
+        return self._KTVSuggestionInfoSet
+
+    @KTVSuggestionInfoSet.setter
+    def KTVSuggestionInfoSet(self, KTVSuggestionInfoSet):
+        self._KTVSuggestionInfoSet = KTVSuggestionInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("KTVSuggestionInfoSet") is not None:
-            self.KTVSuggestionInfoSet = []
+            self._KTVSuggestionInfoSet = []
             for item in params.get("KTVSuggestionInfoSet"):
                 obj = KTVSuggestionInfo()
                 obj._deserialize(item)
-                self.KTVSuggestionInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._KTVSuggestionInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeKTVTagsRequest(AbstractModel):
@@ -847,22 +1595,39 @@ class DescribeKTVTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
         """
-        self.AppName = None
-        self.UserId = None
+        self._AppName = None
+        self._UserId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -875,23 +1640,39 @@ class DescribeKTVTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagGroupInfoSet: 标签分组列表。
+        :param _TagGroupInfoSet: 标签分组列表。
         :type TagGroupInfoSet: list of KTVTagGroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TagGroupInfoSet = None
-        self.RequestId = None
+        self._TagGroupInfoSet = None
+        self._RequestId = None
+
+    @property
+    def TagGroupInfoSet(self):
+        return self._TagGroupInfoSet
+
+    @TagGroupInfoSet.setter
+    def TagGroupInfoSet(self, TagGroupInfoSet):
+        self._TagGroupInfoSet = TagGroupInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TagGroupInfoSet") is not None:
-            self.TagGroupInfoSet = []
+            self._TagGroupInfoSet = []
             for item in params.get("TagGroupInfoSet"):
                 obj = KTVTagGroupInfo()
                 obj._deserialize(item)
-                self.TagGroupInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TagGroupInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveVipTradeInfosRequest(AbstractModel):
@@ -901,44 +1682,101 @@ class DescribeLiveVipTradeInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param StartTime: 直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
+        :param _StartTime: 直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
         :type StartTime: str
-        :param EndTime: 直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
+        :param _EndTime: 直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
         :type EndTime: str
-        :param TradeSerialNos: 交易流水号集合，匹配集合指定所有流水号 。
+        :param _TradeSerialNos: 交易流水号集合，匹配集合指定所有流水号 。
 <li>数组长度限制：10。</li>
         :type TradeSerialNos: list of str
-        :param UserIds: 用户标识集合，匹配集合指定所有用户标识 。
+        :param _UserIds: 用户标识集合，匹配集合指定所有用户标识 。
 <li>数组长度限制：10。</li>
         :type UserIds: list of str
-        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :param _Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
         :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：20，最大值：50。
+        :param _Limit: 分页返回的记录条数，默认值：20，最大值：50。
         :type Limit: int
         """
-        self.AppName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.TradeSerialNos = None
-        self.UserIds = None
-        self.Offset = None
-        self.Limit = None
+        self._AppName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TradeSerialNos = None
+        self._UserIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TradeSerialNos(self):
+        return self._TradeSerialNos
+
+    @TradeSerialNos.setter
+    def TradeSerialNos(self, TradeSerialNos):
+        self._TradeSerialNos = TradeSerialNos
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.TradeSerialNos = params.get("TradeSerialNos")
-        self.UserIds = params.get("UserIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._AppName = params.get("AppName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TradeSerialNos = params.get("TradeSerialNos")
+        self._UserIds = params.get("UserIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -951,27 +1789,51 @@ class DescribeLiveVipTradeInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LiveVipTradeInfoSet: 直播会员充值流水信息列表
+        :param _LiveVipTradeInfoSet: 直播会员充值流水信息列表
         :type LiveVipTradeInfoSet: list of LiveVipTradeInfo
-        :param TotalCount: 直播会员充值流水总数。
+        :param _TotalCount: 直播会员充值流水总数。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LiveVipTradeInfoSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._LiveVipTradeInfoSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def LiveVipTradeInfoSet(self):
+        return self._LiveVipTradeInfoSet
+
+    @LiveVipTradeInfoSet.setter
+    def LiveVipTradeInfoSet(self, LiveVipTradeInfoSet):
+        self._LiveVipTradeInfoSet = LiveVipTradeInfoSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LiveVipTradeInfoSet") is not None:
-            self.LiveVipTradeInfoSet = []
+            self._LiveVipTradeInfoSet = []
             for item in params.get("LiveVipTradeInfoSet"):
                 obj = LiveVipTradeInfo()
                 obj._deserialize(item)
-                self.LiveVipTradeInfoSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._LiveVipTradeInfoSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserInfoRequest(AbstractModel):
@@ -981,22 +1843,39 @@ class DescribeUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
         """
-        self.AppName = None
-        self.UserId = None
+        self._AppName = None
+        self._UserId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1009,20 +1888,36 @@ class DescribeUserInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserInfo: 用户信息。
+        :param _UserInfo: 用户信息。
         :type UserInfo: :class:`tencentcloud.yinsuda.v20220527.models.UserInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UserInfo = None
-        self.RequestId = None
+        self._UserInfo = None
+        self._RequestId = None
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
-            self.UserInfo = UserInfo()
-            self.UserInfo._deserialize(params.get("UserInfo"))
-        self.RequestId = params.get("RequestId")
+            self._UserInfo = UserInfo()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DestroyKTVRobotRequest(AbstractModel):
@@ -1032,26 +1927,51 @@ class DestroyKTVRobotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param RobotId: 机器人Id。
+        :param _RobotId: 机器人Id。
         :type RobotId: str
         """
-        self.AppName = None
-        self.UserId = None
-        self.RobotId = None
+        self._AppName = None
+        self._UserId = None
+        self._RobotId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RobotId(self):
+        return self._RobotId
+
+    @RobotId.setter
+    def RobotId(self, RobotId):
+        self._RobotId = RobotId
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.RobotId = params.get("RobotId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._RobotId = params.get("RobotId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1064,14 +1984,22 @@ class DestroyKTVRobotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class JoinRoomInput(AbstractModel):
@@ -1081,20 +2009,29 @@ class JoinRoomInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TRTCJoinRoomInput: TRTC进房参数
+        :param _TRTCJoinRoomInput: TRTC进房参数
         :type TRTCJoinRoomInput: :class:`tencentcloud.yinsuda.v20220527.models.TRTCJoinRoomInput`
         """
-        self.TRTCJoinRoomInput = None
+        self._TRTCJoinRoomInput = None
+
+    @property
+    def TRTCJoinRoomInput(self):
+        return self._TRTCJoinRoomInput
+
+    @TRTCJoinRoomInput.setter
+    def TRTCJoinRoomInput(self, TRTCJoinRoomInput):
+        self._TRTCJoinRoomInput = TRTCJoinRoomInput
 
 
     def _deserialize(self, params):
         if params.get("TRTCJoinRoomInput") is not None:
-            self.TRTCJoinRoomInput = TRTCJoinRoomInput()
-            self.TRTCJoinRoomInput._deserialize(params.get("TRTCJoinRoomInput"))
+            self._TRTCJoinRoomInput = TRTCJoinRoomInput()
+            self._TRTCJoinRoomInput._deserialize(params.get("TRTCJoinRoomInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1107,26 +2044,43 @@ class KTVBPMInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 节拍类型，取值有：
+        :param _Type: 节拍类型，取值有：
 <li>Slow：慢；</li>
 <li>Middle：中等；</li>
 <li>Fast：快；</li>
 <li>Unknown：未知。</li>
         :type Type: str
-        :param Value: BPM 值。
+        :param _Value: BPM 值。
         :type Value: int
         """
-        self.Type = None
-        self.Value = None
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Value = params.get("Value")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1139,33 +2093,58 @@ class KTVMatchMusic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KTVMusicBaseInfo: 匹配到的歌曲基础信息。
+        :param _KTVMusicBaseInfo: 匹配到的歌曲基础信息。
         :type KTVMusicBaseInfo: :class:`tencentcloud.yinsuda.v20220527.models.KTVMusicBaseInfo`
-        :param MatchRule: 命中规则。
+        :param _MatchRule: 命中规则。
         :type MatchRule: :class:`tencentcloud.yinsuda.v20220527.models.KTVMatchRule`
-        :param AMEMusicBaseInfo: AME 歌曲基础信息，仅在使用音速达歌曲 Id 匹配 AME 曲库时有效。
+        :param _AMEMusicBaseInfo: AME 歌曲基础信息，仅在使用音速达歌曲 Id 匹配 AME 曲库时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AMEMusicBaseInfo: :class:`tencentcloud.yinsuda.v20220527.models.AMEMusicBaseInfo`
         """
-        self.KTVMusicBaseInfo = None
-        self.MatchRule = None
-        self.AMEMusicBaseInfo = None
+        self._KTVMusicBaseInfo = None
+        self._MatchRule = None
+        self._AMEMusicBaseInfo = None
+
+    @property
+    def KTVMusicBaseInfo(self):
+        return self._KTVMusicBaseInfo
+
+    @KTVMusicBaseInfo.setter
+    def KTVMusicBaseInfo(self, KTVMusicBaseInfo):
+        self._KTVMusicBaseInfo = KTVMusicBaseInfo
+
+    @property
+    def MatchRule(self):
+        return self._MatchRule
+
+    @MatchRule.setter
+    def MatchRule(self, MatchRule):
+        self._MatchRule = MatchRule
+
+    @property
+    def AMEMusicBaseInfo(self):
+        return self._AMEMusicBaseInfo
+
+    @AMEMusicBaseInfo.setter
+    def AMEMusicBaseInfo(self, AMEMusicBaseInfo):
+        self._AMEMusicBaseInfo = AMEMusicBaseInfo
 
 
     def _deserialize(self, params):
         if params.get("KTVMusicBaseInfo") is not None:
-            self.KTVMusicBaseInfo = KTVMusicBaseInfo()
-            self.KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
+            self._KTVMusicBaseInfo = KTVMusicBaseInfo()
+            self._KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
         if params.get("MatchRule") is not None:
-            self.MatchRule = KTVMatchRule()
-            self.MatchRule._deserialize(params.get("MatchRule"))
+            self._MatchRule = KTVMatchRule()
+            self._MatchRule._deserialize(params.get("MatchRule"))
         if params.get("AMEMusicBaseInfo") is not None:
-            self.AMEMusicBaseInfo = AMEMusicBaseInfo()
-            self.AMEMusicBaseInfo._deserialize(params.get("AMEMusicBaseInfo"))
+            self._AMEMusicBaseInfo = AMEMusicBaseInfo()
+            self._AMEMusicBaseInfo._deserialize(params.get("AMEMusicBaseInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1178,29 +2157,54 @@ class KTVMatchRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AMEMusicId: AME 曲库 Id。
+        :param _AMEMusicId: AME 曲库 Id。
         :type AMEMusicId: str
-        :param MusicInfo: 歌曲匹配信息。
+        :param _MusicInfo: 歌曲匹配信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MusicInfo: :class:`tencentcloud.yinsuda.v20220527.models.KTVMatchRuleMusicInfo`
-        :param MusicIdToMatchAME: 音速达歌曲 Id，用于匹配 AME 曲库歌曲。
+        :param _MusicIdToMatchAME: 音速达歌曲 Id，用于匹配 AME 曲库歌曲。
         :type MusicIdToMatchAME: str
         """
-        self.AMEMusicId = None
-        self.MusicInfo = None
-        self.MusicIdToMatchAME = None
+        self._AMEMusicId = None
+        self._MusicInfo = None
+        self._MusicIdToMatchAME = None
+
+    @property
+    def AMEMusicId(self):
+        return self._AMEMusicId
+
+    @AMEMusicId.setter
+    def AMEMusicId(self, AMEMusicId):
+        self._AMEMusicId = AMEMusicId
+
+    @property
+    def MusicInfo(self):
+        return self._MusicInfo
+
+    @MusicInfo.setter
+    def MusicInfo(self, MusicInfo):
+        self._MusicInfo = MusicInfo
+
+    @property
+    def MusicIdToMatchAME(self):
+        return self._MusicIdToMatchAME
+
+    @MusicIdToMatchAME.setter
+    def MusicIdToMatchAME(self, MusicIdToMatchAME):
+        self._MusicIdToMatchAME = MusicIdToMatchAME
 
 
     def _deserialize(self, params):
-        self.AMEMusicId = params.get("AMEMusicId")
+        self._AMEMusicId = params.get("AMEMusicId")
         if params.get("MusicInfo") is not None:
-            self.MusicInfo = KTVMatchRuleMusicInfo()
-            self.MusicInfo._deserialize(params.get("MusicInfo"))
-        self.MusicIdToMatchAME = params.get("MusicIdToMatchAME")
+            self._MusicInfo = KTVMatchRuleMusicInfo()
+            self._MusicInfo._deserialize(params.get("MusicInfo"))
+        self._MusicIdToMatchAME = params.get("MusicIdToMatchAME")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1213,22 +2217,39 @@ class KTVMatchRuleMusicInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MusicName: 歌曲名称。
+        :param _MusicName: 歌曲名称。
         :type MusicName: str
-        :param SingerSet: 歌手列表。
+        :param _SingerSet: 歌手列表。
         :type SingerSet: list of str
         """
-        self.MusicName = None
-        self.SingerSet = None
+        self._MusicName = None
+        self._SingerSet = None
+
+    @property
+    def MusicName(self):
+        return self._MusicName
+
+    @MusicName.setter
+    def MusicName(self, MusicName):
+        self._MusicName = MusicName
+
+    @property
+    def SingerSet(self):
+        return self._SingerSet
+
+    @SingerSet.setter
+    def SingerSet(self, SingerSet):
+        self._SingerSet = SingerSet
 
 
     def _deserialize(self, params):
-        self.MusicName = params.get("MusicName")
-        self.SingerSet = params.get("SingerSet")
+        self._MusicName = params.get("MusicName")
+        self._SingerSet = params.get("SingerSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1241,53 +2262,118 @@ class KTVMusicBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MusicId: 歌曲Id。
+        :param _MusicId: 歌曲Id。
         :type MusicId: str
-        :param Name: 歌曲名称。
+        :param _Name: 歌曲名称。
         :type Name: str
-        :param SingerSet: 歌手名称。
+        :param _SingerSet: 歌手名称。
         :type SingerSet: list of str
-        :param Duration: 播放时长。
+        :param _Duration: 播放时长。
         :type Duration: int
-        :param SingerImageUrl: 歌手图片链接。
+        :param _SingerImageUrl: 歌手图片链接。
         :type SingerImageUrl: str
-        :param AlbumInfo: 专辑信息。
+        :param _AlbumInfo: 专辑信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlbumInfo: :class:`tencentcloud.yinsuda.v20220527.models.MusicAlbumInfo`
-        :param RightSet: 权益列表，取值有：
+        :param _RightSet: 权益列表，取值有：
 <li>Play：可播；</li>
 <li>Sing：可唱。</li>
         :type RightSet: list of str
-        :param RecommendType: 推荐类型，取值有：
+        :param _RecommendType: 推荐类型，取值有：
 <li>Featured：精选；</li>
 <li>Other：其他。</li>
         :type RecommendType: str
         """
-        self.MusicId = None
-        self.Name = None
-        self.SingerSet = None
-        self.Duration = None
-        self.SingerImageUrl = None
-        self.AlbumInfo = None
-        self.RightSet = None
-        self.RecommendType = None
+        self._MusicId = None
+        self._Name = None
+        self._SingerSet = None
+        self._Duration = None
+        self._SingerImageUrl = None
+        self._AlbumInfo = None
+        self._RightSet = None
+        self._RecommendType = None
+
+    @property
+    def MusicId(self):
+        return self._MusicId
+
+    @MusicId.setter
+    def MusicId(self, MusicId):
+        self._MusicId = MusicId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SingerSet(self):
+        return self._SingerSet
+
+    @SingerSet.setter
+    def SingerSet(self, SingerSet):
+        self._SingerSet = SingerSet
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def SingerImageUrl(self):
+        return self._SingerImageUrl
+
+    @SingerImageUrl.setter
+    def SingerImageUrl(self, SingerImageUrl):
+        self._SingerImageUrl = SingerImageUrl
+
+    @property
+    def AlbumInfo(self):
+        return self._AlbumInfo
+
+    @AlbumInfo.setter
+    def AlbumInfo(self, AlbumInfo):
+        self._AlbumInfo = AlbumInfo
+
+    @property
+    def RightSet(self):
+        return self._RightSet
+
+    @RightSet.setter
+    def RightSet(self, RightSet):
+        self._RightSet = RightSet
+
+    @property
+    def RecommendType(self):
+        return self._RecommendType
+
+    @RecommendType.setter
+    def RecommendType(self, RecommendType):
+        self._RecommendType = RecommendType
 
 
     def _deserialize(self, params):
-        self.MusicId = params.get("MusicId")
-        self.Name = params.get("Name")
-        self.SingerSet = params.get("SingerSet")
-        self.Duration = params.get("Duration")
-        self.SingerImageUrl = params.get("SingerImageUrl")
+        self._MusicId = params.get("MusicId")
+        self._Name = params.get("Name")
+        self._SingerSet = params.get("SingerSet")
+        self._Duration = params.get("Duration")
+        self._SingerImageUrl = params.get("SingerImageUrl")
         if params.get("AlbumInfo") is not None:
-            self.AlbumInfo = MusicAlbumInfo()
-            self.AlbumInfo._deserialize(params.get("AlbumInfo"))
-        self.RightSet = params.get("RightSet")
-        self.RecommendType = params.get("RecommendType")
+            self._AlbumInfo = MusicAlbumInfo()
+            self._AlbumInfo._deserialize(params.get("AlbumInfo"))
+        self._RightSet = params.get("RightSet")
+        self._RecommendType = params.get("RecommendType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1300,56 +2386,121 @@ class KTVMusicDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KTVMusicBaseInfo: 歌曲基础信息。
+        :param _KTVMusicBaseInfo: 歌曲基础信息。
         :type KTVMusicBaseInfo: :class:`tencentcloud.yinsuda.v20220527.models.KTVMusicBaseInfo`
-        :param PlayToken: 播放凭证。
+        :param _PlayToken: 播放凭证。
         :type PlayToken: str
-        :param LyricsUrl: 歌词下载链接。
+        :param _LyricsUrl: 歌词下载链接。
         :type LyricsUrl: str
-        :param MidiUrl: 音高数据下载链接。
+        :param _MidiUrl: 音高数据下载链接。
         :type MidiUrl: str
-        :param ChorusClipSet: 副歌片段信息。
+        :param _ChorusClipSet: 副歌片段信息。
         :type ChorusClipSet: list of ChorusClip
-        :param PreludeInterval: 前奏间隔。
+        :param _PreludeInterval: 前奏间隔。
         :type PreludeInterval: int
-        :param GenreSet: 歌曲流派列表。
+        :param _GenreSet: 歌曲流派列表。
         :type GenreSet: list of str
-        :param BPMInfo: 节拍信息。
+        :param _BPMInfo: 节拍信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BPMInfo: :class:`tencentcloud.yinsuda.v20220527.models.KTVBPMInfo`
         """
-        self.KTVMusicBaseInfo = None
-        self.PlayToken = None
-        self.LyricsUrl = None
-        self.MidiUrl = None
-        self.ChorusClipSet = None
-        self.PreludeInterval = None
-        self.GenreSet = None
-        self.BPMInfo = None
+        self._KTVMusicBaseInfo = None
+        self._PlayToken = None
+        self._LyricsUrl = None
+        self._MidiUrl = None
+        self._ChorusClipSet = None
+        self._PreludeInterval = None
+        self._GenreSet = None
+        self._BPMInfo = None
+
+    @property
+    def KTVMusicBaseInfo(self):
+        return self._KTVMusicBaseInfo
+
+    @KTVMusicBaseInfo.setter
+    def KTVMusicBaseInfo(self, KTVMusicBaseInfo):
+        self._KTVMusicBaseInfo = KTVMusicBaseInfo
+
+    @property
+    def PlayToken(self):
+        return self._PlayToken
+
+    @PlayToken.setter
+    def PlayToken(self, PlayToken):
+        self._PlayToken = PlayToken
+
+    @property
+    def LyricsUrl(self):
+        return self._LyricsUrl
+
+    @LyricsUrl.setter
+    def LyricsUrl(self, LyricsUrl):
+        self._LyricsUrl = LyricsUrl
+
+    @property
+    def MidiUrl(self):
+        return self._MidiUrl
+
+    @MidiUrl.setter
+    def MidiUrl(self, MidiUrl):
+        self._MidiUrl = MidiUrl
+
+    @property
+    def ChorusClipSet(self):
+        return self._ChorusClipSet
+
+    @ChorusClipSet.setter
+    def ChorusClipSet(self, ChorusClipSet):
+        self._ChorusClipSet = ChorusClipSet
+
+    @property
+    def PreludeInterval(self):
+        return self._PreludeInterval
+
+    @PreludeInterval.setter
+    def PreludeInterval(self, PreludeInterval):
+        self._PreludeInterval = PreludeInterval
+
+    @property
+    def GenreSet(self):
+        return self._GenreSet
+
+    @GenreSet.setter
+    def GenreSet(self, GenreSet):
+        self._GenreSet = GenreSet
+
+    @property
+    def BPMInfo(self):
+        return self._BPMInfo
+
+    @BPMInfo.setter
+    def BPMInfo(self, BPMInfo):
+        self._BPMInfo = BPMInfo
 
 
     def _deserialize(self, params):
         if params.get("KTVMusicBaseInfo") is not None:
-            self.KTVMusicBaseInfo = KTVMusicBaseInfo()
-            self.KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
-        self.PlayToken = params.get("PlayToken")
-        self.LyricsUrl = params.get("LyricsUrl")
-        self.MidiUrl = params.get("MidiUrl")
+            self._KTVMusicBaseInfo = KTVMusicBaseInfo()
+            self._KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
+        self._PlayToken = params.get("PlayToken")
+        self._LyricsUrl = params.get("LyricsUrl")
+        self._MidiUrl = params.get("MidiUrl")
         if params.get("ChorusClipSet") is not None:
-            self.ChorusClipSet = []
+            self._ChorusClipSet = []
             for item in params.get("ChorusClipSet"):
                 obj = ChorusClip()
                 obj._deserialize(item)
-                self.ChorusClipSet.append(obj)
-        self.PreludeInterval = params.get("PreludeInterval")
-        self.GenreSet = params.get("GenreSet")
+                self._ChorusClipSet.append(obj)
+        self._PreludeInterval = params.get("PreludeInterval")
+        self._GenreSet = params.get("GenreSet")
         if params.get("BPMInfo") is not None:
-            self.BPMInfo = KTVBPMInfo()
-            self.BPMInfo._deserialize(params.get("BPMInfo"))
+            self._BPMInfo = KTVBPMInfo()
+            self._BPMInfo._deserialize(params.get("BPMInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1362,24 +2513,41 @@ class KTVOtherSegments(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SegmentBegin: 片段开始时间
+        :param _SegmentBegin: 片段开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentBegin: int
-        :param SegmentEnd: 片段结束时间
+        :param _SegmentEnd: 片段结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentEnd: int
         """
-        self.SegmentBegin = None
-        self.SegmentEnd = None
+        self._SegmentBegin = None
+        self._SegmentEnd = None
+
+    @property
+    def SegmentBegin(self):
+        return self._SegmentBegin
+
+    @SegmentBegin.setter
+    def SegmentBegin(self, SegmentBegin):
+        self._SegmentBegin = SegmentBegin
+
+    @property
+    def SegmentEnd(self):
+        return self._SegmentEnd
+
+    @SegmentEnd.setter
+    def SegmentEnd(self, SegmentEnd):
+        self._SegmentEnd = SegmentEnd
 
 
     def _deserialize(self, params):
-        self.SegmentBegin = params.get("SegmentBegin")
-        self.SegmentEnd = params.get("SegmentEnd")
+        self._SegmentBegin = params.get("SegmentBegin")
+        self._SegmentEnd = params.get("SegmentEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1392,22 +2560,39 @@ class KTVPlaylistBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlaylistId: 歌单Id。
+        :param _PlaylistId: 歌单Id。
         :type PlaylistId: str
-        :param Title: 歌单标题。
+        :param _Title: 歌单标题。
         :type Title: str
         """
-        self.PlaylistId = None
-        self.Title = None
+        self._PlaylistId = None
+        self._Title = None
+
+    @property
+    def PlaylistId(self):
+        return self._PlaylistId
+
+    @PlaylistId.setter
+    def PlaylistId(self, PlaylistId):
+        self._PlaylistId = PlaylistId
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
 
 
     def _deserialize(self, params):
-        self.PlaylistId = params.get("PlaylistId")
-        self.Title = params.get("Title")
+        self._PlaylistId = params.get("PlaylistId")
+        self._Title = params.get("Title")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1420,64 +2605,137 @@ class KTVRobotInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RobotId: 机器人Id。
+        :param _RobotId: 机器人Id。
         :type RobotId: str
-        :param Status: 状态，取值有：
+        :param _Status: 状态，取值有：
 <li>Play：播放</li>
 <li>Pause：暂停</li>
 <li>Destroy：销毁</li>
         :type Status: str
-        :param Playlists: 播放列表。
+        :param _Playlists: 播放列表。
         :type Playlists: list of str
-        :param CurIndex: 当前歌单索引位置。
+        :param _CurIndex: 当前歌单索引位置。
         :type CurIndex: int
-        :param Position: 播放进度，单位：毫秒。
+        :param _Position: 播放进度，单位：毫秒。
         :type Position: int
-        :param SetAudioParamInput: 音频参数。
+        :param _SetAudioParamInput: 音频参数。
         :type SetAudioParamInput: :class:`tencentcloud.yinsuda.v20220527.models.SetAudioParamCommandInput`
-        :param JoinRoomInput: 进房信息。
+        :param _JoinRoomInput: 进房信息。
         :type JoinRoomInput: :class:`tencentcloud.yinsuda.v20220527.models.JoinRoomInput`
-        :param RTCSystem: RTC厂商类型，取值有：
+        :param _RTCSystem: RTC厂商类型，取值有：
 <li>TRTC</li>
         :type RTCSystem: str
-        :param SetPlayModeInput: 播放模式，PlayMode取值有：
+        :param _SetPlayModeInput: 播放模式，PlayMode取值有：
 <li>RepeatPlaylist：列表循环</li>
 <li>Order：顺序播放</li>
 <li>RepeatSingle：单曲循环</li>
 <li>Shuffle：随机播放</li>
         :type SetPlayModeInput: :class:`tencentcloud.yinsuda.v20220527.models.SetPlayModeCommandInput`
         """
-        self.RobotId = None
-        self.Status = None
-        self.Playlists = None
-        self.CurIndex = None
-        self.Position = None
-        self.SetAudioParamInput = None
-        self.JoinRoomInput = None
-        self.RTCSystem = None
-        self.SetPlayModeInput = None
+        self._RobotId = None
+        self._Status = None
+        self._Playlists = None
+        self._CurIndex = None
+        self._Position = None
+        self._SetAudioParamInput = None
+        self._JoinRoomInput = None
+        self._RTCSystem = None
+        self._SetPlayModeInput = None
+
+    @property
+    def RobotId(self):
+        return self._RobotId
+
+    @RobotId.setter
+    def RobotId(self, RobotId):
+        self._RobotId = RobotId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Playlists(self):
+        return self._Playlists
+
+    @Playlists.setter
+    def Playlists(self, Playlists):
+        self._Playlists = Playlists
+
+    @property
+    def CurIndex(self):
+        return self._CurIndex
+
+    @CurIndex.setter
+    def CurIndex(self, CurIndex):
+        self._CurIndex = CurIndex
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def SetAudioParamInput(self):
+        return self._SetAudioParamInput
+
+    @SetAudioParamInput.setter
+    def SetAudioParamInput(self, SetAudioParamInput):
+        self._SetAudioParamInput = SetAudioParamInput
+
+    @property
+    def JoinRoomInput(self):
+        return self._JoinRoomInput
+
+    @JoinRoomInput.setter
+    def JoinRoomInput(self, JoinRoomInput):
+        self._JoinRoomInput = JoinRoomInput
+
+    @property
+    def RTCSystem(self):
+        return self._RTCSystem
+
+    @RTCSystem.setter
+    def RTCSystem(self, RTCSystem):
+        self._RTCSystem = RTCSystem
+
+    @property
+    def SetPlayModeInput(self):
+        return self._SetPlayModeInput
+
+    @SetPlayModeInput.setter
+    def SetPlayModeInput(self, SetPlayModeInput):
+        self._SetPlayModeInput = SetPlayModeInput
 
 
     def _deserialize(self, params):
-        self.RobotId = params.get("RobotId")
-        self.Status = params.get("Status")
-        self.Playlists = params.get("Playlists")
-        self.CurIndex = params.get("CurIndex")
-        self.Position = params.get("Position")
+        self._RobotId = params.get("RobotId")
+        self._Status = params.get("Status")
+        self._Playlists = params.get("Playlists")
+        self._CurIndex = params.get("CurIndex")
+        self._Position = params.get("Position")
         if params.get("SetAudioParamInput") is not None:
-            self.SetAudioParamInput = SetAudioParamCommandInput()
-            self.SetAudioParamInput._deserialize(params.get("SetAudioParamInput"))
+            self._SetAudioParamInput = SetAudioParamCommandInput()
+            self._SetAudioParamInput._deserialize(params.get("SetAudioParamInput"))
         if params.get("JoinRoomInput") is not None:
-            self.JoinRoomInput = JoinRoomInput()
-            self.JoinRoomInput._deserialize(params.get("JoinRoomInput"))
-        self.RTCSystem = params.get("RTCSystem")
+            self._JoinRoomInput = JoinRoomInput()
+            self._JoinRoomInput._deserialize(params.get("JoinRoomInput"))
+        self._RTCSystem = params.get("RTCSystem")
         if params.get("SetPlayModeInput") is not None:
-            self.SetPlayModeInput = SetPlayModeCommandInput()
-            self.SetPlayModeInput._deserialize(params.get("SetPlayModeInput"))
+            self._SetPlayModeInput = SetPlayModeCommandInput()
+            self._SetPlayModeInput._deserialize(params.get("SetPlayModeInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1490,18 +2748,27 @@ class KTVSuggestionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Suggestion: 联想词。
+        :param _Suggestion: 联想词。
         :type Suggestion: str
         """
-        self.Suggestion = None
+        self._Suggestion = None
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
 
 
     def _deserialize(self, params):
-        self.Suggestion = params.get("Suggestion")
+        self._Suggestion = params.get("Suggestion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1514,31 +2781,56 @@ class KTVTagGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 分组 Id。
+        :param _GroupId: 分组 Id。
         :type GroupId: str
-        :param Name: 分组名。
+        :param _Name: 分组名。
         :type Name: str
-        :param TagInfoSet: 标签列表。
+        :param _TagInfoSet: 标签列表。
         :type TagInfoSet: list of KTVTagInfo
         """
-        self.GroupId = None
-        self.Name = None
-        self.TagInfoSet = None
+        self._GroupId = None
+        self._Name = None
+        self._TagInfoSet = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TagInfoSet(self):
+        return self._TagInfoSet
+
+    @TagInfoSet.setter
+    def TagInfoSet(self, TagInfoSet):
+        self._TagInfoSet = TagInfoSet
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.Name = params.get("Name")
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
         if params.get("TagInfoSet") is not None:
-            self.TagInfoSet = []
+            self._TagInfoSet = []
             for item in params.get("TagInfoSet"):
                 obj = KTVTagInfo()
                 obj._deserialize(item)
-                self.TagInfoSet.append(obj)
+                self._TagInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1551,22 +2843,39 @@ class KTVTagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagId: 标签 Id。
+        :param _TagId: 标签 Id。
         :type TagId: str
-        :param Name: 标签名称。
+        :param _Name: 标签名称。
         :type Name: str
         """
-        self.TagId = None
-        self.Name = None
+        self._TagId = None
+        self._Name = None
+
+    @property
+    def TagId(self):
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.TagId = params.get("TagId")
-        self.Name = params.get("Name")
+        self._TagId = params.get("TagId")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1579,46 +2888,103 @@ class LiveVipTradeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TradeSerialNo: 交易流水号。
+        :param _TradeSerialNo: 交易流水号。
         :type TradeSerialNo: str
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param RoomId: 房间标识。
+        :param _RoomId: 房间标识。
         :type RoomId: str
-        :param VipDays: 充值会员天数。
+        :param _VipDays: 充值会员天数。
 取值有： 
 <li>31</li> <li>93</li><li>186</li> <li>372</li>
         :type VipDays: int
-        :param Status: 订单状态。 
+        :param _Status: 订单状态。 
 取值有： 
 <li>Success：成功</li><li>Fail：失败</li><li>Processing：订单处理中</li>
         :type Status: str
-        :param CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。
         :type CreateTime: str
         """
-        self.TradeSerialNo = None
-        self.AppName = None
-        self.UserId = None
-        self.RoomId = None
-        self.VipDays = None
-        self.Status = None
-        self.CreateTime = None
+        self._TradeSerialNo = None
+        self._AppName = None
+        self._UserId = None
+        self._RoomId = None
+        self._VipDays = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def TradeSerialNo(self):
+        return self._TradeSerialNo
+
+    @TradeSerialNo.setter
+    def TradeSerialNo(self, TradeSerialNo):
+        self._TradeSerialNo = TradeSerialNo
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def VipDays(self):
+        return self._VipDays
+
+    @VipDays.setter
+    def VipDays(self, VipDays):
+        self._VipDays = VipDays
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.TradeSerialNo = params.get("TradeSerialNo")
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.RoomId = params.get("RoomId")
-        self.VipDays = params.get("VipDays")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
+        self._TradeSerialNo = params.get("TradeSerialNo")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._RoomId = params.get("RoomId")
+        self._VipDays = params.get("VipDays")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1631,27 +2997,52 @@ class LiveVipUserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoomId: 房间标识。
+        :param _RoomId: 房间标识。
         :type RoomId: str
-        :param LiveVipEndTime: 直播会员结束时间。
+        :param _LiveVipEndTime: 直播会员结束时间。
         :type LiveVipEndTime: str
-        :param LiveVipStatus: 会员生效状态
+        :param _LiveVipStatus: 会员生效状态
 <li>Valid：生效</li><li>Invalid：无效</li>
         :type LiveVipStatus: str
         """
-        self.RoomId = None
-        self.LiveVipEndTime = None
-        self.LiveVipStatus = None
+        self._RoomId = None
+        self._LiveVipEndTime = None
+        self._LiveVipStatus = None
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def LiveVipEndTime(self):
+        return self._LiveVipEndTime
+
+    @LiveVipEndTime.setter
+    def LiveVipEndTime(self, LiveVipEndTime):
+        self._LiveVipEndTime = LiveVipEndTime
+
+    @property
+    def LiveVipStatus(self):
+        return self._LiveVipStatus
+
+    @LiveVipStatus.setter
+    def LiveVipStatus(self, LiveVipStatus):
+        self._LiveVipStatus = LiveVipStatus
 
 
     def _deserialize(self, params):
-        self.RoomId = params.get("RoomId")
-        self.LiveVipEndTime = params.get("LiveVipEndTime")
-        self.LiveVipStatus = params.get("LiveVipStatus")
+        self._RoomId = params.get("RoomId")
+        self._LiveVipEndTime = params.get("LiveVipEndTime")
+        self._LiveVipStatus = params.get("LiveVipStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1664,25 +3055,42 @@ class MusicAlbumCoverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Dimension: 尺寸规格，取值有：
+        :param _Dimension: 尺寸规格，取值有：
 <li>Mini：150 x 150 尺寸；</li>
 <li>Small：240 x 240 尺寸；</li>
 <li>Medium：480 x 480 尺寸。</li>
         :type Dimension: str
-        :param Url: 下载链接。
+        :param _Url: 下载链接。
         :type Url: str
         """
-        self.Dimension = None
-        self.Url = None
+        self._Dimension = None
+        self._Url = None
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
 
 
     def _deserialize(self, params):
-        self.Dimension = params.get("Dimension")
-        self.Url = params.get("Url")
+        self._Dimension = params.get("Dimension")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1695,27 +3103,44 @@ class MusicAlbumInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 专辑名称。
+        :param _Name: 专辑名称。
         :type Name: str
-        :param CoverInfoSet: 封面列表。
+        :param _CoverInfoSet: 封面列表。
         :type CoverInfoSet: list of MusicAlbumCoverInfo
         """
-        self.Name = None
-        self.CoverInfoSet = None
+        self._Name = None
+        self._CoverInfoSet = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CoverInfoSet(self):
+        return self._CoverInfoSet
+
+    @CoverInfoSet.setter
+    def CoverInfoSet(self, CoverInfoSet):
+        self._CoverInfoSet = CoverInfoSet
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         if params.get("CoverInfoSet") is not None:
-            self.CoverInfoSet = []
+            self._CoverInfoSet = []
             for item in params.get("CoverInfoSet"):
                 obj = MusicAlbumCoverInfo()
                 obj._deserialize(item)
-                self.CoverInfoSet.append(obj)
+                self._CoverInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1728,18 +3153,27 @@ class PlayCommandInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Index: 歌曲位置索引。
+        :param _Index: 歌曲位置索引。
         :type Index: int
         """
-        self.Index = None
+        self._Index = None
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
 
 
     def _deserialize(self, params):
-        self.Index = params.get("Index")
+        self._Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1752,48 +3186,105 @@ class RechargeLiveVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param TradeSerialNo: 交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
+        :param _TradeSerialNo: 交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
         :type TradeSerialNo: str
-        :param RoomId: 房间标识。
+        :param _RoomId: 房间标识。
         :type RoomId: str
-        :param VipDays: 充值会员天数。
+        :param _VipDays: 充值会员天数。
 取值有：
 <li>31</li>
 <li>93</li>
 <li>186</li>
 <li>372</li>
         :type VipDays: int
-        :param GiveType: 充值分类。取值有：room_card-包月房卡; 其他-保留。
+        :param _GiveType: 充值分类。取值有：room_card-包月房卡; 其他-保留。
         :type GiveType: str
-        :param PlayScene: 播放场景。默认为Live
+        :param _PlayScene: 播放场景。默认为Live
 <li>Live：直播</li><li>Chat：语聊</li>
         :type PlayScene: str
         """
-        self.AppName = None
-        self.UserId = None
-        self.TradeSerialNo = None
-        self.RoomId = None
-        self.VipDays = None
-        self.GiveType = None
-        self.PlayScene = None
+        self._AppName = None
+        self._UserId = None
+        self._TradeSerialNo = None
+        self._RoomId = None
+        self._VipDays = None
+        self._GiveType = None
+        self._PlayScene = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TradeSerialNo(self):
+        return self._TradeSerialNo
+
+    @TradeSerialNo.setter
+    def TradeSerialNo(self, TradeSerialNo):
+        self._TradeSerialNo = TradeSerialNo
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def VipDays(self):
+        return self._VipDays
+
+    @VipDays.setter
+    def VipDays(self, VipDays):
+        self._VipDays = VipDays
+
+    @property
+    def GiveType(self):
+        return self._GiveType
+
+    @GiveType.setter
+    def GiveType(self, GiveType):
+        self._GiveType = GiveType
+
+    @property
+    def PlayScene(self):
+        return self._PlayScene
+
+    @PlayScene.setter
+    def PlayScene(self, PlayScene):
+        self._PlayScene = PlayScene
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.TradeSerialNo = params.get("TradeSerialNo")
-        self.RoomId = params.get("RoomId")
-        self.VipDays = params.get("VipDays")
-        self.GiveType = params.get("GiveType")
-        self.PlayScene = params.get("PlayScene")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._TradeSerialNo = params.get("TradeSerialNo")
+        self._RoomId = params.get("RoomId")
+        self._VipDays = params.get("VipDays")
+        self._GiveType = params.get("GiveType")
+        self._PlayScene = params.get("PlayScene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1806,20 +3297,36 @@ class RechargeLiveVipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LiveVipUserInfo: 直播会员信息。
+        :param _LiveVipUserInfo: 直播会员信息。
         :type LiveVipUserInfo: :class:`tencentcloud.yinsuda.v20220527.models.LiveVipUserInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LiveVipUserInfo = None
-        self.RequestId = None
+        self._LiveVipUserInfo = None
+        self._RequestId = None
+
+    @property
+    def LiveVipUserInfo(self):
+        return self._LiveVipUserInfo
+
+    @LiveVipUserInfo.setter
+    def LiveVipUserInfo(self, LiveVipUserInfo):
+        self._LiveVipUserInfo = LiveVipUserInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LiveVipUserInfo") is not None:
-            self.LiveVipUserInfo = LiveVipUserInfo()
-            self.LiveVipUserInfo._deserialize(params.get("LiveVipUserInfo"))
-        self.RequestId = params.get("RequestId")
+            self._LiveVipUserInfo = LiveVipUserInfo()
+            self._LiveVipUserInfo._deserialize(params.get("LiveVipUserInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class SearchKTVMusicsRequest(AbstractModel):
@@ -1829,51 +3336,116 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param KeyWord: 关键词。
+        :param _KeyWord: 关键词。
         :type KeyWord: str
-        :param ScrollToken: 滚动标记。
+        :param _ScrollToken: 滚动标记。
         :type ScrollToken: str
-        :param Limit: 返回条数限制，默认 20，最大 50.
+        :param _Limit: 返回条数限制，默认 20，最大 50.
         :type Limit: int
-        :param RightFilters: 权益过滤，取值有：
+        :param _RightFilters: 权益过滤，取值有：
 <li>Play：可播；</li>
 <li>Sing：可唱。</li>
         :type RightFilters: list of str
-        :param PlayScene: 播放场景。默认为Chat
+        :param _PlayScene: 播放场景。默认为Chat
 <li>Live：直播</li><li>Chat：语聊</li>
         :type PlayScene: str
-        :param MaterialFilters: 物料过滤，取值有：
+        :param _MaterialFilters: 物料过滤，取值有：
 <li>Lyrics：含有歌词；</li>
 <li>Midi：含有音高线。</li>
         :type MaterialFilters: list of str
         """
-        self.AppName = None
-        self.UserId = None
-        self.KeyWord = None
-        self.ScrollToken = None
-        self.Limit = None
-        self.RightFilters = None
-        self.PlayScene = None
-        self.MaterialFilters = None
+        self._AppName = None
+        self._UserId = None
+        self._KeyWord = None
+        self._ScrollToken = None
+        self._Limit = None
+        self._RightFilters = None
+        self._PlayScene = None
+        self._MaterialFilters = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RightFilters(self):
+        return self._RightFilters
+
+    @RightFilters.setter
+    def RightFilters(self, RightFilters):
+        self._RightFilters = RightFilters
+
+    @property
+    def PlayScene(self):
+        return self._PlayScene
+
+    @PlayScene.setter
+    def PlayScene(self, PlayScene):
+        self._PlayScene = PlayScene
+
+    @property
+    def MaterialFilters(self):
+        return self._MaterialFilters
+
+    @MaterialFilters.setter
+    def MaterialFilters(self, MaterialFilters):
+        self._MaterialFilters = MaterialFilters
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.KeyWord = params.get("KeyWord")
-        self.ScrollToken = params.get("ScrollToken")
-        self.Limit = params.get("Limit")
-        self.RightFilters = params.get("RightFilters")
-        self.PlayScene = params.get("PlayScene")
-        self.MaterialFilters = params.get("MaterialFilters")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._KeyWord = params.get("KeyWord")
+        self._ScrollToken = params.get("ScrollToken")
+        self._Limit = params.get("Limit")
+        self._RightFilters = params.get("RightFilters")
+        self._PlayScene = params.get("PlayScene")
+        self._MaterialFilters = params.get("MaterialFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1886,27 +3458,51 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KTVMusicInfoSet: 歌曲信息列表。
+        :param _KTVMusicInfoSet: 歌曲信息列表。
         :type KTVMusicInfoSet: list of KTVMusicBaseInfo
-        :param ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
+        :param _ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
         :type ScrollToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KTVMusicInfoSet = None
-        self.ScrollToken = None
-        self.RequestId = None
+        self._KTVMusicInfoSet = None
+        self._ScrollToken = None
+        self._RequestId = None
+
+    @property
+    def KTVMusicInfoSet(self):
+        return self._KTVMusicInfoSet
+
+    @KTVMusicInfoSet.setter
+    def KTVMusicInfoSet(self, KTVMusicInfoSet):
+        self._KTVMusicInfoSet = KTVMusicInfoSet
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("KTVMusicInfoSet") is not None:
-            self.KTVMusicInfoSet = []
+            self._KTVMusicInfoSet = []
             for item in params.get("KTVMusicInfoSet"):
                 obj = KTVMusicBaseInfo()
                 obj._deserialize(item)
-                self.KTVMusicInfoSet.append(obj)
-        self.ScrollToken = params.get("ScrollToken")
-        self.RequestId = params.get("RequestId")
+                self._KTVMusicInfoSet.append(obj)
+        self._ScrollToken = params.get("ScrollToken")
+        self._RequestId = params.get("RequestId")
 
 
 class SeekCommandInput(AbstractModel):
@@ -1916,18 +3512,27 @@ class SeekCommandInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Position: 播放位置，单位：毫秒。
+        :param _Position: 播放位置，单位：毫秒。
         :type Position: int
         """
-        self.Position = None
+        self._Position = None
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
 
 
     def _deserialize(self, params):
-        self.Position = params.get("Position")
+        self._Position = params.get("Position")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1940,22 +3545,39 @@ class SendMessageCommandInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Message: 自定义消息，json格式字符串。
+        :param _Message: 自定义消息，json格式字符串。
         :type Message: str
-        :param Repeat: 消息重复次数，默认为 1。
+        :param _Repeat: 消息重复次数，默认为 1。
         :type Repeat: int
         """
-        self.Message = None
-        self.Repeat = None
+        self._Message = None
+        self._Repeat = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Repeat(self):
+        return self._Repeat
+
+    @Repeat.setter
+    def Repeat(self, Repeat):
+        self._Repeat = Repeat
 
 
     def _deserialize(self, params):
-        self.Message = params.get("Message")
-        self.Repeat = params.get("Repeat")
+        self._Message = params.get("Message")
+        self._Repeat = params.get("Repeat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1968,20 +3590,29 @@ class SetAudioParamCommandInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 音频类型，取值有：
+        :param _Type: 音频类型，取值有：
 <li>Original：原唱</li>
 <li>Accompaniment：伴奏</li>
         :type Type: str
         """
-        self.Type = None
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1994,25 +3625,42 @@ class SetDestroyModeCommandInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DestroyMode: 销毁模式，取值有：
+        :param _DestroyMode: 销毁模式，取值有：
 <li>Auto：房间没人时自动销毁</li>
 <li>Expire：房间没人时过期自动销毁</li>
 <li>Never：不自动销毁，需手动销毁</li>默认为：Auto。
         :type DestroyMode: str
-        :param DestroyExpireTime: 过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
+        :param _DestroyExpireTime: 过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
         :type DestroyExpireTime: int
         """
-        self.DestroyMode = None
-        self.DestroyExpireTime = None
+        self._DestroyMode = None
+        self._DestroyExpireTime = None
+
+    @property
+    def DestroyMode(self):
+        return self._DestroyMode
+
+    @DestroyMode.setter
+    def DestroyMode(self, DestroyMode):
+        self._DestroyMode = DestroyMode
+
+    @property
+    def DestroyExpireTime(self):
+        return self._DestroyExpireTime
+
+    @DestroyExpireTime.setter
+    def DestroyExpireTime(self, DestroyExpireTime):
+        self._DestroyExpireTime = DestroyExpireTime
 
 
     def _deserialize(self, params):
-        self.DestroyMode = params.get("DestroyMode")
-        self.DestroyExpireTime = params.get("DestroyExpireTime")
+        self._DestroyMode = params.get("DestroyMode")
+        self._DestroyExpireTime = params.get("DestroyExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2025,22 +3673,31 @@ class SetPlayModeCommandInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayMode: 播放模式，取值有：
+        :param _PlayMode: 播放模式，取值有：
 <li>RepeatPlaylist：列表循环</li>
 <li>Order：顺序播放</li>
 <li>RepeatSingle：单曲循环</li>
 <li>Shuffle：随机播放</li>
         :type PlayMode: str
         """
-        self.PlayMode = None
+        self._PlayMode = None
+
+    @property
+    def PlayMode(self):
+        return self._PlayMode
+
+    @PlayMode.setter
+    def PlayMode(self, PlayMode):
+        self._PlayMode = PlayMode
 
 
     def _deserialize(self, params):
-        self.PlayMode = params.get("PlayMode")
+        self._PlayMode = params.get("PlayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2053,37 +3710,70 @@ class SetPlaylistCommandInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 变更类型，取值有：
+        :param _Type: 变更类型，取值有：
 <li>Add：添加</li>
 <li>Delete：删除</li>
 <li>ClearList：清空歌曲列表</li>
 <li>Move：移动歌曲</li>
         :type Type: str
-        :param Index: 歌单索引位置，
+        :param _Index: 歌单索引位置，
 当 Type 取 Add 时，-1表示添加在列表最后位置，大于-1表示要添加的位置；
 当 Type 取 Delete 时，表示待删除歌曲的位置；
 当 Type 取 Move 时，表示待调整歌曲的位置。
         :type Index: int
-        :param ChangedIndex: 当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
+        :param _ChangedIndex: 当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
         :type ChangedIndex: int
-        :param MusicIds: 歌曲 ID 列表，当 Type 取 Add 时，必填。
+        :param _MusicIds: 歌曲 ID 列表，当 Type 取 Add 时，必填。
         :type MusicIds: list of str
         """
-        self.Type = None
-        self.Index = None
-        self.ChangedIndex = None
-        self.MusicIds = None
+        self._Type = None
+        self._Index = None
+        self._ChangedIndex = None
+        self._MusicIds = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def ChangedIndex(self):
+        return self._ChangedIndex
+
+    @ChangedIndex.setter
+    def ChangedIndex(self, ChangedIndex):
+        self._ChangedIndex = ChangedIndex
+
+    @property
+    def MusicIds(self):
+        return self._MusicIds
+
+    @MusicIds.setter
+    def MusicIds(self, MusicIds):
+        self._MusicIds = MusicIds
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Index = params.get("Index")
-        self.ChangedIndex = params.get("ChangedIndex")
-        self.MusicIds = params.get("MusicIds")
+        self._Type = params.get("Type")
+        self._Index = params.get("Index")
+        self._ChangedIndex = params.get("ChangedIndex")
+        self._MusicIds = params.get("MusicIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2096,35 +3786,68 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param RobotId: 机器人Id。
+        :param _RobotId: 机器人Id。
         :type RobotId: str
-        :param SyncRobotCommands: 指令及指令参数数组。
+        :param _SyncRobotCommands: 指令及指令参数数组。
         :type SyncRobotCommands: list of SyncRobotCommand
         """
-        self.AppName = None
-        self.UserId = None
-        self.RobotId = None
-        self.SyncRobotCommands = None
+        self._AppName = None
+        self._UserId = None
+        self._RobotId = None
+        self._SyncRobotCommands = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RobotId(self):
+        return self._RobotId
+
+    @RobotId.setter
+    def RobotId(self, RobotId):
+        self._RobotId = RobotId
+
+    @property
+    def SyncRobotCommands(self):
+        return self._SyncRobotCommands
+
+    @SyncRobotCommands.setter
+    def SyncRobotCommands(self, SyncRobotCommands):
+        self._SyncRobotCommands = SyncRobotCommands
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
-        self.RobotId = params.get("RobotId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._RobotId = params.get("RobotId")
         if params.get("SyncRobotCommands") is not None:
-            self.SyncRobotCommands = []
+            self._SyncRobotCommands = []
             for item in params.get("SyncRobotCommands"):
                 obj = SyncRobotCommand()
                 obj._deserialize(item)
-                self.SyncRobotCommands.append(obj)
+                self._SyncRobotCommands.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2137,14 +3860,22 @@ class SyncKTVRobotCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SyncRobotCommand(AbstractModel):
@@ -2154,7 +3885,7 @@ class SyncRobotCommand(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Command: 可同时传入多个指令，顺序执行。取值有：
+        :param _Command: 可同时传入多个指令，顺序执行。取值有：
 <li>Play：播放</li>
 <li>Pause：暂停</li>
 <li>SwitchPrevious：上一首</li>
@@ -2166,58 +3897,123 @@ class SyncRobotCommand(AbstractModel):
 <li>SendMessage：发送自定义消息</li>
 <li>SetDestroyMode：设置销毁模式</li>
         :type Command: str
-        :param PlayCommandInput: 播放参数。
+        :param _PlayCommandInput: 播放参数。
         :type PlayCommandInput: :class:`tencentcloud.yinsuda.v20220527.models.PlayCommandInput`
-        :param SetPlaylistCommandInput: 播放列表变更信息，当Command取SetPlaylist时，必填。
+        :param _SetPlaylistCommandInput: 播放列表变更信息，当Command取SetPlaylist时，必填。
         :type SetPlaylistCommandInput: :class:`tencentcloud.yinsuda.v20220527.models.SetPlaylistCommandInput`
-        :param SeekCommandInput: 播放进度，当Command取Seek时，必填。
+        :param _SeekCommandInput: 播放进度，当Command取Seek时，必填。
         :type SeekCommandInput: :class:`tencentcloud.yinsuda.v20220527.models.SeekCommandInput`
-        :param SetAudioParamCommandInput: 音频参数，当Command取SetAudioParam时，必填。
+        :param _SetAudioParamCommandInput: 音频参数，当Command取SetAudioParam时，必填。
         :type SetAudioParamCommandInput: :class:`tencentcloud.yinsuda.v20220527.models.SetAudioParamCommandInput`
-        :param SendMessageCommandInput: 自定义消息，当Command取SendMessage时，必填。
+        :param _SendMessageCommandInput: 自定义消息，当Command取SendMessage时，必填。
         :type SendMessageCommandInput: :class:`tencentcloud.yinsuda.v20220527.models.SendMessageCommandInput`
-        :param SetPlayModeCommandInput: 播放模式，当Command取SetPlayMode时，必填。
+        :param _SetPlayModeCommandInput: 播放模式，当Command取SetPlayMode时，必填。
         :type SetPlayModeCommandInput: :class:`tencentcloud.yinsuda.v20220527.models.SetPlayModeCommandInput`
-        :param SetDestroyModeCommandInput: 销毁模式，当Command取SetDestroyMode时，必填。
+        :param _SetDestroyModeCommandInput: 销毁模式，当Command取SetDestroyMode时，必填。
         :type SetDestroyModeCommandInput: :class:`tencentcloud.yinsuda.v20220527.models.SetDestroyModeCommandInput`
         """
-        self.Command = None
-        self.PlayCommandInput = None
-        self.SetPlaylistCommandInput = None
-        self.SeekCommandInput = None
-        self.SetAudioParamCommandInput = None
-        self.SendMessageCommandInput = None
-        self.SetPlayModeCommandInput = None
-        self.SetDestroyModeCommandInput = None
+        self._Command = None
+        self._PlayCommandInput = None
+        self._SetPlaylistCommandInput = None
+        self._SeekCommandInput = None
+        self._SetAudioParamCommandInput = None
+        self._SendMessageCommandInput = None
+        self._SetPlayModeCommandInput = None
+        self._SetDestroyModeCommandInput = None
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def PlayCommandInput(self):
+        return self._PlayCommandInput
+
+    @PlayCommandInput.setter
+    def PlayCommandInput(self, PlayCommandInput):
+        self._PlayCommandInput = PlayCommandInput
+
+    @property
+    def SetPlaylistCommandInput(self):
+        return self._SetPlaylistCommandInput
+
+    @SetPlaylistCommandInput.setter
+    def SetPlaylistCommandInput(self, SetPlaylistCommandInput):
+        self._SetPlaylistCommandInput = SetPlaylistCommandInput
+
+    @property
+    def SeekCommandInput(self):
+        return self._SeekCommandInput
+
+    @SeekCommandInput.setter
+    def SeekCommandInput(self, SeekCommandInput):
+        self._SeekCommandInput = SeekCommandInput
+
+    @property
+    def SetAudioParamCommandInput(self):
+        return self._SetAudioParamCommandInput
+
+    @SetAudioParamCommandInput.setter
+    def SetAudioParamCommandInput(self, SetAudioParamCommandInput):
+        self._SetAudioParamCommandInput = SetAudioParamCommandInput
+
+    @property
+    def SendMessageCommandInput(self):
+        return self._SendMessageCommandInput
+
+    @SendMessageCommandInput.setter
+    def SendMessageCommandInput(self, SendMessageCommandInput):
+        self._SendMessageCommandInput = SendMessageCommandInput
+
+    @property
+    def SetPlayModeCommandInput(self):
+        return self._SetPlayModeCommandInput
+
+    @SetPlayModeCommandInput.setter
+    def SetPlayModeCommandInput(self, SetPlayModeCommandInput):
+        self._SetPlayModeCommandInput = SetPlayModeCommandInput
+
+    @property
+    def SetDestroyModeCommandInput(self):
+        return self._SetDestroyModeCommandInput
+
+    @SetDestroyModeCommandInput.setter
+    def SetDestroyModeCommandInput(self, SetDestroyModeCommandInput):
+        self._SetDestroyModeCommandInput = SetDestroyModeCommandInput
 
 
     def _deserialize(self, params):
-        self.Command = params.get("Command")
+        self._Command = params.get("Command")
         if params.get("PlayCommandInput") is not None:
-            self.PlayCommandInput = PlayCommandInput()
-            self.PlayCommandInput._deserialize(params.get("PlayCommandInput"))
+            self._PlayCommandInput = PlayCommandInput()
+            self._PlayCommandInput._deserialize(params.get("PlayCommandInput"))
         if params.get("SetPlaylistCommandInput") is not None:
-            self.SetPlaylistCommandInput = SetPlaylistCommandInput()
-            self.SetPlaylistCommandInput._deserialize(params.get("SetPlaylistCommandInput"))
+            self._SetPlaylistCommandInput = SetPlaylistCommandInput()
+            self._SetPlaylistCommandInput._deserialize(params.get("SetPlaylistCommandInput"))
         if params.get("SeekCommandInput") is not None:
-            self.SeekCommandInput = SeekCommandInput()
-            self.SeekCommandInput._deserialize(params.get("SeekCommandInput"))
+            self._SeekCommandInput = SeekCommandInput()
+            self._SeekCommandInput._deserialize(params.get("SeekCommandInput"))
         if params.get("SetAudioParamCommandInput") is not None:
-            self.SetAudioParamCommandInput = SetAudioParamCommandInput()
-            self.SetAudioParamCommandInput._deserialize(params.get("SetAudioParamCommandInput"))
+            self._SetAudioParamCommandInput = SetAudioParamCommandInput()
+            self._SetAudioParamCommandInput._deserialize(params.get("SetAudioParamCommandInput"))
         if params.get("SendMessageCommandInput") is not None:
-            self.SendMessageCommandInput = SendMessageCommandInput()
-            self.SendMessageCommandInput._deserialize(params.get("SendMessageCommandInput"))
+            self._SendMessageCommandInput = SendMessageCommandInput()
+            self._SendMessageCommandInput._deserialize(params.get("SendMessageCommandInput"))
         if params.get("SetPlayModeCommandInput") is not None:
-            self.SetPlayModeCommandInput = SetPlayModeCommandInput()
-            self.SetPlayModeCommandInput._deserialize(params.get("SetPlayModeCommandInput"))
+            self._SetPlayModeCommandInput = SetPlayModeCommandInput()
+            self._SetPlayModeCommandInput._deserialize(params.get("SetPlayModeCommandInput"))
         if params.get("SetDestroyModeCommandInput") is not None:
-            self.SetDestroyModeCommandInput = SetDestroyModeCommandInput()
-            self.SetDestroyModeCommandInput._deserialize(params.get("SetDestroyModeCommandInput"))
+            self._SetDestroyModeCommandInput = SetDestroyModeCommandInput()
+            self._SetDestroyModeCommandInput._deserialize(params.get("SetDestroyModeCommandInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2230,30 +4026,63 @@ class TRTCJoinRoomInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sign: 签名。
+        :param _Sign: 签名。
         :type Sign: str
-        :param RoomId: 房间号。
+        :param _RoomId: 房间号。
         :type RoomId: str
-        :param SdkAppId: 推流应用ID。
+        :param _SdkAppId: 推流应用ID。
         :type SdkAppId: str
-        :param UserId: 用户唯一标识。
+        :param _UserId: 用户唯一标识。
         :type UserId: str
         """
-        self.Sign = None
-        self.RoomId = None
-        self.SdkAppId = None
-        self.UserId = None
+        self._Sign = None
+        self._RoomId = None
+        self._SdkAppId = None
+        self._UserId = None
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.Sign = params.get("Sign")
-        self.RoomId = params.get("RoomId")
-        self.SdkAppId = params.get("SdkAppId")
-        self.UserId = params.get("UserId")
+        self._Sign = params.get("Sign")
+        self._RoomId = params.get("RoomId")
+        self._SdkAppId = params.get("SdkAppId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2266,24 +4095,41 @@ class TimeRange(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Before: <li>大于等于此时间（起始时间）。</li>
+        :param _Before: <li>大于等于此时间（起始时间）。</li>
 <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
         :type Before: str
-        :param After: <li>小于此时间（结束时间）。</li>
+        :param _After: <li>小于此时间（结束时间）。</li>
 <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
         :type After: str
         """
-        self.Before = None
-        self.After = None
+        self._Before = None
+        self._After = None
+
+    @property
+    def Before(self):
+        return self._Before
+
+    @Before.setter
+    def Before(self, Before):
+        self._Before = Before
+
+    @property
+    def After(self):
+        return self._After
+
+    @After.setter
+    def After(self, After):
+        self._After = After
 
 
     def _deserialize(self, params):
-        self.Before = params.get("Before")
-        self.After = params.get("After")
+        self._Before = params.get("Before")
+        self._After = params.get("After")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2296,35 +4142,68 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param UserId: 用户标识。
+        :param _UserId: 用户标识。
         :type UserId: str
-        :param LiveVipUserInfo: 直播会员详细信息。
+        :param _LiveVipUserInfo: 直播会员详细信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveVipUserInfo: :class:`tencentcloud.yinsuda.v20220527.models.LiveVipUserInfo`
-        :param UserType: 用户类型
+        :param _UserType: 用户类型
 <li>Normal：普通用户</li>
 <li>LiveVip：直播会员用户</li>
         :type UserType: str
         """
-        self.AppName = None
-        self.UserId = None
-        self.LiveVipUserInfo = None
-        self.UserType = None
+        self._AppName = None
+        self._UserId = None
+        self._LiveVipUserInfo = None
+        self._UserType = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def LiveVipUserInfo(self):
+        return self._LiveVipUserInfo
+
+    @LiveVipUserInfo.setter
+    def LiveVipUserInfo(self, LiveVipUserInfo):
+        self._LiveVipUserInfo = LiveVipUserInfo
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.UserId = params.get("UserId")
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
         if params.get("LiveVipUserInfo") is not None:
-            self.LiveVipUserInfo = LiveVipUserInfo()
-            self.LiveVipUserInfo._deserialize(params.get("LiveVipUserInfo"))
-        self.UserType = params.get("UserType")
+            self._LiveVipUserInfo = LiveVipUserInfo()
+            self._LiveVipUserInfo._deserialize(params.get("LiveVipUserInfo"))
+        self._UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

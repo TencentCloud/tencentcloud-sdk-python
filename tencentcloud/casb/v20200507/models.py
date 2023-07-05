@@ -25,43 +25,92 @@ class CopyCryptoColumnPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CasbId: 实例Id
+        :param _CasbId: 实例Id
         :type CasbId: str
-        :param MetaDataId: 元数据id
+        :param _MetaDataId: 元数据id
         :type MetaDataId: str
-        :param DstCasbId: 目标实例Id 如果和实例Id相同则为同CasbId下的策略复制
+        :param _DstCasbId: 目标实例Id 如果和实例Id相同则为同CasbId下的策略复制
         :type DstCasbId: str
-        :param DstMetaDataId: 目标实例Id 如果和[元数据id]相同则为同元数据下的策略复制
+        :param _DstMetaDataId: 目标实例Id 如果和[元数据id]相同则为同元数据下的策略复制
         :type DstMetaDataId: str
-        :param SrcTableFilter: 筛选来源数据库的表
+        :param _SrcTableFilter: 筛选来源数据库的表
         :type SrcTableFilter: list of CryptoCopyColumnPolicyTableFilter
-        :param DstDatabaseName: 复制同元数据下的策略，需要填写目标数据库名
+        :param _DstDatabaseName: 复制同元数据下的策略，需要填写目标数据库名
         :type DstDatabaseName: str
         """
-        self.CasbId = None
-        self.MetaDataId = None
-        self.DstCasbId = None
-        self.DstMetaDataId = None
-        self.SrcTableFilter = None
-        self.DstDatabaseName = None
+        self._CasbId = None
+        self._MetaDataId = None
+        self._DstCasbId = None
+        self._DstMetaDataId = None
+        self._SrcTableFilter = None
+        self._DstDatabaseName = None
+
+    @property
+    def CasbId(self):
+        return self._CasbId
+
+    @CasbId.setter
+    def CasbId(self, CasbId):
+        self._CasbId = CasbId
+
+    @property
+    def MetaDataId(self):
+        return self._MetaDataId
+
+    @MetaDataId.setter
+    def MetaDataId(self, MetaDataId):
+        self._MetaDataId = MetaDataId
+
+    @property
+    def DstCasbId(self):
+        return self._DstCasbId
+
+    @DstCasbId.setter
+    def DstCasbId(self, DstCasbId):
+        self._DstCasbId = DstCasbId
+
+    @property
+    def DstMetaDataId(self):
+        return self._DstMetaDataId
+
+    @DstMetaDataId.setter
+    def DstMetaDataId(self, DstMetaDataId):
+        self._DstMetaDataId = DstMetaDataId
+
+    @property
+    def SrcTableFilter(self):
+        return self._SrcTableFilter
+
+    @SrcTableFilter.setter
+    def SrcTableFilter(self, SrcTableFilter):
+        self._SrcTableFilter = SrcTableFilter
+
+    @property
+    def DstDatabaseName(self):
+        return self._DstDatabaseName
+
+    @DstDatabaseName.setter
+    def DstDatabaseName(self, DstDatabaseName):
+        self._DstDatabaseName = DstDatabaseName
 
 
     def _deserialize(self, params):
-        self.CasbId = params.get("CasbId")
-        self.MetaDataId = params.get("MetaDataId")
-        self.DstCasbId = params.get("DstCasbId")
-        self.DstMetaDataId = params.get("DstMetaDataId")
+        self._CasbId = params.get("CasbId")
+        self._MetaDataId = params.get("MetaDataId")
+        self._DstCasbId = params.get("DstCasbId")
+        self._DstMetaDataId = params.get("DstMetaDataId")
         if params.get("SrcTableFilter") is not None:
-            self.SrcTableFilter = []
+            self._SrcTableFilter = []
             for item in params.get("SrcTableFilter"):
                 obj = CryptoCopyColumnPolicyTableFilter()
                 obj._deserialize(item)
-                self.SrcTableFilter.append(obj)
-        self.DstDatabaseName = params.get("DstDatabaseName")
+                self._SrcTableFilter.append(obj)
+        self._DstDatabaseName = params.get("DstDatabaseName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -74,14 +123,22 @@ class CopyCryptoColumnPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CryptoCopyColumnPolicyTableFilter(AbstractModel):
@@ -91,22 +148,39 @@ class CryptoCopyColumnPolicyTableFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DatabaseName: 数据库名称
+        :param _DatabaseName: 数据库名称
         :type DatabaseName: str
-        :param TableNameSet: 表名称
+        :param _TableNameSet: 表名称
         :type TableNameSet: list of str
         """
-        self.DatabaseName = None
-        self.TableNameSet = None
+        self._DatabaseName = None
+        self._TableNameSet = None
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableNameSet(self):
+        return self._TableNameSet
+
+    @TableNameSet.setter
+    def TableNameSet(self, TableNameSet):
+        self._TableNameSet = TableNameSet
 
 
     def _deserialize(self, params):
-        self.DatabaseName = params.get("DatabaseName")
-        self.TableNameSet = params.get("TableNameSet")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableNameSet = params.get("TableNameSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

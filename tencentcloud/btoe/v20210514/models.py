@@ -25,42 +25,99 @@ class CreateAudioDepositRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceName: 存证名称(长度最大30)
+        :param _EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
-        :param FileContent: 数据Base64编码，大小不超过5M
+        :param _FileContent: 数据Base64编码，大小不超过5M
         :type FileContent: str
-        :param FileName: 带后缀的文件名称，如music.mp3
+        :param _FileName: 带后缀的文件名称，如music.mp3
         :type FileName: str
-        :param EvidenceHash: 文件hash
+        :param _EvidenceHash: 文件hash
         :type EvidenceHash: str
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
         :type BusinessId: str
-        :param HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :param _HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
         :type HashType: int
-        :param EvidenceDescription: 存证描述
+        :param _EvidenceDescription: 存证描述
         :type EvidenceDescription: str
         """
-        self.EvidenceName = None
-        self.FileContent = None
-        self.FileName = None
-        self.EvidenceHash = None
-        self.BusinessId = None
-        self.HashType = None
-        self.EvidenceDescription = None
+        self._EvidenceName = None
+        self._FileContent = None
+        self._FileName = None
+        self._EvidenceHash = None
+        self._BusinessId = None
+        self._HashType = None
+        self._EvidenceDescription = None
+
+    @property
+    def EvidenceName(self):
+        return self._EvidenceName
+
+    @EvidenceName.setter
+    def EvidenceName(self, EvidenceName):
+        self._EvidenceName = EvidenceName
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def HashType(self):
+        return self._HashType
+
+    @HashType.setter
+    def HashType(self, HashType):
+        self._HashType = HashType
+
+    @property
+    def EvidenceDescription(self):
+        return self._EvidenceDescription
+
+    @EvidenceDescription.setter
+    def EvidenceDescription(self, EvidenceDescription):
+        self._EvidenceDescription = EvidenceDescription
 
 
     def _deserialize(self, params):
-        self.EvidenceName = params.get("EvidenceName")
-        self.FileContent = params.get("FileContent")
-        self.FileName = params.get("FileName")
-        self.EvidenceHash = params.get("EvidenceHash")
-        self.BusinessId = params.get("BusinessId")
-        self.HashType = params.get("HashType")
-        self.EvidenceDescription = params.get("EvidenceDescription")
+        self._EvidenceName = params.get("EvidenceName")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        self._EvidenceHash = params.get("EvidenceHash")
+        self._BusinessId = params.get("BusinessId")
+        self._HashType = params.get("HashType")
+        self._EvidenceDescription = params.get("EvidenceDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -73,23 +130,47 @@ class CreateAudioDepositResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
+        :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDataDepositRequest(AbstractModel):
@@ -99,34 +180,75 @@ class CreateDataDepositRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceInfo: 业务数据明文(json格式字符串)，最大256kb
+        :param _EvidenceInfo: 业务数据明文(json格式字符串)，最大256kb
         :type EvidenceInfo: str
-        :param EvidenceName: 存证名称(长度最大30)
+        :param _EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
         :type BusinessId: str
-        :param HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :param _HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
         :type HashType: int
-        :param EvidenceDescription: 存证描述
+        :param _EvidenceDescription: 存证描述
         :type EvidenceDescription: str
         """
-        self.EvidenceInfo = None
-        self.EvidenceName = None
-        self.BusinessId = None
-        self.HashType = None
-        self.EvidenceDescription = None
+        self._EvidenceInfo = None
+        self._EvidenceName = None
+        self._BusinessId = None
+        self._HashType = None
+        self._EvidenceDescription = None
+
+    @property
+    def EvidenceInfo(self):
+        return self._EvidenceInfo
+
+    @EvidenceInfo.setter
+    def EvidenceInfo(self, EvidenceInfo):
+        self._EvidenceInfo = EvidenceInfo
+
+    @property
+    def EvidenceName(self):
+        return self._EvidenceName
+
+    @EvidenceName.setter
+    def EvidenceName(self, EvidenceName):
+        self._EvidenceName = EvidenceName
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def HashType(self):
+        return self._HashType
+
+    @HashType.setter
+    def HashType(self, HashType):
+        self._HashType = HashType
+
+    @property
+    def EvidenceDescription(self):
+        return self._EvidenceDescription
+
+    @EvidenceDescription.setter
+    def EvidenceDescription(self, EvidenceDescription):
+        self._EvidenceDescription = EvidenceDescription
 
 
     def _deserialize(self, params):
-        self.EvidenceInfo = params.get("EvidenceInfo")
-        self.EvidenceName = params.get("EvidenceName")
-        self.BusinessId = params.get("BusinessId")
-        self.HashType = params.get("HashType")
-        self.EvidenceDescription = params.get("EvidenceDescription")
+        self._EvidenceInfo = params.get("EvidenceInfo")
+        self._EvidenceName = params.get("EvidenceName")
+        self._BusinessId = params.get("BusinessId")
+        self._HashType = params.get("HashType")
+        self._EvidenceDescription = params.get("EvidenceDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -139,23 +261,47 @@ class CreateDataDepositResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
+        :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDocDepositRequest(AbstractModel):
@@ -165,42 +311,99 @@ class CreateDocDepositRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceName: 存证名称(长度最大30)
+        :param _EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
-        :param FileContent: 数据Base64编码，大小不超过5M
+        :param _FileContent: 数据Base64编码，大小不超过5M
         :type FileContent: str
-        :param FileName: 带后缀的文件名称，如 test.doc
+        :param _FileName: 带后缀的文件名称，如 test.doc
         :type FileName: str
-        :param EvidenceHash: 文件hash
+        :param _EvidenceHash: 文件hash
         :type EvidenceHash: str
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
         :type BusinessId: str
-        :param HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :param _HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
         :type HashType: int
-        :param EvidenceDescription: 存证描述
+        :param _EvidenceDescription: 存证描述
         :type EvidenceDescription: str
         """
-        self.EvidenceName = None
-        self.FileContent = None
-        self.FileName = None
-        self.EvidenceHash = None
-        self.BusinessId = None
-        self.HashType = None
-        self.EvidenceDescription = None
+        self._EvidenceName = None
+        self._FileContent = None
+        self._FileName = None
+        self._EvidenceHash = None
+        self._BusinessId = None
+        self._HashType = None
+        self._EvidenceDescription = None
+
+    @property
+    def EvidenceName(self):
+        return self._EvidenceName
+
+    @EvidenceName.setter
+    def EvidenceName(self, EvidenceName):
+        self._EvidenceName = EvidenceName
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def HashType(self):
+        return self._HashType
+
+    @HashType.setter
+    def HashType(self, HashType):
+        self._HashType = HashType
+
+    @property
+    def EvidenceDescription(self):
+        return self._EvidenceDescription
+
+    @EvidenceDescription.setter
+    def EvidenceDescription(self, EvidenceDescription):
+        self._EvidenceDescription = EvidenceDescription
 
 
     def _deserialize(self, params):
-        self.EvidenceName = params.get("EvidenceName")
-        self.FileContent = params.get("FileContent")
-        self.FileName = params.get("FileName")
-        self.EvidenceHash = params.get("EvidenceHash")
-        self.BusinessId = params.get("BusinessId")
-        self.HashType = params.get("HashType")
-        self.EvidenceDescription = params.get("EvidenceDescription")
+        self._EvidenceName = params.get("EvidenceName")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        self._EvidenceHash = params.get("EvidenceHash")
+        self._BusinessId = params.get("BusinessId")
+        self._HashType = params.get("HashType")
+        self._EvidenceDescription = params.get("EvidenceDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -213,23 +416,47 @@ class CreateDocDepositResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
+        :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateHashDepositNoCertRequest(AbstractModel):
@@ -239,26 +466,51 @@ class CreateHashDepositNoCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceHash: 数据hash
+        :param _EvidenceHash: 数据hash
         :type EvidenceHash: str
-        :param BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+        :param _BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
         :type BusinessId: str
-        :param EvidenceInfo: 业务扩展信息
+        :param _EvidenceInfo: 业务扩展信息
         :type EvidenceInfo: str
         """
-        self.EvidenceHash = None
-        self.BusinessId = None
-        self.EvidenceInfo = None
+        self._EvidenceHash = None
+        self._BusinessId = None
+        self._EvidenceInfo = None
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceInfo(self):
+        return self._EvidenceInfo
+
+    @EvidenceInfo.setter
+    def EvidenceInfo(self, EvidenceInfo):
+        self._EvidenceInfo = EvidenceInfo
 
 
     def _deserialize(self, params):
-        self.EvidenceHash = params.get("EvidenceHash")
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceInfo = params.get("EvidenceInfo")
+        self._EvidenceHash = params.get("EvidenceHash")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceInfo = params.get("EvidenceInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -271,23 +523,47 @@ class CreateHashDepositNoCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 透传字段
+        :param _BusinessId: 透传字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 存证编码
+        :param _EvidenceId: 存证编码
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateHashDepositNoSealRequest(AbstractModel):
@@ -297,26 +573,51 @@ class CreateHashDepositNoSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceHash: 数据hash
+        :param _EvidenceHash: 数据hash
         :type EvidenceHash: str
-        :param BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+        :param _BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
         :type BusinessId: str
-        :param EvidenceInfo: 业务扩展信息
+        :param _EvidenceInfo: 业务扩展信息
         :type EvidenceInfo: str
         """
-        self.EvidenceHash = None
-        self.BusinessId = None
-        self.EvidenceInfo = None
+        self._EvidenceHash = None
+        self._BusinessId = None
+        self._EvidenceInfo = None
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceInfo(self):
+        return self._EvidenceInfo
+
+    @EvidenceInfo.setter
+    def EvidenceInfo(self, EvidenceInfo):
+        self._EvidenceInfo = EvidenceInfo
 
 
     def _deserialize(self, params):
-        self.EvidenceHash = params.get("EvidenceHash")
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceInfo = params.get("EvidenceInfo")
+        self._EvidenceHash = params.get("EvidenceHash")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceInfo = params.get("EvidenceInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -329,23 +630,47 @@ class CreateHashDepositNoSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 透传字段
+        :param _BusinessId: 透传字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 存证编码
+        :param _EvidenceId: 存证编码
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateHashDepositRequest(AbstractModel):
@@ -355,30 +680,63 @@ class CreateHashDepositRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceName: 存证名称(长度最大30)
+        :param _EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
-        :param EvidenceHash: 数据hash
+        :param _EvidenceHash: 数据hash
         :type EvidenceHash: str
-        :param BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+        :param _BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
         :type BusinessId: str
-        :param EvidenceDescription: 存证描述
+        :param _EvidenceDescription: 存证描述
         :type EvidenceDescription: str
         """
-        self.EvidenceName = None
-        self.EvidenceHash = None
-        self.BusinessId = None
-        self.EvidenceDescription = None
+        self._EvidenceName = None
+        self._EvidenceHash = None
+        self._BusinessId = None
+        self._EvidenceDescription = None
+
+    @property
+    def EvidenceName(self):
+        return self._EvidenceName
+
+    @EvidenceName.setter
+    def EvidenceName(self, EvidenceName):
+        self._EvidenceName = EvidenceName
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceDescription(self):
+        return self._EvidenceDescription
+
+    @EvidenceDescription.setter
+    def EvidenceDescription(self, EvidenceDescription):
+        self._EvidenceDescription = EvidenceDescription
 
 
     def _deserialize(self, params):
-        self.EvidenceName = params.get("EvidenceName")
-        self.EvidenceHash = params.get("EvidenceHash")
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceDescription = params.get("EvidenceDescription")
+        self._EvidenceName = params.get("EvidenceName")
+        self._EvidenceHash = params.get("EvidenceHash")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceDescription = params.get("EvidenceDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -391,23 +749,47 @@ class CreateHashDepositResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 透传字段
+        :param _BusinessId: 透传字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 存证编码
+        :param _EvidenceId: 存证编码
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateImageDepositRequest(AbstractModel):
@@ -417,42 +799,99 @@ class CreateImageDepositRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceName: 存证名称(长度最大30)
+        :param _EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
-        :param FileContent: 数据Base64编码，大小不超过5M
+        :param _FileContent: 数据Base64编码，大小不超过5M
         :type FileContent: str
-        :param FileName: 带后缀的文件名称，如 test.png
+        :param _FileName: 带后缀的文件名称，如 test.png
         :type FileName: str
-        :param EvidenceHash: 文件hash
+        :param _EvidenceHash: 文件hash
         :type EvidenceHash: str
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
         :type BusinessId: str
-        :param HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :param _HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
         :type HashType: int
-        :param EvidenceDescription: 存证描述
+        :param _EvidenceDescription: 存证描述
         :type EvidenceDescription: str
         """
-        self.EvidenceName = None
-        self.FileContent = None
-        self.FileName = None
-        self.EvidenceHash = None
-        self.BusinessId = None
-        self.HashType = None
-        self.EvidenceDescription = None
+        self._EvidenceName = None
+        self._FileContent = None
+        self._FileName = None
+        self._EvidenceHash = None
+        self._BusinessId = None
+        self._HashType = None
+        self._EvidenceDescription = None
+
+    @property
+    def EvidenceName(self):
+        return self._EvidenceName
+
+    @EvidenceName.setter
+    def EvidenceName(self, EvidenceName):
+        self._EvidenceName = EvidenceName
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def HashType(self):
+        return self._HashType
+
+    @HashType.setter
+    def HashType(self, HashType):
+        self._HashType = HashType
+
+    @property
+    def EvidenceDescription(self):
+        return self._EvidenceDescription
+
+    @EvidenceDescription.setter
+    def EvidenceDescription(self, EvidenceDescription):
+        self._EvidenceDescription = EvidenceDescription
 
 
     def _deserialize(self, params):
-        self.EvidenceName = params.get("EvidenceName")
-        self.FileContent = params.get("FileContent")
-        self.FileName = params.get("FileName")
-        self.EvidenceHash = params.get("EvidenceHash")
-        self.BusinessId = params.get("BusinessId")
-        self.HashType = params.get("HashType")
-        self.EvidenceDescription = params.get("EvidenceDescription")
+        self._EvidenceName = params.get("EvidenceName")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        self._EvidenceHash = params.get("EvidenceHash")
+        self._BusinessId = params.get("BusinessId")
+        self._HashType = params.get("HashType")
+        self._EvidenceDescription = params.get("EvidenceDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -465,23 +904,47 @@ class CreateImageDepositResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
+        :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateVideoDepositRequest(AbstractModel):
@@ -491,42 +954,99 @@ class CreateVideoDepositRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceName: 存证名称(长度最大30)
+        :param _EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
-        :param FileContent: 数据Base64编码，大小不超过5M
+        :param _FileContent: 数据Base64编码，大小不超过5M
         :type FileContent: str
-        :param FileName: 带后缀的文件名称，如music.mkv
+        :param _FileName: 带后缀的文件名称，如music.mkv
         :type FileName: str
-        :param EvidenceHash: 文件hash
+        :param _EvidenceHash: 文件hash
         :type EvidenceHash: str
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
         :type BusinessId: str
-        :param HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :param _HashType: 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
         :type HashType: int
-        :param EvidenceDescription: 存证描述
+        :param _EvidenceDescription: 存证描述
         :type EvidenceDescription: str
         """
-        self.EvidenceName = None
-        self.FileContent = None
-        self.FileName = None
-        self.EvidenceHash = None
-        self.BusinessId = None
-        self.HashType = None
-        self.EvidenceDescription = None
+        self._EvidenceName = None
+        self._FileContent = None
+        self._FileName = None
+        self._EvidenceHash = None
+        self._BusinessId = None
+        self._HashType = None
+        self._EvidenceDescription = None
+
+    @property
+    def EvidenceName(self):
+        return self._EvidenceName
+
+    @EvidenceName.setter
+    def EvidenceName(self, EvidenceName):
+        self._EvidenceName = EvidenceName
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def HashType(self):
+        return self._HashType
+
+    @HashType.setter
+    def HashType(self, HashType):
+        self._HashType = HashType
+
+    @property
+    def EvidenceDescription(self):
+        return self._EvidenceDescription
+
+    @EvidenceDescription.setter
+    def EvidenceDescription(self, EvidenceDescription):
+        self._EvidenceDescription = EvidenceDescription
 
 
     def _deserialize(self, params):
-        self.EvidenceName = params.get("EvidenceName")
-        self.FileContent = params.get("FileContent")
-        self.FileName = params.get("FileName")
-        self.EvidenceHash = params.get("EvidenceHash")
-        self.BusinessId = params.get("BusinessId")
-        self.HashType = params.get("HashType")
-        self.EvidenceDescription = params.get("EvidenceDescription")
+        self._EvidenceName = params.get("EvidenceName")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        self._EvidenceHash = params.get("EvidenceHash")
+        self._BusinessId = params.get("BusinessId")
+        self._HashType = params.get("HashType")
+        self._EvidenceDescription = params.get("EvidenceDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -539,23 +1059,47 @@ class CreateVideoDepositResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessId: 业务ID 透传 长度最大不超过64
+        :param _BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
-        :param EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
+        :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BusinessId = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._BusinessId = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BusinessId = params.get("BusinessId")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._BusinessId = params.get("BusinessId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDepositCertRequest(AbstractModel):
@@ -565,18 +1109,27 @@ class GetDepositCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceId: 存证编码
+        :param _EvidenceId: 存证编码
         :type EvidenceId: str
         """
-        self.EvidenceId = None
+        self._EvidenceId = None
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
 
 
     def _deserialize(self, params):
-        self.EvidenceId = params.get("EvidenceId")
+        self._EvidenceId = params.get("EvidenceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -589,22 +1142,46 @@ class GetDepositCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceId: 存证编码
+        :param _EvidenceId: 存证编码
         :type EvidenceId: str
-        :param EvidenceCert: 存证证书文件临时链接
+        :param _EvidenceCert: 存证证书文件临时链接
         :type EvidenceCert: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EvidenceId = None
-        self.EvidenceCert = None
-        self.RequestId = None
+        self._EvidenceId = None
+        self._EvidenceCert = None
+        self._RequestId = None
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def EvidenceCert(self):
+        return self._EvidenceCert
+
+    @EvidenceCert.setter
+    def EvidenceCert(self, EvidenceCert):
+        self._EvidenceCert = EvidenceCert
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EvidenceId = params.get("EvidenceId")
-        self.EvidenceCert = params.get("EvidenceCert")
-        self.RequestId = params.get("RequestId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._EvidenceCert = params.get("EvidenceCert")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDepositFileRequest(AbstractModel):
@@ -614,18 +1191,27 @@ class GetDepositFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceId: 存证编码
+        :param _EvidenceId: 存证编码
         :type EvidenceId: str
         """
-        self.EvidenceId = None
+        self._EvidenceId = None
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
 
 
     def _deserialize(self, params):
-        self.EvidenceId = params.get("EvidenceId")
+        self._EvidenceId = params.get("EvidenceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -638,22 +1224,46 @@ class GetDepositFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceId: 存证编号
+        :param _EvidenceId: 存证编号
         :type EvidenceId: str
-        :param EvidenceFile: 存证文件临时链接
+        :param _EvidenceFile: 存证文件临时链接
         :type EvidenceFile: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EvidenceId = None
-        self.EvidenceFile = None
-        self.RequestId = None
+        self._EvidenceId = None
+        self._EvidenceFile = None
+        self._RequestId = None
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def EvidenceFile(self):
+        return self._EvidenceFile
+
+    @EvidenceFile.setter
+    def EvidenceFile(self, EvidenceFile):
+        self._EvidenceFile = EvidenceFile
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EvidenceId = params.get("EvidenceId")
-        self.EvidenceFile = params.get("EvidenceFile")
-        self.RequestId = params.get("RequestId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._EvidenceFile = params.get("EvidenceFile")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDepositInfoRequest(AbstractModel):
@@ -663,18 +1273,27 @@ class GetDepositInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceId: 存证编码
+        :param _EvidenceId: 存证编码
         :type EvidenceId: str
         """
-        self.EvidenceId = None
+        self._EvidenceId = None
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
 
 
     def _deserialize(self, params):
-        self.EvidenceId = params.get("EvidenceId")
+        self._EvidenceId = params.get("EvidenceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -687,26 +1306,58 @@ class GetDepositInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceId: 存证编号
+        :param _EvidenceId: 存证编号
         :type EvidenceId: str
-        :param EvidenceTime: 上链时间
+        :param _EvidenceTime: 上链时间
         :type EvidenceTime: str
-        :param EvidenceTxHash: 区块链交易哈希
+        :param _EvidenceTxHash: 区块链交易哈希
         :type EvidenceTxHash: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EvidenceId = None
-        self.EvidenceTime = None
-        self.EvidenceTxHash = None
-        self.RequestId = None
+        self._EvidenceId = None
+        self._EvidenceTime = None
+        self._EvidenceTxHash = None
+        self._RequestId = None
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def EvidenceTime(self):
+        return self._EvidenceTime
+
+    @EvidenceTime.setter
+    def EvidenceTime(self, EvidenceTime):
+        self._EvidenceTime = EvidenceTime
+
+    @property
+    def EvidenceTxHash(self):
+        return self._EvidenceTxHash
+
+    @EvidenceTxHash.setter
+    def EvidenceTxHash(self, EvidenceTxHash):
+        self._EvidenceTxHash = EvidenceTxHash
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EvidenceId = params.get("EvidenceId")
-        self.EvidenceTime = params.get("EvidenceTime")
-        self.EvidenceTxHash = params.get("EvidenceTxHash")
-        self.RequestId = params.get("RequestId")
+        self._EvidenceId = params.get("EvidenceId")
+        self._EvidenceTime = params.get("EvidenceTime")
+        self._EvidenceTxHash = params.get("EvidenceTxHash")
+        self._RequestId = params.get("RequestId")
 
 
 class VerifyEvidenceBlockChainTxHashRequest(AbstractModel):
@@ -716,18 +1367,27 @@ class VerifyEvidenceBlockChainTxHashRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceTxHash: 区块链交易 hash，在“存证基本信息查询（GetDepositInfo）”接口中可以获取。
+        :param _EvidenceTxHash: 区块链交易 hash，在“存证基本信息查询（GetDepositInfo）”接口中可以获取。
         :type EvidenceTxHash: str
         """
-        self.EvidenceTxHash = None
+        self._EvidenceTxHash = None
+
+    @property
+    def EvidenceTxHash(self):
+        return self._EvidenceTxHash
+
+    @EvidenceTxHash.setter
+    def EvidenceTxHash(self, EvidenceTxHash):
+        self._EvidenceTxHash = EvidenceTxHash
 
 
     def _deserialize(self, params):
-        self.EvidenceTxHash = params.get("EvidenceTxHash")
+        self._EvidenceTxHash = params.get("EvidenceTxHash")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -740,28 +1400,60 @@ class VerifyEvidenceBlockChainTxHashResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 核验结果，true为核验成功，fals为核验失败
+        :param _Result: 核验结果，true为核验成功，fals为核验失败
         :type Result: bool
-        :param EvidenceTime: 存证时间，仅当核验结果为true时返回
+        :param _EvidenceTime: 存证时间，仅当核验结果为true时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvidenceTime: str
-        :param EvidenceId: 存证编码，仅当核验结果为true时返回
+        :param _EvidenceId: 存证编码，仅当核验结果为true时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvidenceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.EvidenceTime = None
-        self.EvidenceId = None
-        self.RequestId = None
+        self._Result = None
+        self._EvidenceTime = None
+        self._EvidenceId = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def EvidenceTime(self):
+        return self._EvidenceTime
+
+    @EvidenceTime.setter
+    def EvidenceTime(self, EvidenceTime):
+        self._EvidenceTime = EvidenceTime
+
+    @property
+    def EvidenceId(self):
+        return self._EvidenceId
+
+    @EvidenceId.setter
+    def EvidenceId(self, EvidenceId):
+        self._EvidenceId = EvidenceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.EvidenceTime = params.get("EvidenceTime")
-        self.EvidenceId = params.get("EvidenceId")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._EvidenceTime = params.get("EvidenceTime")
+        self._EvidenceId = params.get("EvidenceId")
+        self._RequestId = params.get("RequestId")
 
 
 class VerifyEvidenceHashRequest(AbstractModel):
@@ -771,18 +1463,27 @@ class VerifyEvidenceHashRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvidenceHash: 存证内容hash，hash类型即为用户在存证时所用或所选的hash类型
+        :param _EvidenceHash: 存证内容hash，hash类型即为用户在存证时所用或所选的hash类型
         :type EvidenceHash: str
         """
-        self.EvidenceHash = None
+        self._EvidenceHash = None
+
+    @property
+    def EvidenceHash(self):
+        return self._EvidenceHash
+
+    @EvidenceHash.setter
+    def EvidenceHash(self, EvidenceHash):
+        self._EvidenceHash = EvidenceHash
 
 
     def _deserialize(self, params):
-        self.EvidenceHash = params.get("EvidenceHash")
+        self._EvidenceHash = params.get("EvidenceHash")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -795,15 +1496,31 @@ class VerifyEvidenceHashResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 核验结果，true为核验成功，false为核验失败
+        :param _Result: 核验结果，true为核验成功，false为核验失败
         :type Result: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")

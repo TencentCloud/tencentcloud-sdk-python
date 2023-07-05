@@ -25,20 +25,29 @@ class DescribeNewUserAcquisitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceParams: 用户信息
+        :param _ServiceParams: 用户信息
         :type ServiceParams: :class:`tencentcloud.pds.v20210701.models.UserInfos`
         """
-        self.ServiceParams = None
+        self._ServiceParams = None
+
+    @property
+    def ServiceParams(self):
+        return self._ServiceParams
+
+    @ServiceParams.setter
+    def ServiceParams(self, ServiceParams):
+        self._ServiceParams = ServiceParams
 
 
     def _deserialize(self, params):
         if params.get("ServiceParams") is not None:
-            self.ServiceParams = UserInfos()
-            self.ServiceParams._deserialize(params.get("ServiceParams"))
+            self._ServiceParams = UserInfos()
+            self._ServiceParams._deserialize(params.get("ServiceParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -51,20 +60,36 @@ class DescribeNewUserAcquisitionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceRsp: 用户信誉分，1-5从低到高
+        :param _ServiceRsp: 用户信誉分，1-5从低到高
         :type ServiceRsp: :class:`tencentcloud.pds.v20210701.models.Score`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ServiceRsp = None
-        self.RequestId = None
+        self._ServiceRsp = None
+        self._RequestId = None
+
+    @property
+    def ServiceRsp(self):
+        return self._ServiceRsp
+
+    @ServiceRsp.setter
+    def ServiceRsp(self, ServiceRsp):
+        self._ServiceRsp = ServiceRsp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ServiceRsp") is not None:
-            self.ServiceRsp = Score()
-            self.ServiceRsp._deserialize(params.get("ServiceRsp"))
-        self.RequestId = params.get("RequestId")
+            self._ServiceRsp = Score()
+            self._ServiceRsp._deserialize(params.get("ServiceRsp"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStockEstimationRequest(AbstractModel):
@@ -74,20 +99,29 @@ class DescribeStockEstimationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceParams: 用户信息
+        :param _ServiceParams: 用户信息
         :type ServiceParams: :class:`tencentcloud.pds.v20210701.models.UserInfos`
         """
-        self.ServiceParams = None
+        self._ServiceParams = None
+
+    @property
+    def ServiceParams(self):
+        return self._ServiceParams
+
+    @ServiceParams.setter
+    def ServiceParams(self, ServiceParams):
+        self._ServiceParams = ServiceParams
 
 
     def _deserialize(self, params):
         if params.get("ServiceParams") is not None:
-            self.ServiceParams = UserInfos()
-            self.ServiceParams._deserialize(params.get("ServiceParams"))
+            self._ServiceParams = UserInfos()
+            self._ServiceParams._deserialize(params.get("ServiceParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -100,20 +134,36 @@ class DescribeStockEstimationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceRsp: 用户信誉分，1-5从低到高
+        :param _ServiceRsp: 用户信誉分，1-5从低到高
         :type ServiceRsp: :class:`tencentcloud.pds.v20210701.models.Score`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ServiceRsp = None
-        self.RequestId = None
+        self._ServiceRsp = None
+        self._RequestId = None
+
+    @property
+    def ServiceRsp(self):
+        return self._ServiceRsp
+
+    @ServiceRsp.setter
+    def ServiceRsp(self, ServiceRsp):
+        self._ServiceRsp = ServiceRsp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ServiceRsp") is not None:
-            self.ServiceRsp = Score()
-            self.ServiceRsp._deserialize(params.get("ServiceRsp"))
-        self.RequestId = params.get("RequestId")
+            self._ServiceRsp = Score()
+            self._ServiceRsp._deserialize(params.get("ServiceRsp"))
+        self._RequestId = params.get("RequestId")
 
 
 class Score(AbstractModel):
@@ -123,18 +173,27 @@ class Score(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Star: 信誉分，1-5从低到高
+        :param _Star: 信誉分，1-5从低到高
         :type Star: int
         """
-        self.Star = None
+        self._Star = None
+
+    @property
+    def Star(self):
+        return self._Star
+
+    @Star.setter
+    def Star(self, Star):
+        self._Star = Star
 
 
     def _deserialize(self, params):
-        self.Star = params.get("Star")
+        self._Star = params.get("Star")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -147,42 +206,99 @@ class UserInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNum: 用户的手机号
+        :param _PhoneNum: 用户的手机号
         :type PhoneNum: str
-        :param Openid: 用户的微信OpenID
+        :param _Openid: 用户的微信OpenID
         :type Openid: str
-        :param IP: 用户移动设备的客户端IP
+        :param _IP: 用户移动设备的客户端IP
         :type IP: str
-        :param WiFiBssid: 用户WiFi的BSSID
+        :param _WiFiBssid: 用户WiFi的BSSID
         :type WiFiBssid: str
-        :param IMEI: 用户Android设备的IMEI
+        :param _IMEI: 用户Android设备的IMEI
         :type IMEI: str
-        :param OAID: 用户Android设备的OAID
+        :param _OAID: 用户Android设备的OAID
         :type OAID: str
-        :param IDFA: 用户iOS设备的IDFA
+        :param _IDFA: 用户iOS设备的IDFA
         :type IDFA: str
         """
-        self.PhoneNum = None
-        self.Openid = None
-        self.IP = None
-        self.WiFiBssid = None
-        self.IMEI = None
-        self.OAID = None
-        self.IDFA = None
+        self._PhoneNum = None
+        self._Openid = None
+        self._IP = None
+        self._WiFiBssid = None
+        self._IMEI = None
+        self._OAID = None
+        self._IDFA = None
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def Openid(self):
+        return self._Openid
+
+    @Openid.setter
+    def Openid(self, Openid):
+        self._Openid = Openid
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def WiFiBssid(self):
+        return self._WiFiBssid
+
+    @WiFiBssid.setter
+    def WiFiBssid(self, WiFiBssid):
+        self._WiFiBssid = WiFiBssid
+
+    @property
+    def IMEI(self):
+        return self._IMEI
+
+    @IMEI.setter
+    def IMEI(self, IMEI):
+        self._IMEI = IMEI
+
+    @property
+    def OAID(self):
+        return self._OAID
+
+    @OAID.setter
+    def OAID(self, OAID):
+        self._OAID = OAID
+
+    @property
+    def IDFA(self):
+        return self._IDFA
+
+    @IDFA.setter
+    def IDFA(self, IDFA):
+        self._IDFA = IDFA
 
 
     def _deserialize(self, params):
-        self.PhoneNum = params.get("PhoneNum")
-        self.Openid = params.get("Openid")
-        self.IP = params.get("IP")
-        self.WiFiBssid = params.get("WiFiBssid")
-        self.IMEI = params.get("IMEI")
-        self.OAID = params.get("OAID")
-        self.IDFA = params.get("IDFA")
+        self._PhoneNum = params.get("PhoneNum")
+        self._Openid = params.get("Openid")
+        self._IP = params.get("IP")
+        self._WiFiBssid = params.get("WiFiBssid")
+        self._IMEI = params.get("IMEI")
+        self._OAID = params.get("OAID")
+        self._IDFA = params.get("IDFA")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

@@ -25,55 +25,120 @@ class CreateWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 工作空间名称
+        :param _Name: 工作空间名称
         :type Name: str
-        :param Description: 工作空间描述
+        :param _Description: 工作空间描述
         :type Description: str
-        :param Specs: 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
+        :param _Specs: 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
         :type Specs: str
-        :param Image: 工作空间基础镜像名称, 默认会使用 All In One 镜像
+        :param _Image: 工作空间基础镜像名称, 默认会使用 All In One 镜像
         :type Image: str
-        :param Repository: Git 仓库. 工作空间启动时会自动克隆该仓库
+        :param _Repository: Git 仓库. 工作空间启动时会自动克隆该仓库
         :type Repository: :class:`tencentcloud.cloudstudio.v20230508.models.GitRepository`
-        :param Envs: 环境变量. 会被注入到工作空间中
+        :param _Envs: 环境变量. 会被注入到工作空间中
         :type Envs: list of Env
-        :param Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件 
+        :param _Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件 
         :type Extensions: list of str
-        :param Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        :param _Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
         :type Lifecycle: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
         """
-        self.Name = None
-        self.Description = None
-        self.Specs = None
-        self.Image = None
-        self.Repository = None
-        self.Envs = None
-        self.Extensions = None
-        self.Lifecycle = None
+        self._Name = None
+        self._Description = None
+        self._Specs = None
+        self._Image = None
+        self._Repository = None
+        self._Envs = None
+        self._Extensions = None
+        self._Lifecycle = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Specs(self):
+        return self._Specs
+
+    @Specs.setter
+    def Specs(self, Specs):
+        self._Specs = Specs
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Repository(self):
+        return self._Repository
+
+    @Repository.setter
+    def Repository(self, Repository):
+        self._Repository = Repository
+
+    @property
+    def Envs(self):
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def Extensions(self):
+        return self._Extensions
+
+    @Extensions.setter
+    def Extensions(self, Extensions):
+        self._Extensions = Extensions
+
+    @property
+    def Lifecycle(self):
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.Specs = params.get("Specs")
-        self.Image = params.get("Image")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Specs = params.get("Specs")
+        self._Image = params.get("Image")
         if params.get("Repository") is not None:
-            self.Repository = GitRepository()
-            self.Repository._deserialize(params.get("Repository"))
+            self._Repository = GitRepository()
+            self._Repository._deserialize(params.get("Repository"))
         if params.get("Envs") is not None:
-            self.Envs = []
+            self._Envs = []
             for item in params.get("Envs"):
                 obj = Env()
                 obj._deserialize(item)
-                self.Envs.append(obj)
-        self.Extensions = params.get("Extensions")
+                self._Envs.append(obj)
+        self._Extensions = params.get("Extensions")
         if params.get("Lifecycle") is not None:
-            self.Lifecycle = LifeCycle()
-            self.Lifecycle._deserialize(params.get("Lifecycle"))
+            self._Lifecycle = LifeCycle()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -86,22 +151,46 @@ class CreateWorkspaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpaceKey: 工作空间 SpaceKey
+        :param _SpaceKey: 工作空间 SpaceKey
         :type SpaceKey: str
-        :param Name: 工作空间名称
+        :param _Name: 工作空间名称
         :type Name: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SpaceKey = None
-        self.Name = None
-        self.RequestId = None
+        self._SpaceKey = None
+        self._Name = None
+        self._RequestId = None
+
+    @property
+    def SpaceKey(self):
+        return self._SpaceKey
+
+    @SpaceKey.setter
+    def SpaceKey(self, SpaceKey):
+        self._SpaceKey = SpaceKey
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SpaceKey = params.get("SpaceKey")
-        self.Name = params.get("Name")
-        self.RequestId = params.get("RequestId")
+        self._SpaceKey = params.get("SpaceKey")
+        self._Name = params.get("Name")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateWorkspaceTokenRequest(AbstractModel):
@@ -111,22 +200,39 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpaceKey: 工作空间 SpaceKey
+        :param _SpaceKey: 工作空间 SpaceKey
         :type SpaceKey: str
-        :param TokenExpiredLimitSec: token过期时间，单位是秒，默认 3600
+        :param _TokenExpiredLimitSec: token过期时间，单位是秒，默认 3600
         :type TokenExpiredLimitSec: int
         """
-        self.SpaceKey = None
-        self.TokenExpiredLimitSec = None
+        self._SpaceKey = None
+        self._TokenExpiredLimitSec = None
+
+    @property
+    def SpaceKey(self):
+        return self._SpaceKey
+
+    @SpaceKey.setter
+    def SpaceKey(self, SpaceKey):
+        self._SpaceKey = SpaceKey
+
+    @property
+    def TokenExpiredLimitSec(self):
+        return self._TokenExpiredLimitSec
+
+    @TokenExpiredLimitSec.setter
+    def TokenExpiredLimitSec(self, TokenExpiredLimitSec):
+        self._TokenExpiredLimitSec = TokenExpiredLimitSec
 
 
     def _deserialize(self, params):
-        self.SpaceKey = params.get("SpaceKey")
-        self.TokenExpiredLimitSec = params.get("TokenExpiredLimitSec")
+        self._SpaceKey = params.get("SpaceKey")
+        self._TokenExpiredLimitSec = params.get("TokenExpiredLimitSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -139,22 +245,46 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Token: 访问工作空间临时凭证
+        :param _Token: 访问工作空间临时凭证
         :type Token: str
-        :param ExpiredTime: token 过期时间
+        :param _ExpiredTime: token 过期时间
         :type ExpiredTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Token = None
-        self.ExpiredTime = None
-        self.RequestId = None
+        self._Token = None
+        self._ExpiredTime = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Token = params.get("Token")
-        self.ExpiredTime = params.get("ExpiredTime")
-        self.RequestId = params.get("RequestId")
+        self._Token = params.get("Token")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeConfigRequest(AbstractModel):
@@ -164,18 +294,27 @@ class DescribeConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 配置名称
+        :param _Name: 配置名称
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -188,19 +327,35 @@ class DescribeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 配置值
+        :param _Data: 配置值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
-        self.RequestId = params.get("RequestId")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImagesRequest(AbstractModel):
@@ -216,23 +371,39 @@ class DescribeImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Images: 镜像列表
+        :param _Images: 镜像列表
         :type Images: list of Image
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Images = None
-        self.RequestId = None
+        self._Images = None
+        self._RequestId = None
+
+    @property
+    def Images(self):
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Images") is not None:
-            self.Images = []
+            self._Images = []
             for item in params.get("Images"):
                 obj = Image()
                 obj._deserialize(item)
-                self.Images.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Images.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeWorkspacesRequest(AbstractModel):
@@ -242,18 +413,27 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 工作空间名称过滤条件
+        :param _Name: 工作空间名称过滤条件
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -266,23 +446,39 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 工作空间列表
+        :param _Data: 工作空间列表
         :type Data: list of WorkspaceStatusInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = WorkspaceStatusInfo()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class Env(AbstractModel):
@@ -292,22 +488,39 @@ class Env(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 环境变量 key
+        :param _Name: 环境变量 key
         :type Name: str
-        :param Value: 环境变量 value
+        :param _Value: 环境变量 value
         :type Value: str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -320,22 +533,39 @@ class GitRepository(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: Git 仓库地址
+        :param _Url: Git 仓库地址
         :type Url: str
-        :param Branch: Git 仓库分支名或 Tag 名
+        :param _Branch: Git 仓库分支名或 Tag 名
         :type Branch: str
         """
-        self.Url = None
-        self.Branch = None
+        self._Url = None
+        self._Branch = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Branch(self):
+        return self._Branch
+
+    @Branch.setter
+    def Branch(self, Branch):
+        self._Branch = Branch
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.Branch = params.get("Branch")
+        self._Url = params.get("Url")
+        self._Branch = params.get("Branch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -348,26 +578,51 @@ class Image(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 镜像名称
+        :param _Name: 镜像名称
         :type Name: str
-        :param Repository: 镜像仓库
+        :param _Repository: 镜像仓库
         :type Repository: str
-        :param Tags: tag 列表
+        :param _Tags: tag 列表
         :type Tags: list of str
         """
-        self.Name = None
-        self.Repository = None
-        self.Tags = None
+        self._Name = None
+        self._Repository = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Repository(self):
+        return self._Repository
+
+    @Repository.setter
+    def Repository(self, Repository):
+        self._Repository = Repository
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Repository = params.get("Repository")
-        self.Tags = params.get("Tags")
+        self._Name = params.get("Name")
+        self._Repository = params.get("Repository")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -380,41 +635,66 @@ class LifeCycle(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Init: 工作空间首次初始化时执行
+        :param _Init: 工作空间首次初始化时执行
         :type Init: list of LifeCycleCommand
-        :param Start: 每次工作空间启动时执行
+        :param _Start: 每次工作空间启动时执行
         :type Start: list of LifeCycleCommand
-        :param Destroy: 每次工作空间关闭时执行
+        :param _Destroy: 每次工作空间关闭时执行
         :type Destroy: list of LifeCycleCommand
         """
-        self.Init = None
-        self.Start = None
-        self.Destroy = None
+        self._Init = None
+        self._Start = None
+        self._Destroy = None
+
+    @property
+    def Init(self):
+        return self._Init
+
+    @Init.setter
+    def Init(self, Init):
+        self._Init = Init
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def Destroy(self):
+        return self._Destroy
+
+    @Destroy.setter
+    def Destroy(self, Destroy):
+        self._Destroy = Destroy
 
 
     def _deserialize(self, params):
         if params.get("Init") is not None:
-            self.Init = []
+            self._Init = []
             for item in params.get("Init"):
                 obj = LifeCycleCommand()
                 obj._deserialize(item)
-                self.Init.append(obj)
+                self._Init.append(obj)
         if params.get("Start") is not None:
-            self.Start = []
+            self._Start = []
             for item in params.get("Start"):
                 obj = LifeCycleCommand()
                 obj._deserialize(item)
-                self.Start.append(obj)
+                self._Start.append(obj)
         if params.get("Destroy") is not None:
-            self.Destroy = []
+            self._Destroy = []
             for item in params.get("Destroy"):
                 obj = LifeCycleCommand()
                 obj._deserialize(item)
-                self.Destroy.append(obj)
+                self._Destroy.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -427,22 +707,39 @@ class LifeCycleCommand(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 指令描述
+        :param _Name: 指令描述
         :type Name: str
-        :param Command: 具体命令
+        :param _Command: 具体命令
         :type Command: str
         """
-        self.Name = None
-        self.Command = None
+        self._Name = None
+        self._Command = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Command = params.get("Command")
+        self._Name = params.get("Name")
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -455,49 +752,106 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpaceKey: 工作空间 SpaceKey. 更新该工作空间的属性
+        :param _SpaceKey: 工作空间 SpaceKey. 更新该工作空间的属性
         :type SpaceKey: str
-        :param Name: 工作空间名称
+        :param _Name: 工作空间名称
         :type Name: str
-        :param Description: 工作空间描述
+        :param _Description: 工作空间描述
         :type Description: str
-        :param Specs: 工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
+        :param _Specs: 工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
         :type Specs: str
-        :param Envs: 环境变量. 会被注入到工作空间中
+        :param _Envs: 环境变量. 会被注入到工作空间中
         :type Envs: list of Env
-        :param Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件 
+        :param _Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件 
         :type Extensions: list of str
-        :param Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        :param _Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
         :type Lifecycle: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
         """
-        self.SpaceKey = None
-        self.Name = None
-        self.Description = None
-        self.Specs = None
-        self.Envs = None
-        self.Extensions = None
-        self.Lifecycle = None
+        self._SpaceKey = None
+        self._Name = None
+        self._Description = None
+        self._Specs = None
+        self._Envs = None
+        self._Extensions = None
+        self._Lifecycle = None
+
+    @property
+    def SpaceKey(self):
+        return self._SpaceKey
+
+    @SpaceKey.setter
+    def SpaceKey(self, SpaceKey):
+        self._SpaceKey = SpaceKey
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Specs(self):
+        return self._Specs
+
+    @Specs.setter
+    def Specs(self, Specs):
+        self._Specs = Specs
+
+    @property
+    def Envs(self):
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def Extensions(self):
+        return self._Extensions
+
+    @Extensions.setter
+    def Extensions(self, Extensions):
+        self._Extensions = Extensions
+
+    @property
+    def Lifecycle(self):
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
 
 
     def _deserialize(self, params):
-        self.SpaceKey = params.get("SpaceKey")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.Specs = params.get("Specs")
+        self._SpaceKey = params.get("SpaceKey")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Specs = params.get("Specs")
         if params.get("Envs") is not None:
-            self.Envs = []
+            self._Envs = []
             for item in params.get("Envs"):
                 obj = Env()
                 obj._deserialize(item)
-                self.Envs.append(obj)
-        self.Extensions = params.get("Extensions")
+                self._Envs.append(obj)
+        self._Extensions = params.get("Extensions")
         if params.get("Lifecycle") is not None:
-            self.Lifecycle = LifeCycle()
-            self.Lifecycle._deserialize(params.get("Lifecycle"))
+            self._Lifecycle = LifeCycle()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -510,14 +864,22 @@ class ModifyWorkspaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RemoveWorkspaceRequest(AbstractModel):
@@ -527,18 +889,27 @@ class RemoveWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpaceKey: 工作空间 SpaceKey
+        :param _SpaceKey: 工作空间 SpaceKey
         :type SpaceKey: str
         """
-        self.SpaceKey = None
+        self._SpaceKey = None
+
+    @property
+    def SpaceKey(self):
+        return self._SpaceKey
+
+    @SpaceKey.setter
+    def SpaceKey(self, SpaceKey):
+        self._SpaceKey = SpaceKey
 
 
     def _deserialize(self, params):
-        self.SpaceKey = params.get("SpaceKey")
+        self._SpaceKey = params.get("SpaceKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -551,14 +922,22 @@ class RemoveWorkspaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RunWorkspaceRequest(AbstractModel):
@@ -568,18 +947,27 @@ class RunWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpaceKey: 工作空间 SpaceKey
+        :param _SpaceKey: 工作空间 SpaceKey
         :type SpaceKey: str
         """
-        self.SpaceKey = None
+        self._SpaceKey = None
+
+    @property
+    def SpaceKey(self):
+        return self._SpaceKey
+
+    @SpaceKey.setter
+    def SpaceKey(self, SpaceKey):
+        self._SpaceKey = SpaceKey
 
 
     def _deserialize(self, params):
-        self.SpaceKey = params.get("SpaceKey")
+        self._SpaceKey = params.get("SpaceKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -592,14 +980,22 @@ class RunWorkspaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopWorkspaceRequest(AbstractModel):
@@ -609,18 +1005,27 @@ class StopWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpaceKey: 工作空间 SpaceKey
+        :param _SpaceKey: 工作空间 SpaceKey
         :type SpaceKey: str
         """
-        self.SpaceKey = None
+        self._SpaceKey = None
+
+    @property
+    def SpaceKey(self):
+        return self._SpaceKey
+
+    @SpaceKey.setter
+    def SpaceKey(self, SpaceKey):
+        self._SpaceKey = SpaceKey
 
 
     def _deserialize(self, params):
-        self.SpaceKey = params.get("SpaceKey")
+        self._SpaceKey = params.get("SpaceKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -633,14 +1038,22 @@ class StopWorkspaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class WorkspaceStatusInfo(AbstractModel):
@@ -650,78 +1063,191 @@ class WorkspaceStatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 工作空间 ID
+        :param _Id: 工作空间 ID
         :type Id: int
-        :param Name: 工作空间名称
+        :param _Name: 工作空间名称
         :type Name: str
-        :param SpaceKey: 工作空间标识
+        :param _SpaceKey: 工作空间标识
         :type SpaceKey: str
-        :param Status: 工作空间状态
+        :param _Status: 工作空间状态
         :type Status: str
-        :param Cpu: CPU数量
+        :param _Cpu: CPU数量
         :type Cpu: int
-        :param Memory: 内存
+        :param _Memory: 内存
         :type Memory: int
-        :param Icon: 工作空间图标
+        :param _Icon: 工作空间图标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Icon: str
-        :param StatusReason: 工作空间状态, 异常原因
+        :param _StatusReason: 工作空间状态, 异常原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusReason: str
-        :param Description: 工作空间描述
+        :param _Description: 工作空间描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param WorkspaceType: 工作空间类型
+        :param _WorkspaceType: 工作空间类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceType: str
-        :param VersionControlUrl: Git 仓库 HTTPS 地址
+        :param _VersionControlUrl: Git 仓库 HTTPS 地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionControlUrl: str
-        :param VersionControlRef: Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
+        :param _VersionControlRef: Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionControlRef: str
-        :param LastOpsDate: 最后操作时间
+        :param _LastOpsDate: 最后操作时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastOpsDate: str
-        :param CreateDate: 创建时间
+        :param _CreateDate: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateDate: str
         """
-        self.Id = None
-        self.Name = None
-        self.SpaceKey = None
-        self.Status = None
-        self.Cpu = None
-        self.Memory = None
-        self.Icon = None
-        self.StatusReason = None
-        self.Description = None
-        self.WorkspaceType = None
-        self.VersionControlUrl = None
-        self.VersionControlRef = None
-        self.LastOpsDate = None
-        self.CreateDate = None
+        self._Id = None
+        self._Name = None
+        self._SpaceKey = None
+        self._Status = None
+        self._Cpu = None
+        self._Memory = None
+        self._Icon = None
+        self._StatusReason = None
+        self._Description = None
+        self._WorkspaceType = None
+        self._VersionControlUrl = None
+        self._VersionControlRef = None
+        self._LastOpsDate = None
+        self._CreateDate = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SpaceKey(self):
+        return self._SpaceKey
+
+    @SpaceKey.setter
+    def SpaceKey(self, SpaceKey):
+        self._SpaceKey = SpaceKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Icon(self):
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
+    @property
+    def StatusReason(self):
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def WorkspaceType(self):
+        return self._WorkspaceType
+
+    @WorkspaceType.setter
+    def WorkspaceType(self, WorkspaceType):
+        self._WorkspaceType = WorkspaceType
+
+    @property
+    def VersionControlUrl(self):
+        return self._VersionControlUrl
+
+    @VersionControlUrl.setter
+    def VersionControlUrl(self, VersionControlUrl):
+        self._VersionControlUrl = VersionControlUrl
+
+    @property
+    def VersionControlRef(self):
+        return self._VersionControlRef
+
+    @VersionControlRef.setter
+    def VersionControlRef(self, VersionControlRef):
+        self._VersionControlRef = VersionControlRef
+
+    @property
+    def LastOpsDate(self):
+        return self._LastOpsDate
+
+    @LastOpsDate.setter
+    def LastOpsDate(self, LastOpsDate):
+        self._LastOpsDate = LastOpsDate
+
+    @property
+    def CreateDate(self):
+        return self._CreateDate
+
+    @CreateDate.setter
+    def CreateDate(self, CreateDate):
+        self._CreateDate = CreateDate
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.SpaceKey = params.get("SpaceKey")
-        self.Status = params.get("Status")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.Icon = params.get("Icon")
-        self.StatusReason = params.get("StatusReason")
-        self.Description = params.get("Description")
-        self.WorkspaceType = params.get("WorkspaceType")
-        self.VersionControlUrl = params.get("VersionControlUrl")
-        self.VersionControlRef = params.get("VersionControlRef")
-        self.LastOpsDate = params.get("LastOpsDate")
-        self.CreateDate = params.get("CreateDate")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._SpaceKey = params.get("SpaceKey")
+        self._Status = params.get("Status")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Icon = params.get("Icon")
+        self._StatusReason = params.get("StatusReason")
+        self._Description = params.get("Description")
+        self._WorkspaceType = params.get("WorkspaceType")
+        self._VersionControlUrl = params.get("VersionControlUrl")
+        self._VersionControlRef = params.get("VersionControlRef")
+        self._LastOpsDate = params.get("LastOpsDate")
+        self._CreateDate = params.get("CreateDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

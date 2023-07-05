@@ -25,22 +25,39 @@ class AgeDetectTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 数据唯一ID
+        :param _DataId: 数据唯一ID
         :type DataId: str
-        :param Url: 数据文件的url，为 urlencode 编码,音频文件格式支持的类型：.wav、.m4a、.amr、.mp3、.aac、.wma、.ogg
+        :param _Url: 数据文件的url，为 urlencode 编码,音频文件格式支持的类型：.wav、.m4a、.amr、.mp3、.aac、.wma、.ogg
         :type Url: str
         """
-        self.DataId = None
-        self.Url = None
+        self._DataId = None
+        self._Url = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.Url = params.get("Url")
+        self._DataId = params.get("DataId")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,30 +70,63 @@ class AgeDetectTaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 数据唯一ID
+        :param _DataId: 数据唯一ID
         :type DataId: str
-        :param Url: 数据文件的url
+        :param _Url: 数据文件的url
         :type Url: str
-        :param Status: 任务状态，0: 已创建，1:运行中，2:正常结束，3:异常结束，4:运行超时
+        :param _Status: 任务状态，0: 已创建，1:运行中，2:正常结束，3:异常结束，4:运行超时
         :type Status: int
-        :param Age: 任务结果：0: 成年，1:未成年，100:未知
+        :param _Age: 任务结果：0: 成年，1:未成年，100:未知
         :type Age: int
         """
-        self.DataId = None
-        self.Url = None
-        self.Status = None
-        self.Age = None
+        self._DataId = None
+        self._Url = None
+        self._Status = None
+        self._Age = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.Url = params.get("Url")
-        self.Status = params.get("Status")
-        self.Age = params.get("Age")
+        self._DataId = params.get("DataId")
+        self._Url = params.get("Url")
+        self._Status = params.get("Status")
+        self._Age = params.get("Age")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -89,67 +139,132 @@ class AppStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RealtimeSpeechStatisticsItem: 实时语音统计数据
+        :param _RealtimeSpeechStatisticsItem: 实时语音统计数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealtimeSpeechStatisticsItem: :class:`tencentcloud.gme.v20180711.models.RealTimeSpeechStatisticsItem`
-        :param VoiceMessageStatisticsItem: 语音消息统计数据
+        :param _VoiceMessageStatisticsItem: 语音消息统计数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceMessageStatisticsItem: :class:`tencentcloud.gme.v20180711.models.VoiceMessageStatisticsItem`
-        :param VoiceFilterStatisticsItem: 语音过滤统计数据
+        :param _VoiceFilterStatisticsItem: 语音过滤统计数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceFilterStatisticsItem: :class:`tencentcloud.gme.v20180711.models.VoiceFilterStatisticsItem`
-        :param Date: 统计时间
+        :param _Date: 统计时间
         :type Date: str
-        :param AudioTextStatisticsItem: 录音转文本用量统计数据
+        :param _AudioTextStatisticsItem: 录音转文本用量统计数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.AudioTextStatisticsItem`
-        :param StreamTextStatisticsItem: 流式转文本用量数据
+        :param _StreamTextStatisticsItem: 流式转文本用量数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.StreamTextStatisticsItem`
-        :param OverseaTextStatisticsItem: 海外转文本用量数据
+        :param _OverseaTextStatisticsItem: 海外转文本用量数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type OverseaTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.OverseaTextStatisticsItem`
-        :param RealtimeTextStatisticsItem: 实时语音转文本用量数据
+        :param _RealtimeTextStatisticsItem: 实时语音转文本用量数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealtimeTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.RealtimeTextStatisticsItem`
         """
-        self.RealtimeSpeechStatisticsItem = None
-        self.VoiceMessageStatisticsItem = None
-        self.VoiceFilterStatisticsItem = None
-        self.Date = None
-        self.AudioTextStatisticsItem = None
-        self.StreamTextStatisticsItem = None
-        self.OverseaTextStatisticsItem = None
-        self.RealtimeTextStatisticsItem = None
+        self._RealtimeSpeechStatisticsItem = None
+        self._VoiceMessageStatisticsItem = None
+        self._VoiceFilterStatisticsItem = None
+        self._Date = None
+        self._AudioTextStatisticsItem = None
+        self._StreamTextStatisticsItem = None
+        self._OverseaTextStatisticsItem = None
+        self._RealtimeTextStatisticsItem = None
+
+    @property
+    def RealtimeSpeechStatisticsItem(self):
+        return self._RealtimeSpeechStatisticsItem
+
+    @RealtimeSpeechStatisticsItem.setter
+    def RealtimeSpeechStatisticsItem(self, RealtimeSpeechStatisticsItem):
+        self._RealtimeSpeechStatisticsItem = RealtimeSpeechStatisticsItem
+
+    @property
+    def VoiceMessageStatisticsItem(self):
+        return self._VoiceMessageStatisticsItem
+
+    @VoiceMessageStatisticsItem.setter
+    def VoiceMessageStatisticsItem(self, VoiceMessageStatisticsItem):
+        self._VoiceMessageStatisticsItem = VoiceMessageStatisticsItem
+
+    @property
+    def VoiceFilterStatisticsItem(self):
+        return self._VoiceFilterStatisticsItem
+
+    @VoiceFilterStatisticsItem.setter
+    def VoiceFilterStatisticsItem(self, VoiceFilterStatisticsItem):
+        self._VoiceFilterStatisticsItem = VoiceFilterStatisticsItem
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def AudioTextStatisticsItem(self):
+        return self._AudioTextStatisticsItem
+
+    @AudioTextStatisticsItem.setter
+    def AudioTextStatisticsItem(self, AudioTextStatisticsItem):
+        self._AudioTextStatisticsItem = AudioTextStatisticsItem
+
+    @property
+    def StreamTextStatisticsItem(self):
+        return self._StreamTextStatisticsItem
+
+    @StreamTextStatisticsItem.setter
+    def StreamTextStatisticsItem(self, StreamTextStatisticsItem):
+        self._StreamTextStatisticsItem = StreamTextStatisticsItem
+
+    @property
+    def OverseaTextStatisticsItem(self):
+        return self._OverseaTextStatisticsItem
+
+    @OverseaTextStatisticsItem.setter
+    def OverseaTextStatisticsItem(self, OverseaTextStatisticsItem):
+        self._OverseaTextStatisticsItem = OverseaTextStatisticsItem
+
+    @property
+    def RealtimeTextStatisticsItem(self):
+        return self._RealtimeTextStatisticsItem
+
+    @RealtimeTextStatisticsItem.setter
+    def RealtimeTextStatisticsItem(self, RealtimeTextStatisticsItem):
+        self._RealtimeTextStatisticsItem = RealtimeTextStatisticsItem
 
 
     def _deserialize(self, params):
         if params.get("RealtimeSpeechStatisticsItem") is not None:
-            self.RealtimeSpeechStatisticsItem = RealTimeSpeechStatisticsItem()
-            self.RealtimeSpeechStatisticsItem._deserialize(params.get("RealtimeSpeechStatisticsItem"))
+            self._RealtimeSpeechStatisticsItem = RealTimeSpeechStatisticsItem()
+            self._RealtimeSpeechStatisticsItem._deserialize(params.get("RealtimeSpeechStatisticsItem"))
         if params.get("VoiceMessageStatisticsItem") is not None:
-            self.VoiceMessageStatisticsItem = VoiceMessageStatisticsItem()
-            self.VoiceMessageStatisticsItem._deserialize(params.get("VoiceMessageStatisticsItem"))
+            self._VoiceMessageStatisticsItem = VoiceMessageStatisticsItem()
+            self._VoiceMessageStatisticsItem._deserialize(params.get("VoiceMessageStatisticsItem"))
         if params.get("VoiceFilterStatisticsItem") is not None:
-            self.VoiceFilterStatisticsItem = VoiceFilterStatisticsItem()
-            self.VoiceFilterStatisticsItem._deserialize(params.get("VoiceFilterStatisticsItem"))
-        self.Date = params.get("Date")
+            self._VoiceFilterStatisticsItem = VoiceFilterStatisticsItem()
+            self._VoiceFilterStatisticsItem._deserialize(params.get("VoiceFilterStatisticsItem"))
+        self._Date = params.get("Date")
         if params.get("AudioTextStatisticsItem") is not None:
-            self.AudioTextStatisticsItem = AudioTextStatisticsItem()
-            self.AudioTextStatisticsItem._deserialize(params.get("AudioTextStatisticsItem"))
+            self._AudioTextStatisticsItem = AudioTextStatisticsItem()
+            self._AudioTextStatisticsItem._deserialize(params.get("AudioTextStatisticsItem"))
         if params.get("StreamTextStatisticsItem") is not None:
-            self.StreamTextStatisticsItem = StreamTextStatisticsItem()
-            self.StreamTextStatisticsItem._deserialize(params.get("StreamTextStatisticsItem"))
+            self._StreamTextStatisticsItem = StreamTextStatisticsItem()
+            self._StreamTextStatisticsItem._deserialize(params.get("StreamTextStatisticsItem"))
         if params.get("OverseaTextStatisticsItem") is not None:
-            self.OverseaTextStatisticsItem = OverseaTextStatisticsItem()
-            self.OverseaTextStatisticsItem._deserialize(params.get("OverseaTextStatisticsItem"))
+            self._OverseaTextStatisticsItem = OverseaTextStatisticsItem()
+            self._OverseaTextStatisticsItem._deserialize(params.get("OverseaTextStatisticsItem"))
         if params.get("RealtimeTextStatisticsItem") is not None:
-            self.RealtimeTextStatisticsItem = RealtimeTextStatisticsItem()
-            self.RealtimeTextStatisticsItem._deserialize(params.get("RealtimeTextStatisticsItem"))
+            self._RealtimeTextStatisticsItem = RealtimeTextStatisticsItem()
+            self._RealtimeTextStatisticsItem._deserialize(params.get("RealtimeTextStatisticsItem"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -162,111 +277,216 @@ class ApplicationDataStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID
+        :param _BizId: 应用ID
         :type BizId: int
-        :param DauDataNum: Dau统计项数目
+        :param _DauDataNum: Dau统计项数目
         :type DauDataNum: int
-        :param DauDataMainland: 大陆地区Dau统计数据，单位人
+        :param _DauDataMainland: 大陆地区Dau统计数据，单位人
         :type DauDataMainland: list of StatisticsItem
-        :param DauDataOversea: 海外地区Dau统计数据，单位人
+        :param _DauDataOversea: 海外地区Dau统计数据，单位人
         :type DauDataOversea: list of StatisticsItem
-        :param DauDataSum: 大陆和海外地区Dau统计数据汇总，单位人
+        :param _DauDataSum: 大陆和海外地区Dau统计数据汇总，单位人
         :type DauDataSum: list of StatisticsItem
-        :param DurationDataNum: 实时语音时长统计项数目
+        :param _DurationDataNum: 实时语音时长统计项数目
         :type DurationDataNum: int
-        :param DurationDataMainland: 大陆地区实时语音时长统计数据，单位分钟
+        :param _DurationDataMainland: 大陆地区实时语音时长统计数据，单位分钟
         :type DurationDataMainland: list of StatisticsItem
-        :param DurationDataOversea: 海外地区实时语音时长统计数据，单位分钟
+        :param _DurationDataOversea: 海外地区实时语音时长统计数据，单位分钟
         :type DurationDataOversea: list of StatisticsItem
-        :param DurationDataSum: 大陆和海外地区实时语音时长统计数据汇总，单位分钟
+        :param _DurationDataSum: 大陆和海外地区实时语音时长统计数据汇总，单位分钟
         :type DurationDataSum: list of StatisticsItem
-        :param PcuDataNum: Pcu统计项数目
+        :param _PcuDataNum: Pcu统计项数目
         :type PcuDataNum: int
-        :param PcuDataMainland: 大陆地区Pcu统计数据，单位人
+        :param _PcuDataMainland: 大陆地区Pcu统计数据，单位人
         :type PcuDataMainland: list of StatisticsItem
-        :param PcuDataOversea: 海外地区Pcu统计数据，单位人
+        :param _PcuDataOversea: 海外地区Pcu统计数据，单位人
         :type PcuDataOversea: list of StatisticsItem
-        :param PcuDataSum: 大陆和海外地区Pcu统计数据汇总，单位人
+        :param _PcuDataSum: 大陆和海外地区Pcu统计数据汇总，单位人
         :type PcuDataSum: list of StatisticsItem
         """
-        self.BizId = None
-        self.DauDataNum = None
-        self.DauDataMainland = None
-        self.DauDataOversea = None
-        self.DauDataSum = None
-        self.DurationDataNum = None
-        self.DurationDataMainland = None
-        self.DurationDataOversea = None
-        self.DurationDataSum = None
-        self.PcuDataNum = None
-        self.PcuDataMainland = None
-        self.PcuDataOversea = None
-        self.PcuDataSum = None
+        self._BizId = None
+        self._DauDataNum = None
+        self._DauDataMainland = None
+        self._DauDataOversea = None
+        self._DauDataSum = None
+        self._DurationDataNum = None
+        self._DurationDataMainland = None
+        self._DurationDataOversea = None
+        self._DurationDataSum = None
+        self._PcuDataNum = None
+        self._PcuDataMainland = None
+        self._PcuDataOversea = None
+        self._PcuDataSum = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def DauDataNum(self):
+        return self._DauDataNum
+
+    @DauDataNum.setter
+    def DauDataNum(self, DauDataNum):
+        self._DauDataNum = DauDataNum
+
+    @property
+    def DauDataMainland(self):
+        return self._DauDataMainland
+
+    @DauDataMainland.setter
+    def DauDataMainland(self, DauDataMainland):
+        self._DauDataMainland = DauDataMainland
+
+    @property
+    def DauDataOversea(self):
+        return self._DauDataOversea
+
+    @DauDataOversea.setter
+    def DauDataOversea(self, DauDataOversea):
+        self._DauDataOversea = DauDataOversea
+
+    @property
+    def DauDataSum(self):
+        return self._DauDataSum
+
+    @DauDataSum.setter
+    def DauDataSum(self, DauDataSum):
+        self._DauDataSum = DauDataSum
+
+    @property
+    def DurationDataNum(self):
+        return self._DurationDataNum
+
+    @DurationDataNum.setter
+    def DurationDataNum(self, DurationDataNum):
+        self._DurationDataNum = DurationDataNum
+
+    @property
+    def DurationDataMainland(self):
+        return self._DurationDataMainland
+
+    @DurationDataMainland.setter
+    def DurationDataMainland(self, DurationDataMainland):
+        self._DurationDataMainland = DurationDataMainland
+
+    @property
+    def DurationDataOversea(self):
+        return self._DurationDataOversea
+
+    @DurationDataOversea.setter
+    def DurationDataOversea(self, DurationDataOversea):
+        self._DurationDataOversea = DurationDataOversea
+
+    @property
+    def DurationDataSum(self):
+        return self._DurationDataSum
+
+    @DurationDataSum.setter
+    def DurationDataSum(self, DurationDataSum):
+        self._DurationDataSum = DurationDataSum
+
+    @property
+    def PcuDataNum(self):
+        return self._PcuDataNum
+
+    @PcuDataNum.setter
+    def PcuDataNum(self, PcuDataNum):
+        self._PcuDataNum = PcuDataNum
+
+    @property
+    def PcuDataMainland(self):
+        return self._PcuDataMainland
+
+    @PcuDataMainland.setter
+    def PcuDataMainland(self, PcuDataMainland):
+        self._PcuDataMainland = PcuDataMainland
+
+    @property
+    def PcuDataOversea(self):
+        return self._PcuDataOversea
+
+    @PcuDataOversea.setter
+    def PcuDataOversea(self, PcuDataOversea):
+        self._PcuDataOversea = PcuDataOversea
+
+    @property
+    def PcuDataSum(self):
+        return self._PcuDataSum
+
+    @PcuDataSum.setter
+    def PcuDataSum(self, PcuDataSum):
+        self._PcuDataSum = PcuDataSum
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.DauDataNum = params.get("DauDataNum")
+        self._BizId = params.get("BizId")
+        self._DauDataNum = params.get("DauDataNum")
         if params.get("DauDataMainland") is not None:
-            self.DauDataMainland = []
+            self._DauDataMainland = []
             for item in params.get("DauDataMainland"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.DauDataMainland.append(obj)
+                self._DauDataMainland.append(obj)
         if params.get("DauDataOversea") is not None:
-            self.DauDataOversea = []
+            self._DauDataOversea = []
             for item in params.get("DauDataOversea"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.DauDataOversea.append(obj)
+                self._DauDataOversea.append(obj)
         if params.get("DauDataSum") is not None:
-            self.DauDataSum = []
+            self._DauDataSum = []
             for item in params.get("DauDataSum"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.DauDataSum.append(obj)
-        self.DurationDataNum = params.get("DurationDataNum")
+                self._DauDataSum.append(obj)
+        self._DurationDataNum = params.get("DurationDataNum")
         if params.get("DurationDataMainland") is not None:
-            self.DurationDataMainland = []
+            self._DurationDataMainland = []
             for item in params.get("DurationDataMainland"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.DurationDataMainland.append(obj)
+                self._DurationDataMainland.append(obj)
         if params.get("DurationDataOversea") is not None:
-            self.DurationDataOversea = []
+            self._DurationDataOversea = []
             for item in params.get("DurationDataOversea"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.DurationDataOversea.append(obj)
+                self._DurationDataOversea.append(obj)
         if params.get("DurationDataSum") is not None:
-            self.DurationDataSum = []
+            self._DurationDataSum = []
             for item in params.get("DurationDataSum"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.DurationDataSum.append(obj)
-        self.PcuDataNum = params.get("PcuDataNum")
+                self._DurationDataSum.append(obj)
+        self._PcuDataNum = params.get("PcuDataNum")
         if params.get("PcuDataMainland") is not None:
-            self.PcuDataMainland = []
+            self._PcuDataMainland = []
             for item in params.get("PcuDataMainland"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.PcuDataMainland.append(obj)
+                self._PcuDataMainland.append(obj)
         if params.get("PcuDataOversea") is not None:
-            self.PcuDataOversea = []
+            self._PcuDataOversea = []
             for item in params.get("PcuDataOversea"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.PcuDataOversea.append(obj)
+                self._PcuDataOversea.append(obj)
         if params.get("PcuDataSum") is not None:
-            self.PcuDataSum = []
+            self._PcuDataSum = []
             for item in params.get("PcuDataSum"):
                 obj = StatisticsItem()
                 obj._deserialize(item)
-                self.PcuDataSum.append(obj)
+                self._PcuDataSum.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -279,44 +499,101 @@ class ApplicationList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceConf: 服务开关状态
+        :param _ServiceConf: 服务开关状态
         :type ServiceConf: :class:`tencentcloud.gme.v20180711.models.ServiceStatus`
-        :param BizId: 应用ID(AppID)
+        :param _BizId: 应用ID(AppID)
         :type BizId: int
-        :param AppName: 应用名称
+        :param _AppName: 应用名称
         :type AppName: str
-        :param ProjectId: 项目ID，默认为0
+        :param _ProjectId: 项目ID，默认为0
         :type ProjectId: int
-        :param AppStatus: 应用状态，返回0表示正常，1表示关闭，2表示欠费停服，3表示欠费回收
+        :param _AppStatus: 应用状态，返回0表示正常，1表示关闭，2表示欠费停服，3表示欠费回收
         :type AppStatus: int
-        :param CreateTime: 创建时间，Unix时间戳格式
+        :param _CreateTime: 创建时间，Unix时间戳格式
         :type CreateTime: int
-        :param AppType: 应用类型，无需关注此数值
+        :param _AppType: 应用类型，无需关注此数值
         :type AppType: int
         """
-        self.ServiceConf = None
-        self.BizId = None
-        self.AppName = None
-        self.ProjectId = None
-        self.AppStatus = None
-        self.CreateTime = None
-        self.AppType = None
+        self._ServiceConf = None
+        self._BizId = None
+        self._AppName = None
+        self._ProjectId = None
+        self._AppStatus = None
+        self._CreateTime = None
+        self._AppType = None
+
+    @property
+    def ServiceConf(self):
+        return self._ServiceConf
+
+    @ServiceConf.setter
+    def ServiceConf(self, ServiceConf):
+        self._ServiceConf = ServiceConf
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AppStatus(self):
+        return self._AppStatus
+
+    @AppStatus.setter
+    def AppStatus(self, AppStatus):
+        self._AppStatus = AppStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AppType(self):
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
 
 
     def _deserialize(self, params):
         if params.get("ServiceConf") is not None:
-            self.ServiceConf = ServiceStatus()
-            self.ServiceConf._deserialize(params.get("ServiceConf"))
-        self.BizId = params.get("BizId")
-        self.AppName = params.get("AppName")
-        self.ProjectId = params.get("ProjectId")
-        self.AppStatus = params.get("AppStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.AppType = params.get("AppType")
+            self._ServiceConf = ServiceStatus()
+            self._ServiceConf._deserialize(params.get("ServiceConf"))
+        self._BizId = params.get("BizId")
+        self._AppName = params.get("AppName")
+        self._ProjectId = params.get("ProjectId")
+        self._AppStatus = params.get("AppStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._AppType = params.get("AppType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -329,18 +606,27 @@ class AsrConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 语音转文本服务开关，取值：open/close
+        :param _Status: 语音转文本服务开关，取值：open/close
         :type Status: str
         """
-        self.Status = None
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -353,19 +639,28 @@ class AudioTextStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 统计值，单位：秒
+        :param _Data: 统计值，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
-        self.Data = None
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -378,33 +673,58 @@ class CreateAgeDetectTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用id
+        :param _BizId: 应用id
         :type BizId: int
-        :param Tasks: 语音检测子任务列表，列表最多支持100个检测子任务。结构体中包含：
+        :param _Tasks: 语音检测子任务列表，列表最多支持100个检测子任务。结构体中包含：
 <li>DataId：数据的唯一ID</li>
 <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
         :type Tasks: list of AgeDetectTask
-        :param Callback: 任务结束时gme后台会自动触发回调
+        :param _Callback: 任务结束时gme后台会自动触发回调
         :type Callback: str
         """
-        self.BizId = None
-        self.Tasks = None
-        self.Callback = None
+        self._BizId = None
+        self._Tasks = None
+        self._Callback = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Callback(self):
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
+        self._BizId = params.get("BizId")
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = AgeDetectTask()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.Callback = params.get("Callback")
+                self._Tasks.append(obj)
+        self._Callback = params.get("Callback")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -417,18 +737,34 @@ class CreateAgeDetectTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 本次任务提交后唯一id，用于获取任务运行结果
+        :param _TaskId: 本次任务提交后唯一id，用于获取任务运行结果
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAppRequest(AbstractModel):
@@ -438,65 +774,138 @@ class CreateAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称
+        :param _AppName: 应用名称
         :type AppName: str
-        :param ProjectId: 腾讯云项目ID，默认为0，表示默认项目
+        :param _ProjectId: 腾讯云项目ID，默认为0，表示默认项目
         :type ProjectId: int
-        :param EngineList: 需要支持的引擎列表，默认全选。
+        :param _EngineList: 需要支持的引擎列表，默认全选。
 取值：android/ios/unity/cocos/unreal/windows
         :type EngineList: list of str
-        :param RegionList: 服务区域列表，默认全选。
+        :param _RegionList: 服务区域列表，默认全选。
 取值：mainland-大陆地区，hmt-港澳台，sea-东南亚，na-北美，eu-欧洲，jpkr-日韩亚太，sa-南美，oc-澳洲，me-中东
         :type RegionList: list of str
-        :param RealtimeSpeechConf: 实时语音服务配置数据
+        :param _RealtimeSpeechConf: 实时语音服务配置数据
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param VoiceMessageConf: 语音消息服务配置数据
+        :param _VoiceMessageConf: 语音消息服务配置数据
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
-        :param VoiceFilterConf: 语音分析服务配置数据
+        :param _VoiceFilterConf: 语音分析服务配置数据
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
-        :param AsrConf: 语音转文本配置数据
+        :param _AsrConf: 语音转文本配置数据
         :type AsrConf: :class:`tencentcloud.gme.v20180711.models.AsrConf`
-        :param Tags: 需要添加的标签列表
+        :param _Tags: 需要添加的标签列表
         :type Tags: list of Tag
         """
-        self.AppName = None
-        self.ProjectId = None
-        self.EngineList = None
-        self.RegionList = None
-        self.RealtimeSpeechConf = None
-        self.VoiceMessageConf = None
-        self.VoiceFilterConf = None
-        self.AsrConf = None
-        self.Tags = None
+        self._AppName = None
+        self._ProjectId = None
+        self._EngineList = None
+        self._RegionList = None
+        self._RealtimeSpeechConf = None
+        self._VoiceMessageConf = None
+        self._VoiceFilterConf = None
+        self._AsrConf = None
+        self._Tags = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def EngineList(self):
+        return self._EngineList
+
+    @EngineList.setter
+    def EngineList(self, EngineList):
+        self._EngineList = EngineList
+
+    @property
+    def RegionList(self):
+        return self._RegionList
+
+    @RegionList.setter
+    def RegionList(self, RegionList):
+        self._RegionList = RegionList
+
+    @property
+    def RealtimeSpeechConf(self):
+        return self._RealtimeSpeechConf
+
+    @RealtimeSpeechConf.setter
+    def RealtimeSpeechConf(self, RealtimeSpeechConf):
+        self._RealtimeSpeechConf = RealtimeSpeechConf
+
+    @property
+    def VoiceMessageConf(self):
+        return self._VoiceMessageConf
+
+    @VoiceMessageConf.setter
+    def VoiceMessageConf(self, VoiceMessageConf):
+        self._VoiceMessageConf = VoiceMessageConf
+
+    @property
+    def VoiceFilterConf(self):
+        return self._VoiceFilterConf
+
+    @VoiceFilterConf.setter
+    def VoiceFilterConf(self, VoiceFilterConf):
+        self._VoiceFilterConf = VoiceFilterConf
+
+    @property
+    def AsrConf(self):
+        return self._AsrConf
+
+    @AsrConf.setter
+    def AsrConf(self, AsrConf):
+        self._AsrConf = AsrConf
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.ProjectId = params.get("ProjectId")
-        self.EngineList = params.get("EngineList")
-        self.RegionList = params.get("RegionList")
+        self._AppName = params.get("AppName")
+        self._ProjectId = params.get("ProjectId")
+        self._EngineList = params.get("EngineList")
+        self._RegionList = params.get("RegionList")
         if params.get("RealtimeSpeechConf") is not None:
-            self.RealtimeSpeechConf = RealtimeSpeechConf()
-            self.RealtimeSpeechConf._deserialize(params.get("RealtimeSpeechConf"))
+            self._RealtimeSpeechConf = RealtimeSpeechConf()
+            self._RealtimeSpeechConf._deserialize(params.get("RealtimeSpeechConf"))
         if params.get("VoiceMessageConf") is not None:
-            self.VoiceMessageConf = VoiceMessageConf()
-            self.VoiceMessageConf._deserialize(params.get("VoiceMessageConf"))
+            self._VoiceMessageConf = VoiceMessageConf()
+            self._VoiceMessageConf._deserialize(params.get("VoiceMessageConf"))
         if params.get("VoiceFilterConf") is not None:
-            self.VoiceFilterConf = VoiceFilterConf()
-            self.VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+            self._VoiceFilterConf = VoiceFilterConf()
+            self._VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
         if params.get("AsrConf") is not None:
-            self.AsrConf = AsrConf()
-            self.AsrConf._deserialize(params.get("AsrConf"))
+            self._AsrConf = AsrConf()
+            self._AsrConf._deserialize(params.get("AsrConf"))
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -509,58 +918,131 @@ class CreateAppResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID，由后台自动生成。
+        :param _BizId: 应用ID，由后台自动生成。
         :type BizId: int
-        :param AppName: 应用名称，透传输入参数的AppName
+        :param _AppName: 应用名称，透传输入参数的AppName
         :type AppName: str
-        :param ProjectId: 项目ID，透传输入的ProjectId
+        :param _ProjectId: 项目ID，透传输入的ProjectId
         :type ProjectId: int
-        :param SecretKey: 应用密钥，GME SDK初始化时使用
+        :param _SecretKey: 应用密钥，GME SDK初始化时使用
         :type SecretKey: str
-        :param CreateTime: 服务创建时间戳
+        :param _CreateTime: 服务创建时间戳
         :type CreateTime: int
-        :param RealtimeSpeechConf: 实时语音服务配置数据
+        :param _RealtimeSpeechConf: 实时语音服务配置数据
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param VoiceMessageConf: 语音消息服务配置数据
+        :param _VoiceMessageConf: 语音消息服务配置数据
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
-        :param VoiceFilterConf: 语音分析服务配置数据
+        :param _VoiceFilterConf: 语音分析服务配置数据
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
-        :param AsrConf: 语音转文本服务配置数据
+        :param _AsrConf: 语音转文本服务配置数据
         :type AsrConf: :class:`tencentcloud.gme.v20180711.models.AsrConf`
         """
-        self.BizId = None
-        self.AppName = None
-        self.ProjectId = None
-        self.SecretKey = None
-        self.CreateTime = None
-        self.RealtimeSpeechConf = None
-        self.VoiceMessageConf = None
-        self.VoiceFilterConf = None
-        self.AsrConf = None
+        self._BizId = None
+        self._AppName = None
+        self._ProjectId = None
+        self._SecretKey = None
+        self._CreateTime = None
+        self._RealtimeSpeechConf = None
+        self._VoiceMessageConf = None
+        self._VoiceFilterConf = None
+        self._AsrConf = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RealtimeSpeechConf(self):
+        return self._RealtimeSpeechConf
+
+    @RealtimeSpeechConf.setter
+    def RealtimeSpeechConf(self, RealtimeSpeechConf):
+        self._RealtimeSpeechConf = RealtimeSpeechConf
+
+    @property
+    def VoiceMessageConf(self):
+        return self._VoiceMessageConf
+
+    @VoiceMessageConf.setter
+    def VoiceMessageConf(self, VoiceMessageConf):
+        self._VoiceMessageConf = VoiceMessageConf
+
+    @property
+    def VoiceFilterConf(self):
+        return self._VoiceFilterConf
+
+    @VoiceFilterConf.setter
+    def VoiceFilterConf(self, VoiceFilterConf):
+        self._VoiceFilterConf = VoiceFilterConf
+
+    @property
+    def AsrConf(self):
+        return self._AsrConf
+
+    @AsrConf.setter
+    def AsrConf(self, AsrConf):
+        self._AsrConf = AsrConf
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.AppName = params.get("AppName")
-        self.ProjectId = params.get("ProjectId")
-        self.SecretKey = params.get("SecretKey")
-        self.CreateTime = params.get("CreateTime")
+        self._BizId = params.get("BizId")
+        self._AppName = params.get("AppName")
+        self._ProjectId = params.get("ProjectId")
+        self._SecretKey = params.get("SecretKey")
+        self._CreateTime = params.get("CreateTime")
         if params.get("RealtimeSpeechConf") is not None:
-            self.RealtimeSpeechConf = RealtimeSpeechConf()
-            self.RealtimeSpeechConf._deserialize(params.get("RealtimeSpeechConf"))
+            self._RealtimeSpeechConf = RealtimeSpeechConf()
+            self._RealtimeSpeechConf._deserialize(params.get("RealtimeSpeechConf"))
         if params.get("VoiceMessageConf") is not None:
-            self.VoiceMessageConf = VoiceMessageConf()
-            self.VoiceMessageConf._deserialize(params.get("VoiceMessageConf"))
+            self._VoiceMessageConf = VoiceMessageConf()
+            self._VoiceMessageConf._deserialize(params.get("VoiceMessageConf"))
         if params.get("VoiceFilterConf") is not None:
-            self.VoiceFilterConf = VoiceFilterConf()
-            self.VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+            self._VoiceFilterConf = VoiceFilterConf()
+            self._VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
         if params.get("AsrConf") is not None:
-            self.AsrConf = AsrConf()
-            self.AsrConf._deserialize(params.get("AsrConf"))
+            self._AsrConf = AsrConf()
+            self._AsrConf._deserialize(params.get("AsrConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -573,20 +1055,36 @@ class CreateAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 创建应用返回数据
+        :param _Data: 创建应用返回数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.CreateAppResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CreateAppResp()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CreateAppResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCustomizationRequest(AbstractModel):
@@ -596,26 +1094,51 @@ class CreateCustomizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :param _BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
-        :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+        :param _TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
         :type TextUrl: str
-        :param ModelName: 模型名称，名称长度不超过36，默认为BizId。
+        :param _ModelName: 模型名称，名称长度不超过36，默认为BizId。
         :type ModelName: str
         """
-        self.BizId = None
-        self.TextUrl = None
-        self.ModelName = None
+        self._BizId = None
+        self._TextUrl = None
+        self._ModelName = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def TextUrl(self):
+        return self._TextUrl
+
+    @TextUrl.setter
+    def TextUrl(self, TextUrl):
+        self._TextUrl = TextUrl
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.TextUrl = params.get("TextUrl")
-        self.ModelName = params.get("ModelName")
+        self._BizId = params.get("BizId")
+        self._TextUrl = params.get("TextUrl")
+        self._ModelName = params.get("ModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -628,18 +1151,34 @@ class CreateCustomizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 模型ID
+        :param _ModelId: 模型ID
         :type ModelId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ModelId = None
-        self.RequestId = None
+        self._ModelId = None
+        self._RequestId = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ModelId = params.get("ModelId")
-        self.RequestId = params.get("RequestId")
+        self._ModelId = params.get("ModelId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateScanUserRequest(AbstractModel):
@@ -649,22 +1188,39 @@ class CreateScanUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+        :param _BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
         :type BizId: int
-        :param UserId: 需要新增送检的用户号。示例：1234
+        :param _UserId: 需要新增送检的用户号。示例：1234
         :type UserId: int
         """
-        self.BizId = None
-        self.UserId = None
+        self._BizId = None
+        self._UserId = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.UserId = params.get("UserId")
+        self._BizId = params.get("BizId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -677,18 +1233,34 @@ class CreateScanUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回结果码
+        :param _ErrorCode: 返回结果码
         :type ErrorCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._RequestId = params.get("RequestId")
 
 
 class CustomizationConfigs(AbstractModel):
@@ -698,38 +1270,87 @@ class CustomizationConfigs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :param _BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
-        :param ModelId: 模型ID
+        :param _ModelId: 模型ID
         :type ModelId: str
-        :param ModelState: 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败, 3上线中, 4下线中
+        :param _ModelState: 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败, 3上线中, 4下线中
         :type ModelState: int
-        :param ModelName: 模型名称
+        :param _ModelName: 模型名称
         :type ModelName: str
-        :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+        :param _TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
         :type TextUrl: str
-        :param UpdateTime: 更新时间，11位时间戳
+        :param _UpdateTime: 更新时间，11位时间戳
         :type UpdateTime: int
         """
-        self.BizId = None
-        self.ModelId = None
-        self.ModelState = None
-        self.ModelName = None
-        self.TextUrl = None
-        self.UpdateTime = None
+        self._BizId = None
+        self._ModelId = None
+        self._ModelState = None
+        self._ModelName = None
+        self._TextUrl = None
+        self._UpdateTime = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelState(self):
+        return self._ModelState
+
+    @ModelState.setter
+    def ModelState(self, ModelState):
+        self._ModelState = ModelState
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def TextUrl(self):
+        return self._TextUrl
+
+    @TextUrl.setter
+    def TextUrl(self, TextUrl):
+        self._TextUrl = TextUrl
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.ModelId = params.get("ModelId")
-        self.ModelState = params.get("ModelState")
-        self.ModelName = params.get("ModelName")
-        self.TextUrl = params.get("TextUrl")
-        self.UpdateTime = params.get("UpdateTime")
+        self._BizId = params.get("BizId")
+        self._ModelId = params.get("ModelId")
+        self._ModelState = params.get("ModelState")
+        self._ModelName = params.get("ModelName")
+        self._TextUrl = params.get("TextUrl")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -742,22 +1363,39 @@ class DeleteCustomizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 删除的模型ID
+        :param _ModelId: 删除的模型ID
         :type ModelId: str
-        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :param _BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
         """
-        self.ModelId = None
-        self.BizId = None
+        self._ModelId = None
+        self._BizId = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
 
 
     def _deserialize(self, params):
-        self.ModelId = params.get("ModelId")
-        self.BizId = params.get("BizId")
+        self._ModelId = params.get("ModelId")
+        self._BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -770,18 +1408,34 @@ class DeleteCustomizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回值。0为成功，非0为失败。
+        :param _ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteResult(AbstractModel):
@@ -791,22 +1445,39 @@ class DeleteResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 错误码，0-剔除成功 其他-剔除失败
+        :param _Code: 错误码，0-剔除成功 其他-剔除失败
         :type Code: int
-        :param ErrorMsg: 错误描述
+        :param _ErrorMsg: 错误描述
         :type ErrorMsg: str
         """
-        self.Code = None
-        self.ErrorMsg = None
+        self._Code = None
+        self._ErrorMsg = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.ErrorMsg = params.get("ErrorMsg")
+        self._Code = params.get("Code")
+        self._ErrorMsg = params.get("ErrorMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -819,30 +1490,63 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoomId: 要操作的房间id
+        :param _RoomId: 要操作的房间id
         :type RoomId: str
-        :param DeleteType: 剔除类型 1-删除房间 2-剔除用户
+        :param _DeleteType: 剔除类型 1-删除房间 2-剔除用户
         :type DeleteType: int
-        :param BizId: 应用id
+        :param _BizId: 应用id
         :type BizId: int
-        :param Uids: 要剔除的用户列表
+        :param _Uids: 要剔除的用户列表
         :type Uids: list of str
         """
-        self.RoomId = None
-        self.DeleteType = None
-        self.BizId = None
-        self.Uids = None
+        self._RoomId = None
+        self._DeleteType = None
+        self._BizId = None
+        self._Uids = None
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def DeleteType(self):
+        return self._DeleteType
+
+    @DeleteType.setter
+    def DeleteType(self, DeleteType):
+        self._DeleteType = DeleteType
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def Uids(self):
+        return self._Uids
+
+    @Uids.setter
+    def Uids(self, Uids):
+        self._Uids = Uids
 
 
     def _deserialize(self, params):
-        self.RoomId = params.get("RoomId")
-        self.DeleteType = params.get("DeleteType")
-        self.BizId = params.get("BizId")
-        self.Uids = params.get("Uids")
+        self._RoomId = params.get("RoomId")
+        self._DeleteType = params.get("DeleteType")
+        self._BizId = params.get("BizId")
+        self._Uids = params.get("Uids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -855,20 +1559,36 @@ class DeleteRoomMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteResult: 剔除房间或成员的操作结果
+        :param _DeleteResult: 剔除房间或成员的操作结果
         :type DeleteResult: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DeleteResult = None
-        self.RequestId = None
+        self._DeleteResult = None
+        self._RequestId = None
+
+    @property
+    def DeleteResult(self):
+        return self._DeleteResult
+
+    @DeleteResult.setter
+    def DeleteResult(self, DeleteResult):
+        self._DeleteResult = DeleteResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DeleteResult") is not None:
-            self.DeleteResult = DeleteResult()
-            self.DeleteResult._deserialize(params.get("DeleteResult"))
-        self.RequestId = params.get("RequestId")
+            self._DeleteResult = DeleteResult()
+            self._DeleteResult._deserialize(params.get("DeleteResult"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteScanUserRequest(AbstractModel):
@@ -878,22 +1598,39 @@ class DeleteScanUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+        :param _BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
         :type BizId: int
-        :param UserId: 需要删除送检的用户号。示例：1234
+        :param _UserId: 需要删除送检的用户号。示例：1234
         :type UserId: int
         """
-        self.BizId = None
-        self.UserId = None
+        self._BizId = None
+        self._UserId = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.UserId = params.get("UserId")
+        self._BizId = params.get("BizId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -906,18 +1643,34 @@ class DeleteScanUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回结果码
+        :param _ErrorCode: 返回结果码
         :type ErrorCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgeDetectTaskRequest(AbstractModel):
@@ -927,22 +1680,39 @@ class DescribeAgeDetectTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用id
+        :param _BizId: 应用id
         :type BizId: int
-        :param TaskId: [创建年龄语音识别任务](https://cloud.tencent.com/document/product/607/60620)时返回的taskid
+        :param _TaskId: [创建年龄语音识别任务](https://cloud.tencent.com/document/product/607/60620)时返回的taskid
         :type TaskId: str
         """
-        self.BizId = None
-        self.TaskId = None
+        self._BizId = None
+        self._TaskId = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.TaskId = params.get("TaskId")
+        self._BizId = params.get("BizId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -955,31 +1725,55 @@ class DescribeAgeDetectTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: str
-        :param Results: 语音检测返回。Results 字段是 JSON 数组，每一个元素包含：
+        :param _Results: 语音检测返回。Results 字段是 JSON 数组，每一个元素包含：
 DataId： 请求中对应的 DataId。
 Url ：该请求中对应的 Url。
 Status ：子任务状态，0:已创建，1:运行中，2:已完成，3:任务异常，4:任务超时。
 Age ：子任务完成后的结果，0:成年人，1:未成年人，100:未知结果。
         :type Results: list of AgeDetectTaskResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.Results = None
-        self.RequestId = None
+        self._TaskId = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = AgeDetectTaskResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAppStatisticsRequest(AbstractModel):
@@ -989,30 +1783,63 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: GME应用ID
+        :param _BizId: GME应用ID
         :type BizId: int
-        :param StartDate: 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+        :param _StartDate: 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
         :type StartDate: str
-        :param EndDate: 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+        :param _EndDate: 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
         :type EndDate: str
-        :param Services: 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
+        :param _Services: 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
         :type Services: list of str
         """
-        self.BizId = None
-        self.StartDate = None
-        self.EndDate = None
-        self.Services = None
+        self._BizId = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Services = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Services(self):
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Services = params.get("Services")
+        self._BizId = params.get("BizId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Services = params.get("Services")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1025,23 +1852,32 @@ class DescribeAppStatisticsResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppStatistics: 应用用量统计数据
+        :param _AppStatistics: 应用用量统计数据
         :type AppStatistics: list of AppStatisticsItem
         """
-        self.AppStatistics = None
+        self._AppStatistics = None
+
+    @property
+    def AppStatistics(self):
+        return self._AppStatistics
+
+    @AppStatistics.setter
+    def AppStatistics(self, AppStatistics):
+        self._AppStatistics = AppStatistics
 
 
     def _deserialize(self, params):
         if params.get("AppStatistics") is not None:
-            self.AppStatistics = []
+            self._AppStatistics = []
             for item in params.get("AppStatistics"):
                 obj = AppStatisticsItem()
                 obj._deserialize(item)
-                self.AppStatistics.append(obj)
+                self._AppStatistics.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1054,20 +1890,36 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 应用用量统计数据
+        :param _Data: 应用用量统计数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = DescribeAppStatisticsResp()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = DescribeAppStatisticsResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApplicationDataRequest(AbstractModel):
@@ -1077,26 +1929,51 @@ class DescribeApplicationDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID
+        :param _BizId: 应用ID
         :type BizId: int
-        :param StartDate: 数据开始时间，格式为 年-月-日，如: 2018-07-13
+        :param _StartDate: 数据开始时间，格式为 年-月-日，如: 2018-07-13
         :type StartDate: str
-        :param EndDate: 数据结束时间，格式为 年-月-日，如: 2018-07-13
+        :param _EndDate: 数据结束时间，格式为 年-月-日，如: 2018-07-13
         :type EndDate: str
         """
-        self.BizId = None
-        self.StartDate = None
-        self.EndDate = None
+        self._BizId = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
+        self._BizId = params.get("BizId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1109,20 +1986,36 @@ class DescribeApplicationDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 应用统计数据
+        :param _Data: 应用统计数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.ApplicationDataStatistics`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = ApplicationDataStatistics()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = ApplicationDataStatistics()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApplicationListRequest(AbstractModel):
@@ -1132,48 +2025,97 @@ class DescribeApplicationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project
+        :param _ProjectId: 项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project
         :type ProjectId: int
-        :param PageNo: 页码ID，0表示第一页，以此后推。默认填0
+        :param _PageNo: 页码ID，0表示第一页，以此后推。默认填0
         :type PageNo: int
-        :param PageSize: 每页展示应用数量。默认填200
+        :param _PageSize: 每页展示应用数量。默认填200
         :type PageSize: int
-        :param SearchText: 所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用
+        :param _SearchText: 所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用
         :type SearchText: str
-        :param TagSet: 标签列表
+        :param _TagSet: 标签列表
         :type TagSet: list of Tag
-        :param Filters: 查找过滤关键字列表
+        :param _Filters: 查找过滤关键字列表
         :type Filters: list of Filter
         """
-        self.ProjectId = None
-        self.PageNo = None
-        self.PageSize = None
-        self.SearchText = None
-        self.TagSet = None
-        self.Filters = None
+        self._ProjectId = None
+        self._PageNo = None
+        self._PageSize = None
+        self._SearchText = None
+        self._TagSet = None
+        self._Filters = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SearchText(self):
+        return self._SearchText
+
+    @SearchText.setter
+    def SearchText(self, SearchText):
+        self._SearchText = SearchText
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.PageNo = params.get("PageNo")
-        self.PageSize = params.get("PageSize")
-        self.SearchText = params.get("SearchText")
+        self._ProjectId = params.get("ProjectId")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._SearchText = params.get("SearchText")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
+                self._TagSet.append(obj)
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1186,27 +2128,51 @@ class DescribeApplicationListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationList: 获取应用列表返回
+        :param _ApplicationList: 获取应用列表返回
         :type ApplicationList: list of ApplicationList
-        :param Total: 应用总数
+        :param _Total: 应用总数
         :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ApplicationList = None
-        self.Total = None
-        self.RequestId = None
+        self._ApplicationList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ApplicationList(self):
+        return self._ApplicationList
+
+    @ApplicationList.setter
+    def ApplicationList(self, ApplicationList):
+        self._ApplicationList = ApplicationList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ApplicationList") is not None:
-            self.ApplicationList = []
+            self._ApplicationList = []
             for item in params.get("ApplicationList"):
                 obj = ApplicationList()
                 obj._deserialize(item)
-                self.ApplicationList.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._ApplicationList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRealtimeScanConfigRequest(AbstractModel):
@@ -1216,18 +2182,27 @@ class DescribeRealtimeScanConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID
+        :param _BizId: 应用ID
         :type BizId: int
         """
-        self.BizId = None
+        self._BizId = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
+        self._BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1240,42 +2215,106 @@ class DescribeRealtimeScanConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回结果码，0正常，非0失败
+        :param _ErrorCode: 返回结果码，0正常，非0失败
         :type ErrorCode: int
-        :param BizId: 应用ID
+        :param _BizId: 应用ID
         :type BizId: int
-        :param AuditType: 送检类型，0: 全量送审，1: 自定义送审
+        :param _AuditType: 送检类型，0: 全量送审，1: 自定义送审
         :type AuditType: int
-        :param UserIdRegex: 用户号正则表达式
+        :param _UserIdRegex: 用户号正则表达式
         :type UserIdRegex: list of str
-        :param RoomIdRegex: 房间号正则表达式
+        :param _RoomIdRegex: 房间号正则表达式
         :type RoomIdRegex: list of str
-        :param UserIdString: 用户号字符串，逗号分隔，示例："0001,0002,0003"
+        :param _UserIdString: 用户号字符串，逗号分隔，示例："0001,0002,0003"
         :type UserIdString: str
-        :param RoomIdString: 房间号字符串，逗号分隔，示例："0001,0002,0003"
+        :param _RoomIdString: 房间号字符串，逗号分隔，示例："0001,0002,0003"
         :type RoomIdString: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.BizId = None
-        self.AuditType = None
-        self.UserIdRegex = None
-        self.RoomIdRegex = None
-        self.UserIdString = None
-        self.RoomIdString = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._BizId = None
+        self._AuditType = None
+        self._UserIdRegex = None
+        self._RoomIdRegex = None
+        self._UserIdString = None
+        self._RoomIdString = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def AuditType(self):
+        return self._AuditType
+
+    @AuditType.setter
+    def AuditType(self, AuditType):
+        self._AuditType = AuditType
+
+    @property
+    def UserIdRegex(self):
+        return self._UserIdRegex
+
+    @UserIdRegex.setter
+    def UserIdRegex(self, UserIdRegex):
+        self._UserIdRegex = UserIdRegex
+
+    @property
+    def RoomIdRegex(self):
+        return self._RoomIdRegex
+
+    @RoomIdRegex.setter
+    def RoomIdRegex(self, RoomIdRegex):
+        self._RoomIdRegex = RoomIdRegex
+
+    @property
+    def UserIdString(self):
+        return self._UserIdString
+
+    @UserIdString.setter
+    def UserIdString(self, UserIdString):
+        self._UserIdString = UserIdString
+
+    @property
+    def RoomIdString(self):
+        return self._RoomIdString
+
+    @RoomIdString.setter
+    def RoomIdString(self, RoomIdString):
+        self._RoomIdString = RoomIdString
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.BizId = params.get("BizId")
-        self.AuditType = params.get("AuditType")
-        self.UserIdRegex = params.get("UserIdRegex")
-        self.RoomIdRegex = params.get("RoomIdRegex")
-        self.UserIdString = params.get("UserIdString")
-        self.RoomIdString = params.get("RoomIdString")
-        self.RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._BizId = params.get("BizId")
+        self._AuditType = params.get("AuditType")
+        self._UserIdRegex = params.get("UserIdRegex")
+        self._RoomIdRegex = params.get("RoomIdRegex")
+        self._UserIdString = params.get("UserIdString")
+        self._RoomIdString = params.get("RoomIdString")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRecordInfoRequest(AbstractModel):
@@ -1285,22 +2324,39 @@ class DescribeRecordInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 进行中的任务taskid（StartRecord接口返回）。
+        :param _TaskId: 进行中的任务taskid（StartRecord接口返回）。
         :type TaskId: int
-        :param BizId: 应用ID。
+        :param _BizId: 应用ID。
         :type BizId: int
         """
-        self.TaskId = None
-        self.BizId = None
+        self._TaskId = None
+        self._BizId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.BizId = params.get("BizId")
+        self._TaskId = params.get("TaskId")
+        self._BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1313,32 +2369,64 @@ class DescribeRecordInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecordInfo: 录制信息。
+        :param _RecordInfo: 录制信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordInfo: list of RecordInfo
-        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
         :type RecordMode: int
-        :param RoomId: 房间ID。
+        :param _RoomId: 房间ID。
         :type RoomId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RecordInfo = None
-        self.RecordMode = None
-        self.RoomId = None
-        self.RequestId = None
+        self._RecordInfo = None
+        self._RecordMode = None
+        self._RoomId = None
+        self._RequestId = None
+
+    @property
+    def RecordInfo(self):
+        return self._RecordInfo
+
+    @RecordInfo.setter
+    def RecordInfo(self, RecordInfo):
+        self._RecordInfo = RecordInfo
+
+    @property
+    def RecordMode(self):
+        return self._RecordMode
+
+    @RecordMode.setter
+    def RecordMode(self, RecordMode):
+        self._RecordMode = RecordMode
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RecordInfo") is not None:
-            self.RecordInfo = []
+            self._RecordInfo = []
             for item in params.get("RecordInfo"):
                 obj = RecordInfo()
                 obj._deserialize(item)
-                self.RecordInfo.append(obj)
-        self.RecordMode = params.get("RecordMode")
-        self.RoomId = params.get("RoomId")
-        self.RequestId = params.get("RequestId")
+                self._RecordInfo.append(obj)
+        self._RecordMode = params.get("RecordMode")
+        self._RoomId = params.get("RoomId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRoomInfoRequest(AbstractModel):
@@ -1348,26 +2436,51 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        :param _SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type SdkAppId: int
-        :param RoomIds: 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+        :param _RoomIds: 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
         :type RoomIds: list of int non-negative
-        :param StrRoomIds: 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+        :param _StrRoomIds: 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
         :type StrRoomIds: list of str
         """
-        self.SdkAppId = None
-        self.RoomIds = None
-        self.StrRoomIds = None
+        self._SdkAppId = None
+        self._RoomIds = None
+        self._StrRoomIds = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomIds(self):
+        return self._RoomIds
+
+    @RoomIds.setter
+    def RoomIds(self, RoomIds):
+        self._RoomIds = RoomIds
+
+    @property
+    def StrRoomIds(self):
+        return self._StrRoomIds
+
+    @StrRoomIds.setter
+    def StrRoomIds(self, StrRoomIds):
+        self._StrRoomIds = StrRoomIds
 
 
     def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.RoomIds = params.get("RoomIds")
-        self.StrRoomIds = params.get("StrRoomIds")
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomIds = params.get("RoomIds")
+        self._StrRoomIds = params.get("StrRoomIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1380,29 +2493,53 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 操作结果, 0成功, 非0失败
+        :param _Result: 操作结果, 0成功, 非0失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
-        :param RoomUsers: 房间用户信息
+        :param _RoomUsers: 房间用户信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoomUsers: list of RoomUser
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.RoomUsers = None
-        self.RequestId = None
+        self._Result = None
+        self._RoomUsers = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RoomUsers(self):
+        return self._RoomUsers
+
+    @RoomUsers.setter
+    def RoomUsers(self, RoomUsers):
+        self._RoomUsers = RoomUsers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
+        self._Result = params.get("Result")
         if params.get("RoomUsers") is not None:
-            self.RoomUsers = []
+            self._RoomUsers = []
             for item in params.get("RoomUsers"):
                 obj = RoomUser()
                 obj._deserialize(item)
-                self.RoomUsers.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RoomUsers.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScanResult(AbstractModel):
@@ -1412,76 +2549,181 @@ class DescribeScanResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 业务返回码
+        :param _Code: 业务返回码
         :type Code: int
-        :param DataId: 数据唯一 ID
+        :param _DataId: 数据唯一 ID
         :type DataId: str
-        :param ScanFinishTime: 检测完成的时间戳
+        :param _ScanFinishTime: 检测完成的时间戳
         :type ScanFinishTime: int
-        :param HitFlag: 是否违规
+        :param _HitFlag: 是否违规
         :type HitFlag: bool
-        :param Live: 是否为流
+        :param _Live: 是否为流
         :type Live: bool
-        :param Msg: 业务返回描述
+        :param _Msg: 业务返回描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param ScanPiece: 检测结果，Code 为 0 时返回
+        :param _ScanPiece: 检测结果，Code 为 0 时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPiece: list of ScanPiece
-        :param ScanStartTime: 提交检测的时间戳
+        :param _ScanStartTime: 提交检测的时间戳
         :type ScanStartTime: int
-        :param Scenes: 语音检测场景，对应请求时的 Scene
+        :param _Scenes: 语音检测场景，对应请求时的 Scene
         :type Scenes: list of str
-        :param TaskId: 语音检测任务 ID，由后台分配
+        :param _TaskId: 语音检测任务 ID，由后台分配
         :type TaskId: str
-        :param Url: 文件或接流地址
+        :param _Url: 文件或接流地址
         :type Url: str
-        :param Status: 检测任务执行结果状态，分别为：
+        :param _Status: 检测任务执行结果状态，分别为：
 <li>Start: 任务开始</li>
 <li>Success: 成功结束</li>
 <li>Error: 异常</li>
         :type Status: str
-        :param BizId: 提交检测的应用 ID
+        :param _BizId: 提交检测的应用 ID
         :type BizId: int
         """
-        self.Code = None
-        self.DataId = None
-        self.ScanFinishTime = None
-        self.HitFlag = None
-        self.Live = None
-        self.Msg = None
-        self.ScanPiece = None
-        self.ScanStartTime = None
-        self.Scenes = None
-        self.TaskId = None
-        self.Url = None
-        self.Status = None
-        self.BizId = None
+        self._Code = None
+        self._DataId = None
+        self._ScanFinishTime = None
+        self._HitFlag = None
+        self._Live = None
+        self._Msg = None
+        self._ScanPiece = None
+        self._ScanStartTime = None
+        self._Scenes = None
+        self._TaskId = None
+        self._Url = None
+        self._Status = None
+        self._BizId = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def ScanFinishTime(self):
+        return self._ScanFinishTime
+
+    @ScanFinishTime.setter
+    def ScanFinishTime(self, ScanFinishTime):
+        self._ScanFinishTime = ScanFinishTime
+
+    @property
+    def HitFlag(self):
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def Live(self):
+        return self._Live
+
+    @Live.setter
+    def Live(self, Live):
+        self._Live = Live
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def ScanPiece(self):
+        return self._ScanPiece
+
+    @ScanPiece.setter
+    def ScanPiece(self, ScanPiece):
+        self._ScanPiece = ScanPiece
+
+    @property
+    def ScanStartTime(self):
+        return self._ScanStartTime
+
+    @ScanStartTime.setter
+    def ScanStartTime(self, ScanStartTime):
+        self._ScanStartTime = ScanStartTime
+
+    @property
+    def Scenes(self):
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.DataId = params.get("DataId")
-        self.ScanFinishTime = params.get("ScanFinishTime")
-        self.HitFlag = params.get("HitFlag")
-        self.Live = params.get("Live")
-        self.Msg = params.get("Msg")
+        self._Code = params.get("Code")
+        self._DataId = params.get("DataId")
+        self._ScanFinishTime = params.get("ScanFinishTime")
+        self._HitFlag = params.get("HitFlag")
+        self._Live = params.get("Live")
+        self._Msg = params.get("Msg")
         if params.get("ScanPiece") is not None:
-            self.ScanPiece = []
+            self._ScanPiece = []
             for item in params.get("ScanPiece"):
                 obj = ScanPiece()
                 obj._deserialize(item)
-                self.ScanPiece.append(obj)
-        self.ScanStartTime = params.get("ScanStartTime")
-        self.Scenes = params.get("Scenes")
-        self.TaskId = params.get("TaskId")
-        self.Url = params.get("Url")
-        self.Status = params.get("Status")
-        self.BizId = params.get("BizId")
+                self._ScanPiece.append(obj)
+        self._ScanStartTime = params.get("ScanStartTime")
+        self._Scenes = params.get("Scenes")
+        self._TaskId = params.get("TaskId")
+        self._Url = params.get("Url")
+        self._Status = params.get("Status")
+        self._BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1494,26 +2736,51 @@ class DescribeScanResultListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用 ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        :param _BizId: 应用 ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type BizId: int
-        :param TaskIdList: 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
+        :param _TaskIdList: 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
         :type TaskIdList: list of str
-        :param Limit: 任务返回结果数量，默认10，上限500。大文件任务忽略此参数，返回全量结果
+        :param _Limit: 任务返回结果数量，默认10，上限500。大文件任务忽略此参数，返回全量结果
         :type Limit: int
         """
-        self.BizId = None
-        self.TaskIdList = None
-        self.Limit = None
+        self._BizId = None
+        self._TaskIdList = None
+        self._Limit = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def TaskIdList(self):
+        return self._TaskIdList
+
+    @TaskIdList.setter
+    def TaskIdList(self, TaskIdList):
+        self._TaskIdList = TaskIdList
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.TaskIdList = params.get("TaskIdList")
-        self.Limit = params.get("Limit")
+        self._BizId = params.get("BizId")
+        self._TaskIdList = params.get("TaskIdList")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1526,24 +2793,40 @@ class DescribeScanResultListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 要查询的语音检测任务的结果
+        :param _Data: 要查询的语音检测任务的结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DescribeScanResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = DescribeScanResult()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskInfoRequest(AbstractModel):
@@ -1553,22 +2836,39 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID。
+        :param _BizId: 应用ID。
         :type BizId: int
-        :param RoomId: 房间ID。
+        :param _RoomId: 房间ID。
         :type RoomId: str
         """
-        self.BizId = None
-        self.RoomId = None
+        self._BizId = None
+        self._RoomId = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.RoomId = params.get("RoomId")
+        self._BizId = params.get("BizId")
+        self._RoomId = params.get("RoomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1581,31 +2881,63 @@ class DescribeTaskInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 进行中的任务taskid（StartRecord接口返回）。
+        :param _TaskId: 进行中的任务taskid（StartRecord接口返回）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
-        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordMode: int
-        :param SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
+        :param _SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RecordMode = None
-        self.SubscribeRecordUserIds = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RecordMode = None
+        self._SubscribeRecordUserIds = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RecordMode(self):
+        return self._RecordMode
+
+    @RecordMode.setter
+    def RecordMode(self, RecordMode):
+        self._RecordMode = RecordMode
+
+    @property
+    def SubscribeRecordUserIds(self):
+        return self._SubscribeRecordUserIds
+
+    @SubscribeRecordUserIds.setter
+    def SubscribeRecordUserIds(self, SubscribeRecordUserIds):
+        self._SubscribeRecordUserIds = SubscribeRecordUserIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RecordMode = params.get("RecordMode")
+        self._TaskId = params.get("TaskId")
+        self._RecordMode = params.get("RecordMode")
         if params.get("SubscribeRecordUserIds") is not None:
-            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
-            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
-        self.RequestId = params.get("RequestId")
+            self._SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self._SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserInAndOutTimeRequest(AbstractModel):
@@ -1615,34 +2947,75 @@ class DescribeUserInAndOutTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID
+        :param _BizId: 应用ID
         :type BizId: int
-        :param RoomId: 房间ID
+        :param _RoomId: 房间ID
         :type RoomId: int
-        :param UserId: 用户ID
+        :param _UserId: 用户ID
         :type UserId: int
-        :param UserIdStr: 字符串类型用户ID
+        :param _UserIdStr: 字符串类型用户ID
         :type UserIdStr: str
-        :param RoomIdStr: 字符串类型房间ID
+        :param _RoomIdStr: 字符串类型房间ID
         :type RoomIdStr: str
         """
-        self.BizId = None
-        self.RoomId = None
-        self.UserId = None
-        self.UserIdStr = None
-        self.RoomIdStr = None
+        self._BizId = None
+        self._RoomId = None
+        self._UserId = None
+        self._UserIdStr = None
+        self._RoomIdStr = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserIdStr(self):
+        return self._UserIdStr
+
+    @UserIdStr.setter
+    def UserIdStr(self, UserIdStr):
+        self._UserIdStr = UserIdStr
+
+    @property
+    def RoomIdStr(self):
+        return self._RoomIdStr
+
+    @RoomIdStr.setter
+    def RoomIdStr(self, RoomIdStr):
+        self._RoomIdStr = RoomIdStr
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.RoomId = params.get("RoomId")
-        self.UserId = params.get("UserId")
-        self.UserIdStr = params.get("UserIdStr")
-        self.RoomIdStr = params.get("RoomIdStr")
+        self._BizId = params.get("BizId")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._UserIdStr = params.get("UserIdStr")
+        self._RoomIdStr = params.get("RoomIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1655,27 +3028,51 @@ class DescribeUserInAndOutTimeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InOutList: 用户在房间得进出时间列表
+        :param _InOutList: 用户在房间得进出时间列表
         :type InOutList: list of InOutTimeInfo
-        :param Duration: 用户在房间中总时长
+        :param _Duration: 用户在房间中总时长
         :type Duration: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InOutList = None
-        self.Duration = None
-        self.RequestId = None
+        self._InOutList = None
+        self._Duration = None
+        self._RequestId = None
+
+    @property
+    def InOutList(self):
+        return self._InOutList
+
+    @InOutList.setter
+    def InOutList(self, InOutList):
+        self._InOutList = InOutList
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InOutList") is not None:
-            self.InOutList = []
+            self._InOutList = []
             for item in params.get("InOutList"):
                 obj = InOutTimeInfo()
                 obj._deserialize(item)
-                self.InOutList.append(obj)
-        self.Duration = params.get("Duration")
-        self.RequestId = params.get("RequestId")
+                self._InOutList.append(obj)
+        self._Duration = params.get("Duration")
+        self._RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):
@@ -1685,22 +3082,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 要过滤的字段名, 比如"AppName"
+        :param _Name: 要过滤的字段名, 比如"AppName"
         :type Name: str
-        :param Values: 多个关键字
+        :param _Values: 多个关键字
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1713,18 +3127,27 @@ class GetCustomizationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :param _BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
         """
-        self.BizId = None
+        self._BizId = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
+        self._BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1737,24 +3160,40 @@ class GetCustomizationListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomizationConfigs: 语音消息转文本热句模型配置
+        :param _CustomizationConfigs: 语音消息转文本热句模型配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomizationConfigs: list of CustomizationConfigs
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomizationConfigs = None
-        self.RequestId = None
+        self._CustomizationConfigs = None
+        self._RequestId = None
+
+    @property
+    def CustomizationConfigs(self):
+        return self._CustomizationConfigs
+
+    @CustomizationConfigs.setter
+    def CustomizationConfigs(self, CustomizationConfigs):
+        self._CustomizationConfigs = CustomizationConfigs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CustomizationConfigs") is not None:
-            self.CustomizationConfigs = []
+            self._CustomizationConfigs = []
             for item in params.get("CustomizationConfigs"):
                 obj = CustomizationConfigs()
                 obj._deserialize(item)
-                self.CustomizationConfigs.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CustomizationConfigs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InOutTimeInfo(AbstractModel):
@@ -1764,22 +3203,39 @@ class InOutTimeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 进入房间时间
+        :param _StartTime: 进入房间时间
         :type StartTime: int
-        :param EndTime: 退出房间时间
+        :param _EndTime: 退出房间时间
         :type EndTime: int
         """
-        self.StartTime = None
-        self.EndTime = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1792,22 +3248,39 @@ class ModifyAppStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID，创建应用后由后台生成并返回。
+        :param _BizId: 应用ID，创建应用后由后台生成并返回。
         :type BizId: int
-        :param Status: 应用状态，取值：open/close
+        :param _Status: 应用状态，取值：open/close
         :type Status: str
         """
-        self.BizId = None
-        self.Status = None
+        self._BizId = None
+        self._Status = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.Status = params.get("Status")
+        self._BizId = params.get("BizId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1820,22 +3293,39 @@ class ModifyAppStatusResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: GME应用ID
+        :param _BizId: GME应用ID
         :type BizId: int
-        :param Status: 应用状态，取值：open/close
+        :param _Status: 应用状态，取值：open/close
         :type Status: str
         """
-        self.BizId = None
-        self.Status = None
+        self._BizId = None
+        self._Status = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.Status = params.get("Status")
+        self._BizId = params.get("BizId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1848,20 +3338,36 @@ class ModifyAppStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 修改应用开关状态返回数据
+        :param _Data: 修改应用开关状态返回数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = ModifyAppStatusResp()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = ModifyAppStatusResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCustomizationRequest(AbstractModel):
@@ -1871,26 +3377,51 @@ class ModifyCustomizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :param _BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
-        :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+        :param _TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
         :type TextUrl: str
-        :param ModelId: 修改的模型ID
+        :param _ModelId: 修改的模型ID
         :type ModelId: str
         """
-        self.BizId = None
-        self.TextUrl = None
-        self.ModelId = None
+        self._BizId = None
+        self._TextUrl = None
+        self._ModelId = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def TextUrl(self):
+        return self._TextUrl
+
+    @TextUrl.setter
+    def TextUrl(self, TextUrl):
+        self._TextUrl = TextUrl
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.TextUrl = params.get("TextUrl")
-        self.ModelId = params.get("ModelId")
+        self._BizId = params.get("BizId")
+        self._TextUrl = params.get("TextUrl")
+        self._ModelId = params.get("ModelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1903,22 +3434,46 @@ class ModifyCustomizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回值。0为成功，非0为失败。
+        :param _ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int
-        :param ModelId: 模型ID
+        :param _ModelId: 模型ID
         :type ModelId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.ModelId = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._ModelId = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.ModelId = params.get("ModelId")
-        self.RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ModelId = params.get("ModelId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCustomizationStateRequest(AbstractModel):
@@ -1928,26 +3483,51 @@ class ModifyCustomizationStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 模型ID
+        :param _ModelId: 模型ID
         :type ModelId: str
-        :param ToState: 想要变换的模型状态，-1代表下线，1代表上线
+        :param _ToState: 想要变换的模型状态，-1代表下线，1代表上线
         :type ToState: int
-        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :param _BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
         """
-        self.ModelId = None
-        self.ToState = None
-        self.BizId = None
+        self._ModelId = None
+        self._ToState = None
+        self._BizId = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ToState(self):
+        return self._ToState
+
+    @ToState.setter
+    def ToState(self, ToState):
+        self._ToState = ToState
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
 
 
     def _deserialize(self, params):
-        self.ModelId = params.get("ModelId")
-        self.ToState = params.get("ToState")
-        self.BizId = params.get("BizId")
+        self._ModelId = params.get("ModelId")
+        self._ToState = params.get("ToState")
+        self._BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1960,22 +3540,46 @@ class ModifyCustomizationStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 模型ID
+        :param _ModelId: 模型ID
         :type ModelId: str
-        :param ErrorCode: 返回值。0为成功，非0为失败。
+        :param _ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ModelId = None
-        self.ErrorCode = None
-        self.RequestId = None
+        self._ModelId = None
+        self._ErrorCode = None
+        self._RequestId = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ModelId = params.get("ModelId")
-        self.ErrorCode = params.get("ErrorCode")
-        self.RequestId = params.get("RequestId")
+        self._ModelId = params.get("ModelId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyRecordInfoRequest(AbstractModel):
@@ -1985,32 +3589,65 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 进行中的任务taskid（StartRecord接口返回）。
+        :param _TaskId: 进行中的任务taskid（StartRecord接口返回）。
         :type TaskId: int
-        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
         :type RecordMode: int
-        :param BizId: 应用ID。
+        :param _BizId: 应用ID。
         :type BizId: int
-        :param SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
+        :param _SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
         :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
-        self.TaskId = None
-        self.RecordMode = None
-        self.BizId = None
-        self.SubscribeRecordUserIds = None
+        self._TaskId = None
+        self._RecordMode = None
+        self._BizId = None
+        self._SubscribeRecordUserIds = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RecordMode(self):
+        return self._RecordMode
+
+    @RecordMode.setter
+    def RecordMode(self, RecordMode):
+        self._RecordMode = RecordMode
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def SubscribeRecordUserIds(self):
+        return self._SubscribeRecordUserIds
+
+    @SubscribeRecordUserIds.setter
+    def SubscribeRecordUserIds(self, SubscribeRecordUserIds):
+        self._SubscribeRecordUserIds = SubscribeRecordUserIds
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RecordMode = params.get("RecordMode")
-        self.BizId = params.get("BizId")
+        self._TaskId = params.get("TaskId")
+        self._RecordMode = params.get("RecordMode")
+        self._BizId = params.get("BizId")
         if params.get("SubscribeRecordUserIds") is not None:
-            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
-            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+            self._SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self._SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2023,14 +3660,22 @@ class ModifyRecordInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyUserMicStatusRequest(AbstractModel):
@@ -2040,31 +3685,56 @@ class ModifyUserMicStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 来自 [腾讯云控制台](https://console.cloud.tencent.com/gamegme) 的 GME 服务提供的 AppID，获取请参考 [语音服务开通指引](https://cloud.tencent.com/document/product/607/10782#.E9.87.8D.E7.82.B9.E5.8F.82.E6.95.B0)。
+        :param _BizId: 来自 [腾讯云控制台](https://console.cloud.tencent.com/gamegme) 的 GME 服务提供的 AppID，获取请参考 [语音服务开通指引](https://cloud.tencent.com/document/product/607/10782#.E9.87.8D.E7.82.B9.E5.8F.82.E6.95.B0)。
         :type BizId: int
-        :param RoomId: 实时语音房间号。
+        :param _RoomId: 实时语音房间号。
         :type RoomId: str
-        :param Users: 需要操作的房间内用户以及该用户的目标麦克风状态。
+        :param _Users: 需要操作的房间内用户以及该用户的目标麦克风状态。
         :type Users: list of UserMicStatus
         """
-        self.BizId = None
-        self.RoomId = None
-        self.Users = None
+        self._BizId = None
+        self._RoomId = None
+        self._Users = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.RoomId = params.get("RoomId")
+        self._BizId = params.get("BizId")
+        self._RoomId = params.get("RoomId")
         if params.get("Users") is not None:
-            self.Users = []
+            self._Users = []
             for item in params.get("Users"):
                 obj = UserMicStatus()
                 obj._deserialize(item)
-                self.Users.append(obj)
+                self._Users.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2077,22 +3747,46 @@ class ModifyUserMicStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回结果：0为成功，非0为失败。
+        :param _Result: 返回结果：0为成功，非0为失败。
         :type Result: int
-        :param ErrMsg: 错误信息。
+        :param _ErrMsg: 错误信息。
         :type ErrMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.ErrMsg = None
-        self.RequestId = None
+        self._Result = None
+        self._ErrMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.ErrMsg = params.get("ErrMsg")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._ErrMsg = params.get("ErrMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class OverseaTextStatisticsItem(AbstractModel):
@@ -2102,19 +3796,28 @@ class OverseaTextStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 统计值，单位：秒
+        :param _Data: 统计值，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
-        self.Data = None
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2127,38 +3830,87 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MainLandDau: 大陆地区DAU
+        :param _MainLandDau: 大陆地区DAU
         :type MainLandDau: int
-        :param MainLandPcu: 大陆地区PCU
+        :param _MainLandPcu: 大陆地区PCU
         :type MainLandPcu: int
-        :param MainLandDuration: 大陆地区总使用时长，单位为min
+        :param _MainLandDuration: 大陆地区总使用时长，单位为min
         :type MainLandDuration: int
-        :param OverseaDau: 海外地区DAU
+        :param _OverseaDau: 海外地区DAU
         :type OverseaDau: int
-        :param OverseaPcu: 海外地区PCU
+        :param _OverseaPcu: 海外地区PCU
         :type OverseaPcu: int
-        :param OverseaDuration: 海外地区总使用时长，单位为min
+        :param _OverseaDuration: 海外地区总使用时长，单位为min
         :type OverseaDuration: int
         """
-        self.MainLandDau = None
-        self.MainLandPcu = None
-        self.MainLandDuration = None
-        self.OverseaDau = None
-        self.OverseaPcu = None
-        self.OverseaDuration = None
+        self._MainLandDau = None
+        self._MainLandPcu = None
+        self._MainLandDuration = None
+        self._OverseaDau = None
+        self._OverseaPcu = None
+        self._OverseaDuration = None
+
+    @property
+    def MainLandDau(self):
+        return self._MainLandDau
+
+    @MainLandDau.setter
+    def MainLandDau(self, MainLandDau):
+        self._MainLandDau = MainLandDau
+
+    @property
+    def MainLandPcu(self):
+        return self._MainLandPcu
+
+    @MainLandPcu.setter
+    def MainLandPcu(self, MainLandPcu):
+        self._MainLandPcu = MainLandPcu
+
+    @property
+    def MainLandDuration(self):
+        return self._MainLandDuration
+
+    @MainLandDuration.setter
+    def MainLandDuration(self, MainLandDuration):
+        self._MainLandDuration = MainLandDuration
+
+    @property
+    def OverseaDau(self):
+        return self._OverseaDau
+
+    @OverseaDau.setter
+    def OverseaDau(self, OverseaDau):
+        self._OverseaDau = OverseaDau
+
+    @property
+    def OverseaPcu(self):
+        return self._OverseaPcu
+
+    @OverseaPcu.setter
+    def OverseaPcu(self, OverseaPcu):
+        self._OverseaPcu = OverseaPcu
+
+    @property
+    def OverseaDuration(self):
+        return self._OverseaDuration
+
+    @OverseaDuration.setter
+    def OverseaDuration(self, OverseaDuration):
+        self._OverseaDuration = OverseaDuration
 
 
     def _deserialize(self, params):
-        self.MainLandDau = params.get("MainLandDau")
-        self.MainLandPcu = params.get("MainLandPcu")
-        self.MainLandDuration = params.get("MainLandDuration")
-        self.OverseaDau = params.get("OverseaDau")
-        self.OverseaPcu = params.get("OverseaPcu")
-        self.OverseaDuration = params.get("OverseaDuration")
+        self._MainLandDau = params.get("MainLandDau")
+        self._MainLandPcu = params.get("MainLandPcu")
+        self._MainLandDuration = params.get("MainLandDuration")
+        self._OverseaDau = params.get("OverseaDau")
+        self._OverseaPcu = params.get("OverseaPcu")
+        self._OverseaDuration = params.get("OverseaDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2171,22 +3923,39 @@ class RealtimeSpeechConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 实时语音服务开关，取值：open/close
+        :param _Status: 实时语音服务开关，取值：open/close
         :type Status: str
-        :param Quality: 实时语音音质类型，取值：high-高音质 ordinary-普通音质
+        :param _Quality: 实时语音音质类型，取值：high-高音质 ordinary-普通音质
         :type Quality: str
         """
-        self.Status = None
-        self.Quality = None
+        self._Status = None
+        self._Quality = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Quality(self):
+        return self._Quality
+
+    @Quality.setter
+    def Quality(self, Quality):
+        self._Quality = Quality
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Quality = params.get("Quality")
+        self._Status = params.get("Status")
+        self._Quality = params.get("Quality")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2199,19 +3968,28 @@ class RealtimeTextStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 统计值，单位：秒
+        :param _Data: 统计值，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
-        self.Data = None
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2225,30 +4003,63 @@ class RecordInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户ID（当混流模式时，取值为0）。
+        :param _UserId: 用户ID（当混流模式时，取值为0）。
         :type UserId: str
-        :param FileName: 录制文件名。
+        :param _FileName: 录制文件名。
         :type FileName: str
-        :param RecordBeginTime: 录制开始时间（unix时间戳如：1234567868）。
+        :param _RecordBeginTime: 录制开始时间（unix时间戳如：1234567868）。
         :type RecordBeginTime: int
-        :param RecordStatus: 录制状态：2代表正在录制  10代表等待转码  11代表正在转码  12正在上传  13代表上传完成  14代表通知用户完成。
+        :param _RecordStatus: 录制状态：2代表正在录制  10代表等待转码  11代表正在转码  12正在上传  13代表上传完成  14代表通知用户完成。
         :type RecordStatus: int
         """
-        self.UserId = None
-        self.FileName = None
-        self.RecordBeginTime = None
-        self.RecordStatus = None
+        self._UserId = None
+        self._FileName = None
+        self._RecordBeginTime = None
+        self._RecordStatus = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def RecordBeginTime(self):
+        return self._RecordBeginTime
+
+    @RecordBeginTime.setter
+    def RecordBeginTime(self, RecordBeginTime):
+        self._RecordBeginTime = RecordBeginTime
+
+    @property
+    def RecordStatus(self):
+        return self._RecordStatus
+
+    @RecordStatus.setter
+    def RecordStatus(self, RecordStatus):
+        self._RecordStatus = RecordStatus
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.FileName = params.get("FileName")
-        self.RecordBeginTime = params.get("RecordBeginTime")
-        self.RecordStatus = params.get("RecordStatus")
+        self._UserId = params.get("UserId")
+        self._FileName = params.get("FileName")
+        self._RecordBeginTime = params.get("RecordBeginTime")
+        self._RecordStatus = params.get("RecordStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2261,33 +4072,66 @@ class RoomUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoomId: 房间id
+        :param _RoomId: 房间id
         :type RoomId: int
-        :param Uins: 房间里用户uin列表
+        :param _Uins: 房间里用户uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uins: list of int non-negative
-        :param StrRoomId: 字符串房间id
+        :param _StrRoomId: 字符串房间id
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrRoomId: str
-        :param StrUins: 房间里用户字符串uin列表
+        :param _StrUins: 房间里用户字符串uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrUins: list of str
         """
-        self.RoomId = None
-        self.Uins = None
-        self.StrRoomId = None
-        self.StrUins = None
+        self._RoomId = None
+        self._Uins = None
+        self._StrRoomId = None
+        self._StrUins = None
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Uins(self):
+        return self._Uins
+
+    @Uins.setter
+    def Uins(self, Uins):
+        self._Uins = Uins
+
+    @property
+    def StrRoomId(self):
+        return self._StrRoomId
+
+    @StrRoomId.setter
+    def StrRoomId(self, StrRoomId):
+        self._StrRoomId = StrRoomId
+
+    @property
+    def StrUins(self):
+        return self._StrUins
+
+    @StrUins.setter
+    def StrUins(self, StrUins):
+        self._StrUins = StrUins
 
 
     def _deserialize(self, params):
-        self.RoomId = params.get("RoomId")
-        self.Uins = params.get("Uins")
-        self.StrRoomId = params.get("StrRoomId")
-        self.StrUins = params.get("StrUins")
+        self._RoomId = params.get("RoomId")
+        self._Uins = params.get("Uins")
+        self._StrRoomId = params.get("StrRoomId")
+        self._StrUins = params.get("StrUins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2300,34 +4144,75 @@ class ScanDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 违规场景，参照<a href="https://cloud.tencent.com/document/product/607/37622#Label_Value">Label</a>定义
+        :param _Label: 违规场景，参照<a href="https://cloud.tencent.com/document/product/607/37622#Label_Value">Label</a>定义
         :type Label: str
-        :param Rate: 该场景下概率[0.00,100.00],分值越大违规概率越高
+        :param _Rate: 该场景下概率[0.00,100.00],分值越大违规概率越高
         :type Rate: str
-        :param KeyWord: 违规关键字
+        :param _KeyWord: 违规关键字
         :type KeyWord: str
-        :param StartTime: 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒
+        :param _StartTime: 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒
         :type StartTime: int
-        :param EndTime: 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒
+        :param _EndTime: 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒
         :type EndTime: int
         """
-        self.Label = None
-        self.Rate = None
-        self.KeyWord = None
-        self.StartTime = None
-        self.EndTime = None
+        self._Label = None
+        self._Rate = None
+        self._KeyWord = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Rate = params.get("Rate")
-        self.KeyWord = params.get("KeyWord")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._Label = params.get("Label")
+        self._Rate = params.get("Rate")
+        self._KeyWord = params.get("KeyWord")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2340,67 +4225,148 @@ class ScanPiece(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DumpUrl: 流检测时返回，音频转存地址，保留30min
+        :param _DumpUrl: 流检测时返回，音频转存地址，保留30min
 注意：此字段可能返回 null，表示取不到有效值。
         :type DumpUrl: str
-        :param HitFlag: 是否违规
+        :param _HitFlag: 是否违规
         :type HitFlag: bool
-        :param MainType: 违规主要类型
+        :param _MainType: 违规主要类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MainType: str
-        :param ScanDetail: 语音检测详情
+        :param _ScanDetail: 语音检测详情
         :type ScanDetail: list of ScanDetail
-        :param RoomId: gme实时语音房间ID，透传任务传入时的RoomId
+        :param _RoomId: gme实时语音房间ID，透传任务传入时的RoomId
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoomId: str
-        :param OpenId: gme实时语音用户ID，透传任务传入时的OpenId
+        :param _OpenId: gme实时语音用户ID，透传任务传入时的OpenId
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
-        :param Info: 备注
+        :param _Info: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: str
-        :param Offset: 流检测时分片在流中的偏移时间，单位毫秒
+        :param _Offset: 流检测时分片在流中的偏移时间，单位毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
-        :param Duration: 流检测时分片时长
+        :param _Duration: 流检测时分片时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
-        :param PieceStartTime: 分片开始检测时间
+        :param _PieceStartTime: 分片开始检测时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type PieceStartTime: int
         """
-        self.DumpUrl = None
-        self.HitFlag = None
-        self.MainType = None
-        self.ScanDetail = None
-        self.RoomId = None
-        self.OpenId = None
-        self.Info = None
-        self.Offset = None
-        self.Duration = None
-        self.PieceStartTime = None
+        self._DumpUrl = None
+        self._HitFlag = None
+        self._MainType = None
+        self._ScanDetail = None
+        self._RoomId = None
+        self._OpenId = None
+        self._Info = None
+        self._Offset = None
+        self._Duration = None
+        self._PieceStartTime = None
+
+    @property
+    def DumpUrl(self):
+        return self._DumpUrl
+
+    @DumpUrl.setter
+    def DumpUrl(self, DumpUrl):
+        self._DumpUrl = DumpUrl
+
+    @property
+    def HitFlag(self):
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def MainType(self):
+        return self._MainType
+
+    @MainType.setter
+    def MainType(self, MainType):
+        self._MainType = MainType
+
+    @property
+    def ScanDetail(self):
+        return self._ScanDetail
+
+    @ScanDetail.setter
+    def ScanDetail(self, ScanDetail):
+        self._ScanDetail = ScanDetail
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def PieceStartTime(self):
+        return self._PieceStartTime
+
+    @PieceStartTime.setter
+    def PieceStartTime(self, PieceStartTime):
+        self._PieceStartTime = PieceStartTime
 
 
     def _deserialize(self, params):
-        self.DumpUrl = params.get("DumpUrl")
-        self.HitFlag = params.get("HitFlag")
-        self.MainType = params.get("MainType")
+        self._DumpUrl = params.get("DumpUrl")
+        self._HitFlag = params.get("HitFlag")
+        self._MainType = params.get("MainType")
         if params.get("ScanDetail") is not None:
-            self.ScanDetail = []
+            self._ScanDetail = []
             for item in params.get("ScanDetail"):
                 obj = ScanDetail()
                 obj._deserialize(item)
-                self.ScanDetail.append(obj)
-        self.RoomId = params.get("RoomId")
-        self.OpenId = params.get("OpenId")
-        self.Info = params.get("Info")
-        self.Offset = params.get("Offset")
-        self.Duration = params.get("Duration")
-        self.PieceStartTime = params.get("PieceStartTime")
+                self._ScanDetail.append(obj)
+        self._RoomId = params.get("RoomId")
+        self._OpenId = params.get("OpenId")
+        self._Info = params.get("Info")
+        self._Offset = params.get("Offset")
+        self._Duration = params.get("Duration")
+        self._PieceStartTime = params.get("PieceStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2413,45 +4379,94 @@ class ScanVoiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        :param _BizId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type BizId: int
-        :param Scenes: 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+        :param _Scenes: 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
         :type Scenes: list of str
-        :param Live: 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+        :param _Live: 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
         :type Live: bool
-        :param Tasks: 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
+        :param _Tasks: 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
 <li>DataId：数据的唯一ID</li>
 <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
         :type Tasks: list of Task
-        :param Callback: 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+        :param _Callback: 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
         :type Callback: str
-        :param Lang: 语种，不传默认中文
+        :param _Lang: 语种，不传默认中文
         :type Lang: str
         """
-        self.BizId = None
-        self.Scenes = None
-        self.Live = None
-        self.Tasks = None
-        self.Callback = None
-        self.Lang = None
+        self._BizId = None
+        self._Scenes = None
+        self._Live = None
+        self._Tasks = None
+        self._Callback = None
+        self._Lang = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def Scenes(self):
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def Live(self):
+        return self._Live
+
+    @Live.setter
+    def Live(self, Live):
+        self._Live = Live
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Callback(self):
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.Scenes = params.get("Scenes")
-        self.Live = params.get("Live")
+        self._BizId = params.get("BizId")
+        self._Scenes = params.get("Scenes")
+        self._Live = params.get("Live")
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = Task()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.Callback = params.get("Callback")
-        self.Lang = params.get("Lang")
+                self._Tasks.append(obj)
+        self._Callback = params.get("Callback")
+        self._Lang = params.get("Lang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2464,24 +4479,40 @@ class ScanVoiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
+        :param _Data: 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
 <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
         :type Data: list of ScanVoiceResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = ScanVoiceResult()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ScanVoiceResult(AbstractModel):
@@ -2491,22 +4522,39 @@ class ScanVoiceResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 数据ID
+        :param _DataId: 数据ID
         :type DataId: str
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: str
         """
-        self.DataId = None
-        self.TaskId = None
+        self._DataId = None
+        self._TaskId = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.TaskId = params.get("TaskId")
+        self._DataId = params.get("DataId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2528,56 +4576,105 @@ class ServiceStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RealTimeSpeech: 实时语音服务开关状态
+        :param _RealTimeSpeech: 实时语音服务开关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealTimeSpeech: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
-        :param VoiceMessage: 语音消息服务开关状态
+        :param _VoiceMessage: 语音消息服务开关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceMessage: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
-        :param Porn: 语音内容安全服务开关状态
+        :param _Porn: 语音内容安全服务开关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Porn: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
-        :param Live: 语音录制服务开关状态
+        :param _Live: 语音录制服务开关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Live: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
-        :param RealTimeAsr: 语音转文本服务开关状态
+        :param _RealTimeAsr: 语音转文本服务开关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealTimeAsr: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
-        :param TextTranslate: 文本翻译服务开关状态
+        :param _TextTranslate: 文本翻译服务开关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTranslate: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
-        self.RealTimeSpeech = None
-        self.VoiceMessage = None
-        self.Porn = None
-        self.Live = None
-        self.RealTimeAsr = None
-        self.TextTranslate = None
+        self._RealTimeSpeech = None
+        self._VoiceMessage = None
+        self._Porn = None
+        self._Live = None
+        self._RealTimeAsr = None
+        self._TextTranslate = None
+
+    @property
+    def RealTimeSpeech(self):
+        return self._RealTimeSpeech
+
+    @RealTimeSpeech.setter
+    def RealTimeSpeech(self, RealTimeSpeech):
+        self._RealTimeSpeech = RealTimeSpeech
+
+    @property
+    def VoiceMessage(self):
+        return self._VoiceMessage
+
+    @VoiceMessage.setter
+    def VoiceMessage(self, VoiceMessage):
+        self._VoiceMessage = VoiceMessage
+
+    @property
+    def Porn(self):
+        return self._Porn
+
+    @Porn.setter
+    def Porn(self, Porn):
+        self._Porn = Porn
+
+    @property
+    def Live(self):
+        return self._Live
+
+    @Live.setter
+    def Live(self, Live):
+        self._Live = Live
+
+    @property
+    def RealTimeAsr(self):
+        return self._RealTimeAsr
+
+    @RealTimeAsr.setter
+    def RealTimeAsr(self, RealTimeAsr):
+        self._RealTimeAsr = RealTimeAsr
+
+    @property
+    def TextTranslate(self):
+        return self._TextTranslate
+
+    @TextTranslate.setter
+    def TextTranslate(self, TextTranslate):
+        self._TextTranslate = TextTranslate
 
 
     def _deserialize(self, params):
         if params.get("RealTimeSpeech") is not None:
-            self.RealTimeSpeech = StatusInfo()
-            self.RealTimeSpeech._deserialize(params.get("RealTimeSpeech"))
+            self._RealTimeSpeech = StatusInfo()
+            self._RealTimeSpeech._deserialize(params.get("RealTimeSpeech"))
         if params.get("VoiceMessage") is not None:
-            self.VoiceMessage = StatusInfo()
-            self.VoiceMessage._deserialize(params.get("VoiceMessage"))
+            self._VoiceMessage = StatusInfo()
+            self._VoiceMessage._deserialize(params.get("VoiceMessage"))
         if params.get("Porn") is not None:
-            self.Porn = StatusInfo()
-            self.Porn._deserialize(params.get("Porn"))
+            self._Porn = StatusInfo()
+            self._Porn._deserialize(params.get("Porn"))
         if params.get("Live") is not None:
-            self.Live = StatusInfo()
-            self.Live._deserialize(params.get("Live"))
+            self._Live = StatusInfo()
+            self._Live._deserialize(params.get("Live"))
         if params.get("RealTimeAsr") is not None:
-            self.RealTimeAsr = StatusInfo()
-            self.RealTimeAsr._deserialize(params.get("RealTimeAsr"))
+            self._RealTimeAsr = StatusInfo()
+            self._RealTimeAsr._deserialize(params.get("RealTimeAsr"))
         if params.get("TextTranslate") is not None:
-            self.TextTranslate = StatusInfo()
-            self.TextTranslate._deserialize(params.get("TextTranslate"))
+            self._TextTranslate = StatusInfo()
+            self._TextTranslate._deserialize(params.get("TextTranslate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2590,32 +4687,65 @@ class StartRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID。
+        :param _BizId: 应用ID。
         :type BizId: int
-        :param RoomId: 房间ID。
+        :param _RoomId: 房间ID。
         :type RoomId: str
-        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
         :type RecordMode: int
-        :param SubscribeRecordUserIds: 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+        :param _SubscribeRecordUserIds: 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
         :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
-        self.BizId = None
-        self.RoomId = None
-        self.RecordMode = None
-        self.SubscribeRecordUserIds = None
+        self._BizId = None
+        self._RoomId = None
+        self._RecordMode = None
+        self._SubscribeRecordUserIds = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RecordMode(self):
+        return self._RecordMode
+
+    @RecordMode.setter
+    def RecordMode(self, RecordMode):
+        self._RecordMode = RecordMode
+
+    @property
+    def SubscribeRecordUserIds(self):
+        return self._SubscribeRecordUserIds
+
+    @SubscribeRecordUserIds.setter
+    def SubscribeRecordUserIds(self, SubscribeRecordUserIds):
+        self._SubscribeRecordUserIds = SubscribeRecordUserIds
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.RoomId = params.get("RoomId")
-        self.RecordMode = params.get("RecordMode")
+        self._BizId = params.get("BizId")
+        self._RoomId = params.get("RoomId")
+        self._RecordMode = params.get("RecordMode")
         if params.get("SubscribeRecordUserIds") is not None:
-            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
-            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+            self._SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self._SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2628,18 +4758,34 @@ class StartRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务taskid。
+        :param _TaskId: 任务taskid。
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class StatisticsItem(AbstractModel):
@@ -2649,22 +4795,39 @@ class StatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StatDate: 日期，格式为年-月-日，如2018-07-13
+        :param _StatDate: 日期，格式为年-月-日，如2018-07-13
         :type StatDate: str
-        :param Data: 统计值
+        :param _Data: 统计值
         :type Data: int
         """
-        self.StatDate = None
-        self.Data = None
+        self._StatDate = None
+        self._Data = None
+
+    @property
+    def StatDate(self):
+        return self._StatDate
+
+    @StatDate.setter
+    def StatDate(self, StatDate):
+        self._StatDate = StatDate
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.StatDate = params.get("StatDate")
-        self.Data = params.get("Data")
+        self._StatDate = params.get("StatDate")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2677,18 +4840,27 @@ class StatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 服务开关状态， 0-正常，1-关闭
+        :param _Status: 服务开关状态， 0-正常，1-关闭
         :type Status: int
         """
-        self.Status = None
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2701,22 +4873,39 @@ class StopRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID。
+        :param _TaskId: 任务ID。
         :type TaskId: int
-        :param BizId: 应用ID。
+        :param _BizId: 应用ID。
         :type BizId: int
         """
-        self.TaskId = None
-        self.BizId = None
+        self._TaskId = None
+        self._BizId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.BizId = params.get("BizId")
+        self._TaskId = params.get("TaskId")
+        self._BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2729,14 +4918,22 @@ class StopRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StreamTextStatisticsItem(AbstractModel):
@@ -2746,19 +4943,28 @@ class StreamTextStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 统计值，单位：秒
+        :param _Data: 统计值，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: float
         """
-        self.Data = None
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2771,24 +4977,41 @@ class SubscribeRecordUserIds(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UnSubscribeUserIds: 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
+        :param _UnSubscribeUserIds: 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
 注意：只能同时设置UnSubscribeAudioUserIds、SubscribeAudioUserIds 其中1个参数
         :type UnSubscribeUserIds: list of str
-        :param SubscribeUserIds: 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
+        :param _SubscribeUserIds: 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
 注意：只能同时设置UnSubscribeAudioUserIds、SubscribeAudioUserIds 其中1个参数。
         :type SubscribeUserIds: list of str
         """
-        self.UnSubscribeUserIds = None
-        self.SubscribeUserIds = None
+        self._UnSubscribeUserIds = None
+        self._SubscribeUserIds = None
+
+    @property
+    def UnSubscribeUserIds(self):
+        return self._UnSubscribeUserIds
+
+    @UnSubscribeUserIds.setter
+    def UnSubscribeUserIds(self, UnSubscribeUserIds):
+        self._UnSubscribeUserIds = UnSubscribeUserIds
+
+    @property
+    def SubscribeUserIds(self):
+        return self._SubscribeUserIds
+
+    @SubscribeUserIds.setter
+    def SubscribeUserIds(self, SubscribeUserIds):
+        self._SubscribeUserIds = SubscribeUserIds
 
 
     def _deserialize(self, params):
-        self.UnSubscribeUserIds = params.get("UnSubscribeUserIds")
-        self.SubscribeUserIds = params.get("SubscribeUserIds")
+        self._UnSubscribeUserIds = params.get("UnSubscribeUserIds")
+        self._SubscribeUserIds = params.get("SubscribeUserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2801,24 +5024,41 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param _TagKey: 标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2831,30 +5071,63 @@ class Task(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 数据的唯一ID
+        :param _DataId: 数据的唯一ID
         :type DataId: str
-        :param Url: 数据文件的url，为 urlencode 编码，流式则为拉流地址
+        :param _Url: 数据文件的url，为 urlencode 编码，流式则为拉流地址
         :type Url: str
-        :param RoomId: gme实时语音房间ID，通过gme实时语音进行语音分析时输入
+        :param _RoomId: gme实时语音房间ID，通过gme实时语音进行语音分析时输入
         :type RoomId: str
-        :param OpenId: gme实时语音用户ID，通过gme实时语音进行语音分析时输入
+        :param _OpenId: gme实时语音用户ID，通过gme实时语音进行语音分析时输入
         :type OpenId: str
         """
-        self.DataId = None
-        self.Url = None
-        self.RoomId = None
-        self.OpenId = None
+        self._DataId = None
+        self._Url = None
+        self._RoomId = None
+        self._OpenId = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.Url = params.get("Url")
-        self.RoomId = params.get("RoomId")
-        self.OpenId = params.get("OpenId")
+        self._DataId = params.get("DataId")
+        self._Url = params.get("Url")
+        self._RoomId = params.get("RoomId")
+        self._OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2867,26 +5140,51 @@ class UpdateScanRoomsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID
+        :param _BizId: 应用ID
         :type BizId: int
-        :param RoomIdString: 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
+        :param _RoomIdString: 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
         :type RoomIdString: str
-        :param RoomIdRegex: 符合此正则表达式规则的房间号将被送检。示例：["^6.*"] 表示所有以6开头的房间号将被送检
+        :param _RoomIdRegex: 符合此正则表达式规则的房间号将被送检。示例：["^6.*"] 表示所有以6开头的房间号将被送检
         :type RoomIdRegex: list of str
         """
-        self.BizId = None
-        self.RoomIdString = None
-        self.RoomIdRegex = None
+        self._BizId = None
+        self._RoomIdString = None
+        self._RoomIdRegex = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def RoomIdString(self):
+        return self._RoomIdString
+
+    @RoomIdString.setter
+    def RoomIdString(self, RoomIdString):
+        self._RoomIdString = RoomIdString
+
+    @property
+    def RoomIdRegex(self):
+        return self._RoomIdRegex
+
+    @RoomIdRegex.setter
+    def RoomIdRegex(self, RoomIdRegex):
+        self._RoomIdRegex = RoomIdRegex
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.RoomIdString = params.get("RoomIdString")
-        self.RoomIdRegex = params.get("RoomIdRegex")
+        self._BizId = params.get("BizId")
+        self._RoomIdString = params.get("RoomIdString")
+        self._RoomIdRegex = params.get("RoomIdRegex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2899,19 +5197,35 @@ class UpdateScanRoomsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回结果码
+        :param _ErrorCode: 返回结果码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateScanUsersRequest(AbstractModel):
@@ -2921,26 +5235,51 @@ class UpdateScanUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID
+        :param _BizId: 应用ID
         :type BizId: int
-        :param UserIdString: 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
+        :param _UserIdString: 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
         :type UserIdString: str
-        :param UserIdRegex: 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
+        :param _UserIdRegex: 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
         :type UserIdRegex: list of str
         """
-        self.BizId = None
-        self.UserIdString = None
-        self.UserIdRegex = None
+        self._BizId = None
+        self._UserIdString = None
+        self._UserIdRegex = None
+
+    @property
+    def BizId(self):
+        return self._BizId
+
+    @BizId.setter
+    def BizId(self, BizId):
+        self._BizId = BizId
+
+    @property
+    def UserIdString(self):
+        return self._UserIdString
+
+    @UserIdString.setter
+    def UserIdString(self, UserIdString):
+        self._UserIdString = UserIdString
+
+    @property
+    def UserIdRegex(self):
+        return self._UserIdRegex
+
+    @UserIdRegex.setter
+    def UserIdRegex(self, UserIdRegex):
+        self._UserIdRegex = UserIdRegex
 
 
     def _deserialize(self, params):
-        self.BizId = params.get("BizId")
-        self.UserIdString = params.get("UserIdString")
-        self.UserIdRegex = params.get("UserIdRegex")
+        self._BizId = params.get("BizId")
+        self._UserIdString = params.get("UserIdString")
+        self._UserIdRegex = params.get("UserIdRegex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2953,18 +5292,34 @@ class UpdateScanUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回结果码
+        :param _ErrorCode: 返回结果码
         :type ErrorCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.RequestId = params.get("RequestId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._RequestId = params.get("RequestId")
 
 
 class UserMicStatus(AbstractModel):
@@ -2974,26 +5329,51 @@ class UserMicStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableMic: 开麦状态。1表示关闭麦克风，2表示打开麦克风。
+        :param _EnableMic: 开麦状态。1表示关闭麦克风，2表示打开麦克风。
         :type EnableMic: int
-        :param Uid: 客户端用于标识用户的Openid。（Uid、StrUid必须填一个，优先处理StrUid。）
+        :param _Uid: 客户端用于标识用户的Openid。（Uid、StrUid必须填一个，优先处理StrUid。）
         :type Uid: int
-        :param StrUid: 客户端用于标识字符串型用户的Openid。（Uid、StrUid必须填一个，优先处理StrUid。）
+        :param _StrUid: 客户端用于标识字符串型用户的Openid。（Uid、StrUid必须填一个，优先处理StrUid。）
         :type StrUid: str
         """
-        self.EnableMic = None
-        self.Uid = None
-        self.StrUid = None
+        self._EnableMic = None
+        self._Uid = None
+        self._StrUid = None
+
+    @property
+    def EnableMic(self):
+        return self._EnableMic
+
+    @EnableMic.setter
+    def EnableMic(self, EnableMic):
+        self._EnableMic = EnableMic
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def StrUid(self):
+        return self._StrUid
+
+    @StrUid.setter
+    def StrUid(self, StrUid):
+        self._StrUid = StrUid
 
 
     def _deserialize(self, params):
-        self.EnableMic = params.get("EnableMic")
-        self.Uid = params.get("Uid")
-        self.StrUid = params.get("StrUid")
+        self._EnableMic = params.get("EnableMic")
+        self._Uid = params.get("Uid")
+        self._StrUid = params.get("StrUid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3006,28 +5386,45 @@ class VoiceFilterConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 语音过滤服务开关，取值：open/close
+        :param _Status: 语音过滤服务开关，取值：open/close
         :type Status: str
-        :param SceneInfos: 场景配置信息，如开关状态，回调地址。
+        :param _SceneInfos: 场景配置信息，如开关状态，回调地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SceneInfos: list of SceneInfo
         """
-        self.Status = None
-        self.SceneInfos = None
+        self._Status = None
+        self._SceneInfos = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SceneInfos(self):
+        return self._SceneInfos
+
+    @SceneInfos.setter
+    def SceneInfos(self, SceneInfos):
+        self._SceneInfos = SceneInfos
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self._Status = params.get("Status")
         if params.get("SceneInfos") is not None:
-            self.SceneInfos = []
+            self._SceneInfos = []
             for item in params.get("SceneInfos"):
                 obj = SceneInfo()
                 obj._deserialize(item)
-                self.SceneInfos.append(obj)
+                self._SceneInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3040,18 +5437,27 @@ class VoiceFilterStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Duration: 语音过滤总时长，单位为min
+        :param _Duration: 语音过滤总时长，单位为min
         :type Duration: int
         """
-        self.Duration = None
+        self._Duration = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
 
 
     def _deserialize(self, params):
-        self.Duration = params.get("Duration")
+        self._Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3064,22 +5470,39 @@ class VoiceMessageConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 离线语音服务开关，取值：open/close
+        :param _Status: 离线语音服务开关，取值：open/close
         :type Status: str
-        :param Language: 离线语音支持语种，取值： all-全部，cnen-中英文。默认为中英文
+        :param _Language: 离线语音支持语种，取值： all-全部，cnen-中英文。默认为中英文
         :type Language: str
         """
-        self.Status = None
-        self.Language = None
+        self._Status = None
+        self._Language = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Language = params.get("Language")
+        self._Status = params.get("Status")
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3092,18 +5515,27 @@ class VoiceMessageStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Dau: 离线语音DAU
+        :param _Dau: 离线语音DAU
         :type Dau: int
         """
-        self.Dau = None
+        self._Dau = None
+
+    @property
+    def Dau(self):
+        return self._Dau
+
+    @Dau.setter
+    def Dau(self, Dau):
+        self._Dau = Dau
 
 
     def _deserialize(self, params):
-        self.Dau = params.get("Dau")
+        self._Dau = params.get("Dau")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

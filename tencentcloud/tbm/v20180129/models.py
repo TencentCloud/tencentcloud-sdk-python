@@ -25,22 +25,39 @@ class AgePortrait(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgeRange: 年龄区间
+        :param _AgeRange: 年龄区间
         :type AgeRange: str
-        :param Percent: 百分比
+        :param _Percent: 百分比
         :type Percent: float
         """
-        self.AgeRange = None
-        self.Percent = None
+        self._AgeRange = None
+        self._Percent = None
+
+    @property
+    def AgeRange(self):
+        return self._AgeRange
+
+    @AgeRange.setter
+    def AgeRange(self, AgeRange):
+        self._AgeRange = AgeRange
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
 
 
     def _deserialize(self, params):
-        self.AgeRange = params.get("AgeRange")
-        self.Percent = params.get("Percent")
+        self._AgeRange = params.get("AgeRange")
+        self._Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,23 +70,32 @@ class AgePortraitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PortraitSet: 用户年龄画像数组
+        :param _PortraitSet: 用户年龄画像数组
         :type PortraitSet: list of AgePortrait
         """
-        self.PortraitSet = None
+        self._PortraitSet = None
+
+    @property
+    def PortraitSet(self):
+        return self._PortraitSet
+
+    @PortraitSet.setter
+    def PortraitSet(self, PortraitSet):
+        self._PortraitSet = PortraitSet
 
 
     def _deserialize(self, params):
         if params.get("PortraitSet") is not None:
-            self.PortraitSet = []
+            self._PortraitSet = []
             for item in params.get("PortraitSet"):
                 obj = AgePortrait()
                 obj._deserialize(item)
-                self.PortraitSet.append(obj)
+                self._PortraitSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -82,50 +108,123 @@ class BrandReportArticle(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Title: 文章标题
+        :param _Title: 文章标题
         :type Title: str
-        :param Url: 文章url地址
+        :param _Url: 文章url地址
         :type Url: str
-        :param FromSite: 文章来源
+        :param _FromSite: 文章来源
         :type FromSite: str
-        :param PubTime: 文章发表日期
+        :param _PubTime: 文章发表日期
         :type PubTime: str
-        :param Flag: 文章标识
+        :param _Flag: 文章标识
         :type Flag: int
-        :param Hot: 文章热度值
+        :param _Hot: 文章热度值
         :type Hot: int
-        :param Level: 文章来源等级
+        :param _Level: 文章来源等级
         :type Level: int
-        :param Abstract: 文章摘要
+        :param _Abstract: 文章摘要
         :type Abstract: str
-        :param ArticleId: 文章ID
+        :param _ArticleId: 文章ID
         :type ArticleId: str
         """
-        self.Title = None
-        self.Url = None
-        self.FromSite = None
-        self.PubTime = None
-        self.Flag = None
-        self.Hot = None
-        self.Level = None
-        self.Abstract = None
-        self.ArticleId = None
+        self._Title = None
+        self._Url = None
+        self._FromSite = None
+        self._PubTime = None
+        self._Flag = None
+        self._Hot = None
+        self._Level = None
+        self._Abstract = None
+        self._ArticleId = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def FromSite(self):
+        return self._FromSite
+
+    @FromSite.setter
+    def FromSite(self, FromSite):
+        self._FromSite = FromSite
+
+    @property
+    def PubTime(self):
+        return self._PubTime
+
+    @PubTime.setter
+    def PubTime(self, PubTime):
+        self._PubTime = PubTime
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Hot(self):
+        return self._Hot
+
+    @Hot.setter
+    def Hot(self, Hot):
+        self._Hot = Hot
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Abstract(self):
+        return self._Abstract
+
+    @Abstract.setter
+    def Abstract(self, Abstract):
+        self._Abstract = Abstract
+
+    @property
+    def ArticleId(self):
+        return self._ArticleId
+
+    @ArticleId.setter
+    def ArticleId(self, ArticleId):
+        self._ArticleId = ArticleId
 
 
     def _deserialize(self, params):
-        self.Title = params.get("Title")
-        self.Url = params.get("Url")
-        self.FromSite = params.get("FromSite")
-        self.PubTime = params.get("PubTime")
-        self.Flag = params.get("Flag")
-        self.Hot = params.get("Hot")
-        self.Level = params.get("Level")
-        self.Abstract = params.get("Abstract")
-        self.ArticleId = params.get("ArticleId")
+        self._Title = params.get("Title")
+        self._Url = params.get("Url")
+        self._FromSite = params.get("FromSite")
+        self._PubTime = params.get("PubTime")
+        self._Flag = params.get("Flag")
+        self._Hot = params.get("Hot")
+        self._Level = params.get("Level")
+        self._Abstract = params.get("Abstract")
+        self._ArticleId = params.get("ArticleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -138,26 +237,51 @@ class Comment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Date: 评论的日期
+        :param _Date: 评论的日期
         :type Date: str
-        :param NegCommentCount: 差评的个数
+        :param _NegCommentCount: 差评的个数
         :type NegCommentCount: int
-        :param PosCommentCount: 好评的个数
+        :param _PosCommentCount: 好评的个数
         :type PosCommentCount: int
         """
-        self.Date = None
-        self.NegCommentCount = None
-        self.PosCommentCount = None
+        self._Date = None
+        self._NegCommentCount = None
+        self._PosCommentCount = None
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def NegCommentCount(self):
+        return self._NegCommentCount
+
+    @NegCommentCount.setter
+    def NegCommentCount(self, NegCommentCount):
+        self._NegCommentCount = NegCommentCount
+
+    @property
+    def PosCommentCount(self):
+        return self._PosCommentCount
+
+    @PosCommentCount.setter
+    def PosCommentCount(self, PosCommentCount):
+        self._PosCommentCount = PosCommentCount
 
 
     def _deserialize(self, params):
-        self.Date = params.get("Date")
-        self.NegCommentCount = params.get("NegCommentCount")
-        self.PosCommentCount = params.get("PosCommentCount")
+        self._Date = params.get("Date")
+        self._NegCommentCount = params.get("NegCommentCount")
+        self._PosCommentCount = params.get("PosCommentCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -170,22 +294,39 @@ class CommentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Comment: 用户评论内容
+        :param _Comment: 用户评论内容
         :type Comment: str
-        :param Date: 评论的时间
+        :param _Date: 评论的时间
         :type Date: str
         """
-        self.Comment = None
-        self.Date = None
+        self._Comment = None
+        self._Date = None
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
 
 
     def _deserialize(self, params):
-        self.Comment = params.get("Comment")
-        self.Date = params.get("Date")
+        self._Comment = params.get("Comment")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -198,22 +339,39 @@ class DateCount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Date: 统计日期
+        :param _Date: 统计日期
         :type Date: str
-        :param Count: 统计值
+        :param _Count: 统计值
         :type Count: int
         """
-        self.Date = None
-        self.Count = None
+        self._Date = None
+        self._Count = None
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.Date = params.get("Date")
-        self.Count = params.get("Count")
+        self._Date = params.get("Date")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -226,26 +384,51 @@ class DescribeBrandCommentCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
-        :param StartDate: 查询开始日期
+        :param _StartDate: 查询开始日期
         :type StartDate: str
-        :param EndDate: 查询结束日期
+        :param _EndDate: 查询结束日期
         :type EndDate: str
         """
-        self.BrandId = None
-        self.StartDate = None
-        self.EndDate = None
+        self._BrandId = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
+        self._BrandId = params.get("BrandId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -258,23 +441,39 @@ class DescribeBrandCommentCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommentSet: 按天统计好评/差评数
+        :param _CommentSet: 按天统计好评/差评数
         :type CommentSet: list of Comment
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CommentSet = None
-        self.RequestId = None
+        self._CommentSet = None
+        self._RequestId = None
+
+    @property
+    def CommentSet(self):
+        return self._CommentSet
+
+    @CommentSet.setter
+    def CommentSet(self, CommentSet):
+        self._CommentSet = CommentSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CommentSet") is not None:
-            self.CommentSet = []
+            self._CommentSet = []
             for item in params.get("CommentSet"):
                 obj = Comment()
                 obj._deserialize(item)
-                self.CommentSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CommentSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBrandExposureRequest(AbstractModel):
@@ -284,26 +483,51 @@ class DescribeBrandExposureRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
-        :param StartDate: 查询开始时间
+        :param _StartDate: 查询开始时间
         :type StartDate: str
-        :param EndDate: 查询结束时间
+        :param _EndDate: 查询结束时间
         :type EndDate: str
         """
-        self.BrandId = None
-        self.StartDate = None
-        self.EndDate = None
+        self._BrandId = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
+        self._BrandId = params.get("BrandId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -316,27 +540,51 @@ class DescribeBrandExposureResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 累计曝光量
+        :param _TotalCount: 累计曝光量
         :type TotalCount: int
-        :param DateCountSet: 按天计算的统计数据
+        :param _DateCountSet: 按天计算的统计数据
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.DateCountSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._DateCountSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DateCountSet(self):
+        return self._DateCountSet
+
+    @DateCountSet.setter
+    def DateCountSet(self, DateCountSet):
+        self._DateCountSet = DateCountSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("DateCountSet") is not None:
-            self.DateCountSet = []
+            self._DateCountSet = []
             for item in params.get("DateCountSet"):
                 obj = DateCount()
                 obj._deserialize(item)
-                self.DateCountSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DateCountSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBrandMediaReportRequest(AbstractModel):
@@ -346,26 +594,51 @@ class DescribeBrandMediaReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
-        :param StartDate: 查询开始时间
+        :param _StartDate: 查询开始时间
         :type StartDate: str
-        :param EndDate: 查询结束时间
+        :param _EndDate: 查询结束时间
         :type EndDate: str
         """
-        self.BrandId = None
-        self.StartDate = None
-        self.EndDate = None
+        self._BrandId = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
+        self._BrandId = params.get("BrandId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -378,27 +651,51 @@ class DescribeBrandMediaReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 查询范围内文章总数
+        :param _TotalCount: 查询范围内文章总数
         :type TotalCount: int
-        :param DateCountSet: 按天计算的每天文章数
+        :param _DateCountSet: 按天计算的每天文章数
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.DateCountSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._DateCountSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DateCountSet(self):
+        return self._DateCountSet
+
+    @DateCountSet.setter
+    def DateCountSet(self, DateCountSet):
+        self._DateCountSet = DateCountSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("DateCountSet") is not None:
-            self.DateCountSet = []
+            self._DateCountSet = []
             for item in params.get("DateCountSet"):
                 obj = DateCount()
                 obj._deserialize(item)
-                self.DateCountSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DateCountSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBrandNegCommentsRequest(AbstractModel):
@@ -408,34 +705,75 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
-        :param StartDate: 查询开始时间
+        :param _StartDate: 查询开始时间
         :type StartDate: str
-        :param EndDate: 查询结束时间
+        :param _EndDate: 查询结束时间
         :type EndDate: str
-        :param Limit: 查询条数上限，默认20
+        :param _Limit: 查询条数上限，默认20
         :type Limit: int
-        :param Offset: 查询偏移，默认从0开始
+        :param _Offset: 查询偏移，默认从0开始
         :type Offset: int
         """
-        self.BrandId = None
-        self.StartDate = None
-        self.EndDate = None
-        self.Limit = None
-        self.Offset = None
+        self._BrandId = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._BrandId = params.get("BrandId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -448,27 +786,51 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandCommentSet: 评论列表
+        :param _BrandCommentSet: 评论列表
         :type BrandCommentSet: list of CommentInfo
-        :param TotalComments: 总的差评个数
+        :param _TotalComments: 总的差评个数
         :type TotalComments: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BrandCommentSet = None
-        self.TotalComments = None
-        self.RequestId = None
+        self._BrandCommentSet = None
+        self._TotalComments = None
+        self._RequestId = None
+
+    @property
+    def BrandCommentSet(self):
+        return self._BrandCommentSet
+
+    @BrandCommentSet.setter
+    def BrandCommentSet(self, BrandCommentSet):
+        self._BrandCommentSet = BrandCommentSet
+
+    @property
+    def TotalComments(self):
+        return self._TotalComments
+
+    @TotalComments.setter
+    def TotalComments(self, TotalComments):
+        self._TotalComments = TotalComments
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("BrandCommentSet") is not None:
-            self.BrandCommentSet = []
+            self._BrandCommentSet = []
             for item in params.get("BrandCommentSet"):
                 obj = CommentInfo()
                 obj._deserialize(item)
-                self.BrandCommentSet.append(obj)
-        self.TotalComments = params.get("TotalComments")
-        self.RequestId = params.get("RequestId")
+                self._BrandCommentSet.append(obj)
+        self._TotalComments = params.get("TotalComments")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBrandPosCommentsRequest(AbstractModel):
@@ -478,34 +840,75 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
-        :param StartDate: 查询开始时间
+        :param _StartDate: 查询开始时间
         :type StartDate: str
-        :param EndDate: 查询结束时间
+        :param _EndDate: 查询结束时间
         :type EndDate: str
-        :param Limit: 查询条数上限，默认20
+        :param _Limit: 查询条数上限，默认20
         :type Limit: int
-        :param Offset: 查询偏移，从0开始
+        :param _Offset: 查询偏移，从0开始
         :type Offset: int
         """
-        self.BrandId = None
-        self.StartDate = None
-        self.EndDate = None
-        self.Limit = None
-        self.Offset = None
+        self._BrandId = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._BrandId = params.get("BrandId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -518,27 +921,51 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandCommentSet: 评论列表
+        :param _BrandCommentSet: 评论列表
         :type BrandCommentSet: list of CommentInfo
-        :param TotalComments: 总的好评个数
+        :param _TotalComments: 总的好评个数
         :type TotalComments: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BrandCommentSet = None
-        self.TotalComments = None
-        self.RequestId = None
+        self._BrandCommentSet = None
+        self._TotalComments = None
+        self._RequestId = None
+
+    @property
+    def BrandCommentSet(self):
+        return self._BrandCommentSet
+
+    @BrandCommentSet.setter
+    def BrandCommentSet(self, BrandCommentSet):
+        self._BrandCommentSet = BrandCommentSet
+
+    @property
+    def TotalComments(self):
+        return self._TotalComments
+
+    @TotalComments.setter
+    def TotalComments(self, TotalComments):
+        self._TotalComments = TotalComments
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("BrandCommentSet") is not None:
-            self.BrandCommentSet = []
+            self._BrandCommentSet = []
             for item in params.get("BrandCommentSet"):
                 obj = CommentInfo()
                 obj._deserialize(item)
-                self.BrandCommentSet.append(obj)
-        self.TotalComments = params.get("TotalComments")
-        self.RequestId = params.get("RequestId")
+                self._BrandCommentSet.append(obj)
+        self._TotalComments = params.get("TotalComments")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBrandSocialOpinionRequest(AbstractModel):
@@ -548,38 +975,87 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
-        :param StartDate: 检索开始时间
+        :param _StartDate: 检索开始时间
         :type StartDate: str
-        :param EndDate: 检索结束时间
+        :param _EndDate: 检索结束时间
         :type EndDate: str
-        :param Offset: 查询偏移，默认从0开始
+        :param _Offset: 查询偏移，默认从0开始
         :type Offset: int
-        :param Limit: 查询条数上限，默认20
+        :param _Limit: 查询条数上限，默认20
         :type Limit: int
-        :param ShowList: 列表显示标记，若为true，则返回文章列表详情
+        :param _ShowList: 列表显示标记，若为true，则返回文章列表详情
         :type ShowList: bool
         """
-        self.BrandId = None
-        self.StartDate = None
-        self.EndDate = None
-        self.Offset = None
-        self.Limit = None
-        self.ShowList = None
+        self._BrandId = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Offset = None
+        self._Limit = None
+        self._ShowList = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ShowList(self):
+        return self._ShowList
+
+    @ShowList.setter
+    def ShowList(self, ShowList):
+        self._ShowList = ShowList
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ShowList = params.get("ShowList")
+        self._BrandId = params.get("BrandId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ShowList = params.get("ShowList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -592,35 +1068,75 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ArticleCount: 文章总数
+        :param _ArticleCount: 文章总数
         :type ArticleCount: int
-        :param FromCount: 来源统计总数
+        :param _FromCount: 来源统计总数
         :type FromCount: int
-        :param AdverseCount: 疑似负面报道总数
+        :param _AdverseCount: 疑似负面报道总数
         :type AdverseCount: int
-        :param ArticleSet: 文章列表详情
+        :param _ArticleSet: 文章列表详情
         :type ArticleSet: list of BrandReportArticle
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ArticleCount = None
-        self.FromCount = None
-        self.AdverseCount = None
-        self.ArticleSet = None
-        self.RequestId = None
+        self._ArticleCount = None
+        self._FromCount = None
+        self._AdverseCount = None
+        self._ArticleSet = None
+        self._RequestId = None
+
+    @property
+    def ArticleCount(self):
+        return self._ArticleCount
+
+    @ArticleCount.setter
+    def ArticleCount(self, ArticleCount):
+        self._ArticleCount = ArticleCount
+
+    @property
+    def FromCount(self):
+        return self._FromCount
+
+    @FromCount.setter
+    def FromCount(self, FromCount):
+        self._FromCount = FromCount
+
+    @property
+    def AdverseCount(self):
+        return self._AdverseCount
+
+    @AdverseCount.setter
+    def AdverseCount(self, AdverseCount):
+        self._AdverseCount = AdverseCount
+
+    @property
+    def ArticleSet(self):
+        return self._ArticleSet
+
+    @ArticleSet.setter
+    def ArticleSet(self, ArticleSet):
+        self._ArticleSet = ArticleSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ArticleCount = params.get("ArticleCount")
-        self.FromCount = params.get("FromCount")
-        self.AdverseCount = params.get("AdverseCount")
+        self._ArticleCount = params.get("ArticleCount")
+        self._FromCount = params.get("FromCount")
+        self._AdverseCount = params.get("AdverseCount")
         if params.get("ArticleSet") is not None:
-            self.ArticleSet = []
+            self._ArticleSet = []
             for item in params.get("ArticleSet"):
                 obj = BrandReportArticle()
                 obj._deserialize(item)
-                self.ArticleSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ArticleSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBrandSocialReportRequest(AbstractModel):
@@ -630,26 +1146,51 @@ class DescribeBrandSocialReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
-        :param StartDate: 查询开始时间
+        :param _StartDate: 查询开始时间
         :type StartDate: str
-        :param EndDate: 查询结束时间
+        :param _EndDate: 查询结束时间
         :type EndDate: str
         """
-        self.BrandId = None
-        self.StartDate = None
-        self.EndDate = None
+        self._BrandId = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
+        self._BrandId = params.get("BrandId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -662,27 +1203,51 @@ class DescribeBrandSocialReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 累计统计数据
+        :param _TotalCount: 累计统计数据
         :type TotalCount: int
-        :param DateCountSet: 按天计算的统计数据
+        :param _DateCountSet: 按天计算的统计数据
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.DateCountSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._DateCountSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DateCountSet(self):
+        return self._DateCountSet
+
+    @DateCountSet.setter
+    def DateCountSet(self, DateCountSet):
+        self._DateCountSet = DateCountSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("DateCountSet") is not None:
-            self.DateCountSet = []
+            self._DateCountSet = []
             for item in params.get("DateCountSet"):
                 obj = DateCount()
                 obj._deserialize(item)
-                self.DateCountSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DateCountSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIndustryNewsRequest(AbstractModel):
@@ -692,38 +1257,87 @@ class DescribeIndustryNewsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IndustryId: 行业ID
+        :param _IndustryId: 行业ID
         :type IndustryId: str
-        :param StartDate: 查询开始时间
+        :param _StartDate: 查询开始时间
         :type StartDate: str
-        :param EndDate: 查询结束时间
+        :param _EndDate: 查询结束时间
         :type EndDate: str
-        :param ShowList: 是否显示列表，若为 true，则返回文章列表
+        :param _ShowList: 是否显示列表，若为 true，则返回文章列表
         :type ShowList: bool
-        :param Offset: 查询偏移，默认从0开始
+        :param _Offset: 查询偏移，默认从0开始
         :type Offset: int
-        :param Limit: 查询条数上限，默认20
+        :param _Limit: 查询条数上限，默认20
         :type Limit: int
         """
-        self.IndustryId = None
-        self.StartDate = None
-        self.EndDate = None
-        self.ShowList = None
-        self.Offset = None
-        self.Limit = None
+        self._IndustryId = None
+        self._StartDate = None
+        self._EndDate = None
+        self._ShowList = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def IndustryId(self):
+        return self._IndustryId
+
+    @IndustryId.setter
+    def IndustryId(self, IndustryId):
+        self._IndustryId = IndustryId
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def ShowList(self):
+        return self._ShowList
+
+    @ShowList.setter
+    def ShowList(self, ShowList):
+        self._ShowList = ShowList
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.IndustryId = params.get("IndustryId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.ShowList = params.get("ShowList")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._IndustryId = params.get("IndustryId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._ShowList = params.get("ShowList")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -736,44 +1350,92 @@ class DescribeIndustryNewsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NewsCount: 总计文章数量
+        :param _NewsCount: 总计文章数量
         :type NewsCount: int
-        :param FromCount: 总计来源数量
+        :param _FromCount: 总计来源数量
         :type FromCount: int
-        :param AdverseCount: 总计疑似负面数量
+        :param _AdverseCount: 总计疑似负面数量
         :type AdverseCount: int
-        :param NewsSet: 文章列表
+        :param _NewsSet: 文章列表
         :type NewsSet: list of IndustryNews
-        :param DateCountSet: 按天统计的数量列表
+        :param _DateCountSet: 按天统计的数量列表
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NewsCount = None
-        self.FromCount = None
-        self.AdverseCount = None
-        self.NewsSet = None
-        self.DateCountSet = None
-        self.RequestId = None
+        self._NewsCount = None
+        self._FromCount = None
+        self._AdverseCount = None
+        self._NewsSet = None
+        self._DateCountSet = None
+        self._RequestId = None
+
+    @property
+    def NewsCount(self):
+        return self._NewsCount
+
+    @NewsCount.setter
+    def NewsCount(self, NewsCount):
+        self._NewsCount = NewsCount
+
+    @property
+    def FromCount(self):
+        return self._FromCount
+
+    @FromCount.setter
+    def FromCount(self, FromCount):
+        self._FromCount = FromCount
+
+    @property
+    def AdverseCount(self):
+        return self._AdverseCount
+
+    @AdverseCount.setter
+    def AdverseCount(self, AdverseCount):
+        self._AdverseCount = AdverseCount
+
+    @property
+    def NewsSet(self):
+        return self._NewsSet
+
+    @NewsSet.setter
+    def NewsSet(self, NewsSet):
+        self._NewsSet = NewsSet
+
+    @property
+    def DateCountSet(self):
+        return self._DateCountSet
+
+    @DateCountSet.setter
+    def DateCountSet(self, DateCountSet):
+        self._DateCountSet = DateCountSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.NewsCount = params.get("NewsCount")
-        self.FromCount = params.get("FromCount")
-        self.AdverseCount = params.get("AdverseCount")
+        self._NewsCount = params.get("NewsCount")
+        self._FromCount = params.get("FromCount")
+        self._AdverseCount = params.get("AdverseCount")
         if params.get("NewsSet") is not None:
-            self.NewsSet = []
+            self._NewsSet = []
             for item in params.get("NewsSet"):
                 obj = IndustryNews()
                 obj._deserialize(item)
-                self.NewsSet.append(obj)
+                self._NewsSet.append(obj)
         if params.get("DateCountSet") is not None:
-            self.DateCountSet = []
+            self._DateCountSet = []
             for item in params.get("DateCountSet"):
                 obj = DateCount()
                 obj._deserialize(item)
-                self.DateCountSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DateCountSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserPortraitRequest(AbstractModel):
@@ -783,18 +1445,27 @@ class DescribeUserPortraitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandId: 品牌ID
+        :param _BrandId: 品牌ID
         :type BrandId: str
         """
-        self.BrandId = None
+        self._BrandId = None
+
+    @property
+    def BrandId(self):
+        return self._BrandId
+
+    @BrandId.setter
+    def BrandId(self, BrandId):
+        self._BrandId = BrandId
 
 
     def _deserialize(self, params):
-        self.BrandId = params.get("BrandId")
+        self._BrandId = params.get("BrandId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -807,44 +1478,92 @@ class DescribeUserPortraitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Age: 年龄画像
+        :param _Age: 年龄画像
         :type Age: :class:`tencentcloud.tbm.v20180129.models.AgePortraitInfo`
-        :param Gender: 性别画像
+        :param _Gender: 性别画像
         :type Gender: :class:`tencentcloud.tbm.v20180129.models.GenderPortraitInfo`
-        :param Province: 省份画像
+        :param _Province: 省份画像
         :type Province: :class:`tencentcloud.tbm.v20180129.models.ProvincePortraitInfo`
-        :param Movie: 电影喜好画像
+        :param _Movie: 电影喜好画像
         :type Movie: :class:`tencentcloud.tbm.v20180129.models.MoviePortraitInfo`
-        :param Star: 明星喜好画像
+        :param _Star: 明星喜好画像
         :type Star: :class:`tencentcloud.tbm.v20180129.models.StarPortraitInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Age = None
-        self.Gender = None
-        self.Province = None
-        self.Movie = None
-        self.Star = None
-        self.RequestId = None
+        self._Age = None
+        self._Gender = None
+        self._Province = None
+        self._Movie = None
+        self._Star = None
+        self._RequestId = None
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def Movie(self):
+        return self._Movie
+
+    @Movie.setter
+    def Movie(self, Movie):
+        self._Movie = Movie
+
+    @property
+    def Star(self):
+        return self._Star
+
+    @Star.setter
+    def Star(self, Star):
+        self._Star = Star
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Age") is not None:
-            self.Age = AgePortraitInfo()
-            self.Age._deserialize(params.get("Age"))
+            self._Age = AgePortraitInfo()
+            self._Age._deserialize(params.get("Age"))
         if params.get("Gender") is not None:
-            self.Gender = GenderPortraitInfo()
-            self.Gender._deserialize(params.get("Gender"))
+            self._Gender = GenderPortraitInfo()
+            self._Gender._deserialize(params.get("Gender"))
         if params.get("Province") is not None:
-            self.Province = ProvincePortraitInfo()
-            self.Province._deserialize(params.get("Province"))
+            self._Province = ProvincePortraitInfo()
+            self._Province._deserialize(params.get("Province"))
         if params.get("Movie") is not None:
-            self.Movie = MoviePortraitInfo()
-            self.Movie._deserialize(params.get("Movie"))
+            self._Movie = MoviePortraitInfo()
+            self._Movie._deserialize(params.get("Movie"))
         if params.get("Star") is not None:
-            self.Star = StarPortraitInfo()
-            self.Star._deserialize(params.get("Star"))
-        self.RequestId = params.get("RequestId")
+            self._Star = StarPortraitInfo()
+            self._Star._deserialize(params.get("Star"))
+        self._RequestId = params.get("RequestId")
 
 
 class GenderPortrait(AbstractModel):
@@ -854,22 +1573,39 @@ class GenderPortrait(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Gender: 性别
+        :param _Gender: 性别
         :type Gender: str
-        :param Percent: 百分比
+        :param _Percent: 百分比
         :type Percent: int
         """
-        self.Gender = None
-        self.Percent = None
+        self._Gender = None
+        self._Percent = None
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
 
 
     def _deserialize(self, params):
-        self.Gender = params.get("Gender")
-        self.Percent = params.get("Percent")
+        self._Gender = params.get("Gender")
+        self._Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -882,23 +1618,32 @@ class GenderPortraitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PortraitSet: 用户性别画像数组
+        :param _PortraitSet: 用户性别画像数组
         :type PortraitSet: list of GenderPortrait
         """
-        self.PortraitSet = None
+        self._PortraitSet = None
+
+    @property
+    def PortraitSet(self):
+        return self._PortraitSet
+
+    @PortraitSet.setter
+    def PortraitSet(self, PortraitSet):
+        self._PortraitSet = PortraitSet
 
 
     def _deserialize(self, params):
         if params.get("PortraitSet") is not None:
-            self.PortraitSet = []
+            self._PortraitSet = []
             for item in params.get("PortraitSet"):
                 obj = GenderPortrait()
                 obj._deserialize(item)
-                self.PortraitSet.append(obj)
+                self._PortraitSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -911,50 +1656,123 @@ class IndustryNews(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IndustryId: 行业报道ID
+        :param _IndustryId: 行业报道ID
         :type IndustryId: str
-        :param PubTime: 报道发表时间
+        :param _PubTime: 报道发表时间
         :type PubTime: str
-        :param FromSite: 报道来源
+        :param _FromSite: 报道来源
         :type FromSite: str
-        :param Title: 报道标题
+        :param _Title: 报道标题
         :type Title: str
-        :param Url: 报道来源url
+        :param _Url: 报道来源url
         :type Url: str
-        :param Level: 报道来源等级
+        :param _Level: 报道来源等级
         :type Level: int
-        :param Hot: 热度值
+        :param _Hot: 热度值
         :type Hot: int
-        :param Flag: 报道标识
+        :param _Flag: 报道标识
         :type Flag: int
-        :param Abstract: 报道摘要
+        :param _Abstract: 报道摘要
         :type Abstract: str
         """
-        self.IndustryId = None
-        self.PubTime = None
-        self.FromSite = None
-        self.Title = None
-        self.Url = None
-        self.Level = None
-        self.Hot = None
-        self.Flag = None
-        self.Abstract = None
+        self._IndustryId = None
+        self._PubTime = None
+        self._FromSite = None
+        self._Title = None
+        self._Url = None
+        self._Level = None
+        self._Hot = None
+        self._Flag = None
+        self._Abstract = None
+
+    @property
+    def IndustryId(self):
+        return self._IndustryId
+
+    @IndustryId.setter
+    def IndustryId(self, IndustryId):
+        self._IndustryId = IndustryId
+
+    @property
+    def PubTime(self):
+        return self._PubTime
+
+    @PubTime.setter
+    def PubTime(self, PubTime):
+        self._PubTime = PubTime
+
+    @property
+    def FromSite(self):
+        return self._FromSite
+
+    @FromSite.setter
+    def FromSite(self, FromSite):
+        self._FromSite = FromSite
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Hot(self):
+        return self._Hot
+
+    @Hot.setter
+    def Hot(self, Hot):
+        self._Hot = Hot
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Abstract(self):
+        return self._Abstract
+
+    @Abstract.setter
+    def Abstract(self, Abstract):
+        self._Abstract = Abstract
 
 
     def _deserialize(self, params):
-        self.IndustryId = params.get("IndustryId")
-        self.PubTime = params.get("PubTime")
-        self.FromSite = params.get("FromSite")
-        self.Title = params.get("Title")
-        self.Url = params.get("Url")
-        self.Level = params.get("Level")
-        self.Hot = params.get("Hot")
-        self.Flag = params.get("Flag")
-        self.Abstract = params.get("Abstract")
+        self._IndustryId = params.get("IndustryId")
+        self._PubTime = params.get("PubTime")
+        self._FromSite = params.get("FromSite")
+        self._Title = params.get("Title")
+        self._Url = params.get("Url")
+        self._Level = params.get("Level")
+        self._Hot = params.get("Hot")
+        self._Flag = params.get("Flag")
+        self._Abstract = params.get("Abstract")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -967,22 +1785,39 @@ class MoviePortrait(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 电影名称
+        :param _Name: 电影名称
         :type Name: str
-        :param Percent: 百分比
+        :param _Percent: 百分比
         :type Percent: float
         """
-        self.Name = None
-        self.Percent = None
+        self._Name = None
+        self._Percent = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Percent = params.get("Percent")
+        self._Name = params.get("Name")
+        self._Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -995,23 +1830,32 @@ class MoviePortraitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PortraitSet: 用户喜好电影画像数组
+        :param _PortraitSet: 用户喜好电影画像数组
         :type PortraitSet: list of MoviePortrait
         """
-        self.PortraitSet = None
+        self._PortraitSet = None
+
+    @property
+    def PortraitSet(self):
+        return self._PortraitSet
+
+    @PortraitSet.setter
+    def PortraitSet(self, PortraitSet):
+        self._PortraitSet = PortraitSet
 
 
     def _deserialize(self, params):
         if params.get("PortraitSet") is not None:
-            self.PortraitSet = []
+            self._PortraitSet = []
             for item in params.get("PortraitSet"):
                 obj = MoviePortrait()
                 obj._deserialize(item)
-                self.PortraitSet.append(obj)
+                self._PortraitSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1024,22 +1868,39 @@ class ProvincePortrait(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Province: 省份名称
+        :param _Province: 省份名称
         :type Province: str
-        :param Percent: 百分比
+        :param _Percent: 百分比
         :type Percent: float
         """
-        self.Province = None
-        self.Percent = None
+        self._Province = None
+        self._Percent = None
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
 
 
     def _deserialize(self, params):
-        self.Province = params.get("Province")
-        self.Percent = params.get("Percent")
+        self._Province = params.get("Province")
+        self._Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1052,23 +1913,32 @@ class ProvincePortraitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PortraitSet: 用户省份画像数组
+        :param _PortraitSet: 用户省份画像数组
         :type PortraitSet: list of ProvincePortrait
         """
-        self.PortraitSet = None
+        self._PortraitSet = None
+
+    @property
+    def PortraitSet(self):
+        return self._PortraitSet
+
+    @PortraitSet.setter
+    def PortraitSet(self, PortraitSet):
+        self._PortraitSet = PortraitSet
 
 
     def _deserialize(self, params):
         if params.get("PortraitSet") is not None:
-            self.PortraitSet = []
+            self._PortraitSet = []
             for item in params.get("PortraitSet"):
                 obj = ProvincePortrait()
                 obj._deserialize(item)
-                self.PortraitSet.append(obj)
+                self._PortraitSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1081,22 +1951,39 @@ class StarPortrait(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 喜欢的明星名字
+        :param _Name: 喜欢的明星名字
         :type Name: str
-        :param Percent: 百分比
+        :param _Percent: 百分比
         :type Percent: float
         """
-        self.Name = None
-        self.Percent = None
+        self._Name = None
+        self._Percent = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Percent = params.get("Percent")
+        self._Name = params.get("Name")
+        self._Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1109,23 +1996,32 @@ class StarPortraitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PortraitSet: 用户喜好的明星画像数组
+        :param _PortraitSet: 用户喜好的明星画像数组
         :type PortraitSet: list of StarPortrait
         """
-        self.PortraitSet = None
+        self._PortraitSet = None
+
+    @property
+    def PortraitSet(self):
+        return self._PortraitSet
+
+    @PortraitSet.setter
+    def PortraitSet(self, PortraitSet):
+        self._PortraitSet = PortraitSet
 
 
     def _deserialize(self, params):
         if params.get("PortraitSet") is not None:
-            self.PortraitSet = []
+            self._PortraitSet = []
             for item in params.get("PortraitSet"):
                 obj = StarPortrait()
                 obj._deserialize(item)
-                self.PortraitSet.append(obj)
+                self._PortraitSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

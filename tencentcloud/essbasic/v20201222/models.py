@@ -25,34 +25,75 @@ class Address(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Province: 省份
+        :param _Province: 省份
         :type Province: str
-        :param City: 城市
+        :param _City: 城市
         :type City: str
-        :param County: 区县
+        :param _County: 区县
         :type County: str
-        :param Details: 详细地址
+        :param _Details: 详细地址
         :type Details: str
-        :param Country: 国家，默认中国
+        :param _Country: 国家，默认中国
         :type Country: str
         """
-        self.Province = None
-        self.City = None
-        self.County = None
-        self.Details = None
-        self.Country = None
+        self._Province = None
+        self._City = None
+        self._County = None
+        self._Details = None
+        self._Country = None
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def County(self):
+        return self._County
+
+    @County.setter
+    def County(self, County):
+        self._County = County
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
 
 
     def _deserialize(self, params):
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.County = params.get("County")
-        self.Details = params.get("Details")
-        self.Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._County = params.get("County")
+        self._Details = params.get("Details")
+        self._Country = params.get("Country")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -65,24 +106,41 @@ class ArchiveFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
         """
-        self.Caller = None
-        self.FlowId = None
+        self._Caller = None
+        self._FlowId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -95,14 +153,22 @@ class ArchiveFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Caller(AbstractModel):
@@ -112,26 +178,51 @@ class Caller(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: 应用号
+        :param _ApplicationId: 应用号
         :type ApplicationId: str
-        :param SubOrganizationId: 下属机构ID
+        :param _SubOrganizationId: 下属机构ID
         :type SubOrganizationId: str
-        :param OperatorId: 经办人的用户ID
+        :param _OperatorId: 经办人的用户ID
         :type OperatorId: str
         """
-        self.ApplicationId = None
-        self.SubOrganizationId = None
-        self.OperatorId = None
+        self._ApplicationId = None
+        self._SubOrganizationId = None
+        self._OperatorId = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def OperatorId(self):
+        return self._OperatorId
+
+    @OperatorId.setter
+    def OperatorId(self, OperatorId):
+        self._OperatorId = OperatorId
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.OperatorId = params.get("OperatorId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._OperatorId = params.get("OperatorId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -144,28 +235,53 @@ class CancelFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
-        :param CancelMessage: 撤销原因
+        :param _CancelMessage: 撤销原因
         :type CancelMessage: str
         """
-        self.Caller = None
-        self.FlowId = None
-        self.CancelMessage = None
+        self._Caller = None
+        self._FlowId = None
+        self._CancelMessage = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def CancelMessage(self):
+        return self._CancelMessage
+
+    @CancelMessage.setter
+    def CancelMessage(self, CancelMessage):
+        self._CancelMessage = CancelMessage
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
-        self.CancelMessage = params.get("CancelMessage")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
+        self._CancelMessage = params.get("CancelMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -178,14 +294,22 @@ class CancelFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CatalogApprovers(AbstractModel):
@@ -195,27 +319,44 @@ class CatalogApprovers(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
-        :param Approvers: 参与者列表
+        :param _Approvers: 参与者列表
         :type Approvers: list of FlowApproverInfo
         """
-        self.FlowId = None
-        self.Approvers = None
+        self._FlowId = None
+        self._Approvers = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("Approvers") is not None:
-            self.Approvers = []
+            self._Approvers = []
             for item in params.get("Approvers"):
                 obj = FlowApproverInfo()
                 obj._deserialize(item)
-                self.Approvers.append(obj)
+                self._Approvers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -228,31 +369,56 @@ class CatalogComponents(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
-        :param SignComponents: 签署区列表
+        :param _SignComponents: 签署区列表
         :type SignComponents: list of Component
-        :param SignId: 签署任务ID
+        :param _SignId: 签署任务ID
         :type SignId: str
         """
-        self.FlowId = None
-        self.SignComponents = None
-        self.SignId = None
+        self._FlowId = None
+        self._SignComponents = None
+        self._SignId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("SignComponents") is not None:
-            self.SignComponents = []
+            self._SignComponents = []
             for item in params.get("SignComponents"):
                 obj = Component()
                 obj._deserialize(item)
-                self.SignComponents.append(obj)
-        self.SignId = params.get("SignId")
+                self._SignComponents.append(obj)
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -265,28 +431,53 @@ class CheckBankCard2EVerificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param BankCard: 银行卡号
+        :param _BankCard: 银行卡号
         :type BankCard: str
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
         """
-        self.Caller = None
-        self.BankCard = None
-        self.Name = None
+        self._Caller = None
+        self._BankCard = None
+        self._Name = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def BankCard(self):
+        return self._BankCard
+
+    @BankCard.setter
+    def BankCard(self, BankCard):
+        self._BankCard = BankCard
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.BankCard = params.get("BankCard")
-        self.Name = params.get("Name")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._BankCard = params.get("BankCard")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -299,7 +490,7 @@ class CheckBankCard2EVerificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 检测结果
+        :param _Result: 检测结果
 计费结果码：
   0:  认证通过
   1:  认证未通过
@@ -322,20 +513,44 @@ class CheckBankCard2EVerificationResponse(AbstractModel):
   104: 身份证号码有误
   105: 手机号码不合法
         :type Result: int
-        :param Description: 结果描述; 未通过时必选
+        :param _Description: 结果描述; 未通过时必选
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckBankCard3EVerificationRequest(AbstractModel):
@@ -345,36 +560,77 @@ class CheckBankCard3EVerificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param BankCard: 银行卡号
+        :param _BankCard: 银行卡号
         :type BankCard: str
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param IdCardNumber: 身份证件号码
+        :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param IdCardType: 身份证件类型; ID_CARD
+        :param _IdCardType: 身份证件类型; ID_CARD
         :type IdCardType: str
         """
-        self.Caller = None
-        self.BankCard = None
-        self.Name = None
-        self.IdCardNumber = None
-        self.IdCardType = None
+        self._Caller = None
+        self._BankCard = None
+        self._Name = None
+        self._IdCardNumber = None
+        self._IdCardType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def BankCard(self):
+        return self._BankCard
+
+    @BankCard.setter
+    def BankCard(self, BankCard):
+        self._BankCard = BankCard
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.BankCard = params.get("BankCard")
-        self.Name = params.get("Name")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.IdCardType = params.get("IdCardType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._BankCard = params.get("BankCard")
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._IdCardType = params.get("IdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -387,7 +643,7 @@ class CheckBankCard3EVerificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 检测结果
+        :param _Result: 检测结果
 计费结果码：
   0:  认证通过
   1:  认证未通过
@@ -410,20 +666,44 @@ class CheckBankCard3EVerificationResponse(AbstractModel):
   104: 身份证号码有误
   105: 手机号码不合法
         :type Result: int
-        :param Description: 结果描述; 未通过时必选
+        :param _Description: 结果描述; 未通过时必选
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckBankCard4EVerificationRequest(AbstractModel):
@@ -433,40 +713,89 @@ class CheckBankCard4EVerificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param BankCard: 银行卡号
+        :param _BankCard: 银行卡号
         :type BankCard: str
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param IdCardNumber: 身份证件号码
+        :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param Mobile: 手机号
+        :param _Mobile: 手机号
         :type Mobile: str
-        :param IdCardType: 身份证件类型; ID_CARD
+        :param _IdCardType: 身份证件类型; ID_CARD
         :type IdCardType: str
         """
-        self.Caller = None
-        self.BankCard = None
-        self.Name = None
-        self.IdCardNumber = None
-        self.Mobile = None
-        self.IdCardType = None
+        self._Caller = None
+        self._BankCard = None
+        self._Name = None
+        self._IdCardNumber = None
+        self._Mobile = None
+        self._IdCardType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def BankCard(self):
+        return self._BankCard
+
+    @BankCard.setter
+    def BankCard(self, BankCard):
+        self._BankCard = BankCard
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.BankCard = params.get("BankCard")
-        self.Name = params.get("Name")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.Mobile = params.get("Mobile")
-        self.IdCardType = params.get("IdCardType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._BankCard = params.get("BankCard")
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._Mobile = params.get("Mobile")
+        self._IdCardType = params.get("IdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -479,7 +808,7 @@ class CheckBankCard4EVerificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 检测结果
+        :param _Result: 检测结果
 计费结果码：
   0:  认证通过
   1:  认证未通过
@@ -502,20 +831,44 @@ class CheckBankCard4EVerificationResponse(AbstractModel):
   104: 身份证号码有误
   105: 手机号码不合法
         :type Result: int
-        :param Description: 结果描述; 未通过时必选
+        :param _Description: 结果描述; 未通过时必选
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckBankCardVerificationRequest(AbstractModel):
@@ -525,40 +878,89 @@ class CheckBankCardVerificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param BankCard: 银行卡号
+        :param _BankCard: 银行卡号
         :type BankCard: str
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param IdCardNumber: 身份证件号码
+        :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param Mobile: 手机号
+        :param _Mobile: 手机号
         :type Mobile: str
-        :param IdCardType: 身份证件类型; ID_CARD
+        :param _IdCardType: 身份证件类型; ID_CARD
         :type IdCardType: str
         """
-        self.Caller = None
-        self.BankCard = None
-        self.Name = None
-        self.IdCardNumber = None
-        self.Mobile = None
-        self.IdCardType = None
+        self._Caller = None
+        self._BankCard = None
+        self._Name = None
+        self._IdCardNumber = None
+        self._Mobile = None
+        self._IdCardType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def BankCard(self):
+        return self._BankCard
+
+    @BankCard.setter
+    def BankCard(self, BankCard):
+        self._BankCard = BankCard
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.BankCard = params.get("BankCard")
-        self.Name = params.get("Name")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.Mobile = params.get("Mobile")
-        self.IdCardType = params.get("IdCardType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._BankCard = params.get("BankCard")
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._Mobile = params.get("Mobile")
+        self._IdCardType = params.get("IdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -571,7 +973,7 @@ class CheckBankCardVerificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 检测结果
+        :param _Result: 检测结果
 计费结果码：
   0:  认证通过
   1:  认证未通过
@@ -594,20 +996,44 @@ class CheckBankCardVerificationResponse(AbstractModel):
   104: 身份证号码有误
   105: 手机号码不合法
         :type Result: int
-        :param Description: 结果描述; 未通过时必选
+        :param _Description: 结果描述; 未通过时必选
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckFaceIdentifyRequest(AbstractModel):
@@ -617,40 +1043,89 @@ class CheckFaceIdentifyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param VerifyChannel: 人脸核身渠道; 必选; WEIXINAPP:腾讯电子签小程序,FACEID:腾讯电子签慧眼,None:白名单中的客户直接通过
+        :param _VerifyChannel: 人脸核身渠道; 必选; WEIXINAPP:腾讯电子签小程序,FACEID:腾讯电子签慧眼,None:白名单中的客户直接通过
         :type VerifyChannel: str
-        :param VerifyResult: 核身订单号; 必选; 对于WEIXINAPP,直接取响应的{VerifyResult};对于FACEID,使用{WbAppId}:{OrderNo}拼接
+        :param _VerifyResult: 核身订单号; 必选; 对于WEIXINAPP,直接取响应的{VerifyResult};对于FACEID,使用{WbAppId}:{OrderNo}拼接
         :type VerifyResult: str
-        :param Name: 要对比的姓名; 可选; 未填写时对比caller.OperatorId的实名信息
+        :param _Name: 要对比的姓名; 可选; 未填写时对比caller.OperatorId的实名信息
         :type Name: str
-        :param IdCardNumber: 要对比的身份证号码; 可选; 未填写时对比caller.OperatorId的实名信息
+        :param _IdCardNumber: 要对比的身份证号码; 可选; 未填写时对比caller.OperatorId的实名信息
         :type IdCardNumber: str
-        :param GetPhoto: 是否取认证时的照片
+        :param _GetPhoto: 是否取认证时的照片
         :type GetPhoto: bool
         """
-        self.Caller = None
-        self.VerifyChannel = None
-        self.VerifyResult = None
-        self.Name = None
-        self.IdCardNumber = None
-        self.GetPhoto = None
+        self._Caller = None
+        self._VerifyChannel = None
+        self._VerifyResult = None
+        self._Name = None
+        self._IdCardNumber = None
+        self._GetPhoto = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def VerifyResult(self):
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def GetPhoto(self):
+        return self._GetPhoto
+
+    @GetPhoto.setter
+    def GetPhoto(self, GetPhoto):
+        self._GetPhoto = GetPhoto
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.VerifyResult = params.get("VerifyResult")
-        self.Name = params.get("Name")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.GetPhoto = params.get("GetPhoto")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._VerifyResult = params.get("VerifyResult")
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._GetPhoto = params.get("GetPhoto")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -663,50 +1138,122 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 核身结果; 0:通过,1:不通过
+        :param _Result: 核身结果; 0:通过,1:不通过
         :type Result: int
-        :param Description: 核身结果描述
+        :param _Description: 核身结果描述
         :type Description: str
-        :param ChannelName: 渠道名
+        :param _ChannelName: 渠道名
         :type ChannelName: str
-        :param VerifiedOn: 认证通过时间
+        :param _VerifiedOn: 认证通过时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifiedOn: int
-        :param SerialNumber: 核身流水号
+        :param _SerialNumber: 核身流水号
         :type SerialNumber: str
-        :param VerifyServerIp: 渠道核身服务器IP
+        :param _VerifyServerIp: 渠道核身服务器IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyServerIp: str
-        :param PhotoFileName: 核身照片文件名
+        :param _PhotoFileName: 核身照片文件名
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhotoFileName: str
-        :param PhotoFileData: 核身照片内容base64(文件格式见文件名后缀,一般为jpg)
+        :param _PhotoFileData: 核身照片内容base64(文件格式见文件名后缀,一般为jpg)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhotoFileData: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.ChannelName = None
-        self.VerifiedOn = None
-        self.SerialNumber = None
-        self.VerifyServerIp = None
-        self.PhotoFileName = None
-        self.PhotoFileData = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._ChannelName = None
+        self._VerifiedOn = None
+        self._SerialNumber = None
+        self._VerifyServerIp = None
+        self._PhotoFileName = None
+        self._PhotoFileData = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def VerifiedOn(self):
+        return self._VerifiedOn
+
+    @VerifiedOn.setter
+    def VerifiedOn(self, VerifiedOn):
+        self._VerifiedOn = VerifiedOn
+
+    @property
+    def SerialNumber(self):
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def VerifyServerIp(self):
+        return self._VerifyServerIp
+
+    @VerifyServerIp.setter
+    def VerifyServerIp(self, VerifyServerIp):
+        self._VerifyServerIp = VerifyServerIp
+
+    @property
+    def PhotoFileName(self):
+        return self._PhotoFileName
+
+    @PhotoFileName.setter
+    def PhotoFileName(self, PhotoFileName):
+        self._PhotoFileName = PhotoFileName
+
+    @property
+    def PhotoFileData(self):
+        return self._PhotoFileData
+
+    @PhotoFileData.setter
+    def PhotoFileData(self, PhotoFileData):
+        self._PhotoFileData = PhotoFileData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.ChannelName = params.get("ChannelName")
-        self.VerifiedOn = params.get("VerifiedOn")
-        self.SerialNumber = params.get("SerialNumber")
-        self.VerifyServerIp = params.get("VerifyServerIp")
-        self.PhotoFileName = params.get("PhotoFileName")
-        self.PhotoFileData = params.get("PhotoFileData")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._ChannelName = params.get("ChannelName")
+        self._VerifiedOn = params.get("VerifiedOn")
+        self._SerialNumber = params.get("SerialNumber")
+        self._VerifyServerIp = params.get("VerifyServerIp")
+        self._PhotoFileName = params.get("PhotoFileName")
+        self._PhotoFileData = params.get("PhotoFileData")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckIdCardVerificationRequest(AbstractModel):
@@ -716,32 +1263,65 @@ class CheckIdCardVerificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param IdCardNumber: 身份证件号码
+        :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param IdCardType: 身份证件类型; ID_CARD
+        :param _IdCardType: 身份证件类型; ID_CARD
         :type IdCardType: str
         """
-        self.Caller = None
-        self.Name = None
-        self.IdCardNumber = None
-        self.IdCardType = None
+        self._Caller = None
+        self._Name = None
+        self._IdCardNumber = None
+        self._IdCardType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Name = params.get("Name")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.IdCardType = params.get("IdCardType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._IdCardType = params.get("IdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -754,7 +1334,7 @@ class CheckIdCardVerificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 检测结果; 
+        :param _Result: 检测结果; 
 收费错误码:
   0: 通过,
   1: 姓名和身份证号不一致,
@@ -764,20 +1344,44 @@ class CheckIdCardVerificationResponse(AbstractModel):
   103: 验证平台异常,
   104: 证件库中无此身份证记录
         :type Result: int
-        :param Description: 结果描述; 未通过时必选
+        :param _Description: 结果描述; 未通过时必选
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckMobileAndNameRequest(AbstractModel):
@@ -787,28 +1391,53 @@ class CheckMobileAndNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Mobile: 手机号
+        :param _Mobile: 手机号
         :type Mobile: str
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
         """
-        self.Caller = None
-        self.Mobile = None
-        self.Name = None
+        self._Caller = None
+        self._Mobile = None
+        self._Name = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Mobile = params.get("Mobile")
-        self.Name = params.get("Name")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Mobile = params.get("Mobile")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -821,7 +1450,7 @@ class CheckMobileAndNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 检测结果
+        :param _Result: 检测结果
 计费结果码：
   0:  验证结果一致
   1:  手机号未实名
@@ -835,20 +1464,44 @@ class CheckMobileAndNameResponse(AbstractModel):
   105: 认证未通过
   106: 验证平台异常
         :type Result: int
-        :param Description: 结果描述; 未通过时必选
+        :param _Description: 结果描述; 未通过时必选
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckMobileVerificationRequest(AbstractModel):
@@ -858,36 +1511,77 @@ class CheckMobileVerificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Mobile: 手机号
+        :param _Mobile: 手机号
         :type Mobile: str
-        :param Name: 姓名
+        :param _Name: 姓名
         :type Name: str
-        :param IdCardNumber: 身份证件号码
+        :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param IdCardType: 身份证件类型; ID_CARD
+        :param _IdCardType: 身份证件类型; ID_CARD
         :type IdCardType: str
         """
-        self.Caller = None
-        self.Mobile = None
-        self.Name = None
-        self.IdCardNumber = None
-        self.IdCardType = None
+        self._Caller = None
+        self._Mobile = None
+        self._Name = None
+        self._IdCardNumber = None
+        self._IdCardType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Mobile = params.get("Mobile")
-        self.Name = params.get("Name")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.IdCardType = params.get("IdCardType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Mobile = params.get("Mobile")
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._IdCardType = params.get("IdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -900,7 +1594,7 @@ class CheckMobileVerificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 检测结果
+        :param _Result: 检测结果
 计费结果码：
   0:  验证结果一致
   1:  手机号未实名
@@ -914,20 +1608,44 @@ class CheckMobileVerificationResponse(AbstractModel):
   105: 认证未通过
   106: 验证平台异常
         :type Result: int
-        :param Description: 结果描述; 未通过时必选
+        :param _Description: 结果描述; 未通过时必选
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckVerifyCodeMatchFlowIdRequest(AbstractModel):
@@ -937,32 +1655,65 @@ class CheckVerifyCodeMatchFlowIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Mobile: 手机号
+        :param _Mobile: 手机号
         :type Mobile: str
-        :param VerifyCode: 验证码
+        :param _VerifyCode: 验证码
         :type VerifyCode: str
-        :param FlowId: 流程(目录) id
+        :param _FlowId: 流程(目录) id
         :type FlowId: str
         """
-        self.Caller = None
-        self.Mobile = None
-        self.VerifyCode = None
-        self.FlowId = None
+        self._Caller = None
+        self._Mobile = None
+        self._VerifyCode = None
+        self._FlowId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Mobile = params.get("Mobile")
-        self.VerifyCode = params.get("VerifyCode")
-        self.FlowId = params.get("FlowId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Mobile = params.get("Mobile")
+        self._VerifyCode = params.get("VerifyCode")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -975,27 +1726,59 @@ class CheckVerifyCodeMatchFlowIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Success: true: 验证码正确，false: 验证码错误
+        :param _Success: true: 验证码正确，false: 验证码错误
         :type Success: bool
-        :param Result: 0: 验证码正确 1:验证码错误或过期 2:验证码错误 3:验证码和流程不匹配 4:验证码输入错误超过次数 5:内部错误
+        :param _Result: 0: 验证码正确 1:验证码错误或过期 2:验证码错误 3:验证码和流程不匹配 4:验证码输入错误超过次数 5:内部错误
 6:参数错误
         :type Result: int
-        :param Description: 结果描述
+        :param _Description: 结果描述
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Success = None
-        self.Result = None
-        self.Description = None
-        self.RequestId = None
+        self._Success = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Success = params.get("Success")
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._Success = params.get("Success")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class Component(AbstractModel):
@@ -1005,7 +1788,7 @@ class Component(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentId: 控件编号
+        :param _ComponentId: 控件编号
 
 注：
 当GenerateMode=3时，通过"^"来决定是否使用关键字整词匹配能力。
@@ -1013,7 +1796,7 @@ class Component(AbstractModel):
 当GenerateMode=3时，如果传入关键字"^甲方签署^"，则会在PDF文件中有且仅有"甲方签署"关键字的地方进行对应操作。
 如传入的关键字为"甲方签署"，则PDF文件中每个出现关键字的位置都会执行相应操作。
         :type ComponentId: str
-        :param ComponentType: 如果是Component控件类型，则可选的字段为：
+        :param _ComponentType: 如果是Component控件类型，则可选的字段为：
 TEXT - 普通文本控件；
 DATE - 普通日期控件；
 SELECT- 勾选框控件；
@@ -1022,78 +1805,199 @@ SIGN_SEAL- 签署印章控件；
 SIGN_DATE- 签署日期控件；
 SIGN_SIGNATURE - 用户签名控件；
         :type ComponentType: str
-        :param ComponentName: 控件名称
+        :param _ComponentName: 控件名称
         :type ComponentName: str
-        :param ComponentRequired: 定义控件是否为必填项，默认为false
+        :param _ComponentRequired: 定义控件是否为必填项，默认为false
         :type ComponentRequired: bool
-        :param FileIndex: 控件所属文件的序号 (模板中的resourceId排列序号)
+        :param _FileIndex: 控件所属文件的序号 (模板中的resourceId排列序号)
         :type FileIndex: int
-        :param GenerateMode: 控件生成的方式：
+        :param _GenerateMode: 控件生成的方式：
 0 - 普通控件
 1 - 表单域
 2 - html 控件
 3 - 关键字
         :type GenerateMode: int
-        :param ComponentWidth: 参数控件宽度，单位px
+        :param _ComponentWidth: 参数控件宽度，单位px
         :type ComponentWidth: float
-        :param ComponentHeight: 参数控件高度，单位px
+        :param _ComponentHeight: 参数控件高度，单位px
         :type ComponentHeight: float
-        :param ComponentPage: 参数控件所在页码
+        :param _ComponentPage: 参数控件所在页码
         :type ComponentPage: int
-        :param ComponentPosX: 参数控件X位置，单位px
+        :param _ComponentPosX: 参数控件X位置，单位px
         :type ComponentPosX: float
-        :param ComponentPosY: 参数控件Y位置，单位px
+        :param _ComponentPosY: 参数控件Y位置，单位px
         :type ComponentPosY: float
-        :param ComponentExtra: 参数控件样式
+        :param _ComponentExtra: 参数控件样式
         :type ComponentExtra: str
-        :param ComponentValue: 印章ID，如果是手写签名则为jpg或png格式的base64图片
+        :param _ComponentValue: 印章ID，如果是手写签名则为jpg或png格式的base64图片
 
 SIGN_SEAL控件,可以用ORG_DEFAULT_SEAL表示主企业的默认印章
 SIGN_SEAL控件,可以用SUBORG_DEFAULT_SEAL表示子企业的默认印章
 SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
         :type ComponentValue: str
-        :param SealOperate: 如果是SIGN_SEAL类型的签署控件, 参数标识H5签署界面是否在该签署区上进行放置展示, 1为放置,其他为不放置
+        :param _SealOperate: 如果是SIGN_SEAL类型的签署控件, 参数标识H5签署界面是否在该签署区上进行放置展示, 1为放置,其他为不放置
         :type SealOperate: int
-        :param GenerateExtra: 不同GenerateMode对应的额外信息
+        :param _GenerateExtra: 不同GenerateMode对应的额外信息
         :type GenerateExtra: str
         """
-        self.ComponentId = None
-        self.ComponentType = None
-        self.ComponentName = None
-        self.ComponentRequired = None
-        self.FileIndex = None
-        self.GenerateMode = None
-        self.ComponentWidth = None
-        self.ComponentHeight = None
-        self.ComponentPage = None
-        self.ComponentPosX = None
-        self.ComponentPosY = None
-        self.ComponentExtra = None
-        self.ComponentValue = None
-        self.SealOperate = None
-        self.GenerateExtra = None
+        self._ComponentId = None
+        self._ComponentType = None
+        self._ComponentName = None
+        self._ComponentRequired = None
+        self._FileIndex = None
+        self._GenerateMode = None
+        self._ComponentWidth = None
+        self._ComponentHeight = None
+        self._ComponentPage = None
+        self._ComponentPosX = None
+        self._ComponentPosY = None
+        self._ComponentExtra = None
+        self._ComponentValue = None
+        self._SealOperate = None
+        self._GenerateExtra = None
+
+    @property
+    def ComponentId(self):
+        return self._ComponentId
+
+    @ComponentId.setter
+    def ComponentId(self, ComponentId):
+        self._ComponentId = ComponentId
+
+    @property
+    def ComponentType(self):
+        return self._ComponentType
+
+    @ComponentType.setter
+    def ComponentType(self, ComponentType):
+        self._ComponentType = ComponentType
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def ComponentRequired(self):
+        return self._ComponentRequired
+
+    @ComponentRequired.setter
+    def ComponentRequired(self, ComponentRequired):
+        self._ComponentRequired = ComponentRequired
+
+    @property
+    def FileIndex(self):
+        return self._FileIndex
+
+    @FileIndex.setter
+    def FileIndex(self, FileIndex):
+        self._FileIndex = FileIndex
+
+    @property
+    def GenerateMode(self):
+        return self._GenerateMode
+
+    @GenerateMode.setter
+    def GenerateMode(self, GenerateMode):
+        self._GenerateMode = GenerateMode
+
+    @property
+    def ComponentWidth(self):
+        return self._ComponentWidth
+
+    @ComponentWidth.setter
+    def ComponentWidth(self, ComponentWidth):
+        self._ComponentWidth = ComponentWidth
+
+    @property
+    def ComponentHeight(self):
+        return self._ComponentHeight
+
+    @ComponentHeight.setter
+    def ComponentHeight(self, ComponentHeight):
+        self._ComponentHeight = ComponentHeight
+
+    @property
+    def ComponentPage(self):
+        return self._ComponentPage
+
+    @ComponentPage.setter
+    def ComponentPage(self, ComponentPage):
+        self._ComponentPage = ComponentPage
+
+    @property
+    def ComponentPosX(self):
+        return self._ComponentPosX
+
+    @ComponentPosX.setter
+    def ComponentPosX(self, ComponentPosX):
+        self._ComponentPosX = ComponentPosX
+
+    @property
+    def ComponentPosY(self):
+        return self._ComponentPosY
+
+    @ComponentPosY.setter
+    def ComponentPosY(self, ComponentPosY):
+        self._ComponentPosY = ComponentPosY
+
+    @property
+    def ComponentExtra(self):
+        return self._ComponentExtra
+
+    @ComponentExtra.setter
+    def ComponentExtra(self, ComponentExtra):
+        self._ComponentExtra = ComponentExtra
+
+    @property
+    def ComponentValue(self):
+        return self._ComponentValue
+
+    @ComponentValue.setter
+    def ComponentValue(self, ComponentValue):
+        self._ComponentValue = ComponentValue
+
+    @property
+    def SealOperate(self):
+        return self._SealOperate
+
+    @SealOperate.setter
+    def SealOperate(self, SealOperate):
+        self._SealOperate = SealOperate
+
+    @property
+    def GenerateExtra(self):
+        return self._GenerateExtra
+
+    @GenerateExtra.setter
+    def GenerateExtra(self, GenerateExtra):
+        self._GenerateExtra = GenerateExtra
 
 
     def _deserialize(self, params):
-        self.ComponentId = params.get("ComponentId")
-        self.ComponentType = params.get("ComponentType")
-        self.ComponentName = params.get("ComponentName")
-        self.ComponentRequired = params.get("ComponentRequired")
-        self.FileIndex = params.get("FileIndex")
-        self.GenerateMode = params.get("GenerateMode")
-        self.ComponentWidth = params.get("ComponentWidth")
-        self.ComponentHeight = params.get("ComponentHeight")
-        self.ComponentPage = params.get("ComponentPage")
-        self.ComponentPosX = params.get("ComponentPosX")
-        self.ComponentPosY = params.get("ComponentPosY")
-        self.ComponentExtra = params.get("ComponentExtra")
-        self.ComponentValue = params.get("ComponentValue")
-        self.SealOperate = params.get("SealOperate")
-        self.GenerateExtra = params.get("GenerateExtra")
+        self._ComponentId = params.get("ComponentId")
+        self._ComponentType = params.get("ComponentType")
+        self._ComponentName = params.get("ComponentName")
+        self._ComponentRequired = params.get("ComponentRequired")
+        self._FileIndex = params.get("FileIndex")
+        self._GenerateMode = params.get("GenerateMode")
+        self._ComponentWidth = params.get("ComponentWidth")
+        self._ComponentHeight = params.get("ComponentHeight")
+        self._ComponentPage = params.get("ComponentPage")
+        self._ComponentPosX = params.get("ComponentPosX")
+        self._ComponentPosY = params.get("ComponentPosY")
+        self._ComponentExtra = params.get("ComponentExtra")
+        self._ComponentValue = params.get("ComponentValue")
+        self._SealOperate = params.get("SealOperate")
+        self._GenerateExtra = params.get("GenerateExtra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1106,22 +2010,39 @@ class ComponentSeal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentId: 签署区ID
+        :param _ComponentId: 签署区ID
         :type ComponentId: str
-        :param SealId: 印章ID
+        :param _SealId: 印章ID
         :type SealId: str
         """
-        self.ComponentId = None
-        self.SealId = None
+        self._ComponentId = None
+        self._SealId = None
+
+    @property
+    def ComponentId(self):
+        return self._ComponentId
+
+    @ComponentId.setter
+    def ComponentId(self, ComponentId):
+        self._ComponentId = ComponentId
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
 
 
     def _deserialize(self, params):
-        self.ComponentId = params.get("ComponentId")
-        self.SealId = params.get("SealId")
+        self._ComponentId = params.get("ComponentId")
+        self._SealId = params.get("SealId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1134,24 +2055,41 @@ class CreateFaceIdSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Values: 除api_ticket之外的其它要参与签名的参数值,包括UserId
+        :param _Values: 除api_ticket之外的其它要参与签名的参数值,包括UserId
         :type Values: list of str
         """
-        self.Caller = None
-        self.Values = None
+        self._Caller = None
+        self._Values = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Values = params.get("Values")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1164,18 +2102,34 @@ class CreateFaceIdSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sign: 慧眼API签名
+        :param _Sign: 慧眼API签名
         :type Sign: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Sign = None
-        self.RequestId = None
+        self._Sign = None
+        self._RequestId = None
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Sign = params.get("Sign")
-        self.RequestId = params.get("RequestId")
+        self._Sign = params.get("Sign")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFlowByFilesRequest(AbstractModel):
@@ -1185,34 +2139,67 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowInfo: 流程创建信息
+        :param _FlowInfo: 流程创建信息
         :type FlowInfo: :class:`tencentcloud.essbasic.v20201222.models.FlowInfo`
-        :param FileIds: 文件资源列表 (支持多文件)
+        :param _FileIds: 文件资源列表 (支持多文件)
         :type FileIds: list of str
-        :param CustomId: 自定义流程id
+        :param _CustomId: 自定义流程id
         :type CustomId: str
         """
-        self.Caller = None
-        self.FlowInfo = None
-        self.FileIds = None
-        self.CustomId = None
+        self._Caller = None
+        self._FlowInfo = None
+        self._FileIds = None
+        self._CustomId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowInfo(self):
+        return self._FlowInfo
+
+    @FlowInfo.setter
+    def FlowInfo(self, FlowInfo):
+        self._FlowInfo = FlowInfo
+
+    @property
+    def FileIds(self):
+        return self._FileIds
+
+    @FileIds.setter
+    def FileIds(self, FileIds):
+        self._FileIds = FileIds
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
         if params.get("FlowInfo") is not None:
-            self.FlowInfo = FlowInfo()
-            self.FlowInfo._deserialize(params.get("FlowInfo"))
-        self.FileIds = params.get("FileIds")
-        self.CustomId = params.get("CustomId")
+            self._FlowInfo = FlowInfo()
+            self._FlowInfo._deserialize(params.get("FlowInfo"))
+        self._FileIds = params.get("FileIds")
+        self._CustomId = params.get("CustomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1225,18 +2212,34 @@ class CreateFlowByFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowId = None
-        self.RequestId = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.RequestId = params.get("RequestId")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateH5FaceIdUrlRequest(AbstractModel):
@@ -1246,52 +2249,125 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param WbAppId: 慧眼业务ID; 不填写时后台使用Caller反查
+        :param _WbAppId: 慧眼业务ID; 不填写时后台使用Caller反查
         :type WbAppId: str
-        :param Name: 姓名; 可选(未通过实名认证的用户必选)
+        :param _Name: 姓名; 可选(未通过实名认证的用户必选)
         :type Name: str
-        :param IdCardType: 用户证件类型; 可选; 默认ID_CARD:中国居民身份证
+        :param _IdCardType: 用户证件类型; 可选; 默认ID_CARD:中国居民身份证
         :type IdCardType: str
-        :param IdCardNumber: 用户证件号; 可选(未通过实名认证的用户必选)
+        :param _IdCardNumber: 用户证件号; 可选(未通过实名认证的用户必选)
         :type IdCardNumber: str
-        :param JumpUrl: H5人脸核身完成后回调的第三方Url; 可选; 不需要做Encode, 跳转的参数: ?code=XX&orderNo=XX&liveRate=xx, code=0表示成功,orderNo为订单号,liveRate为百分制活体检测得分
+        :param _JumpUrl: H5人脸核身完成后回调的第三方Url; 可选; 不需要做Encode, 跳转的参数: ?code=XX&orderNo=XX&liveRate=xx, code=0表示成功,orderNo为订单号,liveRate为百分制活体检测得分
         :type JumpUrl: str
-        :param JumpType: 参数值为"1":直接跳转到url回调地址; 可选; 其他值:跳转提供的结果页面
+        :param _JumpType: 参数值为"1":直接跳转到url回调地址; 可选; 其他值:跳转提供的结果页面
         :type JumpType: str
-        :param OpenFrom: browser:表示在浏览器启动刷脸, app:表示在App里启动刷脸,默认值为browser; 可选
+        :param _OpenFrom: browser:表示在浏览器启动刷脸, app:表示在App里启动刷脸,默认值为browser; 可选
         :type OpenFrom: str
-        :param RedirectType: 跳转类型; 可选; 参数值为"1"时,刷脸页面使用replace方式跳转,不在浏览器history中留下记录;不传或其他值则正常跳转
+        :param _RedirectType: 跳转类型; 可选; 参数值为"1"时,刷脸页面使用replace方式跳转,不在浏览器history中留下记录;不传或其他值则正常跳转
         :type RedirectType: str
         """
-        self.Caller = None
-        self.WbAppId = None
-        self.Name = None
-        self.IdCardType = None
-        self.IdCardNumber = None
-        self.JumpUrl = None
-        self.JumpType = None
-        self.OpenFrom = None
-        self.RedirectType = None
+        self._Caller = None
+        self._WbAppId = None
+        self._Name = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+        self._JumpUrl = None
+        self._JumpType = None
+        self._OpenFrom = None
+        self._RedirectType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def WbAppId(self):
+        return self._WbAppId
+
+    @WbAppId.setter
+    def WbAppId(self, WbAppId):
+        self._WbAppId = WbAppId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+    @property
+    def JumpType(self):
+        return self._JumpType
+
+    @JumpType.setter
+    def JumpType(self, JumpType):
+        self._JumpType = JumpType
+
+    @property
+    def OpenFrom(self):
+        return self._OpenFrom
+
+    @OpenFrom.setter
+    def OpenFrom(self, OpenFrom):
+        self._OpenFrom = OpenFrom
+
+    @property
+    def RedirectType(self):
+        return self._RedirectType
+
+    @RedirectType.setter
+    def RedirectType(self, RedirectType):
+        self._RedirectType = RedirectType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.WbAppId = params.get("WbAppId")
-        self.Name = params.get("Name")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.JumpUrl = params.get("JumpUrl")
-        self.JumpType = params.get("JumpType")
-        self.OpenFrom = params.get("OpenFrom")
-        self.RedirectType = params.get("RedirectType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._WbAppId = params.get("WbAppId")
+        self._Name = params.get("Name")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._JumpUrl = params.get("JumpUrl")
+        self._JumpType = params.get("JumpType")
+        self._OpenFrom = params.get("OpenFrom")
+        self._RedirectType = params.get("RedirectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1304,18 +2380,34 @@ class CreateH5FaceIdUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 跳转到人脸核身页面的链接
+        :param _Url: 跳转到人脸核身页面的链接
         :type Url: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Url = None
-        self.RequestId = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.RequestId = params.get("RequestId")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePreviewSignUrlRequest(AbstractModel):
@@ -1325,38 +2417,79 @@ class CreatePreviewSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Deadline: URL过期时间戳
+        :param _Deadline: URL过期时间戳
         :type Deadline: int
-        :param CatalogId: 目录ID。当 SignUrlType 为 CATALOG 时必填
+        :param _CatalogId: 目录ID。当 SignUrlType 为 CATALOG 时必填
         :type CatalogId: str
-        :param FlowId: 流程ID。当 SignUrlType 为 FLOW 时必填
+        :param _FlowId: 流程ID。当 SignUrlType 为 FLOW 时必填
         :type FlowId: str
-        :param SignUrlType: 签署链接类型：
+        :param _SignUrlType: 签署链接类型：
 1. FLOW - 单流程签署 (默认) 
 2. CATALOG - 目录签署
         :type SignUrlType: str
         """
-        self.Caller = None
-        self.Deadline = None
-        self.CatalogId = None
-        self.FlowId = None
-        self.SignUrlType = None
+        self._Caller = None
+        self._Deadline = None
+        self._CatalogId = None
+        self._FlowId = None
+        self._SignUrlType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def CatalogId(self):
+        return self._CatalogId
+
+    @CatalogId.setter
+    def CatalogId(self, CatalogId):
+        self._CatalogId = CatalogId
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def SignUrlType(self):
+        return self._SignUrlType
+
+    @SignUrlType.setter
+    def SignUrlType(self, SignUrlType):
+        self._SignUrlType = SignUrlType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Deadline = params.get("Deadline")
-        self.CatalogId = params.get("CatalogId")
-        self.FlowId = params.get("FlowId")
-        self.SignUrlType = params.get("SignUrlType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Deadline = params.get("Deadline")
+        self._CatalogId = params.get("CatalogId")
+        self._FlowId = params.get("FlowId")
+        self._SignUrlType = params.get("SignUrlType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1369,18 +2502,34 @@ class CreatePreviewSignUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PreviewSignUrl: 合同预览URL
+        :param _PreviewSignUrl: 合同预览URL
         :type PreviewSignUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PreviewSignUrl = None
-        self.RequestId = None
+        self._PreviewSignUrl = None
+        self._RequestId = None
+
+    @property
+    def PreviewSignUrl(self):
+        return self._PreviewSignUrl
+
+    @PreviewSignUrl.setter
+    def PreviewSignUrl(self, PreviewSignUrl):
+        self._PreviewSignUrl = PreviewSignUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PreviewSignUrl = params.get("PreviewSignUrl")
-        self.RequestId = params.get("RequestId")
+        self._PreviewSignUrl = params.get("PreviewSignUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSealRequest(AbstractModel):
@@ -1390,9 +2539,9 @@ class CreateSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param SealType: 印章类型：
+        :param _SealType: 印章类型：
 1. PERSONAL - 个人私章
 2. OFFICIAL - 公章
 3. SPECIAL_FINANCIAL - 财务专用章
@@ -1401,44 +2550,109 @@ class CreateSealRequest(AbstractModel):
 6. SPECIAL_NATIONWIDE_INVOICE - 发票专用章
 7. OTHER-其他
         :type SealType: str
-        :param SealName: 印章名称
+        :param _SealName: 印章名称
         :type SealName: str
-        :param SourceIp: 请求创建印章的客户端IP
+        :param _SourceIp: 请求创建印章的客户端IP
         :type SourceIp: str
-        :param Image: 印章图片，base64编码（与FileId参数二选一，同时传入参数时优先使用Image参数）
+        :param _Image: 印章图片，base64编码（与FileId参数二选一，同时传入参数时优先使用Image参数）
         :type Image: str
-        :param FileId: 印章文件图片ID（与Image参数二选一，同时传入参数时优先使用Image参数）
+        :param _FileId: 印章文件图片ID（与Image参数二选一，同时传入参数时优先使用Image参数）
         :type FileId: str
-        :param UserId: 需要创建印章的用户ID
+        :param _UserId: 需要创建印章的用户ID
         :type UserId: str
-        :param IsDefault: 是否是默认印章 true：是，false：否
+        :param _IsDefault: 是否是默认印章 true：是，false：否
         :type IsDefault: bool
         """
-        self.Caller = None
-        self.SealType = None
-        self.SealName = None
-        self.SourceIp = None
-        self.Image = None
-        self.FileId = None
-        self.UserId = None
-        self.IsDefault = None
+        self._Caller = None
+        self._SealType = None
+        self._SealName = None
+        self._SourceIp = None
+        self._Image = None
+        self._FileId = None
+        self._UserId = None
+        self._IsDefault = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.SealType = params.get("SealType")
-        self.SealName = params.get("SealName")
-        self.SourceIp = params.get("SourceIp")
-        self.Image = params.get("Image")
-        self.FileId = params.get("FileId")
-        self.UserId = params.get("UserId")
-        self.IsDefault = params.get("IsDefault")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._SealType = params.get("SealType")
+        self._SealName = params.get("SealName")
+        self._SourceIp = params.get("SourceIp")
+        self._Image = params.get("Image")
+        self._FileId = params.get("FileId")
+        self._UserId = params.get("UserId")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1451,18 +2665,34 @@ class CreateSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SealId: 电子印章Id
+        :param _SealId: 电子印章Id
         :type SealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SealId = None
-        self.RequestId = None
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SealId = params.get("SealId")
-        self.RequestId = params.get("RequestId")
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateServerFlowSignRequest(AbstractModel):
@@ -1472,37 +2702,70 @@ class CreateServerFlowSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
-        :param SignComponents: 签署区域信息
+        :param _SignComponents: 签署区域信息
         :type SignComponents: list of Component
-        :param SourceIp: 客户端IP
+        :param _SourceIp: 客户端IP
         :type SourceIp: str
         """
-        self.Caller = None
-        self.FlowId = None
-        self.SignComponents = None
-        self.SourceIp = None
+        self._Caller = None
+        self._FlowId = None
+        self._SignComponents = None
+        self._SourceIp = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
         if params.get("SignComponents") is not None:
-            self.SignComponents = []
+            self._SignComponents = []
             for item in params.get("SignComponents"):
                 obj = Component()
                 obj._deserialize(item)
-                self.SignComponents.append(obj)
-        self.SourceIp = params.get("SourceIp")
+                self._SignComponents.append(obj)
+        self._SourceIp = params.get("SourceIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1515,20 +2778,36 @@ class CreateServerFlowSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignStatus: 任务状态：
+        :param _SignStatus: 任务状态：
 0：失败
 1：成功
         :type SignStatus: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SignStatus = None
-        self.RequestId = None
+        self._SignStatus = None
+        self._RequestId = None
+
+    @property
+    def SignStatus(self):
+        return self._SignStatus
+
+    @SignStatus.setter
+    def SignStatus(self, SignStatus):
+        self._SignStatus = SignStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SignStatus = params.get("SignStatus")
-        self.RequestId = params.get("RequestId")
+        self._SignStatus = params.get("SignStatus")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSignUrlRequest(AbstractModel):
@@ -1538,46 +2817,103 @@ class CreateSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param UserId: 签署人ID
+        :param _UserId: 签署人ID
         :type UserId: str
-        :param Deadline: 文件签署截止时间戳
+        :param _Deadline: 文件签署截止时间戳
         :type Deadline: int
-        :param CatalogId: 目录ID。当 SignUrlType 为 CATALOG 时必填
+        :param _CatalogId: 目录ID。当 SignUrlType 为 CATALOG 时必填
         :type CatalogId: str
-        :param FlowId: 流程ID。当 SignUrlType 为 FLOW 时必填
+        :param _FlowId: 流程ID。当 SignUrlType 为 FLOW 时必填
         :type FlowId: str
-        :param SignUrlType: 签署链接类型：
+        :param _SignUrlType: 签署链接类型：
 1. FLOW - 单流程签署 (默认) 
 2. CATALOG - 目录签署
         :type SignUrlType: str
-        :param SignId: 发送流程或目录时生成的签署任务ID
+        :param _SignId: 发送流程或目录时生成的签署任务ID
         :type SignId: str
         """
-        self.Caller = None
-        self.UserId = None
-        self.Deadline = None
-        self.CatalogId = None
-        self.FlowId = None
-        self.SignUrlType = None
-        self.SignId = None
+        self._Caller = None
+        self._UserId = None
+        self._Deadline = None
+        self._CatalogId = None
+        self._FlowId = None
+        self._SignUrlType = None
+        self._SignId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def CatalogId(self):
+        return self._CatalogId
+
+    @CatalogId.setter
+    def CatalogId(self, CatalogId):
+        self._CatalogId = CatalogId
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def SignUrlType(self):
+        return self._SignUrlType
+
+    @SignUrlType.setter
+    def SignUrlType(self, SignUrlType):
+        self._SignUrlType = SignUrlType
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.UserId = params.get("UserId")
-        self.Deadline = params.get("Deadline")
-        self.CatalogId = params.get("CatalogId")
-        self.FlowId = params.get("FlowId")
-        self.SignUrlType = params.get("SignUrlType")
-        self.SignId = params.get("SignId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._UserId = params.get("UserId")
+        self._Deadline = params.get("Deadline")
+        self._CatalogId = params.get("CatalogId")
+        self._FlowId = params.get("FlowId")
+        self._SignUrlType = params.get("SignUrlType")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1590,18 +2926,34 @@ class CreateSignUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignUrl: 合同签署链接
+        :param _SignUrl: 合同签署链接
         :type SignUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SignUrl = None
-        self.RequestId = None
+        self._SignUrl = None
+        self._RequestId = None
+
+    @property
+    def SignUrl(self):
+        return self._SignUrl
+
+    @SignUrl.setter
+    def SignUrl(self, SignUrl):
+        self._SignUrl = SignUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SignUrl = params.get("SignUrl")
-        self.RequestId = params.get("RequestId")
+        self._SignUrl = params.get("SignUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSubOrganizationAndSealRequest(AbstractModel):
@@ -1611,25 +2963,25 @@ class CreateSubOrganizationAndSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Name: 机构名称全称
+        :param _Name: 机构名称全称
         :type Name: str
-        :param IdCardType: 机构证件号码类型可选值：
+        :param _IdCardType: 机构证件号码类型可选值：
 1. USCC - 统一社会信用代码
 2. BIZREGISTNO - 营业执照注册号
         :type IdCardType: str
-        :param IdCardNumber: 机构证件号码
+        :param _IdCardNumber: 机构证件号码
         :type IdCardNumber: str
-        :param OrganizationType: 机构类型可选值：
+        :param _OrganizationType: 机构类型可选值：
 1. ENTERPRISE - 企业
 2. INDIVIDUALBIZ - 个体工商户
 3. PUBLICINSTITUTION - 政府/事业单位
 4. OTHERS - 其他组织
         :type OrganizationType: str
-        :param LegalName: 机构法人/经营者姓名
+        :param _LegalName: 机构法人/经营者姓名
         :type LegalName: str
-        :param LegalIdCardType: 机构法人/经营者证件类型可选值：
+        :param _LegalIdCardType: 机构法人/经营者证件类型可选值：
 1. ID_CARD - 居民身份证
 2. PASSPORT - 护照
 3. MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证
@@ -1637,32 +2989,32 @@ class CreateSubOrganizationAndSealRequest(AbstractModel):
 5. HOUSEHOLD_REGISTER - 户口本
 6. TEMP_ID_CARD - 临时居民身份证
         :type LegalIdCardType: str
-        :param LegalIdCardNumber: 机构法人/经营者证件号码；
+        :param _LegalIdCardNumber: 机构法人/经营者证件号码；
 OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选填
         :type LegalIdCardNumber: str
-        :param VerifyClientIp: 实名认证的客户端IP/请求生成企业印章的客户端Ip
+        :param _VerifyClientIp: 实名认证的客户端IP/请求生成企业印章的客户端Ip
         :type VerifyClientIp: str
-        :param Email: 机构电子邮箱
+        :param _Email: 机构电子邮箱
         :type Email: str
-        :param IdCardFileType: 机构证件文件类型可选值：
+        :param _IdCardFileType: 机构证件文件类型可选值：
 1. USCCFILE - 统一社会信用代码证书
 2. LICENSEFILE - 营业执照
         :type IdCardFileType: str
-        :param BizLicenseFile: 机构证件照片文件，base64编码，支持jpg、jpeg、png格式
+        :param _BizLicenseFile: 机构证件照片文件，base64编码，支持jpg、jpeg、png格式
         :type BizLicenseFile: str
-        :param BizLicenseFileName: 机构证件照片文件名
+        :param _BizLicenseFileName: 机构证件照片文件名
         :type BizLicenseFileName: str
-        :param LegalMobile: 机构法人/经营者/联系人手机号码
+        :param _LegalMobile: 机构法人/经营者/联系人手机号码
         :type LegalMobile: str
-        :param ContactName: 组织联系人姓名
+        :param _ContactName: 组织联系人姓名
         :type ContactName: str
-        :param VerifyServerIp: 实名认证的服务器IP
+        :param _VerifyServerIp: 实名认证的服务器IP
         :type VerifyServerIp: str
-        :param ContactAddress: 企业联系地址
+        :param _ContactAddress: 企业联系地址
         :type ContactAddress: :class:`tencentcloud.essbasic.v20201222.models.Address`
-        :param SealName: 电子印章名称
+        :param _SealName: 电子印章名称
         :type SealName: str
-        :param SealType: 印章类型：默认: CONTRACT
+        :param _SealType: 印章类型：默认: CONTRACT
 1. OFFICIAL-公章
 2. SPECIAL_FINANCIAL-财务专用章
 3. CONTRACT-合同专用章
@@ -1670,68 +3022,245 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 5. SPECIAL_NATIONWIDE_INVOICE-发票专用章
 6. OTHER-其他
         :type SealType: str
-        :param SealHorizontalText: 企业印章横向文字，最多可填8个汉字（可为空，默认为"电子签名专用章"）
+        :param _SealHorizontalText: 企业印章横向文字，最多可填8个汉字（可为空，默认为"电子签名专用章"）
         :type SealHorizontalText: str
-        :param OpenId: 机构在第三方的唯一标识，32位以内标识符
+        :param _OpenId: 机构在第三方的唯一标识，32位以内标识符
         :type OpenId: str
-        :param UseOpenId: 是否使用OpenId作为数据主键，如果为true，请确保OpenId在当前应用号唯一
+        :param _UseOpenId: 是否使用OpenId作为数据主键，如果为true，请确保OpenId在当前应用号唯一
         :type UseOpenId: bool
         """
-        self.Caller = None
-        self.Name = None
-        self.IdCardType = None
-        self.IdCardNumber = None
-        self.OrganizationType = None
-        self.LegalName = None
-        self.LegalIdCardType = None
-        self.LegalIdCardNumber = None
-        self.VerifyClientIp = None
-        self.Email = None
-        self.IdCardFileType = None
-        self.BizLicenseFile = None
-        self.BizLicenseFileName = None
-        self.LegalMobile = None
-        self.ContactName = None
-        self.VerifyServerIp = None
-        self.ContactAddress = None
-        self.SealName = None
-        self.SealType = None
-        self.SealHorizontalText = None
-        self.OpenId = None
-        self.UseOpenId = None
+        self._Caller = None
+        self._Name = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+        self._OrganizationType = None
+        self._LegalName = None
+        self._LegalIdCardType = None
+        self._LegalIdCardNumber = None
+        self._VerifyClientIp = None
+        self._Email = None
+        self._IdCardFileType = None
+        self._BizLicenseFile = None
+        self._BizLicenseFileName = None
+        self._LegalMobile = None
+        self._ContactName = None
+        self._VerifyServerIp = None
+        self._ContactAddress = None
+        self._SealName = None
+        self._SealType = None
+        self._SealHorizontalText = None
+        self._OpenId = None
+        self._UseOpenId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def OrganizationType(self):
+        return self._OrganizationType
+
+    @OrganizationType.setter
+    def OrganizationType(self, OrganizationType):
+        self._OrganizationType = OrganizationType
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def LegalIdCardType(self):
+        return self._LegalIdCardType
+
+    @LegalIdCardType.setter
+    def LegalIdCardType(self, LegalIdCardType):
+        self._LegalIdCardType = LegalIdCardType
+
+    @property
+    def LegalIdCardNumber(self):
+        return self._LegalIdCardNumber
+
+    @LegalIdCardNumber.setter
+    def LegalIdCardNumber(self, LegalIdCardNumber):
+        self._LegalIdCardNumber = LegalIdCardNumber
+
+    @property
+    def VerifyClientIp(self):
+        return self._VerifyClientIp
+
+    @VerifyClientIp.setter
+    def VerifyClientIp(self, VerifyClientIp):
+        self._VerifyClientIp = VerifyClientIp
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def IdCardFileType(self):
+        return self._IdCardFileType
+
+    @IdCardFileType.setter
+    def IdCardFileType(self, IdCardFileType):
+        self._IdCardFileType = IdCardFileType
+
+    @property
+    def BizLicenseFile(self):
+        return self._BizLicenseFile
+
+    @BizLicenseFile.setter
+    def BizLicenseFile(self, BizLicenseFile):
+        self._BizLicenseFile = BizLicenseFile
+
+    @property
+    def BizLicenseFileName(self):
+        return self._BizLicenseFileName
+
+    @BizLicenseFileName.setter
+    def BizLicenseFileName(self, BizLicenseFileName):
+        self._BizLicenseFileName = BizLicenseFileName
+
+    @property
+    def LegalMobile(self):
+        return self._LegalMobile
+
+    @LegalMobile.setter
+    def LegalMobile(self, LegalMobile):
+        self._LegalMobile = LegalMobile
+
+    @property
+    def ContactName(self):
+        return self._ContactName
+
+    @ContactName.setter
+    def ContactName(self, ContactName):
+        self._ContactName = ContactName
+
+    @property
+    def VerifyServerIp(self):
+        return self._VerifyServerIp
+
+    @VerifyServerIp.setter
+    def VerifyServerIp(self, VerifyServerIp):
+        self._VerifyServerIp = VerifyServerIp
+
+    @property
+    def ContactAddress(self):
+        return self._ContactAddress
+
+    @ContactAddress.setter
+    def ContactAddress(self, ContactAddress):
+        self._ContactAddress = ContactAddress
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def SealHorizontalText(self):
+        return self._SealHorizontalText
+
+    @SealHorizontalText.setter
+    def SealHorizontalText(self, SealHorizontalText):
+        self._SealHorizontalText = SealHorizontalText
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def UseOpenId(self):
+        return self._UseOpenId
+
+    @UseOpenId.setter
+    def UseOpenId(self, UseOpenId):
+        self._UseOpenId = UseOpenId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Name = params.get("Name")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.OrganizationType = params.get("OrganizationType")
-        self.LegalName = params.get("LegalName")
-        self.LegalIdCardType = params.get("LegalIdCardType")
-        self.LegalIdCardNumber = params.get("LegalIdCardNumber")
-        self.VerifyClientIp = params.get("VerifyClientIp")
-        self.Email = params.get("Email")
-        self.IdCardFileType = params.get("IdCardFileType")
-        self.BizLicenseFile = params.get("BizLicenseFile")
-        self.BizLicenseFileName = params.get("BizLicenseFileName")
-        self.LegalMobile = params.get("LegalMobile")
-        self.ContactName = params.get("ContactName")
-        self.VerifyServerIp = params.get("VerifyServerIp")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Name = params.get("Name")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._OrganizationType = params.get("OrganizationType")
+        self._LegalName = params.get("LegalName")
+        self._LegalIdCardType = params.get("LegalIdCardType")
+        self._LegalIdCardNumber = params.get("LegalIdCardNumber")
+        self._VerifyClientIp = params.get("VerifyClientIp")
+        self._Email = params.get("Email")
+        self._IdCardFileType = params.get("IdCardFileType")
+        self._BizLicenseFile = params.get("BizLicenseFile")
+        self._BizLicenseFileName = params.get("BizLicenseFileName")
+        self._LegalMobile = params.get("LegalMobile")
+        self._ContactName = params.get("ContactName")
+        self._VerifyServerIp = params.get("VerifyServerIp")
         if params.get("ContactAddress") is not None:
-            self.ContactAddress = Address()
-            self.ContactAddress._deserialize(params.get("ContactAddress"))
-        self.SealName = params.get("SealName")
-        self.SealType = params.get("SealType")
-        self.SealHorizontalText = params.get("SealHorizontalText")
-        self.OpenId = params.get("OpenId")
-        self.UseOpenId = params.get("UseOpenId")
+            self._ContactAddress = Address()
+            self._ContactAddress._deserialize(params.get("ContactAddress"))
+        self._SealName = params.get("SealName")
+        self._SealType = params.get("SealType")
+        self._SealHorizontalText = params.get("SealHorizontalText")
+        self._OpenId = params.get("OpenId")
+        self._UseOpenId = params.get("UseOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1744,22 +3273,46 @@ class CreateSubOrganizationAndSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubOrganizationId: 子机构在电子文件签署平台唯一标识
+        :param _SubOrganizationId: 子机构在电子文件签署平台唯一标识
         :type SubOrganizationId: str
-        :param SealId: 电子印章ID
+        :param _SealId: 电子印章ID
         :type SealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubOrganizationId = None
-        self.SealId = None
-        self.RequestId = None
+        self._SubOrganizationId = None
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.SealId = params.get("SealId")
-        self.RequestId = params.get("RequestId")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSubOrganizationRequest(AbstractModel):
@@ -1769,23 +3322,23 @@ class CreateSubOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param IdCardType: 机构证件号码类型可选值：
+        :param _IdCardType: 机构证件号码类型可选值：
 1. USCC - 统一社会信用代码
 2. BIZREGISTNO - 营业执照注册号
         :type IdCardType: str
-        :param IdCardNumber: 机构证件号码
+        :param _IdCardNumber: 机构证件号码
         :type IdCardNumber: str
-        :param OrganizationType: 机构类型可选值：
+        :param _OrganizationType: 机构类型可选值：
 1. ENTERPRISE - 企业
 2. INDIVIDUALBIZ - 个体工商户
 3. PUBLICINSTITUTION - 政府/事业单位
 4. OTHERS - 其他组织
         :type OrganizationType: str
-        :param LegalName: 机构法人/经营者姓名
+        :param _LegalName: 机构法人/经营者姓名
         :type LegalName: str
-        :param LegalIdCardType: 机构法人/经营者证件类型可选值：
+        :param _LegalIdCardType: 机构法人/经营者证件类型可选值：
 1. ID_CARD - 居民身份证
 2. PASSPORT - 护照
 3. MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证
@@ -1793,85 +3346,238 @@ class CreateSubOrganizationRequest(AbstractModel):
 5. HOUSEHOLD_REGISTER - 户口本
 6. TEMP_ID_CARD - 临时居民身份证
         :type LegalIdCardType: str
-        :param LegalIdCardNumber: 机构法人/经营者证件号码；
+        :param _LegalIdCardNumber: 机构法人/经营者证件号码；
 OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选填
         :type LegalIdCardNumber: str
-        :param Name: 机构名称全称
+        :param _Name: 机构名称全称
         :type Name: str
-        :param OpenId: 机构在第三方的唯一标识，32位以内标识符
+        :param _OpenId: 机构在第三方的唯一标识，32位以内标识符
         :type OpenId: str
-        :param UseOpenId: 是否使用OpenId作为数据主键，如果为true，请确保OpenId在当前应用号唯一
+        :param _UseOpenId: 是否使用OpenId作为数据主键，如果为true，请确保OpenId在当前应用号唯一
         :type UseOpenId: bool
-        :param IdCardFileType: 机构证件文件类型可选值：
+        :param _IdCardFileType: 机构证件文件类型可选值：
 1. USCCFILE - 统一社会信用代码证书
 2. LICENSEFILE - 营业执照
         :type IdCardFileType: str
-        :param BizLicenseFile: 机构证件照片文件，base64编码，支持jpg、jpeg、png格式
+        :param _BizLicenseFile: 机构证件照片文件，base64编码，支持jpg、jpeg、png格式
         :type BizLicenseFile: str
-        :param BizLicenseFileName: 机构证件照片文件名
+        :param _BizLicenseFileName: 机构证件照片文件名
         :type BizLicenseFileName: str
-        :param LegalMobile: 机构法人/经营者/联系人手机号码
+        :param _LegalMobile: 机构法人/经营者/联系人手机号码
         :type LegalMobile: str
-        :param ContactName: 组织联系人姓名
+        :param _ContactName: 组织联系人姓名
         :type ContactName: str
-        :param VerifyClientIp: 实名认证的客户端IP
+        :param _VerifyClientIp: 实名认证的客户端IP
         :type VerifyClientIp: str
-        :param VerifyServerIp: 实名认证的服务器IP
+        :param _VerifyServerIp: 实名认证的服务器IP
         :type VerifyServerIp: str
-        :param ContactAddress: 企业联系地址
+        :param _ContactAddress: 企业联系地址
         :type ContactAddress: :class:`tencentcloud.essbasic.v20201222.models.Address`
-        :param Email: 机构电子邮箱
+        :param _Email: 机构电子邮箱
         :type Email: str
         """
-        self.Caller = None
-        self.IdCardType = None
-        self.IdCardNumber = None
-        self.OrganizationType = None
-        self.LegalName = None
-        self.LegalIdCardType = None
-        self.LegalIdCardNumber = None
-        self.Name = None
-        self.OpenId = None
-        self.UseOpenId = None
-        self.IdCardFileType = None
-        self.BizLicenseFile = None
-        self.BizLicenseFileName = None
-        self.LegalMobile = None
-        self.ContactName = None
-        self.VerifyClientIp = None
-        self.VerifyServerIp = None
-        self.ContactAddress = None
-        self.Email = None
+        self._Caller = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+        self._OrganizationType = None
+        self._LegalName = None
+        self._LegalIdCardType = None
+        self._LegalIdCardNumber = None
+        self._Name = None
+        self._OpenId = None
+        self._UseOpenId = None
+        self._IdCardFileType = None
+        self._BizLicenseFile = None
+        self._BizLicenseFileName = None
+        self._LegalMobile = None
+        self._ContactName = None
+        self._VerifyClientIp = None
+        self._VerifyServerIp = None
+        self._ContactAddress = None
+        self._Email = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def OrganizationType(self):
+        return self._OrganizationType
+
+    @OrganizationType.setter
+    def OrganizationType(self, OrganizationType):
+        self._OrganizationType = OrganizationType
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def LegalIdCardType(self):
+        return self._LegalIdCardType
+
+    @LegalIdCardType.setter
+    def LegalIdCardType(self, LegalIdCardType):
+        self._LegalIdCardType = LegalIdCardType
+
+    @property
+    def LegalIdCardNumber(self):
+        return self._LegalIdCardNumber
+
+    @LegalIdCardNumber.setter
+    def LegalIdCardNumber(self, LegalIdCardNumber):
+        self._LegalIdCardNumber = LegalIdCardNumber
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def UseOpenId(self):
+        return self._UseOpenId
+
+    @UseOpenId.setter
+    def UseOpenId(self, UseOpenId):
+        self._UseOpenId = UseOpenId
+
+    @property
+    def IdCardFileType(self):
+        return self._IdCardFileType
+
+    @IdCardFileType.setter
+    def IdCardFileType(self, IdCardFileType):
+        self._IdCardFileType = IdCardFileType
+
+    @property
+    def BizLicenseFile(self):
+        return self._BizLicenseFile
+
+    @BizLicenseFile.setter
+    def BizLicenseFile(self, BizLicenseFile):
+        self._BizLicenseFile = BizLicenseFile
+
+    @property
+    def BizLicenseFileName(self):
+        return self._BizLicenseFileName
+
+    @BizLicenseFileName.setter
+    def BizLicenseFileName(self, BizLicenseFileName):
+        self._BizLicenseFileName = BizLicenseFileName
+
+    @property
+    def LegalMobile(self):
+        return self._LegalMobile
+
+    @LegalMobile.setter
+    def LegalMobile(self, LegalMobile):
+        self._LegalMobile = LegalMobile
+
+    @property
+    def ContactName(self):
+        return self._ContactName
+
+    @ContactName.setter
+    def ContactName(self, ContactName):
+        self._ContactName = ContactName
+
+    @property
+    def VerifyClientIp(self):
+        return self._VerifyClientIp
+
+    @VerifyClientIp.setter
+    def VerifyClientIp(self, VerifyClientIp):
+        self._VerifyClientIp = VerifyClientIp
+
+    @property
+    def VerifyServerIp(self):
+        return self._VerifyServerIp
+
+    @VerifyServerIp.setter
+    def VerifyServerIp(self, VerifyServerIp):
+        self._VerifyServerIp = VerifyServerIp
+
+    @property
+    def ContactAddress(self):
+        return self._ContactAddress
+
+    @ContactAddress.setter
+    def ContactAddress(self, ContactAddress):
+        self._ContactAddress = ContactAddress
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.OrganizationType = params.get("OrganizationType")
-        self.LegalName = params.get("LegalName")
-        self.LegalIdCardType = params.get("LegalIdCardType")
-        self.LegalIdCardNumber = params.get("LegalIdCardNumber")
-        self.Name = params.get("Name")
-        self.OpenId = params.get("OpenId")
-        self.UseOpenId = params.get("UseOpenId")
-        self.IdCardFileType = params.get("IdCardFileType")
-        self.BizLicenseFile = params.get("BizLicenseFile")
-        self.BizLicenseFileName = params.get("BizLicenseFileName")
-        self.LegalMobile = params.get("LegalMobile")
-        self.ContactName = params.get("ContactName")
-        self.VerifyClientIp = params.get("VerifyClientIp")
-        self.VerifyServerIp = params.get("VerifyServerIp")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._OrganizationType = params.get("OrganizationType")
+        self._LegalName = params.get("LegalName")
+        self._LegalIdCardType = params.get("LegalIdCardType")
+        self._LegalIdCardNumber = params.get("LegalIdCardNumber")
+        self._Name = params.get("Name")
+        self._OpenId = params.get("OpenId")
+        self._UseOpenId = params.get("UseOpenId")
+        self._IdCardFileType = params.get("IdCardFileType")
+        self._BizLicenseFile = params.get("BizLicenseFile")
+        self._BizLicenseFileName = params.get("BizLicenseFileName")
+        self._LegalMobile = params.get("LegalMobile")
+        self._ContactName = params.get("ContactName")
+        self._VerifyClientIp = params.get("VerifyClientIp")
+        self._VerifyServerIp = params.get("VerifyServerIp")
         if params.get("ContactAddress") is not None:
-            self.ContactAddress = Address()
-            self.ContactAddress._deserialize(params.get("ContactAddress"))
-        self.Email = params.get("Email")
+            self._ContactAddress = Address()
+            self._ContactAddress._deserialize(params.get("ContactAddress"))
+        self._Email = params.get("Email")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1884,18 +3590,34 @@ class CreateSubOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubOrganizationId: 子机构ID
+        :param _SubOrganizationId: 子机构ID
         :type SubOrganizationId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubOrganizationId = None
-        self.RequestId = None
+        self._SubOrganizationId = None
+        self._RequestId = None
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.RequestId = params.get("RequestId")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUserAndSealRequest(AbstractModel):
@@ -1905,59 +3627,140 @@ class CreateUserAndSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param OpenId: 第三方平台唯一标识，要求应用内OpenId唯一
+        :param _OpenId: 第三方平台唯一标识，要求应用内OpenId唯一
         :type OpenId: str
-        :param Name: 用户姓名
+        :param _Name: 用户姓名
         :type Name: str
-        :param IdCardType: 用户证件类型：
+        :param _IdCardType: 用户证件类型：
 1. ID_CARD - 居民身份证
 5. HOUSEHOLD_REGISTER - 户口本
 6. TEMP_ID_CARD - 临时居民身份证
         :type IdCardType: str
-        :param IdCardNumber: 用户证件号
+        :param _IdCardNumber: 用户证件号
         :type IdCardNumber: str
-        :param SourceIp: 请求生成个人印章的客户端IP
+        :param _SourceIp: 请求生成个人印章的客户端IP
         :type SourceIp: str
-        :param Mobile: 用户手机号码，不要求唯一
+        :param _Mobile: 用户手机号码，不要求唯一
         :type Mobile: str
-        :param Email: 用户邮箱，不要求唯一
+        :param _Email: 用户邮箱，不要求唯一
         :type Email: str
-        :param SealName: 默认印章名称
+        :param _SealName: 默认印章名称
         :type SealName: str
-        :param UseOpenId: 是否以OpenId作为UserId (为true时将直接以OpenId生成腾讯电子签平台的UserId)
+        :param _UseOpenId: 是否以OpenId作为UserId (为true时将直接以OpenId生成腾讯电子签平台的UserId)
         :type UseOpenId: bool
         """
-        self.Caller = None
-        self.OpenId = None
-        self.Name = None
-        self.IdCardType = None
-        self.IdCardNumber = None
-        self.SourceIp = None
-        self.Mobile = None
-        self.Email = None
-        self.SealName = None
-        self.UseOpenId = None
+        self._Caller = None
+        self._OpenId = None
+        self._Name = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+        self._SourceIp = None
+        self._Mobile = None
+        self._Email = None
+        self._SealName = None
+        self._UseOpenId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def UseOpenId(self):
+        return self._UseOpenId
+
+    @UseOpenId.setter
+    def UseOpenId(self, UseOpenId):
+        self._UseOpenId = UseOpenId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.OpenId = params.get("OpenId")
-        self.Name = params.get("Name")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.SourceIp = params.get("SourceIp")
-        self.Mobile = params.get("Mobile")
-        self.Email = params.get("Email")
-        self.SealName = params.get("SealName")
-        self.UseOpenId = params.get("UseOpenId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._OpenId = params.get("OpenId")
+        self._Name = params.get("Name")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._SourceIp = params.get("SourceIp")
+        self._Mobile = params.get("Mobile")
+        self._Email = params.get("Email")
+        self._SealName = params.get("SealName")
+        self._UseOpenId = params.get("UseOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1970,22 +3773,46 @@ class CreateUserAndSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户唯一标识，按应用号隔离
+        :param _UserId: 用户唯一标识，按应用号隔离
         :type UserId: str
-        :param SealId: 默认印章ID
+        :param _SealId: 默认印章ID
         :type SealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UserId = None
-        self.SealId = None
-        self.RequestId = None
+        self._UserId = None
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.SealId = params.get("SealId")
-        self.RequestId = params.get("RequestId")
+        self._UserId = params.get("UserId")
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUserRequest(AbstractModel):
@@ -1995,13 +3822,13 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param OpenId: 第三方平台唯一标识；要求应用内OpenId唯一; len<=32
+        :param _OpenId: 第三方平台唯一标识；要求应用内OpenId唯一; len<=32
         :type OpenId: str
-        :param Name: 用户姓名
+        :param _Name: 用户姓名
         :type Name: str
-        :param IdCardType: 用户证件类型：
+        :param _IdCardType: 用户证件类型：
 1. ID_CARD - 居民身份证
 2. PASSPORT - 护照
 3. MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证
@@ -2009,40 +3836,105 @@ class CreateUserRequest(AbstractModel):
 5. HOUSEHOLD_REGISTER - 户口本
 6. TEMP_ID_CARD - 临时居民身份证
         :type IdCardType: str
-        :param IdCardNumber: 用户证件号
+        :param _IdCardNumber: 用户证件号
         :type IdCardNumber: str
-        :param UseOpenId: 是否以OpenId作为UserId (为true时将直接以OpenId生成腾讯电子签平台的UserId)
+        :param _UseOpenId: 是否以OpenId作为UserId (为true时将直接以OpenId生成腾讯电子签平台的UserId)
         :type UseOpenId: bool
-        :param Email: 用户邮箱，不要求唯一
+        :param _Email: 用户邮箱，不要求唯一
         :type Email: str
-        :param Mobile: 用户手机号码，不要求唯一
+        :param _Mobile: 用户手机号码，不要求唯一
         :type Mobile: str
         """
-        self.Caller = None
-        self.OpenId = None
-        self.Name = None
-        self.IdCardType = None
-        self.IdCardNumber = None
-        self.UseOpenId = None
-        self.Email = None
-        self.Mobile = None
+        self._Caller = None
+        self._OpenId = None
+        self._Name = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+        self._UseOpenId = None
+        self._Email = None
+        self._Mobile = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def UseOpenId(self):
+        return self._UseOpenId
+
+    @UseOpenId.setter
+    def UseOpenId(self, UseOpenId):
+        self._UseOpenId = UseOpenId
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.OpenId = params.get("OpenId")
-        self.Name = params.get("Name")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.UseOpenId = params.get("UseOpenId")
-        self.Email = params.get("Email")
-        self.Mobile = params.get("Mobile")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._OpenId = params.get("OpenId")
+        self._Name = params.get("Name")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._UseOpenId = params.get("UseOpenId")
+        self._Email = params.get("Email")
+        self._Mobile = params.get("Mobile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2055,18 +3947,34 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户ID，按应用号隔离
+        :param _UserId: 用户ID，按应用号隔离
         :type UserId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UserId = None
-        self.RequestId = None
+        self._UserId = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.RequestId = params.get("RequestId")
+        self._UserId = params.get("UserId")
+        self._RequestId = params.get("RequestId")
 
 
 class CustomFileIdMap(AbstractModel):
@@ -2076,22 +3984,39 @@ class CustomFileIdMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 用户自定义ID
+        :param _CustomId: 用户自定义ID
         :type CustomId: str
-        :param FileId: 文件id
+        :param _FileId: 文件id
         :type FileId: str
         """
-        self.CustomId = None
-        self.FileId = None
+        self._CustomId = None
+        self._FileId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.FileId = params.get("FileId")
+        self._CustomId = params.get("CustomId")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2104,22 +4029,39 @@ class CustomFlowIdMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 自定义id
+        :param _CustomId: 自定义id
         :type CustomId: str
-        :param FlowId: 流程id
+        :param _FlowId: 流程id
         :type FlowId: str
         """
-        self.CustomId = None
-        self.FlowId = None
+        self._CustomId = None
+        self._FlowId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.FlowId = params.get("FlowId")
+        self._CustomId = params.get("CustomId")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2132,32 +4074,65 @@ class DeleteSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param SealId: 印章ID
+        :param _SealId: 印章ID
         :type SealId: str
-        :param SourceIp: 请求删除印章的客户端IP
+        :param _SourceIp: 请求删除印章的客户端IP
         :type SourceIp: str
-        :param UserId: 用户唯一标识，默认为空时删除企业印章，如非空则删除个人印章
+        :param _UserId: 用户唯一标识，默认为空时删除企业印章，如非空则删除个人印章
         :type UserId: str
         """
-        self.Caller = None
-        self.SealId = None
-        self.SourceIp = None
-        self.UserId = None
+        self._Caller = None
+        self._SealId = None
+        self._SourceIp = None
+        self._UserId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.SealId = params.get("SealId")
-        self.SourceIp = params.get("SourceIp")
-        self.UserId = params.get("UserId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._SealId = params.get("SealId")
+        self._SourceIp = params.get("SourceIp")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2170,14 +4145,22 @@ class DeleteSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCatalogApproversRequest(AbstractModel):
@@ -2187,28 +4170,53 @@ class DescribeCatalogApproversRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param CatalogId: 目录ID
+        :param _CatalogId: 目录ID
         :type CatalogId: str
-        :param UserId: 查询指定用户是否为参与者,为空表示查询所有参与者
+        :param _UserId: 查询指定用户是否为参与者,为空表示查询所有参与者
         :type UserId: str
         """
-        self.Caller = None
-        self.CatalogId = None
-        self.UserId = None
+        self._Caller = None
+        self._CatalogId = None
+        self._UserId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def CatalogId(self):
+        return self._CatalogId
+
+    @CatalogId.setter
+    def CatalogId(self, CatalogId):
+        self._CatalogId = CatalogId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.CatalogId = params.get("CatalogId")
-        self.UserId = params.get("UserId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._CatalogId = params.get("CatalogId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2221,23 +4229,39 @@ class DescribeCatalogApproversResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Approvers: 参与者列表
+        :param _Approvers: 参与者列表
         :type Approvers: list of CatalogApprovers
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Approvers = None
-        self.RequestId = None
+        self._Approvers = None
+        self._RequestId = None
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Approvers") is not None:
-            self.Approvers = []
+            self._Approvers = []
             for item in params.get("Approvers"):
                 obj = CatalogApprovers()
                 obj._deserialize(item)
-                self.Approvers.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Approvers.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCatalogSignComponentsRequest(AbstractModel):
@@ -2247,24 +4271,41 @@ class DescribeCatalogSignComponentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param CatalogId: 目录ID
+        :param _CatalogId: 目录ID
         :type CatalogId: str
         """
-        self.Caller = None
-        self.CatalogId = None
+        self._Caller = None
+        self._CatalogId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def CatalogId(self):
+        return self._CatalogId
+
+    @CatalogId.setter
+    def CatalogId(self, CatalogId):
+        self._CatalogId = CatalogId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.CatalogId = params.get("CatalogId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._CatalogId = params.get("CatalogId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2277,23 +4318,39 @@ class DescribeCatalogSignComponentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignComponents: 签署区列表
+        :param _SignComponents: 签署区列表
         :type SignComponents: list of CatalogComponents
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SignComponents = None
-        self.RequestId = None
+        self._SignComponents = None
+        self._RequestId = None
+
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SignComponents") is not None:
-            self.SignComponents = []
+            self._SignComponents = []
             for item in params.get("SignComponents"):
                 obj = CatalogComponents()
                 obj._deserialize(item)
-                self.SignComponents.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SignComponents.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomFlowIdsByFlowIdRequest(AbstractModel):
@@ -2303,24 +4360,41 @@ class DescribeCustomFlowIdsByFlowIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowIds: 流程 id 列表，最多同时查询 10 个流程 id
+        :param _FlowIds: 流程 id 列表，最多同时查询 10 个流程 id
         :type FlowIds: list of str
         """
-        self.Caller = None
-        self.FlowIds = None
+        self._Caller = None
+        self._FlowIds = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowIds = params.get("FlowIds")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowIds = params.get("FlowIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2333,23 +4407,39 @@ class DescribeCustomFlowIdsByFlowIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomIdList: 自定义流程 id 映射列表
+        :param _CustomIdList: 自定义流程 id 映射列表
         :type CustomIdList: list of CustomFlowIdMap
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomIdList = None
-        self.RequestId = None
+        self._CustomIdList = None
+        self._RequestId = None
+
+    @property
+    def CustomIdList(self):
+        return self._CustomIdList
+
+    @CustomIdList.setter
+    def CustomIdList(self, CustomIdList):
+        self._CustomIdList = CustomIdList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CustomIdList") is not None:
-            self.CustomIdList = []
+            self._CustomIdList = []
             for item in params.get("CustomIdList"):
                 obj = CustomFlowIdMap()
                 obj._deserialize(item)
-                self.CustomIdList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CustomIdList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomFlowIdsRequest(AbstractModel):
@@ -2359,24 +4449,41 @@ class DescribeCustomFlowIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param CustomIds: 自定义 id 列表，最多同时查询 10 个自定义 id
+        :param _CustomIds: 自定义 id 列表，最多同时查询 10 个自定义 id
         :type CustomIds: list of str
         """
-        self.Caller = None
-        self.CustomIds = None
+        self._Caller = None
+        self._CustomIds = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def CustomIds(self):
+        return self._CustomIds
+
+    @CustomIds.setter
+    def CustomIds(self, CustomIds):
+        self._CustomIds = CustomIds
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.CustomIds = params.get("CustomIds")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._CustomIds = params.get("CustomIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2389,23 +4496,39 @@ class DescribeCustomFlowIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomIdList: 自定义流程 id 映射列表
+        :param _CustomIdList: 自定义流程 id 映射列表
         :type CustomIdList: list of CustomFlowIdMap
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomIdList = None
-        self.RequestId = None
+        self._CustomIdList = None
+        self._RequestId = None
+
+    @property
+    def CustomIdList(self):
+        return self._CustomIdList
+
+    @CustomIdList.setter
+    def CustomIdList(self, CustomIdList):
+        self._CustomIdList = CustomIdList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CustomIdList") is not None:
-            self.CustomIdList = []
+            self._CustomIdList = []
             for item in params.get("CustomIdList"):
                 obj = CustomFlowIdMap()
                 obj._deserialize(item)
-                self.CustomIdList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CustomIdList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFaceIdPhotosRequest(AbstractModel):
@@ -2415,28 +4538,53 @@ class DescribeFaceIdPhotosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param WbAppId: 慧眼业务ID
+        :param _WbAppId: 慧眼业务ID
         :type WbAppId: str
-        :param OrderNumbers: 订单号(orderNo); 限制在3个或以内
+        :param _OrderNumbers: 订单号(orderNo); 限制在3个或以内
         :type OrderNumbers: list of str
         """
-        self.Caller = None
-        self.WbAppId = None
-        self.OrderNumbers = None
+        self._Caller = None
+        self._WbAppId = None
+        self._OrderNumbers = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def WbAppId(self):
+        return self._WbAppId
+
+    @WbAppId.setter
+    def WbAppId(self, WbAppId):
+        self._WbAppId = WbAppId
+
+    @property
+    def OrderNumbers(self):
+        return self._OrderNumbers
+
+    @OrderNumbers.setter
+    def OrderNumbers(self, OrderNumbers):
+        self._OrderNumbers = OrderNumbers
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.WbAppId = params.get("WbAppId")
-        self.OrderNumbers = params.get("OrderNumbers")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._WbAppId = params.get("WbAppId")
+        self._OrderNumbers = params.get("OrderNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2449,23 +4597,39 @@ class DescribeFaceIdPhotosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Photos: 照片信息列表
+        :param _Photos: 照片信息列表
         :type Photos: list of FaceIdPhoto
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Photos = None
-        self.RequestId = None
+        self._Photos = None
+        self._RequestId = None
+
+    @property
+    def Photos(self):
+        return self._Photos
+
+    @Photos.setter
+    def Photos(self, Photos):
+        self._Photos = Photos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Photos") is not None:
-            self.Photos = []
+            self._Photos = []
             for item in params.get("Photos"):
                 obj = FaceIdPhoto()
                 obj._deserialize(item)
-                self.Photos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Photos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFaceIdResultsRequest(AbstractModel):
@@ -2475,32 +4639,65 @@ class DescribeFaceIdResultsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param WbAppId: 慧眼业务ID
+        :param _WbAppId: 慧眼业务ID
         :type WbAppId: str
-        :param OrderNumbers: 订单号(orderNo); 限制在3个或以内
+        :param _OrderNumbers: 订单号(orderNo); 限制在3个或以内
         :type OrderNumbers: list of str
-        :param FileType: 1:视频+照片,2:照片,3:视频,0（或其他数字）:无; 可选
+        :param _FileType: 1:视频+照片,2:照片,3:视频,0（或其他数字）:无; 可选
         :type FileType: int
         """
-        self.Caller = None
-        self.WbAppId = None
-        self.OrderNumbers = None
-        self.FileType = None
+        self._Caller = None
+        self._WbAppId = None
+        self._OrderNumbers = None
+        self._FileType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def WbAppId(self):
+        return self._WbAppId
+
+    @WbAppId.setter
+    def WbAppId(self, WbAppId):
+        self._WbAppId = WbAppId
+
+    @property
+    def OrderNumbers(self):
+        return self._OrderNumbers
+
+    @OrderNumbers.setter
+    def OrderNumbers(self, OrderNumbers):
+        self._OrderNumbers = OrderNumbers
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.WbAppId = params.get("WbAppId")
-        self.OrderNumbers = params.get("OrderNumbers")
-        self.FileType = params.get("FileType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._WbAppId = params.get("WbAppId")
+        self._OrderNumbers = params.get("OrderNumbers")
+        self._FileType = params.get("FileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2513,23 +4710,39 @@ class DescribeFaceIdResultsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Results: 核身结果列表
+        :param _Results: 核身结果列表
         :type Results: list of FaceIdResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Results = None
-        self.RequestId = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = FaceIdResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFileIdsByCustomIdsRequest(AbstractModel):
@@ -2539,24 +4752,41 @@ class DescribeFileIdsByCustomIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息, OrganizationId必填
+        :param _Caller: 调用方信息, OrganizationId必填
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param CustomIds: 用户自定义ID
+        :param _CustomIds: 用户自定义ID
         :type CustomIds: list of str
         """
-        self.Caller = None
-        self.CustomIds = None
+        self._Caller = None
+        self._CustomIds = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def CustomIds(self):
+        return self._CustomIds
+
+    @CustomIds.setter
+    def CustomIds(self, CustomIds):
+        self._CustomIds = CustomIds
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.CustomIds = params.get("CustomIds")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._CustomIds = params.get("CustomIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2569,23 +4799,39 @@ class DescribeFileIdsByCustomIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomIdList: <自定义Id,文件id>数组
+        :param _CustomIdList: <自定义Id,文件id>数组
         :type CustomIdList: list of CustomFileIdMap
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomIdList = None
-        self.RequestId = None
+        self._CustomIdList = None
+        self._RequestId = None
+
+    @property
+    def CustomIdList(self):
+        return self._CustomIdList
+
+    @CustomIdList.setter
+    def CustomIdList(self, CustomIdList):
+        self._CustomIdList = CustomIdList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CustomIdList") is not None:
-            self.CustomIdList = []
+            self._CustomIdList = []
             for item in params.get("CustomIdList"):
                 obj = CustomFileIdMap()
                 obj._deserialize(item)
-                self.CustomIdList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CustomIdList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFileUrlsRequest(AbstractModel):
@@ -2595,48 +4841,105 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param BusinessIds: 业务编号数组，如模板编号、文档编号、印章编号、流程编号、目录编号
+        :param _BusinessIds: 业务编号数组，如模板编号、文档编号、印章编号、流程编号、目录编号
         :type BusinessIds: list of str
-        :param BusinessType: 业务类型：
+        :param _BusinessType: 业务类型：
 1. TEMPLATE - 模板
 2. SEAL - 印章
 3. FLOW - 流程
 4.CATALOG - 目录
         :type BusinessType: str
-        :param FileName: 下载后的文件命名，只有FileType为“ZIP”时生效
+        :param _FileName: 下载后的文件命名，只有FileType为“ZIP”时生效
         :type FileName: str
-        :param ResourceOffset: 单个业务ID多个资源情况下，指定资源起始偏移量
+        :param _ResourceOffset: 单个业务ID多个资源情况下，指定资源起始偏移量
         :type ResourceOffset: int
-        :param ResourceLimit: 单个业务ID多个资源情况下，指定资源数量
+        :param _ResourceLimit: 单个业务ID多个资源情况下，指定资源数量
         :type ResourceLimit: int
-        :param FileType: 文件类型，支持"JPG", "PDF","ZIP"等，默认为上传的文件类型
+        :param _FileType: 文件类型，支持"JPG", "PDF","ZIP"等，默认为上传的文件类型
         :type FileType: str
         """
-        self.Caller = None
-        self.BusinessIds = None
-        self.BusinessType = None
-        self.FileName = None
-        self.ResourceOffset = None
-        self.ResourceLimit = None
-        self.FileType = None
+        self._Caller = None
+        self._BusinessIds = None
+        self._BusinessType = None
+        self._FileName = None
+        self._ResourceOffset = None
+        self._ResourceLimit = None
+        self._FileType = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def BusinessIds(self):
+        return self._BusinessIds
+
+    @BusinessIds.setter
+    def BusinessIds(self, BusinessIds):
+        self._BusinessIds = BusinessIds
+
+    @property
+    def BusinessType(self):
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def ResourceOffset(self):
+        return self._ResourceOffset
+
+    @ResourceOffset.setter
+    def ResourceOffset(self, ResourceOffset):
+        self._ResourceOffset = ResourceOffset
+
+    @property
+    def ResourceLimit(self):
+        return self._ResourceLimit
+
+    @ResourceLimit.setter
+    def ResourceLimit(self, ResourceLimit):
+        self._ResourceLimit = ResourceLimit
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.BusinessIds = params.get("BusinessIds")
-        self.BusinessType = params.get("BusinessType")
-        self.FileName = params.get("FileName")
-        self.ResourceOffset = params.get("ResourceOffset")
-        self.ResourceLimit = params.get("ResourceLimit")
-        self.FileType = params.get("FileType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._BusinessIds = params.get("BusinessIds")
+        self._BusinessType = params.get("BusinessType")
+        self._FileName = params.get("FileName")
+        self._ResourceOffset = params.get("ResourceOffset")
+        self._ResourceLimit = params.get("ResourceLimit")
+        self._FileType = params.get("FileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2649,27 +4952,51 @@ class DescribeFileUrlsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileUrls: 文件下载URL数组
+        :param _FileUrls: 文件下载URL数组
         :type FileUrls: list of FileUrl
-        :param TotalCount: URL数量
+        :param _TotalCount: URL数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FileUrls = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FileUrls = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FileUrls(self):
+        return self._FileUrls
+
+    @FileUrls.setter
+    def FileUrls(self, FileUrls):
+        self._FileUrls = FileUrls
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FileUrls") is not None:
-            self.FileUrls = []
+            self._FileUrls = []
             for item in params.get("FileUrls"):
                 obj = FileUrl()
                 obj._deserialize(item)
-                self.FileUrls.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FileUrls.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowApproversRequest(AbstractModel):
@@ -2679,32 +5006,65 @@ class DescribeFlowApproversRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 需要查询的流程ID
+        :param _FlowId: 需要查询的流程ID
         :type FlowId: str
-        :param UserId: 需要查询的用户ID，为空则默认查询所有用户信息
+        :param _UserId: 需要查询的用户ID，为空则默认查询所有用户信息
         :type UserId: str
-        :param SignId: 需要查询的签署ID，为空则不按签署ID过滤
+        :param _SignId: 需要查询的签署ID，为空则不按签署ID过滤
         :type SignId: str
         """
-        self.Caller = None
-        self.FlowId = None
-        self.UserId = None
-        self.SignId = None
+        self._Caller = None
+        self._FlowId = None
+        self._UserId = None
+        self._SignId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
-        self.UserId = params.get("UserId")
-        self.SignId = params.get("SignId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
+        self._UserId = params.get("UserId")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2717,27 +5077,51 @@ class DescribeFlowApproversResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程编号
+        :param _FlowId: 流程编号
         :type FlowId: str
-        :param Approvers: 流程参与者信息
+        :param _Approvers: 流程参与者信息
         :type Approvers: list of FlowApproverInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowId = None
-        self.Approvers = None
-        self.RequestId = None
+        self._FlowId = None
+        self._Approvers = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("Approvers") is not None:
-            self.Approvers = []
+            self._Approvers = []
             for item in params.get("Approvers"):
                 obj = FlowApproverInfo()
                 obj._deserialize(item)
-                self.Approvers.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Approvers.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowFilesRequest(AbstractModel):
@@ -2747,24 +5131,41 @@ class DescribeFlowFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息; 必选
+        :param _Caller: 调用方信息; 必选
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 需要查询的流程ID
+        :param _FlowId: 需要查询的流程ID
         :type FlowId: str
         """
-        self.Caller = None
-        self.FlowId = None
+        self._Caller = None
+        self._FlowId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2777,27 +5178,51 @@ class DescribeFlowFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 流程编号
+        :param _FlowId: 流程编号
         :type FlowId: str
-        :param FlowFileInfos: 流程文件列表
+        :param _FlowFileInfos: 流程文件列表
         :type FlowFileInfos: list of FlowFileInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FlowId = None
-        self.FlowFileInfos = None
-        self.RequestId = None
+        self._FlowId = None
+        self._FlowFileInfos = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowFileInfos(self):
+        return self._FlowFileInfos
+
+    @FlowFileInfos.setter
+    def FlowFileInfos(self, FlowFileInfos):
+        self._FlowFileInfos = FlowFileInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("FlowFileInfos") is not None:
-            self.FlowFileInfos = []
+            self._FlowFileInfos = []
             for item in params.get("FlowFileInfos"):
                 obj = FlowFileInfo()
                 obj._deserialize(item)
-                self.FlowFileInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FlowFileInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlowRequest(AbstractModel):
@@ -2807,24 +5232,41 @@ class DescribeFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 需要查询的流程ID
+        :param _FlowId: 需要查询的流程ID
         :type FlowId: str
         """
-        self.Caller = None
-        self.FlowId = None
+        self._Caller = None
+        self._FlowId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2837,17 +5279,17 @@ class DescribeFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Creator: 流程创建者信息
+        :param _Creator: 流程创建者信息
         :type Creator: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 流程编号
+        :param _FlowId: 流程编号
         :type FlowId: str
-        :param FlowName: 流程名称
+        :param _FlowName: 流程名称
         :type FlowName: str
-        :param FlowDescription: 流程描述
+        :param _FlowDescription: 流程描述
         :type FlowDescription: str
-        :param FlowType: 流程的类型: ”劳务合同“,”租赁合同“,”销售合同“,”其他“
+        :param _FlowType: 流程的类型: ”劳务合同“,”租赁合同“,”销售合同“,”其他“
         :type FlowType: str
-        :param FlowStatus: 流程状态：
+        :param _FlowStatus: 流程状态：
 0-创建；
 1-签署中；
 2-拒签；
@@ -2857,48 +5299,144 @@ class DescribeFlowResponse(AbstractModel):
 6-已销毁
 7-签署完成未归档
         :type FlowStatus: int
-        :param CreatedOn: 流程创建时间
+        :param _CreatedOn: 流程创建时间
         :type CreatedOn: int
-        :param UpdatedOn: 流程完成时间
+        :param _UpdatedOn: 流程完成时间
         :type UpdatedOn: int
-        :param Deadline: 流程截止日期
+        :param _Deadline: 流程截止日期
         :type Deadline: int
-        :param CallbackUrl: 回调地址
+        :param _CallbackUrl: 回调地址
         :type CallbackUrl: str
-        :param FlowMessage: 流程中止原因
+        :param _FlowMessage: 流程中止原因
         :type FlowMessage: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Creator = None
-        self.FlowId = None
-        self.FlowName = None
-        self.FlowDescription = None
-        self.FlowType = None
-        self.FlowStatus = None
-        self.CreatedOn = None
-        self.UpdatedOn = None
-        self.Deadline = None
-        self.CallbackUrl = None
-        self.FlowMessage = None
-        self.RequestId = None
+        self._Creator = None
+        self._FlowId = None
+        self._FlowName = None
+        self._FlowDescription = None
+        self._FlowType = None
+        self._FlowStatus = None
+        self._CreatedOn = None
+        self._UpdatedOn = None
+        self._Deadline = None
+        self._CallbackUrl = None
+        self._FlowMessage = None
+        self._RequestId = None
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
+
+    @property
+    def FlowType(self):
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
+    def FlowStatus(self):
+        return self._FlowStatus
+
+    @FlowStatus.setter
+    def FlowStatus(self, FlowStatus):
+        self._FlowStatus = FlowStatus
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def UpdatedOn(self):
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def FlowMessage(self):
+        return self._FlowMessage
+
+    @FlowMessage.setter
+    def FlowMessage(self, FlowMessage):
+        self._FlowMessage = FlowMessage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Creator") is not None:
-            self.Creator = Caller()
-            self.Creator._deserialize(params.get("Creator"))
-        self.FlowId = params.get("FlowId")
-        self.FlowName = params.get("FlowName")
-        self.FlowDescription = params.get("FlowDescription")
-        self.FlowType = params.get("FlowType")
-        self.FlowStatus = params.get("FlowStatus")
-        self.CreatedOn = params.get("CreatedOn")
-        self.UpdatedOn = params.get("UpdatedOn")
-        self.Deadline = params.get("Deadline")
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.FlowMessage = params.get("FlowMessage")
-        self.RequestId = params.get("RequestId")
+            self._Creator = Caller()
+            self._Creator._deserialize(params.get("Creator"))
+        self._FlowId = params.get("FlowId")
+        self._FlowName = params.get("FlowName")
+        self._FlowDescription = params.get("FlowDescription")
+        self._FlowType = params.get("FlowType")
+        self._FlowStatus = params.get("FlowStatus")
+        self._CreatedOn = params.get("CreatedOn")
+        self._UpdatedOn = params.get("UpdatedOn")
+        self._Deadline = params.get("Deadline")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._FlowMessage = params.get("FlowMessage")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSealsRequest(AbstractModel):
@@ -2908,28 +5446,53 @@ class DescribeSealsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param SealIds: 印章ID列表
+        :param _SealIds: 印章ID列表
         :type SealIds: list of str
-        :param UserId: 用户唯一标识
+        :param _UserId: 用户唯一标识
         :type UserId: str
         """
-        self.Caller = None
-        self.SealIds = None
-        self.UserId = None
+        self._Caller = None
+        self._SealIds = None
+        self._UserId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def SealIds(self):
+        return self._SealIds
+
+    @SealIds.setter
+    def SealIds(self, SealIds):
+        self._SealIds = SealIds
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.SealIds = params.get("SealIds")
-        self.UserId = params.get("UserId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._SealIds = params.get("SealIds")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2942,23 +5505,39 @@ class DescribeSealsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Seals: 印章信息
+        :param _Seals: 印章信息
         :type Seals: list of Seal
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Seals = None
-        self.RequestId = None
+        self._Seals = None
+        self._RequestId = None
+
+    @property
+    def Seals(self):
+        return self._Seals
+
+    @Seals.setter
+    def Seals(self, Seals):
+        self._Seals = Seals
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Seals") is not None:
-            self.Seals = []
+            self._Seals = []
             for item in params.get("Seals"):
                 obj = Seal()
                 obj._deserialize(item)
-                self.Seals.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Seals.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSubOrganizationsRequest(AbstractModel):
@@ -2968,24 +5547,41 @@ class DescribeSubOrganizationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param SubOrganizationIds: 子机构ID数组
+        :param _SubOrganizationIds: 子机构ID数组
         :type SubOrganizationIds: list of str
         """
-        self.Caller = None
-        self.SubOrganizationIds = None
+        self._Caller = None
+        self._SubOrganizationIds = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def SubOrganizationIds(self):
+        return self._SubOrganizationIds
+
+    @SubOrganizationIds.setter
+    def SubOrganizationIds(self, SubOrganizationIds):
+        self._SubOrganizationIds = SubOrganizationIds
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.SubOrganizationIds = params.get("SubOrganizationIds")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._SubOrganizationIds = params.get("SubOrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2998,23 +5594,39 @@ class DescribeSubOrganizationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubOrganizationInfos: 子机构信息列表
+        :param _SubOrganizationInfos: 子机构信息列表
         :type SubOrganizationInfos: list of SubOrganizationDetail
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubOrganizationInfos = None
-        self.RequestId = None
+        self._SubOrganizationInfos = None
+        self._RequestId = None
+
+    @property
+    def SubOrganizationInfos(self):
+        return self._SubOrganizationInfos
+
+    @SubOrganizationInfos.setter
+    def SubOrganizationInfos(self, SubOrganizationInfos):
+        self._SubOrganizationInfos = SubOrganizationInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SubOrganizationInfos") is not None:
-            self.SubOrganizationInfos = []
+            self._SubOrganizationInfos = []
             for item in params.get("SubOrganizationInfos"):
                 obj = SubOrganizationDetail()
                 obj._deserialize(item)
-                self.SubOrganizationInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SubOrganizationInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsersRequest(AbstractModel):
@@ -3024,24 +5636,41 @@ class DescribeUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param UserIds: UserId列表，最多支持100个UserId
+        :param _UserIds: UserId列表，最多支持100个UserId
         :type UserIds: list of str
         """
-        self.Caller = None
-        self.UserIds = None
+        self._Caller = None
+        self._UserIds = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.UserIds = params.get("UserIds")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._UserIds = params.get("UserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3054,23 +5683,39 @@ class DescribeUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Users: 用户信息查询结果
+        :param _Users: 用户信息查询结果
         :type Users: list of UserDescribe
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Users = None
-        self.RequestId = None
+        self._Users = None
+        self._RequestId = None
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Users") is not None:
-            self.Users = []
+            self._Users = []
             for item in params.get("Users"):
                 obj = UserDescribe()
                 obj._deserialize(item)
-                self.Users.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Users.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DestroyFlowFileRequest(AbstractModel):
@@ -3080,24 +5725,41 @@ class DestroyFlowFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 流程ID
+        :param _FlowId: 流程ID
         :type FlowId: str
         """
-        self.Caller = None
-        self.FlowId = None
+        self._Caller = None
+        self._FlowId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3110,14 +5772,22 @@ class DestroyFlowFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class FaceIdPhoto(AbstractModel):
@@ -3127,32 +5797,65 @@ class FaceIdPhoto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 核身结果：
+        :param _Result: 核身结果：
 0 - 通过；
 1 - 未通过
         :type Result: int
-        :param Description: 核身失败描述
+        :param _Description: 核身失败描述
         :type Description: str
-        :param Photo: 照片数据 (base64编码, 一般为JPG或PNG)
+        :param _Photo: 照片数据 (base64编码, 一般为JPG或PNG)
         :type Photo: str
-        :param OrderNumber: 订单号 (orderNo)
+        :param _OrderNumber: 订单号 (orderNo)
         :type OrderNumber: str
         """
-        self.Result = None
-        self.Description = None
-        self.Photo = None
-        self.OrderNumber = None
+        self._Result = None
+        self._Description = None
+        self._Photo = None
+        self._OrderNumber = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Photo(self):
+        return self._Photo
+
+    @Photo.setter
+    def Photo(self, Photo):
+        self._Photo = Photo
+
+    @property
+    def OrderNumber(self):
+        return self._OrderNumber
+
+    @OrderNumber.setter
+    def OrderNumber(self, OrderNumber):
+        self._OrderNumber = OrderNumber
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.Photo = params.get("Photo")
-        self.OrderNumber = params.get("OrderNumber")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Photo = params.get("Photo")
+        self._OrderNumber = params.get("OrderNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3165,69 +5868,158 @@ class FaceIdResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 核身结果：
+        :param _Result: 核身结果：
 0 - 通过；
 1 - 未通过
         :type Result: int
-        :param Description: 核身失败描述
+        :param _Description: 核身失败描述
         :type Description: str
-        :param OrderNumber: 订单号 (orderNo)
+        :param _OrderNumber: 订单号 (orderNo)
         :type OrderNumber: str
-        :param Name: 姓名
+        :param _Name: 姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param IdCardType: 身份证件类型： 
+        :param _IdCardType: 身份证件类型： 
 ID_CARD - 居民身份证
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardType: str
-        :param IdCardNumber: 身份证件号码
+        :param _IdCardNumber: 身份证件号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardNumber: str
-        :param LiveRate: 活体检测得分 (百分制)
+        :param _LiveRate: 活体检测得分 (百分制)
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveRate: int
-        :param Similarity: 人脸检测得分 (百分制)
+        :param _Similarity: 人脸检测得分 (百分制)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Similarity: float
-        :param OccurredTime: 刷脸时间 (UNIX时间戳)
+        :param _OccurredTime: 刷脸时间 (UNIX时间戳)
 注意：此字段可能返回 null，表示取不到有效值。
         :type OccurredTime: int
-        :param Photo: 照片数据 (base64编码, 一般为JPG或PNG)
+        :param _Photo: 照片数据 (base64编码, 一般为JPG或PNG)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Photo: str
-        :param Video: 视频数据 (base64编码, 一般为MP4)
+        :param _Video: 视频数据 (base64编码, 一般为MP4)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Video: str
         """
-        self.Result = None
-        self.Description = None
-        self.OrderNumber = None
-        self.Name = None
-        self.IdCardType = None
-        self.IdCardNumber = None
-        self.LiveRate = None
-        self.Similarity = None
-        self.OccurredTime = None
-        self.Photo = None
-        self.Video = None
+        self._Result = None
+        self._Description = None
+        self._OrderNumber = None
+        self._Name = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+        self._LiveRate = None
+        self._Similarity = None
+        self._OccurredTime = None
+        self._Photo = None
+        self._Video = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OrderNumber(self):
+        return self._OrderNumber
+
+    @OrderNumber.setter
+    def OrderNumber(self, OrderNumber):
+        self._OrderNumber = OrderNumber
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def LiveRate(self):
+        return self._LiveRate
+
+    @LiveRate.setter
+    def LiveRate(self, LiveRate):
+        self._LiveRate = LiveRate
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def OccurredTime(self):
+        return self._OccurredTime
+
+    @OccurredTime.setter
+    def OccurredTime(self, OccurredTime):
+        self._OccurredTime = OccurredTime
+
+    @property
+    def Photo(self):
+        return self._Photo
+
+    @Photo.setter
+    def Photo(self, Photo):
+        self._Photo = Photo
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.OrderNumber = params.get("OrderNumber")
-        self.Name = params.get("Name")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.LiveRate = params.get("LiveRate")
-        self.Similarity = params.get("Similarity")
-        self.OccurredTime = params.get("OccurredTime")
-        self.Photo = params.get("Photo")
-        self.Video = params.get("Video")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._OrderNumber = params.get("OrderNumber")
+        self._Name = params.get("Name")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._LiveRate = params.get("LiveRate")
+        self._Similarity = params.get("Similarity")
+        self._OccurredTime = params.get("OccurredTime")
+        self._Photo = params.get("Photo")
+        self._Video = params.get("Video")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3240,30 +6032,63 @@ class FileUrl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 下载文件的URL
+        :param _Url: 下载文件的URL
         :type Url: str
-        :param Option: 下载文件的附加信息
+        :param _Option: 下载文件的附加信息
         :type Option: str
-        :param Index: 下载文件所属的资源序号
+        :param _Index: 下载文件所属的资源序号
         :type Index: int
-        :param FlowId: 目录业务下，文件对应的流程
+        :param _FlowId: 目录业务下，文件对应的流程
         :type FlowId: str
         """
-        self.Url = None
-        self.Option = None
-        self.Index = None
-        self.FlowId = None
+        self._Url = None
+        self._Option = None
+        self._Index = None
+        self._FlowId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Option(self):
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.Option = params.get("Option")
-        self.Index = params.get("Index")
-        self.FlowId = params.get("FlowId")
+        self._Url = params.get("Url")
+        self._Option = params.get("Option")
+        self._Index = params.get("Index")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3276,15 +6101,15 @@ class FlowApproverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户ID
+        :param _UserId: 用户ID
         :type UserId: str
-        :param VerifyChannel: 认证方式：
+        :param _VerifyChannel: 认证方式：
 WEIXINAPP - 微信小程序；
 FACEID - 慧眼 (默认)；
 VERIFYCODE - 验证码；
 THIRD - 第三方 (暂不支持)
         :type VerifyChannel: list of str
-        :param ApproveStatus: 签署状态：
+        :param _ApproveStatus: 签署状态：
 0 - 待签署；
 1- 已签署；
 2 - 拒绝；
@@ -3294,104 +6119,265 @@ THIRD - 第三方 (暂不支持)
 13-审核驳回
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveStatus: int
-        :param ApproveMessage: 拒签/签署/审核驳回原因
+        :param _ApproveMessage: 拒签/签署/审核驳回原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveMessage: str
-        :param ApproveTime: 签约时间的时间戳
+        :param _ApproveTime: 签约时间的时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveTime: int
-        :param SubOrganizationId: 签署企业ID
+        :param _SubOrganizationId: 签署企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubOrganizationId: str
-        :param JumpUrl: 签署完成后跳转的URL
+        :param _JumpUrl: 签署完成后跳转的URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type JumpUrl: str
-        :param ComponentSeals: 用户签署区ID到印章ID的映射集合
+        :param _ComponentSeals: 用户签署区ID到印章ID的映射集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentSeals: list of ComponentSeal
-        :param IsFullText: 签署前置条件：是否强制用户全文阅读，即阅读到待签署文档的最后一页。默认FALSE
+        :param _IsFullText: 签署前置条件：是否强制用户全文阅读，即阅读到待签署文档的最后一页。默认FALSE
         :type IsFullText: bool
-        :param PreReadTime: 签署前置条件：强制阅读时长，页面停留时长不足则不允许签署。默认不限制
+        :param _PreReadTime: 签署前置条件：强制阅读时长，页面停留时长不足则不允许签署。默认不限制
         :type PreReadTime: int
-        :param Mobile: 签署人手机号，脱敏显示
+        :param _Mobile: 签署人手机号，脱敏显示
         :type Mobile: str
-        :param Deadline: 签署链接截止时间，默认签署流程发起后7天失效
+        :param _Deadline: 签署链接截止时间，默认签署流程发起后7天失效
         :type Deadline: int
-        :param IsLastApprover: 是否为最后一个签署人, 若为最后一人，则其签署完成后自动归档
+        :param _IsLastApprover: 是否为最后一个签署人, 若为最后一人，则其签署完成后自动归档
         :type IsLastApprover: bool
-        :param SmsTemplate: 短信模板
+        :param _SmsTemplate: 短信模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmsTemplate: :class:`tencentcloud.essbasic.v20201222.models.SmsTemplate`
-        :param IdCardNumber: 身份证号，脱敏显示
+        :param _IdCardNumber: 身份证号，脱敏显示
         :type IdCardNumber: str
-        :param Name: 用户姓名
+        :param _Name: 用户姓名
         :type Name: str
-        :param CanOffLine: 是否支持线下核身
+        :param _CanOffLine: 是否支持线下核身
         :type CanOffLine: bool
-        :param IdCardType: 证件号码类型：ID_CARD - 身份证，PASSPORT - 护照，MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证; 暂不支持用于电子签自有平台实名认证，MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证; 暂不支持用于电子签自有平台实名认证，HOUSEHOLD_REGISTER - 户口本; 暂不支持用于电子签自有平台实名认证，TEMP_ID_CARD - 临时居民身份证; 暂不支持用于电子签自有平台实名认证
+        :param _IdCardType: 证件号码类型：ID_CARD - 身份证，PASSPORT - 护照，MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证; 暂不支持用于电子签自有平台实名认证，MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证; 暂不支持用于电子签自有平台实名认证，HOUSEHOLD_REGISTER - 户口本; 暂不支持用于电子签自有平台实名认证，TEMP_ID_CARD - 临时居民身份证; 暂不支持用于电子签自有平台实名认证
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardType: str
-        :param CallbackUrl: 签署回调地址
+        :param _CallbackUrl: 签署回调地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackUrl: str
-        :param SignId: 签署任务ID，标识每一次的流程发送
+        :param _SignId: 签署任务ID，标识每一次的流程发送
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignId: str
         """
-        self.UserId = None
-        self.VerifyChannel = None
-        self.ApproveStatus = None
-        self.ApproveMessage = None
-        self.ApproveTime = None
-        self.SubOrganizationId = None
-        self.JumpUrl = None
-        self.ComponentSeals = None
-        self.IsFullText = None
-        self.PreReadTime = None
-        self.Mobile = None
-        self.Deadline = None
-        self.IsLastApprover = None
-        self.SmsTemplate = None
-        self.IdCardNumber = None
-        self.Name = None
-        self.CanOffLine = None
-        self.IdCardType = None
-        self.CallbackUrl = None
-        self.SignId = None
+        self._UserId = None
+        self._VerifyChannel = None
+        self._ApproveStatus = None
+        self._ApproveMessage = None
+        self._ApproveTime = None
+        self._SubOrganizationId = None
+        self._JumpUrl = None
+        self._ComponentSeals = None
+        self._IsFullText = None
+        self._PreReadTime = None
+        self._Mobile = None
+        self._Deadline = None
+        self._IsLastApprover = None
+        self._SmsTemplate = None
+        self._IdCardNumber = None
+        self._Name = None
+        self._CanOffLine = None
+        self._IdCardType = None
+        self._CallbackUrl = None
+        self._SignId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def ApproveStatus(self):
+        return self._ApproveStatus
+
+    @ApproveStatus.setter
+    def ApproveStatus(self, ApproveStatus):
+        self._ApproveStatus = ApproveStatus
+
+    @property
+    def ApproveMessage(self):
+        return self._ApproveMessage
+
+    @ApproveMessage.setter
+    def ApproveMessage(self, ApproveMessage):
+        self._ApproveMessage = ApproveMessage
+
+    @property
+    def ApproveTime(self):
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+    @property
+    def ComponentSeals(self):
+        return self._ComponentSeals
+
+    @ComponentSeals.setter
+    def ComponentSeals(self, ComponentSeals):
+        self._ComponentSeals = ComponentSeals
+
+    @property
+    def IsFullText(self):
+        return self._IsFullText
+
+    @IsFullText.setter
+    def IsFullText(self, IsFullText):
+        self._IsFullText = IsFullText
+
+    @property
+    def PreReadTime(self):
+        return self._PreReadTime
+
+    @PreReadTime.setter
+    def PreReadTime(self, PreReadTime):
+        self._PreReadTime = PreReadTime
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def IsLastApprover(self):
+        return self._IsLastApprover
+
+    @IsLastApprover.setter
+    def IsLastApprover(self, IsLastApprover):
+        self._IsLastApprover = IsLastApprover
+
+    @property
+    def SmsTemplate(self):
+        return self._SmsTemplate
+
+    @SmsTemplate.setter
+    def SmsTemplate(self, SmsTemplate):
+        self._SmsTemplate = SmsTemplate
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CanOffLine(self):
+        return self._CanOffLine
+
+    @CanOffLine.setter
+    def CanOffLine(self, CanOffLine):
+        self._CanOffLine = CanOffLine
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.ApproveStatus = params.get("ApproveStatus")
-        self.ApproveMessage = params.get("ApproveMessage")
-        self.ApproveTime = params.get("ApproveTime")
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.JumpUrl = params.get("JumpUrl")
+        self._UserId = params.get("UserId")
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._ApproveStatus = params.get("ApproveStatus")
+        self._ApproveMessage = params.get("ApproveMessage")
+        self._ApproveTime = params.get("ApproveTime")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._JumpUrl = params.get("JumpUrl")
         if params.get("ComponentSeals") is not None:
-            self.ComponentSeals = []
+            self._ComponentSeals = []
             for item in params.get("ComponentSeals"):
                 obj = ComponentSeal()
                 obj._deserialize(item)
-                self.ComponentSeals.append(obj)
-        self.IsFullText = params.get("IsFullText")
-        self.PreReadTime = params.get("PreReadTime")
-        self.Mobile = params.get("Mobile")
-        self.Deadline = params.get("Deadline")
-        self.IsLastApprover = params.get("IsLastApprover")
+                self._ComponentSeals.append(obj)
+        self._IsFullText = params.get("IsFullText")
+        self._PreReadTime = params.get("PreReadTime")
+        self._Mobile = params.get("Mobile")
+        self._Deadline = params.get("Deadline")
+        self._IsLastApprover = params.get("IsLastApprover")
         if params.get("SmsTemplate") is not None:
-            self.SmsTemplate = SmsTemplate()
-            self.SmsTemplate._deserialize(params.get("SmsTemplate"))
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.Name = params.get("Name")
-        self.CanOffLine = params.get("CanOffLine")
-        self.IdCardType = params.get("IdCardType")
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.SignId = params.get("SignId")
+            self._SmsTemplate = SmsTemplate()
+            self._SmsTemplate._deserialize(params.get("SmsTemplate"))
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._Name = params.get("Name")
+        self._CanOffLine = params.get("CanOffLine")
+        self._IdCardType = params.get("IdCardType")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3404,42 +6390,99 @@ class FlowFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileIndex: 文件序号
+        :param _FileIndex: 文件序号
         :type FileIndex: int
-        :param FileType: 文件类型
+        :param _FileType: 文件类型
         :type FileType: str
-        :param FileMd5: 文件的MD5码
+        :param _FileMd5: 文件的MD5码
         :type FileMd5: str
-        :param FileName: 文件名
+        :param _FileName: 文件名
         :type FileName: str
-        :param FileSize: 文件大小，单位为Byte
+        :param _FileSize: 文件大小，单位为Byte
         :type FileSize: int
-        :param CreatedOn: 文件创建时间戳
+        :param _CreatedOn: 文件创建时间戳
         :type CreatedOn: int
-        :param Url: 文件的下载地址
+        :param _Url: 文件的下载地址
         :type Url: str
         """
-        self.FileIndex = None
-        self.FileType = None
-        self.FileMd5 = None
-        self.FileName = None
-        self.FileSize = None
-        self.CreatedOn = None
-        self.Url = None
+        self._FileIndex = None
+        self._FileType = None
+        self._FileMd5 = None
+        self._FileName = None
+        self._FileSize = None
+        self._CreatedOn = None
+        self._Url = None
+
+    @property
+    def FileIndex(self):
+        return self._FileIndex
+
+    @FileIndex.setter
+    def FileIndex(self, FileIndex):
+        self._FileIndex = FileIndex
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileMd5(self):
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
 
 
     def _deserialize(self, params):
-        self.FileIndex = params.get("FileIndex")
-        self.FileType = params.get("FileType")
-        self.FileMd5 = params.get("FileMd5")
-        self.FileName = params.get("FileName")
-        self.FileSize = params.get("FileSize")
-        self.CreatedOn = params.get("CreatedOn")
-        self.Url = params.get("Url")
+        self._FileIndex = params.get("FileIndex")
+        self._FileType = params.get("FileType")
+        self._FileMd5 = params.get("FileMd5")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._CreatedOn = params.get("CreatedOn")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3452,42 +6495,91 @@ class FlowInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowName: 合同名字
+        :param _FlowName: 合同名字
         :type FlowName: str
-        :param Deadline: 签署截止时间戳，超过有效签署时间则该签署流程失败
+        :param _Deadline: 签署截止时间戳，超过有效签署时间则该签署流程失败
         :type Deadline: int
-        :param FlowDescription: 合同描述
+        :param _FlowDescription: 合同描述
         :type FlowDescription: str
-        :param FlowType: 合同类型：
+        :param _FlowType: 合同类型：
 1. “劳务”
 2. “销售”
 3. “租赁”
 4. “其他”
         :type FlowType: str
-        :param CallbackUrl: 回调地址
+        :param _CallbackUrl: 回调地址
         :type CallbackUrl: str
-        :param UserData: 用户自定义数据
+        :param _UserData: 用户自定义数据
         :type UserData: str
         """
-        self.FlowName = None
-        self.Deadline = None
-        self.FlowDescription = None
-        self.FlowType = None
-        self.CallbackUrl = None
-        self.UserData = None
+        self._FlowName = None
+        self._Deadline = None
+        self._FlowDescription = None
+        self._FlowType = None
+        self._CallbackUrl = None
+        self._UserData = None
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
+
+    @property
+    def FlowType(self):
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
 
 
     def _deserialize(self, params):
-        self.FlowName = params.get("FlowName")
-        self.Deadline = params.get("Deadline")
-        self.FlowDescription = params.get("FlowDescription")
-        self.FlowType = params.get("FlowType")
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.UserData = params.get("UserData")
+        self._FlowName = params.get("FlowName")
+        self._Deadline = params.get("Deadline")
+        self._FlowDescription = params.get("FlowDescription")
+        self._FlowType = params.get("FlowType")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3500,9 +6592,9 @@ class GenerateOrganizationSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param SealType: 印章类型：
+        :param _SealType: 印章类型：
 OFFICIAL-公章
 SPECIAL_FINANCIAL-财务专用章
 CONTRACT-合同专用章
@@ -3510,36 +6602,85 @@ LEGAL_REPRESENTATIVE-法定代表人章
 SPECIAL_NATIONWIDE_INVOICE-发票专用章
 OTHER-其他
         :type SealType: str
-        :param SourceIp: 请求生成企业印章的客户端Ip
+        :param _SourceIp: 请求生成企业印章的客户端Ip
         :type SourceIp: str
-        :param SealName: 电子印章名称
+        :param _SealName: 电子印章名称
         :type SealName: str
-        :param SealHorizontalText: 企业印章横向文字，最多可填8个汉字（可不填，默认为"电子签名专用章"）
+        :param _SealHorizontalText: 企业印章横向文字，最多可填8个汉字（可不填，默认为"电子签名专用章"）
         :type SealHorizontalText: str
-        :param IsDefault: 是否是默认印章 true：是，false：否
+        :param _IsDefault: 是否是默认印章 true：是，false：否
         :type IsDefault: bool
         """
-        self.Caller = None
-        self.SealType = None
-        self.SourceIp = None
-        self.SealName = None
-        self.SealHorizontalText = None
-        self.IsDefault = None
+        self._Caller = None
+        self._SealType = None
+        self._SourceIp = None
+        self._SealName = None
+        self._SealHorizontalText = None
+        self._IsDefault = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def SealHorizontalText(self):
+        return self._SealHorizontalText
+
+    @SealHorizontalText.setter
+    def SealHorizontalText(self, SealHorizontalText):
+        self._SealHorizontalText = SealHorizontalText
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.SealType = params.get("SealType")
-        self.SourceIp = params.get("SourceIp")
-        self.SealName = params.get("SealName")
-        self.SealHorizontalText = params.get("SealHorizontalText")
-        self.IsDefault = params.get("IsDefault")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._SealType = params.get("SealType")
+        self._SourceIp = params.get("SourceIp")
+        self._SealName = params.get("SealName")
+        self._SealHorizontalText = params.get("SealHorizontalText")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3552,18 +6693,34 @@ class GenerateOrganizationSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SealId: 电子印章Id
+        :param _SealId: 电子印章Id
         :type SealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SealId = None
-        self.RequestId = None
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SealId = params.get("SealId")
-        self.RequestId = params.get("RequestId")
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
 
 
 class GenerateUserSealRequest(AbstractModel):
@@ -3573,36 +6730,77 @@ class GenerateUserSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param UserId: 用户ID
+        :param _UserId: 用户ID
         :type UserId: str
-        :param SourceIp: 请求生成个人印章的客户端IP
+        :param _SourceIp: 请求生成个人印章的客户端IP
         :type SourceIp: str
-        :param SealName: 电子印章名称
+        :param _SealName: 电子印章名称
         :type SealName: str
-        :param IsDefault: 是否是默认印章 true：是，false：否
+        :param _IsDefault: 是否是默认印章 true：是，false：否
         :type IsDefault: bool
         """
-        self.Caller = None
-        self.UserId = None
-        self.SourceIp = None
-        self.SealName = None
-        self.IsDefault = None
+        self._Caller = None
+        self._UserId = None
+        self._SourceIp = None
+        self._SealName = None
+        self._IsDefault = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.UserId = params.get("UserId")
-        self.SourceIp = params.get("SourceIp")
-        self.SealName = params.get("SealName")
-        self.IsDefault = params.get("IsDefault")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._UserId = params.get("UserId")
+        self._SourceIp = params.get("SourceIp")
+        self._SealName = params.get("SealName")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3615,18 +6813,34 @@ class GenerateUserSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SealId: 电子印章Id
+        :param _SealId: 电子印章Id
         :type SealId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SealId = None
-        self.RequestId = None
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SealId = params.get("SealId")
-        self.RequestId = params.get("RequestId")
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyOrganizationDefaultSealRequest(AbstractModel):
@@ -3636,28 +6850,53 @@ class ModifyOrganizationDefaultSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param SealId: 重新指定的默认印章ID
+        :param _SealId: 重新指定的默认印章ID
         :type SealId: str
-        :param SourceIp: 请求重新指定企业默认印章的客户端IP
+        :param _SourceIp: 请求重新指定企业默认印章的客户端IP
         :type SourceIp: str
         """
-        self.Caller = None
-        self.SealId = None
-        self.SourceIp = None
+        self._Caller = None
+        self._SealId = None
+        self._SourceIp = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.SealId = params.get("SealId")
-        self.SourceIp = params.get("SourceIp")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._SealId = params.get("SealId")
+        self._SourceIp = params.get("SourceIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3670,14 +6909,22 @@ class ModifyOrganizationDefaultSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySealRequest(AbstractModel):
@@ -3687,44 +6934,101 @@ class ModifySealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param SourceIp: 请求更新印章的客户端IP
+        :param _SourceIp: 请求更新印章的客户端IP
         :type SourceIp: str
-        :param SealId: 电子印章ID。若为空，则修改个人/机构的默认印章。
+        :param _SealId: 电子印章ID。若为空，则修改个人/机构的默认印章。
         :type SealId: str
-        :param SealName: 电子印章名称
+        :param _SealName: 电子印章名称
         :type SealName: str
-        :param Image: 印章图片，base64编码（与FileId参数二选一，同时传入参数时优先使用Image参数）
+        :param _Image: 印章图片，base64编码（与FileId参数二选一，同时传入参数时优先使用Image参数）
         :type Image: str
-        :param FileId: 印章图片文件ID（与Image参数二选一，同时传入参数时优先使用Image参数）
+        :param _FileId: 印章图片文件ID（与Image参数二选一，同时传入参数时优先使用Image参数）
         :type FileId: str
-        :param UserId: 需要更新印章的用户ID
+        :param _UserId: 需要更新印章的用户ID
         :type UserId: str
         """
-        self.Caller = None
-        self.SourceIp = None
-        self.SealId = None
-        self.SealName = None
-        self.Image = None
-        self.FileId = None
-        self.UserId = None
+        self._Caller = None
+        self._SourceIp = None
+        self._SealId = None
+        self._SealName = None
+        self._Image = None
+        self._FileId = None
+        self._UserId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.SourceIp = params.get("SourceIp")
-        self.SealId = params.get("SealId")
-        self.SealName = params.get("SealName")
-        self.Image = params.get("Image")
-        self.FileId = params.get("FileId")
-        self.UserId = params.get("UserId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._SourceIp = params.get("SourceIp")
+        self._SealId = params.get("SealId")
+        self._SealName = params.get("SealName")
+        self._Image = params.get("Image")
+        self._FileId = params.get("FileId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3737,14 +7041,22 @@ class ModifySealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubOrganizationInfoRequest(AbstractModel):
@@ -3754,74 +7066,179 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息，该接口 SubOrganizationId 字段与 OpenId 字段二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
+        :param _Caller: 调用方信息，该接口 SubOrganizationId 字段与 OpenId 字段二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param OpenId: 机构在第三方的唯一标识，32位定长字符串，与 Caller 中 SubOrgnizationId 二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
+        :param _OpenId: 机构在第三方的唯一标识，32位定长字符串，与 Caller 中 SubOrgnizationId 二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
         :type OpenId: str
-        :param Name: 机构名称全称，修改后机构状态将变为未实名，需要调用实名接口重新实名。
+        :param _Name: 机构名称全称，修改后机构状态将变为未实名，需要调用实名接口重新实名。
         :type Name: str
-        :param OrganizationType: 机构类型可选值：
+        :param _OrganizationType: 机构类型可选值：
 1. ENTERPRISE - 企业；
 2. INDIVIDUALBIZ - 个体工商户；
 3. PUBLICINSTITUTION - 政府/事业单位
 4. OTHERS - 其他组织
         :type OrganizationType: str
-        :param BizLicenseFile: 机构证件照片文件，base64编码。支持jpg，jpeg，png格式；如果传值，则重新上传文件后，机构状态将变为未实名，需要调用实名接口重新实名。
+        :param _BizLicenseFile: 机构证件照片文件，base64编码。支持jpg，jpeg，png格式；如果传值，则重新上传文件后，机构状态将变为未实名，需要调用实名接口重新实名。
         :type BizLicenseFile: str
-        :param BizLicenseFileName: 机构证件照片文件名
+        :param _BizLicenseFileName: 机构证件照片文件名
         :type BizLicenseFileName: str
-        :param LegalName: 机构法人/经营者姓名
+        :param _LegalName: 机构法人/经营者姓名
         :type LegalName: str
-        :param LegalIdCardType: 机构法人/经营者证件类型，可选值：ID_CARD - 居民身份证。OrganizationType 为 ENTERPRISE、INDIVIDUALBIZ 时，此项必填，其他情况选填。
+        :param _LegalIdCardType: 机构法人/经营者证件类型，可选值：ID_CARD - 居民身份证。OrganizationType 为 ENTERPRISE、INDIVIDUALBIZ 时，此项必填，其他情况选填。
         :type LegalIdCardType: str
-        :param LegalIdCardNumber: 机构法人/经营者证件号码。OrganizationType 为 ENTERPRISE、INDIVIDUALBIZ 时，此项必填，其他情况选填
+        :param _LegalIdCardNumber: 机构法人/经营者证件号码。OrganizationType 为 ENTERPRISE、INDIVIDUALBIZ 时，此项必填，其他情况选填
         :type LegalIdCardNumber: str
-        :param LegalMobile: 机构法人/经营者/联系人手机号码
+        :param _LegalMobile: 机构法人/经营者/联系人手机号码
         :type LegalMobile: str
-        :param ContactName: 组织联系人姓名
+        :param _ContactName: 组织联系人姓名
         :type ContactName: str
-        :param ContactAddress: 企业联系地址
+        :param _ContactAddress: 企业联系地址
         :type ContactAddress: :class:`tencentcloud.essbasic.v20201222.models.Address`
-        :param Email: 机构电子邮箱
+        :param _Email: 机构电子邮箱
         :type Email: str
         """
-        self.Caller = None
-        self.OpenId = None
-        self.Name = None
-        self.OrganizationType = None
-        self.BizLicenseFile = None
-        self.BizLicenseFileName = None
-        self.LegalName = None
-        self.LegalIdCardType = None
-        self.LegalIdCardNumber = None
-        self.LegalMobile = None
-        self.ContactName = None
-        self.ContactAddress = None
-        self.Email = None
+        self._Caller = None
+        self._OpenId = None
+        self._Name = None
+        self._OrganizationType = None
+        self._BizLicenseFile = None
+        self._BizLicenseFileName = None
+        self._LegalName = None
+        self._LegalIdCardType = None
+        self._LegalIdCardNumber = None
+        self._LegalMobile = None
+        self._ContactName = None
+        self._ContactAddress = None
+        self._Email = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OrganizationType(self):
+        return self._OrganizationType
+
+    @OrganizationType.setter
+    def OrganizationType(self, OrganizationType):
+        self._OrganizationType = OrganizationType
+
+    @property
+    def BizLicenseFile(self):
+        return self._BizLicenseFile
+
+    @BizLicenseFile.setter
+    def BizLicenseFile(self, BizLicenseFile):
+        self._BizLicenseFile = BizLicenseFile
+
+    @property
+    def BizLicenseFileName(self):
+        return self._BizLicenseFileName
+
+    @BizLicenseFileName.setter
+    def BizLicenseFileName(self, BizLicenseFileName):
+        self._BizLicenseFileName = BizLicenseFileName
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def LegalIdCardType(self):
+        return self._LegalIdCardType
+
+    @LegalIdCardType.setter
+    def LegalIdCardType(self, LegalIdCardType):
+        self._LegalIdCardType = LegalIdCardType
+
+    @property
+    def LegalIdCardNumber(self):
+        return self._LegalIdCardNumber
+
+    @LegalIdCardNumber.setter
+    def LegalIdCardNumber(self, LegalIdCardNumber):
+        self._LegalIdCardNumber = LegalIdCardNumber
+
+    @property
+    def LegalMobile(self):
+        return self._LegalMobile
+
+    @LegalMobile.setter
+    def LegalMobile(self, LegalMobile):
+        self._LegalMobile = LegalMobile
+
+    @property
+    def ContactName(self):
+        return self._ContactName
+
+    @ContactName.setter
+    def ContactName(self, ContactName):
+        self._ContactName = ContactName
+
+    @property
+    def ContactAddress(self):
+        return self._ContactAddress
+
+    @ContactAddress.setter
+    def ContactAddress(self, ContactAddress):
+        self._ContactAddress = ContactAddress
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.OpenId = params.get("OpenId")
-        self.Name = params.get("Name")
-        self.OrganizationType = params.get("OrganizationType")
-        self.BizLicenseFile = params.get("BizLicenseFile")
-        self.BizLicenseFileName = params.get("BizLicenseFileName")
-        self.LegalName = params.get("LegalName")
-        self.LegalIdCardType = params.get("LegalIdCardType")
-        self.LegalIdCardNumber = params.get("LegalIdCardNumber")
-        self.LegalMobile = params.get("LegalMobile")
-        self.ContactName = params.get("ContactName")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._OpenId = params.get("OpenId")
+        self._Name = params.get("Name")
+        self._OrganizationType = params.get("OrganizationType")
+        self._BizLicenseFile = params.get("BizLicenseFile")
+        self._BizLicenseFileName = params.get("BizLicenseFileName")
+        self._LegalName = params.get("LegalName")
+        self._LegalIdCardType = params.get("LegalIdCardType")
+        self._LegalIdCardNumber = params.get("LegalIdCardNumber")
+        self._LegalMobile = params.get("LegalMobile")
+        self._ContactName = params.get("ContactName")
         if params.get("ContactAddress") is not None:
-            self.ContactAddress = Address()
-            self.ContactAddress._deserialize(params.get("ContactAddress"))
-        self.Email = params.get("Email")
+            self._ContactAddress = Address()
+            self._ContactAddress._deserialize(params.get("ContactAddress"))
+        self._Email = params.get("Email")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3834,18 +7251,34 @@ class ModifySubOrganizationInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubOrganizationId: 子机构ID
+        :param _SubOrganizationId: 子机构ID
         :type SubOrganizationId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubOrganizationId = None
-        self.RequestId = None
+        self._SubOrganizationId = None
+        self._RequestId = None
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.RequestId = params.get("RequestId")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyUserDefaultSealRequest(AbstractModel):
@@ -3855,32 +7288,65 @@ class ModifyUserDefaultSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param UserId: 用户唯一标识，需要重新指定默认印章的用户ID
+        :param _UserId: 用户唯一标识，需要重新指定默认印章的用户ID
         :type UserId: str
-        :param SealId: 重新指定的默认印章ID
+        :param _SealId: 重新指定的默认印章ID
         :type SealId: str
-        :param SourceIp: 请求重新指定个人默认印章的客户端IP
+        :param _SourceIp: 请求重新指定个人默认印章的客户端IP
         :type SourceIp: str
         """
-        self.Caller = None
-        self.UserId = None
-        self.SealId = None
-        self.SourceIp = None
+        self._Caller = None
+        self._UserId = None
+        self._SealId = None
+        self._SourceIp = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.UserId = params.get("UserId")
-        self.SealId = params.get("SealId")
-        self.SourceIp = params.get("SourceIp")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._UserId = params.get("UserId")
+        self._SealId = params.get("SealId")
+        self._SourceIp = params.get("SourceIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3893,14 +7359,22 @@ class ModifyUserDefaultSealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyUserRequest(AbstractModel):
@@ -3910,40 +7384,89 @@ class ModifyUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param OpenId: 第三方平台用户唯一标识; OpenId 和 UserId 二选一填写, 两个都不为空则优先使用UserId
+        :param _OpenId: 第三方平台用户唯一标识; OpenId 和 UserId 二选一填写, 两个都不为空则优先使用UserId
         :type OpenId: str
-        :param UserId: 腾讯电子签平台用户唯一标识; OpenId 和 UserId 二选一填写, 两个都不为空则优先使用UserId
+        :param _UserId: 腾讯电子签平台用户唯一标识; OpenId 和 UserId 二选一填写, 两个都不为空则优先使用UserId
         :type UserId: str
-        :param Mobile: 用户手机号码，不要求唯一
+        :param _Mobile: 用户手机号码，不要求唯一
         :type Mobile: str
-        :param Email: 用户邮箱，不要求唯一
+        :param _Email: 用户邮箱，不要求唯一
         :type Email: str
-        :param Name: 用户姓名
+        :param _Name: 用户姓名
         :type Name: str
         """
-        self.Caller = None
-        self.OpenId = None
-        self.UserId = None
-        self.Mobile = None
-        self.Email = None
-        self.Name = None
+        self._Caller = None
+        self._OpenId = None
+        self._UserId = None
+        self._Mobile = None
+        self._Email = None
+        self._Name = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.OpenId = params.get("OpenId")
-        self.UserId = params.get("UserId")
-        self.Mobile = params.get("Mobile")
-        self.Email = params.get("Email")
-        self.Name = params.get("Name")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._OpenId = params.get("OpenId")
+        self._UserId = params.get("UserId")
+        self._Mobile = params.get("Mobile")
+        self._Email = params.get("Email")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3956,18 +7479,34 @@ class ModifyUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 腾讯电子签平台用户唯一标识
+        :param _UserId: 腾讯电子签平台用户唯一标识
         :type UserId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UserId = None
-        self.RequestId = None
+        self._UserId = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.RequestId = params.get("RequestId")
+        self._UserId = params.get("UserId")
+        self._RequestId = params.get("RequestId")
 
 
 class RejectFlowRequest(AbstractModel):
@@ -3977,18 +7516,18 @@ class RejectFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 流程编号
+        :param _FlowId: 流程编号
         :type FlowId: str
-        :param VerifyResult: 意愿确认票据。
+        :param _VerifyResult: 意愿确认票据。
 1. VerifyChannel 为 WEIXINAPP，使用响应的VerifyResult；
 2. VerifyChannel 为 FACEID时，使用OrderNo；
 3. VerifyChannel 为 VERIFYCODE，使用短信验证码
 4. VerifyChannel 为 NONE，传空值
 （注：普通情况下，VerifyResult不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
         :type VerifyResult: str
-        :param VerifyChannel: 意愿确认渠道：
+        :param _VerifyChannel: 意愿确认渠道：
 1. WEIXINAPP - 微信小程序
 2. FACEID - 慧眼 (默认) 
 3. VERIFYCODE - 验证码
@@ -3996,36 +7535,93 @@ class RejectFlowRequest(AbstractModel):
 5. NONE - 无需电子签系统验证
 （注：普通情况下，VerifyChannel不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
         :type VerifyChannel: str
-        :param SourceIp: 客户端来源IP
+        :param _SourceIp: 客户端来源IP
         :type SourceIp: str
-        :param RejectMessage: 拒签原因
+        :param _RejectMessage: 拒签原因
         :type RejectMessage: str
-        :param SignId: 签署参与者编号
+        :param _SignId: 签署参与者编号
         :type SignId: str
         """
-        self.Caller = None
-        self.FlowId = None
-        self.VerifyResult = None
-        self.VerifyChannel = None
-        self.SourceIp = None
-        self.RejectMessage = None
-        self.SignId = None
+        self._Caller = None
+        self._FlowId = None
+        self._VerifyResult = None
+        self._VerifyChannel = None
+        self._SourceIp = None
+        self._RejectMessage = None
+        self._SignId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def VerifyResult(self):
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def RejectMessage(self):
+        return self._RejectMessage
+
+    @RejectMessage.setter
+    def RejectMessage(self, RejectMessage):
+        self._RejectMessage = RejectMessage
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
-        self.VerifyResult = params.get("VerifyResult")
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.SourceIp = params.get("SourceIp")
-        self.RejectMessage = params.get("RejectMessage")
-        self.SignId = params.get("SignId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
+        self._VerifyResult = params.get("VerifyResult")
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._SourceIp = params.get("SourceIp")
+        self._RejectMessage = params.get("RejectMessage")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4038,14 +7634,22 @@ class RejectFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Seal(AbstractModel):
@@ -4055,56 +7659,129 @@ class Seal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SealId: 电子印章ID
+        :param _SealId: 电子印章ID
         :type SealId: str
-        :param SealName: 电子印章名称
+        :param _SealName: 电子印章名称
         :type SealName: str
-        :param SealType: 电子印章类型
+        :param _SealType: 电子印章类型
         :type SealType: str
-        :param SealSource: 电子印章来源：
+        :param _SealSource: 电子印章来源：
 CREATE - 通过图片上传
 GENERATE - 通过文字生成
         :type SealSource: str
-        :param Creator: 电子印章创建者
+        :param _Creator: 电子印章创建者
         :type Creator: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param CreatedOn: 电子印章创建时间戳
+        :param _CreatedOn: 电子印章创建时间戳
         :type CreatedOn: int
-        :param UserId: 电子印章所有人
+        :param _UserId: 电子印章所有人
         :type UserId: str
-        :param FileUrl: 电子印章URL
+        :param _FileUrl: 电子印章URL
         :type FileUrl: :class:`tencentcloud.essbasic.v20201222.models.FileUrl`
-        :param DefaultSeal: 是否为默认印章，false-非默认，true-默认
+        :param _DefaultSeal: 是否为默认印章，false-非默认，true-默认
         :type DefaultSeal: bool
         """
-        self.SealId = None
-        self.SealName = None
-        self.SealType = None
-        self.SealSource = None
-        self.Creator = None
-        self.CreatedOn = None
-        self.UserId = None
-        self.FileUrl = None
-        self.DefaultSeal = None
+        self._SealId = None
+        self._SealName = None
+        self._SealType = None
+        self._SealSource = None
+        self._Creator = None
+        self._CreatedOn = None
+        self._UserId = None
+        self._FileUrl = None
+        self._DefaultSeal = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def SealSource(self):
+        return self._SealSource
+
+    @SealSource.setter
+    def SealSource(self, SealSource):
+        self._SealSource = SealSource
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def DefaultSeal(self):
+        return self._DefaultSeal
+
+    @DefaultSeal.setter
+    def DefaultSeal(self, DefaultSeal):
+        self._DefaultSeal = DefaultSeal
 
 
     def _deserialize(self, params):
-        self.SealId = params.get("SealId")
-        self.SealName = params.get("SealName")
-        self.SealType = params.get("SealType")
-        self.SealSource = params.get("SealSource")
+        self._SealId = params.get("SealId")
+        self._SealName = params.get("SealName")
+        self._SealType = params.get("SealType")
+        self._SealSource = params.get("SealSource")
         if params.get("Creator") is not None:
-            self.Creator = Caller()
-            self.Creator._deserialize(params.get("Creator"))
-        self.CreatedOn = params.get("CreatedOn")
-        self.UserId = params.get("UserId")
+            self._Creator = Caller()
+            self._Creator._deserialize(params.get("Creator"))
+        self._CreatedOn = params.get("CreatedOn")
+        self._UserId = params.get("UserId")
         if params.get("FileUrl") is not None:
-            self.FileUrl = FileUrl()
-            self.FileUrl._deserialize(params.get("FileUrl"))
-        self.DefaultSeal = params.get("DefaultSeal")
+            self._FileUrl = FileUrl()
+            self._FileUrl._deserialize(params.get("FileUrl"))
+        self._DefaultSeal = params.get("DefaultSeal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4117,88 +7794,209 @@ class SendFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 需要推送合同的流程ID
+        :param _FlowId: 需要推送合同的流程ID
         :type FlowId: str
-        :param UserId: 签署人用户ID
+        :param _UserId: 签署人用户ID
         :type UserId: str
-        :param SignComponents: 签署控件信息 (支持添加多个控件)
+        :param _SignComponents: 签署控件信息 (支持添加多个控件)
         :type SignComponents: list of Component
-        :param Mobile: 签署人手机号 (如果选择短信验证码签署，则此字段必填)
+        :param _Mobile: 签署人手机号 (如果选择短信验证码签署，则此字段必填)
         :type Mobile: str
-        :param SubOrganizationId: 签署人对应的子机构ID，个人签署者此字段不填
+        :param _SubOrganizationId: 签署人对应的子机构ID，个人签署者此字段不填
         :type SubOrganizationId: str
-        :param VerifyChannel: 签名后校验方式：
+        :param _VerifyChannel: 签名后校验方式：
 1. WEIXINAPP - 微信小程序；
 2. FACEID - 慧眼 (默认) ；
 3. VERIFYCODE - 验证码；
 4. NONE - 无。此选项为白名单参数，暂不支持公开调用。如需开通权限，请通过客户经理或邮件至e-contract@tencent.com与我们联系；
 5. THIRD - 第三方 (暂不支持)
         :type VerifyChannel: list of str
-        :param Deadline: 签署链接失效截止时间，默认为7天
+        :param _Deadline: 签署链接失效截止时间，默认为7天
         :type Deadline: int
-        :param IsLastApprover: 是否为最后一个签署人。若为最后一人，本次签署完成以后自动归档。
+        :param _IsLastApprover: 是否为最后一个签署人。若为最后一人，本次签署完成以后自动归档。
         :type IsLastApprover: bool
-        :param JumpUrl: 签署完成后，前端跳转的URL
+        :param _JumpUrl: 签署完成后，前端跳转的URL
         :type JumpUrl: str
-        :param SmsTemplate: 短信模板。默认使用腾讯电子签官方短信模板，如有自定义需求，请通过客户经理或邮件至e-contract@tencent.com与我们联系。
+        :param _SmsTemplate: 短信模板。默认使用腾讯电子签官方短信模板，如有自定义需求，请通过客户经理或邮件至e-contract@tencent.com与我们联系。
         :type SmsTemplate: :class:`tencentcloud.essbasic.v20201222.models.SmsTemplate`
-        :param IsFullText: 签署前置条件：是否要全文阅读，默认否
+        :param _IsFullText: 签署前置条件：是否要全文阅读，默认否
         :type IsFullText: bool
-        :param PreReadTime: 签署前置条件：强制用户阅读待签署文件时长，默认不限制
+        :param _PreReadTime: 签署前置条件：强制用户阅读待签署文件时长，默认不限制
         :type PreReadTime: int
-        :param CanOffLine: 当前参与者是否支持线下核身,默认为不支持
+        :param _CanOffLine: 当前参与者是否支持线下核身,默认为不支持
         :type CanOffLine: bool
-        :param CallbackUrl: 签署任务的回调地址
+        :param _CallbackUrl: 签署任务的回调地址
         :type CallbackUrl: str
         """
-        self.Caller = None
-        self.FlowId = None
-        self.UserId = None
-        self.SignComponents = None
-        self.Mobile = None
-        self.SubOrganizationId = None
-        self.VerifyChannel = None
-        self.Deadline = None
-        self.IsLastApprover = None
-        self.JumpUrl = None
-        self.SmsTemplate = None
-        self.IsFullText = None
-        self.PreReadTime = None
-        self.CanOffLine = None
-        self.CallbackUrl = None
+        self._Caller = None
+        self._FlowId = None
+        self._UserId = None
+        self._SignComponents = None
+        self._Mobile = None
+        self._SubOrganizationId = None
+        self._VerifyChannel = None
+        self._Deadline = None
+        self._IsLastApprover = None
+        self._JumpUrl = None
+        self._SmsTemplate = None
+        self._IsFullText = None
+        self._PreReadTime = None
+        self._CanOffLine = None
+        self._CallbackUrl = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def IsLastApprover(self):
+        return self._IsLastApprover
+
+    @IsLastApprover.setter
+    def IsLastApprover(self, IsLastApprover):
+        self._IsLastApprover = IsLastApprover
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+    @property
+    def SmsTemplate(self):
+        return self._SmsTemplate
+
+    @SmsTemplate.setter
+    def SmsTemplate(self, SmsTemplate):
+        self._SmsTemplate = SmsTemplate
+
+    @property
+    def IsFullText(self):
+        return self._IsFullText
+
+    @IsFullText.setter
+    def IsFullText(self, IsFullText):
+        self._IsFullText = IsFullText
+
+    @property
+    def PreReadTime(self):
+        return self._PreReadTime
+
+    @PreReadTime.setter
+    def PreReadTime(self, PreReadTime):
+        self._PreReadTime = PreReadTime
+
+    @property
+    def CanOffLine(self):
+        return self._CanOffLine
+
+    @CanOffLine.setter
+    def CanOffLine(self, CanOffLine):
+        self._CanOffLine = CanOffLine
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
-        self.UserId = params.get("UserId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
+        self._UserId = params.get("UserId")
         if params.get("SignComponents") is not None:
-            self.SignComponents = []
+            self._SignComponents = []
             for item in params.get("SignComponents"):
                 obj = Component()
                 obj._deserialize(item)
-                self.SignComponents.append(obj)
-        self.Mobile = params.get("Mobile")
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.Deadline = params.get("Deadline")
-        self.IsLastApprover = params.get("IsLastApprover")
-        self.JumpUrl = params.get("JumpUrl")
+                self._SignComponents.append(obj)
+        self._Mobile = params.get("Mobile")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._Deadline = params.get("Deadline")
+        self._IsLastApprover = params.get("IsLastApprover")
+        self._JumpUrl = params.get("JumpUrl")
         if params.get("SmsTemplate") is not None:
-            self.SmsTemplate = SmsTemplate()
-            self.SmsTemplate._deserialize(params.get("SmsTemplate"))
-        self.IsFullText = params.get("IsFullText")
-        self.PreReadTime = params.get("PreReadTime")
-        self.CanOffLine = params.get("CanOffLine")
-        self.CallbackUrl = params.get("CallbackUrl")
+            self._SmsTemplate = SmsTemplate()
+            self._SmsTemplate._deserialize(params.get("SmsTemplate"))
+        self._IsFullText = params.get("IsFullText")
+        self._PreReadTime = params.get("PreReadTime")
+        self._CanOffLine = params.get("CanOffLine")
+        self._CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4211,18 +8009,34 @@ class SendFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: 签署任务ID，标识每一次的流程发送
+        :param _SignId: 签署任务ID，标识每一次的流程发送
         :type SignId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SignId = None
-        self.RequestId = None
+        self._SignId = None
+        self._RequestId = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
-        self.RequestId = params.get("RequestId")
+        self._SignId = params.get("SignId")
+        self._RequestId = params.get("RequestId")
 
 
 class SendFlowUrlRequest(AbstractModel):
@@ -4232,19 +8046,19 @@ class SendFlowUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 需要推送合同的流程ID
+        :param _FlowId: 需要推送合同的流程ID
         :type FlowId: str
-        :param UserId: 签署人ID
+        :param _UserId: 签署人ID
         :type UserId: str
-        :param SignComponents: 签署控件信息 (支持添加多个控件)
+        :param _SignComponents: 签署控件信息 (支持添加多个控件)
         :type SignComponents: list of Component
-        :param Mobile: 签署人手机号 (如果选择短信验证码签署，则此字段必填)
+        :param _Mobile: 签署人手机号 (如果选择短信验证码签署，则此字段必填)
         :type Mobile: str
-        :param SubOrganizationId: 签署人对应的子机构ID，个人签署者此字段不填
+        :param _SubOrganizationId: 签署人对应的子机构ID，个人签署者此字段不填
         :type SubOrganizationId: str
-        :param VerifyChannel: 签名后校验方式：
+        :param _VerifyChannel: 签名后校验方式：
 1. WEIXINAPP - 微信小程序；
 2. FACEID - 慧眼 (默认) ；
 3. VERIFYCODE - 验证码；
@@ -4252,70 +8066,191 @@ class SendFlowUrlRequest(AbstractModel):
 5. THIRD - 第三方 (暂不支持)
 6. OFFLINE - 线下人工审核
         :type VerifyChannel: list of str
-        :param Deadline: 签署链接失效截止时间，默认为7天
+        :param _Deadline: 签署链接失效截止时间，默认为7天
         :type Deadline: int
-        :param IsLastApprover: 是否为最后一个签署人。若为最后一人，本次签署完成以后自动归档
+        :param _IsLastApprover: 是否为最后一个签署人。若为最后一人，本次签署完成以后自动归档
         :type IsLastApprover: bool
-        :param JumpUrl: 签署完成后，前端跳转的url
+        :param _JumpUrl: 签署完成后，前端跳转的url
         :type JumpUrl: str
-        :param SmsTemplate: 短信模板
+        :param _SmsTemplate: 短信模板
 默认使用腾讯电子签官方短信模板，如有自定义需求，请通过客户经理或邮件至e-contract@tencent.com与我们联系。
         :type SmsTemplate: :class:`tencentcloud.essbasic.v20201222.models.SmsTemplate`
-        :param IsFullText: 签署前置条件：是否要全文阅读，默认否
+        :param _IsFullText: 签署前置条件：是否要全文阅读，默认否
         :type IsFullText: bool
-        :param PreReadTime: 签署前置条件：强制用户阅读待签署文件时长，默认不限制
+        :param _PreReadTime: 签署前置条件：强制用户阅读待签署文件时长，默认不限制
         :type PreReadTime: int
-        :param CanOffLine: 当前参与者是否支持线下核身,默认为不支持
+        :param _CanOffLine: 当前参与者是否支持线下核身,默认为不支持
         :type CanOffLine: bool
-        :param CallbackUrl: 签署任务的回调地址
+        :param _CallbackUrl: 签署任务的回调地址
         :type CallbackUrl: str
         """
-        self.Caller = None
-        self.FlowId = None
-        self.UserId = None
-        self.SignComponents = None
-        self.Mobile = None
-        self.SubOrganizationId = None
-        self.VerifyChannel = None
-        self.Deadline = None
-        self.IsLastApprover = None
-        self.JumpUrl = None
-        self.SmsTemplate = None
-        self.IsFullText = None
-        self.PreReadTime = None
-        self.CanOffLine = None
-        self.CallbackUrl = None
+        self._Caller = None
+        self._FlowId = None
+        self._UserId = None
+        self._SignComponents = None
+        self._Mobile = None
+        self._SubOrganizationId = None
+        self._VerifyChannel = None
+        self._Deadline = None
+        self._IsLastApprover = None
+        self._JumpUrl = None
+        self._SmsTemplate = None
+        self._IsFullText = None
+        self._PreReadTime = None
+        self._CanOffLine = None
+        self._CallbackUrl = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def IsLastApprover(self):
+        return self._IsLastApprover
+
+    @IsLastApprover.setter
+    def IsLastApprover(self, IsLastApprover):
+        self._IsLastApprover = IsLastApprover
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+    @property
+    def SmsTemplate(self):
+        return self._SmsTemplate
+
+    @SmsTemplate.setter
+    def SmsTemplate(self, SmsTemplate):
+        self._SmsTemplate = SmsTemplate
+
+    @property
+    def IsFullText(self):
+        return self._IsFullText
+
+    @IsFullText.setter
+    def IsFullText(self, IsFullText):
+        self._IsFullText = IsFullText
+
+    @property
+    def PreReadTime(self):
+        return self._PreReadTime
+
+    @PreReadTime.setter
+    def PreReadTime(self, PreReadTime):
+        self._PreReadTime = PreReadTime
+
+    @property
+    def CanOffLine(self):
+        return self._CanOffLine
+
+    @CanOffLine.setter
+    def CanOffLine(self, CanOffLine):
+        self._CanOffLine = CanOffLine
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
-        self.UserId = params.get("UserId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
+        self._UserId = params.get("UserId")
         if params.get("SignComponents") is not None:
-            self.SignComponents = []
+            self._SignComponents = []
             for item in params.get("SignComponents"):
                 obj = Component()
                 obj._deserialize(item)
-                self.SignComponents.append(obj)
-        self.Mobile = params.get("Mobile")
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.Deadline = params.get("Deadline")
-        self.IsLastApprover = params.get("IsLastApprover")
-        self.JumpUrl = params.get("JumpUrl")
+                self._SignComponents.append(obj)
+        self._Mobile = params.get("Mobile")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._Deadline = params.get("Deadline")
+        self._IsLastApprover = params.get("IsLastApprover")
+        self._JumpUrl = params.get("JumpUrl")
         if params.get("SmsTemplate") is not None:
-            self.SmsTemplate = SmsTemplate()
-            self.SmsTemplate._deserialize(params.get("SmsTemplate"))
-        self.IsFullText = params.get("IsFullText")
-        self.PreReadTime = params.get("PreReadTime")
-        self.CanOffLine = params.get("CanOffLine")
-        self.CallbackUrl = params.get("CallbackUrl")
+            self._SmsTemplate = SmsTemplate()
+            self._SmsTemplate._deserialize(params.get("SmsTemplate"))
+        self._IsFullText = params.get("IsFullText")
+        self._PreReadTime = params.get("PreReadTime")
+        self._CanOffLine = params.get("CanOffLine")
+        self._CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4328,22 +8263,46 @@ class SendFlowUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: 签署任务ID，标识每一次的流程发送
+        :param _SignId: 签署任务ID，标识每一次的流程发送
         :type SignId: str
-        :param SignUrl: 签署链接
+        :param _SignUrl: 签署链接
         :type SignUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SignId = None
-        self.SignUrl = None
-        self.RequestId = None
+        self._SignId = None
+        self._SignUrl = None
+        self._RequestId = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def SignUrl(self):
+        return self._SignUrl
+
+    @SignUrl.setter
+    def SignUrl(self, SignUrl):
+        self._SignUrl = SignUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
-        self.SignUrl = params.get("SignUrl")
-        self.RequestId = params.get("RequestId")
+        self._SignId = params.get("SignId")
+        self._SignUrl = params.get("SignUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class SendSignInnerVerifyCodeRequest(AbstractModel):
@@ -4353,48 +8312,113 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param Mobile: 手机号
+        :param _Mobile: 手机号
         :type Mobile: str
-        :param VerifyType: 验证码类型，取值(SIGN)
+        :param _VerifyType: 验证码类型，取值(SIGN)
         :type VerifyType: str
-        :param UserId: 用户 id
+        :param _UserId: 用户 id
         :type UserId: str
-        :param VerifyTemplateId: 模板 id
+        :param _VerifyTemplateId: 模板 id
         :type VerifyTemplateId: str
-        :param VerifySign: 签名
+        :param _VerifySign: 签名
         :type VerifySign: str
-        :param FlowId: 流程(目录) id
+        :param _FlowId: 流程(目录) id
         :type FlowId: str
-        :param CheckThreeElementResult: 三要素检测结果
+        :param _CheckThreeElementResult: 三要素检测结果
         :type CheckThreeElementResult: int
         """
-        self.Caller = None
-        self.Mobile = None
-        self.VerifyType = None
-        self.UserId = None
-        self.VerifyTemplateId = None
-        self.VerifySign = None
-        self.FlowId = None
-        self.CheckThreeElementResult = None
+        self._Caller = None
+        self._Mobile = None
+        self._VerifyType = None
+        self._UserId = None
+        self._VerifyTemplateId = None
+        self._VerifySign = None
+        self._FlowId = None
+        self._CheckThreeElementResult = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def VerifyTemplateId(self):
+        return self._VerifyTemplateId
+
+    @VerifyTemplateId.setter
+    def VerifyTemplateId(self, VerifyTemplateId):
+        self._VerifyTemplateId = VerifyTemplateId
+
+    @property
+    def VerifySign(self):
+        return self._VerifySign
+
+    @VerifySign.setter
+    def VerifySign(self, VerifySign):
+        self._VerifySign = VerifySign
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def CheckThreeElementResult(self):
+        return self._CheckThreeElementResult
+
+    @CheckThreeElementResult.setter
+    def CheckThreeElementResult(self, CheckThreeElementResult):
+        self._CheckThreeElementResult = CheckThreeElementResult
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.Mobile = params.get("Mobile")
-        self.VerifyType = params.get("VerifyType")
-        self.UserId = params.get("UserId")
-        self.VerifyTemplateId = params.get("VerifyTemplateId")
-        self.VerifySign = params.get("VerifySign")
-        self.FlowId = params.get("FlowId")
-        self.CheckThreeElementResult = params.get("CheckThreeElementResult")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._Mobile = params.get("Mobile")
+        self._VerifyType = params.get("VerifyType")
+        self._UserId = params.get("UserId")
+        self._VerifyTemplateId = params.get("VerifyTemplateId")
+        self._VerifySign = params.get("VerifySign")
+        self._FlowId = params.get("FlowId")
+        self._CheckThreeElementResult = params.get("CheckThreeElementResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4407,18 +8431,34 @@ class SendSignInnerVerifyCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: true: 验证码正确，false: 验证码错误
+        :param _Result: true: 验证码正确，false: 验证码错误
         :type Result: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class SignFlowRequest(AbstractModel):
@@ -4428,18 +8468,18 @@ class SignFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param FlowId: 流程编号
+        :param _FlowId: 流程编号
         :type FlowId: str
-        :param VerifyResult: 意愿确认票据。
+        :param _VerifyResult: 意愿确认票据。
 1. VerifyChannel 为 WEIXINAPP，使用响应的VerifyResult；
 2. VerifyChannel 为 FACEID时，使用OrderNo；
 3. VerifyChannel 为 VERIFYCODE，使用短信验证码
 4. VerifyChannel 为 NONE，传空值
 （注：普通情况下，VerifyResult不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
         :type VerifyResult: str
-        :param VerifyChannel: 意愿确认渠道：
+        :param _VerifyChannel: 意愿确认渠道：
 1. WEIXINAPP - 微信小程序
 2. FACEID - 慧眼 (默认) 
 3. VERIFYCODE - 验证码
@@ -4447,45 +8487,110 @@ class SignFlowRequest(AbstractModel):
 5. NONE - 无需电子签系统验证
 （注：普通情况下，VerifyChannel不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
         :type VerifyChannel: str
-        :param SourceIp: 客户端来源IP
+        :param _SourceIp: 客户端来源IP
         :type SourceIp: str
-        :param SignSeals: 签署内容
+        :param _SignSeals: 签署内容
         :type SignSeals: list of SignSeal
-        :param ApproveMessage: 签署备注
+        :param _ApproveMessage: 签署备注
         :type ApproveMessage: str
-        :param SignId: 签署参与者编号
+        :param _SignId: 签署参与者编号
         :type SignId: str
         """
-        self.Caller = None
-        self.FlowId = None
-        self.VerifyResult = None
-        self.VerifyChannel = None
-        self.SourceIp = None
-        self.SignSeals = None
-        self.ApproveMessage = None
-        self.SignId = None
+        self._Caller = None
+        self._FlowId = None
+        self._VerifyResult = None
+        self._VerifyChannel = None
+        self._SourceIp = None
+        self._SignSeals = None
+        self._ApproveMessage = None
+        self._SignId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def VerifyResult(self):
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def VerifyChannel(self):
+        return self._VerifyChannel
+
+    @VerifyChannel.setter
+    def VerifyChannel(self, VerifyChannel):
+        self._VerifyChannel = VerifyChannel
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def SignSeals(self):
+        return self._SignSeals
+
+    @SignSeals.setter
+    def SignSeals(self, SignSeals):
+        self._SignSeals = SignSeals
+
+    @property
+    def ApproveMessage(self):
+        return self._ApproveMessage
+
+    @ApproveMessage.setter
+    def ApproveMessage(self, ApproveMessage):
+        self._ApproveMessage = ApproveMessage
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.FlowId = params.get("FlowId")
-        self.VerifyResult = params.get("VerifyResult")
-        self.VerifyChannel = params.get("VerifyChannel")
-        self.SourceIp = params.get("SourceIp")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._FlowId = params.get("FlowId")
+        self._VerifyResult = params.get("VerifyResult")
+        self._VerifyChannel = params.get("VerifyChannel")
+        self._SourceIp = params.get("SourceIp")
         if params.get("SignSeals") is not None:
-            self.SignSeals = []
+            self._SignSeals = []
             for item in params.get("SignSeals"):
                 obj = SignSeal()
                 obj._deserialize(item)
-                self.SignSeals.append(obj)
-        self.ApproveMessage = params.get("ApproveMessage")
-        self.SignId = params.get("SignId")
+                self._SignSeals.append(obj)
+        self._ApproveMessage = params.get("ApproveMessage")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4498,18 +8603,34 @@ class SignFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 签署任务状态。签署成功 - SUCCESS、提交审核 - REVIEW
+        :param _Status: 签署任务状态。签署成功 - SUCCESS、提交审核 - REVIEW
         :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class SignSeal(AbstractModel):
@@ -4519,38 +8640,79 @@ class SignSeal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentId: 签署控件ID
+        :param _ComponentId: 签署控件ID
         :type ComponentId: str
-        :param SignType: 签署印章类型:
+        :param _SignType: 签署印章类型:
 SIGN_SIGNATURE - 签名
 SIGN_SEAL - 印章
 SIGN_DATE - 日期
 SIGN_IMAGE - 图片
         :type SignType: str
-        :param FileIndex: 合同文件ID
+        :param _FileIndex: 合同文件ID
         :type FileIndex: int
-        :param SealId: 印章ID，仅当 SignType 为 SIGN_SEAL 时必填
+        :param _SealId: 印章ID，仅当 SignType 为 SIGN_SEAL 时必填
         :type SealId: str
-        :param SealContent: 签名内容，仅当 SignType 为SIGN_SIGNATURE或SIGN_IMAGE 时必填，base64编码
+        :param _SealContent: 签名内容，仅当 SignType 为SIGN_SIGNATURE或SIGN_IMAGE 时必填，base64编码
         :type SealContent: str
         """
-        self.ComponentId = None
-        self.SignType = None
-        self.FileIndex = None
-        self.SealId = None
-        self.SealContent = None
+        self._ComponentId = None
+        self._SignType = None
+        self._FileIndex = None
+        self._SealId = None
+        self._SealContent = None
+
+    @property
+    def ComponentId(self):
+        return self._ComponentId
+
+    @ComponentId.setter
+    def ComponentId(self, ComponentId):
+        self._ComponentId = ComponentId
+
+    @property
+    def SignType(self):
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        self._SignType = SignType
+
+    @property
+    def FileIndex(self):
+        return self._FileIndex
+
+    @FileIndex.setter
+    def FileIndex(self, FileIndex):
+        self._FileIndex = FileIndex
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SealContent(self):
+        return self._SealContent
+
+    @SealContent.setter
+    def SealContent(self, SealContent):
+        self._SealContent = SealContent
 
 
     def _deserialize(self, params):
-        self.ComponentId = params.get("ComponentId")
-        self.SignType = params.get("SignType")
-        self.FileIndex = params.get("FileIndex")
-        self.SealId = params.get("SealId")
-        self.SealContent = params.get("SealContent")
+        self._ComponentId = params.get("ComponentId")
+        self._SignType = params.get("SignType")
+        self._FileIndex = params.get("FileIndex")
+        self._SealId = params.get("SealId")
+        self._SealContent = params.get("SealContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4563,22 +8725,39 @@ class SmsTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 模板ID，必须填写已审核通过的模板ID。模板ID可登录短信控制台查看。
+        :param _TemplateId: 模板ID，必须填写已审核通过的模板ID。模板ID可登录短信控制台查看。
         :type TemplateId: str
-        :param Sign: 短信签名内容，使用UTF-8编码，必须填写已审核通过的签名，签名信息可登录短信控制台查看。
+        :param _Sign: 短信签名内容，使用UTF-8编码，必须填写已审核通过的签名，签名信息可登录短信控制台查看。
         :type Sign: str
         """
-        self.TemplateId = None
-        self.Sign = None
+        self._TemplateId = None
+        self._Sign = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.Sign = params.get("Sign")
+        self._TemplateId = params.get("TemplateId")
+        self._Sign = params.get("Sign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4591,108 +8770,277 @@ class SubOrganizationDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 组织ID
+        :param _Id: 组织ID
         :type Id: str
-        :param Name: 机构名称全称
+        :param _Name: 机构名称全称
         :type Name: str
-        :param Email: 机构电子邮箱
+        :param _Email: 机构电子邮箱
         :type Email: str
-        :param IdCardType: 机构证件号码类型
+        :param _IdCardType: 机构证件号码类型
         :type IdCardType: str
-        :param IdCardNumber: 机构证件号码
+        :param _IdCardNumber: 机构证件号码
         :type IdCardNumber: str
-        :param OrganizationType: 机构类型
+        :param _OrganizationType: 机构类型
         :type OrganizationType: str
-        :param IdCardFileType: 机构证件文件类型
+        :param _IdCardFileType: 机构证件文件类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardFileType: str
-        :param BizLicenseFile: 机构证件照片文件，base64编码
+        :param _BizLicenseFile: 机构证件照片文件，base64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizLicenseFile: str
-        :param BizLicenseFileName: 机构证件照片文件名
+        :param _BizLicenseFileName: 机构证件照片文件名
         :type BizLicenseFileName: str
-        :param LegalName: 机构法人/经营者姓名
+        :param _LegalName: 机构法人/经营者姓名
         :type LegalName: str
-        :param LegalIdCardType: 机构法人/经营者证件类型
+        :param _LegalIdCardType: 机构法人/经营者证件类型
         :type LegalIdCardType: str
-        :param LegalIdCardNumber: 机构法人/经营者证件号码
+        :param _LegalIdCardNumber: 机构法人/经营者证件号码
         :type LegalIdCardNumber: str
-        :param LegalMobile: 机构法人/经营者/联系人手机号码
+        :param _LegalMobile: 机构法人/经营者/联系人手机号码
         :type LegalMobile: str
-        :param ContactName: 组织联系人姓名
+        :param _ContactName: 组织联系人姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContactName: str
-        :param VerifyStatus: 机构实名状态
+        :param _VerifyStatus: 机构实名状态
         :type VerifyStatus: str
-        :param VerifiedOn: 机构通过实名时间
+        :param _VerifiedOn: 机构通过实名时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifiedOn: int
-        :param CreatedOn: 机构创建时间
+        :param _CreatedOn: 机构创建时间
         :type CreatedOn: int
-        :param UpdatedOn: 机构更新时间
+        :param _UpdatedOn: 机构更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedOn: int
-        :param VerifyClientIp: 实名认证的客户端IP
+        :param _VerifyClientIp: 实名认证的客户端IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyClientIp: str
-        :param VerifyServerIp: 实名认证的服务器IP
+        :param _VerifyServerIp: 实名认证的服务器IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyServerIp: str
-        :param ContactAddress: 企业联系地址
+        :param _ContactAddress: 企业联系地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContactAddress: :class:`tencentcloud.essbasic.v20201222.models.Address`
         """
-        self.Id = None
-        self.Name = None
-        self.Email = None
-        self.IdCardType = None
-        self.IdCardNumber = None
-        self.OrganizationType = None
-        self.IdCardFileType = None
-        self.BizLicenseFile = None
-        self.BizLicenseFileName = None
-        self.LegalName = None
-        self.LegalIdCardType = None
-        self.LegalIdCardNumber = None
-        self.LegalMobile = None
-        self.ContactName = None
-        self.VerifyStatus = None
-        self.VerifiedOn = None
-        self.CreatedOn = None
-        self.UpdatedOn = None
-        self.VerifyClientIp = None
-        self.VerifyServerIp = None
-        self.ContactAddress = None
+        self._Id = None
+        self._Name = None
+        self._Email = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+        self._OrganizationType = None
+        self._IdCardFileType = None
+        self._BizLicenseFile = None
+        self._BizLicenseFileName = None
+        self._LegalName = None
+        self._LegalIdCardType = None
+        self._LegalIdCardNumber = None
+        self._LegalMobile = None
+        self._ContactName = None
+        self._VerifyStatus = None
+        self._VerifiedOn = None
+        self._CreatedOn = None
+        self._UpdatedOn = None
+        self._VerifyClientIp = None
+        self._VerifyServerIp = None
+        self._ContactAddress = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def OrganizationType(self):
+        return self._OrganizationType
+
+    @OrganizationType.setter
+    def OrganizationType(self, OrganizationType):
+        self._OrganizationType = OrganizationType
+
+    @property
+    def IdCardFileType(self):
+        return self._IdCardFileType
+
+    @IdCardFileType.setter
+    def IdCardFileType(self, IdCardFileType):
+        self._IdCardFileType = IdCardFileType
+
+    @property
+    def BizLicenseFile(self):
+        return self._BizLicenseFile
+
+    @BizLicenseFile.setter
+    def BizLicenseFile(self, BizLicenseFile):
+        self._BizLicenseFile = BizLicenseFile
+
+    @property
+    def BizLicenseFileName(self):
+        return self._BizLicenseFileName
+
+    @BizLicenseFileName.setter
+    def BizLicenseFileName(self, BizLicenseFileName):
+        self._BizLicenseFileName = BizLicenseFileName
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def LegalIdCardType(self):
+        return self._LegalIdCardType
+
+    @LegalIdCardType.setter
+    def LegalIdCardType(self, LegalIdCardType):
+        self._LegalIdCardType = LegalIdCardType
+
+    @property
+    def LegalIdCardNumber(self):
+        return self._LegalIdCardNumber
+
+    @LegalIdCardNumber.setter
+    def LegalIdCardNumber(self, LegalIdCardNumber):
+        self._LegalIdCardNumber = LegalIdCardNumber
+
+    @property
+    def LegalMobile(self):
+        return self._LegalMobile
+
+    @LegalMobile.setter
+    def LegalMobile(self, LegalMobile):
+        self._LegalMobile = LegalMobile
+
+    @property
+    def ContactName(self):
+        return self._ContactName
+
+    @ContactName.setter
+    def ContactName(self, ContactName):
+        self._ContactName = ContactName
+
+    @property
+    def VerifyStatus(self):
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
+    @property
+    def VerifiedOn(self):
+        return self._VerifiedOn
+
+    @VerifiedOn.setter
+    def VerifiedOn(self, VerifiedOn):
+        self._VerifiedOn = VerifiedOn
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def UpdatedOn(self):
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
+
+    @property
+    def VerifyClientIp(self):
+        return self._VerifyClientIp
+
+    @VerifyClientIp.setter
+    def VerifyClientIp(self, VerifyClientIp):
+        self._VerifyClientIp = VerifyClientIp
+
+    @property
+    def VerifyServerIp(self):
+        return self._VerifyServerIp
+
+    @VerifyServerIp.setter
+    def VerifyServerIp(self, VerifyServerIp):
+        self._VerifyServerIp = VerifyServerIp
+
+    @property
+    def ContactAddress(self):
+        return self._ContactAddress
+
+    @ContactAddress.setter
+    def ContactAddress(self, ContactAddress):
+        self._ContactAddress = ContactAddress
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.Email = params.get("Email")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
-        self.OrganizationType = params.get("OrganizationType")
-        self.IdCardFileType = params.get("IdCardFileType")
-        self.BizLicenseFile = params.get("BizLicenseFile")
-        self.BizLicenseFileName = params.get("BizLicenseFileName")
-        self.LegalName = params.get("LegalName")
-        self.LegalIdCardType = params.get("LegalIdCardType")
-        self.LegalIdCardNumber = params.get("LegalIdCardNumber")
-        self.LegalMobile = params.get("LegalMobile")
-        self.ContactName = params.get("ContactName")
-        self.VerifyStatus = params.get("VerifyStatus")
-        self.VerifiedOn = params.get("VerifiedOn")
-        self.CreatedOn = params.get("CreatedOn")
-        self.UpdatedOn = params.get("UpdatedOn")
-        self.VerifyClientIp = params.get("VerifyClientIp")
-        self.VerifyServerIp = params.get("VerifyServerIp")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Email = params.get("Email")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._OrganizationType = params.get("OrganizationType")
+        self._IdCardFileType = params.get("IdCardFileType")
+        self._BizLicenseFile = params.get("BizLicenseFile")
+        self._BizLicenseFileName = params.get("BizLicenseFileName")
+        self._LegalName = params.get("LegalName")
+        self._LegalIdCardType = params.get("LegalIdCardType")
+        self._LegalIdCardNumber = params.get("LegalIdCardNumber")
+        self._LegalMobile = params.get("LegalMobile")
+        self._ContactName = params.get("ContactName")
+        self._VerifyStatus = params.get("VerifyStatus")
+        self._VerifiedOn = params.get("VerifiedOn")
+        self._CreatedOn = params.get("CreatedOn")
+        self._UpdatedOn = params.get("UpdatedOn")
+        self._VerifyClientIp = params.get("VerifyClientIp")
+        self._VerifyServerIp = params.get("VerifyServerIp")
         if params.get("ContactAddress") is not None:
-            self.ContactAddress = Address()
-            self.ContactAddress._deserialize(params.get("ContactAddress"))
+            self._ContactAddress = Address()
+            self._ContactAddress._deserialize(params.get("ContactAddress"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4705,22 +9053,39 @@ class UploadFile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileBody: Base64编码后的文件内容
+        :param _FileBody: Base64编码后的文件内容
         :type FileBody: str
-        :param FileName: 文件名
+        :param _FileName: 文件名
         :type FileName: str
         """
-        self.FileBody = None
-        self.FileName = None
+        self._FileBody = None
+        self._FileName = None
+
+    @property
+    def FileBody(self):
+        return self._FileBody
+
+    @FileBody.setter
+    def FileBody(self, FileBody):
+        self._FileBody = FileBody
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
 
 
     def _deserialize(self, params):
-        self.FileBody = params.get("FileBody")
-        self.FileName = params.get("FileName")
+        self._FileBody = params.get("FileBody")
+        self._FileName = params.get("FileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4733,9 +9098,9 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
+        :param _BusinessType: 文件对应业务类型，用于区分文件存储路径：
 1. TEMPLATE - 模版； 文件类型：.pdf/.html
 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
 3. FLOW - 签署过程 文件类型：.pdf/.html
@@ -4743,48 +9108,105 @@ class UploadFilesRequest(AbstractModel):
 5. BUSINESSLICENSE - 营业执照 文件类型：.jpg/.jpeg/.png
 6. IDCARD - 身份证 文件类型：.jpg/.jpeg/.png
         :type BusinessType: str
-        :param FileInfos: 上传文件内容数组，最多支持20个文件
+        :param _FileInfos: 上传文件内容数组，最多支持20个文件
         :type FileInfos: list of UploadFile
-        :param FileUrls: 上传文件链接数组，最多支持20个URL
+        :param _FileUrls: 上传文件链接数组，最多支持20个URL
         :type FileUrls: list of str
-        :param CoverRect: 是否将pdf灰色矩阵置白
+        :param _CoverRect: 是否将pdf灰色矩阵置白
 true--是，处理置白
 false--否，不处理
         :type CoverRect: bool
-        :param FileType: 特殊文件类型需要指定文件类型：
+        :param _FileType: 特殊文件类型需要指定文件类型：
 HTML-- .html文件
         :type FileType: str
-        :param CustomIds: 用户自定义ID数组，与上传文件一一对应
+        :param _CustomIds: 用户自定义ID数组，与上传文件一一对应
         :type CustomIds: list of str
         """
-        self.Caller = None
-        self.BusinessType = None
-        self.FileInfos = None
-        self.FileUrls = None
-        self.CoverRect = None
-        self.FileType = None
-        self.CustomIds = None
+        self._Caller = None
+        self._BusinessType = None
+        self._FileInfos = None
+        self._FileUrls = None
+        self._CoverRect = None
+        self._FileType = None
+        self._CustomIds = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def BusinessType(self):
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def FileUrls(self):
+        return self._FileUrls
+
+    @FileUrls.setter
+    def FileUrls(self, FileUrls):
+        self._FileUrls = FileUrls
+
+    @property
+    def CoverRect(self):
+        return self._CoverRect
+
+    @CoverRect.setter
+    def CoverRect(self, CoverRect):
+        self._CoverRect = CoverRect
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def CustomIds(self):
+        return self._CustomIds
+
+    @CustomIds.setter
+    def CustomIds(self, CustomIds):
+        self._CustomIds = CustomIds
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.BusinessType = params.get("BusinessType")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._BusinessType = params.get("BusinessType")
         if params.get("FileInfos") is not None:
-            self.FileInfos = []
+            self._FileInfos = []
             for item in params.get("FileInfos"):
                 obj = UploadFile()
                 obj._deserialize(item)
-                self.FileInfos.append(obj)
-        self.FileUrls = params.get("FileUrls")
-        self.CoverRect = params.get("CoverRect")
-        self.FileType = params.get("FileType")
-        self.CustomIds = params.get("CustomIds")
+                self._FileInfos.append(obj)
+        self._FileUrls = params.get("FileUrls")
+        self._CoverRect = params.get("CoverRect")
+        self._FileType = params.get("FileType")
+        self._CustomIds = params.get("CustomIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4797,22 +9219,46 @@ class UploadFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileIds: 文件id数组
+        :param _FileIds: 文件id数组
         :type FileIds: list of str
-        :param TotalCount: 上传成功文件数量
+        :param _TotalCount: 上传成功文件数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FileIds = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FileIds = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FileIds(self):
+        return self._FileIds
+
+    @FileIds.setter
+    def FileIds(self, FileIds):
+        self._FileIds = FileIds
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FileIds = params.get("FileIds")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+        self._FileIds = params.get("FileIds")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class UserDescribe(AbstractModel):
@@ -4822,21 +9268,21 @@ class UserDescribe(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户ID
+        :param _UserId: 用户ID
         :type UserId: str
-        :param Mobile: 手机号，隐藏中间4位数字，用*代替
+        :param _Mobile: 手机号，隐藏中间4位数字，用*代替
         :type Mobile: str
-        :param CreatedOn: 注册时间点 (UNIX时间戳)
+        :param _CreatedOn: 注册时间点 (UNIX时间戳)
         :type CreatedOn: int
-        :param VerifyStatus: 实名认证状态：
+        :param _VerifyStatus: 实名认证状态：
 0 - 未实名；
 1 - 通过实名
         :type VerifyStatus: int
-        :param Name: 真实姓名
+        :param _Name: 真实姓名
         :type Name: str
-        :param VerifiedOn: 实名认证通过时间 (UNIX时间戳)
+        :param _VerifiedOn: 实名认证通过时间 (UNIX时间戳)
         :type VerifiedOn: int
-        :param IdCardType: 身份证件类型; 
+        :param _IdCardType: 身份证件类型; 
 ID_CARD - 居民身份证；
 PASSPORT - 护照；
 MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证；
@@ -4844,32 +9290,97 @@ MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证�
 HOUSEHOLD_REGISTER - 户口本；
 TEMP_ID_CARD - 临时居民身份证
         :type IdCardType: str
-        :param IdCardNumber: 身份证件号码 (脱敏)
+        :param _IdCardNumber: 身份证件号码 (脱敏)
         :type IdCardNumber: str
         """
-        self.UserId = None
-        self.Mobile = None
-        self.CreatedOn = None
-        self.VerifyStatus = None
-        self.Name = None
-        self.VerifiedOn = None
-        self.IdCardType = None
-        self.IdCardNumber = None
+        self._UserId = None
+        self._Mobile = None
+        self._CreatedOn = None
+        self._VerifyStatus = None
+        self._Name = None
+        self._VerifiedOn = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def VerifyStatus(self):
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VerifiedOn(self):
+        return self._VerifiedOn
+
+    @VerifiedOn.setter
+    def VerifiedOn(self, VerifiedOn):
+        self._VerifiedOn = VerifiedOn
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.Mobile = params.get("Mobile")
-        self.CreatedOn = params.get("CreatedOn")
-        self.VerifyStatus = params.get("VerifyStatus")
-        self.Name = params.get("Name")
-        self.VerifiedOn = params.get("VerifiedOn")
-        self.IdCardType = params.get("IdCardType")
-        self.IdCardNumber = params.get("IdCardNumber")
+        self._UserId = params.get("UserId")
+        self._Mobile = params.get("Mobile")
+        self._CreatedOn = params.get("CreatedOn")
+        self._VerifyStatus = params.get("VerifyStatus")
+        self._Name = params.get("Name")
+        self._VerifiedOn = params.get("VerifiedOn")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4882,24 +9393,41 @@ class VerifySubOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息，该接口SubOrganizationId必填
+        :param _Caller: 调用方信息，该接口SubOrganizationId必填
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param OpenId: 机构在第三方的唯一标识，32位定长字符串，与 Caller 中 SubOrgnizationId 二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
+        :param _OpenId: 机构在第三方的唯一标识，32位定长字符串，与 Caller 中 SubOrgnizationId 二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
         :type OpenId: str
         """
-        self.Caller = None
-        self.OpenId = None
+        self._Caller = None
+        self._OpenId = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.OpenId = params.get("OpenId")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4912,18 +9440,34 @@ class VerifySubOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubOrganizationId: 子机构ID
+        :param _SubOrganizationId: 子机构ID
         :type SubOrganizationId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubOrganizationId = None
-        self.RequestId = None
+        self._SubOrganizationId = None
+        self._RequestId = None
+
+    @property
+    def SubOrganizationId(self):
+        return self._SubOrganizationId
+
+    @SubOrganizationId.setter
+    def SubOrganizationId(self, SubOrganizationId):
+        self._SubOrganizationId = SubOrganizationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SubOrganizationId = params.get("SubOrganizationId")
-        self.RequestId = params.get("RequestId")
+        self._SubOrganizationId = params.get("SubOrganizationId")
+        self._RequestId = params.get("RequestId")
 
 
 class VerifyUserRequest(AbstractModel):
@@ -4933,29 +9477,54 @@ class VerifyUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
+        :param _Caller: 调用方信息
         :type Caller: :class:`tencentcloud.essbasic.v20201222.models.Caller`
-        :param UserId: 电子签平台用户ID
+        :param _UserId: 电子签平台用户ID
         :type UserId: str
-        :param CertificateRequired: 是否需要下发个人长效证书，默认为false
+        :param _CertificateRequired: 是否需要下发个人长效证书，默认为false
 注：如您有下发个人长效证书需求，请提前邮件至e-contract@oa.com进行申请。
         :type CertificateRequired: bool
         """
-        self.Caller = None
-        self.UserId = None
-        self.CertificateRequired = None
+        self._Caller = None
+        self._UserId = None
+        self._CertificateRequired = None
+
+    @property
+    def Caller(self):
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def CertificateRequired(self):
+        return self._CertificateRequired
+
+    @CertificateRequired.setter
+    def CertificateRequired(self, CertificateRequired):
+        self._CertificateRequired = CertificateRequired
 
 
     def _deserialize(self, params):
         if params.get("Caller") is not None:
-            self.Caller = Caller()
-            self.Caller._deserialize(params.get("Caller"))
-        self.UserId = params.get("UserId")
-        self.CertificateRequired = params.get("CertificateRequired")
+            self._Caller = Caller()
+            self._Caller._deserialize(params.get("Caller"))
+        self._UserId = params.get("UserId")
+        self._CertificateRequired = params.get("CertificateRequired")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4968,15 +9537,31 @@ class VerifyUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 电子签平台用户ID
+        :param _UserId: 电子签平台用户ID
         :type UserId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UserId = None
-        self.RequestId = None
+        self._UserId = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.RequestId = params.get("RequestId")
+        self._UserId = params.get("UserId")
+        self._RequestId = params.get("RequestId")

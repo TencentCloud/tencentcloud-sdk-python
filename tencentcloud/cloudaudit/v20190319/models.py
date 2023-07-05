@@ -25,34 +25,75 @@ class AttributeKeyDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LabelType: 输入框类型
+        :param _LabelType: 输入框类型
         :type LabelType: str
-        :param Starter: 初始化展示
+        :param _Starter: 初始化展示
         :type Starter: str
-        :param Order: 展示排序
+        :param _Order: 展示排序
         :type Order: int
-        :param Value: AttributeKey值
+        :param _Value: AttributeKey值
         :type Value: str
-        :param Label: 中文标签
+        :param _Label: 中文标签
         :type Label: str
         """
-        self.LabelType = None
-        self.Starter = None
-        self.Order = None
-        self.Value = None
-        self.Label = None
+        self._LabelType = None
+        self._Starter = None
+        self._Order = None
+        self._Value = None
+        self._Label = None
+
+    @property
+    def LabelType(self):
+        return self._LabelType
+
+    @LabelType.setter
+    def LabelType(self, LabelType):
+        self._LabelType = LabelType
+
+    @property
+    def Starter(self):
+        return self._Starter
+
+    @Starter.setter
+    def Starter(self, Starter):
+        self._Starter = Starter
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
 
 
     def _deserialize(self, params):
-        self.LabelType = params.get("LabelType")
-        self.Starter = params.get("Starter")
-        self.Order = params.get("Order")
-        self.Value = params.get("Value")
-        self.Label = params.get("Label")
+        self._LabelType = params.get("LabelType")
+        self._Starter = params.get("Starter")
+        self._Order = params.get("Order")
+        self._Value = params.get("Value")
+        self._Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -65,30 +106,63 @@ class AuditSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditStatus: 跟踪集状态，1：开启，0：关闭
+        :param _AuditStatus: 跟踪集状态，1：开启，0：关闭
         :type AuditStatus: int
-        :param CosBucketName: COS存储桶名称
+        :param _CosBucketName: COS存储桶名称
         :type CosBucketName: str
-        :param AuditName: 跟踪集名称
+        :param _AuditName: 跟踪集名称
         :type AuditName: str
-        :param LogFilePrefix: 日志前缀
+        :param _LogFilePrefix: 日志前缀
         :type LogFilePrefix: str
         """
-        self.AuditStatus = None
-        self.CosBucketName = None
-        self.AuditName = None
-        self.LogFilePrefix = None
+        self._AuditStatus = None
+        self._CosBucketName = None
+        self._AuditName = None
+        self._LogFilePrefix = None
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
+
+    @property
+    def LogFilePrefix(self):
+        return self._LogFilePrefix
+
+    @LogFilePrefix.setter
+    def LogFilePrefix(self, LogFilePrefix):
+        self._LogFilePrefix = LogFilePrefix
 
 
     def _deserialize(self, params):
-        self.AuditStatus = params.get("AuditStatus")
-        self.CosBucketName = params.get("CosBucketName")
-        self.AuditName = params.get("AuditName")
-        self.LogFilePrefix = params.get("LogFilePrefix")
+        self._AuditStatus = params.get("AuditStatus")
+        self._CosBucketName = params.get("CosBucketName")
+        self._AuditName = params.get("AuditName")
+        self._LogFilePrefix = params.get("LogFilePrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -101,22 +175,39 @@ class CmqRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CmqRegionName: 地域描述
+        :param _CmqRegionName: 地域描述
         :type CmqRegionName: str
-        :param CmqRegion: cmq地域
+        :param _CmqRegion: cmq地域
         :type CmqRegion: str
         """
-        self.CmqRegionName = None
-        self.CmqRegion = None
+        self._CmqRegionName = None
+        self._CmqRegion = None
+
+    @property
+    def CmqRegionName(self):
+        return self._CmqRegionName
+
+    @CmqRegionName.setter
+    def CmqRegionName(self, CmqRegionName):
+        self._CmqRegionName = CmqRegionName
+
+    @property
+    def CmqRegion(self):
+        return self._CmqRegion
+
+    @CmqRegion.setter
+    def CmqRegion(self, CmqRegion):
+        self._CmqRegion = CmqRegion
 
 
     def _deserialize(self, params):
-        self.CmqRegionName = params.get("CmqRegionName")
-        self.CmqRegion = params.get("CmqRegion")
+        self._CmqRegionName = params.get("CmqRegionName")
+        self._CmqRegion = params.get("CmqRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -129,22 +220,39 @@ class CosRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CosRegion: cos地域
+        :param _CosRegion: cos地域
         :type CosRegion: str
-        :param CosRegionName: 地域描述
+        :param _CosRegionName: 地域描述
         :type CosRegionName: str
         """
-        self.CosRegion = None
-        self.CosRegionName = None
+        self._CosRegion = None
+        self._CosRegionName = None
+
+    @property
+    def CosRegion(self):
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def CosRegionName(self):
+        return self._CosRegionName
+
+    @CosRegionName.setter
+    def CosRegionName(self, CosRegionName):
+        self._CosRegionName = CosRegionName
 
 
     def _deserialize(self, params):
-        self.CosRegion = params.get("CosRegion")
-        self.CosRegionName = params.get("CosRegionName")
+        self._CosRegion = params.get("CosRegion")
+        self._CosRegionName = params.get("CosRegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -157,66 +265,171 @@ class CreateAuditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
+        :param _IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
         :type IsEnableCmqNotify: int
-        :param ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
+        :param _ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
         :type ReadWriteAttribute: int
-        :param AuditName: 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
+        :param _AuditName: 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
         :type AuditName: str
-        :param CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
+        :param _CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
         :type CosRegion: str
-        :param IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
+        :param _IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
         :type IsCreateNewBucket: int
-        :param CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
+        :param _CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
         :type CosBucketName: str
-        :param KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+        :param _KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
         :type KeyId: str
-        :param CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
+        :param _CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
         :type CmqQueueName: str
-        :param KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+        :param _KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
         :type KmsRegion: str
-        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :param _IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
         :type IsEnableKmsEncry: int
-        :param CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :param _CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :type CmqRegion: str
-        :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
+        :param _LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
         :type LogFilePrefix: str
-        :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :param _IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :type IsCreateNewQueue: int
         """
-        self.IsEnableCmqNotify = None
-        self.ReadWriteAttribute = None
-        self.AuditName = None
-        self.CosRegion = None
-        self.IsCreateNewBucket = None
-        self.CosBucketName = None
-        self.KeyId = None
-        self.CmqQueueName = None
-        self.KmsRegion = None
-        self.IsEnableKmsEncry = None
-        self.CmqRegion = None
-        self.LogFilePrefix = None
-        self.IsCreateNewQueue = None
+        self._IsEnableCmqNotify = None
+        self._ReadWriteAttribute = None
+        self._AuditName = None
+        self._CosRegion = None
+        self._IsCreateNewBucket = None
+        self._CosBucketName = None
+        self._KeyId = None
+        self._CmqQueueName = None
+        self._KmsRegion = None
+        self._IsEnableKmsEncry = None
+        self._CmqRegion = None
+        self._LogFilePrefix = None
+        self._IsCreateNewQueue = None
+
+    @property
+    def IsEnableCmqNotify(self):
+        return self._IsEnableCmqNotify
+
+    @IsEnableCmqNotify.setter
+    def IsEnableCmqNotify(self, IsEnableCmqNotify):
+        self._IsEnableCmqNotify = IsEnableCmqNotify
+
+    @property
+    def ReadWriteAttribute(self):
+        return self._ReadWriteAttribute
+
+    @ReadWriteAttribute.setter
+    def ReadWriteAttribute(self, ReadWriteAttribute):
+        self._ReadWriteAttribute = ReadWriteAttribute
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
+
+    @property
+    def CosRegion(self):
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def IsCreateNewBucket(self):
+        return self._IsCreateNewBucket
+
+    @IsCreateNewBucket.setter
+    def IsCreateNewBucket(self, IsCreateNewBucket):
+        self._IsCreateNewBucket = IsCreateNewBucket
+
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def CmqQueueName(self):
+        return self._CmqQueueName
+
+    @CmqQueueName.setter
+    def CmqQueueName(self, CmqQueueName):
+        self._CmqQueueName = CmqQueueName
+
+    @property
+    def KmsRegion(self):
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def IsEnableKmsEncry(self):
+        return self._IsEnableKmsEncry
+
+    @IsEnableKmsEncry.setter
+    def IsEnableKmsEncry(self, IsEnableKmsEncry):
+        self._IsEnableKmsEncry = IsEnableKmsEncry
+
+    @property
+    def CmqRegion(self):
+        return self._CmqRegion
+
+    @CmqRegion.setter
+    def CmqRegion(self, CmqRegion):
+        self._CmqRegion = CmqRegion
+
+    @property
+    def LogFilePrefix(self):
+        return self._LogFilePrefix
+
+    @LogFilePrefix.setter
+    def LogFilePrefix(self, LogFilePrefix):
+        self._LogFilePrefix = LogFilePrefix
+
+    @property
+    def IsCreateNewQueue(self):
+        return self._IsCreateNewQueue
+
+    @IsCreateNewQueue.setter
+    def IsCreateNewQueue(self, IsCreateNewQueue):
+        self._IsCreateNewQueue = IsCreateNewQueue
 
 
     def _deserialize(self, params):
-        self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
-        self.ReadWriteAttribute = params.get("ReadWriteAttribute")
-        self.AuditName = params.get("AuditName")
-        self.CosRegion = params.get("CosRegion")
-        self.IsCreateNewBucket = params.get("IsCreateNewBucket")
-        self.CosBucketName = params.get("CosBucketName")
-        self.KeyId = params.get("KeyId")
-        self.CmqQueueName = params.get("CmqQueueName")
-        self.KmsRegion = params.get("KmsRegion")
-        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
-        self.CmqRegion = params.get("CmqRegion")
-        self.LogFilePrefix = params.get("LogFilePrefix")
-        self.IsCreateNewQueue = params.get("IsCreateNewQueue")
+        self._IsEnableCmqNotify = params.get("IsEnableCmqNotify")
+        self._ReadWriteAttribute = params.get("ReadWriteAttribute")
+        self._AuditName = params.get("AuditName")
+        self._CosRegion = params.get("CosRegion")
+        self._IsCreateNewBucket = params.get("IsCreateNewBucket")
+        self._CosBucketName = params.get("CosBucketName")
+        self._KeyId = params.get("KeyId")
+        self._CmqQueueName = params.get("CmqQueueName")
+        self._KmsRegion = params.get("KmsRegion")
+        self._IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self._CmqRegion = params.get("CmqRegion")
+        self._LogFilePrefix = params.get("LogFilePrefix")
+        self._IsCreateNewQueue = params.get("IsCreateNewQueue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -229,18 +442,34 @@ class CreateAuditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsSuccess: 是否创建成功。
+        :param _IsSuccess: 是否创建成功。
         :type IsSuccess: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsSuccess = None
-        self.RequestId = None
+        self._IsSuccess = None
+        self._RequestId = None
+
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsSuccess = params.get("IsSuccess")
-        self.RequestId = params.get("RequestId")
+        self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAuditTrackRequest(AbstractModel):
@@ -250,44 +479,101 @@ class CreateAuditTrackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :param _Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
         :type Name: str
-        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
         :type ActionType: str
-        :param ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        :param _ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
         :type ResourceType: str
-        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :param _Status: 跟踪集状态（未开启：0；开启：1）
         :type Status: int
-        :param EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        :param _EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
         :type EventNames: list of str
-        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :param _Storage: 数据投递存储（目前支持 cos、cls）
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
         :type TrackForAllMembers: int
         """
-        self.Name = None
-        self.ActionType = None
-        self.ResourceType = None
-        self.Status = None
-        self.EventNames = None
-        self.Storage = None
-        self.TrackForAllMembers = None
+        self._Name = None
+        self._ActionType = None
+        self._ResourceType = None
+        self._Status = None
+        self._EventNames = None
+        self._Storage = None
+        self._TrackForAllMembers = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventNames(self):
+        return self._EventNames
+
+    @EventNames.setter
+    def EventNames(self, EventNames):
+        self._EventNames = EventNames
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def TrackForAllMembers(self):
+        return self._TrackForAllMembers
+
+    @TrackForAllMembers.setter
+    def TrackForAllMembers(self, TrackForAllMembers):
+        self._TrackForAllMembers = TrackForAllMembers
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ActionType = params.get("ActionType")
-        self.ResourceType = params.get("ResourceType")
-        self.Status = params.get("Status")
-        self.EventNames = params.get("EventNames")
+        self._Name = params.get("Name")
+        self._ActionType = params.get("ActionType")
+        self._ResourceType = params.get("ResourceType")
+        self._Status = params.get("Status")
+        self._EventNames = params.get("EventNames")
         if params.get("Storage") is not None:
-            self.Storage = Storage()
-            self.Storage._deserialize(params.get("Storage"))
-        self.TrackForAllMembers = params.get("TrackForAllMembers")
+            self._Storage = Storage()
+            self._Storage._deserialize(params.get("Storage"))
+        self._TrackForAllMembers = params.get("TrackForAllMembers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -300,18 +586,34 @@ class CreateAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TrackId: 跟踪集 ID
+        :param _TrackId: 跟踪集 ID
         :type TrackId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TrackId = None
-        self.RequestId = None
+        self._TrackId = None
+        self._RequestId = None
+
+    @property
+    def TrackId(self):
+        return self._TrackId
+
+    @TrackId.setter
+    def TrackId(self, TrackId):
+        self._TrackId = TrackId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TrackId = params.get("TrackId")
-        self.RequestId = params.get("RequestId")
+        self._TrackId = params.get("TrackId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAuditRequest(AbstractModel):
@@ -321,18 +623,27 @@ class DeleteAuditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditName: 跟踪集名称
+        :param _AuditName: 跟踪集名称
         :type AuditName: str
         """
-        self.AuditName = None
+        self._AuditName = None
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
+        self._AuditName = params.get("AuditName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -345,18 +656,34 @@ class DeleteAuditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsSuccess: 是否删除成功
+        :param _IsSuccess: 是否删除成功
         :type IsSuccess: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsSuccess = None
-        self.RequestId = None
+        self._IsSuccess = None
+        self._RequestId = None
+
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsSuccess = params.get("IsSuccess")
-        self.RequestId = params.get("RequestId")
+        self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAuditTrackRequest(AbstractModel):
@@ -366,18 +693,27 @@ class DeleteAuditTrackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TrackId: 跟踪集 ID
+        :param _TrackId: 跟踪集 ID
         :type TrackId: int
         """
-        self.TrackId = None
+        self._TrackId = None
+
+    @property
+    def TrackId(self):
+        return self._TrackId
+
+    @TrackId.setter
+    def TrackId(self, TrackId):
+        self._TrackId = TrackId
 
 
     def _deserialize(self, params):
-        self.TrackId = params.get("TrackId")
+        self._TrackId = params.get("TrackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -390,14 +726,22 @@ class DeleteAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAuditRequest(AbstractModel):
@@ -407,18 +751,27 @@ class DescribeAuditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditName: 跟踪集名称
+        :param _AuditName: 跟踪集名称
         :type AuditName: str
         """
-        self.AuditName = None
+        self._AuditName = None
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
+        self._AuditName = params.get("AuditName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -431,66 +784,178 @@ class DescribeAuditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。
+        :param _IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。
         :type IsEnableCmqNotify: int
-        :param ReadWriteAttribute: 管理事件读写属性，1：只读，2：只写，3：全部
+        :param _ReadWriteAttribute: 管理事件读写属性，1：只读，2：只写，3：全部
         :type ReadWriteAttribute: int
-        :param KeyId: CMK的全局唯一标识符。
+        :param _KeyId: CMK的全局唯一标识符。
         :type KeyId: str
-        :param AuditStatus: 跟踪集状态，1：开启，0：停止。
+        :param _AuditStatus: 跟踪集状态，1：开启，0：停止。
         :type AuditStatus: int
-        :param AuditName: 跟踪集名称。
+        :param _AuditName: 跟踪集名称。
         :type AuditName: str
-        :param CosRegion: cos存储桶所在地域。
+        :param _CosRegion: cos存储桶所在地域。
         :type CosRegion: str
-        :param CmqQueueName: 队列名称。
+        :param _CmqQueueName: 队列名称。
         :type CmqQueueName: str
-        :param KmsAlias: CMK别名。
+        :param _KmsAlias: CMK别名。
         :type KmsAlias: str
-        :param KmsRegion: kms地域。
+        :param _KmsRegion: kms地域。
         :type KmsRegion: str
-        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :param _IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
         :type IsEnableKmsEncry: int
-        :param CosBucketName: cos存储桶名称。
+        :param _CosBucketName: cos存储桶名称。
         :type CosBucketName: str
-        :param CmqRegion: 队列所在地域。
+        :param _CmqRegion: 队列所在地域。
         :type CmqRegion: str
-        :param LogFilePrefix: 日志前缀。
+        :param _LogFilePrefix: 日志前缀。
         :type LogFilePrefix: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsEnableCmqNotify = None
-        self.ReadWriteAttribute = None
-        self.KeyId = None
-        self.AuditStatus = None
-        self.AuditName = None
-        self.CosRegion = None
-        self.CmqQueueName = None
-        self.KmsAlias = None
-        self.KmsRegion = None
-        self.IsEnableKmsEncry = None
-        self.CosBucketName = None
-        self.CmqRegion = None
-        self.LogFilePrefix = None
-        self.RequestId = None
+        self._IsEnableCmqNotify = None
+        self._ReadWriteAttribute = None
+        self._KeyId = None
+        self._AuditStatus = None
+        self._AuditName = None
+        self._CosRegion = None
+        self._CmqQueueName = None
+        self._KmsAlias = None
+        self._KmsRegion = None
+        self._IsEnableKmsEncry = None
+        self._CosBucketName = None
+        self._CmqRegion = None
+        self._LogFilePrefix = None
+        self._RequestId = None
+
+    @property
+    def IsEnableCmqNotify(self):
+        return self._IsEnableCmqNotify
+
+    @IsEnableCmqNotify.setter
+    def IsEnableCmqNotify(self, IsEnableCmqNotify):
+        self._IsEnableCmqNotify = IsEnableCmqNotify
+
+    @property
+    def ReadWriteAttribute(self):
+        return self._ReadWriteAttribute
+
+    @ReadWriteAttribute.setter
+    def ReadWriteAttribute(self, ReadWriteAttribute):
+        self._ReadWriteAttribute = ReadWriteAttribute
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
+
+    @property
+    def CosRegion(self):
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def CmqQueueName(self):
+        return self._CmqQueueName
+
+    @CmqQueueName.setter
+    def CmqQueueName(self, CmqQueueName):
+        self._CmqQueueName = CmqQueueName
+
+    @property
+    def KmsAlias(self):
+        return self._KmsAlias
+
+    @KmsAlias.setter
+    def KmsAlias(self, KmsAlias):
+        self._KmsAlias = KmsAlias
+
+    @property
+    def KmsRegion(self):
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def IsEnableKmsEncry(self):
+        return self._IsEnableKmsEncry
+
+    @IsEnableKmsEncry.setter
+    def IsEnableKmsEncry(self, IsEnableKmsEncry):
+        self._IsEnableKmsEncry = IsEnableKmsEncry
+
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CmqRegion(self):
+        return self._CmqRegion
+
+    @CmqRegion.setter
+    def CmqRegion(self, CmqRegion):
+        self._CmqRegion = CmqRegion
+
+    @property
+    def LogFilePrefix(self):
+        return self._LogFilePrefix
+
+    @LogFilePrefix.setter
+    def LogFilePrefix(self, LogFilePrefix):
+        self._LogFilePrefix = LogFilePrefix
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
-        self.ReadWriteAttribute = params.get("ReadWriteAttribute")
-        self.KeyId = params.get("KeyId")
-        self.AuditStatus = params.get("AuditStatus")
-        self.AuditName = params.get("AuditName")
-        self.CosRegion = params.get("CosRegion")
-        self.CmqQueueName = params.get("CmqQueueName")
-        self.KmsAlias = params.get("KmsAlias")
-        self.KmsRegion = params.get("KmsRegion")
-        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
-        self.CosBucketName = params.get("CosBucketName")
-        self.CmqRegion = params.get("CmqRegion")
-        self.LogFilePrefix = params.get("LogFilePrefix")
-        self.RequestId = params.get("RequestId")
+        self._IsEnableCmqNotify = params.get("IsEnableCmqNotify")
+        self._ReadWriteAttribute = params.get("ReadWriteAttribute")
+        self._KeyId = params.get("KeyId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._AuditName = params.get("AuditName")
+        self._CosRegion = params.get("CosRegion")
+        self._CmqQueueName = params.get("CmqQueueName")
+        self._KmsAlias = params.get("KmsAlias")
+        self._KmsRegion = params.get("KmsRegion")
+        self._IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CmqRegion = params.get("CmqRegion")
+        self._LogFilePrefix = params.get("LogFilePrefix")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAuditTrackRequest(AbstractModel):
@@ -500,18 +965,27 @@ class DescribeAuditTrackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TrackId: 跟踪集 ID
+        :param _TrackId: 跟踪集 ID
         :type TrackId: int
         """
-        self.TrackId = None
+        self._TrackId = None
+
+    @property
+    def TrackId(self):
+        return self._TrackId
+
+    @TrackId.setter
+    def TrackId(self, TrackId):
+        self._TrackId = TrackId
 
 
     def _deserialize(self, params):
-        self.TrackId = params.get("TrackId")
+        self._TrackId = params.get("TrackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -524,49 +998,121 @@ class DescribeAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 跟踪集名称
+        :param _Name: 跟踪集名称
         :type Name: str
-        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
         :type ActionType: str
-        :param ResourceType: 跟踪事件所属产品（如：cos，全部：*）
+        :param _ResourceType: 跟踪事件所属产品（如：cos，全部：*）
         :type ResourceType: str
-        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :param _Status: 跟踪集状态（未开启：0；开启：1）
         :type Status: int
-        :param EventNames: 跟踪事件接口名列表（全部：[*]）
+        :param _EventNames: 跟踪事件接口名列表（全部：[*]）
         :type EventNames: list of str
-        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :param _Storage: 数据投递存储（目前支持 cos、cls）
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param CreateTime: 跟踪集创建时间
+        :param _CreateTime: 跟踪集创建时间
         :type CreateTime: str
-        :param TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
+        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrackForAllMembers: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Name = None
-        self.ActionType = None
-        self.ResourceType = None
-        self.Status = None
-        self.EventNames = None
-        self.Storage = None
-        self.CreateTime = None
-        self.TrackForAllMembers = None
-        self.RequestId = None
+        self._Name = None
+        self._ActionType = None
+        self._ResourceType = None
+        self._Status = None
+        self._EventNames = None
+        self._Storage = None
+        self._CreateTime = None
+        self._TrackForAllMembers = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventNames(self):
+        return self._EventNames
+
+    @EventNames.setter
+    def EventNames(self, EventNames):
+        self._EventNames = EventNames
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TrackForAllMembers(self):
+        return self._TrackForAllMembers
+
+    @TrackForAllMembers.setter
+    def TrackForAllMembers(self, TrackForAllMembers):
+        self._TrackForAllMembers = TrackForAllMembers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ActionType = params.get("ActionType")
-        self.ResourceType = params.get("ResourceType")
-        self.Status = params.get("Status")
-        self.EventNames = params.get("EventNames")
+        self._Name = params.get("Name")
+        self._ActionType = params.get("ActionType")
+        self._ResourceType = params.get("ResourceType")
+        self._Status = params.get("Status")
+        self._EventNames = params.get("EventNames")
         if params.get("Storage") is not None:
-            self.Storage = Storage()
-            self.Storage._deserialize(params.get("Storage"))
-        self.CreateTime = params.get("CreateTime")
-        self.TrackForAllMembers = params.get("TrackForAllMembers")
-        self.RequestId = params.get("RequestId")
+            self._Storage = Storage()
+            self._Storage._deserialize(params.get("Storage"))
+        self._CreateTime = params.get("CreateTime")
+        self._TrackForAllMembers = params.get("TrackForAllMembers")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAuditTracksRequest(AbstractModel):
@@ -576,22 +1122,39 @@ class DescribeAuditTracksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNumber: 页码
+        :param _PageNumber: 页码
         :type PageNumber: int
-        :param PageSize: 每页数目
+        :param _PageSize: 每页数目
         :type PageSize: int
         """
-        self.PageNumber = None
-        self.PageSize = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -604,27 +1167,51 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tracks: 跟踪集列表
+        :param _Tracks: 跟踪集列表
         :type Tracks: list of Tracks
-        :param TotalCount: 总数目
+        :param _TotalCount: 总数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Tracks = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Tracks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Tracks(self):
+        return self._Tracks
+
+    @Tracks.setter
+    def Tracks(self, Tracks):
+        self._Tracks = Tracks
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Tracks") is not None:
-            self.Tracks = []
+            self._Tracks = []
             for item in params.get("Tracks"):
                 obj = Tracks()
                 obj._deserialize(item)
-                self.Tracks.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Tracks.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEventsRequest(AbstractModel):
@@ -634,43 +1221,92 @@ class DescribeEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 起始时间戳（单位秒，不超过当前时间 90 天）
+        :param _StartTime: 起始时间戳（单位秒，不超过当前时间 90 天）
         :type StartTime: int
-        :param EndTime: 结束时间戳（单位秒，查询时间跨度小于 30 天）
+        :param _EndTime: 结束时间戳（单位秒，查询时间跨度小于 30 天）
         :type EndTime: int
-        :param NextToken: 查看更多日志的凭证
+        :param _NextToken: 查看更多日志的凭证
         :type NextToken: int
-        :param MaxResults: 返回日志的最大条数（最大 50 条）
+        :param _MaxResults: 返回日志的最大条数（最大 50 条）
         :type MaxResults: int
-        :param LookupAttributes: 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
+        :param _LookupAttributes: 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
         :type LookupAttributes: list of LookupAttribute
-        :param IsReturnLocation: 是否返回 IP 归属地（1 返回，0 不返回）
+        :param _IsReturnLocation: 是否返回 IP 归属地（1 返回，0 不返回）
         :type IsReturnLocation: int
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.NextToken = None
-        self.MaxResults = None
-        self.LookupAttributes = None
-        self.IsReturnLocation = None
+        self._StartTime = None
+        self._EndTime = None
+        self._NextToken = None
+        self._MaxResults = None
+        self._LookupAttributes = None
+        self._IsReturnLocation = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def MaxResults(self):
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def LookupAttributes(self):
+        return self._LookupAttributes
+
+    @LookupAttributes.setter
+    def LookupAttributes(self, LookupAttributes):
+        self._LookupAttributes = LookupAttributes
+
+    @property
+    def IsReturnLocation(self):
+        return self._IsReturnLocation
+
+    @IsReturnLocation.setter
+    def IsReturnLocation(self, IsReturnLocation):
+        self._IsReturnLocation = IsReturnLocation
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.NextToken = params.get("NextToken")
-        self.MaxResults = params.get("MaxResults")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._NextToken = params.get("NextToken")
+        self._MaxResults = params.get("MaxResults")
         if params.get("LookupAttributes") is not None:
-            self.LookupAttributes = []
+            self._LookupAttributes = []
             for item in params.get("LookupAttributes"):
                 obj = LookupAttribute()
                 obj._deserialize(item)
-                self.LookupAttributes.append(obj)
-        self.IsReturnLocation = params.get("IsReturnLocation")
+                self._LookupAttributes.append(obj)
+        self._IsReturnLocation = params.get("IsReturnLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -683,37 +1319,77 @@ class DescribeEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListOver: 日志集合是否结束。true表示结束，无需进行翻页。
+        :param _ListOver: 日志集合是否结束。true表示结束，无需进行翻页。
         :type ListOver: bool
-        :param NextToken: 查看更多日志的凭证
+        :param _NextToken: 查看更多日志的凭证
         :type NextToken: int
-        :param Events: 日志集合
+        :param _Events: 日志集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Event
-        :param TotalCount: 此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
+        :param _TotalCount: 此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ListOver = None
-        self.NextToken = None
-        self.Events = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ListOver = None
+        self._NextToken = None
+        self._Events = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ListOver(self):
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ListOver = params.get("ListOver")
-        self.NextToken = params.get("NextToken")
+        self._ListOver = params.get("ListOver")
+        self._NextToken = params.get("NextToken")
         if params.get("Events") is not None:
-            self.Events = []
+            self._Events = []
             for item in params.get("Events"):
                 obj = Event()
                 obj._deserialize(item)
-                self.Events.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Events.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class Event(AbstractModel):
@@ -723,86 +1399,223 @@ class Event(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 日志ID
+        :param _EventId: 日志ID
         :type EventId: str
-        :param Username: 用户名
+        :param _Username: 用户名
         :type Username: str
-        :param EventTime: 事件时间
+        :param _EventTime: 事件时间
         :type EventTime: str
-        :param CloudAuditEvent: 日志详情
+        :param _CloudAuditEvent: 日志详情
         :type CloudAuditEvent: str
-        :param ResourceTypeCn: 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+        :param _ResourceTypeCn: 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
         :type ResourceTypeCn: str
-        :param ErrorCode: 鉴权错误码
+        :param _ErrorCode: 鉴权错误码
         :type ErrorCode: int
-        :param EventName: 事件名称
+        :param _EventName: 事件名称
         :type EventName: str
-        :param SecretId: 证书ID
+        :param _SecretId: 证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretId: str
-        :param EventSource: 请求来源
+        :param _EventSource: 请求来源
         :type EventSource: str
-        :param RequestID: 请求ID
+        :param _RequestID: 请求ID
         :type RequestID: str
-        :param ResourceRegion: 资源地域
+        :param _ResourceRegion: 资源地域
         :type ResourceRegion: str
-        :param AccountID: 主账号ID
+        :param _AccountID: 主账号ID
         :type AccountID: int
-        :param SourceIPAddress: 源IP
+        :param _SourceIPAddress: 源IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceIPAddress: str
-        :param EventNameCn: 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+        :param _EventNameCn: 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
         :type EventNameCn: str
-        :param Resources: 资源对
+        :param _Resources: 资源对
         :type Resources: :class:`tencentcloud.cloudaudit.v20190319.models.Resource`
-        :param EventRegion: 事件地域
+        :param _EventRegion: 事件地域
         :type EventRegion: str
-        :param Location: IP 归属地
+        :param _Location: IP 归属地
         :type Location: str
         """
-        self.EventId = None
-        self.Username = None
-        self.EventTime = None
-        self.CloudAuditEvent = None
-        self.ResourceTypeCn = None
-        self.ErrorCode = None
-        self.EventName = None
-        self.SecretId = None
-        self.EventSource = None
-        self.RequestID = None
-        self.ResourceRegion = None
-        self.AccountID = None
-        self.SourceIPAddress = None
-        self.EventNameCn = None
-        self.Resources = None
-        self.EventRegion = None
-        self.Location = None
+        self._EventId = None
+        self._Username = None
+        self._EventTime = None
+        self._CloudAuditEvent = None
+        self._ResourceTypeCn = None
+        self._ErrorCode = None
+        self._EventName = None
+        self._SecretId = None
+        self._EventSource = None
+        self._RequestID = None
+        self._ResourceRegion = None
+        self._AccountID = None
+        self._SourceIPAddress = None
+        self._EventNameCn = None
+        self._Resources = None
+        self._EventRegion = None
+        self._Location = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def EventTime(self):
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def CloudAuditEvent(self):
+        return self._CloudAuditEvent
+
+    @CloudAuditEvent.setter
+    def CloudAuditEvent(self, CloudAuditEvent):
+        self._CloudAuditEvent = CloudAuditEvent
+
+    @property
+    def ResourceTypeCn(self):
+        return self._ResourceTypeCn
+
+    @ResourceTypeCn.setter
+    def ResourceTypeCn(self, ResourceTypeCn):
+        self._ResourceTypeCn = ResourceTypeCn
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def EventName(self):
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def EventSource(self):
+        return self._EventSource
+
+    @EventSource.setter
+    def EventSource(self, EventSource):
+        self._EventSource = EventSource
+
+    @property
+    def RequestID(self):
+        return self._RequestID
+
+    @RequestID.setter
+    def RequestID(self, RequestID):
+        self._RequestID = RequestID
+
+    @property
+    def ResourceRegion(self):
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def AccountID(self):
+        return self._AccountID
+
+    @AccountID.setter
+    def AccountID(self, AccountID):
+        self._AccountID = AccountID
+
+    @property
+    def SourceIPAddress(self):
+        return self._SourceIPAddress
+
+    @SourceIPAddress.setter
+    def SourceIPAddress(self, SourceIPAddress):
+        self._SourceIPAddress = SourceIPAddress
+
+    @property
+    def EventNameCn(self):
+        return self._EventNameCn
+
+    @EventNameCn.setter
+    def EventNameCn(self, EventNameCn):
+        self._EventNameCn = EventNameCn
+
+    @property
+    def Resources(self):
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def EventRegion(self):
+        return self._EventRegion
+
+    @EventRegion.setter
+    def EventRegion(self, EventRegion):
+        self._EventRegion = EventRegion
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.Username = params.get("Username")
-        self.EventTime = params.get("EventTime")
-        self.CloudAuditEvent = params.get("CloudAuditEvent")
-        self.ResourceTypeCn = params.get("ResourceTypeCn")
-        self.ErrorCode = params.get("ErrorCode")
-        self.EventName = params.get("EventName")
-        self.SecretId = params.get("SecretId")
-        self.EventSource = params.get("EventSource")
-        self.RequestID = params.get("RequestID")
-        self.ResourceRegion = params.get("ResourceRegion")
-        self.AccountID = params.get("AccountID")
-        self.SourceIPAddress = params.get("SourceIPAddress")
-        self.EventNameCn = params.get("EventNameCn")
+        self._EventId = params.get("EventId")
+        self._Username = params.get("Username")
+        self._EventTime = params.get("EventTime")
+        self._CloudAuditEvent = params.get("CloudAuditEvent")
+        self._ResourceTypeCn = params.get("ResourceTypeCn")
+        self._ErrorCode = params.get("ErrorCode")
+        self._EventName = params.get("EventName")
+        self._SecretId = params.get("SecretId")
+        self._EventSource = params.get("EventSource")
+        self._RequestID = params.get("RequestID")
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._AccountID = params.get("AccountID")
+        self._SourceIPAddress = params.get("SourceIPAddress")
+        self._EventNameCn = params.get("EventNameCn")
         if params.get("Resources") is not None:
-            self.Resources = Resource()
-            self.Resources._deserialize(params.get("Resources"))
-        self.EventRegion = params.get("EventRegion")
-        self.Location = params.get("Location")
+            self._Resources = Resource()
+            self._Resources._deserialize(params.get("Resources"))
+        self._EventRegion = params.get("EventRegion")
+        self._Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -815,18 +1628,27 @@ class GetAttributeKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WebsiteType: 网站类型，取值范围是zh和en。如果不传值默认zh
+        :param _WebsiteType: 网站类型，取值范围是zh和en。如果不传值默认zh
         :type WebsiteType: str
         """
-        self.WebsiteType = None
+        self._WebsiteType = None
+
+    @property
+    def WebsiteType(self):
+        return self._WebsiteType
+
+    @WebsiteType.setter
+    def WebsiteType(self, WebsiteType):
+        self._WebsiteType = WebsiteType
 
 
     def _deserialize(self, params):
-        self.WebsiteType = params.get("WebsiteType")
+        self._WebsiteType = params.get("WebsiteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -839,23 +1661,39 @@ class GetAttributeKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AttributeKeyDetails: AttributeKey的有效取值范围
+        :param _AttributeKeyDetails: AttributeKey的有效取值范围
         :type AttributeKeyDetails: list of AttributeKeyDetail
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AttributeKeyDetails = None
-        self.RequestId = None
+        self._AttributeKeyDetails = None
+        self._RequestId = None
+
+    @property
+    def AttributeKeyDetails(self):
+        return self._AttributeKeyDetails
+
+    @AttributeKeyDetails.setter
+    def AttributeKeyDetails(self, AttributeKeyDetails):
+        self._AttributeKeyDetails = AttributeKeyDetails
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AttributeKeyDetails") is not None:
-            self.AttributeKeyDetails = []
+            self._AttributeKeyDetails = []
             for item in params.get("AttributeKeyDetails"):
                 obj = AttributeKeyDetail()
                 obj._deserialize(item)
-                self.AttributeKeyDetails.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AttributeKeyDetails.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InquireAuditCreditRequest(AbstractModel):
@@ -871,18 +1709,34 @@ class InquireAuditCreditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditAmount: 可创建跟踪集的数量
+        :param _AuditAmount: 可创建跟踪集的数量
         :type AuditAmount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AuditAmount = None
-        self.RequestId = None
+        self._AuditAmount = None
+        self._RequestId = None
+
+    @property
+    def AuditAmount(self):
+        return self._AuditAmount
+
+    @AuditAmount.setter
+    def AuditAmount(self, AuditAmount):
+        self._AuditAmount = AuditAmount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AuditAmount = params.get("AuditAmount")
-        self.RequestId = params.get("RequestId")
+        self._AuditAmount = params.get("AuditAmount")
+        self._RequestId = params.get("RequestId")
 
 
 class KeyMetadata(AbstractModel):
@@ -892,22 +1746,39 @@ class KeyMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名
+        :param _Alias: 作为密钥更容易辨识，更容易被人看懂的别名
         :type Alias: str
-        :param KeyId: CMK的全局唯一标识
+        :param _KeyId: CMK的全局唯一标识
         :type KeyId: str
         """
-        self.Alias = None
-        self.KeyId = None
+        self._Alias = None
+        self._KeyId = None
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
 
 
     def _deserialize(self, params):
-        self.Alias = params.get("Alias")
-        self.KeyId = params.get("KeyId")
+        self._Alias = params.get("Alias")
+        self._KeyId = params.get("KeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -926,24 +1797,40 @@ class ListAuditsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditSummarys: 查询跟踪集概要集合
+        :param _AuditSummarys: 查询跟踪集概要集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditSummarys: list of AuditSummary
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AuditSummarys = None
-        self.RequestId = None
+        self._AuditSummarys = None
+        self._RequestId = None
+
+    @property
+    def AuditSummarys(self):
+        return self._AuditSummarys
+
+    @AuditSummarys.setter
+    def AuditSummarys(self, AuditSummarys):
+        self._AuditSummarys = AuditSummarys
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AuditSummarys") is not None:
-            self.AuditSummarys = []
+            self._AuditSummarys = []
             for item in params.get("AuditSummarys"):
                 obj = AuditSummary()
                 obj._deserialize(item)
-                self.AuditSummarys.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AuditSummarys.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListCmqEnableRegionRequest(AbstractModel):
@@ -953,18 +1840,27 @@ class ListCmqEnableRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WebsiteType: 站点类型。zh表示中国区，en表示国际区。默认中国区。
+        :param _WebsiteType: 站点类型。zh表示中国区，en表示国际区。默认中国区。
         :type WebsiteType: str
         """
-        self.WebsiteType = None
+        self._WebsiteType = None
+
+    @property
+    def WebsiteType(self):
+        return self._WebsiteType
+
+    @WebsiteType.setter
+    def WebsiteType(self, WebsiteType):
+        self._WebsiteType = WebsiteType
 
 
     def _deserialize(self, params):
-        self.WebsiteType = params.get("WebsiteType")
+        self._WebsiteType = params.get("WebsiteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -977,23 +1873,39 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableRegions: 云审计支持的cmq的可用区
+        :param _EnableRegions: 云审计支持的cmq的可用区
         :type EnableRegions: list of CmqRegionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EnableRegions = None
-        self.RequestId = None
+        self._EnableRegions = None
+        self._RequestId = None
+
+    @property
+    def EnableRegions(self):
+        return self._EnableRegions
+
+    @EnableRegions.setter
+    def EnableRegions(self, EnableRegions):
+        self._EnableRegions = EnableRegions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EnableRegions") is not None:
-            self.EnableRegions = []
+            self._EnableRegions = []
             for item in params.get("EnableRegions"):
                 obj = CmqRegionInfo()
                 obj._deserialize(item)
-                self.EnableRegions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EnableRegions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListCosEnableRegionRequest(AbstractModel):
@@ -1003,18 +1915,27 @@ class ListCosEnableRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WebsiteType: 站点类型。zh表示中国区，en表示国际区。默认中国区。
+        :param _WebsiteType: 站点类型。zh表示中国区，en表示国际区。默认中国区。
         :type WebsiteType: str
         """
-        self.WebsiteType = None
+        self._WebsiteType = None
+
+    @property
+    def WebsiteType(self):
+        return self._WebsiteType
+
+    @WebsiteType.setter
+    def WebsiteType(self, WebsiteType):
+        self._WebsiteType = WebsiteType
 
 
     def _deserialize(self, params):
-        self.WebsiteType = params.get("WebsiteType")
+        self._WebsiteType = params.get("WebsiteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1027,23 +1948,39 @@ class ListCosEnableRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableRegions: 云审计支持的cos可用区
+        :param _EnableRegions: 云审计支持的cos可用区
         :type EnableRegions: list of CosRegionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EnableRegions = None
-        self.RequestId = None
+        self._EnableRegions = None
+        self._RequestId = None
+
+    @property
+    def EnableRegions(self):
+        return self._EnableRegions
+
+    @EnableRegions.setter
+    def EnableRegions(self, EnableRegions):
+        self._EnableRegions = EnableRegions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EnableRegions") is not None:
-            self.EnableRegions = []
+            self._EnableRegions = []
             for item in params.get("EnableRegions"):
                 obj = CosRegionInfo()
                 obj._deserialize(item)
-                self.EnableRegions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EnableRegions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListKeyAliasByRegionRequest(AbstractModel):
@@ -1053,26 +1990,51 @@ class ListKeyAliasByRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KmsRegion: Kms地域
+        :param _KmsRegion: Kms地域
         :type KmsRegion: str
-        :param Limit: 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
+        :param _Limit: 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
         :type Limit: int
-        :param Offset: 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :param _Offset: 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
         :type Offset: int
         """
-        self.KmsRegion = None
-        self.Limit = None
-        self.Offset = None
+        self._KmsRegion = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def KmsRegion(self):
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.KmsRegion = params.get("KmsRegion")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._KmsRegion = params.get("KmsRegion")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1085,27 +2047,51 @@ class ListKeyAliasByRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: CMK的总数量
+        :param _TotalCount: CMK的总数量
         :type TotalCount: int
-        :param KeyMetadatas: 密钥别名
+        :param _KeyMetadatas: 密钥别名
         :type KeyMetadatas: list of KeyMetadata
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.KeyMetadatas = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._KeyMetadatas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def KeyMetadatas(self):
+        return self._KeyMetadatas
+
+    @KeyMetadatas.setter
+    def KeyMetadatas(self, KeyMetadatas):
+        self._KeyMetadatas = KeyMetadatas
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("KeyMetadatas") is not None:
-            self.KeyMetadatas = []
+            self._KeyMetadatas = []
             for item in params.get("KeyMetadatas"):
                 obj = KeyMetadata()
                 obj._deserialize(item)
-                self.KeyMetadatas.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._KeyMetadatas.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class LookUpEventsRequest(AbstractModel):
@@ -1115,43 +2101,92 @@ class LookUpEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param _StartTime: 开始时间
         :type StartTime: int
-        :param EndTime: 结束时间
+        :param _EndTime: 结束时间
         :type EndTime: int
-        :param LookupAttributes: 检索条件
+        :param _LookupAttributes: 检索条件
         :type LookupAttributes: list of LookupAttribute
-        :param NextToken: 查看更多日志的凭证
+        :param _NextToken: 查看更多日志的凭证
         :type NextToken: str
-        :param MaxResults: 返回日志的最大条数
+        :param _MaxResults: 返回日志的最大条数
         :type MaxResults: int
-        :param Mode: 云审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
+        :param _Mode: 云审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
         :type Mode: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.LookupAttributes = None
-        self.NextToken = None
-        self.MaxResults = None
-        self.Mode = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LookupAttributes = None
+        self._NextToken = None
+        self._MaxResults = None
+        self._Mode = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LookupAttributes(self):
+        return self._LookupAttributes
+
+    @LookupAttributes.setter
+    def LookupAttributes(self, LookupAttributes):
+        self._LookupAttributes = LookupAttributes
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def MaxResults(self):
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("LookupAttributes") is not None:
-            self.LookupAttributes = []
+            self._LookupAttributes = []
             for item in params.get("LookupAttributes"):
                 obj = LookupAttribute()
                 obj._deserialize(item)
-                self.LookupAttributes.append(obj)
-        self.NextToken = params.get("NextToken")
-        self.MaxResults = params.get("MaxResults")
-        self.Mode = params.get("Mode")
+                self._LookupAttributes.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._MaxResults = params.get("MaxResults")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1164,34 +2199,66 @@ class LookUpEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NextToken: 查看更多日志的凭证
+        :param _NextToken: 查看更多日志的凭证
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
-        :param Events: 日志集合
+        :param _Events: 日志集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Event
-        :param ListOver: 日志集合是否结束
+        :param _ListOver: 日志集合是否结束
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListOver: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NextToken = None
-        self.Events = None
-        self.ListOver = None
-        self.RequestId = None
+        self._NextToken = None
+        self._Events = None
+        self._ListOver = None
+        self._RequestId = None
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def ListOver(self):
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.NextToken = params.get("NextToken")
+        self._NextToken = params.get("NextToken")
         if params.get("Events") is not None:
-            self.Events = []
+            self._Events = []
             for item in params.get("Events"):
                 obj = Event()
                 obj._deserialize(item)
-                self.Events.append(obj)
-        self.ListOver = params.get("ListOver")
-        self.RequestId = params.get("RequestId")
+                self._Events.append(obj)
+        self._ListOver = params.get("ListOver")
+        self._RequestId = params.get("RequestId")
 
 
 class LookupAttribute(AbstractModel):
@@ -1201,22 +2268,39 @@ class LookupAttribute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AttributeKey: AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
+        :param _AttributeKey: AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
         :type AttributeKey: str
-        :param AttributeValue: AttributeValue的值
+        :param _AttributeValue: AttributeValue的值
         :type AttributeValue: str
         """
-        self.AttributeKey = None
-        self.AttributeValue = None
+        self._AttributeKey = None
+        self._AttributeValue = None
+
+    @property
+    def AttributeKey(self):
+        return self._AttributeKey
+
+    @AttributeKey.setter
+    def AttributeKey(self, AttributeKey):
+        self._AttributeKey = AttributeKey
+
+    @property
+    def AttributeValue(self):
+        return self._AttributeValue
+
+    @AttributeValue.setter
+    def AttributeValue(self, AttributeValue):
+        self._AttributeValue = AttributeValue
 
 
     def _deserialize(self, params):
-        self.AttributeKey = params.get("AttributeKey")
-        self.AttributeValue = params.get("AttributeValue")
+        self._AttributeKey = params.get("AttributeKey")
+        self._AttributeValue = params.get("AttributeValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1229,48 +2313,113 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TrackId: 跟踪集 ID
+        :param _TrackId: 跟踪集 ID
         :type TrackId: int
-        :param Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :param _Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
         :type Name: str
-        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
         :type ActionType: str
-        :param ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        :param _ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
         :type ResourceType: str
-        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :param _Status: 跟踪集状态（未开启：0；开启：1）
         :type Status: int
-        :param EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        :param _EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
         :type EventNames: list of str
-        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :param _Storage: 数据投递存储（目前支持 cos、cls）
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
         :type TrackForAllMembers: int
         """
-        self.TrackId = None
-        self.Name = None
-        self.ActionType = None
-        self.ResourceType = None
-        self.Status = None
-        self.EventNames = None
-        self.Storage = None
-        self.TrackForAllMembers = None
+        self._TrackId = None
+        self._Name = None
+        self._ActionType = None
+        self._ResourceType = None
+        self._Status = None
+        self._EventNames = None
+        self._Storage = None
+        self._TrackForAllMembers = None
+
+    @property
+    def TrackId(self):
+        return self._TrackId
+
+    @TrackId.setter
+    def TrackId(self, TrackId):
+        self._TrackId = TrackId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventNames(self):
+        return self._EventNames
+
+    @EventNames.setter
+    def EventNames(self, EventNames):
+        self._EventNames = EventNames
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def TrackForAllMembers(self):
+        return self._TrackForAllMembers
+
+    @TrackForAllMembers.setter
+    def TrackForAllMembers(self, TrackForAllMembers):
+        self._TrackForAllMembers = TrackForAllMembers
 
 
     def _deserialize(self, params):
-        self.TrackId = params.get("TrackId")
-        self.Name = params.get("Name")
-        self.ActionType = params.get("ActionType")
-        self.ResourceType = params.get("ResourceType")
-        self.Status = params.get("Status")
-        self.EventNames = params.get("EventNames")
+        self._TrackId = params.get("TrackId")
+        self._Name = params.get("Name")
+        self._ActionType = params.get("ActionType")
+        self._ResourceType = params.get("ResourceType")
+        self._Status = params.get("Status")
+        self._EventNames = params.get("EventNames")
         if params.get("Storage") is not None:
-            self.Storage = Storage()
-            self.Storage._deserialize(params.get("Storage"))
-        self.TrackForAllMembers = params.get("TrackForAllMembers")
+            self._Storage = Storage()
+            self._Storage._deserialize(params.get("Storage"))
+        self._TrackForAllMembers = params.get("TrackForAllMembers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1283,14 +2432,22 @@ class ModifyAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Resource(AbstractModel):
@@ -1300,22 +2457,39 @@ class Resource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型
+        :param _ResourceType: 资源类型
         :type ResourceType: str
-        :param ResourceName: 资源名称
+        :param _ResourceName: 资源名称
         :type ResourceName: str
         """
-        self.ResourceType = None
-        self.ResourceName = None
+        self._ResourceType = None
+        self._ResourceName = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
 
 
     def _deserialize(self, params):
-        self.ResourceType = params.get("ResourceType")
-        self.ResourceName = params.get("ResourceName")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceName = params.get("ResourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1328,18 +2502,27 @@ class StartLoggingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditName: 跟踪集名称
+        :param _AuditName: 跟踪集名称
         :type AuditName: str
         """
-        self.AuditName = None
+        self._AuditName = None
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
+        self._AuditName = params.get("AuditName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1352,18 +2535,34 @@ class StartLoggingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsSuccess: 是否开启成功
+        :param _IsSuccess: 是否开启成功
         :type IsSuccess: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsSuccess = None
-        self.RequestId = None
+        self._IsSuccess = None
+        self._RequestId = None
+
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsSuccess = params.get("IsSuccess")
-        self.RequestId = params.get("RequestId")
+        self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")
 
 
 class StopLoggingRequest(AbstractModel):
@@ -1373,18 +2572,27 @@ class StopLoggingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditName: 跟踪集名称
+        :param _AuditName: 跟踪集名称
         :type AuditName: str
         """
-        self.AuditName = None
+        self._AuditName = None
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
+        self._AuditName = params.get("AuditName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1397,18 +2605,34 @@ class StopLoggingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsSuccess: 是否关闭成功
+        :param _IsSuccess: 是否关闭成功
         :type IsSuccess: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsSuccess = None
-        self.RequestId = None
+        self._IsSuccess = None
+        self._RequestId = None
+
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsSuccess = params.get("IsSuccess")
-        self.RequestId = params.get("RequestId")
+        self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")
 
 
 class Storage(AbstractModel):
@@ -1418,30 +2642,63 @@ class Storage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StorageType: 存储类型（目前支持 cos、cls）
+        :param _StorageType: 存储类型（目前支持 cos、cls）
         :type StorageType: str
-        :param StorageRegion: 存储所在地域
+        :param _StorageRegion: 存储所在地域
         :type StorageRegion: str
-        :param StorageName: 存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
+        :param _StorageName: 存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
         :type StorageName: str
-        :param StoragePrefix: 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
+        :param _StoragePrefix: 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
         :type StoragePrefix: str
         """
-        self.StorageType = None
-        self.StorageRegion = None
-        self.StorageName = None
-        self.StoragePrefix = None
+        self._StorageType = None
+        self._StorageRegion = None
+        self._StorageName = None
+        self._StoragePrefix = None
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def StorageRegion(self):
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def StorageName(self):
+        return self._StorageName
+
+    @StorageName.setter
+    def StorageName(self, StorageName):
+        self._StorageName = StorageName
+
+    @property
+    def StoragePrefix(self):
+        return self._StoragePrefix
+
+    @StoragePrefix.setter
+    def StoragePrefix(self, StoragePrefix):
+        self._StoragePrefix = StoragePrefix
 
 
     def _deserialize(self, params):
-        self.StorageType = params.get("StorageType")
-        self.StorageRegion = params.get("StorageRegion")
-        self.StorageName = params.get("StorageName")
-        self.StoragePrefix = params.get("StoragePrefix")
+        self._StorageType = params.get("StorageType")
+        self._StorageRegion = params.get("StorageRegion")
+        self._StorageName = params.get("StorageName")
+        self._StoragePrefix = params.get("StoragePrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1454,48 +2711,113 @@ class Tracks(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 跟踪集名称
+        :param _Name: 跟踪集名称
         :type Name: str
-        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
         :type ActionType: str
-        :param ResourceType: 跟踪事件所属产品（如：cos，全部：*）
+        :param _ResourceType: 跟踪事件所属产品（如：cos，全部：*）
         :type ResourceType: str
-        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :param _Status: 跟踪集状态（未开启：0；开启：1）
         :type Status: int
-        :param EventNames: 跟踪事件接口名列表（全部：[*]）
+        :param _EventNames: 跟踪事件接口名列表（全部：[*]）
         :type EventNames: list of str
-        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :param _Storage: 数据投递存储（目前支持 cos、cls）
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param CreateTime: 跟踪集创建时间
+        :param _CreateTime: 跟踪集创建时间
         :type CreateTime: str
-        :param TrackId: 跟踪集 ID
+        :param _TrackId: 跟踪集 ID
         :type TrackId: int
         """
-        self.Name = None
-        self.ActionType = None
-        self.ResourceType = None
-        self.Status = None
-        self.EventNames = None
-        self.Storage = None
-        self.CreateTime = None
-        self.TrackId = None
+        self._Name = None
+        self._ActionType = None
+        self._ResourceType = None
+        self._Status = None
+        self._EventNames = None
+        self._Storage = None
+        self._CreateTime = None
+        self._TrackId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventNames(self):
+        return self._EventNames
+
+    @EventNames.setter
+    def EventNames(self, EventNames):
+        self._EventNames = EventNames
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TrackId(self):
+        return self._TrackId
+
+    @TrackId.setter
+    def TrackId(self, TrackId):
+        self._TrackId = TrackId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ActionType = params.get("ActionType")
-        self.ResourceType = params.get("ResourceType")
-        self.Status = params.get("Status")
-        self.EventNames = params.get("EventNames")
+        self._Name = params.get("Name")
+        self._ActionType = params.get("ActionType")
+        self._ResourceType = params.get("ResourceType")
+        self._Status = params.get("Status")
+        self._EventNames = params.get("EventNames")
         if params.get("Storage") is not None:
-            self.Storage = Storage()
-            self.Storage._deserialize(params.get("Storage"))
-        self.CreateTime = params.get("CreateTime")
-        self.TrackId = params.get("TrackId")
+            self._Storage = Storage()
+            self._Storage._deserialize(params.get("Storage"))
+        self._CreateTime = params.get("CreateTime")
+        self._TrackId = params.get("TrackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1508,66 +2830,171 @@ class UpdateAuditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditName: 跟踪集名称
+        :param _AuditName: 跟踪集名称
         :type AuditName: str
-        :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
+        :param _IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
         :type IsEnableCmqNotify: int
-        :param ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
+        :param _ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
         :type ReadWriteAttribute: int
-        :param KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+        :param _KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
         :type KeyId: str
-        :param CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
+        :param _CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
         :type CosRegion: str
-        :param CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
+        :param _CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
         :type CmqQueueName: str
-        :param IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
+        :param _IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
         :type IsCreateNewBucket: int
-        :param KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+        :param _KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
         :type KmsRegion: str
-        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :param _IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
         :type IsEnableKmsEncry: int
-        :param CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
+        :param _CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
         :type CosBucketName: str
-        :param CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :param _CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :type CmqRegion: str
-        :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
+        :param _LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
         :type LogFilePrefix: str
-        :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :param _IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :type IsCreateNewQueue: int
         """
-        self.AuditName = None
-        self.IsEnableCmqNotify = None
-        self.ReadWriteAttribute = None
-        self.KeyId = None
-        self.CosRegion = None
-        self.CmqQueueName = None
-        self.IsCreateNewBucket = None
-        self.KmsRegion = None
-        self.IsEnableKmsEncry = None
-        self.CosBucketName = None
-        self.CmqRegion = None
-        self.LogFilePrefix = None
-        self.IsCreateNewQueue = None
+        self._AuditName = None
+        self._IsEnableCmqNotify = None
+        self._ReadWriteAttribute = None
+        self._KeyId = None
+        self._CosRegion = None
+        self._CmqQueueName = None
+        self._IsCreateNewBucket = None
+        self._KmsRegion = None
+        self._IsEnableKmsEncry = None
+        self._CosBucketName = None
+        self._CmqRegion = None
+        self._LogFilePrefix = None
+        self._IsCreateNewQueue = None
+
+    @property
+    def AuditName(self):
+        return self._AuditName
+
+    @AuditName.setter
+    def AuditName(self, AuditName):
+        self._AuditName = AuditName
+
+    @property
+    def IsEnableCmqNotify(self):
+        return self._IsEnableCmqNotify
+
+    @IsEnableCmqNotify.setter
+    def IsEnableCmqNotify(self, IsEnableCmqNotify):
+        self._IsEnableCmqNotify = IsEnableCmqNotify
+
+    @property
+    def ReadWriteAttribute(self):
+        return self._ReadWriteAttribute
+
+    @ReadWriteAttribute.setter
+    def ReadWriteAttribute(self, ReadWriteAttribute):
+        self._ReadWriteAttribute = ReadWriteAttribute
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def CosRegion(self):
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def CmqQueueName(self):
+        return self._CmqQueueName
+
+    @CmqQueueName.setter
+    def CmqQueueName(self, CmqQueueName):
+        self._CmqQueueName = CmqQueueName
+
+    @property
+    def IsCreateNewBucket(self):
+        return self._IsCreateNewBucket
+
+    @IsCreateNewBucket.setter
+    def IsCreateNewBucket(self, IsCreateNewBucket):
+        self._IsCreateNewBucket = IsCreateNewBucket
+
+    @property
+    def KmsRegion(self):
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def IsEnableKmsEncry(self):
+        return self._IsEnableKmsEncry
+
+    @IsEnableKmsEncry.setter
+    def IsEnableKmsEncry(self, IsEnableKmsEncry):
+        self._IsEnableKmsEncry = IsEnableKmsEncry
+
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CmqRegion(self):
+        return self._CmqRegion
+
+    @CmqRegion.setter
+    def CmqRegion(self, CmqRegion):
+        self._CmqRegion = CmqRegion
+
+    @property
+    def LogFilePrefix(self):
+        return self._LogFilePrefix
+
+    @LogFilePrefix.setter
+    def LogFilePrefix(self, LogFilePrefix):
+        self._LogFilePrefix = LogFilePrefix
+
+    @property
+    def IsCreateNewQueue(self):
+        return self._IsCreateNewQueue
+
+    @IsCreateNewQueue.setter
+    def IsCreateNewQueue(self, IsCreateNewQueue):
+        self._IsCreateNewQueue = IsCreateNewQueue
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
-        self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
-        self.ReadWriteAttribute = params.get("ReadWriteAttribute")
-        self.KeyId = params.get("KeyId")
-        self.CosRegion = params.get("CosRegion")
-        self.CmqQueueName = params.get("CmqQueueName")
-        self.IsCreateNewBucket = params.get("IsCreateNewBucket")
-        self.KmsRegion = params.get("KmsRegion")
-        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
-        self.CosBucketName = params.get("CosBucketName")
-        self.CmqRegion = params.get("CmqRegion")
-        self.LogFilePrefix = params.get("LogFilePrefix")
-        self.IsCreateNewQueue = params.get("IsCreateNewQueue")
+        self._AuditName = params.get("AuditName")
+        self._IsEnableCmqNotify = params.get("IsEnableCmqNotify")
+        self._ReadWriteAttribute = params.get("ReadWriteAttribute")
+        self._KeyId = params.get("KeyId")
+        self._CosRegion = params.get("CosRegion")
+        self._CmqQueueName = params.get("CmqQueueName")
+        self._IsCreateNewBucket = params.get("IsCreateNewBucket")
+        self._KmsRegion = params.get("KmsRegion")
+        self._IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CmqRegion = params.get("CmqRegion")
+        self._LogFilePrefix = params.get("LogFilePrefix")
+        self._IsCreateNewQueue = params.get("IsCreateNewQueue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1580,15 +3007,31 @@ class UpdateAuditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsSuccess: 是否更新成功
+        :param _IsSuccess: 是否更新成功
         :type IsSuccess: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsSuccess = None
-        self.RequestId = None
+        self._IsSuccess = None
+        self._RequestId = None
+
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsSuccess = params.get("IsSuccess")
-        self.RequestId = params.get("RequestId")
+        self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")

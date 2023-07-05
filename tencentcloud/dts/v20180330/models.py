@@ -25,40 +25,89 @@ class ActivateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 订阅实例ID。
+        :param _SubscribeId: 订阅实例ID。
         :type SubscribeId: str
-        :param InstanceId: 数据库实例ID
+        :param _InstanceId: 数据库实例ID
         :type InstanceId: str
-        :param SubscribeObjectType: 数据订阅类型0-全实例订阅，1数据订阅，2结构订阅，3数据订阅与结构订阅
+        :param _SubscribeObjectType: 数据订阅类型0-全实例订阅，1数据订阅，2结构订阅，3数据订阅与结构订阅
         :type SubscribeObjectType: int
-        :param Objects: 订阅对象
+        :param _Objects: 订阅对象
         :type Objects: :class:`tencentcloud.dts.v20180330.models.SubscribeObject`
-        :param UniqSubnetId: 数据订阅服务所在子网。默认为数据库实例所在的子网内。
+        :param _UniqSubnetId: 数据订阅服务所在子网。默认为数据库实例所在的子网内。
         :type UniqSubnetId: str
-        :param Vport: 订阅服务端口；默认为7507
+        :param _Vport: 订阅服务端口；默认为7507
         :type Vport: int
         """
-        self.SubscribeId = None
-        self.InstanceId = None
-        self.SubscribeObjectType = None
-        self.Objects = None
-        self.UniqSubnetId = None
-        self.Vport = None
+        self._SubscribeId = None
+        self._InstanceId = None
+        self._SubscribeObjectType = None
+        self._Objects = None
+        self._UniqSubnetId = None
+        self._Vport = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SubscribeObjectType(self):
+        return self._SubscribeObjectType
+
+    @SubscribeObjectType.setter
+    def SubscribeObjectType(self, SubscribeObjectType):
+        self._SubscribeObjectType = SubscribeObjectType
+
+    @property
+    def Objects(self):
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.InstanceId = params.get("InstanceId")
-        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        self._SubscribeId = params.get("SubscribeId")
+        self._InstanceId = params.get("InstanceId")
+        self._SubscribeObjectType = params.get("SubscribeObjectType")
         if params.get("Objects") is not None:
-            self.Objects = SubscribeObject()
-            self.Objects._deserialize(params.get("Objects"))
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.Vport = params.get("Vport")
+            self._Objects = SubscribeObject()
+            self._Objects._deserialize(params.get("Objects"))
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -71,18 +120,34 @@ class ActivateSubscribeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 配置数据订阅任务ID。
+        :param _AsyncRequestId: 配置数据订阅任务ID。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsyncRequestId = None
-        self.RequestId = None
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CompleteMigrateJobRequest(AbstractModel):
@@ -92,22 +157,39 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
-        :param CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
+        :param _CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
         :type CompleteMode: str
         """
-        self.JobId = None
-        self.CompleteMode = None
+        self._JobId = None
+        self._CompleteMode = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompleteMode(self):
+        return self._CompleteMode
+
+    @CompleteMode.setter
+    def CompleteMode(self, CompleteMode):
+        self._CompleteMode = CompleteMode
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CompleteMode = params.get("CompleteMode")
+        self._JobId = params.get("JobId")
+        self._CompleteMode = params.get("CompleteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -120,14 +202,22 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ConsistencyParams(AbstractModel):
@@ -137,26 +227,51 @@ class ConsistencyParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SelectRowsPerTable: 数据内容检测参数。表中选出用来数据对比的行，占表的总行数的百分比。取值范围是整数[1-100]
+        :param _SelectRowsPerTable: 数据内容检测参数。表中选出用来数据对比的行，占表的总行数的百分比。取值范围是整数[1-100]
         :type SelectRowsPerTable: int
-        :param TablesSelectAll: 数据内容检测参数。迁移库表中，要进行数据内容检测的表，占所有表的百分比。取值范围是整数[1-100]
+        :param _TablesSelectAll: 数据内容检测参数。迁移库表中，要进行数据内容检测的表，占所有表的百分比。取值范围是整数[1-100]
         :type TablesSelectAll: int
-        :param TablesSelectCount: 数据数量检测，检测表行数是否一致。迁移库表中，要进行数据数量检测的表，占所有表的百分比。取值范围是整数[1-100]
+        :param _TablesSelectCount: 数据数量检测，检测表行数是否一致。迁移库表中，要进行数据数量检测的表，占所有表的百分比。取值范围是整数[1-100]
         :type TablesSelectCount: int
         """
-        self.SelectRowsPerTable = None
-        self.TablesSelectAll = None
-        self.TablesSelectCount = None
+        self._SelectRowsPerTable = None
+        self._TablesSelectAll = None
+        self._TablesSelectCount = None
+
+    @property
+    def SelectRowsPerTable(self):
+        return self._SelectRowsPerTable
+
+    @SelectRowsPerTable.setter
+    def SelectRowsPerTable(self, SelectRowsPerTable):
+        self._SelectRowsPerTable = SelectRowsPerTable
+
+    @property
+    def TablesSelectAll(self):
+        return self._TablesSelectAll
+
+    @TablesSelectAll.setter
+    def TablesSelectAll(self, TablesSelectAll):
+        self._TablesSelectAll = TablesSelectAll
+
+    @property
+    def TablesSelectCount(self):
+        return self._TablesSelectCount
+
+    @TablesSelectCount.setter
+    def TablesSelectCount(self, TablesSelectCount):
+        self._TablesSelectCount = TablesSelectCount
 
 
     def _deserialize(self, params):
-        self.SelectRowsPerTable = params.get("SelectRowsPerTable")
-        self.TablesSelectAll = params.get("TablesSelectAll")
-        self.TablesSelectCount = params.get("TablesSelectCount")
+        self._SelectRowsPerTable = params.get("SelectRowsPerTable")
+        self._TablesSelectAll = params.get("TablesSelectAll")
+        self._TablesSelectCount = params.get("TablesSelectCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -169,18 +284,27 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -193,14 +317,22 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMigrateJobRequest(AbstractModel):
@@ -210,82 +342,179 @@ class CreateMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobName: 数据迁移任务名称
+        :param _JobName: 数据迁移任务名称
         :type JobName: str
-        :param MigrateOption: 迁移任务配置选项
+        :param _MigrateOption: 迁移任务配置选项
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver 不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+        :param _SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver 不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
         :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
+        :param _SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
         :type SrcAccessType: str
-        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
+        :param _SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver，cynosdbmysql。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+        :param _DstDatabaseType: 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver，cynosdbmysql。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
         :type DstDatabaseType: str
-        :param DstAccessType: 目标实例接入类型，目前支持：cdb（腾讯云数据库实例）
+        :param _DstAccessType: 目标实例接入类型，目前支持：cdb（腾讯云数据库实例）
         :type DstAccessType: str
-        :param DstInfo: 目标实例信息
+        :param _DstInfo: 目标实例信息
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
-        :param DatabaseInfo: 需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
+        :param _DatabaseInfo: 需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
 对于database-table两级结构的数据库：
 [{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
 对于database-schema-table三级结构：
 [{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
         :type DatabaseInfo: str
-        :param Tags: 迁移实例的tag
+        :param _Tags: 迁移实例的tag
         :type Tags: list of TagItem
-        :param SrcNodeType: 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+        :param _SrcNodeType: 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
         :type SrcNodeType: str
-        :param SrcInfoMulti: 源实例信息，具体内容跟迁移任务类型相关
+        :param _SrcInfoMulti: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfoMulti: list of SrcInfo
         """
-        self.JobName = None
-        self.MigrateOption = None
-        self.SrcDatabaseType = None
-        self.SrcAccessType = None
-        self.SrcInfo = None
-        self.DstDatabaseType = None
-        self.DstAccessType = None
-        self.DstInfo = None
-        self.DatabaseInfo = None
-        self.Tags = None
-        self.SrcNodeType = None
-        self.SrcInfoMulti = None
+        self._JobName = None
+        self._MigrateOption = None
+        self._SrcDatabaseType = None
+        self._SrcAccessType = None
+        self._SrcInfo = None
+        self._DstDatabaseType = None
+        self._DstAccessType = None
+        self._DstInfo = None
+        self._DatabaseInfo = None
+        self._Tags = None
+        self._SrcNodeType = None
+        self._SrcInfoMulti = None
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def MigrateOption(self):
+        return self._MigrateOption
+
+    @MigrateOption.setter
+    def MigrateOption(self, MigrateOption):
+        self._MigrateOption = MigrateOption
+
+    @property
+    def SrcDatabaseType(self):
+        return self._SrcDatabaseType
+
+    @SrcDatabaseType.setter
+    def SrcDatabaseType(self, SrcDatabaseType):
+        self._SrcDatabaseType = SrcDatabaseType
+
+    @property
+    def SrcAccessType(self):
+        return self._SrcAccessType
+
+    @SrcAccessType.setter
+    def SrcAccessType(self, SrcAccessType):
+        self._SrcAccessType = SrcAccessType
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstDatabaseType(self):
+        return self._DstDatabaseType
+
+    @DstDatabaseType.setter
+    def DstDatabaseType(self, DstDatabaseType):
+        self._DstDatabaseType = DstDatabaseType
+
+    @property
+    def DstAccessType(self):
+        return self._DstAccessType
+
+    @DstAccessType.setter
+    def DstAccessType(self, DstAccessType):
+        self._DstAccessType = DstAccessType
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def DatabaseInfo(self):
+        return self._DatabaseInfo
+
+    @DatabaseInfo.setter
+    def DatabaseInfo(self, DatabaseInfo):
+        self._DatabaseInfo = DatabaseInfo
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SrcNodeType(self):
+        return self._SrcNodeType
+
+    @SrcNodeType.setter
+    def SrcNodeType(self, SrcNodeType):
+        self._SrcNodeType = SrcNodeType
+
+    @property
+    def SrcInfoMulti(self):
+        return self._SrcInfoMulti
+
+    @SrcInfoMulti.setter
+    def SrcInfoMulti(self, SrcInfoMulti):
+        self._SrcInfoMulti = SrcInfoMulti
 
 
     def _deserialize(self, params):
-        self.JobName = params.get("JobName")
+        self._JobName = params.get("JobName")
         if params.get("MigrateOption") is not None:
-            self.MigrateOption = MigrateOption()
-            self.MigrateOption._deserialize(params.get("MigrateOption"))
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.SrcAccessType = params.get("SrcAccessType")
+            self._MigrateOption = MigrateOption()
+            self._MigrateOption._deserialize(params.get("MigrateOption"))
+        self._SrcDatabaseType = params.get("SrcDatabaseType")
+        self._SrcAccessType = params.get("SrcAccessType")
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = SrcInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        self.DstAccessType = params.get("DstAccessType")
+            self._SrcInfo = SrcInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
+        self._DstDatabaseType = params.get("DstDatabaseType")
+        self._DstAccessType = params.get("DstAccessType")
         if params.get("DstInfo") is not None:
-            self.DstInfo = DstInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.DatabaseInfo = params.get("DatabaseInfo")
+            self._DstInfo = DstInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
+        self._DatabaseInfo = params.get("DatabaseInfo")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.SrcNodeType = params.get("SrcNodeType")
+                self._Tags.append(obj)
+        self._SrcNodeType = params.get("SrcNodeType")
         if params.get("SrcInfoMulti") is not None:
-            self.SrcInfoMulti = []
+            self._SrcInfoMulti = []
             for item in params.get("SrcInfoMulti"):
                 obj = SrcInfo()
                 obj._deserialize(item)
-                self.SrcInfoMulti.append(obj)
+                self._SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -298,18 +527,34 @@ class CreateMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.RequestId = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSubscribeRequest(AbstractModel):
@@ -319,47 +564,104 @@ class CreateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 订阅的数据库类型，目前支持的有 mysql
+        :param _Product: 订阅的数据库类型，目前支持的有 mysql
         :type Product: str
-        :param PayType: 实例付费类型，1小时计费，0包年包月
+        :param _PayType: 实例付费类型，1小时计费，0包年包月
         :type PayType: int
-        :param Duration: 购买时长。PayType为0时必填。单位为月，最大支持120
+        :param _Duration: 购买时长。PayType为0时必填。单位为月，最大支持120
         :type Duration: int
-        :param Count: 购买数量,默认为1，最大为10
+        :param _Count: 购买数量,默认为1，最大为10
         :type Count: int
-        :param AutoRenew: 是否自动续费，0表示不自动续费，1表示自动续费，默认为0。小时计费实例设置该标识无效。
+        :param _AutoRenew: 是否自动续费，0表示不自动续费，1表示自动续费，默认为0。小时计费实例设置该标识无效。
         :type AutoRenew: int
-        :param Tags: 实例资源标签
+        :param _Tags: 实例资源标签
         :type Tags: list of TagItem
-        :param Name: 用户自定义实例名
+        :param _Name: 用户自定义实例名
         :type Name: str
         """
-        self.Product = None
-        self.PayType = None
-        self.Duration = None
-        self.Count = None
-        self.AutoRenew = None
-        self.Tags = None
-        self.Name = None
+        self._Product = None
+        self._PayType = None
+        self._Duration = None
+        self._Count = None
+        self._AutoRenew = None
+        self._Tags = None
+        self._Name = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.PayType = params.get("PayType")
-        self.Duration = params.get("Duration")
-        self.Count = params.get("Count")
-        self.AutoRenew = params.get("AutoRenew")
+        self._Product = params.get("Product")
+        self._PayType = params.get("PayType")
+        self._Duration = params.get("Duration")
+        self._Count = params.get("Count")
+        self._AutoRenew = params.get("AutoRenew")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Name = params.get("Name")
+                self._Tags.append(obj)
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -372,19 +674,35 @@ class CreateSubscribeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeIds: 数据订阅实例的ID数组
+        :param _SubscribeIds: 数据订阅实例的ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubscribeIds = None
-        self.RequestId = None
+        self._SubscribeIds = None
+        self._RequestId = None
+
+    @property
+    def SubscribeIds(self):
+        return self._SubscribeIds
+
+    @SubscribeIds.setter
+    def SubscribeIds(self, SubscribeIds):
+        self._SubscribeIds = SubscribeIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SubscribeIds = params.get("SubscribeIds")
-        self.RequestId = params.get("RequestId")
+        self._SubscribeIds = params.get("SubscribeIds")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteMigrateJobRequest(AbstractModel):
@@ -394,18 +712,27 @@ class DeleteMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -418,14 +745,22 @@ class DeleteMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAsyncRequestInfoRequest(AbstractModel):
@@ -435,18 +770,27 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 任务 ID
+        :param _AsyncRequestId: 任务 ID
         :type AsyncRequestId: str
         """
-        self.AsyncRequestId = None
+        self._AsyncRequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -459,22 +803,46 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: 任务执行结果信息
+        :param _Info: 任务执行结果信息
         :type Info: str
-        :param Status: 任务执行状态，可能的值有：success，failed，running
+        :param _Status: 任务执行状态，可能的值有：success，failed，running
         :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Info = None
-        self.Status = None
-        self.RequestId = None
+        self._Info = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Info = params.get("Info")
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Info = params.get("Info")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMigrateCheckJobRequest(AbstractModel):
@@ -484,18 +852,27 @@ class DescribeMigrateCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -508,34 +885,82 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 校验任务状态：unavailable(当前不可用), starting(开始中)，running(校验中)，finished(校验完成)
+        :param _Status: 校验任务状态：unavailable(当前不可用), starting(开始中)，running(校验中)，finished(校验完成)
         :type Status: str
-        :param ErrorCode: 任务的错误码
+        :param _ErrorCode: 任务的错误码
         :type ErrorCode: int
-        :param ErrorMessage: 任务的错误信息
+        :param _ErrorMessage: 任务的错误信息
         :type ErrorMessage: str
-        :param Progress: Check任务总进度,如："30"表示30%
+        :param _Progress: Check任务总进度,如："30"表示30%
         :type Progress: str
-        :param CheckFlag: 校验是否通过,0-未通过，1-校验通过, 3-未校验
+        :param _CheckFlag: 校验是否通过,0-未通过，1-校验通过, 3-未校验
         :type CheckFlag: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.ErrorCode = None
-        self.ErrorMessage = None
-        self.Progress = None
-        self.CheckFlag = None
-        self.RequestId = None
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._Progress = None
+        self._CheckFlag = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def CheckFlag(self):
+        return self._CheckFlag
+
+    @CheckFlag.setter
+    def CheckFlag(self, CheckFlag):
+        self._CheckFlag = CheckFlag
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMessage = params.get("ErrorMessage")
-        self.Progress = params.get("Progress")
-        self.CheckFlag = params.get("CheckFlag")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._Progress = params.get("Progress")
+        self._CheckFlag = params.get("CheckFlag")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMigrateJobsRequest(AbstractModel):
@@ -545,47 +970,104 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
-        :param JobName: 数据迁移任务名称
+        :param _JobName: 数据迁移任务名称
         :type JobName: str
-        :param Order: 排序字段，可以取值为JobId、Status、JobName、MigrateType、RunMode、CreateTime
+        :param _Order: 排序字段，可以取值为JobId、Status、JobName、MigrateType、RunMode、CreateTime
         :type Order: str
-        :param OrderSeq: 排序方式，升序为ASC，降序为DESC
+        :param _OrderSeq: 排序方式，升序为ASC，降序为DESC
         :type OrderSeq: str
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param Limit: 返回实例数量，默认20，有效区间[1,100]
+        :param _Limit: 返回实例数量，默认20，有效区间[1,100]
         :type Limit: int
-        :param TagFilters: 标签过滤条件
+        :param _TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter
         """
-        self.JobId = None
-        self.JobName = None
-        self.Order = None
-        self.OrderSeq = None
-        self.Offset = None
-        self.Limit = None
-        self.TagFilters = None
+        self._JobId = None
+        self._JobName = None
+        self._Order = None
+        self._OrderSeq = None
+        self._Offset = None
+        self._Limit = None
+        self._TagFilters = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderSeq(self):
+        return self._OrderSeq
+
+    @OrderSeq.setter
+    def OrderSeq(self, OrderSeq):
+        self._OrderSeq = OrderSeq
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.Order = params.get("Order")
-        self.OrderSeq = params.get("OrderSeq")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._Order = params.get("Order")
+        self._OrderSeq = params.get("OrderSeq")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("TagFilters") is not None:
-            self.TagFilters = []
+            self._TagFilters = []
             for item in params.get("TagFilters"):
                 obj = TagFilter()
                 obj._deserialize(item)
-                self.TagFilters.append(obj)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -598,27 +1080,51 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 任务数目
+        :param _TotalCount: 任务数目
         :type TotalCount: int
-        :param JobList: 任务详情数组
+        :param _JobList: 任务详情数组
         :type JobList: list of MigrateJobInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.JobList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._JobList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JobList(self):
+        return self._JobList
+
+    @JobList.setter
+    def JobList(self, JobList):
+        self._JobList = JobList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("JobList") is not None:
-            self.JobList = []
+            self._JobList = []
             for item in params.get("JobList"):
                 obj = MigrateJobInfo()
                 obj._deserialize(item)
-                self.JobList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._JobList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRegionConfRequest(AbstractModel):
@@ -634,27 +1140,51 @@ class DescribeRegionConfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 可售卖地域的数量
+        :param _TotalCount: 可售卖地域的数量
         :type TotalCount: int
-        :param Items: 可售卖地域详情
+        :param _Items: 可售卖地域详情
         :type Items: list of SubscribeRegionConf
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = SubscribeRegionConf()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSubscribeConfRequest(AbstractModel):
@@ -664,18 +1194,27 @@ class DescribeSubscribeConfRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 订阅实例ID
+        :param _SubscribeId: 订阅实例ID
         :type SubscribeId: str
         """
-        self.SubscribeId = None
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
+        self._SubscribeId = params.get("SubscribeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -688,144 +1227,376 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 订阅实例ID
+        :param _SubscribeId: 订阅实例ID
         :type SubscribeId: str
-        :param SubscribeName: 订阅实例名称
+        :param _SubscribeName: 订阅实例名称
         :type SubscribeName: str
-        :param ChannelId: 订阅通道
+        :param _ChannelId: 订阅通道
         :type ChannelId: str
-        :param Product: 订阅数据库类型
+        :param _Product: 订阅数据库类型
         :type Product: str
-        :param InstanceId: 被订阅的实例
+        :param _InstanceId: 被订阅的实例
         :type InstanceId: str
-        :param InstanceStatus: 被订阅的实例的状态，可能的值有running,offline,isolate
+        :param _InstanceStatus: 被订阅的实例的状态，可能的值有running,offline,isolate
         :type InstanceStatus: str
-        :param SubsStatus: 订阅实例状态，可能的值有unconfigure-未配置，configuring-配置中，configured-已配置
+        :param _SubsStatus: 订阅实例状态，可能的值有unconfigure-未配置，configuring-配置中，configured-已配置
         :type SubsStatus: str
-        :param Status: 订阅实例生命周期状态，可能的值有：normal-正常，isolating-隔离中，isolated-已隔离，offlining-下线中
+        :param _Status: 订阅实例生命周期状态，可能的值有：normal-正常，isolating-隔离中，isolated-已隔离，offlining-下线中
         :type Status: str
-        :param CreateTime: 订阅实例创建时间
+        :param _CreateTime: 订阅实例创建时间
         :type CreateTime: str
-        :param IsolateTime: 订阅实例被隔离时间
+        :param _IsolateTime: 订阅实例被隔离时间
         :type IsolateTime: str
-        :param ExpireTime: 订阅实例到期时间
+        :param _ExpireTime: 订阅实例到期时间
         :type ExpireTime: str
-        :param OfflineTime: 订阅实例下线时间
+        :param _OfflineTime: 订阅实例下线时间
         :type OfflineTime: str
-        :param ConsumeStartTime: 订阅实例消费时间起点。
+        :param _ConsumeStartTime: 订阅实例消费时间起点。
         :type ConsumeStartTime: str
-        :param PayType: 订阅实例计费类型，1-小时计费，0-包年包月
+        :param _PayType: 订阅实例计费类型，1-小时计费，0-包年包月
         :type PayType: int
-        :param Vip: 订阅通道Vip
+        :param _Vip: 订阅通道Vip
         :type Vip: str
-        :param Vport: 订阅通道Port
+        :param _Vport: 订阅通道Port
         :type Vport: int
-        :param UniqVpcId: 订阅通道所在VpcId
+        :param _UniqVpcId: 订阅通道所在VpcId
         :type UniqVpcId: str
-        :param UniqSubnetId: 订阅通道所在SubnetId
+        :param _UniqSubnetId: 订阅通道所在SubnetId
         :type UniqSubnetId: str
-        :param SdkConsumedTime: 当前SDK消费时间位点
+        :param _SdkConsumedTime: 当前SDK消费时间位点
         :type SdkConsumedTime: str
-        :param SdkHost: 订阅SDK IP地址
+        :param _SdkHost: 订阅SDK IP地址
         :type SdkHost: str
-        :param SubscribeObjectType: 订阅对象类型0-全实例订阅，1-DDL数据订阅，2-DML结构订阅，3-DDL数据订阅+DML结构订阅
+        :param _SubscribeObjectType: 订阅对象类型0-全实例订阅，1-DDL数据订阅，2-DML结构订阅，3-DDL数据订阅+DML结构订阅
         :type SubscribeObjectType: int
-        :param SubscribeObjects: 订阅对象，当SubscribeObjectType 为0时，此字段为空数组
+        :param _SubscribeObjects: 订阅对象，当SubscribeObjectType 为0时，此字段为空数组
         :type SubscribeObjects: list of SubscribeObject
-        :param ModifyTime: 修改时间
+        :param _ModifyTime: 修改时间
         :type ModifyTime: str
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param Tags: 订阅实例的标签
+        :param _Tags: 订阅实例的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param AutoRenewFlag: 自动续费标识,0-不自动续费，1-自动续费
+        :param _AutoRenewFlag: 自动续费标识,0-不自动续费，1-自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
-        :param SubscribeVersion: 数据订阅版本。老版订阅填txdts，kafka版填kafka
+        :param _SubscribeVersion: 数据订阅版本。老版订阅填txdts，kafka版填kafka
         :type SubscribeVersion: str
-        :param Errors: 错误信息
+        :param _Errors: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of SubsErr
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubscribeId = None
-        self.SubscribeName = None
-        self.ChannelId = None
-        self.Product = None
-        self.InstanceId = None
-        self.InstanceStatus = None
-        self.SubsStatus = None
-        self.Status = None
-        self.CreateTime = None
-        self.IsolateTime = None
-        self.ExpireTime = None
-        self.OfflineTime = None
-        self.ConsumeStartTime = None
-        self.PayType = None
-        self.Vip = None
-        self.Vport = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
-        self.SdkConsumedTime = None
-        self.SdkHost = None
-        self.SubscribeObjectType = None
-        self.SubscribeObjects = None
-        self.ModifyTime = None
-        self.Region = None
-        self.Tags = None
-        self.AutoRenewFlag = None
-        self.SubscribeVersion = None
-        self.Errors = None
-        self.RequestId = None
+        self._SubscribeId = None
+        self._SubscribeName = None
+        self._ChannelId = None
+        self._Product = None
+        self._InstanceId = None
+        self._InstanceStatus = None
+        self._SubsStatus = None
+        self._Status = None
+        self._CreateTime = None
+        self._IsolateTime = None
+        self._ExpireTime = None
+        self._OfflineTime = None
+        self._ConsumeStartTime = None
+        self._PayType = None
+        self._Vip = None
+        self._Vport = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._SdkConsumedTime = None
+        self._SdkHost = None
+        self._SubscribeObjectType = None
+        self._SubscribeObjects = None
+        self._ModifyTime = None
+        self._Region = None
+        self._Tags = None
+        self._AutoRenewFlag = None
+        self._SubscribeVersion = None
+        self._Errors = None
+        self._RequestId = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def SubsStatus(self):
+        return self._SubsStatus
+
+    @SubsStatus.setter
+    def SubsStatus(self, SubsStatus):
+        self._SubsStatus = SubsStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsolateTime(self):
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OfflineTime(self):
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def ConsumeStartTime(self):
+        return self._ConsumeStartTime
+
+    @ConsumeStartTime.setter
+    def ConsumeStartTime(self, ConsumeStartTime):
+        self._ConsumeStartTime = ConsumeStartTime
+
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def SdkConsumedTime(self):
+        return self._SdkConsumedTime
+
+    @SdkConsumedTime.setter
+    def SdkConsumedTime(self, SdkConsumedTime):
+        self._SdkConsumedTime = SdkConsumedTime
+
+    @property
+    def SdkHost(self):
+        return self._SdkHost
+
+    @SdkHost.setter
+    def SdkHost(self, SdkHost):
+        self._SdkHost = SdkHost
+
+    @property
+    def SubscribeObjectType(self):
+        return self._SubscribeObjectType
+
+    @SubscribeObjectType.setter
+    def SubscribeObjectType(self, SubscribeObjectType):
+        self._SubscribeObjectType = SubscribeObjectType
+
+    @property
+    def SubscribeObjects(self):
+        return self._SubscribeObjects
+
+    @SubscribeObjects.setter
+    def SubscribeObjects(self, SubscribeObjects):
+        self._SubscribeObjects = SubscribeObjects
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def SubscribeVersion(self):
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
+
+    @property
+    def Errors(self):
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.SubscribeName = params.get("SubscribeName")
-        self.ChannelId = params.get("ChannelId")
-        self.Product = params.get("Product")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceStatus = params.get("InstanceStatus")
-        self.SubsStatus = params.get("SubsStatus")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.IsolateTime = params.get("IsolateTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.OfflineTime = params.get("OfflineTime")
-        self.ConsumeStartTime = params.get("ConsumeStartTime")
-        self.PayType = params.get("PayType")
-        self.Vip = params.get("Vip")
-        self.Vport = params.get("Vport")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.SdkConsumedTime = params.get("SdkConsumedTime")
-        self.SdkHost = params.get("SdkHost")
-        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
+        self._ChannelId = params.get("ChannelId")
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._SubsStatus = params.get("SubsStatus")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OfflineTime = params.get("OfflineTime")
+        self._ConsumeStartTime = params.get("ConsumeStartTime")
+        self._PayType = params.get("PayType")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._SdkConsumedTime = params.get("SdkConsumedTime")
+        self._SdkHost = params.get("SdkHost")
+        self._SubscribeObjectType = params.get("SubscribeObjectType")
         if params.get("SubscribeObjects") is not None:
-            self.SubscribeObjects = []
+            self._SubscribeObjects = []
             for item in params.get("SubscribeObjects"):
                 obj = SubscribeObject()
                 obj._deserialize(item)
-                self.SubscribeObjects.append(obj)
-        self.ModifyTime = params.get("ModifyTime")
-        self.Region = params.get("Region")
+                self._SubscribeObjects.append(obj)
+        self._ModifyTime = params.get("ModifyTime")
+        self._Region = params.get("Region")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.SubscribeVersion = params.get("SubscribeVersion")
+                self._Tags.append(obj)
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._SubscribeVersion = params.get("SubscribeVersion")
         if params.get("Errors") is not None:
-            self.Errors = []
+            self._Errors = []
             for item in params.get("Errors"):
                 obj = SubsErr()
                 obj._deserialize(item)
-                self.Errors.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Errors.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSubscribesRequest(AbstractModel):
@@ -835,71 +1606,176 @@ class DescribeSubscribesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅的实例ID
+        :param _SubscribeId: 数据订阅的实例ID
         :type SubscribeId: str
-        :param SubscribeName: 数据订阅的实例名称
+        :param _SubscribeName: 数据订阅的实例名称
         :type SubscribeName: str
-        :param InstanceId: 绑定数据库实例的ID
+        :param _InstanceId: 绑定数据库实例的ID
         :type InstanceId: str
-        :param ChannelId: 数据订阅实例的通道ID
+        :param _ChannelId: 数据订阅实例的通道ID
         :type ChannelId: str
-        :param PayType: 计费模式筛选，可能的值：0-包年包月，1-按量计费
+        :param _PayType: 计费模式筛选，可能的值：0-包年包月，1-按量计费
         :type PayType: str
-        :param Product: 订阅的数据库产品，如mysql
+        :param _Product: 订阅的数据库产品，如mysql
         :type Product: str
-        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中
+        :param _Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中
         :type Status: list of str
-        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        :param _SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
         :type SubsStatus: list of str
-        :param Offset: 返回记录的起始偏移量，默认为0。请输入非负整数
+        :param _Offset: 返回记录的起始偏移量，默认为0。请输入非负整数
         :type Offset: int
-        :param Limit: 单次返回的记录数量，默认20。请输入1到100的整数
+        :param _Limit: 单次返回的记录数量，默认20。请输入1到100的整数
         :type Limit: int
-        :param OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+        :param _OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
         :type OrderDirection: str
-        :param TagFilters: 标签过滤条件
+        :param _TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter
-        :param SubscribeVersion: 订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅
+        :param _SubscribeVersion: 订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅
         :type SubscribeVersion: str
         """
-        self.SubscribeId = None
-        self.SubscribeName = None
-        self.InstanceId = None
-        self.ChannelId = None
-        self.PayType = None
-        self.Product = None
-        self.Status = None
-        self.SubsStatus = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderDirection = None
-        self.TagFilters = None
-        self.SubscribeVersion = None
+        self._SubscribeId = None
+        self._SubscribeName = None
+        self._InstanceId = None
+        self._ChannelId = None
+        self._PayType = None
+        self._Product = None
+        self._Status = None
+        self._SubsStatus = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderDirection = None
+        self._TagFilters = None
+        self._SubscribeVersion = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubsStatus(self):
+        return self._SubsStatus
+
+    @SubsStatus.setter
+    def SubsStatus(self, SubsStatus):
+        self._SubsStatus = SubsStatus
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+    @property
+    def SubscribeVersion(self):
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.SubscribeName = params.get("SubscribeName")
-        self.InstanceId = params.get("InstanceId")
-        self.ChannelId = params.get("ChannelId")
-        self.PayType = params.get("PayType")
-        self.Product = params.get("Product")
-        self.Status = params.get("Status")
-        self.SubsStatus = params.get("SubsStatus")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderDirection = params.get("OrderDirection")
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
+        self._InstanceId = params.get("InstanceId")
+        self._ChannelId = params.get("ChannelId")
+        self._PayType = params.get("PayType")
+        self._Product = params.get("Product")
+        self._Status = params.get("Status")
+        self._SubsStatus = params.get("SubsStatus")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderDirection = params.get("OrderDirection")
         if params.get("TagFilters") is not None:
-            self.TagFilters = []
+            self._TagFilters = []
             for item in params.get("TagFilters"):
                 obj = TagFilter()
                 obj._deserialize(item)
-                self.TagFilters.append(obj)
-        self.SubscribeVersion = params.get("SubscribeVersion")
+                self._TagFilters.append(obj)
+        self._SubscribeVersion = params.get("SubscribeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -912,27 +1788,51 @@ class DescribeSubscribesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合查询条件的实例总数
+        :param _TotalCount: 符合查询条件的实例总数
         :type TotalCount: int
-        :param Items: 数据订阅实例的信息列表
+        :param _Items: 数据订阅实例的信息列表
         :type Items: list of SubscribeInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = SubscribeInfo()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DstInfo(AbstractModel):
@@ -942,42 +1842,99 @@ class DstInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 目标实例地域，如ap-guangzhou
+        :param _Region: 目标实例地域，如ap-guangzhou
         :type Region: str
-        :param InstanceId: 目标实例ID，如cdb-jd92ijd8
+        :param _InstanceId: 目标实例ID，如cdb-jd92ijd8
         :type InstanceId: str
-        :param Ip: 目标实例vip。已废弃，无需填写
+        :param _Ip: 目标实例vip。已废弃，无需填写
         :type Ip: str
-        :param Port: 目标实例vport。已废弃，无需填写
+        :param _Port: 目标实例vport。已废弃，无需填写
         :type Port: int
-        :param ReadOnly: 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
+        :param _ReadOnly: 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
         :type ReadOnly: int
-        :param User: 目标数据库账号
+        :param _User: 目标数据库账号
         :type User: str
-        :param Password: 目标数据库密码
+        :param _Password: 目标数据库密码
         :type Password: str
         """
-        self.Region = None
-        self.InstanceId = None
-        self.Ip = None
-        self.Port = None
-        self.ReadOnly = None
-        self.User = None
-        self.Password = None
+        self._Region = None
+        self._InstanceId = None
+        self._Ip = None
+        self._Port = None
+        self._ReadOnly = None
+        self._User = None
+        self._Password = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def ReadOnly(self):
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.InstanceId = params.get("InstanceId")
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        self.ReadOnly = params.get("ReadOnly")
-        self.User = params.get("User")
-        self.Password = params.get("Password")
+        self._Region = params.get("Region")
+        self._InstanceId = params.get("InstanceId")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._ReadOnly = params.get("ReadOnly")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -990,22 +1947,39 @@ class ErrorInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorLog: 具体的报错日志, 包含错误码和错误信息
+        :param _ErrorLog: 具体的报错日志, 包含错误码和错误信息
         :type ErrorLog: str
-        :param HelpDoc: 报错对应的帮助文档Ur
+        :param _HelpDoc: 报错对应的帮助文档Ur
         :type HelpDoc: str
         """
-        self.ErrorLog = None
-        self.HelpDoc = None
+        self._ErrorLog = None
+        self._HelpDoc = None
+
+    @property
+    def ErrorLog(self):
+        return self._ErrorLog
+
+    @ErrorLog.setter
+    def ErrorLog(self, ErrorLog):
+        self._ErrorLog = ErrorLog
+
+    @property
+    def HelpDoc(self):
+        return self._HelpDoc
+
+    @HelpDoc.setter
+    def HelpDoc(self, HelpDoc):
+        self._HelpDoc = HelpDoc
 
 
     def _deserialize(self, params):
-        self.ErrorLog = params.get("ErrorLog")
-        self.HelpDoc = params.get("HelpDoc")
+        self._ErrorLog = params.get("ErrorLog")
+        self._HelpDoc = params.get("HelpDoc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1018,18 +1992,27 @@ class IsolateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 订阅实例ID
+        :param _SubscribeId: 订阅实例ID
         :type SubscribeId: str
         """
-        self.SubscribeId = None
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
+        self._SubscribeId = params.get("SubscribeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1042,14 +2025,22 @@ class IsolateSubscribeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class MigrateDetailInfo(AbstractModel):
@@ -1059,47 +2050,104 @@ class MigrateDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StepAll: 总步骤数
+        :param _StepAll: 总步骤数
         :type StepAll: int
-        :param StepNow: 当前步骤
+        :param _StepNow: 当前步骤
         :type StepNow: int
-        :param Progress: 总进度,如："10"
+        :param _Progress: 总进度,如："10"
         :type Progress: str
-        :param CurrentStepProgress: 当前步骤进度,如:"1"
+        :param _CurrentStepProgress: 当前步骤进度,如:"1"
         :type CurrentStepProgress: str
-        :param MasterSlaveDistance: 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql
+        :param _MasterSlaveDistance: 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql
         :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: 主从差距，秒；在增量同步阶段有效，目前支持产品为：mysql
+        :param _SecondsBehindMaster: 主从差距，秒；在增量同步阶段有效，目前支持产品为：mysql
         :type SecondsBehindMaster: int
-        :param StepInfo: 步骤信息
+        :param _StepInfo: 步骤信息
         :type StepInfo: list of MigrateStepDetailInfo
         """
-        self.StepAll = None
-        self.StepNow = None
-        self.Progress = None
-        self.CurrentStepProgress = None
-        self.MasterSlaveDistance = None
-        self.SecondsBehindMaster = None
-        self.StepInfo = None
+        self._StepAll = None
+        self._StepNow = None
+        self._Progress = None
+        self._CurrentStepProgress = None
+        self._MasterSlaveDistance = None
+        self._SecondsBehindMaster = None
+        self._StepInfo = None
+
+    @property
+    def StepAll(self):
+        return self._StepAll
+
+    @StepAll.setter
+    def StepAll(self, StepAll):
+        self._StepAll = StepAll
+
+    @property
+    def StepNow(self):
+        return self._StepNow
+
+    @StepNow.setter
+    def StepNow(self, StepNow):
+        self._StepNow = StepNow
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def CurrentStepProgress(self):
+        return self._CurrentStepProgress
+
+    @CurrentStepProgress.setter
+    def CurrentStepProgress(self, CurrentStepProgress):
+        self._CurrentStepProgress = CurrentStepProgress
+
+    @property
+    def MasterSlaveDistance(self):
+        return self._MasterSlaveDistance
+
+    @MasterSlaveDistance.setter
+    def MasterSlaveDistance(self, MasterSlaveDistance):
+        self._MasterSlaveDistance = MasterSlaveDistance
+
+    @property
+    def SecondsBehindMaster(self):
+        return self._SecondsBehindMaster
+
+    @SecondsBehindMaster.setter
+    def SecondsBehindMaster(self, SecondsBehindMaster):
+        self._SecondsBehindMaster = SecondsBehindMaster
+
+    @property
+    def StepInfo(self):
+        return self._StepInfo
+
+    @StepInfo.setter
+    def StepInfo(self, StepInfo):
+        self._StepInfo = StepInfo
 
 
     def _deserialize(self, params):
-        self.StepAll = params.get("StepAll")
-        self.StepNow = params.get("StepNow")
-        self.Progress = params.get("Progress")
-        self.CurrentStepProgress = params.get("CurrentStepProgress")
-        self.MasterSlaveDistance = params.get("MasterSlaveDistance")
-        self.SecondsBehindMaster = params.get("SecondsBehindMaster")
+        self._StepAll = params.get("StepAll")
+        self._StepNow = params.get("StepNow")
+        self._Progress = params.get("Progress")
+        self._CurrentStepProgress = params.get("CurrentStepProgress")
+        self._MasterSlaveDistance = params.get("MasterSlaveDistance")
+        self._SecondsBehindMaster = params.get("SecondsBehindMaster")
         if params.get("StepInfo") is not None:
-            self.StepInfo = []
+            self._StepInfo = []
             for item in params.get("StepInfo"):
                 obj = MigrateStepDetailInfo()
                 obj._deserialize(item)
-                self.StepInfo.append(obj)
+                self._StepInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1112,111 +2160,256 @@ class MigrateJobInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
-        :param JobName: 数据迁移任务名称
+        :param _JobName: 数据迁移任务名称
         :type JobName: str
-        :param MigrateOption: 迁移任务配置选项
+        :param _MigrateOption: 迁移任务配置选项
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: 源实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
+        :param _SrcDatabaseType: 源实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
         :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
+        :param _SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
         :type SrcAccessType: str
-        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
+        :param _SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: 目标实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
+        :param _DstDatabaseType: 目标实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
         :type DstDatabaseType: str
-        :param DstAccessType: 目标实例接入类型，目前支持：cdb(腾讯云数据库实例)
+        :param _DstAccessType: 目标实例接入类型，目前支持：cdb(腾讯云数据库实例)
         :type DstAccessType: str
-        :param DstInfo: 目标实例信息
+        :param _DstInfo: 目标实例信息
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
-        :param DatabaseInfo: 需要迁移的源数据库表信息，如果需要迁移的是整个实例，该字段为[]
+        :param _DatabaseInfo: 需要迁移的源数据库表信息，如果需要迁移的是整个实例，该字段为[]
         :type DatabaseInfo: str
-        :param CreateTime: 任务创建(提交)时间
+        :param _CreateTime: 任务创建(提交)时间
         :type CreateTime: str
-        :param StartTime: 任务开始执行时间
+        :param _StartTime: 任务开始执行时间
         :type StartTime: str
-        :param EndTime: 任务执行结束时间
+        :param _EndTime: 任务执行结束时间
         :type EndTime: str
-        :param Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
+        :param _Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
         :type Status: int
-        :param Detail: 任务详情
+        :param _Detail: 任务详情
         :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
-        :param ErrorInfo: 任务错误信息提示，当任务发生错误时，不为null或者空值
+        :param _ErrorInfo: 任务错误信息提示，当任务发生错误时，不为null或者空值
         :type ErrorInfo: list of ErrorInfo
-        :param Tags: 标签
+        :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param SrcInfoMulti: 源实例为集群时且接入为非cdb时源实例信息
+        :param _SrcInfoMulti: 源实例为集群时且接入为非cdb时源实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfoMulti: list of SrcInfo
         """
-        self.JobId = None
-        self.JobName = None
-        self.MigrateOption = None
-        self.SrcDatabaseType = None
-        self.SrcAccessType = None
-        self.SrcInfo = None
-        self.DstDatabaseType = None
-        self.DstAccessType = None
-        self.DstInfo = None
-        self.DatabaseInfo = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Status = None
-        self.Detail = None
-        self.ErrorInfo = None
-        self.Tags = None
-        self.SrcInfoMulti = None
+        self._JobId = None
+        self._JobName = None
+        self._MigrateOption = None
+        self._SrcDatabaseType = None
+        self._SrcAccessType = None
+        self._SrcInfo = None
+        self._DstDatabaseType = None
+        self._DstAccessType = None
+        self._DstInfo = None
+        self._DatabaseInfo = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Detail = None
+        self._ErrorInfo = None
+        self._Tags = None
+        self._SrcInfoMulti = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def MigrateOption(self):
+        return self._MigrateOption
+
+    @MigrateOption.setter
+    def MigrateOption(self, MigrateOption):
+        self._MigrateOption = MigrateOption
+
+    @property
+    def SrcDatabaseType(self):
+        return self._SrcDatabaseType
+
+    @SrcDatabaseType.setter
+    def SrcDatabaseType(self, SrcDatabaseType):
+        self._SrcDatabaseType = SrcDatabaseType
+
+    @property
+    def SrcAccessType(self):
+        return self._SrcAccessType
+
+    @SrcAccessType.setter
+    def SrcAccessType(self, SrcAccessType):
+        self._SrcAccessType = SrcAccessType
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstDatabaseType(self):
+        return self._DstDatabaseType
+
+    @DstDatabaseType.setter
+    def DstDatabaseType(self, DstDatabaseType):
+        self._DstDatabaseType = DstDatabaseType
+
+    @property
+    def DstAccessType(self):
+        return self._DstAccessType
+
+    @DstAccessType.setter
+    def DstAccessType(self, DstAccessType):
+        self._DstAccessType = DstAccessType
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def DatabaseInfo(self):
+        return self._DatabaseInfo
+
+    @DatabaseInfo.setter
+    def DatabaseInfo(self, DatabaseInfo):
+        self._DatabaseInfo = DatabaseInfo
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SrcInfoMulti(self):
+        return self._SrcInfoMulti
+
+    @SrcInfoMulti.setter
+    def SrcInfoMulti(self, SrcInfoMulti):
+        self._SrcInfoMulti = SrcInfoMulti
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
         if params.get("MigrateOption") is not None:
-            self.MigrateOption = MigrateOption()
-            self.MigrateOption._deserialize(params.get("MigrateOption"))
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.SrcAccessType = params.get("SrcAccessType")
+            self._MigrateOption = MigrateOption()
+            self._MigrateOption._deserialize(params.get("MigrateOption"))
+        self._SrcDatabaseType = params.get("SrcDatabaseType")
+        self._SrcAccessType = params.get("SrcAccessType")
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = SrcInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
-        self.DstDatabaseType = params.get("DstDatabaseType")
-        self.DstAccessType = params.get("DstAccessType")
+            self._SrcInfo = SrcInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
+        self._DstDatabaseType = params.get("DstDatabaseType")
+        self._DstAccessType = params.get("DstAccessType")
         if params.get("DstInfo") is not None:
-            self.DstInfo = DstInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.DatabaseInfo = params.get("DatabaseInfo")
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Status = params.get("Status")
+            self._DstInfo = DstInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
+        self._DatabaseInfo = params.get("DatabaseInfo")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
         if params.get("Detail") is not None:
-            self.Detail = MigrateDetailInfo()
-            self.Detail._deserialize(params.get("Detail"))
+            self._Detail = MigrateDetailInfo()
+            self._Detail._deserialize(params.get("Detail"))
         if params.get("ErrorInfo") is not None:
-            self.ErrorInfo = []
+            self._ErrorInfo = []
             for item in params.get("ErrorInfo"):
                 obj = ErrorInfo()
                 obj._deserialize(item)
-                self.ErrorInfo.append(obj)
+                self._ErrorInfo.append(obj)
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("SrcInfoMulti") is not None:
-            self.SrcInfoMulti = []
+            self._SrcInfoMulti = []
             for item in params.get("SrcInfoMulti"):
                 obj = SrcInfo()
                 obj._deserialize(item)
-                self.SrcInfoMulti.append(obj)
+                self._SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1229,19 +2422,19 @@ class MigrateOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RunMode: 任务运行模式，值包括：1-立即执行，2-定时执行
+        :param _RunMode: 任务运行模式，值包括：1-立即执行，2-定时执行
         :type RunMode: int
-        :param ExpectTime: 期望执行时间，当runMode=2时，该字段必填，时间格式：yyyy-mm-dd hh:mm:ss
+        :param _ExpectTime: 期望执行时间，当runMode=2时，该字段必填，时间格式：yyyy-mm-dd hh:mm:ss
         :type ExpectTime: str
-        :param MigrateType: 数据迁移类型，值包括：1-结构迁移,2-全量迁移,3-全量+增量迁移
+        :param _MigrateType: 数据迁移类型，值包括：1-结构迁移,2-全量迁移,3-全量+增量迁移
         :type MigrateType: int
-        :param MigrateObject: 迁移对象，1-整个实例，2-指定库表
+        :param _MigrateObject: 迁移对象，1-整个实例，2-指定库表
         :type MigrateObject: int
-        :param ConsistencyType: 抽样数据一致性检测参数，1-未配置,2-全量检测,3-抽样检测, 4-仅校验不一致表,5-不检测
+        :param _ConsistencyType: 抽样数据一致性检测参数，1-未配置,2-全量检测,3-抽样检测, 4-仅校验不一致表,5-不检测
         :type ConsistencyType: int
-        :param IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：0-不覆盖，1-覆盖，选择库表或者结构迁移时应该为0
+        :param _IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：0-不覆盖，1-覆盖，选择库表或者结构迁移时应该为0
         :type IsOverrideRoot: int
-        :param ExternParams: 不同数据库用到的额外参数.以JSON格式描述. 
+        :param _ExternParams: 不同数据库用到的额外参数.以JSON格式描述. 
 Redis可定义如下的参数: 
 { 
 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 
@@ -1258,34 +2451,99 @@ MongoDB可定义如下的参数:
 }
 MySQL暂不支持额外参数设置。
         :type ExternParams: str
-        :param ConsistencyParams: 仅用于“抽样数据一致性检测”，ConsistencyType配置为抽样检测时，必选
+        :param _ConsistencyParams: 仅用于“抽样数据一致性检测”，ConsistencyType配置为抽样检测时，必选
         :type ConsistencyParams: :class:`tencentcloud.dts.v20180330.models.ConsistencyParams`
         """
-        self.RunMode = None
-        self.ExpectTime = None
-        self.MigrateType = None
-        self.MigrateObject = None
-        self.ConsistencyType = None
-        self.IsOverrideRoot = None
-        self.ExternParams = None
-        self.ConsistencyParams = None
+        self._RunMode = None
+        self._ExpectTime = None
+        self._MigrateType = None
+        self._MigrateObject = None
+        self._ConsistencyType = None
+        self._IsOverrideRoot = None
+        self._ExternParams = None
+        self._ConsistencyParams = None
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def ExpectTime(self):
+        return self._ExpectTime
+
+    @ExpectTime.setter
+    def ExpectTime(self, ExpectTime):
+        self._ExpectTime = ExpectTime
+
+    @property
+    def MigrateType(self):
+        return self._MigrateType
+
+    @MigrateType.setter
+    def MigrateType(self, MigrateType):
+        self._MigrateType = MigrateType
+
+    @property
+    def MigrateObject(self):
+        return self._MigrateObject
+
+    @MigrateObject.setter
+    def MigrateObject(self, MigrateObject):
+        self._MigrateObject = MigrateObject
+
+    @property
+    def ConsistencyType(self):
+        return self._ConsistencyType
+
+    @ConsistencyType.setter
+    def ConsistencyType(self, ConsistencyType):
+        self._ConsistencyType = ConsistencyType
+
+    @property
+    def IsOverrideRoot(self):
+        return self._IsOverrideRoot
+
+    @IsOverrideRoot.setter
+    def IsOverrideRoot(self, IsOverrideRoot):
+        self._IsOverrideRoot = IsOverrideRoot
+
+    @property
+    def ExternParams(self):
+        return self._ExternParams
+
+    @ExternParams.setter
+    def ExternParams(self, ExternParams):
+        self._ExternParams = ExternParams
+
+    @property
+    def ConsistencyParams(self):
+        return self._ConsistencyParams
+
+    @ConsistencyParams.setter
+    def ConsistencyParams(self, ConsistencyParams):
+        self._ConsistencyParams = ConsistencyParams
 
 
     def _deserialize(self, params):
-        self.RunMode = params.get("RunMode")
-        self.ExpectTime = params.get("ExpectTime")
-        self.MigrateType = params.get("MigrateType")
-        self.MigrateObject = params.get("MigrateObject")
-        self.ConsistencyType = params.get("ConsistencyType")
-        self.IsOverrideRoot = params.get("IsOverrideRoot")
-        self.ExternParams = params.get("ExternParams")
+        self._RunMode = params.get("RunMode")
+        self._ExpectTime = params.get("ExpectTime")
+        self._MigrateType = params.get("MigrateType")
+        self._MigrateObject = params.get("MigrateObject")
+        self._ConsistencyType = params.get("ConsistencyType")
+        self._IsOverrideRoot = params.get("IsOverrideRoot")
+        self._ExternParams = params.get("ExternParams")
         if params.get("ConsistencyParams") is not None:
-            self.ConsistencyParams = ConsistencyParams()
-            self.ConsistencyParams._deserialize(params.get("ConsistencyParams"))
+            self._ConsistencyParams = ConsistencyParams()
+            self._ConsistencyParams._deserialize(params.get("ConsistencyParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1298,35 +2556,76 @@ class MigrateStepDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StepNo: 步骤序列
+        :param _StepNo: 步骤序列
         :type StepNo: int
-        :param StepName: 步骤展现名称
+        :param _StepName: 步骤展现名称
         :type StepName: str
-        :param StepId: 步骤英文标识
+        :param _StepId: 步骤英文标识
         :type StepId: str
-        :param Status: 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
+        :param _Status: 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
         :type Status: int
-        :param StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
+        :param _StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         """
-        self.StepNo = None
-        self.StepName = None
-        self.StepId = None
-        self.Status = None
-        self.StartTime = None
+        self._StepNo = None
+        self._StepName = None
+        self._StepId = None
+        self._Status = None
+        self._StartTime = None
+
+    @property
+    def StepNo(self):
+        return self._StepNo
+
+    @StepNo.setter
+    def StepNo(self, StepNo):
+        self._StepNo = StepNo
+
+    @property
+    def StepName(self):
+        return self._StepName
+
+    @StepName.setter
+    def StepName(self, StepName):
+        self._StepName = StepName
+
+    @property
+    def StepId(self):
+        return self._StepId
+
+    @StepId.setter
+    def StepId(self, StepId):
+        self._StepId = StepId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
 
 
     def _deserialize(self, params):
-        self.StepNo = params.get("StepNo")
-        self.StepName = params.get("StepName")
-        self.StepId = params.get("StepId")
-        self.Status = params.get("Status")
-        self.StartTime = params.get("StartTime")
+        self._StepNo = params.get("StepNo")
+        self._StepName = params.get("StepName")
+        self._StepId = params.get("StepId")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1339,21 +2638,21 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 待修改的数据迁移任务ID
+        :param _JobId: 待修改的数据迁移任务ID
         :type JobId: str
-        :param JobName: 数据迁移任务名称
+        :param _JobName: 数据迁移任务名称
         :type JobName: str
-        :param MigrateOption: 迁移任务配置选项
+        :param _MigrateOption: 迁移任务配置选项
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(云上CDB实例)
+        :param _SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(云上CDB实例)
         :type SrcAccessType: str
-        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
+        :param _SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstAccessType: 目标实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例)，cdb(云上CDB实例). 目前只支持cdb.
+        :param _DstAccessType: 目标实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例)，cdb(云上CDB实例). 目前只支持cdb.
         :type DstAccessType: str
-        :param DstInfo: 目标实例信息, 其中目标实例地域不允许修改.
+        :param _DstInfo: 目标实例信息, 其中目标实例地域不允许修改.
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
-        :param DatabaseInfo: 当选择'指定库表'迁移的时候, 需要设置待迁移的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
+        :param _DatabaseInfo: 当选择'指定库表'迁移的时候, 需要设置待迁移的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
 
 对于database-table两级结构的数据库：
 [{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
@@ -1362,49 +2661,130 @@ class ModifyMigrateJobRequest(AbstractModel):
 
 如果是'整个实例'的迁移模式,不需设置该字段
         :type DatabaseInfo: str
-        :param SrcNodeType: 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+        :param _SrcNodeType: 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
         :type SrcNodeType: str
-        :param SrcInfoMulti: 源实例信息，具体内容跟迁移任务类型相关
+        :param _SrcInfoMulti: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfoMulti: list of SrcInfo
         """
-        self.JobId = None
-        self.JobName = None
-        self.MigrateOption = None
-        self.SrcAccessType = None
-        self.SrcInfo = None
-        self.DstAccessType = None
-        self.DstInfo = None
-        self.DatabaseInfo = None
-        self.SrcNodeType = None
-        self.SrcInfoMulti = None
+        self._JobId = None
+        self._JobName = None
+        self._MigrateOption = None
+        self._SrcAccessType = None
+        self._SrcInfo = None
+        self._DstAccessType = None
+        self._DstInfo = None
+        self._DatabaseInfo = None
+        self._SrcNodeType = None
+        self._SrcInfoMulti = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def MigrateOption(self):
+        return self._MigrateOption
+
+    @MigrateOption.setter
+    def MigrateOption(self, MigrateOption):
+        self._MigrateOption = MigrateOption
+
+    @property
+    def SrcAccessType(self):
+        return self._SrcAccessType
+
+    @SrcAccessType.setter
+    def SrcAccessType(self, SrcAccessType):
+        self._SrcAccessType = SrcAccessType
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstAccessType(self):
+        return self._DstAccessType
+
+    @DstAccessType.setter
+    def DstAccessType(self, DstAccessType):
+        self._DstAccessType = DstAccessType
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def DatabaseInfo(self):
+        return self._DatabaseInfo
+
+    @DatabaseInfo.setter
+    def DatabaseInfo(self, DatabaseInfo):
+        self._DatabaseInfo = DatabaseInfo
+
+    @property
+    def SrcNodeType(self):
+        return self._SrcNodeType
+
+    @SrcNodeType.setter
+    def SrcNodeType(self, SrcNodeType):
+        self._SrcNodeType = SrcNodeType
+
+    @property
+    def SrcInfoMulti(self):
+        return self._SrcInfoMulti
+
+    @SrcInfoMulti.setter
+    def SrcInfoMulti(self, SrcInfoMulti):
+        self._SrcInfoMulti = SrcInfoMulti
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
         if params.get("MigrateOption") is not None:
-            self.MigrateOption = MigrateOption()
-            self.MigrateOption._deserialize(params.get("MigrateOption"))
-        self.SrcAccessType = params.get("SrcAccessType")
+            self._MigrateOption = MigrateOption()
+            self._MigrateOption._deserialize(params.get("MigrateOption"))
+        self._SrcAccessType = params.get("SrcAccessType")
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = SrcInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
-        self.DstAccessType = params.get("DstAccessType")
+            self._SrcInfo = SrcInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
+        self._DstAccessType = params.get("DstAccessType")
         if params.get("DstInfo") is not None:
-            self.DstInfo = DstInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.DatabaseInfo = params.get("DatabaseInfo")
-        self.SrcNodeType = params.get("SrcNodeType")
+            self._DstInfo = DstInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
+        self._DatabaseInfo = params.get("DatabaseInfo")
+        self._SrcNodeType = params.get("SrcNodeType")
         if params.get("SrcInfoMulti") is not None:
-            self.SrcInfoMulti = []
+            self._SrcInfoMulti = []
             for item in params.get("SrcInfoMulti"):
                 obj = SrcInfo()
                 obj._deserialize(item)
-                self.SrcInfoMulti.append(obj)
+                self._SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1417,14 +2797,22 @@ class ModifyMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
@@ -1434,22 +2822,39 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 订阅实例ID，例如：subs-8uey736k
+        :param _SubscribeId: 订阅实例ID，例如：subs-8uey736k
         :type SubscribeId: str
-        :param AutoRenewFlag: 自动续费标识。1-自动续费，0-不自动续费
+        :param _AutoRenewFlag: 自动续费标识。1-自动续费，0-不自动续费
         :type AutoRenewFlag: int
         """
-        self.SubscribeId = None
-        self.AutoRenewFlag = None
+        self._SubscribeId = None
+        self._AutoRenewFlag = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self._SubscribeId = params.get("SubscribeId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1462,14 +2867,22 @@ class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubscribeConsumeTimeRequest(AbstractModel):
@@ -1479,22 +2892,39 @@ class ModifySubscribeConsumeTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
-        :param ConsumeStartTime: 消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内
+        :param _ConsumeStartTime: 消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内
         :type ConsumeStartTime: str
         """
-        self.SubscribeId = None
-        self.ConsumeStartTime = None
+        self._SubscribeId = None
+        self._ConsumeStartTime = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def ConsumeStartTime(self):
+        return self._ConsumeStartTime
+
+    @ConsumeStartTime.setter
+    def ConsumeStartTime(self, ConsumeStartTime):
+        self._ConsumeStartTime = ConsumeStartTime
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.ConsumeStartTime = params.get("ConsumeStartTime")
+        self._SubscribeId = params.get("SubscribeId")
+        self._ConsumeStartTime = params.get("ConsumeStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1507,14 +2937,22 @@ class ModifySubscribeConsumeTimeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubscribeNameRequest(AbstractModel):
@@ -1524,22 +2962,39 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
-        :param SubscribeName: 数据订阅实例的名称，长度限制为[1,60]
+        :param _SubscribeName: 数据订阅实例的名称，长度限制为[1,60]
         :type SubscribeName: str
         """
-        self.SubscribeId = None
-        self.SubscribeName = None
+        self._SubscribeId = None
+        self._SubscribeName = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.SubscribeName = params.get("SubscribeName")
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1552,14 +3007,22 @@ class ModifySubscribeNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubscribeObjectsRequest(AbstractModel):
@@ -1569,31 +3032,56 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
-        :param SubscribeObjectType: 数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅
+        :param _SubscribeObjectType: 数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅
         :type SubscribeObjectType: int
-        :param Objects: 订阅的数据库表信息
+        :param _Objects: 订阅的数据库表信息
         :type Objects: list of SubscribeObject
         """
-        self.SubscribeId = None
-        self.SubscribeObjectType = None
-        self.Objects = None
+        self._SubscribeId = None
+        self._SubscribeObjectType = None
+        self._Objects = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeObjectType(self):
+        return self._SubscribeObjectType
+
+    @SubscribeObjectType.setter
+    def SubscribeObjectType(self, SubscribeObjectType):
+        self._SubscribeObjectType = SubscribeObjectType
+
+    @property
+    def Objects(self):
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeObjectType = params.get("SubscribeObjectType")
         if params.get("Objects") is not None:
-            self.Objects = []
+            self._Objects = []
             for item in params.get("Objects"):
                 obj = SubscribeObject()
                 obj._deserialize(item)
-                self.Objects.append(obj)
+                self._Objects.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1606,18 +3094,34 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 异步任务的ID
+        :param _AsyncRequestId: 异步任务的ID
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsyncRequestId = None
-        self.RequestId = None
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubscribeVipVportRequest(AbstractModel):
@@ -1627,30 +3131,63 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
-        :param DstUniqSubnetId: 指定目的子网，如果传此参数，DstIp必须在目的子网内
+        :param _DstUniqSubnetId: 指定目的子网，如果传此参数，DstIp必须在目的子网内
         :type DstUniqSubnetId: str
-        :param DstIp: 目标IP，与DstPort至少传一个
+        :param _DstIp: 目标IP，与DstPort至少传一个
         :type DstIp: str
-        :param DstPort: 目标PORT，支持范围为：[1025-65535]
+        :param _DstPort: 目标PORT，支持范围为：[1025-65535]
         :type DstPort: int
         """
-        self.SubscribeId = None
-        self.DstUniqSubnetId = None
-        self.DstIp = None
-        self.DstPort = None
+        self._SubscribeId = None
+        self._DstUniqSubnetId = None
+        self._DstIp = None
+        self._DstPort = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def DstUniqSubnetId(self):
+        return self._DstUniqSubnetId
+
+    @DstUniqSubnetId.setter
+    def DstUniqSubnetId(self, DstUniqSubnetId):
+        self._DstUniqSubnetId = DstUniqSubnetId
+
+    @property
+    def DstIp(self):
+        return self._DstIp
+
+    @DstIp.setter
+    def DstIp(self, DstIp):
+        self._DstIp = DstIp
+
+    @property
+    def DstPort(self):
+        return self._DstPort
+
+    @DstPort.setter
+    def DstPort(self, DstPort):
+        self._DstPort = DstPort
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.DstUniqSubnetId = params.get("DstUniqSubnetId")
-        self.DstIp = params.get("DstIp")
-        self.DstPort = params.get("DstPort")
+        self._SubscribeId = params.get("SubscribeId")
+        self._DstUniqSubnetId = params.get("DstUniqSubnetId")
+        self._DstIp = params.get("DstIp")
+        self._DstPort = params.get("DstPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1663,14 +3200,22 @@ class ModifySubscribeVipVportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OfflineIsolatedSubscribeRequest(AbstractModel):
@@ -1680,18 +3225,27 @@ class OfflineIsolatedSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         """
-        self.SubscribeId = None
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
+        self._SubscribeId = params.get("SubscribeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1704,14 +3258,22 @@ class OfflineIsolatedSubscribeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResetSubscribeRequest(AbstractModel):
@@ -1721,18 +3283,27 @@ class ResetSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅实例的ID
+        :param _SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         """
-        self.SubscribeId = None
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
+        self._SubscribeId = params.get("SubscribeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1745,14 +3316,22 @@ class ResetSubscribeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SrcInfo(AbstractModel):
@@ -1762,79 +3341,208 @@ class SrcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKey: 阿里云AccessKey。源库是阿里云RDS5.6适用
+        :param _AccessKey: 阿里云AccessKey。源库是阿里云RDS5.6适用
         :type AccessKey: str
-        :param Ip: 实例的IP地址
+        :param _Ip: 实例的IP地址
         :type Ip: str
-        :param Port: 实例的端口
+        :param _Port: 实例的端口
         :type Port: int
-        :param User: 实例的用户名
+        :param _User: 实例的用户名
         :type User: str
-        :param Password: 实例的密码
+        :param _Password: 实例的密码
         :type Password: str
-        :param RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
+        :param _RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
         :type RdsInstanceId: str
-        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
+        :param _CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
         :type CvmInstanceId: str
-        :param UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb
+        :param _UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb
         :type UniqDcgId: str
-        :param VpcId: 私有网络ID，格式如：vpc-92jblxto
+        :param _VpcId: 私有网络ID，格式如：vpc-92jblxto
         :type VpcId: str
-        :param SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz
+        :param _SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz
         :type SubnetId: str
-        :param UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q
+        :param _UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q
         :type UniqVpnGwId: str
-        :param InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
+        :param _InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
         :type InstanceId: str
-        :param Region: 地域英文名，如：ap-guangzhou
+        :param _Region: 地域英文名，如：ap-guangzhou
         :type Region: str
-        :param Supplier: 当实例为RDS实例时，填写为aliyun, 其他情况均填写others
+        :param _Supplier: 当实例为RDS实例时，填写为aliyun, 其他情况均填写others
         :type Supplier: str
-        :param CcnId: 云联网ID，如：ccn-afp6kltc
+        :param _CcnId: 云联网ID，如：ccn-afp6kltc
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
-        :param EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
+        :param _EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
         :type EngineVersion: str
         """
-        self.AccessKey = None
-        self.Ip = None
-        self.Port = None
-        self.User = None
-        self.Password = None
-        self.RdsInstanceId = None
-        self.CvmInstanceId = None
-        self.UniqDcgId = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.UniqVpnGwId = None
-        self.InstanceId = None
-        self.Region = None
-        self.Supplier = None
-        self.CcnId = None
-        self.EngineVersion = None
+        self._AccessKey = None
+        self._Ip = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+        self._RdsInstanceId = None
+        self._CvmInstanceId = None
+        self._UniqDcgId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._UniqVpnGwId = None
+        self._InstanceId = None
+        self._Region = None
+        self._Supplier = None
+        self._CcnId = None
+        self._EngineVersion = None
+
+    @property
+    def AccessKey(self):
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def RdsInstanceId(self):
+        return self._RdsInstanceId
+
+    @RdsInstanceId.setter
+    def RdsInstanceId(self, RdsInstanceId):
+        self._RdsInstanceId = RdsInstanceId
+
+    @property
+    def CvmInstanceId(self):
+        return self._CvmInstanceId
+
+    @CvmInstanceId.setter
+    def CvmInstanceId(self, CvmInstanceId):
+        self._CvmInstanceId = CvmInstanceId
+
+    @property
+    def UniqDcgId(self):
+        return self._UniqDcgId
+
+    @UniqDcgId.setter
+    def UniqDcgId(self, UniqDcgId):
+        self._UniqDcgId = UniqDcgId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def UniqVpnGwId(self):
+        return self._UniqVpnGwId
+
+    @UniqVpnGwId.setter
+    def UniqVpnGwId(self, UniqVpnGwId):
+        self._UniqVpnGwId = UniqVpnGwId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Supplier(self):
+        return self._Supplier
+
+    @Supplier.setter
+    def Supplier(self, Supplier):
+        self._Supplier = Supplier
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def EngineVersion(self):
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
 
 
     def _deserialize(self, params):
-        self.AccessKey = params.get("AccessKey")
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        self.User = params.get("User")
-        self.Password = params.get("Password")
-        self.RdsInstanceId = params.get("RdsInstanceId")
-        self.CvmInstanceId = params.get("CvmInstanceId")
-        self.UniqDcgId = params.get("UniqDcgId")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.UniqVpnGwId = params.get("UniqVpnGwId")
-        self.InstanceId = params.get("InstanceId")
-        self.Region = params.get("Region")
-        self.Supplier = params.get("Supplier")
-        self.CcnId = params.get("CcnId")
-        self.EngineVersion = params.get("EngineVersion")
+        self._AccessKey = params.get("AccessKey")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._RdsInstanceId = params.get("RdsInstanceId")
+        self._CvmInstanceId = params.get("CvmInstanceId")
+        self._UniqDcgId = params.get("UniqDcgId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._UniqVpnGwId = params.get("UniqVpnGwId")
+        self._InstanceId = params.get("InstanceId")
+        self._Region = params.get("Region")
+        self._Supplier = params.get("Supplier")
+        self._CcnId = params.get("CcnId")
+        self._EngineVersion = params.get("EngineVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1847,18 +3555,27 @@ class StartMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1871,14 +3588,22 @@ class StartMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopMigrateJobRequest(AbstractModel):
@@ -1888,18 +3613,27 @@ class StopMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 数据迁移任务ID
+        :param _JobId: 数据迁移任务ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1912,14 +3646,22 @@ class StopMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubsErr(AbstractModel):
@@ -1929,19 +3671,28 @@ class SubsErr(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Message: 错误信息
+        :param _Message: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
-        self.Message = None
+        self._Message = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.Message = params.get("Message")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1954,118 +3705,311 @@ class SubscribeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubscribeId: 数据订阅的实例ID
+        :param _SubscribeId: 数据订阅的实例ID
         :type SubscribeId: str
-        :param SubscribeName: 数据订阅实例的名称
+        :param _SubscribeName: 数据订阅实例的名称
         :type SubscribeName: str
-        :param ChannelId: 数据订阅实例绑定的通道ID
+        :param _ChannelId: 数据订阅实例绑定的通道ID
         :type ChannelId: str
-        :param Product: 数据订阅绑定实例对应的产品名称
+        :param _Product: 数据订阅绑定实例对应的产品名称
         :type Product: str
-        :param InstanceId: 数据订阅实例绑定的数据库实例ID
+        :param _InstanceId: 数据订阅实例绑定的数据库实例ID
         :type InstanceId: str
-        :param InstanceStatus: 数据订阅实例绑定的数据库实例状态
+        :param _InstanceStatus: 数据订阅实例绑定的数据库实例状态
         :type InstanceStatus: str
-        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        :param _SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
         :type SubsStatus: str
-        :param ModifyTime: 上次修改时间
+        :param _ModifyTime: 上次修改时间
         :type ModifyTime: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param IsolateTime: 隔离时间
+        :param _IsolateTime: 隔离时间
         :type IsolateTime: str
-        :param ExpireTime: 到期时间
+        :param _ExpireTime: 到期时间
         :type ExpireTime: str
-        :param OfflineTime: 下线时间
+        :param _OfflineTime: 下线时间
         :type OfflineTime: str
-        :param ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值
+        :param _ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值
         :type ConsumeStartTime: str
-        :param Region: 数据订阅实例所属地域
+        :param _Region: 数据订阅实例所属地域
         :type Region: str
-        :param PayType: 计费方式，0 - 包年包月，1 - 按量计费
+        :param _PayType: 计费方式，0 - 包年包月，1 - 按量计费
         :type PayType: int
-        :param Vip: 数据订阅实例的Vip
+        :param _Vip: 数据订阅实例的Vip
         :type Vip: str
-        :param Vport: 数据订阅实例的Vport
+        :param _Vport: 数据订阅实例的Vport
         :type Vport: int
-        :param UniqVpcId: 数据订阅实例Vip所在VPC的唯一ID
+        :param _UniqVpcId: 数据订阅实例Vip所在VPC的唯一ID
         :type UniqVpcId: str
-        :param UniqSubnetId: 数据订阅实例Vip所在子网的唯一ID
+        :param _UniqSubnetId: 数据订阅实例Vip所在子网的唯一ID
         :type UniqSubnetId: str
-        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
+        :param _Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
         :type Status: str
-        :param SdkConsumedTime: SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
+        :param _SdkConsumedTime: SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
         :type SdkConsumedTime: str
-        :param Tags: 标签
+        :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
+        :param _AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
-        :param SubscribeVersion: 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
+        :param _SubscribeVersion: 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeVersion: str
         """
-        self.SubscribeId = None
-        self.SubscribeName = None
-        self.ChannelId = None
-        self.Product = None
-        self.InstanceId = None
-        self.InstanceStatus = None
-        self.SubsStatus = None
-        self.ModifyTime = None
-        self.CreateTime = None
-        self.IsolateTime = None
-        self.ExpireTime = None
-        self.OfflineTime = None
-        self.ConsumeStartTime = None
-        self.Region = None
-        self.PayType = None
-        self.Vip = None
-        self.Vport = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
-        self.Status = None
-        self.SdkConsumedTime = None
-        self.Tags = None
-        self.AutoRenewFlag = None
-        self.SubscribeVersion = None
+        self._SubscribeId = None
+        self._SubscribeName = None
+        self._ChannelId = None
+        self._Product = None
+        self._InstanceId = None
+        self._InstanceStatus = None
+        self._SubsStatus = None
+        self._ModifyTime = None
+        self._CreateTime = None
+        self._IsolateTime = None
+        self._ExpireTime = None
+        self._OfflineTime = None
+        self._ConsumeStartTime = None
+        self._Region = None
+        self._PayType = None
+        self._Vip = None
+        self._Vport = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._Status = None
+        self._SdkConsumedTime = None
+        self._Tags = None
+        self._AutoRenewFlag = None
+        self._SubscribeVersion = None
+
+    @property
+    def SubscribeId(self):
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def SubsStatus(self):
+        return self._SubsStatus
+
+    @SubsStatus.setter
+    def SubsStatus(self, SubsStatus):
+        self._SubsStatus = SubsStatus
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsolateTime(self):
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OfflineTime(self):
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def ConsumeStartTime(self):
+        return self._ConsumeStartTime
+
+    @ConsumeStartTime.setter
+    def ConsumeStartTime(self, ConsumeStartTime):
+        self._ConsumeStartTime = ConsumeStartTime
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SdkConsumedTime(self):
+        return self._SdkConsumedTime
+
+    @SdkConsumedTime.setter
+    def SdkConsumedTime(self, SdkConsumedTime):
+        self._SdkConsumedTime = SdkConsumedTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def SubscribeVersion(self):
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
 
 
     def _deserialize(self, params):
-        self.SubscribeId = params.get("SubscribeId")
-        self.SubscribeName = params.get("SubscribeName")
-        self.ChannelId = params.get("ChannelId")
-        self.Product = params.get("Product")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceStatus = params.get("InstanceStatus")
-        self.SubsStatus = params.get("SubsStatus")
-        self.ModifyTime = params.get("ModifyTime")
-        self.CreateTime = params.get("CreateTime")
-        self.IsolateTime = params.get("IsolateTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.OfflineTime = params.get("OfflineTime")
-        self.ConsumeStartTime = params.get("ConsumeStartTime")
-        self.Region = params.get("Region")
-        self.PayType = params.get("PayType")
-        self.Vip = params.get("Vip")
-        self.Vport = params.get("Vport")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.Status = params.get("Status")
-        self.SdkConsumedTime = params.get("SdkConsumedTime")
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
+        self._ChannelId = params.get("ChannelId")
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._SubsStatus = params.get("SubsStatus")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CreateTime = params.get("CreateTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OfflineTime = params.get("OfflineTime")
+        self._ConsumeStartTime = params.get("ConsumeStartTime")
+        self._Region = params.get("Region")
+        self._PayType = params.get("PayType")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._Status = params.get("Status")
+        self._SdkConsumedTime = params.get("SdkConsumedTime")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagItem()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.SubscribeVersion = params.get("SubscribeVersion")
+                self._Tags.append(obj)
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._SubscribeVersion = params.get("SubscribeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2078,29 +4022,54 @@ class SubscribeObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ObjectsType: 数据订阅对象的类型，0-数据库，1-数据库内的表
+        :param _ObjectsType: 数据订阅对象的类型，0-数据库，1-数据库内的表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectsType: int
-        :param DatabaseName: 订阅数据库的名称
+        :param _DatabaseName: 订阅数据库的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
-        :param TableNames: 订阅数据库中表名称数组
+        :param _TableNames: 订阅数据库中表名称数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableNames: list of str
         """
-        self.ObjectsType = None
-        self.DatabaseName = None
-        self.TableNames = None
+        self._ObjectsType = None
+        self._DatabaseName = None
+        self._TableNames = None
+
+    @property
+    def ObjectsType(self):
+        return self._ObjectsType
+
+    @ObjectsType.setter
+    def ObjectsType(self, ObjectsType):
+        self._ObjectsType = ObjectsType
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableNames(self):
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
 
 
     def _deserialize(self, params):
-        self.ObjectsType = params.get("ObjectsType")
-        self.DatabaseName = params.get("DatabaseName")
-        self.TableNames = params.get("TableNames")
+        self._ObjectsType = params.get("ObjectsType")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableNames = params.get("TableNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2113,39 +4082,80 @@ class SubscribeRegionConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionName: 地域名称，如广州
+        :param _RegionName: 地域名称，如广州
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
-        :param Region: 地区标识，如ap-guangzhou
+        :param _Region: 地区标识，如ap-guangzhou
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param Area: 地域名称，如华南地区
+        :param _Area: 地域名称，如华南地区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Area: str
-        :param IsDefaultRegion: 是否为默认地域，0 - 不是，1 - 是的
+        :param _IsDefaultRegion: 是否为默认地域，0 - 不是，1 - 是的
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefaultRegion: int
-        :param Status: 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
+        :param _Status: 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
-        self.RegionName = None
-        self.Region = None
-        self.Area = None
-        self.IsDefaultRegion = None
-        self.Status = None
+        self._RegionName = None
+        self._Region = None
+        self._Area = None
+        self._IsDefaultRegion = None
+        self._Status = None
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def IsDefaultRegion(self):
+        return self._IsDefaultRegion
+
+    @IsDefaultRegion.setter
+    def IsDefaultRegion(self, IsDefaultRegion):
+        self._IsDefaultRegion = IsDefaultRegion
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.RegionName = params.get("RegionName")
-        self.Region = params.get("Region")
-        self.Area = params.get("Area")
-        self.IsDefaultRegion = params.get("IsDefaultRegion")
-        self.Status = params.get("Status")
+        self._RegionName = params.get("RegionName")
+        self._Region = params.get("Region")
+        self._Area = params.get("Area")
+        self._IsDefaultRegion = params.get("IsDefaultRegion")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2158,22 +4168,39 @@ class TagFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键值
+        :param _TagKey: 标签键值
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
         :type TagValue: list of str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2186,23 +4213,40 @@ class TagItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键值
+        :param _TagKey: 标签键值
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

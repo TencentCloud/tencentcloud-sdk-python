@@ -25,39 +25,80 @@ class AuthorInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 作者id
+        :param _Id: 作者id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param Name: 作者名称
+        :param _Name: 作者名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param SourceId: 作者来源
+        :param _SourceId: 作者来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceId: int
-        :param FollowType: 关注类型：1-关注，2-取关
+        :param _FollowType: 关注类型：1-关注，2-取关
 注意：此字段可能返回 null，表示取不到有效值。
         :type FollowType: int
-        :param IconUrl: 作者头像icon地址
+        :param _IconUrl: 作者头像icon地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type IconUrl: str
         """
-        self.Id = None
-        self.Name = None
-        self.SourceId = None
-        self.FollowType = None
-        self.IconUrl = None
+        self._Id = None
+        self._Name = None
+        self._SourceId = None
+        self._FollowType = None
+        self._IconUrl = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SourceId(self):
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def FollowType(self):
+        return self._FollowType
+
+    @FollowType.setter
+    def FollowType(self, FollowType):
+        self._FollowType = FollowType
+
+    @property
+    def IconUrl(self):
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.SourceId = params.get("SourceId")
-        self.FollowType = params.get("FollowType")
-        self.IconUrl = params.get("IconUrl")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._SourceId = params.get("SourceId")
+        self._FollowType = params.get("FollowType")
+        self._IconUrl = params.get("IconUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -70,22 +111,39 @@ class DislikeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 不喜欢的物料类别，对应物料上传协议中的字段名，如authorId，keyword，topic等
+        :param _Type: 不喜欢的物料类别，对应物料上传协议中的字段名，如authorId，keyword，topic等
         :type Type: str
-        :param Value: type对应字段名的值，如具体的topic名，作者id等
+        :param _Value: type对应字段名的值，如具体的topic名，作者id等
         :type Value: str
         """
-        self.Type = None
-        self.Value = None
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Value = params.get("Value")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -98,111 +156,296 @@ class DocBehavior(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ItemId: 内容唯一ID，如 2824324234
+        :param _ItemId: 内容唯一ID，如 2824324234
         :type ItemId: str
-        :param BehaviorType: 行为类型
+        :param _BehaviorType: 行为类型
         :type BehaviorType: int
-        :param BehaviorValue: 行为值
+        :param _BehaviorValue: 行为值
         :type BehaviorValue: str
-        :param BehaviorTimestamp: 行为时间戳： 秒级时间戳（默认为当前时间）,不能延迟太久，尽量实时上报，否则会影响推荐结果的准确性。
+        :param _BehaviorTimestamp: 行为时间戳： 秒级时间戳（默认为当前时间）,不能延迟太久，尽量实时上报，否则会影响推荐结果的准确性。
         :type BehaviorTimestamp: int
-        :param SceneId: 场景id，在控制台创建场景后获取。
+        :param _SceneId: 场景id，在控制台创建场景后获取。
         :type SceneId: str
-        :param UserIdList: 用户id列表
+        :param _UserIdList: 用户id列表
         :type UserIdList: list of UserIdInfo
-        :param RecTraceId: 会话id，使用获取推荐结果中返回的RecTraceId填入。<br>注意：如果和在线推荐请求中的traceId不同，会影响行为特征归因，影响推荐算法效果
+        :param _RecTraceId: 会话id，使用获取推荐结果中返回的RecTraceId填入。<br>注意：如果和在线推荐请求中的traceId不同，会影响行为特征归因，影响推荐算法效果
         :type RecTraceId: str
-        :param Source: 算法来源：用来区分行为来源于哪个算法。值为**business，tencent，other** 三者之一<br>● business 表示业务自己的算法对照组<br>● tencent 为腾讯算法<br>● other 为其他算法
+        :param _Source: 算法来源：用来区分行为来源于哪个算法。值为**business，tencent，other** 三者之一<br>● business 表示业务自己的算法对照组<br>● tencent 为腾讯算法<br>● other 为其他算法
         :type Source: str
-        :param ItemType: 物料类型
+        :param _ItemType: 物料类型
         :type ItemType: int
-        :param AppId: 微信开放平台上查看appId
+        :param _AppId: 微信开放平台上查看appId
         :type AppId: str
-        :param VideoPlayDuration: 回传video_over事件的时候，回传的用户播放视频的总时长（真正播放的，拖动不算，单位为秒）
+        :param _VideoPlayDuration: 回传video_over事件的时候，回传的用户播放视频的总时长（真正播放的，拖动不算，单位为秒）
         :type VideoPlayDuration: int
-        :param ReferrerItemId: 来源物料内容：用来标识在指定内容页面产生的行为，如需要统计用户在A内容详情页里，对推荐内容B点击等行为，则ReferrerItemId代表内容A，ItemId代表内容B
+        :param _ReferrerItemId: 来源物料内容：用来标识在指定内容页面产生的行为，如需要统计用户在A内容详情页里，对推荐内容B点击等行为，则ReferrerItemId代表内容A，ItemId代表内容B
         :type ReferrerItemId: str
-        :param Country: 国家，统一用简写，比如中国则填写CN
+        :param _Country: 国家，统一用简写，比如中国则填写CN
         :type Country: str
-        :param Province: 省
+        :param _Province: 省
         :type Province: str
-        :param City: 城市
+        :param _City: 城市
         :type City: str
-        :param District: 区县
+        :param _District: 区县
         :type District: str
-        :param IP: 客户端ip
+        :param _IP: 客户端ip
         :type IP: str
-        :param Network: 客户端网络类型
+        :param _Network: 客户端网络类型
         :type Network: str
-        :param Platform: 客户端平台，ios/android/h5
+        :param _Platform: 客户端平台，ios/android/h5
         :type Platform: str
-        :param AppVersion: 客户端app版本
+        :param _AppVersion: 客户端app版本
         :type AppVersion: str
-        :param OsVersion: 操作系统版本
+        :param _OsVersion: 操作系统版本
         :type OsVersion: str
-        :param DeviceModel: 机型
+        :param _DeviceModel: 机型
         :type DeviceModel: str
-        :param Extension: json字符串，用于行为数据的扩展
+        :param _Extension: json字符串，用于行为数据的扩展
         :type Extension: str
         """
-        self.ItemId = None
-        self.BehaviorType = None
-        self.BehaviorValue = None
-        self.BehaviorTimestamp = None
-        self.SceneId = None
-        self.UserIdList = None
-        self.RecTraceId = None
-        self.Source = None
-        self.ItemType = None
-        self.AppId = None
-        self.VideoPlayDuration = None
-        self.ReferrerItemId = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.District = None
-        self.IP = None
-        self.Network = None
-        self.Platform = None
-        self.AppVersion = None
-        self.OsVersion = None
-        self.DeviceModel = None
-        self.Extension = None
+        self._ItemId = None
+        self._BehaviorType = None
+        self._BehaviorValue = None
+        self._BehaviorTimestamp = None
+        self._SceneId = None
+        self._UserIdList = None
+        self._RecTraceId = None
+        self._Source = None
+        self._ItemType = None
+        self._AppId = None
+        self._VideoPlayDuration = None
+        self._ReferrerItemId = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._District = None
+        self._IP = None
+        self._Network = None
+        self._Platform = None
+        self._AppVersion = None
+        self._OsVersion = None
+        self._DeviceModel = None
+        self._Extension = None
+
+    @property
+    def ItemId(self):
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def BehaviorType(self):
+        return self._BehaviorType
+
+    @BehaviorType.setter
+    def BehaviorType(self, BehaviorType):
+        self._BehaviorType = BehaviorType
+
+    @property
+    def BehaviorValue(self):
+        return self._BehaviorValue
+
+    @BehaviorValue.setter
+    def BehaviorValue(self, BehaviorValue):
+        self._BehaviorValue = BehaviorValue
+
+    @property
+    def BehaviorTimestamp(self):
+        return self._BehaviorTimestamp
+
+    @BehaviorTimestamp.setter
+    def BehaviorTimestamp(self, BehaviorTimestamp):
+        self._BehaviorTimestamp = BehaviorTimestamp
+
+    @property
+    def SceneId(self):
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def UserIdList(self):
+        return self._UserIdList
+
+    @UserIdList.setter
+    def UserIdList(self, UserIdList):
+        self._UserIdList = UserIdList
+
+    @property
+    def RecTraceId(self):
+        return self._RecTraceId
+
+    @RecTraceId.setter
+    def RecTraceId(self, RecTraceId):
+        self._RecTraceId = RecTraceId
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ItemType(self):
+        return self._ItemType
+
+    @ItemType.setter
+    def ItemType(self, ItemType):
+        self._ItemType = ItemType
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def VideoPlayDuration(self):
+        return self._VideoPlayDuration
+
+    @VideoPlayDuration.setter
+    def VideoPlayDuration(self, VideoPlayDuration):
+        self._VideoPlayDuration = VideoPlayDuration
+
+    @property
+    def ReferrerItemId(self):
+        return self._ReferrerItemId
+
+    @ReferrerItemId.setter
+    def ReferrerItemId(self, ReferrerItemId):
+        self._ReferrerItemId = ReferrerItemId
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Network(self):
+        return self._Network
+
+    @Network.setter
+    def Network(self, Network):
+        self._Network = Network
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def OsVersion(self):
+        return self._OsVersion
+
+    @OsVersion.setter
+    def OsVersion(self, OsVersion):
+        self._OsVersion = OsVersion
+
+    @property
+    def DeviceModel(self):
+        return self._DeviceModel
+
+    @DeviceModel.setter
+    def DeviceModel(self, DeviceModel):
+        self._DeviceModel = DeviceModel
+
+    @property
+    def Extension(self):
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
 
 
     def _deserialize(self, params):
-        self.ItemId = params.get("ItemId")
-        self.BehaviorType = params.get("BehaviorType")
-        self.BehaviorValue = params.get("BehaviorValue")
-        self.BehaviorTimestamp = params.get("BehaviorTimestamp")
-        self.SceneId = params.get("SceneId")
+        self._ItemId = params.get("ItemId")
+        self._BehaviorType = params.get("BehaviorType")
+        self._BehaviorValue = params.get("BehaviorValue")
+        self._BehaviorTimestamp = params.get("BehaviorTimestamp")
+        self._SceneId = params.get("SceneId")
         if params.get("UserIdList") is not None:
-            self.UserIdList = []
+            self._UserIdList = []
             for item in params.get("UserIdList"):
                 obj = UserIdInfo()
                 obj._deserialize(item)
-                self.UserIdList.append(obj)
-        self.RecTraceId = params.get("RecTraceId")
-        self.Source = params.get("Source")
-        self.ItemType = params.get("ItemType")
-        self.AppId = params.get("AppId")
-        self.VideoPlayDuration = params.get("VideoPlayDuration")
-        self.ReferrerItemId = params.get("ReferrerItemId")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.District = params.get("District")
-        self.IP = params.get("IP")
-        self.Network = params.get("Network")
-        self.Platform = params.get("Platform")
-        self.AppVersion = params.get("AppVersion")
-        self.OsVersion = params.get("OsVersion")
-        self.DeviceModel = params.get("DeviceModel")
-        self.Extension = params.get("Extension")
+                self._UserIdList.append(obj)
+        self._RecTraceId = params.get("RecTraceId")
+        self._Source = params.get("Source")
+        self._ItemType = params.get("ItemType")
+        self._AppId = params.get("AppId")
+        self._VideoPlayDuration = params.get("VideoPlayDuration")
+        self._ReferrerItemId = params.get("ReferrerItemId")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._District = params.get("District")
+        self._IP = params.get("IP")
+        self._Network = params.get("Network")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._OsVersion = params.get("OsVersion")
+        self._DeviceModel = params.get("DeviceModel")
+        self._Extension = params.get("Extension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -215,151 +458,416 @@ class DocItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ItemId: 内容唯一id
+        :param _ItemId: 内容唯一id
         :type ItemId: str
-        :param ItemType: 内容类型
+        :param _ItemType: 内容类型
         :type ItemType: int
-        :param Status: 内容状态：1 - 上架， 2 - 下架
+        :param _Status: 内容状态：1 - 上架， 2 - 下架
         :type Status: int
-        :param PublishTimestamp: 内容生成时间，秒级时间戳（1639624786），需大于0
+        :param _PublishTimestamp: 内容生成时间，秒级时间戳（1639624786），需大于0
         :type PublishTimestamp: int
-        :param SourceId: 物料来源ID
+        :param _SourceId: 物料来源ID
         :type SourceId: int
-        :param Title: 标题名称
+        :param _Title: 标题名称
         :type Title: str
-        :param Content: 内容正文
+        :param _Content: 内容正文
         :type Content: str
-        :param Author: 作者
+        :param _Author: 作者
         :type Author: str
-        :param AuthorId: 作者id
+        :param _AuthorId: 作者id
         :type AuthorId: str
-        :param Keyword: 标签关键词，多个用英文分号分割
+        :param _Keyword: 标签关键词，多个用英文分号分割
         :type Keyword: str
-        :param Desc: 内容物料描述：物料的描述信息，推荐系统会对内容的描述信息，使用否LP技术，进行分词、提取关键词，作为news的特征使用。
+        :param _Desc: 内容物料描述：物料的描述信息，推荐系统会对内容的描述信息，使用否LP技术，进行分词、提取关键词，作为news的特征使用。
         :type Desc: str
-        :param PicUrlList: 图片url
+        :param _PicUrlList: 图片url
         :type PicUrlList: list of str
-        :param VideoUrlList: 视频url
+        :param _VideoUrlList: 视频url
         :type VideoUrlList: list of str
-        :param VideoDuration: 视频时长，时间秒
+        :param _VideoDuration: 视频时长，时间秒
         :type VideoDuration: int
-        :param CategoryLevel: 类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配
+        :param _CategoryLevel: 类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配
         :type CategoryLevel: int
-        :param CategoryPath: 类目路径，一级二级三级等依次用英文冒号联接，如体育：“足球:巴塞罗那”
+        :param _CategoryPath: 类目路径，一级二级三级等依次用英文冒号联接，如体育：“足球:巴塞罗那”
         :type CategoryPath: str
-        :param Country: 国家，统一用简写，比如中国则填写CN
+        :param _Country: 国家，统一用简写，比如中国则填写CN
         :type Country: str
-        :param Province: 省
+        :param _Province: 省
         :type Province: str
-        :param City: 城市
+        :param _City: 城市
         :type City: str
-        :param District: 区县
+        :param _District: 区县
         :type District: str
-        :param ExpireTimestamp: 内容过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年
+        :param _ExpireTimestamp: 内容过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年
         :type ExpireTimestamp: int
-        :param Topic: 所属话题
+        :param _Topic: 所属话题
         :type Topic: str
-        :param AuthorFans: 作者粉丝数
+        :param _AuthorFans: 作者粉丝数
         :type AuthorFans: int
-        :param AuthorLevel: 作者评级
+        :param _AuthorLevel: 作者评级
         :type AuthorLevel: str
-        :param CollectCnt: 内容累计收藏次数
+        :param _CollectCnt: 内容累计收藏次数
         :type CollectCnt: int
-        :param PraiseCnt: 内容累积点赞次数
+        :param _PraiseCnt: 内容累积点赞次数
         :type PraiseCnt: int
-        :param CommentCnt: 内容累计评论次数
+        :param _CommentCnt: 内容累计评论次数
         :type CommentCnt: int
-        :param ShareCnt: 内容累计分享次数
+        :param _ShareCnt: 内容累计分享次数
         :type ShareCnt: int
-        :param RewardCnt: 内容累积打赏数
+        :param _RewardCnt: 内容累积打赏数
         :type RewardCnt: int
-        :param Score: 内容质量评分，类似豆瓣电影的评分，这里为100分制，比如97分，满分100分，最低0分，范围外的将会被拦截
+        :param _Score: 内容质量评分，类似豆瓣电影的评分，这里为100分制，比如97分，满分100分，最低0分，范围外的将会被拦截
         :type Score: float
-        :param PoolIdList: 内容池id，用于分内容池召回，一个内容支持指定一个或多个内容池， 内容池id不建议使用0（0表示不区分内容池）
+        :param _PoolIdList: 内容池id，用于分内容池召回，一个内容支持指定一个或多个内容池， 内容池id不建议使用0（0表示不区分内容池）
         :type PoolIdList: list of str
-        :param TagInfoList: 描述用户标签
+        :param _TagInfoList: 描述用户标签
         :type TagInfoList: list of TagInfo
-        :param Extension: json字符串，用于物料数据的扩展
+        :param _Extension: json字符串，用于物料数据的扩展
         :type Extension: str
         """
-        self.ItemId = None
-        self.ItemType = None
-        self.Status = None
-        self.PublishTimestamp = None
-        self.SourceId = None
-        self.Title = None
-        self.Content = None
-        self.Author = None
-        self.AuthorId = None
-        self.Keyword = None
-        self.Desc = None
-        self.PicUrlList = None
-        self.VideoUrlList = None
-        self.VideoDuration = None
-        self.CategoryLevel = None
-        self.CategoryPath = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.District = None
-        self.ExpireTimestamp = None
-        self.Topic = None
-        self.AuthorFans = None
-        self.AuthorLevel = None
-        self.CollectCnt = None
-        self.PraiseCnt = None
-        self.CommentCnt = None
-        self.ShareCnt = None
-        self.RewardCnt = None
-        self.Score = None
-        self.PoolIdList = None
-        self.TagInfoList = None
-        self.Extension = None
+        self._ItemId = None
+        self._ItemType = None
+        self._Status = None
+        self._PublishTimestamp = None
+        self._SourceId = None
+        self._Title = None
+        self._Content = None
+        self._Author = None
+        self._AuthorId = None
+        self._Keyword = None
+        self._Desc = None
+        self._PicUrlList = None
+        self._VideoUrlList = None
+        self._VideoDuration = None
+        self._CategoryLevel = None
+        self._CategoryPath = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._District = None
+        self._ExpireTimestamp = None
+        self._Topic = None
+        self._AuthorFans = None
+        self._AuthorLevel = None
+        self._CollectCnt = None
+        self._PraiseCnt = None
+        self._CommentCnt = None
+        self._ShareCnt = None
+        self._RewardCnt = None
+        self._Score = None
+        self._PoolIdList = None
+        self._TagInfoList = None
+        self._Extension = None
+
+    @property
+    def ItemId(self):
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def ItemType(self):
+        return self._ItemType
+
+    @ItemType.setter
+    def ItemType(self, ItemType):
+        self._ItemType = ItemType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PublishTimestamp(self):
+        return self._PublishTimestamp
+
+    @PublishTimestamp.setter
+    def PublishTimestamp(self, PublishTimestamp):
+        self._PublishTimestamp = PublishTimestamp
+
+    @property
+    def SourceId(self):
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Author(self):
+        return self._Author
+
+    @Author.setter
+    def Author(self, Author):
+        self._Author = Author
+
+    @property
+    def AuthorId(self):
+        return self._AuthorId
+
+    @AuthorId.setter
+    def AuthorId(self, AuthorId):
+        self._AuthorId = AuthorId
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def PicUrlList(self):
+        return self._PicUrlList
+
+    @PicUrlList.setter
+    def PicUrlList(self, PicUrlList):
+        self._PicUrlList = PicUrlList
+
+    @property
+    def VideoUrlList(self):
+        return self._VideoUrlList
+
+    @VideoUrlList.setter
+    def VideoUrlList(self, VideoUrlList):
+        self._VideoUrlList = VideoUrlList
+
+    @property
+    def VideoDuration(self):
+        return self._VideoDuration
+
+    @VideoDuration.setter
+    def VideoDuration(self, VideoDuration):
+        self._VideoDuration = VideoDuration
+
+    @property
+    def CategoryLevel(self):
+        return self._CategoryLevel
+
+    @CategoryLevel.setter
+    def CategoryLevel(self, CategoryLevel):
+        self._CategoryLevel = CategoryLevel
+
+    @property
+    def CategoryPath(self):
+        return self._CategoryPath
+
+    @CategoryPath.setter
+    def CategoryPath(self, CategoryPath):
+        self._CategoryPath = CategoryPath
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def ExpireTimestamp(self):
+        return self._ExpireTimestamp
+
+    @ExpireTimestamp.setter
+    def ExpireTimestamp(self, ExpireTimestamp):
+        self._ExpireTimestamp = ExpireTimestamp
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def AuthorFans(self):
+        return self._AuthorFans
+
+    @AuthorFans.setter
+    def AuthorFans(self, AuthorFans):
+        self._AuthorFans = AuthorFans
+
+    @property
+    def AuthorLevel(self):
+        return self._AuthorLevel
+
+    @AuthorLevel.setter
+    def AuthorLevel(self, AuthorLevel):
+        self._AuthorLevel = AuthorLevel
+
+    @property
+    def CollectCnt(self):
+        return self._CollectCnt
+
+    @CollectCnt.setter
+    def CollectCnt(self, CollectCnt):
+        self._CollectCnt = CollectCnt
+
+    @property
+    def PraiseCnt(self):
+        return self._PraiseCnt
+
+    @PraiseCnt.setter
+    def PraiseCnt(self, PraiseCnt):
+        self._PraiseCnt = PraiseCnt
+
+    @property
+    def CommentCnt(self):
+        return self._CommentCnt
+
+    @CommentCnt.setter
+    def CommentCnt(self, CommentCnt):
+        self._CommentCnt = CommentCnt
+
+    @property
+    def ShareCnt(self):
+        return self._ShareCnt
+
+    @ShareCnt.setter
+    def ShareCnt(self, ShareCnt):
+        self._ShareCnt = ShareCnt
+
+    @property
+    def RewardCnt(self):
+        return self._RewardCnt
+
+    @RewardCnt.setter
+    def RewardCnt(self, RewardCnt):
+        self._RewardCnt = RewardCnt
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def PoolIdList(self):
+        return self._PoolIdList
+
+    @PoolIdList.setter
+    def PoolIdList(self, PoolIdList):
+        self._PoolIdList = PoolIdList
+
+    @property
+    def TagInfoList(self):
+        return self._TagInfoList
+
+    @TagInfoList.setter
+    def TagInfoList(self, TagInfoList):
+        self._TagInfoList = TagInfoList
+
+    @property
+    def Extension(self):
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
 
 
     def _deserialize(self, params):
-        self.ItemId = params.get("ItemId")
-        self.ItemType = params.get("ItemType")
-        self.Status = params.get("Status")
-        self.PublishTimestamp = params.get("PublishTimestamp")
-        self.SourceId = params.get("SourceId")
-        self.Title = params.get("Title")
-        self.Content = params.get("Content")
-        self.Author = params.get("Author")
-        self.AuthorId = params.get("AuthorId")
-        self.Keyword = params.get("Keyword")
-        self.Desc = params.get("Desc")
-        self.PicUrlList = params.get("PicUrlList")
-        self.VideoUrlList = params.get("VideoUrlList")
-        self.VideoDuration = params.get("VideoDuration")
-        self.CategoryLevel = params.get("CategoryLevel")
-        self.CategoryPath = params.get("CategoryPath")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.District = params.get("District")
-        self.ExpireTimestamp = params.get("ExpireTimestamp")
-        self.Topic = params.get("Topic")
-        self.AuthorFans = params.get("AuthorFans")
-        self.AuthorLevel = params.get("AuthorLevel")
-        self.CollectCnt = params.get("CollectCnt")
-        self.PraiseCnt = params.get("PraiseCnt")
-        self.CommentCnt = params.get("CommentCnt")
-        self.ShareCnt = params.get("ShareCnt")
-        self.RewardCnt = params.get("RewardCnt")
-        self.Score = params.get("Score")
-        self.PoolIdList = params.get("PoolIdList")
+        self._ItemId = params.get("ItemId")
+        self._ItemType = params.get("ItemType")
+        self._Status = params.get("Status")
+        self._PublishTimestamp = params.get("PublishTimestamp")
+        self._SourceId = params.get("SourceId")
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._Author = params.get("Author")
+        self._AuthorId = params.get("AuthorId")
+        self._Keyword = params.get("Keyword")
+        self._Desc = params.get("Desc")
+        self._PicUrlList = params.get("PicUrlList")
+        self._VideoUrlList = params.get("VideoUrlList")
+        self._VideoDuration = params.get("VideoDuration")
+        self._CategoryLevel = params.get("CategoryLevel")
+        self._CategoryPath = params.get("CategoryPath")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._District = params.get("District")
+        self._ExpireTimestamp = params.get("ExpireTimestamp")
+        self._Topic = params.get("Topic")
+        self._AuthorFans = params.get("AuthorFans")
+        self._AuthorLevel = params.get("AuthorLevel")
+        self._CollectCnt = params.get("CollectCnt")
+        self._PraiseCnt = params.get("PraiseCnt")
+        self._CommentCnt = params.get("CommentCnt")
+        self._ShareCnt = params.get("ShareCnt")
+        self._RewardCnt = params.get("RewardCnt")
+        self._Score = params.get("Score")
+        self._PoolIdList = params.get("PoolIdList")
         if params.get("TagInfoList") is not None:
-            self.TagInfoList = []
+            self._TagInfoList = []
             for item in params.get("TagInfoList"):
                 obj = TagInfo()
                 obj._deserialize(item)
-                self.TagInfoList.append(obj)
-        self.Extension = params.get("Extension")
+                self._TagInfoList.append(obj)
+        self._Extension = params.get("Extension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -372,138 +880,347 @@ class PortraitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserIdList: 用户id列表
+        :param _UserIdList: 用户id列表
         :type UserIdList: list of UserIdInfo
-        :param AppId: 如果"userIdType"是10则必传，在微信开放平台上查看appId
+        :param _AppId: 如果"userIdType"是10则必传，在微信开放平台上查看appId
         :type AppId: str
-        :param Age: 用户年龄，值域在 0-200
+        :param _Age: 用户年龄，值域在 0-200
         :type Age: int
-        :param Gender: 用户性别：0-未知，1-男， 2-女
+        :param _Gender: 用户性别：0-未知，1-男， 2-女
         :type Gender: int
-        :param Degree: 用户学历 ：小学，初中，高中，大专，本科，硕士，博士
+        :param _Degree: 用户学历 ：小学，初中，高中，大专，本科，硕士，博士
         :type Degree: str
-        :param School: 用户毕业学校全称
+        :param _School: 用户毕业学校全称
         :type School: str
-        :param Occupation: 用户职业，保证业务的唯一性
+        :param _Occupation: 用户职业，保证业务的唯一性
         :type Occupation: str
-        :param Industry: 用户所属行业，保证业务的唯一性
+        :param _Industry: 用户所属行业，保证业务的唯一性
         :type Industry: str
-        :param ResidentCountry: 用户常驻国家，统一用简写，比如中国则填写CN
+        :param _ResidentCountry: 用户常驻国家，统一用简写，比如中国则填写CN
         :type ResidentCountry: str
-        :param ResidentProvince: 用户常驻省份
+        :param _ResidentProvince: 用户常驻省份
         :type ResidentProvince: str
-        :param ResidentCity: 用户常驻城市
+        :param _ResidentCity: 用户常驻城市
         :type ResidentCity: str
-        :param ResidentDistrict: 用户常驻区县
+        :param _ResidentDistrict: 用户常驻区县
         :type ResidentDistrict: str
-        :param PhoneMd5: 用户手机的MD5值
+        :param _PhoneMd5: 用户手机的MD5值
         :type PhoneMd5: str
-        :param PhoneImei: 用户手机的IMEI号
+        :param _PhoneImei: 用户手机的IMEI号
         :type PhoneImei: str
-        :param Idfa: 设备idfa信息
+        :param _Idfa: 设备idfa信息
         :type Idfa: str
-        :param RegisterTimestamp: 用户注册时间，秒级时间戳（1639624786）
+        :param _RegisterTimestamp: 用户注册时间，秒级时间戳（1639624786）
         :type RegisterTimestamp: int
-        :param MembershipLevel: 用户会员等级
+        :param _MembershipLevel: 用户会员等级
         :type MembershipLevel: str
-        :param LastLoginTimestamp: 用户上一次登录时间，秒级时间戳（1639624786）
+        :param _LastLoginTimestamp: 用户上一次登录时间，秒级时间戳（1639624786）
         :type LastLoginTimestamp: int
-        :param LastLoginIp: 用户上一次登录的ip
+        :param _LastLoginIp: 用户上一次登录的ip
         :type LastLoginIp: str
-        :param LastModifyTimestamp: 用户信息的最后修改时间戳，秒级时间戳（1639624786）
+        :param _LastModifyTimestamp: 用户信息的最后修改时间戳，秒级时间戳（1639624786）
         :type LastModifyTimestamp: int
-        :param TagInfoList: 用户标签
+        :param _TagInfoList: 用户标签
         :type TagInfoList: list of TagInfo
-        :param AuthorInfoList: 用户关注作者列表
+        :param _AuthorInfoList: 用户关注作者列表
         :type AuthorInfoList: list of AuthorInfo
-        :param DislikeInfoList: 用户不喜欢列表
+        :param _DislikeInfoList: 用户不喜欢列表
         :type DislikeInfoList: list of DislikeInfo
-        :param Extension: json字符串，用于画像数据的扩展
+        :param _Extension: json字符串，用于画像数据的扩展
         :type Extension: str
-        :param Oaid: 设备oaid信息
+        :param _Oaid: 设备oaid信息
         :type Oaid: str
-        :param AndroidId: 设备AndroidId信息
+        :param _AndroidId: 设备AndroidId信息
         :type AndroidId: str
         """
-        self.UserIdList = None
-        self.AppId = None
-        self.Age = None
-        self.Gender = None
-        self.Degree = None
-        self.School = None
-        self.Occupation = None
-        self.Industry = None
-        self.ResidentCountry = None
-        self.ResidentProvince = None
-        self.ResidentCity = None
-        self.ResidentDistrict = None
-        self.PhoneMd5 = None
-        self.PhoneImei = None
-        self.Idfa = None
-        self.RegisterTimestamp = None
-        self.MembershipLevel = None
-        self.LastLoginTimestamp = None
-        self.LastLoginIp = None
-        self.LastModifyTimestamp = None
-        self.TagInfoList = None
-        self.AuthorInfoList = None
-        self.DislikeInfoList = None
-        self.Extension = None
-        self.Oaid = None
-        self.AndroidId = None
+        self._UserIdList = None
+        self._AppId = None
+        self._Age = None
+        self._Gender = None
+        self._Degree = None
+        self._School = None
+        self._Occupation = None
+        self._Industry = None
+        self._ResidentCountry = None
+        self._ResidentProvince = None
+        self._ResidentCity = None
+        self._ResidentDistrict = None
+        self._PhoneMd5 = None
+        self._PhoneImei = None
+        self._Idfa = None
+        self._RegisterTimestamp = None
+        self._MembershipLevel = None
+        self._LastLoginTimestamp = None
+        self._LastLoginIp = None
+        self._LastModifyTimestamp = None
+        self._TagInfoList = None
+        self._AuthorInfoList = None
+        self._DislikeInfoList = None
+        self._Extension = None
+        self._Oaid = None
+        self._AndroidId = None
+
+    @property
+    def UserIdList(self):
+        return self._UserIdList
+
+    @UserIdList.setter
+    def UserIdList(self, UserIdList):
+        self._UserIdList = UserIdList
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Degree(self):
+        return self._Degree
+
+    @Degree.setter
+    def Degree(self, Degree):
+        self._Degree = Degree
+
+    @property
+    def School(self):
+        return self._School
+
+    @School.setter
+    def School(self, School):
+        self._School = School
+
+    @property
+    def Occupation(self):
+        return self._Occupation
+
+    @Occupation.setter
+    def Occupation(self, Occupation):
+        self._Occupation = Occupation
+
+    @property
+    def Industry(self):
+        return self._Industry
+
+    @Industry.setter
+    def Industry(self, Industry):
+        self._Industry = Industry
+
+    @property
+    def ResidentCountry(self):
+        return self._ResidentCountry
+
+    @ResidentCountry.setter
+    def ResidentCountry(self, ResidentCountry):
+        self._ResidentCountry = ResidentCountry
+
+    @property
+    def ResidentProvince(self):
+        return self._ResidentProvince
+
+    @ResidentProvince.setter
+    def ResidentProvince(self, ResidentProvince):
+        self._ResidentProvince = ResidentProvince
+
+    @property
+    def ResidentCity(self):
+        return self._ResidentCity
+
+    @ResidentCity.setter
+    def ResidentCity(self, ResidentCity):
+        self._ResidentCity = ResidentCity
+
+    @property
+    def ResidentDistrict(self):
+        return self._ResidentDistrict
+
+    @ResidentDistrict.setter
+    def ResidentDistrict(self, ResidentDistrict):
+        self._ResidentDistrict = ResidentDistrict
+
+    @property
+    def PhoneMd5(self):
+        return self._PhoneMd5
+
+    @PhoneMd5.setter
+    def PhoneMd5(self, PhoneMd5):
+        self._PhoneMd5 = PhoneMd5
+
+    @property
+    def PhoneImei(self):
+        return self._PhoneImei
+
+    @PhoneImei.setter
+    def PhoneImei(self, PhoneImei):
+        self._PhoneImei = PhoneImei
+
+    @property
+    def Idfa(self):
+        return self._Idfa
+
+    @Idfa.setter
+    def Idfa(self, Idfa):
+        self._Idfa = Idfa
+
+    @property
+    def RegisterTimestamp(self):
+        return self._RegisterTimestamp
+
+    @RegisterTimestamp.setter
+    def RegisterTimestamp(self, RegisterTimestamp):
+        self._RegisterTimestamp = RegisterTimestamp
+
+    @property
+    def MembershipLevel(self):
+        return self._MembershipLevel
+
+    @MembershipLevel.setter
+    def MembershipLevel(self, MembershipLevel):
+        self._MembershipLevel = MembershipLevel
+
+    @property
+    def LastLoginTimestamp(self):
+        return self._LastLoginTimestamp
+
+    @LastLoginTimestamp.setter
+    def LastLoginTimestamp(self, LastLoginTimestamp):
+        self._LastLoginTimestamp = LastLoginTimestamp
+
+    @property
+    def LastLoginIp(self):
+        return self._LastLoginIp
+
+    @LastLoginIp.setter
+    def LastLoginIp(self, LastLoginIp):
+        self._LastLoginIp = LastLoginIp
+
+    @property
+    def LastModifyTimestamp(self):
+        return self._LastModifyTimestamp
+
+    @LastModifyTimestamp.setter
+    def LastModifyTimestamp(self, LastModifyTimestamp):
+        self._LastModifyTimestamp = LastModifyTimestamp
+
+    @property
+    def TagInfoList(self):
+        return self._TagInfoList
+
+    @TagInfoList.setter
+    def TagInfoList(self, TagInfoList):
+        self._TagInfoList = TagInfoList
+
+    @property
+    def AuthorInfoList(self):
+        return self._AuthorInfoList
+
+    @AuthorInfoList.setter
+    def AuthorInfoList(self, AuthorInfoList):
+        self._AuthorInfoList = AuthorInfoList
+
+    @property
+    def DislikeInfoList(self):
+        return self._DislikeInfoList
+
+    @DislikeInfoList.setter
+    def DislikeInfoList(self, DislikeInfoList):
+        self._DislikeInfoList = DislikeInfoList
+
+    @property
+    def Extension(self):
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
+
+    @property
+    def Oaid(self):
+        return self._Oaid
+
+    @Oaid.setter
+    def Oaid(self, Oaid):
+        self._Oaid = Oaid
+
+    @property
+    def AndroidId(self):
+        return self._AndroidId
+
+    @AndroidId.setter
+    def AndroidId(self, AndroidId):
+        self._AndroidId = AndroidId
 
 
     def _deserialize(self, params):
         if params.get("UserIdList") is not None:
-            self.UserIdList = []
+            self._UserIdList = []
             for item in params.get("UserIdList"):
                 obj = UserIdInfo()
                 obj._deserialize(item)
-                self.UserIdList.append(obj)
-        self.AppId = params.get("AppId")
-        self.Age = params.get("Age")
-        self.Gender = params.get("Gender")
-        self.Degree = params.get("Degree")
-        self.School = params.get("School")
-        self.Occupation = params.get("Occupation")
-        self.Industry = params.get("Industry")
-        self.ResidentCountry = params.get("ResidentCountry")
-        self.ResidentProvince = params.get("ResidentProvince")
-        self.ResidentCity = params.get("ResidentCity")
-        self.ResidentDistrict = params.get("ResidentDistrict")
-        self.PhoneMd5 = params.get("PhoneMd5")
-        self.PhoneImei = params.get("PhoneImei")
-        self.Idfa = params.get("Idfa")
-        self.RegisterTimestamp = params.get("RegisterTimestamp")
-        self.MembershipLevel = params.get("MembershipLevel")
-        self.LastLoginTimestamp = params.get("LastLoginTimestamp")
-        self.LastLoginIp = params.get("LastLoginIp")
-        self.LastModifyTimestamp = params.get("LastModifyTimestamp")
+                self._UserIdList.append(obj)
+        self._AppId = params.get("AppId")
+        self._Age = params.get("Age")
+        self._Gender = params.get("Gender")
+        self._Degree = params.get("Degree")
+        self._School = params.get("School")
+        self._Occupation = params.get("Occupation")
+        self._Industry = params.get("Industry")
+        self._ResidentCountry = params.get("ResidentCountry")
+        self._ResidentProvince = params.get("ResidentProvince")
+        self._ResidentCity = params.get("ResidentCity")
+        self._ResidentDistrict = params.get("ResidentDistrict")
+        self._PhoneMd5 = params.get("PhoneMd5")
+        self._PhoneImei = params.get("PhoneImei")
+        self._Idfa = params.get("Idfa")
+        self._RegisterTimestamp = params.get("RegisterTimestamp")
+        self._MembershipLevel = params.get("MembershipLevel")
+        self._LastLoginTimestamp = params.get("LastLoginTimestamp")
+        self._LastLoginIp = params.get("LastLoginIp")
+        self._LastModifyTimestamp = params.get("LastModifyTimestamp")
         if params.get("TagInfoList") is not None:
-            self.TagInfoList = []
+            self._TagInfoList = []
             for item in params.get("TagInfoList"):
                 obj = TagInfo()
                 obj._deserialize(item)
-                self.TagInfoList.append(obj)
+                self._TagInfoList.append(obj)
         if params.get("AuthorInfoList") is not None:
-            self.AuthorInfoList = []
+            self._AuthorInfoList = []
             for item in params.get("AuthorInfoList"):
                 obj = AuthorInfo()
                 obj._deserialize(item)
-                self.AuthorInfoList.append(obj)
+                self._AuthorInfoList.append(obj)
         if params.get("DislikeInfoList") is not None:
-            self.DislikeInfoList = []
+            self._DislikeInfoList = []
             for item in params.get("DislikeInfoList"):
                 obj = DislikeInfo()
                 obj._deserialize(item)
-                self.DislikeInfoList.append(obj)
-        self.Extension = params.get("Extension")
-        self.Oaid = params.get("Oaid")
-        self.AndroidId = params.get("AndroidId")
+                self._DislikeInfoList.append(obj)
+        self._Extension = params.get("Extension")
+        self._Oaid = params.get("Oaid")
+        self._AndroidId = params.get("AndroidId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -516,38 +1233,79 @@ class RecItemData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ItemId: 推荐的内容id，即用户行为上报中的itemId
+        :param _ItemId: 推荐的内容id，即用户行为上报中的itemId
         :type ItemId: str
-        :param ItemType: 物料子类型，包括如下： 1-图文、2-长视频（横视频）、3-短视频（横视频）、4-小说、5-小视频（竖视频）、6-纯文本
+        :param _ItemType: 物料子类型，包括如下： 1-图文、2-长视频（横视频）、3-短视频（横视频）、4-小说、5-小视频（竖视频）、6-纯文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemType: int
-        :param Weight: 推荐内容的权重，取值范围[0,1000000]
+        :param _Weight: 推荐内容的权重，取值范围[0,1000000]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param Score: 推荐预测分
+        :param _Score: 推荐预测分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: float
-        :param Keyword: 关键词，多个用英文分号分割，和物料上传的keyword一致
+        :param _Keyword: 关键词，多个用英文分号分割，和物料上传的keyword一致
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keyword: str
         """
-        self.ItemId = None
-        self.ItemType = None
-        self.Weight = None
-        self.Score = None
-        self.Keyword = None
+        self._ItemId = None
+        self._ItemType = None
+        self._Weight = None
+        self._Score = None
+        self._Keyword = None
+
+    @property
+    def ItemId(self):
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def ItemType(self):
+        return self._ItemType
+
+    @ItemType.setter
+    def ItemType(self, ItemType):
+        self._ItemType = ItemType
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.ItemId = params.get("ItemId")
-        self.ItemType = params.get("ItemType")
-        self.Weight = params.get("Weight")
-        self.Score = params.get("Score")
-        self.Keyword = params.get("Keyword")
+        self._ItemId = params.get("ItemId")
+        self._ItemType = params.get("ItemType")
+        self._Weight = params.get("Weight")
+        self._Score = params.get("Score")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -560,55 +1318,128 @@ class RecommendContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bid: 业务id
+        :param _Bid: 业务id
         :type Bid: str
-        :param SceneId: 场景id：比如有“猜你喜欢”，“热门内容”等推荐模块，每一个模块都有一个scene_id来表示。 在控制台创建场景后获取。需要跟行为上报时的id一致
+        :param _SceneId: 场景id：比如有“猜你喜欢”，“热门内容”等推荐模块，每一个模块都有一个scene_id来表示。 在控制台创建场景后获取。需要跟行为上报时的id一致
         :type SceneId: str
-        :param UserIdList: 用户唯一ID数组，每个数组元素详见userId结构体，若不填，则接口返回热门结果
+        :param _UserIdList: 用户唯一ID数组，每个数组元素详见userId结构体，若不填，则接口返回热门结果
         :type UserIdList: list of UserIdInfo
-        :param RecTraceId: 会话id：必须和行为数据上报时所填写的traceId相同，用于行为数据来自于那次在线推荐请求的归因。**注意：此处如果没传，则响应会返回一个全局唯一ID返回给客户，并需客户透传给行为日志上报接口**
+        :param _RecTraceId: 会话id：必须和行为数据上报时所填写的traceId相同，用于行为数据来自于那次在线推荐请求的归因。**注意：此处如果没传，则响应会返回一个全局唯一ID返回给客户，并需客户透传给行为日志上报接口**
         :type RecTraceId: str
-        :param ItemCnt: 推荐数量：物料优选的结果， 默认50个，目前最多支持200个的内容返回，如果返回个数更多，会影响性能，容易超时。
+        :param _ItemCnt: 推荐数量：物料优选的结果， 默认50个，目前最多支持200个的内容返回，如果返回个数更多，会影响性能，容易超时。
         :type ItemCnt: int
-        :param PoolId: 物料池id，用于召回该pool_id下的商品，如果有多个，用英文;分割。**注意：此处poolId需和物料上报时的poolIdList对应上**
+        :param _PoolId: 物料池id，用于召回该pool_id下的商品，如果有多个，用英文;分割。**注意：此处poolId需和物料上报时的poolIdList对应上**
         :type PoolId: str
-        :param CurrentItemId: 来源物料id，即用户当前浏览的物料id，用于在内容详情页获取关联推荐内容
+        :param _CurrentItemId: 来源物料id，即用户当前浏览的物料id，用于在内容详情页获取关联推荐内容
         :type CurrentItemId: str
-        :param ResponseTimeout: 请求响应超时时间，单位ms，默认300ms，数值设置的过小，会影响推荐效果，最小支持250ms
+        :param _ResponseTimeout: 请求响应超时时间，单位ms，默认300ms，数值设置的过小，会影响推荐效果，最小支持250ms
         :type ResponseTimeout: int
-        :param ItemTypeRatio: 返回结果中不同物料类型的比例，比例顺序需严格按照（图文，长视频，短视频，小视频）进行。只允许传[0,100]数字，多个请用**英文冒号**分割，且加起来不能超过100，以及比例数量不能超过**场景绑定的物料类型**（图文，长视频，短视频，小视频）数。**示例：**图文和短视频比例为40%:60%时，则填40:60图文和短视频比例为0%:100%时，则填0:100图文，长视频和短视频的比例为，图文占20%，剩余80%由长视频和短视频随机返回，则填20:80或仅填20均可
+        :param _ItemTypeRatio: 返回结果中不同物料类型的比例，比例顺序需严格按照（图文，长视频，短视频，小视频）进行。只允许传[0,100]数字，多个请用**英文冒号**分割，且加起来不能超过100，以及比例数量不能超过**场景绑定的物料类型**（图文，长视频，短视频，小视频）数。**示例：**图文和短视频比例为40%:60%时，则填40:60图文和短视频比例为0%:100%时，则填0:100图文，长视频和短视频的比例为，图文占20%，剩余80%由长视频和短视频随机返回，则填20:80或仅填20均可
         :type ItemTypeRatio: str
         """
-        self.Bid = None
-        self.SceneId = None
-        self.UserIdList = None
-        self.RecTraceId = None
-        self.ItemCnt = None
-        self.PoolId = None
-        self.CurrentItemId = None
-        self.ResponseTimeout = None
-        self.ItemTypeRatio = None
+        self._Bid = None
+        self._SceneId = None
+        self._UserIdList = None
+        self._RecTraceId = None
+        self._ItemCnt = None
+        self._PoolId = None
+        self._CurrentItemId = None
+        self._ResponseTimeout = None
+        self._ItemTypeRatio = None
+
+    @property
+    def Bid(self):
+        return self._Bid
+
+    @Bid.setter
+    def Bid(self, Bid):
+        self._Bid = Bid
+
+    @property
+    def SceneId(self):
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def UserIdList(self):
+        return self._UserIdList
+
+    @UserIdList.setter
+    def UserIdList(self, UserIdList):
+        self._UserIdList = UserIdList
+
+    @property
+    def RecTraceId(self):
+        return self._RecTraceId
+
+    @RecTraceId.setter
+    def RecTraceId(self, RecTraceId):
+        self._RecTraceId = RecTraceId
+
+    @property
+    def ItemCnt(self):
+        return self._ItemCnt
+
+    @ItemCnt.setter
+    def ItemCnt(self, ItemCnt):
+        self._ItemCnt = ItemCnt
+
+    @property
+    def PoolId(self):
+        return self._PoolId
+
+    @PoolId.setter
+    def PoolId(self, PoolId):
+        self._PoolId = PoolId
+
+    @property
+    def CurrentItemId(self):
+        return self._CurrentItemId
+
+    @CurrentItemId.setter
+    def CurrentItemId(self, CurrentItemId):
+        self._CurrentItemId = CurrentItemId
+
+    @property
+    def ResponseTimeout(self):
+        return self._ResponseTimeout
+
+    @ResponseTimeout.setter
+    def ResponseTimeout(self, ResponseTimeout):
+        self._ResponseTimeout = ResponseTimeout
+
+    @property
+    def ItemTypeRatio(self):
+        return self._ItemTypeRatio
+
+    @ItemTypeRatio.setter
+    def ItemTypeRatio(self, ItemTypeRatio):
+        self._ItemTypeRatio = ItemTypeRatio
 
 
     def _deserialize(self, params):
-        self.Bid = params.get("Bid")
-        self.SceneId = params.get("SceneId")
+        self._Bid = params.get("Bid")
+        self._SceneId = params.get("SceneId")
         if params.get("UserIdList") is not None:
-            self.UserIdList = []
+            self._UserIdList = []
             for item in params.get("UserIdList"):
                 obj = UserIdInfo()
                 obj._deserialize(item)
-                self.UserIdList.append(obj)
-        self.RecTraceId = params.get("RecTraceId")
-        self.ItemCnt = params.get("ItemCnt")
-        self.PoolId = params.get("PoolId")
-        self.CurrentItemId = params.get("CurrentItemId")
-        self.ResponseTimeout = params.get("ResponseTimeout")
-        self.ItemTypeRatio = params.get("ItemTypeRatio")
+                self._UserIdList.append(obj)
+        self._RecTraceId = params.get("RecTraceId")
+        self._ItemCnt = params.get("ItemCnt")
+        self._PoolId = params.get("PoolId")
+        self._CurrentItemId = params.get("CurrentItemId")
+        self._ResponseTimeout = params.get("ResponseTimeout")
+        self._ItemTypeRatio = params.get("ItemTypeRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -621,27 +1452,51 @@ class RecommendContentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecTraceId: 推荐追踪id，用于行为上报。每次接口调用返回的traceId不同
+        :param _RecTraceId: 推荐追踪id，用于行为上报。每次接口调用返回的traceId不同
         :type RecTraceId: str
-        :param DataList: 标识具体的物料信息
+        :param _DataList: 标识具体的物料信息
         :type DataList: list of RecItemData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RecTraceId = None
-        self.DataList = None
-        self.RequestId = None
+        self._RecTraceId = None
+        self._DataList = None
+        self._RequestId = None
+
+    @property
+    def RecTraceId(self):
+        return self._RecTraceId
+
+    @RecTraceId.setter
+    def RecTraceId(self, RecTraceId):
+        self._RecTraceId = RecTraceId
+
+    @property
+    def DataList(self):
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RecTraceId = params.get("RecTraceId")
+        self._RecTraceId = params.get("RecTraceId")
         if params.get("DataList") is not None:
-            self.DataList = []
+            self._DataList = []
             for item in params.get("DataList"):
                 obj = RecItemData()
                 obj._deserialize(item)
-                self.DataList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ReportActionRequest(AbstractModel):
@@ -651,27 +1506,44 @@ class ReportActionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bid: 业务id
+        :param _Bid: 业务id
         :type Bid: str
-        :param DocBehaviorList: 上报的行为对象数组，数量不超过50
+        :param _DocBehaviorList: 上报的行为对象数组，数量不超过50
         :type DocBehaviorList: list of DocBehavior
         """
-        self.Bid = None
-        self.DocBehaviorList = None
+        self._Bid = None
+        self._DocBehaviorList = None
+
+    @property
+    def Bid(self):
+        return self._Bid
+
+    @Bid.setter
+    def Bid(self, Bid):
+        self._Bid = Bid
+
+    @property
+    def DocBehaviorList(self):
+        return self._DocBehaviorList
+
+    @DocBehaviorList.setter
+    def DocBehaviorList(self, DocBehaviorList):
+        self._DocBehaviorList = DocBehaviorList
 
 
     def _deserialize(self, params):
-        self.Bid = params.get("Bid")
+        self._Bid = params.get("Bid")
         if params.get("DocBehaviorList") is not None:
-            self.DocBehaviorList = []
+            self._DocBehaviorList = []
             for item in params.get("DocBehaviorList"):
                 obj = DocBehavior()
                 obj._deserialize(item)
-                self.DocBehaviorList.append(obj)
+                self._DocBehaviorList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -684,14 +1556,22 @@ class ReportActionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ReportMaterialRequest(AbstractModel):
@@ -701,27 +1581,44 @@ class ReportMaterialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bid: 业务id
+        :param _Bid: 业务id
         :type Bid: str
-        :param DocItemList: 上报的信息流数组，一次数量不超过50
+        :param _DocItemList: 上报的信息流数组，一次数量不超过50
         :type DocItemList: list of DocItem
         """
-        self.Bid = None
-        self.DocItemList = None
+        self._Bid = None
+        self._DocItemList = None
+
+    @property
+    def Bid(self):
+        return self._Bid
+
+    @Bid.setter
+    def Bid(self, Bid):
+        self._Bid = Bid
+
+    @property
+    def DocItemList(self):
+        return self._DocItemList
+
+    @DocItemList.setter
+    def DocItemList(self, DocItemList):
+        self._DocItemList = DocItemList
 
 
     def _deserialize(self, params):
-        self.Bid = params.get("Bid")
+        self._Bid = params.get("Bid")
         if params.get("DocItemList") is not None:
-            self.DocItemList = []
+            self._DocItemList = []
             for item in params.get("DocItemList"):
                 obj = DocItem()
                 obj._deserialize(item)
-                self.DocItemList.append(obj)
+                self._DocItemList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -734,14 +1631,22 @@ class ReportMaterialResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ReportPortraitRequest(AbstractModel):
@@ -751,27 +1656,44 @@ class ReportPortraitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bid: 推荐平台上的业务id
+        :param _Bid: 推荐平台上的业务id
         :type Bid: str
-        :param PortraitList: 上报的用户画像数组，数量不超过50
+        :param _PortraitList: 上报的用户画像数组，数量不超过50
         :type PortraitList: list of PortraitInfo
         """
-        self.Bid = None
-        self.PortraitList = None
+        self._Bid = None
+        self._PortraitList = None
+
+    @property
+    def Bid(self):
+        return self._Bid
+
+    @Bid.setter
+    def Bid(self, Bid):
+        self._Bid = Bid
+
+    @property
+    def PortraitList(self):
+        return self._PortraitList
+
+    @PortraitList.setter
+    def PortraitList(self, PortraitList):
+        self._PortraitList = PortraitList
 
 
     def _deserialize(self, params):
-        self.Bid = params.get("Bid")
+        self._Bid = params.get("Bid")
         if params.get("PortraitList") is not None:
-            self.PortraitList = []
+            self._PortraitList = []
             for item in params.get("PortraitList"):
                 obj = PortraitInfo()
                 obj._deserialize(item)
-                self.PortraitList.append(obj)
+                self._PortraitList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -784,14 +1706,22 @@ class ReportPortraitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TagInfo(AbstractModel):
@@ -801,29 +1731,54 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 标签id
+        :param _Id: 标签id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param Name: 标签名
+        :param _Name: 标签名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Weight: 推荐权重
+        :param _Weight: 推荐权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: float
         """
-        self.Id = None
-        self.Name = None
-        self.Weight = None
+        self._Id = None
+        self._Name = None
+        self._Weight = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.Weight = params.get("Weight")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -836,7 +1791,7 @@ class UserIdInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserIdType: 用户ID类型：
+        :param _UserIdType: 用户ID类型：
 1 - qq
 2 - qq_md5：md5后的qq
 3 - imei：设备imei（安卓10之后不会再授权imei，安卓10之后的imei映射关系可能拿不到，故安卓10之后的设备建议用oaid）
@@ -854,20 +1809,37 @@ class UserIdInfo(AbstractModel):
 15 - phone_sm3：国密SM3加密的手机号
 1000 - 客户自定义id
         :type UserIdType: int
-        :param UserId: 用户id
+        :param _UserId: 用户id
         :type UserId: str
         """
-        self.UserIdType = None
-        self.UserId = None
+        self._UserIdType = None
+        self._UserId = None
+
+    @property
+    def UserIdType(self):
+        return self._UserIdType
+
+    @UserIdType.setter
+    def UserIdType(self, UserIdType):
+        self._UserIdType = UserIdType
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserIdType = params.get("UserIdType")
-        self.UserId = params.get("UserId")
+        self._UserIdType = params.get("UserIdType")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

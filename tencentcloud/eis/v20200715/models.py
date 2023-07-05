@@ -25,22 +25,39 @@ class DescribeEisConnectorConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectorName: 连接器名称
+        :param _ConnectorName: 连接器名称
         :type ConnectorName: str
-        :param ConnectorVersion: 连接器版本
+        :param _ConnectorVersion: 连接器版本
         :type ConnectorVersion: str
         """
-        self.ConnectorName = None
-        self.ConnectorVersion = None
+        self._ConnectorName = None
+        self._ConnectorVersion = None
+
+    @property
+    def ConnectorName(self):
+        return self._ConnectorName
+
+    @ConnectorName.setter
+    def ConnectorName(self, ConnectorName):
+        self._ConnectorName = ConnectorName
+
+    @property
+    def ConnectorVersion(self):
+        return self._ConnectorVersion
+
+    @ConnectorVersion.setter
+    def ConnectorVersion(self, ConnectorVersion):
+        self._ConnectorVersion = ConnectorVersion
 
 
     def _deserialize(self, params):
-        self.ConnectorName = params.get("ConnectorName")
-        self.ConnectorVersion = params.get("ConnectorVersion")
+        self._ConnectorName = params.get("ConnectorName")
+        self._ConnectorVersion = params.get("ConnectorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,7 +70,7 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectorParameter: 连接器配置参数描述（json结构），示例如下：
+        :param _ConnectorParameter: 连接器配置参数描述（json结构），示例如下：
 {
     "attributes":{
         "description":"测试", // 连接器的描述
@@ -229,16 +246,32 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
     ]
 }
         :type ConnectorParameter: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ConnectorParameter = None
-        self.RequestId = None
+        self._ConnectorParameter = None
+        self._RequestId = None
+
+    @property
+    def ConnectorParameter(self):
+        return self._ConnectorParameter
+
+    @ConnectorParameter.setter
+    def ConnectorParameter(self, ConnectorParameter):
+        self._ConnectorParameter = ConnectorParameter
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ConnectorParameter = params.get("ConnectorParameter")
-        self.RequestId = params.get("RequestId")
+        self._ConnectorParameter = params.get("ConnectorParameter")
+        self._RequestId = params.get("RequestId")
 
 
 class EisConnectionOperation(AbstractModel):
@@ -248,26 +281,51 @@ class EisConnectionOperation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OperationName: 连接器操作名称
+        :param _OperationName: 连接器操作名称
         :type OperationName: str
-        :param DisplayName: 连接器展示名称
+        :param _DisplayName: 连接器展示名称
         :type DisplayName: str
-        :param IsTrigger: 操作是否为触发器
+        :param _IsTrigger: 操作是否为触发器
         :type IsTrigger: bool
         """
-        self.OperationName = None
-        self.DisplayName = None
-        self.IsTrigger = None
+        self._OperationName = None
+        self._DisplayName = None
+        self._IsTrigger = None
+
+    @property
+    def OperationName(self):
+        return self._OperationName
+
+    @OperationName.setter
+    def OperationName(self, OperationName):
+        self._OperationName = OperationName
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def IsTrigger(self):
+        return self._IsTrigger
+
+    @IsTrigger.setter
+    def IsTrigger(self, IsTrigger):
+        self._IsTrigger = IsTrigger
 
 
     def _deserialize(self, params):
-        self.OperationName = params.get("OperationName")
-        self.DisplayName = params.get("DisplayName")
-        self.IsTrigger = params.get("IsTrigger")
+        self._OperationName = params.get("OperationName")
+        self._DisplayName = params.get("DisplayName")
+        self._IsTrigger = params.get("IsTrigger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -280,38 +338,87 @@ class EisConnectorSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectorName: 连接器名称
+        :param _ConnectorName: 连接器名称
         :type ConnectorName: str
-        :param DisplayName: 连接器展示名称
+        :param _DisplayName: 连接器展示名称
         :type DisplayName: str
-        :param Company: 连接器对应企业
+        :param _Company: 连接器对应企业
         :type Company: str
-        :param Product: 连接器对应产品
+        :param _Product: 连接器对应产品
         :type Product: str
-        :param ConnectorVersion: 连接器版本
+        :param _ConnectorVersion: 连接器版本
         :type ConnectorVersion: str
-        :param CreateTime: 连接器创建时间
+        :param _CreateTime: 连接器创建时间
         :type CreateTime: int
         """
-        self.ConnectorName = None
-        self.DisplayName = None
-        self.Company = None
-        self.Product = None
-        self.ConnectorVersion = None
-        self.CreateTime = None
+        self._ConnectorName = None
+        self._DisplayName = None
+        self._Company = None
+        self._Product = None
+        self._ConnectorVersion = None
+        self._CreateTime = None
+
+    @property
+    def ConnectorName(self):
+        return self._ConnectorName
+
+    @ConnectorName.setter
+    def ConnectorName(self, ConnectorName):
+        self._ConnectorName = ConnectorName
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Company(self):
+        return self._Company
+
+    @Company.setter
+    def Company(self, Company):
+        self._Company = Company
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ConnectorVersion(self):
+        return self._ConnectorVersion
+
+    @ConnectorVersion.setter
+    def ConnectorVersion(self, ConnectorVersion):
+        self._ConnectorVersion = ConnectorVersion
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.ConnectorName = params.get("ConnectorName")
-        self.DisplayName = params.get("DisplayName")
-        self.Company = params.get("Company")
-        self.Product = params.get("Product")
-        self.ConnectorVersion = params.get("ConnectorVersion")
-        self.CreateTime = params.get("CreateTime")
+        self._ConnectorName = params.get("ConnectorName")
+        self._DisplayName = params.get("DisplayName")
+        self._Company = params.get("Company")
+        self._Product = params.get("Product")
+        self._ConnectorVersion = params.get("ConnectorVersion")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -324,22 +431,39 @@ class ListEisConnectorOperationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectorName: 连接器名称
+        :param _ConnectorName: 连接器名称
         :type ConnectorName: str
-        :param ConnectorVersion: 连接器版本
+        :param _ConnectorVersion: 连接器版本
         :type ConnectorVersion: str
         """
-        self.ConnectorName = None
-        self.ConnectorVersion = None
+        self._ConnectorName = None
+        self._ConnectorVersion = None
+
+    @property
+    def ConnectorName(self):
+        return self._ConnectorName
+
+    @ConnectorName.setter
+    def ConnectorName(self, ConnectorName):
+        self._ConnectorName = ConnectorName
+
+    @property
+    def ConnectorVersion(self):
+        return self._ConnectorVersion
+
+    @ConnectorVersion.setter
+    def ConnectorVersion(self, ConnectorVersion):
+        self._ConnectorVersion = ConnectorVersion
 
 
     def _deserialize(self, params):
-        self.ConnectorName = params.get("ConnectorName")
-        self.ConnectorVersion = params.get("ConnectorVersion")
+        self._ConnectorName = params.get("ConnectorName")
+        self._ConnectorVersion = params.get("ConnectorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -352,23 +476,39 @@ class ListEisConnectorOperationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operations: 连接器列表
+        :param _Operations: 连接器列表
         :type Operations: list of EisConnectionOperation
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Operations = None
-        self.RequestId = None
+        self._Operations = None
+        self._RequestId = None
+
+    @property
+    def Operations(self):
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Operations") is not None:
-            self.Operations = []
+            self._Operations = []
             for item in params.get("Operations"):
                 obj = EisConnectionOperation()
                 obj._deserialize(item)
-                self.Operations.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Operations.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListEisConnectorsRequest(AbstractModel):
@@ -378,26 +518,51 @@ class ListEisConnectorsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectorName: 连接器名称,非必输，如输入则按照输入值模糊匹配
+        :param _ConnectorName: 连接器名称,非必输，如输入则按照输入值模糊匹配
         :type ConnectorName: str
-        :param Offset: 分页参数,数据偏移量
+        :param _Offset: 分页参数,数据偏移量
         :type Offset: int
-        :param Limit: 分页参数,每页显示的条数
+        :param _Limit: 分页参数,每页显示的条数
         :type Limit: int
         """
-        self.ConnectorName = None
-        self.Offset = None
-        self.Limit = None
+        self._ConnectorName = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ConnectorName(self):
+        return self._ConnectorName
+
+    @ConnectorName.setter
+    def ConnectorName(self, ConnectorName):
+        self._ConnectorName = ConnectorName
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ConnectorName = params.get("ConnectorName")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._ConnectorName = params.get("ConnectorName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -410,24 +575,48 @@ class ListEisConnectorsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 连接器总数
+        :param _TotalCount: 连接器总数
         :type TotalCount: int
-        :param Connectors: 连接器列表
+        :param _Connectors: 连接器列表
         :type Connectors: list of EisConnectorSummary
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Connectors = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Connectors = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Connectors(self):
+        return self._Connectors
+
+    @Connectors.setter
+    def Connectors(self, Connectors):
+        self._Connectors = Connectors
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Connectors") is not None:
-            self.Connectors = []
+            self._Connectors = []
             for item in params.get("Connectors"):
                 obj = EisConnectorSummary()
                 obj._deserialize(item)
-                self.Connectors.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Connectors.append(obj)
+        self._RequestId = params.get("RequestId")

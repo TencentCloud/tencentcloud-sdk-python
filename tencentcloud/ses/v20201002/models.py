@@ -25,22 +25,39 @@ class Attachment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileName: 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
+        :param _FileName: 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
         :type FileName: str
-        :param Content: Base64之后的附件内容，你可以发送的附件大小上限为4M。注意：腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍。应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 接口会返回错误。
+        :param _Content: Base64之后的附件内容，你可以发送的附件大小上限为4M。注意：腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍。应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 接口会返回错误。
         :type Content: str
         """
-        self.FileName = None
-        self.Content = None
+        self._FileName = None
+        self._Content = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.FileName = params.get("FileName")
-        self.Content = params.get("Content")
+        self._FileName = params.get("FileName")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,77 +70,174 @@ class BatchSendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
+        :param _FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
 发信人 &lt;邮件地址&gt; 的方式填写，例如：
 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
         :type FromEmailAddress: str
-        :param ReceiverId: 收件人列表ID
+        :param _ReceiverId: 收件人列表ID
         :type ReceiverId: int
-        :param Subject: 邮件主题
+        :param _Subject: 邮件主题
         :type Subject: str
-        :param TaskType: 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
+        :param _TaskType: 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
         :type TaskType: int
-        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        :param _ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
         :type ReplyToAddresses: str
-        :param Template: 使用模板发送时，填写的模板相关参数
+        :param _Template: 使用模板发送时，填写的模板相关参数
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param Simple: 已废弃
+        :param _Simple: 已废弃
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param Attachments: 需要发送附件时，填写附件相关参数（暂未支持）
+        :param _Attachments: 需要发送附件时，填写附件相关参数（暂未支持）
         :type Attachments: list of Attachment
-        :param CycleParam: 周期发送任务的必要参数
+        :param _CycleParam: 周期发送任务的必要参数
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
-        :param TimedParam: 定时发送任务的必要参数
+        :param _TimedParam: 定时发送任务的必要参数
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
-        :param Unsubscribe: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :param _Unsubscribe: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
         :type Unsubscribe: str
-        :param ADLocation: 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+        :param _ADLocation: 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
         :type ADLocation: int
         """
-        self.FromEmailAddress = None
-        self.ReceiverId = None
-        self.Subject = None
-        self.TaskType = None
-        self.ReplyToAddresses = None
-        self.Template = None
-        self.Simple = None
-        self.Attachments = None
-        self.CycleParam = None
-        self.TimedParam = None
-        self.Unsubscribe = None
-        self.ADLocation = None
+        self._FromEmailAddress = None
+        self._ReceiverId = None
+        self._Subject = None
+        self._TaskType = None
+        self._ReplyToAddresses = None
+        self._Template = None
+        self._Simple = None
+        self._Attachments = None
+        self._CycleParam = None
+        self._TimedParam = None
+        self._Unsubscribe = None
+        self._ADLocation = None
+
+    @property
+    def FromEmailAddress(self):
+        return self._FromEmailAddress
+
+    @FromEmailAddress.setter
+    def FromEmailAddress(self, FromEmailAddress):
+        self._FromEmailAddress = FromEmailAddress
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def Subject(self):
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ReplyToAddresses(self):
+        return self._ReplyToAddresses
+
+    @ReplyToAddresses.setter
+    def ReplyToAddresses(self, ReplyToAddresses):
+        self._ReplyToAddresses = ReplyToAddresses
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def Simple(self):
+        return self._Simple
+
+    @Simple.setter
+    def Simple(self, Simple):
+        self._Simple = Simple
+
+    @property
+    def Attachments(self):
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+    @property
+    def CycleParam(self):
+        return self._CycleParam
+
+    @CycleParam.setter
+    def CycleParam(self, CycleParam):
+        self._CycleParam = CycleParam
+
+    @property
+    def TimedParam(self):
+        return self._TimedParam
+
+    @TimedParam.setter
+    def TimedParam(self, TimedParam):
+        self._TimedParam = TimedParam
+
+    @property
+    def Unsubscribe(self):
+        return self._Unsubscribe
+
+    @Unsubscribe.setter
+    def Unsubscribe(self, Unsubscribe):
+        self._Unsubscribe = Unsubscribe
+
+    @property
+    def ADLocation(self):
+        return self._ADLocation
+
+    @ADLocation.setter
+    def ADLocation(self, ADLocation):
+        self._ADLocation = ADLocation
 
 
     def _deserialize(self, params):
-        self.FromEmailAddress = params.get("FromEmailAddress")
-        self.ReceiverId = params.get("ReceiverId")
-        self.Subject = params.get("Subject")
-        self.TaskType = params.get("TaskType")
-        self.ReplyToAddresses = params.get("ReplyToAddresses")
+        self._FromEmailAddress = params.get("FromEmailAddress")
+        self._ReceiverId = params.get("ReceiverId")
+        self._Subject = params.get("Subject")
+        self._TaskType = params.get("TaskType")
+        self._ReplyToAddresses = params.get("ReplyToAddresses")
         if params.get("Template") is not None:
-            self.Template = Template()
-            self.Template._deserialize(params.get("Template"))
+            self._Template = Template()
+            self._Template._deserialize(params.get("Template"))
         if params.get("Simple") is not None:
-            self.Simple = Simple()
-            self.Simple._deserialize(params.get("Simple"))
+            self._Simple = Simple()
+            self._Simple._deserialize(params.get("Simple"))
         if params.get("Attachments") is not None:
-            self.Attachments = []
+            self._Attachments = []
             for item in params.get("Attachments"):
                 obj = Attachment()
                 obj._deserialize(item)
-                self.Attachments.append(obj)
+                self._Attachments.append(obj)
         if params.get("CycleParam") is not None:
-            self.CycleParam = CycleEmailParam()
-            self.CycleParam._deserialize(params.get("CycleParam"))
+            self._CycleParam = CycleEmailParam()
+            self._CycleParam._deserialize(params.get("CycleParam"))
         if params.get("TimedParam") is not None:
-            self.TimedParam = TimedEmailParam()
-            self.TimedParam._deserialize(params.get("TimedParam"))
-        self.Unsubscribe = params.get("Unsubscribe")
-        self.ADLocation = params.get("ADLocation")
+            self._TimedParam = TimedEmailParam()
+            self._TimedParam._deserialize(params.get("TimedParam"))
+        self._Unsubscribe = params.get("Unsubscribe")
+        self._ADLocation = params.get("ADLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -136,18 +250,34 @@ class BatchSendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 发送任务ID
+        :param _TaskId: 发送任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class BlackEmailAddress(AbstractModel):
@@ -157,22 +287,39 @@ class BlackEmailAddress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BounceTime: 邮箱被拉黑时间
+        :param _BounceTime: 邮箱被拉黑时间
         :type BounceTime: str
-        :param EmailAddress: 被拉黑的邮箱地址
+        :param _EmailAddress: 被拉黑的邮箱地址
         :type EmailAddress: str
         """
-        self.BounceTime = None
-        self.EmailAddress = None
+        self._BounceTime = None
+        self._EmailAddress = None
+
+    @property
+    def BounceTime(self):
+        return self._BounceTime
+
+    @BounceTime.setter
+    def BounceTime(self, BounceTime):
+        self._BounceTime = BounceTime
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
 
 
     def _deserialize(self, params):
-        self.BounceTime = params.get("BounceTime")
-        self.EmailAddress = params.get("EmailAddress")
+        self._BounceTime = params.get("BounceTime")
+        self._EmailAddress = params.get("EmailAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -185,22 +332,39 @@ class CreateEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailAddress: 您的发信地址（发信地址总数上限为10个）
+        :param _EmailAddress: 您的发信地址（发信地址总数上限为10个）
         :type EmailAddress: str
-        :param EmailSenderName: 发件人别名
+        :param _EmailSenderName: 发件人别名
         :type EmailSenderName: str
         """
-        self.EmailAddress = None
-        self.EmailSenderName = None
+        self._EmailAddress = None
+        self._EmailSenderName = None
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
+
+    @property
+    def EmailSenderName(self):
+        return self._EmailSenderName
+
+    @EmailSenderName.setter
+    def EmailSenderName(self, EmailSenderName):
+        self._EmailSenderName = EmailSenderName
 
 
     def _deserialize(self, params):
-        self.EmailAddress = params.get("EmailAddress")
-        self.EmailSenderName = params.get("EmailSenderName")
+        self._EmailAddress = params.get("EmailAddress")
+        self._EmailSenderName = params.get("EmailSenderName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -213,14 +377,22 @@ class CreateEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEmailIdentityRequest(AbstractModel):
@@ -230,18 +402,27 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
+        :param _EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
         :type EmailIdentity: str
         """
-        self.EmailIdentity = None
+        self._EmailIdentity = None
+
+    @property
+    def EmailIdentity(self):
+        return self._EmailIdentity
+
+    @EmailIdentity.setter
+    def EmailIdentity(self, EmailIdentity):
+        self._EmailIdentity = EmailIdentity
 
 
     def _deserialize(self, params):
-        self.EmailIdentity = params.get("EmailIdentity")
+        self._EmailIdentity = params.get("EmailIdentity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -254,31 +435,63 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityType: 验证类型。固定值：DOMAIN
+        :param _IdentityType: 验证类型。固定值：DOMAIN
         :type IdentityType: str
-        :param VerifiedForSendingStatus: 是否已通过验证
+        :param _VerifiedForSendingStatus: 是否已通过验证
         :type VerifiedForSendingStatus: bool
-        :param Attributes: 需要配置的DNS信息
+        :param _Attributes: 需要配置的DNS信息
         :type Attributes: list of DNSAttributes
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IdentityType = None
-        self.VerifiedForSendingStatus = None
-        self.Attributes = None
-        self.RequestId = None
+        self._IdentityType = None
+        self._VerifiedForSendingStatus = None
+        self._Attributes = None
+        self._RequestId = None
+
+    @property
+    def IdentityType(self):
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
+
+    @property
+    def VerifiedForSendingStatus(self):
+        return self._VerifiedForSendingStatus
+
+    @VerifiedForSendingStatus.setter
+    def VerifiedForSendingStatus(self, VerifiedForSendingStatus):
+        self._VerifiedForSendingStatus = VerifiedForSendingStatus
+
+    @property
+    def Attributes(self):
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IdentityType = params.get("IdentityType")
-        self.VerifiedForSendingStatus = params.get("VerifiedForSendingStatus")
+        self._IdentityType = params.get("IdentityType")
+        self._VerifiedForSendingStatus = params.get("VerifiedForSendingStatus")
         if params.get("Attributes") is not None:
-            self.Attributes = []
+            self._Attributes = []
             for item in params.get("Attributes"):
                 obj = DNSAttributes()
                 obj._deserialize(item)
-                self.Attributes.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Attributes.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEmailTemplateRequest(AbstractModel):
@@ -288,24 +501,41 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: 模板名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param TemplateContent: 模板内容
+        :param _TemplateContent: 模板内容
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
-        self.TemplateName = None
-        self.TemplateContent = None
+        self._TemplateName = None
+        self._TemplateContent = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
+        self._TemplateName = params.get("TemplateName")
         if params.get("TemplateContent") is not None:
-            self.TemplateContent = TemplateContent()
-            self.TemplateContent._deserialize(params.get("TemplateContent"))
+            self._TemplateContent = TemplateContent()
+            self._TemplateContent._deserialize(params.get("TemplateContent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -318,18 +548,34 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateID: 模板id
+        :param _TemplateID: 模板id
         :type TemplateID: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TemplateID = None
-        self.RequestId = None
+        self._TemplateID = None
+        self._RequestId = None
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TemplateID = params.get("TemplateID")
-        self.RequestId = params.get("RequestId")
+        self._TemplateID = params.get("TemplateID")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateReceiverDetailRequest(AbstractModel):
@@ -339,22 +585,39 @@ class CreateReceiverDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReceiverId: 收件人列表ID
+        :param _ReceiverId: 收件人列表ID
         :type ReceiverId: int
-        :param Emails: 邮箱
+        :param _Emails: 邮箱
         :type Emails: list of str
         """
-        self.ReceiverId = None
-        self.Emails = None
+        self._ReceiverId = None
+        self._Emails = None
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def Emails(self):
+        return self._Emails
+
+    @Emails.setter
+    def Emails(self, Emails):
+        self._Emails = Emails
 
 
     def _deserialize(self, params):
-        self.ReceiverId = params.get("ReceiverId")
-        self.Emails = params.get("Emails")
+        self._ReceiverId = params.get("ReceiverId")
+        self._Emails = params.get("Emails")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -367,14 +630,22 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateReceiverDetailWithDataRequest(AbstractModel):
@@ -384,27 +655,44 @@ class CreateReceiverDetailWithDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReceiverId: 收件人列表ID
+        :param _ReceiverId: 收件人列表ID
         :type ReceiverId: int
-        :param Datas: 收信人邮箱以及模板参数，数组形式。收件人个数限制20000个以内。
+        :param _Datas: 收信人邮箱以及模板参数，数组形式。收件人个数限制20000个以内。
         :type Datas: list of ReceiverInputData
         """
-        self.ReceiverId = None
-        self.Datas = None
+        self._ReceiverId = None
+        self._Datas = None
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def Datas(self):
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
 
 
     def _deserialize(self, params):
-        self.ReceiverId = params.get("ReceiverId")
+        self._ReceiverId = params.get("ReceiverId")
         if params.get("Datas") is not None:
-            self.Datas = []
+            self._Datas = []
             for item in params.get("Datas"):
                 obj = ReceiverInputData()
                 obj._deserialize(item)
-                self.Datas.append(obj)
+                self._Datas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -417,14 +705,22 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateReceiverRequest(AbstractModel):
@@ -434,22 +730,39 @@ class CreateReceiverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReceiversName: 收件人列表名称
+        :param _ReceiversName: 收件人列表名称
         :type ReceiversName: str
-        :param Desc: 收件人列表描述
+        :param _Desc: 收件人列表描述
         :type Desc: str
         """
-        self.ReceiversName = None
-        self.Desc = None
+        self._ReceiversName = None
+        self._Desc = None
+
+    @property
+    def ReceiversName(self):
+        return self._ReceiversName
+
+    @ReceiversName.setter
+    def ReceiversName(self, ReceiversName):
+        self._ReceiversName = ReceiversName
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
 
 
     def _deserialize(self, params):
-        self.ReceiversName = params.get("ReceiversName")
-        self.Desc = params.get("Desc")
+        self._ReceiversName = params.get("ReceiversName")
+        self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -462,18 +775,34 @@ class CreateReceiverResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReceiverId: 收件人列表id，后续根据收件人列表id上传收件人地址
+        :param _ReceiverId: 收件人列表id，后续根据收件人列表id上传收件人地址
         :type ReceiverId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ReceiverId = None
-        self.RequestId = None
+        self._ReceiverId = None
+        self._RequestId = None
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ReceiverId = params.get("ReceiverId")
-        self.RequestId = params.get("RequestId")
+        self._ReceiverId = params.get("ReceiverId")
+        self._RequestId = params.get("RequestId")
 
 
 class CycleEmailParam(AbstractModel):
@@ -483,26 +812,51 @@ class CycleEmailParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BeginTime: 任务开始时间
+        :param _BeginTime: 任务开始时间
         :type BeginTime: str
-        :param IntervalTime: 任务周期 小时维度
+        :param _IntervalTime: 任务周期 小时维度
         :type IntervalTime: int
-        :param TermCycle: 是否终止周期，用于任务更新 0否1是
+        :param _TermCycle: 是否终止周期，用于任务更新 0否1是
         :type TermCycle: int
         """
-        self.BeginTime = None
-        self.IntervalTime = None
-        self.TermCycle = None
+        self._BeginTime = None
+        self._IntervalTime = None
+        self._TermCycle = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def IntervalTime(self):
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def TermCycle(self):
+        return self._TermCycle
+
+    @TermCycle.setter
+    def TermCycle(self, TermCycle):
+        self._TermCycle = TermCycle
 
 
     def _deserialize(self, params):
-        self.BeginTime = params.get("BeginTime")
-        self.IntervalTime = params.get("IntervalTime")
-        self.TermCycle = params.get("TermCycle")
+        self._BeginTime = params.get("BeginTime")
+        self._IntervalTime = params.get("IntervalTime")
+        self._TermCycle = params.get("TermCycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -515,34 +869,75 @@ class DNSAttributes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 记录类型 CNAME | A | TXT | MX
+        :param _Type: 记录类型 CNAME | A | TXT | MX
         :type Type: str
-        :param SendDomain: 域名
+        :param _SendDomain: 域名
         :type SendDomain: str
-        :param ExpectedValue: 需要配置的值
+        :param _ExpectedValue: 需要配置的值
         :type ExpectedValue: str
-        :param CurrentValue: 腾讯云目前检测到的值
+        :param _CurrentValue: 腾讯云目前检测到的值
         :type CurrentValue: str
-        :param Status: 检测是否通过，创建时默认为false
+        :param _Status: 检测是否通过，创建时默认为false
         :type Status: bool
         """
-        self.Type = None
-        self.SendDomain = None
-        self.ExpectedValue = None
-        self.CurrentValue = None
-        self.Status = None
+        self._Type = None
+        self._SendDomain = None
+        self._ExpectedValue = None
+        self._CurrentValue = None
+        self._Status = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SendDomain(self):
+        return self._SendDomain
+
+    @SendDomain.setter
+    def SendDomain(self, SendDomain):
+        self._SendDomain = SendDomain
+
+    @property
+    def ExpectedValue(self):
+        return self._ExpectedValue
+
+    @ExpectedValue.setter
+    def ExpectedValue(self, ExpectedValue):
+        self._ExpectedValue = ExpectedValue
+
+    @property
+    def CurrentValue(self):
+        return self._CurrentValue
+
+    @CurrentValue.setter
+    def CurrentValue(self, CurrentValue):
+        self._CurrentValue = CurrentValue
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.SendDomain = params.get("SendDomain")
-        self.ExpectedValue = params.get("ExpectedValue")
-        self.CurrentValue = params.get("CurrentValue")
-        self.Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._SendDomain = params.get("SendDomain")
+        self._ExpectedValue = params.get("ExpectedValue")
+        self._CurrentValue = params.get("CurrentValue")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -555,18 +950,27 @@ class DeleteBlackListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailAddressList: 需要清除的黑名单邮箱列表，数组长度至少为1
+        :param _EmailAddressList: 需要清除的黑名单邮箱列表，数组长度至少为1
         :type EmailAddressList: list of str
         """
-        self.EmailAddressList = None
+        self._EmailAddressList = None
+
+    @property
+    def EmailAddressList(self):
+        return self._EmailAddressList
+
+    @EmailAddressList.setter
+    def EmailAddressList(self, EmailAddressList):
+        self._EmailAddressList = EmailAddressList
 
 
     def _deserialize(self, params):
-        self.EmailAddressList = params.get("EmailAddressList")
+        self._EmailAddressList = params.get("EmailAddressList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -579,14 +983,22 @@ class DeleteBlackListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteEmailAddressRequest(AbstractModel):
@@ -596,18 +1008,27 @@ class DeleteEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailAddress: 发信地址
+        :param _EmailAddress: 发信地址
         :type EmailAddress: str
         """
-        self.EmailAddress = None
+        self._EmailAddress = None
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
 
 
     def _deserialize(self, params):
-        self.EmailAddress = params.get("EmailAddress")
+        self._EmailAddress = params.get("EmailAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -620,14 +1041,22 @@ class DeleteEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteEmailIdentityRequest(AbstractModel):
@@ -637,18 +1066,27 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailIdentity: 发信域名
+        :param _EmailIdentity: 发信域名
         :type EmailIdentity: str
         """
-        self.EmailIdentity = None
+        self._EmailIdentity = None
+
+    @property
+    def EmailIdentity(self):
+        return self._EmailIdentity
+
+    @EmailIdentity.setter
+    def EmailIdentity(self, EmailIdentity):
+        self._EmailIdentity = EmailIdentity
 
 
     def _deserialize(self, params):
-        self.EmailIdentity = params.get("EmailIdentity")
+        self._EmailIdentity = params.get("EmailIdentity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -661,14 +1099,22 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteEmailTemplateRequest(AbstractModel):
@@ -678,18 +1124,27 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateID: 模板ID
+        :param _TemplateID: 模板ID
         :type TemplateID: int
         """
-        self.TemplateID = None
+        self._TemplateID = None
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
 
 
     def _deserialize(self, params):
-        self.TemplateID = params.get("TemplateID")
+        self._TemplateID = params.get("TemplateID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -702,14 +1157,22 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteReceiverRequest(AbstractModel):
@@ -719,18 +1182,27 @@ class DeleteReceiverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReceiverId: 收件人列表id，创建收件人列表时会返回
+        :param _ReceiverId: 收件人列表id，创建收件人列表时会返回
         :type ReceiverId: int
         """
-        self.ReceiverId = None
+        self._ReceiverId = None
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
 
 
     def _deserialize(self, params):
-        self.ReceiverId = params.get("ReceiverId")
+        self._ReceiverId = params.get("ReceiverId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -743,14 +1215,22 @@ class DeleteReceiverResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class EmailIdentity(AbstractModel):
@@ -760,34 +1240,75 @@ class EmailIdentity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityName: 发信域名
+        :param _IdentityName: 发信域名
         :type IdentityName: str
-        :param IdentityType: 验证类型，固定为DOMAIN
+        :param _IdentityType: 验证类型，固定为DOMAIN
         :type IdentityType: str
-        :param SendingEnabled: 是否已通过验证
+        :param _SendingEnabled: 是否已通过验证
         :type SendingEnabled: bool
-        :param CurrentReputationLevel: 当前信誉等级
+        :param _CurrentReputationLevel: 当前信誉等级
         :type CurrentReputationLevel: int
-        :param DailyQuota: 当日最高发信量
+        :param _DailyQuota: 当日最高发信量
         :type DailyQuota: int
         """
-        self.IdentityName = None
-        self.IdentityType = None
-        self.SendingEnabled = None
-        self.CurrentReputationLevel = None
-        self.DailyQuota = None
+        self._IdentityName = None
+        self._IdentityType = None
+        self._SendingEnabled = None
+        self._CurrentReputationLevel = None
+        self._DailyQuota = None
+
+    @property
+    def IdentityName(self):
+        return self._IdentityName
+
+    @IdentityName.setter
+    def IdentityName(self, IdentityName):
+        self._IdentityName = IdentityName
+
+    @property
+    def IdentityType(self):
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
+
+    @property
+    def SendingEnabled(self):
+        return self._SendingEnabled
+
+    @SendingEnabled.setter
+    def SendingEnabled(self, SendingEnabled):
+        self._SendingEnabled = SendingEnabled
+
+    @property
+    def CurrentReputationLevel(self):
+        return self._CurrentReputationLevel
+
+    @CurrentReputationLevel.setter
+    def CurrentReputationLevel(self, CurrentReputationLevel):
+        self._CurrentReputationLevel = CurrentReputationLevel
+
+    @property
+    def DailyQuota(self):
+        return self._DailyQuota
+
+    @DailyQuota.setter
+    def DailyQuota(self, DailyQuota):
+        self._DailyQuota = DailyQuota
 
 
     def _deserialize(self, params):
-        self.IdentityName = params.get("IdentityName")
-        self.IdentityType = params.get("IdentityType")
-        self.SendingEnabled = params.get("SendingEnabled")
-        self.CurrentReputationLevel = params.get("CurrentReputationLevel")
-        self.DailyQuota = params.get("DailyQuota")
+        self._IdentityName = params.get("IdentityName")
+        self._IdentityType = params.get("IdentityType")
+        self._SendingEnabled = params.get("SendingEnabled")
+        self._CurrentReputationLevel = params.get("CurrentReputationLevel")
+        self._DailyQuota = params.get("DailyQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -800,28 +1321,53 @@ class EmailSender(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailAddress: 发信地址
+        :param _EmailAddress: 发信地址
         :type EmailAddress: str
-        :param EmailSenderName: 发信人别名
+        :param _EmailSenderName: 发信人别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmailSenderName: str
-        :param CreatedTimestamp: 创建时间
+        :param _CreatedTimestamp: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTimestamp: int
         """
-        self.EmailAddress = None
-        self.EmailSenderName = None
-        self.CreatedTimestamp = None
+        self._EmailAddress = None
+        self._EmailSenderName = None
+        self._CreatedTimestamp = None
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
+
+    @property
+    def EmailSenderName(self):
+        return self._EmailSenderName
+
+    @EmailSenderName.setter
+    def EmailSenderName(self, EmailSenderName):
+        self._EmailSenderName = EmailSenderName
+
+    @property
+    def CreatedTimestamp(self):
+        return self._CreatedTimestamp
+
+    @CreatedTimestamp.setter
+    def CreatedTimestamp(self, CreatedTimestamp):
+        self._CreatedTimestamp = CreatedTimestamp
 
 
     def _deserialize(self, params):
-        self.EmailAddress = params.get("EmailAddress")
-        self.EmailSenderName = params.get("EmailSenderName")
-        self.CreatedTimestamp = params.get("CreatedTimestamp")
+        self._EmailAddress = params.get("EmailAddress")
+        self._EmailSenderName = params.get("EmailSenderName")
+        self._CreatedTimestamp = params.get("CreatedTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -834,18 +1380,27 @@ class GetEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailIdentity: 发信域名
+        :param _EmailIdentity: 发信域名
         :type EmailIdentity: str
         """
-        self.EmailIdentity = None
+        self._EmailIdentity = None
+
+    @property
+    def EmailIdentity(self):
+        return self._EmailIdentity
+
+    @EmailIdentity.setter
+    def EmailIdentity(self, EmailIdentity):
+        self._EmailIdentity = EmailIdentity
 
 
     def _deserialize(self, params):
-        self.EmailIdentity = params.get("EmailIdentity")
+        self._EmailIdentity = params.get("EmailIdentity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -858,31 +1413,63 @@ class GetEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityType: 验证类型。固定值：DOMAIN
+        :param _IdentityType: 验证类型。固定值：DOMAIN
         :type IdentityType: str
-        :param VerifiedForSendingStatus: 是否已通过验证
+        :param _VerifiedForSendingStatus: 是否已通过验证
         :type VerifiedForSendingStatus: bool
-        :param Attributes: DNS配置详情
+        :param _Attributes: DNS配置详情
         :type Attributes: list of DNSAttributes
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IdentityType = None
-        self.VerifiedForSendingStatus = None
-        self.Attributes = None
-        self.RequestId = None
+        self._IdentityType = None
+        self._VerifiedForSendingStatus = None
+        self._Attributes = None
+        self._RequestId = None
+
+    @property
+    def IdentityType(self):
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
+
+    @property
+    def VerifiedForSendingStatus(self):
+        return self._VerifiedForSendingStatus
+
+    @VerifiedForSendingStatus.setter
+    def VerifiedForSendingStatus(self, VerifiedForSendingStatus):
+        self._VerifiedForSendingStatus = VerifiedForSendingStatus
+
+    @property
+    def Attributes(self):
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IdentityType = params.get("IdentityType")
-        self.VerifiedForSendingStatus = params.get("VerifiedForSendingStatus")
+        self._IdentityType = params.get("IdentityType")
+        self._VerifiedForSendingStatus = params.get("VerifiedForSendingStatus")
         if params.get("Attributes") is not None:
-            self.Attributes = []
+            self._Attributes = []
             for item in params.get("Attributes"):
                 obj = DNSAttributes()
                 obj._deserialize(item)
-                self.Attributes.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Attributes.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetEmailTemplateRequest(AbstractModel):
@@ -892,18 +1479,27 @@ class GetEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateID: 模板ID
+        :param _TemplateID: 模板ID
         :type TemplateID: int
         """
-        self.TemplateID = None
+        self._TemplateID = None
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
 
 
     def _deserialize(self, params):
-        self.TemplateID = params.get("TemplateID")
+        self._TemplateID = params.get("TemplateID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -916,28 +1512,60 @@ class GetEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateContent: 模板内容数据
+        :param _TemplateContent: 模板内容数据
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
-        :param TemplateStatus: 模板状态 0-审核通过 1-待审核 2-审核拒绝
+        :param _TemplateStatus: 模板状态 0-审核通过 1-待审核 2-审核拒绝
         :type TemplateStatus: int
-        :param TemplateName: 模板名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TemplateContent = None
-        self.TemplateStatus = None
-        self.TemplateName = None
-        self.RequestId = None
+        self._TemplateContent = None
+        self._TemplateStatus = None
+        self._TemplateName = None
+        self._RequestId = None
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
+
+    @property
+    def TemplateStatus(self):
+        return self._TemplateStatus
+
+    @TemplateStatus.setter
+    def TemplateStatus(self, TemplateStatus):
+        self._TemplateStatus = TemplateStatus
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TemplateContent") is not None:
-            self.TemplateContent = TemplateContent()
-            self.TemplateContent._deserialize(params.get("TemplateContent"))
-        self.TemplateStatus = params.get("TemplateStatus")
-        self.TemplateName = params.get("TemplateName")
-        self.RequestId = params.get("RequestId")
+            self._TemplateContent = TemplateContent()
+            self._TemplateContent._deserialize(params.get("TemplateContent"))
+        self._TemplateStatus = params.get("TemplateStatus")
+        self._TemplateName = params.get("TemplateName")
+        self._RequestId = params.get("RequestId")
 
 
 class GetSendEmailStatusRequest(AbstractModel):
@@ -947,34 +1575,75 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestDate: 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
+        :param _RequestDate: 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
         :type RequestDate: str
-        :param Offset: 偏移量。默认为0
+        :param _Offset: 偏移量。默认为0
         :type Offset: int
-        :param Limit: 拉取最大条数，最多 100。
+        :param _Limit: 拉取最大条数，最多 100。
         :type Limit: int
-        :param MessageId: SendMail接口返回的MessageId字段。
+        :param _MessageId: SendMail接口返回的MessageId字段。
         :type MessageId: str
-        :param ToEmailAddress: 收件人邮箱。
+        :param _ToEmailAddress: 收件人邮箱。
         :type ToEmailAddress: str
         """
-        self.RequestDate = None
-        self.Offset = None
-        self.Limit = None
-        self.MessageId = None
-        self.ToEmailAddress = None
+        self._RequestDate = None
+        self._Offset = None
+        self._Limit = None
+        self._MessageId = None
+        self._ToEmailAddress = None
+
+    @property
+    def RequestDate(self):
+        return self._RequestDate
+
+    @RequestDate.setter
+    def RequestDate(self, RequestDate):
+        self._RequestDate = RequestDate
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def MessageId(self):
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def ToEmailAddress(self):
+        return self._ToEmailAddress
+
+    @ToEmailAddress.setter
+    def ToEmailAddress(self, ToEmailAddress):
+        self._ToEmailAddress = ToEmailAddress
 
 
     def _deserialize(self, params):
-        self.RequestDate = params.get("RequestDate")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.MessageId = params.get("MessageId")
-        self.ToEmailAddress = params.get("ToEmailAddress")
+        self._RequestDate = params.get("RequestDate")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._MessageId = params.get("MessageId")
+        self._ToEmailAddress = params.get("ToEmailAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -987,23 +1656,39 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailStatusList: 邮件发送状态列表
+        :param _EmailStatusList: 邮件发送状态列表
         :type EmailStatusList: list of SendEmailStatus
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EmailStatusList = None
-        self.RequestId = None
+        self._EmailStatusList = None
+        self._RequestId = None
+
+    @property
+    def EmailStatusList(self):
+        return self._EmailStatusList
+
+    @EmailStatusList.setter
+    def EmailStatusList(self, EmailStatusList):
+        self._EmailStatusList = EmailStatusList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EmailStatusList") is not None:
-            self.EmailStatusList = []
+            self._EmailStatusList = []
             for item in params.get("EmailStatusList"):
                 obj = SendEmailStatus()
                 obj._deserialize(item)
-                self.EmailStatusList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EmailStatusList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetStatisticsReportRequest(AbstractModel):
@@ -1013,30 +1698,63 @@ class GetStatisticsReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartDate: 开始日期
+        :param _StartDate: 开始日期
         :type StartDate: str
-        :param EndDate: 结束日期
+        :param _EndDate: 结束日期
         :type EndDate: str
-        :param Domain: 发信域名
+        :param _Domain: 发信域名
         :type Domain: str
-        :param ReceivingMailboxType: 收件方邮箱类型，例如gmail.com
+        :param _ReceivingMailboxType: 收件方邮箱类型，例如gmail.com
         :type ReceivingMailboxType: str
         """
-        self.StartDate = None
-        self.EndDate = None
-        self.Domain = None
-        self.ReceivingMailboxType = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Domain = None
+        self._ReceivingMailboxType = None
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def ReceivingMailboxType(self):
+        return self._ReceivingMailboxType
+
+    @ReceivingMailboxType.setter
+    def ReceivingMailboxType(self, ReceivingMailboxType):
+        self._ReceivingMailboxType = ReceivingMailboxType
 
 
     def _deserialize(self, params):
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Domain = params.get("Domain")
-        self.ReceivingMailboxType = params.get("ReceivingMailboxType")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Domain = params.get("Domain")
+        self._ReceivingMailboxType = params.get("ReceivingMailboxType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1049,29 +1767,53 @@ class GetStatisticsReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DailyVolumes: 发信统计报告，按天
+        :param _DailyVolumes: 发信统计报告，按天
         :type DailyVolumes: list of Volume
-        :param OverallVolume: 发信统计报告，总览
+        :param _OverallVolume: 发信统计报告，总览
         :type OverallVolume: :class:`tencentcloud.ses.v20201002.models.Volume`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DailyVolumes = None
-        self.OverallVolume = None
-        self.RequestId = None
+        self._DailyVolumes = None
+        self._OverallVolume = None
+        self._RequestId = None
+
+    @property
+    def DailyVolumes(self):
+        return self._DailyVolumes
+
+    @DailyVolumes.setter
+    def DailyVolumes(self, DailyVolumes):
+        self._DailyVolumes = DailyVolumes
+
+    @property
+    def OverallVolume(self):
+        return self._OverallVolume
+
+    @OverallVolume.setter
+    def OverallVolume(self, OverallVolume):
+        self._OverallVolume = OverallVolume
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DailyVolumes") is not None:
-            self.DailyVolumes = []
+            self._DailyVolumes = []
             for item in params.get("DailyVolumes"):
                 obj = Volume()
                 obj._deserialize(item)
-                self.DailyVolumes.append(obj)
+                self._DailyVolumes.append(obj)
         if params.get("OverallVolume") is not None:
-            self.OverallVolume = Volume()
-            self.OverallVolume._deserialize(params.get("OverallVolume"))
-        self.RequestId = params.get("RequestId")
+            self._OverallVolume = Volume()
+            self._OverallVolume._deserialize(params.get("OverallVolume"))
+        self._RequestId = params.get("RequestId")
 
 
 class ListBlackEmailAddressRequest(AbstractModel):
@@ -1081,38 +1823,87 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartDate: 开始日期，格式为YYYY-MM-DD
+        :param _StartDate: 开始日期，格式为YYYY-MM-DD
         :type StartDate: str
-        :param EndDate: 结束日期，格式为YYYY-MM-DD
+        :param _EndDate: 结束日期，格式为YYYY-MM-DD
         :type EndDate: str
-        :param Limit: 规范，配合Offset使用
+        :param _Limit: 规范，配合Offset使用
         :type Limit: int
-        :param Offset: 规范，配合Limit使用，Limit最大取值为100
+        :param _Offset: 规范，配合Limit使用，Limit最大取值为100
         :type Offset: int
-        :param EmailAddress: 可以指定邮箱进行查询
+        :param _EmailAddress: 可以指定邮箱进行查询
         :type EmailAddress: str
-        :param TaskID: 可以指定任务ID进行查询
+        :param _TaskID: 可以指定任务ID进行查询
         :type TaskID: str
         """
-        self.StartDate = None
-        self.EndDate = None
-        self.Limit = None
-        self.Offset = None
-        self.EmailAddress = None
-        self.TaskID = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Limit = None
+        self._Offset = None
+        self._EmailAddress = None
+        self._TaskID = None
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
 
 
     def _deserialize(self, params):
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.EmailAddress = params.get("EmailAddress")
-        self.TaskID = params.get("TaskID")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EmailAddress = params.get("EmailAddress")
+        self._TaskID = params.get("TaskID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1125,27 +1916,51 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BlackList: 黑名单列表
+        :param _BlackList: 黑名单列表
         :type BlackList: list of BlackEmailAddress
-        :param TotalCount: 黑名单总数
+        :param _TotalCount: 黑名单总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BlackList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._BlackList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def BlackList(self):
+        return self._BlackList
+
+    @BlackList.setter
+    def BlackList(self, BlackList):
+        self._BlackList = BlackList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("BlackList") is not None:
-            self.BlackList = []
+            self._BlackList = []
             for item in params.get("BlackList"):
                 obj = BlackEmailAddress()
                 obj._deserialize(item)
-                self.BlackList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._BlackList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListEmailAddressRequest(AbstractModel):
@@ -1161,24 +1976,40 @@ class ListEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailSenders: 发信地址列表详情
+        :param _EmailSenders: 发信地址列表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmailSenders: list of EmailSender
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EmailSenders = None
-        self.RequestId = None
+        self._EmailSenders = None
+        self._RequestId = None
+
+    @property
+    def EmailSenders(self):
+        return self._EmailSenders
+
+    @EmailSenders.setter
+    def EmailSenders(self, EmailSenders):
+        self._EmailSenders = EmailSenders
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EmailSenders") is not None:
-            self.EmailSenders = []
+            self._EmailSenders = []
             for item in params.get("EmailSenders"):
                 obj = EmailSender()
                 obj._deserialize(item)
-                self.EmailSenders.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EmailSenders.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListEmailIdentitiesRequest(AbstractModel):
@@ -1194,31 +2025,63 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailIdentities: 发信域名列表
+        :param _EmailIdentities: 发信域名列表
         :type EmailIdentities: list of EmailIdentity
-        :param MaxReputationLevel: 最大信誉等级
+        :param _MaxReputationLevel: 最大信誉等级
         :type MaxReputationLevel: int
-        :param MaxDailyQuota: 单域名最高日发送量
+        :param _MaxDailyQuota: 单域名最高日发送量
         :type MaxDailyQuota: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EmailIdentities = None
-        self.MaxReputationLevel = None
-        self.MaxDailyQuota = None
-        self.RequestId = None
+        self._EmailIdentities = None
+        self._MaxReputationLevel = None
+        self._MaxDailyQuota = None
+        self._RequestId = None
+
+    @property
+    def EmailIdentities(self):
+        return self._EmailIdentities
+
+    @EmailIdentities.setter
+    def EmailIdentities(self, EmailIdentities):
+        self._EmailIdentities = EmailIdentities
+
+    @property
+    def MaxReputationLevel(self):
+        return self._MaxReputationLevel
+
+    @MaxReputationLevel.setter
+    def MaxReputationLevel(self, MaxReputationLevel):
+        self._MaxReputationLevel = MaxReputationLevel
+
+    @property
+    def MaxDailyQuota(self):
+        return self._MaxDailyQuota
+
+    @MaxDailyQuota.setter
+    def MaxDailyQuota(self, MaxDailyQuota):
+        self._MaxDailyQuota = MaxDailyQuota
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EmailIdentities") is not None:
-            self.EmailIdentities = []
+            self._EmailIdentities = []
             for item in params.get("EmailIdentities"):
                 obj = EmailIdentity()
                 obj._deserialize(item)
-                self.EmailIdentities.append(obj)
-        self.MaxReputationLevel = params.get("MaxReputationLevel")
-        self.MaxDailyQuota = params.get("MaxDailyQuota")
-        self.RequestId = params.get("RequestId")
+                self._EmailIdentities.append(obj)
+        self._MaxReputationLevel = params.get("MaxReputationLevel")
+        self._MaxDailyQuota = params.get("MaxDailyQuota")
+        self._RequestId = params.get("RequestId")
 
 
 class ListEmailTemplatesRequest(AbstractModel):
@@ -1228,22 +2091,39 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 获取模板数据量，用于分页
+        :param _Limit: 获取模板数据量，用于分页
         :type Limit: int
-        :param Offset: 获取模板偏移值，用于分页
+        :param _Offset: 获取模板偏移值，用于分页
         :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1256,27 +2136,51 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplatesMetadata: 邮件模板列表
+        :param _TemplatesMetadata: 邮件模板列表
         :type TemplatesMetadata: list of TemplatesMetadata
-        :param TotalCount: 模板总数量
+        :param _TotalCount: 模板总数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TemplatesMetadata = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._TemplatesMetadata = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TemplatesMetadata(self):
+        return self._TemplatesMetadata
+
+    @TemplatesMetadata.setter
+    def TemplatesMetadata(self, TemplatesMetadata):
+        self._TemplatesMetadata = TemplatesMetadata
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TemplatesMetadata") is not None:
-            self.TemplatesMetadata = []
+            self._TemplatesMetadata = []
             for item in params.get("TemplatesMetadata"):
                 obj = TemplatesMetadata()
                 obj._deserialize(item)
-                self.TemplatesMetadata.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._TemplatesMetadata.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListReceiversRequest(AbstractModel):
@@ -1286,30 +2190,63 @@ class ListReceiversRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量，整型，从0开始
+        :param _Offset: 偏移量，整型，从0开始
         :type Offset: int
-        :param Limit: 限制数目，整型，不超过100
+        :param _Limit: 限制数目，整型，不超过100
         :type Limit: int
-        :param Status: 列表状态(1 待上传 2 上传中  3传完成)，若查询所有就不传这个字段
+        :param _Status: 列表状态(1 待上传 2 上传中  3传完成)，若查询所有就不传这个字段
         :type Status: int
-        :param KeyWord: 列表名称的关键字，模糊查询
+        :param _KeyWord: 列表名称的关键字，模糊查询
         :type KeyWord: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.Status = None
-        self.KeyWord = None
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+        self._KeyWord = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Status = params.get("Status")
-        self.KeyWord = params.get("KeyWord")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._KeyWord = params.get("KeyWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1322,27 +2259,51 @@ class ListReceiversResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param Data: 数据记录
+        :param _Data: 数据记录
         :type Data: list of ReceiverData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Data = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = ReceiverData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListSendTasksRequest(AbstractModel):
@@ -1352,34 +2313,75 @@ class ListSendTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量，整型，从0开始，0代表跳过0行
+        :param _Offset: 偏移量，整型，从0开始，0代表跳过0行
         :type Offset: int
-        :param Limit: 限制数目，整型,不超过100
+        :param _Limit: 限制数目，整型,不超过100
         :type Limit: int
-        :param Status: 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成。查询所有状态，则不传这个字段
+        :param _Status: 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成。查询所有状态，则不传这个字段
         :type Status: int
-        :param ReceiverId: 收件人列表ID
+        :param _ReceiverId: 收件人列表ID
         :type ReceiverId: int
-        :param TaskType: 任务类型 1即时 2定时 3周期，查询所有类型则不传这个字段
+        :param _TaskType: 任务类型 1即时 2定时 3周期，查询所有类型则不传这个字段
         :type TaskType: int
         """
-        self.Offset = None
-        self.Limit = None
-        self.Status = None
-        self.ReceiverId = None
-        self.TaskType = None
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+        self._ReceiverId = None
+        self._TaskType = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Status = params.get("Status")
-        self.ReceiverId = params.get("ReceiverId")
-        self.TaskType = params.get("TaskType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._ReceiverId = params.get("ReceiverId")
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1392,27 +2394,51 @@ class ListSendTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param Data: 数据记录
+        :param _Data: 数据记录
         :type Data: list of SendTaskData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Data = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = SendTaskData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ReceiverData(AbstractModel):
@@ -1422,40 +2448,89 @@ class ReceiverData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReceiverId: 收件人列表ID
+        :param _ReceiverId: 收件人列表ID
         :type ReceiverId: int
-        :param ReceiversName: 收件人列表名称
+        :param _ReceiversName: 收件人列表名称
         :type ReceiversName: str
-        :param Count: 收件人地址总数
+        :param _Count: 收件人地址总数
         :type Count: int
-        :param Desc: 收件人列表描述
+        :param _Desc: 收件人列表描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
-        :param ReceiversStatus: 列表状态(1 待上传 2 上传中 3 上传完成)
+        :param _ReceiversStatus: 列表状态(1 待上传 2 上传中 3 上传完成)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiversStatus: int
-        :param CreateTime: 创建时间,如:2021-09-28 16:40:35
+        :param _CreateTime: 创建时间,如:2021-09-28 16:40:35
         :type CreateTime: str
         """
-        self.ReceiverId = None
-        self.ReceiversName = None
-        self.Count = None
-        self.Desc = None
-        self.ReceiversStatus = None
-        self.CreateTime = None
+        self._ReceiverId = None
+        self._ReceiversName = None
+        self._Count = None
+        self._Desc = None
+        self._ReceiversStatus = None
+        self._CreateTime = None
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def ReceiversName(self):
+        return self._ReceiversName
+
+    @ReceiversName.setter
+    def ReceiversName(self, ReceiversName):
+        self._ReceiversName = ReceiversName
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def ReceiversStatus(self):
+        return self._ReceiversStatus
+
+    @ReceiversStatus.setter
+    def ReceiversStatus(self, ReceiversStatus):
+        self._ReceiversStatus = ReceiversStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.ReceiverId = params.get("ReceiverId")
-        self.ReceiversName = params.get("ReceiversName")
-        self.Count = params.get("Count")
-        self.Desc = params.get("Desc")
-        self.ReceiversStatus = params.get("ReceiversStatus")
-        self.CreateTime = params.get("CreateTime")
+        self._ReceiverId = params.get("ReceiverId")
+        self._ReceiversName = params.get("ReceiversName")
+        self._Count = params.get("Count")
+        self._Desc = params.get("Desc")
+        self._ReceiversStatus = params.get("ReceiversStatus")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1468,23 +2543,40 @@ class ReceiverInputData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Email: 收件人邮箱
+        :param _Email: 收件人邮箱
         :type Email: str
-        :param TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
+        :param _TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
 注意：参数值不能是html等复杂类型的数据。TemplateData (整个 JSON 结构) 总长度限制为 800 bytes。
         :type TemplateData: str
         """
-        self.Email = None
-        self.TemplateData = None
+        self._Email = None
+        self._TemplateData = None
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def TemplateData(self):
+        return self._TemplateData
+
+    @TemplateData.setter
+    def TemplateData(self, TemplateData):
+        self._TemplateData = TemplateData
 
 
     def _deserialize(self, params):
-        self.Email = params.get("Email")
-        self.TemplateData = params.get("TemplateData")
+        self._Email = params.get("Email")
+        self._TemplateData = params.get("TemplateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1497,69 +2589,158 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com
+        :param _FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com
 如需填写发件人说明，请按照如下方式： 
 别名 <邮箱地址>
         :type FromEmailAddress: str
-        :param Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+        :param _Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
         :type Destination: list of str
-        :param Subject: 邮件主题
+        :param _Subject: 邮件主题
         :type Subject: str
-        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        :param _ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
         :type ReplyToAddresses: str
-        :param Cc: 抄送人邮箱地址，最多支持抄送20人。
+        :param _Cc: 抄送人邮箱地址，最多支持抄送20人。
         :type Cc: list of str
-        :param Bcc: 密送人邮箱地址，最多支持抄送20人。
+        :param _Bcc: 密送人邮箱地址，最多支持抄送20人。
         :type Bcc: list of str
-        :param Template: 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
+        :param _Template: 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param Simple: 已废弃
+        :param _Simple: 已废弃
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param Attachments: 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
+        :param _Attachments: 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
         :type Attachments: list of Attachment
-        :param Unsubscribe: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :param _Unsubscribe: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
         :type Unsubscribe: str
-        :param TriggerType: 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+        :param _TriggerType: 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
         :type TriggerType: int
         """
-        self.FromEmailAddress = None
-        self.Destination = None
-        self.Subject = None
-        self.ReplyToAddresses = None
-        self.Cc = None
-        self.Bcc = None
-        self.Template = None
-        self.Simple = None
-        self.Attachments = None
-        self.Unsubscribe = None
-        self.TriggerType = None
+        self._FromEmailAddress = None
+        self._Destination = None
+        self._Subject = None
+        self._ReplyToAddresses = None
+        self._Cc = None
+        self._Bcc = None
+        self._Template = None
+        self._Simple = None
+        self._Attachments = None
+        self._Unsubscribe = None
+        self._TriggerType = None
+
+    @property
+    def FromEmailAddress(self):
+        return self._FromEmailAddress
+
+    @FromEmailAddress.setter
+    def FromEmailAddress(self, FromEmailAddress):
+        self._FromEmailAddress = FromEmailAddress
+
+    @property
+    def Destination(self):
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+    @property
+    def Subject(self):
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def ReplyToAddresses(self):
+        return self._ReplyToAddresses
+
+    @ReplyToAddresses.setter
+    def ReplyToAddresses(self, ReplyToAddresses):
+        self._ReplyToAddresses = ReplyToAddresses
+
+    @property
+    def Cc(self):
+        return self._Cc
+
+    @Cc.setter
+    def Cc(self, Cc):
+        self._Cc = Cc
+
+    @property
+    def Bcc(self):
+        return self._Bcc
+
+    @Bcc.setter
+    def Bcc(self, Bcc):
+        self._Bcc = Bcc
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def Simple(self):
+        return self._Simple
+
+    @Simple.setter
+    def Simple(self, Simple):
+        self._Simple = Simple
+
+    @property
+    def Attachments(self):
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+    @property
+    def Unsubscribe(self):
+        return self._Unsubscribe
+
+    @Unsubscribe.setter
+    def Unsubscribe(self, Unsubscribe):
+        self._Unsubscribe = Unsubscribe
+
+    @property
+    def TriggerType(self):
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
 
 
     def _deserialize(self, params):
-        self.FromEmailAddress = params.get("FromEmailAddress")
-        self.Destination = params.get("Destination")
-        self.Subject = params.get("Subject")
-        self.ReplyToAddresses = params.get("ReplyToAddresses")
-        self.Cc = params.get("Cc")
-        self.Bcc = params.get("Bcc")
+        self._FromEmailAddress = params.get("FromEmailAddress")
+        self._Destination = params.get("Destination")
+        self._Subject = params.get("Subject")
+        self._ReplyToAddresses = params.get("ReplyToAddresses")
+        self._Cc = params.get("Cc")
+        self._Bcc = params.get("Bcc")
         if params.get("Template") is not None:
-            self.Template = Template()
-            self.Template._deserialize(params.get("Template"))
+            self._Template = Template()
+            self._Template._deserialize(params.get("Template"))
         if params.get("Simple") is not None:
-            self.Simple = Simple()
-            self.Simple._deserialize(params.get("Simple"))
+            self._Simple = Simple()
+            self._Simple._deserialize(params.get("Simple"))
         if params.get("Attachments") is not None:
-            self.Attachments = []
+            self._Attachments = []
             for item in params.get("Attachments"):
                 obj = Attachment()
                 obj._deserialize(item)
-                self.Attachments.append(obj)
-        self.Unsubscribe = params.get("Unsubscribe")
-        self.TriggerType = params.get("TriggerType")
+                self._Attachments.append(obj)
+        self._Unsubscribe = params.get("Unsubscribe")
+        self._TriggerType = params.get("TriggerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1572,18 +2753,34 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MessageId: 接受消息生成的唯一消息标识符。
+        :param _MessageId: 接受消息生成的唯一消息标识符。
         :type MessageId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MessageId = None
-        self.RequestId = None
+        self._MessageId = None
+        self._RequestId = None
+
+    @property
+    def MessageId(self):
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MessageId = params.get("MessageId")
-        self.RequestId = params.get("RequestId")
+        self._MessageId = params.get("MessageId")
+        self._RequestId = params.get("RequestId")
 
 
 class SendEmailStatus(AbstractModel):
@@ -1593,13 +2790,13 @@ class SendEmailStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MessageId: SendEmail返回的MessageId
+        :param _MessageId: SendEmail返回的MessageId
         :type MessageId: str
-        :param ToEmailAddress: 收件人邮箱
+        :param _ToEmailAddress: 收件人邮箱
         :type ToEmailAddress: str
-        :param FromEmailAddress: 发件人邮箱
+        :param _FromEmailAddress: 发件人邮箱
         :type FromEmailAddress: str
-        :param SendStatus: 腾讯云处理状态
+        :param _SendStatus: 腾讯云处理状态
 0: 处理成功
 1001: 内部系统异常
 1002: 内部系统异常
@@ -1625,59 +2822,156 @@ class SendEmailStatus(AbstractModel):
 3030: 退信率过高，临时限制发送
 3033: 余额不足，账号欠费等
         :type SendStatus: int
-        :param DeliverStatus: 收件方处理状态
+        :param _DeliverStatus: 收件方处理状态
 0: 请求成功被腾讯云接受，进入发送队列
 1: 邮件递送成功，DeliverTime表示递送成功的时间
 2: 邮件因某种原因被丢弃，DeliverMessage表示丢弃原因
 3: 收件方ESP拒信，一般原因为邮箱地址不存在，或其它原因
 8: 邮件被ESP因某些原因延迟递送，DeliverMessage表示延迟原因
         :type DeliverStatus: int
-        :param DeliverMessage: 收件方处理状态描述
+        :param _DeliverMessage: 收件方处理状态描述
         :type DeliverMessage: str
-        :param RequestTime: 请求到达腾讯云时间戳
+        :param _RequestTime: 请求到达腾讯云时间戳
         :type RequestTime: int
-        :param DeliverTime: 腾讯云执行递送时间戳
+        :param _DeliverTime: 腾讯云执行递送时间戳
         :type DeliverTime: int
-        :param UserOpened: 用户是否打开该邮件
+        :param _UserOpened: 用户是否打开该邮件
         :type UserOpened: bool
-        :param UserClicked: 用户是否点击该邮件中的链接
+        :param _UserClicked: 用户是否点击该邮件中的链接
         :type UserClicked: bool
-        :param UserUnsubscribed: 用户是否取消该发送者的订阅
+        :param _UserUnsubscribed: 用户是否取消该发送者的订阅
         :type UserUnsubscribed: bool
-        :param UserComplainted: 用户是否举报该发送者
+        :param _UserComplainted: 用户是否举报该发送者
         :type UserComplainted: bool
         """
-        self.MessageId = None
-        self.ToEmailAddress = None
-        self.FromEmailAddress = None
-        self.SendStatus = None
-        self.DeliverStatus = None
-        self.DeliverMessage = None
-        self.RequestTime = None
-        self.DeliverTime = None
-        self.UserOpened = None
-        self.UserClicked = None
-        self.UserUnsubscribed = None
-        self.UserComplainted = None
+        self._MessageId = None
+        self._ToEmailAddress = None
+        self._FromEmailAddress = None
+        self._SendStatus = None
+        self._DeliverStatus = None
+        self._DeliverMessage = None
+        self._RequestTime = None
+        self._DeliverTime = None
+        self._UserOpened = None
+        self._UserClicked = None
+        self._UserUnsubscribed = None
+        self._UserComplainted = None
+
+    @property
+    def MessageId(self):
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def ToEmailAddress(self):
+        return self._ToEmailAddress
+
+    @ToEmailAddress.setter
+    def ToEmailAddress(self, ToEmailAddress):
+        self._ToEmailAddress = ToEmailAddress
+
+    @property
+    def FromEmailAddress(self):
+        return self._FromEmailAddress
+
+    @FromEmailAddress.setter
+    def FromEmailAddress(self, FromEmailAddress):
+        self._FromEmailAddress = FromEmailAddress
+
+    @property
+    def SendStatus(self):
+        return self._SendStatus
+
+    @SendStatus.setter
+    def SendStatus(self, SendStatus):
+        self._SendStatus = SendStatus
+
+    @property
+    def DeliverStatus(self):
+        return self._DeliverStatus
+
+    @DeliverStatus.setter
+    def DeliverStatus(self, DeliverStatus):
+        self._DeliverStatus = DeliverStatus
+
+    @property
+    def DeliverMessage(self):
+        return self._DeliverMessage
+
+    @DeliverMessage.setter
+    def DeliverMessage(self, DeliverMessage):
+        self._DeliverMessage = DeliverMessage
+
+    @property
+    def RequestTime(self):
+        return self._RequestTime
+
+    @RequestTime.setter
+    def RequestTime(self, RequestTime):
+        self._RequestTime = RequestTime
+
+    @property
+    def DeliverTime(self):
+        return self._DeliverTime
+
+    @DeliverTime.setter
+    def DeliverTime(self, DeliverTime):
+        self._DeliverTime = DeliverTime
+
+    @property
+    def UserOpened(self):
+        return self._UserOpened
+
+    @UserOpened.setter
+    def UserOpened(self, UserOpened):
+        self._UserOpened = UserOpened
+
+    @property
+    def UserClicked(self):
+        return self._UserClicked
+
+    @UserClicked.setter
+    def UserClicked(self, UserClicked):
+        self._UserClicked = UserClicked
+
+    @property
+    def UserUnsubscribed(self):
+        return self._UserUnsubscribed
+
+    @UserUnsubscribed.setter
+    def UserUnsubscribed(self, UserUnsubscribed):
+        self._UserUnsubscribed = UserUnsubscribed
+
+    @property
+    def UserComplainted(self):
+        return self._UserComplainted
+
+    @UserComplainted.setter
+    def UserComplainted(self, UserComplainted):
+        self._UserComplainted = UserComplainted
 
 
     def _deserialize(self, params):
-        self.MessageId = params.get("MessageId")
-        self.ToEmailAddress = params.get("ToEmailAddress")
-        self.FromEmailAddress = params.get("FromEmailAddress")
-        self.SendStatus = params.get("SendStatus")
-        self.DeliverStatus = params.get("DeliverStatus")
-        self.DeliverMessage = params.get("DeliverMessage")
-        self.RequestTime = params.get("RequestTime")
-        self.DeliverTime = params.get("DeliverTime")
-        self.UserOpened = params.get("UserOpened")
-        self.UserClicked = params.get("UserClicked")
-        self.UserUnsubscribed = params.get("UserUnsubscribed")
-        self.UserComplainted = params.get("UserComplainted")
+        self._MessageId = params.get("MessageId")
+        self._ToEmailAddress = params.get("ToEmailAddress")
+        self._FromEmailAddress = params.get("FromEmailAddress")
+        self._SendStatus = params.get("SendStatus")
+        self._DeliverStatus = params.get("DeliverStatus")
+        self._DeliverMessage = params.get("DeliverMessage")
+        self._RequestTime = params.get("RequestTime")
+        self._DeliverTime = params.get("DeliverTime")
+        self._UserOpened = params.get("UserOpened")
+        self._UserClicked = params.get("UserClicked")
+        self._UserUnsubscribed = params.get("UserUnsubscribed")
+        self._UserComplainted = params.get("UserComplainted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1690,88 +2984,217 @@ class SendTaskData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务id
+        :param _TaskId: 任务id
         :type TaskId: int
-        :param FromEmailAddress: 发信地址
+        :param _FromEmailAddress: 发信地址
         :type FromEmailAddress: str
-        :param ReceiverId: 收件人列表Id
+        :param _ReceiverId: 收件人列表Id
         :type ReceiverId: int
-        :param TaskStatus: 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成
+        :param _TaskStatus: 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成
         :type TaskStatus: int
-        :param TaskType: 任务类型 1 即时 2 定时 3 周期
+        :param _TaskType: 任务类型 1 即时 2 定时 3 周期
         :type TaskType: int
-        :param RequestCount: 任务请求发信数量
+        :param _RequestCount: 任务请求发信数量
         :type RequestCount: int
-        :param SendCount: 已经发送数量
+        :param _SendCount: 已经发送数量
         :type SendCount: int
-        :param CacheCount: 缓存数量
+        :param _CacheCount: 缓存数量
         :type CacheCount: int
-        :param CreateTime: 任务创建时间
+        :param _CreateTime: 任务创建时间
         :type CreateTime: str
-        :param UpdateTime: 任务更新时间
+        :param _UpdateTime: 任务更新时间
         :type UpdateTime: str
-        :param Subject: 邮件主题
+        :param _Subject: 邮件主题
         :type Subject: str
-        :param Template: 模板和模板数据
+        :param _Template: 模板和模板数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param CycleParam: 周期任务参数
+        :param _CycleParam: 周期任务参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
-        :param TimedParam: 定时任务参数
+        :param _TimedParam: 定时任务参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
-        :param ErrMsg: 任务异常信息
+        :param _ErrMsg: 任务异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
-        :param ReceiversName: 收件人列表名称
+        :param _ReceiversName: 收件人列表名称
         :type ReceiversName: str
         """
-        self.TaskId = None
-        self.FromEmailAddress = None
-        self.ReceiverId = None
-        self.TaskStatus = None
-        self.TaskType = None
-        self.RequestCount = None
-        self.SendCount = None
-        self.CacheCount = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Subject = None
-        self.Template = None
-        self.CycleParam = None
-        self.TimedParam = None
-        self.ErrMsg = None
-        self.ReceiversName = None
+        self._TaskId = None
+        self._FromEmailAddress = None
+        self._ReceiverId = None
+        self._TaskStatus = None
+        self._TaskType = None
+        self._RequestCount = None
+        self._SendCount = None
+        self._CacheCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Subject = None
+        self._Template = None
+        self._CycleParam = None
+        self._TimedParam = None
+        self._ErrMsg = None
+        self._ReceiversName = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FromEmailAddress(self):
+        return self._FromEmailAddress
+
+    @FromEmailAddress.setter
+    def FromEmailAddress(self, FromEmailAddress):
+        self._FromEmailAddress = FromEmailAddress
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def RequestCount(self):
+        return self._RequestCount
+
+    @RequestCount.setter
+    def RequestCount(self, RequestCount):
+        self._RequestCount = RequestCount
+
+    @property
+    def SendCount(self):
+        return self._SendCount
+
+    @SendCount.setter
+    def SendCount(self, SendCount):
+        self._SendCount = SendCount
+
+    @property
+    def CacheCount(self):
+        return self._CacheCount
+
+    @CacheCount.setter
+    def CacheCount(self, CacheCount):
+        self._CacheCount = CacheCount
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Subject(self):
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def CycleParam(self):
+        return self._CycleParam
+
+    @CycleParam.setter
+    def CycleParam(self, CycleParam):
+        self._CycleParam = CycleParam
+
+    @property
+    def TimedParam(self):
+        return self._TimedParam
+
+    @TimedParam.setter
+    def TimedParam(self, TimedParam):
+        self._TimedParam = TimedParam
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def ReceiversName(self):
+        return self._ReceiversName
+
+    @ReceiversName.setter
+    def ReceiversName(self, ReceiversName):
+        self._ReceiversName = ReceiversName
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.FromEmailAddress = params.get("FromEmailAddress")
-        self.ReceiverId = params.get("ReceiverId")
-        self.TaskStatus = params.get("TaskStatus")
-        self.TaskType = params.get("TaskType")
-        self.RequestCount = params.get("RequestCount")
-        self.SendCount = params.get("SendCount")
-        self.CacheCount = params.get("CacheCount")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Subject = params.get("Subject")
+        self._TaskId = params.get("TaskId")
+        self._FromEmailAddress = params.get("FromEmailAddress")
+        self._ReceiverId = params.get("ReceiverId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._TaskType = params.get("TaskType")
+        self._RequestCount = params.get("RequestCount")
+        self._SendCount = params.get("SendCount")
+        self._CacheCount = params.get("CacheCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Subject = params.get("Subject")
         if params.get("Template") is not None:
-            self.Template = Template()
-            self.Template._deserialize(params.get("Template"))
+            self._Template = Template()
+            self._Template._deserialize(params.get("Template"))
         if params.get("CycleParam") is not None:
-            self.CycleParam = CycleEmailParam()
-            self.CycleParam._deserialize(params.get("CycleParam"))
+            self._CycleParam = CycleEmailParam()
+            self._CycleParam._deserialize(params.get("CycleParam"))
         if params.get("TimedParam") is not None:
-            self.TimedParam = TimedEmailParam()
-            self.TimedParam._deserialize(params.get("TimedParam"))
-        self.ErrMsg = params.get("ErrMsg")
-        self.ReceiversName = params.get("ReceiversName")
+            self._TimedParam = TimedEmailParam()
+            self._TimedParam._deserialize(params.get("TimedParam"))
+        self._ErrMsg = params.get("ErrMsg")
+        self._ReceiversName = params.get("ReceiversName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1784,22 +3207,39 @@ class Simple(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Html: base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
+        :param _Html: base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
         :type Html: str
-        :param Text: base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
+        :param _Text: base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
         :type Text: str
         """
-        self.Html = None
-        self.Text = None
+        self._Html = None
+        self._Text = None
+
+    @property
+    def Html(self):
+        return self._Html
+
+    @Html.setter
+    def Html(self, Html):
+        self._Html = Html
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Html = params.get("Html")
-        self.Text = params.get("Text")
+        self._Html = params.get("Html")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1812,24 +3252,41 @@ class Template(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateID: 模板ID。如果没有模板，请先新建一个
+        :param _TemplateID: 模板ID。如果没有模板，请先新建一个
         :type TemplateID: int
-        :param TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
+        :param _TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
 注意：参数值不能是html等复杂类型的数据。
 示例：{"name":"xxx","age":"xx"}
         :type TemplateData: str
         """
-        self.TemplateID = None
-        self.TemplateData = None
+        self._TemplateID = None
+        self._TemplateData = None
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def TemplateData(self):
+        return self._TemplateData
+
+    @TemplateData.setter
+    def TemplateData(self, TemplateData):
+        self._TemplateData = TemplateData
 
 
     def _deserialize(self, params):
-        self.TemplateID = params.get("TemplateID")
-        self.TemplateData = params.get("TemplateData")
+        self._TemplateID = params.get("TemplateID")
+        self._TemplateData = params.get("TemplateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1842,22 +3299,39 @@ class TemplateContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Html: base64之后的Html代码
+        :param _Html: base64之后的Html代码
         :type Html: str
-        :param Text: base64之后的文本内容
+        :param _Text: base64之后的文本内容
         :type Text: str
         """
-        self.Html = None
-        self.Text = None
+        self._Html = None
+        self._Text = None
+
+    @property
+    def Html(self):
+        return self._Html
+
+    @Html.setter
+    def Html(self, Html):
+        self._Html = Html
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Html = params.get("Html")
-        self.Text = params.get("Text")
+        self._Html = params.get("Html")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1870,34 +3344,75 @@ class TemplatesMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreatedTimestamp: 创建时间
+        :param _CreatedTimestamp: 创建时间
         :type CreatedTimestamp: int
-        :param TemplateName: 模板名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param TemplateStatus: 模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用
+        :param _TemplateStatus: 模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用
         :type TemplateStatus: int
-        :param TemplateID: 模板ID
+        :param _TemplateID: 模板ID
         :type TemplateID: int
-        :param ReviewReason: 审核原因
+        :param _ReviewReason: 审核原因
         :type ReviewReason: str
         """
-        self.CreatedTimestamp = None
-        self.TemplateName = None
-        self.TemplateStatus = None
-        self.TemplateID = None
-        self.ReviewReason = None
+        self._CreatedTimestamp = None
+        self._TemplateName = None
+        self._TemplateStatus = None
+        self._TemplateID = None
+        self._ReviewReason = None
+
+    @property
+    def CreatedTimestamp(self):
+        return self._CreatedTimestamp
+
+    @CreatedTimestamp.setter
+    def CreatedTimestamp(self, CreatedTimestamp):
+        self._CreatedTimestamp = CreatedTimestamp
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateStatus(self):
+        return self._TemplateStatus
+
+    @TemplateStatus.setter
+    def TemplateStatus(self, TemplateStatus):
+        self._TemplateStatus = TemplateStatus
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def ReviewReason(self):
+        return self._ReviewReason
+
+    @ReviewReason.setter
+    def ReviewReason(self, ReviewReason):
+        self._ReviewReason = ReviewReason
 
 
     def _deserialize(self, params):
-        self.CreatedTimestamp = params.get("CreatedTimestamp")
-        self.TemplateName = params.get("TemplateName")
-        self.TemplateStatus = params.get("TemplateStatus")
-        self.TemplateID = params.get("TemplateID")
-        self.ReviewReason = params.get("ReviewReason")
+        self._CreatedTimestamp = params.get("CreatedTimestamp")
+        self._TemplateName = params.get("TemplateName")
+        self._TemplateStatus = params.get("TemplateStatus")
+        self._TemplateID = params.get("TemplateID")
+        self._ReviewReason = params.get("ReviewReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1910,18 +3425,27 @@ class TimedEmailParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BeginTime: 定时发送邮件的开始时间
+        :param _BeginTime: 定时发送邮件的开始时间
         :type BeginTime: str
         """
-        self.BeginTime = None
+        self._BeginTime = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
 
 
     def _deserialize(self, params):
-        self.BeginTime = params.get("BeginTime")
+        self._BeginTime = params.get("BeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1934,18 +3458,27 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmailIdentity: 请求验证的域名
+        :param _EmailIdentity: 请求验证的域名
         :type EmailIdentity: str
         """
-        self.EmailIdentity = None
+        self._EmailIdentity = None
+
+    @property
+    def EmailIdentity(self):
+        return self._EmailIdentity
+
+    @EmailIdentity.setter
+    def EmailIdentity(self, EmailIdentity):
+        self._EmailIdentity = EmailIdentity
 
 
     def _deserialize(self, params):
-        self.EmailIdentity = params.get("EmailIdentity")
+        self._EmailIdentity = params.get("EmailIdentity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1958,31 +3491,63 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityType: 验证类型。固定值：DOMAIN
+        :param _IdentityType: 验证类型。固定值：DOMAIN
         :type IdentityType: str
-        :param VerifiedForSendingStatus: 是否已通过验证
+        :param _VerifiedForSendingStatus: 是否已通过验证
         :type VerifiedForSendingStatus: bool
-        :param Attributes: 需要配置的DNS信息
+        :param _Attributes: 需要配置的DNS信息
         :type Attributes: list of DNSAttributes
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IdentityType = None
-        self.VerifiedForSendingStatus = None
-        self.Attributes = None
-        self.RequestId = None
+        self._IdentityType = None
+        self._VerifiedForSendingStatus = None
+        self._Attributes = None
+        self._RequestId = None
+
+    @property
+    def IdentityType(self):
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
+
+    @property
+    def VerifiedForSendingStatus(self):
+        return self._VerifiedForSendingStatus
+
+    @VerifiedForSendingStatus.setter
+    def VerifiedForSendingStatus(self, VerifiedForSendingStatus):
+        self._VerifiedForSendingStatus = VerifiedForSendingStatus
+
+    @property
+    def Attributes(self):
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IdentityType = params.get("IdentityType")
-        self.VerifiedForSendingStatus = params.get("VerifiedForSendingStatus")
+        self._IdentityType = params.get("IdentityType")
+        self._VerifiedForSendingStatus = params.get("VerifiedForSendingStatus")
         if params.get("Attributes") is not None:
-            self.Attributes = []
+            self._Attributes = []
             for item in params.get("Attributes"):
                 obj = DNSAttributes()
                 obj._deserialize(item)
-                self.Attributes.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Attributes.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateEmailSmtpPassWordRequest(AbstractModel):
@@ -1992,22 +3557,39 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Password: smtp密码，长度限制64
+        :param _Password: smtp密码，长度限制64
         :type Password: str
-        :param EmailAddress: 发信邮箱,长度限制128
+        :param _EmailAddress: 发信邮箱,长度限制128
         :type EmailAddress: str
         """
-        self.Password = None
-        self.EmailAddress = None
+        self._Password = None
+        self._EmailAddress = None
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EmailAddress(self):
+        return self._EmailAddress
+
+    @EmailAddress.setter
+    def EmailAddress(self, EmailAddress):
+        self._EmailAddress = EmailAddress
 
 
     def _deserialize(self, params):
-        self.Password = params.get("Password")
-        self.EmailAddress = params.get("EmailAddress")
+        self._Password = params.get("Password")
+        self._EmailAddress = params.get("EmailAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2020,14 +3602,22 @@ class UpdateEmailSmtpPassWordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateEmailTemplateRequest(AbstractModel):
@@ -2037,28 +3627,53 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateContent: 模板内容
+        :param _TemplateContent: 模板内容
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
-        :param TemplateID: 模板ID
+        :param _TemplateID: 模板ID
         :type TemplateID: int
-        :param TemplateName: 模板名字
+        :param _TemplateName: 模板名字
         :type TemplateName: str
         """
-        self.TemplateContent = None
-        self.TemplateID = None
-        self.TemplateName = None
+        self._TemplateContent = None
+        self._TemplateID = None
+        self._TemplateName = None
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
 
 
     def _deserialize(self, params):
         if params.get("TemplateContent") is not None:
-            self.TemplateContent = TemplateContent()
-            self.TemplateContent._deserialize(params.get("TemplateContent"))
-        self.TemplateID = params.get("TemplateID")
-        self.TemplateName = params.get("TemplateName")
+            self._TemplateContent = TemplateContent()
+            self._TemplateContent._deserialize(params.get("TemplateContent"))
+        self._TemplateID = params.get("TemplateID")
+        self._TemplateName = params.get("TemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2071,14 +3686,22 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Volume(AbstractModel):
@@ -2088,48 +3711,113 @@ class Volume(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SendDate: 日期
+        :param _SendDate: 日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type SendDate: str
-        :param RequestCount: 邮件请求数量
+        :param _RequestCount: 邮件请求数量
         :type RequestCount: int
-        :param AcceptedCount: 腾讯云通过数量
+        :param _AcceptedCount: 腾讯云通过数量
         :type AcceptedCount: int
-        :param DeliveredCount: 送达数量
+        :param _DeliveredCount: 送达数量
         :type DeliveredCount: int
-        :param OpenedCount: 打开邮件的用户数量，根据收件人去重
+        :param _OpenedCount: 打开邮件的用户数量，根据收件人去重
         :type OpenedCount: int
-        :param ClickedCount: 点击了邮件中的链接数量用户数量
+        :param _ClickedCount: 点击了邮件中的链接数量用户数量
         :type ClickedCount: int
-        :param BounceCount: 退信数量
+        :param _BounceCount: 退信数量
         :type BounceCount: int
-        :param UnsubscribeCount: 取消订阅的用户数量
+        :param _UnsubscribeCount: 取消订阅的用户数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnsubscribeCount: int
         """
-        self.SendDate = None
-        self.RequestCount = None
-        self.AcceptedCount = None
-        self.DeliveredCount = None
-        self.OpenedCount = None
-        self.ClickedCount = None
-        self.BounceCount = None
-        self.UnsubscribeCount = None
+        self._SendDate = None
+        self._RequestCount = None
+        self._AcceptedCount = None
+        self._DeliveredCount = None
+        self._OpenedCount = None
+        self._ClickedCount = None
+        self._BounceCount = None
+        self._UnsubscribeCount = None
+
+    @property
+    def SendDate(self):
+        return self._SendDate
+
+    @SendDate.setter
+    def SendDate(self, SendDate):
+        self._SendDate = SendDate
+
+    @property
+    def RequestCount(self):
+        return self._RequestCount
+
+    @RequestCount.setter
+    def RequestCount(self, RequestCount):
+        self._RequestCount = RequestCount
+
+    @property
+    def AcceptedCount(self):
+        return self._AcceptedCount
+
+    @AcceptedCount.setter
+    def AcceptedCount(self, AcceptedCount):
+        self._AcceptedCount = AcceptedCount
+
+    @property
+    def DeliveredCount(self):
+        return self._DeliveredCount
+
+    @DeliveredCount.setter
+    def DeliveredCount(self, DeliveredCount):
+        self._DeliveredCount = DeliveredCount
+
+    @property
+    def OpenedCount(self):
+        return self._OpenedCount
+
+    @OpenedCount.setter
+    def OpenedCount(self, OpenedCount):
+        self._OpenedCount = OpenedCount
+
+    @property
+    def ClickedCount(self):
+        return self._ClickedCount
+
+    @ClickedCount.setter
+    def ClickedCount(self, ClickedCount):
+        self._ClickedCount = ClickedCount
+
+    @property
+    def BounceCount(self):
+        return self._BounceCount
+
+    @BounceCount.setter
+    def BounceCount(self, BounceCount):
+        self._BounceCount = BounceCount
+
+    @property
+    def UnsubscribeCount(self):
+        return self._UnsubscribeCount
+
+    @UnsubscribeCount.setter
+    def UnsubscribeCount(self, UnsubscribeCount):
+        self._UnsubscribeCount = UnsubscribeCount
 
 
     def _deserialize(self, params):
-        self.SendDate = params.get("SendDate")
-        self.RequestCount = params.get("RequestCount")
-        self.AcceptedCount = params.get("AcceptedCount")
-        self.DeliveredCount = params.get("DeliveredCount")
-        self.OpenedCount = params.get("OpenedCount")
-        self.ClickedCount = params.get("ClickedCount")
-        self.BounceCount = params.get("BounceCount")
-        self.UnsubscribeCount = params.get("UnsubscribeCount")
+        self._SendDate = params.get("SendDate")
+        self._RequestCount = params.get("RequestCount")
+        self._AcceptedCount = params.get("AcceptedCount")
+        self._DeliveredCount = params.get("DeliveredCount")
+        self._OpenedCount = params.get("OpenedCount")
+        self._ClickedCount = params.get("ClickedCount")
+        self._BounceCount = params.get("BounceCount")
+        self._UnsubscribeCount = params.get("UnsubscribeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

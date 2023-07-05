@@ -36,50 +36,115 @@ class AttrItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 字段名称
+        :param _Name: 字段名称
         :type Name: str
-        :param Value: 字段值
+        :param _Value: 字段值
         :type Value: str
-        :param Type: 字段类型
+        :param _Type: 字段类型
 text:文本类型, 
 longtext:长文本类型, banner:单图片类型, image:多图片类型,
 video:视频类型,
 mp:小程序类型
         :type Type: str
-        :param ReadOnly: 只读
+        :param _ReadOnly: 只读
         :type ReadOnly: bool
-        :param Hidden: 扫码展示
+        :param _Hidden: 扫码展示
         :type Hidden: bool
-        :param Values: 多个值
+        :param _Values: 多个值
         :type Values: list of str
-        :param Key: 类型标识
+        :param _Key: 类型标识
         :type Key: str
-        :param Ext: 扩展字段
+        :param _Ext: 扩展字段
         :type Ext: str
         """
-        self.Name = None
-        self.Value = None
-        self.Type = None
-        self.ReadOnly = None
-        self.Hidden = None
-        self.Values = None
-        self.Key = None
-        self.Ext = None
+        self._Name = None
+        self._Value = None
+        self._Type = None
+        self._ReadOnly = None
+        self._Hidden = None
+        self._Values = None
+        self._Key = None
+        self._Ext = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ReadOnly(self):
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+    @property
+    def Hidden(self):
+        return self._Hidden
+
+    @Hidden.setter
+    def Hidden(self, Hidden):
+        self._Hidden = Hidden
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
-        self.Type = params.get("Type")
-        self.ReadOnly = params.get("ReadOnly")
-        self.Hidden = params.get("Hidden")
-        self.Values = params.get("Values")
-        self.Key = params.get("Key")
-        self.Ext = params.get("Ext")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        self._ReadOnly = params.get("ReadOnly")
+        self._Hidden = params.get("Hidden")
+        self._Values = params.get("Values")
+        self._Key = params.get("Key")
+        self._Ext = params.get("Ext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -92,20 +157,29 @@ class AuthorizedTransferRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessSecurityData: 业务加密入参。
+        :param _BusinessSecurityData: 业务加密入参。
         :type BusinessSecurityData: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
         """
-        self.BusinessSecurityData = None
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = InputEncryptData()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+            self._BusinessSecurityData = InputEncryptData()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -118,20 +192,36 @@ class AuthorizedTransferResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 业务出参。
+        :param _Data: 业务出参。
         :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = OutputAuthorizedTransfer()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = OutputAuthorizedTransfer()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ChainData(AbstractModel):
@@ -141,29 +231,54 @@ class ChainData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BlockHash: 区块hash
+        :param _BlockHash: 区块hash
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockHash: str
-        :param BlockHeight: 区块高度
+        :param _BlockHeight: 区块高度
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockHeight: str
-        :param BlockTime: 区块时间
+        :param _BlockTime: 区块时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockTime: str
         """
-        self.BlockHash = None
-        self.BlockHeight = None
-        self.BlockTime = None
+        self._BlockHash = None
+        self._BlockHeight = None
+        self._BlockTime = None
+
+    @property
+    def BlockHash(self):
+        return self._BlockHash
+
+    @BlockHash.setter
+    def BlockHash(self, BlockHash):
+        self._BlockHash = BlockHash
+
+    @property
+    def BlockHeight(self):
+        return self._BlockHeight
+
+    @BlockHeight.setter
+    def BlockHeight(self, BlockHeight):
+        self._BlockHeight = BlockHeight
+
+    @property
+    def BlockTime(self):
+        return self._BlockTime
+
+    @BlockTime.setter
+    def BlockTime(self, BlockTime):
+        self._BlockTime = BlockTime
 
 
     def _deserialize(self, params):
-        self.BlockHash = params.get("BlockHash")
-        self.BlockHeight = params.get("BlockHeight")
-        self.BlockTime = params.get("BlockTime")
+        self._BlockHash = params.get("BlockHash")
+        self._BlockHeight = params.get("BlockHeight")
+        self._BlockTime = params.get("BlockTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -176,122 +291,283 @@ class CodeBatch(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次号
+        :param _BatchId: 批次号
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param BatchCode: 批次编码(未使用)
+        :param _BatchCode: 批次编码(未使用)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchCode: str
-        :param CodeCnt: 码数量
+        :param _CodeCnt: 码数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeCnt: int
-        :param MerchantId: 所属商户ID
+        :param _MerchantId: 所属商户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param ProductId: 产品ID
+        :param _ProductId: 产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param BatchType: 批次类型
+        :param _BatchType: 批次类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchType: int
-        :param Remark: 备注
+        :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param MpTpl: 微信模板
+        :param _MpTpl: 微信模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type MpTpl: str
-        :param Status: 批次状态 0: 未激活 1: 已激活 -1: 已冻结
+        :param _Status: 批次状态 0: 未激活 1: 已激活 -1: 已冻结
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param UpdateTime: 修改时间
+        :param _UpdateTime: 修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param MerchantName: 所属商户名称
+        :param _MerchantName: 所属商户名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantName: str
-        :param ProductName: 产品名称
+        :param _ProductName: 产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
-        :param Ext: 未使用
+        :param _Ext: 未使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
-        :param TplName: 模板名称
+        :param _TplName: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TplName: str
-        :param Job: 调度任务
+        :param _Job: 调度任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type Job: :class:`tencentcloud.trp.v20210515.models.Job`
-        :param ProductionDate: 生产日期
+        :param _ProductionDate: 生产日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductionDate: str
-        :param ValidDate: 有效期
+        :param _ValidDate: 有效期
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidDate: str
-        :param Attrs: 扩展属性
+        :param _Attrs: 扩展属性
         :type Attrs: list of AttrItem
         """
-        self.BatchId = None
-        self.CorpId = None
-        self.BatchCode = None
-        self.CodeCnt = None
-        self.MerchantId = None
-        self.ProductId = None
-        self.BatchType = None
-        self.Remark = None
-        self.MpTpl = None
-        self.Status = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.MerchantName = None
-        self.ProductName = None
-        self.Ext = None
-        self.TplName = None
-        self.Job = None
-        self.ProductionDate = None
-        self.ValidDate = None
-        self.Attrs = None
+        self._BatchId = None
+        self._CorpId = None
+        self._BatchCode = None
+        self._CodeCnt = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._BatchType = None
+        self._Remark = None
+        self._MpTpl = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._MerchantName = None
+        self._ProductName = None
+        self._Ext = None
+        self._TplName = None
+        self._Job = None
+        self._ProductionDate = None
+        self._ValidDate = None
+        self._Attrs = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def BatchCode(self):
+        return self._BatchCode
+
+    @BatchCode.setter
+    def BatchCode(self, BatchCode):
+        self._BatchCode = BatchCode
+
+    @property
+    def CodeCnt(self):
+        return self._CodeCnt
+
+    @CodeCnt.setter
+    def CodeCnt(self, CodeCnt):
+        self._CodeCnt = CodeCnt
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def BatchType(self):
+        return self._BatchType
+
+    @BatchType.setter
+    def BatchType(self, BatchType):
+        self._BatchType = BatchType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MpTpl(self):
+        return self._MpTpl
+
+    @MpTpl.setter
+    def MpTpl(self, MpTpl):
+        self._MpTpl = MpTpl
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MerchantName(self):
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
+    @property
+    def TplName(self):
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def Job(self):
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def ProductionDate(self):
+        return self._ProductionDate
+
+    @ProductionDate.setter
+    def ProductionDate(self, ProductionDate):
+        self._ProductionDate = ProductionDate
+
+    @property
+    def ValidDate(self):
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def Attrs(self):
+        return self._Attrs
+
+    @Attrs.setter
+    def Attrs(self, Attrs):
+        self._Attrs = Attrs
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.CorpId = params.get("CorpId")
-        self.BatchCode = params.get("BatchCode")
-        self.CodeCnt = params.get("CodeCnt")
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.BatchType = params.get("BatchType")
-        self.Remark = params.get("Remark")
-        self.MpTpl = params.get("MpTpl")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.MerchantName = params.get("MerchantName")
-        self.ProductName = params.get("ProductName")
+        self._BatchId = params.get("BatchId")
+        self._CorpId = params.get("CorpId")
+        self._BatchCode = params.get("BatchCode")
+        self._CodeCnt = params.get("CodeCnt")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._BatchType = params.get("BatchType")
+        self._Remark = params.get("Remark")
+        self._MpTpl = params.get("MpTpl")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._MerchantName = params.get("MerchantName")
+        self._ProductName = params.get("ProductName")
         if params.get("Ext") is not None:
-            self.Ext = Ext()
-            self.Ext._deserialize(params.get("Ext"))
-        self.TplName = params.get("TplName")
+            self._Ext = Ext()
+            self._Ext._deserialize(params.get("Ext"))
+        self._TplName = params.get("TplName")
         if params.get("Job") is not None:
-            self.Job = Job()
-            self.Job._deserialize(params.get("Job"))
-        self.ProductionDate = params.get("ProductionDate")
-        self.ValidDate = params.get("ValidDate")
+            self._Job = Job()
+            self._Job._deserialize(params.get("Job"))
+        self._ProductionDate = params.get("ProductionDate")
+        self._ValidDate = params.get("ValidDate")
         if params.get("Attrs") is not None:
-            self.Attrs = []
+            self._Attrs = []
             for item in params.get("Attrs"):
                 obj = AttrItem()
                 obj._deserialize(item)
-                self.Attrs.append(obj)
+                self._Attrs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -304,18 +580,27 @@ class CodeItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 无
+        :param _Code: 无
         :type Code: str
         """
-        self.Code = None
+        self._Code = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
+        self._Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -328,119 +613,280 @@ class CodePack(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackId: 码id
+        :param _PackId: 码id
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackId: str
-        :param CorpId: 企业id
+        :param _CorpId: 企业id
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param MerchantId: 商户id
+        :param _MerchantId: 商户id
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param Status: 制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
+        :param _Status: 制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Log: 执行日志
+        :param _Log: 执行日志
 注意：此字段可能返回 null，表示取不到有效值。
         :type Log: str
-        :param CreateUser: 创建人
+        :param _CreateUser: 创建人
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUser: str
-        :param Amount: 码数
+        :param _Amount: 码数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: int
-        :param CodeLength: 防伪码长度
+        :param _CodeLength: 防伪码长度
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeLength: int
-        :param CodeType: 码类型
+        :param _CodeType: 码类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeType: str
-        :param Cipher: 是否暗码
+        :param _Cipher: 是否暗码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cipher: int
-        :param TextUrl: [弃用] 文字码地址，通过另一个接口查
+        :param _TextUrl: [弃用] 文字码地址，通过另一个接口查
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextUrl: str
-        :param PackUrl: [弃用] 二维码地址，通过另一个接口查
+        :param _PackUrl: [弃用] 二维码地址，通过另一个接口查
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackUrl: str
-        :param MerchantName: 商户名
+        :param _MerchantName: 商户名
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantName: str
-        :param RuleType: 码规则类型 0: 默认, 1: 自定义
+        :param _RuleType: 码规则类型 0: 默认, 1: 自定义
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: int
-        :param CustomId: 自定义码规则ID
+        :param _CustomId: 自定义码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param PackType: 码包类型 0: 普通码包 1: 层级码包
+        :param _PackType: 码包类型 0: 普通码包 1: 层级码包
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackType: int
-        :param PackLevel: 生码层级
+        :param _PackLevel: 生码层级
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackLevel: int
-        :param PackSpec: 层级码配置
+        :param _PackSpec: 层级码配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackSpec: list of PackSpec
         """
-        self.PackId = None
-        self.CorpId = None
-        self.MerchantId = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Status = None
-        self.Log = None
-        self.CreateUser = None
-        self.Amount = None
-        self.CodeLength = None
-        self.CodeType = None
-        self.Cipher = None
-        self.TextUrl = None
-        self.PackUrl = None
-        self.MerchantName = None
-        self.RuleType = None
-        self.CustomId = None
-        self.PackType = None
-        self.PackLevel = None
-        self.PackSpec = None
+        self._PackId = None
+        self._CorpId = None
+        self._MerchantId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+        self._Log = None
+        self._CreateUser = None
+        self._Amount = None
+        self._CodeLength = None
+        self._CodeType = None
+        self._Cipher = None
+        self._TextUrl = None
+        self._PackUrl = None
+        self._MerchantName = None
+        self._RuleType = None
+        self._CustomId = None
+        self._PackType = None
+        self._PackLevel = None
+        self._PackSpec = None
+
+    @property
+    def PackId(self):
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def CreateUser(self):
+        return self._CreateUser
+
+    @CreateUser.setter
+    def CreateUser(self, CreateUser):
+        self._CreateUser = CreateUser
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def CodeLength(self):
+        return self._CodeLength
+
+    @CodeLength.setter
+    def CodeLength(self, CodeLength):
+        self._CodeLength = CodeLength
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def Cipher(self):
+        return self._Cipher
+
+    @Cipher.setter
+    def Cipher(self, Cipher):
+        self._Cipher = Cipher
+
+    @property
+    def TextUrl(self):
+        return self._TextUrl
+
+    @TextUrl.setter
+    def TextUrl(self, TextUrl):
+        self._TextUrl = TextUrl
+
+    @property
+    def PackUrl(self):
+        return self._PackUrl
+
+    @PackUrl.setter
+    def PackUrl(self, PackUrl):
+        self._PackUrl = PackUrl
+
+    @property
+    def MerchantName(self):
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def PackType(self):
+        return self._PackType
+
+    @PackType.setter
+    def PackType(self, PackType):
+        self._PackType = PackType
+
+    @property
+    def PackLevel(self):
+        return self._PackLevel
+
+    @PackLevel.setter
+    def PackLevel(self, PackLevel):
+        self._PackLevel = PackLevel
+
+    @property
+    def PackSpec(self):
+        return self._PackSpec
+
+    @PackSpec.setter
+    def PackSpec(self, PackSpec):
+        self._PackSpec = PackSpec
 
 
     def _deserialize(self, params):
-        self.PackId = params.get("PackId")
-        self.CorpId = params.get("CorpId")
-        self.MerchantId = params.get("MerchantId")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Status = params.get("Status")
-        self.Log = params.get("Log")
-        self.CreateUser = params.get("CreateUser")
-        self.Amount = params.get("Amount")
-        self.CodeLength = params.get("CodeLength")
-        self.CodeType = params.get("CodeType")
-        self.Cipher = params.get("Cipher")
-        self.TextUrl = params.get("TextUrl")
-        self.PackUrl = params.get("PackUrl")
-        self.MerchantName = params.get("MerchantName")
-        self.RuleType = params.get("RuleType")
-        self.CustomId = params.get("CustomId")
-        self.PackType = params.get("PackType")
-        self.PackLevel = params.get("PackLevel")
+        self._PackId = params.get("PackId")
+        self._CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._Log = params.get("Log")
+        self._CreateUser = params.get("CreateUser")
+        self._Amount = params.get("Amount")
+        self._CodeLength = params.get("CodeLength")
+        self._CodeType = params.get("CodeType")
+        self._Cipher = params.get("Cipher")
+        self._TextUrl = params.get("TextUrl")
+        self._PackUrl = params.get("PackUrl")
+        self._MerchantName = params.get("MerchantName")
+        self._RuleType = params.get("RuleType")
+        self._CustomId = params.get("CustomId")
+        self._PackType = params.get("PackType")
+        self._PackLevel = params.get("PackLevel")
         if params.get("PackSpec") is not None:
-            self.PackSpec = []
+            self._PackSpec = []
             for item in params.get("PackSpec"):
                 obj = PackSpec()
                 obj._deserialize(item)
-                self.PackSpec.append(obj)
+                self._PackSpec.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -453,38 +899,79 @@ class CodePart(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 码段名称
+        :param _Name: 码段名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Type: 码段类型
+        :param _Type: 码段类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Value: 码段内容
+        :param _Value: 码段内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
-        :param Length: 码段长度
+        :param _Length: 码段长度
         :type Length: int
-        :param Ext: 扩展字段
+        :param _Ext: 扩展字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: str
         """
-        self.Name = None
-        self.Type = None
-        self.Value = None
-        self.Length = None
-        self.Ext = None
+        self._Name = None
+        self._Type = None
+        self._Value = None
+        self._Length = None
+        self._Ext = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.Value = params.get("Value")
-        self.Length = params.get("Length")
-        self.Ext = params.get("Ext")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._Length = params.get("Length")
+        self._Ext = params.get("Ext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -497,34 +984,67 @@ class CorpQuota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param CorpName: 企业名称
+        :param _CorpName: 企业名称
         :type CorpName: str
-        :param Quota: 额度
+        :param _Quota: 额度
         :type Quota: :class:`tencentcloud.trp.v20210515.models.Quota`
-        :param UsageQuota: 额度使用量
+        :param _UsageQuota: 额度使用量
         :type UsageQuota: :class:`tencentcloud.trp.v20210515.models.UsageQuota`
         """
-        self.CorpId = None
-        self.CorpName = None
-        self.Quota = None
-        self.UsageQuota = None
+        self._CorpId = None
+        self._CorpName = None
+        self._Quota = None
+        self._UsageQuota = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def CorpName(self):
+        return self._CorpName
+
+    @CorpName.setter
+    def CorpName(self, CorpName):
+        self._CorpName = CorpName
+
+    @property
+    def Quota(self):
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def UsageQuota(self):
+        return self._UsageQuota
+
+    @UsageQuota.setter
+    def UsageQuota(self, UsageQuota):
+        self._UsageQuota = UsageQuota
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.CorpName = params.get("CorpName")
+        self._CorpId = params.get("CorpId")
+        self._CorpName = params.get("CorpName")
         if params.get("Quota") is not None:
-            self.Quota = Quota()
-            self.Quota._deserialize(params.get("Quota"))
+            self._Quota = Quota()
+            self._Quota._deserialize(params.get("Quota"))
         if params.get("UsageQuota") is not None:
-            self.UsageQuota = UsageQuota()
-            self.UsageQuota._deserialize(params.get("UsageQuota"))
+            self._UsageQuota = UsageQuota()
+            self._UsageQuota._deserialize(params.get("UsageQuota"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -537,58 +1057,147 @@ class CreateCodeBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param ProductId: 产品ID
+        :param _ProductId: 产品ID
         :type ProductId: str
-        :param BatchType: 批次类型 0:溯源 1:营销
+        :param _BatchType: 批次类型 0:溯源 1:营销
         :type BatchType: int
-        :param BatchId: 批次ID，留空时系统自动生成
+        :param _BatchId: 批次ID，留空时系统自动生成
         :type BatchId: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param MpTpl: 模版ID，或者活动ID
+        :param _MpTpl: 模版ID，或者活动ID
         :type MpTpl: str
-        :param CloneId: 克隆批次ID，同时会复制溯源信息
+        :param _CloneId: 克隆批次ID，同时会复制溯源信息
         :type CloneId: str
-        :param BatchCode: 批次编号，业务字段不判断唯一性
+        :param _BatchCode: 批次编号，业务字段不判断唯一性
         :type BatchCode: str
-        :param ValidDate: 有效期
+        :param _ValidDate: 有效期
         :type ValidDate: str
-        :param ProductionDate: 生产日期
+        :param _ProductionDate: 生产日期
         :type ProductionDate: str
         """
-        self.CorpId = None
-        self.MerchantId = None
-        self.ProductId = None
-        self.BatchType = None
-        self.BatchId = None
-        self.Remark = None
-        self.MpTpl = None
-        self.CloneId = None
-        self.BatchCode = None
-        self.ValidDate = None
-        self.ProductionDate = None
+        self._CorpId = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._BatchType = None
+        self._BatchId = None
+        self._Remark = None
+        self._MpTpl = None
+        self._CloneId = None
+        self._BatchCode = None
+        self._ValidDate = None
+        self._ProductionDate = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def BatchType(self):
+        return self._BatchType
+
+    @BatchType.setter
+    def BatchType(self, BatchType):
+        self._BatchType = BatchType
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MpTpl(self):
+        return self._MpTpl
+
+    @MpTpl.setter
+    def MpTpl(self, MpTpl):
+        self._MpTpl = MpTpl
+
+    @property
+    def CloneId(self):
+        return self._CloneId
+
+    @CloneId.setter
+    def CloneId(self, CloneId):
+        self._CloneId = CloneId
+
+    @property
+    def BatchCode(self):
+        return self._BatchCode
+
+    @BatchCode.setter
+    def BatchCode(self, BatchCode):
+        self._BatchCode = BatchCode
+
+    @property
+    def ValidDate(self):
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def ProductionDate(self):
+        return self._ProductionDate
+
+    @ProductionDate.setter
+    def ProductionDate(self, ProductionDate):
+        self._ProductionDate = ProductionDate
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.BatchType = params.get("BatchType")
-        self.BatchId = params.get("BatchId")
-        self.Remark = params.get("Remark")
-        self.MpTpl = params.get("MpTpl")
-        self.CloneId = params.get("CloneId")
-        self.BatchCode = params.get("BatchCode")
-        self.ValidDate = params.get("ValidDate")
-        self.ProductionDate = params.get("ProductionDate")
+        self._CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._BatchType = params.get("BatchType")
+        self._BatchId = params.get("BatchId")
+        self._Remark = params.get("Remark")
+        self._MpTpl = params.get("MpTpl")
+        self._CloneId = params.get("CloneId")
+        self._BatchCode = params.get("BatchCode")
+        self._ValidDate = params.get("ValidDate")
+        self._ProductionDate = params.get("ProductionDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -601,18 +1210,34 @@ class CreateCodeBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BatchId = None
-        self.RequestId = None
+        self._BatchId = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.RequestId = params.get("RequestId")
+        self._BatchId = params.get("BatchId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCodePackRequest(AbstractModel):
@@ -622,59 +1247,140 @@ class CreateCodePackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param CodeLength: 码长度
+        :param _CodeLength: 码长度
         :type CodeLength: int
-        :param CodeType: 码类型 alphabet 字母, number 数字, mixin 混合
+        :param _CodeType: 码类型 alphabet 字母, number 数字, mixin 混合
         :type CodeType: str
-        :param Amount: 生码数量 普通码包时必填
+        :param _Amount: 生码数量 普通码包时必填
         :type Amount: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param PackType: 码包类型 0: 普通码包 1: 层级码包
+        :param _PackType: 码包类型 0: 普通码包 1: 层级码包
         :type PackType: int
-        :param PackLevel: 码包层级
+        :param _PackLevel: 码包层级
         :type PackLevel: int
-        :param PackSpec: 码包规格
+        :param _PackSpec: 码包规格
         :type PackSpec: list of PackSpec
-        :param BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
+        :param _BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
         :type BatchId: str
-        :param SerialType: 是否有流水码 0:无 1:有
+        :param _SerialType: 是否有流水码 0:无 1:有
         :type SerialType: int
         """
-        self.MerchantId = None
-        self.CodeLength = None
-        self.CodeType = None
-        self.Amount = None
-        self.CorpId = None
-        self.PackType = None
-        self.PackLevel = None
-        self.PackSpec = None
-        self.BatchId = None
-        self.SerialType = None
+        self._MerchantId = None
+        self._CodeLength = None
+        self._CodeType = None
+        self._Amount = None
+        self._CorpId = None
+        self._PackType = None
+        self._PackLevel = None
+        self._PackSpec = None
+        self._BatchId = None
+        self._SerialType = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CodeLength(self):
+        return self._CodeLength
+
+    @CodeLength.setter
+    def CodeLength(self, CodeLength):
+        self._CodeLength = CodeLength
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def PackType(self):
+        return self._PackType
+
+    @PackType.setter
+    def PackType(self, PackType):
+        self._PackType = PackType
+
+    @property
+    def PackLevel(self):
+        return self._PackLevel
+
+    @PackLevel.setter
+    def PackLevel(self, PackLevel):
+        self._PackLevel = PackLevel
+
+    @property
+    def PackSpec(self):
+        return self._PackSpec
+
+    @PackSpec.setter
+    def PackSpec(self, PackSpec):
+        self._PackSpec = PackSpec
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def SerialType(self):
+        return self._SerialType
+
+    @SerialType.setter
+    def SerialType(self, SerialType):
+        self._SerialType = SerialType
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.CodeLength = params.get("CodeLength")
-        self.CodeType = params.get("CodeType")
-        self.Amount = params.get("Amount")
-        self.CorpId = params.get("CorpId")
-        self.PackType = params.get("PackType")
-        self.PackLevel = params.get("PackLevel")
+        self._MerchantId = params.get("MerchantId")
+        self._CodeLength = params.get("CodeLength")
+        self._CodeType = params.get("CodeType")
+        self._Amount = params.get("Amount")
+        self._CorpId = params.get("CorpId")
+        self._PackType = params.get("PackType")
+        self._PackLevel = params.get("PackLevel")
         if params.get("PackSpec") is not None:
-            self.PackSpec = []
+            self._PackSpec = []
             for item in params.get("PackSpec"):
                 obj = PackSpec()
                 obj._deserialize(item)
-                self.PackSpec.append(obj)
-        self.BatchId = params.get("BatchId")
-        self.SerialType = params.get("SerialType")
+                self._PackSpec.append(obj)
+        self._BatchId = params.get("BatchId")
+        self._SerialType = params.get("SerialType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -687,18 +1393,34 @@ class CreateCodePackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackId: 码包ID
+        :param _PackId: 码包ID
         :type PackId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PackId = None
-        self.RequestId = None
+        self._PackId = None
+        self._RequestId = None
+
+    @property
+    def PackId(self):
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PackId = params.get("PackId")
-        self.RequestId = params.get("RequestId")
+        self._PackId = params.get("PackId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCorporationOrderRequest(AbstractModel):
@@ -708,50 +1430,123 @@ class CreateCorporationOrderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpName: 企业名称
+        :param _CorpName: 企业名称
         :type CorpName: str
-        :param Owner: 所有者ID
+        :param _Owner: 所有者ID
         :type Owner: str
-        :param CodeQuota: 溯源码额度
+        :param _CodeQuota: 溯源码额度
         :type CodeQuota: int
-        :param ExpireTime: 额度过期时间
+        :param _ExpireTime: 额度过期时间
         :type ExpireTime: str
-        :param Amount: 金额
+        :param _Amount: 金额
         :type Amount: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param ContactPerson: 联系人
+        :param _ContactPerson: 联系人
         :type ContactPerson: str
-        :param ContactNumber: 联系电话
+        :param _ContactNumber: 联系电话
         :type ContactNumber: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
         """
-        self.CorpName = None
-        self.Owner = None
-        self.CodeQuota = None
-        self.ExpireTime = None
-        self.Amount = None
-        self.CorpId = None
-        self.ContactPerson = None
-        self.ContactNumber = None
-        self.Remark = None
+        self._CorpName = None
+        self._Owner = None
+        self._CodeQuota = None
+        self._ExpireTime = None
+        self._Amount = None
+        self._CorpId = None
+        self._ContactPerson = None
+        self._ContactNumber = None
+        self._Remark = None
+
+    @property
+    def CorpName(self):
+        return self._CorpName
+
+    @CorpName.setter
+    def CorpName(self, CorpName):
+        self._CorpName = CorpName
+
+    @property
+    def Owner(self):
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def CodeQuota(self):
+        return self._CodeQuota
+
+    @CodeQuota.setter
+    def CodeQuota(self, CodeQuota):
+        self._CodeQuota = CodeQuota
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def ContactPerson(self):
+        return self._ContactPerson
+
+    @ContactPerson.setter
+    def ContactPerson(self, ContactPerson):
+        self._ContactPerson = ContactPerson
+
+    @property
+    def ContactNumber(self):
+        return self._ContactNumber
+
+    @ContactNumber.setter
+    def ContactNumber(self, ContactNumber):
+        self._ContactNumber = ContactNumber
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.CorpName = params.get("CorpName")
-        self.Owner = params.get("Owner")
-        self.CodeQuota = params.get("CodeQuota")
-        self.ExpireTime = params.get("ExpireTime")
-        self.Amount = params.get("Amount")
-        self.CorpId = params.get("CorpId")
-        self.ContactPerson = params.get("ContactPerson")
-        self.ContactNumber = params.get("ContactNumber")
-        self.Remark = params.get("Remark")
+        self._CorpName = params.get("CorpName")
+        self._Owner = params.get("Owner")
+        self._CodeQuota = params.get("CodeQuota")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Amount = params.get("Amount")
+        self._CorpId = params.get("CorpId")
+        self._ContactPerson = params.get("ContactPerson")
+        self._ContactNumber = params.get("ContactNumber")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -764,19 +1559,35 @@ class CreateCorporationOrderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CorpId = None
-        self.RequestId = None
+        self._CorpId = None
+        self._RequestId = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.RequestId = params.get("RequestId")
+        self._CorpId = params.get("CorpId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCustomPackRequest(AbstractModel):
@@ -786,64 +1597,145 @@ class CreateCustomPackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param Amount: 生码数量, 普通码包时必填
+        :param _Amount: 生码数量, 普通码包时必填
         :type Amount: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param PackType: 码包类型 0: 普通码包 1: 层级码包
+        :param _PackType: 码包类型 0: 普通码包 1: 层级码包
         :type PackType: int
-        :param PackLevel: 码包层级
+        :param _PackLevel: 码包层级
         :type PackLevel: int
-        :param PackSpec: 层级码包规则
+        :param _PackSpec: 层级码包规则
         :type PackSpec: list of PackSpec
-        :param CustomId: 码规则ID,  和CodeParts二选一必填
+        :param _CustomId: 码规则ID,  和CodeParts二选一必填
         :type CustomId: str
-        :param CodeParts: 码段配置，和CustomId二选一必填
+        :param _CodeParts: 码段配置，和CustomId二选一必填
         :type CodeParts: list of CodePart
-        :param BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
+        :param _BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
         :type BatchId: str
-        :param SerialType: 是否有流水码 0:无 1:有
+        :param _SerialType: 是否有流水码 0:无 1:有
         :type SerialType: int
         """
-        self.MerchantId = None
-        self.Amount = None
-        self.CorpId = None
-        self.PackType = None
-        self.PackLevel = None
-        self.PackSpec = None
-        self.CustomId = None
-        self.CodeParts = None
-        self.BatchId = None
-        self.SerialType = None
+        self._MerchantId = None
+        self._Amount = None
+        self._CorpId = None
+        self._PackType = None
+        self._PackLevel = None
+        self._PackSpec = None
+        self._CustomId = None
+        self._CodeParts = None
+        self._BatchId = None
+        self._SerialType = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def PackType(self):
+        return self._PackType
+
+    @PackType.setter
+    def PackType(self, PackType):
+        self._PackType = PackType
+
+    @property
+    def PackLevel(self):
+        return self._PackLevel
+
+    @PackLevel.setter
+    def PackLevel(self, PackLevel):
+        self._PackLevel = PackLevel
+
+    @property
+    def PackSpec(self):
+        return self._PackSpec
+
+    @PackSpec.setter
+    def PackSpec(self, PackSpec):
+        self._PackSpec = PackSpec
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def CodeParts(self):
+        return self._CodeParts
+
+    @CodeParts.setter
+    def CodeParts(self, CodeParts):
+        self._CodeParts = CodeParts
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def SerialType(self):
+        return self._SerialType
+
+    @SerialType.setter
+    def SerialType(self, SerialType):
+        self._SerialType = SerialType
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.Amount = params.get("Amount")
-        self.CorpId = params.get("CorpId")
-        self.PackType = params.get("PackType")
-        self.PackLevel = params.get("PackLevel")
+        self._MerchantId = params.get("MerchantId")
+        self._Amount = params.get("Amount")
+        self._CorpId = params.get("CorpId")
+        self._PackType = params.get("PackType")
+        self._PackLevel = params.get("PackLevel")
         if params.get("PackSpec") is not None:
-            self.PackSpec = []
+            self._PackSpec = []
             for item in params.get("PackSpec"):
                 obj = PackSpec()
                 obj._deserialize(item)
-                self.PackSpec.append(obj)
-        self.CustomId = params.get("CustomId")
+                self._PackSpec.append(obj)
+        self._CustomId = params.get("CustomId")
         if params.get("CodeParts") is not None:
-            self.CodeParts = []
+            self._CodeParts = []
             for item in params.get("CodeParts"):
                 obj = CodePart()
                 obj._deserialize(item)
-                self.CodeParts.append(obj)
-        self.BatchId = params.get("BatchId")
-        self.SerialType = params.get("SerialType")
+                self._CodeParts.append(obj)
+        self._BatchId = params.get("BatchId")
+        self._SerialType = params.get("SerialType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -856,18 +1748,34 @@ class CreateCustomPackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackId: 码包ID
+        :param _PackId: 码包ID
         :type PackId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PackId = None
-        self.RequestId = None
+        self._PackId = None
+        self._RequestId = None
+
+    @property
+    def PackId(self):
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PackId = params.get("PackId")
-        self.RequestId = params.get("RequestId")
+        self._PackId = params.get("PackId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCustomRuleRequest(AbstractModel):
@@ -877,39 +1785,80 @@ class CreateCustomRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 规则名称
+        :param _Name: 规则名称
         :type Name: str
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param CodeLength: 码长度
+        :param _CodeLength: 码长度
         :type CodeLength: int
-        :param CodeParts: 码段配置
+        :param _CodeParts: 码段配置
         :type CodeParts: list of CodePart
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.Name = None
-        self.MerchantId = None
-        self.CodeLength = None
-        self.CodeParts = None
-        self.CorpId = None
+        self._Name = None
+        self._MerchantId = None
+        self._CodeLength = None
+        self._CodeParts = None
+        self._CorpId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CodeLength(self):
+        return self._CodeLength
+
+    @CodeLength.setter
+    def CodeLength(self, CodeLength):
+        self._CodeLength = CodeLength
+
+    @property
+    def CodeParts(self):
+        return self._CodeParts
+
+    @CodeParts.setter
+    def CodeParts(self, CodeParts):
+        self._CodeParts = CodeParts
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.MerchantId = params.get("MerchantId")
-        self.CodeLength = params.get("CodeLength")
+        self._Name = params.get("Name")
+        self._MerchantId = params.get("MerchantId")
+        self._CodeLength = params.get("CodeLength")
         if params.get("CodeParts") is not None:
-            self.CodeParts = []
+            self._CodeParts = []
             for item in params.get("CodeParts"):
                 obj = CodePart()
                 obj._deserialize(item)
-                self.CodeParts.append(obj)
-        self.CorpId = params.get("CorpId")
+                self._CodeParts.append(obj)
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -922,19 +1871,35 @@ class CreateCustomRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomId = None
-        self.RequestId = None
+        self._CustomId = None
+        self._RequestId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.RequestId = params.get("RequestId")
+        self._CustomId = params.get("CustomId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMerchantRequest(AbstractModel):
@@ -944,34 +1909,75 @@ class CreateMerchantRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 商户名称
+        :param _Name: 商户名称
         :type Name: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param CodeType: 码包来源 0:自建, 1:第三发
+        :param _CodeType: 码包来源 0:自建, 1:第三发
         :type CodeType: int
-        :param CodeUrl: 码包前缀地址 第三方码包时必填
+        :param _CodeUrl: 码包前缀地址 第三方码包时必填
         :type CodeUrl: str
         """
-        self.Name = None
-        self.Remark = None
-        self.CorpId = None
-        self.CodeType = None
-        self.CodeUrl = None
+        self._Name = None
+        self._Remark = None
+        self._CorpId = None
+        self._CodeType = None
+        self._CodeUrl = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def CodeUrl(self):
+        return self._CodeUrl
+
+    @CodeUrl.setter
+    def CodeUrl(self, CodeUrl):
+        self._CodeUrl = CodeUrl
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.CorpId = params.get("CorpId")
-        self.CodeType = params.get("CodeType")
-        self.CodeUrl = params.get("CodeUrl")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._CorpId = params.get("CorpId")
+        self._CodeType = params.get("CodeType")
+        self._CodeUrl = params.get("CodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -984,19 +1990,35 @@ class CreateMerchantResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MerchantId = None
-        self.RequestId = None
+        self._MerchantId = None
+        self._RequestId = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.RequestId = params.get("RequestId")
+        self._MerchantId = params.get("MerchantId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateProductRequest(AbstractModel):
@@ -1006,48 +2028,113 @@ class CreateProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 商品名称
+        :param _Name: 商品名称
         :type Name: str
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param MerchantName: 商户名称
+        :param _MerchantName: 商户名称
         :type MerchantName: str
-        :param Specification: 商品规格
+        :param _Specification: 商品规格
         :type Specification: str
-        :param Logo: 商品图片
+        :param _Logo: 商品图片
         :type Logo: list of str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Ext: 预留字段
+        :param _Ext: 预留字段
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
         """
-        self.Name = None
-        self.MerchantId = None
-        self.Remark = None
-        self.MerchantName = None
-        self.Specification = None
-        self.Logo = None
-        self.CorpId = None
-        self.Ext = None
+        self._Name = None
+        self._MerchantId = None
+        self._Remark = None
+        self._MerchantName = None
+        self._Specification = None
+        self._Logo = None
+        self._CorpId = None
+        self._Ext = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MerchantName(self):
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Logo(self):
+        return self._Logo
+
+    @Logo.setter
+    def Logo(self, Logo):
+        self._Logo = Logo
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.MerchantId = params.get("MerchantId")
-        self.Remark = params.get("Remark")
-        self.MerchantName = params.get("MerchantName")
-        self.Specification = params.get("Specification")
-        self.Logo = params.get("Logo")
-        self.CorpId = params.get("CorpId")
+        self._Name = params.get("Name")
+        self._MerchantId = params.get("MerchantId")
+        self._Remark = params.get("Remark")
+        self._MerchantName = params.get("MerchantName")
+        self._Specification = params.get("Specification")
+        self._Logo = params.get("Logo")
+        self._CorpId = params.get("CorpId")
         if params.get("Ext") is not None:
-            self.Ext = Ext()
-            self.Ext._deserialize(params.get("Ext"))
+            self._Ext = Ext()
+            self._Ext._deserialize(params.get("Ext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1060,19 +2147,35 @@ class CreateProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProductId = None
-        self.RequestId = None
+        self._ProductId = None
+        self._RequestId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.RequestId = params.get("RequestId")
+        self._ProductId = params.get("ProductId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTraceChainRequest(AbstractModel):
@@ -1082,22 +2185,39 @@ class CreateTraceChainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param TraceId: 溯源ID
+        :param _TraceId: 溯源ID
         :type TraceId: str
         """
-        self.CorpId = None
-        self.TraceId = None
+        self._CorpId = None
+        self._TraceId = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.TraceId = params.get("TraceId")
+        self._CorpId = params.get("CorpId")
+        self._TraceId = params.get("TraceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1110,18 +2230,34 @@ class CreateTraceChainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceId: 溯源ID
+        :param _TraceId: 溯源ID
         :type TraceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TraceId = None
-        self.RequestId = None
+        self._TraceId = None
+        self._RequestId = None
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TraceId = params.get("TraceId")
-        self.RequestId = params.get("RequestId")
+        self._TraceId = params.get("TraceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTraceCodesAsyncRequest(AbstractModel):
@@ -1131,26 +2267,51 @@ class CreateTraceCodesAsyncRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param FileKey: 上传文件Key，仅支持 csv 或者 zip 类型
+        :param _FileKey: 上传文件Key，仅支持 csv 或者 zip 类型
         :type FileKey: str
         """
-        self.CorpId = None
-        self.BatchId = None
-        self.FileKey = None
+        self._CorpId = None
+        self._BatchId = None
+        self._FileKey = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def FileKey(self):
+        return self._FileKey
+
+    @FileKey.setter
+    def FileKey(self, FileKey):
+        self._FileKey = FileKey
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.BatchId = params.get("BatchId")
-        self.FileKey = params.get("FileKey")
+        self._CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
+        self._FileKey = params.get("FileKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1163,19 +2324,35 @@ class CreateTraceCodesAsyncResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BatchId = None
-        self.RequestId = None
+        self._BatchId = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.RequestId = params.get("RequestId")
+        self._BatchId = params.get("BatchId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTraceCodesRequest(AbstractModel):
@@ -1185,43 +2362,84 @@ class CreateTraceCodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Codes: 码
+        :param _Codes: 码
         :type Codes: list of CodeItem
-        :param CodeType: 码绑定激活策略，默认  0
+        :param _CodeType: 码绑定激活策略，默认  0
 0: 传什么码就激活什么码
 1: 层级码 + 层级子码
         :type CodeType: int
-        :param CheckType: 错误检查类型，默认 0
+        :param _CheckType: 错误检查类型，默认 0
 0: 没有新导入码时正常返回
 1: 没有新导入码时报错，并返回没有导入成功的原因
         :type CheckType: int
         """
-        self.BatchId = None
-        self.CorpId = None
-        self.Codes = None
-        self.CodeType = None
-        self.CheckType = None
+        self._BatchId = None
+        self._CorpId = None
+        self._Codes = None
+        self._CodeType = None
+        self._CheckType = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Codes(self):
+        return self._Codes
+
+    @Codes.setter
+    def Codes(self, Codes):
+        self._Codes = Codes
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def CheckType(self):
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
+        self._CorpId = params.get("CorpId")
         if params.get("Codes") is not None:
-            self.Codes = []
+            self._Codes = []
             for item in params.get("Codes"):
                 obj = CodeItem()
                 obj._deserialize(item)
-                self.Codes.append(obj)
-        self.CodeType = params.get("CodeType")
-        self.CheckType = params.get("CheckType")
+                self._Codes.append(obj)
+        self._CodeType = params.get("CodeType")
+        self._CheckType = params.get("CheckType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1234,26 +2452,58 @@ class CreateTraceCodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param ActiveCnt: 导入成功码数量
+        :param _ActiveCnt: 导入成功码数量
         :type ActiveCnt: int
-        :param CodeCnt: 批次码数量
+        :param _CodeCnt: 批次码数量
         :type CodeCnt: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BatchId = None
-        self.ActiveCnt = None
-        self.CodeCnt = None
-        self.RequestId = None
+        self._BatchId = None
+        self._ActiveCnt = None
+        self._CodeCnt = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def ActiveCnt(self):
+        return self._ActiveCnt
+
+    @ActiveCnt.setter
+    def ActiveCnt(self, ActiveCnt):
+        self._ActiveCnt = ActiveCnt
+
+    @property
+    def CodeCnt(self):
+        return self._CodeCnt
+
+    @CodeCnt.setter
+    def CodeCnt(self, CodeCnt):
+        self._CodeCnt = CodeCnt
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.ActiveCnt = params.get("ActiveCnt")
-        self.CodeCnt = params.get("CodeCnt")
-        self.RequestId = params.get("RequestId")
+        self._BatchId = params.get("BatchId")
+        self._ActiveCnt = params.get("ActiveCnt")
+        self._CodeCnt = params.get("CodeCnt")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTraceDataRequest(AbstractModel):
@@ -1263,65 +2513,154 @@ class CreateTraceDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: str
-        :param Phase: 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
+        :param _Phase: 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
         :type Phase: int
-        :param PhaseName: 溯源阶段名称
+        :param _PhaseName: 溯源阶段名称
         :type PhaseName: str
-        :param ChainStatus: [无效] 上链状态
+        :param _ChainStatus: [无效] 上链状态
         :type ChainStatus: int
-        :param Type: [无效] 码类型 0: 批次, 1: 码, 2: 生产任务, 3: 物流信息
+        :param _Type: [无效] 码类型 0: 批次, 1: 码, 2: 生产任务, 3: 物流信息
         :type Type: int
-        :param TraceId: [无效] 溯源ID
+        :param _TraceId: [无效] 溯源ID
         :type TraceId: str
-        :param TraceItems: 溯源信息
+        :param _TraceItems: 溯源信息
         :type TraceItems: list of TraceItem
-        :param Status: 溯源状态 0: 无效, 1: 有效
+        :param _Status: 溯源状态 0: 无效, 1: 有效
         :type Status: int
-        :param PhaseData: 环节数据
+        :param _PhaseData: 环节数据
         :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
-        self.CorpId = None
-        self.BatchId = None
-        self.TaskId = None
-        self.Phase = None
-        self.PhaseName = None
-        self.ChainStatus = None
-        self.Type = None
-        self.TraceId = None
-        self.TraceItems = None
-        self.Status = None
-        self.PhaseData = None
+        self._CorpId = None
+        self._BatchId = None
+        self._TaskId = None
+        self._Phase = None
+        self._PhaseName = None
+        self._ChainStatus = None
+        self._Type = None
+        self._TraceId = None
+        self._TraceItems = None
+        self._Status = None
+        self._PhaseData = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Phase(self):
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def PhaseName(self):
+        return self._PhaseName
+
+    @PhaseName.setter
+    def PhaseName(self, PhaseName):
+        self._PhaseName = PhaseName
+
+    @property
+    def ChainStatus(self):
+        return self._ChainStatus
+
+    @ChainStatus.setter
+    def ChainStatus(self, ChainStatus):
+        self._ChainStatus = ChainStatus
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def TraceItems(self):
+        return self._TraceItems
+
+    @TraceItems.setter
+    def TraceItems(self, TraceItems):
+        self._TraceItems = TraceItems
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PhaseData(self):
+        return self._PhaseData
+
+    @PhaseData.setter
+    def PhaseData(self, PhaseData):
+        self._PhaseData = PhaseData
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.BatchId = params.get("BatchId")
-        self.TaskId = params.get("TaskId")
-        self.Phase = params.get("Phase")
-        self.PhaseName = params.get("PhaseName")
-        self.ChainStatus = params.get("ChainStatus")
-        self.Type = params.get("Type")
-        self.TraceId = params.get("TraceId")
+        self._CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
+        self._TaskId = params.get("TaskId")
+        self._Phase = params.get("Phase")
+        self._PhaseName = params.get("PhaseName")
+        self._ChainStatus = params.get("ChainStatus")
+        self._Type = params.get("Type")
+        self._TraceId = params.get("TraceId")
         if params.get("TraceItems") is not None:
-            self.TraceItems = []
+            self._TraceItems = []
             for item in params.get("TraceItems"):
                 obj = TraceItem()
                 obj._deserialize(item)
-                self.TraceItems.append(obj)
-        self.Status = params.get("Status")
+                self._TraceItems.append(obj)
+        self._Status = params.get("Status")
         if params.get("PhaseData") is not None:
-            self.PhaseData = PhaseData()
-            self.PhaseData._deserialize(params.get("PhaseData"))
+            self._PhaseData = PhaseData()
+            self._PhaseData._deserialize(params.get("PhaseData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1334,18 +2673,34 @@ class CreateTraceDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceId: 溯源ID
+        :param _TraceId: 溯源ID
         :type TraceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TraceId = None
-        self.RequestId = None
+        self._TraceId = None
+        self._RequestId = None
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TraceId = params.get("TraceId")
-        self.RequestId = params.get("RequestId")
+        self._TraceId = params.get("TraceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CustomRule(AbstractModel):
@@ -1355,58 +2710,131 @@ class CustomRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
         :type CustomId: str
-        :param Name: 码规则名
+        :param _Name: 码规则名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param CodeLength: 码ID长度
+        :param _CodeLength: 码ID长度
         :type CodeLength: int
-        :param Status: 规则状态
+        :param _Status: 规则状态
         :type Status: int
-        :param CodeParts: 码段配置
+        :param _CodeParts: 码段配置
         :type CodeParts: list of CodePart
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
         :type UpdateTime: str
         """
-        self.CustomId = None
-        self.Name = None
-        self.CorpId = None
-        self.MerchantId = None
-        self.CodeLength = None
-        self.Status = None
-        self.CodeParts = None
-        self.CreateTime = None
-        self.UpdateTime = None
+        self._CustomId = None
+        self._Name = None
+        self._CorpId = None
+        self._MerchantId = None
+        self._CodeLength = None
+        self._Status = None
+        self._CodeParts = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CodeLength(self):
+        return self._CodeLength
+
+    @CodeLength.setter
+    def CodeLength(self, CodeLength):
+        self._CodeLength = CodeLength
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CodeParts(self):
+        return self._CodeParts
+
+    @CodeParts.setter
+    def CodeParts(self, CodeParts):
+        self._CodeParts = CodeParts
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.Name = params.get("Name")
-        self.CorpId = params.get("CorpId")
-        self.MerchantId = params.get("MerchantId")
-        self.CodeLength = params.get("CodeLength")
-        self.Status = params.get("Status")
+        self._CustomId = params.get("CustomId")
+        self._Name = params.get("Name")
+        self._CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._CodeLength = params.get("CodeLength")
+        self._Status = params.get("Status")
         if params.get("CodeParts") is not None:
-            self.CodeParts = []
+            self._CodeParts = []
             for item in params.get("CodeParts"):
                 obj = CodePart()
                 obj._deserialize(item)
-                self.CodeParts.append(obj)
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+                self._CodeParts.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1419,22 +2847,39 @@ class DeleteCodeBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
         """
-        self.CorpId = None
-        self.BatchId = None
+        self._CorpId = None
+        self._BatchId = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.BatchId = params.get("BatchId")
+        self._CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1447,18 +2892,34 @@ class DeleteCodeBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BatchId = None
-        self.RequestId = None
+        self._BatchId = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.RequestId = params.get("RequestId")
+        self._BatchId = params.get("BatchId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteMerchantRequest(AbstractModel):
@@ -1468,22 +2929,39 @@ class DeleteMerchantRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
         :type MerchantId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.MerchantId = None
-        self.CorpId = None
+        self._MerchantId = None
+        self._CorpId = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1496,19 +2974,35 @@ class DeleteMerchantResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MerchantId = None
-        self.RequestId = None
+        self._MerchantId = None
+        self._RequestId = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.RequestId = params.get("RequestId")
+        self._MerchantId = params.get("MerchantId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteProductRequest(AbstractModel):
@@ -1518,22 +3012,39 @@ class DeleteProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
         :type ProductId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.ProductId = None
-        self.CorpId = None
+        self._ProductId = None
+        self._CorpId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.CorpId = params.get("CorpId")
+        self._ProductId = params.get("ProductId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1546,19 +3057,35 @@ class DeleteProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProductId = None
-        self.RequestId = None
+        self._ProductId = None
+        self._RequestId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.RequestId = params.get("RequestId")
+        self._ProductId = params.get("ProductId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTraceDataRequest(AbstractModel):
@@ -1568,22 +3095,39 @@ class DeleteTraceDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceId: 溯源ID
+        :param _TraceId: 溯源ID
         :type TraceId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.TraceId = None
-        self.CorpId = None
+        self._TraceId = None
+        self._CorpId = None
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.TraceId = params.get("TraceId")
-        self.CorpId = params.get("CorpId")
+        self._TraceId = params.get("TraceId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1596,19 +3140,35 @@ class DeleteTraceDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceId: 溯源id
+        :param _TraceId: 溯源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TraceId = None
-        self.RequestId = None
+        self._TraceId = None
+        self._RequestId = None
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TraceId = params.get("TraceId")
-        self.RequestId = params.get("RequestId")
+        self._TraceId = params.get("TraceId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAgentCorpsRequest(AbstractModel):
@@ -1618,30 +3178,63 @@ class DescribeAgentCorpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageSize: 每页数量
+        :param _PageSize: 每页数量
         :type PageSize: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param AgentId: 渠道ID
+        :param _AgentId: 渠道ID
         :type AgentId: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.PageSize = None
-        self.PageNumber = None
-        self.AgentId = None
-        self.CorpId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._AgentId = None
+        self._CorpId = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def AgentId(self):
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.AgentId = params.get("AgentId")
-        self.CorpId = params.get("CorpId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._AgentId = params.get("AgentId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1654,14 +3247,22 @@ class DescribeAgentCorpsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCodeBatchByIdRequest(AbstractModel):
@@ -1671,22 +3272,39 @@ class DescribeCodeBatchByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
         """
-        self.CorpId = None
-        self.BatchId = None
+        self._CorpId = None
+        self._BatchId = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.BatchId = params.get("BatchId")
+        self._CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1699,20 +3317,36 @@ class DescribeCodeBatchByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CodeBatch: 批次
+        :param _CodeBatch: 批次
         :type CodeBatch: :class:`tencentcloud.trp.v20210515.models.CodeBatch`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CodeBatch = None
-        self.RequestId = None
+        self._CodeBatch = None
+        self._RequestId = None
+
+    @property
+    def CodeBatch(self):
+        return self._CodeBatch
+
+    @CodeBatch.setter
+    def CodeBatch(self, CodeBatch):
+        self._CodeBatch = CodeBatch
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CodeBatch") is not None:
-            self.CodeBatch = CodeBatch()
-            self.CodeBatch._deserialize(params.get("CodeBatch"))
-        self.RequestId = params.get("RequestId")
+            self._CodeBatch = CodeBatch()
+            self._CodeBatch._deserialize(params.get("CodeBatch"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCodeBatchsRequest(AbstractModel):
@@ -1722,42 +3356,99 @@ class DescribeCodeBatchsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 查询商户ID
+        :param _MerchantId: 查询商户ID
         :type MerchantId: str
-        :param ProductId: 查询商品ID
+        :param _ProductId: 查询商品ID
         :type ProductId: str
-        :param Keyword: 查询关键字
+        :param _Keyword: 查询关键字
         :type Keyword: str
-        :param PageSize: 条数
+        :param _PageSize: 条数
         :type PageSize: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param BatchType: 批次类型 0:溯源 1:营销
+        :param _BatchType: 批次类型 0:溯源 1:营销
         :type BatchType: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.MerchantId = None
-        self.ProductId = None
-        self.Keyword = None
-        self.PageSize = None
-        self.PageNumber = None
-        self.BatchType = None
-        self.CorpId = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._Keyword = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._BatchType = None
+        self._CorpId = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def BatchType(self):
+        return self._BatchType
+
+    @BatchType.setter
+    def BatchType(self, BatchType):
+        self._BatchType = BatchType
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.Keyword = params.get("Keyword")
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.BatchType = params.get("BatchType")
-        self.CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._Keyword = params.get("Keyword")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._BatchType = params.get("BatchType")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1770,29 +3461,53 @@ class DescribeCodeBatchsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CodeBatchs: 批次列表
+        :param _CodeBatchs: 批次列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeBatchs: list of CodeBatch
-        :param TotalCount: 总条数
+        :param _TotalCount: 总条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CodeBatchs = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._CodeBatchs = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CodeBatchs(self):
+        return self._CodeBatchs
+
+    @CodeBatchs.setter
+    def CodeBatchs(self, CodeBatchs):
+        self._CodeBatchs = CodeBatchs
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CodeBatchs") is not None:
-            self.CodeBatchs = []
+            self._CodeBatchs = []
             for item in params.get("CodeBatchs"):
                 obj = CodeBatch()
                 obj._deserialize(item)
-                self.CodeBatchs.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._CodeBatchs.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCodePackStatusRequest(AbstractModel):
@@ -1802,22 +3517,39 @@ class DescribeCodePackStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackId: 码包ID
+        :param _PackId: 码包ID
         :type PackId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.PackId = None
-        self.CorpId = None
+        self._PackId = None
+        self._CorpId = None
+
+    @property
+    def PackId(self):
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.PackId = params.get("PackId")
-        self.CorpId = params.get("CorpId")
+        self._PackId = params.get("PackId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1830,19 +3562,35 @@ class DescribeCodePackStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
+        :param _Status: 码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCodePackUrlRequest(AbstractModel):
@@ -1852,22 +3600,39 @@ class DescribeCodePackUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackId: 码包ID
+        :param _PackId: 码包ID
         :type PackId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.PackId = None
-        self.CorpId = None
+        self._PackId = None
+        self._CorpId = None
+
+    @property
+    def PackId(self):
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.PackId = params.get("PackId")
-        self.CorpId = params.get("CorpId")
+        self._PackId = params.get("PackId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1880,29 +3645,61 @@ class DescribeCodePackUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 文字码包地址
+        :param _Url: 文字码包地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param ImgUrl: 图片码包地址，可能为空
+        :param _ImgUrl: 图片码包地址，可能为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImgUrl: str
-        :param FileKey: 文字码包Key，用于上传导入
+        :param _FileKey: 文字码包Key，用于上传导入
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileKey: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Url = None
-        self.ImgUrl = None
-        self.FileKey = None
-        self.RequestId = None
+        self._Url = None
+        self._ImgUrl = None
+        self._FileKey = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ImgUrl(self):
+        return self._ImgUrl
+
+    @ImgUrl.setter
+    def ImgUrl(self, ImgUrl):
+        self._ImgUrl = ImgUrl
+
+    @property
+    def FileKey(self):
+        return self._FileKey
+
+    @FileKey.setter
+    def FileKey(self, FileKey):
+        self._FileKey = FileKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.ImgUrl = params.get("ImgUrl")
-        self.FileKey = params.get("FileKey")
-        self.RequestId = params.get("RequestId")
+        self._Url = params.get("Url")
+        self._ImgUrl = params.get("ImgUrl")
+        self._FileKey = params.get("FileKey")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCodePacksRequest(AbstractModel):
@@ -1912,34 +3709,75 @@ class DescribeCodePacksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageSize: 每页数量
+        :param _PageSize: 每页数量
         :type PageSize: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param Keyword: 查询关键字
+        :param _Keyword: 查询关键字
         :type Keyword: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param SerialType: 是否有流水码 0:无 1:有
+        :param _SerialType: 是否有流水码 0:无 1:有
         :type SerialType: int
         """
-        self.PageSize = None
-        self.PageNumber = None
-        self.Keyword = None
-        self.CorpId = None
-        self.SerialType = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._Keyword = None
+        self._CorpId = None
+        self._SerialType = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def SerialType(self):
+        return self._SerialType
+
+    @SerialType.setter
+    def SerialType(self, SerialType):
+        self._SerialType = SerialType
 
 
     def _deserialize(self, params):
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.Keyword = params.get("Keyword")
-        self.CorpId = params.get("CorpId")
-        self.SerialType = params.get("SerialType")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Keyword = params.get("Keyword")
+        self._CorpId = params.get("CorpId")
+        self._SerialType = params.get("SerialType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1952,29 +3790,53 @@ class DescribeCodePacksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CodePacks: 码列表
+        :param _CodePacks: 码列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodePacks: list of CodePack
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CodePacks = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._CodePacks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CodePacks(self):
+        return self._CodePacks
+
+    @CodePacks.setter
+    def CodePacks(self, CodePacks):
+        self._CodePacks = CodePacks
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CodePacks") is not None:
-            self.CodePacks = []
+            self._CodePacks = []
             for item in params.get("CodePacks"):
                 obj = CodePack()
                 obj._deserialize(item)
-                self.CodePacks.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._CodePacks.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCodesByPackRequest(AbstractModel):
@@ -1984,22 +3846,39 @@ class DescribeCodesByPackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackId: 码包ID
+        :param _PackId: 码包ID
         :type PackId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.PackId = None
-        self.CorpId = None
+        self._PackId = None
+        self._CorpId = None
+
+    @property
+    def PackId(self):
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.PackId = params.get("PackId")
-        self.CorpId = params.get("CorpId")
+        self._PackId = params.get("PackId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2012,24 +3891,40 @@ class DescribeCodesByPackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codes: 码列表
+        :param _Codes: 码列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codes: list of CodeItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Codes = None
-        self.RequestId = None
+        self._Codes = None
+        self._RequestId = None
+
+    @property
+    def Codes(self):
+        return self._Codes
+
+    @Codes.setter
+    def Codes(self, Codes):
+        self._Codes = Codes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Codes") is not None:
-            self.Codes = []
+            self._Codes = []
             for item in params.get("Codes"):
                 obj = CodeItem()
                 obj._deserialize(item)
-                self.Codes.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Codes.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCorpQuotasRequest(AbstractModel):
@@ -2039,30 +3934,63 @@ class DescribeCorpQuotasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentId: 渠道商ID，不要传
+        :param _AgentId: 渠道商ID，不要传
         :type AgentId: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param PageSize: 每页数量
+        :param _PageSize: 每页数量
         :type PageSize: int
-        :param Keyword: 搜索企业ID
+        :param _Keyword: 搜索企业ID
         :type Keyword: str
         """
-        self.AgentId = None
-        self.PageNumber = None
-        self.PageSize = None
-        self.Keyword = None
+        self._AgentId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Keyword = None
+
+    @property
+    def AgentId(self):
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.AgentId = params.get("AgentId")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        self.Keyword = params.get("Keyword")
+        self._AgentId = params.get("AgentId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2075,29 +4003,53 @@ class DescribeCorpQuotasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpQuotas: 子企业额度使用情况
+        :param _CorpQuotas: 子企业额度使用情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpQuotas: list of CorpQuota
-        :param Total: 记录总数量
+        :param _Total: 记录总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CorpQuotas = None
-        self.Total = None
-        self.RequestId = None
+        self._CorpQuotas = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def CorpQuotas(self):
+        return self._CorpQuotas
+
+    @CorpQuotas.setter
+    def CorpQuotas(self, CorpQuotas):
+        self._CorpQuotas = CorpQuotas
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CorpQuotas") is not None:
-            self.CorpQuotas = []
+            self._CorpQuotas = []
             for item in params.get("CorpQuotas"):
                 obj = CorpQuota()
                 obj._deserialize(item)
-                self.CorpQuotas.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._CorpQuotas.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomRuleByIdRequest(AbstractModel):
@@ -2107,22 +4059,39 @@ class DescribeCustomRuleByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
         :type CustomId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.CustomId = None
-        self.CorpId = None
+        self._CustomId = None
+        self._CorpId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.CorpId = params.get("CorpId")
+        self._CustomId = params.get("CustomId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2135,21 +4104,37 @@ class DescribeCustomRuleByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomRule: 码规则信息
+        :param _CustomRule: 码规则信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRule: :class:`tencentcloud.trp.v20210515.models.CustomRule`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomRule = None
-        self.RequestId = None
+        self._CustomRule = None
+        self._RequestId = None
+
+    @property
+    def CustomRule(self):
+        return self._CustomRule
+
+    @CustomRule.setter
+    def CustomRule(self, CustomRule):
+        self._CustomRule = CustomRule
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CustomRule") is not None:
-            self.CustomRule = CustomRule()
-            self.CustomRule._deserialize(params.get("CustomRule"))
-        self.RequestId = params.get("RequestId")
+            self._CustomRule = CustomRule()
+            self._CustomRule._deserialize(params.get("CustomRule"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomRulesRequest(AbstractModel):
@@ -2159,38 +4144,87 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: 搜索关键字
+        :param _Keyword: 搜索关键字
         :type Keyword: str
-        :param PageSize: 条数
+        :param _PageSize: 条数
         :type PageSize: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Status: 码规则状态 0:未生效 1:已生效 -1:已失效
+        :param _Status: 码规则状态 0:未生效 1:已生效 -1:已失效
         :type Status: int
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
         """
-        self.Keyword = None
-        self.PageSize = None
-        self.PageNumber = None
-        self.CorpId = None
-        self.Status = None
-        self.MerchantId = None
+        self._Keyword = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._CorpId = None
+        self._Status = None
+        self._MerchantId = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.CorpId = params.get("CorpId")
-        self.Status = params.get("Status")
-        self.MerchantId = params.get("MerchantId")
+        self._Keyword = params.get("Keyword")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._CorpId = params.get("CorpId")
+        self._Status = params.get("Status")
+        self._MerchantId = params.get("MerchantId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2203,29 +4237,53 @@ class DescribeCustomRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomRules: 码规则列表
+        :param _CustomRules: 码规则列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRules: list of CustomRule
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomRules = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._CustomRules = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CustomRules(self):
+        return self._CustomRules
+
+    @CustomRules.setter
+    def CustomRules(self, CustomRules):
+        self._CustomRules = CustomRules
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CustomRules") is not None:
-            self.CustomRules = []
+            self._CustomRules = []
             for item in params.get("CustomRules"):
                 obj = CustomRule()
                 obj._deserialize(item)
-                self.CustomRules.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._CustomRules.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobFileUrlRequest(AbstractModel):
@@ -2235,22 +4293,39 @@ class DescribeJobFileUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 调度ID
+        :param _JobId: 调度ID
         :type JobId: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.JobId = None
-        self.CorpId = None
+        self._JobId = None
+        self._CorpId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.CorpId = params.get("CorpId")
+        self._JobId = params.get("JobId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2263,19 +4338,35 @@ class DescribeJobFileUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 码包地址
+        :param _Url: 码包地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Url = None
-        self.RequestId = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.RequestId = params.get("RequestId")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMerchantByIdRequest(AbstractModel):
@@ -2285,22 +4376,39 @@ class DescribeMerchantByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
         :type MerchantId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.MerchantId = None
-        self.CorpId = None
+        self._MerchantId = None
+        self._CorpId = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2313,21 +4421,37 @@ class DescribeMerchantByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Merchant: 商户信息
+        :param _Merchant: 商户信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Merchant: :class:`tencentcloud.trp.v20210515.models.Merchant`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Merchant = None
-        self.RequestId = None
+        self._Merchant = None
+        self._RequestId = None
+
+    @property
+    def Merchant(self):
+        return self._Merchant
+
+    @Merchant.setter
+    def Merchant(self, Merchant):
+        self._Merchant = Merchant
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Merchant") is not None:
-            self.Merchant = Merchant()
-            self.Merchant._deserialize(params.get("Merchant"))
-        self.RequestId = params.get("RequestId")
+            self._Merchant = Merchant()
+            self._Merchant._deserialize(params.get("Merchant"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMerchantsRequest(AbstractModel):
@@ -2337,34 +4461,75 @@ class DescribeMerchantsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 搜索商户名称
+        :param _Name: 搜索商户名称
         :type Name: str
-        :param PageSize: 条数
+        :param _PageSize: 条数
         :type PageSize: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param CodeType: 码来源类型 0:自建, 1:第三方
+        :param _CodeType: 码来源类型 0:自建, 1:第三方
         :type CodeType: int
         """
-        self.Name = None
-        self.PageSize = None
-        self.PageNumber = None
-        self.CorpId = None
-        self.CodeType = None
+        self._Name = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._CorpId = None
+        self._CodeType = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.CorpId = params.get("CorpId")
-        self.CodeType = params.get("CodeType")
+        self._Name = params.get("Name")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._CorpId = params.get("CorpId")
+        self._CodeType = params.get("CodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2377,29 +4542,53 @@ class DescribeMerchantsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Merchants: 商户列表
+        :param _Merchants: 商户列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Merchants: list of Merchant
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Merchants = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Merchants = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Merchants(self):
+        return self._Merchants
+
+    @Merchants.setter
+    def Merchants(self, Merchants):
+        self._Merchants = Merchants
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Merchants") is not None:
-            self.Merchants = []
+            self._Merchants = []
             for item in params.get("Merchants"):
                 obj = Merchant()
                 obj._deserialize(item)
-                self.Merchants.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Merchants.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProductByIdRequest(AbstractModel):
@@ -2409,22 +4598,39 @@ class DescribeProductByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
         :type ProductId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.ProductId = None
-        self.CorpId = None
+        self._ProductId = None
+        self._CorpId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.CorpId = params.get("CorpId")
+        self._ProductId = params.get("ProductId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2437,21 +4643,37 @@ class DescribeProductByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 商品信息
+        :param _Product: 商品信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Product: :class:`tencentcloud.trp.v20210515.models.Product`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Product = None
-        self.RequestId = None
+        self._Product = None
+        self._RequestId = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Product") is not None:
-            self.Product = Product()
-            self.Product._deserialize(params.get("Product"))
-        self.RequestId = params.get("RequestId")
+            self._Product = Product()
+            self._Product._deserialize(params.get("Product"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProductsRequest(AbstractModel):
@@ -2461,34 +4683,75 @@ class DescribeProductsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 商品名称
+        :param _Name: 商品名称
         :type Name: str
-        :param PageSize: 条数
+        :param _PageSize: 条数
         :type PageSize: int
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param MerchantId: 商品ID
+        :param _MerchantId: 商品ID
         :type MerchantId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.Name = None
-        self.PageSize = None
-        self.PageNumber = None
-        self.MerchantId = None
-        self.CorpId = None
+        self._Name = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._MerchantId = None
+        self._CorpId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.MerchantId = params.get("MerchantId")
-        self.CorpId = params.get("CorpId")
+        self._Name = params.get("Name")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._MerchantId = params.get("MerchantId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2501,29 +4764,166 @@ class DescribeProductsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Products: 商品列表
+        :param _Products: 商品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Products: list of Product
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Products = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Products = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Products(self):
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Products") is not None:
-            self.Products = []
+            self._Products = []
             for item in params.get("Products"):
                 obj = Product()
                 obj._deserialize(item)
-                self.Products.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Products.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRawScanLogsRequest(AbstractModel):
+    """DescribeRawScanLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: 企业ID, 默认为当前企业
+如果有渠道权限，可以传 0 会查渠道下所有的企业
+        :type CorpId: int
+        :param _PageSize: 分页数量，默认为 100，最大为 1000
+        :type PageSize: int
+        :param _PageNumber: 当前分页，默认为 1
+        :type PageNumber: int
+        :param _AfterLogId: 从哪个日志后查询
+即: LogId > $AfterLogId
+        :type AfterLogId: int
+        """
+        self._CorpId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._AfterLogId = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def AfterLogId(self):
+        return self._AfterLogId
+
+    @AfterLogId.setter
+    def AfterLogId(self, AfterLogId):
+        self._AfterLogId = AfterLogId
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._AfterLogId = params.get("AfterLogId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRawScanLogsResponse(AbstractModel):
+    """DescribeRawScanLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScanLogs: 原始扫码日志
+        :type ScanLogs: list of RawScanLog
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ScanLogs = None
+        self._RequestId = None
+
+    @property
+    def ScanLogs(self):
+        return self._ScanLogs
+
+    @ScanLogs.setter
+    def ScanLogs(self, ScanLogs):
+        self._ScanLogs = ScanLogs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ScanLogs") is not None:
+            self._ScanLogs = []
+            for item in params.get("ScanLogs"):
+                obj = RawScanLog()
+                obj._deserialize(item)
+                self._ScanLogs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScanLogsRequest(AbstractModel):
@@ -2533,34 +4933,75 @@ class DescribeScanLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param PageSize: 分页数量
+        :param _PageSize: 分页数量
         :type PageSize: int
-        :param PageNumber: 当前分页
+        :param _PageNumber: 当前分页
         :type PageNumber: int
-        :param Code: 安心码
+        :param _Code: 安心码
         :type Code: str
-        :param Openid: 小程序用户ID
+        :param _Openid: 小程序用户ID
         :type Openid: str
         """
-        self.CorpId = None
-        self.PageSize = None
-        self.PageNumber = None
-        self.Code = None
-        self.Openid = None
+        self._CorpId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._Code = None
+        self._Openid = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Openid(self):
+        return self._Openid
+
+    @Openid.setter
+    def Openid(self, Openid):
+        self._Openid = Openid
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.Code = params.get("Code")
-        self.Openid = params.get("Openid")
+        self._CorpId = params.get("CorpId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Code = params.get("Code")
+        self._Openid = params.get("Openid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2573,36 +5014,72 @@ class DescribeScanLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Products: 【弃用】
+        :param _Products: 【弃用】
         :type Products: list of ScanLog
-        :param TotalCount: 条数
+        :param _TotalCount: 条数
         :type TotalCount: int
-        :param ScanLogs: 扫描记录
+        :param _ScanLogs: 扫描记录
         :type ScanLogs: list of ScanLog
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Products = None
-        self.TotalCount = None
-        self.ScanLogs = None
-        self.RequestId = None
+        self._Products = None
+        self._TotalCount = None
+        self._ScanLogs = None
+        self._RequestId = None
+
+    @property
+    def Products(self):
+        warnings.warn("parameter `Products` is deprecated", DeprecationWarning) 
+
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        warnings.warn("parameter `Products` is deprecated", DeprecationWarning) 
+
+        self._Products = Products
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ScanLogs(self):
+        return self._ScanLogs
+
+    @ScanLogs.setter
+    def ScanLogs(self, ScanLogs):
+        self._ScanLogs = ScanLogs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Products") is not None:
-            self.Products = []
+            self._Products = []
             for item in params.get("Products"):
                 obj = ScanLog()
                 obj._deserialize(item)
-                self.Products.append(obj)
-        self.TotalCount = params.get("TotalCount")
+                self._Products.append(obj)
+        self._TotalCount = params.get("TotalCount")
         if params.get("ScanLogs") is not None:
-            self.ScanLogs = []
+            self._ScanLogs = []
             for item in params.get("ScanLogs"):
                 obj = ScanLog()
                 obj._deserialize(item)
-                self.ScanLogs.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ScanLogs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScanStatsRequest(AbstractModel):
@@ -2612,42 +5089,99 @@ class DescribeScanStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param PageSize: 分页数量
+        :param _PageSize: 分页数量
         :type PageSize: int
-        :param PageNumber: 当前分页
+        :param _PageNumber: 当前分页
         :type PageNumber: int
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param ProductId: 产品ID
+        :param _ProductId: 产品ID
         :type ProductId: str
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param Code: 安心码
+        :param _Code: 安心码
         :type Code: str
         """
-        self.CorpId = None
-        self.PageSize = None
-        self.PageNumber = None
-        self.MerchantId = None
-        self.ProductId = None
-        self.BatchId = None
-        self.Code = None
+        self._CorpId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._BatchId = None
+        self._Code = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.BatchId = params.get("BatchId")
-        self.Code = params.get("Code")
+        self._CorpId = params.get("CorpId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._BatchId = params.get("BatchId")
+        self._Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2660,23 +5194,39 @@ class DescribeScanStatsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ScanStats: 统计记录
+        :param _ScanStats: 统计记录
         :type ScanStats: list of ScanStat
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ScanStats = None
-        self.RequestId = None
+        self._ScanStats = None
+        self._RequestId = None
+
+    @property
+    def ScanStats(self):
+        return self._ScanStats
+
+    @ScanStats.setter
+    def ScanStats(self, ScanStats):
+        self._ScanStats = ScanStats
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ScanStats") is not None:
-            self.ScanStats = []
+            self._ScanStats = []
             for item in params.get("ScanStats"):
                 obj = ScanStat()
                 obj._deserialize(item)
-                self.ScanStats.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ScanStats.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTmpTokenRequest(AbstractModel):
@@ -2686,18 +5236,27 @@ class DescribeTmpTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.CorpId = None
+        self._CorpId = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2710,19 +5269,35 @@ class DescribeTmpTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Token: 临时token
+        :param _Token: 临时token
 注意：此字段可能返回 null，表示取不到有效值。
         :type Token: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Token = None
-        self.RequestId = None
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Token = params.get("Token")
-        self.RequestId = params.get("RequestId")
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTraceCodeByIdRequest(AbstractModel):
@@ -2732,22 +5307,39 @@ class DescribeTraceCodeByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Code: 二维码
+        :param _Code: 二维码
         :type Code: str
         """
-        self.CorpId = None
-        self.Code = None
+        self._CorpId = None
+        self._Code = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.Code = params.get("Code")
+        self._CorpId = params.get("CorpId")
+        self._Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2760,24 +5352,48 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceCode: 无
+        :param _TraceCode: 无
         :type TraceCode: :class:`tencentcloud.trp.v20210515.models.TraceCode`
-        :param CodePath: 码路径，如level是2，则为 [1级, 2级]
+        :param _CodePath: 码路径，如level是2，则为 [1级, 2级]
         :type CodePath: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TraceCode = None
-        self.CodePath = None
-        self.RequestId = None
+        self._TraceCode = None
+        self._CodePath = None
+        self._RequestId = None
+
+    @property
+    def TraceCode(self):
+        return self._TraceCode
+
+    @TraceCode.setter
+    def TraceCode(self, TraceCode):
+        self._TraceCode = TraceCode
+
+    @property
+    def CodePath(self):
+        return self._CodePath
+
+    @CodePath.setter
+    def CodePath(self, CodePath):
+        self._CodePath = CodePath
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TraceCode") is not None:
-            self.TraceCode = TraceCode()
-            self.TraceCode._deserialize(params.get("TraceCode"))
-        self.CodePath = params.get("CodePath")
-        self.RequestId = params.get("RequestId")
+            self._TraceCode = TraceCode()
+            self._TraceCode._deserialize(params.get("TraceCode"))
+        self._CodePath = params.get("CodePath")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTraceCodesRequest(AbstractModel):
@@ -2787,34 +5403,75 @@ class DescribeTraceCodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: 搜索关键字 码标识，或者批次ID
+        :param _Keyword: 搜索关键字 码标识，或者批次ID
         :type Keyword: str
-        :param PageNumber: 条数
+        :param _PageNumber: 条数
         :type PageNumber: int
-        :param PageSize: 页码
+        :param _PageSize: 页码
         :type PageSize: int
-        :param BatchId: 批次ID，弃用
+        :param _BatchId: 批次ID，弃用
         :type BatchId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.Keyword = None
-        self.PageNumber = None
-        self.PageSize = None
-        self.BatchId = None
-        self.CorpId = None
+        self._Keyword = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._BatchId = None
+        self._CorpId = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        self.BatchId = params.get("BatchId")
-        self.CorpId = params.get("CorpId")
+        self._Keyword = params.get("Keyword")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._BatchId = params.get("BatchId")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2827,29 +5484,53 @@ class DescribeTraceCodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceCodes: 标识列表
+        :param _TraceCodes: 标识列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceCodes: list of TraceCode
-        :param TotalCount: 条数
+        :param _TotalCount: 条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TraceCodes = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._TraceCodes = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TraceCodes(self):
+        return self._TraceCodes
+
+    @TraceCodes.setter
+    def TraceCodes(self, TraceCodes):
+        self._TraceCodes = TraceCodes
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TraceCodes") is not None:
-            self.TraceCodes = []
+            self._TraceCodes = []
             for item in params.get("TraceCodes"):
                 obj = TraceCode()
                 obj._deserialize(item)
-                self.TraceCodes.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._TraceCodes.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTraceDataByIdRequest(AbstractModel):
@@ -2859,22 +5540,39 @@ class DescribeTraceDataByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 溯源ID
+        :param _Id: 溯源ID
         :type Id: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.Id = None
-        self.CorpId = None
+        self._Id = None
+        self._CorpId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.CorpId = params.get("CorpId")
+        self._Id = params.get("Id")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2887,20 +5585,36 @@ class DescribeTraceDataByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceData: 无
+        :param _TraceData: 无
         :type TraceData: :class:`tencentcloud.trp.v20210515.models.TraceData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TraceData = None
-        self.RequestId = None
+        self._TraceData = None
+        self._RequestId = None
+
+    @property
+    def TraceData(self):
+        return self._TraceData
+
+    @TraceData.setter
+    def TraceData(self, TraceData):
+        self._TraceData = TraceData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TraceData") is not None:
-            self.TraceData = TraceData()
-            self.TraceData._deserialize(params.get("TraceData"))
-        self.RequestId = params.get("RequestId")
+            self._TraceData = TraceData()
+            self._TraceData._deserialize(params.get("TraceData"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTraceDataListRequest(AbstractModel):
@@ -2910,42 +5624,99 @@ class DescribeTraceDataListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param TaskId: 任务ID 用于外部溯源
+        :param _TaskId: 任务ID 用于外部溯源
         :type TaskId: str
-        :param PageNumber: 页数
+        :param _PageNumber: 页数
         :type PageNumber: int
-        :param Code: 二维码
+        :param _Code: 二维码
         :type Code: str
-        :param Phase: 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
+        :param _Phase: 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
         :type Phase: int
-        :param PageSize: 数量
+        :param _PageSize: 数量
         :type PageSize: int
         """
-        self.CorpId = None
-        self.BatchId = None
-        self.TaskId = None
-        self.PageNumber = None
-        self.Code = None
-        self.Phase = None
-        self.PageSize = None
+        self._CorpId = None
+        self._BatchId = None
+        self._TaskId = None
+        self._PageNumber = None
+        self._Code = None
+        self._Phase = None
+        self._PageSize = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Phase(self):
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.BatchId = params.get("BatchId")
-        self.TaskId = params.get("TaskId")
-        self.PageNumber = params.get("PageNumber")
-        self.Code = params.get("Code")
-        self.Phase = params.get("Phase")
-        self.PageSize = params.get("PageSize")
+        self._CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
+        self._TaskId = params.get("TaskId")
+        self._PageNumber = params.get("PageNumber")
+        self._Code = params.get("Code")
+        self._Phase = params.get("Phase")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2958,27 +5729,51 @@ class DescribeTraceDataListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 数量
+        :param _TotalCount: 数量
         :type TotalCount: int
-        :param TraceDataList: 无
+        :param _TraceDataList: 无
         :type TraceDataList: list of TraceData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TraceDataList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TraceDataList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TraceDataList(self):
+        return self._TraceDataList
+
+    @TraceDataList.setter
+    def TraceDataList(self, TraceDataList):
+        self._TraceDataList = TraceDataList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TraceDataList") is not None:
-            self.TraceDataList = []
+            self._TraceDataList = []
             for item in params.get("TraceDataList"):
                 obj = TraceData()
                 obj._deserialize(item)
-                self.TraceDataList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TraceDataList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class EffectFeedbackRequest(AbstractModel):
@@ -2988,20 +5783,29 @@ class EffectFeedbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessSecurityData: 业务加密入参。
+        :param _BusinessSecurityData: 业务加密入参。
         :type BusinessSecurityData: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
         """
-        self.BusinessSecurityData = None
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = InputEncryptData()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+            self._BusinessSecurityData = InputEncryptData()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3014,20 +5818,36 @@ class EffectFeedbackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 业务出参。
+        :param _Data: 业务出参。
         :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = OutputAuthorizedTransfer()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = OutputAuthorizedTransfer()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class Ext(AbstractModel):
@@ -3043,37 +5863,78 @@ class InputEncryptData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EncryptMethod: 加密方式，0：AES加密；
+        :param _EncryptMethod: 加密方式，0：AES加密；
 
         :type EncryptMethod: int
-        :param EncryptMode: 加密算法中的块处理模式，1：CBC模式； 目前只支持CBC模式
+        :param _EncryptMode: 加密算法中的块处理模式，1：CBC模式； 目前只支持CBC模式
         :type EncryptMode: int
-        :param PaddingType: 填充模式，0：ZeroPadding；1：PKCS5Padding；2：
+        :param _PaddingType: 填充模式，0：ZeroPadding；1：PKCS5Padding；2：
 PKCS7Padding。
         :type PaddingType: int
-        :param EncryptData: 加密数据，将AuthorizedData结构体数组（数组最大长度不超过20）序列化成JSON字符串，对得到的字符串加密并填充到该字段。
+        :param _EncryptData: 加密数据，将AuthorizedData结构体数组（数组最大长度不超过20）序列化成JSON字符串，对得到的字符串加密并填充到该字段。
         :type EncryptData: str
-        :param IsAuthorized: 用户是否授权，本接口取值：1，已授权。
+        :param _IsAuthorized: 用户是否授权，本接口取值：1，已授权。
 
         :type IsAuthorized: int
         """
-        self.EncryptMethod = None
-        self.EncryptMode = None
-        self.PaddingType = None
-        self.EncryptData = None
-        self.IsAuthorized = None
+        self._EncryptMethod = None
+        self._EncryptMode = None
+        self._PaddingType = None
+        self._EncryptData = None
+        self._IsAuthorized = None
+
+    @property
+    def EncryptMethod(self):
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+    @property
+    def EncryptMode(self):
+        return self._EncryptMode
+
+    @EncryptMode.setter
+    def EncryptMode(self, EncryptMode):
+        self._EncryptMode = EncryptMode
+
+    @property
+    def PaddingType(self):
+        return self._PaddingType
+
+    @PaddingType.setter
+    def PaddingType(self, PaddingType):
+        self._PaddingType = PaddingType
+
+    @property
+    def EncryptData(self):
+        return self._EncryptData
+
+    @EncryptData.setter
+    def EncryptData(self, EncryptData):
+        self._EncryptData = EncryptData
+
+    @property
+    def IsAuthorized(self):
+        return self._IsAuthorized
+
+    @IsAuthorized.setter
+    def IsAuthorized(self, IsAuthorized):
+        self._IsAuthorized = IsAuthorized
 
 
     def _deserialize(self, params):
-        self.EncryptMethod = params.get("EncryptMethod")
-        self.EncryptMode = params.get("EncryptMode")
-        self.PaddingType = params.get("PaddingType")
-        self.EncryptData = params.get("EncryptData")
-        self.IsAuthorized = params.get("IsAuthorized")
+        self._EncryptMethod = params.get("EncryptMethod")
+        self._EncryptMode = params.get("EncryptMode")
+        self._PaddingType = params.get("PaddingType")
+        self._EncryptData = params.get("EncryptData")
+        self._IsAuthorized = params.get("IsAuthorized")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3086,22 +5947,39 @@ class Job(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 调度ID
+        :param _JobId: 调度ID
         :type JobId: int
-        :param Status: 执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
+        :param _Status: 执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
         :type Status: str
         """
-        self.JobId = None
-        self.Status = None
+        self._JobId = None
+        self._Status = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Status = params.get("Status")
+        self._JobId = params.get("JobId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3114,52 +5992,125 @@ class Merchant(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
         :type MerchantId: str
-        :param CorpId: 企业id
+        :param _CorpId: 企业id
         :type CorpId: int
-        :param Name: 商户名称
+        :param _Name: 商户名称
         :type Name: str
-        :param Remark: 备注
+        :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
         :type UpdateTime: str
-        :param CodeRule: 商户码规则
+        :param _CodeRule: 商户码规则
         :type CodeRule: str
-        :param CodeType: 码来源类型 0: 安心平台 1: 第三方码
+        :param _CodeType: 码来源类型 0: 安心平台 1: 第三方码
         :type CodeType: int
-        :param CodeUrl: 第三方码域名前缀
+        :param _CodeUrl: 第三方码域名前缀
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeUrl: str
         """
-        self.MerchantId = None
-        self.CorpId = None
-        self.Name = None
-        self.Remark = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.CodeRule = None
-        self.CodeType = None
-        self.CodeUrl = None
+        self._MerchantId = None
+        self._CorpId = None
+        self._Name = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CodeRule = None
+        self._CodeType = None
+        self._CodeUrl = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CodeRule(self):
+        return self._CodeRule
+
+    @CodeRule.setter
+    def CodeRule(self, CodeRule):
+        self._CodeRule = CodeRule
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def CodeUrl(self):
+        return self._CodeUrl
+
+    @CodeUrl.setter
+    def CodeUrl(self, CodeUrl):
+        self._CodeUrl = CodeUrl
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.CorpId = params.get("CorpId")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.CodeRule = params.get("CodeRule")
-        self.CodeType = params.get("CodeType")
-        self.CodeUrl = params.get("CodeUrl")
+        self._MerchantId = params.get("MerchantId")
+        self._CorpId = params.get("CorpId")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CodeRule = params.get("CodeRule")
+        self._CodeType = params.get("CodeType")
+        self._CodeUrl = params.get("CodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3172,54 +6123,135 @@ class ModifyCodeBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Status: 状态 0: 未激活 1: 已激活 -1: 已冻结
+        :param _Status: 状态 0: 未激活 1: 已激活 -1: 已冻结
         :type Status: int
-        :param MpTpl: 模板ID，或者活动ID
+        :param _MpTpl: 模板ID，或者活动ID
         :type MpTpl: str
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
         :type ProductId: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param BatchCode: 批次编码，业务字段不判断唯一性
+        :param _BatchCode: 批次编码，业务字段不判断唯一性
         :type BatchCode: str
-        :param ValidDate: 有效期
+        :param _ValidDate: 有效期
         :type ValidDate: str
-        :param ProductionDate: 生产日期
+        :param _ProductionDate: 生产日期
         :type ProductionDate: str
         """
-        self.BatchId = None
-        self.CorpId = None
-        self.Status = None
-        self.MpTpl = None
-        self.MerchantId = None
-        self.ProductId = None
-        self.Remark = None
-        self.BatchCode = None
-        self.ValidDate = None
-        self.ProductionDate = None
+        self._BatchId = None
+        self._CorpId = None
+        self._Status = None
+        self._MpTpl = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._Remark = None
+        self._BatchCode = None
+        self._ValidDate = None
+        self._ProductionDate = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MpTpl(self):
+        return self._MpTpl
+
+    @MpTpl.setter
+    def MpTpl(self, MpTpl):
+        self._MpTpl = MpTpl
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def BatchCode(self):
+        return self._BatchCode
+
+    @BatchCode.setter
+    def BatchCode(self, BatchCode):
+        self._BatchCode = BatchCode
+
+    @property
+    def ValidDate(self):
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def ProductionDate(self):
+        return self._ProductionDate
+
+    @ProductionDate.setter
+    def ProductionDate(self, ProductionDate):
+        self._ProductionDate = ProductionDate
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.CorpId = params.get("CorpId")
-        self.Status = params.get("Status")
-        self.MpTpl = params.get("MpTpl")
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.Remark = params.get("Remark")
-        self.BatchCode = params.get("BatchCode")
-        self.ValidDate = params.get("ValidDate")
-        self.ProductionDate = params.get("ProductionDate")
+        self._BatchId = params.get("BatchId")
+        self._CorpId = params.get("CorpId")
+        self._Status = params.get("Status")
+        self._MpTpl = params.get("MpTpl")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._Remark = params.get("Remark")
+        self._BatchCode = params.get("BatchCode")
+        self._ValidDate = params.get("ValidDate")
+        self._ProductionDate = params.get("ProductionDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3232,18 +6264,34 @@ class ModifyCodeBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BatchId = None
-        self.RequestId = None
+        self._BatchId = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.RequestId = params.get("RequestId")
+        self._BatchId = params.get("BatchId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCustomRuleRequest(AbstractModel):
@@ -3253,39 +6301,80 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
         :type CustomId: str
-        :param Name: 规则名称
+        :param _Name: 规则名称
         :type Name: str
-        :param CodeLength: 码长度
+        :param _CodeLength: 码长度
         :type CodeLength: int
-        :param CodeParts: 码段配置
+        :param _CodeParts: 码段配置
         :type CodeParts: list of CodePart
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.CustomId = None
-        self.Name = None
-        self.CodeLength = None
-        self.CodeParts = None
-        self.CorpId = None
+        self._CustomId = None
+        self._Name = None
+        self._CodeLength = None
+        self._CodeParts = None
+        self._CorpId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CodeLength(self):
+        return self._CodeLength
+
+    @CodeLength.setter
+    def CodeLength(self, CodeLength):
+        self._CodeLength = CodeLength
+
+    @property
+    def CodeParts(self):
+        return self._CodeParts
+
+    @CodeParts.setter
+    def CodeParts(self, CodeParts):
+        self._CodeParts = CodeParts
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.Name = params.get("Name")
-        self.CodeLength = params.get("CodeLength")
+        self._CustomId = params.get("CustomId")
+        self._Name = params.get("Name")
+        self._CodeLength = params.get("CodeLength")
         if params.get("CodeParts") is not None:
-            self.CodeParts = []
+            self._CodeParts = []
             for item in params.get("CodeParts"):
                 obj = CodePart()
                 obj._deserialize(item)
-                self.CodeParts.append(obj)
-        self.CorpId = params.get("CorpId")
+                self._CodeParts.append(obj)
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3298,19 +6387,35 @@ class ModifyCustomRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomId = None
-        self.RequestId = None
+        self._CustomId = None
+        self._RequestId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.RequestId = params.get("RequestId")
+        self._CustomId = params.get("CustomId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCustomRuleStatusRequest(AbstractModel):
@@ -3320,26 +6425,51 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
         :type CustomId: str
-        :param Status: 码规则状态 0:未生效 1:已生效 -1:已失效
+        :param _Status: 码规则状态 0:未生效 1:已生效 -1:已失效
         :type Status: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.CustomId = None
-        self.Status = None
-        self.CorpId = None
+        self._CustomId = None
+        self._Status = None
+        self._CorpId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.Status = params.get("Status")
-        self.CorpId = params.get("CorpId")
+        self._CustomId = params.get("CustomId")
+        self._Status = params.get("Status")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3352,19 +6482,35 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CustomId = None
-        self.RequestId = None
+        self._CustomId = None
+        self._RequestId = None
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CustomId = params.get("CustomId")
-        self.RequestId = params.get("RequestId")
+        self._CustomId = params.get("CustomId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyMerchantRequest(AbstractModel):
@@ -3374,38 +6520,87 @@ class ModifyMerchantRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 商户名称
+        :param _Name: 商户名称
         :type Name: str
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
         :type MerchantId: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param CodeType: 码包来源 0:自建, 1:第三码包，暂不支持修改
+        :param _CodeType: 码包来源 0:自建, 1:第三码包，暂不支持修改
         :type CodeType: int
-        :param CodeUrl: 码包前缀地址 第三方码包时必填
+        :param _CodeUrl: 码包前缀地址 第三方码包时必填
         :type CodeUrl: str
         """
-        self.Name = None
-        self.MerchantId = None
-        self.Remark = None
-        self.CorpId = None
-        self.CodeType = None
-        self.CodeUrl = None
+        self._Name = None
+        self._MerchantId = None
+        self._Remark = None
+        self._CorpId = None
+        self._CodeType = None
+        self._CodeUrl = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def CodeType(self):
+        return self._CodeType
+
+    @CodeType.setter
+    def CodeType(self, CodeType):
+        self._CodeType = CodeType
+
+    @property
+    def CodeUrl(self):
+        return self._CodeUrl
+
+    @CodeUrl.setter
+    def CodeUrl(self, CodeUrl):
+        self._CodeUrl = CodeUrl
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.MerchantId = params.get("MerchantId")
-        self.Remark = params.get("Remark")
-        self.CorpId = params.get("CorpId")
-        self.CodeType = params.get("CodeType")
-        self.CodeUrl = params.get("CodeUrl")
+        self._Name = params.get("Name")
+        self._MerchantId = params.get("MerchantId")
+        self._Remark = params.get("Remark")
+        self._CorpId = params.get("CorpId")
+        self._CodeType = params.get("CodeType")
+        self._CodeUrl = params.get("CodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3418,19 +6613,35 @@ class ModifyMerchantResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MerchantId = None
-        self.RequestId = None
+        self._MerchantId = None
+        self._RequestId = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.RequestId = params.get("RequestId")
+        self._MerchantId = params.get("MerchantId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyProductRequest(AbstractModel):
@@ -3440,44 +6651,101 @@ class ModifyProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 商品名称
+        :param _Name: 商品名称
         :type Name: str
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
         :type ProductId: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param Specification: 商品规格
+        :param _Specification: 商品规格
         :type Specification: str
-        :param Logo: 商品图片
+        :param _Logo: 商品图片
         :type Logo: list of str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Ext: 预留字段
+        :param _Ext: 预留字段
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
         """
-        self.Name = None
-        self.ProductId = None
-        self.Remark = None
-        self.Specification = None
-        self.Logo = None
-        self.CorpId = None
-        self.Ext = None
+        self._Name = None
+        self._ProductId = None
+        self._Remark = None
+        self._Specification = None
+        self._Logo = None
+        self._CorpId = None
+        self._Ext = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Logo(self):
+        return self._Logo
+
+    @Logo.setter
+    def Logo(self, Logo):
+        self._Logo = Logo
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ProductId = params.get("ProductId")
-        self.Remark = params.get("Remark")
-        self.Specification = params.get("Specification")
-        self.Logo = params.get("Logo")
-        self.CorpId = params.get("CorpId")
+        self._Name = params.get("Name")
+        self._ProductId = params.get("ProductId")
+        self._Remark = params.get("Remark")
+        self._Specification = params.get("Specification")
+        self._Logo = params.get("Logo")
+        self._CorpId = params.get("CorpId")
         if params.get("Ext") is not None:
-            self.Ext = Ext()
-            self.Ext._deserialize(params.get("Ext"))
+            self._Ext = Ext()
+            self._Ext._deserialize(params.get("Ext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3490,19 +6758,35 @@ class ModifyProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProductId = None
-        self.RequestId = None
+        self._ProductId = None
+        self._RequestId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.RequestId = params.get("RequestId")
+        self._ProductId = params.get("ProductId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTraceCodeRequest(AbstractModel):
@@ -3512,26 +6796,51 @@ class ModifyTraceCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 二维码
+        :param _Code: 二维码
         :type Code: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Status: 状态 0: 冻结 1: 激活
+        :param _Status: 状态 0: 冻结 1: 激活
         :type Status: int
         """
-        self.Code = None
-        self.CorpId = None
-        self.Status = None
+        self._Code = None
+        self._CorpId = None
+        self._Status = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.CorpId = params.get("CorpId")
-        self.Status = params.get("Status")
+        self._Code = params.get("Code")
+        self._CorpId = params.get("CorpId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3544,14 +6853,22 @@ class ModifyTraceCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTraceCodeUnlinkRequest(AbstractModel):
@@ -3561,26 +6878,51 @@ class ModifyTraceCodeUnlinkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param Codes: 溯源码列表
+        :param _Codes: 溯源码列表
         :type Codes: list of str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.BatchId = None
-        self.Codes = None
-        self.CorpId = None
+        self._BatchId = None
+        self._Codes = None
+        self._CorpId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def Codes(self):
+        return self._Codes
+
+    @Codes.setter
+    def Codes(self, Codes):
+        self._Codes = Codes
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.Codes = params.get("Codes")
-        self.CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
+        self._Codes = params.get("Codes")
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3593,26 +6935,58 @@ class ModifyTraceCodeUnlinkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UnlinkCnt: 成功解绑溯源码的数量
+        :param _UnlinkCnt: 成功解绑溯源码的数量
         :type UnlinkCnt: int
-        :param CodeCnt: 当前批次的码数量
+        :param _CodeCnt: 当前批次的码数量
         :type CodeCnt: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UnlinkCnt = None
-        self.CodeCnt = None
-        self.BatchId = None
-        self.RequestId = None
+        self._UnlinkCnt = None
+        self._CodeCnt = None
+        self._BatchId = None
+        self._RequestId = None
+
+    @property
+    def UnlinkCnt(self):
+        return self._UnlinkCnt
+
+    @UnlinkCnt.setter
+    def UnlinkCnt(self, UnlinkCnt):
+        self._UnlinkCnt = UnlinkCnt
+
+    @property
+    def CodeCnt(self):
+        return self._CodeCnt
+
+    @CodeCnt.setter
+    def CodeCnt(self, CodeCnt):
+        self._CodeCnt = CodeCnt
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UnlinkCnt = params.get("UnlinkCnt")
-        self.CodeCnt = params.get("CodeCnt")
-        self.BatchId = params.get("BatchId")
-        self.RequestId = params.get("RequestId")
+        self._UnlinkCnt = params.get("UnlinkCnt")
+        self._CodeCnt = params.get("CodeCnt")
+        self._BatchId = params.get("BatchId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTraceDataRanksRequest(AbstractModel):
@@ -3622,30 +6996,63 @@ class ModifyTraceDataRanksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param TaskId: 生产任务ID
+        :param _TaskId: 生产任务ID
         :type TaskId: str
-        :param TraceIds: 溯源ID
+        :param _TraceIds: 溯源ID
         :type TraceIds: list of str
         """
-        self.CorpId = None
-        self.BatchId = None
-        self.TaskId = None
-        self.TraceIds = None
+        self._CorpId = None
+        self._BatchId = None
+        self._TaskId = None
+        self._TraceIds = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TraceIds(self):
+        return self._TraceIds
+
+    @TraceIds.setter
+    def TraceIds(self, TraceIds):
+        self._TraceIds = TraceIds
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.BatchId = params.get("BatchId")
-        self.TaskId = params.get("TaskId")
-        self.TraceIds = params.get("TraceIds")
+        self._CorpId = params.get("CorpId")
+        self._BatchId = params.get("BatchId")
+        self._TaskId = params.get("TaskId")
+        self._TraceIds = params.get("TraceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3658,19 +7065,35 @@ class ModifyTraceDataRanksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BatchId = None
-        self.RequestId = None
+        self._BatchId = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
-        self.RequestId = params.get("RequestId")
+        self._BatchId = params.get("BatchId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTraceDataRequest(AbstractModel):
@@ -3680,91 +7103,228 @@ class ModifyTraceDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceId: 溯源ID
+        :param _TraceId: 溯源ID
         :type TraceId: str
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param TaskId: 生产溯源任务ID
+        :param _TaskId: 生产溯源任务ID
         :type TaskId: str
-        :param TraceItems: 溯源信息
+        :param _TraceItems: 溯源信息
         :type TraceItems: list of TraceItem
-        :param PhaseName: 溯源阶段名称
+        :param _PhaseName: 溯源阶段名称
         :type PhaseName: str
-        :param PhaseData: 环节数据
+        :param _PhaseData: 环节数据
         :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
-        :param Status: 溯源状态 0: 无效, 1: 有效
+        :param _Status: 溯源状态 0: 无效, 1: 有效
         :type Status: int
-        :param Rank: 排序
+        :param _Rank: 排序
         :type Rank: int
-        :param Type: [无效] 类型
+        :param _Type: [无效] 类型
         :type Type: int
-        :param Code: [无效] 溯源码
+        :param _Code: [无效] 溯源码
         :type Code: str
-        :param Phase: [无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
+        :param _Phase: [无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
         :type Phase: int
-        :param TraceTime: [无效] 溯源时间
+        :param _TraceTime: [无效] 溯源时间
         :type TraceTime: str
-        :param CreateTime: [无效] 创建时间
+        :param _CreateTime: [无效] 创建时间
         :type CreateTime: str
-        :param ChainStatus: [无效] 上链状态
+        :param _ChainStatus: [无效] 上链状态
         :type ChainStatus: int
-        :param ChainTime: [无效] 上链时间
+        :param _ChainTime: [无效] 上链时间
         :type ChainTime: str
-        :param ChainData: [无效] 上链数据
+        :param _ChainData: [无效] 上链数据
         :type ChainData: :class:`tencentcloud.trp.v20210515.models.ChainData`
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
         """
-        self.TraceId = None
-        self.BatchId = None
-        self.TaskId = None
-        self.TraceItems = None
-        self.PhaseName = None
-        self.PhaseData = None
-        self.Status = None
-        self.Rank = None
-        self.Type = None
-        self.Code = None
-        self.Phase = None
-        self.TraceTime = None
-        self.CreateTime = None
-        self.ChainStatus = None
-        self.ChainTime = None
-        self.ChainData = None
-        self.CorpId = None
+        self._TraceId = None
+        self._BatchId = None
+        self._TaskId = None
+        self._TraceItems = None
+        self._PhaseName = None
+        self._PhaseData = None
+        self._Status = None
+        self._Rank = None
+        self._Type = None
+        self._Code = None
+        self._Phase = None
+        self._TraceTime = None
+        self._CreateTime = None
+        self._ChainStatus = None
+        self._ChainTime = None
+        self._ChainData = None
+        self._CorpId = None
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TraceItems(self):
+        return self._TraceItems
+
+    @TraceItems.setter
+    def TraceItems(self, TraceItems):
+        self._TraceItems = TraceItems
+
+    @property
+    def PhaseName(self):
+        return self._PhaseName
+
+    @PhaseName.setter
+    def PhaseName(self, PhaseName):
+        self._PhaseName = PhaseName
+
+    @property
+    def PhaseData(self):
+        return self._PhaseData
+
+    @PhaseData.setter
+    def PhaseData(self, PhaseData):
+        self._PhaseData = PhaseData
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Rank(self):
+        return self._Rank
+
+    @Rank.setter
+    def Rank(self, Rank):
+        self._Rank = Rank
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Phase(self):
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def TraceTime(self):
+        return self._TraceTime
+
+    @TraceTime.setter
+    def TraceTime(self, TraceTime):
+        self._TraceTime = TraceTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ChainStatus(self):
+        return self._ChainStatus
+
+    @ChainStatus.setter
+    def ChainStatus(self, ChainStatus):
+        self._ChainStatus = ChainStatus
+
+    @property
+    def ChainTime(self):
+        return self._ChainTime
+
+    @ChainTime.setter
+    def ChainTime(self, ChainTime):
+        self._ChainTime = ChainTime
+
+    @property
+    def ChainData(self):
+        return self._ChainData
+
+    @ChainData.setter
+    def ChainData(self, ChainData):
+        self._ChainData = ChainData
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
 
 
     def _deserialize(self, params):
-        self.TraceId = params.get("TraceId")
-        self.BatchId = params.get("BatchId")
-        self.TaskId = params.get("TaskId")
+        self._TraceId = params.get("TraceId")
+        self._BatchId = params.get("BatchId")
+        self._TaskId = params.get("TaskId")
         if params.get("TraceItems") is not None:
-            self.TraceItems = []
+            self._TraceItems = []
             for item in params.get("TraceItems"):
                 obj = TraceItem()
                 obj._deserialize(item)
-                self.TraceItems.append(obj)
-        self.PhaseName = params.get("PhaseName")
+                self._TraceItems.append(obj)
+        self._PhaseName = params.get("PhaseName")
         if params.get("PhaseData") is not None:
-            self.PhaseData = PhaseData()
-            self.PhaseData._deserialize(params.get("PhaseData"))
-        self.Status = params.get("Status")
-        self.Rank = params.get("Rank")
-        self.Type = params.get("Type")
-        self.Code = params.get("Code")
-        self.Phase = params.get("Phase")
-        self.TraceTime = params.get("TraceTime")
-        self.CreateTime = params.get("CreateTime")
-        self.ChainStatus = params.get("ChainStatus")
-        self.ChainTime = params.get("ChainTime")
+            self._PhaseData = PhaseData()
+            self._PhaseData._deserialize(params.get("PhaseData"))
+        self._Status = params.get("Status")
+        self._Rank = params.get("Rank")
+        self._Type = params.get("Type")
+        self._Code = params.get("Code")
+        self._Phase = params.get("Phase")
+        self._TraceTime = params.get("TraceTime")
+        self._CreateTime = params.get("CreateTime")
+        self._ChainStatus = params.get("ChainStatus")
+        self._ChainTime = params.get("ChainTime")
         if params.get("ChainData") is not None:
-            self.ChainData = ChainData()
-            self.ChainData._deserialize(params.get("ChainData"))
-        self.CorpId = params.get("CorpId")
+            self._ChainData = ChainData()
+            self._ChainData._deserialize(params.get("ChainData"))
+        self._CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3777,18 +7337,34 @@ class ModifyTraceDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceId: 溯源ID
+        :param _TraceId: 溯源ID
         :type TraceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TraceId = None
-        self.RequestId = None
+        self._TraceId = None
+        self._RequestId = None
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TraceId = params.get("TraceId")
-        self.RequestId = params.get("RequestId")
+        self._TraceId = params.get("TraceId")
+        self._RequestId = params.get("RequestId")
 
 
 class OutputAuthorizedTransfer(AbstractModel):
@@ -3798,29 +7374,54 @@ class OutputAuthorizedTransfer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 推送状态，0表示成功。
+        :param _Code: 推送状态，0表示成功。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
-        :param Message: 错误码。
+        :param _Message: 错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Value: 错误信息描述。
+        :param _Value: 错误信息描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
-        self.Code = None
-        self.Message = None
-        self.Value = None
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
-        self.Value = params.get("Value")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3833,41 +7434,82 @@ class PackSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Level: 层级
+        :param _Level: 层级
         :type Level: int
-        :param Rate: 比例
+        :param _Rate: 比例
         :type Rate: int
-        :param Amount: 数量
+        :param _Amount: 数量
         :type Amount: int
-        :param CustomId: 码规则ID
+        :param _CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param CodeParts: 码段配置
+        :param _CodeParts: 码段配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeParts: list of CodePart
         """
-        self.Level = None
-        self.Rate = None
-        self.Amount = None
-        self.CustomId = None
-        self.CodeParts = None
+        self._Level = None
+        self._Rate = None
+        self._Amount = None
+        self._CustomId = None
+        self._CodeParts = None
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def CodeParts(self):
+        return self._CodeParts
+
+    @CodeParts.setter
+    def CodeParts(self, CodeParts):
+        self._CodeParts = CodeParts
 
 
     def _deserialize(self, params):
-        self.Level = params.get("Level")
-        self.Rate = params.get("Rate")
-        self.Amount = params.get("Amount")
-        self.CustomId = params.get("CustomId")
+        self._Level = params.get("Level")
+        self._Rate = params.get("Rate")
+        self._Amount = params.get("Amount")
+        self._CustomId = params.get("CustomId")
         if params.get("CodeParts") is not None:
-            self.CodeParts = []
+            self._CodeParts = []
             for item in params.get("CodeParts"):
                 obj = CodePart()
                 obj._deserialize(item)
-                self.CodeParts.append(obj)
+                self._CodeParts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3880,38 +7522,87 @@ class PhaseData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HeadEnabled: 启用头
+        :param _HeadEnabled: 启用头
         :type HeadEnabled: bool
-        :param HeadTitle: 标题
+        :param _HeadTitle: 标题
         :type HeadTitle: str
-        :param Key: 标识符
+        :param _Key: 标识符
         :type Key: str
-        :param AppId: 小程序AppId
+        :param _AppId: 小程序AppId
         :type AppId: str
-        :param AppPath: 小程序AppPath
+        :param _AppPath: 小程序AppPath
         :type AppPath: str
-        :param AppName: 小程序名称AppName
+        :param _AppName: 小程序名称AppName
         :type AppName: str
         """
-        self.HeadEnabled = None
-        self.HeadTitle = None
-        self.Key = None
-        self.AppId = None
-        self.AppPath = None
-        self.AppName = None
+        self._HeadEnabled = None
+        self._HeadTitle = None
+        self._Key = None
+        self._AppId = None
+        self._AppPath = None
+        self._AppName = None
+
+    @property
+    def HeadEnabled(self):
+        return self._HeadEnabled
+
+    @HeadEnabled.setter
+    def HeadEnabled(self, HeadEnabled):
+        self._HeadEnabled = HeadEnabled
+
+    @property
+    def HeadTitle(self):
+        return self._HeadTitle
+
+    @HeadTitle.setter
+    def HeadTitle(self, HeadTitle):
+        self._HeadTitle = HeadTitle
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppPath(self):
+        return self._AppPath
+
+    @AppPath.setter
+    def AppPath(self, AppPath):
+        self._AppPath = AppPath
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
 
 
     def _deserialize(self, params):
-        self.HeadEnabled = params.get("HeadEnabled")
-        self.HeadTitle = params.get("HeadTitle")
-        self.Key = params.get("Key")
-        self.AppId = params.get("AppId")
-        self.AppPath = params.get("AppPath")
-        self.AppName = params.get("AppName")
+        self._HeadEnabled = params.get("HeadEnabled")
+        self._HeadTitle = params.get("HeadTitle")
+        self._Key = params.get("Key")
+        self._AppId = params.get("AppId")
+        self._AppPath = params.get("AppPath")
+        self._AppName = params.get("AppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3924,68 +7615,165 @@ class Product(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MerchantId: 商户标识码
+        :param _MerchantId: 商户标识码
         :type MerchantId: str
-        :param Name: 商品名称
+        :param _Name: 商品名称
         :type Name: str
-        :param ProductId: 商品id
+        :param _ProductId: 商品id
         :type ProductId: str
-        :param CorpId: 企业id
+        :param _CorpId: 企业id
         :type CorpId: int
-        :param ProductCode: 商品编号
+        :param _ProductCode: 商品编号
         :type ProductCode: str
-        :param Specification: 商品规格
+        :param _Specification: 商品规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
-        :param Remark: 备注
+        :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param Logo: 商品图片
+        :param _Logo: 商品图片
 注意：此字段可能返回 null，表示取不到有效值。
         :type Logo: list of str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 修改时间
+        :param _UpdateTime: 修改时间
         :type UpdateTime: str
-        :param Ext: 预留字段
+        :param _Ext: 预留字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
-        :param MerchantName: 商户名称
+        :param _MerchantName: 商户名称
         :type MerchantName: str
         """
-        self.MerchantId = None
-        self.Name = None
-        self.ProductId = None
-        self.CorpId = None
-        self.ProductCode = None
-        self.Specification = None
-        self.Remark = None
-        self.Logo = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Ext = None
-        self.MerchantName = None
+        self._MerchantId = None
+        self._Name = None
+        self._ProductId = None
+        self._CorpId = None
+        self._ProductCode = None
+        self._Specification = None
+        self._Remark = None
+        self._Logo = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Ext = None
+        self._MerchantName = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Logo(self):
+        return self._Logo
+
+    @Logo.setter
+    def Logo(self, Logo):
+        self._Logo = Logo
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
+    @property
+    def MerchantName(self):
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
 
 
     def _deserialize(self, params):
-        self.MerchantId = params.get("MerchantId")
-        self.Name = params.get("Name")
-        self.ProductId = params.get("ProductId")
-        self.CorpId = params.get("CorpId")
-        self.ProductCode = params.get("ProductCode")
-        self.Specification = params.get("Specification")
-        self.Remark = params.get("Remark")
-        self.Logo = params.get("Logo")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._MerchantId = params.get("MerchantId")
+        self._Name = params.get("Name")
+        self._ProductId = params.get("ProductId")
+        self._CorpId = params.get("CorpId")
+        self._ProductCode = params.get("ProductCode")
+        self._Specification = params.get("Specification")
+        self._Remark = params.get("Remark")
+        self._Logo = params.get("Logo")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         if params.get("Ext") is not None:
-            self.Ext = Ext()
-            self.Ext._deserialize(params.get("Ext"))
-        self.MerchantName = params.get("MerchantName")
+            self._Ext = Ext()
+            self._Ext._deserialize(params.get("Ext"))
+        self._MerchantName = params.get("MerchantName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3998,79 +7786,344 @@ class Quota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 服务开始时间
+        :param _StartTime: 服务开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param EndTime: 服务结束时间
+        :param _EndTime: 服务结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param QuotaId: 配额ID
+        :param _QuotaId: 配额ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaId: int
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param Services: 开通服务
+        :param _Services: 开通服务
 注意：此字段可能返回 null，表示取不到有效值。
         :type Services: list of str
-        :param FactoryQuota: 商户配额
+        :param _FactoryQuota: 商户配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type FactoryQuota: int
-        :param ItemQuota: 商品配额
+        :param _ItemQuota: 商品配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemQuota: int
-        :param TrackQuota: 溯源码配额
+        :param _TrackQuota: 溯源码配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrackQuota: int
-        :param SaleQuota: 销售码配额
+        :param _SaleQuota: 销售码配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type SaleQuota: int
-        :param ChainQuota: 上链配额
+        :param _ChainQuota: 上链配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainQuota: int
-        :param RiskQuota: 风控配额
+        :param _RiskQuota: 风控配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskQuota: int
-        :param TrackType: 溯源类型
+        :param _TrackType: 溯源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrackType: int
-        :param Version: 开通版本 lite:轻量版, basic:基础版, standard:标准版
+        :param _Version: 开通版本 lite:轻量版, basic:基础版, standard:标准版
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.QuotaId = None
-        self.CorpId = None
-        self.Services = None
-        self.FactoryQuota = None
-        self.ItemQuota = None
-        self.TrackQuota = None
-        self.SaleQuota = None
-        self.ChainQuota = None
-        self.RiskQuota = None
-        self.TrackType = None
-        self.Version = None
+        self._StartTime = None
+        self._EndTime = None
+        self._QuotaId = None
+        self._CorpId = None
+        self._Services = None
+        self._FactoryQuota = None
+        self._ItemQuota = None
+        self._TrackQuota = None
+        self._SaleQuota = None
+        self._ChainQuota = None
+        self._RiskQuota = None
+        self._TrackType = None
+        self._Version = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def QuotaId(self):
+        return self._QuotaId
+
+    @QuotaId.setter
+    def QuotaId(self, QuotaId):
+        self._QuotaId = QuotaId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Services(self):
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def FactoryQuota(self):
+        return self._FactoryQuota
+
+    @FactoryQuota.setter
+    def FactoryQuota(self, FactoryQuota):
+        self._FactoryQuota = FactoryQuota
+
+    @property
+    def ItemQuota(self):
+        return self._ItemQuota
+
+    @ItemQuota.setter
+    def ItemQuota(self, ItemQuota):
+        self._ItemQuota = ItemQuota
+
+    @property
+    def TrackQuota(self):
+        return self._TrackQuota
+
+    @TrackQuota.setter
+    def TrackQuota(self, TrackQuota):
+        self._TrackQuota = TrackQuota
+
+    @property
+    def SaleQuota(self):
+        return self._SaleQuota
+
+    @SaleQuota.setter
+    def SaleQuota(self, SaleQuota):
+        self._SaleQuota = SaleQuota
+
+    @property
+    def ChainQuota(self):
+        return self._ChainQuota
+
+    @ChainQuota.setter
+    def ChainQuota(self, ChainQuota):
+        self._ChainQuota = ChainQuota
+
+    @property
+    def RiskQuota(self):
+        return self._RiskQuota
+
+    @RiskQuota.setter
+    def RiskQuota(self, RiskQuota):
+        self._RiskQuota = RiskQuota
+
+    @property
+    def TrackType(self):
+        return self._TrackType
+
+    @TrackType.setter
+    def TrackType(self, TrackType):
+        self._TrackType = TrackType
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.QuotaId = params.get("QuotaId")
-        self.CorpId = params.get("CorpId")
-        self.Services = params.get("Services")
-        self.FactoryQuota = params.get("FactoryQuota")
-        self.ItemQuota = params.get("ItemQuota")
-        self.TrackQuota = params.get("TrackQuota")
-        self.SaleQuota = params.get("SaleQuota")
-        self.ChainQuota = params.get("ChainQuota")
-        self.RiskQuota = params.get("RiskQuota")
-        self.TrackType = params.get("TrackType")
-        self.Version = params.get("Version")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._QuotaId = params.get("QuotaId")
+        self._CorpId = params.get("CorpId")
+        self._Services = params.get("Services")
+        self._FactoryQuota = params.get("FactoryQuota")
+        self._ItemQuota = params.get("ItemQuota")
+        self._TrackQuota = params.get("TrackQuota")
+        self._SaleQuota = params.get("SaleQuota")
+        self._ChainQuota = params.get("ChainQuota")
+        self._RiskQuota = params.get("RiskQuota")
+        self._TrackType = params.get("TrackType")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RawScanLog(AbstractModel):
+    """原始扫码日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: 日志ID
+        :type LogId: int
+        :param _Openid: 微信小程序openid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Openid: str
+        :param _CreateTime: 扫码时间
+        :type CreateTime: str
+        :param _Code: 溯源码
+        :type Code: str
+        :param _CorpId: 企业ID
+        :type CorpId: int
+        :param _MerchantId: 商户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MerchantId: str
+        :param _ProductId: 商品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        :param _BatchId: 批次ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        :param _Province: 省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: str
+        :param _City: 地市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
+        :param _District: 区/县
+注意：此字段可能返回 null，表示取不到有效值。
+        :type District: str
+        """
+        self._LogId = None
+        self._Openid = None
+        self._CreateTime = None
+        self._Code = None
+        self._CorpId = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._BatchId = None
+        self._Province = None
+        self._City = None
+        self._District = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def Openid(self):
+        return self._Openid
+
+    @Openid.setter
+    def Openid(self, Openid):
+        self._Openid = Openid
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._Openid = params.get("Openid")
+        self._CreateTime = params.get("CreateTime")
+        self._Code = params.get("Code")
+        self._CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._BatchId = params.get("BatchId")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._District = params.get("District")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4083,20 +8136,29 @@ class ReportBatchCallbackStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessSecurityData: 业务加密入参。
+        :param _BusinessSecurityData: 业务加密入参。
         :type BusinessSecurityData: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
         """
-        self.BusinessSecurityData = None
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = InputEncryptData()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+            self._BusinessSecurityData = InputEncryptData()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4109,20 +8171,36 @@ class ReportBatchCallbackStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 业务出参。
+        :param _Data: 业务出参。
         :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = OutputAuthorizedTransfer()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = OutputAuthorizedTransfer()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ScanLog(AbstractModel):
@@ -4132,107 +8210,260 @@ class ScanLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: 行ID
+        :param _LogId: 行ID
         :type LogId: int
-        :param Openid: 微信openid
+        :param _Openid: 微信openid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Openid: str
-        :param Nickname: 微信昵称
+        :param _Nickname: 微信昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nickname: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Code: 码
+        :param _Code: 码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param ProductId: 商品ID
+        :param _ProductId: 商品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param Ip: ip地址
+        :param _Ip: ip地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
-        :param Country: 国家
+        :param _Country: 国家
 注意：此字段可能返回 null，表示取不到有效值。
         :type Country: str
-        :param Province: 省份
+        :param _Province: 省份
 注意：此字段可能返回 null，表示取不到有效值。
         :type Province: str
-        :param City: 城市
+        :param _City: 城市
 注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
-        :param District: 县/区
+        :param _District: 县/区
 注意：此字段可能返回 null，表示取不到有效值。
         :type District: str
-        :param Unionid: 微信 unionid
+        :param _Unionid: 微信 unionid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Unionid: str
-        :param First: 首次扫码 0:否, 1:是
+        :param _First: 首次扫码 0:否, 1:是
 注意：此字段可能返回 null，表示取不到有效值。
         :type First: int
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
-        :param Type: 扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
+        :param _Type: 扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
         :type Type: int
-        :param MerchantName: 商户名称
+        :param _MerchantName: 商户名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantName: str
-        :param ProductName: 产品名称
+        :param _ProductName: 产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         """
-        self.LogId = None
-        self.Openid = None
-        self.Nickname = None
-        self.CreateTime = None
-        self.Code = None
-        self.CorpId = None
-        self.MerchantId = None
-        self.ProductId = None
-        self.Ip = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.District = None
-        self.Unionid = None
-        self.First = None
-        self.BatchId = None
-        self.Type = None
-        self.MerchantName = None
-        self.ProductName = None
+        self._LogId = None
+        self._Openid = None
+        self._Nickname = None
+        self._CreateTime = None
+        self._Code = None
+        self._CorpId = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._Ip = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._District = None
+        self._Unionid = None
+        self._First = None
+        self._BatchId = None
+        self._Type = None
+        self._MerchantName = None
+        self._ProductName = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def Openid(self):
+        return self._Openid
+
+    @Openid.setter
+    def Openid(self, Openid):
+        self._Openid = Openid
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def Unionid(self):
+        return self._Unionid
+
+    @Unionid.setter
+    def Unionid(self, Unionid):
+        self._Unionid = Unionid
+
+    @property
+    def First(self):
+        return self._First
+
+    @First.setter
+    def First(self, First):
+        self._First = First
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def MerchantName(self):
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.Openid = params.get("Openid")
-        self.Nickname = params.get("Nickname")
-        self.CreateTime = params.get("CreateTime")
-        self.Code = params.get("Code")
-        self.CorpId = params.get("CorpId")
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.Ip = params.get("Ip")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.District = params.get("District")
-        self.Unionid = params.get("Unionid")
-        self.First = params.get("First")
-        self.BatchId = params.get("BatchId")
-        self.Type = params.get("Type")
-        self.MerchantName = params.get("MerchantName")
-        self.ProductName = params.get("ProductName")
+        self._LogId = params.get("LogId")
+        self._Openid = params.get("Openid")
+        self._Nickname = params.get("Nickname")
+        self._CreateTime = params.get("CreateTime")
+        self._Code = params.get("Code")
+        self._CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._Ip = params.get("Ip")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._District = params.get("District")
+        self._Unionid = params.get("Unionid")
+        self._First = params.get("First")
+        self._BatchId = params.get("BatchId")
+        self._Type = params.get("Type")
+        self._MerchantName = params.get("MerchantName")
+        self._ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4245,58 +8476,147 @@ class ScanStat(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 安心码
+        :param _Code: 安心码
         :type Code: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param MerchantId: 商户ID
+        :param _MerchantId: 商户ID
         :type MerchantId: str
-        :param ProductId: 产品ID
+        :param _ProductId: 产品ID
         :type ProductId: str
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param Pv: 扫码次数
+        :param _Pv: 扫码次数
         :type Pv: int
-        :param Uv: 扫码人数
+        :param _Uv: 扫码人数
         :type Uv: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
         :type UpdateTime: str
-        :param MerchantName: 商户名称
+        :param _MerchantName: 商户名称
         :type MerchantName: str
-        :param ProductName: 产品名称
+        :param _ProductName: 产品名称
         :type ProductName: str
         """
-        self.Code = None
-        self.CorpId = None
-        self.MerchantId = None
-        self.ProductId = None
-        self.BatchId = None
-        self.Pv = None
-        self.Uv = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.MerchantName = None
-        self.ProductName = None
+        self._Code = None
+        self._CorpId = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._BatchId = None
+        self._Pv = None
+        self._Uv = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._MerchantName = None
+        self._ProductName = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def Pv(self):
+        return self._Pv
+
+    @Pv.setter
+    def Pv(self, Pv):
+        self._Pv = Pv
+
+    @property
+    def Uv(self):
+        return self._Uv
+
+    @Uv.setter
+    def Uv(self, Uv):
+        self._Uv = Uv
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MerchantName(self):
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.CorpId = params.get("CorpId")
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.BatchId = params.get("BatchId")
-        self.Pv = params.get("Pv")
-        self.Uv = params.get("Uv")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.MerchantName = params.get("MerchantName")
-        self.ProductName = params.get("ProductName")
+        self._Code = params.get("Code")
+        self._CorpId = params.get("CorpId")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._BatchId = params.get("BatchId")
+        self._Pv = params.get("Pv")
+        self._Uv = params.get("Uv")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._MerchantName = params.get("MerchantName")
+        self._ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4309,66 +8629,171 @@ class TraceCode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 二维码
+        :param _Code: 二维码
         :type Code: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param PackId: 码包ID
+        :param _PackId: 码包ID
         :type PackId: str
-        :param BatchId: 批次ID
+        :param _BatchId: 批次ID
         :type BatchId: str
-        :param MerchantId: 所属商户ID
+        :param _MerchantId: 所属商户ID
         :type MerchantId: str
-        :param ProductId: 产品ID
+        :param _ProductId: 产品ID
         :type ProductId: str
-        :param Status: 码状态 0: 冻结 1: 激活
+        :param _Status: 码状态 0: 冻结 1: 激活
         :type Status: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 修改时间
+        :param _UpdateTime: 修改时间
         :type UpdateTime: str
-        :param MerchantName: 商户名称
+        :param _MerchantName: 商户名称
         :type MerchantName: str
-        :param ProductName: 产品名称
+        :param _ProductName: 产品名称
         :type ProductName: str
-        :param AgentId: 渠道商ID
+        :param _AgentId: 渠道商ID
         :type AgentId: int
-        :param Level: 码层级 0: 最小级, 1: 一级, 2: 二级
+        :param _Level: 码层级 0: 最小级, 1: 一级, 2: 二级
         :type Level: int
         """
-        self.Code = None
-        self.CorpId = None
-        self.PackId = None
-        self.BatchId = None
-        self.MerchantId = None
-        self.ProductId = None
-        self.Status = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.MerchantName = None
-        self.ProductName = None
-        self.AgentId = None
-        self.Level = None
+        self._Code = None
+        self._CorpId = None
+        self._PackId = None
+        self._BatchId = None
+        self._MerchantId = None
+        self._ProductId = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._MerchantName = None
+        self._ProductName = None
+        self._AgentId = None
+        self._Level = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def PackId(self):
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MerchantName(self):
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def AgentId(self):
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.CorpId = params.get("CorpId")
-        self.PackId = params.get("PackId")
-        self.BatchId = params.get("BatchId")
-        self.MerchantId = params.get("MerchantId")
-        self.ProductId = params.get("ProductId")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.MerchantName = params.get("MerchantName")
-        self.ProductName = params.get("ProductName")
-        self.AgentId = params.get("AgentId")
-        self.Level = params.get("Level")
+        self._Code = params.get("Code")
+        self._CorpId = params.get("CorpId")
+        self._PackId = params.get("PackId")
+        self._BatchId = params.get("BatchId")
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._MerchantName = params.get("MerchantName")
+        self._ProductName = params.get("ProductName")
+        self._AgentId = params.get("AgentId")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4381,90 +8806,211 @@ class TraceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TraceId: 溯源ID
+        :param _TraceId: 溯源ID
         :type TraceId: str
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
         :type CorpId: int
-        :param Type: 码类型 0: 批次, 1: 码, 2: 生产任务
+        :param _Type: 码类型 0: 批次, 1: 码, 2: 生产任务
         :type Type: int
-        :param Code: 码值，跟码类型一一对应
+        :param _Code: 码值，跟码类型一一对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Rank: 排序，在Phase相同情况下，值越小排名靠前
+        :param _Rank: 排序，在Phase相同情况下，值越小排名靠前
         :type Rank: int
-        :param Phase: 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
+        :param _Phase: 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
         :type Phase: int
-        :param PhaseName: 溯源环节名称
+        :param _PhaseName: 溯源环节名称
         :type PhaseName: str
-        :param TraceTime: 溯源时间
+        :param _TraceTime: 溯源时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceTime: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param ChainStatus: 上链状态 0: 未上链 1: 上链中 2: 已上链 -1: 异常
+        :param _ChainStatus: 上链状态 0: 未上链 1: 上链中 2: 已上链 -1: 异常
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainStatus: int
-        :param ChainTime: 上链时间
+        :param _ChainTime: 上链时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainTime: str
-        :param ChainData: 上链数据
+        :param _ChainData: 上链数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainData: :class:`tencentcloud.trp.v20210515.models.ChainData`
-        :param PhaseData: 溯源阶段配置
+        :param _PhaseData: 溯源阶段配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
-        :param Status: 溯源阶段状态 0: 无效, 1: 有效
+        :param _Status: 溯源阶段状态 0: 无效, 1: 有效
         :type Status: int
-        :param TraceItems: 无
+        :param _TraceItems: 无
         :type TraceItems: list of TraceItem
         """
-        self.TraceId = None
-        self.CorpId = None
-        self.Type = None
-        self.Code = None
-        self.Rank = None
-        self.Phase = None
-        self.PhaseName = None
-        self.TraceTime = None
-        self.CreateTime = None
-        self.ChainStatus = None
-        self.ChainTime = None
-        self.ChainData = None
-        self.PhaseData = None
-        self.Status = None
-        self.TraceItems = None
+        self._TraceId = None
+        self._CorpId = None
+        self._Type = None
+        self._Code = None
+        self._Rank = None
+        self._Phase = None
+        self._PhaseName = None
+        self._TraceTime = None
+        self._CreateTime = None
+        self._ChainStatus = None
+        self._ChainTime = None
+        self._ChainData = None
+        self._PhaseData = None
+        self._Status = None
+        self._TraceItems = None
+
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Rank(self):
+        return self._Rank
+
+    @Rank.setter
+    def Rank(self, Rank):
+        self._Rank = Rank
+
+    @property
+    def Phase(self):
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def PhaseName(self):
+        return self._PhaseName
+
+    @PhaseName.setter
+    def PhaseName(self, PhaseName):
+        self._PhaseName = PhaseName
+
+    @property
+    def TraceTime(self):
+        return self._TraceTime
+
+    @TraceTime.setter
+    def TraceTime(self, TraceTime):
+        self._TraceTime = TraceTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ChainStatus(self):
+        return self._ChainStatus
+
+    @ChainStatus.setter
+    def ChainStatus(self, ChainStatus):
+        self._ChainStatus = ChainStatus
+
+    @property
+    def ChainTime(self):
+        return self._ChainTime
+
+    @ChainTime.setter
+    def ChainTime(self, ChainTime):
+        self._ChainTime = ChainTime
+
+    @property
+    def ChainData(self):
+        return self._ChainData
+
+    @ChainData.setter
+    def ChainData(self, ChainData):
+        self._ChainData = ChainData
+
+    @property
+    def PhaseData(self):
+        return self._PhaseData
+
+    @PhaseData.setter
+    def PhaseData(self, PhaseData):
+        self._PhaseData = PhaseData
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TraceItems(self):
+        return self._TraceItems
+
+    @TraceItems.setter
+    def TraceItems(self, TraceItems):
+        self._TraceItems = TraceItems
 
 
     def _deserialize(self, params):
-        self.TraceId = params.get("TraceId")
-        self.CorpId = params.get("CorpId")
-        self.Type = params.get("Type")
-        self.Code = params.get("Code")
-        self.Rank = params.get("Rank")
-        self.Phase = params.get("Phase")
-        self.PhaseName = params.get("PhaseName")
-        self.TraceTime = params.get("TraceTime")
-        self.CreateTime = params.get("CreateTime")
-        self.ChainStatus = params.get("ChainStatus")
-        self.ChainTime = params.get("ChainTime")
+        self._TraceId = params.get("TraceId")
+        self._CorpId = params.get("CorpId")
+        self._Type = params.get("Type")
+        self._Code = params.get("Code")
+        self._Rank = params.get("Rank")
+        self._Phase = params.get("Phase")
+        self._PhaseName = params.get("PhaseName")
+        self._TraceTime = params.get("TraceTime")
+        self._CreateTime = params.get("CreateTime")
+        self._ChainStatus = params.get("ChainStatus")
+        self._ChainTime = params.get("ChainTime")
         if params.get("ChainData") is not None:
-            self.ChainData = ChainData()
-            self.ChainData._deserialize(params.get("ChainData"))
+            self._ChainData = ChainData()
+            self._ChainData._deserialize(params.get("ChainData"))
         if params.get("PhaseData") is not None:
-            self.PhaseData = PhaseData()
-            self.PhaseData._deserialize(params.get("PhaseData"))
-        self.Status = params.get("Status")
+            self._PhaseData = PhaseData()
+            self._PhaseData._deserialize(params.get("PhaseData"))
+        self._Status = params.get("Status")
         if params.get("TraceItems") is not None:
-            self.TraceItems = []
+            self._TraceItems = []
             for item in params.get("TraceItems"):
                 obj = TraceItem()
                 obj._deserialize(item)
-                self.TraceItems.append(obj)
+                self._TraceItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4487,68 +9033,149 @@ class TraceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 字段名称
+        :param _Name: 字段名称
         :type Name: str
-        :param Value: 字段值
+        :param _Value: 字段值
         :type Value: str
-        :param Type: 字段类型
+        :param _Type: 字段类型
 text:文本类型, 
 longtext:长文本类型, banner:单图片类型, image:多图片类型,
 video:视频类型,
 mp:小程序类型
         :type Type: str
-        :param Values: 多个值
+        :param _Values: 多个值
         :type Values: list of str
-        :param ReadOnly: 只读
+        :param _ReadOnly: 只读
         :type ReadOnly: bool
-        :param Hidden: 扫码展示
+        :param _Hidden: 扫码展示
         :type Hidden: bool
-        :param Key: 类型标识
+        :param _Key: 类型标识
         :type Key: str
-        :param Ext: 扩展字段
+        :param _Ext: 扩展字段
         :type Ext: str
-        :param Attrs: 额外属性
+        :param _Attrs: 额外属性
         :type Attrs: list of TraceItem
-        :param List: 子页面，只读
+        :param _List: 子页面，只读
         :type List: list of TraceData
         """
-        self.Name = None
-        self.Value = None
-        self.Type = None
-        self.Values = None
-        self.ReadOnly = None
-        self.Hidden = None
-        self.Key = None
-        self.Ext = None
-        self.Attrs = None
-        self.List = None
+        self._Name = None
+        self._Value = None
+        self._Type = None
+        self._Values = None
+        self._ReadOnly = None
+        self._Hidden = None
+        self._Key = None
+        self._Ext = None
+        self._Attrs = None
+        self._List = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ReadOnly(self):
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+    @property
+    def Hidden(self):
+        return self._Hidden
+
+    @Hidden.setter
+    def Hidden(self, Hidden):
+        self._Hidden = Hidden
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
+    @property
+    def Attrs(self):
+        return self._Attrs
+
+    @Attrs.setter
+    def Attrs(self, Attrs):
+        self._Attrs = Attrs
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
-        self.Type = params.get("Type")
-        self.Values = params.get("Values")
-        self.ReadOnly = params.get("ReadOnly")
-        self.Hidden = params.get("Hidden")
-        self.Key = params.get("Key")
-        self.Ext = params.get("Ext")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        self._Values = params.get("Values")
+        self._ReadOnly = params.get("ReadOnly")
+        self._Hidden = params.get("Hidden")
+        self._Key = params.get("Key")
+        self._Ext = params.get("Ext")
         if params.get("Attrs") is not None:
-            self.Attrs = []
+            self._Attrs = []
             for item in params.get("Attrs"):
                 obj = TraceItem()
                 obj._deserialize(item)
-                self.Attrs.append(obj)
+                self._Attrs.append(obj)
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = TraceData()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4561,54 +9188,119 @@ class UsageQuota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorpId: 企业ID
+        :param _CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param FactoryCnt: 商户配额
+        :param _FactoryCnt: 商户配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type FactoryCnt: int
-        :param ItemCnt: 商品数量
+        :param _ItemCnt: 商品数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCnt: int
-        :param TrackCnt: 溯源码量
+        :param _TrackCnt: 溯源码量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrackCnt: int
-        :param SaleCnt: 营销码额度
+        :param _SaleCnt: 营销码额度
 注意：此字段可能返回 null，表示取不到有效值。
         :type SaleCnt: int
-        :param ChainCnt: 区块链上链次数
+        :param _ChainCnt: 区块链上链次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainCnt: int
-        :param RiskCnt: 营销风控次数
+        :param _RiskCnt: 营销风控次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCnt: int
-        :param UpdateTime: 时间
+        :param _UpdateTime: 时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
-        self.CorpId = None
-        self.FactoryCnt = None
-        self.ItemCnt = None
-        self.TrackCnt = None
-        self.SaleCnt = None
-        self.ChainCnt = None
-        self.RiskCnt = None
-        self.UpdateTime = None
+        self._CorpId = None
+        self._FactoryCnt = None
+        self._ItemCnt = None
+        self._TrackCnt = None
+        self._SaleCnt = None
+        self._ChainCnt = None
+        self._RiskCnt = None
+        self._UpdateTime = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def FactoryCnt(self):
+        return self._FactoryCnt
+
+    @FactoryCnt.setter
+    def FactoryCnt(self, FactoryCnt):
+        self._FactoryCnt = FactoryCnt
+
+    @property
+    def ItemCnt(self):
+        return self._ItemCnt
+
+    @ItemCnt.setter
+    def ItemCnt(self, ItemCnt):
+        self._ItemCnt = ItemCnt
+
+    @property
+    def TrackCnt(self):
+        return self._TrackCnt
+
+    @TrackCnt.setter
+    def TrackCnt(self, TrackCnt):
+        self._TrackCnt = TrackCnt
+
+    @property
+    def SaleCnt(self):
+        return self._SaleCnt
+
+    @SaleCnt.setter
+    def SaleCnt(self, SaleCnt):
+        self._SaleCnt = SaleCnt
+
+    @property
+    def ChainCnt(self):
+        return self._ChainCnt
+
+    @ChainCnt.setter
+    def ChainCnt(self, ChainCnt):
+        self._ChainCnt = ChainCnt
+
+    @property
+    def RiskCnt(self):
+        return self._RiskCnt
+
+    @RiskCnt.setter
+    def RiskCnt(self, RiskCnt):
+        self._RiskCnt = RiskCnt
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.CorpId = params.get("CorpId")
-        self.FactoryCnt = params.get("FactoryCnt")
-        self.ItemCnt = params.get("ItemCnt")
-        self.TrackCnt = params.get("TrackCnt")
-        self.SaleCnt = params.get("SaleCnt")
-        self.ChainCnt = params.get("ChainCnt")
-        self.RiskCnt = params.get("RiskCnt")
-        self.UpdateTime = params.get("UpdateTime")
+        self._CorpId = params.get("CorpId")
+        self._FactoryCnt = params.get("FactoryCnt")
+        self._ItemCnt = params.get("ItemCnt")
+        self._TrackCnt = params.get("TrackCnt")
+        self._SaleCnt = params.get("SaleCnt")
+        self._ChainCnt = params.get("ChainCnt")
+        self._RiskCnt = params.get("RiskCnt")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

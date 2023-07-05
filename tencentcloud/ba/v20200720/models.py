@@ -25,18 +25,27 @@ class CreateWeappQRUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SessionKey: 代理角色临时密钥的Token
+        :param _SessionKey: 代理角色临时密钥的Token
         :type SessionKey: str
         """
-        self.SessionKey = None
+        self._SessionKey = None
+
+    @property
+    def SessionKey(self):
+        return self._SessionKey
+
+    @SessionKey.setter
+    def SessionKey(self, SessionKey):
+        self._SessionKey = SessionKey
 
 
     def _deserialize(self, params):
-        self.SessionKey = params.get("SessionKey")
+        self._SessionKey = params.get("SessionKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -49,18 +58,34 @@ class CreateWeappQRUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: 渠道备案小程序二维码
+        :param _Url: 渠道备案小程序二维码
         :type Url: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Url = None
-        self.RequestId = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.RequestId = params.get("RequestId")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGetAuthInfoRequest(AbstractModel):
@@ -76,26 +101,58 @@ class DescribeGetAuthInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsTenPayMasked: 实名认证状态：0未实名，1已实名
+        :param _IsTenPayMasked: 实名认证状态：0未实名，1已实名
         :type IsTenPayMasked: str
-        :param IsAuthenticated: 实名认证类型：0个人，1企业
+        :param _IsAuthenticated: 实名认证类型：0个人，1企业
         :type IsAuthenticated: str
-        :param Type: 认证类型，个人0，企业1
+        :param _Type: 认证类型，个人0，企业1
         :type Type: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IsTenPayMasked = None
-        self.IsAuthenticated = None
-        self.Type = None
-        self.RequestId = None
+        self._IsTenPayMasked = None
+        self._IsAuthenticated = None
+        self._Type = None
+        self._RequestId = None
+
+    @property
+    def IsTenPayMasked(self):
+        return self._IsTenPayMasked
+
+    @IsTenPayMasked.setter
+    def IsTenPayMasked(self, IsTenPayMasked):
+        self._IsTenPayMasked = IsTenPayMasked
+
+    @property
+    def IsAuthenticated(self):
+        return self._IsAuthenticated
+
+    @IsAuthenticated.setter
+    def IsAuthenticated(self, IsAuthenticated):
+        self._IsAuthenticated = IsAuthenticated
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsTenPayMasked = params.get("IsTenPayMasked")
-        self.IsAuthenticated = params.get("IsAuthenticated")
-        self.Type = params.get("Type")
-        self.RequestId = params.get("RequestId")
+        self._IsTenPayMasked = params.get("IsTenPayMasked")
+        self._IsAuthenticated = params.get("IsAuthenticated")
+        self._Type = params.get("Type")
+        self._RequestId = params.get("RequestId")
 
 
 class SyncIcpOrderWebInfoRequest(AbstractModel):
@@ -105,34 +162,75 @@ class SyncIcpOrderWebInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IcpOrderId: 备案ICP订单号
+        :param _IcpOrderId: 备案ICP订单号
         :type IcpOrderId: str
-        :param SourceWebId: 订单里的webId
+        :param _SourceWebId: 订单里的webId
         :type SourceWebId: str
-        :param TargetWebIds: 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)
+        :param _TargetWebIds: 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)
         :type TargetWebIds: list of str
-        :param SyncFields: 网站信息字段名 数组
+        :param _SyncFields: 网站信息字段名 数组
         :type SyncFields: list of str
-        :param CheckSamePerson: 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值
+        :param _CheckSamePerson: 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值
         :type CheckSamePerson: bool
         """
-        self.IcpOrderId = None
-        self.SourceWebId = None
-        self.TargetWebIds = None
-        self.SyncFields = None
-        self.CheckSamePerson = None
+        self._IcpOrderId = None
+        self._SourceWebId = None
+        self._TargetWebIds = None
+        self._SyncFields = None
+        self._CheckSamePerson = None
+
+    @property
+    def IcpOrderId(self):
+        return self._IcpOrderId
+
+    @IcpOrderId.setter
+    def IcpOrderId(self, IcpOrderId):
+        self._IcpOrderId = IcpOrderId
+
+    @property
+    def SourceWebId(self):
+        return self._SourceWebId
+
+    @SourceWebId.setter
+    def SourceWebId(self, SourceWebId):
+        self._SourceWebId = SourceWebId
+
+    @property
+    def TargetWebIds(self):
+        return self._TargetWebIds
+
+    @TargetWebIds.setter
+    def TargetWebIds(self, TargetWebIds):
+        self._TargetWebIds = TargetWebIds
+
+    @property
+    def SyncFields(self):
+        return self._SyncFields
+
+    @SyncFields.setter
+    def SyncFields(self, SyncFields):
+        self._SyncFields = SyncFields
+
+    @property
+    def CheckSamePerson(self):
+        return self._CheckSamePerson
+
+    @CheckSamePerson.setter
+    def CheckSamePerson(self, CheckSamePerson):
+        self._CheckSamePerson = CheckSamePerson
 
 
     def _deserialize(self, params):
-        self.IcpOrderId = params.get("IcpOrderId")
-        self.SourceWebId = params.get("SourceWebId")
-        self.TargetWebIds = params.get("TargetWebIds")
-        self.SyncFields = params.get("SyncFields")
-        self.CheckSamePerson = params.get("CheckSamePerson")
+        self._IcpOrderId = params.get("IcpOrderId")
+        self._SourceWebId = params.get("SourceWebId")
+        self._TargetWebIds = params.get("TargetWebIds")
+        self._SyncFields = params.get("SyncFields")
+        self._CheckSamePerson = params.get("CheckSamePerson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -145,11 +243,19 @@ class SyncIcpOrderWebInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

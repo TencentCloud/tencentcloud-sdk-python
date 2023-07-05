@@ -31,15 +31,31 @@ class DescribeSdkAppidResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppids: 表示 appid 对应的 SdkAppid 的数据
+        :param _SdkAppids: 表示 appid 对应的 SdkAppid 的数据
         :type SdkAppids: list of int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SdkAppids = None
-        self.RequestId = None
+        self._SdkAppids = None
+        self._RequestId = None
+
+    @property
+    def SdkAppids(self):
+        return self._SdkAppids
+
+    @SdkAppids.setter
+    def SdkAppids(self, SdkAppids):
+        self._SdkAppids = SdkAppids
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SdkAppids = params.get("SdkAppids")
-        self.RequestId = params.get("RequestId")
+        self._SdkAppids = params.get("SdkAppids")
+        self._RequestId = params.get("RequestId")

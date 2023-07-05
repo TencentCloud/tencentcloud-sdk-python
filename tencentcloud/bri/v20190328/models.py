@@ -25,71 +25,184 @@ class BRIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Service: 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
+        :param _Service: 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
         :type Service: str
-        :param QQ: QQ号 (业务名为bri_social时必填, 除非已填Wechat)
+        :param _QQ: QQ号 (业务名为bri_social时必填, 除非已填Wechat)
         :type QQ: str
-        :param QQTag: QQ号的可疑标签
+        :param _QQTag: QQ号的可疑标签
         :type QQTag: str
-        :param Url: 网址 (业务名为bri_url时必填)
+        :param _Url: 网址 (业务名为bri_url时必填)
         :type Url: str
-        :param CertMd5: Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
+        :param _CertMd5: Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
         :type CertMd5: str
-        :param PackageName: Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
+        :param _PackageName: Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
         :type PackageName: str
-        :param FileMd5: Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
+        :param _FileMd5: Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
         :type FileMd5: str
-        :param Scene: 业务场景 (1-注册, 2-登录, 3-发消息)
+        :param _Scene: 业务场景 (1-注册, 2-登录, 3-发消息)
         :type Scene: str
-        :param PhoneNumber: 电话号码 (业务名为bri_num时必填)
+        :param _PhoneNumber: 电话号码 (业务名为bri_num时必填)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneNumber: str
-        :param FileSize: Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
+        :param _FileSize: Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
         :type FileSize: int
-        :param Ip: 点分格式的IP (业务名为bri_ip时必填)
+        :param _Ip: 点分格式的IP (业务名为bri_ip时必填)
         :type Ip: str
-        :param Imei: 安卓设备的Imei (业务名为bri_dev时必填)
+        :param _Imei: 安卓设备的Imei (业务名为bri_dev时必填)
         :type Imei: str
-        :param Wechat: 微信号 (业务名为bri_social时必填, 除非已填QQ)
+        :param _Wechat: 微信号 (业务名为bri_social时必填, 除非已填QQ)
         :type Wechat: str
-        :param WechatTag: 微信号的可疑标签
+        :param _WechatTag: 微信号的可疑标签
         :type WechatTag: str
         """
-        self.Service = None
-        self.QQ = None
-        self.QQTag = None
-        self.Url = None
-        self.CertMd5 = None
-        self.PackageName = None
-        self.FileMd5 = None
-        self.Scene = None
-        self.PhoneNumber = None
-        self.FileSize = None
-        self.Ip = None
-        self.Imei = None
-        self.Wechat = None
-        self.WechatTag = None
+        self._Service = None
+        self._QQ = None
+        self._QQTag = None
+        self._Url = None
+        self._CertMd5 = None
+        self._PackageName = None
+        self._FileMd5 = None
+        self._Scene = None
+        self._PhoneNumber = None
+        self._FileSize = None
+        self._Ip = None
+        self._Imei = None
+        self._Wechat = None
+        self._WechatTag = None
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def QQ(self):
+        return self._QQ
+
+    @QQ.setter
+    def QQ(self, QQ):
+        self._QQ = QQ
+
+    @property
+    def QQTag(self):
+        return self._QQTag
+
+    @QQTag.setter
+    def QQTag(self, QQTag):
+        self._QQTag = QQTag
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def CertMd5(self):
+        return self._CertMd5
+
+    @CertMd5.setter
+    def CertMd5(self, CertMd5):
+        self._CertMd5 = CertMd5
+
+    @property
+    def PackageName(self):
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def FileMd5(self):
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def Wechat(self):
+        return self._Wechat
+
+    @Wechat.setter
+    def Wechat(self, Wechat):
+        self._Wechat = Wechat
+
+    @property
+    def WechatTag(self):
+        return self._WechatTag
+
+    @WechatTag.setter
+    def WechatTag(self, WechatTag):
+        self._WechatTag = WechatTag
 
 
     def _deserialize(self, params):
-        self.Service = params.get("Service")
-        self.QQ = params.get("QQ")
-        self.QQTag = params.get("QQTag")
-        self.Url = params.get("Url")
-        self.CertMd5 = params.get("CertMd5")
-        self.PackageName = params.get("PackageName")
-        self.FileMd5 = params.get("FileMd5")
-        self.Scene = params.get("Scene")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.FileSize = params.get("FileSize")
-        self.Ip = params.get("Ip")
-        self.Imei = params.get("Imei")
-        self.Wechat = params.get("Wechat")
-        self.WechatTag = params.get("WechatTag")
+        self._Service = params.get("Service")
+        self._QQ = params.get("QQ")
+        self._QQTag = params.get("QQTag")
+        self._Url = params.get("Url")
+        self._CertMd5 = params.get("CertMd5")
+        self._PackageName = params.get("PackageName")
+        self._FileMd5 = params.get("FileMd5")
+        self._Scene = params.get("Scene")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._FileSize = params.get("FileSize")
+        self._Ip = params.get("Ip")
+        self._Imei = params.get("Imei")
+        self._Wechat = params.get("Wechat")
+        self._WechatTag = params.get("WechatTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -102,9 +215,9 @@ class BRIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Score: 风险分值，取值[0,100], 分值越高风险越高
+        :param _Score: 风险分值，取值[0,100], 分值越高风险越高
         :type Score: float
-        :param Tags: 当Service为bri_num时,返回的风险标签有:
+        :param _Tags: 当Service为bri_num时,返回的风险标签有:
 1) 疑似垃圾流量     说明: 结合号码的历史数据表现，判断该号码历史用互联网业务作恶行为，其产生的互联网行为对于其他业务来说属于作弊或垃圾流量。 
 2) 疑似新客户       说明: 通过号码互联网行为（社交，浏览等）是否异常判断为小号或接码平台帐号。 
 
@@ -131,17 +244,34 @@ class BRIResponse(AbstractModel):
 4) 病毒   说明: APK为包含恶意代码的恶意软件,可能破坏系统或者其他app正常使用
         :type Tags: list of str
         """
-        self.Score = None
-        self.Tags = None
+        self._Score = None
+        self._Tags = None
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Score = params.get("Score")
-        self.Tags = params.get("Tags")
+        self._Score = params.get("Score")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -154,24 +284,41 @@ class DescribeBRIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestData: 业务风险情报请求体
+        :param _RequestData: 业务风险情报请求体
         :type RequestData: :class:`tencentcloud.bri.v20190328.models.BRIRequest`
-        :param ResourceId: 客户用于计费的资源ID
+        :param _ResourceId: 客户用于计费的资源ID
         :type ResourceId: str
         """
-        self.RequestData = None
-        self.ResourceId = None
+        self._RequestData = None
+        self._ResourceId = None
+
+    @property
+    def RequestData(self):
+        return self._RequestData
+
+    @RequestData.setter
+    def RequestData(self, RequestData):
+        self._RequestData = RequestData
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
         if params.get("RequestData") is not None:
-            self.RequestData = BRIRequest()
-            self.RequestData._deserialize(params.get("RequestData"))
-        self.ResourceId = params.get("ResourceId")
+            self._RequestData = BRIRequest()
+            self._RequestData._deserialize(params.get("RequestData"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -184,17 +331,33 @@ class DescribeBRIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResponseData: 业务风险情报响应体
+        :param _ResponseData: 业务风险情报响应体
         :type ResponseData: :class:`tencentcloud.bri.v20190328.models.BRIResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResponseData = None
-        self.RequestId = None
+        self._ResponseData = None
+        self._RequestId = None
+
+    @property
+    def ResponseData(self):
+        return self._ResponseData
+
+    @ResponseData.setter
+    def ResponseData(self, ResponseData):
+        self._ResponseData = ResponseData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResponseData") is not None:
-            self.ResponseData = BRIResponse()
-            self.ResponseData._deserialize(params.get("ResponseData"))
-        self.RequestId = params.get("RequestId")
+            self._ResponseData = BRIResponse()
+            self._ResponseData._deserialize(params.get("ResponseData"))
+        self._RequestId = params.get("RequestId")

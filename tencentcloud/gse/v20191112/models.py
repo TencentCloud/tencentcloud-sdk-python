@@ -25,55 +25,120 @@ class Alias(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 别名的唯一标识符
+        :param _AliasId: 别名的唯一标识符
         :type AliasId: str
-        :param AliasArn: 别名的全局唯一资源标识符
+        :param _AliasArn: 别名的全局唯一资源标识符
         :type AliasArn: str
-        :param Name: 名字，长度不小于1字符不超过1024字符
+        :param _Name: 名字，长度不小于1字符不超过1024字符
         :type Name: str
-        :param Description: 别名的可读说明，长度不小于1字符不超过1024字符
+        :param _Description: 别名的可读说明，长度不小于1字符不超过1024字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param RoutingStrategy: 别名的路由配置
+        :param _RoutingStrategy: 别名的路由配置
         :type RoutingStrategy: :class:`tencentcloud.gse.v20191112.models.RoutingStrategy`
-        :param CreationTime: 创建时间
+        :param _CreationTime: 创建时间
         :type CreationTime: str
-        :param LastUpdatedTime: 上次修改此数据对象的时间
+        :param _LastUpdatedTime: 上次修改此数据对象的时间
         :type LastUpdatedTime: str
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
-        self.AliasId = None
-        self.AliasArn = None
-        self.Name = None
-        self.Description = None
-        self.RoutingStrategy = None
-        self.CreationTime = None
-        self.LastUpdatedTime = None
-        self.Tags = None
+        self._AliasId = None
+        self._AliasArn = None
+        self._Name = None
+        self._Description = None
+        self._RoutingStrategy = None
+        self._CreationTime = None
+        self._LastUpdatedTime = None
+        self._Tags = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
+
+    @property
+    def AliasArn(self):
+        return self._AliasArn
+
+    @AliasArn.setter
+    def AliasArn(self, AliasArn):
+        self._AliasArn = AliasArn
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RoutingStrategy(self):
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def LastUpdatedTime(self):
+        return self._LastUpdatedTime
+
+    @LastUpdatedTime.setter
+    def LastUpdatedTime(self, LastUpdatedTime):
+        self._LastUpdatedTime = LastUpdatedTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
-        self.AliasArn = params.get("AliasArn")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._AliasId = params.get("AliasId")
+        self._AliasArn = params.get("AliasArn")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         if params.get("RoutingStrategy") is not None:
-            self.RoutingStrategy = RoutingStrategy()
-            self.RoutingStrategy._deserialize(params.get("RoutingStrategy"))
-        self.CreationTime = params.get("CreationTime")
-        self.LastUpdatedTime = params.get("LastUpdatedTime")
+            self._RoutingStrategy = RoutingStrategy()
+            self._RoutingStrategy._deserialize(params.get("RoutingStrategy"))
+        self._CreationTime = params.get("CreationTime")
+        self._LastUpdatedTime = params.get("LastUpdatedTime")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -86,76 +151,189 @@ class Asset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包ID
+        :param _AssetId: 生成包ID
         :type AssetId: str
-        :param AssetName: 生成包名字，最小长度为1，最大长度为64
+        :param _AssetName: 生成包名字，最小长度为1，最大长度为64
         :type AssetName: str
-        :param AssetVersion: 生成包版本，最小长度为1，最大长度为64
+        :param _AssetVersion: 生成包版本，最小长度为1，最大长度为64
         :type AssetVersion: str
-        :param OperateSystem: 生成包可运行的操作系统，暂时只支持CentOS7.16
+        :param _OperateSystem: 生成包可运行的操作系统，暂时只支持CentOS7.16
         :type OperateSystem: str
-        :param Stauts: 生成包状态，0代表上传中，1代表上传失败，2代表上传成功
+        :param _Stauts: 生成包状态，0代表上传中，1代表上传失败，2代表上传成功
         :type Stauts: int
-        :param Size: 生成包大小
+        :param _Size: 生成包大小
         :type Size: str
-        :param CreateTime: 生成包创建时间
+        :param _CreateTime: 生成包创建时间
         :type CreateTime: str
-        :param BindFleetNum: 生成包绑定的Fleet个数，最小值为0
+        :param _BindFleetNum: 生成包绑定的Fleet个数，最小值为0
         :type BindFleetNum: int
-        :param AssetArn: 生成包的全局唯一资源标识符
+        :param _AssetArn: 生成包的全局唯一资源标识符
         :type AssetArn: str
-        :param ImageId: 生成包支持的操作系统镜像id
+        :param _ImageId: 生成包支持的操作系统镜像id
         :type ImageId: str
-        :param OsType: 生成包支持的操作系统类型
+        :param _OsType: 生成包支持的操作系统类型
         :type OsType: str
-        :param ResourceType: 生成包资源类型，ASSET 或者 IMAGE；ASSET 代表是原有生成包类型，IMAGE 为扩充使用镜像类型
+        :param _ResourceType: 生成包资源类型，ASSET 或者 IMAGE；ASSET 代表是原有生成包类型，IMAGE 为扩充使用镜像类型
         :type ResourceType: str
-        :param SharingStatus: 镜像资源共享类型，当 ResourceType 为 IMAGE 时该字段有意义，SHARED 表示共享、SHARED_IMAGE 表示未共享；ResourceType 为 ASSET 时这里返回 UNKNOWN_SHARED 用于占位
+        :param _SharingStatus: 镜像资源共享类型，当 ResourceType 为 IMAGE 时该字段有意义，SHARED 表示共享、SHARED_IMAGE 表示未共享；ResourceType 为 ASSET 时这里返回 UNKNOWN_SHARED 用于占位
         :type SharingStatus: str
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
-        self.AssetId = None
-        self.AssetName = None
-        self.AssetVersion = None
-        self.OperateSystem = None
-        self.Stauts = None
-        self.Size = None
-        self.CreateTime = None
-        self.BindFleetNum = None
-        self.AssetArn = None
-        self.ImageId = None
-        self.OsType = None
-        self.ResourceType = None
-        self.SharingStatus = None
-        self.Tags = None
+        self._AssetId = None
+        self._AssetName = None
+        self._AssetVersion = None
+        self._OperateSystem = None
+        self._Stauts = None
+        self._Size = None
+        self._CreateTime = None
+        self._BindFleetNum = None
+        self._AssetArn = None
+        self._ImageId = None
+        self._OsType = None
+        self._ResourceType = None
+        self._SharingStatus = None
+        self._Tags = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetVersion(self):
+        return self._AssetVersion
+
+    @AssetVersion.setter
+    def AssetVersion(self, AssetVersion):
+        self._AssetVersion = AssetVersion
+
+    @property
+    def OperateSystem(self):
+        return self._OperateSystem
+
+    @OperateSystem.setter
+    def OperateSystem(self, OperateSystem):
+        self._OperateSystem = OperateSystem
+
+    @property
+    def Stauts(self):
+        return self._Stauts
+
+    @Stauts.setter
+    def Stauts(self, Stauts):
+        self._Stauts = Stauts
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def BindFleetNum(self):
+        return self._BindFleetNum
+
+    @BindFleetNum.setter
+    def BindFleetNum(self, BindFleetNum):
+        self._BindFleetNum = BindFleetNum
+
+    @property
+    def AssetArn(self):
+        return self._AssetArn
+
+    @AssetArn.setter
+    def AssetArn(self, AssetArn):
+        self._AssetArn = AssetArn
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def OsType(self):
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def SharingStatus(self):
+        return self._SharingStatus
+
+    @SharingStatus.setter
+    def SharingStatus(self, SharingStatus):
+        self._SharingStatus = SharingStatus
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
-        self.AssetName = params.get("AssetName")
-        self.AssetVersion = params.get("AssetVersion")
-        self.OperateSystem = params.get("OperateSystem")
-        self.Stauts = params.get("Stauts")
-        self.Size = params.get("Size")
-        self.CreateTime = params.get("CreateTime")
-        self.BindFleetNum = params.get("BindFleetNum")
-        self.AssetArn = params.get("AssetArn")
-        self.ImageId = params.get("ImageId")
-        self.OsType = params.get("OsType")
-        self.ResourceType = params.get("ResourceType")
-        self.SharingStatus = params.get("SharingStatus")
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._AssetVersion = params.get("AssetVersion")
+        self._OperateSystem = params.get("OperateSystem")
+        self._Stauts = params.get("Stauts")
+        self._Size = params.get("Size")
+        self._CreateTime = params.get("CreateTime")
+        self._BindFleetNum = params.get("BindFleetNum")
+        self._AssetArn = params.get("AssetArn")
+        self._ImageId = params.get("ImageId")
+        self._OsType = params.get("OsType")
+        self._ResourceType = params.get("ResourceType")
+        self._SharingStatus = params.get("SharingStatus")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -168,26 +346,51 @@ class AssetCredentials(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TmpSecretId: 临时证书密钥ID
+        :param _TmpSecretId: 临时证书密钥ID
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时证书密钥Key
+        :param _TmpSecretKey: 临时证书密钥Key
         :type TmpSecretKey: str
-        :param Token: 临时证书Token
+        :param _Token: 临时证书Token
         :type Token: str
         """
-        self.TmpSecretId = None
-        self.TmpSecretKey = None
-        self.Token = None
+        self._TmpSecretId = None
+        self._TmpSecretKey = None
+        self._Token = None
+
+    @property
+    def TmpSecretId(self):
+        return self._TmpSecretId
+
+    @TmpSecretId.setter
+    def TmpSecretId(self, TmpSecretId):
+        self._TmpSecretId = TmpSecretId
+
+    @property
+    def TmpSecretKey(self):
+        return self._TmpSecretKey
+
+    @TmpSecretKey.setter
+    def TmpSecretKey(self, TmpSecretKey):
+        self._TmpSecretKey = TmpSecretKey
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
 
 
     def _deserialize(self, params):
-        self.TmpSecretId = params.get("TmpSecretId")
-        self.TmpSecretKey = params.get("TmpSecretKey")
-        self.Token = params.get("Token")
+        self._TmpSecretId = params.get("TmpSecretId")
+        self._TmpSecretKey = params.get("TmpSecretKey")
+        self._Token = params.get("Token")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -200,30 +403,63 @@ class AssetSupportSys(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 生成包操作系统的镜像Id
+        :param _ImageId: 生成包操作系统的镜像Id
         :type ImageId: str
-        :param OsType: 生成包操作系统的类型
+        :param _OsType: 生成包操作系统的类型
         :type OsType: str
-        :param OsBit: 生成包操作系统的位数
+        :param _OsBit: 生成包操作系统的位数
         :type OsBit: int
-        :param OsVersion: 生成包操作系统的版本
+        :param _OsVersion: 生成包操作系统的版本
         :type OsVersion: str
         """
-        self.ImageId = None
-        self.OsType = None
-        self.OsBit = None
-        self.OsVersion = None
+        self._ImageId = None
+        self._OsType = None
+        self._OsBit = None
+        self._OsVersion = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def OsType(self):
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def OsBit(self):
+        return self._OsBit
+
+    @OsBit.setter
+    def OsBit(self, OsBit):
+        self._OsBit = OsBit
+
+    @property
+    def OsVersion(self):
+        return self._OsVersion
+
+    @OsVersion.setter
+    def OsVersion(self, OsVersion):
+        self._OsVersion = OsVersion
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.OsType = params.get("OsType")
-        self.OsBit = params.get("OsBit")
-        self.OsVersion = params.get("OsVersion")
+        self._ImageId = params.get("ImageId")
+        self._OsType = params.get("OsType")
+        self._OsBit = params.get("OsBit")
+        self._OsVersion = params.get("OsVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -236,26 +472,51 @@ class AttachCcnInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param AccountId: 云联网账号 Uin
+        :param _AccountId: 云联网账号 Uin
         :type AccountId: str
-        :param CcnId: 云联网 Id
+        :param _CcnId: 云联网 Id
         :type CcnId: str
         """
-        self.FleetId = None
-        self.AccountId = None
-        self.CcnId = None
+        self._FleetId = None
+        self._AccountId = None
+        self._CcnId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.AccountId = params.get("AccountId")
-        self.CcnId = params.get("CcnId")
+        self._FleetId = params.get("FleetId")
+        self._AccountId = params.get("AccountId")
+        self._CcnId = params.get("CcnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -268,14 +529,22 @@ class AttachCcnInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CcnInfo(AbstractModel):
@@ -285,22 +554,39 @@ class CcnInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: 云联网所属账号
+        :param _AccountId: 云联网所属账号
         :type AccountId: str
-        :param CcnId: 云联网id
+        :param _CcnId: 云联网id
         :type CcnId: str
         """
-        self.AccountId = None
-        self.CcnId = None
+        self._AccountId = None
+        self._CcnId = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
-        self.CcnId = params.get("CcnId")
+        self._AccountId = params.get("AccountId")
+        self._CcnId = params.get("CcnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -313,39 +599,80 @@ class CcnInstanceSets(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: 云联网账号 Uin
+        :param _AccountId: 云联网账号 Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountId: str
-        :param CcnId: 云联网 Id
+        :param _CcnId: 云联网 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
-        :param CreateTime: 云联网关联时间
+        :param _CreateTime: 云联网关联时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param InstanceName: 云联网实例名称
+        :param _InstanceName: 云联网实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param State: 云联网状态：申请中、已连接、已过期、已拒绝、已删除、失败的、关联中、解关联中、解关联失败
+        :param _State: 云联网状态：申请中、已连接、已过期、已拒绝、已删除、失败的、关联中、解关联中、解关联失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         """
-        self.AccountId = None
-        self.CcnId = None
-        self.CreateTime = None
-        self.InstanceName = None
-        self.State = None
+        self._AccountId = None
+        self._CcnId = None
+        self._CreateTime = None
+        self._InstanceName = None
+        self._State = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
-        self.CcnId = params.get("CcnId")
-        self.CreateTime = params.get("CreateTime")
-        self.InstanceName = params.get("InstanceName")
-        self.State = params.get("State")
+        self._AccountId = params.get("AccountId")
+        self._CcnId = params.get("CcnId")
+        self._CreateTime = params.get("CreateTime")
+        self._InstanceName = params.get("InstanceName")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -358,120 +685,281 @@ class CopyFleetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param CopyNumber: 复制数量，最小值1，最大值为剩余配额，可以根据[获取用户配额](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :param _CopyNumber: 复制数量，最小值1，最大值为剩余配额，可以根据[获取用户配额](https://cloud.tencent.com/document/product/1165/48732)接口获取。
         :type CopyNumber: int
-        :param AssetId: 生成包 Id
+        :param _AssetId: 生成包 Id
         :type AssetId: str
-        :param Description: 描述，最小长度0，最大长度100
+        :param _Description: 描述，最小长度0，最大长度100
         :type Description: str
-        :param InboundPermissions: 网络配置
+        :param _InboundPermissions: 网络配置
         :type InboundPermissions: list of InboundPermission
-        :param InstanceType: 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :param _InstanceType: 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
         :type InstanceType: str
-        :param FleetType: 服务器舰队类型，目前只支持ON_DEMAND类型
+        :param _FleetType: 服务器舰队类型，目前只支持ON_DEMAND类型
         :type FleetType: str
-        :param Name: 服务器舰队名称，最小长度1，最大长度50
+        :param _Name: 服务器舰队名称，最小长度1，最大长度50
         :type Name: str
-        :param NewGameServerSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+        :param _NewGameServerSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
         :type NewGameServerSessionProtectionPolicy: str
-        :param ResourceCreationLimitPolicy: 资源创建限制策略
+        :param _ResourceCreationLimitPolicy: 资源创建限制策略
         :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
-        :param RuntimeConfiguration: 进程配置
+        :param _RuntimeConfiguration: 进程配置
         :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
-        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+        :param _GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
         :type GameServerSessionProtectionTimeLimit: int
-        :param SelectedScalingType: 是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
+        :param _SelectedScalingType: 是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
         :type SelectedScalingType: str
-        :param SelectedCcnType: 是否选择云联网：CCN_SELECTED_BEFORE_CREATE（创建前关联）， CCN_SELECTED_AFTER_CREATE（创建后关联）或者 CCN_UNSELECTED（不关联）；默认是 CCN_UNSELECTED
+        :param _SelectedCcnType: 是否选择云联网：CCN_SELECTED_BEFORE_CREATE（创建前关联）， CCN_SELECTED_AFTER_CREATE（创建后关联）或者 CCN_UNSELECTED（不关联）；默认是 CCN_UNSELECTED
         :type SelectedCcnType: str
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
-        :param SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+        :param _SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
         :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
-        :param DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+        :param _DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
         :type DataDiskInfo: list of DiskInfo
-        :param SelectedTimerType: 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
+        :param _SelectedTimerType: 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
         :type SelectedTimerType: str
-        :param CcnInfos: 云联网信息，包含对应的账号信息及所属id
+        :param _CcnInfos: 云联网信息，包含对应的账号信息及所属id
         :type CcnInfos: list of CcnInfo
-        :param InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+        :param _InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
         :type InternetMaxBandwidthOut: int
         """
-        self.FleetId = None
-        self.CopyNumber = None
-        self.AssetId = None
-        self.Description = None
-        self.InboundPermissions = None
-        self.InstanceType = None
-        self.FleetType = None
-        self.Name = None
-        self.NewGameServerSessionProtectionPolicy = None
-        self.ResourceCreationLimitPolicy = None
-        self.RuntimeConfiguration = None
-        self.GameServerSessionProtectionTimeLimit = None
-        self.SelectedScalingType = None
-        self.SelectedCcnType = None
-        self.Tags = None
-        self.SystemDiskInfo = None
-        self.DataDiskInfo = None
-        self.SelectedTimerType = None
-        self.CcnInfos = None
-        self.InternetMaxBandwidthOut = None
+        self._FleetId = None
+        self._CopyNumber = None
+        self._AssetId = None
+        self._Description = None
+        self._InboundPermissions = None
+        self._InstanceType = None
+        self._FleetType = None
+        self._Name = None
+        self._NewGameServerSessionProtectionPolicy = None
+        self._ResourceCreationLimitPolicy = None
+        self._RuntimeConfiguration = None
+        self._GameServerSessionProtectionTimeLimit = None
+        self._SelectedScalingType = None
+        self._SelectedCcnType = None
+        self._Tags = None
+        self._SystemDiskInfo = None
+        self._DataDiskInfo = None
+        self._SelectedTimerType = None
+        self._CcnInfos = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def CopyNumber(self):
+        return self._CopyNumber
+
+    @CopyNumber.setter
+    def CopyNumber(self, CopyNumber):
+        self._CopyNumber = CopyNumber
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InboundPermissions(self):
+        return self._InboundPermissions
+
+    @InboundPermissions.setter
+    def InboundPermissions(self, InboundPermissions):
+        self._InboundPermissions = InboundPermissions
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def FleetType(self):
+        return self._FleetType
+
+    @FleetType.setter
+    def FleetType(self, FleetType):
+        self._FleetType = FleetType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NewGameServerSessionProtectionPolicy(self):
+        return self._NewGameServerSessionProtectionPolicy
+
+    @NewGameServerSessionProtectionPolicy.setter
+    def NewGameServerSessionProtectionPolicy(self, NewGameServerSessionProtectionPolicy):
+        self._NewGameServerSessionProtectionPolicy = NewGameServerSessionProtectionPolicy
+
+    @property
+    def ResourceCreationLimitPolicy(self):
+        return self._ResourceCreationLimitPolicy
+
+    @ResourceCreationLimitPolicy.setter
+    def ResourceCreationLimitPolicy(self, ResourceCreationLimitPolicy):
+        self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy
+
+    @property
+    def RuntimeConfiguration(self):
+        return self._RuntimeConfiguration
+
+    @RuntimeConfiguration.setter
+    def RuntimeConfiguration(self, RuntimeConfiguration):
+        self._RuntimeConfiguration = RuntimeConfiguration
+
+    @property
+    def GameServerSessionProtectionTimeLimit(self):
+        return self._GameServerSessionProtectionTimeLimit
+
+    @GameServerSessionProtectionTimeLimit.setter
+    def GameServerSessionProtectionTimeLimit(self, GameServerSessionProtectionTimeLimit):
+        self._GameServerSessionProtectionTimeLimit = GameServerSessionProtectionTimeLimit
+
+    @property
+    def SelectedScalingType(self):
+        return self._SelectedScalingType
+
+    @SelectedScalingType.setter
+    def SelectedScalingType(self, SelectedScalingType):
+        self._SelectedScalingType = SelectedScalingType
+
+    @property
+    def SelectedCcnType(self):
+        return self._SelectedCcnType
+
+    @SelectedCcnType.setter
+    def SelectedCcnType(self, SelectedCcnType):
+        self._SelectedCcnType = SelectedCcnType
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SystemDiskInfo(self):
+        return self._SystemDiskInfo
+
+    @SystemDiskInfo.setter
+    def SystemDiskInfo(self, SystemDiskInfo):
+        self._SystemDiskInfo = SystemDiskInfo
+
+    @property
+    def DataDiskInfo(self):
+        return self._DataDiskInfo
+
+    @DataDiskInfo.setter
+    def DataDiskInfo(self, DataDiskInfo):
+        self._DataDiskInfo = DataDiskInfo
+
+    @property
+    def SelectedTimerType(self):
+        return self._SelectedTimerType
+
+    @SelectedTimerType.setter
+    def SelectedTimerType(self, SelectedTimerType):
+        self._SelectedTimerType = SelectedTimerType
+
+    @property
+    def CcnInfos(self):
+        return self._CcnInfos
+
+    @CcnInfos.setter
+    def CcnInfos(self, CcnInfos):
+        self._CcnInfos = CcnInfos
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.CopyNumber = params.get("CopyNumber")
-        self.AssetId = params.get("AssetId")
-        self.Description = params.get("Description")
+        self._FleetId = params.get("FleetId")
+        self._CopyNumber = params.get("CopyNumber")
+        self._AssetId = params.get("AssetId")
+        self._Description = params.get("Description")
         if params.get("InboundPermissions") is not None:
-            self.InboundPermissions = []
+            self._InboundPermissions = []
             for item in params.get("InboundPermissions"):
                 obj = InboundPermission()
                 obj._deserialize(item)
-                self.InboundPermissions.append(obj)
-        self.InstanceType = params.get("InstanceType")
-        self.FleetType = params.get("FleetType")
-        self.Name = params.get("Name")
-        self.NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
+                self._InboundPermissions.append(obj)
+        self._InstanceType = params.get("InstanceType")
+        self._FleetType = params.get("FleetType")
+        self._Name = params.get("Name")
+        self._NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
         if params.get("ResourceCreationLimitPolicy") is not None:
-            self.ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
-            self.ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
+            self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
+            self._ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
         if params.get("RuntimeConfiguration") is not None:
-            self.RuntimeConfiguration = RuntimeConfiguration()
-            self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
-        self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
-        self.SelectedScalingType = params.get("SelectedScalingType")
-        self.SelectedCcnType = params.get("SelectedCcnType")
+            self._RuntimeConfiguration = RuntimeConfiguration()
+            self._RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
+        self._GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+        self._SelectedScalingType = params.get("SelectedScalingType")
+        self._SelectedCcnType = params.get("SelectedCcnType")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("SystemDiskInfo") is not None:
-            self.SystemDiskInfo = DiskInfo()
-            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+            self._SystemDiskInfo = DiskInfo()
+            self._SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
         if params.get("DataDiskInfo") is not None:
-            self.DataDiskInfo = []
+            self._DataDiskInfo = []
             for item in params.get("DataDiskInfo"):
                 obj = DiskInfo()
                 obj._deserialize(item)
-                self.DataDiskInfo.append(obj)
-        self.SelectedTimerType = params.get("SelectedTimerType")
+                self._DataDiskInfo.append(obj)
+        self._SelectedTimerType = params.get("SelectedTimerType")
         if params.get("CcnInfos") is not None:
-            self.CcnInfos = []
+            self._CcnInfos = []
             for item in params.get("CcnInfos"):
                 obj = CcnInfo()
                 obj._deserialize(item)
-                self.CcnInfos.append(obj)
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+                self._CcnInfos.append(obj)
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -484,28 +972,52 @@ class CopyFleetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetAttributes: 服务器舰队属性
+        :param _FleetAttributes: 服务器舰队属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetAttributes: list of FleetAttributes
-        :param TotalCount: 服务器舰队数量
+        :param _TotalCount: 服务器舰队数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetAttributes = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FleetAttributes = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FleetAttributes(self):
+        return self._FleetAttributes
+
+    @FleetAttributes.setter
+    def FleetAttributes(self, FleetAttributes):
+        self._FleetAttributes = FleetAttributes
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FleetAttributes") is not None:
-            self.FleetAttributes = []
+            self._FleetAttributes = []
             for item in params.get("FleetAttributes"):
                 obj = FleetAttributes()
                 obj._deserialize(item)
-                self.FleetAttributes.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FleetAttributes.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAliasRequest(AbstractModel):
@@ -515,37 +1027,70 @@ class CreateAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名字，长度不小于1字符不超过1024字符
+        :param _Name: 名字，长度不小于1字符不超过1024字符
         :type Name: str
-        :param RoutingStrategy: 别名的路由配置
+        :param _RoutingStrategy: 别名的路由配置
         :type RoutingStrategy: :class:`tencentcloud.gse.v20191112.models.RoutingStrategy`
-        :param Description: 别名的可读说明，长度不小于1字符不超过1024字符
+        :param _Description: 别名的可读说明，长度不小于1字符不超过1024字符
         :type Description: str
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
         """
-        self.Name = None
-        self.RoutingStrategy = None
-        self.Description = None
-        self.Tags = None
+        self._Name = None
+        self._RoutingStrategy = None
+        self._Description = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RoutingStrategy(self):
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         if params.get("RoutingStrategy") is not None:
-            self.RoutingStrategy = RoutingStrategy()
-            self.RoutingStrategy._deserialize(params.get("RoutingStrategy"))
-        self.Description = params.get("Description")
+            self._RoutingStrategy = RoutingStrategy()
+            self._RoutingStrategy._deserialize(params.get("RoutingStrategy"))
+        self._Description = params.get("Description")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -558,20 +1103,36 @@ class CreateAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Alias: 别名对象
+        :param _Alias: 别名对象
         :type Alias: :class:`tencentcloud.gse.v20191112.models.Alias`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Alias = None
-        self.RequestId = None
+        self._Alias = None
+        self._RequestId = None
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Alias") is not None:
-            self.Alias = Alias()
-            self.Alias._deserialize(params.get("Alias"))
-        self.RequestId = params.get("RequestId")
+            self._Alias = Alias()
+            self._Alias._deserialize(params.get("Alias"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAssetRequest(AbstractModel):
@@ -581,47 +1142,104 @@ class CreateAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BucketKey: 生成包的ZIP包名，例如：server.zip
+        :param _BucketKey: 生成包的ZIP包名，例如：server.zip
         :type BucketKey: str
-        :param AssetName: 生成包名字，最小长度为1，最大长度为64
+        :param _AssetName: 生成包名字，最小长度为1，最大长度为64
         :type AssetName: str
-        :param AssetVersion: 生成包版本，最小长度为1，最大长度为64
+        :param _AssetVersion: 生成包版本，最小长度为1，最大长度为64
         :type AssetVersion: str
-        :param AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :param _AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
         :type AssetRegion: str
-        :param OperateSystem: 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）。这里可通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统进行传入（使用AssetSupportSys的OsVersion字段）
+        :param _OperateSystem: 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）。这里可通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统进行传入（使用AssetSupportSys的OsVersion字段）
         :type OperateSystem: str
-        :param ImageId: 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
+        :param _ImageId: 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
         :type ImageId: str
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
         """
-        self.BucketKey = None
-        self.AssetName = None
-        self.AssetVersion = None
-        self.AssetRegion = None
-        self.OperateSystem = None
-        self.ImageId = None
-        self.Tags = None
+        self._BucketKey = None
+        self._AssetName = None
+        self._AssetVersion = None
+        self._AssetRegion = None
+        self._OperateSystem = None
+        self._ImageId = None
+        self._Tags = None
+
+    @property
+    def BucketKey(self):
+        return self._BucketKey
+
+    @BucketKey.setter
+    def BucketKey(self, BucketKey):
+        self._BucketKey = BucketKey
+
+    @property
+    def AssetName(self):
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetVersion(self):
+        return self._AssetVersion
+
+    @AssetVersion.setter
+    def AssetVersion(self, AssetVersion):
+        self._AssetVersion = AssetVersion
+
+    @property
+    def AssetRegion(self):
+        return self._AssetRegion
+
+    @AssetRegion.setter
+    def AssetRegion(self, AssetRegion):
+        self._AssetRegion = AssetRegion
+
+    @property
+    def OperateSystem(self):
+        return self._OperateSystem
+
+    @OperateSystem.setter
+    def OperateSystem(self, OperateSystem):
+        self._OperateSystem = OperateSystem
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.BucketKey = params.get("BucketKey")
-        self.AssetName = params.get("AssetName")
-        self.AssetVersion = params.get("AssetVersion")
-        self.AssetRegion = params.get("AssetRegion")
-        self.OperateSystem = params.get("OperateSystem")
-        self.ImageId = params.get("ImageId")
+        self._BucketKey = params.get("BucketKey")
+        self._AssetName = params.get("AssetName")
+        self._AssetVersion = params.get("AssetVersion")
+        self._AssetRegion = params.get("AssetRegion")
+        self._OperateSystem = params.get("OperateSystem")
+        self._ImageId = params.get("ImageId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -634,22 +1252,46 @@ class CreateAssetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包ID
+        :param _AssetId: 生成包ID
         :type AssetId: str
-        :param AssetArn: 生成包的全局唯一资源标识符
+        :param _AssetArn: 生成包的全局唯一资源标识符
         :type AssetArn: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AssetId = None
-        self.AssetArn = None
-        self.RequestId = None
+        self._AssetId = None
+        self._AssetArn = None
+        self._RequestId = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetArn(self):
+        return self._AssetArn
+
+    @AssetArn.setter
+    def AssetArn(self, AssetArn):
+        self._AssetArn = AssetArn
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
-        self.AssetArn = params.get("AssetArn")
-        self.RequestId = params.get("RequestId")
+        self._AssetId = params.get("AssetId")
+        self._AssetArn = params.get("AssetArn")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAssetWithImageRequest(AbstractModel):
@@ -659,50 +1301,123 @@ class CreateAssetWithImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetName: 生成包名字，最小长度为1，最大长度为64
+        :param _AssetName: 生成包名字，最小长度为1，最大长度为64
         :type AssetName: str
-        :param AssetVersion: 生成包版本，最小长度为1，最大长度为64
+        :param _AssetVersion: 生成包版本，最小长度为1，最大长度为64
         :type AssetVersion: str
-        :param AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :param _AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
         :type AssetRegion: str
-        :param ImageId: 生成包支持的操作系统镜像id
+        :param _ImageId: 生成包支持的操作系统镜像id
         :type ImageId: str
-        :param ImageSize: 操作系统镜像包大小，比如：40GB，支持单位 KB、MB、GB
+        :param _ImageSize: 操作系统镜像包大小，比如：40GB，支持单位 KB、MB、GB
         :type ImageSize: str
-        :param ImageOs: 操作系统镜像包名称，最小长度为1，最大长度为64
+        :param _ImageOs: 操作系统镜像包名称，最小长度为1，最大长度为64
         :type ImageOs: str
-        :param OsType: 操作系统镜像包类型，CentOS 或者 Windows
+        :param _OsType: 操作系统镜像包类型，CentOS 或者 Windows
         :type OsType: str
-        :param ImageType: 操作系统镜像包类型，当前只支持 SHARED_IMAGE
+        :param _ImageType: 操作系统镜像包类型，当前只支持 SHARED_IMAGE
         :type ImageType: str
-        :param OsBit: 操作系统镜像包位数，32 或者 64
+        :param _OsBit: 操作系统镜像包位数，32 或者 64
         :type OsBit: int
         """
-        self.AssetName = None
-        self.AssetVersion = None
-        self.AssetRegion = None
-        self.ImageId = None
-        self.ImageSize = None
-        self.ImageOs = None
-        self.OsType = None
-        self.ImageType = None
-        self.OsBit = None
+        self._AssetName = None
+        self._AssetVersion = None
+        self._AssetRegion = None
+        self._ImageId = None
+        self._ImageSize = None
+        self._ImageOs = None
+        self._OsType = None
+        self._ImageType = None
+        self._OsBit = None
+
+    @property
+    def AssetName(self):
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetVersion(self):
+        return self._AssetVersion
+
+    @AssetVersion.setter
+    def AssetVersion(self, AssetVersion):
+        self._AssetVersion = AssetVersion
+
+    @property
+    def AssetRegion(self):
+        return self._AssetRegion
+
+    @AssetRegion.setter
+    def AssetRegion(self, AssetRegion):
+        self._AssetRegion = AssetRegion
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageSize(self):
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
+
+    @property
+    def ImageOs(self):
+        return self._ImageOs
+
+    @ImageOs.setter
+    def ImageOs(self, ImageOs):
+        self._ImageOs = ImageOs
+
+    @property
+    def OsType(self):
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def ImageType(self):
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def OsBit(self):
+        return self._OsBit
+
+    @OsBit.setter
+    def OsBit(self, OsBit):
+        self._OsBit = OsBit
 
 
     def _deserialize(self, params):
-        self.AssetName = params.get("AssetName")
-        self.AssetVersion = params.get("AssetVersion")
-        self.AssetRegion = params.get("AssetRegion")
-        self.ImageId = params.get("ImageId")
-        self.ImageSize = params.get("ImageSize")
-        self.ImageOs = params.get("ImageOs")
-        self.OsType = params.get("OsType")
-        self.ImageType = params.get("ImageType")
-        self.OsBit = params.get("OsBit")
+        self._AssetName = params.get("AssetName")
+        self._AssetVersion = params.get("AssetVersion")
+        self._AssetRegion = params.get("AssetRegion")
+        self._ImageId = params.get("ImageId")
+        self._ImageSize = params.get("ImageSize")
+        self._ImageOs = params.get("ImageOs")
+        self._OsType = params.get("OsType")
+        self._ImageType = params.get("ImageType")
+        self._OsBit = params.get("OsBit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -715,22 +1430,46 @@ class CreateAssetWithImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包ID
+        :param _AssetId: 生成包ID
         :type AssetId: str
-        :param AssetArn: 生成包的全局唯一资源标识符
+        :param _AssetArn: 生成包的全局唯一资源标识符
         :type AssetArn: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AssetId = None
-        self.AssetArn = None
-        self.RequestId = None
+        self._AssetId = None
+        self._AssetArn = None
+        self._RequestId = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetArn(self):
+        return self._AssetArn
+
+    @AssetArn.setter
+    def AssetArn(self, AssetArn):
+        self._AssetArn = AssetArn
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
-        self.AssetArn = params.get("AssetArn")
-        self.RequestId = params.get("RequestId")
+        self._AssetId = params.get("AssetId")
+        self._AssetArn = params.get("AssetArn")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFleetRequest(AbstractModel):
@@ -740,108 +1479,245 @@ class CreateFleetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包 Id
+        :param _AssetId: 生成包 Id
         :type AssetId: str
-        :param Description: 描述，最小长度0，最大长度100
+        :param _Description: 描述，最小长度0，最大长度100
         :type Description: str
-        :param InboundPermissions: 网络配置
+        :param _InboundPermissions: 网络配置
         :type InboundPermissions: list of InboundPermission
-        :param InstanceType: 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :param _InstanceType: 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
         :type InstanceType: str
-        :param FleetType: 服务器舰队类型，目前只支持ON_DEMAND类型
+        :param _FleetType: 服务器舰队类型，目前只支持ON_DEMAND类型
         :type FleetType: str
-        :param Name: 服务器舰队名称，最小长度1，最大长度50
+        :param _Name: 服务器舰队名称，最小长度1，最大长度50
         :type Name: str
-        :param NewGameServerSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+        :param _NewGameServerSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
         :type NewGameServerSessionProtectionPolicy: str
-        :param PeerVpcId: VPC 网络 Id，对等连接已不再使用
+        :param _PeerVpcId: VPC 网络 Id，对等连接已不再使用
         :type PeerVpcId: str
-        :param ResourceCreationLimitPolicy: 资源创建限制策略
+        :param _ResourceCreationLimitPolicy: 资源创建限制策略
         :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
-        :param RuntimeConfiguration: 进程配置
+        :param _RuntimeConfiguration: 进程配置
         :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
-        :param SubNetId: VPC 子网，对等连接已不再使用
+        :param _SubNetId: VPC 子网，对等连接已不再使用
         :type SubNetId: str
-        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+        :param _GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
         :type GameServerSessionProtectionTimeLimit: int
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
-        :param SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+        :param _SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
         :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
-        :param DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+        :param _DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
         :type DataDiskInfo: list of DiskInfo
-        :param CcnInfos: 云联网信息，包含对应的账号信息及所属id
+        :param _CcnInfos: 云联网信息，包含对应的账号信息及所属id
         :type CcnInfos: list of CcnInfo
-        :param InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+        :param _InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
         :type InternetMaxBandwidthOut: int
         """
-        self.AssetId = None
-        self.Description = None
-        self.InboundPermissions = None
-        self.InstanceType = None
-        self.FleetType = None
-        self.Name = None
-        self.NewGameServerSessionProtectionPolicy = None
-        self.PeerVpcId = None
-        self.ResourceCreationLimitPolicy = None
-        self.RuntimeConfiguration = None
-        self.SubNetId = None
-        self.GameServerSessionProtectionTimeLimit = None
-        self.Tags = None
-        self.SystemDiskInfo = None
-        self.DataDiskInfo = None
-        self.CcnInfos = None
-        self.InternetMaxBandwidthOut = None
+        self._AssetId = None
+        self._Description = None
+        self._InboundPermissions = None
+        self._InstanceType = None
+        self._FleetType = None
+        self._Name = None
+        self._NewGameServerSessionProtectionPolicy = None
+        self._PeerVpcId = None
+        self._ResourceCreationLimitPolicy = None
+        self._RuntimeConfiguration = None
+        self._SubNetId = None
+        self._GameServerSessionProtectionTimeLimit = None
+        self._Tags = None
+        self._SystemDiskInfo = None
+        self._DataDiskInfo = None
+        self._CcnInfos = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InboundPermissions(self):
+        return self._InboundPermissions
+
+    @InboundPermissions.setter
+    def InboundPermissions(self, InboundPermissions):
+        self._InboundPermissions = InboundPermissions
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def FleetType(self):
+        return self._FleetType
+
+    @FleetType.setter
+    def FleetType(self, FleetType):
+        self._FleetType = FleetType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NewGameServerSessionProtectionPolicy(self):
+        return self._NewGameServerSessionProtectionPolicy
+
+    @NewGameServerSessionProtectionPolicy.setter
+    def NewGameServerSessionProtectionPolicy(self, NewGameServerSessionProtectionPolicy):
+        self._NewGameServerSessionProtectionPolicy = NewGameServerSessionProtectionPolicy
+
+    @property
+    def PeerVpcId(self):
+        return self._PeerVpcId
+
+    @PeerVpcId.setter
+    def PeerVpcId(self, PeerVpcId):
+        self._PeerVpcId = PeerVpcId
+
+    @property
+    def ResourceCreationLimitPolicy(self):
+        return self._ResourceCreationLimitPolicy
+
+    @ResourceCreationLimitPolicy.setter
+    def ResourceCreationLimitPolicy(self, ResourceCreationLimitPolicy):
+        self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy
+
+    @property
+    def RuntimeConfiguration(self):
+        return self._RuntimeConfiguration
+
+    @RuntimeConfiguration.setter
+    def RuntimeConfiguration(self, RuntimeConfiguration):
+        self._RuntimeConfiguration = RuntimeConfiguration
+
+    @property
+    def SubNetId(self):
+        return self._SubNetId
+
+    @SubNetId.setter
+    def SubNetId(self, SubNetId):
+        self._SubNetId = SubNetId
+
+    @property
+    def GameServerSessionProtectionTimeLimit(self):
+        return self._GameServerSessionProtectionTimeLimit
+
+    @GameServerSessionProtectionTimeLimit.setter
+    def GameServerSessionProtectionTimeLimit(self, GameServerSessionProtectionTimeLimit):
+        self._GameServerSessionProtectionTimeLimit = GameServerSessionProtectionTimeLimit
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SystemDiskInfo(self):
+        return self._SystemDiskInfo
+
+    @SystemDiskInfo.setter
+    def SystemDiskInfo(self, SystemDiskInfo):
+        self._SystemDiskInfo = SystemDiskInfo
+
+    @property
+    def DataDiskInfo(self):
+        return self._DataDiskInfo
+
+    @DataDiskInfo.setter
+    def DataDiskInfo(self, DataDiskInfo):
+        self._DataDiskInfo = DataDiskInfo
+
+    @property
+    def CcnInfos(self):
+        return self._CcnInfos
+
+    @CcnInfos.setter
+    def CcnInfos(self, CcnInfos):
+        self._CcnInfos = CcnInfos
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
-        self.Description = params.get("Description")
+        self._AssetId = params.get("AssetId")
+        self._Description = params.get("Description")
         if params.get("InboundPermissions") is not None:
-            self.InboundPermissions = []
+            self._InboundPermissions = []
             for item in params.get("InboundPermissions"):
                 obj = InboundPermission()
                 obj._deserialize(item)
-                self.InboundPermissions.append(obj)
-        self.InstanceType = params.get("InstanceType")
-        self.FleetType = params.get("FleetType")
-        self.Name = params.get("Name")
-        self.NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
-        self.PeerVpcId = params.get("PeerVpcId")
+                self._InboundPermissions.append(obj)
+        self._InstanceType = params.get("InstanceType")
+        self._FleetType = params.get("FleetType")
+        self._Name = params.get("Name")
+        self._NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
+        self._PeerVpcId = params.get("PeerVpcId")
         if params.get("ResourceCreationLimitPolicy") is not None:
-            self.ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
-            self.ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
+            self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
+            self._ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
         if params.get("RuntimeConfiguration") is not None:
-            self.RuntimeConfiguration = RuntimeConfiguration()
-            self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
-        self.SubNetId = params.get("SubNetId")
-        self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+            self._RuntimeConfiguration = RuntimeConfiguration()
+            self._RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
+        self._SubNetId = params.get("SubNetId")
+        self._GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("SystemDiskInfo") is not None:
-            self.SystemDiskInfo = DiskInfo()
-            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+            self._SystemDiskInfo = DiskInfo()
+            self._SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
         if params.get("DataDiskInfo") is not None:
-            self.DataDiskInfo = []
+            self._DataDiskInfo = []
             for item in params.get("DataDiskInfo"):
                 obj = DiskInfo()
                 obj._deserialize(item)
-                self.DataDiskInfo.append(obj)
+                self._DataDiskInfo.append(obj)
         if params.get("CcnInfos") is not None:
-            self.CcnInfos = []
+            self._CcnInfos = []
             for item in params.get("CcnInfos"):
                 obj = CcnInfo()
                 obj._deserialize(item)
-                self.CcnInfos.append(obj)
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+                self._CcnInfos.append(obj)
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -854,21 +1730,37 @@ class CreateFleetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetAttributes: 服务器舰队属性
+        :param _FleetAttributes: 服务器舰队属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetAttributes: :class:`tencentcloud.gse.v20191112.models.FleetAttributes`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetAttributes = None
-        self.RequestId = None
+        self._FleetAttributes = None
+        self._RequestId = None
+
+    @property
+    def FleetAttributes(self):
+        return self._FleetAttributes
+
+    @FleetAttributes.setter
+    def FleetAttributes(self, FleetAttributes):
+        self._FleetAttributes = FleetAttributes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FleetAttributes") is not None:
-            self.FleetAttributes = FleetAttributes()
-            self.FleetAttributes._deserialize(params.get("FleetAttributes"))
-        self.RequestId = params.get("RequestId")
+            self._FleetAttributes = FleetAttributes()
+            self._FleetAttributes._deserialize(params.get("FleetAttributes"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateGameServerSessionQueueRequest(AbstractModel):
@@ -878,49 +1770,90 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 游戏服务器会话队列名称，长度1~128
+        :param _Name: 游戏服务器会话队列名称，长度1~128
         :type Name: str
-        :param Destinations: 目的服务器舰队（可为别名）列表
+        :param _Destinations: 目的服务器舰队（可为别名）列表
         :type Destinations: list of GameServerSessionQueueDestination
-        :param PlayerLatencyPolicies: 延迟策略集合
+        :param _PlayerLatencyPolicies: 延迟策略集合
         :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
-        :param TimeoutInSeconds: 超时时间（单位秒，默认值为600秒）
+        :param _TimeoutInSeconds: 超时时间（单位秒，默认值为600秒）
         :type TimeoutInSeconds: int
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
         """
-        self.Name = None
-        self.Destinations = None
-        self.PlayerLatencyPolicies = None
-        self.TimeoutInSeconds = None
-        self.Tags = None
+        self._Name = None
+        self._Destinations = None
+        self._PlayerLatencyPolicies = None
+        self._TimeoutInSeconds = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def PlayerLatencyPolicies(self):
+        return self._PlayerLatencyPolicies
+
+    @PlayerLatencyPolicies.setter
+    def PlayerLatencyPolicies(self, PlayerLatencyPolicies):
+        self._PlayerLatencyPolicies = PlayerLatencyPolicies
+
+    @property
+    def TimeoutInSeconds(self):
+        return self._TimeoutInSeconds
+
+    @TimeoutInSeconds.setter
+    def TimeoutInSeconds(self, TimeoutInSeconds):
+        self._TimeoutInSeconds = TimeoutInSeconds
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = GameServerSessionQueueDestination()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
+                self._Destinations.append(obj)
         if params.get("PlayerLatencyPolicies") is not None:
-            self.PlayerLatencyPolicies = []
+            self._PlayerLatencyPolicies = []
             for item in params.get("PlayerLatencyPolicies"):
                 obj = PlayerLatencyPolicy()
                 obj._deserialize(item)
-                self.PlayerLatencyPolicies.append(obj)
-        self.TimeoutInSeconds = params.get("TimeoutInSeconds")
+                self._PlayerLatencyPolicies.append(obj)
+        self._TimeoutInSeconds = params.get("TimeoutInSeconds")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -933,20 +1866,36 @@ class CreateGameServerSessionQueueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionQueue: 游戏服务器会话队列
+        :param _GameServerSessionQueue: 游戏服务器会话队列
         :type GameServerSessionQueue: :class:`tencentcloud.gse.v20191112.models.GameServerSessionQueue`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessionQueue = None
-        self.RequestId = None
+        self._GameServerSessionQueue = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessionQueue(self):
+        return self._GameServerSessionQueue
+
+    @GameServerSessionQueue.setter
+    def GameServerSessionQueue(self, GameServerSessionQueue):
+        self._GameServerSessionQueue = GameServerSessionQueue
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessionQueue") is not None:
-            self.GameServerSessionQueue = GameServerSessionQueue()
-            self.GameServerSessionQueue._deserialize(params.get("GameServerSessionQueue"))
-        self.RequestId = params.get("RequestId")
+            self._GameServerSessionQueue = GameServerSessionQueue()
+            self._GameServerSessionQueue._deserialize(params.get("GameServerSessionQueue"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateGameServerSessionRequest(AbstractModel):
@@ -956,55 +1905,128 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaximumPlayerSessionCount: 最大玩家数量，最小值不小于0
+        :param _MaximumPlayerSessionCount: 最大玩家数量，最小值不小于0
         :type MaximumPlayerSessionCount: int
-        :param AliasId: 别名ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
+        :param _AliasId: 别名ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
         :type AliasId: str
-        :param CreatorId: 创建者ID，最大长度不超过1024个ASCII字符
+        :param _CreatorId: 创建者ID，最大长度不超过1024个ASCII字符
         :type CreatorId: str
-        :param FleetId: 舰队ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
+        :param _FleetId: 舰队ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
         :type FleetId: str
-        :param GameProperties: 游戏属性，最大长度不超过16组
+        :param _GameProperties: 游戏属性，最大长度不超过16组
         :type GameProperties: list of GameProperty
-        :param GameServerSessionData: 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
+        :param _GameServerSessionData: 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
         :type GameServerSessionData: str
-        :param GameServerSessionId: 游戏服务器会话自定义ID，最大长度不超过4096个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话自定义ID，最大长度不超过4096个ASCII字符
         :type GameServerSessionId: str
-        :param IdempotencyToken: 幂等token，最大长度不超过48个ASCII字符
+        :param _IdempotencyToken: 幂等token，最大长度不超过48个ASCII字符
         :type IdempotencyToken: str
-        :param Name: 游戏服务器会话名称，最大长度不超过1024个ASCII字符
+        :param _Name: 游戏服务器会话名称，最大长度不超过1024个ASCII字符
         :type Name: str
         """
-        self.MaximumPlayerSessionCount = None
-        self.AliasId = None
-        self.CreatorId = None
-        self.FleetId = None
-        self.GameProperties = None
-        self.GameServerSessionData = None
-        self.GameServerSessionId = None
-        self.IdempotencyToken = None
-        self.Name = None
+        self._MaximumPlayerSessionCount = None
+        self._AliasId = None
+        self._CreatorId = None
+        self._FleetId = None
+        self._GameProperties = None
+        self._GameServerSessionData = None
+        self._GameServerSessionId = None
+        self._IdempotencyToken = None
+        self._Name = None
+
+    @property
+    def MaximumPlayerSessionCount(self):
+        return self._MaximumPlayerSessionCount
+
+    @MaximumPlayerSessionCount.setter
+    def MaximumPlayerSessionCount(self, MaximumPlayerSessionCount):
+        self._MaximumPlayerSessionCount = MaximumPlayerSessionCount
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
+
+    @property
+    def CreatorId(self):
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def GameProperties(self):
+        return self._GameProperties
+
+    @GameProperties.setter
+    def GameProperties(self, GameProperties):
+        self._GameProperties = GameProperties
+
+    @property
+    def GameServerSessionData(self):
+        return self._GameServerSessionData
+
+    @GameServerSessionData.setter
+    def GameServerSessionData(self, GameServerSessionData):
+        self._GameServerSessionData = GameServerSessionData
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def IdempotencyToken(self):
+        return self._IdempotencyToken
+
+    @IdempotencyToken.setter
+    def IdempotencyToken(self, IdempotencyToken):
+        self._IdempotencyToken = IdempotencyToken
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
-        self.AliasId = params.get("AliasId")
-        self.CreatorId = params.get("CreatorId")
-        self.FleetId = params.get("FleetId")
+        self._MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
+        self._AliasId = params.get("AliasId")
+        self._CreatorId = params.get("CreatorId")
+        self._FleetId = params.get("FleetId")
         if params.get("GameProperties") is not None:
-            self.GameProperties = []
+            self._GameProperties = []
             for item in params.get("GameProperties"):
                 obj = GameProperty()
                 obj._deserialize(item)
-                self.GameProperties.append(obj)
-        self.GameServerSessionData = params.get("GameServerSessionData")
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.IdempotencyToken = params.get("IdempotencyToken")
-        self.Name = params.get("Name")
+                self._GameProperties.append(obj)
+        self._GameServerSessionData = params.get("GameServerSessionData")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._IdempotencyToken = params.get("IdempotencyToken")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1017,21 +2039,37 @@ class CreateGameServerSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSession: 游戏服务器会话
+        :param _GameServerSession: 游戏服务器会话
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSession: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSession = None
-        self.RequestId = None
+        self._GameServerSession = None
+        self._RequestId = None
+
+    @property
+    def GameServerSession(self):
+        return self._GameServerSession
+
+    @GameServerSession.setter
+    def GameServerSession(self, GameServerSession):
+        self._GameServerSession = GameServerSession
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSession") is not None:
-            self.GameServerSession = GameServerSession()
-            self.GameServerSession._deserialize(params.get("GameServerSession"))
-        self.RequestId = params.get("RequestId")
+            self._GameServerSession = GameServerSession()
+            self._GameServerSession._deserialize(params.get("GameServerSession"))
+        self._RequestId = params.get("RequestId")
 
 
 class Credentials(AbstractModel):
@@ -1041,22 +2079,39 @@ class Credentials(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Secret: ssh私钥
+        :param _Secret: ssh私钥
         :type Secret: str
-        :param UserName: 用户名
+        :param _UserName: 用户名
         :type UserName: str
         """
-        self.Secret = None
-        self.UserName = None
+        self._Secret = None
+        self._UserName = None
+
+    @property
+    def Secret(self):
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
 
 
     def _deserialize(self, params):
-        self.Secret = params.get("Secret")
-        self.UserName = params.get("UserName")
+        self._Secret = params.get("Secret")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1069,18 +2124,27 @@ class DeleteAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 要删除的别名ID
+        :param _AliasId: 要删除的别名ID
         :type AliasId: str
         """
-        self.AliasId = None
+        self._AliasId = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
+        self._AliasId = params.get("AliasId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1093,14 +2157,22 @@ class DeleteAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAssetRequest(AbstractModel):
@@ -1110,18 +2182,27 @@ class DeleteAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包ID
+        :param _AssetId: 生成包ID
         :type AssetId: str
         """
-        self.AssetId = None
+        self._AssetId = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
+        self._AssetId = params.get("AssetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1134,14 +2215,22 @@ class DeleteAssetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteFleetRequest(AbstractModel):
@@ -1151,18 +2240,27 @@ class DeleteFleetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
         """
-        self.FleetId = None
+        self._FleetId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1175,14 +2273,22 @@ class DeleteFleetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteGameServerSessionQueueRequest(AbstractModel):
@@ -1192,18 +2298,27 @@ class DeleteGameServerSessionQueueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 游戏服务器会话队列名字，长度1~128
+        :param _Name: 游戏服务器会话队列名字，长度1~128
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1216,14 +2331,22 @@ class DeleteGameServerSessionQueueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteScalingPolicyRequest(AbstractModel):
@@ -1233,22 +2356,39 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param Name: 扩缩容策略名称，最小长度为0，最大长度为1024
+        :param _Name: 扩缩容策略名称，最小长度为0，最大长度为1024
         :type Name: str
         """
-        self.FleetId = None
-        self.Name = None
+        self._FleetId = None
+        self._Name = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Name = params.get("Name")
+        self._FleetId = params.get("FleetId")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1261,14 +2401,22 @@ class DeleteScalingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTimerScalingPolicyRequest(AbstractModel):
@@ -1278,26 +2426,51 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimerId: 定时器ID, 进行encode
+        :param _TimerId: 定时器ID, 进行encode
         :type TimerId: str
-        :param FleetId: 扩缩容配置服务器舰队ID
+        :param _FleetId: 扩缩容配置服务器舰队ID
         :type FleetId: str
-        :param TimerName: 定时器名称
+        :param _TimerName: 定时器名称
         :type TimerName: str
         """
-        self.TimerId = None
-        self.FleetId = None
-        self.TimerName = None
+        self._TimerId = None
+        self._FleetId = None
+        self._TimerName = None
+
+    @property
+    def TimerId(self):
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def TimerName(self):
+        return self._TimerName
+
+    @TimerName.setter
+    def TimerName(self, TimerName):
+        self._TimerName = TimerName
 
 
     def _deserialize(self, params):
-        self.TimerId = params.get("TimerId")
-        self.FleetId = params.get("FleetId")
-        self.TimerName = params.get("TimerName")
+        self._TimerId = params.get("TimerId")
+        self._FleetId = params.get("FleetId")
+        self._TimerName = params.get("TimerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1310,14 +2483,22 @@ class DeleteTimerScalingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAliasRequest(AbstractModel):
@@ -1327,18 +2508,27 @@ class DescribeAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 要检索的队列别名的唯一标识符
+        :param _AliasId: 要检索的队列别名的唯一标识符
         :type AliasId: str
         """
-        self.AliasId = None
+        self._AliasId = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
+        self._AliasId = params.get("AliasId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1351,21 +2541,37 @@ class DescribeAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Alias: 别名对象
+        :param _Alias: 别名对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: :class:`tencentcloud.gse.v20191112.models.Alias`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Alias = None
-        self.RequestId = None
+        self._Alias = None
+        self._RequestId = None
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Alias") is not None:
-            self.Alias = Alias()
-            self.Alias._deserialize(params.get("Alias"))
-        self.RequestId = params.get("RequestId")
+            self._Alias = Alias()
+            self._Alias._deserialize(params.get("Alias"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAssetRequest(AbstractModel):
@@ -1375,18 +2581,27 @@ class DescribeAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包ID
+        :param _AssetId: 生成包ID
         :type AssetId: str
         """
-        self.AssetId = None
+        self._AssetId = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
+        self._AssetId = params.get("AssetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1399,20 +2614,36 @@ class DescribeAssetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Asset: 生成包信息
+        :param _Asset: 生成包信息
         :type Asset: :class:`tencentcloud.gse.v20191112.models.Asset`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Asset = None
-        self.RequestId = None
+        self._Asset = None
+        self._RequestId = None
+
+    @property
+    def Asset(self):
+        return self._Asset
+
+    @Asset.setter
+    def Asset(self, Asset):
+        self._Asset = Asset
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Asset") is not None:
-            self.Asset = Asset()
-            self.Asset._deserialize(params.get("Asset"))
-        self.RequestId = params.get("RequestId")
+            self._Asset = Asset()
+            self._Asset._deserialize(params.get("Asset"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAssetSystemsRequest(AbstractModel):
@@ -1422,22 +2653,39 @@ class DescribeAssetSystemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OsType: 生成包支持的操作系统类型
+        :param _OsType: 生成包支持的操作系统类型
         :type OsType: str
-        :param OsBit: 生成包支持的操作系统位数
+        :param _OsBit: 生成包支持的操作系统位数
         :type OsBit: int
         """
-        self.OsType = None
-        self.OsBit = None
+        self._OsType = None
+        self._OsBit = None
+
+    @property
+    def OsType(self):
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def OsBit(self):
+        return self._OsBit
+
+    @OsBit.setter
+    def OsBit(self, OsBit):
+        self._OsBit = OsBit
 
 
     def _deserialize(self, params):
-        self.OsType = params.get("OsType")
-        self.OsBit = params.get("OsBit")
+        self._OsType = params.get("OsType")
+        self._OsBit = params.get("OsBit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1450,23 +2698,39 @@ class DescribeAssetSystemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetSupportSys: 生成包支持的操作系统类型列表
+        :param _AssetSupportSys: 生成包支持的操作系统类型列表
         :type AssetSupportSys: list of AssetSupportSys
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AssetSupportSys = None
-        self.RequestId = None
+        self._AssetSupportSys = None
+        self._RequestId = None
+
+    @property
+    def AssetSupportSys(self):
+        return self._AssetSupportSys
+
+    @AssetSupportSys.setter
+    def AssetSupportSys(self, AssetSupportSys):
+        self._AssetSupportSys = AssetSupportSys
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AssetSupportSys") is not None:
-            self.AssetSupportSys = []
+            self._AssetSupportSys = []
             for item in params.get("AssetSupportSys"):
                 obj = AssetSupportSys()
                 obj._deserialize(item)
-                self.AssetSupportSys.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AssetSupportSys.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAssetsRequest(AbstractModel):
@@ -1476,39 +2740,80 @@ class DescribeAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetRegion: 生成包支持的可部署 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :param _AssetRegion: 生成包支持的可部署 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
         :type AssetRegion: str
-        :param Offset: 偏移，代表页数，与asset实际数量相关
+        :param _Offset: 偏移，代表页数，与asset实际数量相关
         :type Offset: int
-        :param Limit: 前端界面每页显示的最大条数，不超过100
+        :param _Limit: 前端界面每页显示的最大条数，不超过100
         :type Limit: int
-        :param Filter: 搜索条件，支持包ID或包名字过滤，该字段会逐步废弃，建议使用 Filters 字段
+        :param _Filter: 搜索条件，支持包ID或包名字过滤，该字段会逐步废弃，建议使用 Filters 字段
         :type Filter: str
-        :param Filters: 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（生成包当前仅支持单个名称的过滤）- 资源ID过滤    - Key: 固定字符串 "resource:resourceId"    - Values: 生成包ID数组（生成包当前仅支持单个生成包ID的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :param _Filters: 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（生成包当前仅支持单个名称的过滤）- 资源ID过滤    - Key: 固定字符串 "resource:resourceId"    - Values: 生成包ID数组（生成包当前仅支持单个生成包ID的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
         :type Filters: list of Filter
         """
-        self.AssetRegion = None
-        self.Offset = None
-        self.Limit = None
-        self.Filter = None
-        self.Filters = None
+        self._AssetRegion = None
+        self._Offset = None
+        self._Limit = None
+        self._Filter = None
+        self._Filters = None
+
+    @property
+    def AssetRegion(self):
+        return self._AssetRegion
+
+    @AssetRegion.setter
+    def AssetRegion(self, AssetRegion):
+        self._AssetRegion = AssetRegion
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.AssetRegion = params.get("AssetRegion")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Filter = params.get("Filter")
+        self._AssetRegion = params.get("AssetRegion")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Filter = params.get("Filter")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1521,27 +2826,51 @@ class DescribeAssetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 生成包总数
+        :param _TotalCount: 生成包总数
         :type TotalCount: int
-        :param Assets: 生成包列表
+        :param _Assets: 生成包列表
         :type Assets: list of Asset
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Assets = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Assets = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Assets(self):
+        return self._Assets
+
+    @Assets.setter
+    def Assets(self, Assets):
+        self._Assets = Assets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Assets") is not None:
-            self.Assets = []
+            self._Assets = []
             for item in params.get("Assets"):
                 obj = Asset()
                 obj._deserialize(item)
-                self.Assets.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Assets.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCcnInstancesRequest(AbstractModel):
@@ -1551,18 +2880,27 @@ class DescribeCcnInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
         """
-        self.FleetId = None
+        self._FleetId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1575,28 +2913,52 @@ class DescribeCcnInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CcnInstanceSets: 云联网实例信息
+        :param _CcnInstanceSets: 云联网实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnInstanceSets: list of CcnInstanceSets
-        :param TotalCount: 云联网实例个数，最小值为0
+        :param _TotalCount: 云联网实例个数，最小值为0
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CcnInstanceSets = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._CcnInstanceSets = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CcnInstanceSets(self):
+        return self._CcnInstanceSets
+
+    @CcnInstanceSets.setter
+    def CcnInstanceSets(self, CcnInstanceSets):
+        self._CcnInstanceSets = CcnInstanceSets
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CcnInstanceSets") is not None:
-            self.CcnInstanceSets = []
+            self._CcnInstanceSets = []
             for item in params.get("CcnInstanceSets"):
                 obj = CcnInstanceSets()
                 obj._deserialize(item)
-                self.CcnInstanceSets.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._CcnInstanceSets.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetAttributesRequest(AbstractModel):
@@ -1606,26 +2968,51 @@ class DescribeFleetAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetIds: 服务器舰队 Ids
+        :param _FleetIds: 服务器舰队 Ids
         :type FleetIds: list of str
-        :param Limit: 结果返回最大数量，默认值20，最大值100
+        :param _Limit: 结果返回最大数量，默认值20，最大值100
         :type Limit: int
-        :param Offset: 返回结果偏移，最小值0
+        :param _Offset: 返回结果偏移，最小值0
         :type Offset: int
         """
-        self.FleetIds = None
-        self.Limit = None
-        self.Offset = None
+        self._FleetIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def FleetIds(self):
+        return self._FleetIds
+
+    @FleetIds.setter
+    def FleetIds(self, FleetIds):
+        self._FleetIds = FleetIds
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.FleetIds = params.get("FleetIds")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._FleetIds = params.get("FleetIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1638,28 +3025,52 @@ class DescribeFleetAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetAttributes: 服务器舰队属性
+        :param _FleetAttributes: 服务器舰队属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetAttributes: list of FleetAttributes
-        :param TotalCount: 服务器舰队总数，最小值0
+        :param _TotalCount: 服务器舰队总数，最小值0
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetAttributes = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FleetAttributes = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FleetAttributes(self):
+        return self._FleetAttributes
+
+    @FleetAttributes.setter
+    def FleetAttributes(self, FleetAttributes):
+        self._FleetAttributes = FleetAttributes
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FleetAttributes") is not None:
-            self.FleetAttributes = []
+            self._FleetAttributes = []
             for item in params.get("FleetAttributes"):
                 obj = FleetAttributes()
                 obj._deserialize(item)
-                self.FleetAttributes.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FleetAttributes.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetCapacityRequest(AbstractModel):
@@ -1669,26 +3080,51 @@ class DescribeFleetCapacityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetIds: 服务器舰队ID列表
+        :param _FleetIds: 服务器舰队ID列表
         :type FleetIds: list of str
-        :param Limit: 结果返回最大数量，最大值 100
+        :param _Limit: 结果返回最大数量，最大值 100
         :type Limit: int
-        :param Offset: 返回结果偏移，最小值 0
+        :param _Offset: 返回结果偏移，最小值 0
         :type Offset: int
         """
-        self.FleetIds = None
-        self.Limit = None
-        self.Offset = None
+        self._FleetIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def FleetIds(self):
+        return self._FleetIds
+
+    @FleetIds.setter
+    def FleetIds(self, FleetIds):
+        self._FleetIds = FleetIds
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.FleetIds = params.get("FleetIds")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._FleetIds = params.get("FleetIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1701,29 +3137,53 @@ class DescribeFleetCapacityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetCapacity: 服务器舰队的容量配置
+        :param _FleetCapacity: 服务器舰队的容量配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetCapacity: list of FleetCapacity
-        :param TotalCount: 结果返回最大数量
+        :param _TotalCount: 结果返回最大数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetCapacity = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FleetCapacity = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FleetCapacity(self):
+        return self._FleetCapacity
+
+    @FleetCapacity.setter
+    def FleetCapacity(self, FleetCapacity):
+        self._FleetCapacity = FleetCapacity
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FleetCapacity") is not None:
-            self.FleetCapacity = []
+            self._FleetCapacity = []
             for item in params.get("FleetCapacity"):
                 obj = FleetCapacity()
                 obj._deserialize(item)
-                self.FleetCapacity.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FleetCapacity.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetEventsRequest(AbstractModel):
@@ -1733,38 +3193,87 @@ class DescribeFleetEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Limit: 分页时返回服务器舰队事件的数量，默认为20，最大值为100
+        :param _Limit: 分页时返回服务器舰队事件的数量，默认为20，最大值为100
         :type Limit: int
-        :param Offset: 分页时的数据偏移量，默认为0
+        :param _Offset: 分页时的数据偏移量，默认为0
         :type Offset: int
-        :param EventCode: 事件代码
+        :param _EventCode: 事件代码
         :type EventCode: str
-        :param StartTime: 发生事件的开始时间
+        :param _StartTime: 发生事件的开始时间
         :type StartTime: str
-        :param EndTime: 发生事件的结束时间
+        :param _EndTime: 发生事件的结束时间
         :type EndTime: str
         """
-        self.FleetId = None
-        self.Limit = None
-        self.Offset = None
-        self.EventCode = None
-        self.StartTime = None
-        self.EndTime = None
+        self._FleetId = None
+        self._Limit = None
+        self._Offset = None
+        self._EventCode = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EventCode(self):
+        return self._EventCode
+
+    @EventCode.setter
+    def EventCode(self, EventCode):
+        self._EventCode = EventCode
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.EventCode = params.get("EventCode")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._FleetId = params.get("FleetId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EventCode = params.get("EventCode")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1777,27 +3286,51 @@ class DescribeFleetEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Events: 返回的事件列表
+        :param _Events: 返回的事件列表
         :type Events: list of Event
-        :param TotalCount: 返回的事件总数
+        :param _TotalCount: 返回的事件总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Events = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Events = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Events") is not None:
-            self.Events = []
+            self._Events = []
             for item in params.get("Events"):
                 obj = Event()
                 obj._deserialize(item)
-                self.Events.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Events.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetPortSettingsRequest(AbstractModel):
@@ -1807,18 +3340,27 @@ class DescribeFleetPortSettingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
         """
-        self.FleetId = None
+        self._FleetId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1831,24 +3373,40 @@ class DescribeFleetPortSettingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InboundPermissions: 安全组信息
+        :param _InboundPermissions: 安全组信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InboundPermissions: list of InboundPermission
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InboundPermissions = None
-        self.RequestId = None
+        self._InboundPermissions = None
+        self._RequestId = None
+
+    @property
+    def InboundPermissions(self):
+        return self._InboundPermissions
+
+    @InboundPermissions.setter
+    def InboundPermissions(self, InboundPermissions):
+        self._InboundPermissions = InboundPermissions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InboundPermissions") is not None:
-            self.InboundPermissions = []
+            self._InboundPermissions = []
             for item in params.get("InboundPermissions"):
                 obj = InboundPermission()
                 obj._deserialize(item)
-                self.InboundPermissions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InboundPermissions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetRelatedResourcesRequest(AbstractModel):
@@ -1858,18 +3416,27 @@ class DescribeFleetRelatedResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
         """
-        self.FleetId = None
+        self._FleetId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1882,24 +3449,40 @@ class DescribeFleetRelatedResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Resources: 与服务器舰队关联的资源信息
+        :param _Resources: 与服务器舰队关联的资源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: list of FleetRelatedResource
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Resources = None
-        self.RequestId = None
+        self._Resources = None
+        self._RequestId = None
+
+    @property
+    def Resources(self):
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Resources") is not None:
-            self.Resources = []
+            self._Resources = []
             for item in params.get("Resources"):
                 obj = FleetRelatedResource()
                 obj._deserialize(item)
-                self.Resources.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Resources.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetStatisticDetailsRequest(AbstractModel):
@@ -1909,34 +3492,75 @@ class DescribeFleetStatisticDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param BeginTime: 查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :param _BeginTime: 查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type BeginTime: str
-        :param EndTime: 查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :param _EndTime: 查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type EndTime: str
-        :param Limit: 结果返回最大数量，最小值0，最大值100
+        :param _Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
-        :param Offset: 返回结果偏移，最小值0
+        :param _Offset: 返回结果偏移，最小值0
         :type Offset: int
         """
-        self.FleetId = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.Limit = None
-        self.Offset = None
+        self._FleetId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._FleetId = params.get("FleetId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1949,34 +3573,66 @@ class DescribeFleetStatisticDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DetailList: 服务部署统计详情列表
+        :param _DetailList: 服务部署统计详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailList: list of FleetStatisticDetail
-        :param TotalCount: 记录总数
+        :param _TotalCount: 记录总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param TimeType: 统计时间类型
+        :param _TimeType: 统计时间类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeType: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DetailList = None
-        self.TotalCount = None
-        self.TimeType = None
-        self.RequestId = None
+        self._DetailList = None
+        self._TotalCount = None
+        self._TimeType = None
+        self._RequestId = None
+
+    @property
+    def DetailList(self):
+        return self._DetailList
+
+    @DetailList.setter
+    def DetailList(self, DetailList):
+        self._DetailList = DetailList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TimeType(self):
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DetailList") is not None:
-            self.DetailList = []
+            self._DetailList = []
             for item in params.get("DetailList"):
                 obj = FleetStatisticDetail()
                 obj._deserialize(item)
-                self.DetailList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.TimeType = params.get("TimeType")
-        self.RequestId = params.get("RequestId")
+                self._DetailList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._TimeType = params.get("TimeType")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetStatisticFlowsRequest(AbstractModel):
@@ -1986,34 +3642,75 @@ class DescribeFleetStatisticFlowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param BeginTime: 查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :param _BeginTime: 查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type BeginTime: str
-        :param EndTime: 查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
+        :param _EndTime: 查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type EndTime: str
-        :param Limit: 结果返回最大数量，最小值0，最大值100
+        :param _Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
-        :param Offset: 返回结果偏移，最小值0
+        :param _Offset: 返回结果偏移，最小值0
         :type Offset: int
         """
-        self.FleetId = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.Limit = None
-        self.Offset = None
+        self._FleetId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._FleetId = params.get("FleetId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2026,44 +3723,84 @@ class DescribeFleetStatisticFlowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsedFlowList: 流量统计列表
+        :param _UsedFlowList: 流量统计列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedFlowList: list of FleetStatisticFlows
-        :param UsedTimeList: 时长统计列表
+        :param _UsedTimeList: 时长统计列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedTimeList: list of FleetStatisticTimes
-        :param TotalCount: 记录总数
+        :param _TotalCount: 记录总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param TimeType: 统计时间类型，取值：小时和天
+        :param _TimeType: 统计时间类型，取值：小时和天
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeType: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UsedFlowList = None
-        self.UsedTimeList = None
-        self.TotalCount = None
-        self.TimeType = None
-        self.RequestId = None
+        self._UsedFlowList = None
+        self._UsedTimeList = None
+        self._TotalCount = None
+        self._TimeType = None
+        self._RequestId = None
+
+    @property
+    def UsedFlowList(self):
+        return self._UsedFlowList
+
+    @UsedFlowList.setter
+    def UsedFlowList(self, UsedFlowList):
+        self._UsedFlowList = UsedFlowList
+
+    @property
+    def UsedTimeList(self):
+        return self._UsedTimeList
+
+    @UsedTimeList.setter
+    def UsedTimeList(self, UsedTimeList):
+        self._UsedTimeList = UsedTimeList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TimeType(self):
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("UsedFlowList") is not None:
-            self.UsedFlowList = []
+            self._UsedFlowList = []
             for item in params.get("UsedFlowList"):
                 obj = FleetStatisticFlows()
                 obj._deserialize(item)
-                self.UsedFlowList.append(obj)
+                self._UsedFlowList.append(obj)
         if params.get("UsedTimeList") is not None:
-            self.UsedTimeList = []
+            self._UsedTimeList = []
             for item in params.get("UsedTimeList"):
                 obj = FleetStatisticTimes()
                 obj._deserialize(item)
-                self.UsedTimeList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.TimeType = params.get("TimeType")
-        self.RequestId = params.get("RequestId")
+                self._UsedTimeList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._TimeType = params.get("TimeType")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetStatisticSummaryRequest(AbstractModel):
@@ -2073,26 +3810,51 @@ class DescribeFleetStatisticSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param BeginTime: 查询开始时间，时间格式: YYYY-MM-DD hh:mm:ss
+        :param _BeginTime: 查询开始时间，时间格式: YYYY-MM-DD hh:mm:ss
         :type BeginTime: str
-        :param EndTime: 查询结束时间，时间格式: YYYY-MM-DD hh:mm:ss
+        :param _EndTime: 查询结束时间，时间格式: YYYY-MM-DD hh:mm:ss
         :type EndTime: str
         """
-        self.FleetId = None
-        self.BeginTime = None
-        self.EndTime = None
+        self._FleetId = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
+        self._FleetId = params.get("FleetId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2105,24 +3867,48 @@ class DescribeFleetStatisticSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalUsedTimeSeconds: 总时长，单位秒
+        :param _TotalUsedTimeSeconds: 总时长，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUsedTimeSeconds: str
-        :param TotalUsedFlowMegaBytes: 总流量，单位MB
+        :param _TotalUsedFlowMegaBytes: 总流量，单位MB
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUsedFlowMegaBytes: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalUsedTimeSeconds = None
-        self.TotalUsedFlowMegaBytes = None
-        self.RequestId = None
+        self._TotalUsedTimeSeconds = None
+        self._TotalUsedFlowMegaBytes = None
+        self._RequestId = None
+
+    @property
+    def TotalUsedTimeSeconds(self):
+        return self._TotalUsedTimeSeconds
+
+    @TotalUsedTimeSeconds.setter
+    def TotalUsedTimeSeconds(self, TotalUsedTimeSeconds):
+        self._TotalUsedTimeSeconds = TotalUsedTimeSeconds
+
+    @property
+    def TotalUsedFlowMegaBytes(self):
+        return self._TotalUsedFlowMegaBytes
+
+    @TotalUsedFlowMegaBytes.setter
+    def TotalUsedFlowMegaBytes(self, TotalUsedFlowMegaBytes):
+        self._TotalUsedFlowMegaBytes = TotalUsedFlowMegaBytes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalUsedTimeSeconds = params.get("TotalUsedTimeSeconds")
-        self.TotalUsedFlowMegaBytes = params.get("TotalUsedFlowMegaBytes")
-        self.RequestId = params.get("RequestId")
+        self._TotalUsedTimeSeconds = params.get("TotalUsedTimeSeconds")
+        self._TotalUsedFlowMegaBytes = params.get("TotalUsedFlowMegaBytes")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFleetUtilizationRequest(AbstractModel):
@@ -2132,18 +3918,27 @@ class DescribeFleetUtilizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetIds: 服务器舰队 Ids
+        :param _FleetIds: 服务器舰队 Ids
         :type FleetIds: list of str
         """
-        self.FleetIds = None
+        self._FleetIds = None
+
+    @property
+    def FleetIds(self):
+        return self._FleetIds
+
+    @FleetIds.setter
+    def FleetIds(self, FleetIds):
+        self._FleetIds = FleetIds
 
 
     def _deserialize(self, params):
-        self.FleetIds = params.get("FleetIds")
+        self._FleetIds = params.get("FleetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2156,28 +3951,52 @@ class DescribeFleetUtilizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetUtilization: 服务器舰队利用率
+        :param _FleetUtilization: 服务器舰队利用率
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetUtilization: list of FleetUtilization
-        :param TotalCount: 总数，最小值0
+        :param _TotalCount: 总数，最小值0
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetUtilization = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FleetUtilization = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FleetUtilization(self):
+        return self._FleetUtilization
+
+    @FleetUtilization.setter
+    def FleetUtilization(self, FleetUtilization):
+        self._FleetUtilization = FleetUtilization
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FleetUtilization") is not None:
-            self.FleetUtilization = []
+            self._FleetUtilization = []
             for item in params.get("FleetUtilization"):
                 obj = FleetUtilization()
                 obj._deserialize(item)
-                self.FleetUtilization.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FleetUtilization.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGameServerSessionDetailsRequest(AbstractModel):
@@ -2187,38 +4006,87 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 别名ID
+        :param _AliasId: 别名ID
         :type AliasId: str
-        :param FleetId: 舰队ID
+        :param _FleetId: 舰队ID
         :type FleetId: str
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
         :type GameServerSessionId: str
-        :param Limit: 单次查询记录数上限
+        :param _Limit: 单次查询记录数上限
         :type Limit: int
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type NextToken: str
-        :param StatusFilter: 游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
+        :param _StatusFilter: 游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
         :type StatusFilter: str
         """
-        self.AliasId = None
-        self.FleetId = None
-        self.GameServerSessionId = None
-        self.Limit = None
-        self.NextToken = None
-        self.StatusFilter = None
+        self._AliasId = None
+        self._FleetId = None
+        self._GameServerSessionId = None
+        self._Limit = None
+        self._NextToken = None
+        self._StatusFilter = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def StatusFilter(self):
+        return self._StatusFilter
+
+    @StatusFilter.setter
+    def StatusFilter(self, StatusFilter):
+        self._StatusFilter = StatusFilter
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
-        self.FleetId = params.get("FleetId")
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.Limit = params.get("Limit")
-        self.NextToken = params.get("NextToken")
-        self.StatusFilter = params.get("StatusFilter")
+        self._AliasId = params.get("AliasId")
+        self._FleetId = params.get("FleetId")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._Limit = params.get("Limit")
+        self._NextToken = params.get("NextToken")
+        self._StatusFilter = params.get("StatusFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2231,29 +4099,53 @@ class DescribeGameServerSessionDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionDetails: 游戏服务器会话详情列表
+        :param _GameServerSessionDetails: 游戏服务器会话详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionDetails: list of GameServerSessionDetail
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessionDetails = None
-        self.NextToken = None
-        self.RequestId = None
+        self._GameServerSessionDetails = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessionDetails(self):
+        return self._GameServerSessionDetails
+
+    @GameServerSessionDetails.setter
+    def GameServerSessionDetails(self, GameServerSessionDetails):
+        self._GameServerSessionDetails = GameServerSessionDetails
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessionDetails") is not None:
-            self.GameServerSessionDetails = []
+            self._GameServerSessionDetails = []
             for item in params.get("GameServerSessionDetails"):
                 obj = GameServerSessionDetail()
                 obj._deserialize(item)
-                self.GameServerSessionDetails.append(obj)
-        self.NextToken = params.get("NextToken")
-        self.RequestId = params.get("RequestId")
+                self._GameServerSessionDetails.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGameServerSessionPlacementRequest(AbstractModel):
@@ -2263,18 +4155,27 @@ class DescribeGameServerSessionPlacementRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlacementId: 游戏服务器会话放置的唯一标识符
+        :param _PlacementId: 游戏服务器会话放置的唯一标识符
         :type PlacementId: str
         """
-        self.PlacementId = None
+        self._PlacementId = None
+
+    @property
+    def PlacementId(self):
+        return self._PlacementId
+
+    @PlacementId.setter
+    def PlacementId(self, PlacementId):
+        self._PlacementId = PlacementId
 
 
     def _deserialize(self, params):
-        self.PlacementId = params.get("PlacementId")
+        self._PlacementId = params.get("PlacementId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2287,20 +4188,36 @@ class DescribeGameServerSessionPlacementResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionPlacement: 游戏服务器会话放置
+        :param _GameServerSessionPlacement: 游戏服务器会话放置
         :type GameServerSessionPlacement: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessionPlacement = None
-        self.RequestId = None
+        self._GameServerSessionPlacement = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessionPlacement(self):
+        return self._GameServerSessionPlacement
+
+    @GameServerSessionPlacement.setter
+    def GameServerSessionPlacement(self, GameServerSessionPlacement):
+        self._GameServerSessionPlacement = GameServerSessionPlacement
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessionPlacement") is not None:
-            self.GameServerSessionPlacement = GameServerSessionPlacement()
-            self.GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
-        self.RequestId = params.get("RequestId")
+            self._GameServerSessionPlacement = GameServerSessionPlacement()
+            self._GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGameServerSessionQueuesRequest(AbstractModel):
@@ -2310,35 +4227,68 @@ class DescribeGameServerSessionQueuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Names: 游戏服务器会话队列名称数组，单个名字长度1~128
+        :param _Names: 游戏服务器会话队列名称数组，单个名字长度1~128
         :type Names: list of str
-        :param Limit: 结果返回最大数量，最小值0，最大值100
+        :param _Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
-        :param Offset: 返回结果偏移，最小值0
+        :param _Offset: 返回结果偏移，最小值0
         :type Offset: int
-        :param Filters: 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（游戏服务器会话队列支持多个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :param _Filters: 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（游戏服务器会话队列支持多个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
         :type Filters: list of Filter
         """
-        self.Names = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._Names = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Names(self):
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Names = params.get("Names")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Names = params.get("Names")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2351,28 +4301,52 @@ class DescribeGameServerSessionQueuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionQueues: 游戏服务器会话队列数组
+        :param _GameServerSessionQueues: 游戏服务器会话队列数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionQueues: list of GameServerSessionQueue
-        :param TotalCount: 游戏服务器会话队列总数
+        :param _TotalCount: 游戏服务器会话队列总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessionQueues = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._GameServerSessionQueues = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessionQueues(self):
+        return self._GameServerSessionQueues
+
+    @GameServerSessionQueues.setter
+    def GameServerSessionQueues(self, GameServerSessionQueues):
+        self._GameServerSessionQueues = GameServerSessionQueues
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessionQueues") is not None:
-            self.GameServerSessionQueues = []
+            self._GameServerSessionQueues = []
             for item in params.get("GameServerSessionQueues"):
                 obj = GameServerSessionQueue()
                 obj._deserialize(item)
-                self.GameServerSessionQueues.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._GameServerSessionQueues.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGameServerSessionsRequest(AbstractModel):
@@ -2382,38 +4356,87 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 别名ID
+        :param _AliasId: 别名ID
         :type AliasId: str
-        :param FleetId: 舰队ID
+        :param _FleetId: 舰队ID
         :type FleetId: str
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
         :type GameServerSessionId: str
-        :param Limit: 单次查询记录数上限
+        :param _Limit: 单次查询记录数上限
         :type Limit: int
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type NextToken: str
-        :param StatusFilter: 游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
+        :param _StatusFilter: 游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
         :type StatusFilter: str
         """
-        self.AliasId = None
-        self.FleetId = None
-        self.GameServerSessionId = None
-        self.Limit = None
-        self.NextToken = None
-        self.StatusFilter = None
+        self._AliasId = None
+        self._FleetId = None
+        self._GameServerSessionId = None
+        self._Limit = None
+        self._NextToken = None
+        self._StatusFilter = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def StatusFilter(self):
+        return self._StatusFilter
+
+    @StatusFilter.setter
+    def StatusFilter(self, StatusFilter):
+        self._StatusFilter = StatusFilter
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
-        self.FleetId = params.get("FleetId")
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.Limit = params.get("Limit")
-        self.NextToken = params.get("NextToken")
-        self.StatusFilter = params.get("StatusFilter")
+        self._AliasId = params.get("AliasId")
+        self._FleetId = params.get("FleetId")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._Limit = params.get("Limit")
+        self._NextToken = params.get("NextToken")
+        self._StatusFilter = params.get("StatusFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2426,29 +4449,53 @@ class DescribeGameServerSessionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessions: 游戏服务器会话列表
+        :param _GameServerSessions: 游戏服务器会话列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessions: list of GameServerSession
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessions = None
-        self.NextToken = None
-        self.RequestId = None
+        self._GameServerSessions = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessions(self):
+        return self._GameServerSessions
+
+    @GameServerSessions.setter
+    def GameServerSessions(self, GameServerSessions):
+        self._GameServerSessions = GameServerSessions
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessions") is not None:
-            self.GameServerSessions = []
+            self._GameServerSessions = []
             for item in params.get("GameServerSessions"):
                 obj = GameServerSession()
                 obj._deserialize(item)
-                self.GameServerSessions.append(obj)
-        self.NextToken = params.get("NextToken")
-        self.RequestId = params.get("RequestId")
+                self._GameServerSessions.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceLimitRequest(AbstractModel):
@@ -2464,27 +4511,51 @@ class DescribeInstanceLimitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 限额
+        :param _Limit: 限额
         :type Limit: int
-        :param ExtraInfos: 详细信息
+        :param _ExtraInfos: 详细信息
         :type ExtraInfos: list of ExtraInfos
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Limit = None
-        self.ExtraInfos = None
-        self.RequestId = None
+        self._Limit = None
+        self._ExtraInfos = None
+        self._RequestId = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ExtraInfos(self):
+        return self._ExtraInfos
+
+    @ExtraInfos.setter
+    def ExtraInfos(self, ExtraInfos):
+        self._ExtraInfos = ExtraInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
+        self._Limit = params.get("Limit")
         if params.get("ExtraInfos") is not None:
-            self.ExtraInfos = []
+            self._ExtraInfos = []
             for item in params.get("ExtraInfos"):
                 obj = ExtraInfos()
                 obj._deserialize(item)
-                self.ExtraInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ExtraInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceTypesRequest(AbstractModel):
@@ -2500,23 +4571,39 @@ class DescribeInstanceTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceTypeList: 服务器实例类型列表
+        :param _InstanceTypeList: 服务器实例类型列表
         :type InstanceTypeList: list of InstanceTypeInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstanceTypeList = None
-        self.RequestId = None
+        self._InstanceTypeList = None
+        self._RequestId = None
+
+    @property
+    def InstanceTypeList(self):
+        return self._InstanceTypeList
+
+    @InstanceTypeList.setter
+    def InstanceTypeList(self, InstanceTypeList):
+        self._InstanceTypeList = InstanceTypeList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstanceTypeList") is not None:
-            self.InstanceTypeList = []
+            self._InstanceTypeList = []
             for item in params.get("InstanceTypeList"):
                 obj = InstanceTypeInfo()
                 obj._deserialize(item)
-                self.InstanceTypeList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceTypeList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesExtendRequest(AbstractModel):
@@ -2526,30 +4613,63 @@ class DescribeInstancesExtendRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param Offset: 返回结果偏移，最小值0
+        :param _Offset: 返回结果偏移，最小值0
         :type Offset: int
-        :param Limit: 结果返回最大数量，最小值0，最大值100
+        :param _Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
-        :param IpAddress: CVM实例公网IP
+        :param _IpAddress: CVM实例公网IP
         :type IpAddress: str
         """
-        self.FleetId = None
-        self.Offset = None
-        self.Limit = None
-        self.IpAddress = None
+        self._FleetId = None
+        self._Offset = None
+        self._Limit = None
+        self._IpAddress = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.IpAddress = params.get("IpAddress")
+        self._FleetId = params.get("FleetId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._IpAddress = params.get("IpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2562,29 +4682,53 @@ class DescribeInstancesExtendResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Instances: 实例信息列表
+        :param _Instances: 实例信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Instances: list of InstanceExtend
-        :param TotalCount: 梳理信息总数
+        :param _TotalCount: 梳理信息总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Instances = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Instances = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
-            self.Instances = []
+            self._Instances = []
             for item in params.get("Instances"):
                 obj = InstanceExtend()
                 obj._deserialize(item)
-                self.Instances.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Instances.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesRequest(AbstractModel):
@@ -2594,34 +4738,75 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param InstanceId: CVM实例ID
+        :param _InstanceId: CVM实例ID
         :type InstanceId: str
-        :param Offset: 结果返回最大数量，最小值0，最大值100
+        :param _Offset: 结果返回最大数量，最小值0，最大值100
         :type Offset: int
-        :param Limit: 返回结果偏移，最小值0
+        :param _Limit: 返回结果偏移，最小值0
         :type Limit: int
-        :param IpAddress: CVM实例公网IP
+        :param _IpAddress: CVM实例公网IP
         :type IpAddress: str
         """
-        self.FleetId = None
-        self.InstanceId = None
-        self.Offset = None
-        self.Limit = None
-        self.IpAddress = None
+        self._FleetId = None
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._IpAddress = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.IpAddress = params.get("IpAddress")
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._IpAddress = params.get("IpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2634,29 +4819,53 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Instances: 实例信息列表
+        :param _Instances: 实例信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Instances: list of Instance
-        :param TotalCount: 结果返回最大数量
+        :param _TotalCount: 结果返回最大数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Instances = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Instances = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
-            self.Instances = []
+            self._Instances = []
             for item in params.get("Instances"):
                 obj = Instance()
                 obj._deserialize(item)
-                self.Instances.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Instances.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePlayerSessionsRequest(AbstractModel):
@@ -2666,38 +4875,87 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
         :type GameServerSessionId: str
-        :param Limit: 单次查询记录数上限
+        :param _Limit: 单次查询记录数上限
         :type Limit: int
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type NextToken: str
-        :param PlayerId: 玩家ID，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _PlayerId: 玩家ID，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type PlayerId: str
-        :param PlayerSessionId: 玩家会话ID，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _PlayerSessionId: 玩家会话ID，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type PlayerSessionId: str
-        :param PlayerSessionStatusFilter: 玩家会话状态（RESERVED,ACTIVE,COMPLETED,TIMEDOUT）
+        :param _PlayerSessionStatusFilter: 玩家会话状态（RESERVED,ACTIVE,COMPLETED,TIMEDOUT）
         :type PlayerSessionStatusFilter: str
         """
-        self.GameServerSessionId = None
-        self.Limit = None
-        self.NextToken = None
-        self.PlayerId = None
-        self.PlayerSessionId = None
-        self.PlayerSessionStatusFilter = None
+        self._GameServerSessionId = None
+        self._Limit = None
+        self._NextToken = None
+        self._PlayerId = None
+        self._PlayerSessionId = None
+        self._PlayerSessionStatusFilter = None
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def PlayerId(self):
+        return self._PlayerId
+
+    @PlayerId.setter
+    def PlayerId(self, PlayerId):
+        self._PlayerId = PlayerId
+
+    @property
+    def PlayerSessionId(self):
+        return self._PlayerSessionId
+
+    @PlayerSessionId.setter
+    def PlayerSessionId(self, PlayerSessionId):
+        self._PlayerSessionId = PlayerSessionId
+
+    @property
+    def PlayerSessionStatusFilter(self):
+        return self._PlayerSessionStatusFilter
+
+    @PlayerSessionStatusFilter.setter
+    def PlayerSessionStatusFilter(self, PlayerSessionStatusFilter):
+        self._PlayerSessionStatusFilter = PlayerSessionStatusFilter
 
 
     def _deserialize(self, params):
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.Limit = params.get("Limit")
-        self.NextToken = params.get("NextToken")
-        self.PlayerId = params.get("PlayerId")
-        self.PlayerSessionId = params.get("PlayerSessionId")
-        self.PlayerSessionStatusFilter = params.get("PlayerSessionStatusFilter")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._Limit = params.get("Limit")
+        self._NextToken = params.get("NextToken")
+        self._PlayerId = params.get("PlayerId")
+        self._PlayerSessionId = params.get("PlayerSessionId")
+        self._PlayerSessionStatusFilter = params.get("PlayerSessionStatusFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2710,29 +4968,53 @@ class DescribePlayerSessionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayerSessions: 玩家会话列表
+        :param _PlayerSessions: 玩家会话列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerSessions: list of PlayerSession
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PlayerSessions = None
-        self.NextToken = None
-        self.RequestId = None
+        self._PlayerSessions = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def PlayerSessions(self):
+        return self._PlayerSessions
+
+    @PlayerSessions.setter
+    def PlayerSessions(self, PlayerSessions):
+        self._PlayerSessions = PlayerSessions
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PlayerSessions") is not None:
-            self.PlayerSessions = []
+            self._PlayerSessions = []
             for item in params.get("PlayerSessions"):
                 obj = PlayerSession()
                 obj._deserialize(item)
-                self.PlayerSessions.append(obj)
-        self.NextToken = params.get("NextToken")
-        self.RequestId = params.get("RequestId")
+                self._PlayerSessions.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRuntimeConfigurationRequest(AbstractModel):
@@ -2742,18 +5024,27 @@ class DescribeRuntimeConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
         """
-        self.FleetId = None
+        self._FleetId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2766,21 +5057,37 @@ class DescribeRuntimeConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuntimeConfiguration: 服务器舰队运行配置信息
+        :param _RuntimeConfiguration: 服务器舰队运行配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RuntimeConfiguration = None
-        self.RequestId = None
+        self._RuntimeConfiguration = None
+        self._RequestId = None
+
+    @property
+    def RuntimeConfiguration(self):
+        return self._RuntimeConfiguration
+
+    @RuntimeConfiguration.setter
+    def RuntimeConfiguration(self, RuntimeConfiguration):
+        self._RuntimeConfiguration = RuntimeConfiguration
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RuntimeConfiguration") is not None:
-            self.RuntimeConfiguration = RuntimeConfiguration()
-            self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
-        self.RequestId = params.get("RequestId")
+            self._RuntimeConfiguration = RuntimeConfiguration()
+            self._RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScalingPoliciesRequest(AbstractModel):
@@ -2790,30 +5097,63 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param StatusFilter: 状态过滤条件，取值：ACTIVE表示活跃
+        :param _StatusFilter: 状态过滤条件，取值：ACTIVE表示活跃
         :type StatusFilter: str
-        :param Offset: 返回结果偏移，最小值0
+        :param _Offset: 返回结果偏移，最小值0
         :type Offset: int
-        :param Limit: 结果返回最大数量，最小值0，最大值100
+        :param _Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
         """
-        self.FleetId = None
-        self.StatusFilter = None
-        self.Offset = None
-        self.Limit = None
+        self._FleetId = None
+        self._StatusFilter = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def StatusFilter(self):
+        return self._StatusFilter
+
+    @StatusFilter.setter
+    def StatusFilter(self, StatusFilter):
+        self._StatusFilter = StatusFilter
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.StatusFilter = params.get("StatusFilter")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._FleetId = params.get("FleetId")
+        self._StatusFilter = params.get("StatusFilter")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2826,29 +5166,53 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ScalingPolicies: 动态扩缩容配置策略数组
+        :param _ScalingPolicies: 动态扩缩容配置策略数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingPolicies: list of ScalingPolicy
-        :param TotalCount: 动态扩缩容配置策略总数
+        :param _TotalCount: 动态扩缩容配置策略总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ScalingPolicies = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ScalingPolicies = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ScalingPolicies(self):
+        return self._ScalingPolicies
+
+    @ScalingPolicies.setter
+    def ScalingPolicies(self, ScalingPolicies):
+        self._ScalingPolicies = ScalingPolicies
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ScalingPolicies") is not None:
-            self.ScalingPolicies = []
+            self._ScalingPolicies = []
             for item in params.get("ScalingPolicies"):
                 obj = ScalingPolicy()
                 obj._deserialize(item)
-                self.ScalingPolicies.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ScalingPolicies.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTimerScalingPoliciesRequest(AbstractModel):
@@ -2858,38 +5222,87 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 扩缩容配置服务器舰队ID
+        :param _FleetId: 扩缩容配置服务器舰队ID
         :type FleetId: str
-        :param TimerName: 定时器名称
+        :param _TimerName: 定时器名称
         :type TimerName: str
-        :param BeginTime: 定时器开始时间
+        :param _BeginTime: 定时器开始时间
         :type BeginTime: str
-        :param EndTime: 定时器结束时间
+        :param _EndTime: 定时器结束时间
         :type EndTime: str
-        :param Offset: 分页偏移量
+        :param _Offset: 分页偏移量
         :type Offset: int
-        :param Limit: 页大小
+        :param _Limit: 页大小
         :type Limit: int
         """
-        self.FleetId = None
-        self.TimerName = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.Offset = None
-        self.Limit = None
+        self._FleetId = None
+        self._TimerName = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def TimerName(self):
+        return self._TimerName
+
+    @TimerName.setter
+    def TimerName(self, TimerName):
+        self._TimerName = TimerName
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.TimerName = params.get("TimerName")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._FleetId = params.get("FleetId")
+        self._TimerName = params.get("TimerName")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2902,29 +5315,53 @@ class DescribeTimerScalingPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimerScalingPolicies: 定时器扩缩容策略配置
+        :param _TimerScalingPolicies: 定时器扩缩容策略配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerScalingPolicies: list of TimerScalingPolicy
-        :param TotalCount: 定时器总数
+        :param _TotalCount: 定时器总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TimerScalingPolicies = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._TimerScalingPolicies = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TimerScalingPolicies(self):
+        return self._TimerScalingPolicies
+
+    @TimerScalingPolicies.setter
+    def TimerScalingPolicies(self, TimerScalingPolicies):
+        self._TimerScalingPolicies = TimerScalingPolicies
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TimerScalingPolicies") is not None:
-            self.TimerScalingPolicies = []
+            self._TimerScalingPolicies = []
             for item in params.get("TimerScalingPolicies"):
                 obj = TimerScalingPolicy()
                 obj._deserialize(item)
-                self.TimerScalingPolicies.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._TimerScalingPolicies.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserQuotaRequest(AbstractModel):
@@ -2934,18 +5371,27 @@ class DescribeUserQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型
+        :param _ResourceType: 资源类型
         :type ResourceType: int
         """
-        self.ResourceType = None
+        self._ResourceType = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
 
 
     def _deserialize(self, params):
-        self.ResourceType = params.get("ResourceType")
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2958,21 +5404,37 @@ class DescribeUserQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QuotaResource: 配额资源信息
+        :param _QuotaResource: 配额资源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaResource: :class:`tencentcloud.gse.v20191112.models.QuotaResource`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.QuotaResource = None
-        self.RequestId = None
+        self._QuotaResource = None
+        self._RequestId = None
+
+    @property
+    def QuotaResource(self):
+        return self._QuotaResource
+
+    @QuotaResource.setter
+    def QuotaResource(self, QuotaResource):
+        self._QuotaResource = QuotaResource
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("QuotaResource") is not None:
-            self.QuotaResource = QuotaResource()
-            self.QuotaResource._deserialize(params.get("QuotaResource"))
-        self.RequestId = params.get("RequestId")
+            self._QuotaResource = QuotaResource()
+            self._QuotaResource._deserialize(params.get("QuotaResource"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserQuotasRequest(AbstractModel):
@@ -2988,28 +5450,52 @@ class DescribeUserQuotasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QuotaResource: 配额信息列表
+        :param _QuotaResource: 配额信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaResource: list of QuotaResource
-        :param Total: 配额信息列表总数，最小值0
+        :param _Total: 配额信息列表总数，最小值0
         :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.QuotaResource = None
-        self.Total = None
-        self.RequestId = None
+        self._QuotaResource = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def QuotaResource(self):
+        return self._QuotaResource
+
+    @QuotaResource.setter
+    def QuotaResource(self, QuotaResource):
+        self._QuotaResource = QuotaResource
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("QuotaResource") is not None:
-            self.QuotaResource = []
+            self._QuotaResource = []
             for item in params.get("QuotaResource"):
                 obj = QuotaResource()
                 obj._deserialize(item)
-                self.QuotaResource.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._QuotaResource.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DesiredPlayerSession(AbstractModel):
@@ -3019,22 +5505,39 @@ class DesiredPlayerSession(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayerId: 与玩家会话关联的唯一玩家标识
+        :param _PlayerId: 与玩家会话关联的唯一玩家标识
         :type PlayerId: str
-        :param PlayerData: 开发人员定义的玩家数据
+        :param _PlayerData: 开发人员定义的玩家数据
         :type PlayerData: str
         """
-        self.PlayerId = None
-        self.PlayerData = None
+        self._PlayerId = None
+        self._PlayerData = None
+
+    @property
+    def PlayerId(self):
+        return self._PlayerId
+
+    @PlayerId.setter
+    def PlayerId(self, PlayerId):
+        self._PlayerId = PlayerId
+
+    @property
+    def PlayerData(self):
+        return self._PlayerData
+
+    @PlayerData.setter
+    def PlayerData(self, PlayerData):
+        self._PlayerData = PlayerData
 
 
     def _deserialize(self, params):
-        self.PlayerId = params.get("PlayerId")
-        self.PlayerData = params.get("PlayerData")
+        self._PlayerId = params.get("PlayerId")
+        self._PlayerData = params.get("PlayerData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3047,18 +5550,27 @@ class DetachCcnInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
         """
-        self.FleetId = None
+        self._FleetId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3071,14 +5583,22 @@ class DetachCcnInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DiskInfo(AbstractModel):
@@ -3088,22 +5608,39 @@ class DiskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: 磁盘类型，支持：高性能云硬盘（CLOUD_PREMIUM）、SSD云硬盘（CLOUD_SSD）
+        :param _DiskType: 磁盘类型，支持：高性能云硬盘（CLOUD_PREMIUM）、SSD云硬盘（CLOUD_SSD）
         :type DiskType: str
-        :param DiskSize: 系统盘：可选硬盘容量，50-500GB，数字以1为单位，数据盘：可选硬盘容量：10-32000GB，数字以10为单位；当磁盘类型为SSD云硬盘（CLOUD_SSD）最小大小为 100GB
+        :param _DiskSize: 系统盘：可选硬盘容量，50-500GB，数字以1为单位，数据盘：可选硬盘容量：10-32000GB，数字以10为单位；当磁盘类型为SSD云硬盘（CLOUD_SSD）最小大小为 100GB
         :type DiskSize: int
         """
-        self.DiskType = None
-        self.DiskSize = None
+        self._DiskType = None
+        self._DiskSize = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
 
 
     def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3116,26 +5653,51 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionId: 游戏服务器会话ID，如果传入游戏服务器会话ID，结束对应进程以及游戏服务器会话和玩家会话。
+        :param _GameServerSessionId: 游戏服务器会话ID，如果传入游戏服务器会话ID，结束对应进程以及游戏服务器会话和玩家会话。
         :type GameServerSessionId: str
-        :param IpAddress: CVM的公网IP地址，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入IpAddress不生效。
+        :param _IpAddress: CVM的公网IP地址，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入IpAddress不生效。
         :type IpAddress: str
-        :param Port: 端口号，取值范围1025-60000，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入Port不生效。
+        :param _Port: 端口号，取值范围1025-60000，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入Port不生效。
         :type Port: int
         """
-        self.GameServerSessionId = None
-        self.IpAddress = None
-        self.Port = None
+        self._GameServerSessionId = None
+        self._IpAddress = None
+        self._Port = None
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.IpAddress = params.get("IpAddress")
-        self.Port = params.get("Port")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._IpAddress = params.get("IpAddress")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3148,14 +5710,22 @@ class EndGameServerSessionAndProcessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Event(AbstractModel):
@@ -3165,7 +5735,7 @@ class Event(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventCode: 事件代码，支持以下的事件代码
+        :param _EventCode: 事件代码，支持以下的事件代码
 
 - FLEET_CREATED 
 - FLEET_STATE_DOWNLOADING 
@@ -3189,38 +5759,87 @@ class Event(AbstractModel):
 - FLEET_ACTIVATION_FAILED
 - GAME_SESSION_ACTIVATION_TIMEOUT
         :type EventCode: str
-        :param EventId: 事件的唯一标识 ID
+        :param _EventId: 事件的唯一标识 ID
         :type EventId: str
-        :param EventTime: 事件的发生时间，UTC 时间格式
+        :param _EventTime: 事件的发生时间，UTC 时间格式
         :type EventTime: str
-        :param Message: 事件的消息
+        :param _Message: 事件的消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param PreSignedLogUrl: 事件相关的日志存储路径
+        :param _PreSignedLogUrl: 事件相关的日志存储路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreSignedLogUrl: str
-        :param ResourceId: 事件对应的资源对象唯一标识 ID，例如服务器舰队 ID
+        :param _ResourceId: 事件对应的资源对象唯一标识 ID，例如服务器舰队 ID
         :type ResourceId: str
         """
-        self.EventCode = None
-        self.EventId = None
-        self.EventTime = None
-        self.Message = None
-        self.PreSignedLogUrl = None
-        self.ResourceId = None
+        self._EventCode = None
+        self._EventId = None
+        self._EventTime = None
+        self._Message = None
+        self._PreSignedLogUrl = None
+        self._ResourceId = None
+
+    @property
+    def EventCode(self):
+        return self._EventCode
+
+    @EventCode.setter
+    def EventCode(self, EventCode):
+        self._EventCode = EventCode
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def EventTime(self):
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def PreSignedLogUrl(self):
+        return self._PreSignedLogUrl
+
+    @PreSignedLogUrl.setter
+    def PreSignedLogUrl(self, PreSignedLogUrl):
+        self._PreSignedLogUrl = PreSignedLogUrl
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
-        self.EventCode = params.get("EventCode")
-        self.EventId = params.get("EventId")
-        self.EventTime = params.get("EventTime")
-        self.Message = params.get("Message")
-        self.PreSignedLogUrl = params.get("PreSignedLogUrl")
-        self.ResourceId = params.get("ResourceId")
+        self._EventCode = params.get("EventCode")
+        self._EventId = params.get("EventId")
+        self._EventTime = params.get("EventTime")
+        self._Message = params.get("Message")
+        self._PreSignedLogUrl = params.get("PreSignedLogUrl")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3233,24 +5852,41 @@ class ExtraInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceType: 实例类型，例如S5.LARGE8
+        :param _InstanceType: 实例类型，例如S5.LARGE8
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param TotalInstances: 实例限额数
+        :param _TotalInstances: 实例限额数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalInstances: int
         """
-        self.InstanceType = None
-        self.TotalInstances = None
+        self._InstanceType = None
+        self._TotalInstances = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def TotalInstances(self):
+        return self._TotalInstances
+
+    @TotalInstances.setter
+    def TotalInstances(self, TotalInstances):
+        self._TotalInstances = TotalInstances
 
 
     def _deserialize(self, params):
-        self.InstanceType = params.get("InstanceType")
-        self.TotalInstances = params.get("TotalInstances")
+        self._InstanceType = params.get("InstanceType")
+        self._TotalInstances = params.get("TotalInstances")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3263,22 +5899,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 过滤属性的 key
+        :param _Key: 过滤属性的 key
         :type Key: str
-        :param Values: 过滤属性的 values 值
+        :param _Values: 过滤属性的 values 值
         :type Values: list of str
         """
-        self.Key = None
-        self.Values = None
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Values = params.get("Values")
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3291,135 +5944,304 @@ class FleetAttributes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包 Id
+        :param _AssetId: 生成包 Id
         :type AssetId: str
-        :param CreationTime: 创建服务器舰队时间
+        :param _CreationTime: 创建服务器舰队时间
         :type CreationTime: str
-        :param Description: 描述
+        :param _Description: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param FleetArn: 服务器舰队资源描述
+        :param _FleetArn: 服务器舰队资源描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetArn: str
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param FleetType: 服务器舰队类型，目前只支持ON_DEMAND
+        :param _FleetType: 服务器舰队类型，目前只支持ON_DEMAND
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetType: str
-        :param InstanceType: 服务器类型，例如S5.LARGE8
+        :param _InstanceType: 服务器类型，例如S5.LARGE8
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param Name: 服务器舰队名称
+        :param _Name: 服务器舰队名称
         :type Name: str
-        :param NewGameServerSessionProtectionPolicy: 游戏会话保护策略
+        :param _NewGameServerSessionProtectionPolicy: 游戏会话保护策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewGameServerSessionProtectionPolicy: str
-        :param OperatingSystem: 操作系统类型
+        :param _OperatingSystem: 操作系统类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatingSystem: str
-        :param ResourceCreationLimitPolicy: 资源创建限制策略
+        :param _ResourceCreationLimitPolicy: 资源创建限制策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
-        :param Status: 状态：新建、下载中、验证中、生成中、激活中、活跃、异常、删除中、结束
+        :param _Status: 状态：新建、下载中、验证中、生成中、激活中、活跃、异常、删除中、结束
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param StoppedActions: 服务器舰队停止状态，为空时表示自动扩缩容
+        :param _StoppedActions: 服务器舰队停止状态，为空时表示自动扩缩容
 注意：此字段可能返回 null，表示取不到有效值。
         :type StoppedActions: list of str
-        :param TerminationTime: 服务器舰队终止时间
+        :param _TerminationTime: 服务器舰队终止时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerminationTime: str
-        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440
+        :param _GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionProtectionTimeLimit: int
-        :param BillingStatus: 计费状态：未开通、已开通、异常、欠费隔离、销毁、解冻
+        :param _BillingStatus: 计费状态：未开通、已开通、异常、欠费隔离、销毁、解冻
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingStatus: str
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+        :param _DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDiskInfo: list of DiskInfo
-        :param SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+        :param _SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
-        :param RelatedCcnInfos: 云联网相关信息
+        :param _RelatedCcnInfos: 云联网相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedCcnInfos: list of RelatedCcnInfo
-        :param InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+        :param _InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
         """
-        self.AssetId = None
-        self.CreationTime = None
-        self.Description = None
-        self.FleetArn = None
-        self.FleetId = None
-        self.FleetType = None
-        self.InstanceType = None
-        self.Name = None
-        self.NewGameServerSessionProtectionPolicy = None
-        self.OperatingSystem = None
-        self.ResourceCreationLimitPolicy = None
-        self.Status = None
-        self.StoppedActions = None
-        self.TerminationTime = None
-        self.GameServerSessionProtectionTimeLimit = None
-        self.BillingStatus = None
-        self.Tags = None
-        self.DataDiskInfo = None
-        self.SystemDiskInfo = None
-        self.RelatedCcnInfos = None
-        self.InternetMaxBandwidthOut = None
+        self._AssetId = None
+        self._CreationTime = None
+        self._Description = None
+        self._FleetArn = None
+        self._FleetId = None
+        self._FleetType = None
+        self._InstanceType = None
+        self._Name = None
+        self._NewGameServerSessionProtectionPolicy = None
+        self._OperatingSystem = None
+        self._ResourceCreationLimitPolicy = None
+        self._Status = None
+        self._StoppedActions = None
+        self._TerminationTime = None
+        self._GameServerSessionProtectionTimeLimit = None
+        self._BillingStatus = None
+        self._Tags = None
+        self._DataDiskInfo = None
+        self._SystemDiskInfo = None
+        self._RelatedCcnInfos = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def FleetArn(self):
+        return self._FleetArn
+
+    @FleetArn.setter
+    def FleetArn(self, FleetArn):
+        self._FleetArn = FleetArn
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def FleetType(self):
+        return self._FleetType
+
+    @FleetType.setter
+    def FleetType(self, FleetType):
+        self._FleetType = FleetType
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NewGameServerSessionProtectionPolicy(self):
+        return self._NewGameServerSessionProtectionPolicy
+
+    @NewGameServerSessionProtectionPolicy.setter
+    def NewGameServerSessionProtectionPolicy(self, NewGameServerSessionProtectionPolicy):
+        self._NewGameServerSessionProtectionPolicy = NewGameServerSessionProtectionPolicy
+
+    @property
+    def OperatingSystem(self):
+        return self._OperatingSystem
+
+    @OperatingSystem.setter
+    def OperatingSystem(self, OperatingSystem):
+        self._OperatingSystem = OperatingSystem
+
+    @property
+    def ResourceCreationLimitPolicy(self):
+        return self._ResourceCreationLimitPolicy
+
+    @ResourceCreationLimitPolicy.setter
+    def ResourceCreationLimitPolicy(self, ResourceCreationLimitPolicy):
+        self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StoppedActions(self):
+        return self._StoppedActions
+
+    @StoppedActions.setter
+    def StoppedActions(self, StoppedActions):
+        self._StoppedActions = StoppedActions
+
+    @property
+    def TerminationTime(self):
+        return self._TerminationTime
+
+    @TerminationTime.setter
+    def TerminationTime(self, TerminationTime):
+        self._TerminationTime = TerminationTime
+
+    @property
+    def GameServerSessionProtectionTimeLimit(self):
+        return self._GameServerSessionProtectionTimeLimit
+
+    @GameServerSessionProtectionTimeLimit.setter
+    def GameServerSessionProtectionTimeLimit(self, GameServerSessionProtectionTimeLimit):
+        self._GameServerSessionProtectionTimeLimit = GameServerSessionProtectionTimeLimit
+
+    @property
+    def BillingStatus(self):
+        return self._BillingStatus
+
+    @BillingStatus.setter
+    def BillingStatus(self, BillingStatus):
+        self._BillingStatus = BillingStatus
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DataDiskInfo(self):
+        return self._DataDiskInfo
+
+    @DataDiskInfo.setter
+    def DataDiskInfo(self, DataDiskInfo):
+        self._DataDiskInfo = DataDiskInfo
+
+    @property
+    def SystemDiskInfo(self):
+        return self._SystemDiskInfo
+
+    @SystemDiskInfo.setter
+    def SystemDiskInfo(self, SystemDiskInfo):
+        self._SystemDiskInfo = SystemDiskInfo
+
+    @property
+    def RelatedCcnInfos(self):
+        return self._RelatedCcnInfos
+
+    @RelatedCcnInfos.setter
+    def RelatedCcnInfos(self, RelatedCcnInfos):
+        self._RelatedCcnInfos = RelatedCcnInfos
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
-        self.CreationTime = params.get("CreationTime")
-        self.Description = params.get("Description")
-        self.FleetArn = params.get("FleetArn")
-        self.FleetId = params.get("FleetId")
-        self.FleetType = params.get("FleetType")
-        self.InstanceType = params.get("InstanceType")
-        self.Name = params.get("Name")
-        self.NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
-        self.OperatingSystem = params.get("OperatingSystem")
+        self._AssetId = params.get("AssetId")
+        self._CreationTime = params.get("CreationTime")
+        self._Description = params.get("Description")
+        self._FleetArn = params.get("FleetArn")
+        self._FleetId = params.get("FleetId")
+        self._FleetType = params.get("FleetType")
+        self._InstanceType = params.get("InstanceType")
+        self._Name = params.get("Name")
+        self._NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
+        self._OperatingSystem = params.get("OperatingSystem")
         if params.get("ResourceCreationLimitPolicy") is not None:
-            self.ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
-            self.ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
-        self.Status = params.get("Status")
-        self.StoppedActions = params.get("StoppedActions")
-        self.TerminationTime = params.get("TerminationTime")
-        self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
-        self.BillingStatus = params.get("BillingStatus")
+            self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
+            self._ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
+        self._Status = params.get("Status")
+        self._StoppedActions = params.get("StoppedActions")
+        self._TerminationTime = params.get("TerminationTime")
+        self._GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+        self._BillingStatus = params.get("BillingStatus")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("DataDiskInfo") is not None:
-            self.DataDiskInfo = []
+            self._DataDiskInfo = []
             for item in params.get("DataDiskInfo"):
                 obj = DiskInfo()
                 obj._deserialize(item)
-                self.DataDiskInfo.append(obj)
+                self._DataDiskInfo.append(obj)
         if params.get("SystemDiskInfo") is not None:
-            self.SystemDiskInfo = DiskInfo()
-            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+            self._SystemDiskInfo = DiskInfo()
+            self._SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
         if params.get("RelatedCcnInfos") is not None:
-            self.RelatedCcnInfos = []
+            self._RelatedCcnInfos = []
             for item in params.get("RelatedCcnInfos"):
                 obj = RelatedCcnInfo()
                 obj._deserialize(item)
-                self.RelatedCcnInfos.append(obj)
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+                self._RelatedCcnInfos.append(obj)
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3432,36 +6254,69 @@ class FleetCapacity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务部署 Id
+        :param _FleetId: 服务部署 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param InstanceType: 服务器类型，如S3.LARGE8,S2.LARGE8,S5.LARGE8等
+        :param _InstanceType: 服务器类型，如S3.LARGE8,S2.LARGE8,S5.LARGE8等
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param InstanceCounts: 服务器实例统计数据
+        :param _InstanceCounts: 服务器实例统计数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCounts: :class:`tencentcloud.gse.v20191112.models.InstanceCounts`
-        :param ScalingInterval: 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
+        :param _ScalingInterval: 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingInterval: int
         """
-        self.FleetId = None
-        self.InstanceType = None
-        self.InstanceCounts = None
-        self.ScalingInterval = None
+        self._FleetId = None
+        self._InstanceType = None
+        self._InstanceCounts = None
+        self._ScalingInterval = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceCounts(self):
+        return self._InstanceCounts
+
+    @InstanceCounts.setter
+    def InstanceCounts(self, InstanceCounts):
+        self._InstanceCounts = InstanceCounts
+
+    @property
+    def ScalingInterval(self):
+        return self._ScalingInterval
+
+    @ScalingInterval.setter
+    def ScalingInterval(self, ScalingInterval):
+        self._ScalingInterval = ScalingInterval
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceType = params.get("InstanceType")
+        self._FleetId = params.get("FleetId")
+        self._InstanceType = params.get("InstanceType")
         if params.get("InstanceCounts") is not None:
-            self.InstanceCounts = InstanceCounts()
-            self.InstanceCounts._deserialize(params.get("InstanceCounts"))
-        self.ScalingInterval = params.get("ScalingInterval")
+            self._InstanceCounts = InstanceCounts()
+            self._InstanceCounts._deserialize(params.get("InstanceCounts"))
+        self._ScalingInterval = params.get("ScalingInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3474,31 +6329,56 @@ class FleetRelatedResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 资源类型。
+        :param _Type: 资源类型。
 - ALIAS：别名
 - QUEUE：队列
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param ResourceId: 资源ID，目前仅支持别名ID和队列名称
+        :param _ResourceId: 资源ID，目前仅支持别名ID和队列名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param ResourceRegion: 资源所在区域，如ap-shanghai、na-siliconvalley等
+        :param _ResourceRegion: 资源所在区域，如ap-shanghai、na-siliconvalley等
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         """
-        self.Type = None
-        self.ResourceId = None
-        self.ResourceRegion = None
+        self._Type = None
+        self._ResourceId = None
+        self._ResourceRegion = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceRegion(self):
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceRegion = params.get("ResourceRegion")
+        self._Type = params.get("Type")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceRegion = params.get("ResourceRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3511,49 +6391,106 @@ class FleetStatisticDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 舰队ID
+        :param _FleetId: 舰队ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param InstanceIP: 实例IP
+        :param _InstanceIP: 实例IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIP: str
-        :param BeginTime: 开始时间
+        :param _BeginTime: 开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
-        :param EndTime: 结束时间
+        :param _EndTime: 结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param TotalUsedTimeSeconds: 总时长，单位秒
+        :param _TotalUsedTimeSeconds: 总时长，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUsedTimeSeconds: str
-        :param TotalUsedFlowMegaBytes: 总流量，单位MB
+        :param _TotalUsedFlowMegaBytes: 总流量，单位MB
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUsedFlowMegaBytes: float
         """
-        self.FleetId = None
-        self.InstanceId = None
-        self.InstanceIP = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.TotalUsedTimeSeconds = None
-        self.TotalUsedFlowMegaBytes = None
+        self._FleetId = None
+        self._InstanceId = None
+        self._InstanceIP = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._TotalUsedTimeSeconds = None
+        self._TotalUsedFlowMegaBytes = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceIP(self):
+        return self._InstanceIP
+
+    @InstanceIP.setter
+    def InstanceIP(self, InstanceIP):
+        self._InstanceIP = InstanceIP
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TotalUsedTimeSeconds(self):
+        return self._TotalUsedTimeSeconds
+
+    @TotalUsedTimeSeconds.setter
+    def TotalUsedTimeSeconds(self, TotalUsedTimeSeconds):
+        self._TotalUsedTimeSeconds = TotalUsedTimeSeconds
+
+    @property
+    def TotalUsedFlowMegaBytes(self):
+        return self._TotalUsedFlowMegaBytes
+
+    @TotalUsedFlowMegaBytes.setter
+    def TotalUsedFlowMegaBytes(self, TotalUsedFlowMegaBytes):
+        self._TotalUsedFlowMegaBytes = TotalUsedFlowMegaBytes
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceIP = params.get("InstanceIP")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.TotalUsedTimeSeconds = params.get("TotalUsedTimeSeconds")
-        self.TotalUsedFlowMegaBytes = params.get("TotalUsedFlowMegaBytes")
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceIP = params.get("InstanceIP")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._TotalUsedTimeSeconds = params.get("TotalUsedTimeSeconds")
+        self._TotalUsedFlowMegaBytes = params.get("TotalUsedFlowMegaBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3566,24 +6503,41 @@ class FleetStatisticFlows(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalUsedFlowMegaBytes: 总流量，单位MB
+        :param _TotalUsedFlowMegaBytes: 总流量，单位MB
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUsedFlowMegaBytes: float
-        :param BeginTime: 统计开始时间
+        :param _BeginTime: 统计开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         """
-        self.TotalUsedFlowMegaBytes = None
-        self.BeginTime = None
+        self._TotalUsedFlowMegaBytes = None
+        self._BeginTime = None
+
+    @property
+    def TotalUsedFlowMegaBytes(self):
+        return self._TotalUsedFlowMegaBytes
+
+    @TotalUsedFlowMegaBytes.setter
+    def TotalUsedFlowMegaBytes(self, TotalUsedFlowMegaBytes):
+        self._TotalUsedFlowMegaBytes = TotalUsedFlowMegaBytes
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
 
 
     def _deserialize(self, params):
-        self.TotalUsedFlowMegaBytes = params.get("TotalUsedFlowMegaBytes")
-        self.BeginTime = params.get("BeginTime")
+        self._TotalUsedFlowMegaBytes = params.get("TotalUsedFlowMegaBytes")
+        self._BeginTime = params.get("BeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3596,24 +6550,41 @@ class FleetStatisticTimes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BeginTime: 统计开始时间
+        :param _BeginTime: 统计开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
-        :param TotalUsedTimeSeconds: 统计总时长，单位秒
+        :param _TotalUsedTimeSeconds: 统计总时长，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUsedTimeSeconds: str
         """
-        self.BeginTime = None
-        self.TotalUsedTimeSeconds = None
+        self._BeginTime = None
+        self._TotalUsedTimeSeconds = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def TotalUsedTimeSeconds(self):
+        return self._TotalUsedTimeSeconds
+
+    @TotalUsedTimeSeconds.setter
+    def TotalUsedTimeSeconds(self, TotalUsedTimeSeconds):
+        self._TotalUsedTimeSeconds = TotalUsedTimeSeconds
 
 
     def _deserialize(self, params):
-        self.BeginTime = params.get("BeginTime")
-        self.TotalUsedTimeSeconds = params.get("TotalUsedTimeSeconds")
+        self._BeginTime = params.get("BeginTime")
+        self._TotalUsedTimeSeconds = params.get("TotalUsedTimeSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3626,39 +6597,80 @@ class FleetUtilization(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActiveGameServerSessionCount: 游戏会话数
+        :param _ActiveGameServerSessionCount: 游戏会话数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveGameServerSessionCount: int
-        :param ActiveServerProcessCount: 活跃进程数
+        :param _ActiveServerProcessCount: 活跃进程数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveServerProcessCount: int
-        :param CurrentPlayerSessionCount: 当前游戏玩家数
+        :param _CurrentPlayerSessionCount: 当前游戏玩家数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentPlayerSessionCount: int
-        :param FleetId: 服务部署 Id
+        :param _FleetId: 服务部署 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param MaximumPlayerSessionCount: 最大玩家会话数
+        :param _MaximumPlayerSessionCount: 最大玩家会话数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaximumPlayerSessionCount: int
         """
-        self.ActiveGameServerSessionCount = None
-        self.ActiveServerProcessCount = None
-        self.CurrentPlayerSessionCount = None
-        self.FleetId = None
-        self.MaximumPlayerSessionCount = None
+        self._ActiveGameServerSessionCount = None
+        self._ActiveServerProcessCount = None
+        self._CurrentPlayerSessionCount = None
+        self._FleetId = None
+        self._MaximumPlayerSessionCount = None
+
+    @property
+    def ActiveGameServerSessionCount(self):
+        return self._ActiveGameServerSessionCount
+
+    @ActiveGameServerSessionCount.setter
+    def ActiveGameServerSessionCount(self, ActiveGameServerSessionCount):
+        self._ActiveGameServerSessionCount = ActiveGameServerSessionCount
+
+    @property
+    def ActiveServerProcessCount(self):
+        return self._ActiveServerProcessCount
+
+    @ActiveServerProcessCount.setter
+    def ActiveServerProcessCount(self, ActiveServerProcessCount):
+        self._ActiveServerProcessCount = ActiveServerProcessCount
+
+    @property
+    def CurrentPlayerSessionCount(self):
+        return self._CurrentPlayerSessionCount
+
+    @CurrentPlayerSessionCount.setter
+    def CurrentPlayerSessionCount(self, CurrentPlayerSessionCount):
+        self._CurrentPlayerSessionCount = CurrentPlayerSessionCount
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def MaximumPlayerSessionCount(self):
+        return self._MaximumPlayerSessionCount
+
+    @MaximumPlayerSessionCount.setter
+    def MaximumPlayerSessionCount(self, MaximumPlayerSessionCount):
+        self._MaximumPlayerSessionCount = MaximumPlayerSessionCount
 
 
     def _deserialize(self, params):
-        self.ActiveGameServerSessionCount = params.get("ActiveGameServerSessionCount")
-        self.ActiveServerProcessCount = params.get("ActiveServerProcessCount")
-        self.CurrentPlayerSessionCount = params.get("CurrentPlayerSessionCount")
-        self.FleetId = params.get("FleetId")
-        self.MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
+        self._ActiveGameServerSessionCount = params.get("ActiveGameServerSessionCount")
+        self._ActiveServerProcessCount = params.get("ActiveServerProcessCount")
+        self._CurrentPlayerSessionCount = params.get("CurrentPlayerSessionCount")
+        self._FleetId = params.get("FleetId")
+        self._MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3671,22 +6683,39 @@ class GameProperty(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 属性名称，最大长度不超过32个ASCII字符
+        :param _Key: 属性名称，最大长度不超过32个ASCII字符
         :type Key: str
-        :param Value: 属性值，最大长度不超过96个ASCII字符
+        :param _Value: 属性值，最大长度不超过96个ASCII字符
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3699,121 +6728,298 @@ class GameServerSession(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreationTime: 游戏服务器会话创建时间
+        :param _CreationTime: 游戏服务器会话创建时间
         :type CreationTime: str
-        :param CreatorId: 创建者ID，最大长度不超过1024个ASCII字符
+        :param _CreatorId: 创建者ID，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorId: str
-        :param CurrentPlayerSessionCount: 当前玩家数量，最小值不小于0
+        :param _CurrentPlayerSessionCount: 当前玩家数量，最小值不小于0
         :type CurrentPlayerSessionCount: int
-        :param DnsName: CVM的DNS标识符
+        :param _DnsName: CVM的DNS标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type DnsName: str
-        :param FleetId: 舰队ID
+        :param _FleetId: 舰队ID
         :type FleetId: str
-        :param GameProperties: 游戏属性，最大长度不超过16组
+        :param _GameProperties: 游戏属性，最大长度不超过16组
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameProperties: list of GameProperty
-        :param GameServerSessionData: 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
+        :param _GameServerSessionData: 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionData: str
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
         :type GameServerSessionId: str
-        :param IpAddress: CVM IP地址
+        :param _IpAddress: CVM IP地址
         :type IpAddress: str
-        :param MatchmakerData: 对战进程详情，最大长度不超过400000个ASCII字符
+        :param _MatchmakerData: 对战进程详情，最大长度不超过400000个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchmakerData: str
-        :param MaximumPlayerSessionCount: 最大玩家数量，最小值不小于0
+        :param _MaximumPlayerSessionCount: 最大玩家数量，最小值不小于0
         :type MaximumPlayerSessionCount: int
-        :param Name: 游戏服务器会话名称，最大长度不超过1024个ASCII字符
+        :param _Name: 游戏服务器会话名称，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param PlayerSessionCreationPolicy: 玩家会话创建策略（ACCEPT_ALL,DENY_ALL）
+        :param _PlayerSessionCreationPolicy: 玩家会话创建策略（ACCEPT_ALL,DENY_ALL）
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerSessionCreationPolicy: str
-        :param Port: 端口号，最小值不小于1，最大值不超过60000
+        :param _Port: 端口号，最小值不小于1，最大值不超过60000
         :type Port: int
-        :param Status: 游戏服务器会话状态（ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR）
+        :param _Status: 游戏服务器会话状态（ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR）
         :type Status: str
-        :param StatusReason: 游戏服务器会话状态附加信息
+        :param _StatusReason: 游戏服务器会话状态附加信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusReason: str
-        :param TerminationTime: 终止的时间
+        :param _TerminationTime: 终止的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerminationTime: str
-        :param InstanceType: 实例类型，最大长度不超过128个ASCII字符
+        :param _InstanceType: 实例类型，最大长度不超过128个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param CurrentCustomCount: 当前自定义数
+        :param _CurrentCustomCount: 当前自定义数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentCustomCount: int
-        :param MaxCustomCount: 最大自定义数
+        :param _MaxCustomCount: 最大自定义数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxCustomCount: int
-        :param Weight: 权重
+        :param _Weight: 权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param AvailabilityStatus: 会话可用性状态，是否被屏蔽（Enable,Disable）
+        :param _AvailabilityStatus: 会话可用性状态，是否被屏蔽（Enable,Disable）
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailabilityStatus: str
         """
-        self.CreationTime = None
-        self.CreatorId = None
-        self.CurrentPlayerSessionCount = None
-        self.DnsName = None
-        self.FleetId = None
-        self.GameProperties = None
-        self.GameServerSessionData = None
-        self.GameServerSessionId = None
-        self.IpAddress = None
-        self.MatchmakerData = None
-        self.MaximumPlayerSessionCount = None
-        self.Name = None
-        self.PlayerSessionCreationPolicy = None
-        self.Port = None
-        self.Status = None
-        self.StatusReason = None
-        self.TerminationTime = None
-        self.InstanceType = None
-        self.CurrentCustomCount = None
-        self.MaxCustomCount = None
-        self.Weight = None
-        self.AvailabilityStatus = None
+        self._CreationTime = None
+        self._CreatorId = None
+        self._CurrentPlayerSessionCount = None
+        self._DnsName = None
+        self._FleetId = None
+        self._GameProperties = None
+        self._GameServerSessionData = None
+        self._GameServerSessionId = None
+        self._IpAddress = None
+        self._MatchmakerData = None
+        self._MaximumPlayerSessionCount = None
+        self._Name = None
+        self._PlayerSessionCreationPolicy = None
+        self._Port = None
+        self._Status = None
+        self._StatusReason = None
+        self._TerminationTime = None
+        self._InstanceType = None
+        self._CurrentCustomCount = None
+        self._MaxCustomCount = None
+        self._Weight = None
+        self._AvailabilityStatus = None
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def CreatorId(self):
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
+
+    @property
+    def CurrentPlayerSessionCount(self):
+        return self._CurrentPlayerSessionCount
+
+    @CurrentPlayerSessionCount.setter
+    def CurrentPlayerSessionCount(self, CurrentPlayerSessionCount):
+        self._CurrentPlayerSessionCount = CurrentPlayerSessionCount
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def GameProperties(self):
+        return self._GameProperties
+
+    @GameProperties.setter
+    def GameProperties(self, GameProperties):
+        self._GameProperties = GameProperties
+
+    @property
+    def GameServerSessionData(self):
+        return self._GameServerSessionData
+
+    @GameServerSessionData.setter
+    def GameServerSessionData(self, GameServerSessionData):
+        self._GameServerSessionData = GameServerSessionData
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
+
+    @property
+    def MatchmakerData(self):
+        return self._MatchmakerData
+
+    @MatchmakerData.setter
+    def MatchmakerData(self, MatchmakerData):
+        self._MatchmakerData = MatchmakerData
+
+    @property
+    def MaximumPlayerSessionCount(self):
+        return self._MaximumPlayerSessionCount
+
+    @MaximumPlayerSessionCount.setter
+    def MaximumPlayerSessionCount(self, MaximumPlayerSessionCount):
+        self._MaximumPlayerSessionCount = MaximumPlayerSessionCount
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PlayerSessionCreationPolicy(self):
+        return self._PlayerSessionCreationPolicy
+
+    @PlayerSessionCreationPolicy.setter
+    def PlayerSessionCreationPolicy(self, PlayerSessionCreationPolicy):
+        self._PlayerSessionCreationPolicy = PlayerSessionCreationPolicy
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusReason(self):
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+    @property
+    def TerminationTime(self):
+        return self._TerminationTime
+
+    @TerminationTime.setter
+    def TerminationTime(self, TerminationTime):
+        self._TerminationTime = TerminationTime
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def CurrentCustomCount(self):
+        return self._CurrentCustomCount
+
+    @CurrentCustomCount.setter
+    def CurrentCustomCount(self, CurrentCustomCount):
+        self._CurrentCustomCount = CurrentCustomCount
+
+    @property
+    def MaxCustomCount(self):
+        return self._MaxCustomCount
+
+    @MaxCustomCount.setter
+    def MaxCustomCount(self, MaxCustomCount):
+        self._MaxCustomCount = MaxCustomCount
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def AvailabilityStatus(self):
+        return self._AvailabilityStatus
+
+    @AvailabilityStatus.setter
+    def AvailabilityStatus(self, AvailabilityStatus):
+        self._AvailabilityStatus = AvailabilityStatus
 
 
     def _deserialize(self, params):
-        self.CreationTime = params.get("CreationTime")
-        self.CreatorId = params.get("CreatorId")
-        self.CurrentPlayerSessionCount = params.get("CurrentPlayerSessionCount")
-        self.DnsName = params.get("DnsName")
-        self.FleetId = params.get("FleetId")
+        self._CreationTime = params.get("CreationTime")
+        self._CreatorId = params.get("CreatorId")
+        self._CurrentPlayerSessionCount = params.get("CurrentPlayerSessionCount")
+        self._DnsName = params.get("DnsName")
+        self._FleetId = params.get("FleetId")
         if params.get("GameProperties") is not None:
-            self.GameProperties = []
+            self._GameProperties = []
             for item in params.get("GameProperties"):
                 obj = GameProperty()
                 obj._deserialize(item)
-                self.GameProperties.append(obj)
-        self.GameServerSessionData = params.get("GameServerSessionData")
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.IpAddress = params.get("IpAddress")
-        self.MatchmakerData = params.get("MatchmakerData")
-        self.MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
-        self.Name = params.get("Name")
-        self.PlayerSessionCreationPolicy = params.get("PlayerSessionCreationPolicy")
-        self.Port = params.get("Port")
-        self.Status = params.get("Status")
-        self.StatusReason = params.get("StatusReason")
-        self.TerminationTime = params.get("TerminationTime")
-        self.InstanceType = params.get("InstanceType")
-        self.CurrentCustomCount = params.get("CurrentCustomCount")
-        self.MaxCustomCount = params.get("MaxCustomCount")
-        self.Weight = params.get("Weight")
-        self.AvailabilityStatus = params.get("AvailabilityStatus")
+                self._GameProperties.append(obj)
+        self._GameServerSessionData = params.get("GameServerSessionData")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._IpAddress = params.get("IpAddress")
+        self._MatchmakerData = params.get("MatchmakerData")
+        self._MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
+        self._Name = params.get("Name")
+        self._PlayerSessionCreationPolicy = params.get("PlayerSessionCreationPolicy")
+        self._Port = params.get("Port")
+        self._Status = params.get("Status")
+        self._StatusReason = params.get("StatusReason")
+        self._TerminationTime = params.get("TerminationTime")
+        self._InstanceType = params.get("InstanceType")
+        self._CurrentCustomCount = params.get("CurrentCustomCount")
+        self._MaxCustomCount = params.get("MaxCustomCount")
+        self._Weight = params.get("Weight")
+        self._AvailabilityStatus = params.get("AvailabilityStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3826,25 +7032,42 @@ class GameServerSessionDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSession: 游戏服务器会话
+        :param _GameServerSession: 游戏服务器会话
         :type GameServerSession: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
-        :param ProtectionPolicy: 保护策略，可选（NoProtection,FullProtection）
+        :param _ProtectionPolicy: 保护策略，可选（NoProtection,FullProtection）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtectionPolicy: str
         """
-        self.GameServerSession = None
-        self.ProtectionPolicy = None
+        self._GameServerSession = None
+        self._ProtectionPolicy = None
+
+    @property
+    def GameServerSession(self):
+        return self._GameServerSession
+
+    @GameServerSession.setter
+    def GameServerSession(self, GameServerSession):
+        self._GameServerSession = GameServerSession
+
+    @property
+    def ProtectionPolicy(self):
+        return self._ProtectionPolicy
+
+    @ProtectionPolicy.setter
+    def ProtectionPolicy(self, ProtectionPolicy):
+        self._ProtectionPolicy = ProtectionPolicy
 
 
     def _deserialize(self, params):
         if params.get("GameServerSession") is not None:
-            self.GameServerSession = GameServerSession()
-            self.GameServerSession._deserialize(params.get("GameServerSession"))
-        self.ProtectionPolicy = params.get("ProtectionPolicy")
+            self._GameServerSession = GameServerSession()
+            self._GameServerSession._deserialize(params.get("GameServerSession"))
+        self._ProtectionPolicy = params.get("ProtectionPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3857,109 +7080,246 @@ class GameServerSessionPlacement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlacementId: 部署Id
+        :param _PlacementId: 部署Id
         :type PlacementId: str
-        :param GameServerSessionQueueName: 服务部署组名称
+        :param _GameServerSessionQueueName: 服务部署组名称
         :type GameServerSessionQueueName: str
-        :param PlayerLatencies: 玩家延迟
+        :param _PlayerLatencies: 玩家延迟
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerLatencies: list of PlayerLatency
-        :param Status: 服务部署状态
+        :param _Status: 服务部署状态
         :type Status: str
-        :param DnsName: 分配给正在运行游戏会话的实例的DNS标识符
+        :param _DnsName: 分配给正在运行游戏会话的实例的DNS标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type DnsName: str
-        :param GameServerSessionId: 游戏会话Id
+        :param _GameServerSessionId: 游戏会话Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionId: str
-        :param GameServerSessionName: 游戏会话名称
+        :param _GameServerSessionName: 游戏会话名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionName: str
-        :param GameServerSessionRegion: 服务部署区域
+        :param _GameServerSessionRegion: 服务部署区域
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionRegion: str
-        :param GameProperties: 游戏属性
+        :param _GameProperties: 游戏属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameProperties: list of GameProperty
-        :param MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
+        :param _MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
         :type MaximumPlayerSessionCount: int
-        :param GameServerSessionData: 游戏会话数据
+        :param _GameServerSessionData: 游戏会话数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessionData: str
-        :param IpAddress: 运行游戏会话的实例的IP地址
+        :param _IpAddress: 运行游戏会话的实例的IP地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpAddress: str
-        :param Port: 运行游戏会话的实例的端口号
+        :param _Port: 运行游戏会话的实例的端口号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param MatchmakerData: 游戏匹配数据
+        :param _MatchmakerData: 游戏匹配数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchmakerData: str
-        :param PlacedPlayerSessions: 部署的玩家游戏数据
+        :param _PlacedPlayerSessions: 部署的玩家游戏数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlacedPlayerSessions: list of PlacedPlayerSession
-        :param StartTime: 开始时间
+        :param _StartTime: 开始时间
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param _EndTime: 结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
-        self.PlacementId = None
-        self.GameServerSessionQueueName = None
-        self.PlayerLatencies = None
-        self.Status = None
-        self.DnsName = None
-        self.GameServerSessionId = None
-        self.GameServerSessionName = None
-        self.GameServerSessionRegion = None
-        self.GameProperties = None
-        self.MaximumPlayerSessionCount = None
-        self.GameServerSessionData = None
-        self.IpAddress = None
-        self.Port = None
-        self.MatchmakerData = None
-        self.PlacedPlayerSessions = None
-        self.StartTime = None
-        self.EndTime = None
+        self._PlacementId = None
+        self._GameServerSessionQueueName = None
+        self._PlayerLatencies = None
+        self._Status = None
+        self._DnsName = None
+        self._GameServerSessionId = None
+        self._GameServerSessionName = None
+        self._GameServerSessionRegion = None
+        self._GameProperties = None
+        self._MaximumPlayerSessionCount = None
+        self._GameServerSessionData = None
+        self._IpAddress = None
+        self._Port = None
+        self._MatchmakerData = None
+        self._PlacedPlayerSessions = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def PlacementId(self):
+        return self._PlacementId
+
+    @PlacementId.setter
+    def PlacementId(self, PlacementId):
+        self._PlacementId = PlacementId
+
+    @property
+    def GameServerSessionQueueName(self):
+        return self._GameServerSessionQueueName
+
+    @GameServerSessionQueueName.setter
+    def GameServerSessionQueueName(self, GameServerSessionQueueName):
+        self._GameServerSessionQueueName = GameServerSessionQueueName
+
+    @property
+    def PlayerLatencies(self):
+        return self._PlayerLatencies
+
+    @PlayerLatencies.setter
+    def PlayerLatencies(self, PlayerLatencies):
+        self._PlayerLatencies = PlayerLatencies
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def GameServerSessionName(self):
+        return self._GameServerSessionName
+
+    @GameServerSessionName.setter
+    def GameServerSessionName(self, GameServerSessionName):
+        self._GameServerSessionName = GameServerSessionName
+
+    @property
+    def GameServerSessionRegion(self):
+        return self._GameServerSessionRegion
+
+    @GameServerSessionRegion.setter
+    def GameServerSessionRegion(self, GameServerSessionRegion):
+        self._GameServerSessionRegion = GameServerSessionRegion
+
+    @property
+    def GameProperties(self):
+        return self._GameProperties
+
+    @GameProperties.setter
+    def GameProperties(self, GameProperties):
+        self._GameProperties = GameProperties
+
+    @property
+    def MaximumPlayerSessionCount(self):
+        return self._MaximumPlayerSessionCount
+
+    @MaximumPlayerSessionCount.setter
+    def MaximumPlayerSessionCount(self, MaximumPlayerSessionCount):
+        self._MaximumPlayerSessionCount = MaximumPlayerSessionCount
+
+    @property
+    def GameServerSessionData(self):
+        return self._GameServerSessionData
+
+    @GameServerSessionData.setter
+    def GameServerSessionData(self, GameServerSessionData):
+        self._GameServerSessionData = GameServerSessionData
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def MatchmakerData(self):
+        return self._MatchmakerData
+
+    @MatchmakerData.setter
+    def MatchmakerData(self, MatchmakerData):
+        self._MatchmakerData = MatchmakerData
+
+    @property
+    def PlacedPlayerSessions(self):
+        return self._PlacedPlayerSessions
+
+    @PlacedPlayerSessions.setter
+    def PlacedPlayerSessions(self, PlacedPlayerSessions):
+        self._PlacedPlayerSessions = PlacedPlayerSessions
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.PlacementId = params.get("PlacementId")
-        self.GameServerSessionQueueName = params.get("GameServerSessionQueueName")
+        self._PlacementId = params.get("PlacementId")
+        self._GameServerSessionQueueName = params.get("GameServerSessionQueueName")
         if params.get("PlayerLatencies") is not None:
-            self.PlayerLatencies = []
+            self._PlayerLatencies = []
             for item in params.get("PlayerLatencies"):
                 obj = PlayerLatency()
                 obj._deserialize(item)
-                self.PlayerLatencies.append(obj)
-        self.Status = params.get("Status")
-        self.DnsName = params.get("DnsName")
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.GameServerSessionName = params.get("GameServerSessionName")
-        self.GameServerSessionRegion = params.get("GameServerSessionRegion")
+                self._PlayerLatencies.append(obj)
+        self._Status = params.get("Status")
+        self._DnsName = params.get("DnsName")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._GameServerSessionName = params.get("GameServerSessionName")
+        self._GameServerSessionRegion = params.get("GameServerSessionRegion")
         if params.get("GameProperties") is not None:
-            self.GameProperties = []
+            self._GameProperties = []
             for item in params.get("GameProperties"):
                 obj = GameProperty()
                 obj._deserialize(item)
-                self.GameProperties.append(obj)
-        self.MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
-        self.GameServerSessionData = params.get("GameServerSessionData")
-        self.IpAddress = params.get("IpAddress")
-        self.Port = params.get("Port")
-        self.MatchmakerData = params.get("MatchmakerData")
+                self._GameProperties.append(obj)
+        self._MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
+        self._GameServerSessionData = params.get("GameServerSessionData")
+        self._IpAddress = params.get("IpAddress")
+        self._Port = params.get("Port")
+        self._MatchmakerData = params.get("MatchmakerData")
         if params.get("PlacedPlayerSessions") is not None:
-            self.PlacedPlayerSessions = []
+            self._PlacedPlayerSessions = []
             for item in params.get("PlacedPlayerSessions"):
                 obj = PlacedPlayerSession()
                 obj._deserialize(item)
-                self.PlacedPlayerSessions.append(obj)
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+                self._PlacedPlayerSessions.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3972,56 +7332,105 @@ class GameServerSessionQueue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 服务部署组名字
+        :param _Name: 服务部署组名字
         :type Name: str
-        :param GameServerSessionQueueArn: 服务部署组资源
+        :param _GameServerSessionQueueArn: 服务部署组资源
         :type GameServerSessionQueueArn: str
-        :param Destinations: 目的fleet（可为别名）列表
+        :param _Destinations: 目的fleet（可为别名）列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Destinations: list of GameServerSessionQueueDestination
-        :param PlayerLatencyPolicies: 延迟策略集合
+        :param _PlayerLatencyPolicies: 延迟策略集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
-        :param TimeoutInSeconds: 超时时间
+        :param _TimeoutInSeconds: 超时时间
         :type TimeoutInSeconds: int
-        :param Tags: 标签列表，最大长度50组
+        :param _Tags: 标签列表，最大长度50组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
-        self.Name = None
-        self.GameServerSessionQueueArn = None
-        self.Destinations = None
-        self.PlayerLatencyPolicies = None
-        self.TimeoutInSeconds = None
-        self.Tags = None
+        self._Name = None
+        self._GameServerSessionQueueArn = None
+        self._Destinations = None
+        self._PlayerLatencyPolicies = None
+        self._TimeoutInSeconds = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def GameServerSessionQueueArn(self):
+        return self._GameServerSessionQueueArn
+
+    @GameServerSessionQueueArn.setter
+    def GameServerSessionQueueArn(self, GameServerSessionQueueArn):
+        self._GameServerSessionQueueArn = GameServerSessionQueueArn
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def PlayerLatencyPolicies(self):
+        return self._PlayerLatencyPolicies
+
+    @PlayerLatencyPolicies.setter
+    def PlayerLatencyPolicies(self, PlayerLatencyPolicies):
+        self._PlayerLatencyPolicies = PlayerLatencyPolicies
+
+    @property
+    def TimeoutInSeconds(self):
+        return self._TimeoutInSeconds
+
+    @TimeoutInSeconds.setter
+    def TimeoutInSeconds(self, TimeoutInSeconds):
+        self._TimeoutInSeconds = TimeoutInSeconds
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.GameServerSessionQueueArn = params.get("GameServerSessionQueueArn")
+        self._Name = params.get("Name")
+        self._GameServerSessionQueueArn = params.get("GameServerSessionQueueArn")
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = GameServerSessionQueueDestination()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
+                self._Destinations.append(obj)
         if params.get("PlayerLatencyPolicies") is not None:
-            self.PlayerLatencyPolicies = []
+            self._PlayerLatencyPolicies = []
             for item in params.get("PlayerLatencyPolicies"):
                 obj = PlayerLatencyPolicy()
                 obj._deserialize(item)
-                self.PlayerLatencyPolicies.append(obj)
-        self.TimeoutInSeconds = params.get("TimeoutInSeconds")
+                self._PlayerLatencyPolicies.append(obj)
+        self._TimeoutInSeconds = params.get("TimeoutInSeconds")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4034,24 +7443,41 @@ class GameServerSessionQueueDestination(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DestinationArn: 服务部署组目的的资源描述
+        :param _DestinationArn: 服务部署组目的的资源描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationArn: str
-        :param FleetStatus: 服务部署组目的的状态
+        :param _FleetStatus: 服务部署组目的的状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetStatus: str
         """
-        self.DestinationArn = None
-        self.FleetStatus = None
+        self._DestinationArn = None
+        self._FleetStatus = None
+
+    @property
+    def DestinationArn(self):
+        return self._DestinationArn
+
+    @DestinationArn.setter
+    def DestinationArn(self, DestinationArn):
+        self._DestinationArn = DestinationArn
+
+    @property
+    def FleetStatus(self):
+        return self._FleetStatus
+
+    @FleetStatus.setter
+    def FleetStatus(self, FleetStatus):
+        self._FleetStatus = FleetStatus
 
 
     def _deserialize(self, params):
-        self.DestinationArn = params.get("DestinationArn")
-        self.FleetStatus = params.get("FleetStatus")
+        self._DestinationArn = params.get("DestinationArn")
+        self._FleetStatus = params.get("FleetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4064,34 +7490,75 @@ class GetGameServerInstanceLogUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 游戏舰队ID
+        :param _FleetId: 游戏舰队ID
         :type FleetId: str
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param ServerIp: 实例IP
+        :param _ServerIp: 实例IP
         :type ServerIp: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Size: 每次条数
+        :param _Size: 每次条数
         :type Size: int
         """
-        self.FleetId = None
-        self.InstanceId = None
-        self.ServerIp = None
-        self.Offset = None
-        self.Size = None
+        self._FleetId = None
+        self._InstanceId = None
+        self._ServerIp = None
+        self._Offset = None
+        self._Size = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServerIp(self):
+        return self._ServerIp
+
+    @ServerIp.setter
+    def ServerIp(self, ServerIp):
+        self._ServerIp = ServerIp
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
-        self.ServerIp = params.get("ServerIp")
-        self.Offset = params.get("Offset")
-        self.Size = params.get("Size")
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
+        self._ServerIp = params.get("ServerIp")
+        self._Offset = params.get("Offset")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4104,27 +7571,59 @@ class GetGameServerInstanceLogUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PresignedUrls: 日志下载URL的数组，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _PresignedUrls: 日志下载URL的数组，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type PresignedUrls: list of str
-        :param Total: 总条数
+        :param _Total: 总条数
         :type Total: int
-        :param HasNext: 是否还有没拉取完的
+        :param _HasNext: 是否还有没拉取完的
         :type HasNext: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PresignedUrls = None
-        self.Total = None
-        self.HasNext = None
-        self.RequestId = None
+        self._PresignedUrls = None
+        self._Total = None
+        self._HasNext = None
+        self._RequestId = None
+
+    @property
+    def PresignedUrls(self):
+        return self._PresignedUrls
+
+    @PresignedUrls.setter
+    def PresignedUrls(self, PresignedUrls):
+        self._PresignedUrls = PresignedUrls
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def HasNext(self):
+        return self._HasNext
+
+    @HasNext.setter
+    def HasNext(self, HasNext):
+        self._HasNext = HasNext
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PresignedUrls = params.get("PresignedUrls")
-        self.Total = params.get("Total")
-        self.HasNext = params.get("HasNext")
-        self.RequestId = params.get("RequestId")
+        self._PresignedUrls = params.get("PresignedUrls")
+        self._Total = params.get("Total")
+        self._HasNext = params.get("HasNext")
+        self._RequestId = params.get("RequestId")
 
 
 class GetGameServerSessionLogUrlRequest(AbstractModel):
@@ -4134,18 +7633,27 @@ class GetGameServerSessionLogUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度不小于1个ASCII字符，最大长度不超过48个ASCII字符
         :type GameServerSessionId: str
         """
-        self.GameServerSessionId = None
+        self._GameServerSessionId = None
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
 
 
     def _deserialize(self, params):
-        self.GameServerSessionId = params.get("GameServerSessionId")
+        self._GameServerSessionId = params.get("GameServerSessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4158,19 +7666,35 @@ class GetGameServerSessionLogUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PreSignedUrl: 日志下载URL，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _PreSignedUrl: 日志下载URL，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreSignedUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PreSignedUrl = None
-        self.RequestId = None
+        self._PreSignedUrl = None
+        self._RequestId = None
+
+    @property
+    def PreSignedUrl(self):
+        return self._PreSignedUrl
+
+    @PreSignedUrl.setter
+    def PreSignedUrl(self, PreSignedUrl):
+        self._PreSignedUrl = PreSignedUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PreSignedUrl = params.get("PreSignedUrl")
-        self.RequestId = params.get("RequestId")
+        self._PreSignedUrl = params.get("PreSignedUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class GetInstanceAccessRequest(AbstractModel):
@@ -4180,22 +7704,39 @@ class GetInstanceAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param InstanceId: 实例Id
+        :param _InstanceId: 实例Id
         :type InstanceId: str
         """
-        self.FleetId = None
-        self.InstanceId = None
+        self._FleetId = None
+        self._InstanceId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4208,20 +7749,36 @@ class GetInstanceAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceAccess: 实例登录所需要的凭据
+        :param _InstanceAccess: 实例登录所需要的凭据
         :type InstanceAccess: :class:`tencentcloud.gse.v20191112.models.InstanceAccess`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstanceAccess = None
-        self.RequestId = None
+        self._InstanceAccess = None
+        self._RequestId = None
+
+    @property
+    def InstanceAccess(self):
+        return self._InstanceAccess
+
+    @InstanceAccess.setter
+    def InstanceAccess(self, InstanceAccess):
+        self._InstanceAccess = InstanceAccess
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstanceAccess") is not None:
-            self.InstanceAccess = InstanceAccess()
-            self.InstanceAccess._deserialize(params.get("InstanceAccess"))
-        self.RequestId = params.get("RequestId")
+            self._InstanceAccess = InstanceAccess()
+            self._InstanceAccess._deserialize(params.get("InstanceAccess"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetUploadCredentialsRequest(AbstractModel):
@@ -4231,22 +7788,39 @@ class GetUploadCredentialsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :param _AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
         :type AssetRegion: str
-        :param BucketKey: 生成包的ZIP包名，例如：server.zip
+        :param _BucketKey: 生成包的ZIP包名，例如：server.zip
         :type BucketKey: str
         """
-        self.AssetRegion = None
-        self.BucketKey = None
+        self._AssetRegion = None
+        self._BucketKey = None
+
+    @property
+    def AssetRegion(self):
+        return self._AssetRegion
+
+    @AssetRegion.setter
+    def AssetRegion(self, AssetRegion):
+        self._AssetRegion = AssetRegion
+
+    @property
+    def BucketKey(self):
+        return self._BucketKey
+
+    @BucketKey.setter
+    def BucketKey(self, BucketKey):
+        self._BucketKey = BucketKey
 
 
     def _deserialize(self, params):
-        self.AssetRegion = params.get("AssetRegion")
-        self.BucketKey = params.get("BucketKey")
+        self._AssetRegion = params.get("AssetRegion")
+        self._BucketKey = params.get("BucketKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4259,26 +7833,58 @@ class GetUploadCredentialsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BucketAuth: 上传文件授权信息Auth
+        :param _BucketAuth: 上传文件授权信息Auth
         :type BucketAuth: str
-        :param BucketName: Bucket名字
+        :param _BucketName: Bucket名字
         :type BucketName: str
-        :param AssetRegion: 生成包所在地域
+        :param _AssetRegion: 生成包所在地域
         :type AssetRegion: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BucketAuth = None
-        self.BucketName = None
-        self.AssetRegion = None
-        self.RequestId = None
+        self._BucketAuth = None
+        self._BucketName = None
+        self._AssetRegion = None
+        self._RequestId = None
+
+    @property
+    def BucketAuth(self):
+        return self._BucketAuth
+
+    @BucketAuth.setter
+    def BucketAuth(self, BucketAuth):
+        self._BucketAuth = BucketAuth
+
+    @property
+    def BucketName(self):
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def AssetRegion(self):
+        return self._AssetRegion
+
+    @AssetRegion.setter
+    def AssetRegion(self, AssetRegion):
+        self._AssetRegion = AssetRegion
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BucketAuth = params.get("BucketAuth")
-        self.BucketName = params.get("BucketName")
-        self.AssetRegion = params.get("AssetRegion")
-        self.RequestId = params.get("RequestId")
+        self._BucketAuth = params.get("BucketAuth")
+        self._BucketName = params.get("BucketName")
+        self._AssetRegion = params.get("AssetRegion")
+        self._RequestId = params.get("RequestId")
 
 
 class GetUploadFederationTokenRequest(AbstractModel):
@@ -4294,24 +7900,48 @@ class GetUploadFederationTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExpiredTime: 临时证书的过期时间，Unix 时间戳，精确到秒
+        :param _ExpiredTime: 临时证书的过期时间，Unix 时间戳，精确到秒
         :type ExpiredTime: int
-        :param AssetCredentials: 临时证书
+        :param _AssetCredentials: 临时证书
         :type AssetCredentials: :class:`tencentcloud.gse.v20191112.models.AssetCredentials`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ExpiredTime = None
-        self.AssetCredentials = None
-        self.RequestId = None
+        self._ExpiredTime = None
+        self._AssetCredentials = None
+        self._RequestId = None
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def AssetCredentials(self):
+        return self._AssetCredentials
+
+    @AssetCredentials.setter
+    def AssetCredentials(self, AssetCredentials):
+        self._AssetCredentials = AssetCredentials
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ExpiredTime = params.get("ExpiredTime")
+        self._ExpiredTime = params.get("ExpiredTime")
         if params.get("AssetCredentials") is not None:
-            self.AssetCredentials = AssetCredentials()
-            self.AssetCredentials._deserialize(params.get("AssetCredentials"))
-        self.RequestId = params.get("RequestId")
+            self._AssetCredentials = AssetCredentials()
+            self._AssetCredentials._deserialize(params.get("AssetCredentials"))
+        self._RequestId = params.get("RequestId")
 
 
 class InboundPermission(AbstractModel):
@@ -4321,30 +7951,63 @@ class InboundPermission(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromPort: 起始端口号，最小值1025
+        :param _FromPort: 起始端口号，最小值1025
         :type FromPort: int
-        :param IpRange: IP 段范围，合法的 CIDR 地址类型，如所有IPv4来源：0.0.0.0/0
+        :param _IpRange: IP 段范围，合法的 CIDR 地址类型，如所有IPv4来源：0.0.0.0/0
         :type IpRange: str
-        :param Protocol: 协议类型：TCP或者UDP
+        :param _Protocol: 协议类型：TCP或者UDP
         :type Protocol: str
-        :param ToPort: 终止端口号，最大值60000
+        :param _ToPort: 终止端口号，最大值60000
         :type ToPort: int
         """
-        self.FromPort = None
-        self.IpRange = None
-        self.Protocol = None
-        self.ToPort = None
+        self._FromPort = None
+        self._IpRange = None
+        self._Protocol = None
+        self._ToPort = None
+
+    @property
+    def FromPort(self):
+        return self._FromPort
+
+    @FromPort.setter
+    def FromPort(self, FromPort):
+        self._FromPort = FromPort
+
+    @property
+    def IpRange(self):
+        return self._IpRange
+
+    @IpRange.setter
+    def IpRange(self, IpRange):
+        self._IpRange = IpRange
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ToPort(self):
+        return self._ToPort
+
+    @ToPort.setter
+    def ToPort(self, ToPort):
+        self._ToPort = ToPort
 
 
     def _deserialize(self, params):
-        self.FromPort = params.get("FromPort")
-        self.IpRange = params.get("IpRange")
-        self.Protocol = params.get("Protocol")
-        self.ToPort = params.get("ToPort")
+        self._FromPort = params.get("FromPort")
+        self._IpRange = params.get("IpRange")
+        self._Protocol = params.get("Protocol")
+        self._ToPort = params.get("ToPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4357,30 +8020,63 @@ class InboundPermissionAuthorization(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromPort: 起始端口号
+        :param _FromPort: 起始端口号
         :type FromPort: int
-        :param IpRange: IP 端范围，CIDR方式划分
+        :param _IpRange: IP 端范围，CIDR方式划分
         :type IpRange: str
-        :param Protocol: 协议类型
+        :param _Protocol: 协议类型
         :type Protocol: str
-        :param ToPort: 终止端口号
+        :param _ToPort: 终止端口号
         :type ToPort: int
         """
-        self.FromPort = None
-        self.IpRange = None
-        self.Protocol = None
-        self.ToPort = None
+        self._FromPort = None
+        self._IpRange = None
+        self._Protocol = None
+        self._ToPort = None
+
+    @property
+    def FromPort(self):
+        return self._FromPort
+
+    @FromPort.setter
+    def FromPort(self, FromPort):
+        self._FromPort = FromPort
+
+    @property
+    def IpRange(self):
+        return self._IpRange
+
+    @IpRange.setter
+    def IpRange(self, IpRange):
+        self._IpRange = IpRange
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ToPort(self):
+        return self._ToPort
+
+    @ToPort.setter
+    def ToPort(self, ToPort):
+        self._ToPort = ToPort
 
 
     def _deserialize(self, params):
-        self.FromPort = params.get("FromPort")
-        self.IpRange = params.get("IpRange")
-        self.Protocol = params.get("Protocol")
-        self.ToPort = params.get("ToPort")
+        self._FromPort = params.get("FromPort")
+        self._IpRange = params.get("IpRange")
+        self._Protocol = params.get("Protocol")
+        self._ToPort = params.get("ToPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4393,30 +8089,63 @@ class InboundPermissionRevocations(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromPort: 起始端口号
+        :param _FromPort: 起始端口号
         :type FromPort: int
-        :param IpRange: IP 端范围，CIDR 方式换分
+        :param _IpRange: IP 端范围，CIDR 方式换分
         :type IpRange: str
-        :param Protocol: 协议类型：UDP或者TCP
+        :param _Protocol: 协议类型：UDP或者TCP
         :type Protocol: str
-        :param ToPort: 终止端口号
+        :param _ToPort: 终止端口号
         :type ToPort: int
         """
-        self.FromPort = None
-        self.IpRange = None
-        self.Protocol = None
-        self.ToPort = None
+        self._FromPort = None
+        self._IpRange = None
+        self._Protocol = None
+        self._ToPort = None
+
+    @property
+    def FromPort(self):
+        return self._FromPort
+
+    @FromPort.setter
+    def FromPort(self, FromPort):
+        self._FromPort = FromPort
+
+    @property
+    def IpRange(self):
+        return self._IpRange
+
+    @IpRange.setter
+    def IpRange(self, IpRange):
+        self._IpRange = IpRange
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ToPort(self):
+        return self._ToPort
+
+    @ToPort.setter
+    def ToPort(self, ToPort):
+        self._ToPort = ToPort
 
 
     def _deserialize(self, params):
-        self.FromPort = params.get("FromPort")
-        self.IpRange = params.get("IpRange")
-        self.Protocol = params.get("Protocol")
-        self.ToPort = params.get("ToPort")
+        self._FromPort = params.get("FromPort")
+        self._IpRange = params.get("IpRange")
+        self._Protocol = params.get("Protocol")
+        self._ToPort = params.get("ToPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4429,69 +8158,158 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务部署ID
+        :param _FleetId: 服务部署ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param IpAddress: IP地址
+        :param _IpAddress: IP地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpAddress: str
-        :param DnsName: dns
+        :param _DnsName: dns
 注意：此字段可能返回 null，表示取不到有效值。
         :type DnsName: str
-        :param OperatingSystem: 操作系统
+        :param _OperatingSystem: 操作系统
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatingSystem: str
-        :param Status: 状态
+        :param _Status: 状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Type: 类型
+        :param _Type: 类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Weight: 实例权重
+        :param _Weight: 实例权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param ReserveValue: 实例是否保留, 1-保留，0-不保留,默认
+        :param _ReserveValue: 实例是否保留, 1-保留，0-不保留,默认
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReserveValue: int
-        :param PrivateIpAddress: 实例的私有IP地址
+        :param _PrivateIpAddress: 实例的私有IP地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddress: str
         """
-        self.FleetId = None
-        self.InstanceId = None
-        self.IpAddress = None
-        self.DnsName = None
-        self.OperatingSystem = None
-        self.Status = None
-        self.Type = None
-        self.CreateTime = None
-        self.Weight = None
-        self.ReserveValue = None
-        self.PrivateIpAddress = None
+        self._FleetId = None
+        self._InstanceId = None
+        self._IpAddress = None
+        self._DnsName = None
+        self._OperatingSystem = None
+        self._Status = None
+        self._Type = None
+        self._CreateTime = None
+        self._Weight = None
+        self._ReserveValue = None
+        self._PrivateIpAddress = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def OperatingSystem(self):
+        return self._OperatingSystem
+
+    @OperatingSystem.setter
+    def OperatingSystem(self, OperatingSystem):
+        self._OperatingSystem = OperatingSystem
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def ReserveValue(self):
+        return self._ReserveValue
+
+    @ReserveValue.setter
+    def ReserveValue(self, ReserveValue):
+        self._ReserveValue = ReserveValue
+
+    @property
+    def PrivateIpAddress(self):
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
-        self.IpAddress = params.get("IpAddress")
-        self.DnsName = params.get("DnsName")
-        self.OperatingSystem = params.get("OperatingSystem")
-        self.Status = params.get("Status")
-        self.Type = params.get("Type")
-        self.CreateTime = params.get("CreateTime")
-        self.Weight = params.get("Weight")
-        self.ReserveValue = params.get("ReserveValue")
-        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
+        self._IpAddress = params.get("IpAddress")
+        self._DnsName = params.get("DnsName")
+        self._OperatingSystem = params.get("OperatingSystem")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._CreateTime = params.get("CreateTime")
+        self._Weight = params.get("Weight")
+        self._ReserveValue = params.get("ReserveValue")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4504,36 +8322,77 @@ class InstanceAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Credentials: 访问实例所需要的凭据
+        :param _Credentials: 访问实例所需要的凭据
         :type Credentials: :class:`tencentcloud.gse.v20191112.models.Credentials`
-        :param FleetId: 服务部署Id
+        :param _FleetId: 服务部署Id
         :type FleetId: str
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param IpAddress: 实例公网IP
+        :param _IpAddress: 实例公网IP
         :type IpAddress: str
-        :param OperatingSystem: 操作系统
+        :param _OperatingSystem: 操作系统
         :type OperatingSystem: str
         """
-        self.Credentials = None
-        self.FleetId = None
-        self.InstanceId = None
-        self.IpAddress = None
-        self.OperatingSystem = None
+        self._Credentials = None
+        self._FleetId = None
+        self._InstanceId = None
+        self._IpAddress = None
+        self._OperatingSystem = None
+
+    @property
+    def Credentials(self):
+        return self._Credentials
+
+    @Credentials.setter
+    def Credentials(self, Credentials):
+        self._Credentials = Credentials
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
+
+    @property
+    def OperatingSystem(self):
+        return self._OperatingSystem
+
+    @OperatingSystem.setter
+    def OperatingSystem(self, OperatingSystem):
+        self._OperatingSystem = OperatingSystem
 
 
     def _deserialize(self, params):
         if params.get("Credentials") is not None:
-            self.Credentials = Credentials()
-            self.Credentials._deserialize(params.get("Credentials"))
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
-        self.IpAddress = params.get("IpAddress")
-        self.OperatingSystem = params.get("OperatingSystem")
+            self._Credentials = Credentials()
+            self._Credentials._deserialize(params.get("Credentials"))
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
+        self._IpAddress = params.get("IpAddress")
+        self._OperatingSystem = params.get("OperatingSystem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4546,49 +8405,106 @@ class InstanceCounts(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Active: 活跃的服务器实例数
+        :param _Active: 活跃的服务器实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Active: int
-        :param Desired: 期望的服务器实例数
+        :param _Desired: 期望的服务器实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Desired: int
-        :param Idle: 空闲的服务器实例数
+        :param _Idle: 空闲的服务器实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Idle: int
-        :param MaxiNum: 服务器实例数最大限制
+        :param _MaxiNum: 服务器实例数最大限制
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxiNum: int
-        :param MiniNum: 服务器实例数最小限制
+        :param _MiniNum: 服务器实例数最小限制
 注意：此字段可能返回 null，表示取不到有效值。
         :type MiniNum: int
-        :param Pending: 已开始创建，但未激活的服务器实例数
+        :param _Pending: 已开始创建，但未激活的服务器实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pending: int
-        :param Terminating: 结束中的服务器实例数
+        :param _Terminating: 结束中的服务器实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Terminating: int
         """
-        self.Active = None
-        self.Desired = None
-        self.Idle = None
-        self.MaxiNum = None
-        self.MiniNum = None
-        self.Pending = None
-        self.Terminating = None
+        self._Active = None
+        self._Desired = None
+        self._Idle = None
+        self._MaxiNum = None
+        self._MiniNum = None
+        self._Pending = None
+        self._Terminating = None
+
+    @property
+    def Active(self):
+        return self._Active
+
+    @Active.setter
+    def Active(self, Active):
+        self._Active = Active
+
+    @property
+    def Desired(self):
+        return self._Desired
+
+    @Desired.setter
+    def Desired(self, Desired):
+        self._Desired = Desired
+
+    @property
+    def Idle(self):
+        return self._Idle
+
+    @Idle.setter
+    def Idle(self, Idle):
+        self._Idle = Idle
+
+    @property
+    def MaxiNum(self):
+        return self._MaxiNum
+
+    @MaxiNum.setter
+    def MaxiNum(self, MaxiNum):
+        self._MaxiNum = MaxiNum
+
+    @property
+    def MiniNum(self):
+        return self._MiniNum
+
+    @MiniNum.setter
+    def MiniNum(self, MiniNum):
+        self._MiniNum = MiniNum
+
+    @property
+    def Pending(self):
+        return self._Pending
+
+    @Pending.setter
+    def Pending(self, Pending):
+        self._Pending = Pending
+
+    @property
+    def Terminating(self):
+        return self._Terminating
+
+    @Terminating.setter
+    def Terminating(self, Terminating):
+        self._Terminating = Terminating
 
 
     def _deserialize(self, params):
-        self.Active = params.get("Active")
-        self.Desired = params.get("Desired")
-        self.Idle = params.get("Idle")
-        self.MaxiNum = params.get("MaxiNum")
-        self.MiniNum = params.get("MiniNum")
-        self.Pending = params.get("Pending")
-        self.Terminating = params.get("Terminating")
+        self._Active = params.get("Active")
+        self._Desired = params.get("Desired")
+        self._Idle = params.get("Idle")
+        self._MaxiNum = params.get("MaxiNum")
+        self._MiniNum = params.get("MiniNum")
+        self._Pending = params.get("Pending")
+        self._Terminating = params.get("Terminating")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4601,56 +8517,121 @@ class InstanceExtend(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Instance: 实例信息
+        :param _Instance: 实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Instance: :class:`tencentcloud.gse.v20191112.models.Instance`
-        :param State: 实例状态
+        :param _State: 实例状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
-        :param HealthyProcessCnt: 健康进程数
+        :param _HealthyProcessCnt: 健康进程数
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthyProcessCnt: int
-        :param ActiveProcessCnt: 活跃进程数
+        :param _ActiveProcessCnt: 活跃进程数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveProcessCnt: int
-        :param GameSessionCnt: 当前游戏会话总数
+        :param _GameSessionCnt: 当前游戏会话总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameSessionCnt: int
-        :param MaxGameSessionCnt: 最大游戏会话数
+        :param _MaxGameSessionCnt: 最大游戏会话数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxGameSessionCnt: int
-        :param PlayerSessionCnt: 当前玩家会话数
+        :param _PlayerSessionCnt: 当前玩家会话数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerSessionCnt: int
-        :param MaxPlayerSessionCnt: 最大玩家会话数
+        :param _MaxPlayerSessionCnt: 最大玩家会话数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPlayerSessionCnt: int
         """
-        self.Instance = None
-        self.State = None
-        self.HealthyProcessCnt = None
-        self.ActiveProcessCnt = None
-        self.GameSessionCnt = None
-        self.MaxGameSessionCnt = None
-        self.PlayerSessionCnt = None
-        self.MaxPlayerSessionCnt = None
+        self._Instance = None
+        self._State = None
+        self._HealthyProcessCnt = None
+        self._ActiveProcessCnt = None
+        self._GameSessionCnt = None
+        self._MaxGameSessionCnt = None
+        self._PlayerSessionCnt = None
+        self._MaxPlayerSessionCnt = None
+
+    @property
+    def Instance(self):
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def HealthyProcessCnt(self):
+        return self._HealthyProcessCnt
+
+    @HealthyProcessCnt.setter
+    def HealthyProcessCnt(self, HealthyProcessCnt):
+        self._HealthyProcessCnt = HealthyProcessCnt
+
+    @property
+    def ActiveProcessCnt(self):
+        return self._ActiveProcessCnt
+
+    @ActiveProcessCnt.setter
+    def ActiveProcessCnt(self, ActiveProcessCnt):
+        self._ActiveProcessCnt = ActiveProcessCnt
+
+    @property
+    def GameSessionCnt(self):
+        return self._GameSessionCnt
+
+    @GameSessionCnt.setter
+    def GameSessionCnt(self, GameSessionCnt):
+        self._GameSessionCnt = GameSessionCnt
+
+    @property
+    def MaxGameSessionCnt(self):
+        return self._MaxGameSessionCnt
+
+    @MaxGameSessionCnt.setter
+    def MaxGameSessionCnt(self, MaxGameSessionCnt):
+        self._MaxGameSessionCnt = MaxGameSessionCnt
+
+    @property
+    def PlayerSessionCnt(self):
+        return self._PlayerSessionCnt
+
+    @PlayerSessionCnt.setter
+    def PlayerSessionCnt(self, PlayerSessionCnt):
+        self._PlayerSessionCnt = PlayerSessionCnt
+
+    @property
+    def MaxPlayerSessionCnt(self):
+        return self._MaxPlayerSessionCnt
+
+    @MaxPlayerSessionCnt.setter
+    def MaxPlayerSessionCnt(self, MaxPlayerSessionCnt):
+        self._MaxPlayerSessionCnt = MaxPlayerSessionCnt
 
 
     def _deserialize(self, params):
         if params.get("Instance") is not None:
-            self.Instance = Instance()
-            self.Instance._deserialize(params.get("Instance"))
-        self.State = params.get("State")
-        self.HealthyProcessCnt = params.get("HealthyProcessCnt")
-        self.ActiveProcessCnt = params.get("ActiveProcessCnt")
-        self.GameSessionCnt = params.get("GameSessionCnt")
-        self.MaxGameSessionCnt = params.get("MaxGameSessionCnt")
-        self.PlayerSessionCnt = params.get("PlayerSessionCnt")
-        self.MaxPlayerSessionCnt = params.get("MaxPlayerSessionCnt")
+            self._Instance = Instance()
+            self._Instance._deserialize(params.get("Instance"))
+        self._State = params.get("State")
+        self._HealthyProcessCnt = params.get("HealthyProcessCnt")
+        self._ActiveProcessCnt = params.get("ActiveProcessCnt")
+        self._GameSessionCnt = params.get("GameSessionCnt")
+        self._MaxGameSessionCnt = params.get("MaxGameSessionCnt")
+        self._PlayerSessionCnt = params.get("PlayerSessionCnt")
+        self._MaxPlayerSessionCnt = params.get("MaxPlayerSessionCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4663,34 +8644,75 @@ class InstanceTypeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TypeName: 类型名，例如“标准型SA1”
+        :param _TypeName: 类型名，例如“标准型SA1”
         :type TypeName: str
-        :param InstanceType: 类型，例如"SA1.SMALL1"
+        :param _InstanceType: 类型，例如"SA1.SMALL1"
         :type InstanceType: str
-        :param Cpu: CPU，例如1核就是1
+        :param _Cpu: CPU，例如1核就是1
         :type Cpu: int
-        :param Memory: 内存，例如2G就是2
+        :param _Memory: 内存，例如2G就是2
         :type Memory: int
-        :param NetworkCard: 网络收到包,例如25万PPS就是25
+        :param _NetworkCard: 网络收到包,例如25万PPS就是25
         :type NetworkCard: int
         """
-        self.TypeName = None
-        self.InstanceType = None
-        self.Cpu = None
-        self.Memory = None
-        self.NetworkCard = None
+        self._TypeName = None
+        self._InstanceType = None
+        self._Cpu = None
+        self._Memory = None
+        self._NetworkCard = None
+
+    @property
+    def TypeName(self):
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def NetworkCard(self):
+        return self._NetworkCard
+
+    @NetworkCard.setter
+    def NetworkCard(self, NetworkCard):
+        self._NetworkCard = NetworkCard
 
 
     def _deserialize(self, params):
-        self.TypeName = params.get("TypeName")
-        self.InstanceType = params.get("InstanceType")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.NetworkCard = params.get("NetworkCard")
+        self._TypeName = params.get("TypeName")
+        self._InstanceType = params.get("InstanceType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._NetworkCard = params.get("NetworkCard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4703,28 +8725,53 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
         :type GameServerSessionId: str
-        :param PlayerIds: 玩家ID列表，最小1组，最大25组
+        :param _PlayerIds: 玩家ID列表，最小1组，最大25组
         :type PlayerIds: list of str
-        :param PlayerDataMap: 玩家自定义数据
+        :param _PlayerDataMap: 玩家自定义数据
         :type PlayerDataMap: :class:`tencentcloud.gse.v20191112.models.PlayerDataMap`
         """
-        self.GameServerSessionId = None
-        self.PlayerIds = None
-        self.PlayerDataMap = None
+        self._GameServerSessionId = None
+        self._PlayerIds = None
+        self._PlayerDataMap = None
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def PlayerIds(self):
+        return self._PlayerIds
+
+    @PlayerIds.setter
+    def PlayerIds(self, PlayerIds):
+        self._PlayerIds = PlayerIds
+
+    @property
+    def PlayerDataMap(self):
+        return self._PlayerDataMap
+
+    @PlayerDataMap.setter
+    def PlayerDataMap(self, PlayerDataMap):
+        self._PlayerDataMap = PlayerDataMap
 
 
     def _deserialize(self, params):
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.PlayerIds = params.get("PlayerIds")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._PlayerIds = params.get("PlayerIds")
         if params.get("PlayerDataMap") is not None:
-            self.PlayerDataMap = PlayerDataMap()
-            self.PlayerDataMap._deserialize(params.get("PlayerDataMap"))
+            self._PlayerDataMap = PlayerDataMap()
+            self._PlayerDataMap._deserialize(params.get("PlayerDataMap"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4737,24 +8784,40 @@ class JoinGameServerSessionBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayerSessions: 玩家会话列表，最大25组
+        :param _PlayerSessions: 玩家会话列表，最大25组
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerSessions: list of PlayerSession
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PlayerSessions = None
-        self.RequestId = None
+        self._PlayerSessions = None
+        self._RequestId = None
+
+    @property
+    def PlayerSessions(self):
+        return self._PlayerSessions
+
+    @PlayerSessions.setter
+    def PlayerSessions(self, PlayerSessions):
+        self._PlayerSessions = PlayerSessions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PlayerSessions") is not None:
-            self.PlayerSessions = []
+            self._PlayerSessions = []
             for item in params.get("PlayerSessions"):
                 obj = PlayerSession()
                 obj._deserialize(item)
-                self.PlayerSessions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PlayerSessions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class JoinGameServerSessionRequest(AbstractModel):
@@ -4764,26 +8827,51 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
         :type GameServerSessionId: str
-        :param PlayerId: 玩家ID，最大长度1024个ASCII字符
+        :param _PlayerId: 玩家ID，最大长度1024个ASCII字符
         :type PlayerId: str
-        :param PlayerData: 玩家自定义数据，最大长度2048个ASCII字符
+        :param _PlayerData: 玩家自定义数据，最大长度2048个ASCII字符
         :type PlayerData: str
         """
-        self.GameServerSessionId = None
-        self.PlayerId = None
-        self.PlayerData = None
+        self._GameServerSessionId = None
+        self._PlayerId = None
+        self._PlayerData = None
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def PlayerId(self):
+        return self._PlayerId
+
+    @PlayerId.setter
+    def PlayerId(self, PlayerId):
+        self._PlayerId = PlayerId
+
+    @property
+    def PlayerData(self):
+        return self._PlayerData
+
+    @PlayerData.setter
+    def PlayerData(self, PlayerData):
+        self._PlayerData = PlayerData
 
 
     def _deserialize(self, params):
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.PlayerId = params.get("PlayerId")
-        self.PlayerData = params.get("PlayerData")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._PlayerId = params.get("PlayerId")
+        self._PlayerData = params.get("PlayerData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4796,21 +8884,37 @@ class JoinGameServerSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayerSession: 玩家会话
+        :param _PlayerSession: 玩家会话
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerSession: :class:`tencentcloud.gse.v20191112.models.PlayerSession`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PlayerSession = None
-        self.RequestId = None
+        self._PlayerSession = None
+        self._RequestId = None
+
+    @property
+    def PlayerSession(self):
+        return self._PlayerSession
+
+    @PlayerSession.setter
+    def PlayerSession(self, PlayerSession):
+        self._PlayerSession = PlayerSession
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PlayerSession") is not None:
-            self.PlayerSession = PlayerSession()
-            self.PlayerSession._deserialize(params.get("PlayerSession"))
-        self.RequestId = params.get("RequestId")
+            self._PlayerSession = PlayerSession()
+            self._PlayerSession._deserialize(params.get("PlayerSession"))
+        self._RequestId = params.get("RequestId")
 
 
 class ListAliasesRequest(AbstractModel):
@@ -4820,47 +8924,104 @@ class ListAliasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名字，长度不小于1字符不超过1024字符
+        :param _Name: 名字，长度不小于1字符不超过1024字符
         :type Name: str
-        :param RoutingStrategyType: 路由策略类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
+        :param _RoutingStrategyType: 路由策略类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
         :type RoutingStrategyType: str
-        :param Limit: 要返回的最大结果数，最小值1
+        :param _Limit: 要返回的最大结果数，最小值1
         :type Limit: int
-        :param Offset: 偏移，默认0
+        :param _Offset: 偏移，默认0
         :type Offset: int
-        :param OrderBy: 排序字段，例如CreationTime
+        :param _OrderBy: 排序字段，例如CreationTime
         :type OrderBy: str
-        :param OrderWay: 排序方式，有效值asc|desc
+        :param _OrderWay: 排序方式，有效值asc|desc
         :type OrderWay: str
-        :param Filters: 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（舰队当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :param _Filters: 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（舰队当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
         :type Filters: list of Filter
         """
-        self.Name = None
-        self.RoutingStrategyType = None
-        self.Limit = None
-        self.Offset = None
-        self.OrderBy = None
-        self.OrderWay = None
-        self.Filters = None
+        self._Name = None
+        self._RoutingStrategyType = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderWay = None
+        self._Filters = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RoutingStrategyType(self):
+        return self._RoutingStrategyType
+
+    @RoutingStrategyType.setter
+    def RoutingStrategyType(self, RoutingStrategyType):
+        self._RoutingStrategyType = RoutingStrategyType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderWay(self):
+        return self._OrderWay
+
+    @OrderWay.setter
+    def OrderWay(self, OrderWay):
+        self._OrderWay = OrderWay
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.RoutingStrategyType = params.get("RoutingStrategyType")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.OrderBy = params.get("OrderBy")
-        self.OrderWay = params.get("OrderWay")
+        self._Name = params.get("Name")
+        self._RoutingStrategyType = params.get("RoutingStrategyType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderWay = params.get("OrderWay")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4873,28 +9034,52 @@ class ListAliasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Aliases: 别名对象数组
+        :param _Aliases: 别名对象数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Aliases: list of Alias
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Aliases = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Aliases = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Aliases(self):
+        return self._Aliases
+
+    @Aliases.setter
+    def Aliases(self, Aliases):
+        self._Aliases = Aliases
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Aliases") is not None:
-            self.Aliases = []
+            self._Aliases = []
             for item in params.get("Aliases"):
                 obj = Alias()
                 obj._deserialize(item)
-                self.Aliases.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Aliases.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListFleetsRequest(AbstractModel):
@@ -4904,35 +9089,68 @@ class ListFleetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包 Id
+        :param _AssetId: 生成包 Id
         :type AssetId: str
-        :param Limit: 结果返回最大值，暂未使用
+        :param _Limit: 结果返回最大值，暂未使用
         :type Limit: int
-        :param Offset: 结果返回偏移，暂未使用
+        :param _Offset: 结果返回偏移，暂未使用
         :type Offset: int
-        :param Filters: 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :param _Filters: 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
         :type Filters: list of Filter
         """
-        self.AssetId = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._AssetId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._AssetId = params.get("AssetId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4945,23 +9163,47 @@ class ListFleetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetIds: 服务器舰队 Id 列表
+        :param _FleetIds: 服务器舰队 Id 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetIds: list of str
-        :param TotalCount: 服务器舰队 Id 总数，最小值0
+        :param _TotalCount: 服务器舰队 Id 总数，最小值0
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetIds = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FleetIds = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FleetIds(self):
+        return self._FleetIds
+
+    @FleetIds.setter
+    def FleetIds(self, FleetIds):
+        self._FleetIds = FleetIds
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FleetIds = params.get("FleetIds")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+        self._FleetIds = params.get("FleetIds")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class PlacedPlayerSession(AbstractModel):
@@ -4971,22 +9213,39 @@ class PlacedPlayerSession(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayerId: 玩家Id
+        :param _PlayerId: 玩家Id
         :type PlayerId: str
-        :param PlayerSessionId: 玩家会话Id
+        :param _PlayerSessionId: 玩家会话Id
         :type PlayerSessionId: str
         """
-        self.PlayerId = None
-        self.PlayerSessionId = None
+        self._PlayerId = None
+        self._PlayerSessionId = None
+
+    @property
+    def PlayerId(self):
+        return self._PlayerId
+
+    @PlayerId.setter
+    def PlayerId(self, PlayerId):
+        self._PlayerId = PlayerId
+
+    @property
+    def PlayerSessionId(self):
+        return self._PlayerSessionId
+
+    @PlayerSessionId.setter
+    def PlayerSessionId(self, PlayerSessionId):
+        self._PlayerSessionId = PlayerSessionId
 
 
     def _deserialize(self, params):
-        self.PlayerId = params.get("PlayerId")
-        self.PlayerSessionId = params.get("PlayerSessionId")
+        self._PlayerId = params.get("PlayerId")
+        self._PlayerSessionId = params.get("PlayerSessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4999,22 +9258,39 @@ class PlayerDataMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 玩家自定义数据键，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _Key: 玩家自定义数据键，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type Key: str
-        :param Value: 玩家自定义数据值，最小长度不小于1个ASCII字符，最大长度不超过2048个ASCII字符
+        :param _Value: 玩家自定义数据值，最小长度不小于1个ASCII字符，最大长度不超过2048个ASCII字符
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5027,28 +9303,53 @@ class PlayerLatency(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayerId: 玩家Id
+        :param _PlayerId: 玩家Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerId: str
-        :param RegionIdentifier: 延迟对应的区域名称
+        :param _RegionIdentifier: 延迟对应的区域名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionIdentifier: str
-        :param LatencyInMilliseconds: 毫秒级延迟
+        :param _LatencyInMilliseconds: 毫秒级延迟
         :type LatencyInMilliseconds: int
         """
-        self.PlayerId = None
-        self.RegionIdentifier = None
-        self.LatencyInMilliseconds = None
+        self._PlayerId = None
+        self._RegionIdentifier = None
+        self._LatencyInMilliseconds = None
+
+    @property
+    def PlayerId(self):
+        return self._PlayerId
+
+    @PlayerId.setter
+    def PlayerId(self, PlayerId):
+        self._PlayerId = PlayerId
+
+    @property
+    def RegionIdentifier(self):
+        return self._RegionIdentifier
+
+    @RegionIdentifier.setter
+    def RegionIdentifier(self, RegionIdentifier):
+        self._RegionIdentifier = RegionIdentifier
+
+    @property
+    def LatencyInMilliseconds(self):
+        return self._LatencyInMilliseconds
+
+    @LatencyInMilliseconds.setter
+    def LatencyInMilliseconds(self, LatencyInMilliseconds):
+        self._LatencyInMilliseconds = LatencyInMilliseconds
 
 
     def _deserialize(self, params):
-        self.PlayerId = params.get("PlayerId")
-        self.RegionIdentifier = params.get("RegionIdentifier")
-        self.LatencyInMilliseconds = params.get("LatencyInMilliseconds")
+        self._PlayerId = params.get("PlayerId")
+        self._RegionIdentifier = params.get("RegionIdentifier")
+        self._LatencyInMilliseconds = params.get("LatencyInMilliseconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5061,24 +9362,41 @@ class PlayerLatencyPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaximumIndividualPlayerLatencyMilliseconds: 任意player允许的最大延迟，单位：毫秒
+        :param _MaximumIndividualPlayerLatencyMilliseconds: 任意player允许的最大延迟，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaximumIndividualPlayerLatencyMilliseconds: int
-        :param PolicyDurationSeconds: 放置新GameServerSession时强制实施策略的时间长度，单位：秒
+        :param _PolicyDurationSeconds: 放置新GameServerSession时强制实施策略的时间长度，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDurationSeconds: int
         """
-        self.MaximumIndividualPlayerLatencyMilliseconds = None
-        self.PolicyDurationSeconds = None
+        self._MaximumIndividualPlayerLatencyMilliseconds = None
+        self._PolicyDurationSeconds = None
+
+    @property
+    def MaximumIndividualPlayerLatencyMilliseconds(self):
+        return self._MaximumIndividualPlayerLatencyMilliseconds
+
+    @MaximumIndividualPlayerLatencyMilliseconds.setter
+    def MaximumIndividualPlayerLatencyMilliseconds(self, MaximumIndividualPlayerLatencyMilliseconds):
+        self._MaximumIndividualPlayerLatencyMilliseconds = MaximumIndividualPlayerLatencyMilliseconds
+
+    @property
+    def PolicyDurationSeconds(self):
+        return self._PolicyDurationSeconds
+
+    @PolicyDurationSeconds.setter
+    def PolicyDurationSeconds(self, PolicyDurationSeconds):
+        self._PolicyDurationSeconds = PolicyDurationSeconds
 
 
     def _deserialize(self, params):
-        self.MaximumIndividualPlayerLatencyMilliseconds = params.get("MaximumIndividualPlayerLatencyMilliseconds")
-        self.PolicyDurationSeconds = params.get("PolicyDurationSeconds")
+        self._MaximumIndividualPlayerLatencyMilliseconds = params.get("MaximumIndividualPlayerLatencyMilliseconds")
+        self._PolicyDurationSeconds = params.get("PolicyDurationSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5091,62 +9409,151 @@ class PlayerSession(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreationTime: 玩家会话创建时间
+        :param _CreationTime: 玩家会话创建时间
         :type CreationTime: str
-        :param DnsName: 游戏服务器会话运行的DNS标识
+        :param _DnsName: 游戏服务器会话运行的DNS标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DnsName: str
-        :param FleetId: 舰队ID
+        :param _FleetId: 舰队ID
         :type FleetId: str
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
         :type GameServerSessionId: str
-        :param IpAddress: 游戏服务器会话运行的CVM地址
+        :param _IpAddress: 游戏服务器会话运行的CVM地址
         :type IpAddress: str
-        :param PlayerData: 玩家自定义数据，最大长度2048个ASCII字符
+        :param _PlayerData: 玩家自定义数据，最大长度2048个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerData: str
-        :param PlayerId: 玩家ID，最大长度1024个ASCII字符
+        :param _PlayerId: 玩家ID，最大长度1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayerId: str
-        :param PlayerSessionId: 玩家会话ID
+        :param _PlayerSessionId: 玩家会话ID
         :type PlayerSessionId: str
-        :param Port: 端口号，最小值不小于1，最大值不超过60000
+        :param _Port: 端口号，最小值不小于1，最大值不超过60000
         :type Port: int
-        :param Status: 玩家会话的状态（RESERVED = 1,ACTIVE = 2,COMPLETED = 3,TIMEDOUT = 4）
+        :param _Status: 玩家会话的状态（RESERVED = 1,ACTIVE = 2,COMPLETED = 3,TIMEDOUT = 4）
         :type Status: str
-        :param TerminationTime: 玩家会话终止时间
+        :param _TerminationTime: 玩家会话终止时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerminationTime: str
         """
-        self.CreationTime = None
-        self.DnsName = None
-        self.FleetId = None
-        self.GameServerSessionId = None
-        self.IpAddress = None
-        self.PlayerData = None
-        self.PlayerId = None
-        self.PlayerSessionId = None
-        self.Port = None
-        self.Status = None
-        self.TerminationTime = None
+        self._CreationTime = None
+        self._DnsName = None
+        self._FleetId = None
+        self._GameServerSessionId = None
+        self._IpAddress = None
+        self._PlayerData = None
+        self._PlayerId = None
+        self._PlayerSessionId = None
+        self._Port = None
+        self._Status = None
+        self._TerminationTime = None
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
+
+    @property
+    def PlayerData(self):
+        return self._PlayerData
+
+    @PlayerData.setter
+    def PlayerData(self, PlayerData):
+        self._PlayerData = PlayerData
+
+    @property
+    def PlayerId(self):
+        return self._PlayerId
+
+    @PlayerId.setter
+    def PlayerId(self, PlayerId):
+        self._PlayerId = PlayerId
+
+    @property
+    def PlayerSessionId(self):
+        return self._PlayerSessionId
+
+    @PlayerSessionId.setter
+    def PlayerSessionId(self, PlayerSessionId):
+        self._PlayerSessionId = PlayerSessionId
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TerminationTime(self):
+        return self._TerminationTime
+
+    @TerminationTime.setter
+    def TerminationTime(self, TerminationTime):
+        self._TerminationTime = TerminationTime
 
 
     def _deserialize(self, params):
-        self.CreationTime = params.get("CreationTime")
-        self.DnsName = params.get("DnsName")
-        self.FleetId = params.get("FleetId")
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.IpAddress = params.get("IpAddress")
-        self.PlayerData = params.get("PlayerData")
-        self.PlayerId = params.get("PlayerId")
-        self.PlayerSessionId = params.get("PlayerSessionId")
-        self.Port = params.get("Port")
-        self.Status = params.get("Status")
-        self.TerminationTime = params.get("TerminationTime")
+        self._CreationTime = params.get("CreationTime")
+        self._DnsName = params.get("DnsName")
+        self._FleetId = params.get("FleetId")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._IpAddress = params.get("IpAddress")
+        self._PlayerData = params.get("PlayerData")
+        self._PlayerId = params.get("PlayerId")
+        self._PlayerSessionId = params.get("PlayerSessionId")
+        self._Port = params.get("Port")
+        self._Status = params.get("Status")
+        self._TerminationTime = params.get("TerminationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5159,59 +9566,140 @@ class PutScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 扩缩容配置服务器舰队ID
+        :param _FleetId: 扩缩容配置服务器舰队ID
         :type FleetId: str
-        :param Name: 扩缩容策略名称，最小长度为1，最大长度为1024
+        :param _Name: 扩缩容策略名称，最小长度为1，最大长度为1024
         :type Name: str
-        :param ScalingAdjustment: 扩缩容调整值，ScalingAdjustmentType取值PercentChangeInCapacity时，取值范围-99~99
+        :param _ScalingAdjustment: 扩缩容调整值，ScalingAdjustmentType取值PercentChangeInCapacity时，取值范围-99~99
 ScalingAdjustmentType取值ChangeInCapacity或ExactCapacity时，最小值要缩容的最多CVM个数，最大值为实际最大的CVM个数限额
         :type ScalingAdjustment: int
-        :param ScalingAdjustmentType: 扩缩容调整类型，取值（ChangeInCapacity，ExactCapacity，PercentChangeInCapacity）
+        :param _ScalingAdjustmentType: 扩缩容调整类型，取值（ChangeInCapacity，ExactCapacity，PercentChangeInCapacity）
         :type ScalingAdjustmentType: str
-        :param Threshold: 扩缩容指标阈值
+        :param _Threshold: 扩缩容指标阈值
         :type Threshold: float
-        :param ComparisonOperator: 扩缩容策略比较符，取值：>,>=,<,<=
+        :param _ComparisonOperator: 扩缩容策略比较符，取值：>,>=,<,<=
         :type ComparisonOperator: str
-        :param EvaluationPeriods: 单个策略持续时间长度（分钟）
+        :param _EvaluationPeriods: 单个策略持续时间长度（分钟）
         :type EvaluationPeriods: int
-        :param MetricName: 扩缩容参与计算的指标名称，PolicyType取值RuleBased，
+        :param _MetricName: 扩缩容参与计算的指标名称，PolicyType取值RuleBased，
 MetricName取值（AvailableGameServerSessions，AvailableCustomCount，PercentAvailableCustomCount，ActiveInstances，IdleInstances，CurrentPlayerSessions和PercentIdleInstances）；
 PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
         :type MetricName: str
-        :param PolicyType: 策略类型，取值：TargetBased表示基于目标的策略；RuleBased表示基于规则的策略
+        :param _PolicyType: 策略类型，取值：TargetBased表示基于目标的策略；RuleBased表示基于规则的策略
         :type PolicyType: str
-        :param TargetConfiguration: 扩缩容目标值配置，只有TargetBased类型的策略生效
+        :param _TargetConfiguration: 扩缩容目标值配置，只有TargetBased类型的策略生效
         :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
         """
-        self.FleetId = None
-        self.Name = None
-        self.ScalingAdjustment = None
-        self.ScalingAdjustmentType = None
-        self.Threshold = None
-        self.ComparisonOperator = None
-        self.EvaluationPeriods = None
-        self.MetricName = None
-        self.PolicyType = None
-        self.TargetConfiguration = None
+        self._FleetId = None
+        self._Name = None
+        self._ScalingAdjustment = None
+        self._ScalingAdjustmentType = None
+        self._Threshold = None
+        self._ComparisonOperator = None
+        self._EvaluationPeriods = None
+        self._MetricName = None
+        self._PolicyType = None
+        self._TargetConfiguration = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ScalingAdjustment(self):
+        return self._ScalingAdjustment
+
+    @ScalingAdjustment.setter
+    def ScalingAdjustment(self, ScalingAdjustment):
+        self._ScalingAdjustment = ScalingAdjustment
+
+    @property
+    def ScalingAdjustmentType(self):
+        return self._ScalingAdjustmentType
+
+    @ScalingAdjustmentType.setter
+    def ScalingAdjustmentType(self, ScalingAdjustmentType):
+        self._ScalingAdjustmentType = ScalingAdjustmentType
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def ComparisonOperator(self):
+        return self._ComparisonOperator
+
+    @ComparisonOperator.setter
+    def ComparisonOperator(self, ComparisonOperator):
+        self._ComparisonOperator = ComparisonOperator
+
+    @property
+    def EvaluationPeriods(self):
+        return self._EvaluationPeriods
+
+    @EvaluationPeriods.setter
+    def EvaluationPeriods(self, EvaluationPeriods):
+        self._EvaluationPeriods = EvaluationPeriods
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def TargetConfiguration(self):
+        return self._TargetConfiguration
+
+    @TargetConfiguration.setter
+    def TargetConfiguration(self, TargetConfiguration):
+        self._TargetConfiguration = TargetConfiguration
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Name = params.get("Name")
-        self.ScalingAdjustment = params.get("ScalingAdjustment")
-        self.ScalingAdjustmentType = params.get("ScalingAdjustmentType")
-        self.Threshold = params.get("Threshold")
-        self.ComparisonOperator = params.get("ComparisonOperator")
-        self.EvaluationPeriods = params.get("EvaluationPeriods")
-        self.MetricName = params.get("MetricName")
-        self.PolicyType = params.get("PolicyType")
+        self._FleetId = params.get("FleetId")
+        self._Name = params.get("Name")
+        self._ScalingAdjustment = params.get("ScalingAdjustment")
+        self._ScalingAdjustmentType = params.get("ScalingAdjustmentType")
+        self._Threshold = params.get("Threshold")
+        self._ComparisonOperator = params.get("ComparisonOperator")
+        self._EvaluationPeriods = params.get("EvaluationPeriods")
+        self._MetricName = params.get("MetricName")
+        self._PolicyType = params.get("PolicyType")
         if params.get("TargetConfiguration") is not None:
-            self.TargetConfiguration = TargetConfiguration()
-            self.TargetConfiguration._deserialize(params.get("TargetConfiguration"))
+            self._TargetConfiguration = TargetConfiguration()
+            self._TargetConfiguration._deserialize(params.get("TargetConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5224,19 +9712,35 @@ class PutScalingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 规则名称
+        :param _Name: 规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Name = None
-        self.RequestId = None
+        self._Name = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.RequestId = params.get("RequestId")
+        self._Name = params.get("Name")
+        self._RequestId = params.get("RequestId")
 
 
 class PutTimerScalingPolicyRequest(AbstractModel):
@@ -5246,20 +9750,29 @@ class PutTimerScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimerScalingPolicy: 定时器策略消息
+        :param _TimerScalingPolicy: 定时器策略消息
         :type TimerScalingPolicy: :class:`tencentcloud.gse.v20191112.models.TimerScalingPolicy`
         """
-        self.TimerScalingPolicy = None
+        self._TimerScalingPolicy = None
+
+    @property
+    def TimerScalingPolicy(self):
+        return self._TimerScalingPolicy
+
+    @TimerScalingPolicy.setter
+    def TimerScalingPolicy(self, TimerScalingPolicy):
+        self._TimerScalingPolicy = TimerScalingPolicy
 
 
     def _deserialize(self, params):
         if params.get("TimerScalingPolicy") is not None:
-            self.TimerScalingPolicy = TimerScalingPolicy()
-            self.TimerScalingPolicy._deserialize(params.get("TimerScalingPolicy"))
+            self._TimerScalingPolicy = TimerScalingPolicy()
+            self._TimerScalingPolicy._deserialize(params.get("TimerScalingPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5272,14 +9785,22 @@ class PutTimerScalingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class QuotaResource(AbstractModel):
@@ -5289,34 +9810,67 @@ class QuotaResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型，1生成包、2服务部署、3别名、4游戏服务器队列、5实例
+        :param _ResourceType: 资源类型，1生成包、2服务部署、3别名、4游戏服务器队列、5实例
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: int
-        :param HardLimit: 总额度
+        :param _HardLimit: 总额度
 注意：此字段可能返回 null，表示取不到有效值。
         :type HardLimit: int
-        :param Remaining: 剩余额度
+        :param _Remaining: 剩余额度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remaining: int
-        :param ExtraInfo: 额外信息，可能为空
+        :param _ExtraInfo: 额外信息，可能为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
         """
-        self.ResourceType = None
-        self.HardLimit = None
-        self.Remaining = None
-        self.ExtraInfo = None
+        self._ResourceType = None
+        self._HardLimit = None
+        self._Remaining = None
+        self._ExtraInfo = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def HardLimit(self):
+        return self._HardLimit
+
+    @HardLimit.setter
+    def HardLimit(self, HardLimit):
+        self._HardLimit = HardLimit
+
+    @property
+    def Remaining(self):
+        return self._Remaining
+
+    @Remaining.setter
+    def Remaining(self, Remaining):
+        self._Remaining = Remaining
+
+    @property
+    def ExtraInfo(self):
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
 
 
     def _deserialize(self, params):
-        self.ResourceType = params.get("ResourceType")
-        self.HardLimit = params.get("HardLimit")
-        self.Remaining = params.get("Remaining")
-        self.ExtraInfo = params.get("ExtraInfo")
+        self._ResourceType = params.get("ResourceType")
+        self._HardLimit = params.get("HardLimit")
+        self._Remaining = params.get("Remaining")
+        self._ExtraInfo = params.get("ExtraInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5329,26 +9883,51 @@ class RelatedCcnInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: 云联网所属账号
+        :param _AccountId: 云联网所属账号
         :type AccountId: str
-        :param CcnId: 云联网 ID
+        :param _CcnId: 云联网 ID
         :type CcnId: str
-        :param AttachType: 关联云联网状态
+        :param _AttachType: 关联云联网状态
         :type AttachType: str
         """
-        self.AccountId = None
-        self.CcnId = None
-        self.AttachType = None
+        self._AccountId = None
+        self._CcnId = None
+        self._AttachType = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def AttachType(self):
+        return self._AttachType
+
+    @AttachType.setter
+    def AttachType(self, AttachType):
+        self._AttachType = AttachType
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
-        self.CcnId = params.get("CcnId")
-        self.AttachType = params.get("AttachType")
+        self._AccountId = params.get("AccountId")
+        self._CcnId = params.get("CcnId")
+        self._AttachType = params.get("AttachType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5361,18 +9940,27 @@ class ResolveAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 要获取fleetId的别名ID
+        :param _AliasId: 要获取fleetId的别名ID
         :type AliasId: str
         """
-        self.AliasId = None
+        self._AliasId = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
+        self._AliasId = params.get("AliasId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5385,19 +9973,35 @@ class ResolveAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 别名指向的fleet的唯一标识符
+        :param _FleetId: 别名指向的fleet的唯一标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetId = None
-        self.RequestId = None
+        self._FleetId = None
+        self._RequestId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.RequestId = params.get("RequestId")
+        self._FleetId = params.get("FleetId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResourceCreationLimitPolicy(AbstractModel):
@@ -5407,22 +10011,39 @@ class ResourceCreationLimitPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NewGameServerSessionsPerCreator: 创建数量，最小值1，默认2
+        :param _NewGameServerSessionsPerCreator: 创建数量，最小值1，默认2
         :type NewGameServerSessionsPerCreator: int
-        :param PolicyPeriodInMinutes: 单位时间，最小值1，默认3，单位分钟
+        :param _PolicyPeriodInMinutes: 单位时间，最小值1，默认3，单位分钟
         :type PolicyPeriodInMinutes: int
         """
-        self.NewGameServerSessionsPerCreator = None
-        self.PolicyPeriodInMinutes = None
+        self._NewGameServerSessionsPerCreator = None
+        self._PolicyPeriodInMinutes = None
+
+    @property
+    def NewGameServerSessionsPerCreator(self):
+        return self._NewGameServerSessionsPerCreator
+
+    @NewGameServerSessionsPerCreator.setter
+    def NewGameServerSessionsPerCreator(self, NewGameServerSessionsPerCreator):
+        self._NewGameServerSessionsPerCreator = NewGameServerSessionsPerCreator
+
+    @property
+    def PolicyPeriodInMinutes(self):
+        return self._PolicyPeriodInMinutes
+
+    @PolicyPeriodInMinutes.setter
+    def PolicyPeriodInMinutes(self, PolicyPeriodInMinutes):
+        self._PolicyPeriodInMinutes = PolicyPeriodInMinutes
 
 
     def _deserialize(self, params):
-        self.NewGameServerSessionsPerCreator = params.get("NewGameServerSessionsPerCreator")
-        self.PolicyPeriodInMinutes = params.get("PolicyPeriodInMinutes")
+        self._NewGameServerSessionsPerCreator = params.get("NewGameServerSessionsPerCreator")
+        self._PolicyPeriodInMinutes = params.get("PolicyPeriodInMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5435,28 +10056,53 @@ class RoutingStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 别名的路由策略的类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
+        :param _Type: 别名的路由策略的类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
         :type Type: str
-        :param FleetId: 别名指向的队列的唯一标识符
+        :param _FleetId: 别名指向的队列的唯一标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param Message: 与终端路由策略一起使用的消息文本，长度不小于1字符不超过1024字符
+        :param _Message: 与终端路由策略一起使用的消息文本，长度不小于1字符不超过1024字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
-        self.Type = None
-        self.FleetId = None
-        self.Message = None
+        self._Type = None
+        self._FleetId = None
+        self._Message = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.FleetId = params.get("FleetId")
-        self.Message = params.get("Message")
+        self._Type = params.get("Type")
+        self._FleetId = params.get("FleetId")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5469,31 +10115,56 @@ class RuntimeConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionActivationTimeoutSeconds: 游戏会话进程超时，最小值1，最大值600，单位秒
+        :param _GameServerSessionActivationTimeoutSeconds: 游戏会话进程超时，最小值1，最大值600，单位秒
         :type GameServerSessionActivationTimeoutSeconds: int
-        :param MaxConcurrentGameServerSessionActivations: 最大游戏会话数，最小值1，最大值2147483647
+        :param _MaxConcurrentGameServerSessionActivations: 最大游戏会话数，最小值1，最大值2147483647
         :type MaxConcurrentGameServerSessionActivations: int
-        :param ServerProcesses: 服务进程配置，至少有一个进程配置
+        :param _ServerProcesses: 服务进程配置，至少有一个进程配置
         :type ServerProcesses: list of ServerProcesse
         """
-        self.GameServerSessionActivationTimeoutSeconds = None
-        self.MaxConcurrentGameServerSessionActivations = None
-        self.ServerProcesses = None
+        self._GameServerSessionActivationTimeoutSeconds = None
+        self._MaxConcurrentGameServerSessionActivations = None
+        self._ServerProcesses = None
+
+    @property
+    def GameServerSessionActivationTimeoutSeconds(self):
+        return self._GameServerSessionActivationTimeoutSeconds
+
+    @GameServerSessionActivationTimeoutSeconds.setter
+    def GameServerSessionActivationTimeoutSeconds(self, GameServerSessionActivationTimeoutSeconds):
+        self._GameServerSessionActivationTimeoutSeconds = GameServerSessionActivationTimeoutSeconds
+
+    @property
+    def MaxConcurrentGameServerSessionActivations(self):
+        return self._MaxConcurrentGameServerSessionActivations
+
+    @MaxConcurrentGameServerSessionActivations.setter
+    def MaxConcurrentGameServerSessionActivations(self, MaxConcurrentGameServerSessionActivations):
+        self._MaxConcurrentGameServerSessionActivations = MaxConcurrentGameServerSessionActivations
+
+    @property
+    def ServerProcesses(self):
+        return self._ServerProcesses
+
+    @ServerProcesses.setter
+    def ServerProcesses(self, ServerProcesses):
+        self._ServerProcesses = ServerProcesses
 
 
     def _deserialize(self, params):
-        self.GameServerSessionActivationTimeoutSeconds = params.get("GameServerSessionActivationTimeoutSeconds")
-        self.MaxConcurrentGameServerSessionActivations = params.get("MaxConcurrentGameServerSessionActivations")
+        self._GameServerSessionActivationTimeoutSeconds = params.get("GameServerSessionActivationTimeoutSeconds")
+        self._MaxConcurrentGameServerSessionActivations = params.get("MaxConcurrentGameServerSessionActivations")
         if params.get("ServerProcesses") is not None:
-            self.ServerProcesses = []
+            self._ServerProcesses = []
             for item in params.get("ServerProcesses"):
                 obj = ServerProcesse()
                 obj._deserialize(item)
-                self.ServerProcesses.append(obj)
+                self._ServerProcesses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5506,71 +10177,160 @@ class ScalingPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务部署ID
+        :param _FleetId: 服务部署ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param Name: 名称
+        :param _Name: 名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Status: 状态
+        :param _Status: 状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param ScalingAdjustment: 保留参数
+        :param _ScalingAdjustment: 保留参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingAdjustment: str
-        :param ScalingAdjustmentType: 保留参数
+        :param _ScalingAdjustmentType: 保留参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingAdjustmentType: str
-        :param ComparisonOperator: 保留参数
+        :param _ComparisonOperator: 保留参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComparisonOperator: str
-        :param Threshold: 保留参数
+        :param _Threshold: 保留参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Threshold: str
-        :param EvaluationPeriods: 保留参数
+        :param _EvaluationPeriods: 保留参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvaluationPeriods: str
-        :param MetricName: 保留参数
+        :param _MetricName: 保留参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricName: str
-        :param PolicyType: 策略类型
+        :param _PolicyType: 策略类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
-        :param TargetConfiguration: 基于规则的配置
+        :param _TargetConfiguration: 基于规则的配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
         """
-        self.FleetId = None
-        self.Name = None
-        self.Status = None
-        self.ScalingAdjustment = None
-        self.ScalingAdjustmentType = None
-        self.ComparisonOperator = None
-        self.Threshold = None
-        self.EvaluationPeriods = None
-        self.MetricName = None
-        self.PolicyType = None
-        self.TargetConfiguration = None
+        self._FleetId = None
+        self._Name = None
+        self._Status = None
+        self._ScalingAdjustment = None
+        self._ScalingAdjustmentType = None
+        self._ComparisonOperator = None
+        self._Threshold = None
+        self._EvaluationPeriods = None
+        self._MetricName = None
+        self._PolicyType = None
+        self._TargetConfiguration = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ScalingAdjustment(self):
+        return self._ScalingAdjustment
+
+    @ScalingAdjustment.setter
+    def ScalingAdjustment(self, ScalingAdjustment):
+        self._ScalingAdjustment = ScalingAdjustment
+
+    @property
+    def ScalingAdjustmentType(self):
+        return self._ScalingAdjustmentType
+
+    @ScalingAdjustmentType.setter
+    def ScalingAdjustmentType(self, ScalingAdjustmentType):
+        self._ScalingAdjustmentType = ScalingAdjustmentType
+
+    @property
+    def ComparisonOperator(self):
+        return self._ComparisonOperator
+
+    @ComparisonOperator.setter
+    def ComparisonOperator(self, ComparisonOperator):
+        self._ComparisonOperator = ComparisonOperator
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def EvaluationPeriods(self):
+        return self._EvaluationPeriods
+
+    @EvaluationPeriods.setter
+    def EvaluationPeriods(self, EvaluationPeriods):
+        self._EvaluationPeriods = EvaluationPeriods
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def TargetConfiguration(self):
+        return self._TargetConfiguration
+
+    @TargetConfiguration.setter
+    def TargetConfiguration(self, TargetConfiguration):
+        self._TargetConfiguration = TargetConfiguration
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.ScalingAdjustment = params.get("ScalingAdjustment")
-        self.ScalingAdjustmentType = params.get("ScalingAdjustmentType")
-        self.ComparisonOperator = params.get("ComparisonOperator")
-        self.Threshold = params.get("Threshold")
-        self.EvaluationPeriods = params.get("EvaluationPeriods")
-        self.MetricName = params.get("MetricName")
-        self.PolicyType = params.get("PolicyType")
+        self._FleetId = params.get("FleetId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._ScalingAdjustment = params.get("ScalingAdjustment")
+        self._ScalingAdjustmentType = params.get("ScalingAdjustmentType")
+        self._ComparisonOperator = params.get("ComparisonOperator")
+        self._Threshold = params.get("Threshold")
+        self._EvaluationPeriods = params.get("EvaluationPeriods")
+        self._MetricName = params.get("MetricName")
+        self._PolicyType = params.get("PolicyType")
         if params.get("TargetConfiguration") is not None:
-            self.TargetConfiguration = TargetConfiguration()
-            self.TargetConfiguration._deserialize(params.get("TargetConfiguration"))
+            self._TargetConfiguration = TargetConfiguration()
+            self._TargetConfiguration._deserialize(params.get("TargetConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5583,15 +10343,15 @@ class SearchGameServerSessionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 别名ID
+        :param _AliasId: 别名ID
         :type AliasId: str
-        :param FleetId: 舰队ID
+        :param _FleetId: 舰队ID
         :type FleetId: str
-        :param Limit: 单次查询记录数上限
+        :param _Limit: 单次查询记录数上限
         :type Limit: int
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type NextToken: str
-        :param FilterExpression: 搜索条件表达式，支持如下变量
+        :param _FilterExpression: 搜索条件表达式，支持如下变量
 gameServerSessionName 游戏会话名称 String
 gameServerSessionId 游戏会话ID String
 maximumSessions 最大的玩家会话数 Number
@@ -5629,7 +10389,7 @@ gameServerSessionProperties.K1 = 'V1' AND gameServerSessionProperties.K2 = 'V2' 
     ]
 }
         :type FilterExpression: str
-        :param SortExpression: 排序条件关键字
+        :param _SortExpression: 排序条件关键字
 支持排序字段
 gameServerSessionName 游戏会话名称 String
 gameServerSessionId 游戏会话ID String
@@ -5638,25 +10398,74 @@ creationTimeMillis 创建时间，单位：毫秒 Number
 playerSessionCount 当前玩家会话数 Number
         :type SortExpression: str
         """
-        self.AliasId = None
-        self.FleetId = None
-        self.Limit = None
-        self.NextToken = None
-        self.FilterExpression = None
-        self.SortExpression = None
+        self._AliasId = None
+        self._FleetId = None
+        self._Limit = None
+        self._NextToken = None
+        self._FilterExpression = None
+        self._SortExpression = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def FilterExpression(self):
+        return self._FilterExpression
+
+    @FilterExpression.setter
+    def FilterExpression(self, FilterExpression):
+        self._FilterExpression = FilterExpression
+
+    @property
+    def SortExpression(self):
+        return self._SortExpression
+
+    @SortExpression.setter
+    def SortExpression(self, SortExpression):
+        self._SortExpression = SortExpression
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
-        self.FleetId = params.get("FleetId")
-        self.Limit = params.get("Limit")
-        self.NextToken = params.get("NextToken")
-        self.FilterExpression = params.get("FilterExpression")
-        self.SortExpression = params.get("SortExpression")
+        self._AliasId = params.get("AliasId")
+        self._FleetId = params.get("FleetId")
+        self._Limit = params.get("Limit")
+        self._NextToken = params.get("NextToken")
+        self._FilterExpression = params.get("FilterExpression")
+        self._SortExpression = params.get("SortExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5669,29 +10478,53 @@ class SearchGameServerSessionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessions: 游戏服务器会话列表
+        :param _GameServerSessions: 游戏服务器会话列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessions: list of GameServerSession
-        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessions = None
-        self.NextToken = None
-        self.RequestId = None
+        self._GameServerSessions = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessions(self):
+        return self._GameServerSessions
+
+    @GameServerSessions.setter
+    def GameServerSessions(self, GameServerSessions):
+        self._GameServerSessions = GameServerSessions
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessions") is not None:
-            self.GameServerSessions = []
+            self._GameServerSessions = []
             for item in params.get("GameServerSessions"):
                 obj = GameServerSession()
                 obj._deserialize(item)
-                self.GameServerSessions.append(obj)
-        self.NextToken = params.get("NextToken")
-        self.RequestId = params.get("RequestId")
+                self._GameServerSessions.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
 
 
 class ServerProcesse(AbstractModel):
@@ -5701,26 +10534,51 @@ class ServerProcesse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConcurrentExecutions: 并发执行数量，所有进程并发执行总数最小值1，最大值50
+        :param _ConcurrentExecutions: 并发执行数量，所有进程并发执行总数最小值1，最大值50
         :type ConcurrentExecutions: int
-        :param LaunchPath: 启动路径：Linux路径/local/game/ 或WIndows路径C:\game\，最小长度1，最大长度1024
+        :param _LaunchPath: 启动路径：Linux路径/local/game/ 或WIndows路径C:\game\，最小长度1，最大长度1024
         :type LaunchPath: str
-        :param Parameters: 启动参数，最小长度0，最大长度1024
+        :param _Parameters: 启动参数，最小长度0，最大长度1024
         :type Parameters: str
         """
-        self.ConcurrentExecutions = None
-        self.LaunchPath = None
-        self.Parameters = None
+        self._ConcurrentExecutions = None
+        self._LaunchPath = None
+        self._Parameters = None
+
+    @property
+    def ConcurrentExecutions(self):
+        return self._ConcurrentExecutions
+
+    @ConcurrentExecutions.setter
+    def ConcurrentExecutions(self, ConcurrentExecutions):
+        self._ConcurrentExecutions = ConcurrentExecutions
+
+    @property
+    def LaunchPath(self):
+        return self._LaunchPath
+
+    @LaunchPath.setter
+    def LaunchPath(self, LaunchPath):
+        self._LaunchPath = LaunchPath
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
 
 
     def _deserialize(self, params):
-        self.ConcurrentExecutions = params.get("ConcurrentExecutions")
-        self.LaunchPath = params.get("LaunchPath")
-        self.Parameters = params.get("Parameters")
+        self._ConcurrentExecutions = params.get("ConcurrentExecutions")
+        self._LaunchPath = params.get("LaunchPath")
+        self._Parameters = params.get("Parameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5733,26 +10591,51 @@ class SetServerReservedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 扩缩容配置服务器舰队ID
+        :param _FleetId: 扩缩容配置服务器舰队ID
         :type FleetId: str
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param ReserveValue: 实例是否保留, 1-保留，0-不保留,默认
+        :param _ReserveValue: 实例是否保留, 1-保留，0-不保留,默认
         :type ReserveValue: int
         """
-        self.FleetId = None
-        self.InstanceId = None
-        self.ReserveValue = None
+        self._FleetId = None
+        self._InstanceId = None
+        self._ReserveValue = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ReserveValue(self):
+        return self._ReserveValue
+
+    @ReserveValue.setter
+    def ReserveValue(self, ReserveValue):
+        self._ReserveValue = ReserveValue
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
-        self.ReserveValue = params.get("ReserveValue")
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
+        self._ReserveValue = params.get("ReserveValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5765,14 +10648,22 @@ class SetServerReservedResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetServerWeightRequest(AbstractModel):
@@ -5782,26 +10673,51 @@ class SetServerWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param Weight: 权重，最小值0，最大值10，默认值5
+        :param _Weight: 权重，最小值0，最大值10，默认值5
         :type Weight: int
         """
-        self.FleetId = None
-        self.InstanceId = None
-        self.Weight = None
+        self._FleetId = None
+        self._InstanceId = None
+        self._Weight = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.InstanceId = params.get("InstanceId")
-        self.Weight = params.get("Weight")
+        self._FleetId = params.get("FleetId")
+        self._InstanceId = params.get("InstanceId")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5814,14 +10730,22 @@ class SetServerWeightResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartFleetActionsRequest(AbstractModel):
@@ -5831,22 +10755,39 @@ class StartFleetActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Actions: 服务器舰队扩展策略，值为["AUTO_SCALING"]
+        :param _Actions: 服务器舰队扩展策略，值为["AUTO_SCALING"]
         :type Actions: list of str
         """
-        self.FleetId = None
-        self.Actions = None
+        self._FleetId = None
+        self._Actions = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Actions(self):
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Actions = params.get("Actions")
+        self._FleetId = params.get("FleetId")
+        self._Actions = params.get("Actions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5859,19 +10800,35 @@ class StartFleetActionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetId = None
-        self.RequestId = None
+        self._FleetId = None
+        self._RequestId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.RequestId = params.get("RequestId")
+        self._FleetId = params.get("FleetId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartGameServerSessionPlacementRequest(AbstractModel):
@@ -5881,61 +10838,126 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlacementId: 开始部署游戏服务器会话的唯一标识符，最大值48个ASCII字符，模式：[a-zA-Z0-9-]+
+        :param _PlacementId: 开始部署游戏服务器会话的唯一标识符，最大值48个ASCII字符，模式：[a-zA-Z0-9-]+
         :type PlacementId: str
-        :param GameServerSessionQueueName: 游戏服务器会话队列名称
+        :param _GameServerSessionQueueName: 游戏服务器会话队列名称
         :type GameServerSessionQueueName: str
-        :param MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
+        :param _MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
         :type MaximumPlayerSessionCount: int
-        :param DesiredPlayerSessions: 玩家游戏会话信息
+        :param _DesiredPlayerSessions: 玩家游戏会话信息
         :type DesiredPlayerSessions: list of DesiredPlayerSession
-        :param GameProperties: 玩家游戏会话属性
+        :param _GameProperties: 玩家游戏会话属性
         :type GameProperties: list of GameProperty
-        :param GameServerSessionData: 游戏服务器会话数据，最大长度不超过4096个ASCII字符
+        :param _GameServerSessionData: 游戏服务器会话数据，最大长度不超过4096个ASCII字符
         :type GameServerSessionData: str
-        :param GameServerSessionName: 游戏服务器会话名称，最大长度不超过4096个ASCII字符
+        :param _GameServerSessionName: 游戏服务器会话名称，最大长度不超过4096个ASCII字符
         :type GameServerSessionName: str
-        :param PlayerLatencies: 玩家延迟
+        :param _PlayerLatencies: 玩家延迟
         :type PlayerLatencies: list of PlayerLatency
         """
-        self.PlacementId = None
-        self.GameServerSessionQueueName = None
-        self.MaximumPlayerSessionCount = None
-        self.DesiredPlayerSessions = None
-        self.GameProperties = None
-        self.GameServerSessionData = None
-        self.GameServerSessionName = None
-        self.PlayerLatencies = None
+        self._PlacementId = None
+        self._GameServerSessionQueueName = None
+        self._MaximumPlayerSessionCount = None
+        self._DesiredPlayerSessions = None
+        self._GameProperties = None
+        self._GameServerSessionData = None
+        self._GameServerSessionName = None
+        self._PlayerLatencies = None
+
+    @property
+    def PlacementId(self):
+        return self._PlacementId
+
+    @PlacementId.setter
+    def PlacementId(self, PlacementId):
+        self._PlacementId = PlacementId
+
+    @property
+    def GameServerSessionQueueName(self):
+        return self._GameServerSessionQueueName
+
+    @GameServerSessionQueueName.setter
+    def GameServerSessionQueueName(self, GameServerSessionQueueName):
+        self._GameServerSessionQueueName = GameServerSessionQueueName
+
+    @property
+    def MaximumPlayerSessionCount(self):
+        return self._MaximumPlayerSessionCount
+
+    @MaximumPlayerSessionCount.setter
+    def MaximumPlayerSessionCount(self, MaximumPlayerSessionCount):
+        self._MaximumPlayerSessionCount = MaximumPlayerSessionCount
+
+    @property
+    def DesiredPlayerSessions(self):
+        return self._DesiredPlayerSessions
+
+    @DesiredPlayerSessions.setter
+    def DesiredPlayerSessions(self, DesiredPlayerSessions):
+        self._DesiredPlayerSessions = DesiredPlayerSessions
+
+    @property
+    def GameProperties(self):
+        return self._GameProperties
+
+    @GameProperties.setter
+    def GameProperties(self, GameProperties):
+        self._GameProperties = GameProperties
+
+    @property
+    def GameServerSessionData(self):
+        return self._GameServerSessionData
+
+    @GameServerSessionData.setter
+    def GameServerSessionData(self, GameServerSessionData):
+        self._GameServerSessionData = GameServerSessionData
+
+    @property
+    def GameServerSessionName(self):
+        return self._GameServerSessionName
+
+    @GameServerSessionName.setter
+    def GameServerSessionName(self, GameServerSessionName):
+        self._GameServerSessionName = GameServerSessionName
+
+    @property
+    def PlayerLatencies(self):
+        return self._PlayerLatencies
+
+    @PlayerLatencies.setter
+    def PlayerLatencies(self, PlayerLatencies):
+        self._PlayerLatencies = PlayerLatencies
 
 
     def _deserialize(self, params):
-        self.PlacementId = params.get("PlacementId")
-        self.GameServerSessionQueueName = params.get("GameServerSessionQueueName")
-        self.MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
+        self._PlacementId = params.get("PlacementId")
+        self._GameServerSessionQueueName = params.get("GameServerSessionQueueName")
+        self._MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
         if params.get("DesiredPlayerSessions") is not None:
-            self.DesiredPlayerSessions = []
+            self._DesiredPlayerSessions = []
             for item in params.get("DesiredPlayerSessions"):
                 obj = DesiredPlayerSession()
                 obj._deserialize(item)
-                self.DesiredPlayerSessions.append(obj)
+                self._DesiredPlayerSessions.append(obj)
         if params.get("GameProperties") is not None:
-            self.GameProperties = []
+            self._GameProperties = []
             for item in params.get("GameProperties"):
                 obj = GameProperty()
                 obj._deserialize(item)
-                self.GameProperties.append(obj)
-        self.GameServerSessionData = params.get("GameServerSessionData")
-        self.GameServerSessionName = params.get("GameServerSessionName")
+                self._GameProperties.append(obj)
+        self._GameServerSessionData = params.get("GameServerSessionData")
+        self._GameServerSessionName = params.get("GameServerSessionName")
         if params.get("PlayerLatencies") is not None:
-            self.PlayerLatencies = []
+            self._PlayerLatencies = []
             for item in params.get("PlayerLatencies"):
                 obj = PlayerLatency()
                 obj._deserialize(item)
-                self.PlayerLatencies.append(obj)
+                self._PlayerLatencies.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5948,20 +10970,36 @@ class StartGameServerSessionPlacementResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionPlacement: 游戏服务器会话放置
+        :param _GameServerSessionPlacement: 游戏服务器会话放置
         :type GameServerSessionPlacement: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessionPlacement = None
-        self.RequestId = None
+        self._GameServerSessionPlacement = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessionPlacement(self):
+        return self._GameServerSessionPlacement
+
+    @GameServerSessionPlacement.setter
+    def GameServerSessionPlacement(self, GameServerSessionPlacement):
+        self._GameServerSessionPlacement = GameServerSessionPlacement
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessionPlacement") is not None:
-            self.GameServerSessionPlacement = GameServerSessionPlacement()
-            self.GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
-        self.RequestId = params.get("RequestId")
+            self._GameServerSessionPlacement = GameServerSessionPlacement()
+            self._GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
+        self._RequestId = params.get("RequestId")
 
 
 class StopFleetActionsRequest(AbstractModel):
@@ -5971,22 +11009,39 @@ class StopFleetActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Actions: 服务器舰队扩展策略，值为["AUTO_SCALING"]
+        :param _Actions: 服务器舰队扩展策略，值为["AUTO_SCALING"]
         :type Actions: list of str
         """
-        self.FleetId = None
-        self.Actions = None
+        self._FleetId = None
+        self._Actions = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Actions(self):
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Actions = params.get("Actions")
+        self._FleetId = params.get("FleetId")
+        self._Actions = params.get("Actions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5999,19 +11054,35 @@ class StopFleetActionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetId = None
-        self.RequestId = None
+        self._FleetId = None
+        self._RequestId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.RequestId = params.get("RequestId")
+        self._FleetId = params.get("FleetId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopGameServerSessionPlacementRequest(AbstractModel):
@@ -6021,18 +11092,27 @@ class StopGameServerSessionPlacementRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlacementId: 游戏服务器会话放置的唯一标识符
+        :param _PlacementId: 游戏服务器会话放置的唯一标识符
         :type PlacementId: str
         """
-        self.PlacementId = None
+        self._PlacementId = None
+
+    @property
+    def PlacementId(self):
+        return self._PlacementId
+
+    @PlacementId.setter
+    def PlacementId(self, PlacementId):
+        self._PlacementId = PlacementId
 
 
     def _deserialize(self, params):
-        self.PlacementId = params.get("PlacementId")
+        self._PlacementId = params.get("PlacementId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6045,20 +11125,36 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionPlacement: 游戏服务器会话放置
+        :param _GameServerSessionPlacement: 游戏服务器会话放置
         :type GameServerSessionPlacement: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessionPlacement = None
-        self.RequestId = None
+        self._GameServerSessionPlacement = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessionPlacement(self):
+        return self._GameServerSessionPlacement
+
+    @GameServerSessionPlacement.setter
+    def GameServerSessionPlacement(self, GameServerSessionPlacement):
+        self._GameServerSessionPlacement = GameServerSessionPlacement
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessionPlacement") is not None:
-            self.GameServerSessionPlacement = GameServerSessionPlacement()
-            self.GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
-        self.RequestId = params.get("RequestId")
+            self._GameServerSessionPlacement = GameServerSessionPlacement()
+            self._GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
+        self._RequestId = params.get("RequestId")
 
 
 class Tag(AbstractModel):
@@ -6068,22 +11164,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 标签键，最大长度127字节
+        :param _Key: 标签键，最大长度127字节
         :type Key: str
-        :param Value: 标签值，最大长度255字节
+        :param _Value: 标签值，最大长度255字节
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6096,19 +11209,28 @@ class TargetConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetValue: 预留存率
+        :param _TargetValue: 预留存率
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetValue: int
         """
-        self.TargetValue = None
+        self._TargetValue = None
+
+    @property
+    def TargetValue(self):
+        return self._TargetValue
+
+    @TargetValue.setter
+    def TargetValue(self, TargetValue):
+        self._TargetValue = TargetValue
 
 
     def _deserialize(self, params):
-        self.TargetValue = params.get("TargetValue")
+        self._TargetValue = params.get("TargetValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6121,36 +11243,69 @@ class TimerConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimerType: 定时器重复周期类型（未定义0，单次1、按天2、按月3、按周4）
+        :param _TimerType: 定时器重复周期类型（未定义0，单次1、按天2、按月3、按周4）
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerType: int
-        :param TimerValue: 定时器取值
+        :param _TimerValue: 定时器取值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerValue: :class:`tencentcloud.gse.v20191112.models.TimerValue`
-        :param BeginTime: 定时器开始时间
+        :param _BeginTime: 定时器开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
-        :param EndTime: 定时器结束时间
+        :param _EndTime: 定时器结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
-        self.TimerType = None
-        self.TimerValue = None
-        self.BeginTime = None
-        self.EndTime = None
+        self._TimerType = None
+        self._TimerValue = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def TimerType(self):
+        return self._TimerType
+
+    @TimerType.setter
+    def TimerType(self, TimerType):
+        self._TimerType = TimerType
+
+    @property
+    def TimerValue(self):
+        return self._TimerValue
+
+    @TimerValue.setter
+    def TimerValue(self, TimerValue):
+        self._TimerValue = TimerValue
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.TimerType = params.get("TimerType")
+        self._TimerType = params.get("TimerType")
         if params.get("TimerValue") is not None:
-            self.TimerValue = TimerValue()
-            self.TimerValue._deserialize(params.get("TimerValue"))
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
+            self._TimerValue = TimerValue()
+            self._TimerValue._deserialize(params.get("TimerValue"))
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6163,51 +11318,108 @@ class TimerFleetCapacity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 扩缩容配置服务器舰队ID
+        :param _FleetId: 扩缩容配置服务器舰队ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param DesiredInstances: 期望实例数
+        :param _DesiredInstances: 期望实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredInstances: int
-        :param MinSize: 最小实例数
+        :param _MinSize: 最小实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinSize: int
-        :param MaxSize: 最大实例数
+        :param _MaxSize: 最大实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSize: int
-        :param ScalingInterval: 伸缩容间隔，单位：分钟
+        :param _ScalingInterval: 伸缩容间隔，单位：分钟
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingInterval: int
-        :param ScalingType: 扩缩容类型（手动1，自动2、未定义0）
+        :param _ScalingType: 扩缩容类型（手动1，自动2、未定义0）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingType: int
-        :param TargetConfiguration: 基于目标的扩展策略的设置
+        :param _TargetConfiguration: 基于目标的扩展策略的设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
         """
-        self.FleetId = None
-        self.DesiredInstances = None
-        self.MinSize = None
-        self.MaxSize = None
-        self.ScalingInterval = None
-        self.ScalingType = None
-        self.TargetConfiguration = None
+        self._FleetId = None
+        self._DesiredInstances = None
+        self._MinSize = None
+        self._MaxSize = None
+        self._ScalingInterval = None
+        self._ScalingType = None
+        self._TargetConfiguration = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def DesiredInstances(self):
+        return self._DesiredInstances
+
+    @DesiredInstances.setter
+    def DesiredInstances(self, DesiredInstances):
+        self._DesiredInstances = DesiredInstances
+
+    @property
+    def MinSize(self):
+        return self._MinSize
+
+    @MinSize.setter
+    def MinSize(self, MinSize):
+        self._MinSize = MinSize
+
+    @property
+    def MaxSize(self):
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+    @property
+    def ScalingInterval(self):
+        return self._ScalingInterval
+
+    @ScalingInterval.setter
+    def ScalingInterval(self, ScalingInterval):
+        self._ScalingInterval = ScalingInterval
+
+    @property
+    def ScalingType(self):
+        return self._ScalingType
+
+    @ScalingType.setter
+    def ScalingType(self, ScalingType):
+        self._ScalingType = ScalingType
+
+    @property
+    def TargetConfiguration(self):
+        return self._TargetConfiguration
+
+    @TargetConfiguration.setter
+    def TargetConfiguration(self, TargetConfiguration):
+        self._TargetConfiguration = TargetConfiguration
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.DesiredInstances = params.get("DesiredInstances")
-        self.MinSize = params.get("MinSize")
-        self.MaxSize = params.get("MaxSize")
-        self.ScalingInterval = params.get("ScalingInterval")
-        self.ScalingType = params.get("ScalingType")
+        self._FleetId = params.get("FleetId")
+        self._DesiredInstances = params.get("DesiredInstances")
+        self._MinSize = params.get("MinSize")
+        self._MaxSize = params.get("MaxSize")
+        self._ScalingInterval = params.get("ScalingInterval")
+        self._ScalingType = params.get("ScalingType")
         if params.get("TargetConfiguration") is not None:
-            self.TargetConfiguration = TargetConfiguration()
-            self.TargetConfiguration._deserialize(params.get("TargetConfiguration"))
+            self._TargetConfiguration = TargetConfiguration()
+            self._TargetConfiguration._deserialize(params.get("TargetConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6220,43 +11432,84 @@ class TimerScalingPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimerId: 定时器ID，进行encode，填写时更新
+        :param _TimerId: 定时器ID，进行encode，填写时更新
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerId: str
-        :param TimerName: 定时器名称
+        :param _TimerName: 定时器名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerName: str
-        :param TimerStatus: 定时器状态(未定义0、未生效1、生效中2、已停止3、已过期4)
+        :param _TimerStatus: 定时器状态(未定义0、未生效1、生效中2、已停止3、已过期4)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerStatus: int
-        :param TimerFleetCapacity: 定时器弹性伸缩策略
+        :param _TimerFleetCapacity: 定时器弹性伸缩策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerFleetCapacity: :class:`tencentcloud.gse.v20191112.models.TimerFleetCapacity`
-        :param TimerConfiguration: 重复周期配置
+        :param _TimerConfiguration: 重复周期配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimerConfiguration: :class:`tencentcloud.gse.v20191112.models.TimerConfiguration`
         """
-        self.TimerId = None
-        self.TimerName = None
-        self.TimerStatus = None
-        self.TimerFleetCapacity = None
-        self.TimerConfiguration = None
+        self._TimerId = None
+        self._TimerName = None
+        self._TimerStatus = None
+        self._TimerFleetCapacity = None
+        self._TimerConfiguration = None
+
+    @property
+    def TimerId(self):
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def TimerName(self):
+        return self._TimerName
+
+    @TimerName.setter
+    def TimerName(self, TimerName):
+        self._TimerName = TimerName
+
+    @property
+    def TimerStatus(self):
+        return self._TimerStatus
+
+    @TimerStatus.setter
+    def TimerStatus(self, TimerStatus):
+        self._TimerStatus = TimerStatus
+
+    @property
+    def TimerFleetCapacity(self):
+        return self._TimerFleetCapacity
+
+    @TimerFleetCapacity.setter
+    def TimerFleetCapacity(self, TimerFleetCapacity):
+        self._TimerFleetCapacity = TimerFleetCapacity
+
+    @property
+    def TimerConfiguration(self):
+        return self._TimerConfiguration
+
+    @TimerConfiguration.setter
+    def TimerConfiguration(self, TimerConfiguration):
+        self._TimerConfiguration = TimerConfiguration
 
 
     def _deserialize(self, params):
-        self.TimerId = params.get("TimerId")
-        self.TimerName = params.get("TimerName")
-        self.TimerStatus = params.get("TimerStatus")
+        self._TimerId = params.get("TimerId")
+        self._TimerName = params.get("TimerName")
+        self._TimerStatus = params.get("TimerStatus")
         if params.get("TimerFleetCapacity") is not None:
-            self.TimerFleetCapacity = TimerFleetCapacity()
-            self.TimerFleetCapacity._deserialize(params.get("TimerFleetCapacity"))
+            self._TimerFleetCapacity = TimerFleetCapacity()
+            self._TimerFleetCapacity._deserialize(params.get("TimerFleetCapacity"))
         if params.get("TimerConfiguration") is not None:
-            self.TimerConfiguration = TimerConfiguration()
-            self.TimerConfiguration._deserialize(params.get("TimerConfiguration"))
+            self._TimerConfiguration = TimerConfiguration()
+            self._TimerConfiguration._deserialize(params.get("TimerConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6269,34 +11522,67 @@ class TimerValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Day: 每X天，执行一次(重复周期-按天/单次)
+        :param _Day: 每X天，执行一次(重复周期-按天/单次)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Day: int
-        :param FromDay: 每月从第x天，执行一次(重复周期-按月)
+        :param _FromDay: 每月从第x天，执行一次(重复周期-按月)
 注意：此字段可能返回 null，表示取不到有效值。
         :type FromDay: int
-        :param ToDay: 每月到第x天，执行一次(重复周期-按月)
+        :param _ToDay: 每月到第x天，执行一次(重复周期-按月)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ToDay: int
-        :param WeekDays: 重复周期-按周，周几（多个值,取值周一(1,2,3,4,5,6,7)周日）
+        :param _WeekDays: 重复周期-按周，周几（多个值,取值周一(1,2,3,4,5,6,7)周日）
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeekDays: list of int
         """
-        self.Day = None
-        self.FromDay = None
-        self.ToDay = None
-        self.WeekDays = None
+        self._Day = None
+        self._FromDay = None
+        self._ToDay = None
+        self._WeekDays = None
+
+    @property
+    def Day(self):
+        return self._Day
+
+    @Day.setter
+    def Day(self, Day):
+        self._Day = Day
+
+    @property
+    def FromDay(self):
+        return self._FromDay
+
+    @FromDay.setter
+    def FromDay(self, FromDay):
+        self._FromDay = FromDay
+
+    @property
+    def ToDay(self):
+        return self._ToDay
+
+    @ToDay.setter
+    def ToDay(self, ToDay):
+        self._ToDay = ToDay
+
+    @property
+    def WeekDays(self):
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
 
 
     def _deserialize(self, params):
-        self.Day = params.get("Day")
-        self.FromDay = params.get("FromDay")
-        self.ToDay = params.get("ToDay")
-        self.WeekDays = params.get("WeekDays")
+        self._Day = params.get("Day")
+        self._FromDay = params.get("FromDay")
+        self._ToDay = params.get("ToDay")
+        self._WeekDays = params.get("WeekDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6309,32 +11595,65 @@ class UpdateAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AliasId: 要更新的别名的唯一标识符
+        :param _AliasId: 要更新的别名的唯一标识符
         :type AliasId: str
-        :param Name: 名字，长度不小于1字符不超过1024字符
+        :param _Name: 名字，长度不小于1字符不超过1024字符
         :type Name: str
-        :param Description: 别名的可读说明，长度不小于1字符不超过1024字符
+        :param _Description: 别名的可读说明，长度不小于1字符不超过1024字符
         :type Description: str
-        :param RoutingStrategy: 别名的路由配置
+        :param _RoutingStrategy: 别名的路由配置
         :type RoutingStrategy: :class:`tencentcloud.gse.v20191112.models.RoutingStrategy`
         """
-        self.AliasId = None
-        self.Name = None
-        self.Description = None
-        self.RoutingStrategy = None
+        self._AliasId = None
+        self._Name = None
+        self._Description = None
+        self._RoutingStrategy = None
+
+    @property
+    def AliasId(self):
+        return self._AliasId
+
+    @AliasId.setter
+    def AliasId(self, AliasId):
+        self._AliasId = AliasId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RoutingStrategy(self):
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
 
 
     def _deserialize(self, params):
-        self.AliasId = params.get("AliasId")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._AliasId = params.get("AliasId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         if params.get("RoutingStrategy") is not None:
-            self.RoutingStrategy = RoutingStrategy()
-            self.RoutingStrategy._deserialize(params.get("RoutingStrategy"))
+            self._RoutingStrategy = RoutingStrategy()
+            self._RoutingStrategy._deserialize(params.get("RoutingStrategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6347,21 +11666,37 @@ class UpdateAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Alias: 别名对象
+        :param _Alias: 别名对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: :class:`tencentcloud.gse.v20191112.models.Alias`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Alias = None
-        self.RequestId = None
+        self._Alias = None
+        self._RequestId = None
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Alias") is not None:
-            self.Alias = Alias()
-            self.Alias._deserialize(params.get("Alias"))
-        self.RequestId = params.get("RequestId")
+            self._Alias = Alias()
+            self._Alias._deserialize(params.get("Alias"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateAssetRequest(AbstractModel):
@@ -6371,26 +11706,51 @@ class UpdateAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetId: 生成包ID
+        :param _AssetId: 生成包ID
         :type AssetId: str
-        :param AssetName: 生成包名字，最小长度为1，最大长度为64
+        :param _AssetName: 生成包名字，最小长度为1，最大长度为64
         :type AssetName: str
-        :param AssetVersion: 生成包版本，最小长度为1，最大长度为64
+        :param _AssetVersion: 生成包版本，最小长度为1，最大长度为64
         :type AssetVersion: str
         """
-        self.AssetId = None
-        self.AssetName = None
-        self.AssetVersion = None
+        self._AssetId = None
+        self._AssetName = None
+        self._AssetVersion = None
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetVersion(self):
+        return self._AssetVersion
+
+    @AssetVersion.setter
+    def AssetVersion(self, AssetVersion):
+        self._AssetVersion = AssetVersion
 
 
     def _deserialize(self, params):
-        self.AssetId = params.get("AssetId")
-        self.AssetName = params.get("AssetName")
-        self.AssetVersion = params.get("AssetVersion")
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._AssetVersion = params.get("AssetVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6403,14 +11763,22 @@ class UpdateAssetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateBucketAccelerateOptRequest(AbstractModel):
@@ -6420,18 +11788,27 @@ class UpdateBucketAccelerateOptRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Allowed: true为开启全球加速，false为关闭
+        :param _Allowed: true为开启全球加速，false为关闭
         :type Allowed: bool
         """
-        self.Allowed = None
+        self._Allowed = None
+
+    @property
+    def Allowed(self):
+        return self._Allowed
+
+    @Allowed.setter
+    def Allowed(self, Allowed):
+        self._Allowed = Allowed
 
 
     def _deserialize(self, params):
-        self.Allowed = params.get("Allowed")
+        self._Allowed = params.get("Allowed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6444,14 +11821,22 @@ class UpdateBucketAccelerateOptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateBucketCORSOptRequest(AbstractModel):
@@ -6461,34 +11846,75 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllowedOrigins: 允许的访问来源;具体参见 [cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :param _AllowedOrigins: 允许的访问来源;具体参见 [cos文档](https://cloud.tencent.com/document/product/436/8279)
         :type AllowedOrigins: list of str
-        :param AllowedMethods: 允许的 HTTP 操作方法;可以配置多个:PUT、GET、POST、HEAD。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :param _AllowedMethods: 允许的 HTTP 操作方法;可以配置多个:PUT、GET、POST、HEAD。[cos文档](https://cloud.tencent.com/document/product/436/8279)
         :type AllowedMethods: list of str
-        :param AllowedHeaders: 用于指定允许浏览器发送 CORS 请求时携带的自定义 HTTP 请求头部;可以配置*，代表允许所有头部，为了避免遗漏，推荐配置为*。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :param _AllowedHeaders: 用于指定允许浏览器发送 CORS 请求时携带的自定义 HTTP 请求头部;可以配置*，代表允许所有头部，为了避免遗漏，推荐配置为*。[cos文档](https://cloud.tencent.com/document/product/436/8279)
         :type AllowedHeaders: list of str
-        :param MaxAgeSeconds: 跨域资源共享配置的有效时间，单位为秒。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :param _MaxAgeSeconds: 跨域资源共享配置的有效时间，单位为秒。[cos文档](https://cloud.tencent.com/document/product/436/8279)
         :type MaxAgeSeconds: int
-        :param ExposeHeaders: 允许浏览器获取的 CORS 请求响应中的头部，不区分大小写；默认情况下浏览器只能访问简单响应头部：Cache-Control、Content-Type、Expires、Last-Modified，如果需要访问其他响应头部，需要添加 ExposeHeader 配置。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+        :param _ExposeHeaders: 允许浏览器获取的 CORS 请求响应中的头部，不区分大小写；默认情况下浏览器只能访问简单响应头部：Cache-Control、Content-Type、Expires、Last-Modified，如果需要访问其他响应头部，需要添加 ExposeHeader 配置。[cos文档](https://cloud.tencent.com/document/product/436/8279)
         :type ExposeHeaders: list of str
         """
-        self.AllowedOrigins = None
-        self.AllowedMethods = None
-        self.AllowedHeaders = None
-        self.MaxAgeSeconds = None
-        self.ExposeHeaders = None
+        self._AllowedOrigins = None
+        self._AllowedMethods = None
+        self._AllowedHeaders = None
+        self._MaxAgeSeconds = None
+        self._ExposeHeaders = None
+
+    @property
+    def AllowedOrigins(self):
+        return self._AllowedOrigins
+
+    @AllowedOrigins.setter
+    def AllowedOrigins(self, AllowedOrigins):
+        self._AllowedOrigins = AllowedOrigins
+
+    @property
+    def AllowedMethods(self):
+        return self._AllowedMethods
+
+    @AllowedMethods.setter
+    def AllowedMethods(self, AllowedMethods):
+        self._AllowedMethods = AllowedMethods
+
+    @property
+    def AllowedHeaders(self):
+        return self._AllowedHeaders
+
+    @AllowedHeaders.setter
+    def AllowedHeaders(self, AllowedHeaders):
+        self._AllowedHeaders = AllowedHeaders
+
+    @property
+    def MaxAgeSeconds(self):
+        return self._MaxAgeSeconds
+
+    @MaxAgeSeconds.setter
+    def MaxAgeSeconds(self, MaxAgeSeconds):
+        self._MaxAgeSeconds = MaxAgeSeconds
+
+    @property
+    def ExposeHeaders(self):
+        return self._ExposeHeaders
+
+    @ExposeHeaders.setter
+    def ExposeHeaders(self, ExposeHeaders):
+        self._ExposeHeaders = ExposeHeaders
 
 
     def _deserialize(self, params):
-        self.AllowedOrigins = params.get("AllowedOrigins")
-        self.AllowedMethods = params.get("AllowedMethods")
-        self.AllowedHeaders = params.get("AllowedHeaders")
-        self.MaxAgeSeconds = params.get("MaxAgeSeconds")
-        self.ExposeHeaders = params.get("ExposeHeaders")
+        self._AllowedOrigins = params.get("AllowedOrigins")
+        self._AllowedMethods = params.get("AllowedMethods")
+        self._AllowedHeaders = params.get("AllowedHeaders")
+        self._MaxAgeSeconds = params.get("MaxAgeSeconds")
+        self._ExposeHeaders = params.get("ExposeHeaders")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6501,14 +11927,22 @@ class UpdateBucketCORSOptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateFleetAttributesRequest(AbstractModel):
@@ -6518,40 +11952,89 @@ class UpdateFleetAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Description: 服务器舰队描述，最小长度0，最大长度100
+        :param _Description: 服务器舰队描述，最小长度0，最大长度100
         :type Description: str
-        :param Name: 服务器舰队名称，最小长度1，最大长度50
+        :param _Name: 服务器舰队名称，最小长度1，最大长度50
         :type Name: str
-        :param NewGameSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+        :param _NewGameSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
         :type NewGameSessionProtectionPolicy: str
-        :param ResourceCreationLimitPolicy: 资源创建限制策略
+        :param _ResourceCreationLimitPolicy: 资源创建限制策略
         :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
-        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+        :param _GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
         :type GameServerSessionProtectionTimeLimit: int
         """
-        self.FleetId = None
-        self.Description = None
-        self.Name = None
-        self.NewGameSessionProtectionPolicy = None
-        self.ResourceCreationLimitPolicy = None
-        self.GameServerSessionProtectionTimeLimit = None
+        self._FleetId = None
+        self._Description = None
+        self._Name = None
+        self._NewGameSessionProtectionPolicy = None
+        self._ResourceCreationLimitPolicy = None
+        self._GameServerSessionProtectionTimeLimit = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NewGameSessionProtectionPolicy(self):
+        return self._NewGameSessionProtectionPolicy
+
+    @NewGameSessionProtectionPolicy.setter
+    def NewGameSessionProtectionPolicy(self, NewGameSessionProtectionPolicy):
+        self._NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy
+
+    @property
+    def ResourceCreationLimitPolicy(self):
+        return self._ResourceCreationLimitPolicy
+
+    @ResourceCreationLimitPolicy.setter
+    def ResourceCreationLimitPolicy(self, ResourceCreationLimitPolicy):
+        self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy
+
+    @property
+    def GameServerSessionProtectionTimeLimit(self):
+        return self._GameServerSessionProtectionTimeLimit
+
+    @GameServerSessionProtectionTimeLimit.setter
+    def GameServerSessionProtectionTimeLimit(self, GameServerSessionProtectionTimeLimit):
+        self._GameServerSessionProtectionTimeLimit = GameServerSessionProtectionTimeLimit
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Description = params.get("Description")
-        self.Name = params.get("Name")
-        self.NewGameSessionProtectionPolicy = params.get("NewGameSessionProtectionPolicy")
+        self._FleetId = params.get("FleetId")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._NewGameSessionProtectionPolicy = params.get("NewGameSessionProtectionPolicy")
         if params.get("ResourceCreationLimitPolicy") is not None:
-            self.ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
-            self.ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
-        self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+            self._ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
+            self._ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
+        self._GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6564,19 +12047,35 @@ class UpdateFleetAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队Id
+        :param _FleetId: 服务器舰队Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetId = None
-        self.RequestId = None
+        self._FleetId = None
+        self._RequestId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.RequestId = params.get("RequestId")
+        self._FleetId = params.get("FleetId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateFleetCapacityRequest(AbstractModel):
@@ -6586,34 +12085,75 @@ class UpdateFleetCapacityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
         :type FleetId: str
-        :param DesiredInstances: 期望的服务器实例数
+        :param _DesiredInstances: 期望的服务器实例数
         :type DesiredInstances: int
-        :param MinSize: 服务器实例数最小限制，最小值0，最大值不超过最高配额查看各地区最高配额减1
+        :param _MinSize: 服务器实例数最小限制，最小值0，最大值不超过最高配额查看各地区最高配额减1
         :type MinSize: int
-        :param MaxSize: 服务器实例数最大限制，最小值1，最大值不超过最高配额查看各地区最高配额
+        :param _MaxSize: 服务器实例数最大限制，最小值1，最大值不超过最高配额查看各地区最高配额
         :type MaxSize: int
-        :param ScalingInterval: 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
+        :param _ScalingInterval: 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
         :type ScalingInterval: int
         """
-        self.FleetId = None
-        self.DesiredInstances = None
-        self.MinSize = None
-        self.MaxSize = None
-        self.ScalingInterval = None
+        self._FleetId = None
+        self._DesiredInstances = None
+        self._MinSize = None
+        self._MaxSize = None
+        self._ScalingInterval = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def DesiredInstances(self):
+        return self._DesiredInstances
+
+    @DesiredInstances.setter
+    def DesiredInstances(self, DesiredInstances):
+        self._DesiredInstances = DesiredInstances
+
+    @property
+    def MinSize(self):
+        return self._MinSize
+
+    @MinSize.setter
+    def MinSize(self, MinSize):
+        self._MinSize = MinSize
+
+    @property
+    def MaxSize(self):
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+    @property
+    def ScalingInterval(self):
+        return self._ScalingInterval
+
+    @ScalingInterval.setter
+    def ScalingInterval(self, ScalingInterval):
+        self._ScalingInterval = ScalingInterval
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.DesiredInstances = params.get("DesiredInstances")
-        self.MinSize = params.get("MinSize")
-        self.MaxSize = params.get("MaxSize")
-        self.ScalingInterval = params.get("ScalingInterval")
+        self._FleetId = params.get("FleetId")
+        self._DesiredInstances = params.get("DesiredInstances")
+        self._MinSize = params.get("MinSize")
+        self._MaxSize = params.get("MaxSize")
+        self._ScalingInterval = params.get("ScalingInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6626,19 +12166,35 @@ class UpdateFleetCapacityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队ID
+        :param _FleetId: 服务器舰队ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetId = None
-        self.RequestId = None
+        self._FleetId = None
+        self._RequestId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.RequestId = params.get("RequestId")
+        self._FleetId = params.get("FleetId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateFleetNameRequest(AbstractModel):
@@ -6648,22 +12204,39 @@ class UpdateFleetNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Name: 服务器舰队名称，最小长度1，最大长度50
+        :param _Name: 服务器舰队名称，最小长度1，最大长度50
         :type Name: str
         """
-        self.FleetId = None
-        self.Name = None
+        self._FleetId = None
+        self._Name = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.Name = params.get("Name")
+        self._FleetId = params.get("FleetId")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6676,14 +12249,22 @@ class UpdateFleetNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateFleetPortSettingsRequest(AbstractModel):
@@ -6693,36 +12274,61 @@ class UpdateFleetPortSettingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队 Id
+        :param _FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param InboundPermissionAuthorizations: 新增安全组
+        :param _InboundPermissionAuthorizations: 新增安全组
         :type InboundPermissionAuthorizations: list of InboundPermissionAuthorization
-        :param InboundPermissionRevocations: 移除安全组
+        :param _InboundPermissionRevocations: 移除安全组
         :type InboundPermissionRevocations: list of InboundPermissionRevocations
         """
-        self.FleetId = None
-        self.InboundPermissionAuthorizations = None
-        self.InboundPermissionRevocations = None
+        self._FleetId = None
+        self._InboundPermissionAuthorizations = None
+        self._InboundPermissionRevocations = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def InboundPermissionAuthorizations(self):
+        return self._InboundPermissionAuthorizations
+
+    @InboundPermissionAuthorizations.setter
+    def InboundPermissionAuthorizations(self, InboundPermissionAuthorizations):
+        self._InboundPermissionAuthorizations = InboundPermissionAuthorizations
+
+    @property
+    def InboundPermissionRevocations(self):
+        return self._InboundPermissionRevocations
+
+    @InboundPermissionRevocations.setter
+    def InboundPermissionRevocations(self, InboundPermissionRevocations):
+        self._InboundPermissionRevocations = InboundPermissionRevocations
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         if params.get("InboundPermissionAuthorizations") is not None:
-            self.InboundPermissionAuthorizations = []
+            self._InboundPermissionAuthorizations = []
             for item in params.get("InboundPermissionAuthorizations"):
                 obj = InboundPermissionAuthorization()
                 obj._deserialize(item)
-                self.InboundPermissionAuthorizations.append(obj)
+                self._InboundPermissionAuthorizations.append(obj)
         if params.get("InboundPermissionRevocations") is not None:
-            self.InboundPermissionRevocations = []
+            self._InboundPermissionRevocations = []
             for item in params.get("InboundPermissionRevocations"):
                 obj = InboundPermissionRevocations()
                 obj._deserialize(item)
-                self.InboundPermissionRevocations.append(obj)
+                self._InboundPermissionRevocations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6735,19 +12341,35 @@ class UpdateFleetPortSettingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务部署 Id
+        :param _FleetId: 服务部署 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FleetId = None
-        self.RequestId = None
+        self._FleetId = None
+        self._RequestId = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
-        self.RequestId = params.get("RequestId")
+        self._FleetId = params.get("FleetId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateGameServerSessionQueueRequest(AbstractModel):
@@ -6757,40 +12379,73 @@ class UpdateGameServerSessionQueueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 游戏服务器会话队列名字，长度1~128
+        :param _Name: 游戏服务器会话队列名字，长度1~128
         :type Name: str
-        :param Destinations: 目的服务器舰队（可为别名）列表
+        :param _Destinations: 目的服务器舰队（可为别名）列表
         :type Destinations: list of GameServerSessionQueueDestination
-        :param PlayerLatencyPolicies: 延迟策略集合
+        :param _PlayerLatencyPolicies: 延迟策略集合
         :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
-        :param TimeoutInSeconds: 超时时间
+        :param _TimeoutInSeconds: 超时时间
         :type TimeoutInSeconds: int
         """
-        self.Name = None
-        self.Destinations = None
-        self.PlayerLatencyPolicies = None
-        self.TimeoutInSeconds = None
+        self._Name = None
+        self._Destinations = None
+        self._PlayerLatencyPolicies = None
+        self._TimeoutInSeconds = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def PlayerLatencyPolicies(self):
+        return self._PlayerLatencyPolicies
+
+    @PlayerLatencyPolicies.setter
+    def PlayerLatencyPolicies(self, PlayerLatencyPolicies):
+        self._PlayerLatencyPolicies = PlayerLatencyPolicies
+
+    @property
+    def TimeoutInSeconds(self):
+        return self._TimeoutInSeconds
+
+    @TimeoutInSeconds.setter
+    def TimeoutInSeconds(self, TimeoutInSeconds):
+        self._TimeoutInSeconds = TimeoutInSeconds
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = GameServerSessionQueueDestination()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
+                self._Destinations.append(obj)
         if params.get("PlayerLatencyPolicies") is not None:
-            self.PlayerLatencyPolicies = []
+            self._PlayerLatencyPolicies = []
             for item in params.get("PlayerLatencyPolicies"):
                 obj = PlayerLatencyPolicy()
                 obj._deserialize(item)
-                self.PlayerLatencyPolicies.append(obj)
-        self.TimeoutInSeconds = params.get("TimeoutInSeconds")
+                self._PlayerLatencyPolicies.append(obj)
+        self._TimeoutInSeconds = params.get("TimeoutInSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6803,20 +12458,36 @@ class UpdateGameServerSessionQueueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionQueue: 部署服务组对象
+        :param _GameServerSessionQueue: 部署服务组对象
         :type GameServerSessionQueue: :class:`tencentcloud.gse.v20191112.models.GameServerSessionQueue`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSessionQueue = None
-        self.RequestId = None
+        self._GameServerSessionQueue = None
+        self._RequestId = None
+
+    @property
+    def GameServerSessionQueue(self):
+        return self._GameServerSessionQueue
+
+    @GameServerSessionQueue.setter
+    def GameServerSessionQueue(self, GameServerSessionQueue):
+        self._GameServerSessionQueue = GameServerSessionQueue
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSessionQueue") is not None:
-            self.GameServerSessionQueue = GameServerSessionQueue()
-            self.GameServerSessionQueue._deserialize(params.get("GameServerSessionQueue"))
-        self.RequestId = params.get("RequestId")
+            self._GameServerSessionQueue = GameServerSessionQueue()
+            self._GameServerSessionQueue._deserialize(params.get("GameServerSessionQueue"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateGameServerSessionRequest(AbstractModel):
@@ -6826,34 +12497,75 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+        :param _GameServerSessionId: 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
         :type GameServerSessionId: str
-        :param MaximumPlayerSessionCount: 最大玩家数量，最小值不小于0
+        :param _MaximumPlayerSessionCount: 最大玩家数量，最小值不小于0
         :type MaximumPlayerSessionCount: int
-        :param Name: 游戏服务器会话名称，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+        :param _Name: 游戏服务器会话名称，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type Name: str
-        :param PlayerSessionCreationPolicy: 玩家会话创建策略，包括允许所有玩家加入和禁止所有玩家加入（ACCEPT_ALL,DENY_ALL）
+        :param _PlayerSessionCreationPolicy: 玩家会话创建策略，包括允许所有玩家加入和禁止所有玩家加入（ACCEPT_ALL,DENY_ALL）
         :type PlayerSessionCreationPolicy: str
-        :param ProtectionPolicy: 保护策略，包括不保护、时限保护和完全保护(NoProtection,TimeLimitProtection,FullProtection)
+        :param _ProtectionPolicy: 保护策略，包括不保护、时限保护和完全保护(NoProtection,TimeLimitProtection,FullProtection)
         :type ProtectionPolicy: str
         """
-        self.GameServerSessionId = None
-        self.MaximumPlayerSessionCount = None
-        self.Name = None
-        self.PlayerSessionCreationPolicy = None
-        self.ProtectionPolicy = None
+        self._GameServerSessionId = None
+        self._MaximumPlayerSessionCount = None
+        self._Name = None
+        self._PlayerSessionCreationPolicy = None
+        self._ProtectionPolicy = None
+
+    @property
+    def GameServerSessionId(self):
+        return self._GameServerSessionId
+
+    @GameServerSessionId.setter
+    def GameServerSessionId(self, GameServerSessionId):
+        self._GameServerSessionId = GameServerSessionId
+
+    @property
+    def MaximumPlayerSessionCount(self):
+        return self._MaximumPlayerSessionCount
+
+    @MaximumPlayerSessionCount.setter
+    def MaximumPlayerSessionCount(self, MaximumPlayerSessionCount):
+        self._MaximumPlayerSessionCount = MaximumPlayerSessionCount
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PlayerSessionCreationPolicy(self):
+        return self._PlayerSessionCreationPolicy
+
+    @PlayerSessionCreationPolicy.setter
+    def PlayerSessionCreationPolicy(self, PlayerSessionCreationPolicy):
+        self._PlayerSessionCreationPolicy = PlayerSessionCreationPolicy
+
+    @property
+    def ProtectionPolicy(self):
+        return self._ProtectionPolicy
+
+    @ProtectionPolicy.setter
+    def ProtectionPolicy(self, ProtectionPolicy):
+        self._ProtectionPolicy = ProtectionPolicy
 
 
     def _deserialize(self, params):
-        self.GameServerSessionId = params.get("GameServerSessionId")
-        self.MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
-        self.Name = params.get("Name")
-        self.PlayerSessionCreationPolicy = params.get("PlayerSessionCreationPolicy")
-        self.ProtectionPolicy = params.get("ProtectionPolicy")
+        self._GameServerSessionId = params.get("GameServerSessionId")
+        self._MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
+        self._Name = params.get("Name")
+        self._PlayerSessionCreationPolicy = params.get("PlayerSessionCreationPolicy")
+        self._ProtectionPolicy = params.get("ProtectionPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6866,20 +12578,36 @@ class UpdateGameServerSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameServerSession: 更新后的游戏会话
+        :param _GameServerSession: 更新后的游戏会话
         :type GameServerSession: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GameServerSession = None
-        self.RequestId = None
+        self._GameServerSession = None
+        self._RequestId = None
+
+    @property
+    def GameServerSession(self):
+        return self._GameServerSession
+
+    @GameServerSession.setter
+    def GameServerSession(self, GameServerSession):
+        self._GameServerSession = GameServerSession
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("GameServerSession") is not None:
-            self.GameServerSession = GameServerSession()
-            self.GameServerSession._deserialize(params.get("GameServerSession"))
-        self.RequestId = params.get("RequestId")
+            self._GameServerSession = GameServerSession()
+            self._GameServerSession._deserialize(params.get("GameServerSession"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateRuntimeConfigurationRequest(AbstractModel):
@@ -6889,24 +12617,41 @@ class UpdateRuntimeConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FleetId: 服务器舰队Id
+        :param _FleetId: 服务器舰队Id
         :type FleetId: str
-        :param RuntimeConfiguration: 服务器舰队配置
+        :param _RuntimeConfiguration: 服务器舰队配置
         :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
         """
-        self.FleetId = None
-        self.RuntimeConfiguration = None
+        self._FleetId = None
+        self._RuntimeConfiguration = None
+
+    @property
+    def FleetId(self):
+        return self._FleetId
+
+    @FleetId.setter
+    def FleetId(self, FleetId):
+        self._FleetId = FleetId
+
+    @property
+    def RuntimeConfiguration(self):
+        return self._RuntimeConfiguration
+
+    @RuntimeConfiguration.setter
+    def RuntimeConfiguration(self, RuntimeConfiguration):
+        self._RuntimeConfiguration = RuntimeConfiguration
 
 
     def _deserialize(self, params):
-        self.FleetId = params.get("FleetId")
+        self._FleetId = params.get("FleetId")
         if params.get("RuntimeConfiguration") is not None:
-            self.RuntimeConfiguration = RuntimeConfiguration()
-            self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
+            self._RuntimeConfiguration = RuntimeConfiguration()
+            self._RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6919,18 +12664,34 @@ class UpdateRuntimeConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuntimeConfiguration: 服务器舰队配置
+        :param _RuntimeConfiguration: 服务器舰队配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RuntimeConfiguration = None
-        self.RequestId = None
+        self._RuntimeConfiguration = None
+        self._RequestId = None
+
+    @property
+    def RuntimeConfiguration(self):
+        return self._RuntimeConfiguration
+
+    @RuntimeConfiguration.setter
+    def RuntimeConfiguration(self, RuntimeConfiguration):
+        self._RuntimeConfiguration = RuntimeConfiguration
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RuntimeConfiguration") is not None:
-            self.RuntimeConfiguration = RuntimeConfiguration()
-            self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
-        self.RequestId = params.get("RequestId")
+            self._RuntimeConfiguration = RuntimeConfiguration()
+            self._RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
+        self._RequestId = params.get("RequestId")

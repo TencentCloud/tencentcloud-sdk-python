@@ -1407,7 +1407,7 @@ class PostgresClient(AbstractClient):
 
 
     def IsolateDBInstances(self, request):
-        """本接口（IsolateDBInstances）用于隔离实例
+        """本接口（IsolateDBInstances）用于隔离实例。
 
         :param request: Request instance for IsolateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.IsolateDBInstancesRequest`

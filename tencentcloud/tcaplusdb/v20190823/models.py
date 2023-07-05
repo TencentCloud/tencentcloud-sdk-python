@@ -25,89 +25,226 @@ class Application(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: 审批单号
+        :param _ApplicationId: 审批单号
         :type ApplicationId: str
-        :param ApplicationType: 申请类型
+        :param _ApplicationType: 申请类型
         :type ApplicationType: int
-        :param ClusterId: 集群Id
+        :param _ClusterId: 集群Id
         :type ClusterId: str
-        :param ClusterName: 集群名称
+        :param _ClusterName: 集群名称
         :type ClusterName: str
-        :param TableGroupName: 表格组名称
+        :param _TableGroupName: 表格组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupName: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
         :type TableName: str
-        :param Applicant: 申请人
+        :param _Applicant: 申请人
         :type Applicant: str
-        :param CreatedTime: 建单时间
+        :param _CreatedTime: 建单时间
         :type CreatedTime: str
-        :param ApplicationStatus: 处理状态 -1 撤回 0-待审核 1-已经审核并提交任务 2-已驳回
+        :param _ApplicationStatus: 处理状态 -1 撤回 0-待审核 1-已经审核并提交任务 2-已驳回
         :type ApplicationStatus: int
-        :param TableGroupId: 表格组Id
+        :param _TableGroupId: 表格组Id
         :type TableGroupId: str
-        :param TaskId: 已提交的任务Id，未提交申请为0
+        :param _TaskId: 已提交的任务Id，未提交申请为0
         :type TaskId: str
-        :param TableInstanceId: 腾讯云上table的唯一键
+        :param _TableInstanceId: 腾讯云上table的唯一键
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
-        :param UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param ExecuteUser: 审批人
+        :param _ExecuteUser: 审批人
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUser: str
-        :param ExecuteStatus: 执行状态
+        :param _ExecuteStatus: 执行状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteStatus: str
-        :param CanCensor: 该申请单是否可以被当前用户审批
+        :param _CanCensor: 该申请单是否可以被当前用户审批
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanCensor: bool
-        :param CanWithdrawal: 该申请单是否可以被当前用户撤回
+        :param _CanWithdrawal: 该申请单是否可以被当前用户撤回
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanWithdrawal: bool
         """
-        self.ApplicationId = None
-        self.ApplicationType = None
-        self.ClusterId = None
-        self.ClusterName = None
-        self.TableGroupName = None
-        self.TableName = None
-        self.Applicant = None
-        self.CreatedTime = None
-        self.ApplicationStatus = None
-        self.TableGroupId = None
-        self.TaskId = None
-        self.TableInstanceId = None
-        self.UpdateTime = None
-        self.ExecuteUser = None
-        self.ExecuteStatus = None
-        self.CanCensor = None
-        self.CanWithdrawal = None
+        self._ApplicationId = None
+        self._ApplicationType = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._TableGroupName = None
+        self._TableName = None
+        self._Applicant = None
+        self._CreatedTime = None
+        self._ApplicationStatus = None
+        self._TableGroupId = None
+        self._TaskId = None
+        self._TableInstanceId = None
+        self._UpdateTime = None
+        self._ExecuteUser = None
+        self._ExecuteStatus = None
+        self._CanCensor = None
+        self._CanWithdrawal = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def TableGroupName(self):
+        return self._TableGroupName
+
+    @TableGroupName.setter
+    def TableGroupName(self, TableGroupName):
+        self._TableGroupName = TableGroupName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Applicant(self):
+        return self._Applicant
+
+    @Applicant.setter
+    def Applicant(self, Applicant):
+        self._Applicant = Applicant
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ApplicationStatus(self):
+        return self._ApplicationStatus
+
+    @ApplicationStatus.setter
+    def ApplicationStatus(self, ApplicationStatus):
+        self._ApplicationStatus = ApplicationStatus
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ExecuteUser(self):
+        return self._ExecuteUser
+
+    @ExecuteUser.setter
+    def ExecuteUser(self, ExecuteUser):
+        self._ExecuteUser = ExecuteUser
+
+    @property
+    def ExecuteStatus(self):
+        return self._ExecuteStatus
+
+    @ExecuteStatus.setter
+    def ExecuteStatus(self, ExecuteStatus):
+        self._ExecuteStatus = ExecuteStatus
+
+    @property
+    def CanCensor(self):
+        return self._CanCensor
+
+    @CanCensor.setter
+    def CanCensor(self, CanCensor):
+        self._CanCensor = CanCensor
+
+    @property
+    def CanWithdrawal(self):
+        return self._CanWithdrawal
+
+    @CanWithdrawal.setter
+    def CanWithdrawal(self, CanWithdrawal):
+        self._CanWithdrawal = CanWithdrawal
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.ApplicationType = params.get("ApplicationType")
-        self.ClusterId = params.get("ClusterId")
-        self.ClusterName = params.get("ClusterName")
-        self.TableGroupName = params.get("TableGroupName")
-        self.TableName = params.get("TableName")
-        self.Applicant = params.get("Applicant")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ApplicationStatus = params.get("ApplicationStatus")
-        self.TableGroupId = params.get("TableGroupId")
-        self.TaskId = params.get("TaskId")
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.UpdateTime = params.get("UpdateTime")
-        self.ExecuteUser = params.get("ExecuteUser")
-        self.ExecuteStatus = params.get("ExecuteStatus")
-        self.CanCensor = params.get("CanCensor")
-        self.CanWithdrawal = params.get("CanWithdrawal")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationType = params.get("ApplicationType")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._TableGroupName = params.get("TableGroupName")
+        self._TableName = params.get("TableName")
+        self._Applicant = params.get("Applicant")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ApplicationStatus = params.get("ApplicationStatus")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TaskId = params.get("TaskId")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ExecuteUser = params.get("ExecuteUser")
+        self._ExecuteStatus = params.get("ExecuteStatus")
+        self._CanCensor = params.get("CanCensor")
+        self._CanWithdrawal = params.get("CanWithdrawal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -120,39 +257,80 @@ class ApplyResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: 申请单id
+        :param _ApplicationId: 申请单id
         :type ApplicationId: str
-        :param ApplicationType: 申请类型
+        :param _ApplicationType: 申请类型
         :type ApplicationType: int
-        :param ApplicationStatus: 处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
+        :param _ApplicationStatus: 处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationStatus: int
-        :param TaskId: 已提交的任务Id
+        :param _TaskId: 已提交的任务Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        self.ApplicationId = None
-        self.ApplicationType = None
-        self.ApplicationStatus = None
-        self.TaskId = None
-        self.Error = None
+        self._ApplicationId = None
+        self._ApplicationType = None
+        self._ApplicationStatus = None
+        self._TaskId = None
+        self._Error = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def ApplicationStatus(self):
+        return self._ApplicationStatus
+
+    @ApplicationStatus.setter
+    def ApplicationStatus(self, ApplicationStatus):
+        self._ApplicationStatus = ApplicationStatus
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.ApplicationType = params.get("ApplicationType")
-        self.ApplicationStatus = params.get("ApplicationStatus")
-        self.TaskId = params.get("TaskId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationType = params.get("ApplicationType")
+        self._ApplicationStatus = params.get("ApplicationStatus")
+        self._TaskId = params.get("TaskId")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -165,30 +343,63 @@ class ApplyStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: 集群id-申请单id
+        :param _ApplicationId: 集群id-申请单id
         :type ApplicationId: str
-        :param ApplicationStatus: 处理状态-1-撤回 1-通过 2-驳回，非0状态的申请单不可改变状态。
+        :param _ApplicationStatus: 处理状态-1-撤回 1-通过 2-驳回，非0状态的申请单不可改变状态。
         :type ApplicationStatus: int
-        :param ApplicationType: 申请单类型
+        :param _ApplicationType: 申请单类型
         :type ApplicationType: int
-        :param ClusterId: 集群Id
+        :param _ClusterId: 集群Id
         :type ClusterId: str
         """
-        self.ApplicationId = None
-        self.ApplicationStatus = None
-        self.ApplicationType = None
-        self.ClusterId = None
+        self._ApplicationId = None
+        self._ApplicationStatus = None
+        self._ApplicationType = None
+        self._ClusterId = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationStatus(self):
+        return self._ApplicationStatus
+
+    @ApplicationStatus.setter
+    def ApplicationStatus(self, ApplicationStatus):
+        self._ApplicationStatus = ApplicationStatus
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.ApplicationStatus = params.get("ApplicationStatus")
-        self.ApplicationType = params.get("ApplicationType")
-        self.ClusterId = params.get("ClusterId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationStatus = params.get("ApplicationStatus")
+        self._ApplicationType = params.get("ApplicationType")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -208,34 +419,75 @@ class BackupExpireRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 所属表格组ID
+        :param _TableGroupId: 所属表格组ID
         :type TableGroupId: str
-        :param TableName: 表名称
+        :param _TableName: 表名称
         :type TableName: str
-        :param FileTag: 文件标签，见上面描述
+        :param _FileTag: 文件标签，见上面描述
         :type FileTag: int
-        :param ExpireDay: 淘汰天数，见上面描述
+        :param _ExpireDay: 淘汰天数，见上面描述
         :type ExpireDay: int
-        :param OperType: 操作类型，见上面描述
+        :param _OperType: 操作类型，见上面描述
         :type OperType: int
         """
-        self.TableGroupId = None
-        self.TableName = None
-        self.FileTag = None
-        self.ExpireDay = None
-        self.OperType = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._FileTag = None
+        self._ExpireDay = None
+        self._OperType = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FileTag(self):
+        return self._FileTag
+
+    @FileTag.setter
+    def FileTag(self, FileTag):
+        self._FileTag = FileTag
+
+    @property
+    def ExpireDay(self):
+        return self._ExpireDay
+
+    @ExpireDay.setter
+    def ExpireDay(self, ExpireDay):
+        self._ExpireDay = ExpireDay
+
+    @property
+    def OperType(self):
+        return self._OperType
+
+    @OperType.setter
+    def OperType(self, OperType):
+        self._OperType = OperType
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.FileTag = params.get("FileTag")
-        self.ExpireDay = params.get("ExpireDay")
-        self.OperType = params.get("OperType")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._FileTag = params.get("FileTag")
+        self._ExpireDay = params.get("ExpireDay")
+        self._OperType = params.get("OperType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -250,54 +502,135 @@ class BackupRecords(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 表格组ID
+        :param _ZoneId: 表格组ID
         :type ZoneId: int
-        :param TableName: 表名称
+        :param _TableName: 表名称
         :type TableName: str
-        :param BackupType: 备份源
+        :param _BackupType: 备份源
         :type BackupType: str
-        :param FileTag: 文件标签：TCAPLUS_FULL或OSDATA
+        :param _FileTag: 文件标签：TCAPLUS_FULL或OSDATA
         :type FileTag: str
-        :param ShardCount: 分片数量
+        :param _ShardCount: 分片数量
         :type ShardCount: int
-        :param BackupBatchTime: 备份批次日期
+        :param _BackupBatchTime: 备份批次日期
         :type BackupBatchTime: str
-        :param BackupFileSize: 备份文件汇总大小
+        :param _BackupFileSize: 备份文件汇总大小
         :type BackupFileSize: int
-        :param BackupSuccRate: 备份成功率
+        :param _BackupSuccRate: 备份成功率
         :type BackupSuccRate: str
-        :param BackupExpireTime: 备份文件过期时间
+        :param _BackupExpireTime: 备份文件过期时间
         :type BackupExpireTime: str
-        :param AppId: 业务ID
+        :param _AppId: 业务ID
         :type AppId: int
         """
-        self.ZoneId = None
-        self.TableName = None
-        self.BackupType = None
-        self.FileTag = None
-        self.ShardCount = None
-        self.BackupBatchTime = None
-        self.BackupFileSize = None
-        self.BackupSuccRate = None
-        self.BackupExpireTime = None
-        self.AppId = None
+        self._ZoneId = None
+        self._TableName = None
+        self._BackupType = None
+        self._FileTag = None
+        self._ShardCount = None
+        self._BackupBatchTime = None
+        self._BackupFileSize = None
+        self._BackupSuccRate = None
+        self._BackupExpireTime = None
+        self._AppId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def FileTag(self):
+        return self._FileTag
+
+    @FileTag.setter
+    def FileTag(self, FileTag):
+        self._FileTag = FileTag
+
+    @property
+    def ShardCount(self):
+        return self._ShardCount
+
+    @ShardCount.setter
+    def ShardCount(self, ShardCount):
+        self._ShardCount = ShardCount
+
+    @property
+    def BackupBatchTime(self):
+        return self._BackupBatchTime
+
+    @BackupBatchTime.setter
+    def BackupBatchTime(self, BackupBatchTime):
+        self._BackupBatchTime = BackupBatchTime
+
+    @property
+    def BackupFileSize(self):
+        return self._BackupFileSize
+
+    @BackupFileSize.setter
+    def BackupFileSize(self, BackupFileSize):
+        self._BackupFileSize = BackupFileSize
+
+    @property
+    def BackupSuccRate(self):
+        return self._BackupSuccRate
+
+    @BackupSuccRate.setter
+    def BackupSuccRate(self, BackupSuccRate):
+        self._BackupSuccRate = BackupSuccRate
+
+    @property
+    def BackupExpireTime(self):
+        return self._BackupExpireTime
+
+    @BackupExpireTime.setter
+    def BackupExpireTime(self, BackupExpireTime):
+        self._BackupExpireTime = BackupExpireTime
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.TableName = params.get("TableName")
-        self.BackupType = params.get("BackupType")
-        self.FileTag = params.get("FileTag")
-        self.ShardCount = params.get("ShardCount")
-        self.BackupBatchTime = params.get("BackupBatchTime")
-        self.BackupFileSize = params.get("BackupFileSize")
-        self.BackupSuccRate = params.get("BackupSuccRate")
-        self.BackupExpireTime = params.get("BackupExpireTime")
-        self.AppId = params.get("AppId")
+        self._ZoneId = params.get("ZoneId")
+        self._TableName = params.get("TableName")
+        self._BackupType = params.get("BackupType")
+        self._FileTag = params.get("FileTag")
+        self._ShardCount = params.get("ShardCount")
+        self._BackupBatchTime = params.get("BackupBatchTime")
+        self._BackupFileSize = params.get("BackupFileSize")
+        self._BackupSuccRate = params.get("BackupSuccRate")
+        self._BackupExpireTime = params.get("BackupExpireTime")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -310,27 +643,44 @@ class ClearTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表所属集群实例ID
+        :param _ClusterId: 表所属集群实例ID
         :type ClusterId: str
-        :param SelectedTables: 待清理表信息列表
+        :param _SelectedTables: 待清理表信息列表
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -343,27 +693,51 @@ class ClearTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 清除表结果数量
+        :param _TotalCount: 清除表结果数量
         :type TotalCount: int
-        :param TableResults: 清除表结果列表
+        :param _TableResults: 清除表结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ClusterInfo(AbstractModel):
@@ -373,162 +747,403 @@ class ClusterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterName: 集群名称
+        :param _ClusterName: 集群名称
         :type ClusterName: str
-        :param ClusterId: 集群ID
+        :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param Region: 集群所在地域
+        :param _Region: 集群所在地域
         :type Region: str
-        :param IdlType: 集群数据描述语言类型，如：`PROTO`,`TDR`
+        :param _IdlType: 集群数据描述语言类型，如：`PROTO`,`TDR`
         :type IdlType: str
-        :param NetworkType: 网络类型
+        :param _NetworkType: 网络类型
         :type NetworkType: str
-        :param VpcId: 集群关联的用户私有网络实例ID
+        :param _VpcId: 集群关联的用户私有网络实例ID
         :type VpcId: str
-        :param SubnetId: 集群关联的用户子网实例ID
+        :param _SubnetId: 集群关联的用户子网实例ID
         :type SubnetId: str
-        :param CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间
         :type CreatedTime: str
-        :param Password: 集群密码
+        :param _Password: 集群密码
         :type Password: str
-        :param PasswordStatus: 密码状态
+        :param _PasswordStatus: 密码状态
         :type PasswordStatus: str
-        :param ApiAccessId: TcaplusDB SDK连接参数，接入ID
+        :param _ApiAccessId: TcaplusDB SDK连接参数，接入ID
         :type ApiAccessId: str
-        :param ApiAccessIp: TcaplusDB SDK连接参数，接入地址
+        :param _ApiAccessIp: TcaplusDB SDK连接参数，接入地址
         :type ApiAccessIp: str
-        :param ApiAccessPort: TcaplusDB SDK连接参数，接入端口
+        :param _ApiAccessPort: TcaplusDB SDK连接参数，接入端口
         :type ApiAccessPort: int
-        :param OldPasswordExpireTime: 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
+        :param _OldPasswordExpireTime: 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type OldPasswordExpireTime: str
-        :param ApiAccessIpv6: TcaplusDB SDK连接参数，接入ipv6地址
+        :param _ApiAccessIpv6: TcaplusDB SDK连接参数，接入ipv6地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAccessIpv6: str
-        :param ClusterType: 集群类型，0,1:共享集群; 2:独立集群
+        :param _ClusterType: 集群类型，0,1:共享集群; 2:独立集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
-        :param ClusterStatus: 集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
+        :param _ClusterStatus: 集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: int
-        :param ReadCapacityUnit: 读CU
+        :param _ReadCapacityUnit: 读CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadCapacityUnit: int
-        :param WriteCapacityUnit: 写CU
+        :param _WriteCapacityUnit: 写CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type WriteCapacityUnit: int
-        :param DiskVolume: 磁盘容量
+        :param _DiskVolume: 磁盘容量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskVolume: int
-        :param ServerList: 独占server机器信息
+        :param _ServerList: 独占server机器信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerList: list of ServerDetailInfo
-        :param ProxyList: 独占proxy机器信息
+        :param _ProxyList: 独占proxy机器信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyList: list of ProxyDetailInfo
-        :param Censorship: 是否开启审核 0-不开启 1-开启
+        :param _Censorship: 是否开启审核 0-不开启 1-开启
         :type Censorship: int
-        :param DbaUins: 审批人uin列表
+        :param _DbaUins: 审批人uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbaUins: list of str
-        :param DataFlowStatus: 是否开启了数据订阅
+        :param _DataFlowStatus: 是否开启了数据订阅
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataFlowStatus: int
-        :param KafkaInfo: 数据订阅的kafka信息
+        :param _KafkaInfo: 数据订阅的kafka信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
-        :param TxhBackupExpireDay: 集群Txh备份文件多少天后过期删除
+        :param _TxhBackupExpireDay: 集群Txh备份文件多少天后过期删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type TxhBackupExpireDay: int
-        :param UlogBackupExpireDay: 集群Ulog备份文件多少天后过期删除
+        :param _UlogBackupExpireDay: 集群Ulog备份文件多少天后过期删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type UlogBackupExpireDay: int
-        :param IsReadOnlyUlogBackupExpireDay: 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
+        :param _IsReadOnlyUlogBackupExpireDay: 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsReadOnlyUlogBackupExpireDay: int
-        :param RestProxyStatus: restproxy状态
+        :param _RestProxyStatus: restproxy状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestProxyStatus: int
         """
-        self.ClusterName = None
-        self.ClusterId = None
-        self.Region = None
-        self.IdlType = None
-        self.NetworkType = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.CreatedTime = None
-        self.Password = None
-        self.PasswordStatus = None
-        self.ApiAccessId = None
-        self.ApiAccessIp = None
-        self.ApiAccessPort = None
-        self.OldPasswordExpireTime = None
-        self.ApiAccessIpv6 = None
-        self.ClusterType = None
-        self.ClusterStatus = None
-        self.ReadCapacityUnit = None
-        self.WriteCapacityUnit = None
-        self.DiskVolume = None
-        self.ServerList = None
-        self.ProxyList = None
-        self.Censorship = None
-        self.DbaUins = None
-        self.DataFlowStatus = None
-        self.KafkaInfo = None
-        self.TxhBackupExpireDay = None
-        self.UlogBackupExpireDay = None
-        self.IsReadOnlyUlogBackupExpireDay = None
-        self.RestProxyStatus = None
+        self._ClusterName = None
+        self._ClusterId = None
+        self._Region = None
+        self._IdlType = None
+        self._NetworkType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._CreatedTime = None
+        self._Password = None
+        self._PasswordStatus = None
+        self._ApiAccessId = None
+        self._ApiAccessIp = None
+        self._ApiAccessPort = None
+        self._OldPasswordExpireTime = None
+        self._ApiAccessIpv6 = None
+        self._ClusterType = None
+        self._ClusterStatus = None
+        self._ReadCapacityUnit = None
+        self._WriteCapacityUnit = None
+        self._DiskVolume = None
+        self._ServerList = None
+        self._ProxyList = None
+        self._Censorship = None
+        self._DbaUins = None
+        self._DataFlowStatus = None
+        self._KafkaInfo = None
+        self._TxhBackupExpireDay = None
+        self._UlogBackupExpireDay = None
+        self._IsReadOnlyUlogBackupExpireDay = None
+        self._RestProxyStatus = None
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def IdlType(self):
+        return self._IdlType
+
+    @IdlType.setter
+    def IdlType(self, IdlType):
+        self._IdlType = IdlType
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def PasswordStatus(self):
+        return self._PasswordStatus
+
+    @PasswordStatus.setter
+    def PasswordStatus(self, PasswordStatus):
+        self._PasswordStatus = PasswordStatus
+
+    @property
+    def ApiAccessId(self):
+        return self._ApiAccessId
+
+    @ApiAccessId.setter
+    def ApiAccessId(self, ApiAccessId):
+        self._ApiAccessId = ApiAccessId
+
+    @property
+    def ApiAccessIp(self):
+        return self._ApiAccessIp
+
+    @ApiAccessIp.setter
+    def ApiAccessIp(self, ApiAccessIp):
+        self._ApiAccessIp = ApiAccessIp
+
+    @property
+    def ApiAccessPort(self):
+        return self._ApiAccessPort
+
+    @ApiAccessPort.setter
+    def ApiAccessPort(self, ApiAccessPort):
+        self._ApiAccessPort = ApiAccessPort
+
+    @property
+    def OldPasswordExpireTime(self):
+        return self._OldPasswordExpireTime
+
+    @OldPasswordExpireTime.setter
+    def OldPasswordExpireTime(self, OldPasswordExpireTime):
+        self._OldPasswordExpireTime = OldPasswordExpireTime
+
+    @property
+    def ApiAccessIpv6(self):
+        return self._ApiAccessIpv6
+
+    @ApiAccessIpv6.setter
+    def ApiAccessIpv6(self, ApiAccessIpv6):
+        self._ApiAccessIpv6 = ApiAccessIpv6
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterStatus(self):
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def ReadCapacityUnit(self):
+        return self._ReadCapacityUnit
+
+    @ReadCapacityUnit.setter
+    def ReadCapacityUnit(self, ReadCapacityUnit):
+        self._ReadCapacityUnit = ReadCapacityUnit
+
+    @property
+    def WriteCapacityUnit(self):
+        return self._WriteCapacityUnit
+
+    @WriteCapacityUnit.setter
+    def WriteCapacityUnit(self, WriteCapacityUnit):
+        self._WriteCapacityUnit = WriteCapacityUnit
+
+    @property
+    def DiskVolume(self):
+        return self._DiskVolume
+
+    @DiskVolume.setter
+    def DiskVolume(self, DiskVolume):
+        self._DiskVolume = DiskVolume
+
+    @property
+    def ServerList(self):
+        return self._ServerList
+
+    @ServerList.setter
+    def ServerList(self, ServerList):
+        self._ServerList = ServerList
+
+    @property
+    def ProxyList(self):
+        return self._ProxyList
+
+    @ProxyList.setter
+    def ProxyList(self, ProxyList):
+        self._ProxyList = ProxyList
+
+    @property
+    def Censorship(self):
+        return self._Censorship
+
+    @Censorship.setter
+    def Censorship(self, Censorship):
+        self._Censorship = Censorship
+
+    @property
+    def DbaUins(self):
+        return self._DbaUins
+
+    @DbaUins.setter
+    def DbaUins(self, DbaUins):
+        self._DbaUins = DbaUins
+
+    @property
+    def DataFlowStatus(self):
+        return self._DataFlowStatus
+
+    @DataFlowStatus.setter
+    def DataFlowStatus(self, DataFlowStatus):
+        self._DataFlowStatus = DataFlowStatus
+
+    @property
+    def KafkaInfo(self):
+        return self._KafkaInfo
+
+    @KafkaInfo.setter
+    def KafkaInfo(self, KafkaInfo):
+        self._KafkaInfo = KafkaInfo
+
+    @property
+    def TxhBackupExpireDay(self):
+        return self._TxhBackupExpireDay
+
+    @TxhBackupExpireDay.setter
+    def TxhBackupExpireDay(self, TxhBackupExpireDay):
+        self._TxhBackupExpireDay = TxhBackupExpireDay
+
+    @property
+    def UlogBackupExpireDay(self):
+        return self._UlogBackupExpireDay
+
+    @UlogBackupExpireDay.setter
+    def UlogBackupExpireDay(self, UlogBackupExpireDay):
+        self._UlogBackupExpireDay = UlogBackupExpireDay
+
+    @property
+    def IsReadOnlyUlogBackupExpireDay(self):
+        return self._IsReadOnlyUlogBackupExpireDay
+
+    @IsReadOnlyUlogBackupExpireDay.setter
+    def IsReadOnlyUlogBackupExpireDay(self, IsReadOnlyUlogBackupExpireDay):
+        self._IsReadOnlyUlogBackupExpireDay = IsReadOnlyUlogBackupExpireDay
+
+    @property
+    def RestProxyStatus(self):
+        return self._RestProxyStatus
+
+    @RestProxyStatus.setter
+    def RestProxyStatus(self, RestProxyStatus):
+        self._RestProxyStatus = RestProxyStatus
 
 
     def _deserialize(self, params):
-        self.ClusterName = params.get("ClusterName")
-        self.ClusterId = params.get("ClusterId")
-        self.Region = params.get("Region")
-        self.IdlType = params.get("IdlType")
-        self.NetworkType = params.get("NetworkType")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.CreatedTime = params.get("CreatedTime")
-        self.Password = params.get("Password")
-        self.PasswordStatus = params.get("PasswordStatus")
-        self.ApiAccessId = params.get("ApiAccessId")
-        self.ApiAccessIp = params.get("ApiAccessIp")
-        self.ApiAccessPort = params.get("ApiAccessPort")
-        self.OldPasswordExpireTime = params.get("OldPasswordExpireTime")
-        self.ApiAccessIpv6 = params.get("ApiAccessIpv6")
-        self.ClusterType = params.get("ClusterType")
-        self.ClusterStatus = params.get("ClusterStatus")
-        self.ReadCapacityUnit = params.get("ReadCapacityUnit")
-        self.WriteCapacityUnit = params.get("WriteCapacityUnit")
-        self.DiskVolume = params.get("DiskVolume")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterId = params.get("ClusterId")
+        self._Region = params.get("Region")
+        self._IdlType = params.get("IdlType")
+        self._NetworkType = params.get("NetworkType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Password = params.get("Password")
+        self._PasswordStatus = params.get("PasswordStatus")
+        self._ApiAccessId = params.get("ApiAccessId")
+        self._ApiAccessIp = params.get("ApiAccessIp")
+        self._ApiAccessPort = params.get("ApiAccessPort")
+        self._OldPasswordExpireTime = params.get("OldPasswordExpireTime")
+        self._ApiAccessIpv6 = params.get("ApiAccessIpv6")
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._ReadCapacityUnit = params.get("ReadCapacityUnit")
+        self._WriteCapacityUnit = params.get("WriteCapacityUnit")
+        self._DiskVolume = params.get("DiskVolume")
         if params.get("ServerList") is not None:
-            self.ServerList = []
+            self._ServerList = []
             for item in params.get("ServerList"):
                 obj = ServerDetailInfo()
                 obj._deserialize(item)
-                self.ServerList.append(obj)
+                self._ServerList.append(obj)
         if params.get("ProxyList") is not None:
-            self.ProxyList = []
+            self._ProxyList = []
             for item in params.get("ProxyList"):
                 obj = ProxyDetailInfo()
                 obj._deserialize(item)
-                self.ProxyList.append(obj)
-        self.Censorship = params.get("Censorship")
-        self.DbaUins = params.get("DbaUins")
-        self.DataFlowStatus = params.get("DataFlowStatus")
+                self._ProxyList.append(obj)
+        self._Censorship = params.get("Censorship")
+        self._DbaUins = params.get("DbaUins")
+        self._DataFlowStatus = params.get("DataFlowStatus")
         if params.get("KafkaInfo") is not None:
-            self.KafkaInfo = KafkaInfo()
-            self.KafkaInfo._deserialize(params.get("KafkaInfo"))
-        self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
-        self.UlogBackupExpireDay = params.get("UlogBackupExpireDay")
-        self.IsReadOnlyUlogBackupExpireDay = params.get("IsReadOnlyUlogBackupExpireDay")
-        self.RestProxyStatus = params.get("RestProxyStatus")
+            self._KafkaInfo = KafkaInfo()
+            self._KafkaInfo._deserialize(params.get("KafkaInfo"))
+        self._TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+        self._UlogBackupExpireDay = params.get("UlogBackupExpireDay")
+        self._IsReadOnlyUlogBackupExpireDay = params.get("IsReadOnlyUlogBackupExpireDay")
+        self._RestProxyStatus = params.get("RestProxyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -541,45 +1156,78 @@ class CompareIdlFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待修改表格所在集群ID
+        :param _ClusterId: 待修改表格所在集群ID
         :type ClusterId: str
-        :param SelectedTables: 待修改表格列表
+        :param _SelectedTables: 待修改表格列表
         :type SelectedTables: list of SelectedTableInfoNew
-        :param ExistingIdlFiles: 选中的已上传IDL文件列表，与NewIdlFiles必选其一
+        :param _ExistingIdlFiles: 选中的已上传IDL文件列表，与NewIdlFiles必选其一
         :type ExistingIdlFiles: list of IdlFileInfo
-        :param NewIdlFiles: 本次上传IDL文件列表，与ExistingIdlFiles必选其一
+        :param _NewIdlFiles: 本次上传IDL文件列表，与ExistingIdlFiles必选其一
         :type NewIdlFiles: list of IdlFileInfo
         """
-        self.ClusterId = None
-        self.SelectedTables = None
-        self.ExistingIdlFiles = None
-        self.NewIdlFiles = None
+        self._ClusterId = None
+        self._SelectedTables = None
+        self._ExistingIdlFiles = None
+        self._NewIdlFiles = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
+
+    @property
+    def ExistingIdlFiles(self):
+        return self._ExistingIdlFiles
+
+    @ExistingIdlFiles.setter
+    def ExistingIdlFiles(self, ExistingIdlFiles):
+        self._ExistingIdlFiles = ExistingIdlFiles
+
+    @property
+    def NewIdlFiles(self):
+        return self._NewIdlFiles
+
+    @NewIdlFiles.setter
+    def NewIdlFiles(self, NewIdlFiles):
+        self._NewIdlFiles = NewIdlFiles
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         if params.get("ExistingIdlFiles") is not None:
-            self.ExistingIdlFiles = []
+            self._ExistingIdlFiles = []
             for item in params.get("ExistingIdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.ExistingIdlFiles.append(obj)
+                self._ExistingIdlFiles.append(obj)
         if params.get("NewIdlFiles") is not None:
-            self.NewIdlFiles = []
+            self._NewIdlFiles = []
             for item in params.get("NewIdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.NewIdlFiles.append(obj)
+                self._NewIdlFiles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -592,36 +1240,68 @@ class CompareIdlFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdlFiles: 本次上传校验所有的IDL文件信息列表
+        :param _IdlFiles: 本次上传校验所有的IDL文件信息列表
         :type IdlFiles: list of IdlFileInfo
-        :param TotalCount: 本次校验合法的表格数量
+        :param _TotalCount: 本次校验合法的表格数量
         :type TotalCount: int
-        :param TableInfos: 读取IDL描述文件后,根据用户指示的所选中表格解析校验结果
+        :param _TableInfos: 读取IDL描述文件后,根据用户指示的所选中表格解析校验结果
         :type TableInfos: list of ParsedTableInfoNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IdlFiles = None
-        self.TotalCount = None
-        self.TableInfos = None
-        self.RequestId = None
+        self._IdlFiles = None
+        self._TotalCount = None
+        self._TableInfos = None
+        self._RequestId = None
+
+    @property
+    def IdlFiles(self):
+        return self._IdlFiles
+
+    @IdlFiles.setter
+    def IdlFiles(self, IdlFiles):
+        self._IdlFiles = IdlFiles
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableInfos(self):
+        return self._TableInfos
+
+    @TableInfos.setter
+    def TableInfos(self, TableInfos):
+        self._TableInfos = TableInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("IdlFiles") is not None:
-            self.IdlFiles = []
+            self._IdlFiles = []
             for item in params.get("IdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.IdlFiles.append(obj)
-        self.TotalCount = params.get("TotalCount")
+                self._IdlFiles.append(obj)
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableInfos") is not None:
-            self.TableInfos = []
+            self._TableInfos = []
             for item in params.get("TableInfos"):
                 obj = ParsedTableInfoNew()
                 obj._deserialize(item)
-                self.TableInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CompareTablesInfo(AbstractModel):
@@ -631,46 +1311,111 @@ class CompareTablesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SrcTableClusterId: 源表格的集群id
+        :param _SrcTableClusterId: 源表格的集群id
         :type SrcTableClusterId: str
-        :param SrcTableGroupId: 源表格的表格组id
+        :param _SrcTableGroupId: 源表格的表格组id
         :type SrcTableGroupId: str
-        :param SrcTableName: 源表格的表名
+        :param _SrcTableName: 源表格的表名
         :type SrcTableName: str
-        :param DstTableClusterId: 目标表格的集群id
+        :param _DstTableClusterId: 目标表格的集群id
         :type DstTableClusterId: str
-        :param DstTableGroupId: 目标表格的表格组id
+        :param _DstTableGroupId: 目标表格的表格组id
         :type DstTableGroupId: str
-        :param DstTableName: 目标表格的表名
+        :param _DstTableName: 目标表格的表名
         :type DstTableName: str
-        :param SrcTableInstanceId: 源表格的实例id
+        :param _SrcTableInstanceId: 源表格的实例id
         :type SrcTableInstanceId: str
-        :param DstTableInstanceId: 目标表格的实例id
+        :param _DstTableInstanceId: 目标表格的实例id
         :type DstTableInstanceId: str
         """
-        self.SrcTableClusterId = None
-        self.SrcTableGroupId = None
-        self.SrcTableName = None
-        self.DstTableClusterId = None
-        self.DstTableGroupId = None
-        self.DstTableName = None
-        self.SrcTableInstanceId = None
-        self.DstTableInstanceId = None
+        self._SrcTableClusterId = None
+        self._SrcTableGroupId = None
+        self._SrcTableName = None
+        self._DstTableClusterId = None
+        self._DstTableGroupId = None
+        self._DstTableName = None
+        self._SrcTableInstanceId = None
+        self._DstTableInstanceId = None
+
+    @property
+    def SrcTableClusterId(self):
+        return self._SrcTableClusterId
+
+    @SrcTableClusterId.setter
+    def SrcTableClusterId(self, SrcTableClusterId):
+        self._SrcTableClusterId = SrcTableClusterId
+
+    @property
+    def SrcTableGroupId(self):
+        return self._SrcTableGroupId
+
+    @SrcTableGroupId.setter
+    def SrcTableGroupId(self, SrcTableGroupId):
+        self._SrcTableGroupId = SrcTableGroupId
+
+    @property
+    def SrcTableName(self):
+        return self._SrcTableName
+
+    @SrcTableName.setter
+    def SrcTableName(self, SrcTableName):
+        self._SrcTableName = SrcTableName
+
+    @property
+    def DstTableClusterId(self):
+        return self._DstTableClusterId
+
+    @DstTableClusterId.setter
+    def DstTableClusterId(self, DstTableClusterId):
+        self._DstTableClusterId = DstTableClusterId
+
+    @property
+    def DstTableGroupId(self):
+        return self._DstTableGroupId
+
+    @DstTableGroupId.setter
+    def DstTableGroupId(self, DstTableGroupId):
+        self._DstTableGroupId = DstTableGroupId
+
+    @property
+    def DstTableName(self):
+        return self._DstTableName
+
+    @DstTableName.setter
+    def DstTableName(self, DstTableName):
+        self._DstTableName = DstTableName
+
+    @property
+    def SrcTableInstanceId(self):
+        return self._SrcTableInstanceId
+
+    @SrcTableInstanceId.setter
+    def SrcTableInstanceId(self, SrcTableInstanceId):
+        self._SrcTableInstanceId = SrcTableInstanceId
+
+    @property
+    def DstTableInstanceId(self):
+        return self._DstTableInstanceId
+
+    @DstTableInstanceId.setter
+    def DstTableInstanceId(self, DstTableInstanceId):
+        self._DstTableInstanceId = DstTableInstanceId
 
 
     def _deserialize(self, params):
-        self.SrcTableClusterId = params.get("SrcTableClusterId")
-        self.SrcTableGroupId = params.get("SrcTableGroupId")
-        self.SrcTableName = params.get("SrcTableName")
-        self.DstTableClusterId = params.get("DstTableClusterId")
-        self.DstTableGroupId = params.get("DstTableGroupId")
-        self.DstTableName = params.get("DstTableName")
-        self.SrcTableInstanceId = params.get("SrcTableInstanceId")
-        self.DstTableInstanceId = params.get("DstTableInstanceId")
+        self._SrcTableClusterId = params.get("SrcTableClusterId")
+        self._SrcTableGroupId = params.get("SrcTableGroupId")
+        self._SrcTableName = params.get("SrcTableName")
+        self._DstTableClusterId = params.get("DstTableClusterId")
+        self._DstTableGroupId = params.get("DstTableGroupId")
+        self._DstTableName = params.get("DstTableName")
+        self._SrcTableInstanceId = params.get("SrcTableInstanceId")
+        self._DstTableInstanceId = params.get("DstTableInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -683,31 +1428,56 @@ class CreateBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待创建备份表所属集群ID
+        :param _ClusterId: 待创建备份表所属集群ID
         :type ClusterId: str
-        :param SelectedTables: 待创建备份表信息列表
+        :param _SelectedTables: 待创建备份表信息列表
         :type SelectedTables: list of SelectedTableInfoNew
-        :param Remark: 备注信息
+        :param _Remark: 备注信息
         :type Remark: str
         """
-        self.ClusterId = None
-        self.SelectedTables = None
-        self.Remark = None
+        self._ClusterId = None
+        self._SelectedTables = None
+        self._Remark = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
-        self.Remark = params.get("Remark")
+                self._SelectedTables.append(obj)
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -720,24 +1490,48 @@ class CreateBackupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIds: 创建的备份任务ID列表
+        :param _TaskIds: 创建的备份任务ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
-        :param ApplicationIds: 创建的备份申请ID列表
+        :param _ApplicationIds: 创建的备份申请ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskIds = None
-        self.ApplicationIds = None
-        self.RequestId = None
+        self._TaskIds = None
+        self._ApplicationIds = None
+        self._RequestId = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def ApplicationIds(self):
+        return self._ApplicationIds
+
+    @ApplicationIds.setter
+    def ApplicationIds(self, ApplicationIds):
+        self._ApplicationIds = ApplicationIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskIds = params.get("TaskIds")
-        self.ApplicationIds = params.get("ApplicationIds")
-        self.RequestId = params.get("RequestId")
+        self._TaskIds = params.get("TaskIds")
+        self._ApplicationIds = params.get("ApplicationIds")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateClusterRequest(AbstractModel):
@@ -747,73 +1541,162 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdlType: 集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
+        :param _IdlType: 集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
         :type IdlType: str
-        :param ClusterName: 集群名称，可使用中文或英文字符，最大长度32个字符
+        :param _ClusterName: 集群名称，可使用中文或英文字符，最大长度32个字符
         :type ClusterName: str
-        :param VpcId: 集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
+        :param _VpcId: 集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
         :type VpcId: str
-        :param SubnetId: 集群所绑定的子网实例ID，形如：subnet-pxir56ns
+        :param _SubnetId: 集群所绑定的子网实例ID，形如：subnet-pxir56ns
         :type SubnetId: str
-        :param Password: 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+        :param _Password: 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
         :type Password: str
-        :param ResourceTags: 集群标签列表
+        :param _ResourceTags: 集群标签列表
         :type ResourceTags: list of TagInfoUnit
-        :param Ipv6Enable: 集群是否开启IPv6功能
+        :param _Ipv6Enable: 集群是否开启IPv6功能
         :type Ipv6Enable: int
-        :param ServerList: 独占集群占用的svr机器
+        :param _ServerList: 独占集群占用的svr机器
         :type ServerList: list of MachineInfo
-        :param ProxyList: 独占集群占用的proxy机器
+        :param _ProxyList: 独占集群占用的proxy机器
         :type ProxyList: list of MachineInfo
-        :param ClusterType: 集群类型1共享2独占
+        :param _ClusterType: 集群类型1共享2独占
         :type ClusterType: int
-        :param AuthType: 密码认证类型，0 静态认证， 1 签名认证
+        :param _AuthType: 密码认证类型，0 静态认证， 1 签名认证
         :type AuthType: int
         """
-        self.IdlType = None
-        self.ClusterName = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.Password = None
-        self.ResourceTags = None
-        self.Ipv6Enable = None
-        self.ServerList = None
-        self.ProxyList = None
-        self.ClusterType = None
-        self.AuthType = None
+        self._IdlType = None
+        self._ClusterName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Password = None
+        self._ResourceTags = None
+        self._Ipv6Enable = None
+        self._ServerList = None
+        self._ProxyList = None
+        self._ClusterType = None
+        self._AuthType = None
+
+    @property
+    def IdlType(self):
+        return self._IdlType
+
+    @IdlType.setter
+    def IdlType(self, IdlType):
+        self._IdlType = IdlType
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def Ipv6Enable(self):
+        return self._Ipv6Enable
+
+    @Ipv6Enable.setter
+    def Ipv6Enable(self, Ipv6Enable):
+        self._Ipv6Enable = Ipv6Enable
+
+    @property
+    def ServerList(self):
+        return self._ServerList
+
+    @ServerList.setter
+    def ServerList(self, ServerList):
+        self._ServerList = ServerList
+
+    @property
+    def ProxyList(self):
+        return self._ProxyList
+
+    @ProxyList.setter
+    def ProxyList(self, ProxyList):
+        self._ProxyList = ProxyList
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
 
 
     def _deserialize(self, params):
-        self.IdlType = params.get("IdlType")
-        self.ClusterName = params.get("ClusterName")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.Password = params.get("Password")
+        self._IdlType = params.get("IdlType")
+        self._ClusterName = params.get("ClusterName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Password = params.get("Password")
         if params.get("ResourceTags") is not None:
-            self.ResourceTags = []
+            self._ResourceTags = []
             for item in params.get("ResourceTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.ResourceTags.append(obj)
-        self.Ipv6Enable = params.get("Ipv6Enable")
+                self._ResourceTags.append(obj)
+        self._Ipv6Enable = params.get("Ipv6Enable")
         if params.get("ServerList") is not None:
-            self.ServerList = []
+            self._ServerList = []
             for item in params.get("ServerList"):
                 obj = MachineInfo()
                 obj._deserialize(item)
-                self.ServerList.append(obj)
+                self._ServerList.append(obj)
         if params.get("ProxyList") is not None:
-            self.ProxyList = []
+            self._ProxyList = []
             for item in params.get("ProxyList"):
                 obj = MachineInfo()
                 obj._deserialize(item)
-                self.ProxyList.append(obj)
-        self.ClusterType = params.get("ClusterType")
-        self.AuthType = params.get("AuthType")
+                self._ProxyList.append(obj)
+        self._ClusterType = params.get("ClusterType")
+        self._AuthType = params.get("AuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -826,18 +1709,34 @@ class CreateClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群ID
+        :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ClusterId = None
-        self.RequestId = None
+        self._ClusterId = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.RequestId = params.get("RequestId")
+        self._ClusterId = params.get("ClusterId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSnapshotsRequest(AbstractModel):
@@ -847,27 +1746,44 @@ class CreateSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属集群id
+        :param _ClusterId: 表格所属集群id
         :type ClusterId: str
-        :param SelectedTables: 快照列表
+        :param _SelectedTables: 快照列表
         :type SelectedTables: list of SnapshotInfo
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SnapshotInfo()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -880,27 +1796,51 @@ class CreateSnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 批量创建的快照数量
+        :param _TotalCount: 批量创建的快照数量
         :type TotalCount: int
-        :param TableResults: 批量创建的快照结果列表
+        :param _TableResults: 批量创建的快照结果列表
         :type TableResults: list of SnapshotResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = SnapshotResult()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTableGroupRequest(AbstractModel):
@@ -910,35 +1850,68 @@ class CreateTableGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格组所属集群ID
+        :param _ClusterId: 表格组所属集群ID
         :type ClusterId: str
-        :param TableGroupName: 表格组名称，可以采用中文、英文或数字字符，最大长度32个字符
+        :param _TableGroupName: 表格组名称，可以采用中文、英文或数字字符，最大长度32个字符
         :type TableGroupName: str
-        :param TableGroupId: 表格组ID，可以由用户指定，但在同一个集群内不能重复，如果不指定则采用自增的模式
+        :param _TableGroupId: 表格组ID，可以由用户指定，但在同一个集群内不能重复，如果不指定则采用自增的模式
         :type TableGroupId: str
-        :param ResourceTags: 表格组标签列表
+        :param _ResourceTags: 表格组标签列表
         :type ResourceTags: list of TagInfoUnit
         """
-        self.ClusterId = None
-        self.TableGroupName = None
-        self.TableGroupId = None
-        self.ResourceTags = None
+        self._ClusterId = None
+        self._TableGroupName = None
+        self._TableGroupId = None
+        self._ResourceTags = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupName(self):
+        return self._TableGroupName
+
+    @TableGroupName.setter
+    def TableGroupName(self, TableGroupName):
+        self._TableGroupName = TableGroupName
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupName = params.get("TableGroupName")
-        self.TableGroupId = params.get("TableGroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupName = params.get("TableGroupName")
+        self._TableGroupId = params.get("TableGroupId")
         if params.get("ResourceTags") is not None:
-            self.ResourceTags = []
+            self._ResourceTags = []
             for item in params.get("ResourceTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.ResourceTags.append(obj)
+                self._ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -951,18 +1924,34 @@ class CreateTableGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 创建成功的表格组ID
+        :param _TableGroupId: 创建成功的表格组ID
         :type TableGroupId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TableGroupId = None
-        self.RequestId = None
+        self._TableGroupId = None
+        self._RequestId = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.RequestId = params.get("RequestId")
+        self._TableGroupId = params.get("TableGroupId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTablesRequest(AbstractModel):
@@ -972,45 +1961,78 @@ class CreateTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待创建表格所属集群ID
+        :param _ClusterId: 待创建表格所属集群ID
         :type ClusterId: str
-        :param IdlFiles: 用户选定的建表格IDL文件列表
+        :param _IdlFiles: 用户选定的建表格IDL文件列表
         :type IdlFiles: list of IdlFileInfo
-        :param SelectedTables: 待创建表格信息列表
+        :param _SelectedTables: 待创建表格信息列表
         :type SelectedTables: list of SelectedTableInfoNew
-        :param ResourceTags: 表格标签列表
+        :param _ResourceTags: 表格标签列表
         :type ResourceTags: list of TagInfoUnit
         """
-        self.ClusterId = None
-        self.IdlFiles = None
-        self.SelectedTables = None
-        self.ResourceTags = None
+        self._ClusterId = None
+        self._IdlFiles = None
+        self._SelectedTables = None
+        self._ResourceTags = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IdlFiles(self):
+        return self._IdlFiles
+
+    @IdlFiles.setter
+    def IdlFiles(self, IdlFiles):
+        self._IdlFiles = IdlFiles
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("IdlFiles") is not None:
-            self.IdlFiles = []
+            self._IdlFiles = []
             for item in params.get("IdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.IdlFiles.append(obj)
+                self._IdlFiles.append(obj)
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         if params.get("ResourceTags") is not None:
-            self.ResourceTags = []
+            self._ResourceTags = []
             for item in params.get("ResourceTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.ResourceTags.append(obj)
+                self._ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1023,27 +2045,51 @@ class CreateTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 批量创建表格结果数量
+        :param _TotalCount: 批量创建表格结果数量
         :type TotalCount: int
-        :param TableResults: 批量创建表格结果列表
+        :param _TableResults: 批量创建表格结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteBackupRecordsRequest(AbstractModel):
@@ -1053,27 +2099,44 @@ class DeleteBackupRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待删除备份记录的所在集群ID
+        :param _ClusterId: 待删除备份记录的所在集群ID
         :type ClusterId: str
-        :param BackupRecords: 待删除备份记录的详情
+        :param _BackupRecords: 待删除备份记录的详情
         :type BackupRecords: list of BackupRecords
         """
-        self.ClusterId = None
-        self.BackupRecords = None
+        self._ClusterId = None
+        self._BackupRecords = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupRecords(self):
+        return self._BackupRecords
+
+    @BackupRecords.setter
+    def BackupRecords(self, BackupRecords):
+        self._BackupRecords = BackupRecords
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("BackupRecords") is not None:
-            self.BackupRecords = []
+            self._BackupRecords = []
             for item in params.get("BackupRecords"):
                 obj = BackupRecords()
                 obj._deserialize(item)
-                self.BackupRecords.append(obj)
+                self._BackupRecords.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1086,19 +2149,35 @@ class DeleteBackupRecordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteClusterRequest(AbstractModel):
@@ -1108,18 +2187,27 @@ class DeleteClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待删除的集群ID
+        :param _ClusterId: 待删除的集群ID
         :type ClusterId: str
         """
-        self.ClusterId = None
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1132,18 +2220,34 @@ class DeleteClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 删除集群生成的任务ID
+        :param _TaskId: 删除集群生成的任务ID
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteIdlFilesRequest(AbstractModel):
@@ -1153,27 +2257,44 @@ class DeleteIdlFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: IDL所属集群ID
+        :param _ClusterId: IDL所属集群ID
         :type ClusterId: str
-        :param IdlFiles: 待删除的IDL文件信息列表
+        :param _IdlFiles: 待删除的IDL文件信息列表
         :type IdlFiles: list of IdlFileInfo
         """
-        self.ClusterId = None
-        self.IdlFiles = None
+        self._ClusterId = None
+        self._IdlFiles = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IdlFiles(self):
+        return self._IdlFiles
+
+    @IdlFiles.setter
+    def IdlFiles(self, IdlFiles):
+        self._IdlFiles = IdlFiles
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("IdlFiles") is not None:
-            self.IdlFiles = []
+            self._IdlFiles = []
             for item in params.get("IdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.IdlFiles.append(obj)
+                self._IdlFiles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1186,27 +2307,51 @@ class DeleteIdlFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 结果记录数量
+        :param _TotalCount: 结果记录数量
         :type TotalCount: int
-        :param IdlFileInfos: 删除结果
+        :param _IdlFileInfos: 删除结果
         :type IdlFileInfos: list of IdlFileInfoWithoutContent
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.IdlFileInfos = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._IdlFileInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IdlFileInfos(self):
+        return self._IdlFileInfos
+
+    @IdlFileInfos.setter
+    def IdlFileInfos(self, IdlFileInfos):
+        self._IdlFileInfos = IdlFileInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("IdlFileInfos") is not None:
-            self.IdlFileInfos = []
+            self._IdlFileInfos = []
             for item in params.get("IdlFileInfos"):
                 obj = IdlFileInfoWithoutContent()
                 obj._deserialize(item)
-                self.IdlFileInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._IdlFileInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSnapshotsRequest(AbstractModel):
@@ -1216,27 +2361,44 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属集群id
+        :param _ClusterId: 表格所属集群id
         :type ClusterId: str
-        :param SelectedTables: 删除的快照列表
+        :param _SelectedTables: 删除的快照列表
         :type SelectedTables: list of SnapshotInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SnapshotInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1249,27 +2411,51 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 批量删除的快照数量
+        :param _TotalCount: 批量删除的快照数量
         :type TotalCount: int
-        :param TableResults: 批量删除的快照结果
+        :param _TableResults: 批量删除的快照结果
         :type TableResults: list of SnapshotResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = SnapshotResult()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTableDataFlowRequest(AbstractModel):
@@ -1279,27 +2465,44 @@ class DeleteTableDataFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属集群实例ID
+        :param _ClusterId: 表格所属集群实例ID
         :type ClusterId: str
-        :param SelectedTables: 待删除分布式索引的表格列表
+        :param _SelectedTables: 待删除分布式索引的表格列表
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1312,27 +2515,51 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 删除表格分布式索引结果数量
+        :param _TotalCount: 删除表格分布式索引结果数量
         :type TotalCount: int
-        :param TableResults: 删除表格分布式索引结果列表
+        :param _TableResults: 删除表格分布式索引结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTableGroupRequest(AbstractModel):
@@ -1342,22 +2569,39 @@ class DeleteTableGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格组所属的集群ID
+        :param _ClusterId: 表格组所属的集群ID
         :type ClusterId: str
-        :param TableGroupId: 表格组ID
+        :param _TableGroupId: 表格组ID
         :type TableGroupId: str
         """
-        self.ClusterId = None
-        self.TableGroupId = None
+        self._ClusterId = None
+        self._TableGroupId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupId = params.get("TableGroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupId = params.get("TableGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1370,18 +2614,34 @@ class DeleteTableGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 删除表格组所创建的任务ID
+        :param _TaskId: 删除表格组所创建的任务ID
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTableIndexRequest(AbstractModel):
@@ -1391,27 +2651,44 @@ class DeleteTableIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属集群实例ID
+        :param _ClusterId: 表格所属集群实例ID
         :type ClusterId: str
-        :param SelectedTables: 待删除分布式索引的表格列表
+        :param _SelectedTables: 待删除分布式索引的表格列表
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1424,27 +2701,51 @@ class DeleteTableIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 删除表格分布式索引结果数量
+        :param _TotalCount: 删除表格分布式索引结果数量
         :type TotalCount: int
-        :param TableResults: 删除表格分布式索引结果列表
+        :param _TableResults: 删除表格分布式索引结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTablesRequest(AbstractModel):
@@ -1454,27 +2755,44 @@ class DeleteTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待删除表所在集群ID
+        :param _ClusterId: 待删除表所在集群ID
         :type ClusterId: str
-        :param SelectedTables: 待删除表信息列表
+        :param _SelectedTables: 待删除表信息列表
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1487,27 +2805,51 @@ class DeleteTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 删除表结果数量
+        :param _TotalCount: 删除表结果数量
         :type TotalCount: int
-        :param TableResults: 删除表结果详情列表
+        :param _TableResults: 删除表结果详情列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApplicationsRequest(AbstractModel):
@@ -1517,46 +2859,111 @@ class DescribeApplicationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群ID，用于获取指定集群的单据
+        :param _ClusterId: 集群ID，用于获取指定集群的单据
         :type ClusterId: str
-        :param Limit: 分页，限制当前返回多少条记录，大于等于10
+        :param _Limit: 分页，限制当前返回多少条记录，大于等于10
         :type Limit: int
-        :param Offset: 分页，从多少条数据开始返回
+        :param _Offset: 分页，从多少条数据开始返回
         :type Offset: int
-        :param CensorStatus: 申请单状态，用于过滤，0-待审核 1-已经审核并提交任务 2-已驳回
+        :param _CensorStatus: 申请单状态，用于过滤，0-待审核 1-已经审核并提交任务 2-已驳回
         :type CensorStatus: int
-        :param TableGroupId: 表格组id，用于过滤
+        :param _TableGroupId: 表格组id，用于过滤
         :type TableGroupId: str
-        :param TableName: 表格名，用于过滤
+        :param _TableName: 表格名，用于过滤
         :type TableName: str
-        :param Applicant: 申请人uin，用于过滤
+        :param _Applicant: 申请人uin，用于过滤
         :type Applicant: str
-        :param ApplyType: 申请类型，用于过滤，0加表 1删除表 2清理表 3修改表 4表重建 5存储层扩缩容 6接入层扩缩容 7复制表数据 8key回档
+        :param _ApplyType: 申请类型，用于过滤，0加表 1删除表 2清理表 3修改表 4表重建 5存储层扩缩容 6接入层扩缩容 7复制表数据 8key回档
         :type ApplyType: int
         """
-        self.ClusterId = None
-        self.Limit = None
-        self.Offset = None
-        self.CensorStatus = None
-        self.TableGroupId = None
-        self.TableName = None
-        self.Applicant = None
-        self.ApplyType = None
+        self._ClusterId = None
+        self._Limit = None
+        self._Offset = None
+        self._CensorStatus = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._Applicant = None
+        self._ApplyType = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def CensorStatus(self):
+        return self._CensorStatus
+
+    @CensorStatus.setter
+    def CensorStatus(self, CensorStatus):
+        self._CensorStatus = CensorStatus
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Applicant(self):
+        return self._Applicant
+
+    @Applicant.setter
+    def Applicant(self, Applicant):
+        self._Applicant = Applicant
+
+    @property
+    def ApplyType(self):
+        return self._ApplyType
+
+    @ApplyType.setter
+    def ApplyType(self, ApplyType):
+        self._ApplyType = ApplyType
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.CensorStatus = params.get("CensorStatus")
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.Applicant = params.get("Applicant")
-        self.ApplyType = params.get("ApplyType")
+        self._ClusterId = params.get("ClusterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._CensorStatus = params.get("CensorStatus")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._Applicant = params.get("Applicant")
+        self._ApplyType = params.get("ApplyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1569,27 +2976,51 @@ class DescribeApplicationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Applications: 申请单列表
+        :param _Applications: 申请单列表
         :type Applications: list of Application
-        :param TotalCount: 申请单个数
+        :param _TotalCount: 申请单个数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Applications = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Applications = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Applications(self):
+        return self._Applications
+
+    @Applications.setter
+    def Applications(self, Applications):
+        self._Applications = Applications
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Applications") is not None:
-            self.Applications = []
+            self._Applications = []
             for item in params.get("Applications"):
                 obj = Application()
                 obj._deserialize(item)
-                self.Applications.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Applications.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBackupRecordsRequest(AbstractModel):
@@ -1599,34 +3030,75 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群ID，用于获取指定集群的单据
+        :param _ClusterId: 集群ID，用于获取指定集群的单据
         :type ClusterId: str
-        :param Limit: 分页
+        :param _Limit: 分页
         :type Limit: int
-        :param Offset: 分页
+        :param _Offset: 分页
         :type Offset: int
-        :param TableGroupId: 表格组id，用于过滤
+        :param _TableGroupId: 表格组id，用于过滤
         :type TableGroupId: str
-        :param TableName: 表格名，用于过滤
+        :param _TableName: 表格名，用于过滤
         :type TableName: str
         """
-        self.ClusterId = None
-        self.Limit = None
-        self.Offset = None
-        self.TableGroupId = None
-        self.TableName = None
+        self._ClusterId = None
+        self._Limit = None
+        self._Offset = None
+        self._TableGroupId = None
+        self._TableName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
+        self._ClusterId = params.get("ClusterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1639,27 +3111,51 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BackupRecords: 备份记录详情
+        :param _BackupRecords: 备份记录详情
         :type BackupRecords: list of BackupRecords
-        :param TotalCount: 返回记录条数
+        :param _TotalCount: 返回记录条数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BackupRecords = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._BackupRecords = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def BackupRecords(self):
+        return self._BackupRecords
+
+    @BackupRecords.setter
+    def BackupRecords(self, BackupRecords):
+        self._BackupRecords = BackupRecords
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("BackupRecords") is not None:
-            self.BackupRecords = []
+            self._BackupRecords = []
             for item in params.get("BackupRecords"):
                 obj = BackupRecords()
                 obj._deserialize(item)
-                self.BackupRecords.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._BackupRecords.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClusterTagsRequest(AbstractModel):
@@ -1669,18 +3165,27 @@ class DescribeClusterTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterIds: 集群ID列表
+        :param _ClusterIds: 集群ID列表
         :type ClusterIds: list of str
         """
-        self.ClusterIds = None
+        self._ClusterIds = None
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
 
 
     def _deserialize(self, params):
-        self.ClusterIds = params.get("ClusterIds")
+        self._ClusterIds = params.get("ClusterIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1693,29 +3198,53 @@ class DescribeClusterTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rows: 集群标签信息列表
+        :param _Rows: 集群标签信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of TagsInfoOfCluster
-        :param TotalCount: 返回结果个数
+        :param _TotalCount: 返回结果个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Rows = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Rows = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rows") is not None:
-            self.Rows = []
+            self._Rows = []
             for item in params.get("Rows"):
                 obj = TagsInfoOfCluster()
                 obj._deserialize(item)
-                self.Rows.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Rows.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClustersRequest(AbstractModel):
@@ -1725,39 +3254,80 @@ class DescribeClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterIds: 指定查询的集群ID列表
+        :param _ClusterIds: 指定查询的集群ID列表
         :type ClusterIds: list of str
-        :param Filters: 查询过滤条件
+        :param _Filters: 查询过滤条件
         :type Filters: list of Filter
-        :param Offset: 查询列表偏移量
+        :param _Offset: 查询列表偏移量
         :type Offset: int
-        :param Limit: 查询列表返回记录数，默认值20
+        :param _Limit: 查询列表返回记录数，默认值20
         :type Limit: int
-        :param Ipv6Enable: 是否启用Ipv6
+        :param _Ipv6Enable: 是否启用Ipv6
         :type Ipv6Enable: int
         """
-        self.ClusterIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.Ipv6Enable = None
+        self._ClusterIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Ipv6Enable = None
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Ipv6Enable(self):
+        return self._Ipv6Enable
+
+    @Ipv6Enable.setter
+    def Ipv6Enable(self, Ipv6Enable):
+        self._Ipv6Enable = Ipv6Enable
 
 
     def _deserialize(self, params):
-        self.ClusterIds = params.get("ClusterIds")
+        self._ClusterIds = params.get("ClusterIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Ipv6Enable = params.get("Ipv6Enable")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Ipv6Enable = params.get("Ipv6Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1770,27 +3340,51 @@ class DescribeClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 集群实例数
+        :param _TotalCount: 集群实例数
         :type TotalCount: int
-        :param Clusters: 集群实例列表
+        :param _Clusters: 集群实例列表
         :type Clusters: list of ClusterInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Clusters = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Clusters = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Clusters(self):
+        return self._Clusters
+
+    @Clusters.setter
+    def Clusters(self, Clusters):
+        self._Clusters = Clusters
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Clusters") is not None:
-            self.Clusters = []
+            self._Clusters = []
             for item in params.get("Clusters"):
                 obj = ClusterInfo()
                 obj._deserialize(item)
-                self.Clusters.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Clusters.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIdlFileInfosRequest(AbstractModel):
@@ -1800,34 +3394,75 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 文件所属集群ID
+        :param _ClusterId: 文件所属集群ID
         :type ClusterId: str
-        :param TableGroupIds: 文件所属表格组ID
+        :param _TableGroupIds: 文件所属表格组ID
         :type TableGroupIds: list of str
-        :param IdlFileIds: 指定文件ID列表
+        :param _IdlFileIds: 指定文件ID列表
         :type IdlFileIds: list of str
-        :param Offset: 查询列表偏移量
+        :param _Offset: 查询列表偏移量
         :type Offset: int
-        :param Limit: 查询列表返回记录数
+        :param _Limit: 查询列表返回记录数
         :type Limit: int
         """
-        self.ClusterId = None
-        self.TableGroupIds = None
-        self.IdlFileIds = None
-        self.Offset = None
-        self.Limit = None
+        self._ClusterId = None
+        self._TableGroupIds = None
+        self._IdlFileIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupIds(self):
+        return self._TableGroupIds
+
+    @TableGroupIds.setter
+    def TableGroupIds(self, TableGroupIds):
+        self._TableGroupIds = TableGroupIds
+
+    @property
+    def IdlFileIds(self):
+        return self._IdlFileIds
+
+    @IdlFileIds.setter
+    def IdlFileIds(self, IdlFileIds):
+        self._IdlFileIds = IdlFileIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupIds = params.get("TableGroupIds")
-        self.IdlFileIds = params.get("IdlFileIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupIds = params.get("TableGroupIds")
+        self._IdlFileIds = params.get("IdlFileIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1840,27 +3475,51 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 文件数量
+        :param _TotalCount: 文件数量
         :type TotalCount: int
-        :param IdlFileInfos: 文件详情列表
+        :param _IdlFileInfos: 文件详情列表
         :type IdlFileInfos: list of IdlFileInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.IdlFileInfos = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._IdlFileInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IdlFileInfos(self):
+        return self._IdlFileInfos
+
+    @IdlFileInfos.setter
+    def IdlFileInfos(self, IdlFileInfos):
+        self._IdlFileInfos = IdlFileInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("IdlFileInfos") is not None:
-            self.IdlFileInfos = []
+            self._IdlFileInfos = []
             for item in params.get("IdlFileInfos"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.IdlFileInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._IdlFileInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMachineRequest(AbstractModel):
@@ -1870,18 +3529,27 @@ class DescribeMachineRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ipv6Enable: 不为0，表示查询支持ipv6的机器
+        :param _Ipv6Enable: 不为0，表示查询支持ipv6的机器
         :type Ipv6Enable: int
         """
-        self.Ipv6Enable = None
+        self._Ipv6Enable = None
+
+    @property
+    def Ipv6Enable(self):
+        return self._Ipv6Enable
+
+    @Ipv6Enable.setter
+    def Ipv6Enable(self, Ipv6Enable):
+        self._Ipv6Enable = Ipv6Enable
 
 
     def _deserialize(self, params):
-        self.Ipv6Enable = params.get("Ipv6Enable")
+        self._Ipv6Enable = params.get("Ipv6Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1894,23 +3562,39 @@ class DescribeMachineResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PoolList: 独占机器资源列表
+        :param _PoolList: 独占机器资源列表
         :type PoolList: list of PoolInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PoolList = None
-        self.RequestId = None
+        self._PoolList = None
+        self._RequestId = None
+
+    @property
+    def PoolList(self):
+        return self._PoolList
+
+    @PoolList.setter
+    def PoolList(self, PoolList):
+        self._PoolList = PoolList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PoolList") is not None:
-            self.PoolList = []
+            self._PoolList = []
             for item in params.get("PoolList"):
                 obj = PoolInfo()
                 obj._deserialize(item)
-                self.PoolList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PoolList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRegionsRequest(AbstractModel):
@@ -1926,27 +3610,51 @@ class DescribeRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 可用区详情结果数量
+        :param _TotalCount: 可用区详情结果数量
         :type TotalCount: int
-        :param RegionInfos: 可用区详情结果列表
+        :param _RegionInfos: 可用区详情结果列表
         :type RegionInfos: list of RegionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.RegionInfos = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._RegionInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RegionInfos(self):
+        return self._RegionInfos
+
+    @RegionInfos.setter
+    def RegionInfos(self, RegionInfos):
+        self._RegionInfos = RegionInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("RegionInfos") is not None:
-            self.RegionInfos = []
+            self._RegionInfos = []
             for item in params.get("RegionInfos"):
                 obj = RegionInfo()
                 obj._deserialize(item)
-                self.RegionInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RegionInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSnapshotsRequest(AbstractModel):
@@ -1956,39 +3664,80 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属集群id
+        :param _ClusterId: 表格所属集群id
         :type ClusterId: str
-        :param TableGroupId: 所属表格组ID
+        :param _TableGroupId: 所属表格组ID
         :type TableGroupId: str
-        :param TableName: 表名称
+        :param _TableName: 表名称
         :type TableName: str
-        :param SnapshotName: 快照名称
+        :param _SnapshotName: 快照名称
         :type SnapshotName: str
-        :param SelectedTables: 批量拉取快照的表格列表
+        :param _SelectedTables: 批量拉取快照的表格列表
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.TableGroupId = None
-        self.TableName = None
-        self.SnapshotName = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._SnapshotName = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.SnapshotName = params.get("SnapshotName")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._SnapshotName = params.get("SnapshotName")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2001,27 +3750,51 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 快照数量
+        :param _TotalCount: 快照数量
         :type TotalCount: int
-        :param TableResults: 快照结果列表
+        :param _TableResults: 快照结果列表
         :type TableResults: list of SnapshotResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = SnapshotResult()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTableGroupTagsRequest(AbstractModel):
@@ -2031,22 +3804,39 @@ class DescribeTableGroupTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待查询标签表格组所属集群ID
+        :param _ClusterId: 待查询标签表格组所属集群ID
         :type ClusterId: str
-        :param TableGroupIds: 待查询标签表格组ID列表
+        :param _TableGroupIds: 待查询标签表格组ID列表
         :type TableGroupIds: list of str
         """
-        self.ClusterId = None
-        self.TableGroupIds = None
+        self._ClusterId = None
+        self._TableGroupIds = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupIds(self):
+        return self._TableGroupIds
+
+    @TableGroupIds.setter
+    def TableGroupIds(self, TableGroupIds):
+        self._TableGroupIds = TableGroupIds
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupIds = params.get("TableGroupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupIds = params.get("TableGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2059,29 +3849,53 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rows: 表格组标签信息列表
+        :param _Rows: 表格组标签信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of TagsInfoOfTableGroup
-        :param TotalCount: 返回结果个数
+        :param _TotalCount: 返回结果个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Rows = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Rows = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rows") is not None:
-            self.Rows = []
+            self._Rows = []
             for item in params.get("Rows"):
                 obj = TagsInfoOfTableGroup()
                 obj._deserialize(item)
-                self.Rows.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Rows.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTableGroupsRequest(AbstractModel):
@@ -2091,39 +3905,80 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格组所属集群ID
+        :param _ClusterId: 表格组所属集群ID
         :type ClusterId: str
-        :param TableGroupIds: 表格组ID列表
+        :param _TableGroupIds: 表格组ID列表
         :type TableGroupIds: list of str
-        :param Filters: 过滤条件，本接口支持：TableGroupName，TableGroupId
+        :param _Filters: 过滤条件，本接口支持：TableGroupName，TableGroupId
         :type Filters: list of Filter
-        :param Offset: 查询列表偏移量
+        :param _Offset: 查询列表偏移量
         :type Offset: int
-        :param Limit: 查询列表返回记录数
+        :param _Limit: 查询列表返回记录数
         :type Limit: int
         """
-        self.ClusterId = None
-        self.TableGroupIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._ClusterId = None
+        self._TableGroupIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupIds(self):
+        return self._TableGroupIds
+
+    @TableGroupIds.setter
+    def TableGroupIds(self, TableGroupIds):
+        self._TableGroupIds = TableGroupIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupIds = params.get("TableGroupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupIds = params.get("TableGroupIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2136,27 +3991,51 @@ class DescribeTableGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 表格组数量
+        :param _TotalCount: 表格组数量
         :type TotalCount: int
-        :param TableGroups: 表格组信息列表
+        :param _TableGroups: 表格组信息列表
         :type TableGroups: list of TableGroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableGroups = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableGroups = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableGroups(self):
+        return self._TableGroups
+
+    @TableGroups.setter
+    def TableGroups(self, TableGroups):
+        self._TableGroups = TableGroups
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableGroups") is not None:
-            self.TableGroups = []
+            self._TableGroups = []
             for item in params.get("TableGroups"):
                 obj = TableGroupInfo()
                 obj._deserialize(item)
-                self.TableGroups.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableGroups.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTableTagsRequest(AbstractModel):
@@ -2166,27 +4045,44 @@ class DescribeTableTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属集群ID
+        :param _ClusterId: 表格所属集群ID
         :type ClusterId: str
-        :param SelectedTables: 表格列表
+        :param _SelectedTables: 表格列表
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2199,27 +4095,51 @@ class DescribeTableTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 返回结果总数
+        :param _TotalCount: 返回结果总数
         :type TotalCount: int
-        :param Rows: 表格标签信息列表
+        :param _Rows: 表格标签信息列表
         :type Rows: list of TagsInfoOfTable
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Rows = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Rows") is not None:
-            self.Rows = []
+            self._Rows = []
             for item in params.get("Rows"):
                 obj = TagsInfoOfTable()
                 obj._deserialize(item)
-                self.Rows.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTablesInRecycleRequest(AbstractModel):
@@ -2229,39 +4149,80 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待查询表格所属集群ID
+        :param _ClusterId: 待查询表格所属集群ID
         :type ClusterId: str
-        :param TableGroupIds: 待查询表格所属表格组ID列表
+        :param _TableGroupIds: 待查询表格所属表格组ID列表
         :type TableGroupIds: list of str
-        :param Filters: 过滤条件，本接口支持：TableName，TableInstanceId
+        :param _Filters: 过滤条件，本接口支持：TableName，TableInstanceId
         :type Filters: list of Filter
-        :param Offset: 查询结果偏移量
+        :param _Offset: 查询结果偏移量
         :type Offset: int
-        :param Limit: 查询结果返回记录数量
+        :param _Limit: 查询结果返回记录数量
         :type Limit: int
         """
-        self.ClusterId = None
-        self.TableGroupIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._ClusterId = None
+        self._TableGroupIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupIds(self):
+        return self._TableGroupIds
+
+    @TableGroupIds.setter
+    def TableGroupIds(self, TableGroupIds):
+        self._TableGroupIds = TableGroupIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupIds = params.get("TableGroupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupIds = params.get("TableGroupIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2274,27 +4235,51 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 表格数量
+        :param _TotalCount: 表格数量
         :type TotalCount: int
-        :param TableInfos: 表格详情结果列表
+        :param _TableInfos: 表格详情结果列表
         :type TableInfos: list of TableInfoNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableInfos = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableInfos(self):
+        return self._TableInfos
+
+    @TableInfos.setter
+    def TableInfos(self, TableInfos):
+        self._TableInfos = TableInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableInfos") is not None:
-            self.TableInfos = []
+            self._TableInfos = []
             for item in params.get("TableInfos"):
                 obj = TableInfoNew()
                 obj._deserialize(item)
-                self.TableInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTablesRequest(AbstractModel):
@@ -2304,48 +4289,97 @@ class DescribeTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待查询表格所属集群ID
+        :param _ClusterId: 待查询表格所属集群ID
         :type ClusterId: str
-        :param TableGroupIds: 待查询表格所属表格组ID列表
+        :param _TableGroupIds: 待查询表格所属表格组ID列表
         :type TableGroupIds: list of str
-        :param SelectedTables: 待查询表格信息列表，用户不用关注，过滤请使用filter
+        :param _SelectedTables: 待查询表格信息列表，用户不用关注，过滤请使用filter
         :type SelectedTables: list of SelectedTableInfoNew
-        :param Filters: 过滤条件，本接口支持：TableName，TableInstanceId
+        :param _Filters: 过滤条件，本接口支持：TableName，TableInstanceId
         :type Filters: list of Filter
-        :param Offset: 查询结果偏移量
+        :param _Offset: 查询结果偏移量
         :type Offset: int
-        :param Limit: 查询结果返回记录数量
+        :param _Limit: 查询结果返回记录数量
         :type Limit: int
         """
-        self.ClusterId = None
-        self.TableGroupIds = None
-        self.SelectedTables = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._ClusterId = None
+        self._TableGroupIds = None
+        self._SelectedTables = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupIds(self):
+        return self._TableGroupIds
+
+    @TableGroupIds.setter
+    def TableGroupIds(self, TableGroupIds):
+        self._TableGroupIds = TableGroupIds
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupIds = params.get("TableGroupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupIds = params.get("TableGroupIds")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2358,27 +4392,51 @@ class DescribeTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 表格数量
+        :param _TotalCount: 表格数量
         :type TotalCount: int
-        :param TableInfos: 表格详情结果列表
+        :param _TableInfos: 表格详情结果列表
         :type TableInfos: list of TableInfoNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableInfos = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableInfos(self):
+        return self._TableInfos
+
+    @TableInfos.setter
+    def TableInfos(self, TableInfos):
+        self._TableInfos = TableInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableInfos") is not None:
-            self.TableInfos = []
+            self._TableInfos = []
             for item in params.get("TableInfos"):
                 obj = TableInfoNew()
                 obj._deserialize(item)
-                self.TableInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTasksRequest(AbstractModel):
@@ -2388,39 +4446,80 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterIds: 需要查询任务所属的集群ID列表
+        :param _ClusterIds: 需要查询任务所属的集群ID列表
         :type ClusterIds: list of str
-        :param TaskIds: 需要查询的任务ID列表
+        :param _TaskIds: 需要查询的任务ID列表
         :type TaskIds: list of str
-        :param Filters: 过滤条件，本接口支持：Content，TaskType, Operator, Time
+        :param _Filters: 过滤条件，本接口支持：Content，TaskType, Operator, Time
         :type Filters: list of Filter
-        :param Offset: 查询列表偏移量
+        :param _Offset: 查询列表偏移量
         :type Offset: int
-        :param Limit: 查询列表返回记录数
+        :param _Limit: 查询列表返回记录数
         :type Limit: int
         """
-        self.ClusterIds = None
-        self.TaskIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._ClusterIds = None
+        self._TaskIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ClusterIds = params.get("ClusterIds")
-        self.TaskIds = params.get("TaskIds")
+        self._ClusterIds = params.get("ClusterIds")
+        self._TaskIds = params.get("TaskIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2433,27 +4532,51 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 任务数量
+        :param _TotalCount: 任务数量
         :type TotalCount: int
-        :param TaskInfos: 查询到的任务详情列表
+        :param _TaskInfos: 查询到的任务详情列表
         :type TaskInfos: list of TaskInfoNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TaskInfos = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TaskInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskInfos(self):
+        return self._TaskInfos
+
+    @TaskInfos.setter
+    def TaskInfos(self, TaskInfos):
+        self._TaskInfos = TaskInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TaskInfos") is not None:
-            self.TaskInfos = []
+            self._TaskInfos = []
             for item in params.get("TaskInfos"):
                 obj = TaskInfoNew()
                 obj._deserialize(item)
-                self.TaskInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TaskInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUinInWhitelistRequest(AbstractModel):
@@ -2469,18 +4592,34 @@ class DescribeUinInWhitelistResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 查询结果：`FALSE` 否；`TRUE` 是
+        :param _Result: 查询结果：`FALSE` 否；`TRUE` 是
         :type Result: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DisableRestProxyRequest(AbstractModel):
@@ -2490,18 +4629,27 @@ class DisableRestProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 对应appid
+        :param _ClusterId: 对应appid
         :type ClusterId: str
         """
-        self.ClusterId = None
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2514,22 +4662,46 @@ class DisableRestProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+        :param _RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
         :type RestProxyStatus: int
-        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RestProxyStatus = None
-        self.TaskId = None
-        self.RequestId = None
+        self._RestProxyStatus = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def RestProxyStatus(self):
+        return self._RestProxyStatus
+
+    @RestProxyStatus.setter
+    def RestProxyStatus(self, RestProxyStatus):
+        self._RestProxyStatus = RestProxyStatus
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RestProxyStatus = params.get("RestProxyStatus")
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._RestProxyStatus = params.get("RestProxyStatus")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class EnableRestProxyRequest(AbstractModel):
@@ -2539,18 +4711,27 @@ class EnableRestProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 对应于appid
+        :param _ClusterId: 对应于appid
         :type ClusterId: str
         """
-        self.ClusterId = None
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2563,22 +4744,46 @@ class EnableRestProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+        :param _RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
         :type RestProxyStatus: int
-        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RestProxyStatus = None
-        self.TaskId = None
-        self.RequestId = None
+        self._RestProxyStatus = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def RestProxyStatus(self):
+        return self._RestProxyStatus
+
+    @RestProxyStatus.setter
+    def RestProxyStatus(self, RestProxyStatus):
+        self._RestProxyStatus = RestProxyStatus
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RestProxyStatus = params.get("RestProxyStatus")
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._RestProxyStatus = params.get("RestProxyStatus")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ErrorInfo(AbstractModel):
@@ -2588,22 +4793,39 @@ class ErrorInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 错误码
+        :param _Code: 错误码
         :type Code: str
-        :param Message: 错误信息
+        :param _Message: 错误信息
         :type Message: str
         """
-        self.Code = None
-        self.Message = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2616,30 +4838,63 @@ class FieldInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FieldName: 表格字段名称
+        :param _FieldName: 表格字段名称
         :type FieldName: str
-        :param IsPrimaryKey: 字段是否是主键字段
+        :param _IsPrimaryKey: 字段是否是主键字段
         :type IsPrimaryKey: str
-        :param FieldType: 字段类型
+        :param _FieldType: 字段类型
         :type FieldType: str
-        :param FieldSize: 字段长度
+        :param _FieldSize: 字段长度
         :type FieldSize: int
         """
-        self.FieldName = None
-        self.IsPrimaryKey = None
-        self.FieldType = None
-        self.FieldSize = None
+        self._FieldName = None
+        self._IsPrimaryKey = None
+        self._FieldType = None
+        self._FieldSize = None
+
+    @property
+    def FieldName(self):
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def IsPrimaryKey(self):
+        return self._IsPrimaryKey
+
+    @IsPrimaryKey.setter
+    def IsPrimaryKey(self, IsPrimaryKey):
+        self._IsPrimaryKey = IsPrimaryKey
+
+    @property
+    def FieldType(self):
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def FieldSize(self):
+        return self._FieldSize
+
+    @FieldSize.setter
+    def FieldSize(self, FieldSize):
+        self._FieldSize = FieldSize
 
 
     def _deserialize(self, params):
-        self.FieldName = params.get("FieldName")
-        self.IsPrimaryKey = params.get("IsPrimaryKey")
-        self.FieldType = params.get("FieldType")
-        self.FieldSize = params.get("FieldSize")
+        self._FieldName = params.get("FieldName")
+        self._IsPrimaryKey = params.get("IsPrimaryKey")
+        self._FieldType = params.get("FieldType")
+        self._FieldSize = params.get("FieldSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2652,26 +4907,51 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 过滤字段名
+        :param _Name: 过滤字段名
         :type Name: str
-        :param Value: 过滤字段值
+        :param _Value: 过滤字段值
         :type Value: str
-        :param Values: 过滤字段值
+        :param _Values: 过滤字段值
         :type Values: list of str
         """
-        self.Name = None
-        self.Value = None
-        self.Values = None
+        self._Name = None
+        self._Value = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2684,40 +4964,89 @@ class IdlFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileName: 文件名称，不包含扩展名
+        :param _FileName: 文件名称，不包含扩展名
         :type FileName: str
-        :param FileType: 数据描述语言（IDL）类型
+        :param _FileType: 数据描述语言（IDL）类型
         :type FileType: str
-        :param FileExtType: 文件扩展名
+        :param _FileExtType: 文件扩展名
         :type FileExtType: str
-        :param FileSize: 文件大小（Bytes）
+        :param _FileSize: 文件大小（Bytes）
         :type FileSize: int
-        :param FileId: 文件ID，对于已上传的文件有意义
+        :param _FileId: 文件ID，对于已上传的文件有意义
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: int
-        :param FileContent: 文件内容，对于本次新上传的文件有意义
+        :param _FileContent: 文件内容，对于本次新上传的文件有意义
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileContent: str
         """
-        self.FileName = None
-        self.FileType = None
-        self.FileExtType = None
-        self.FileSize = None
-        self.FileId = None
-        self.FileContent = None
+        self._FileName = None
+        self._FileType = None
+        self._FileExtType = None
+        self._FileSize = None
+        self._FileId = None
+        self._FileContent = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileExtType(self):
+        return self._FileExtType
+
+    @FileExtType.setter
+    def FileExtType(self, FileExtType):
+        self._FileExtType = FileExtType
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
 
 
     def _deserialize(self, params):
-        self.FileName = params.get("FileName")
-        self.FileType = params.get("FileType")
-        self.FileExtType = params.get("FileExtType")
-        self.FileSize = params.get("FileSize")
-        self.FileId = params.get("FileId")
-        self.FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._FileExtType = params.get("FileExtType")
+        self._FileSize = params.get("FileSize")
+        self._FileId = params.get("FileId")
+        self._FileContent = params.get("FileContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2730,46 +5059,95 @@ class IdlFileInfoWithoutContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileName: 文件名称，不包含扩展名
+        :param _FileName: 文件名称，不包含扩展名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
-        :param FileType: 数据描述语言（IDL）类型
+        :param _FileType: 数据描述语言（IDL）类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
-        :param FileExtType: 文件扩展名
+        :param _FileExtType: 文件扩展名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileExtType: str
-        :param FileSize: 文件大小（Bytes）
+        :param _FileSize: 文件大小（Bytes）
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
-        :param FileId: 文件ID
+        :param _FileId: 文件ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: int
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        self.FileName = None
-        self.FileType = None
-        self.FileExtType = None
-        self.FileSize = None
-        self.FileId = None
-        self.Error = None
+        self._FileName = None
+        self._FileType = None
+        self._FileExtType = None
+        self._FileSize = None
+        self._FileId = None
+        self._Error = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileExtType(self):
+        return self._FileExtType
+
+    @FileExtType.setter
+    def FileExtType(self, FileExtType):
+        self._FileExtType = FileExtType
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
-        self.FileName = params.get("FileName")
-        self.FileType = params.get("FileType")
-        self.FileExtType = params.get("FileExtType")
-        self.FileSize = params.get("FileSize")
-        self.FileId = params.get("FileId")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._FileExtType = params.get("FileExtType")
+        self._FileSize = params.get("FileSize")
+        self._FileId = params.get("FileId")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2782,46 +5160,103 @@ class ImportSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属的集群id
+        :param _ClusterId: 表格所属的集群id
         :type ClusterId: str
-        :param Snapshots: 用于导入的快照信息
+        :param _Snapshots: 用于导入的快照信息
         :type Snapshots: :class:`tencentcloud.tcaplusdb.v20190823.models.SnapshotInfo`
-        :param ImportSpecialKey: 是否导入部分记录，TRUE表示导入部分记录，FALSE表示全表导入
+        :param _ImportSpecialKey: 是否导入部分记录，TRUE表示导入部分记录，FALSE表示全表导入
         :type ImportSpecialKey: str
-        :param ImportOriginTable: 是否导入到当前表，TRUE表示导入到当前表，FALSE表示导入到新表
+        :param _ImportOriginTable: 是否导入到当前表，TRUE表示导入到当前表，FALSE表示导入到新表
         :type ImportOriginTable: str
-        :param KeyFile: 部分记录的key文件
+        :param _KeyFile: 部分记录的key文件
         :type KeyFile: :class:`tencentcloud.tcaplusdb.v20190823.models.KeyFile`
-        :param NewTableGroupId: 如果导入到新表，此为新表所属的表格组id
+        :param _NewTableGroupId: 如果导入到新表，此为新表所属的表格组id
         :type NewTableGroupId: str
-        :param NewTableName: 如果导入到新表，此为新表的表名，系统会以该名称自动创建一张结构相同的空表
+        :param _NewTableName: 如果导入到新表，此为新表的表名，系统会以该名称自动创建一张结构相同的空表
         :type NewTableName: str
         """
-        self.ClusterId = None
-        self.Snapshots = None
-        self.ImportSpecialKey = None
-        self.ImportOriginTable = None
-        self.KeyFile = None
-        self.NewTableGroupId = None
-        self.NewTableName = None
+        self._ClusterId = None
+        self._Snapshots = None
+        self._ImportSpecialKey = None
+        self._ImportOriginTable = None
+        self._KeyFile = None
+        self._NewTableGroupId = None
+        self._NewTableName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Snapshots(self):
+        return self._Snapshots
+
+    @Snapshots.setter
+    def Snapshots(self, Snapshots):
+        self._Snapshots = Snapshots
+
+    @property
+    def ImportSpecialKey(self):
+        return self._ImportSpecialKey
+
+    @ImportSpecialKey.setter
+    def ImportSpecialKey(self, ImportSpecialKey):
+        self._ImportSpecialKey = ImportSpecialKey
+
+    @property
+    def ImportOriginTable(self):
+        return self._ImportOriginTable
+
+    @ImportOriginTable.setter
+    def ImportOriginTable(self, ImportOriginTable):
+        self._ImportOriginTable = ImportOriginTable
+
+    @property
+    def KeyFile(self):
+        return self._KeyFile
+
+    @KeyFile.setter
+    def KeyFile(self, KeyFile):
+        self._KeyFile = KeyFile
+
+    @property
+    def NewTableGroupId(self):
+        return self._NewTableGroupId
+
+    @NewTableGroupId.setter
+    def NewTableGroupId(self, NewTableGroupId):
+        self._NewTableGroupId = NewTableGroupId
+
+    @property
+    def NewTableName(self):
+        return self._NewTableName
+
+    @NewTableName.setter
+    def NewTableName(self, NewTableName):
+        self._NewTableName = NewTableName
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("Snapshots") is not None:
-            self.Snapshots = SnapshotInfo()
-            self.Snapshots._deserialize(params.get("Snapshots"))
-        self.ImportSpecialKey = params.get("ImportSpecialKey")
-        self.ImportOriginTable = params.get("ImportOriginTable")
+            self._Snapshots = SnapshotInfo()
+            self._Snapshots._deserialize(params.get("Snapshots"))
+        self._ImportSpecialKey = params.get("ImportSpecialKey")
+        self._ImportOriginTable = params.get("ImportOriginTable")
         if params.get("KeyFile") is not None:
-            self.KeyFile = KeyFile()
-            self.KeyFile._deserialize(params.get("KeyFile"))
-        self.NewTableGroupId = params.get("NewTableGroupId")
-        self.NewTableName = params.get("NewTableName")
+            self._KeyFile = KeyFile()
+            self._KeyFile._deserialize(params.get("KeyFile"))
+        self._NewTableGroupId = params.get("NewTableGroupId")
+        self._NewTableName = params.get("NewTableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2834,24 +5269,48 @@ class ImportSnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param ApplicationId: ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
+        :param _ApplicationId: ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.ApplicationId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._ApplicationId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.ApplicationId = params.get("ApplicationId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._RequestId = params.get("RequestId")
 
 
 class KafkaInfo(AbstractModel):
@@ -2861,38 +5320,87 @@ class KafkaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Address: kafaka address
+        :param _Address: kafaka address
         :type Address: str
-        :param Topic: kafaka topic
+        :param _Topic: kafaka topic
         :type Topic: str
-        :param User: kafka username
+        :param _User: kafka username
         :type User: str
-        :param Password: kafka password
+        :param _Password: kafka password
         :type Password: str
-        :param Instance: ckafka实例
+        :param _Instance: ckafka实例
         :type Instance: str
-        :param IsVpc: 是否走VPC
+        :param _IsVpc: 是否走VPC
         :type IsVpc: int
         """
-        self.Address = None
-        self.Topic = None
-        self.User = None
-        self.Password = None
-        self.Instance = None
-        self.IsVpc = None
+        self._Address = None
+        self._Topic = None
+        self._User = None
+        self._Password = None
+        self._Instance = None
+        self._IsVpc = None
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Instance(self):
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def IsVpc(self):
+        return self._IsVpc
+
+    @IsVpc.setter
+    def IsVpc(self, IsVpc):
+        self._IsVpc = IsVpc
 
 
     def _deserialize(self, params):
-        self.Address = params.get("Address")
-        self.Topic = params.get("Topic")
-        self.User = params.get("User")
-        self.Password = params.get("Password")
-        self.Instance = params.get("Instance")
-        self.IsVpc = params.get("IsVpc")
+        self._Address = params.get("Address")
+        self._Topic = params.get("Topic")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._Instance = params.get("Instance")
+        self._IsVpc = params.get("IsVpc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2905,30 +5413,63 @@ class KeyFile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileName: key文件名称
+        :param _FileName: key文件名称
         :type FileName: str
-        :param FileExtType: key文件扩展名
+        :param _FileExtType: key文件扩展名
         :type FileExtType: str
-        :param FileContent: key文件内容
+        :param _FileContent: key文件内容
         :type FileContent: str
-        :param FileSize: key文件大小
+        :param _FileSize: key文件大小
         :type FileSize: int
         """
-        self.FileName = None
-        self.FileExtType = None
-        self.FileContent = None
-        self.FileSize = None
+        self._FileName = None
+        self._FileExtType = None
+        self._FileContent = None
+        self._FileSize = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileExtType(self):
+        return self._FileExtType
+
+    @FileExtType.setter
+    def FileExtType(self, FileExtType):
+        self._FileExtType = FileExtType
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
 
 
     def _deserialize(self, params):
-        self.FileName = params.get("FileName")
-        self.FileExtType = params.get("FileExtType")
-        self.FileContent = params.get("FileContent")
-        self.FileSize = params.get("FileSize")
+        self._FileName = params.get("FileName")
+        self._FileExtType = params.get("FileExtType")
+        self._FileContent = params.get("FileContent")
+        self._FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2941,22 +5482,39 @@ class MachineInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MachineType: 机器类型
+        :param _MachineType: 机器类型
         :type MachineType: str
-        :param MachineNum: 机器数量
+        :param _MachineNum: 机器数量
         :type MachineNum: int
         """
-        self.MachineType = None
-        self.MachineNum = None
+        self._MachineType = None
+        self._MachineNum = None
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def MachineNum(self):
+        return self._MachineNum
+
+    @MachineNum.setter
+    def MachineNum(self, MachineNum):
+        self._MachineNum = MachineNum
 
 
     def _deserialize(self, params):
-        self.MachineType = params.get("MachineType")
-        self.MachineNum = params.get("MachineNum")
+        self._MachineType = params.get("MachineType")
+        self._MachineNum = params.get("MachineNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2969,37 +5527,70 @@ class MergeTableResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务Id
+        :param _TaskId: 任务Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param Error: 成功时此字段返回 null，表示取不到有效值。
+        :param _Error: 成功时此字段返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
-        :param Table: 对比的表格信息
+        :param _Table: 对比的表格信息
         :type Table: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
-        :param ApplicationId: 申请单Id
+        :param _ApplicationId: 申请单Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         """
-        self.TaskId = None
-        self.Error = None
-        self.Table = None
-        self.ApplicationId = None
+        self._TaskId = None
+        self._Error = None
+        self._Table = None
+        self._ApplicationId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
         if params.get("Table") is not None:
-            self.Table = CompareTablesInfo()
-            self.Table._deserialize(params.get("Table"))
-        self.ApplicationId = params.get("ApplicationId")
+            self._Table = CompareTablesInfo()
+            self._Table._deserialize(params.get("Table"))
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3012,27 +5603,44 @@ class MergeTablesDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SelectedTables: 选取的表格
+        :param _SelectedTables: 选取的表格
         :type SelectedTables: list of MergeTablesInfo
-        :param IsOnlyCompare: true只做对比，false既对比又执行
+        :param _IsOnlyCompare: true只做对比，false既对比又执行
         :type IsOnlyCompare: bool
         """
-        self.SelectedTables = None
-        self.IsOnlyCompare = None
+        self._SelectedTables = None
+        self._IsOnlyCompare = None
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
+
+    @property
+    def IsOnlyCompare(self):
+        return self._IsOnlyCompare
+
+    @IsOnlyCompare.setter
+    def IsOnlyCompare(self, IsOnlyCompare):
+        self._IsOnlyCompare = IsOnlyCompare
 
 
     def _deserialize(self, params):
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = MergeTablesInfo()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
-        self.IsOnlyCompare = params.get("IsOnlyCompare")
+                self._SelectedTables.append(obj)
+        self._IsOnlyCompare = params.get("IsOnlyCompare")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3045,23 +5653,39 @@ class MergeTablesDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Results: 合服结果集
+        :param _Results: 合服结果集
         :type Results: list of MergeTableResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Results = None
-        self.RequestId = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = MergeTableResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class MergeTablesInfo(AbstractModel):
@@ -3071,24 +5695,41 @@ class MergeTablesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MergeTables: 合服的表格信息
+        :param _MergeTables: 合服的表格信息
         :type MergeTables: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
-        :param CheckIndex: 是否检查索引
+        :param _CheckIndex: 是否检查索引
         :type CheckIndex: bool
         """
-        self.MergeTables = None
-        self.CheckIndex = None
+        self._MergeTables = None
+        self._CheckIndex = None
+
+    @property
+    def MergeTables(self):
+        return self._MergeTables
+
+    @MergeTables.setter
+    def MergeTables(self, MergeTables):
+        self._MergeTables = MergeTables
+
+    @property
+    def CheckIndex(self):
+        return self._CheckIndex
+
+    @CheckIndex.setter
+    def CheckIndex(self, CheckIndex):
+        self._CheckIndex = CheckIndex
 
 
     def _deserialize(self, params):
         if params.get("MergeTables") is not None:
-            self.MergeTables = CompareTablesInfo()
-            self.MergeTables._deserialize(params.get("MergeTables"))
-        self.CheckIndex = params.get("CheckIndex")
+            self._MergeTables = CompareTablesInfo()
+            self._MergeTables._deserialize(params.get("MergeTables"))
+        self._CheckIndex = params.get("CheckIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3101,26 +5742,51 @@ class ModifyCensorshipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群id
+        :param _ClusterId: 集群id
         :type ClusterId: str
-        :param Censorship: 集群是否开启审核 0-关闭 1-开启
+        :param _Censorship: 集群是否开启审核 0-关闭 1-开启
         :type Censorship: int
-        :param Uins: 审批人uin列表
+        :param _Uins: 审批人uin列表
         :type Uins: list of str
         """
-        self.ClusterId = None
-        self.Censorship = None
-        self.Uins = None
+        self._ClusterId = None
+        self._Censorship = None
+        self._Uins = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Censorship(self):
+        return self._Censorship
+
+    @Censorship.setter
+    def Censorship(self, Censorship):
+        self._Censorship = Censorship
+
+    @property
+    def Uins(self):
+        return self._Uins
+
+    @Uins.setter
+    def Uins(self, Uins):
+        self._Uins = Uins
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.Censorship = params.get("Censorship")
-        self.Uins = params.get("Uins")
+        self._ClusterId = params.get("ClusterId")
+        self._Censorship = params.get("Censorship")
+        self._Uins = params.get("Uins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3133,27 +5799,59 @@ class ModifyCensorshipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群id
+        :param _ClusterId: 集群id
         :type ClusterId: str
-        :param Uins: 已加入审批人的uin
+        :param _Uins: 已加入审批人的uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uins: list of str
-        :param Censorship: 集群是否开启审核 0-关闭 1-开启
+        :param _Censorship: 集群是否开启审核 0-关闭 1-开启
         :type Censorship: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ClusterId = None
-        self.Uins = None
-        self.Censorship = None
-        self.RequestId = None
+        self._ClusterId = None
+        self._Uins = None
+        self._Censorship = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Uins(self):
+        return self._Uins
+
+    @Uins.setter
+    def Uins(self, Uins):
+        self._Uins = Uins
+
+    @property
+    def Censorship(self):
+        return self._Censorship
+
+    @Censorship.setter
+    def Censorship(self, Censorship):
+        self._Censorship = Censorship
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.Uins = params.get("Uins")
-        self.Censorship = params.get("Censorship")
-        self.RequestId = params.get("RequestId")
+        self._ClusterId = params.get("ClusterId")
+        self._Uins = params.get("Uins")
+        self._Censorship = params.get("Censorship")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyClusterMachineRequest(AbstractModel):
@@ -3163,40 +5861,73 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群id
+        :param _ClusterId: 集群id
         :type ClusterId: str
-        :param ServerList: svr占用的机器
+        :param _ServerList: svr占用的机器
         :type ServerList: list of MachineInfo
-        :param ProxyList: proxy占用的机器
+        :param _ProxyList: proxy占用的机器
         :type ProxyList: list of MachineInfo
-        :param ClusterType: 集群类型1共享集群2独占集群
+        :param _ClusterType: 集群类型1共享集群2独占集群
         :type ClusterType: int
         """
-        self.ClusterId = None
-        self.ServerList = None
-        self.ProxyList = None
-        self.ClusterType = None
+        self._ClusterId = None
+        self._ServerList = None
+        self._ProxyList = None
+        self._ClusterType = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ServerList(self):
+        return self._ServerList
+
+    @ServerList.setter
+    def ServerList(self, ServerList):
+        self._ServerList = ServerList
+
+    @property
+    def ProxyList(self):
+        return self._ProxyList
+
+    @ProxyList.setter
+    def ProxyList(self, ProxyList):
+        self._ProxyList = ProxyList
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("ServerList") is not None:
-            self.ServerList = []
+            self._ServerList = []
             for item in params.get("ServerList"):
                 obj = MachineInfo()
                 obj._deserialize(item)
-                self.ServerList.append(obj)
+                self._ServerList.append(obj)
         if params.get("ProxyList") is not None:
-            self.ProxyList = []
+            self._ProxyList = []
             for item in params.get("ProxyList"):
                 obj = MachineInfo()
                 obj._deserialize(item)
-                self.ProxyList.append(obj)
-        self.ClusterType = params.get("ClusterType")
+                self._ProxyList.append(obj)
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3209,18 +5940,34 @@ class ModifyClusterMachineResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群id
+        :param _ClusterId: 集群id
         :type ClusterId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ClusterId = None
-        self.RequestId = None
+        self._ClusterId = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.RequestId = params.get("RequestId")
+        self._ClusterId = params.get("ClusterId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyClusterNameRequest(AbstractModel):
@@ -3230,22 +5977,39 @@ class ModifyClusterNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 需要修改名称的集群ID
+        :param _ClusterId: 需要修改名称的集群ID
         :type ClusterId: str
-        :param ClusterName: 需要修改的集群名称，可使用中文或英文字符，最大长度32个字符
+        :param _ClusterName: 需要修改的集群名称，可使用中文或英文字符，最大长度32个字符
         :type ClusterName: str
         """
-        self.ClusterId = None
-        self.ClusterName = None
+        self._ClusterId = None
+        self._ClusterName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.ClusterName = params.get("ClusterName")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3258,14 +6022,22 @@ class ModifyClusterNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyClusterPasswordRequest(AbstractModel):
@@ -3275,34 +6047,75 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 需要修改密码的集群ID
+        :param _ClusterId: 需要修改密码的集群ID
         :type ClusterId: str
-        :param OldPassword: 集群旧密码
+        :param _OldPassword: 集群旧密码
         :type OldPassword: str
-        :param OldPasswordExpireTime: 集群旧密码预期失效时间
+        :param _OldPasswordExpireTime: 集群旧密码预期失效时间
         :type OldPasswordExpireTime: str
-        :param NewPassword: 集群新密码，密码必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+        :param _NewPassword: 集群新密码，密码必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
         :type NewPassword: str
-        :param Mode: 更新模式： `1` 更新密码；`2` 更新旧密码失效时间，默认为`1` 模式
+        :param _Mode: 更新模式： `1` 更新密码；`2` 更新旧密码失效时间，默认为`1` 模式
         :type Mode: str
         """
-        self.ClusterId = None
-        self.OldPassword = None
-        self.OldPasswordExpireTime = None
-        self.NewPassword = None
-        self.Mode = None
+        self._ClusterId = None
+        self._OldPassword = None
+        self._OldPasswordExpireTime = None
+        self._NewPassword = None
+        self._Mode = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def OldPassword(self):
+        return self._OldPassword
+
+    @OldPassword.setter
+    def OldPassword(self, OldPassword):
+        self._OldPassword = OldPassword
+
+    @property
+    def OldPasswordExpireTime(self):
+        return self._OldPasswordExpireTime
+
+    @OldPasswordExpireTime.setter
+    def OldPasswordExpireTime(self, OldPasswordExpireTime):
+        self._OldPasswordExpireTime = OldPasswordExpireTime
+
+    @property
+    def NewPassword(self):
+        return self._NewPassword
+
+    @NewPassword.setter
+    def NewPassword(self, NewPassword):
+        self._NewPassword = NewPassword
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.OldPassword = params.get("OldPassword")
-        self.OldPasswordExpireTime = params.get("OldPasswordExpireTime")
-        self.NewPassword = params.get("NewPassword")
-        self.Mode = params.get("Mode")
+        self._ClusterId = params.get("ClusterId")
+        self._OldPassword = params.get("OldPassword")
+        self._OldPasswordExpireTime = params.get("OldPasswordExpireTime")
+        self._NewPassword = params.get("NewPassword")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3315,14 +6128,22 @@ class ModifyClusterPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyClusterTagsRequest(AbstractModel):
@@ -3332,36 +6153,61 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待修改标签的集群ID
+        :param _ClusterId: 待修改标签的集群ID
         :type ClusterId: str
-        :param ReplaceTags: 待增加或修改的标签列表
+        :param _ReplaceTags: 待增加或修改的标签列表
         :type ReplaceTags: list of TagInfoUnit
-        :param DeleteTags: 待删除的标签
+        :param _DeleteTags: 待删除的标签
         :type DeleteTags: list of TagInfoUnit
         """
-        self.ClusterId = None
-        self.ReplaceTags = None
-        self.DeleteTags = None
+        self._ClusterId = None
+        self._ReplaceTags = None
+        self._DeleteTags = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ReplaceTags(self):
+        return self._ReplaceTags
+
+    @ReplaceTags.setter
+    def ReplaceTags(self, ReplaceTags):
+        self._ReplaceTags = ReplaceTags
+
+    @property
+    def DeleteTags(self):
+        return self._DeleteTags
+
+    @DeleteTags.setter
+    def DeleteTags(self, DeleteTags):
+        self._DeleteTags = DeleteTags
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("ReplaceTags") is not None:
-            self.ReplaceTags = []
+            self._ReplaceTags = []
             for item in params.get("ReplaceTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.ReplaceTags.append(obj)
+                self._ReplaceTags.append(obj)
         if params.get("DeleteTags") is not None:
-            self.DeleteTags = []
+            self._DeleteTags = []
             for item in params.get("DeleteTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.DeleteTags.append(obj)
+                self._DeleteTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3374,19 +6220,35 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySnapshotsRequest(AbstractModel):
@@ -3396,27 +6258,44 @@ class ModifySnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格所属集群id
+        :param _ClusterId: 表格所属集群id
         :type ClusterId: str
-        :param SelectedTables: 快照列表
+        :param _SelectedTables: 快照列表
         :type SelectedTables: list of SnapshotInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SnapshotInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3429,27 +6308,51 @@ class ModifySnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 批量修改的快照数量
+        :param _TotalCount: 批量修改的快照数量
         :type TotalCount: int
-        :param TableResults: 批量修改的快照结果列表
+        :param _TableResults: 批量修改的快照结果列表
         :type TableResults: list of SnapshotResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = SnapshotResult()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTableGroupNameRequest(AbstractModel):
@@ -3459,26 +6362,51 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表格组所属的集群ID
+        :param _ClusterId: 表格组所属的集群ID
         :type ClusterId: str
-        :param TableGroupId: 待修改名称的表格组ID
+        :param _TableGroupId: 待修改名称的表格组ID
         :type TableGroupId: str
-        :param TableGroupName: 新的表格组名称，可以使用中英文字符和符号
+        :param _TableGroupName: 新的表格组名称，可以使用中英文字符和符号
         :type TableGroupName: str
         """
-        self.ClusterId = None
-        self.TableGroupId = None
-        self.TableGroupName = None
+        self._ClusterId = None
+        self._TableGroupId = None
+        self._TableGroupName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableGroupName(self):
+        return self._TableGroupName
+
+    @TableGroupName.setter
+    def TableGroupName(self, TableGroupName):
+        self._TableGroupName = TableGroupName
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableGroupName = params.get("TableGroupName")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableGroupName = params.get("TableGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3491,14 +6419,22 @@ class ModifyTableGroupNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTableGroupTagsRequest(AbstractModel):
@@ -3508,40 +6444,73 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待修改标签表格组所属集群ID
+        :param _ClusterId: 待修改标签表格组所属集群ID
         :type ClusterId: str
-        :param TableGroupId: 待修改标签表格组ID
+        :param _TableGroupId: 待修改标签表格组ID
         :type TableGroupId: str
-        :param ReplaceTags: 待增加或修改的标签列表
+        :param _ReplaceTags: 待增加或修改的标签列表
         :type ReplaceTags: list of TagInfoUnit
-        :param DeleteTags: 待删除的标签
+        :param _DeleteTags: 待删除的标签
         :type DeleteTags: list of TagInfoUnit
         """
-        self.ClusterId = None
-        self.TableGroupId = None
-        self.ReplaceTags = None
-        self.DeleteTags = None
+        self._ClusterId = None
+        self._TableGroupId = None
+        self._ReplaceTags = None
+        self._DeleteTags = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def ReplaceTags(self):
+        return self._ReplaceTags
+
+    @ReplaceTags.setter
+    def ReplaceTags(self, ReplaceTags):
+        self._ReplaceTags = ReplaceTags
+
+    @property
+    def DeleteTags(self):
+        return self._DeleteTags
+
+    @DeleteTags.setter
+    def DeleteTags(self, DeleteTags):
+        self._DeleteTags = DeleteTags
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupId = params.get("TableGroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupId = params.get("TableGroupId")
         if params.get("ReplaceTags") is not None:
-            self.ReplaceTags = []
+            self._ReplaceTags = []
             for item in params.get("ReplaceTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.ReplaceTags.append(obj)
+                self._ReplaceTags.append(obj)
         if params.get("DeleteTags") is not None:
-            self.DeleteTags = []
+            self._DeleteTags = []
             for item in params.get("DeleteTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.DeleteTags.append(obj)
+                self._DeleteTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3554,19 +6523,35 @@ class ModifyTableGroupTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTableMemosRequest(AbstractModel):
@@ -3576,27 +6561,44 @@ class ModifyTableMemosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表所属集群实例ID
+        :param _ClusterId: 表所属集群实例ID
         :type ClusterId: str
-        :param TableMemos: 选定表详情列表
+        :param _TableMemos: 选定表详情列表
         :type TableMemos: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.TableMemos = None
+        self._ClusterId = None
+        self._TableMemos = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableMemos(self):
+        return self._TableMemos
+
+    @TableMemos.setter
+    def TableMemos(self, TableMemos):
+        self._TableMemos = TableMemos
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("TableMemos") is not None:
-            self.TableMemos = []
+            self._TableMemos = []
             for item in params.get("TableMemos"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.TableMemos.append(obj)
+                self._TableMemos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3609,27 +6611,51 @@ class ModifyTableMemosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 表备注修改结果数量
+        :param _TotalCount: 表备注修改结果数量
         :type TotalCount: int
-        :param TableResults: 表备注修改结果列表
+        :param _TableResults: 表备注修改结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTableQuotasRequest(AbstractModel):
@@ -3639,27 +6665,44 @@ class ModifyTableQuotasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 带扩缩容表所属集群ID
+        :param _ClusterId: 带扩缩容表所属集群ID
         :type ClusterId: str
-        :param TableQuotas: 已选中待修改的表配额列表
+        :param _TableQuotas: 已选中待修改的表配额列表
         :type TableQuotas: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.TableQuotas = None
+        self._ClusterId = None
+        self._TableQuotas = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableQuotas(self):
+        return self._TableQuotas
+
+    @TableQuotas.setter
+    def TableQuotas(self, TableQuotas):
+        self._TableQuotas = TableQuotas
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("TableQuotas") is not None:
-            self.TableQuotas = []
+            self._TableQuotas = []
             for item in params.get("TableQuotas"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.TableQuotas.append(obj)
+                self._TableQuotas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3672,27 +6715,51 @@ class ModifyTableQuotasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 扩缩容结果数量
+        :param _TotalCount: 扩缩容结果数量
         :type TotalCount: int
-        :param TableResults: 扩缩容结果列表
+        :param _TableResults: 扩缩容结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTableTagsRequest(AbstractModel):
@@ -3702,45 +6769,78 @@ class ModifyTableTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待修改标签表格所属集群ID
+        :param _ClusterId: 待修改标签表格所属集群ID
         :type ClusterId: str
-        :param SelectedTables: 待修改标签表格列表
+        :param _SelectedTables: 待修改标签表格列表
         :type SelectedTables: list of SelectedTableInfoNew
-        :param ReplaceTags: 待增加或修改的标签列表
+        :param _ReplaceTags: 待增加或修改的标签列表
         :type ReplaceTags: list of TagInfoUnit
-        :param DeleteTags: 待删除的标签列表
+        :param _DeleteTags: 待删除的标签列表
         :type DeleteTags: list of TagInfoUnit
         """
-        self.ClusterId = None
-        self.SelectedTables = None
-        self.ReplaceTags = None
-        self.DeleteTags = None
+        self._ClusterId = None
+        self._SelectedTables = None
+        self._ReplaceTags = None
+        self._DeleteTags = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
+
+    @property
+    def ReplaceTags(self):
+        return self._ReplaceTags
+
+    @ReplaceTags.setter
+    def ReplaceTags(self, ReplaceTags):
+        self._ReplaceTags = ReplaceTags
+
+    @property
+    def DeleteTags(self):
+        return self._DeleteTags
+
+    @DeleteTags.setter
+    def DeleteTags(self, DeleteTags):
+        self._DeleteTags = DeleteTags
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         if params.get("ReplaceTags") is not None:
-            self.ReplaceTags = []
+            self._ReplaceTags = []
             for item in params.get("ReplaceTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.ReplaceTags.append(obj)
+                self._ReplaceTags.append(obj)
         if params.get("DeleteTags") is not None:
-            self.DeleteTags = []
+            self._DeleteTags = []
             for item in params.get("DeleteTags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.DeleteTags.append(obj)
+                self._DeleteTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3753,27 +6853,51 @@ class ModifyTableTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 返回结果总数
+        :param _TotalCount: 返回结果总数
         :type TotalCount: int
-        :param TableResults: 返回结果
+        :param _TableResults: 返回结果
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTablesRequest(AbstractModel):
@@ -3783,36 +6907,61 @@ class ModifyTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待修改表格所在集群ID
+        :param _ClusterId: 待修改表格所在集群ID
         :type ClusterId: str
-        :param IdlFiles: 选中的改表IDL文件
+        :param _IdlFiles: 选中的改表IDL文件
         :type IdlFiles: list of IdlFileInfo
-        :param SelectedTables: 待改表格列表
+        :param _SelectedTables: 待改表格列表
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.IdlFiles = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._IdlFiles = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IdlFiles(self):
+        return self._IdlFiles
+
+    @IdlFiles.setter
+    def IdlFiles(self, IdlFiles):
+        self._IdlFiles = IdlFiles
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("IdlFiles") is not None:
-            self.IdlFiles = []
+            self._IdlFiles = []
             for item in params.get("IdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.IdlFiles.append(obj)
+                self._IdlFiles.append(obj)
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3825,27 +6974,51 @@ class ModifyTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 修改表结果数量
+        :param _TotalCount: 修改表结果数量
         :type TotalCount: int
-        :param TableResults: 修改表结果列表
+        :param _TableResults: 修改表结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ParsedTableInfoNew(AbstractModel):
@@ -3855,106 +7028,251 @@ class ParsedTableInfoNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
+        :param _TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
-        :param TableInstanceId: 表格实例ID
+        :param _TableInstanceId: 表格实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param TableType: 表格数据结构类型：`GENERIC`或`LIST`
+        :param _TableType: 表格数据结构类型：`GENERIC`或`LIST`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
-        :param KeyFields: 主键字段信息
+        :param _KeyFields: 主键字段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyFields: str
-        :param OldKeyFields: 原主键字段信息，改表校验时有效
+        :param _OldKeyFields: 原主键字段信息，改表校验时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type OldKeyFields: str
-        :param ValueFields: 非主键字段信息
+        :param _ValueFields: 非主键字段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValueFields: str
-        :param OldValueFields: 原非主键字段信息，改表校验时有效
+        :param _OldValueFields: 原非主键字段信息，改表校验时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type OldValueFields: str
-        :param TableGroupId: 所属表格组ID
+        :param _TableGroupId: 所属表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
-        :param SumKeyFieldSize: 主键字段总大小
+        :param _SumKeyFieldSize: 主键字段总大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type SumKeyFieldSize: int
-        :param SumValueFieldSize: 非主键字段总大小
+        :param _SumValueFieldSize: 非主键字段总大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type SumValueFieldSize: int
-        :param IndexKeySet: 索引键集合
+        :param _IndexKeySet: 索引键集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexKeySet: str
-        :param ShardingKeySet: 分表因子集合
+        :param _ShardingKeySet: 分表因子集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShardingKeySet: str
-        :param TdrVersion: TDR版本号
+        :param _TdrVersion: TDR版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type TdrVersion: int
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
-        :param ListElementNum: LIST类型表格元素个数
+        :param _ListElementNum: LIST类型表格元素个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListElementNum: int
-        :param SortFieldNum: SORTLIST类型表格排序字段个数
+        :param _SortFieldNum: SORTLIST类型表格排序字段个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SortFieldNum: int
-        :param SortRule: SORTLIST类型表格排序顺序
+        :param _SortRule: SORTLIST类型表格排序顺序
 注意：此字段可能返回 null，表示取不到有效值。
         :type SortRule: int
         """
-        self.TableIdlType = None
-        self.TableInstanceId = None
-        self.TableName = None
-        self.TableType = None
-        self.KeyFields = None
-        self.OldKeyFields = None
-        self.ValueFields = None
-        self.OldValueFields = None
-        self.TableGroupId = None
-        self.SumKeyFieldSize = None
-        self.SumValueFieldSize = None
-        self.IndexKeySet = None
-        self.ShardingKeySet = None
-        self.TdrVersion = None
-        self.Error = None
-        self.ListElementNum = None
-        self.SortFieldNum = None
-        self.SortRule = None
+        self._TableIdlType = None
+        self._TableInstanceId = None
+        self._TableName = None
+        self._TableType = None
+        self._KeyFields = None
+        self._OldKeyFields = None
+        self._ValueFields = None
+        self._OldValueFields = None
+        self._TableGroupId = None
+        self._SumKeyFieldSize = None
+        self._SumValueFieldSize = None
+        self._IndexKeySet = None
+        self._ShardingKeySet = None
+        self._TdrVersion = None
+        self._Error = None
+        self._ListElementNum = None
+        self._SortFieldNum = None
+        self._SortRule = None
+
+    @property
+    def TableIdlType(self):
+        return self._TableIdlType
+
+    @TableIdlType.setter
+    def TableIdlType(self, TableIdlType):
+        self._TableIdlType = TableIdlType
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def KeyFields(self):
+        return self._KeyFields
+
+    @KeyFields.setter
+    def KeyFields(self, KeyFields):
+        self._KeyFields = KeyFields
+
+    @property
+    def OldKeyFields(self):
+        return self._OldKeyFields
+
+    @OldKeyFields.setter
+    def OldKeyFields(self, OldKeyFields):
+        self._OldKeyFields = OldKeyFields
+
+    @property
+    def ValueFields(self):
+        return self._ValueFields
+
+    @ValueFields.setter
+    def ValueFields(self, ValueFields):
+        self._ValueFields = ValueFields
+
+    @property
+    def OldValueFields(self):
+        return self._OldValueFields
+
+    @OldValueFields.setter
+    def OldValueFields(self, OldValueFields):
+        self._OldValueFields = OldValueFields
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def SumKeyFieldSize(self):
+        return self._SumKeyFieldSize
+
+    @SumKeyFieldSize.setter
+    def SumKeyFieldSize(self, SumKeyFieldSize):
+        self._SumKeyFieldSize = SumKeyFieldSize
+
+    @property
+    def SumValueFieldSize(self):
+        return self._SumValueFieldSize
+
+    @SumValueFieldSize.setter
+    def SumValueFieldSize(self, SumValueFieldSize):
+        self._SumValueFieldSize = SumValueFieldSize
+
+    @property
+    def IndexKeySet(self):
+        return self._IndexKeySet
+
+    @IndexKeySet.setter
+    def IndexKeySet(self, IndexKeySet):
+        self._IndexKeySet = IndexKeySet
+
+    @property
+    def ShardingKeySet(self):
+        return self._ShardingKeySet
+
+    @ShardingKeySet.setter
+    def ShardingKeySet(self, ShardingKeySet):
+        self._ShardingKeySet = ShardingKeySet
+
+    @property
+    def TdrVersion(self):
+        return self._TdrVersion
+
+    @TdrVersion.setter
+    def TdrVersion(self, TdrVersion):
+        self._TdrVersion = TdrVersion
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def ListElementNum(self):
+        return self._ListElementNum
+
+    @ListElementNum.setter
+    def ListElementNum(self, ListElementNum):
+        self._ListElementNum = ListElementNum
+
+    @property
+    def SortFieldNum(self):
+        return self._SortFieldNum
+
+    @SortFieldNum.setter
+    def SortFieldNum(self, SortFieldNum):
+        self._SortFieldNum = SortFieldNum
+
+    @property
+    def SortRule(self):
+        return self._SortRule
+
+    @SortRule.setter
+    def SortRule(self, SortRule):
+        self._SortRule = SortRule
 
 
     def _deserialize(self, params):
-        self.TableIdlType = params.get("TableIdlType")
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.TableName = params.get("TableName")
-        self.TableType = params.get("TableType")
-        self.KeyFields = params.get("KeyFields")
-        self.OldKeyFields = params.get("OldKeyFields")
-        self.ValueFields = params.get("ValueFields")
-        self.OldValueFields = params.get("OldValueFields")
-        self.TableGroupId = params.get("TableGroupId")
-        self.SumKeyFieldSize = params.get("SumKeyFieldSize")
-        self.SumValueFieldSize = params.get("SumValueFieldSize")
-        self.IndexKeySet = params.get("IndexKeySet")
-        self.ShardingKeySet = params.get("ShardingKeySet")
-        self.TdrVersion = params.get("TdrVersion")
+        self._TableIdlType = params.get("TableIdlType")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._TableName = params.get("TableName")
+        self._TableType = params.get("TableType")
+        self._KeyFields = params.get("KeyFields")
+        self._OldKeyFields = params.get("OldKeyFields")
+        self._ValueFields = params.get("ValueFields")
+        self._OldValueFields = params.get("OldValueFields")
+        self._TableGroupId = params.get("TableGroupId")
+        self._SumKeyFieldSize = params.get("SumKeyFieldSize")
+        self._SumValueFieldSize = params.get("SumValueFieldSize")
+        self._IndexKeySet = params.get("IndexKeySet")
+        self._ShardingKeySet = params.get("ShardingKeySet")
+        self._TdrVersion = params.get("TdrVersion")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
-        self.ListElementNum = params.get("ListElementNum")
-        self.SortFieldNum = params.get("SortFieldNum")
-        self.SortRule = params.get("SortRule")
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        self._ListElementNum = params.get("ListElementNum")
+        self._SortFieldNum = params.get("SortFieldNum")
+        self._SortRule = params.get("SortRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3967,44 +7285,85 @@ class PoolInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PoolUid: 唯一id
+        :param _PoolUid: 唯一id
         :type PoolUid: int
-        :param Ipv6Enable: 是否支持ipv6
+        :param _Ipv6Enable: 是否支持ipv6
         :type Ipv6Enable: int
-        :param AvailableAppCount: 剩余可用app
+        :param _AvailableAppCount: 剩余可用app
         :type AvailableAppCount: int
-        :param ServerList: svr机器列表
+        :param _ServerList: svr机器列表
         :type ServerList: list of ServerMachineInfo
-        :param ProxyList: proxy机器列表
+        :param _ProxyList: proxy机器列表
         :type ProxyList: list of ProxyMachineInfo
         """
-        self.PoolUid = None
-        self.Ipv6Enable = None
-        self.AvailableAppCount = None
-        self.ServerList = None
-        self.ProxyList = None
+        self._PoolUid = None
+        self._Ipv6Enable = None
+        self._AvailableAppCount = None
+        self._ServerList = None
+        self._ProxyList = None
+
+    @property
+    def PoolUid(self):
+        return self._PoolUid
+
+    @PoolUid.setter
+    def PoolUid(self, PoolUid):
+        self._PoolUid = PoolUid
+
+    @property
+    def Ipv6Enable(self):
+        return self._Ipv6Enable
+
+    @Ipv6Enable.setter
+    def Ipv6Enable(self, Ipv6Enable):
+        self._Ipv6Enable = Ipv6Enable
+
+    @property
+    def AvailableAppCount(self):
+        return self._AvailableAppCount
+
+    @AvailableAppCount.setter
+    def AvailableAppCount(self, AvailableAppCount):
+        self._AvailableAppCount = AvailableAppCount
+
+    @property
+    def ServerList(self):
+        return self._ServerList
+
+    @ServerList.setter
+    def ServerList(self, ServerList):
+        self._ServerList = ServerList
+
+    @property
+    def ProxyList(self):
+        return self._ProxyList
+
+    @ProxyList.setter
+    def ProxyList(self, ProxyList):
+        self._ProxyList = ProxyList
 
 
     def _deserialize(self, params):
-        self.PoolUid = params.get("PoolUid")
-        self.Ipv6Enable = params.get("Ipv6Enable")
-        self.AvailableAppCount = params.get("AvailableAppCount")
+        self._PoolUid = params.get("PoolUid")
+        self._Ipv6Enable = params.get("Ipv6Enable")
+        self._AvailableAppCount = params.get("AvailableAppCount")
         if params.get("ServerList") is not None:
-            self.ServerList = []
+            self._ServerList = []
             for item in params.get("ServerList"):
                 obj = ServerMachineInfo()
                 obj._deserialize(item)
-                self.ServerList.append(obj)
+                self._ServerList.append(obj)
         if params.get("ProxyList") is not None:
-            self.ProxyList = []
+            self._ProxyList = []
             for item in params.get("ProxyList"):
                 obj = ProxyMachineInfo()
                 obj._deserialize(item)
-                self.ProxyList.append(obj)
+                self._ProxyList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4017,39 +7376,88 @@ class ProxyDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyUid: proxy的唯一id
+        :param _ProxyUid: proxy的唯一id
         :type ProxyUid: str
-        :param MachineType: 机器类型
+        :param _MachineType: 机器类型
         :type MachineType: str
-        :param ProcessSpeed: 请求包速度
+        :param _ProcessSpeed: 请求包速度
         :type ProcessSpeed: int
-        :param AverageProcessDelay: 请求包时延
+        :param _AverageProcessDelay: 请求包时延
         :type AverageProcessDelay: int
-        :param SlowProcessSpeed: 慢处理包速度
+        :param _SlowProcessSpeed: 慢处理包速度
         :type SlowProcessSpeed: int
-        :param Version: 版本
+        :param _Version: 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
-        self.ProxyUid = None
-        self.MachineType = None
-        self.ProcessSpeed = None
-        self.AverageProcessDelay = None
-        self.SlowProcessSpeed = None
-        self.Version = None
+        self._ProxyUid = None
+        self._MachineType = None
+        self._ProcessSpeed = None
+        self._AverageProcessDelay = None
+        self._SlowProcessSpeed = None
+        self._Version = None
+
+    @property
+    def ProxyUid(self):
+        return self._ProxyUid
+
+    @ProxyUid.setter
+    def ProxyUid(self, ProxyUid):
+        self._ProxyUid = ProxyUid
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def ProcessSpeed(self):
+        return self._ProcessSpeed
+
+    @ProcessSpeed.setter
+    def ProcessSpeed(self, ProcessSpeed):
+        self._ProcessSpeed = ProcessSpeed
+
+    @property
+    def AverageProcessDelay(self):
+        return self._AverageProcessDelay
+
+    @AverageProcessDelay.setter
+    def AverageProcessDelay(self, AverageProcessDelay):
+        self._AverageProcessDelay = AverageProcessDelay
+
+    @property
+    def SlowProcessSpeed(self):
+        return self._SlowProcessSpeed
+
+    @SlowProcessSpeed.setter
+    def SlowProcessSpeed(self, SlowProcessSpeed):
+        self._SlowProcessSpeed = SlowProcessSpeed
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
-        self.ProxyUid = params.get("ProxyUid")
-        self.MachineType = params.get("MachineType")
-        self.ProcessSpeed = params.get("ProcessSpeed")
-        self.AverageProcessDelay = params.get("AverageProcessDelay")
-        self.SlowProcessSpeed = params.get("SlowProcessSpeed")
-        self.Version = params.get("Version")
+        self._ProxyUid = params.get("ProxyUid")
+        self._MachineType = params.get("MachineType")
+        self._ProcessSpeed = params.get("ProcessSpeed")
+        self._AverageProcessDelay = params.get("AverageProcessDelay")
+        self._SlowProcessSpeed = params.get("SlowProcessSpeed")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4062,26 +7470,51 @@ class ProxyMachineInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyUid: 唯一id
+        :param _ProxyUid: 唯一id
         :type ProxyUid: str
-        :param MachineType: 机器类型
+        :param _MachineType: 机器类型
         :type MachineType: str
-        :param AvailableCount: 可分配proxy资源数
+        :param _AvailableCount: 可分配proxy资源数
         :type AvailableCount: int
         """
-        self.ProxyUid = None
-        self.MachineType = None
-        self.AvailableCount = None
+        self._ProxyUid = None
+        self._MachineType = None
+        self._AvailableCount = None
+
+    @property
+    def ProxyUid(self):
+        return self._ProxyUid
+
+    @ProxyUid.setter
+    def ProxyUid(self, ProxyUid):
+        self._ProxyUid = ProxyUid
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def AvailableCount(self):
+        return self._AvailableCount
+
+    @AvailableCount.setter
+    def AvailableCount(self, AvailableCount):
+        self._AvailableCount = AvailableCount
 
 
     def _deserialize(self, params):
-        self.ProxyUid = params.get("ProxyUid")
-        self.MachineType = params.get("MachineType")
-        self.AvailableCount = params.get("AvailableCount")
+        self._ProxyUid = params.get("ProxyUid")
+        self._MachineType = params.get("MachineType")
+        self._AvailableCount = params.get("AvailableCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4094,27 +7527,44 @@ class RecoverRecycleTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表所在集群ID
+        :param _ClusterId: 表所在集群ID
         :type ClusterId: str
-        :param SelectedTables: 待恢复表信息
+        :param _SelectedTables: 待恢复表信息
         :type SelectedTables: list of SelectedTableInfoNew
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4127,27 +7577,51 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 恢复表结果数量
+        :param _TotalCount: 恢复表结果数量
         :type TotalCount: int
-        :param TableResults: 恢复表信息列表
+        :param _TableResults: 恢复表信息列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class RegionInfo(AbstractModel):
@@ -4157,30 +7631,63 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionName: 地域Ap-Code
+        :param _RegionName: 地域Ap-Code
         :type RegionName: str
-        :param RegionAbbr: 地域缩写
+        :param _RegionAbbr: 地域缩写
         :type RegionAbbr: str
-        :param RegionId: 地域ID
+        :param _RegionId: 地域ID
         :type RegionId: int
-        :param Ipv6Enable: 是否支持ipv6，0:不支持，1:支持
+        :param _Ipv6Enable: 是否支持ipv6，0:不支持，1:支持
         :type Ipv6Enable: int
         """
-        self.RegionName = None
-        self.RegionAbbr = None
-        self.RegionId = None
-        self.Ipv6Enable = None
+        self._RegionName = None
+        self._RegionAbbr = None
+        self._RegionId = None
+        self._Ipv6Enable = None
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionAbbr(self):
+        return self._RegionAbbr
+
+    @RegionAbbr.setter
+    def RegionAbbr(self, RegionAbbr):
+        self._RegionAbbr = RegionAbbr
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Ipv6Enable(self):
+        return self._Ipv6Enable
+
+    @Ipv6Enable.setter
+    def Ipv6Enable(self, Ipv6Enable):
+        self._Ipv6Enable = Ipv6Enable
 
 
     def _deserialize(self, params):
-        self.RegionName = params.get("RegionName")
-        self.RegionAbbr = params.get("RegionAbbr")
-        self.RegionId = params.get("RegionId")
-        self.Ipv6Enable = params.get("Ipv6Enable")
+        self._RegionName = params.get("RegionName")
+        self._RegionAbbr = params.get("RegionAbbr")
+        self._RegionId = params.get("RegionId")
+        self._Ipv6Enable = params.get("Ipv6Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4193,35 +7700,68 @@ class RollbackTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待回档表格所在集群ID
+        :param _ClusterId: 待回档表格所在集群ID
         :type ClusterId: str
-        :param SelectedTables: 待回档表格列表
+        :param _SelectedTables: 待回档表格列表
         :type SelectedTables: list of SelectedTableInfoNew
-        :param RollbackTime: 待回档时间
+        :param _RollbackTime: 待回档时间
         :type RollbackTime: str
-        :param Mode: 回档模式，支持：`KEYS`
+        :param _Mode: 回档模式，支持：`KEYS`
         :type Mode: str
         """
-        self.ClusterId = None
-        self.SelectedTables = None
-        self.RollbackTime = None
-        self.Mode = None
+        self._ClusterId = None
+        self._SelectedTables = None
+        self._RollbackTime = None
+        self._Mode = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
+
+    @property
+    def RollbackTime(self):
+        return self._RollbackTime
+
+    @RollbackTime.setter
+    def RollbackTime(self, RollbackTime):
+        self._RollbackTime = RollbackTime
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
-        self.RollbackTime = params.get("RollbackTime")
-        self.Mode = params.get("Mode")
+                self._SelectedTables.append(obj)
+        self._RollbackTime = params.get("RollbackTime")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4234,27 +7774,51 @@ class RollbackTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 表格回档任务结果数量
+        :param _TotalCount: 表格回档任务结果数量
         :type TotalCount: int
-        :param TableResults: 表格回档任务结果列表
+        :param _TableResults: 表格回档任务结果列表
         :type TableResults: list of TableRollbackResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableRollbackResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SelectedTableInfoNew(AbstractModel):
@@ -4264,70 +7828,183 @@ class SelectedTableInfoNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 表所属表格组ID
+        :param _TableGroupId: 表所属表格组ID
         :type TableGroupId: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
         :type TableName: str
-        :param TableInstanceId: 表实例ID
+        :param _TableInstanceId: 表实例ID
         :type TableInstanceId: str
-        :param TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
+        :param _TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
         :type TableIdlType: str
-        :param TableType: 表格数据结构类型：`GENERIC`或`LIST`
+        :param _TableType: 表格数据结构类型：`GENERIC`或`LIST`
         :type TableType: str
-        :param ListElementNum: LIST表元素个数
+        :param _ListElementNum: LIST表元素个数
         :type ListElementNum: int
-        :param ReservedVolume: 表格预留容量（GB）
+        :param _ReservedVolume: 表格预留容量（GB）
         :type ReservedVolume: int
-        :param ReservedReadQps: 表格预留读CU
+        :param _ReservedReadQps: 表格预留读CU
         :type ReservedReadQps: int
-        :param ReservedWriteQps: 表格预留写CU
+        :param _ReservedWriteQps: 表格预留写CU
         :type ReservedWriteQps: int
-        :param Memo: 表格备注信息
+        :param _Memo: 表格备注信息
         :type Memo: str
-        :param FileName: Key回档文件名，回档专用
+        :param _FileName: Key回档文件名，回档专用
         :type FileName: str
-        :param FileExtType: Key回档文件扩展名，回档专用
+        :param _FileExtType: Key回档文件扩展名，回档专用
         :type FileExtType: str
-        :param FileSize: Key回档文件大小，回档专用
+        :param _FileSize: Key回档文件大小，回档专用
         :type FileSize: int
-        :param FileContent: Key回档文件内容，回档专用
+        :param _FileContent: Key回档文件内容，回档专用
         :type FileContent: str
         """
-        self.TableGroupId = None
-        self.TableName = None
-        self.TableInstanceId = None
-        self.TableIdlType = None
-        self.TableType = None
-        self.ListElementNum = None
-        self.ReservedVolume = None
-        self.ReservedReadQps = None
-        self.ReservedWriteQps = None
-        self.Memo = None
-        self.FileName = None
-        self.FileExtType = None
-        self.FileSize = None
-        self.FileContent = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._TableInstanceId = None
+        self._TableIdlType = None
+        self._TableType = None
+        self._ListElementNum = None
+        self._ReservedVolume = None
+        self._ReservedReadQps = None
+        self._ReservedWriteQps = None
+        self._Memo = None
+        self._FileName = None
+        self._FileExtType = None
+        self._FileSize = None
+        self._FileContent = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def TableIdlType(self):
+        return self._TableIdlType
+
+    @TableIdlType.setter
+    def TableIdlType(self, TableIdlType):
+        self._TableIdlType = TableIdlType
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def ListElementNum(self):
+        return self._ListElementNum
+
+    @ListElementNum.setter
+    def ListElementNum(self, ListElementNum):
+        self._ListElementNum = ListElementNum
+
+    @property
+    def ReservedVolume(self):
+        return self._ReservedVolume
+
+    @ReservedVolume.setter
+    def ReservedVolume(self, ReservedVolume):
+        self._ReservedVolume = ReservedVolume
+
+    @property
+    def ReservedReadQps(self):
+        return self._ReservedReadQps
+
+    @ReservedReadQps.setter
+    def ReservedReadQps(self, ReservedReadQps):
+        self._ReservedReadQps = ReservedReadQps
+
+    @property
+    def ReservedWriteQps(self):
+        return self._ReservedWriteQps
+
+    @ReservedWriteQps.setter
+    def ReservedWriteQps(self, ReservedWriteQps):
+        self._ReservedWriteQps = ReservedWriteQps
+
+    @property
+    def Memo(self):
+        return self._Memo
+
+    @Memo.setter
+    def Memo(self, Memo):
+        self._Memo = Memo
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileExtType(self):
+        return self._FileExtType
+
+    @FileExtType.setter
+    def FileExtType(self, FileExtType):
+        self._FileExtType = FileExtType
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.TableIdlType = params.get("TableIdlType")
-        self.TableType = params.get("TableType")
-        self.ListElementNum = params.get("ListElementNum")
-        self.ReservedVolume = params.get("ReservedVolume")
-        self.ReservedReadQps = params.get("ReservedReadQps")
-        self.ReservedWriteQps = params.get("ReservedWriteQps")
-        self.Memo = params.get("Memo")
-        self.FileName = params.get("FileName")
-        self.FileExtType = params.get("FileExtType")
-        self.FileSize = params.get("FileSize")
-        self.FileContent = params.get("FileContent")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._TableIdlType = params.get("TableIdlType")
+        self._TableType = params.get("TableType")
+        self._ListElementNum = params.get("ListElementNum")
+        self._ReservedVolume = params.get("ReservedVolume")
+        self._ReservedReadQps = params.get("ReservedReadQps")
+        self._ReservedWriteQps = params.get("ReservedWriteQps")
+        self._Memo = params.get("Memo")
+        self._FileName = params.get("FileName")
+        self._FileExtType = params.get("FileExtType")
+        self._FileSize = params.get("FileSize")
+        self._FileContent = params.get("FileContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4340,53 +8017,118 @@ class SelectedTableWithField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 表所属表格组ID
+        :param _TableGroupId: 表所属表格组ID
         :type TableGroupId: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
         :type TableName: str
-        :param TableInstanceId: 表实例ID
+        :param _TableInstanceId: 表实例ID
         :type TableInstanceId: str
-        :param TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
+        :param _TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
         :type TableIdlType: str
-        :param TableType: 表格数据结构类型：`GENERIC`或`LIST`
+        :param _TableType: 表格数据结构类型：`GENERIC`或`LIST`
         :type TableType: str
-        :param SelectedFields: 待创建索引、缓写、数据订阅的字段列表
+        :param _SelectedFields: 待创建索引、缓写、数据订阅的字段列表
         :type SelectedFields: list of FieldInfo
-        :param ShardNum: 索引分片数
+        :param _ShardNum: 索引分片数
         :type ShardNum: int
-        :param KafkaInfo: ckafka实例信息
+        :param _KafkaInfo: ckafka实例信息
         :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
-        self.TableGroupId = None
-        self.TableName = None
-        self.TableInstanceId = None
-        self.TableIdlType = None
-        self.TableType = None
-        self.SelectedFields = None
-        self.ShardNum = None
-        self.KafkaInfo = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._TableInstanceId = None
+        self._TableIdlType = None
+        self._TableType = None
+        self._SelectedFields = None
+        self._ShardNum = None
+        self._KafkaInfo = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def TableIdlType(self):
+        return self._TableIdlType
+
+    @TableIdlType.setter
+    def TableIdlType(self, TableIdlType):
+        self._TableIdlType = TableIdlType
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def SelectedFields(self):
+        return self._SelectedFields
+
+    @SelectedFields.setter
+    def SelectedFields(self, SelectedFields):
+        self._SelectedFields = SelectedFields
+
+    @property
+    def ShardNum(self):
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
+    @property
+    def KafkaInfo(self):
+        return self._KafkaInfo
+
+    @KafkaInfo.setter
+    def KafkaInfo(self, KafkaInfo):
+        self._KafkaInfo = KafkaInfo
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.TableIdlType = params.get("TableIdlType")
-        self.TableType = params.get("TableType")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._TableIdlType = params.get("TableIdlType")
+        self._TableType = params.get("TableType")
         if params.get("SelectedFields") is not None:
-            self.SelectedFields = []
+            self._SelectedFields = []
             for item in params.get("SelectedFields"):
                 obj = FieldInfo()
                 obj._deserialize(item)
-                self.SelectedFields.append(obj)
-        self.ShardNum = params.get("ShardNum")
+                self._SelectedFields.append(obj)
+        self._ShardNum = params.get("ShardNum")
         if params.get("KafkaInfo") is not None:
-            self.KafkaInfo = KafkaInfo()
-            self.KafkaInfo._deserialize(params.get("KafkaInfo"))
+            self._KafkaInfo = KafkaInfo()
+            self._KafkaInfo._deserialize(params.get("KafkaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4399,43 +8141,100 @@ class ServerDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerUid: svr唯一id
+        :param _ServerUid: svr唯一id
         :type ServerUid: str
-        :param MachineType: 机器类型
+        :param _MachineType: 机器类型
         :type MachineType: str
-        :param MemoryRate: 内存占用量
+        :param _MemoryRate: 内存占用量
         :type MemoryRate: int
-        :param DiskRate: 磁盘占用量
+        :param _DiskRate: 磁盘占用量
         :type DiskRate: int
-        :param ReadNum: 读次数
+        :param _ReadNum: 读次数
         :type ReadNum: int
-        :param WriteNum: 写次数
+        :param _WriteNum: 写次数
         :type WriteNum: int
-        :param Version: 版本
+        :param _Version: 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
-        self.ServerUid = None
-        self.MachineType = None
-        self.MemoryRate = None
-        self.DiskRate = None
-        self.ReadNum = None
-        self.WriteNum = None
-        self.Version = None
+        self._ServerUid = None
+        self._MachineType = None
+        self._MemoryRate = None
+        self._DiskRate = None
+        self._ReadNum = None
+        self._WriteNum = None
+        self._Version = None
+
+    @property
+    def ServerUid(self):
+        return self._ServerUid
+
+    @ServerUid.setter
+    def ServerUid(self, ServerUid):
+        self._ServerUid = ServerUid
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def MemoryRate(self):
+        return self._MemoryRate
+
+    @MemoryRate.setter
+    def MemoryRate(self, MemoryRate):
+        self._MemoryRate = MemoryRate
+
+    @property
+    def DiskRate(self):
+        return self._DiskRate
+
+    @DiskRate.setter
+    def DiskRate(self, DiskRate):
+        self._DiskRate = DiskRate
+
+    @property
+    def ReadNum(self):
+        return self._ReadNum
+
+    @ReadNum.setter
+    def ReadNum(self, ReadNum):
+        self._ReadNum = ReadNum
+
+    @property
+    def WriteNum(self):
+        return self._WriteNum
+
+    @WriteNum.setter
+    def WriteNum(self, WriteNum):
+        self._WriteNum = WriteNum
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
-        self.ServerUid = params.get("ServerUid")
-        self.MachineType = params.get("MachineType")
-        self.MemoryRate = params.get("MemoryRate")
-        self.DiskRate = params.get("DiskRate")
-        self.ReadNum = params.get("ReadNum")
-        self.WriteNum = params.get("WriteNum")
-        self.Version = params.get("Version")
+        self._ServerUid = params.get("ServerUid")
+        self._MachineType = params.get("MachineType")
+        self._MemoryRate = params.get("MemoryRate")
+        self._DiskRate = params.get("DiskRate")
+        self._ReadNum = params.get("ReadNum")
+        self._WriteNum = params.get("WriteNum")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4448,22 +8247,39 @@ class ServerMachineInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerUid: 机器唯一id
+        :param _ServerUid: 机器唯一id
         :type ServerUid: str
-        :param MachineType: 机器类型
+        :param _MachineType: 机器类型
         :type MachineType: str
         """
-        self.ServerUid = None
-        self.MachineType = None
+        self._ServerUid = None
+        self._MachineType = None
+
+    @property
+    def ServerUid(self):
+        return self._ServerUid
+
+    @ServerUid.setter
+    def ServerUid(self, ServerUid):
+        self._ServerUid = ServerUid
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
 
 
     def _deserialize(self, params):
-        self.ServerUid = params.get("ServerUid")
-        self.MachineType = params.get("MachineType")
+        self._ServerUid = params.get("ServerUid")
+        self._MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4476,27 +8292,44 @@ class SetBackupExpireRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表所属集群实例ID
+        :param _ClusterId: 表所属集群实例ID
         :type ClusterId: str
-        :param BackupExpireRules: 淘汰策略数组
+        :param _BackupExpireRules: 淘汰策略数组
         :type BackupExpireRules: list of BackupExpireRuleInfo
         """
-        self.ClusterId = None
-        self.BackupExpireRules = None
+        self._ClusterId = None
+        self._BackupExpireRules = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupExpireRules(self):
+        return self._BackupExpireRules
+
+    @BackupExpireRules.setter
+    def BackupExpireRules(self, BackupExpireRules):
+        self._BackupExpireRules = BackupExpireRules
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("BackupExpireRules") is not None:
-            self.BackupExpireRules = []
+            self._BackupExpireRules = []
             for item in params.get("BackupExpireRules"):
                 obj = BackupExpireRuleInfo()
                 obj._deserialize(item)
-                self.BackupExpireRules.append(obj)
+                self._BackupExpireRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4509,19 +8342,35 @@ class SetBackupExpireRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetTableDataFlowRequest(AbstractModel):
@@ -4531,27 +8380,44 @@ class SetTableDataFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表所属集群实例ID
+        :param _ClusterId: 表所属集群实例ID
         :type ClusterId: str
-        :param SelectedTables: 待创建分布式索引表格列表
+        :param _SelectedTables: 待创建分布式索引表格列表
         :type SelectedTables: list of SelectedTableWithField
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableWithField()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4564,27 +8430,51 @@ class SetTableDataFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 表格数据订阅创建结果数量
+        :param _TotalCount: 表格数据订阅创建结果数量
         :type TotalCount: int
-        :param TableResults: 表格数据订阅创建结果列表
+        :param _TableResults: 表格数据订阅创建结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SetTableIndexRequest(AbstractModel):
@@ -4594,27 +8484,44 @@ class SetTableIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 表所属集群实例ID
+        :param _ClusterId: 表所属集群实例ID
         :type ClusterId: str
-        :param SelectedTables: 待创建分布式索引表格列表
+        :param _SelectedTables: 待创建分布式索引表格列表
         :type SelectedTables: list of SelectedTableWithField
         """
-        self.ClusterId = None
-        self.SelectedTables = None
+        self._ClusterId = None
+        self._SelectedTables = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SelectedTables(self):
+        return self._SelectedTables
+
+    @SelectedTables.setter
+    def SelectedTables(self, SelectedTables):
+        self._SelectedTables = SelectedTables
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("SelectedTables") is not None:
-            self.SelectedTables = []
+            self._SelectedTables = []
             for item in params.get("SelectedTables"):
                 obj = SelectedTableWithField()
                 obj._deserialize(item)
-                self.SelectedTables.append(obj)
+                self._SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4627,27 +8534,51 @@ class SetTableIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 表格分布式索引创建结果数量
+        :param _TotalCount: 表格分布式索引创建结果数量
         :type TotalCount: int
-        :param TableResults: 表格分布式索引创建结果列表
+        :param _TableResults: 表格分布式索引创建结果列表
         :type TableResults: list of TableResultNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TableResults = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TableResults = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableResults(self):
+        return self._TableResults
+
+    @TableResults.setter
+    def TableResults(self, TableResults):
+        self._TableResults = TableResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableResults") is not None:
-            self.TableResults = []
+            self._TableResults = []
             for item in params.get("TableResults"):
                 obj = TableResultNew()
                 obj._deserialize(item)
-                self.TableResults.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SnapshotInfo(AbstractModel):
@@ -4657,34 +8588,75 @@ class SnapshotInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 所属表格组ID
+        :param _TableGroupId: 所属表格组ID
         :type TableGroupId: str
-        :param TableName: 表名称
+        :param _TableName: 表名称
         :type TableName: str
-        :param SnapshotName: 快照名称
+        :param _SnapshotName: 快照名称
         :type SnapshotName: str
-        :param SnapshotTime: 快照时间点
+        :param _SnapshotTime: 快照时间点
         :type SnapshotTime: str
-        :param SnapshotDeadTime: 快照过期时间点
+        :param _SnapshotDeadTime: 快照过期时间点
         :type SnapshotDeadTime: str
         """
-        self.TableGroupId = None
-        self.TableName = None
-        self.SnapshotName = None
-        self.SnapshotTime = None
-        self.SnapshotDeadTime = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._SnapshotName = None
+        self._SnapshotTime = None
+        self._SnapshotDeadTime = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def SnapshotTime(self):
+        return self._SnapshotTime
+
+    @SnapshotTime.setter
+    def SnapshotTime(self, SnapshotTime):
+        self._SnapshotTime = SnapshotTime
+
+    @property
+    def SnapshotDeadTime(self):
+        return self._SnapshotDeadTime
+
+    @SnapshotDeadTime.setter
+    def SnapshotDeadTime(self, SnapshotDeadTime):
+        self._SnapshotDeadTime = SnapshotDeadTime
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.SnapshotName = params.get("SnapshotName")
-        self.SnapshotTime = params.get("SnapshotTime")
-        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._SnapshotName = params.get("SnapshotName")
+        self._SnapshotTime = params.get("SnapshotTime")
+        self._SnapshotDeadTime = params.get("SnapshotDeadTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4697,30 +8669,63 @@ class SnapshotInfoNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 所属表格组ID
+        :param _TableGroupId: 所属表格组ID
         :type TableGroupId: str
-        :param TableName: 表名称
+        :param _TableName: 表名称
         :type TableName: str
-        :param SnapshotName: 快照名称
+        :param _SnapshotName: 快照名称
         :type SnapshotName: str
-        :param SnapshotDeadTime: 快照过期时间点
+        :param _SnapshotDeadTime: 快照过期时间点
         :type SnapshotDeadTime: str
         """
-        self.TableGroupId = None
-        self.TableName = None
-        self.SnapshotName = None
-        self.SnapshotDeadTime = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._SnapshotName = None
+        self._SnapshotDeadTime = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def SnapshotDeadTime(self):
+        return self._SnapshotDeadTime
+
+    @SnapshotDeadTime.setter
+    def SnapshotDeadTime(self, SnapshotDeadTime):
+        self._SnapshotDeadTime = SnapshotDeadTime
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.SnapshotName = params.get("SnapshotName")
-        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._SnapshotName = params.get("SnapshotName")
+        self._SnapshotDeadTime = params.get("SnapshotDeadTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4733,66 +8738,147 @@ class SnapshotResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 表格所属表格组ID
+        :param _TableGroupId: 表格所属表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param TaskId: 任务ID，对于创建单任务的接口有效
+        :param _TaskId: 任务ID，对于创建单任务的接口有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
-        :param SnapshotName: 快照名称
+        :param _SnapshotName: 快照名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotName: str
-        :param SnapshotTime: 快照的时间点
+        :param _SnapshotTime: 快照的时间点
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotTime: str
-        :param SnapshotDeadTime: 快照的过期时间点
+        :param _SnapshotDeadTime: 快照的过期时间点
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotDeadTime: str
-        :param SnapshotCreateTime: 快照创建时间点
+        :param _SnapshotCreateTime: 快照创建时间点
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotCreateTime: str
-        :param SnapshotSize: 快照大小
+        :param _SnapshotSize: 快照大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotSize: int
-        :param SnapshotStatus: 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
+        :param _SnapshotStatus: 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotStatus: int
         """
-        self.TableGroupId = None
-        self.TableName = None
-        self.TaskId = None
-        self.Error = None
-        self.SnapshotName = None
-        self.SnapshotTime = None
-        self.SnapshotDeadTime = None
-        self.SnapshotCreateTime = None
-        self.SnapshotSize = None
-        self.SnapshotStatus = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._TaskId = None
+        self._Error = None
+        self._SnapshotName = None
+        self._SnapshotTime = None
+        self._SnapshotDeadTime = None
+        self._SnapshotCreateTime = None
+        self._SnapshotSize = None
+        self._SnapshotStatus = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def SnapshotTime(self):
+        return self._SnapshotTime
+
+    @SnapshotTime.setter
+    def SnapshotTime(self, SnapshotTime):
+        self._SnapshotTime = SnapshotTime
+
+    @property
+    def SnapshotDeadTime(self):
+        return self._SnapshotDeadTime
+
+    @SnapshotDeadTime.setter
+    def SnapshotDeadTime(self, SnapshotDeadTime):
+        self._SnapshotDeadTime = SnapshotDeadTime
+
+    @property
+    def SnapshotCreateTime(self):
+        return self._SnapshotCreateTime
+
+    @SnapshotCreateTime.setter
+    def SnapshotCreateTime(self, SnapshotCreateTime):
+        self._SnapshotCreateTime = SnapshotCreateTime
+
+    @property
+    def SnapshotSize(self):
+        return self._SnapshotSize
+
+    @SnapshotSize.setter
+    def SnapshotSize(self, SnapshotSize):
+        self._SnapshotSize = SnapshotSize
+
+    @property
+    def SnapshotStatus(self):
+        return self._SnapshotStatus
+
+    @SnapshotStatus.setter
+    def SnapshotStatus(self, SnapshotStatus):
+        self._SnapshotStatus = SnapshotStatus
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.TaskId = params.get("TaskId")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._TaskId = params.get("TaskId")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
-        self.SnapshotName = params.get("SnapshotName")
-        self.SnapshotTime = params.get("SnapshotTime")
-        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
-        self.SnapshotCreateTime = params.get("SnapshotCreateTime")
-        self.SnapshotSize = params.get("SnapshotSize")
-        self.SnapshotStatus = params.get("SnapshotStatus")
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        self._SnapshotName = params.get("SnapshotName")
+        self._SnapshotTime = params.get("SnapshotTime")
+        self._SnapshotDeadTime = params.get("SnapshotDeadTime")
+        self._SnapshotCreateTime = params.get("SnapshotCreateTime")
+        self._SnapshotSize = params.get("SnapshotSize")
+        self._SnapshotStatus = params.get("SnapshotStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4805,22 +8891,39 @@ class SyncTableField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceName: TcaplusDB表字段名称
+        :param _SourceName: TcaplusDB表字段名称
         :type SourceName: str
-        :param TargetName: 目标缓写表的字段名称
+        :param _TargetName: 目标缓写表的字段名称
         :type TargetName: str
         """
-        self.SourceName = None
-        self.TargetName = None
+        self._SourceName = None
+        self._TargetName = None
+
+    @property
+    def SourceName(self):
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def TargetName(self):
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
 
 
     def _deserialize(self, params):
-        self.SourceName = params.get("SourceName")
-        self.TargetName = params.get("TargetName")
+        self._SourceName = params.get("SourceName")
+        self._TargetName = params.get("TargetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4833,68 +8936,157 @@ class SyncTableInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetTableSplitNum: 目标缓写表的分表数目
+        :param _TargetTableSplitNum: 目标缓写表的分表数目
         :type TargetTableSplitNum: int
-        :param TargetTableNamePrefix: 目标缓写表名前缀
+        :param _TargetTableNamePrefix: 目标缓写表名前缀
         :type TargetTableNamePrefix: list of str
-        :param TargetSyncDBInstanceId: 缓写数据库实例ID
+        :param _TargetSyncDBInstanceId: 缓写数据库实例ID
         :type TargetSyncDBInstanceId: str
-        :param TargetDatabaseName: 缓写表所在数据库名称
+        :param _TargetDatabaseName: 缓写表所在数据库名称
         :type TargetDatabaseName: str
-        :param Status: 缓写状态，0：创建中，1：进行中，2：关闭，-1：被删除
+        :param _Status: 缓写状态，0：创建中，1：进行中，2：关闭，-1：被删除
         :type Status: int
-        :param ClusterId: 表格所在集群ID
+        :param _ClusterId: 表格所在集群ID
         :type ClusterId: str
-        :param TableGroupId: 表格所在表格组ID
+        :param _TableGroupId: 表格所在表格组ID
         :type TableGroupId: int
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
         :type TableName: str
-        :param TableId: 表格ID
+        :param _TableId: 表格ID
         :type TableId: str
-        :param KeyFieldMapping: TcaplusDB表主键字段到目标缓写表字段的映射
+        :param _KeyFieldMapping: TcaplusDB表主键字段到目标缓写表字段的映射
         :type KeyFieldMapping: list of SyncTableField
-        :param ValueFieldMapping: TcaplusDB表字段到目标缓写表字段的映射
+        :param _ValueFieldMapping: TcaplusDB表字段到目标缓写表字段的映射
         :type ValueFieldMapping: list of SyncTableField
         """
-        self.TargetTableSplitNum = None
-        self.TargetTableNamePrefix = None
-        self.TargetSyncDBInstanceId = None
-        self.TargetDatabaseName = None
-        self.Status = None
-        self.ClusterId = None
-        self.TableGroupId = None
-        self.TableName = None
-        self.TableId = None
-        self.KeyFieldMapping = None
-        self.ValueFieldMapping = None
+        self._TargetTableSplitNum = None
+        self._TargetTableNamePrefix = None
+        self._TargetSyncDBInstanceId = None
+        self._TargetDatabaseName = None
+        self._Status = None
+        self._ClusterId = None
+        self._TableGroupId = None
+        self._TableName = None
+        self._TableId = None
+        self._KeyFieldMapping = None
+        self._ValueFieldMapping = None
+
+    @property
+    def TargetTableSplitNum(self):
+        return self._TargetTableSplitNum
+
+    @TargetTableSplitNum.setter
+    def TargetTableSplitNum(self, TargetTableSplitNum):
+        self._TargetTableSplitNum = TargetTableSplitNum
+
+    @property
+    def TargetTableNamePrefix(self):
+        return self._TargetTableNamePrefix
+
+    @TargetTableNamePrefix.setter
+    def TargetTableNamePrefix(self, TargetTableNamePrefix):
+        self._TargetTableNamePrefix = TargetTableNamePrefix
+
+    @property
+    def TargetSyncDBInstanceId(self):
+        return self._TargetSyncDBInstanceId
+
+    @TargetSyncDBInstanceId.setter
+    def TargetSyncDBInstanceId(self, TargetSyncDBInstanceId):
+        self._TargetSyncDBInstanceId = TargetSyncDBInstanceId
+
+    @property
+    def TargetDatabaseName(self):
+        return self._TargetDatabaseName
+
+    @TargetDatabaseName.setter
+    def TargetDatabaseName(self, TargetDatabaseName):
+        self._TargetDatabaseName = TargetDatabaseName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def KeyFieldMapping(self):
+        return self._KeyFieldMapping
+
+    @KeyFieldMapping.setter
+    def KeyFieldMapping(self, KeyFieldMapping):
+        self._KeyFieldMapping = KeyFieldMapping
+
+    @property
+    def ValueFieldMapping(self):
+        return self._ValueFieldMapping
+
+    @ValueFieldMapping.setter
+    def ValueFieldMapping(self, ValueFieldMapping):
+        self._ValueFieldMapping = ValueFieldMapping
 
 
     def _deserialize(self, params):
-        self.TargetTableSplitNum = params.get("TargetTableSplitNum")
-        self.TargetTableNamePrefix = params.get("TargetTableNamePrefix")
-        self.TargetSyncDBInstanceId = params.get("TargetSyncDBInstanceId")
-        self.TargetDatabaseName = params.get("TargetDatabaseName")
-        self.Status = params.get("Status")
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableName = params.get("TableName")
-        self.TableId = params.get("TableId")
+        self._TargetTableSplitNum = params.get("TargetTableSplitNum")
+        self._TargetTableNamePrefix = params.get("TargetTableNamePrefix")
+        self._TargetSyncDBInstanceId = params.get("TargetSyncDBInstanceId")
+        self._TargetDatabaseName = params.get("TargetDatabaseName")
+        self._Status = params.get("Status")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableName = params.get("TableName")
+        self._TableId = params.get("TableId")
         if params.get("KeyFieldMapping") is not None:
-            self.KeyFieldMapping = []
+            self._KeyFieldMapping = []
             for item in params.get("KeyFieldMapping"):
                 obj = SyncTableField()
                 obj._deserialize(item)
-                self.KeyFieldMapping.append(obj)
+                self._KeyFieldMapping.append(obj)
         if params.get("ValueFieldMapping") is not None:
-            self.ValueFieldMapping = []
+            self._ValueFieldMapping = []
             for item in params.get("ValueFieldMapping"):
                 obj = SyncTableField()
                 obj._deserialize(item)
-                self.ValueFieldMapping.append(obj)
+                self._ValueFieldMapping.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4907,53 +9099,126 @@ class TableGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableGroupId: 表格组ID
+        :param _TableGroupId: 表格组ID
         :type TableGroupId: str
-        :param TableGroupName: 表格组名称
+        :param _TableGroupName: 表格组名称
         :type TableGroupName: str
-        :param CreatedTime: 表格组创建时间
+        :param _CreatedTime: 表格组创建时间
         :type CreatedTime: str
-        :param TableCount: 表格组包含的表格数量
+        :param _TableCount: 表格组包含的表格数量
         :type TableCount: int
-        :param TotalSize: 表格组包含的表格存储总量（MB）
+        :param _TotalSize: 表格组包含的表格存储总量（MB）
         :type TotalSize: int
-        :param TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
+        :param _TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type TxhBackupExpireDay: int
-        :param EnableMysql: 是否开启mysql负载均衡,0未开启 1开启中 2已开启
+        :param _EnableMysql: 是否开启mysql负载均衡,0未开启 1开启中 2已开启
         :type EnableMysql: int
-        :param MysqlConnIp: mysql负载均衡vip
+        :param _MysqlConnIp: mysql负载均衡vip
 注意：此字段可能返回 null，表示取不到有效值。
         :type MysqlConnIp: str
-        :param MysqlConnPort: mysql负载均衡vport
+        :param _MysqlConnPort: mysql负载均衡vport
 注意：此字段可能返回 null，表示取不到有效值。
         :type MysqlConnPort: int
         """
-        self.TableGroupId = None
-        self.TableGroupName = None
-        self.CreatedTime = None
-        self.TableCount = None
-        self.TotalSize = None
-        self.TxhBackupExpireDay = None
-        self.EnableMysql = None
-        self.MysqlConnIp = None
-        self.MysqlConnPort = None
+        self._TableGroupId = None
+        self._TableGroupName = None
+        self._CreatedTime = None
+        self._TableCount = None
+        self._TotalSize = None
+        self._TxhBackupExpireDay = None
+        self._EnableMysql = None
+        self._MysqlConnIp = None
+        self._MysqlConnPort = None
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableGroupName(self):
+        return self._TableGroupName
+
+    @TableGroupName.setter
+    def TableGroupName(self, TableGroupName):
+        self._TableGroupName = TableGroupName
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def TableCount(self):
+        return self._TableCount
+
+    @TableCount.setter
+    def TableCount(self, TableCount):
+        self._TableCount = TableCount
+
+    @property
+    def TotalSize(self):
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
+    @property
+    def TxhBackupExpireDay(self):
+        return self._TxhBackupExpireDay
+
+    @TxhBackupExpireDay.setter
+    def TxhBackupExpireDay(self, TxhBackupExpireDay):
+        self._TxhBackupExpireDay = TxhBackupExpireDay
+
+    @property
+    def EnableMysql(self):
+        return self._EnableMysql
+
+    @EnableMysql.setter
+    def EnableMysql(self, EnableMysql):
+        self._EnableMysql = EnableMysql
+
+    @property
+    def MysqlConnIp(self):
+        return self._MysqlConnIp
+
+    @MysqlConnIp.setter
+    def MysqlConnIp(self, MysqlConnIp):
+        self._MysqlConnIp = MysqlConnIp
+
+    @property
+    def MysqlConnPort(self):
+        return self._MysqlConnPort
+
+    @MysqlConnPort.setter
+    def MysqlConnPort(self, MysqlConnPort):
+        self._MysqlConnPort = MysqlConnPort
 
 
     def _deserialize(self, params):
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableGroupName = params.get("TableGroupName")
-        self.CreatedTime = params.get("CreatedTime")
-        self.TableCount = params.get("TableCount")
-        self.TotalSize = params.get("TotalSize")
-        self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
-        self.EnableMysql = params.get("EnableMysql")
-        self.MysqlConnIp = params.get("MysqlConnIp")
-        self.MysqlConnPort = params.get("MysqlConnPort")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableGroupName = params.get("TableGroupName")
+        self._CreatedTime = params.get("CreatedTime")
+        self._TableCount = params.get("TableCount")
+        self._TotalSize = params.get("TotalSize")
+        self._TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+        self._EnableMysql = params.get("EnableMysql")
+        self._MysqlConnIp = params.get("MysqlConnIp")
+        self._MysqlConnPort = params.get("MysqlConnPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4966,168 +9231,401 @@ class TableInfoNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param TableInstanceId: 表格实例ID
+        :param _TableInstanceId: 表格实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
-        :param TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
+        :param _TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
-        :param TableIdlType: 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+        :param _TableIdlType: 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
-        :param ClusterId: 表格所属集群ID
+        :param _ClusterId: 表格所属集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param ClusterName: 表格所属集群名称
+        :param _ClusterName: 表格所属集群名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param TableGroupId: 表格所属表格组ID
+        :param _TableGroupId: 表格所属表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
-        :param TableGroupName: 表格所属表格组名称
+        :param _TableGroupName: 表格所属表格组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupName: str
-        :param KeyStruct: 表格主键字段结构json字符串
+        :param _KeyStruct: 表格主键字段结构json字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyStruct: str
-        :param ValueStruct: 表格非主键字段结构json字符串
+        :param _ValueStruct: 表格非主键字段结构json字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValueStruct: str
-        :param ShardingKeySet: 表格分表因子集合，对PROTO类型表格有效
+        :param _ShardingKeySet: 表格分表因子集合，对PROTO类型表格有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShardingKeySet: str
-        :param IndexStruct: 表格索引键字段集合，对PROTO类型表格有效
+        :param _IndexStruct: 表格索引键字段集合，对PROTO类型表格有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStruct: str
-        :param ListElementNum: LIST类型表格元素个数
+        :param _ListElementNum: LIST类型表格元素个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListElementNum: int
-        :param IdlFiles: 表格所关联IDL文件信息列表
+        :param _IdlFiles: 表格所关联IDL文件信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdlFiles: list of IdlFileInfo
-        :param ReservedVolume: 表格预留容量（GB）
+        :param _ReservedVolume: 表格预留容量（GB）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedVolume: int
-        :param ReservedReadQps: 表格预留读CU
+        :param _ReservedReadQps: 表格预留读CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedReadQps: int
-        :param ReservedWriteQps: 表格预留写CU
+        :param _ReservedWriteQps: 表格预留写CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedWriteQps: int
-        :param TableSize: 表格实际数据量大小（MB）
+        :param _TableSize: 表格实际数据量大小（MB）
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableSize: int
-        :param Status: 表格状态
+        :param _Status: 表格状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param CreatedTime: 表格创建时间
+        :param _CreatedTime: 表格创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param UpdatedTime: 表格最后一次修改时间
+        :param _UpdatedTime: 表格最后一次修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
-        :param Memo: 表格备注信息
+        :param _Memo: 表格备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Memo: str
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
-        :param ApiAccessId: TcaplusDB SDK数据访问接入ID
+        :param _ApiAccessId: TcaplusDB SDK数据访问接入ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAccessId: str
-        :param SortFieldNum: SORTLIST类型表格排序字段个数
+        :param _SortFieldNum: SORTLIST类型表格排序字段个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SortFieldNum: int
-        :param SortRule: SORTLIST类型表格排序顺序
+        :param _SortRule: SORTLIST类型表格排序顺序
 注意：此字段可能返回 null，表示取不到有效值。
         :type SortRule: int
-        :param DbClusterInfoStruct: 表格分布式索引/缓写、kafka数据订阅信息
+        :param _DbClusterInfoStruct: 表格分布式索引/缓写、kafka数据订阅信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbClusterInfoStruct: str
-        :param TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
+        :param _TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type TxhBackupExpireDay: int
-        :param SyncTableInfo: 表格的缓写信息
+        :param _SyncTableInfo: 表格的缓写信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SyncTableInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
         """
-        self.TableName = None
-        self.TableInstanceId = None
-        self.TableType = None
-        self.TableIdlType = None
-        self.ClusterId = None
-        self.ClusterName = None
-        self.TableGroupId = None
-        self.TableGroupName = None
-        self.KeyStruct = None
-        self.ValueStruct = None
-        self.ShardingKeySet = None
-        self.IndexStruct = None
-        self.ListElementNum = None
-        self.IdlFiles = None
-        self.ReservedVolume = None
-        self.ReservedReadQps = None
-        self.ReservedWriteQps = None
-        self.TableSize = None
-        self.Status = None
-        self.CreatedTime = None
-        self.UpdatedTime = None
-        self.Memo = None
-        self.Error = None
-        self.ApiAccessId = None
-        self.SortFieldNum = None
-        self.SortRule = None
-        self.DbClusterInfoStruct = None
-        self.TxhBackupExpireDay = None
-        self.SyncTableInfo = None
+        self._TableName = None
+        self._TableInstanceId = None
+        self._TableType = None
+        self._TableIdlType = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._TableGroupId = None
+        self._TableGroupName = None
+        self._KeyStruct = None
+        self._ValueStruct = None
+        self._ShardingKeySet = None
+        self._IndexStruct = None
+        self._ListElementNum = None
+        self._IdlFiles = None
+        self._ReservedVolume = None
+        self._ReservedReadQps = None
+        self._ReservedWriteQps = None
+        self._TableSize = None
+        self._Status = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._Memo = None
+        self._Error = None
+        self._ApiAccessId = None
+        self._SortFieldNum = None
+        self._SortRule = None
+        self._DbClusterInfoStruct = None
+        self._TxhBackupExpireDay = None
+        self._SyncTableInfo = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def TableIdlType(self):
+        return self._TableIdlType
+
+    @TableIdlType.setter
+    def TableIdlType(self, TableIdlType):
+        self._TableIdlType = TableIdlType
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableGroupName(self):
+        return self._TableGroupName
+
+    @TableGroupName.setter
+    def TableGroupName(self, TableGroupName):
+        self._TableGroupName = TableGroupName
+
+    @property
+    def KeyStruct(self):
+        return self._KeyStruct
+
+    @KeyStruct.setter
+    def KeyStruct(self, KeyStruct):
+        self._KeyStruct = KeyStruct
+
+    @property
+    def ValueStruct(self):
+        return self._ValueStruct
+
+    @ValueStruct.setter
+    def ValueStruct(self, ValueStruct):
+        self._ValueStruct = ValueStruct
+
+    @property
+    def ShardingKeySet(self):
+        return self._ShardingKeySet
+
+    @ShardingKeySet.setter
+    def ShardingKeySet(self, ShardingKeySet):
+        self._ShardingKeySet = ShardingKeySet
+
+    @property
+    def IndexStruct(self):
+        return self._IndexStruct
+
+    @IndexStruct.setter
+    def IndexStruct(self, IndexStruct):
+        self._IndexStruct = IndexStruct
+
+    @property
+    def ListElementNum(self):
+        return self._ListElementNum
+
+    @ListElementNum.setter
+    def ListElementNum(self, ListElementNum):
+        self._ListElementNum = ListElementNum
+
+    @property
+    def IdlFiles(self):
+        return self._IdlFiles
+
+    @IdlFiles.setter
+    def IdlFiles(self, IdlFiles):
+        self._IdlFiles = IdlFiles
+
+    @property
+    def ReservedVolume(self):
+        return self._ReservedVolume
+
+    @ReservedVolume.setter
+    def ReservedVolume(self, ReservedVolume):
+        self._ReservedVolume = ReservedVolume
+
+    @property
+    def ReservedReadQps(self):
+        return self._ReservedReadQps
+
+    @ReservedReadQps.setter
+    def ReservedReadQps(self, ReservedReadQps):
+        self._ReservedReadQps = ReservedReadQps
+
+    @property
+    def ReservedWriteQps(self):
+        return self._ReservedWriteQps
+
+    @ReservedWriteQps.setter
+    def ReservedWriteQps(self, ReservedWriteQps):
+        self._ReservedWriteQps = ReservedWriteQps
+
+    @property
+    def TableSize(self):
+        return self._TableSize
+
+    @TableSize.setter
+    def TableSize(self, TableSize):
+        self._TableSize = TableSize
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def Memo(self):
+        return self._Memo
+
+    @Memo.setter
+    def Memo(self, Memo):
+        self._Memo = Memo
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def ApiAccessId(self):
+        return self._ApiAccessId
+
+    @ApiAccessId.setter
+    def ApiAccessId(self, ApiAccessId):
+        self._ApiAccessId = ApiAccessId
+
+    @property
+    def SortFieldNum(self):
+        return self._SortFieldNum
+
+    @SortFieldNum.setter
+    def SortFieldNum(self, SortFieldNum):
+        self._SortFieldNum = SortFieldNum
+
+    @property
+    def SortRule(self):
+        return self._SortRule
+
+    @SortRule.setter
+    def SortRule(self, SortRule):
+        self._SortRule = SortRule
+
+    @property
+    def DbClusterInfoStruct(self):
+        return self._DbClusterInfoStruct
+
+    @DbClusterInfoStruct.setter
+    def DbClusterInfoStruct(self, DbClusterInfoStruct):
+        self._DbClusterInfoStruct = DbClusterInfoStruct
+
+    @property
+    def TxhBackupExpireDay(self):
+        return self._TxhBackupExpireDay
+
+    @TxhBackupExpireDay.setter
+    def TxhBackupExpireDay(self, TxhBackupExpireDay):
+        self._TxhBackupExpireDay = TxhBackupExpireDay
+
+    @property
+    def SyncTableInfo(self):
+        return self._SyncTableInfo
+
+    @SyncTableInfo.setter
+    def SyncTableInfo(self, SyncTableInfo):
+        self._SyncTableInfo = SyncTableInfo
 
 
     def _deserialize(self, params):
-        self.TableName = params.get("TableName")
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.TableType = params.get("TableType")
-        self.TableIdlType = params.get("TableIdlType")
-        self.ClusterId = params.get("ClusterId")
-        self.ClusterName = params.get("ClusterName")
-        self.TableGroupId = params.get("TableGroupId")
-        self.TableGroupName = params.get("TableGroupName")
-        self.KeyStruct = params.get("KeyStruct")
-        self.ValueStruct = params.get("ValueStruct")
-        self.ShardingKeySet = params.get("ShardingKeySet")
-        self.IndexStruct = params.get("IndexStruct")
-        self.ListElementNum = params.get("ListElementNum")
+        self._TableName = params.get("TableName")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._TableType = params.get("TableType")
+        self._TableIdlType = params.get("TableIdlType")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableGroupName = params.get("TableGroupName")
+        self._KeyStruct = params.get("KeyStruct")
+        self._ValueStruct = params.get("ValueStruct")
+        self._ShardingKeySet = params.get("ShardingKeySet")
+        self._IndexStruct = params.get("IndexStruct")
+        self._ListElementNum = params.get("ListElementNum")
         if params.get("IdlFiles") is not None:
-            self.IdlFiles = []
+            self._IdlFiles = []
             for item in params.get("IdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.IdlFiles.append(obj)
-        self.ReservedVolume = params.get("ReservedVolume")
-        self.ReservedReadQps = params.get("ReservedReadQps")
-        self.ReservedWriteQps = params.get("ReservedWriteQps")
-        self.TableSize = params.get("TableSize")
-        self.Status = params.get("Status")
-        self.CreatedTime = params.get("CreatedTime")
-        self.UpdatedTime = params.get("UpdatedTime")
-        self.Memo = params.get("Memo")
+                self._IdlFiles.append(obj)
+        self._ReservedVolume = params.get("ReservedVolume")
+        self._ReservedReadQps = params.get("ReservedReadQps")
+        self._ReservedWriteQps = params.get("ReservedWriteQps")
+        self._TableSize = params.get("TableSize")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._Memo = params.get("Memo")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
-        self.ApiAccessId = params.get("ApiAccessId")
-        self.SortFieldNum = params.get("SortFieldNum")
-        self.SortRule = params.get("SortRule")
-        self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
-        self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        self._ApiAccessId = params.get("ApiAccessId")
+        self._SortFieldNum = params.get("SortFieldNum")
+        self._SortRule = params.get("SortRule")
+        self._DbClusterInfoStruct = params.get("DbClusterInfoStruct")
+        self._TxhBackupExpireDay = params.get("TxhBackupExpireDay")
         if params.get("SyncTableInfo") is not None:
-            self.SyncTableInfo = SyncTableInfo()
-            self.SyncTableInfo._deserialize(params.get("SyncTableInfo"))
+            self._SyncTableInfo = SyncTableInfo()
+            self._SyncTableInfo._deserialize(params.get("SyncTableInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5140,61 +9638,134 @@ class TableResultNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
+        :param _TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
-        :param TaskId: 任务ID，对于创建单任务的接口有效
+        :param _TaskId: 任务ID，对于创建单任务的接口有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
+        :param _TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
-        :param TableIdlType: 表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+        :param _TableIdlType: 表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
-        :param TableGroupId: 表格所属表格组ID
+        :param _TableGroupId: 表格所属表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
-        :param TaskIds: 任务ID列表，对于创建多任务的接口有效
+        :param _TaskIds: 任务ID列表，对于创建多任务的接口有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
-        :param ApplicationId: 腾讯云申请审核单Id
+        :param _ApplicationId: 腾讯云申请审核单Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         """
-        self.TableInstanceId = None
-        self.TaskId = None
-        self.TableName = None
-        self.TableType = None
-        self.TableIdlType = None
-        self.TableGroupId = None
-        self.Error = None
-        self.TaskIds = None
-        self.ApplicationId = None
+        self._TableInstanceId = None
+        self._TaskId = None
+        self._TableName = None
+        self._TableType = None
+        self._TableIdlType = None
+        self._TableGroupId = None
+        self._Error = None
+        self._TaskIds = None
+        self._ApplicationId = None
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def TableIdlType(self):
+        return self._TableIdlType
+
+    @TableIdlType.setter
+    def TableIdlType(self, TableIdlType):
+        self._TableIdlType = TableIdlType
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
 
 
     def _deserialize(self, params):
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.TaskId = params.get("TaskId")
-        self.TableName = params.get("TableName")
-        self.TableType = params.get("TableType")
-        self.TableIdlType = params.get("TableIdlType")
-        self.TableGroupId = params.get("TableGroupId")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._TaskId = params.get("TaskId")
+        self._TableName = params.get("TableName")
+        self._TableType = params.get("TableType")
+        self._TableIdlType = params.get("TableIdlType")
+        self._TableGroupId = params.get("TableGroupId")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
-        self.TaskIds = params.get("TaskIds")
-        self.ApplicationId = params.get("ApplicationId")
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        self._TaskIds = params.get("TaskIds")
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5207,71 +9778,160 @@ class TableRollbackResultNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
+        :param _TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
-        :param TaskId: 任务ID，对于创建单任务的接口有效
+        :param _TaskId: 任务ID，对于创建单任务的接口有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
+        :param _TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
-        :param TableIdlType: 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+        :param _TableIdlType: 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
-        :param TableGroupId: 表格所属表格组ID
+        :param _TableGroupId: 表格所属表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
-        :param TaskIds: 任务ID列表，对于创建多任务的接口有效
+        :param _TaskIds: 任务ID列表，对于创建多任务的接口有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
-        :param FileId: 上传的key文件ID
+        :param _FileId: 上传的key文件ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
-        :param SuccKeyNum: 校验成功Key数量
+        :param _SuccKeyNum: 校验成功Key数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccKeyNum: int
-        :param TotalKeyNum: Key文件中包含总的Key数量
+        :param _TotalKeyNum: Key文件中包含总的Key数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalKeyNum: int
         """
-        self.TableInstanceId = None
-        self.TaskId = None
-        self.TableName = None
-        self.TableType = None
-        self.TableIdlType = None
-        self.TableGroupId = None
-        self.Error = None
-        self.TaskIds = None
-        self.FileId = None
-        self.SuccKeyNum = None
-        self.TotalKeyNum = None
+        self._TableInstanceId = None
+        self._TaskId = None
+        self._TableName = None
+        self._TableType = None
+        self._TableIdlType = None
+        self._TableGroupId = None
+        self._Error = None
+        self._TaskIds = None
+        self._FileId = None
+        self._SuccKeyNum = None
+        self._TotalKeyNum = None
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def TableIdlType(self):
+        return self._TableIdlType
+
+    @TableIdlType.setter
+    def TableIdlType(self, TableIdlType):
+        self._TableIdlType = TableIdlType
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def SuccKeyNum(self):
+        return self._SuccKeyNum
+
+    @SuccKeyNum.setter
+    def SuccKeyNum(self, SuccKeyNum):
+        self._SuccKeyNum = SuccKeyNum
+
+    @property
+    def TotalKeyNum(self):
+        return self._TotalKeyNum
+
+    @TotalKeyNum.setter
+    def TotalKeyNum(self, TotalKeyNum):
+        self._TotalKeyNum = TotalKeyNum
 
 
     def _deserialize(self, params):
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.TaskId = params.get("TaskId")
-        self.TableName = params.get("TableName")
-        self.TableType = params.get("TableType")
-        self.TableIdlType = params.get("TableIdlType")
-        self.TableGroupId = params.get("TableGroupId")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._TaskId = params.get("TaskId")
+        self._TableName = params.get("TableName")
+        self._TableType = params.get("TableType")
+        self._TableIdlType = params.get("TableIdlType")
+        self._TableGroupId = params.get("TableGroupId")
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
-        self.TaskIds = params.get("TaskIds")
-        self.FileId = params.get("FileId")
-        self.SuccKeyNum = params.get("SuccKeyNum")
-        self.TotalKeyNum = params.get("TotalKeyNum")
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        self._TaskIds = params.get("TaskIds")
+        self._FileId = params.get("FileId")
+        self._SuccKeyNum = params.get("SuccKeyNum")
+        self._TotalKeyNum = params.get("TotalKeyNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5284,23 +9944,40 @@ class TagInfoUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param _TagKey: 标签键
         :type TagKey: str
-        :param TagValue: 标签值
+        :param _TagValue: 标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5313,36 +9990,61 @@ class TagsInfoOfCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群ID
+        :param _ClusterId: 集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfoUnit
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        self.ClusterId = None
-        self.Tags = None
-        self.Error = None
+        self._ClusterId = None
+        self._Tags = None
+        self._Error = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5355,46 +10057,87 @@ class TagsInfoOfTable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableInstanceId: 表格实例ID
+        :param _TableInstanceId: 表格实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
-        :param TableName: 表格名称
+        :param _TableName: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param TableGroupId: 表格组ID
+        :param _TableGroupId: 表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfoUnit
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        self.TableInstanceId = None
-        self.TableName = None
-        self.TableGroupId = None
-        self.Tags = None
-        self.Error = None
+        self._TableInstanceId = None
+        self._TableName = None
+        self._TableGroupId = None
+        self._Tags = None
+        self._Error = None
+
+    @property
+    def TableInstanceId(self):
+        return self._TableInstanceId
+
+    @TableInstanceId.setter
+    def TableInstanceId(self, TableInstanceId):
+        self._TableInstanceId = TableInstanceId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
-        self.TableInstanceId = params.get("TableInstanceId")
-        self.TableName = params.get("TableName")
-        self.TableGroupId = params.get("TableGroupId")
+        self._TableInstanceId = params.get("TableInstanceId")
+        self._TableName = params.get("TableName")
+        self._TableGroupId = params.get("TableGroupId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5407,41 +10150,74 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群ID
+        :param _ClusterId: 集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param TableGroupId: 表格组ID
+        :param _TableGroupId: 表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
-        :param Tags: 标签信息
+        :param _Tags: 标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfoUnit
-        :param Error: 错误信息
+        :param _Error: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
-        self.ClusterId = None
-        self.TableGroupId = None
-        self.Tags = None
-        self.Error = None
+        self._ClusterId = None
+        self._TableGroupId = None
+        self._Tags = None
+        self._Error = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupId = params.get("TableGroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupId = params.get("TableGroupId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("Error") is not None:
-            self.Error = ErrorInfo()
-            self.Error._deserialize(params.get("Error"))
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5454,54 +10230,135 @@ class TaskInfoNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: str
-        :param TaskType: 任务类型
+        :param _TaskType: 任务类型
         :type TaskType: str
-        :param TransId: 任务所关联的TcaplusDB内部事务ID
+        :param _TransId: 任务所关联的TcaplusDB内部事务ID
         :type TransId: str
-        :param ClusterId: 任务所属集群ID
+        :param _ClusterId: 任务所属集群ID
         :type ClusterId: str
-        :param ClusterName: 任务所属集群名称
+        :param _ClusterName: 任务所属集群名称
         :type ClusterName: str
-        :param Progress: 任务进度
+        :param _Progress: 任务进度
         :type Progress: int
-        :param StartTime: 任务创建时间
+        :param _StartTime: 任务创建时间
         :type StartTime: str
-        :param UpdateTime: 任务最后更新时间
+        :param _UpdateTime: 任务最后更新时间
         :type UpdateTime: str
-        :param Operator: 操作者
+        :param _Operator: 操作者
         :type Operator: str
-        :param Content: 任务详情
+        :param _Content: 任务详情
         :type Content: str
         """
-        self.TaskId = None
-        self.TaskType = None
-        self.TransId = None
-        self.ClusterId = None
-        self.ClusterName = None
-        self.Progress = None
-        self.StartTime = None
-        self.UpdateTime = None
-        self.Operator = None
-        self.Content = None
+        self._TaskId = None
+        self._TaskType = None
+        self._TransId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._Progress = None
+        self._StartTime = None
+        self._UpdateTime = None
+        self._Operator = None
+        self._Content = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TransId(self):
+        return self._TransId
+
+    @TransId.setter
+    def TransId(self, TransId):
+        self._TransId = TransId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.TaskType = params.get("TaskType")
-        self.TransId = params.get("TransId")
-        self.ClusterId = params.get("ClusterId")
-        self.ClusterName = params.get("ClusterName")
-        self.Progress = params.get("Progress")
-        self.StartTime = params.get("StartTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Operator = params.get("Operator")
-        self.Content = params.get("Content")
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._TransId = params.get("TransId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._Progress = params.get("Progress")
+        self._StartTime = params.get("StartTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Operator = params.get("Operator")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5514,23 +10371,32 @@ class UpdateApplyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplyStatus: 申请单状态
+        :param _ApplyStatus: 申请单状态
         :type ApplyStatus: list of ApplyStatus
         """
-        self.ApplyStatus = None
+        self._ApplyStatus = None
+
+    @property
+    def ApplyStatus(self):
+        return self._ApplyStatus
+
+    @ApplyStatus.setter
+    def ApplyStatus(self, ApplyStatus):
+        self._ApplyStatus = ApplyStatus
 
 
     def _deserialize(self, params):
         if params.get("ApplyStatus") is not None:
-            self.ApplyStatus = []
+            self._ApplyStatus = []
             for item in params.get("ApplyStatus"):
                 obj = ApplyStatus()
                 obj._deserialize(item)
-                self.ApplyStatus.append(obj)
+                self._ApplyStatus.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5543,28 +10409,52 @@ class UpdateApplyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplyResults: 已更新的申请单列表
+        :param _ApplyResults: 已更新的申请单列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyResults: list of ApplyResult
-        :param TotalCount: 更新数量
+        :param _TotalCount: 更新数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ApplyResults = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ApplyResults = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ApplyResults(self):
+        return self._ApplyResults
+
+    @ApplyResults.setter
+    def ApplyResults(self, ApplyResults):
+        self._ApplyResults = ApplyResults
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ApplyResults") is not None:
-            self.ApplyResults = []
+            self._ApplyResults = []
             for item in params.get("ApplyResults"):
                 obj = ApplyResult()
                 obj._deserialize(item)
-                self.ApplyResults.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ApplyResults.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class VerifyIdlFilesRequest(AbstractModel):
@@ -5574,40 +10464,73 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 待创建表格的集群ID
+        :param _ClusterId: 待创建表格的集群ID
         :type ClusterId: str
-        :param TableGroupId: 待创建表格的表格组ID
+        :param _TableGroupId: 待创建表格的表格组ID
         :type TableGroupId: str
-        :param ExistingIdlFiles: 曾经上传过的IDL文件信息列表，与NewIdlFiles至少有一者
+        :param _ExistingIdlFiles: 曾经上传过的IDL文件信息列表，与NewIdlFiles至少有一者
         :type ExistingIdlFiles: list of IdlFileInfo
-        :param NewIdlFiles: 待上传的IDL文件信息列表，与ExistingIdlFiles至少有一者
+        :param _NewIdlFiles: 待上传的IDL文件信息列表，与ExistingIdlFiles至少有一者
         :type NewIdlFiles: list of IdlFileInfo
         """
-        self.ClusterId = None
-        self.TableGroupId = None
-        self.ExistingIdlFiles = None
-        self.NewIdlFiles = None
+        self._ClusterId = None
+        self._TableGroupId = None
+        self._ExistingIdlFiles = None
+        self._NewIdlFiles = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def ExistingIdlFiles(self):
+        return self._ExistingIdlFiles
+
+    @ExistingIdlFiles.setter
+    def ExistingIdlFiles(self, ExistingIdlFiles):
+        self._ExistingIdlFiles = ExistingIdlFiles
+
+    @property
+    def NewIdlFiles(self):
+        return self._NewIdlFiles
+
+    @NewIdlFiles.setter
+    def NewIdlFiles(self, NewIdlFiles):
+        self._NewIdlFiles = NewIdlFiles
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.TableGroupId = params.get("TableGroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._TableGroupId = params.get("TableGroupId")
         if params.get("ExistingIdlFiles") is not None:
-            self.ExistingIdlFiles = []
+            self._ExistingIdlFiles = []
             for item in params.get("ExistingIdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.ExistingIdlFiles.append(obj)
+                self._ExistingIdlFiles.append(obj)
         if params.get("NewIdlFiles") is not None:
-            self.NewIdlFiles = []
+            self._NewIdlFiles = []
             for item in params.get("NewIdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.NewIdlFiles.append(obj)
+                self._NewIdlFiles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5620,33 +10543,65 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdlFiles: 本次上传校验所有的IDL文件信息列表
+        :param _IdlFiles: 本次上传校验所有的IDL文件信息列表
         :type IdlFiles: list of IdlFileInfo
-        :param TotalCount: 读取IDL描述文件后解析出的合法表数量，不包含已经创建的表
+        :param _TotalCount: 读取IDL描述文件后解析出的合法表数量，不包含已经创建的表
         :type TotalCount: int
-        :param TableInfos: 读取IDL描述文件后解析出的合法表列表，不包含已经创建的表
+        :param _TableInfos: 读取IDL描述文件后解析出的合法表列表，不包含已经创建的表
         :type TableInfos: list of ParsedTableInfoNew
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.IdlFiles = None
-        self.TotalCount = None
-        self.TableInfos = None
-        self.RequestId = None
+        self._IdlFiles = None
+        self._TotalCount = None
+        self._TableInfos = None
+        self._RequestId = None
+
+    @property
+    def IdlFiles(self):
+        return self._IdlFiles
+
+    @IdlFiles.setter
+    def IdlFiles(self, IdlFiles):
+        self._IdlFiles = IdlFiles
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TableInfos(self):
+        return self._TableInfos
+
+    @TableInfos.setter
+    def TableInfos(self, TableInfos):
+        self._TableInfos = TableInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("IdlFiles") is not None:
-            self.IdlFiles = []
+            self._IdlFiles = []
             for item in params.get("IdlFiles"):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
-                self.IdlFiles.append(obj)
-        self.TotalCount = params.get("TotalCount")
+                self._IdlFiles.append(obj)
+        self._TotalCount = params.get("TotalCount")
         if params.get("TableInfos") is not None:
-            self.TableInfos = []
+            self._TableInfos = []
             for item in params.get("TableInfos"):
                 obj = ParsedTableInfoNew()
                 obj._deserialize(item)
-                self.TableInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TableInfos.append(obj)
+        self._RequestId = params.get("RequestId")

@@ -25,18 +25,27 @@ class AnalyzeSentimentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）。
+        :param _Text: 待分析的文本（仅支持UTF-8格式，不超过200字）。
         :type Text: str
         """
-        self.Text = None
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -49,33 +58,73 @@ class AnalyzeSentimentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Positive: 正面情感概率。
+        :param _Positive: 正面情感概率。
         :type Positive: float
-        :param Neutral: 中性情感概率。
+        :param _Neutral: 中性情感概率。
         :type Neutral: float
-        :param Negative: 负面情感概率。
+        :param _Negative: 负面情感概率。
         :type Negative: float
-        :param Sentiment: 情感分类结果：
+        :param _Sentiment: 情感分类结果：
 positive：正面情感
 negative：负面情感
 neutral：中性、无情感
         :type Sentiment: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Positive = None
-        self.Neutral = None
-        self.Negative = None
-        self.Sentiment = None
-        self.RequestId = None
+        self._Positive = None
+        self._Neutral = None
+        self._Negative = None
+        self._Sentiment = None
+        self._RequestId = None
+
+    @property
+    def Positive(self):
+        return self._Positive
+
+    @Positive.setter
+    def Positive(self, Positive):
+        self._Positive = Positive
+
+    @property
+    def Neutral(self):
+        return self._Neutral
+
+    @Neutral.setter
+    def Neutral(self, Neutral):
+        self._Neutral = Neutral
+
+    @property
+    def Negative(self):
+        return self._Negative
+
+    @Negative.setter
+    def Negative(self, Negative):
+        self._Negative = Negative
+
+    @property
+    def Sentiment(self):
+        return self._Sentiment
+
+    @Sentiment.setter
+    def Sentiment(self, Sentiment):
+        self._Sentiment = Sentiment
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Positive = params.get("Positive")
-        self.Neutral = params.get("Neutral")
-        self.Negative = params.get("Negative")
-        self.Sentiment = params.get("Sentiment")
-        self.RequestId = params.get("RequestId")
+        self._Positive = params.get("Positive")
+        self._Neutral = params.get("Neutral")
+        self._Negative = params.get("Negative")
+        self._Sentiment = params.get("Sentiment")
+        self._RequestId = params.get("RequestId")
 
 
 class AutoSummarizationRequest(AbstractModel):
@@ -85,23 +134,40 @@ class AutoSummarizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待处理的文本（仅支持UTF-8格式，不超过2000字）
+        :param _Text: 待处理的文本（仅支持UTF-8格式，不超过2000字）
         :type Text: str
-        :param Length: 指定摘要的长度上限（默认值为200）
+        :param _Length: 指定摘要的长度上限（默认值为200）
 注：为保证摘要的可读性，最终生成的摘要长度会低于指定的长度上限。
         :type Length: int
         """
-        self.Text = None
-        self.Length = None
+        self._Text = None
+        self._Length = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Length = params.get("Length")
+        self._Text = params.get("Text")
+        self._Length = params.get("Length")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -114,18 +180,34 @@ class AutoSummarizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Summary: 文本摘要结果
+        :param _Summary: 文本摘要结果
         :type Summary: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Summary = None
-        self.RequestId = None
+        self._Summary = None
+        self._RequestId = None
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Summary = params.get("Summary")
-        self.RequestId = params.get("RequestId")
+        self._Summary = params.get("Summary")
+        self._RequestId = params.get("RequestId")
 
 
 class BasicParticiple(AbstractModel):
@@ -135,30 +217,63 @@ class BasicParticiple(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Word: 基础词。
+        :param _Word: 基础词。
         :type Word: str
-        :param BeginOffset: 基础词在NormalText中的起始位置。
+        :param _BeginOffset: 基础词在NormalText中的起始位置。
         :type BeginOffset: int
-        :param Length: 基础词的长度。
+        :param _Length: 基础词的长度。
         :type Length: int
-        :param Pos: 词性。
+        :param _Pos: 词性。
         :type Pos: str
         """
-        self.Word = None
-        self.BeginOffset = None
-        self.Length = None
-        self.Pos = None
+        self._Word = None
+        self._BeginOffset = None
+        self._Length = None
+        self._Pos = None
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def BeginOffset(self):
+        return self._BeginOffset
+
+    @BeginOffset.setter
+    def BeginOffset(self, BeginOffset):
+        self._BeginOffset = BeginOffset
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def Pos(self):
+        return self._Pos
+
+    @Pos.setter
+    def Pos(self, Pos):
+        self._Pos = Pos
 
 
     def _deserialize(self, params):
-        self.Word = params.get("Word")
-        self.BeginOffset = params.get("BeginOffset")
-        self.Length = params.get("Length")
-        self.Pos = params.get("Pos")
+        self._Word = params.get("Word")
+        self._BeginOffset = params.get("BeginOffset")
+        self._Length = params.get("Length")
+        self._Pos = params.get("Pos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -171,26 +286,51 @@ class CCIToken(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Word: 错别字内容
+        :param _Word: 错别字内容
         :type Word: str
-        :param BeginOffset: 错别字的起始位置，从0开始
+        :param _BeginOffset: 错别字的起始位置，从0开始
         :type BeginOffset: int
-        :param CorrectWord: 错别字纠错结果
+        :param _CorrectWord: 错别字纠错结果
         :type CorrectWord: str
         """
-        self.Word = None
-        self.BeginOffset = None
-        self.CorrectWord = None
+        self._Word = None
+        self._BeginOffset = None
+        self._CorrectWord = None
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def BeginOffset(self):
+        return self._BeginOffset
+
+    @BeginOffset.setter
+    def BeginOffset(self, BeginOffset):
+        self._BeginOffset = BeginOffset
+
+    @property
+    def CorrectWord(self):
+        return self._CorrectWord
+
+    @CorrectWord.setter
+    def CorrectWord(self, CorrectWord):
+        self._CorrectWord = CorrectWord
 
 
     def _deserialize(self, params):
-        self.Word = params.get("Word")
-        self.BeginOffset = params.get("BeginOffset")
-        self.CorrectWord = params.get("CorrectWord")
+        self._Word = params.get("Word")
+        self._BeginOffset = params.get("BeginOffset")
+        self._CorrectWord = params.get("CorrectWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -203,34 +343,67 @@ class Category(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 分类id。
+        :param _Id: 分类id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param Label: 分类英文名。
+        :param _Label: 分类英文名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Name: 分类中文名。
+        :param _Name: 分类中文名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Score: 分类置信度。
+        :param _Score: 分类置信度。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: float
         """
-        self.Id = None
-        self.Label = None
-        self.Name = None
-        self.Score = None
+        self._Id = None
+        self._Label = None
+        self._Name = None
+        self._Score = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Label = params.get("Label")
-        self.Name = params.get("Name")
-        self.Score = params.get("Score")
+        self._Id = params.get("Id")
+        self._Label = params.get("Label")
+        self._Name = params.get("Name")
+        self._Score = params.get("Score")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -243,26 +416,51 @@ class ChatBotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Query: 用户请求的query
+        :param _Query: 用户请求的query
         :type Query: str
-        :param OpenId: 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
+        :param _OpenId: 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
         :type OpenId: str
-        :param Flag: 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
+        :param _Flag: 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
         :type Flag: int
         """
-        self.Query = None
-        self.OpenId = None
-        self.Flag = None
+        self._Query = None
+        self._OpenId = None
+        self._Flag = None
+
+    @property
+    def Query(self):
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
 
 
     def _deserialize(self, params):
-        self.Query = params.get("Query")
-        self.OpenId = params.get("OpenId")
-        self.Flag = params.get("Flag")
+        self._Query = params.get("Query")
+        self._OpenId = params.get("OpenId")
+        self._Flag = params.get("Flag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -275,22 +473,46 @@ class ChatBotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Reply: 闲聊回复
+        :param _Reply: 闲聊回复
         :type Reply: str
-        :param Confidence: 对于当前输出回复的自信度
+        :param _Confidence: 对于当前输出回复的自信度
         :type Confidence: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Reply = None
-        self.Confidence = None
-        self.RequestId = None
+        self._Reply = None
+        self._Confidence = None
+        self._RequestId = None
+
+    @property
+    def Reply(self):
+        return self._Reply
+
+    @Reply.setter
+    def Reply(self, Reply):
+        self._Reply = Reply
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Reply = params.get("Reply")
-        self.Confidence = params.get("Confidence")
-        self.RequestId = params.get("RequestId")
+        self._Reply = params.get("Reply")
+        self._Confidence = params.get("Confidence")
+        self._RequestId = params.get("RequestId")
 
 
 class ClassificationResult(AbstractModel):
@@ -300,54 +522,135 @@ class ClassificationResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstClassName: 一级分类名称
+        :param _FirstClassName: 一级分类名称
         :type FirstClassName: str
-        :param SecondClassName: 二级分类名称
+        :param _SecondClassName: 二级分类名称
         :type SecondClassName: str
-        :param FirstClassProbability: 一级分类概率
+        :param _FirstClassProbability: 一级分类概率
         :type FirstClassProbability: float
-        :param SecondClassProbability: 二级分类概率
+        :param _SecondClassProbability: 二级分类概率
         :type SecondClassProbability: float
-        :param ThirdClassName: 三级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+        :param _ThirdClassName: 三级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
         :type ThirdClassName: str
-        :param ThirdClassProbability: 三级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+        :param _ThirdClassProbability: 三级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
         :type ThirdClassProbability: float
-        :param FourthClassName: 四级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+        :param _FourthClassName: 四级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
         :type FourthClassName: str
-        :param FourthClassProbability: 四级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+        :param _FourthClassProbability: 四级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
         :type FourthClassProbability: float
-        :param FifthClassName: 五级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+        :param _FifthClassName: 五级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
         :type FifthClassName: str
-        :param FifthClassProbability: 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+        :param _FifthClassProbability: 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
         :type FifthClassProbability: float
         """
-        self.FirstClassName = None
-        self.SecondClassName = None
-        self.FirstClassProbability = None
-        self.SecondClassProbability = None
-        self.ThirdClassName = None
-        self.ThirdClassProbability = None
-        self.FourthClassName = None
-        self.FourthClassProbability = None
-        self.FifthClassName = None
-        self.FifthClassProbability = None
+        self._FirstClassName = None
+        self._SecondClassName = None
+        self._FirstClassProbability = None
+        self._SecondClassProbability = None
+        self._ThirdClassName = None
+        self._ThirdClassProbability = None
+        self._FourthClassName = None
+        self._FourthClassProbability = None
+        self._FifthClassName = None
+        self._FifthClassProbability = None
+
+    @property
+    def FirstClassName(self):
+        return self._FirstClassName
+
+    @FirstClassName.setter
+    def FirstClassName(self, FirstClassName):
+        self._FirstClassName = FirstClassName
+
+    @property
+    def SecondClassName(self):
+        return self._SecondClassName
+
+    @SecondClassName.setter
+    def SecondClassName(self, SecondClassName):
+        self._SecondClassName = SecondClassName
+
+    @property
+    def FirstClassProbability(self):
+        return self._FirstClassProbability
+
+    @FirstClassProbability.setter
+    def FirstClassProbability(self, FirstClassProbability):
+        self._FirstClassProbability = FirstClassProbability
+
+    @property
+    def SecondClassProbability(self):
+        return self._SecondClassProbability
+
+    @SecondClassProbability.setter
+    def SecondClassProbability(self, SecondClassProbability):
+        self._SecondClassProbability = SecondClassProbability
+
+    @property
+    def ThirdClassName(self):
+        return self._ThirdClassName
+
+    @ThirdClassName.setter
+    def ThirdClassName(self, ThirdClassName):
+        self._ThirdClassName = ThirdClassName
+
+    @property
+    def ThirdClassProbability(self):
+        return self._ThirdClassProbability
+
+    @ThirdClassProbability.setter
+    def ThirdClassProbability(self, ThirdClassProbability):
+        self._ThirdClassProbability = ThirdClassProbability
+
+    @property
+    def FourthClassName(self):
+        return self._FourthClassName
+
+    @FourthClassName.setter
+    def FourthClassName(self, FourthClassName):
+        self._FourthClassName = FourthClassName
+
+    @property
+    def FourthClassProbability(self):
+        return self._FourthClassProbability
+
+    @FourthClassProbability.setter
+    def FourthClassProbability(self, FourthClassProbability):
+        self._FourthClassProbability = FourthClassProbability
+
+    @property
+    def FifthClassName(self):
+        return self._FifthClassName
+
+    @FifthClassName.setter
+    def FifthClassName(self, FifthClassName):
+        self._FifthClassName = FifthClassName
+
+    @property
+    def FifthClassProbability(self):
+        return self._FifthClassProbability
+
+    @FifthClassProbability.setter
+    def FifthClassProbability(self, FifthClassProbability):
+        self._FifthClassProbability = FifthClassProbability
 
 
     def _deserialize(self, params):
-        self.FirstClassName = params.get("FirstClassName")
-        self.SecondClassName = params.get("SecondClassName")
-        self.FirstClassProbability = params.get("FirstClassProbability")
-        self.SecondClassProbability = params.get("SecondClassProbability")
-        self.ThirdClassName = params.get("ThirdClassName")
-        self.ThirdClassProbability = params.get("ThirdClassProbability")
-        self.FourthClassName = params.get("FourthClassName")
-        self.FourthClassProbability = params.get("FourthClassProbability")
-        self.FifthClassName = params.get("FifthClassName")
-        self.FifthClassProbability = params.get("FifthClassProbability")
+        self._FirstClassName = params.get("FirstClassName")
+        self._SecondClassName = params.get("SecondClassName")
+        self._FirstClassProbability = params.get("FirstClassProbability")
+        self._SecondClassProbability = params.get("SecondClassProbability")
+        self._ThirdClassName = params.get("ThirdClassName")
+        self._ThirdClassProbability = params.get("ThirdClassProbability")
+        self._FourthClassName = params.get("FourthClassName")
+        self._FourthClassProbability = params.get("FourthClassProbability")
+        self._FifthClassName = params.get("FifthClassName")
+        self._FifthClassProbability = params.get("FifthClassProbability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -360,22 +663,39 @@ class ClassifyContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Title: 待分类的文章的标题（仅支持UTF-8格式，不超过100字符）。
+        :param _Title: 待分类的文章的标题（仅支持UTF-8格式，不超过100字符）。
         :type Title: str
-        :param Content: 待分类文章的内容, 每个元素对应一个段落。（仅支持UTF-8格式，文章内容长度总和不超过2000字符）
+        :param _Content: 待分类文章的内容, 每个元素对应一个段落。（仅支持UTF-8格式，文章内容长度总和不超过2000字符）
         :type Content: list of str
         """
-        self.Title = None
-        self.Content = None
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.Title = params.get("Title")
-        self.Content = params.get("Content")
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -388,33 +708,65 @@ class ClassifyContentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstClassification: 一级分类。分类详情见附录-三级分类体系表。
+        :param _FirstClassification: 一级分类。分类详情见附录-三级分类体系表。
         :type FirstClassification: :class:`tencentcloud.nlp.v20190408.models.Category`
-        :param SecondClassification: 二级分类。分类详情见附录-三级分类体系表。
+        :param _SecondClassification: 二级分类。分类详情见附录-三级分类体系表。
         :type SecondClassification: :class:`tencentcloud.nlp.v20190408.models.Category`
-        :param ThirdClassification: 三级分类。分类详情见附录-三级分类体系表。
+        :param _ThirdClassification: 三级分类。分类详情见附录-三级分类体系表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdClassification: :class:`tencentcloud.nlp.v20190408.models.Category`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FirstClassification = None
-        self.SecondClassification = None
-        self.ThirdClassification = None
-        self.RequestId = None
+        self._FirstClassification = None
+        self._SecondClassification = None
+        self._ThirdClassification = None
+        self._RequestId = None
+
+    @property
+    def FirstClassification(self):
+        return self._FirstClassification
+
+    @FirstClassification.setter
+    def FirstClassification(self, FirstClassification):
+        self._FirstClassification = FirstClassification
+
+    @property
+    def SecondClassification(self):
+        return self._SecondClassification
+
+    @SecondClassification.setter
+    def SecondClassification(self, SecondClassification):
+        self._SecondClassification = SecondClassification
+
+    @property
+    def ThirdClassification(self):
+        return self._ThirdClassification
+
+    @ThirdClassification.setter
+    def ThirdClassification(self, ThirdClassification):
+        self._ThirdClassification = ThirdClassification
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FirstClassification") is not None:
-            self.FirstClassification = Category()
-            self.FirstClassification._deserialize(params.get("FirstClassification"))
+            self._FirstClassification = Category()
+            self._FirstClassification._deserialize(params.get("FirstClassification"))
         if params.get("SecondClassification") is not None:
-            self.SecondClassification = Category()
-            self.SecondClassification._deserialize(params.get("SecondClassification"))
+            self._SecondClassification = Category()
+            self._SecondClassification._deserialize(params.get("SecondClassification"))
         if params.get("ThirdClassification") is not None:
-            self.ThirdClassification = Category()
-            self.ThirdClassification._deserialize(params.get("ThirdClassification"))
-        self.RequestId = params.get("RequestId")
+            self._ThirdClassification = Category()
+            self._ThirdClassification._deserialize(params.get("ThirdClassification"))
+        self._RequestId = params.get("RequestId")
 
 
 class ComposeCoupletRequest(AbstractModel):
@@ -424,22 +776,39 @@ class ComposeCoupletRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+        :param _Text: 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
         :type Text: str
-        :param TargetType: 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+        :param _TargetType: 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
         :type TargetType: int
         """
-        self.Text = None
-        self.TargetType = None
+        self._Text = None
+        self._TargetType = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.TargetType = params.get("TargetType")
+        self._Text = params.get("Text")
+        self._TargetType = params.get("TargetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -452,26 +821,58 @@ class ComposeCoupletResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopScroll: 横批。
+        :param _TopScroll: 横批。
         :type TopScroll: str
-        :param Content: 上联与下联。
+        :param _Content: 上联与下联。
         :type Content: list of str
-        :param RandomCause: 当对联随机生成时，展示随机生成原因。
+        :param _RandomCause: 当对联随机生成时，展示随机生成原因。
         :type RandomCause: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TopScroll = None
-        self.Content = None
-        self.RandomCause = None
-        self.RequestId = None
+        self._TopScroll = None
+        self._Content = None
+        self._RandomCause = None
+        self._RequestId = None
+
+    @property
+    def TopScroll(self):
+        return self._TopScroll
+
+    @TopScroll.setter
+    def TopScroll(self, TopScroll):
+        self._TopScroll = TopScroll
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RandomCause(self):
+        return self._RandomCause
+
+    @RandomCause.setter
+    def RandomCause(self, RandomCause):
+        self._RandomCause = RandomCause
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TopScroll = params.get("TopScroll")
-        self.Content = params.get("Content")
-        self.RandomCause = params.get("RandomCause")
-        self.RequestId = params.get("RequestId")
+        self._TopScroll = params.get("TopScroll")
+        self._Content = params.get("Content")
+        self._RandomCause = params.get("RandomCause")
+        self._RequestId = params.get("RequestId")
 
 
 class ComposePoetryRequest(AbstractModel):
@@ -481,26 +882,51 @@ class ComposePoetryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 生成诗词的关键词。
+        :param _Text: 生成诗词的关键词。
         :type Text: str
-        :param PoetryType: 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+        :param _PoetryType: 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
         :type PoetryType: int
-        :param Genre: 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+        :param _Genre: 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
         :type Genre: int
         """
-        self.Text = None
-        self.PoetryType = None
-        self.Genre = None
+        self._Text = None
+        self._PoetryType = None
+        self._Genre = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def PoetryType(self):
+        return self._PoetryType
+
+    @PoetryType.setter
+    def PoetryType(self, PoetryType):
+        self._PoetryType = PoetryType
+
+    @property
+    def Genre(self):
+        return self._Genre
+
+    @Genre.setter
+    def Genre(self, Genre):
+        self._Genre = Genre
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.PoetryType = params.get("PoetryType")
-        self.Genre = params.get("Genre")
+        self._Text = params.get("Text")
+        self._PoetryType = params.get("PoetryType")
+        self._Genre = params.get("Genre")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -513,22 +939,46 @@ class ComposePoetryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Title: 诗题，即输入的生成诗词的关键词。
+        :param _Title: 诗题，即输入的生成诗词的关键词。
         :type Title: str
-        :param Content: 诗的内容。
+        :param _Content: 诗的内容。
         :type Content: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Title = None
-        self.Content = None
-        self.RequestId = None
+        self._Title = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Title = params.get("Title")
-        self.Content = params.get("Content")
-        self.RequestId = params.get("RequestId")
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
 
 
 class CompoundParticiple(AbstractModel):
@@ -538,30 +988,63 @@ class CompoundParticiple(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Word: 基础词。
+        :param _Word: 基础词。
         :type Word: str
-        :param BeginOffset: 基础词在NormalText中的起始位置。
+        :param _BeginOffset: 基础词在NormalText中的起始位置。
         :type BeginOffset: int
-        :param Length: 基础词的长度。
+        :param _Length: 基础词的长度。
         :type Length: int
-        :param Pos: 词性。
+        :param _Pos: 词性。
         :type Pos: str
         """
-        self.Word = None
-        self.BeginOffset = None
-        self.Length = None
-        self.Pos = None
+        self._Word = None
+        self._BeginOffset = None
+        self._Length = None
+        self._Pos = None
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def BeginOffset(self):
+        return self._BeginOffset
+
+    @BeginOffset.setter
+    def BeginOffset(self, BeginOffset):
+        self._BeginOffset = BeginOffset
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def Pos(self):
+        return self._Pos
+
+    @Pos.setter
+    def Pos(self, Pos):
+        self._Pos = Pos
 
 
     def _deserialize(self, params):
-        self.Word = params.get("Word")
-        self.BeginOffset = params.get("BeginOffset")
-        self.Length = params.get("Length")
-        self.Pos = params.get("Pos")
+        self._Word = params.get("Word")
+        self._BeginOffset = params.get("BeginOffset")
+        self._Length = params.get("Length")
+        self._Pos = params.get("Pos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -574,53 +1057,126 @@ class CorrectionItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Order: 纠错句子的序号。
+        :param _Order: 纠错句子的序号。
         :type Order: int
-        :param BeginOffset: 错误的起始位置，从0开始。
+        :param _BeginOffset: 错误的起始位置，从0开始。
         :type BeginOffset: int
-        :param Len: 错误内容长度。
+        :param _Len: 错误内容长度。
         :type Len: int
-        :param Word: 错误内容。
+        :param _Word: 错误内容。
         :type Word: str
-        :param CorrectWord: 纠错结果，当为删除类错误时，结果为null。
+        :param _CorrectWord: 纠错结果，当为删除类错误时，结果为null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorrectWord: list of str
-        :param CorrectionType: 纠错类型。0：替换；1：插入；2：删除。
+        :param _CorrectionType: 纠错类型。0：替换；1：插入；2：删除。
         :type CorrectionType: int
-        :param Confidence: 纠错信息置信度。0：error；1：warning；error的置信度更高。（仅供参考）
+        :param _Confidence: 纠错信息置信度。0：error；1：warning；error的置信度更高。（仅供参考）
         :type Confidence: int
-        :param DescriptionZh: 纠错信息中文描述。
+        :param _DescriptionZh: 纠错信息中文描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescriptionZh: str
-        :param DescriptionEn: 纠错信息英文描述。
+        :param _DescriptionEn: 纠错信息英文描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescriptionEn: str
         """
-        self.Order = None
-        self.BeginOffset = None
-        self.Len = None
-        self.Word = None
-        self.CorrectWord = None
-        self.CorrectionType = None
-        self.Confidence = None
-        self.DescriptionZh = None
-        self.DescriptionEn = None
+        self._Order = None
+        self._BeginOffset = None
+        self._Len = None
+        self._Word = None
+        self._CorrectWord = None
+        self._CorrectionType = None
+        self._Confidence = None
+        self._DescriptionZh = None
+        self._DescriptionEn = None
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def BeginOffset(self):
+        return self._BeginOffset
+
+    @BeginOffset.setter
+    def BeginOffset(self, BeginOffset):
+        self._BeginOffset = BeginOffset
+
+    @property
+    def Len(self):
+        return self._Len
+
+    @Len.setter
+    def Len(self, Len):
+        self._Len = Len
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def CorrectWord(self):
+        return self._CorrectWord
+
+    @CorrectWord.setter
+    def CorrectWord(self, CorrectWord):
+        self._CorrectWord = CorrectWord
+
+    @property
+    def CorrectionType(self):
+        return self._CorrectionType
+
+    @CorrectionType.setter
+    def CorrectionType(self, CorrectionType):
+        self._CorrectionType = CorrectionType
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def DescriptionZh(self):
+        return self._DescriptionZh
+
+    @DescriptionZh.setter
+    def DescriptionZh(self, DescriptionZh):
+        self._DescriptionZh = DescriptionZh
+
+    @property
+    def DescriptionEn(self):
+        return self._DescriptionEn
+
+    @DescriptionEn.setter
+    def DescriptionEn(self, DescriptionEn):
+        self._DescriptionEn = DescriptionEn
 
 
     def _deserialize(self, params):
-        self.Order = params.get("Order")
-        self.BeginOffset = params.get("BeginOffset")
-        self.Len = params.get("Len")
-        self.Word = params.get("Word")
-        self.CorrectWord = params.get("CorrectWord")
-        self.CorrectionType = params.get("CorrectionType")
-        self.Confidence = params.get("Confidence")
-        self.DescriptionZh = params.get("DescriptionZh")
-        self.DescriptionEn = params.get("DescriptionEn")
+        self._Order = params.get("Order")
+        self._BeginOffset = params.get("BeginOffset")
+        self._Len = params.get("Len")
+        self._Word = params.get("Word")
+        self._CorrectWord = params.get("CorrectWord")
+        self._CorrectionType = params.get("CorrectionType")
+        self._Confidence = params.get("Confidence")
+        self._DescriptionZh = params.get("DescriptionZh")
+        self._DescriptionEn = params.get("DescriptionEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -633,22 +1189,39 @@ class CreateDictRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 自定义词库名称，不超过20字。
+        :param _Name: 自定义词库名称，不超过20字。
         :type Name: str
-        :param Description: 自定义词库描述，不超过100字。
+        :param _Description: 自定义词库描述，不超过100字。
         :type Description: str
         """
-        self.Name = None
-        self.Description = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -661,19 +1234,35 @@ class CreateDictResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 创建的自定义词库ID。
+        :param _DictId: 创建的自定义词库ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DictId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DictId = None
-        self.RequestId = None
+        self._DictId = None
+        self._RequestId = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
-        self.RequestId = params.get("RequestId")
+        self._DictId = params.get("DictId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateWordItemsRequest(AbstractModel):
@@ -683,27 +1272,44 @@ class CreateWordItemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 自定义词库ID。
+        :param _DictId: 自定义词库ID。
         :type DictId: str
-        :param WordItems: 待添加的词条集合。
+        :param _WordItems: 待添加的词条集合。
         :type WordItems: list of WordItem
         """
-        self.DictId = None
-        self.WordItems = None
+        self._DictId = None
+        self._WordItems = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def WordItems(self):
+        return self._WordItems
+
+    @WordItems.setter
+    def WordItems(self, WordItems):
+        self._WordItems = WordItems
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
+        self._DictId = params.get("DictId")
         if params.get("WordItems") is not None:
-            self.WordItems = []
+            self._WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
-                self.WordItems.append(obj)
+                self._WordItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -716,14 +1322,22 @@ class CreateWordItemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteDictRequest(AbstractModel):
@@ -733,18 +1347,27 @@ class DeleteDictRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 要删除的自定义词库ID。
+        :param _DictId: 要删除的自定义词库ID。
         :type DictId: str
         """
-        self.DictId = None
+        self._DictId = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
+        self._DictId = params.get("DictId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -757,14 +1380,22 @@ class DeleteDictResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteWordItemsRequest(AbstractModel):
@@ -774,27 +1405,44 @@ class DeleteWordItemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 自定义词库ID。
+        :param _DictId: 自定义词库ID。
         :type DictId: str
-        :param WordItems: 待删除的词条集合。
+        :param _WordItems: 待删除的词条集合。
         :type WordItems: list of WordItem
         """
-        self.DictId = None
-        self.WordItems = None
+        self._DictId = None
+        self._WordItems = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def WordItems(self):
+        return self._WordItems
+
+    @WordItems.setter
+    def WordItems(self, WordItems):
+        self._WordItems = WordItems
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
+        self._DictId = params.get("DictId")
         if params.get("WordItems") is not None:
-            self.WordItems = []
+            self._WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
-                self.WordItems.append(obj)
+                self._WordItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -807,14 +1455,22 @@ class DeleteWordItemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DependencyParsingRequest(AbstractModel):
@@ -824,18 +1480,27 @@ class DependencyParsingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
+        :param _Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
         :type Text: str
         """
-        self.Text = None
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -848,7 +1513,7 @@ class DependencyParsingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DpTokens: 句法依存分析结果，其中句法依存关系的类型包括：
+        :param _DpTokens: 句法依存分析结果，其中句法依存关系的类型包括：
 <li>主谓关系，eg: 我送她一束花 (我 <-- 送)
 <li>动宾关系，eg: 我送她一束花 (送 --> 花)
 <li>间宾关系，eg: 我送她一束花 (送 --> 她)
@@ -865,21 +1530,37 @@ class DependencyParsingResponse(AbstractModel):
 <li>标点符号，eg: 。
 <li>核心关系，eg: 整个句子的核心
         :type DpTokens: list of DpToken
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DpTokens = None
-        self.RequestId = None
+        self._DpTokens = None
+        self._RequestId = None
+
+    @property
+    def DpTokens(self):
+        return self._DpTokens
+
+    @DpTokens.setter
+    def DpTokens(self, DpTokens):
+        self._DpTokens = DpTokens
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DpTokens") is not None:
-            self.DpTokens = []
+            self._DpTokens = []
             for item in params.get("DpTokens"):
                 obj = DpToken()
                 obj._deserialize(item)
-                self.DpTokens.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DpTokens.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDictRequest(AbstractModel):
@@ -889,22 +1570,39 @@ class DescribeDictRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 自定义词库ID。
+        :param _DictId: 自定义词库ID。
         :type DictId: str
-        :param Name: 自定义词库名称，模糊搜索。
+        :param _Name: 自定义词库名称，模糊搜索。
         :type Name: str
         """
-        self.DictId = None
-        self.Name = None
+        self._DictId = None
+        self._Name = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
-        self.Name = params.get("Name")
+        self._DictId = params.get("DictId")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -917,24 +1615,40 @@ class DescribeDictResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Dicts: 查询到的词库信息列表。
+        :param _Dicts: 查询到的词库信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Dicts: list of DictInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Dicts = None
-        self.RequestId = None
+        self._Dicts = None
+        self._RequestId = None
+
+    @property
+    def Dicts(self):
+        return self._Dicts
+
+    @Dicts.setter
+    def Dicts(self, Dicts):
+        self._Dicts = Dicts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Dicts") is not None:
-            self.Dicts = []
+            self._Dicts = []
             for item in params.get("Dicts"):
                 obj = DictInfo()
                 obj._deserialize(item)
-                self.Dicts.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Dicts.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDictsRequest(AbstractModel):
@@ -944,22 +1658,39 @@ class DescribeDictsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 每页数据量，范围为1~100，默认为10。
+        :param _Limit: 每页数据量，范围为1~100，默认为10。
         :type Limit: int
-        :param Offset: 分页偏移量，从0开始，默认为0。
+        :param _Offset: 分页偏移量，从0开始，默认为0。
         :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -972,28 +1703,52 @@ class DescribeDictsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 记录总条数。
+        :param _TotalCount: 记录总条数。
         :type TotalCount: int
-        :param Dicts: 自定义词库信息列表。
+        :param _Dicts: 自定义词库信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Dicts: list of DictInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Dicts = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Dicts = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Dicts(self):
+        return self._Dicts
+
+    @Dicts.setter
+    def Dicts(self, Dicts):
+        self._Dicts = Dicts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Dicts") is not None:
-            self.Dicts = []
+            self._Dicts = []
             for item in params.get("Dicts"):
                 obj = DictInfo()
                 obj._deserialize(item)
-                self.Dicts.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Dicts.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeWordItemsRequest(AbstractModel):
@@ -1003,30 +1758,63 @@ class DescribeWordItemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 自定义词库ID。
+        :param _DictId: 自定义词库ID。
         :type DictId: str
-        :param Offset: 分页偏移量，从0开始，默认为0。
+        :param _Offset: 分页偏移量，从0开始，默认为0。
         :type Offset: int
-        :param Limit: 每页数据量，范围为1~100，默认为10。
+        :param _Limit: 每页数据量，范围为1~100，默认为10。
         :type Limit: int
-        :param Text: 待检索的词条文本，支持模糊匹配。
+        :param _Text: 待检索的词条文本，支持模糊匹配。
         :type Text: str
         """
-        self.DictId = None
-        self.Offset = None
-        self.Limit = None
-        self.Text = None
+        self._DictId = None
+        self._Offset = None
+        self._Limit = None
+        self._Text = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Text = params.get("Text")
+        self._DictId = params.get("DictId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1039,28 +1827,52 @@ class DescribeWordItemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 词条记录总条数。
+        :param _TotalCount: 词条记录总条数。
         :type TotalCount: int
-        :param WordItems: 词条信息列表。
+        :param _WordItems: 词条信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WordItems: list of WordItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.WordItems = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._WordItems = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def WordItems(self):
+        return self._WordItems
+
+    @WordItems.setter
+    def WordItems(self, WordItems):
+        self._WordItems = WordItems
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("WordItems") is not None:
-            self.WordItems = []
+            self._WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
-                self.WordItems.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._WordItems.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DictInfo(AbstractModel):
@@ -1070,34 +1882,75 @@ class DictInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 自定义词库名称。
+        :param _Name: 自定义词库名称。
         :type Name: str
-        :param Id: 自定义词库ID。
+        :param _Id: 自定义词库ID。
         :type Id: str
-        :param Description: 自定义词库描述信息。
+        :param _Description: 自定义词库描述信息。
         :type Description: str
-        :param UpdateTime: 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
+        :param _UpdateTime: 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
         :type UpdateTime: str
-        :param CreateTime: 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
+        :param _CreateTime: 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
         :type CreateTime: str
         """
-        self.Name = None
-        self.Id = None
-        self.Description = None
-        self.UpdateTime = None
-        self.CreateTime = None
+        self._Name = None
+        self._Id = None
+        self._Description = None
+        self._UpdateTime = None
+        self._CreateTime = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Id = params.get("Id")
-        self.Description = params.get("Description")
-        self.UpdateTime = params.get("UpdateTime")
-        self.CreateTime = params.get("CreateTime")
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._Description = params.get("Description")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1110,30 +1963,63 @@ class DpToken(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Relation: 句法依存关系的类型
+        :param _Relation: 句法依存关系的类型
         :type Relation: str
-        :param HeadId: 当前词父节点的序号
+        :param _HeadId: 当前词父节点的序号
         :type HeadId: int
-        :param Word: 基础词
+        :param _Word: 基础词
         :type Word: str
-        :param Id: 基础词的序号
+        :param _Id: 基础词的序号
         :type Id: int
         """
-        self.Relation = None
-        self.HeadId = None
-        self.Word = None
-        self.Id = None
+        self._Relation = None
+        self._HeadId = None
+        self._Word = None
+        self._Id = None
+
+    @property
+    def Relation(self):
+        return self._Relation
+
+    @Relation.setter
+    def Relation(self, Relation):
+        self._Relation = Relation
+
+    @property
+    def HeadId(self):
+        return self._HeadId
+
+    @HeadId.setter
+    def HeadId(self, HeadId):
+        self._HeadId = HeadId
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Relation = params.get("Relation")
-        self.HeadId = params.get("HeadId")
-        self.Word = params.get("Word")
-        self.Id = params.get("Id")
+        self._Relation = params.get("Relation")
+        self._HeadId = params.get("HeadId")
+        self._Word = params.get("Word")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1146,10 +2032,10 @@ class Embellish(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 润色后的文本。
+        :param _Text: 润色后的文本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param EmbellishType: 润色类型。类型如下：
+        :param _EmbellishType: 润色类型。类型如下：
 expansion：扩写
 rewriting：改写
 translation_m2a：从现代文改写为古文
@@ -1159,17 +2045,34 @@ translation_a2m：从古文改写为现代文
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmbellishType: str
         """
-        self.Text = None
-        self.EmbellishType = None
+        self._Text = None
+        self._EmbellishType = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def EmbellishType(self):
+        return self._EmbellishType
+
+    @EmbellishType.setter
+    def EmbellishType(self, EmbellishType):
+        self._EmbellishType = EmbellishType
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.EmbellishType = params.get("EmbellishType")
+        self._Text = params.get("Text")
+        self._EmbellishType = params.get("EmbellishType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1182,34 +2085,75 @@ class Entity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Word: 基础词。
+        :param _Word: 基础词。
         :type Word: str
-        :param BeginOffset: 基础词在NormalText中的起始位置。
+        :param _BeginOffset: 基础词在NormalText中的起始位置。
         :type BeginOffset: int
-        :param Length: 基础词的长度。
+        :param _Length: 基础词的长度。
         :type Length: int
-        :param Type: 实体类型的标准名字。
+        :param _Type: 实体类型的标准名字。
         :type Type: str
-        :param Name: 类型名字的自然语言表达。（中文或英文）
+        :param _Name: 类型名字的自然语言表达。（中文或英文）
         :type Name: str
         """
-        self.Word = None
-        self.BeginOffset = None
-        self.Length = None
-        self.Type = None
-        self.Name = None
+        self._Word = None
+        self._BeginOffset = None
+        self._Length = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def BeginOffset(self):
+        return self._BeginOffset
+
+    @BeginOffset.setter
+    def BeginOffset(self, BeginOffset):
+        self._BeginOffset = BeginOffset
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Word = params.get("Word")
-        self.BeginOffset = params.get("BeginOffset")
-        self.Length = params.get("Length")
-        self.Type = params.get("Type")
-        self.Name = params.get("Name")
+        self._Word = params.get("Word")
+        self._BeginOffset = params.get("BeginOffset")
+        self._Length = params.get("Length")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1222,23 +2166,32 @@ class EvaluateSentenceSimilarityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SentencePairList: 待分析的句子对数组。句子对应不超过1对，仅支持中文文本，原句子与目标句子均应不超过64字符。
+        :param _SentencePairList: 待分析的句子对数组。句子对应不超过1对，仅支持中文文本，原句子与目标句子均应不超过64字符。
         :type SentencePairList: list of SentencePair
         """
-        self.SentencePairList = None
+        self._SentencePairList = None
+
+    @property
+    def SentencePairList(self):
+        return self._SentencePairList
+
+    @SentencePairList.setter
+    def SentencePairList(self, SentencePairList):
+        self._SentencePairList = SentencePairList
 
 
     def _deserialize(self, params):
         if params.get("SentencePairList") is not None:
-            self.SentencePairList = []
+            self._SentencePairList = []
             for item in params.get("SentencePairList"):
                 obj = SentencePair()
                 obj._deserialize(item)
-                self.SentencePairList.append(obj)
+                self._SentencePairList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1251,18 +2204,34 @@ class EvaluateSentenceSimilarityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ScoreList: 每个句子对的相似度分值。
+        :param _ScoreList: 每个句子对的相似度分值。
         :type ScoreList: list of float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ScoreList = None
-        self.RequestId = None
+        self._ScoreList = None
+        self._RequestId = None
+
+    @property
+    def ScoreList(self):
+        return self._ScoreList
+
+    @ScoreList.setter
+    def ScoreList(self, ScoreList):
+        self._ScoreList = ScoreList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ScoreList = params.get("ScoreList")
-        self.RequestId = params.get("RequestId")
+        self._ScoreList = params.get("ScoreList")
+        self._RequestId = params.get("RequestId")
 
 
 class EvaluateWordSimilarityRequest(AbstractModel):
@@ -1272,24 +2241,41 @@ class EvaluateWordSimilarityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceWord: 计算相似度的源词。（仅支持UTF-8格式，不超过10字符）
+        :param _SourceWord: 计算相似度的源词。（仅支持UTF-8格式，不超过10字符）
 
         :type SourceWord: str
-        :param TargetWord: 计算相似度的目标词。（仅支持UTF-8格式，不超过10字符）
+        :param _TargetWord: 计算相似度的目标词。（仅支持UTF-8格式，不超过10字符）
 
         :type TargetWord: str
         """
-        self.SourceWord = None
-        self.TargetWord = None
+        self._SourceWord = None
+        self._TargetWord = None
+
+    @property
+    def SourceWord(self):
+        return self._SourceWord
+
+    @SourceWord.setter
+    def SourceWord(self, SourceWord):
+        self._SourceWord = SourceWord
+
+    @property
+    def TargetWord(self):
+        return self._TargetWord
+
+    @TargetWord.setter
+    def TargetWord(self, TargetWord):
+        self._TargetWord = TargetWord
 
 
     def _deserialize(self, params):
-        self.SourceWord = params.get("SourceWord")
-        self.TargetWord = params.get("TargetWord")
+        self._SourceWord = params.get("SourceWord")
+        self._TargetWord = params.get("TargetWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1302,18 +2288,34 @@ class EvaluateWordSimilarityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Similarity: 词相似度分值。
+        :param _Similarity: 词相似度分值。
         :type Similarity: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Similarity = None
-        self.RequestId = None
+        self._Similarity = None
+        self._RequestId = None
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Similarity = params.get("Similarity")
-        self.RequestId = params.get("RequestId")
+        self._Similarity = params.get("Similarity")
+        self._RequestId = params.get("RequestId")
 
 
 class GenerateCoupletRequest(AbstractModel):
@@ -1323,22 +2325,39 @@ class GenerateCoupletRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+        :param _Text: 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
         :type Text: str
-        :param TargetType: 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+        :param _TargetType: 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
         :type TargetType: int
         """
-        self.Text = None
-        self.TargetType = None
+        self._Text = None
+        self._TargetType = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.TargetType = params.get("TargetType")
+        self._Text = params.get("Text")
+        self._TargetType = params.get("TargetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1351,26 +2370,58 @@ class GenerateCoupletResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopScroll: 横批。
+        :param _TopScroll: 横批。
         :type TopScroll: str
-        :param Content: 上联与下联。
+        :param _Content: 上联与下联。
         :type Content: list of str
-        :param RandomCause: 当对联随机生成时，展示随机生成原因。
+        :param _RandomCause: 当对联随机生成时，展示随机生成原因。
         :type RandomCause: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TopScroll = None
-        self.Content = None
-        self.RandomCause = None
-        self.RequestId = None
+        self._TopScroll = None
+        self._Content = None
+        self._RandomCause = None
+        self._RequestId = None
+
+    @property
+    def TopScroll(self):
+        return self._TopScroll
+
+    @TopScroll.setter
+    def TopScroll(self, TopScroll):
+        self._TopScroll = TopScroll
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RandomCause(self):
+        return self._RandomCause
+
+    @RandomCause.setter
+    def RandomCause(self, RandomCause):
+        self._RandomCause = RandomCause
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TopScroll = params.get("TopScroll")
-        self.Content = params.get("Content")
-        self.RandomCause = params.get("RandomCause")
-        self.RequestId = params.get("RequestId")
+        self._TopScroll = params.get("TopScroll")
+        self._Content = params.get("Content")
+        self._RandomCause = params.get("RandomCause")
+        self._RequestId = params.get("RequestId")
 
 
 class GenerateKeywordSentenceRequest(AbstractModel):
@@ -1380,30 +2431,55 @@ class GenerateKeywordSentenceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WordList: 生成句子的关键词，关键词个数需不超过4个，中文关键词长度应不超过10字符，英文关键词长度不超过3个单词。关键词中不可包含标点符号。
+        :param _WordList: 生成句子的关键词，关键词个数需不超过4个，中文关键词长度应不超过10字符，英文关键词长度不超过3个单词。关键词中不可包含标点符号。
         :type WordList: list of str
-        :param Number: 返回生成句子的个数。数量需>=1且<=5。
+        :param _Number: 返回生成句子的个数。数量需>=1且<=5。
 （注意实际结果可能小于指定个数）
         :type Number: int
-        :param Domain: 指定生成句子的领域，支持领域如下：
+        :param _Domain: 指定生成句子的领域，支持领域如下：
 general：通用领域，支持中英文
 academic：学术领域，仅支持英文
 默认为general（通用领域）。
         :type Domain: str
         """
-        self.WordList = None
-        self.Number = None
-        self.Domain = None
+        self._WordList = None
+        self._Number = None
+        self._Domain = None
+
+    @property
+    def WordList(self):
+        return self._WordList
+
+    @WordList.setter
+    def WordList(self, WordList):
+        self._WordList = WordList
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
 
     def _deserialize(self, params):
-        self.WordList = params.get("WordList")
-        self.Number = params.get("Number")
-        self.Domain = params.get("Domain")
+        self._WordList = params.get("WordList")
+        self._Number = params.get("Number")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1416,23 +2492,39 @@ class GenerateKeywordSentenceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeywordSentenceList: 生成的句子列表。
+        :param _KeywordSentenceList: 生成的句子列表。
         :type KeywordSentenceList: list of KeywordSentence
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KeywordSentenceList = None
-        self.RequestId = None
+        self._KeywordSentenceList = None
+        self._RequestId = None
+
+    @property
+    def KeywordSentenceList(self):
+        return self._KeywordSentenceList
+
+    @KeywordSentenceList.setter
+    def KeywordSentenceList(self, KeywordSentenceList):
+        self._KeywordSentenceList = KeywordSentenceList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("KeywordSentenceList") is not None:
-            self.KeywordSentenceList = []
+            self._KeywordSentenceList = []
             for item in params.get("KeywordSentenceList"):
                 obj = KeywordSentence()
                 obj._deserialize(item)
-                self.KeywordSentenceList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._KeywordSentenceList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GeneratePoetryRequest(AbstractModel):
@@ -1442,26 +2534,51 @@ class GeneratePoetryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 生成诗词的关键词。
+        :param _Text: 生成诗词的关键词。
         :type Text: str
-        :param PoetryType: 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+        :param _PoetryType: 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
         :type PoetryType: int
-        :param Genre: 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+        :param _Genre: 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
         :type Genre: int
         """
-        self.Text = None
-        self.PoetryType = None
-        self.Genre = None
+        self._Text = None
+        self._PoetryType = None
+        self._Genre = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def PoetryType(self):
+        return self._PoetryType
+
+    @PoetryType.setter
+    def PoetryType(self, PoetryType):
+        self._PoetryType = PoetryType
+
+    @property
+    def Genre(self):
+        return self._Genre
+
+    @Genre.setter
+    def Genre(self, Genre):
+        self._Genre = Genre
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.PoetryType = params.get("PoetryType")
-        self.Genre = params.get("Genre")
+        self._Text = params.get("Text")
+        self._PoetryType = params.get("PoetryType")
+        self._Genre = params.get("Genre")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1474,22 +2591,46 @@ class GeneratePoetryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Title: 诗题，即输入的生成诗词的关键词。
+        :param _Title: 诗题，即输入的生成诗词的关键词。
         :type Title: str
-        :param Content: 诗的内容。
+        :param _Content: 诗的内容。
         :type Content: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Title = None
-        self.Content = None
-        self.RequestId = None
+        self._Title = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Title = params.get("Title")
-        self.Content = params.get("Content")
-        self.RequestId = params.get("RequestId")
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
 
 
 class Keyword(AbstractModel):
@@ -1499,22 +2640,39 @@ class Keyword(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Score: 权重
+        :param _Score: 权重
         :type Score: float
-        :param Word: 关键词
+        :param _Word: 关键词
         :type Word: str
         """
-        self.Score = None
-        self.Word = None
+        self._Score = None
+        self._Word = None
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
 
 
     def _deserialize(self, params):
-        self.Score = params.get("Score")
-        self.Word = params.get("Word")
+        self._Score = params.get("Score")
+        self._Word = params.get("Word")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1527,18 +2685,27 @@ class KeywordSentence(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetText: 通过关键词生成的句子。
+        :param _TargetText: 通过关键词生成的句子。
         :type TargetText: str
         """
-        self.TargetText = None
+        self._TargetText = None
+
+    @property
+    def TargetText(self):
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
 
 
     def _deserialize(self, params):
-        self.TargetText = params.get("TargetText")
+        self._TargetText = params.get("TargetText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1551,22 +2718,39 @@ class KeywordsExtractionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待处理的文本（仅支持UTF-8格式，不超过10000字符）
+        :param _Text: 待处理的文本（仅支持UTF-8格式，不超过10000字符）
         :type Text: str
-        :param Num: 指定关键词个数上限（默认值为5）
+        :param _Num: 指定关键词个数上限（默认值为5）
         :type Num: int
         """
-        self.Text = None
-        self.Num = None
+        self._Text = None
+        self._Num = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Num = params.get("Num")
+        self._Text = params.get("Text")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1579,24 +2763,40 @@ class KeywordsExtractionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keywords: 关键词提取结果
+        :param _Keywords: 关键词提取结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of Keyword
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Keywords = None
-        self.RequestId = None
+        self._Keywords = None
+        self._RequestId = None
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Keywords") is not None:
-            self.Keywords = []
+            self._Keywords = []
             for item in params.get("Keywords"):
                 obj = Keyword()
                 obj._deserialize(item)
-                self.Keywords.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Keywords.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class LexicalAnalysisRequest(AbstractModel):
@@ -1606,28 +2806,53 @@ class LexicalAnalysisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待分析的文本（仅支持UTF-8格式，不超过500字）
+        :param _Text: 待分析的文本（仅支持UTF-8格式，不超过500字）
         :type Text: str
-        :param DictId: 指定要加载的自定义词库ID。
+        :param _DictId: 指定要加载的自定义词库ID。
         :type DictId: str
-        :param Flag: 词法分析模式（默认取2值）：
+        :param _Flag: 词法分析模式（默认取2值）：
 1、高精度（混合粒度分词能力）；
 2、高性能（单粒度分词能力）；
         :type Flag: int
         """
-        self.Text = None
-        self.DictId = None
-        self.Flag = None
+        self._Text = None
+        self._DictId = None
+        self._Flag = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.DictId = params.get("DictId")
-        self.Flag = params.get("Flag")
+        self._Text = params.get("Text")
+        self._DictId = params.get("DictId")
+        self._Flag = params.get("Flag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1640,37 +2865,61 @@ class LexicalAnalysisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NerTokens: 命名实体识别结果。取值范围：
+        :param _NerTokens: 命名实体识别结果。取值范围：
 <li>PER：表示人名，如刘德华、贝克汉姆</li>
 <li>LOC：表示地名，如北京、华山</li>
 <li>ORG：表示机构团体名，如腾讯、最高人民法院、人大附中</li>
 <li>PRODUCTION：表示产品名，如QQ、微信、iPhone</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NerTokens: list of NerToken
-        :param PosTokens: 分词&词性标注结果（词性表请参见附录）
+        :param _PosTokens: 分词&词性标注结果（词性表请参见附录）
         :type PosTokens: list of PosToken
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NerTokens = None
-        self.PosTokens = None
-        self.RequestId = None
+        self._NerTokens = None
+        self._PosTokens = None
+        self._RequestId = None
+
+    @property
+    def NerTokens(self):
+        return self._NerTokens
+
+    @NerTokens.setter
+    def NerTokens(self, NerTokens):
+        self._NerTokens = NerTokens
+
+    @property
+    def PosTokens(self):
+        return self._PosTokens
+
+    @PosTokens.setter
+    def PosTokens(self, PosTokens):
+        self._PosTokens = PosTokens
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("NerTokens") is not None:
-            self.NerTokens = []
+            self._NerTokens = []
             for item in params.get("NerTokens"):
                 obj = NerToken()
                 obj._deserialize(item)
-                self.NerTokens.append(obj)
+                self._NerTokens.append(obj)
         if params.get("PosTokens") is not None:
-            self.PosTokens = []
+            self._PosTokens = []
             for item in params.get("PosTokens"):
                 obj = PosToken()
                 obj._deserialize(item)
-                self.PosTokens.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PosTokens.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class NerToken(AbstractModel):
@@ -1680,30 +2929,63 @@ class NerToken(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Word: 基础词
+        :param _Word: 基础词
         :type Word: str
-        :param Length: 长度
+        :param _Length: 长度
         :type Length: int
-        :param BeginOffset: 起始位置
+        :param _BeginOffset: 起始位置
         :type BeginOffset: int
-        :param Type: 命名实体类型
+        :param _Type: 命名实体类型
         :type Type: str
         """
-        self.Word = None
-        self.Length = None
-        self.BeginOffset = None
-        self.Type = None
+        self._Word = None
+        self._Length = None
+        self._BeginOffset = None
+        self._Type = None
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def BeginOffset(self):
+        return self._BeginOffset
+
+    @BeginOffset.setter
+    def BeginOffset(self, BeginOffset):
+        self._BeginOffset = BeginOffset
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Word = params.get("Word")
-        self.Length = params.get("Length")
-        self.BeginOffset = params.get("BeginOffset")
-        self.Type = params.get("Type")
+        self._Word = params.get("Word")
+        self._Length = params.get("Length")
+        self._BeginOffset = params.get("BeginOffset")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1716,18 +2998,27 @@ class ParseWordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待分析的文本（支持中英文文本，不超过500字符）
+        :param _Text: 待分析的文本（支持中英文文本，不超过500字符）
         :type Text: str
         """
-        self.Text = None
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1740,47 +3031,87 @@ class ParseWordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NormalText: 输入文本正则化的结果。（包括对英文文本中的开头和实体进行大写等）
+        :param _NormalText: 输入文本正则化的结果。（包括对英文文本中的开头和实体进行大写等）
         :type NormalText: str
-        :param BasicParticiples: 基础粒度分词和词性标注的结果。（词性表请参见附录）
+        :param _BasicParticiples: 基础粒度分词和词性标注的结果。（词性表请参见附录）
 
         :type BasicParticiples: list of BasicParticiple
-        :param CompoundParticiples: 复合粒度分词和词性标注的结果。（词性表请参见附录）
+        :param _CompoundParticiples: 复合粒度分词和词性标注的结果。（词性表请参见附录）
         :type CompoundParticiples: list of CompoundParticiple
-        :param Entities: 实体识别结果。（实体类型数据请参见附录）
+        :param _Entities: 实体识别结果。（实体类型数据请参见附录）
 
         :type Entities: list of Entity
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NormalText = None
-        self.BasicParticiples = None
-        self.CompoundParticiples = None
-        self.Entities = None
-        self.RequestId = None
+        self._NormalText = None
+        self._BasicParticiples = None
+        self._CompoundParticiples = None
+        self._Entities = None
+        self._RequestId = None
+
+    @property
+    def NormalText(self):
+        return self._NormalText
+
+    @NormalText.setter
+    def NormalText(self, NormalText):
+        self._NormalText = NormalText
+
+    @property
+    def BasicParticiples(self):
+        return self._BasicParticiples
+
+    @BasicParticiples.setter
+    def BasicParticiples(self, BasicParticiples):
+        self._BasicParticiples = BasicParticiples
+
+    @property
+    def CompoundParticiples(self):
+        return self._CompoundParticiples
+
+    @CompoundParticiples.setter
+    def CompoundParticiples(self, CompoundParticiples):
+        self._CompoundParticiples = CompoundParticiples
+
+    @property
+    def Entities(self):
+        return self._Entities
+
+    @Entities.setter
+    def Entities(self, Entities):
+        self._Entities = Entities
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.NormalText = params.get("NormalText")
+        self._NormalText = params.get("NormalText")
         if params.get("BasicParticiples") is not None:
-            self.BasicParticiples = []
+            self._BasicParticiples = []
             for item in params.get("BasicParticiples"):
                 obj = BasicParticiple()
                 obj._deserialize(item)
-                self.BasicParticiples.append(obj)
+                self._BasicParticiples.append(obj)
         if params.get("CompoundParticiples") is not None:
-            self.CompoundParticiples = []
+            self._CompoundParticiples = []
             for item in params.get("CompoundParticiples"):
                 obj = CompoundParticiple()
                 obj._deserialize(item)
-                self.CompoundParticiples.append(obj)
+                self._CompoundParticiples.append(obj)
         if params.get("Entities") is not None:
-            self.Entities = []
+            self._Entities = []
             for item in params.get("Entities"):
                 obj = Entity()
                 obj._deserialize(item)
-                self.Entities.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Entities.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class PosToken(AbstractModel):
@@ -1790,30 +3121,63 @@ class PosToken(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Word: 基础词
+        :param _Word: 基础词
         :type Word: str
-        :param Length: 长度
+        :param _Length: 长度
         :type Length: int
-        :param BeginOffset: 起始位置
+        :param _BeginOffset: 起始位置
         :type BeginOffset: int
-        :param Pos: 词性
+        :param _Pos: 词性
         :type Pos: str
         """
-        self.Word = None
-        self.Length = None
-        self.BeginOffset = None
-        self.Pos = None
+        self._Word = None
+        self._Length = None
+        self._BeginOffset = None
+        self._Pos = None
+
+    @property
+    def Word(self):
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def BeginOffset(self):
+        return self._BeginOffset
+
+    @BeginOffset.setter
+    def BeginOffset(self, BeginOffset):
+        self._BeginOffset = BeginOffset
+
+    @property
+    def Pos(self):
+        return self._Pos
+
+    @Pos.setter
+    def Pos(self, Pos):
+        self._Pos = Pos
 
 
     def _deserialize(self, params):
-        self.Word = params.get("Word")
-        self.Length = params.get("Length")
-        self.BeginOffset = params.get("BeginOffset")
-        self.Pos = params.get("Pos")
+        self._Word = params.get("Word")
+        self._Length = params.get("Length")
+        self._BeginOffset = params.get("BeginOffset")
+        self._Pos = params.get("Pos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1826,22 +3190,39 @@ class RetrieveSimilarWordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 输入的词语。（仅支持UTF-8格式，不超过10字符）
+        :param _Text: 输入的词语。（仅支持UTF-8格式，不超过10字符）
         :type Text: str
-        :param Number: 召回的相似词个数，取值范围为1-20。
+        :param _Number: 召回的相似词个数，取值范围为1-20。
         :type Number: int
         """
-        self.Text = None
-        self.Number = None
+        self._Text = None
+        self._Number = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Number = params.get("Number")
+        self._Text = params.get("Text")
+        self._Number = params.get("Number")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1854,18 +3235,34 @@ class RetrieveSimilarWordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WordList: 召回的相似词数组。
+        :param _WordList: 召回的相似词数组。
         :type WordList: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.WordList = None
-        self.RequestId = None
+        self._WordList = None
+        self._RequestId = None
+
+    @property
+    def WordList(self):
+        return self._WordList
+
+    @WordList.setter
+    def WordList(self, WordList):
+        self._WordList = WordList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.WordList = params.get("WordList")
-        self.RequestId = params.get("RequestId")
+        self._WordList = params.get("WordList")
+        self._RequestId = params.get("RequestId")
 
 
 class SearchResult(AbstractModel):
@@ -1875,30 +3272,63 @@ class SearchResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 被搜索的词条文本。
+        :param _Text: 被搜索的词条文本。
         :type Text: str
-        :param IsExist: 0表示词条不存在，1表示存在。
+        :param _IsExist: 0表示词条不存在，1表示存在。
         :type IsExist: int
-        :param MatchText: 匹配到的词条文本。
+        :param _MatchText: 匹配到的词条文本。
         :type MatchText: str
-        :param Pos: 词条的词性。
+        :param _Pos: 词条的词性。
         :type Pos: str
         """
-        self.Text = None
-        self.IsExist = None
-        self.MatchText = None
-        self.Pos = None
+        self._Text = None
+        self._IsExist = None
+        self._MatchText = None
+        self._Pos = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def IsExist(self):
+        return self._IsExist
+
+    @IsExist.setter
+    def IsExist(self, IsExist):
+        self._IsExist = IsExist
+
+    @property
+    def MatchText(self):
+        return self._MatchText
+
+    @MatchText.setter
+    def MatchText(self, MatchText):
+        self._MatchText = MatchText
+
+    @property
+    def Pos(self):
+        return self._Pos
+
+    @Pos.setter
+    def Pos(self, Pos):
+        self._Pos = Pos
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.IsExist = params.get("IsExist")
-        self.MatchText = params.get("MatchText")
-        self.Pos = params.get("Pos")
+        self._Text = params.get("Text")
+        self._IsExist = params.get("IsExist")
+        self._MatchText = params.get("MatchText")
+        self._Pos = params.get("Pos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1911,27 +3341,44 @@ class SearchWordItemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 自定义词库ID。
+        :param _DictId: 自定义词库ID。
         :type DictId: str
-        :param WordItems: 待检索的词条集合。
+        :param _WordItems: 待检索的词条集合。
         :type WordItems: list of WordItem
         """
-        self.DictId = None
-        self.WordItems = None
+        self._DictId = None
+        self._WordItems = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def WordItems(self):
+        return self._WordItems
+
+    @WordItems.setter
+    def WordItems(self, WordItems):
+        self._WordItems = WordItems
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
+        self._DictId = params.get("DictId")
         if params.get("WordItems") is not None:
-            self.WordItems = []
+            self._WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
-                self.WordItems.append(obj)
+                self._WordItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1944,24 +3391,40 @@ class SearchWordItemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Results: 词条检索结果集合。
+        :param _Results: 词条检索结果集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of SearchResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Results = None
-        self.RequestId = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = SearchResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SentenceCorrectionRequest(AbstractModel):
@@ -1971,18 +3434,27 @@ class SentenceCorrectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TextList: 待纠错的句子列表。可以以数组方式在一次请求中填写多个待纠错的句子。文本统一使用utf-8格式编码，每个中文句子的长度不超过150字符，每个英文句子的长度不超过100个单词，且数组长度需小于150，即句子总数需少于150句。
+        :param _TextList: 待纠错的句子列表。可以以数组方式在一次请求中填写多个待纠错的句子。文本统一使用utf-8格式编码，每个中文句子的长度不超过150字符，每个英文句子的长度不超过100个单词，且数组长度需小于150，即句子总数需少于150句。
         :type TextList: list of str
         """
-        self.TextList = None
+        self._TextList = None
+
+    @property
+    def TextList(self):
+        return self._TextList
+
+    @TextList.setter
+    def TextList(self, TextList):
+        self._TextList = TextList
 
 
     def _deserialize(self, params):
-        self.TextList = params.get("TextList")
+        self._TextList = params.get("TextList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1995,24 +3467,40 @@ class SentenceCorrectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CorrectionList: 纠错结果列表。
+        :param _CorrectionList: 纠错结果列表。
 （注意仅展示错误句子的纠错结果，若句子无错则不展示，若全部待纠错句子都被认为无错，则可能返回数组为空）
         :type CorrectionList: list of CorrectionItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CorrectionList = None
-        self.RequestId = None
+        self._CorrectionList = None
+        self._RequestId = None
+
+    @property
+    def CorrectionList(self):
+        return self._CorrectionList
+
+    @CorrectionList.setter
+    def CorrectionList(self, CorrectionList):
+        self._CorrectionList = CorrectionList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CorrectionList") is not None:
-            self.CorrectionList = []
+            self._CorrectionList = []
             for item in params.get("CorrectionList"):
                 obj = CorrectionItem()
                 obj._deserialize(item)
-                self.CorrectionList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CorrectionList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SentenceEmbeddingRequest(AbstractModel):
@@ -2022,18 +3510,27 @@ class SentenceEmbeddingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 输入的文本（仅支持UTF-8格式，不超过500字）
+        :param _Text: 输入的文本（仅支持UTF-8格式，不超过500字）
         :type Text: str
         """
-        self.Text = None
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2046,22 +3543,46 @@ class SentenceEmbeddingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Vector: 句向量数组
+        :param _Vector: 句向量数组
         :type Vector: list of float
-        :param Dimension: 句向量的维度
+        :param _Dimension: 句向量的维度
         :type Dimension: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Vector = None
-        self.Dimension = None
-        self.RequestId = None
+        self._Vector = None
+        self._Dimension = None
+        self._RequestId = None
+
+    @property
+    def Vector(self):
+        return self._Vector
+
+    @Vector.setter
+    def Vector(self, Vector):
+        self._Vector = Vector
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Vector = params.get("Vector")
-        self.Dimension = params.get("Dimension")
-        self.RequestId = params.get("RequestId")
+        self._Vector = params.get("Vector")
+        self._Dimension = params.get("Dimension")
+        self._RequestId = params.get("RequestId")
 
 
 class SentencePair(AbstractModel):
@@ -2071,23 +3592,40 @@ class SentencePair(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceText: 需要与目标句子计算相似度的源句子。（仅支持UTF-8格式，不超过500字符）
+        :param _SourceText: 需要与目标句子计算相似度的源句子。（仅支持UTF-8格式，不超过500字符）
         :type SourceText: str
-        :param TargetText: 目标句子。（仅支持UTF-8格式，不超过500字符）
+        :param _TargetText: 目标句子。（仅支持UTF-8格式，不超过500字符）
 
         :type TargetText: str
         """
-        self.SourceText = None
-        self.TargetText = None
+        self._SourceText = None
+        self._TargetText = None
+
+    @property
+    def SourceText(self):
+        return self._SourceText
+
+    @SourceText.setter
+    def SourceText(self, SourceText):
+        self._SourceText = SourceText
+
+    @property
+    def TargetText(self):
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
 
 
     def _deserialize(self, params):
-        self.SourceText = params.get("SourceText")
-        self.TargetText = params.get("TargetText")
+        self._SourceText = params.get("SourceText")
+        self._TargetText = params.get("TargetText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2100,32 +3638,57 @@ class SentimentAnalysisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
+        :param _Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
         :type Text: str
-        :param Flag: 待分析文本所属的类型，仅当输入参数Mode取值为2class时有效（默认取4值）：
+        :param _Flag: 待分析文本所属的类型，仅当输入参数Mode取值为2class时有效（默认取4值）：
 1、商品评论类
 2、社交类
 3、美食酒店类
 4、通用领域类
         :type Flag: int
-        :param Mode: 情感分类模式选项，可取2class或3class（默认值为2class）
+        :param _Mode: 情感分类模式选项，可取2class或3class（默认值为2class）
 1、2class：返回正负面二分类情感结果
 2、3class：返回正负面及中性三分类情感结果
         :type Mode: str
         """
-        self.Text = None
-        self.Flag = None
-        self.Mode = None
+        self._Text = None
+        self._Flag = None
+        self._Mode = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Flag = params.get("Flag")
-        self.Mode = params.get("Mode")
+        self._Text = params.get("Text")
+        self._Flag = params.get("Flag")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2138,34 +3701,74 @@ class SentimentAnalysisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Positive: 正面情感概率
+        :param _Positive: 正面情感概率
         :type Positive: float
-        :param Neutral: 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
+        :param _Neutral: 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Neutral: float
-        :param Negative: 负面情感概率
+        :param _Negative: 负面情感概率
         :type Negative: float
-        :param Sentiment: 情感分类结果：
+        :param _Sentiment: 情感分类结果：
 1、positive，表示正面情感
 2、negative，表示负面情感
 3、neutral，表示中性、无情感
         :type Sentiment: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Positive = None
-        self.Neutral = None
-        self.Negative = None
-        self.Sentiment = None
-        self.RequestId = None
+        self._Positive = None
+        self._Neutral = None
+        self._Negative = None
+        self._Sentiment = None
+        self._RequestId = None
+
+    @property
+    def Positive(self):
+        return self._Positive
+
+    @Positive.setter
+    def Positive(self, Positive):
+        self._Positive = Positive
+
+    @property
+    def Neutral(self):
+        return self._Neutral
+
+    @Neutral.setter
+    def Neutral(self, Neutral):
+        self._Neutral = Neutral
+
+    @property
+    def Negative(self):
+        return self._Negative
+
+    @Negative.setter
+    def Negative(self, Negative):
+        self._Negative = Negative
+
+    @property
+    def Sentiment(self):
+        return self._Sentiment
+
+    @Sentiment.setter
+    def Sentiment(self, Sentiment):
+        self._Sentiment = Sentiment
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Positive = params.get("Positive")
-        self.Neutral = params.get("Neutral")
-        self.Negative = params.get("Negative")
-        self.Sentiment = params.get("Sentiment")
-        self.RequestId = params.get("RequestId")
+        self._Positive = params.get("Positive")
+        self._Neutral = params.get("Neutral")
+        self._Negative = params.get("Negative")
+        self._Sentiment = params.get("Sentiment")
+        self._RequestId = params.get("RequestId")
 
 
 class SimilarWordsRequest(AbstractModel):
@@ -2175,22 +3778,39 @@ class SimilarWordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 输入的词语（仅支持UTF-8格式，不超过20字）
+        :param _Text: 输入的词语（仅支持UTF-8格式，不超过20字）
         :type Text: str
-        :param WordNumber: 相似词个数；取值范围：1-200，默认为10；
+        :param _WordNumber: 相似词个数；取值范围：1-200，默认为10；
         :type WordNumber: int
         """
-        self.Text = None
-        self.WordNumber = None
+        self._Text = None
+        self._WordNumber = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def WordNumber(self):
+        return self._WordNumber
+
+    @WordNumber.setter
+    def WordNumber(self, WordNumber):
+        self._WordNumber = WordNumber
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.WordNumber = params.get("WordNumber")
+        self._Text = params.get("Text")
+        self._WordNumber = params.get("WordNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2203,18 +3823,34 @@ class SimilarWordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SimilarWords: 相似词数组
+        :param _SimilarWords: 相似词数组
         :type SimilarWords: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SimilarWords = None
-        self.RequestId = None
+        self._SimilarWords = None
+        self._RequestId = None
+
+    @property
+    def SimilarWords(self):
+        return self._SimilarWords
+
+    @SimilarWords.setter
+    def SimilarWords(self, SimilarWords):
+        self._SimilarWords = SimilarWords
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SimilarWords = params.get("SimilarWords")
-        self.RequestId = params.get("RequestId")
+        self._SimilarWords = params.get("SimilarWords")
+        self._RequestId = params.get("RequestId")
 
 
 class Similarity(AbstractModel):
@@ -2224,22 +3860,39 @@ class Similarity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 目标文本句子
+        :param _Text: 目标文本句子
         :type Text: str
-        :param Score: 相似度分数
+        :param _Score: 相似度分数
         :type Score: float
         """
-        self.Text = None
-        self.Score = None
+        self._Text = None
+        self._Score = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Score = params.get("Score")
+        self._Text = params.get("Text")
+        self._Score = params.get("Score")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2252,24 +3905,41 @@ class TextClassificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待分类的文本（仅支持UTF-8格式，不超过10000字）
+        :param _Text: 待分类的文本（仅支持UTF-8格式，不超过10000字）
         :type Text: str
-        :param Flag: 领域分类体系（默认取1值）：
+        :param _Flag: 领域分类体系（默认取1值）：
 1、通用领域，二分类
 2、新闻领域，五分类。类别数据不一定全部返回，详情见类目映射表（注意：目前五分类已下线不可用）
         :type Flag: int
         """
-        self.Text = None
-        self.Flag = None
+        self._Text = None
+        self._Flag = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Flag = params.get("Flag")
+        self._Text = params.get("Text")
+        self._Flag = params.get("Flag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2282,23 +3952,39 @@ class TextClassificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Classes: 文本分类结果（文本分类映射表请参见附录）
+        :param _Classes: 文本分类结果（文本分类映射表请参见附录）
         :type Classes: list of ClassificationResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Classes = None
-        self.RequestId = None
+        self._Classes = None
+        self._RequestId = None
+
+    @property
+    def Classes(self):
+        return self._Classes
+
+    @Classes.setter
+    def Classes(self, Classes):
+        self._Classes = Classes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Classes") is not None:
-            self.Classes = []
+            self._Classes = []
             for item in params.get("Classes"):
                 obj = ClassificationResult()
                 obj._deserialize(item)
-                self.Classes.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Classes.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class TextCorrectionProRequest(AbstractModel):
@@ -2308,18 +3994,27 @@ class TextCorrectionProRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待纠错的文本（仅支持UTF-8格式，不超过128字符）
+        :param _Text: 待纠错的文本（仅支持UTF-8格式，不超过128字符）
         :type Text: str
         """
-        self.Text = None
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2332,28 +4027,52 @@ class TextCorrectionProResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CCITokens: 纠错详情
+        :param _CCITokens: 纠错详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type CCITokens: list of CCIToken
-        :param ResultText: 纠错后的文本
+        :param _ResultText: 纠错后的文本
         :type ResultText: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CCITokens = None
-        self.ResultText = None
-        self.RequestId = None
+        self._CCITokens = None
+        self._ResultText = None
+        self._RequestId = None
+
+    @property
+    def CCITokens(self):
+        return self._CCITokens
+
+    @CCITokens.setter
+    def CCITokens(self, CCITokens):
+        self._CCITokens = CCITokens
+
+    @property
+    def ResultText(self):
+        return self._ResultText
+
+    @ResultText.setter
+    def ResultText(self, ResultText):
+        self._ResultText = ResultText
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CCITokens") is not None:
-            self.CCITokens = []
+            self._CCITokens = []
             for item in params.get("CCITokens"):
                 obj = CCIToken()
                 obj._deserialize(item)
-                self.CCITokens.append(obj)
-        self.ResultText = params.get("ResultText")
-        self.RequestId = params.get("RequestId")
+                self._CCITokens.append(obj)
+        self._ResultText = params.get("ResultText")
+        self._RequestId = params.get("RequestId")
 
 
 class TextCorrectionRequest(AbstractModel):
@@ -2363,18 +4082,27 @@ class TextCorrectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待纠错的文本（仅支持UTF-8格式，不超过2000字符）
+        :param _Text: 待纠错的文本（仅支持UTF-8格式，不超过2000字符）
         :type Text: str
         """
-        self.Text = None
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2387,28 +4115,52 @@ class TextCorrectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CCITokens: 纠错详情
+        :param _CCITokens: 纠错详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type CCITokens: list of CCIToken
-        :param ResultText: 纠错后的文本
+        :param _ResultText: 纠错后的文本
         :type ResultText: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CCITokens = None
-        self.ResultText = None
-        self.RequestId = None
+        self._CCITokens = None
+        self._ResultText = None
+        self._RequestId = None
+
+    @property
+    def CCITokens(self):
+        return self._CCITokens
+
+    @CCITokens.setter
+    def CCITokens(self, CCITokens):
+        self._CCITokens = CCITokens
+
+    @property
+    def ResultText(self):
+        return self._ResultText
+
+    @ResultText.setter
+    def ResultText(self, ResultText):
+        self._ResultText = ResultText
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CCITokens") is not None:
-            self.CCITokens = []
+            self._CCITokens = []
             for item in params.get("CCITokens"):
                 obj = CCIToken()
                 obj._deserialize(item)
-                self.CCITokens.append(obj)
-        self.ResultText = params.get("ResultText")
-        self.RequestId = params.get("RequestId")
+                self._CCITokens.append(obj)
+        self._ResultText = params.get("ResultText")
+        self._RequestId = params.get("RequestId")
 
 
 class TextEmbellishRequest(AbstractModel):
@@ -2418,16 +4170,16 @@ class TextEmbellishRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
+        :param _Text: 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
         :type Text: str
-        :param SourceLang: 待润色文本的语言类型，支持语言如下：
+        :param _SourceLang: 待润色文本的语言类型，支持语言如下：
 zh：中文
 en：英文
         :type SourceLang: str
-        :param Number: 返回润色结果的个数。数量需>=1且<=5。
+        :param _Number: 返回润色结果的个数。数量需>=1且<=5。
 （注意实际结果可能小于指定个数）
         :type Number: int
-        :param Style: 控制润色类型，类型如下：
+        :param _Style: 控制润色类型，类型如下：
 both：同时返回改写和扩写
 expansion：扩写
 rewriting：改写
@@ -2436,21 +4188,54 @@ a2m：从古文改写为现代文
 默认为both。
         :type Style: str
         """
-        self.Text = None
-        self.SourceLang = None
-        self.Number = None
-        self.Style = None
+        self._Text = None
+        self._SourceLang = None
+        self._Number = None
+        self._Style = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def SourceLang(self):
+        return self._SourceLang
+
+    @SourceLang.setter
+    def SourceLang(self, SourceLang):
+        self._SourceLang = SourceLang
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Style(self):
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.SourceLang = params.get("SourceLang")
-        self.Number = params.get("Number")
-        self.Style = params.get("Style")
+        self._Text = params.get("Text")
+        self._SourceLang = params.get("SourceLang")
+        self._Number = params.get("Number")
+        self._Style = params.get("Style")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2463,23 +4248,39 @@ class TextEmbellishResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EmbellishList: 润色结果列表。
+        :param _EmbellishList: 润色结果列表。
         :type EmbellishList: list of Embellish
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EmbellishList = None
-        self.RequestId = None
+        self._EmbellishList = None
+        self._RequestId = None
+
+    @property
+    def EmbellishList(self):
+        return self._EmbellishList
+
+    @EmbellishList.setter
+    def EmbellishList(self, EmbellishList):
+        self._EmbellishList = EmbellishList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EmbellishList") is not None:
-            self.EmbellishList = []
+            self._EmbellishList = []
             for item in params.get("EmbellishList"):
                 obj = Embellish()
                 obj._deserialize(item)
-                self.EmbellishList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EmbellishList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class TextSimilarityProRequest(AbstractModel):
@@ -2489,22 +4290,39 @@ class TextSimilarityProRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过128字符）
+        :param _SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过128字符）
         :type SrcText: str
-        :param TargetText: 目标句子（仅支持UTF-8格式，不超过128字符）
+        :param _TargetText: 目标句子（仅支持UTF-8格式，不超过128字符）
         :type TargetText: list of str
         """
-        self.SrcText = None
-        self.TargetText = None
+        self._SrcText = None
+        self._TargetText = None
+
+    @property
+    def SrcText(self):
+        return self._SrcText
+
+    @SrcText.setter
+    def SrcText(self, SrcText):
+        self._SrcText = SrcText
+
+    @property
+    def TargetText(self):
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
 
 
     def _deserialize(self, params):
-        self.SrcText = params.get("SrcText")
-        self.TargetText = params.get("TargetText")
+        self._SrcText = params.get("SrcText")
+        self._TargetText = params.get("TargetText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2517,23 +4335,39 @@ class TextSimilarityProResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
+        :param _Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
         :type Similarity: list of Similarity
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Similarity = None
-        self.RequestId = None
+        self._Similarity = None
+        self._RequestId = None
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Similarity") is not None:
-            self.Similarity = []
+            self._Similarity = []
             for item in params.get("Similarity"):
                 obj = Similarity()
                 obj._deserialize(item)
-                self.Similarity.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Similarity.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class TextSimilarityRequest(AbstractModel):
@@ -2543,22 +4377,39 @@ class TextSimilarityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
+        :param _SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
         :type SrcText: str
-        :param TargetText: 目标句子（以句子数量为单位消耗资源包）
+        :param _TargetText: 目标句子（以句子数量为单位消耗资源包）
         :type TargetText: list of str
         """
-        self.SrcText = None
-        self.TargetText = None
+        self._SrcText = None
+        self._TargetText = None
+
+    @property
+    def SrcText(self):
+        return self._SrcText
+
+    @SrcText.setter
+    def SrcText(self, SrcText):
+        self._SrcText = SrcText
+
+    @property
+    def TargetText(self):
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
 
 
     def _deserialize(self, params):
-        self.SrcText = params.get("SrcText")
-        self.TargetText = params.get("TargetText")
+        self._SrcText = params.get("SrcText")
+        self._TargetText = params.get("TargetText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2571,23 +4422,39 @@ class TextSimilarityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
+        :param _Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
         :type Similarity: list of Similarity
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Similarity = None
-        self.RequestId = None
+        self._Similarity = None
+        self._RequestId = None
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Similarity") is not None:
-            self.Similarity = []
+            self._Similarity = []
             for item in params.get("Similarity"):
                 obj = Similarity()
                 obj._deserialize(item)
-                self.Similarity.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Similarity.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class TextWritingRequest(AbstractModel):
@@ -2597,21 +4464,21 @@ class TextWritingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
+        :param _Text: 待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
         :type Text: str
-        :param SourceLang: 待续写文本的语言类型，支持语言如下：
+        :param _SourceLang: 待续写文本的语言类型，支持语言如下：
 zh：中文
 en：英文
         :type SourceLang: str
-        :param Number: 返回续写结果的个数。数量需>=1且<=5。
+        :param _Number: 返回续写结果的个数。数量需>=1且<=5。
 （注意实际结果可能小于指定个数）
         :type Number: int
-        :param Domain: 指定续写领域，支持领域如下：
+        :param _Domain: 指定续写领域，支持领域如下：
 general：通用领域，支持中英文补全
 academic：学术领域，仅支持英文补全
 默认为general（通用领域）。
         :type Domain: str
-        :param Style: 指定续写风格，支持风格如下：
+        :param _Style: 指定续写风格，支持风格如下：
 science_fiction：科幻
 military_history：军事
 xuanhuan_wuxia：武侠
@@ -2619,23 +4486,64 @@ urban_officialdom：职场
 默认为xuanhuan_wuxia（武侠）。
         :type Style: str
         """
-        self.Text = None
-        self.SourceLang = None
-        self.Number = None
-        self.Domain = None
-        self.Style = None
+        self._Text = None
+        self._SourceLang = None
+        self._Number = None
+        self._Domain = None
+        self._Style = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def SourceLang(self):
+        return self._SourceLang
+
+    @SourceLang.setter
+    def SourceLang(self, SourceLang):
+        self._SourceLang = SourceLang
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Style(self):
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.SourceLang = params.get("SourceLang")
-        self.Number = params.get("Number")
-        self.Domain = params.get("Domain")
-        self.Style = params.get("Style")
+        self._Text = params.get("Text")
+        self._SourceLang = params.get("SourceLang")
+        self._Number = params.get("Number")
+        self._Domain = params.get("Domain")
+        self._Style = params.get("Style")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2648,23 +4556,39 @@ class TextWritingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WritingList: 续写结果列表。
+        :param _WritingList: 续写结果列表。
         :type WritingList: list of Writing
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.WritingList = None
-        self.RequestId = None
+        self._WritingList = None
+        self._RequestId = None
+
+    @property
+    def WritingList(self):
+        return self._WritingList
+
+    @WritingList.setter
+    def WritingList(self, WritingList):
+        self._WritingList = WritingList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("WritingList") is not None:
-            self.WritingList = []
+            self._WritingList = []
             for item in params.get("WritingList"):
                 obj = Writing()
                 obj._deserialize(item)
-                self.WritingList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._WritingList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateDictRequest(AbstractModel):
@@ -2674,26 +4598,51 @@ class UpdateDictRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DictId: 自定义词库ID。
+        :param _DictId: 自定义词库ID。
         :type DictId: str
-        :param Description: 词库描述，不超过100字。
+        :param _Description: 词库描述，不超过100字。
         :type Description: str
-        :param Name: 词库名称，不超过20字。
+        :param _Name: 词库名称，不超过20字。
         :type Name: str
         """
-        self.DictId = None
-        self.Description = None
-        self.Name = None
+        self._DictId = None
+        self._Description = None
+        self._Name = None
+
+    @property
+    def DictId(self):
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.DictId = params.get("DictId")
-        self.Description = params.get("Description")
-        self.Name = params.get("Name")
+        self._DictId = params.get("DictId")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2706,14 +4655,22 @@ class UpdateDictResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class WordEmbeddingRequest(AbstractModel):
@@ -2723,18 +4680,27 @@ class WordEmbeddingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 输入的词语（仅支持UTF-8格式，不超过20字）
+        :param _Text: 输入的词语（仅支持UTF-8格式，不超过20字）
         :type Text: str
         """
-        self.Text = None
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2747,22 +4713,46 @@ class WordEmbeddingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Vector: 词向量数组
+        :param _Vector: 词向量数组
         :type Vector: list of float
-        :param Dimension: 词向量的维度
+        :param _Dimension: 词向量的维度
         :type Dimension: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Vector = None
-        self.Dimension = None
-        self.RequestId = None
+        self._Vector = None
+        self._Dimension = None
+        self._RequestId = None
+
+    @property
+    def Vector(self):
+        return self._Vector
+
+    @Vector.setter
+    def Vector(self, Vector):
+        self._Vector = Vector
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Vector = params.get("Vector")
-        self.Dimension = params.get("Dimension")
-        self.RequestId = params.get("RequestId")
+        self._Vector = params.get("Vector")
+        self._Dimension = params.get("Dimension")
+        self._RequestId = params.get("RequestId")
 
 
 class WordItem(AbstractModel):
@@ -2772,26 +4762,51 @@ class WordItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 词条文本内容。
+        :param _Text: 词条文本内容。
         :type Text: str
-        :param CreateTime: 词条创建时间。
+        :param _CreateTime: 词条创建时间。
         :type CreateTime: str
-        :param Pos: 词条的词性。
+        :param _Pos: 词条的词性。
         :type Pos: str
         """
-        self.Text = None
-        self.CreateTime = None
-        self.Pos = None
+        self._Text = None
+        self._CreateTime = None
+        self._Pos = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Pos(self):
+        return self._Pos
+
+    @Pos.setter
+    def Pos(self, Pos):
+        self._Pos = Pos
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.CreateTime = params.get("CreateTime")
-        self.Pos = params.get("Pos")
+        self._Text = params.get("Text")
+        self._CreateTime = params.get("CreateTime")
+        self._Pos = params.get("Pos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2804,22 +4819,39 @@ class WordSimilarityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SrcWord: 计算相似度的源词（仅支持UTF-8格式，不超过20字）
+        :param _SrcWord: 计算相似度的源词（仅支持UTF-8格式，不超过20字）
         :type SrcWord: str
-        :param TargetWord: 计算相似度的目标词（仅支持UTF-8格式，不超过20字）
+        :param _TargetWord: 计算相似度的目标词（仅支持UTF-8格式，不超过20字）
         :type TargetWord: str
         """
-        self.SrcWord = None
-        self.TargetWord = None
+        self._SrcWord = None
+        self._TargetWord = None
+
+    @property
+    def SrcWord(self):
+        return self._SrcWord
+
+    @SrcWord.setter
+    def SrcWord(self, SrcWord):
+        self._SrcWord = SrcWord
+
+    @property
+    def TargetWord(self):
+        return self._TargetWord
+
+    @TargetWord.setter
+    def TargetWord(self, TargetWord):
+        self._TargetWord = TargetWord
 
 
     def _deserialize(self, params):
-        self.SrcWord = params.get("SrcWord")
-        self.TargetWord = params.get("TargetWord")
+        self._SrcWord = params.get("SrcWord")
+        self._TargetWord = params.get("TargetWord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2832,18 +4864,34 @@ class WordSimilarityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Similarity: 两个词语的相似度
+        :param _Similarity: 两个词语的相似度
         :type Similarity: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Similarity = None
-        self.RequestId = None
+        self._Similarity = None
+        self._RequestId = None
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Similarity = params.get("Similarity")
-        self.RequestId = params.get("RequestId")
+        self._Similarity = params.get("Similarity")
+        self._RequestId = params.get("RequestId")
 
 
 class Writing(AbstractModel):
@@ -2853,22 +4901,39 @@ class Writing(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetText: 续写的文本。
+        :param _TargetText: 续写的文本。
         :type TargetText: str
-        :param PrefixText: 续写的前缀。
+        :param _PrefixText: 续写的前缀。
         :type PrefixText: str
         """
-        self.TargetText = None
-        self.PrefixText = None
+        self._TargetText = None
+        self._PrefixText = None
+
+    @property
+    def TargetText(self):
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def PrefixText(self):
+        return self._PrefixText
+
+    @PrefixText.setter
+    def PrefixText(self, PrefixText):
+        self._PrefixText = PrefixText
 
 
     def _deserialize(self, params):
-        self.TargetText = params.get("TargetText")
-        self.PrefixText = params.get("PrefixText")
+        self._TargetText = params.get("TargetText")
+        self._PrefixText = params.get("PrefixText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

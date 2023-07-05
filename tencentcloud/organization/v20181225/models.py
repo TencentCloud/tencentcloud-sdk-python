@@ -25,18 +25,27 @@ class AcceptOrganizationInvitationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 邀请ID
+        :param _Id: 邀请ID
         :type Id: int
         """
-        self.Id = None
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -49,14 +58,22 @@ class AcceptOrganizationInvitationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AddOrganizationNodeRequest(AbstractModel):
@@ -66,22 +83,39 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ParentNodeId: 父组织单元ID
+        :param _ParentNodeId: 父组织单元ID
         :type ParentNodeId: int
-        :param Name: 组织单元名字
+        :param _Name: 组织单元名字
         :type Name: str
         """
-        self.ParentNodeId = None
-        self.Name = None
+        self._ParentNodeId = None
+        self._Name = None
+
+    @property
+    def ParentNodeId(self):
+        return self._ParentNodeId
+
+    @ParentNodeId.setter
+    def ParentNodeId(self, ParentNodeId):
+        self._ParentNodeId = ParentNodeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.ParentNodeId = params.get("ParentNodeId")
-        self.Name = params.get("Name")
+        self._ParentNodeId = params.get("ParentNodeId")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -94,18 +128,34 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: 组织单元ID
+        :param _NodeId: 组织单元ID
         :type NodeId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NodeId = None
-        self.RequestId = None
+        self._NodeId = None
+        self._RequestId = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.RequestId = params.get("RequestId")
+        self._NodeId = params.get("NodeId")
+        self._RequestId = params.get("RequestId")
 
 
 class CancelOrganizationInvitationRequest(AbstractModel):
@@ -115,18 +165,27 @@ class CancelOrganizationInvitationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 邀请ID
+        :param _Id: 邀请ID
         :type Id: int
         """
-        self.Id = None
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -139,14 +198,22 @@ class CancelOrganizationInvitationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateOrganizationRequest(AbstractModel):
@@ -156,18 +223,27 @@ class CreateOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgType: 组织类型（目前固定为1）
+        :param _OrgType: 组织类型（目前固定为1）
         :type OrgType: int
         """
-        self.OrgType = None
+        self._OrgType = None
+
+    @property
+    def OrgType(self):
+        return self._OrgType
+
+    @OrgType.setter
+    def OrgType(self, OrgType):
+        self._OrgType = OrgType
 
 
     def _deserialize(self, params):
-        self.OrgType = params.get("OrgType")
+        self._OrgType = params.get("OrgType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -180,30 +256,70 @@ class CreateOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgId: 企业组织ID
+        :param _OrgId: 企业组织ID
         :type OrgId: int
-        :param Nickname: 创建者昵称
+        :param _Nickname: 创建者昵称
         :type Nickname: str
-        :param Mail: 创建者邮箱
+        :param _Mail: 创建者邮箱
         :type Mail: str
-        :param OrgType: 组织类型
+        :param _OrgType: 组织类型
         :type OrgType: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.OrgId = None
-        self.Nickname = None
-        self.Mail = None
-        self.OrgType = None
-        self.RequestId = None
+        self._OrgId = None
+        self._Nickname = None
+        self._Mail = None
+        self._OrgType = None
+        self._RequestId = None
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def OrgType(self):
+        return self._OrgType
+
+    @OrgType.setter
+    def OrgType(self, OrgType):
+        self._OrgType = OrgType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OrgId = params.get("OrgId")
-        self.Nickname = params.get("Nickname")
-        self.Mail = params.get("Mail")
-        self.OrgType = params.get("OrgType")
-        self.RequestId = params.get("RequestId")
+        self._OrgId = params.get("OrgId")
+        self._Nickname = params.get("Nickname")
+        self._Mail = params.get("Mail")
+        self._OrgType = params.get("OrgType")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
@@ -213,22 +329,39 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: 被删除成员UIN
+        :param _MemberUin: 被删除成员UIN
         :type MemberUin: int
-        :param NodeId: 组织单元ID
+        :param _NodeId: 组织单元ID
         :type NodeId: int
         """
-        self.MemberUin = None
-        self.NodeId = None
+        self._MemberUin = None
+        self._NodeId = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
-        self.NodeId = params.get("NodeId")
+        self._MemberUin = params.get("MemberUin")
+        self._NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -241,14 +374,22 @@ class DeleteOrganizationMemberFromNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOrganizationMembersRequest(AbstractModel):
@@ -258,18 +399,27 @@ class DeleteOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uins: 被删除成员的UIN列表
+        :param _Uins: 被删除成员的UIN列表
         :type Uins: list of int non-negative
         """
-        self.Uins = None
+        self._Uins = None
+
+    @property
+    def Uins(self):
+        return self._Uins
+
+    @Uins.setter
+    def Uins(self, Uins):
+        self._Uins = Uins
 
 
     def _deserialize(self, params):
-        self.Uins = params.get("Uins")
+        self._Uins = params.get("Uins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -282,14 +432,22 @@ class DeleteOrganizationMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOrganizationNodesRequest(AbstractModel):
@@ -299,18 +457,27 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeIds: 组织单元ID列表
+        :param _NodeIds: 组织单元ID列表
         :type NodeIds: list of int non-negative
         """
-        self.NodeIds = None
+        self._NodeIds = None
+
+    @property
+    def NodeIds(self):
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
 
 
     def _deserialize(self, params):
-        self.NodeIds = params.get("NodeIds")
+        self._NodeIds = params.get("NodeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -323,14 +490,22 @@ class DeleteOrganizationNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOrganizationRequest(AbstractModel):
@@ -346,14 +521,22 @@ class DeleteOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DenyOrganizationInvitationRequest(AbstractModel):
@@ -363,18 +546,27 @@ class DenyOrganizationInvitationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 邀请ID
+        :param _Id: 邀请ID
         :type Id: int
         """
-        self.Id = None
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -387,14 +579,22 @@ class DenyOrganizationInvitationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class GetOrganizationMemberRequest(AbstractModel):
@@ -404,18 +604,27 @@ class GetOrganizationMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: 组织成员UIN
+        :param _MemberUin: 组织成员UIN
         :type MemberUin: int
         """
-        self.MemberUin = None
+        self._MemberUin = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
+        self._MemberUin = params.get("MemberUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -428,42 +637,106 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 组织成员UIN
+        :param _Uin: 组织成员UIN
         :type Uin: int
-        :param Name: 组织成员名称
+        :param _Name: 组织成员名称
         :type Name: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param JoinTime: 加入时间
+        :param _JoinTime: 加入时间
         :type JoinTime: str
-        :param NodeId: 组织单元ID
+        :param _NodeId: 组织单元ID
         :type NodeId: int
-        :param NodeName: 组织单元名称
+        :param _NodeName: 组织单元名称
         :type NodeName: str
-        :param ParentNodeId: 父组织单元ID
+        :param _ParentNodeId: 父组织单元ID
         :type ParentNodeId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Remark = None
-        self.JoinTime = None
-        self.NodeId = None
-        self.NodeName = None
-        self.ParentNodeId = None
-        self.RequestId = None
+        self._Uin = None
+        self._Name = None
+        self._Remark = None
+        self._JoinTime = None
+        self._NodeId = None
+        self._NodeName = None
+        self._ParentNodeId = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def JoinTime(self):
+        return self._JoinTime
+
+    @JoinTime.setter
+    def JoinTime(self, JoinTime):
+        self._JoinTime = JoinTime
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def ParentNodeId(self):
+        return self._ParentNodeId
+
+    @ParentNodeId.setter
+    def ParentNodeId(self, ParentNodeId):
+        self._ParentNodeId = ParentNodeId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.JoinTime = params.get("JoinTime")
-        self.NodeId = params.get("NodeId")
-        self.NodeName = params.get("NodeName")
-        self.ParentNodeId = params.get("ParentNodeId")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._JoinTime = params.get("JoinTime")
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
+        self._ParentNodeId = params.get("ParentNodeId")
+        self._RequestId = params.get("RequestId")
 
 
 class GetOrganizationRequest(AbstractModel):
@@ -479,38 +752,94 @@ class GetOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgId: 企业组织ID
+        :param _OrgId: 企业组织ID
         :type OrgId: int
-        :param HostUin: 创建者UIN
+        :param _HostUin: 创建者UIN
         :type HostUin: int
-        :param Nickname: 创建者昵称
+        :param _Nickname: 创建者昵称
         :type Nickname: str
-        :param Mail: 创建者邮箱
+        :param _Mail: 创建者邮箱
         :type Mail: str
-        :param OrgType: 企业组织类型
+        :param _OrgType: 企业组织类型
         :type OrgType: int
-        :param IsEmpty: 是否为空
+        :param _IsEmpty: 是否为空
         :type IsEmpty: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.OrgId = None
-        self.HostUin = None
-        self.Nickname = None
-        self.Mail = None
-        self.OrgType = None
-        self.IsEmpty = None
-        self.RequestId = None
+        self._OrgId = None
+        self._HostUin = None
+        self._Nickname = None
+        self._Mail = None
+        self._OrgType = None
+        self._IsEmpty = None
+        self._RequestId = None
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def HostUin(self):
+        return self._HostUin
+
+    @HostUin.setter
+    def HostUin(self, HostUin):
+        self._HostUin = HostUin
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def OrgType(self):
+        return self._OrgType
+
+    @OrgType.setter
+    def OrgType(self, OrgType):
+        self._OrgType = OrgType
+
+    @property
+    def IsEmpty(self):
+        return self._IsEmpty
+
+    @IsEmpty.setter
+    def IsEmpty(self, IsEmpty):
+        self._IsEmpty = IsEmpty
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OrgId = params.get("OrgId")
-        self.HostUin = params.get("HostUin")
-        self.Nickname = params.get("Nickname")
-        self.Mail = params.get("Mail")
-        self.OrgType = params.get("OrgType")
-        self.IsEmpty = params.get("IsEmpty")
-        self.RequestId = params.get("RequestId")
+        self._OrgId = params.get("OrgId")
+        self._HostUin = params.get("HostUin")
+        self._Nickname = params.get("Nickname")
+        self._Mail = params.get("Mail")
+        self._OrgType = params.get("OrgType")
+        self._IsEmpty = params.get("IsEmpty")
+        self._RequestId = params.get("RequestId")
 
 
 class ListOrganizationInvitationsRequest(AbstractModel):
@@ -520,26 +849,51 @@ class ListOrganizationInvitationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Invited: 是否被邀请。1：被邀请，0：发出的邀请
+        :param _Invited: 是否被邀请。1：被邀请，0：发出的邀请
         :type Invited: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
         """
-        self.Invited = None
-        self.Offset = None
-        self.Limit = None
+        self._Invited = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Invited(self):
+        return self._Invited
+
+    @Invited.setter
+    def Invited(self, Invited):
+        self._Invited = Invited
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Invited = params.get("Invited")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Invited = params.get("Invited")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -552,27 +906,51 @@ class ListOrganizationInvitationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Invitations: 邀请信息列表
+        :param _Invitations: 邀请信息列表
         :type Invitations: list of OrgInvitation
-        :param TotalCount: 总数目
+        :param _TotalCount: 总数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Invitations = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Invitations = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Invitations(self):
+        return self._Invitations
+
+    @Invitations.setter
+    def Invitations(self, Invitations):
+        self._Invitations = Invitations
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Invitations") is not None:
-            self.Invitations = []
+            self._Invitations = []
             for item in params.get("Invitations"):
                 obj = OrgInvitation()
                 obj._deserialize(item)
-                self.Invitations.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Invitations.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListOrganizationMembersRequest(AbstractModel):
@@ -582,22 +960,39 @@ class ListOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
         """
-        self.Offset = None
-        self.Limit = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -610,27 +1005,51 @@ class ListOrganizationMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Members: 成员列表
+        :param _Members: 成员列表
         :type Members: list of OrgMember
-        :param TotalCount: 总数目
+        :param _TotalCount: 总数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Members = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Members = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Members(self):
+        return self._Members
+
+    @Members.setter
+    def Members(self, Members):
+        self._Members = Members
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Members") is not None:
-            self.Members = []
+            self._Members = []
             for item in params.get("Members"):
                 obj = OrgMember()
                 obj._deserialize(item)
-                self.Members.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Members.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListOrganizationNodeMembersRequest(AbstractModel):
@@ -640,26 +1059,51 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: 企业组织单元ID
+        :param _NodeId: 企业组织单元ID
         :type NodeId: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
         """
-        self.NodeId = None
-        self.Offset = None
-        self.Limit = None
+        self._NodeId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._NodeId = params.get("NodeId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -672,27 +1116,51 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总数目
+        :param _TotalCount: 总数目
         :type TotalCount: int
-        :param Members: 成员列表
+        :param _Members: 成员列表
         :type Members: list of OrgMember
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Members = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Members = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Members(self):
+        return self._Members
+
+    @Members.setter
+    def Members(self, Members):
+        self._Members = Members
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Members") is not None:
-            self.Members = []
+            self._Members = []
             for item in params.get("Members"):
                 obj = OrgMember()
                 obj._deserialize(item)
-                self.Members.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Members.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListOrganizationNodesRequest(AbstractModel):
@@ -708,23 +1176,39 @@ class ListOrganizationNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Nodes: 企业组织单元列表
+        :param _Nodes: 企业组织单元列表
         :type Nodes: list of OrgNode
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Nodes = None
-        self.RequestId = None
+        self._Nodes = None
+        self._RequestId = None
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Nodes") is not None:
-            self.Nodes = []
+            self._Nodes = []
             for item in params.get("Nodes"):
                 obj = OrgNode()
                 obj._deserialize(item)
-                self.Nodes.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Nodes.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class MoveOrganizationMembersToNodeRequest(AbstractModel):
@@ -734,22 +1218,39 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: 组织单元ID
+        :param _NodeId: 组织单元ID
         :type NodeId: int
-        :param Uins: 成员UIN列表
+        :param _Uins: 成员UIN列表
         :type Uins: list of int non-negative
         """
-        self.NodeId = None
-        self.Uins = None
+        self._NodeId = None
+        self._Uins = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Uins(self):
+        return self._Uins
+
+    @Uins.setter
+    def Uins(self, Uins):
+        self._Uins = Uins
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.Uins = params.get("Uins")
+        self._NodeId = params.get("NodeId")
+        self._Uins = params.get("Uins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -762,14 +1263,22 @@ class MoveOrganizationMembersToNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OrgInvitation(AbstractModel):
@@ -779,58 +1288,147 @@ class OrgInvitation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 邀请ID
+        :param _Id: 邀请ID
         :type Id: int
-        :param Uin: 被邀请UIN
+        :param _Uin: 被邀请UIN
         :type Uin: int
-        :param HostUin: 创建者UIN
+        :param _HostUin: 创建者UIN
         :type HostUin: int
-        :param HostName: 创建者名称
+        :param _HostName: 创建者名称
         :type HostName: str
-        :param HostMail: 创建者邮箱
+        :param _HostMail: 创建者邮箱
         :type HostMail: str
-        :param Status: 邀请状态。-1：已过期，0：正常，1：已接受，2：已失效，3：已取消
+        :param _Status: 邀请状态。-1：已过期，0：正常，1：已接受，2：已失效，3：已取消
         :type Status: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param OrgType: 企业组织类型
+        :param _OrgType: 企业组织类型
         :type OrgType: int
-        :param InviteTime: 邀请时间
+        :param _InviteTime: 邀请时间
         :type InviteTime: str
-        :param ExpireTime: 过期时间
+        :param _ExpireTime: 过期时间
         :type ExpireTime: str
         """
-        self.Id = None
-        self.Uin = None
-        self.HostUin = None
-        self.HostName = None
-        self.HostMail = None
-        self.Status = None
-        self.Name = None
-        self.Remark = None
-        self.OrgType = None
-        self.InviteTime = None
-        self.ExpireTime = None
+        self._Id = None
+        self._Uin = None
+        self._HostUin = None
+        self._HostName = None
+        self._HostMail = None
+        self._Status = None
+        self._Name = None
+        self._Remark = None
+        self._OrgType = None
+        self._InviteTime = None
+        self._ExpireTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def HostUin(self):
+        return self._HostUin
+
+    @HostUin.setter
+    def HostUin(self, HostUin):
+        self._HostUin = HostUin
+
+    @property
+    def HostName(self):
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def HostMail(self):
+        return self._HostMail
+
+    @HostMail.setter
+    def HostMail(self, HostMail):
+        self._HostMail = HostMail
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def OrgType(self):
+        return self._OrgType
+
+    @OrgType.setter
+    def OrgType(self, OrgType):
+        self._OrgType = OrgType
+
+    @property
+    def InviteTime(self):
+        return self._InviteTime
+
+    @InviteTime.setter
+    def InviteTime(self, InviteTime):
+        self._InviteTime = InviteTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Uin = params.get("Uin")
-        self.HostUin = params.get("HostUin")
-        self.HostName = params.get("HostName")
-        self.HostMail = params.get("HostMail")
-        self.Status = params.get("Status")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.OrgType = params.get("OrgType")
-        self.InviteTime = params.get("InviteTime")
-        self.ExpireTime = params.get("ExpireTime")
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._HostUin = params.get("HostUin")
+        self._HostName = params.get("HostName")
+        self._HostMail = params.get("HostMail")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._OrgType = params.get("OrgType")
+        self._InviteTime = params.get("InviteTime")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -843,30 +1441,63 @@ class OrgMember(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: UIN
+        :param _Uin: UIN
         :type Uin: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param JoinTime: 加入时间
+        :param _JoinTime: 加入时间
         :type JoinTime: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Remark = None
-        self.JoinTime = None
+        self._Uin = None
+        self._Name = None
+        self._Remark = None
+        self._JoinTime = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def JoinTime(self):
+        return self._JoinTime
+
+    @JoinTime.setter
+    def JoinTime(self, JoinTime):
+        self._JoinTime = JoinTime
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.JoinTime = params.get("JoinTime")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._JoinTime = params.get("JoinTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -879,30 +1510,63 @@ class OrgNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: 组织单元ID
+        :param _NodeId: 组织单元ID
         :type NodeId: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param ParentNodeId: 父单元ID
+        :param _ParentNodeId: 父单元ID
         :type ParentNodeId: int
-        :param MemberCount: 成员数量
+        :param _MemberCount: 成员数量
         :type MemberCount: int
         """
-        self.NodeId = None
-        self.Name = None
-        self.ParentNodeId = None
-        self.MemberCount = None
+        self._NodeId = None
+        self._Name = None
+        self._ParentNodeId = None
+        self._MemberCount = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentNodeId(self):
+        return self._ParentNodeId
+
+    @ParentNodeId.setter
+    def ParentNodeId(self, ParentNodeId):
+        self._ParentNodeId = ParentNodeId
+
+    @property
+    def MemberCount(self):
+        return self._MemberCount
+
+    @MemberCount.setter
+    def MemberCount(self, MemberCount):
+        self._MemberCount = MemberCount
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.Name = params.get("Name")
-        self.ParentNodeId = params.get("ParentNodeId")
-        self.MemberCount = params.get("MemberCount")
+        self._NodeId = params.get("NodeId")
+        self._Name = params.get("Name")
+        self._ParentNodeId = params.get("ParentNodeId")
+        self._MemberCount = params.get("MemberCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -915,18 +1579,27 @@ class QuitOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgId: 企业组织ID
+        :param _OrgId: 企业组织ID
         :type OrgId: int
         """
-        self.OrgId = None
+        self._OrgId = None
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
 
 
     def _deserialize(self, params):
-        self.OrgId = params.get("OrgId")
+        self._OrgId = params.get("OrgId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -939,14 +1612,22 @@ class QuitOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SendOrganizationInvitationRequest(AbstractModel):
@@ -956,26 +1637,51 @@ class SendOrganizationInvitationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InviteUin: 被邀请账户UIN
+        :param _InviteUin: 被邀请账户UIN
         :type InviteUin: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
         """
-        self.InviteUin = None
-        self.Name = None
-        self.Remark = None
+        self._InviteUin = None
+        self._Name = None
+        self._Remark = None
+
+    @property
+    def InviteUin(self):
+        return self._InviteUin
+
+    @InviteUin.setter
+    def InviteUin(self, InviteUin):
+        self._InviteUin = InviteUin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.InviteUin = params.get("InviteUin")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
+        self._InviteUin = params.get("InviteUin")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -988,14 +1694,22 @@ class SendOrganizationInvitationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateOrganizationMemberRequest(AbstractModel):
@@ -1005,26 +1719,51 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: 成员UIN
+        :param _MemberUin: 成员UIN
         :type MemberUin: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
         """
-        self.MemberUin = None
-        self.Name = None
-        self.Remark = None
+        self._MemberUin = None
+        self._Name = None
+        self._Remark = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
+        self._MemberUin = params.get("MemberUin")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1037,14 +1776,22 @@ class UpdateOrganizationMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateOrganizationNodeRequest(AbstractModel):
@@ -1054,26 +1801,51 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: 企业组织单元ID
+        :param _NodeId: 企业组织单元ID
         :type NodeId: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param ParentNodeId: 父单元ID
+        :param _ParentNodeId: 父单元ID
         :type ParentNodeId: int
         """
-        self.NodeId = None
-        self.Name = None
-        self.ParentNodeId = None
+        self._NodeId = None
+        self._Name = None
+        self._ParentNodeId = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentNodeId(self):
+        return self._ParentNodeId
+
+    @ParentNodeId.setter
+    def ParentNodeId(self, ParentNodeId):
+        self._ParentNodeId = ParentNodeId
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.Name = params.get("Name")
-        self.ParentNodeId = params.get("ParentNodeId")
+        self._NodeId = params.get("NodeId")
+        self._Name = params.get("Name")
+        self._ParentNodeId = params.get("ParentNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1086,11 +1858,19 @@ class UpdateOrganizationNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

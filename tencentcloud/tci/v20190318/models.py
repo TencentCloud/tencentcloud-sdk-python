@@ -25,50 +25,123 @@ class AIAssistantRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，audio_url: 音频文件，picture：图片二进制数据的BASE64编码
+        :param _FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，audio_url: 音频文件，picture：图片二进制数据的BASE64编码
         :type FileType: str
-        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :param _Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
-        :param LibrarySet: 查询人员库列表
+        :param _LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
-        :param Template: 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
+        :param _Template: 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
         :type Template: int
-        :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :param _VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
-        :param VoiceEncodeType: 语音编码类型 1:pcm
+        :param _VoiceEncodeType: 语音编码类型 1:pcm
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
+        :param _VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
         :type VoiceFileType: int
         """
-        self.FileContent = None
-        self.FileType = None
-        self.Lang = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
-        self.Template = None
-        self.VocabLibNameList = None
-        self.VoiceEncodeType = None
-        self.VoiceFileType = None
+        self._FileContent = None
+        self._FileType = None
+        self._Lang = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+        self._Template = None
+        self._VocabLibNameList = None
+        self._VoiceEncodeType = None
+        self._VoiceFileType = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def VocabLibNameList(self):
+        return self._VocabLibNameList
+
+    @VocabLibNameList.setter
+    def VocabLibNameList(self, VocabLibNameList):
+        self._VocabLibNameList = VocabLibNameList
+
+    @property
+    def VoiceEncodeType(self):
+        return self._VoiceEncodeType
+
+    @VoiceEncodeType.setter
+    def VoiceEncodeType(self, VoiceEncodeType):
+        self._VoiceEncodeType = VoiceEncodeType
+
+    @property
+    def VoiceFileType(self):
+        return self._VoiceFileType
+
+    @VoiceFileType.setter
+    def VoiceFileType(self, VoiceFileType):
+        self._VoiceFileType = VoiceFileType
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.Lang = params.get("Lang")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
-        self.Template = params.get("Template")
-        self.VocabLibNameList = params.get("VocabLibNameList")
-        self.VoiceEncodeType = params.get("VoiceEncodeType")
-        self.VoiceFileType = params.get("VoiceFileType")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._Lang = params.get("Lang")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
+        self._Template = params.get("Template")
+        self._VocabLibNameList = params.get("VocabLibNameList")
+        self._VoiceEncodeType = params.get("VoiceEncodeType")
+        self._VoiceFileType = params.get("VoiceFileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -81,27 +154,51 @@ class AIAssistantResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageResults: 图像任务直接返回结果
+        :param _ImageResults: 图像任务直接返回结果
         :type ImageResults: list of ImageTaskResult
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageResults = None
-        self.TaskId = None
-        self.RequestId = None
+        self._ImageResults = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ImageResults(self):
+        return self._ImageResults
+
+    @ImageResults.setter
+    def ImageResults(self, ImageResults):
+        self._ImageResults = ImageResults
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImageResults") is not None:
-            self.ImageResults = []
+            self._ImageResults = []
             for item in params.get("ImageResults"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ImageResults.append(obj)
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+                self._ImageResults.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ASRStat(AbstractModel):
@@ -111,50 +208,123 @@ class ASRStat(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AvgSpeed: 当前音频的平均语速
+        :param _AvgSpeed: 当前音频的平均语速
         :type AvgSpeed: float
-        :param AvgVolume: Vad的平均音量
+        :param _AvgVolume: Vad的平均音量
         :type AvgVolume: float
-        :param MaxVolume: Vad的最大音量
+        :param _MaxVolume: Vad的最大音量
         :type MaxVolume: float
-        :param MinVolume: Vad的最小音量
+        :param _MinVolume: Vad的最小音量
         :type MinVolume: float
-        :param MuteDuration: 当前音频的非发音时长
+        :param _MuteDuration: 当前音频的非发音时长
         :type MuteDuration: int
-        :param SoundDuration: 当前音频的发音时长
+        :param _SoundDuration: 当前音频的发音时长
         :type SoundDuration: int
-        :param TotalDuration: 当前音频的总时长
+        :param _TotalDuration: 当前音频的总时长
         :type TotalDuration: int
-        :param VadNum: 当前音频的句子总数
+        :param _VadNum: 当前音频的句子总数
         :type VadNum: int
-        :param WordNum: 当前音频的单词总数
+        :param _WordNum: 当前音频的单词总数
         :type WordNum: int
         """
-        self.AvgSpeed = None
-        self.AvgVolume = None
-        self.MaxVolume = None
-        self.MinVolume = None
-        self.MuteDuration = None
-        self.SoundDuration = None
-        self.TotalDuration = None
-        self.VadNum = None
-        self.WordNum = None
+        self._AvgSpeed = None
+        self._AvgVolume = None
+        self._MaxVolume = None
+        self._MinVolume = None
+        self._MuteDuration = None
+        self._SoundDuration = None
+        self._TotalDuration = None
+        self._VadNum = None
+        self._WordNum = None
+
+    @property
+    def AvgSpeed(self):
+        return self._AvgSpeed
+
+    @AvgSpeed.setter
+    def AvgSpeed(self, AvgSpeed):
+        self._AvgSpeed = AvgSpeed
+
+    @property
+    def AvgVolume(self):
+        return self._AvgVolume
+
+    @AvgVolume.setter
+    def AvgVolume(self, AvgVolume):
+        self._AvgVolume = AvgVolume
+
+    @property
+    def MaxVolume(self):
+        return self._MaxVolume
+
+    @MaxVolume.setter
+    def MaxVolume(self, MaxVolume):
+        self._MaxVolume = MaxVolume
+
+    @property
+    def MinVolume(self):
+        return self._MinVolume
+
+    @MinVolume.setter
+    def MinVolume(self, MinVolume):
+        self._MinVolume = MinVolume
+
+    @property
+    def MuteDuration(self):
+        return self._MuteDuration
+
+    @MuteDuration.setter
+    def MuteDuration(self, MuteDuration):
+        self._MuteDuration = MuteDuration
+
+    @property
+    def SoundDuration(self):
+        return self._SoundDuration
+
+    @SoundDuration.setter
+    def SoundDuration(self, SoundDuration):
+        self._SoundDuration = SoundDuration
+
+    @property
+    def TotalDuration(self):
+        return self._TotalDuration
+
+    @TotalDuration.setter
+    def TotalDuration(self, TotalDuration):
+        self._TotalDuration = TotalDuration
+
+    @property
+    def VadNum(self):
+        return self._VadNum
+
+    @VadNum.setter
+    def VadNum(self, VadNum):
+        self._VadNum = VadNum
+
+    @property
+    def WordNum(self):
+        return self._WordNum
+
+    @WordNum.setter
+    def WordNum(self, WordNum):
+        self._WordNum = WordNum
 
 
     def _deserialize(self, params):
-        self.AvgSpeed = params.get("AvgSpeed")
-        self.AvgVolume = params.get("AvgVolume")
-        self.MaxVolume = params.get("MaxVolume")
-        self.MinVolume = params.get("MinVolume")
-        self.MuteDuration = params.get("MuteDuration")
-        self.SoundDuration = params.get("SoundDuration")
-        self.TotalDuration = params.get("TotalDuration")
-        self.VadNum = params.get("VadNum")
-        self.WordNum = params.get("WordNum")
+        self._AvgSpeed = params.get("AvgSpeed")
+        self._AvgVolume = params.get("AvgVolume")
+        self._MaxVolume = params.get("MaxVolume")
+        self._MinVolume = params.get("MinVolume")
+        self._MuteDuration = params.get("MuteDuration")
+        self._SoundDuration = params.get("SoundDuration")
+        self._TotalDuration = params.get("TotalDuration")
+        self._VadNum = params.get("VadNum")
+        self._WordNum = params.get("WordNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -167,22 +337,39 @@ class AbsenceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryIds: 识别到的人员所在的库id
+        :param _LibraryIds: 识别到的人员所在的库id
         :type LibraryIds: str
-        :param PersonId: 识别到的人员id
+        :param _PersonId: 识别到的人员id
         :type PersonId: str
         """
-        self.LibraryIds = None
-        self.PersonId = None
+        self._LibraryIds = None
+        self._PersonId = None
+
+    @property
+    def LibraryIds(self):
+        return self._LibraryIds
+
+    @LibraryIds.setter
+    def LibraryIds(self, LibraryIds):
+        self._LibraryIds = LibraryIds
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
-        self.LibraryIds = params.get("LibraryIds")
-        self.PersonId = params.get("PersonId")
+        self._LibraryIds = params.get("LibraryIds")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -195,22 +382,39 @@ class ActionCountStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Count: 数量
+        :param _Count: 数量
         :type Count: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
         """
-        self.Count = None
-        self.Name = None
+        self._Count = None
+        self._Name = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Count = params.get("Count")
-        self.Name = params.get("Name")
+        self._Count = params.get("Count")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -223,22 +427,39 @@ class ActionDurationRatioStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Ratio: 比例
+        :param _Ratio: 比例
         :type Ratio: float
         """
-        self.Name = None
-        self.Ratio = None
+        self._Name = None
+        self._Ratio = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Ratio = params.get("Ratio")
+        self._Name = params.get("Name")
+        self._Ratio = params.get("Ratio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -251,22 +472,39 @@ class ActionDurationStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Duration: 时长
+        :param _Duration: 时长
         :type Duration: int
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
         """
-        self.Duration = None
-        self.Name = None
+        self._Duration = None
+        self._Name = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Duration = params.get("Duration")
-        self.Name = params.get("Name")
+        self._Duration = params.get("Duration")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -279,54 +517,119 @@ class ActionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BodyPosture: 躯体动作识别结果，包含坐着（sit）、站立（stand）和趴睡（sleep）
+        :param _BodyPosture: 躯体动作识别结果，包含坐着（sit）、站立（stand）和趴睡（sleep）
         :type BodyPosture: :class:`tencentcloud.tci.v20190318.models.ActionType`
-        :param Handup: 举手识别结果，包含举手（hand）和未检测到举手（nothand）
+        :param _Handup: 举手识别结果，包含举手（hand）和未检测到举手（nothand）
         :type Handup: :class:`tencentcloud.tci.v20190318.models.ActionType`
-        :param LookHead: 是否低头识别结果，包含抬头（lookingahead）和未检测到抬头（notlookingahead）
+        :param _LookHead: 是否低头识别结果，包含抬头（lookingahead）和未检测到抬头（notlookingahead）
         :type LookHead: :class:`tencentcloud.tci.v20190318.models.ActionType`
-        :param Writing: 是否写字识别结果，包含写字（write）和未检测到写字（notlookingahead）
+        :param _Writing: 是否写字识别结果，包含写字（write）和未检测到写字（notlookingahead）
         :type Writing: :class:`tencentcloud.tci.v20190318.models.ActionType`
-        :param Height: 动作图像高度
+        :param _Height: 动作图像高度
         :type Height: int
-        :param Left: 动作出现图像的左侧起始坐标位置
+        :param _Left: 动作出现图像的左侧起始坐标位置
         :type Left: int
-        :param Top: 动作出现图像的上侧起始侧坐标位置
+        :param _Top: 动作出现图像的上侧起始侧坐标位置
         :type Top: int
-        :param Width: 动作图像宽度
+        :param _Width: 动作图像宽度
         :type Width: int
         """
-        self.BodyPosture = None
-        self.Handup = None
-        self.LookHead = None
-        self.Writing = None
-        self.Height = None
-        self.Left = None
-        self.Top = None
-        self.Width = None
+        self._BodyPosture = None
+        self._Handup = None
+        self._LookHead = None
+        self._Writing = None
+        self._Height = None
+        self._Left = None
+        self._Top = None
+        self._Width = None
+
+    @property
+    def BodyPosture(self):
+        return self._BodyPosture
+
+    @BodyPosture.setter
+    def BodyPosture(self, BodyPosture):
+        self._BodyPosture = BodyPosture
+
+    @property
+    def Handup(self):
+        return self._Handup
+
+    @Handup.setter
+    def Handup(self, Handup):
+        self._Handup = Handup
+
+    @property
+    def LookHead(self):
+        return self._LookHead
+
+    @LookHead.setter
+    def LookHead(self, LookHead):
+        self._LookHead = LookHead
+
+    @property
+    def Writing(self):
+        return self._Writing
+
+    @Writing.setter
+    def Writing(self, Writing):
+        self._Writing = Writing
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Top(self):
+        return self._Top
+
+    @Top.setter
+    def Top(self, Top):
+        self._Top = Top
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
 
 
     def _deserialize(self, params):
         if params.get("BodyPosture") is not None:
-            self.BodyPosture = ActionType()
-            self.BodyPosture._deserialize(params.get("BodyPosture"))
+            self._BodyPosture = ActionType()
+            self._BodyPosture._deserialize(params.get("BodyPosture"))
         if params.get("Handup") is not None:
-            self.Handup = ActionType()
-            self.Handup._deserialize(params.get("Handup"))
+            self._Handup = ActionType()
+            self._Handup._deserialize(params.get("Handup"))
         if params.get("LookHead") is not None:
-            self.LookHead = ActionType()
-            self.LookHead._deserialize(params.get("LookHead"))
+            self._LookHead = ActionType()
+            self._LookHead._deserialize(params.get("LookHead"))
         if params.get("Writing") is not None:
-            self.Writing = ActionType()
-            self.Writing._deserialize(params.get("Writing"))
-        self.Height = params.get("Height")
-        self.Left = params.get("Left")
-        self.Top = params.get("Top")
-        self.Width = params.get("Width")
+            self._Writing = ActionType()
+            self._Writing._deserialize(params.get("Writing"))
+        self._Height = params.get("Height")
+        self._Left = params.get("Left")
+        self._Top = params.get("Top")
+        self._Width = params.get("Width")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -339,41 +642,66 @@ class ActionStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActionCount: 数量统计
+        :param _ActionCount: 数量统计
         :type ActionCount: list of ActionCountStatistic
-        :param ActionDuration: 时长统计
+        :param _ActionDuration: 时长统计
         :type ActionDuration: list of ActionDurationStatistic
-        :param ActionDurationRatio: 时长比例统计
+        :param _ActionDurationRatio: 时长比例统计
         :type ActionDurationRatio: list of ActionDurationRatioStatistic
         """
-        self.ActionCount = None
-        self.ActionDuration = None
-        self.ActionDurationRatio = None
+        self._ActionCount = None
+        self._ActionDuration = None
+        self._ActionDurationRatio = None
+
+    @property
+    def ActionCount(self):
+        return self._ActionCount
+
+    @ActionCount.setter
+    def ActionCount(self, ActionCount):
+        self._ActionCount = ActionCount
+
+    @property
+    def ActionDuration(self):
+        return self._ActionDuration
+
+    @ActionDuration.setter
+    def ActionDuration(self, ActionDuration):
+        self._ActionDuration = ActionDuration
+
+    @property
+    def ActionDurationRatio(self):
+        return self._ActionDurationRatio
+
+    @ActionDurationRatio.setter
+    def ActionDurationRatio(self, ActionDurationRatio):
+        self._ActionDurationRatio = ActionDurationRatio
 
 
     def _deserialize(self, params):
         if params.get("ActionCount") is not None:
-            self.ActionCount = []
+            self._ActionCount = []
             for item in params.get("ActionCount"):
                 obj = ActionCountStatistic()
                 obj._deserialize(item)
-                self.ActionCount.append(obj)
+                self._ActionCount.append(obj)
         if params.get("ActionDuration") is not None:
-            self.ActionDuration = []
+            self._ActionDuration = []
             for item in params.get("ActionDuration"):
                 obj = ActionDurationStatistic()
                 obj._deserialize(item)
-                self.ActionDuration.append(obj)
+                self._ActionDuration.append(obj)
         if params.get("ActionDurationRatio") is not None:
-            self.ActionDurationRatio = []
+            self._ActionDurationRatio = []
             for item in params.get("ActionDurationRatio"):
                 obj = ActionDurationRatioStatistic()
                 obj._deserialize(item)
-                self.ActionDurationRatio.append(obj)
+                self._ActionDurationRatio.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -386,22 +714,39 @@ class ActionType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Confidence: 置信度
+        :param _Confidence: 置信度
         :type Confidence: float
-        :param Type: 动作类别
+        :param _Type: 动作类别
         :type Type: str
         """
-        self.Confidence = None
-        self.Type = None
+        self._Confidence = None
+        self._Type = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Type = params.get("Type")
+        self._Confidence = params.get("Confidence")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -414,31 +759,56 @@ class AllMuteSlice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MuteSlice: 所有静音片段。
+        :param _MuteSlice: 所有静音片段。
         :type MuteSlice: list of MuteSlice
-        :param MuteRatio: 静音时长占比。
+        :param _MuteRatio: 静音时长占比。
         :type MuteRatio: float
-        :param TotalMuteDuration: 静音总时长。
+        :param _TotalMuteDuration: 静音总时长。
         :type TotalMuteDuration: int
         """
-        self.MuteSlice = None
-        self.MuteRatio = None
-        self.TotalMuteDuration = None
+        self._MuteSlice = None
+        self._MuteRatio = None
+        self._TotalMuteDuration = None
+
+    @property
+    def MuteSlice(self):
+        return self._MuteSlice
+
+    @MuteSlice.setter
+    def MuteSlice(self, MuteSlice):
+        self._MuteSlice = MuteSlice
+
+    @property
+    def MuteRatio(self):
+        return self._MuteRatio
+
+    @MuteRatio.setter
+    def MuteRatio(self, MuteRatio):
+        self._MuteRatio = MuteRatio
+
+    @property
+    def TotalMuteDuration(self):
+        return self._TotalMuteDuration
+
+    @TotalMuteDuration.setter
+    def TotalMuteDuration(self, TotalMuteDuration):
+        self._TotalMuteDuration = TotalMuteDuration
 
 
     def _deserialize(self, params):
         if params.get("MuteSlice") is not None:
-            self.MuteSlice = []
+            self._MuteSlice = []
             for item in params.get("MuteSlice"):
                 obj = MuteSlice()
                 obj._deserialize(item)
-                self.MuteSlice.append(obj)
-        self.MuteRatio = params.get("MuteRatio")
-        self.TotalMuteDuration = params.get("TotalMuteDuration")
+                self._MuteSlice.append(obj)
+        self._MuteRatio = params.get("MuteRatio")
+        self._TotalMuteDuration = params.get("TotalMuteDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -451,24 +821,41 @@ class AttendanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Face: 识别到的人员信息
+        :param _Face: 识别到的人员信息
         :type Face: :class:`tencentcloud.tci.v20190318.models.FrameInfo`
-        :param PersonId: 识别到的人员id
+        :param _PersonId: 识别到的人员id
         :type PersonId: str
         """
-        self.Face = None
-        self.PersonId = None
+        self._Face = None
+        self._PersonId = None
+
+    @property
+    def Face(self):
+        return self._Face
+
+    @Face.setter
+    def Face(self, Face):
+        self._Face = Face
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
         if params.get("Face") is not None:
-            self.Face = FrameInfo()
-            self.Face._deserialize(params.get("Face"))
-        self.PersonId = params.get("PersonId")
+            self._Face = FrameInfo()
+            self._Face._deserialize(params.get("Face"))
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -481,42 +868,91 @@ class BodyMovementResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Confidence: 置信度
+        :param _Confidence: 置信度
         :type Confidence: float
-        :param Height: 识别结果高度
+        :param _Height: 识别结果高度
         :type Height: int
-        :param Left: 识别结果左坐标
+        :param _Left: 识别结果左坐标
         :type Left: int
-        :param Movements: 老师动作识别结果，包含
+        :param _Movements: 老师动作识别结果，包含
 1、teach_on_positive_attitude 正面讲解
 2、point_to_the_blackboard 指黑板
 3、writing_blackboard 写板书
 4、other 其他
         :type Movements: str
-        :param Top: 识别结果顶坐标
+        :param _Top: 识别结果顶坐标
         :type Top: int
-        :param Width: 识别结果宽度
+        :param _Width: 识别结果宽度
         :type Width: int
         """
-        self.Confidence = None
-        self.Height = None
-        self.Left = None
-        self.Movements = None
-        self.Top = None
-        self.Width = None
+        self._Confidence = None
+        self._Height = None
+        self._Left = None
+        self._Movements = None
+        self._Top = None
+        self._Width = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Movements(self):
+        return self._Movements
+
+    @Movements.setter
+    def Movements(self, Movements):
+        self._Movements = Movements
+
+    @property
+    def Top(self):
+        return self._Top
+
+    @Top.setter
+    def Top(self, Top):
+        self._Top = Top
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Height = params.get("Height")
-        self.Left = params.get("Left")
-        self.Movements = params.get("Movements")
-        self.Top = params.get("Top")
-        self.Width = params.get("Width")
+        self._Confidence = params.get("Confidence")
+        self._Height = params.get("Height")
+        self._Left = params.get("Left")
+        self._Movements = params.get("Movements")
+        self._Top = params.get("Top")
+        self._Width = params.get("Width")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -529,18 +965,27 @@ class CancelTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 待取消任务标志符。
+        :param _JobId: 待取消任务标志符。
         :type JobId: int
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -553,18 +998,34 @@ class CancelTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 取消任务标志符。
+        :param _JobId: 取消任务标志符。
         :type JobId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.RequestId = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckFacePhotoRequest(AbstractModel):
@@ -574,22 +1035,39 @@ class CheckFacePhotoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容
+        :param _FileContent: 输入分析对象内容
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址
+        :param _FileType: 输入分析对象类型，picture_url:图片地址
         :type FileType: str
         """
-        self.FileContent = None
-        self.FileType = None
+        self._FileContent = None
+        self._FileType = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -602,18 +1080,34 @@ class CheckFacePhotoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CheckResult: 人脸检查结果，0：通过检查，1：图片模糊
+        :param _CheckResult: 人脸检查结果，0：通过检查，1：图片模糊
         :type CheckResult: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CheckResult = None
-        self.RequestId = None
+        self._CheckResult = None
+        self._RequestId = None
+
+    @property
+    def CheckResult(self):
+        return self._CheckResult
+
+    @CheckResult.setter
+    def CheckResult(self, CheckResult):
+        self._CheckResult = CheckResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CheckResult = params.get("CheckResult")
-        self.RequestId = params.get("RequestId")
+        self._CheckResult = params.get("CheckResult")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFaceRequest(AbstractModel):
@@ -623,30 +1117,63 @@ class CreateFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param Images: 图片数据 base64 字符串，与 Urls 参数选择一个输入
+        :param _Images: 图片数据 base64 字符串，与 Urls 参数选择一个输入
         :type Images: list of str
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param Urls: 图片下载地址，与 Images 参数选择一个输入
+        :param _Urls: 图片下载地址，与 Images 参数选择一个输入
         :type Urls: list of str
         """
-        self.PersonId = None
-        self.Images = None
-        self.LibraryId = None
-        self.Urls = None
+        self._PersonId = None
+        self._Images = None
+        self._LibraryId = None
+        self._Urls = None
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Images(self):
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
 
 
     def _deserialize(self, params):
-        self.PersonId = params.get("PersonId")
-        self.Images = params.get("Images")
-        self.LibraryId = params.get("LibraryId")
-        self.Urls = params.get("Urls")
+        self._PersonId = params.get("PersonId")
+        self._Images = params.get("Images")
+        self._LibraryId = params.get("LibraryId")
+        self._Urls = params.get("Urls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -659,23 +1186,39 @@ class CreateFaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceInfoSet: 人脸操作结果信息
+        :param _FaceInfoSet: 人脸操作结果信息
         :type FaceInfoSet: list of FaceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FaceInfoSet = None
-        self.RequestId = None
+        self._FaceInfoSet = None
+        self._RequestId = None
+
+    @property
+    def FaceInfoSet(self):
+        return self._FaceInfoSet
+
+    @FaceInfoSet.setter
+    def FaceInfoSet(self, FaceInfoSet):
+        self._FaceInfoSet = FaceInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FaceInfoSet") is not None:
-            self.FaceInfoSet = []
+            self._FaceInfoSet = []
             for item in params.get("FaceInfoSet"):
                 obj = FaceInfo()
                 obj._deserialize(item)
-                self.FaceInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLibraryRequest(AbstractModel):
@@ -685,22 +1228,39 @@ class CreateLibraryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryName: 人员库名称
+        :param _LibraryName: 人员库名称
         :type LibraryName: str
-        :param LibraryId: 人员库唯一标志符，为空则系统自动生成。
+        :param _LibraryId: 人员库唯一标志符，为空则系统自动生成。
         :type LibraryId: str
         """
-        self.LibraryName = None
-        self.LibraryId = None
+        self._LibraryName = None
+        self._LibraryId = None
+
+    @property
+    def LibraryName(self):
+        return self._LibraryName
+
+    @LibraryName.setter
+    def LibraryName(self, LibraryName):
+        self._LibraryName = LibraryName
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
 
 
     def _deserialize(self, params):
-        self.LibraryName = params.get("LibraryName")
-        self.LibraryId = params.get("LibraryId")
+        self._LibraryName = params.get("LibraryName")
+        self._LibraryId = params.get("LibraryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -713,22 +1273,46 @@ class CreateLibraryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param LibraryName: 人员库名称
+        :param _LibraryName: 人员库名称
         :type LibraryName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LibraryId = None
-        self.LibraryName = None
-        self.RequestId = None
+        self._LibraryId = None
+        self._LibraryName = None
+        self._RequestId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def LibraryName(self):
+        return self._LibraryName
+
+    @LibraryName.setter
+    def LibraryName(self, LibraryName):
+        self._LibraryName = LibraryName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.LibraryName = params.get("LibraryName")
-        self.RequestId = params.get("RequestId")
+        self._LibraryId = params.get("LibraryId")
+        self._LibraryName = params.get("LibraryName")
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePersonRequest(AbstractModel):
@@ -738,54 +1322,135 @@ class CreatePersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param PersonName: 人员名称
+        :param _PersonName: 人员名称
         :type PersonName: str
-        :param Images: 图片数据 base64 字符串，与 Urls 参数选择一个输入
+        :param _Images: 图片数据 base64 字符串，与 Urls 参数选择一个输入
         :type Images: list of str
-        :param JobNumber: 人员工作号码
+        :param _JobNumber: 人员工作号码
         :type JobNumber: str
-        :param Mail: 人员邮箱
+        :param _Mail: 人员邮箱
         :type Mail: str
-        :param Male: 人员性别，0：未知 1：男性，2：女性
+        :param _Male: 人员性别，0：未知 1：男性，2：女性
         :type Male: int
-        :param PersonId: 自定义人员 ID，注意不能使用 tci_person_ 前缀
+        :param _PersonId: 自定义人员 ID，注意不能使用 tci_person_ 前缀
         :type PersonId: str
-        :param PhoneNumber: 人员电话号码
+        :param _PhoneNumber: 人员电话号码
         :type PhoneNumber: str
-        :param StudentNumber: 人员学生号码
+        :param _StudentNumber: 人员学生号码
         :type StudentNumber: str
-        :param Urls: 图片下载地址，与 Images 参数选择一个输入
+        :param _Urls: 图片下载地址，与 Images 参数选择一个输入
         :type Urls: list of str
         """
-        self.LibraryId = None
-        self.PersonName = None
-        self.Images = None
-        self.JobNumber = None
-        self.Mail = None
-        self.Male = None
-        self.PersonId = None
-        self.PhoneNumber = None
-        self.StudentNumber = None
-        self.Urls = None
+        self._LibraryId = None
+        self._PersonName = None
+        self._Images = None
+        self._JobNumber = None
+        self._Mail = None
+        self._Male = None
+        self._PersonId = None
+        self._PhoneNumber = None
+        self._StudentNumber = None
+        self._Urls = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonName(self):
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def Images(self):
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def JobNumber(self):
+        return self._JobNumber
+
+    @JobNumber.setter
+    def JobNumber(self, JobNumber):
+        self._JobNumber = JobNumber
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def Male(self):
+        return self._Male
+
+    @Male.setter
+    def Male(self, Male):
+        self._Male = Male
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def StudentNumber(self):
+        return self._StudentNumber
+
+    @StudentNumber.setter
+    def StudentNumber(self, StudentNumber):
+        self._StudentNumber = StudentNumber
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.PersonName = params.get("PersonName")
-        self.Images = params.get("Images")
-        self.JobNumber = params.get("JobNumber")
-        self.Mail = params.get("Mail")
-        self.Male = params.get("Male")
-        self.PersonId = params.get("PersonId")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.StudentNumber = params.get("StudentNumber")
-        self.Urls = params.get("Urls")
+        self._LibraryId = params.get("LibraryId")
+        self._PersonName = params.get("PersonName")
+        self._Images = params.get("Images")
+        self._JobNumber = params.get("JobNumber")
+        self._Mail = params.get("Mail")
+        self._Male = params.get("Male")
+        self._PersonId = params.get("PersonId")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._StudentNumber = params.get("StudentNumber")
+        self._Urls = params.get("Urls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -798,35 +1463,75 @@ class CreatePersonResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceInfoSet: 人脸操作结果信息
+        :param _FaceInfoSet: 人脸操作结果信息
         :type FaceInfoSet: list of FaceInfo
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param PersonName: 人员名称
+        :param _PersonName: 人员名称
         :type PersonName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FaceInfoSet = None
-        self.LibraryId = None
-        self.PersonId = None
-        self.PersonName = None
-        self.RequestId = None
+        self._FaceInfoSet = None
+        self._LibraryId = None
+        self._PersonId = None
+        self._PersonName = None
+        self._RequestId = None
+
+    @property
+    def FaceInfoSet(self):
+        return self._FaceInfoSet
+
+    @FaceInfoSet.setter
+    def FaceInfoSet(self, FaceInfoSet):
+        self._FaceInfoSet = FaceInfoSet
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def PersonName(self):
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FaceInfoSet") is not None:
-            self.FaceInfoSet = []
+            self._FaceInfoSet = []
             for item in params.get("FaceInfoSet"):
                 obj = FaceInfo()
                 obj._deserialize(item)
-                self.FaceInfoSet.append(obj)
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
-        self.PersonName = params.get("PersonName")
-        self.RequestId = params.get("RequestId")
+                self._FaceInfoSet.append(obj)
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
+        self._PersonName = params.get("PersonName")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateVocabLibRequest(AbstractModel):
@@ -836,18 +1541,27 @@ class CreateVocabLibRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabLibName: 词汇库名称
+        :param _VocabLibName: 词汇库名称
         :type VocabLibName: str
         """
-        self.VocabLibName = None
+        self._VocabLibName = None
+
+    @property
+    def VocabLibName(self):
+        return self._VocabLibName
+
+    @VocabLibName.setter
+    def VocabLibName(self, VocabLibName):
+        self._VocabLibName = VocabLibName
 
 
     def _deserialize(self, params):
-        self.VocabLibName = params.get("VocabLibName")
+        self._VocabLibName = params.get("VocabLibName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -860,14 +1574,22 @@ class CreateVocabLibResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateVocabRequest(AbstractModel):
@@ -877,22 +1599,39 @@ class CreateVocabRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabLibName: 要添加词汇的词汇库名
+        :param _VocabLibName: 要添加词汇的词汇库名
         :type VocabLibName: str
-        :param VocabList: 要添加的词汇列表
+        :param _VocabList: 要添加的词汇列表
         :type VocabList: list of str
         """
-        self.VocabLibName = None
-        self.VocabList = None
+        self._VocabLibName = None
+        self._VocabList = None
+
+    @property
+    def VocabLibName(self):
+        return self._VocabLibName
+
+    @VocabLibName.setter
+    def VocabLibName(self, VocabLibName):
+        self._VocabLibName = VocabLibName
+
+    @property
+    def VocabList(self):
+        return self._VocabList
+
+    @VocabList.setter
+    def VocabList(self, VocabList):
+        self._VocabList = VocabList
 
 
     def _deserialize(self, params):
-        self.VocabLibName = params.get("VocabLibName")
-        self.VocabList = params.get("VocabList")
+        self._VocabLibName = params.get("VocabLibName")
+        self._VocabList = params.get("VocabList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -905,14 +1644,22 @@ class CreateVocabResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteFaceRequest(AbstractModel):
@@ -922,26 +1669,51 @@ class DeleteFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceIdSet: 人脸标识符数组
+        :param _FaceIdSet: 人脸标识符数组
         :type FaceIdSet: list of str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
         """
-        self.FaceIdSet = None
-        self.PersonId = None
-        self.LibraryId = None
+        self._FaceIdSet = None
+        self._PersonId = None
+        self._LibraryId = None
+
+    @property
+    def FaceIdSet(self):
+        return self._FaceIdSet
+
+    @FaceIdSet.setter
+    def FaceIdSet(self, FaceIdSet):
+        self._FaceIdSet = FaceIdSet
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
 
 
     def _deserialize(self, params):
-        self.FaceIdSet = params.get("FaceIdSet")
-        self.PersonId = params.get("PersonId")
-        self.LibraryId = params.get("LibraryId")
+        self._FaceIdSet = params.get("FaceIdSet")
+        self._PersonId = params.get("PersonId")
+        self._LibraryId = params.get("LibraryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -954,23 +1726,39 @@ class DeleteFaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceInfoSet: 人脸操作结果
+        :param _FaceInfoSet: 人脸操作结果
         :type FaceInfoSet: list of FaceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FaceInfoSet = None
-        self.RequestId = None
+        self._FaceInfoSet = None
+        self._RequestId = None
+
+    @property
+    def FaceInfoSet(self):
+        return self._FaceInfoSet
+
+    @FaceInfoSet.setter
+    def FaceInfoSet(self, FaceInfoSet):
+        self._FaceInfoSet = FaceInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FaceInfoSet") is not None:
-            self.FaceInfoSet = []
+            self._FaceInfoSet = []
             for item in params.get("FaceInfoSet"):
                 obj = FaceInfo()
                 obj._deserialize(item)
-                self.FaceInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLibraryRequest(AbstractModel):
@@ -980,18 +1768,27 @@ class DeleteLibraryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
         """
-        self.LibraryId = None
+        self._LibraryId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
+        self._LibraryId = params.get("LibraryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1004,22 +1801,46 @@ class DeleteLibraryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param LibraryName: 人员库名称
+        :param _LibraryName: 人员库名称
         :type LibraryName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LibraryId = None
-        self.LibraryName = None
-        self.RequestId = None
+        self._LibraryId = None
+        self._LibraryName = None
+        self._RequestId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def LibraryName(self):
+        return self._LibraryName
+
+    @LibraryName.setter
+    def LibraryName(self, LibraryName):
+        self._LibraryName = LibraryName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.LibraryName = params.get("LibraryName")
-        self.RequestId = params.get("RequestId")
+        self._LibraryId = params.get("LibraryId")
+        self._LibraryName = params.get("LibraryName")
+        self._RequestId = params.get("RequestId")
 
 
 class DeletePersonRequest(AbstractModel):
@@ -1029,22 +1850,39 @@ class DeletePersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
         """
-        self.LibraryId = None
-        self.PersonId = None
+        self._LibraryId = None
+        self._PersonId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1057,35 +1895,75 @@ class DeletePersonResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceInfoSet: 人脸信息
+        :param _FaceInfoSet: 人脸信息
         :type FaceInfoSet: list of FaceInfo
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param PersonName: 人员名称
+        :param _PersonName: 人员名称
         :type PersonName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FaceInfoSet = None
-        self.LibraryId = None
-        self.PersonId = None
-        self.PersonName = None
-        self.RequestId = None
+        self._FaceInfoSet = None
+        self._LibraryId = None
+        self._PersonId = None
+        self._PersonName = None
+        self._RequestId = None
+
+    @property
+    def FaceInfoSet(self):
+        return self._FaceInfoSet
+
+    @FaceInfoSet.setter
+    def FaceInfoSet(self, FaceInfoSet):
+        self._FaceInfoSet = FaceInfoSet
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def PersonName(self):
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FaceInfoSet") is not None:
-            self.FaceInfoSet = []
+            self._FaceInfoSet = []
             for item in params.get("FaceInfoSet"):
                 obj = FaceInfo()
                 obj._deserialize(item)
-                self.FaceInfoSet.append(obj)
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
-        self.PersonName = params.get("PersonName")
-        self.RequestId = params.get("RequestId")
+                self._FaceInfoSet.append(obj)
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
+        self._PersonName = params.get("PersonName")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteVocabLibRequest(AbstractModel):
@@ -1095,18 +1973,27 @@ class DeleteVocabLibRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabLibName: 词汇库名称
+        :param _VocabLibName: 词汇库名称
         :type VocabLibName: str
         """
-        self.VocabLibName = None
+        self._VocabLibName = None
+
+    @property
+    def VocabLibName(self):
+        return self._VocabLibName
+
+    @VocabLibName.setter
+    def VocabLibName(self, VocabLibName):
+        self._VocabLibName = VocabLibName
 
 
     def _deserialize(self, params):
-        self.VocabLibName = params.get("VocabLibName")
+        self._VocabLibName = params.get("VocabLibName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1119,14 +2006,22 @@ class DeleteVocabLibResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteVocabRequest(AbstractModel):
@@ -1136,22 +2031,39 @@ class DeleteVocabRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabLibName: 要删除词汇的词汇库名
+        :param _VocabLibName: 要删除词汇的词汇库名
         :type VocabLibName: str
-        :param VocabList: 要删除的词汇列表
+        :param _VocabList: 要删除的词汇列表
         :type VocabList: list of str
         """
-        self.VocabLibName = None
-        self.VocabList = None
+        self._VocabLibName = None
+        self._VocabList = None
+
+    @property
+    def VocabLibName(self):
+        return self._VocabLibName
+
+    @VocabLibName.setter
+    def VocabLibName(self, VocabLibName):
+        self._VocabLibName = VocabLibName
+
+    @property
+    def VocabList(self):
+        return self._VocabList
+
+    @VocabList.setter
+    def VocabList(self, VocabList):
+        self._VocabList = VocabList
 
 
     def _deserialize(self, params):
-        self.VocabLibName = params.get("VocabLibName")
-        self.VocabList = params.get("VocabList")
+        self._VocabLibName = params.get("VocabLibName")
+        self._VocabList = params.get("VocabList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1164,14 +2076,22 @@ class DeleteVocabResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAITaskResultRequest(AbstractModel):
@@ -1181,26 +2101,51 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务唯一标识符。在URL方式时提交请求后会返回一个任务标识符，后续查询该url的结果时使用这个标识符进行查询。
+        :param _TaskId: 任务唯一标识符。在URL方式时提交请求后会返回一个任务标识符，后续查询该url的结果时使用这个标识符进行查询。
         :type TaskId: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
         """
-        self.TaskId = None
-        self.Limit = None
-        self.Offset = None
+        self._TaskId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._TaskId = params.get("TaskId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1213,40 +2158,88 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AudioResult: 音频分析结果
+        :param _AudioResult: 音频分析结果
         :type AudioResult: :class:`tencentcloud.tci.v20190318.models.StandardAudioResult`
-        :param ImageResult: 图像分析结果
+        :param _ImageResult: 图像分析结果
         :type ImageResult: :class:`tencentcloud.tci.v20190318.models.StandardImageResult`
-        :param VideoResult: 视频分析结果
+        :param _VideoResult: 视频分析结果
         :type VideoResult: :class:`tencentcloud.tci.v20190318.models.StandardVideoResult`
-        :param Status: 任务状态
+        :param _Status: 任务状态
         :type Status: str
-        :param TaskId: 任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :param _TaskId: 任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AudioResult = None
-        self.ImageResult = None
-        self.VideoResult = None
-        self.Status = None
-        self.TaskId = None
-        self.RequestId = None
+        self._AudioResult = None
+        self._ImageResult = None
+        self._VideoResult = None
+        self._Status = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def AudioResult(self):
+        return self._AudioResult
+
+    @AudioResult.setter
+    def AudioResult(self, AudioResult):
+        self._AudioResult = AudioResult
+
+    @property
+    def ImageResult(self):
+        return self._ImageResult
+
+    @ImageResult.setter
+    def ImageResult(self, ImageResult):
+        self._ImageResult = ImageResult
+
+    @property
+    def VideoResult(self):
+        return self._VideoResult
+
+    @VideoResult.setter
+    def VideoResult(self, VideoResult):
+        self._VideoResult = VideoResult
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AudioResult") is not None:
-            self.AudioResult = StandardAudioResult()
-            self.AudioResult._deserialize(params.get("AudioResult"))
+            self._AudioResult = StandardAudioResult()
+            self._AudioResult._deserialize(params.get("AudioResult"))
         if params.get("ImageResult") is not None:
-            self.ImageResult = StandardImageResult()
-            self.ImageResult._deserialize(params.get("ImageResult"))
+            self._ImageResult = StandardImageResult()
+            self._ImageResult._deserialize(params.get("ImageResult"))
         if params.get("VideoResult") is not None:
-            self.VideoResult = StandardVideoResult()
-            self.VideoResult._deserialize(params.get("VideoResult"))
-        self.Status = params.get("Status")
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+            self._VideoResult = StandardVideoResult()
+            self._VideoResult._deserialize(params.get("VideoResult"))
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAttendanceResultRequest(AbstractModel):
@@ -1256,18 +2249,27 @@ class DescribeAttendanceResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务唯一标识符
+        :param _JobId: 任务唯一标识符
         :type JobId: int
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1280,49 +2282,97 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AbsenceSetInLibs: 缺失人员的ID列表(只针对请求中的libids字段)
+        :param _AbsenceSetInLibs: 缺失人员的ID列表(只针对请求中的libids字段)
         :type AbsenceSetInLibs: list of AbsenceInfo
-        :param AttendanceSet: 确定出勤人员列表
+        :param _AttendanceSet: 确定出勤人员列表
         :type AttendanceSet: list of AttendanceInfo
-        :param SuspectedSet: 疑似出勤人员列表
+        :param _SuspectedSet: 疑似出勤人员列表
         :type SuspectedSet: list of SuspectedInfo
-        :param AbsenceSet: 缺失人员的ID列表(只针对请求中的personids字段)
+        :param _AbsenceSet: 缺失人员的ID列表(只针对请求中的personids字段)
         :type AbsenceSet: list of str
-        :param Progress: 请求处理进度
+        :param _Progress: 请求处理进度
         :type Progress: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AbsenceSetInLibs = None
-        self.AttendanceSet = None
-        self.SuspectedSet = None
-        self.AbsenceSet = None
-        self.Progress = None
-        self.RequestId = None
+        self._AbsenceSetInLibs = None
+        self._AttendanceSet = None
+        self._SuspectedSet = None
+        self._AbsenceSet = None
+        self._Progress = None
+        self._RequestId = None
+
+    @property
+    def AbsenceSetInLibs(self):
+        return self._AbsenceSetInLibs
+
+    @AbsenceSetInLibs.setter
+    def AbsenceSetInLibs(self, AbsenceSetInLibs):
+        self._AbsenceSetInLibs = AbsenceSetInLibs
+
+    @property
+    def AttendanceSet(self):
+        return self._AttendanceSet
+
+    @AttendanceSet.setter
+    def AttendanceSet(self, AttendanceSet):
+        self._AttendanceSet = AttendanceSet
+
+    @property
+    def SuspectedSet(self):
+        return self._SuspectedSet
+
+    @SuspectedSet.setter
+    def SuspectedSet(self, SuspectedSet):
+        self._SuspectedSet = SuspectedSet
+
+    @property
+    def AbsenceSet(self):
+        return self._AbsenceSet
+
+    @AbsenceSet.setter
+    def AbsenceSet(self, AbsenceSet):
+        self._AbsenceSet = AbsenceSet
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AbsenceSetInLibs") is not None:
-            self.AbsenceSetInLibs = []
+            self._AbsenceSetInLibs = []
             for item in params.get("AbsenceSetInLibs"):
                 obj = AbsenceInfo()
                 obj._deserialize(item)
-                self.AbsenceSetInLibs.append(obj)
+                self._AbsenceSetInLibs.append(obj)
         if params.get("AttendanceSet") is not None:
-            self.AttendanceSet = []
+            self._AttendanceSet = []
             for item in params.get("AttendanceSet"):
                 obj = AttendanceInfo()
                 obj._deserialize(item)
-                self.AttendanceSet.append(obj)
+                self._AttendanceSet.append(obj)
         if params.get("SuspectedSet") is not None:
-            self.SuspectedSet = []
+            self._SuspectedSet = []
             for item in params.get("SuspectedSet"):
                 obj = SuspectedInfo()
                 obj._deserialize(item)
-                self.SuspectedSet.append(obj)
-        self.AbsenceSet = params.get("AbsenceSet")
-        self.Progress = params.get("Progress")
-        self.RequestId = params.get("RequestId")
+                self._SuspectedSet.append(obj)
+        self._AbsenceSet = params.get("AbsenceSet")
+        self._Progress = params.get("Progress")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAudioTaskRequest(AbstractModel):
@@ -1332,26 +2382,51 @@ class DescribeAudioTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :param _JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
         """
-        self.JobId = None
-        self.Limit = None
-        self.Offset = None
+        self._JobId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._JobId = params.get("JobId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1364,69 +2439,149 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllMuteSlice: 如果请求中开启了静音检测开关，则会返回所有的静音片段（静音时长超过阈值的片段）。
+        :param _AllMuteSlice: 如果请求中开启了静音检测开关，则会返回所有的静音片段（静音时长超过阈值的片段）。
         :type AllMuteSlice: :class:`tencentcloud.tci.v20190318.models.AllMuteSlice`
-        :param AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
+        :param _AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
         :type AsrStat: :class:`tencentcloud.tci.v20190318.models.ASRStat`
-        :param Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :param _Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
         :type Texts: list of WholeTextItem
-        :param VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
+        :param _VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
         :type VocabAnalysisDetailInfo: list of VocabDetailInfomation
-        :param VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
+        :param _VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
-        :param AllTexts: 返回音频全部文本。
+        :param _AllTexts: 返回音频全部文本。
         :type AllTexts: str
-        :param JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :param _JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
-        :param Progress: 返回的当前处理进度。
+        :param _Progress: 返回的当前处理进度。
         :type Progress: float
-        :param TotalCount: 结果总数
+        :param _TotalCount: 结果总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AllMuteSlice = None
-        self.AsrStat = None
-        self.Texts = None
-        self.VocabAnalysisDetailInfo = None
-        self.VocabAnalysisStatInfo = None
-        self.AllTexts = None
-        self.JobId = None
-        self.Progress = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AllMuteSlice = None
+        self._AsrStat = None
+        self._Texts = None
+        self._VocabAnalysisDetailInfo = None
+        self._VocabAnalysisStatInfo = None
+        self._AllTexts = None
+        self._JobId = None
+        self._Progress = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AllMuteSlice(self):
+        return self._AllMuteSlice
+
+    @AllMuteSlice.setter
+    def AllMuteSlice(self, AllMuteSlice):
+        self._AllMuteSlice = AllMuteSlice
+
+    @property
+    def AsrStat(self):
+        return self._AsrStat
+
+    @AsrStat.setter
+    def AsrStat(self, AsrStat):
+        self._AsrStat = AsrStat
+
+    @property
+    def Texts(self):
+        return self._Texts
+
+    @Texts.setter
+    def Texts(self, Texts):
+        self._Texts = Texts
+
+    @property
+    def VocabAnalysisDetailInfo(self):
+        return self._VocabAnalysisDetailInfo
+
+    @VocabAnalysisDetailInfo.setter
+    def VocabAnalysisDetailInfo(self, VocabAnalysisDetailInfo):
+        self._VocabAnalysisDetailInfo = VocabAnalysisDetailInfo
+
+    @property
+    def VocabAnalysisStatInfo(self):
+        return self._VocabAnalysisStatInfo
+
+    @VocabAnalysisStatInfo.setter
+    def VocabAnalysisStatInfo(self, VocabAnalysisStatInfo):
+        self._VocabAnalysisStatInfo = VocabAnalysisStatInfo
+
+    @property
+    def AllTexts(self):
+        return self._AllTexts
+
+    @AllTexts.setter
+    def AllTexts(self, AllTexts):
+        self._AllTexts = AllTexts
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AllMuteSlice") is not None:
-            self.AllMuteSlice = AllMuteSlice()
-            self.AllMuteSlice._deserialize(params.get("AllMuteSlice"))
+            self._AllMuteSlice = AllMuteSlice()
+            self._AllMuteSlice._deserialize(params.get("AllMuteSlice"))
         if params.get("AsrStat") is not None:
-            self.AsrStat = ASRStat()
-            self.AsrStat._deserialize(params.get("AsrStat"))
+            self._AsrStat = ASRStat()
+            self._AsrStat._deserialize(params.get("AsrStat"))
         if params.get("Texts") is not None:
-            self.Texts = []
+            self._Texts = []
             for item in params.get("Texts"):
                 obj = WholeTextItem()
                 obj._deserialize(item)
-                self.Texts.append(obj)
+                self._Texts.append(obj)
         if params.get("VocabAnalysisDetailInfo") is not None:
-            self.VocabAnalysisDetailInfo = []
+            self._VocabAnalysisDetailInfo = []
             for item in params.get("VocabAnalysisDetailInfo"):
                 obj = VocabDetailInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisDetailInfo.append(obj)
+                self._VocabAnalysisDetailInfo.append(obj)
         if params.get("VocabAnalysisStatInfo") is not None:
-            self.VocabAnalysisStatInfo = []
+            self._VocabAnalysisStatInfo = []
             for item in params.get("VocabAnalysisStatInfo"):
                 obj = VocabStatInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisStatInfo.append(obj)
-        self.AllTexts = params.get("AllTexts")
-        self.JobId = params.get("JobId")
-        self.Progress = params.get("Progress")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._VocabAnalysisStatInfo.append(obj)
+        self._AllTexts = params.get("AllTexts")
+        self._JobId = params.get("JobId")
+        self._Progress = params.get("Progress")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeConversationTaskRequest(AbstractModel):
@@ -1436,30 +2591,63 @@ class DescribeConversationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :param _JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
-        :param Identity: 要查询明细的流的身份，1 老师 2 学生
+        :param _Identity: 要查询明细的流的身份，1 老师 2 学生
         :type Identity: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
         """
-        self.JobId = None
-        self.Identity = None
-        self.Limit = None
-        self.Offset = None
+        self._JobId = None
+        self._Identity = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Identity(self):
+        return self._Identity
+
+    @Identity.setter
+    def Identity(self, Identity):
+        self._Identity = Identity
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Identity = params.get("Identity")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._JobId = params.get("JobId")
+        self._Identity = params.get("Identity")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1472,63 +2660,135 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
+        :param _AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
         :type AsrStat: :class:`tencentcloud.tci.v20190318.models.ASRStat`
-        :param Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :param _Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
         :type Texts: list of WholeTextItem
-        :param VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
+        :param _VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
         :type VocabAnalysisDetailInfo: list of VocabDetailInfomation
-        :param VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
+        :param _VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
-        :param AllTexts: 整个音频流的全部文本
+        :param _AllTexts: 整个音频流的全部文本
         :type AllTexts: str
-        :param JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :param _JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
-        :param Progress: 返回的当前处理进度。
+        :param _Progress: 返回的当前处理进度。
         :type Progress: float
-        :param TotalCount: 结果总数
+        :param _TotalCount: 结果总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsrStat = None
-        self.Texts = None
-        self.VocabAnalysisDetailInfo = None
-        self.VocabAnalysisStatInfo = None
-        self.AllTexts = None
-        self.JobId = None
-        self.Progress = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AsrStat = None
+        self._Texts = None
+        self._VocabAnalysisDetailInfo = None
+        self._VocabAnalysisStatInfo = None
+        self._AllTexts = None
+        self._JobId = None
+        self._Progress = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AsrStat(self):
+        return self._AsrStat
+
+    @AsrStat.setter
+    def AsrStat(self, AsrStat):
+        self._AsrStat = AsrStat
+
+    @property
+    def Texts(self):
+        return self._Texts
+
+    @Texts.setter
+    def Texts(self, Texts):
+        self._Texts = Texts
+
+    @property
+    def VocabAnalysisDetailInfo(self):
+        return self._VocabAnalysisDetailInfo
+
+    @VocabAnalysisDetailInfo.setter
+    def VocabAnalysisDetailInfo(self, VocabAnalysisDetailInfo):
+        self._VocabAnalysisDetailInfo = VocabAnalysisDetailInfo
+
+    @property
+    def VocabAnalysisStatInfo(self):
+        return self._VocabAnalysisStatInfo
+
+    @VocabAnalysisStatInfo.setter
+    def VocabAnalysisStatInfo(self, VocabAnalysisStatInfo):
+        self._VocabAnalysisStatInfo = VocabAnalysisStatInfo
+
+    @property
+    def AllTexts(self):
+        return self._AllTexts
+
+    @AllTexts.setter
+    def AllTexts(self, AllTexts):
+        self._AllTexts = AllTexts
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AsrStat") is not None:
-            self.AsrStat = ASRStat()
-            self.AsrStat._deserialize(params.get("AsrStat"))
+            self._AsrStat = ASRStat()
+            self._AsrStat._deserialize(params.get("AsrStat"))
         if params.get("Texts") is not None:
-            self.Texts = []
+            self._Texts = []
             for item in params.get("Texts"):
                 obj = WholeTextItem()
                 obj._deserialize(item)
-                self.Texts.append(obj)
+                self._Texts.append(obj)
         if params.get("VocabAnalysisDetailInfo") is not None:
-            self.VocabAnalysisDetailInfo = []
+            self._VocabAnalysisDetailInfo = []
             for item in params.get("VocabAnalysisDetailInfo"):
                 obj = VocabDetailInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisDetailInfo.append(obj)
+                self._VocabAnalysisDetailInfo.append(obj)
         if params.get("VocabAnalysisStatInfo") is not None:
-            self.VocabAnalysisStatInfo = []
+            self._VocabAnalysisStatInfo = []
             for item in params.get("VocabAnalysisStatInfo"):
                 obj = VocabStatInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisStatInfo.append(obj)
-        self.AllTexts = params.get("AllTexts")
-        self.JobId = params.get("JobId")
-        self.Progress = params.get("Progress")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._VocabAnalysisStatInfo.append(obj)
+        self._AllTexts = params.get("AllTexts")
+        self._JobId = params.get("JobId")
+        self._Progress = params.get("Progress")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeHighlightResultRequest(AbstractModel):
@@ -1538,18 +2798,27 @@ class DescribeHighlightResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
+        :param _JobId: 精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
         :type JobId: int
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1562,31 +2831,63 @@ class DescribeHighlightResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HighlightsInfo: 精彩集锦详细信息。
+        :param _HighlightsInfo: 精彩集锦详细信息。
         :type HighlightsInfo: list of HighlightsInfomation
-        :param JobId: 精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
+        :param _JobId: 精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
         :type JobId: int
-        :param Progress: 任务的进度百分比，100表示任务已完成。
+        :param _Progress: 任务的进度百分比，100表示任务已完成。
         :type Progress: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.HighlightsInfo = None
-        self.JobId = None
-        self.Progress = None
-        self.RequestId = None
+        self._HighlightsInfo = None
+        self._JobId = None
+        self._Progress = None
+        self._RequestId = None
+
+    @property
+    def HighlightsInfo(self):
+        return self._HighlightsInfo
+
+    @HighlightsInfo.setter
+    def HighlightsInfo(self, HighlightsInfo):
+        self._HighlightsInfo = HighlightsInfo
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("HighlightsInfo") is not None:
-            self.HighlightsInfo = []
+            self._HighlightsInfo = []
             for item in params.get("HighlightsInfo"):
                 obj = HighlightsInfomation()
                 obj._deserialize(item)
-                self.HighlightsInfo.append(obj)
-        self.JobId = params.get("JobId")
-        self.Progress = params.get("Progress")
-        self.RequestId = params.get("RequestId")
+                self._HighlightsInfo.append(obj)
+        self._JobId = params.get("JobId")
+        self._Progress = params.get("Progress")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImageTaskRequest(AbstractModel):
@@ -1596,26 +2897,51 @@ class DescribeImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务标识符
+        :param _JobId: 任务标识符
         :type JobId: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
         """
-        self.JobId = None
-        self.Limit = None
-        self.Offset = None
+        self._JobId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._JobId = params.get("JobId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1628,35 +2954,75 @@ class DescribeImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: 任务处理结果
+        :param _ResultSet: 任务处理结果
         :type ResultSet: list of ImageTaskResult
-        :param JobId: 任务唯一标识
+        :param _JobId: 任务唯一标识
         :type JobId: int
-        :param Progress: 任务执行进度
+        :param _Progress: 任务执行进度
         :type Progress: int
-        :param TotalCount: 任务结果数目
+        :param _TotalCount: 任务结果数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResultSet = None
-        self.JobId = None
-        self.Progress = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ResultSet = None
+        self._JobId = None
+        self._Progress = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResultSet") is not None:
-            self.ResultSet = []
+            self._ResultSet = []
             for item in params.get("ResultSet"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ResultSet.append(obj)
-        self.JobId = params.get("JobId")
-        self.Progress = params.get("Progress")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ResultSet.append(obj)
+        self._JobId = params.get("JobId")
+        self._Progress = params.get("Progress")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImageTaskStatisticRequest(AbstractModel):
@@ -1666,18 +3032,27 @@ class DescribeImageTaskStatisticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 图像任务标识符
+        :param _JobId: 图像任务标识符
         :type JobId: int
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1690,24 +3065,48 @@ class DescribeImageTaskStatisticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Statistic: 任务统计信息
+        :param _Statistic: 任务统计信息
         :type Statistic: :class:`tencentcloud.tci.v20190318.models.ImageTaskStatistic`
-        :param JobId: 图像任务唯一标识符
+        :param _JobId: 图像任务唯一标识符
         :type JobId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Statistic = None
-        self.JobId = None
-        self.RequestId = None
+        self._Statistic = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def Statistic(self):
+        return self._Statistic
+
+    @Statistic.setter
+    def Statistic(self, Statistic):
+        self._Statistic = Statistic
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Statistic") is not None:
-            self.Statistic = ImageTaskStatistic()
-            self.Statistic._deserialize(params.get("Statistic"))
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
+            self._Statistic = ImageTaskStatistic()
+            self._Statistic._deserialize(params.get("Statistic"))
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLibrariesRequest(AbstractModel):
@@ -1723,27 +3122,51 @@ class DescribeLibrariesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibrarySet: 人员库列表
+        :param _LibrarySet: 人员库列表
         :type LibrarySet: list of Library
-        :param TotalCount: 人员库总数量
+        :param _TotalCount: 人员库总数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LibrarySet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._LibrarySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LibrarySet") is not None:
-            self.LibrarySet = []
+            self._LibrarySet = []
             for item in params.get("LibrarySet"):
                 obj = Library()
                 obj._deserialize(item)
-                self.LibrarySet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._LibrarySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePersonRequest(AbstractModel):
@@ -1753,22 +3176,39 @@ class DescribePersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
         """
-        self.LibraryId = None
-        self.PersonId = None
+        self._LibraryId = None
+        self._PersonId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1781,63 +3221,159 @@ class DescribePersonResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceSet: 人员人脸列表
+        :param _FaceSet: 人员人脸列表
         :type FaceSet: list of Face
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param JobNumber: 工作号码
+        :param _JobNumber: 工作号码
         :type JobNumber: str
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param Mail: 邮箱
+        :param _Mail: 邮箱
         :type Mail: str
-        :param Male: 性别
+        :param _Male: 性别
         :type Male: int
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param PersonName: 人员名称
+        :param _PersonName: 人员名称
         :type PersonName: str
-        :param PhoneNumber: 电话号码
+        :param _PhoneNumber: 电话号码
         :type PhoneNumber: str
-        :param StudentNumber: 学生号码
+        :param _StudentNumber: 学生号码
         :type StudentNumber: str
-        :param UpdateTime: 修改时间
+        :param _UpdateTime: 修改时间
         :type UpdateTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FaceSet = None
-        self.CreateTime = None
-        self.JobNumber = None
-        self.LibraryId = None
-        self.Mail = None
-        self.Male = None
-        self.PersonId = None
-        self.PersonName = None
-        self.PhoneNumber = None
-        self.StudentNumber = None
-        self.UpdateTime = None
-        self.RequestId = None
+        self._FaceSet = None
+        self._CreateTime = None
+        self._JobNumber = None
+        self._LibraryId = None
+        self._Mail = None
+        self._Male = None
+        self._PersonId = None
+        self._PersonName = None
+        self._PhoneNumber = None
+        self._StudentNumber = None
+        self._UpdateTime = None
+        self._RequestId = None
+
+    @property
+    def FaceSet(self):
+        return self._FaceSet
+
+    @FaceSet.setter
+    def FaceSet(self, FaceSet):
+        self._FaceSet = FaceSet
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def JobNumber(self):
+        return self._JobNumber
+
+    @JobNumber.setter
+    def JobNumber(self, JobNumber):
+        self._JobNumber = JobNumber
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def Male(self):
+        return self._Male
+
+    @Male.setter
+    def Male(self, Male):
+        self._Male = Male
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def PersonName(self):
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def StudentNumber(self):
+        return self._StudentNumber
+
+    @StudentNumber.setter
+    def StudentNumber(self, StudentNumber):
+        self._StudentNumber = StudentNumber
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FaceSet") is not None:
-            self.FaceSet = []
+            self._FaceSet = []
             for item in params.get("FaceSet"):
                 obj = Face()
                 obj._deserialize(item)
-                self.FaceSet.append(obj)
-        self.CreateTime = params.get("CreateTime")
-        self.JobNumber = params.get("JobNumber")
-        self.LibraryId = params.get("LibraryId")
-        self.Mail = params.get("Mail")
-        self.Male = params.get("Male")
-        self.PersonId = params.get("PersonId")
-        self.PersonName = params.get("PersonName")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.StudentNumber = params.get("StudentNumber")
-        self.UpdateTime = params.get("UpdateTime")
-        self.RequestId = params.get("RequestId")
+                self._FaceSet.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._JobNumber = params.get("JobNumber")
+        self._LibraryId = params.get("LibraryId")
+        self._Mail = params.get("Mail")
+        self._Male = params.get("Male")
+        self._PersonId = params.get("PersonId")
+        self._PersonName = params.get("PersonName")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._StudentNumber = params.get("StudentNumber")
+        self._UpdateTime = params.get("UpdateTime")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePersonsRequest(AbstractModel):
@@ -1847,26 +3383,51 @@ class DescribePersonsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
         """
-        self.LibraryId = None
-        self.Limit = None
-        self.Offset = None
+        self._LibraryId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._LibraryId = params.get("LibraryId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1879,27 +3440,51 @@ class DescribePersonsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PersonSet: 人员列表
+        :param _PersonSet: 人员列表
         :type PersonSet: list of Person
-        :param TotalCount: 人员总数
+        :param _TotalCount: 人员总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PersonSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._PersonSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PersonSet(self):
+        return self._PersonSet
+
+    @PersonSet.setter
+    def PersonSet(self, PersonSet):
+        self._PersonSet = PersonSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PersonSet") is not None:
-            self.PersonSet = []
+            self._PersonSet = []
             for item in params.get("PersonSet"):
                 obj = Person()
                 obj._deserialize(item)
-                self.PersonSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._PersonSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVocabLibRequest(AbstractModel):
@@ -1915,18 +3500,34 @@ class DescribeVocabLibResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabLibNameSet: 返回该appid下的所有词汇库名
+        :param _VocabLibNameSet: 返回该appid下的所有词汇库名
         :type VocabLibNameSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VocabLibNameSet = None
-        self.RequestId = None
+        self._VocabLibNameSet = None
+        self._RequestId = None
+
+    @property
+    def VocabLibNameSet(self):
+        return self._VocabLibNameSet
+
+    @VocabLibNameSet.setter
+    def VocabLibNameSet(self, VocabLibNameSet):
+        self._VocabLibNameSet = VocabLibNameSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VocabLibNameSet = params.get("VocabLibNameSet")
-        self.RequestId = params.get("RequestId")
+        self._VocabLibNameSet = params.get("VocabLibNameSet")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVocabRequest(AbstractModel):
@@ -1936,18 +3537,27 @@ class DescribeVocabRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabLibName: 要查询词汇的词汇库名
+        :param _VocabLibName: 要查询词汇的词汇库名
         :type VocabLibName: str
         """
-        self.VocabLibName = None
+        self._VocabLibName = None
+
+    @property
+    def VocabLibName(self):
+        return self._VocabLibName
+
+    @VocabLibName.setter
+    def VocabLibName(self, VocabLibName):
+        self._VocabLibName = VocabLibName
 
 
     def _deserialize(self, params):
-        self.VocabLibName = params.get("VocabLibName")
+        self._VocabLibName = params.get("VocabLibName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1960,18 +3570,34 @@ class DescribeVocabResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabNameSet: 词汇列表
+        :param _VocabNameSet: 词汇列表
         :type VocabNameSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VocabNameSet = None
-        self.RequestId = None
+        self._VocabNameSet = None
+        self._RequestId = None
+
+    @property
+    def VocabNameSet(self):
+        return self._VocabNameSet
+
+    @VocabNameSet.setter
+    def VocabNameSet(self, VocabNameSet):
+        self._VocabNameSet = VocabNameSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VocabNameSet = params.get("VocabNameSet")
-        self.RequestId = params.get("RequestId")
+        self._VocabNameSet = params.get("VocabNameSet")
+        self._RequestId = params.get("RequestId")
 
 
 class DetailInfo(AbstractModel):
@@ -1981,27 +3607,44 @@ class DetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Value: 单词出现在该音频中的那个句子的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
+        :param _Value: 单词出现在该音频中的那个句子的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
         :type Value: list of WordTimePair
-        :param Keyword: 词汇库中的单词
+        :param _Keyword: 词汇库中的单词
         :type Keyword: str
         """
-        self.Value = None
-        self.Keyword = None
+        self._Value = None
+        self._Keyword = None
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
         if params.get("Value") is not None:
-            self.Value = []
+            self._Value = []
             for item in params.get("Value"):
                 obj = WordTimePair()
                 obj._deserialize(item)
-                self.Value.append(obj)
-        self.Keyword = params.get("Keyword")
+                self._Value.append(obj)
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2014,18 +3657,27 @@ class DoubleVideoFunction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableCoverPictures: 片头片尾增加图片开关
+        :param _EnableCoverPictures: 片头片尾增加图片开关
         :type EnableCoverPictures: bool
         """
-        self.EnableCoverPictures = None
+        self._EnableCoverPictures = None
+
+    @property
+    def EnableCoverPictures(self):
+        return self._EnableCoverPictures
+
+    @EnableCoverPictures.setter
+    def EnableCoverPictures(self, EnableCoverPictures):
+        self._EnableCoverPictures = EnableCoverPictures
 
 
     def _deserialize(self, params):
-        self.EnableCoverPictures = params.get("EnableCoverPictures")
+        self._EnableCoverPictures = params.get("EnableCoverPictures")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2038,30 +3690,63 @@ class ExpressRatioStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Count: 出现次数
+        :param _Count: 出现次数
         :type Count: int
-        :param Express: 表情
+        :param _Express: 表情
         :type Express: str
-        :param Ratio: 该表情时长占所有表情时长的比例
+        :param _Ratio: 该表情时长占所有表情时长的比例
         :type Ratio: float
-        :param RatioUseDuration: 该表情时长占视频总时长的比例
+        :param _RatioUseDuration: 该表情时长占视频总时长的比例
         :type RatioUseDuration: float
         """
-        self.Count = None
-        self.Express = None
-        self.Ratio = None
-        self.RatioUseDuration = None
+        self._Count = None
+        self._Express = None
+        self._Ratio = None
+        self._RatioUseDuration = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Express(self):
+        return self._Express
+
+    @Express.setter
+    def Express(self, Express):
+        self._Express = Express
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def RatioUseDuration(self):
+        return self._RatioUseDuration
+
+    @RatioUseDuration.setter
+    def RatioUseDuration(self, RatioUseDuration):
+        self._RatioUseDuration = RatioUseDuration
 
 
     def _deserialize(self, params):
-        self.Count = params.get("Count")
-        self.Express = params.get("Express")
-        self.Ratio = params.get("Ratio")
-        self.RatioUseDuration = params.get("RatioUseDuration")
+        self._Count = params.get("Count")
+        self._Express = params.get("Express")
+        self._Ratio = params.get("Ratio")
+        self._RatioUseDuration = params.get("RatioUseDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2074,26 +3759,51 @@ class Face(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceId: 人脸唯一标识符
+        :param _FaceId: 人脸唯一标识符
         :type FaceId: str
-        :param FaceUrl: 人脸图片 URL
+        :param _FaceUrl: 人脸图片 URL
         :type FaceUrl: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
         """
-        self.FaceId = None
-        self.FaceUrl = None
-        self.PersonId = None
+        self._FaceId = None
+        self._FaceUrl = None
+        self._PersonId = None
+
+    @property
+    def FaceId(self):
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def FaceUrl(self):
+        return self._FaceUrl
+
+    @FaceUrl.setter
+    def FaceUrl(self, FaceUrl):
+        self._FaceUrl = FaceUrl
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
-        self.FaceId = params.get("FaceId")
-        self.FaceUrl = params.get("FaceUrl")
-        self.PersonId = params.get("PersonId")
+        self._FaceId = params.get("FaceId")
+        self._FaceUrl = params.get("FaceUrl")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2106,22 +3816,39 @@ class FaceAttrResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Age: 年龄
+        :param _Age: 年龄
         :type Age: int
-        :param Sex: 性别
+        :param _Sex: 性别
         :type Sex: str
         """
-        self.Age = None
-        self.Sex = None
+        self._Age = None
+        self._Sex = None
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
 
 
     def _deserialize(self, params):
-        self.Age = params.get("Age")
-        self.Sex = params.get("Sex")
+        self._Age = params.get("Age")
+        self._Sex = params.get("Sex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2134,46 +3861,111 @@ class FaceDetectStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceSizeRatio: 人脸大小占画面平均占比
+        :param _FaceSizeRatio: 人脸大小占画面平均占比
         :type FaceSizeRatio: float
-        :param FrontalFaceCount: 检测到正脸次数
+        :param _FrontalFaceCount: 检测到正脸次数
         :type FrontalFaceCount: int
-        :param FrontalFaceRatio: 正脸时长占比
+        :param _FrontalFaceRatio: 正脸时长占比
         :type FrontalFaceRatio: float
-        :param FrontalFaceRealRatio: 正脸时长在总出现时常占比
+        :param _FrontalFaceRealRatio: 正脸时长在总出现时常占比
         :type FrontalFaceRealRatio: float
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param SideFaceCount: 检测到侧脸次数
+        :param _SideFaceCount: 检测到侧脸次数
         :type SideFaceCount: int
-        :param SideFaceRatio: 侧脸时长占比
+        :param _SideFaceRatio: 侧脸时长占比
         :type SideFaceRatio: float
-        :param SideFaceRealRatio: 侧脸时长在总出现时常占比
+        :param _SideFaceRealRatio: 侧脸时长在总出现时常占比
         :type SideFaceRealRatio: float
         """
-        self.FaceSizeRatio = None
-        self.FrontalFaceCount = None
-        self.FrontalFaceRatio = None
-        self.FrontalFaceRealRatio = None
-        self.PersonId = None
-        self.SideFaceCount = None
-        self.SideFaceRatio = None
-        self.SideFaceRealRatio = None
+        self._FaceSizeRatio = None
+        self._FrontalFaceCount = None
+        self._FrontalFaceRatio = None
+        self._FrontalFaceRealRatio = None
+        self._PersonId = None
+        self._SideFaceCount = None
+        self._SideFaceRatio = None
+        self._SideFaceRealRatio = None
+
+    @property
+    def FaceSizeRatio(self):
+        return self._FaceSizeRatio
+
+    @FaceSizeRatio.setter
+    def FaceSizeRatio(self, FaceSizeRatio):
+        self._FaceSizeRatio = FaceSizeRatio
+
+    @property
+    def FrontalFaceCount(self):
+        return self._FrontalFaceCount
+
+    @FrontalFaceCount.setter
+    def FrontalFaceCount(self, FrontalFaceCount):
+        self._FrontalFaceCount = FrontalFaceCount
+
+    @property
+    def FrontalFaceRatio(self):
+        return self._FrontalFaceRatio
+
+    @FrontalFaceRatio.setter
+    def FrontalFaceRatio(self, FrontalFaceRatio):
+        self._FrontalFaceRatio = FrontalFaceRatio
+
+    @property
+    def FrontalFaceRealRatio(self):
+        return self._FrontalFaceRealRatio
+
+    @FrontalFaceRealRatio.setter
+    def FrontalFaceRealRatio(self, FrontalFaceRealRatio):
+        self._FrontalFaceRealRatio = FrontalFaceRealRatio
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def SideFaceCount(self):
+        return self._SideFaceCount
+
+    @SideFaceCount.setter
+    def SideFaceCount(self, SideFaceCount):
+        self._SideFaceCount = SideFaceCount
+
+    @property
+    def SideFaceRatio(self):
+        return self._SideFaceRatio
+
+    @SideFaceRatio.setter
+    def SideFaceRatio(self, SideFaceRatio):
+        self._SideFaceRatio = SideFaceRatio
+
+    @property
+    def SideFaceRealRatio(self):
+        return self._SideFaceRealRatio
+
+    @SideFaceRealRatio.setter
+    def SideFaceRealRatio(self, SideFaceRealRatio):
+        self._SideFaceRealRatio = SideFaceRealRatio
 
 
     def _deserialize(self, params):
-        self.FaceSizeRatio = params.get("FaceSizeRatio")
-        self.FrontalFaceCount = params.get("FrontalFaceCount")
-        self.FrontalFaceRatio = params.get("FrontalFaceRatio")
-        self.FrontalFaceRealRatio = params.get("FrontalFaceRealRatio")
-        self.PersonId = params.get("PersonId")
-        self.SideFaceCount = params.get("SideFaceCount")
-        self.SideFaceRatio = params.get("SideFaceRatio")
-        self.SideFaceRealRatio = params.get("SideFaceRealRatio")
+        self._FaceSizeRatio = params.get("FaceSizeRatio")
+        self._FrontalFaceCount = params.get("FrontalFaceCount")
+        self._FrontalFaceRatio = params.get("FrontalFaceRatio")
+        self._FrontalFaceRealRatio = params.get("FrontalFaceRealRatio")
+        self._PersonId = params.get("PersonId")
+        self._SideFaceCount = params.get("SideFaceCount")
+        self._SideFaceRatio = params.get("SideFaceRatio")
+        self._SideFaceRealRatio = params.get("SideFaceRealRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2186,27 +3978,44 @@ class FaceExpressStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param ExpressRatio: 表情统计结果
+        :param _ExpressRatio: 表情统计结果
         :type ExpressRatio: list of ExpressRatioStatistic
         """
-        self.PersonId = None
-        self.ExpressRatio = None
+        self._PersonId = None
+        self._ExpressRatio = None
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def ExpressRatio(self):
+        return self._ExpressRatio
+
+    @ExpressRatio.setter
+    def ExpressRatio(self, ExpressRatio):
+        self._ExpressRatio = ExpressRatio
 
 
     def _deserialize(self, params):
-        self.PersonId = params.get("PersonId")
+        self._PersonId = params.get("PersonId")
         if params.get("ExpressRatio") is not None:
-            self.ExpressRatio = []
+            self._ExpressRatio = []
             for item in params.get("ExpressRatio"):
                 obj = ExpressRatioStatistic()
                 obj._deserialize(item)
-                self.ExpressRatio.append(obj)
+                self._ExpressRatio.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2219,22 +4028,39 @@ class FaceExpressionResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Confidence: 表情置信度
+        :param _Confidence: 表情置信度
         :type Confidence: float
-        :param Expression: 表情识别结果，包括"neutral":中性,"happiness":开心，"angry":"生气"，"disgust":厌恶，"fear":"恐惧"，"sadness":"悲伤"，"surprise":"惊讶"，"contempt":"蔑视"
+        :param _Expression: 表情识别结果，包括"neutral":中性,"happiness":开心，"angry":"生气"，"disgust":厌恶，"fear":"恐惧"，"sadness":"悲伤"，"surprise":"惊讶"，"contempt":"蔑视"
         :type Expression: str
         """
-        self.Confidence = None
-        self.Expression = None
+        self._Confidence = None
+        self._Expression = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Expression(self):
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Expression = params.get("Expression")
+        self._Confidence = params.get("Confidence")
+        self._Expression = params.get("Expression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2247,30 +4073,63 @@ class FaceIdentifyResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceId: 人脸标识符
+        :param _FaceId: 人脸标识符
         :type FaceId: str
-        :param LibraryId: 人员库标识符
+        :param _LibraryId: 人员库标识符
         :type LibraryId: str
-        :param PersonId: 人员标识符
+        :param _PersonId: 人员标识符
         :type PersonId: str
-        :param Similarity: 相似度
+        :param _Similarity: 相似度
         :type Similarity: float
         """
-        self.FaceId = None
-        self.LibraryId = None
-        self.PersonId = None
-        self.Similarity = None
+        self._FaceId = None
+        self._LibraryId = None
+        self._PersonId = None
+        self._Similarity = None
+
+    @property
+    def FaceId(self):
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
 
 
     def _deserialize(self, params):
-        self.FaceId = params.get("FaceId")
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
-        self.Similarity = params.get("Similarity")
+        self._FaceId = params.get("FaceId")
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
+        self._Similarity = params.get("Similarity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2283,34 +4142,75 @@ class FaceIdentifyStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Duration: 持续时间
+        :param _Duration: 持续时间
         :type Duration: int
-        :param EndTs: 结束时间
+        :param _EndTs: 结束时间
         :type EndTs: int
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param Similarity: 相似度
+        :param _Similarity: 相似度
         :type Similarity: float
-        :param StartTs: 开始时间
+        :param _StartTs: 开始时间
         :type StartTs: int
         """
-        self.Duration = None
-        self.EndTs = None
-        self.PersonId = None
-        self.Similarity = None
-        self.StartTs = None
+        self._Duration = None
+        self._EndTs = None
+        self._PersonId = None
+        self._Similarity = None
+        self._StartTs = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def EndTs(self):
+        return self._EndTs
+
+    @EndTs.setter
+    def EndTs(self, EndTs):
+        self._EndTs = EndTs
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def StartTs(self):
+        return self._StartTs
+
+    @StartTs.setter
+    def StartTs(self, StartTs):
+        self._StartTs = StartTs
 
 
     def _deserialize(self, params):
-        self.Duration = params.get("Duration")
-        self.EndTs = params.get("EndTs")
-        self.PersonId = params.get("PersonId")
-        self.Similarity = params.get("Similarity")
-        self.StartTs = params.get("StartTs")
+        self._Duration = params.get("Duration")
+        self._EndTs = params.get("EndTs")
+        self._PersonId = params.get("PersonId")
+        self._Similarity = params.get("Similarity")
+        self._StartTs = params.get("StartTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2323,34 +4223,75 @@ class FaceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 人脸操作错误码
+        :param _ErrorCode: 人脸操作错误码
         :type ErrorCode: str
-        :param ErrorMsg: 人脸操作结果信息
+        :param _ErrorMsg: 人脸操作结果信息
         :type ErrorMsg: str
-        :param FaceId: 人脸唯一标识符
+        :param _FaceId: 人脸唯一标识符
         :type FaceId: str
-        :param FaceUrl: 人脸保存地址
+        :param _FaceUrl: 人脸保存地址
         :type FaceUrl: str
-        :param PersonId: 人员唯一标识
+        :param _PersonId: 人员唯一标识
         :type PersonId: str
         """
-        self.ErrorCode = None
-        self.ErrorMsg = None
-        self.FaceId = None
-        self.FaceUrl = None
-        self.PersonId = None
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._FaceId = None
+        self._FaceUrl = None
+        self._PersonId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def FaceId(self):
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def FaceUrl(self):
+        return self._FaceUrl
+
+    @FaceUrl.setter
+    def FaceUrl(self, FaceUrl):
+        self._FaceUrl = FaceUrl
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMsg = params.get("ErrorMsg")
-        self.FaceId = params.get("FaceId")
-        self.FaceUrl = params.get("FaceUrl")
-        self.PersonId = params.get("PersonId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._FaceId = params.get("FaceId")
+        self._FaceUrl = params.get("FaceUrl")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2363,42 +4304,99 @@ class FaceInfoResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceRatio: 人脸尺寸的占比
+        :param _FaceRatio: 人脸尺寸的占比
         :type FaceRatio: float
-        :param FrameHeight: 帧高度
+        :param _FrameHeight: 帧高度
         :type FrameHeight: int
-        :param FrameWidth: 帧宽度
+        :param _FrameWidth: 帧宽度
         :type FrameWidth: int
-        :param Height: 人脸高度
+        :param _Height: 人脸高度
         :type Height: int
-        :param Left: 人脸左坐标
+        :param _Left: 人脸左坐标
         :type Left: int
-        :param Top: 人脸顶坐标
+        :param _Top: 人脸顶坐标
         :type Top: int
-        :param Width: 人脸宽度
+        :param _Width: 人脸宽度
         :type Width: int
         """
-        self.FaceRatio = None
-        self.FrameHeight = None
-        self.FrameWidth = None
-        self.Height = None
-        self.Left = None
-        self.Top = None
-        self.Width = None
+        self._FaceRatio = None
+        self._FrameHeight = None
+        self._FrameWidth = None
+        self._Height = None
+        self._Left = None
+        self._Top = None
+        self._Width = None
+
+    @property
+    def FaceRatio(self):
+        return self._FaceRatio
+
+    @FaceRatio.setter
+    def FaceRatio(self, FaceRatio):
+        self._FaceRatio = FaceRatio
+
+    @property
+    def FrameHeight(self):
+        return self._FrameHeight
+
+    @FrameHeight.setter
+    def FrameHeight(self, FrameHeight):
+        self._FrameHeight = FrameHeight
+
+    @property
+    def FrameWidth(self):
+        return self._FrameWidth
+
+    @FrameWidth.setter
+    def FrameWidth(self, FrameWidth):
+        self._FrameWidth = FrameWidth
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Top(self):
+        return self._Top
+
+    @Top.setter
+    def Top(self, Top):
+        self._Top = Top
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
 
 
     def _deserialize(self, params):
-        self.FaceRatio = params.get("FaceRatio")
-        self.FrameHeight = params.get("FrameHeight")
-        self.FrameWidth = params.get("FrameWidth")
-        self.Height = params.get("Height")
-        self.Left = params.get("Left")
-        self.Top = params.get("Top")
-        self.Width = params.get("Width")
+        self._FaceRatio = params.get("FaceRatio")
+        self._FrameHeight = params.get("FrameHeight")
+        self._FrameWidth = params.get("FrameWidth")
+        self._Height = params.get("Height")
+        self._Left = params.get("Left")
+        self._Top = params.get("Top")
+        self._Width = params.get("Width")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2411,30 +4409,63 @@ class FacePoseResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Direction: 正脸或侧脸的消息
+        :param _Direction: 正脸或侧脸的消息
         :type Direction: str
-        :param Pitch: 围绕Z轴旋转角度，俯仰角
+        :param _Pitch: 围绕Z轴旋转角度，俯仰角
         :type Pitch: float
-        :param Roll: 围绕X轴旋转角度，翻滚角
+        :param _Roll: 围绕X轴旋转角度，翻滚角
         :type Roll: float
-        :param Yaw: 围绕Y轴旋转角度，偏航角
+        :param _Yaw: 围绕Y轴旋转角度，偏航角
         :type Yaw: float
         """
-        self.Direction = None
-        self.Pitch = None
-        self.Roll = None
-        self.Yaw = None
+        self._Direction = None
+        self._Pitch = None
+        self._Roll = None
+        self._Yaw = None
+
+    @property
+    def Direction(self):
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def Pitch(self):
+        return self._Pitch
+
+    @Pitch.setter
+    def Pitch(self, Pitch):
+        self._Pitch = Pitch
+
+    @property
+    def Roll(self):
+        return self._Roll
+
+    @Roll.setter
+    def Roll(self, Roll):
+        self._Roll = Roll
+
+    @property
+    def Yaw(self):
+        return self._Yaw
+
+    @Yaw.setter
+    def Yaw(self, Yaw):
+        self._Yaw = Yaw
 
 
     def _deserialize(self, params):
-        self.Direction = params.get("Direction")
-        self.Pitch = params.get("Pitch")
-        self.Roll = params.get("Roll")
-        self.Yaw = params.get("Yaw")
+        self._Direction = params.get("Direction")
+        self._Pitch = params.get("Pitch")
+        self._Roll = params.get("Roll")
+        self._Yaw = params.get("Yaw")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2447,26 +4478,51 @@ class FrameInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Similarity: 相似度
+        :param _Similarity: 相似度
         :type Similarity: float
-        :param SnapshotUrl: 截图的存储地址
+        :param _SnapshotUrl: 截图的存储地址
         :type SnapshotUrl: str
-        :param Ts: 相对于视频起始时间的时间戳，单位秒
+        :param _Ts: 相对于视频起始时间的时间戳，单位秒
         :type Ts: int
         """
-        self.Similarity = None
-        self.SnapshotUrl = None
-        self.Ts = None
+        self._Similarity = None
+        self._SnapshotUrl = None
+        self._Ts = None
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def SnapshotUrl(self):
+        return self._SnapshotUrl
+
+    @SnapshotUrl.setter
+    def SnapshotUrl(self, SnapshotUrl):
+        self._SnapshotUrl = SnapshotUrl
+
+    @property
+    def Ts(self):
+        return self._Ts
+
+    @Ts.setter
+    def Ts(self, Ts):
+        self._Ts = Ts
 
 
     def _deserialize(self, params):
-        self.Similarity = params.get("Similarity")
-        self.SnapshotUrl = params.get("SnapshotUrl")
-        self.Ts = params.get("Ts")
+        self._Similarity = params.get("Similarity")
+        self._SnapshotUrl = params.get("SnapshotUrl")
+        self._Ts = params.get("Ts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2479,34 +4535,75 @@ class Function(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableAllText: 输出全部文本标识，当该值设置为true时，会输出当前音频的全部文本
+        :param _EnableAllText: 输出全部文本标识，当该值设置为true时，会输出当前音频的全部文本
         :type EnableAllText: bool
-        :param EnableKeyword: 输出关键词信息标识，当该值设置为true时，会输出当前音频的关键词信息。
+        :param _EnableKeyword: 输出关键词信息标识，当该值设置为true时，会输出当前音频的关键词信息。
         :type EnableKeyword: bool
-        :param EnableMuteDetect: 静音检测标识，当设置为 true 时，需要设置静音时间阈值字段mute_threshold，统计结果中会返回静音片段。
+        :param _EnableMuteDetect: 静音检测标识，当设置为 true 时，需要设置静音时间阈值字段mute_threshold，统计结果中会返回静音片段。
         :type EnableMuteDetect: bool
-        :param EnableVadInfo: 输出音频统计信息标识，当设置为 true 时，任务查询结果会输出音频的统计信息（AsrStat）
+        :param _EnableVadInfo: 输出音频统计信息标识，当设置为 true 时，任务查询结果会输出音频的统计信息（AsrStat）
         :type EnableVadInfo: bool
-        :param EnableVolume: 输出音频音量信息标识，当设置为 true 时，会输出当前音频音量信息。
+        :param _EnableVolume: 输出音频音量信息标识，当设置为 true 时，会输出当前音频音量信息。
         :type EnableVolume: bool
         """
-        self.EnableAllText = None
-        self.EnableKeyword = None
-        self.EnableMuteDetect = None
-        self.EnableVadInfo = None
-        self.EnableVolume = None
+        self._EnableAllText = None
+        self._EnableKeyword = None
+        self._EnableMuteDetect = None
+        self._EnableVadInfo = None
+        self._EnableVolume = None
+
+    @property
+    def EnableAllText(self):
+        return self._EnableAllText
+
+    @EnableAllText.setter
+    def EnableAllText(self, EnableAllText):
+        self._EnableAllText = EnableAllText
+
+    @property
+    def EnableKeyword(self):
+        return self._EnableKeyword
+
+    @EnableKeyword.setter
+    def EnableKeyword(self, EnableKeyword):
+        self._EnableKeyword = EnableKeyword
+
+    @property
+    def EnableMuteDetect(self):
+        return self._EnableMuteDetect
+
+    @EnableMuteDetect.setter
+    def EnableMuteDetect(self, EnableMuteDetect):
+        self._EnableMuteDetect = EnableMuteDetect
+
+    @property
+    def EnableVadInfo(self):
+        return self._EnableVadInfo
+
+    @EnableVadInfo.setter
+    def EnableVadInfo(self, EnableVadInfo):
+        self._EnableVadInfo = EnableVadInfo
+
+    @property
+    def EnableVolume(self):
+        return self._EnableVolume
+
+    @EnableVolume.setter
+    def EnableVolume(self, EnableVolume):
+        self._EnableVolume = EnableVolume
 
 
     def _deserialize(self, params):
-        self.EnableAllText = params.get("EnableAllText")
-        self.EnableKeyword = params.get("EnableKeyword")
-        self.EnableMuteDetect = params.get("EnableMuteDetect")
-        self.EnableVadInfo = params.get("EnableVadInfo")
-        self.EnableVolume = params.get("EnableVolume")
+        self._EnableAllText = params.get("EnableAllText")
+        self._EnableKeyword = params.get("EnableKeyword")
+        self._EnableMuteDetect = params.get("EnableMuteDetect")
+        self._EnableVadInfo = params.get("EnableVadInfo")
+        self._EnableVolume = params.get("EnableVolume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2519,38 +4616,87 @@ class GestureResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Class: 识别结果，包含"USPEAK":听你说，"LISTEN":听我说，"GOOD":GOOD，"TOOLS":拿教具，"OTHERS":其他
+        :param _Class: 识别结果，包含"USPEAK":听你说，"LISTEN":听我说，"GOOD":GOOD，"TOOLS":拿教具，"OTHERS":其他
         :type Class: str
-        :param Confidence: 置信度
+        :param _Confidence: 置信度
         :type Confidence: float
-        :param Height: 识别结果高度
+        :param _Height: 识别结果高度
         :type Height: int
-        :param Left: 识别结果左坐标
+        :param _Left: 识别结果左坐标
         :type Left: int
-        :param Top: 识别结果顶坐标
+        :param _Top: 识别结果顶坐标
         :type Top: int
-        :param Width: 识别结果宽度
+        :param _Width: 识别结果宽度
         :type Width: int
         """
-        self.Class = None
-        self.Confidence = None
-        self.Height = None
-        self.Left = None
-        self.Top = None
-        self.Width = None
+        self._Class = None
+        self._Confidence = None
+        self._Height = None
+        self._Left = None
+        self._Top = None
+        self._Width = None
+
+    @property
+    def Class(self):
+        return self._Class
+
+    @Class.setter
+    def Class(self, Class):
+        self._Class = Class
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Top(self):
+        return self._Top
+
+    @Top.setter
+    def Top(self, Top):
+        self._Top = Top
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
 
 
     def _deserialize(self, params):
-        self.Class = params.get("Class")
-        self.Confidence = params.get("Confidence")
-        self.Height = params.get("Height")
-        self.Left = params.get("Left")
-        self.Top = params.get("Top")
-        self.Width = params.get("Width")
+        self._Class = params.get("Class")
+        self._Confidence = params.get("Confidence")
+        self._Height = params.get("Height")
+        self._Left = params.get("Left")
+        self._Top = params.get("Top")
+        self._Width = params.get("Width")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2563,34 +4709,75 @@ class HLFunction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableFaceDetect: 是否开启人脸检测
+        :param _EnableFaceDetect: 是否开启人脸检测
         :type EnableFaceDetect: bool
-        :param EnableFaceExpression: 是否开启表情识别
+        :param _EnableFaceExpression: 是否开启表情识别
         :type EnableFaceExpression: bool
-        :param EnableFaceIdent: 是否开启人脸检索
+        :param _EnableFaceIdent: 是否开启人脸检索
         :type EnableFaceIdent: bool
-        :param EnableKeywordWonderfulTime: 是否开启视频集锦-老师关键字识别
+        :param _EnableKeywordWonderfulTime: 是否开启视频集锦-老师关键字识别
         :type EnableKeywordWonderfulTime: bool
-        :param EnableSmileWonderfulTime: 是否开启视频集锦-微笑识别
+        :param _EnableSmileWonderfulTime: 是否开启视频集锦-微笑识别
         :type EnableSmileWonderfulTime: bool
         """
-        self.EnableFaceDetect = None
-        self.EnableFaceExpression = None
-        self.EnableFaceIdent = None
-        self.EnableKeywordWonderfulTime = None
-        self.EnableSmileWonderfulTime = None
+        self._EnableFaceDetect = None
+        self._EnableFaceExpression = None
+        self._EnableFaceIdent = None
+        self._EnableKeywordWonderfulTime = None
+        self._EnableSmileWonderfulTime = None
+
+    @property
+    def EnableFaceDetect(self):
+        return self._EnableFaceDetect
+
+    @EnableFaceDetect.setter
+    def EnableFaceDetect(self, EnableFaceDetect):
+        self._EnableFaceDetect = EnableFaceDetect
+
+    @property
+    def EnableFaceExpression(self):
+        return self._EnableFaceExpression
+
+    @EnableFaceExpression.setter
+    def EnableFaceExpression(self, EnableFaceExpression):
+        self._EnableFaceExpression = EnableFaceExpression
+
+    @property
+    def EnableFaceIdent(self):
+        return self._EnableFaceIdent
+
+    @EnableFaceIdent.setter
+    def EnableFaceIdent(self, EnableFaceIdent):
+        self._EnableFaceIdent = EnableFaceIdent
+
+    @property
+    def EnableKeywordWonderfulTime(self):
+        return self._EnableKeywordWonderfulTime
+
+    @EnableKeywordWonderfulTime.setter
+    def EnableKeywordWonderfulTime(self, EnableKeywordWonderfulTime):
+        self._EnableKeywordWonderfulTime = EnableKeywordWonderfulTime
+
+    @property
+    def EnableSmileWonderfulTime(self):
+        return self._EnableSmileWonderfulTime
+
+    @EnableSmileWonderfulTime.setter
+    def EnableSmileWonderfulTime(self, EnableSmileWonderfulTime):
+        self._EnableSmileWonderfulTime = EnableSmileWonderfulTime
 
 
     def _deserialize(self, params):
-        self.EnableFaceDetect = params.get("EnableFaceDetect")
-        self.EnableFaceExpression = params.get("EnableFaceExpression")
-        self.EnableFaceIdent = params.get("EnableFaceIdent")
-        self.EnableKeywordWonderfulTime = params.get("EnableKeywordWonderfulTime")
-        self.EnableSmileWonderfulTime = params.get("EnableSmileWonderfulTime")
+        self._EnableFaceDetect = params.get("EnableFaceDetect")
+        self._EnableFaceExpression = params.get("EnableFaceExpression")
+        self._EnableFaceIdent = params.get("EnableFaceIdent")
+        self._EnableKeywordWonderfulTime = params.get("EnableKeywordWonderfulTime")
+        self._EnableSmileWonderfulTime = params.get("EnableSmileWonderfulTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2603,38 +4790,87 @@ class HandTrackingResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Class: 识别结果
+        :param _Class: 识别结果
         :type Class: str
-        :param Confidence: 置信度
+        :param _Confidence: 置信度
         :type Confidence: float
-        :param Height: 识别结果高度
+        :param _Height: 识别结果高度
         :type Height: int
-        :param Left: 识别结果左坐标
+        :param _Left: 识别结果左坐标
         :type Left: int
-        :param Top: 识别结果顶坐标
+        :param _Top: 识别结果顶坐标
         :type Top: int
-        :param Width: 识别结果宽度
+        :param _Width: 识别结果宽度
         :type Width: int
         """
-        self.Class = None
-        self.Confidence = None
-        self.Height = None
-        self.Left = None
-        self.Top = None
-        self.Width = None
+        self._Class = None
+        self._Confidence = None
+        self._Height = None
+        self._Left = None
+        self._Top = None
+        self._Width = None
+
+    @property
+    def Class(self):
+        return self._Class
+
+    @Class.setter
+    def Class(self, Class):
+        self._Class = Class
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Top(self):
+        return self._Top
+
+    @Top.setter
+    def Top(self, Top):
+        self._Top = Top
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
 
 
     def _deserialize(self, params):
-        self.Class = params.get("Class")
-        self.Confidence = params.get("Confidence")
-        self.Height = params.get("Height")
-        self.Left = params.get("Left")
-        self.Top = params.get("Top")
-        self.Width = params.get("Width")
+        self._Class = params.get("Class")
+        self._Confidence = params.get("Confidence")
+        self._Height = params.get("Height")
+        self._Left = params.get("Left")
+        self._Top = params.get("Top")
+        self._Width = params.get("Width")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2647,40 +4883,73 @@ class HighlightsInfomation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Concentration: 专注的起始与终止时间信息。
+        :param _Concentration: 专注的起始与终止时间信息。
         :type Concentration: list of TimeType
-        :param Smile: 微笑的起始与终止时间信息。
+        :param _Smile: 微笑的起始与终止时间信息。
         :type Smile: list of TimeType
-        :param HighlightsUrl: 高光集锦视频地址，保存剪辑好的视频地址。
+        :param _HighlightsUrl: 高光集锦视频地址，保存剪辑好的视频地址。
         :type HighlightsUrl: str
-        :param PersonId: 片段中识别出来的人脸ID。
+        :param _PersonId: 片段中识别出来的人脸ID。
         :type PersonId: str
         """
-        self.Concentration = None
-        self.Smile = None
-        self.HighlightsUrl = None
-        self.PersonId = None
+        self._Concentration = None
+        self._Smile = None
+        self._HighlightsUrl = None
+        self._PersonId = None
+
+    @property
+    def Concentration(self):
+        return self._Concentration
+
+    @Concentration.setter
+    def Concentration(self, Concentration):
+        self._Concentration = Concentration
+
+    @property
+    def Smile(self):
+        return self._Smile
+
+    @Smile.setter
+    def Smile(self, Smile):
+        self._Smile = Smile
+
+    @property
+    def HighlightsUrl(self):
+        return self._HighlightsUrl
+
+    @HighlightsUrl.setter
+    def HighlightsUrl(self, HighlightsUrl):
+        self._HighlightsUrl = HighlightsUrl
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
         if params.get("Concentration") is not None:
-            self.Concentration = []
+            self._Concentration = []
             for item in params.get("Concentration"):
                 obj = TimeType()
                 obj._deserialize(item)
-                self.Concentration.append(obj)
+                self._Concentration.append(obj)
         if params.get("Smile") is not None:
-            self.Smile = []
+            self._Smile = []
             for item in params.get("Smile"):
                 obj = TimeType()
                 obj._deserialize(item)
-                self.Smile.append(obj)
-        self.HighlightsUrl = params.get("HighlightsUrl")
-        self.PersonId = params.get("PersonId")
+                self._Smile.append(obj)
+        self._HighlightsUrl = params.get("HighlightsUrl")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2693,54 +4962,135 @@ class ImageTaskFunction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableActionClass: 大教室场景学生肢体动作识别选项
+        :param _EnableActionClass: 大教室场景学生肢体动作识别选项
         :type EnableActionClass: bool
-        :param EnableFaceDetect: 人脸检测选项（默认为true，目前不可编辑）
+        :param _EnableFaceDetect: 人脸检测选项（默认为true，目前不可编辑）
         :type EnableFaceDetect: bool
-        :param EnableFaceExpression: 人脸表情识别选项
+        :param _EnableFaceExpression: 人脸表情识别选项
         :type EnableFaceExpression: bool
-        :param EnableFaceIdentify: 人脸检索选项（默认为true，目前不可编辑）
+        :param _EnableFaceIdentify: 人脸检索选项（默认为true，目前不可编辑）
         :type EnableFaceIdentify: bool
-        :param EnableGesture: 手势选项
+        :param _EnableGesture: 手势选项
         :type EnableGesture: bool
-        :param EnableHandTracking: 优图手势选项（该功能尚未支持）
+        :param _EnableHandTracking: 优图手势选项（该功能尚未支持）
         :type EnableHandTracking: bool
-        :param EnableLightJudge: 光照选项
+        :param _EnableLightJudge: 光照选项
         :type EnableLightJudge: bool
-        :param EnableStudentBodyMovements: 小班课场景学生肢体动作识别选项
+        :param _EnableStudentBodyMovements: 小班课场景学生肢体动作识别选项
         :type EnableStudentBodyMovements: bool
-        :param EnableTeacherBodyMovements: 教师动作选项（该功能尚未支持）
+        :param _EnableTeacherBodyMovements: 教师动作选项（该功能尚未支持）
         :type EnableTeacherBodyMovements: bool
-        :param EnableTeacherOutScreen: 判断老师是否在屏幕中（该功能尚未支持）
+        :param _EnableTeacherOutScreen: 判断老师是否在屏幕中（该功能尚未支持）
         :type EnableTeacherOutScreen: bool
         """
-        self.EnableActionClass = None
-        self.EnableFaceDetect = None
-        self.EnableFaceExpression = None
-        self.EnableFaceIdentify = None
-        self.EnableGesture = None
-        self.EnableHandTracking = None
-        self.EnableLightJudge = None
-        self.EnableStudentBodyMovements = None
-        self.EnableTeacherBodyMovements = None
-        self.EnableTeacherOutScreen = None
+        self._EnableActionClass = None
+        self._EnableFaceDetect = None
+        self._EnableFaceExpression = None
+        self._EnableFaceIdentify = None
+        self._EnableGesture = None
+        self._EnableHandTracking = None
+        self._EnableLightJudge = None
+        self._EnableStudentBodyMovements = None
+        self._EnableTeacherBodyMovements = None
+        self._EnableTeacherOutScreen = None
+
+    @property
+    def EnableActionClass(self):
+        return self._EnableActionClass
+
+    @EnableActionClass.setter
+    def EnableActionClass(self, EnableActionClass):
+        self._EnableActionClass = EnableActionClass
+
+    @property
+    def EnableFaceDetect(self):
+        return self._EnableFaceDetect
+
+    @EnableFaceDetect.setter
+    def EnableFaceDetect(self, EnableFaceDetect):
+        self._EnableFaceDetect = EnableFaceDetect
+
+    @property
+    def EnableFaceExpression(self):
+        return self._EnableFaceExpression
+
+    @EnableFaceExpression.setter
+    def EnableFaceExpression(self, EnableFaceExpression):
+        self._EnableFaceExpression = EnableFaceExpression
+
+    @property
+    def EnableFaceIdentify(self):
+        return self._EnableFaceIdentify
+
+    @EnableFaceIdentify.setter
+    def EnableFaceIdentify(self, EnableFaceIdentify):
+        self._EnableFaceIdentify = EnableFaceIdentify
+
+    @property
+    def EnableGesture(self):
+        return self._EnableGesture
+
+    @EnableGesture.setter
+    def EnableGesture(self, EnableGesture):
+        self._EnableGesture = EnableGesture
+
+    @property
+    def EnableHandTracking(self):
+        return self._EnableHandTracking
+
+    @EnableHandTracking.setter
+    def EnableHandTracking(self, EnableHandTracking):
+        self._EnableHandTracking = EnableHandTracking
+
+    @property
+    def EnableLightJudge(self):
+        return self._EnableLightJudge
+
+    @EnableLightJudge.setter
+    def EnableLightJudge(self, EnableLightJudge):
+        self._EnableLightJudge = EnableLightJudge
+
+    @property
+    def EnableStudentBodyMovements(self):
+        return self._EnableStudentBodyMovements
+
+    @EnableStudentBodyMovements.setter
+    def EnableStudentBodyMovements(self, EnableStudentBodyMovements):
+        self._EnableStudentBodyMovements = EnableStudentBodyMovements
+
+    @property
+    def EnableTeacherBodyMovements(self):
+        return self._EnableTeacherBodyMovements
+
+    @EnableTeacherBodyMovements.setter
+    def EnableTeacherBodyMovements(self, EnableTeacherBodyMovements):
+        self._EnableTeacherBodyMovements = EnableTeacherBodyMovements
+
+    @property
+    def EnableTeacherOutScreen(self):
+        return self._EnableTeacherOutScreen
+
+    @EnableTeacherOutScreen.setter
+    def EnableTeacherOutScreen(self, EnableTeacherOutScreen):
+        self._EnableTeacherOutScreen = EnableTeacherOutScreen
 
 
     def _deserialize(self, params):
-        self.EnableActionClass = params.get("EnableActionClass")
-        self.EnableFaceDetect = params.get("EnableFaceDetect")
-        self.EnableFaceExpression = params.get("EnableFaceExpression")
-        self.EnableFaceIdentify = params.get("EnableFaceIdentify")
-        self.EnableGesture = params.get("EnableGesture")
-        self.EnableHandTracking = params.get("EnableHandTracking")
-        self.EnableLightJudge = params.get("EnableLightJudge")
-        self.EnableStudentBodyMovements = params.get("EnableStudentBodyMovements")
-        self.EnableTeacherBodyMovements = params.get("EnableTeacherBodyMovements")
-        self.EnableTeacherOutScreen = params.get("EnableTeacherOutScreen")
+        self._EnableActionClass = params.get("EnableActionClass")
+        self._EnableFaceDetect = params.get("EnableFaceDetect")
+        self._EnableFaceExpression = params.get("EnableFaceExpression")
+        self._EnableFaceIdentify = params.get("EnableFaceIdentify")
+        self._EnableGesture = params.get("EnableGesture")
+        self._EnableHandTracking = params.get("EnableHandTracking")
+        self._EnableLightJudge = params.get("EnableLightJudge")
+        self._EnableStudentBodyMovements = params.get("EnableStudentBodyMovements")
+        self._EnableTeacherBodyMovements = params.get("EnableTeacherBodyMovements")
+        self._EnableTeacherOutScreen = params.get("EnableTeacherOutScreen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2753,92 +5103,197 @@ class ImageTaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActionInfo: 大教室场景学生肢体动作识别信息
+        :param _ActionInfo: 大教室场景学生肢体动作识别信息
         :type ActionInfo: :class:`tencentcloud.tci.v20190318.models.ActionInfo`
-        :param FaceAttr: 属性识别结果
+        :param _FaceAttr: 属性识别结果
         :type FaceAttr: :class:`tencentcloud.tci.v20190318.models.FaceAttrResult`
-        :param FaceExpression: 表情识别结果
+        :param _FaceExpression: 表情识别结果
         :type FaceExpression: :class:`tencentcloud.tci.v20190318.models.FaceExpressionResult`
-        :param FaceIdentify: 人脸检索结果
+        :param _FaceIdentify: 人脸检索结果
         :type FaceIdentify: :class:`tencentcloud.tci.v20190318.models.FaceIdentifyResult`
-        :param FaceInfo: 人脸检测结果
+        :param _FaceInfo: 人脸检测结果
         :type FaceInfo: :class:`tencentcloud.tci.v20190318.models.FaceInfoResult`
-        :param FacePose: 姿势识别结果
+        :param _FacePose: 姿势识别结果
         :type FacePose: :class:`tencentcloud.tci.v20190318.models.FacePoseResult`
-        :param Gesture: 动作分类结果
+        :param _Gesture: 动作分类结果
         :type Gesture: :class:`tencentcloud.tci.v20190318.models.GestureResult`
-        :param HandTracking: 手势分类结果
+        :param _HandTracking: 手势分类结果
         :type HandTracking: :class:`tencentcloud.tci.v20190318.models.HandTrackingResult`
-        :param Light: 光照识别结果
+        :param _Light: 光照识别结果
         :type Light: :class:`tencentcloud.tci.v20190318.models.LightResult`
-        :param StudentBodyMovement: 学生肢体动作识别结果
+        :param _StudentBodyMovement: 学生肢体动作识别结果
         :type StudentBodyMovement: :class:`tencentcloud.tci.v20190318.models.StudentBodyMovementResult`
-        :param TeacherBodyMovement: 老师肢体动作识别结果
+        :param _TeacherBodyMovement: 老师肢体动作识别结果
         :type TeacherBodyMovement: :class:`tencentcloud.tci.v20190318.models.BodyMovementResult`
-        :param TeacherOutScreen: 教师是否在屏幕内判断结果
+        :param _TeacherOutScreen: 教师是否在屏幕内判断结果
         :type TeacherOutScreen: :class:`tencentcloud.tci.v20190318.models.TeacherOutScreenResult`
-        :param TimeInfo: 时间统计结果
+        :param _TimeInfo: 时间统计结果
         :type TimeInfo: :class:`tencentcloud.tci.v20190318.models.TimeInfoResult`
         """
-        self.ActionInfo = None
-        self.FaceAttr = None
-        self.FaceExpression = None
-        self.FaceIdentify = None
-        self.FaceInfo = None
-        self.FacePose = None
-        self.Gesture = None
-        self.HandTracking = None
-        self.Light = None
-        self.StudentBodyMovement = None
-        self.TeacherBodyMovement = None
-        self.TeacherOutScreen = None
-        self.TimeInfo = None
+        self._ActionInfo = None
+        self._FaceAttr = None
+        self._FaceExpression = None
+        self._FaceIdentify = None
+        self._FaceInfo = None
+        self._FacePose = None
+        self._Gesture = None
+        self._HandTracking = None
+        self._Light = None
+        self._StudentBodyMovement = None
+        self._TeacherBodyMovement = None
+        self._TeacherOutScreen = None
+        self._TimeInfo = None
+
+    @property
+    def ActionInfo(self):
+        return self._ActionInfo
+
+    @ActionInfo.setter
+    def ActionInfo(self, ActionInfo):
+        self._ActionInfo = ActionInfo
+
+    @property
+    def FaceAttr(self):
+        return self._FaceAttr
+
+    @FaceAttr.setter
+    def FaceAttr(self, FaceAttr):
+        self._FaceAttr = FaceAttr
+
+    @property
+    def FaceExpression(self):
+        return self._FaceExpression
+
+    @FaceExpression.setter
+    def FaceExpression(self, FaceExpression):
+        self._FaceExpression = FaceExpression
+
+    @property
+    def FaceIdentify(self):
+        return self._FaceIdentify
+
+    @FaceIdentify.setter
+    def FaceIdentify(self, FaceIdentify):
+        self._FaceIdentify = FaceIdentify
+
+    @property
+    def FaceInfo(self):
+        return self._FaceInfo
+
+    @FaceInfo.setter
+    def FaceInfo(self, FaceInfo):
+        self._FaceInfo = FaceInfo
+
+    @property
+    def FacePose(self):
+        return self._FacePose
+
+    @FacePose.setter
+    def FacePose(self, FacePose):
+        self._FacePose = FacePose
+
+    @property
+    def Gesture(self):
+        return self._Gesture
+
+    @Gesture.setter
+    def Gesture(self, Gesture):
+        self._Gesture = Gesture
+
+    @property
+    def HandTracking(self):
+        return self._HandTracking
+
+    @HandTracking.setter
+    def HandTracking(self, HandTracking):
+        self._HandTracking = HandTracking
+
+    @property
+    def Light(self):
+        return self._Light
+
+    @Light.setter
+    def Light(self, Light):
+        self._Light = Light
+
+    @property
+    def StudentBodyMovement(self):
+        return self._StudentBodyMovement
+
+    @StudentBodyMovement.setter
+    def StudentBodyMovement(self, StudentBodyMovement):
+        self._StudentBodyMovement = StudentBodyMovement
+
+    @property
+    def TeacherBodyMovement(self):
+        return self._TeacherBodyMovement
+
+    @TeacherBodyMovement.setter
+    def TeacherBodyMovement(self, TeacherBodyMovement):
+        self._TeacherBodyMovement = TeacherBodyMovement
+
+    @property
+    def TeacherOutScreen(self):
+        return self._TeacherOutScreen
+
+    @TeacherOutScreen.setter
+    def TeacherOutScreen(self, TeacherOutScreen):
+        self._TeacherOutScreen = TeacherOutScreen
+
+    @property
+    def TimeInfo(self):
+        return self._TimeInfo
+
+    @TimeInfo.setter
+    def TimeInfo(self, TimeInfo):
+        self._TimeInfo = TimeInfo
 
 
     def _deserialize(self, params):
         if params.get("ActionInfo") is not None:
-            self.ActionInfo = ActionInfo()
-            self.ActionInfo._deserialize(params.get("ActionInfo"))
+            self._ActionInfo = ActionInfo()
+            self._ActionInfo._deserialize(params.get("ActionInfo"))
         if params.get("FaceAttr") is not None:
-            self.FaceAttr = FaceAttrResult()
-            self.FaceAttr._deserialize(params.get("FaceAttr"))
+            self._FaceAttr = FaceAttrResult()
+            self._FaceAttr._deserialize(params.get("FaceAttr"))
         if params.get("FaceExpression") is not None:
-            self.FaceExpression = FaceExpressionResult()
-            self.FaceExpression._deserialize(params.get("FaceExpression"))
+            self._FaceExpression = FaceExpressionResult()
+            self._FaceExpression._deserialize(params.get("FaceExpression"))
         if params.get("FaceIdentify") is not None:
-            self.FaceIdentify = FaceIdentifyResult()
-            self.FaceIdentify._deserialize(params.get("FaceIdentify"))
+            self._FaceIdentify = FaceIdentifyResult()
+            self._FaceIdentify._deserialize(params.get("FaceIdentify"))
         if params.get("FaceInfo") is not None:
-            self.FaceInfo = FaceInfoResult()
-            self.FaceInfo._deserialize(params.get("FaceInfo"))
+            self._FaceInfo = FaceInfoResult()
+            self._FaceInfo._deserialize(params.get("FaceInfo"))
         if params.get("FacePose") is not None:
-            self.FacePose = FacePoseResult()
-            self.FacePose._deserialize(params.get("FacePose"))
+            self._FacePose = FacePoseResult()
+            self._FacePose._deserialize(params.get("FacePose"))
         if params.get("Gesture") is not None:
-            self.Gesture = GestureResult()
-            self.Gesture._deserialize(params.get("Gesture"))
+            self._Gesture = GestureResult()
+            self._Gesture._deserialize(params.get("Gesture"))
         if params.get("HandTracking") is not None:
-            self.HandTracking = HandTrackingResult()
-            self.HandTracking._deserialize(params.get("HandTracking"))
+            self._HandTracking = HandTrackingResult()
+            self._HandTracking._deserialize(params.get("HandTracking"))
         if params.get("Light") is not None:
-            self.Light = LightResult()
-            self.Light._deserialize(params.get("Light"))
+            self._Light = LightResult()
+            self._Light._deserialize(params.get("Light"))
         if params.get("StudentBodyMovement") is not None:
-            self.StudentBodyMovement = StudentBodyMovementResult()
-            self.StudentBodyMovement._deserialize(params.get("StudentBodyMovement"))
+            self._StudentBodyMovement = StudentBodyMovementResult()
+            self._StudentBodyMovement._deserialize(params.get("StudentBodyMovement"))
         if params.get("TeacherBodyMovement") is not None:
-            self.TeacherBodyMovement = BodyMovementResult()
-            self.TeacherBodyMovement._deserialize(params.get("TeacherBodyMovement"))
+            self._TeacherBodyMovement = BodyMovementResult()
+            self._TeacherBodyMovement._deserialize(params.get("TeacherBodyMovement"))
         if params.get("TeacherOutScreen") is not None:
-            self.TeacherOutScreen = TeacherOutScreenResult()
-            self.TeacherOutScreen._deserialize(params.get("TeacherOutScreen"))
+            self._TeacherOutScreen = TeacherOutScreenResult()
+            self._TeacherOutScreen._deserialize(params.get("TeacherOutScreen"))
         if params.get("TimeInfo") is not None:
-            self.TimeInfo = TimeInfoResult()
-            self.TimeInfo._deserialize(params.get("TimeInfo"))
+            self._TimeInfo = TimeInfoResult()
+            self._TimeInfo._deserialize(params.get("TimeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2851,71 +5306,136 @@ class ImageTaskStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceDetect: 人员检测统计信息
+        :param _FaceDetect: 人员检测统计信息
         :type FaceDetect: list of FaceDetectStatistic
-        :param FaceExpression: 人脸表情统计信息
+        :param _FaceExpression: 人脸表情统计信息
         :type FaceExpression: list of FaceExpressStatistic
-        :param FaceIdentify: 人脸检索统计信息
+        :param _FaceIdentify: 人脸检索统计信息
         :type FaceIdentify: list of FaceIdentifyStatistic
-        :param Gesture: 姿势识别统计信息
+        :param _Gesture: 姿势识别统计信息
         :type Gesture: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
-        :param Handtracking: 手势识别统计信息
+        :param _Handtracking: 手势识别统计信息
         :type Handtracking: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
-        :param Light: 光照统计信息
+        :param _Light: 光照统计信息
         :type Light: :class:`tencentcloud.tci.v20190318.models.LightStatistic`
-        :param StudentMovement: 学生动作统计信息
+        :param _StudentMovement: 学生动作统计信息
         :type StudentMovement: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
-        :param TeacherMovement: 教师动作统计信息
+        :param _TeacherMovement: 教师动作统计信息
         :type TeacherMovement: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
         """
-        self.FaceDetect = None
-        self.FaceExpression = None
-        self.FaceIdentify = None
-        self.Gesture = None
-        self.Handtracking = None
-        self.Light = None
-        self.StudentMovement = None
-        self.TeacherMovement = None
+        self._FaceDetect = None
+        self._FaceExpression = None
+        self._FaceIdentify = None
+        self._Gesture = None
+        self._Handtracking = None
+        self._Light = None
+        self._StudentMovement = None
+        self._TeacherMovement = None
+
+    @property
+    def FaceDetect(self):
+        return self._FaceDetect
+
+    @FaceDetect.setter
+    def FaceDetect(self, FaceDetect):
+        self._FaceDetect = FaceDetect
+
+    @property
+    def FaceExpression(self):
+        return self._FaceExpression
+
+    @FaceExpression.setter
+    def FaceExpression(self, FaceExpression):
+        self._FaceExpression = FaceExpression
+
+    @property
+    def FaceIdentify(self):
+        return self._FaceIdentify
+
+    @FaceIdentify.setter
+    def FaceIdentify(self, FaceIdentify):
+        self._FaceIdentify = FaceIdentify
+
+    @property
+    def Gesture(self):
+        return self._Gesture
+
+    @Gesture.setter
+    def Gesture(self, Gesture):
+        self._Gesture = Gesture
+
+    @property
+    def Handtracking(self):
+        return self._Handtracking
+
+    @Handtracking.setter
+    def Handtracking(self, Handtracking):
+        self._Handtracking = Handtracking
+
+    @property
+    def Light(self):
+        return self._Light
+
+    @Light.setter
+    def Light(self, Light):
+        self._Light = Light
+
+    @property
+    def StudentMovement(self):
+        return self._StudentMovement
+
+    @StudentMovement.setter
+    def StudentMovement(self, StudentMovement):
+        self._StudentMovement = StudentMovement
+
+    @property
+    def TeacherMovement(self):
+        return self._TeacherMovement
+
+    @TeacherMovement.setter
+    def TeacherMovement(self, TeacherMovement):
+        self._TeacherMovement = TeacherMovement
 
 
     def _deserialize(self, params):
         if params.get("FaceDetect") is not None:
-            self.FaceDetect = []
+            self._FaceDetect = []
             for item in params.get("FaceDetect"):
                 obj = FaceDetectStatistic()
                 obj._deserialize(item)
-                self.FaceDetect.append(obj)
+                self._FaceDetect.append(obj)
         if params.get("FaceExpression") is not None:
-            self.FaceExpression = []
+            self._FaceExpression = []
             for item in params.get("FaceExpression"):
                 obj = FaceExpressStatistic()
                 obj._deserialize(item)
-                self.FaceExpression.append(obj)
+                self._FaceExpression.append(obj)
         if params.get("FaceIdentify") is not None:
-            self.FaceIdentify = []
+            self._FaceIdentify = []
             for item in params.get("FaceIdentify"):
                 obj = FaceIdentifyStatistic()
                 obj._deserialize(item)
-                self.FaceIdentify.append(obj)
+                self._FaceIdentify.append(obj)
         if params.get("Gesture") is not None:
-            self.Gesture = ActionStatistic()
-            self.Gesture._deserialize(params.get("Gesture"))
+            self._Gesture = ActionStatistic()
+            self._Gesture._deserialize(params.get("Gesture"))
         if params.get("Handtracking") is not None:
-            self.Handtracking = ActionStatistic()
-            self.Handtracking._deserialize(params.get("Handtracking"))
+            self._Handtracking = ActionStatistic()
+            self._Handtracking._deserialize(params.get("Handtracking"))
         if params.get("Light") is not None:
-            self.Light = LightStatistic()
-            self.Light._deserialize(params.get("Light"))
+            self._Light = LightStatistic()
+            self._Light._deserialize(params.get("Light"))
         if params.get("StudentMovement") is not None:
-            self.StudentMovement = ActionStatistic()
-            self.StudentMovement._deserialize(params.get("StudentMovement"))
+            self._StudentMovement = ActionStatistic()
+            self._StudentMovement._deserialize(params.get("StudentMovement"))
         if params.get("TeacherMovement") is not None:
-            self.TeacherMovement = ActionStatistic()
-            self.TeacherMovement._deserialize(params.get("TeacherMovement"))
+            self._TeacherMovement = ActionStatistic()
+            self._TeacherMovement._deserialize(params.get("TeacherMovement"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2928,34 +5448,75 @@ class Library(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreateTime: 人员库创建时间
+        :param _CreateTime: 人员库创建时间
         :type CreateTime: str
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param LibraryName: 人员库名称
+        :param _LibraryName: 人员库名称
         :type LibraryName: str
-        :param PersonCount: 人员库人员数量
+        :param _PersonCount: 人员库人员数量
         :type PersonCount: int
-        :param UpdateTime: 人员库修改时间
+        :param _UpdateTime: 人员库修改时间
         :type UpdateTime: str
         """
-        self.CreateTime = None
-        self.LibraryId = None
-        self.LibraryName = None
-        self.PersonCount = None
-        self.UpdateTime = None
+        self._CreateTime = None
+        self._LibraryId = None
+        self._LibraryName = None
+        self._PersonCount = None
+        self._UpdateTime = None
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def LibraryName(self):
+        return self._LibraryName
+
+    @LibraryName.setter
+    def LibraryName(self, LibraryName):
+        self._LibraryName = LibraryName
+
+    @property
+    def PersonCount(self):
+        return self._PersonCount
+
+    @PersonCount.setter
+    def PersonCount(self, PersonCount):
+        self._PersonCount = PersonCount
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.CreateTime = params.get("CreateTime")
-        self.LibraryId = params.get("LibraryId")
-        self.LibraryName = params.get("LibraryName")
-        self.PersonCount = params.get("PersonCount")
-        self.UpdateTime = params.get("UpdateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._LibraryId = params.get("LibraryId")
+        self._LibraryName = params.get("LibraryName")
+        self._PersonCount = params.get("PersonCount")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2968,22 +5529,39 @@ class LightDistributionStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: 时间点
+        :param _Time: 时间点
         :type Time: int
-        :param Value: 光线值
+        :param _Value: 光线值
         :type Value: int
         """
-        self.Time = None
-        self.Value = None
+        self._Time = None
+        self._Value = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Value = params.get("Value")
+        self._Time = params.get("Time")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2996,22 +5574,39 @@ class LightLevelRatioStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Level: 名称
+        :param _Level: 名称
         :type Level: str
-        :param Ratio: 比例
+        :param _Ratio: 比例
         :type Ratio: float
         """
-        self.Level = None
-        self.Ratio = None
+        self._Level = None
+        self._Ratio = None
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
 
 
     def _deserialize(self, params):
-        self.Level = params.get("Level")
-        self.Ratio = params.get("Ratio")
+        self._Level = params.get("Level")
+        self._Ratio = params.get("Ratio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3024,22 +5619,39 @@ class LightResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LightLevel: 光照程度，参考提交任务时的LightStandard指定的Name参数
+        :param _LightLevel: 光照程度，参考提交任务时的LightStandard指定的Name参数
         :type LightLevel: str
-        :param LightValue: 光照亮度
+        :param _LightValue: 光照亮度
         :type LightValue: float
         """
-        self.LightLevel = None
-        self.LightValue = None
+        self._LightLevel = None
+        self._LightValue = None
+
+    @property
+    def LightLevel(self):
+        return self._LightLevel
+
+    @LightLevel.setter
+    def LightLevel(self, LightLevel):
+        self._LightLevel = LightLevel
+
+    @property
+    def LightValue(self):
+        return self._LightValue
+
+    @LightValue.setter
+    def LightValue(self, LightValue):
+        self._LightValue = LightValue
 
 
     def _deserialize(self, params):
-        self.LightLevel = params.get("LightLevel")
-        self.LightValue = params.get("LightValue")
+        self._LightLevel = params.get("LightLevel")
+        self._LightValue = params.get("LightValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3057,22 +5669,39 @@ class LightStandard(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 光照名称
+        :param _Name: 光照名称
         :type Name: str
-        :param Range: 范围
+        :param _Range: 范围
         :type Range: list of float
         """
-        self.Name = None
-        self.Range = None
+        self._Name = None
+        self._Range = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Range(self):
+        return self._Range
+
+    @Range.setter
+    def Range(self, Range):
+        self._Range = Range
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Range = params.get("Range")
+        self._Name = params.get("Name")
+        self._Range = params.get("Range")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3085,32 +5714,49 @@ class LightStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LightDistribution: 各个时间点的光线值
+        :param _LightDistribution: 各个时间点的光线值
         :type LightDistribution: list of LightDistributionStatistic
-        :param LightLevelRatio: 光照程度比例统计结果
+        :param _LightLevelRatio: 光照程度比例统计结果
         :type LightLevelRatio: list of LightLevelRatioStatistic
         """
-        self.LightDistribution = None
-        self.LightLevelRatio = None
+        self._LightDistribution = None
+        self._LightLevelRatio = None
+
+    @property
+    def LightDistribution(self):
+        return self._LightDistribution
+
+    @LightDistribution.setter
+    def LightDistribution(self, LightDistribution):
+        self._LightDistribution = LightDistribution
+
+    @property
+    def LightLevelRatio(self):
+        return self._LightLevelRatio
+
+    @LightLevelRatio.setter
+    def LightLevelRatio(self, LightLevelRatio):
+        self._LightLevelRatio = LightLevelRatio
 
 
     def _deserialize(self, params):
         if params.get("LightDistribution") is not None:
-            self.LightDistribution = []
+            self._LightDistribution = []
             for item in params.get("LightDistribution"):
                 obj = LightDistributionStatistic()
                 obj._deserialize(item)
-                self.LightDistribution.append(obj)
+                self._LightDistribution.append(obj)
         if params.get("LightLevelRatio") is not None:
-            self.LightLevelRatio = []
+            self._LightLevelRatio = []
             for item in params.get("LightLevelRatio"):
                 obj = LightLevelRatioStatistic()
                 obj._deserialize(item)
-                self.LightLevelRatio.append(obj)
+                self._LightLevelRatio.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3123,22 +5769,39 @@ class ModifyLibraryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param LibraryName: 人员库名称
+        :param _LibraryName: 人员库名称
         :type LibraryName: str
         """
-        self.LibraryId = None
-        self.LibraryName = None
+        self._LibraryId = None
+        self._LibraryName = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def LibraryName(self):
+        return self._LibraryName
+
+    @LibraryName.setter
+    def LibraryName(self, LibraryName):
+        self._LibraryName = LibraryName
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.LibraryName = params.get("LibraryName")
+        self._LibraryId = params.get("LibraryId")
+        self._LibraryName = params.get("LibraryName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3151,22 +5814,46 @@ class ModifyLibraryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param LibraryName: 人员库名称
+        :param _LibraryName: 人员库名称
         :type LibraryName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LibraryId = None
-        self.LibraryName = None
-        self.RequestId = None
+        self._LibraryId = None
+        self._LibraryName = None
+        self._RequestId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def LibraryName(self):
+        return self._LibraryName
+
+    @LibraryName.setter
+    def LibraryName(self, LibraryName):
+        self._LibraryName = LibraryName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.LibraryName = params.get("LibraryName")
-        self.RequestId = params.get("RequestId")
+        self._LibraryId = params.get("LibraryId")
+        self._LibraryName = params.get("LibraryName")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyPersonRequest(AbstractModel):
@@ -3176,46 +5863,111 @@ class ModifyPersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param JobNumber: 人员工作号码
+        :param _JobNumber: 人员工作号码
         :type JobNumber: str
-        :param Mail: 人员邮箱
+        :param _Mail: 人员邮箱
         :type Mail: str
-        :param Male: 人员性别
+        :param _Male: 人员性别
         :type Male: int
-        :param PersonName: 人员名称
+        :param _PersonName: 人员名称
         :type PersonName: str
-        :param PhoneNumber: 人员电话号码
+        :param _PhoneNumber: 人员电话号码
         :type PhoneNumber: str
-        :param StudentNumber: 人员学生号码
+        :param _StudentNumber: 人员学生号码
         :type StudentNumber: str
         """
-        self.LibraryId = None
-        self.PersonId = None
-        self.JobNumber = None
-        self.Mail = None
-        self.Male = None
-        self.PersonName = None
-        self.PhoneNumber = None
-        self.StudentNumber = None
+        self._LibraryId = None
+        self._PersonId = None
+        self._JobNumber = None
+        self._Mail = None
+        self._Male = None
+        self._PersonName = None
+        self._PhoneNumber = None
+        self._StudentNumber = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def JobNumber(self):
+        return self._JobNumber
+
+    @JobNumber.setter
+    def JobNumber(self, JobNumber):
+        self._JobNumber = JobNumber
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def Male(self):
+        return self._Male
+
+    @Male.setter
+    def Male(self, Male):
+        self._Male = Male
+
+    @property
+    def PersonName(self):
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def StudentNumber(self):
+        return self._StudentNumber
+
+    @StudentNumber.setter
+    def StudentNumber(self, StudentNumber):
+        self._StudentNumber = StudentNumber
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
-        self.JobNumber = params.get("JobNumber")
-        self.Mail = params.get("Mail")
-        self.Male = params.get("Male")
-        self.PersonName = params.get("PersonName")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.StudentNumber = params.get("StudentNumber")
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
+        self._JobNumber = params.get("JobNumber")
+        self._Mail = params.get("Mail")
+        self._Male = params.get("Male")
+        self._PersonName = params.get("PersonName")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._StudentNumber = params.get("StudentNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3228,35 +5980,75 @@ class ModifyPersonResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceInfoSet: 人脸信息
+        :param _FaceInfoSet: 人脸信息
         :type FaceInfoSet: list of FaceInfo
-        :param LibraryId: 人员所属人员库标识符
+        :param _LibraryId: 人员所属人员库标识符
         :type LibraryId: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param PersonName: 人员名称
+        :param _PersonName: 人员名称
         :type PersonName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FaceInfoSet = None
-        self.LibraryId = None
-        self.PersonId = None
-        self.PersonName = None
-        self.RequestId = None
+        self._FaceInfoSet = None
+        self._LibraryId = None
+        self._PersonId = None
+        self._PersonName = None
+        self._RequestId = None
+
+    @property
+    def FaceInfoSet(self):
+        return self._FaceInfoSet
+
+    @FaceInfoSet.setter
+    def FaceInfoSet(self, FaceInfoSet):
+        self._FaceInfoSet = FaceInfoSet
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def PersonName(self):
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FaceInfoSet") is not None:
-            self.FaceInfoSet = []
+            self._FaceInfoSet = []
             for item in params.get("FaceInfoSet"):
                 obj = FaceInfo()
                 obj._deserialize(item)
-                self.FaceInfoSet.append(obj)
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
-        self.PersonName = params.get("PersonName")
-        self.RequestId = params.get("RequestId")
+                self._FaceInfoSet.append(obj)
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
+        self._PersonName = params.get("PersonName")
+        self._RequestId = params.get("RequestId")
 
 
 class MuteSlice(AbstractModel):
@@ -3266,22 +6058,39 @@ class MuteSlice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MuteBtm: 起始时间。
+        :param _MuteBtm: 起始时间。
         :type MuteBtm: int
-        :param MuteEtm: 终止时间。
+        :param _MuteEtm: 终止时间。
         :type MuteEtm: int
         """
-        self.MuteBtm = None
-        self.MuteEtm = None
+        self._MuteBtm = None
+        self._MuteEtm = None
+
+    @property
+    def MuteBtm(self):
+        return self._MuteBtm
+
+    @MuteBtm.setter
+    def MuteBtm(self, MuteBtm):
+        self._MuteBtm = MuteBtm
+
+    @property
+    def MuteEtm(self):
+        return self._MuteEtm
+
+    @MuteEtm.setter
+    def MuteEtm(self, MuteEtm):
+        self._MuteEtm = MuteEtm
 
 
     def _deserialize(self, params):
-        self.MuteBtm = params.get("MuteBtm")
-        self.MuteEtm = params.get("MuteEtm")
+        self._MuteBtm = params.get("MuteBtm")
+        self._MuteEtm = params.get("MuteEtm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3294,54 +6103,135 @@ class Person(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LibraryId: 人员库唯一标识符
+        :param _LibraryId: 人员库唯一标识符
         :type LibraryId: str
-        :param PersonId: 人员唯一标识符
+        :param _PersonId: 人员唯一标识符
         :type PersonId: str
-        :param PersonName: 人员名称
+        :param _PersonName: 人员名称
         :type PersonName: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param JobNumber: 工作号码
+        :param _JobNumber: 工作号码
         :type JobNumber: str
-        :param Mail: 邮箱
+        :param _Mail: 邮箱
         :type Mail: str
-        :param Male: 性别
+        :param _Male: 性别
         :type Male: int
-        :param PhoneNumber: 电话号码
+        :param _PhoneNumber: 电话号码
         :type PhoneNumber: str
-        :param StudentNumber: 学生号码
+        :param _StudentNumber: 学生号码
         :type StudentNumber: str
-        :param UpdateTime: 修改时间
+        :param _UpdateTime: 修改时间
         :type UpdateTime: str
         """
-        self.LibraryId = None
-        self.PersonId = None
-        self.PersonName = None
-        self.CreateTime = None
-        self.JobNumber = None
-        self.Mail = None
-        self.Male = None
-        self.PhoneNumber = None
-        self.StudentNumber = None
-        self.UpdateTime = None
+        self._LibraryId = None
+        self._PersonId = None
+        self._PersonName = None
+        self._CreateTime = None
+        self._JobNumber = None
+        self._Mail = None
+        self._Male = None
+        self._PhoneNumber = None
+        self._StudentNumber = None
+        self._UpdateTime = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def PersonName(self):
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def JobNumber(self):
+        return self._JobNumber
+
+    @JobNumber.setter
+    def JobNumber(self, JobNumber):
+        self._JobNumber = JobNumber
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def Male(self):
+        return self._Male
+
+    @Male.setter
+    def Male(self, Male):
+        self._Male = Male
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def StudentNumber(self):
+        return self._StudentNumber
+
+    @StudentNumber.setter
+    def StudentNumber(self, StudentNumber):
+        self._StudentNumber = StudentNumber
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.LibraryId = params.get("LibraryId")
-        self.PersonId = params.get("PersonId")
-        self.PersonName = params.get("PersonName")
-        self.CreateTime = params.get("CreateTime")
-        self.JobNumber = params.get("JobNumber")
-        self.Mail = params.get("Mail")
-        self.Male = params.get("Male")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.StudentNumber = params.get("StudentNumber")
-        self.UpdateTime = params.get("UpdateTime")
+        self._LibraryId = params.get("LibraryId")
+        self._PersonId = params.get("PersonId")
+        self._PersonName = params.get("PersonName")
+        self._CreateTime = params.get("CreateTime")
+        self._JobNumber = params.get("JobNumber")
+        self._Mail = params.get("Mail")
+        self._Male = params.get("Male")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._StudentNumber = params.get("StudentNumber")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3354,26 +6244,51 @@ class PersonInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PersonId: 需要匹配的人员的ID列表。
+        :param _PersonId: 需要匹配的人员的ID列表。
         :type PersonId: str
-        :param CoverBeginUrl: 视频集锦开始封面照片。
+        :param _CoverBeginUrl: 视频集锦开始封面照片。
         :type CoverBeginUrl: str
-        :param CoverEndUrl: 视频集锦结束封面照片。
+        :param _CoverEndUrl: 视频集锦结束封面照片。
         :type CoverEndUrl: str
         """
-        self.PersonId = None
-        self.CoverBeginUrl = None
-        self.CoverEndUrl = None
+        self._PersonId = None
+        self._CoverBeginUrl = None
+        self._CoverEndUrl = None
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def CoverBeginUrl(self):
+        return self._CoverBeginUrl
+
+    @CoverBeginUrl.setter
+    def CoverBeginUrl(self, CoverBeginUrl):
+        self._CoverBeginUrl = CoverBeginUrl
+
+    @property
+    def CoverEndUrl(self):
+        return self._CoverEndUrl
+
+    @CoverEndUrl.setter
+    def CoverEndUrl(self, CoverEndUrl):
+        self._CoverEndUrl = CoverEndUrl
 
 
     def _deserialize(self, params):
-        self.PersonId = params.get("PersonId")
-        self.CoverBeginUrl = params.get("CoverBeginUrl")
-        self.CoverEndUrl = params.get("CoverEndUrl")
+        self._PersonId = params.get("PersonId")
+        self._CoverBeginUrl = params.get("CoverBeginUrl")
+        self._CoverEndUrl = params.get("CoverEndUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3386,59 +6301,116 @@ class StandardAudioResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
+        :param _AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
         :type AsrStat: :class:`tencentcloud.tci.v20190318.models.ASRStat`
-        :param Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :param _Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
         :type Texts: list of WholeTextItem
-        :param VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
+        :param _VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
         :type VocabAnalysisDetailInfo: list of VocabDetailInfomation
-        :param VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
+        :param _VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
-        :param Message: 状态描述
+        :param _Message: 状态描述
         :type Message: str
-        :param Status: 任务状态
+        :param _Status: 任务状态
         :type Status: str
-        :param TotalCount: 结果数量
+        :param _TotalCount: 结果数量
         :type TotalCount: int
         """
-        self.AsrStat = None
-        self.Texts = None
-        self.VocabAnalysisDetailInfo = None
-        self.VocabAnalysisStatInfo = None
-        self.Message = None
-        self.Status = None
-        self.TotalCount = None
+        self._AsrStat = None
+        self._Texts = None
+        self._VocabAnalysisDetailInfo = None
+        self._VocabAnalysisStatInfo = None
+        self._Message = None
+        self._Status = None
+        self._TotalCount = None
+
+    @property
+    def AsrStat(self):
+        return self._AsrStat
+
+    @AsrStat.setter
+    def AsrStat(self, AsrStat):
+        self._AsrStat = AsrStat
+
+    @property
+    def Texts(self):
+        return self._Texts
+
+    @Texts.setter
+    def Texts(self, Texts):
+        self._Texts = Texts
+
+    @property
+    def VocabAnalysisDetailInfo(self):
+        return self._VocabAnalysisDetailInfo
+
+    @VocabAnalysisDetailInfo.setter
+    def VocabAnalysisDetailInfo(self, VocabAnalysisDetailInfo):
+        self._VocabAnalysisDetailInfo = VocabAnalysisDetailInfo
+
+    @property
+    def VocabAnalysisStatInfo(self):
+        return self._VocabAnalysisStatInfo
+
+    @VocabAnalysisStatInfo.setter
+    def VocabAnalysisStatInfo(self, VocabAnalysisStatInfo):
+        self._VocabAnalysisStatInfo = VocabAnalysisStatInfo
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
 
     def _deserialize(self, params):
         if params.get("AsrStat") is not None:
-            self.AsrStat = ASRStat()
-            self.AsrStat._deserialize(params.get("AsrStat"))
+            self._AsrStat = ASRStat()
+            self._AsrStat._deserialize(params.get("AsrStat"))
         if params.get("Texts") is not None:
-            self.Texts = []
+            self._Texts = []
             for item in params.get("Texts"):
                 obj = WholeTextItem()
                 obj._deserialize(item)
-                self.Texts.append(obj)
+                self._Texts.append(obj)
         if params.get("VocabAnalysisDetailInfo") is not None:
-            self.VocabAnalysisDetailInfo = []
+            self._VocabAnalysisDetailInfo = []
             for item in params.get("VocabAnalysisDetailInfo"):
                 obj = VocabDetailInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisDetailInfo.append(obj)
+                self._VocabAnalysisDetailInfo.append(obj)
         if params.get("VocabAnalysisStatInfo") is not None:
-            self.VocabAnalysisStatInfo = []
+            self._VocabAnalysisStatInfo = []
             for item in params.get("VocabAnalysisStatInfo"):
                 obj = VocabStatInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisStatInfo.append(obj)
-        self.Message = params.get("Message")
-        self.Status = params.get("Status")
-        self.TotalCount = params.get("TotalCount")
+                self._VocabAnalysisStatInfo.append(obj)
+        self._Message = params.get("Message")
+        self._Status = params.get("Status")
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3451,41 +6423,82 @@ class StandardImageResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: 详细结果
+        :param _ResultSet: 详细结果
         :type ResultSet: list of ImageTaskResult
-        :param Statistic: 分析完成后的统计结果
+        :param _Statistic: 分析完成后的统计结果
         :type Statistic: :class:`tencentcloud.tci.v20190318.models.ImageTaskStatistic`
-        :param Message: 状态描述
+        :param _Message: 状态描述
         :type Message: str
-        :param Status: 任务状态
+        :param _Status: 任务状态
         :type Status: str
-        :param TotalCount: 结果总数
+        :param _TotalCount: 结果总数
         :type TotalCount: int
         """
-        self.ResultSet = None
-        self.Statistic = None
-        self.Message = None
-        self.Status = None
-        self.TotalCount = None
+        self._ResultSet = None
+        self._Statistic = None
+        self._Message = None
+        self._Status = None
+        self._TotalCount = None
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+    @property
+    def Statistic(self):
+        return self._Statistic
+
+    @Statistic.setter
+    def Statistic(self, Statistic):
+        self._Statistic = Statistic
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
 
     def _deserialize(self, params):
         if params.get("ResultSet") is not None:
-            self.ResultSet = []
+            self._ResultSet = []
             for item in params.get("ResultSet"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ResultSet.append(obj)
+                self._ResultSet.append(obj)
         if params.get("Statistic") is not None:
-            self.Statistic = ImageTaskStatistic()
-            self.Statistic._deserialize(params.get("Statistic"))
-        self.Message = params.get("Message")
-        self.Status = params.get("Status")
-        self.TotalCount = params.get("TotalCount")
+            self._Statistic = ImageTaskStatistic()
+            self._Statistic._deserialize(params.get("Statistic"))
+        self._Message = params.get("Message")
+        self._Status = params.get("Status")
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3498,31 +6511,56 @@ class StandardVideoResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HighlightsInfo: 分析完成后的统计结果
+        :param _HighlightsInfo: 分析完成后的统计结果
         :type HighlightsInfo: list of HighlightsInfomation
-        :param Message: 状态描述
+        :param _Message: 状态描述
         :type Message: str
-        :param Status: 任务状态
+        :param _Status: 任务状态
         :type Status: str
         """
-        self.HighlightsInfo = None
-        self.Message = None
-        self.Status = None
+        self._HighlightsInfo = None
+        self._Message = None
+        self._Status = None
+
+    @property
+    def HighlightsInfo(self):
+        return self._HighlightsInfo
+
+    @HighlightsInfo.setter
+    def HighlightsInfo(self, HighlightsInfo):
+        self._HighlightsInfo = HighlightsInfo
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
         if params.get("HighlightsInfo") is not None:
-            self.HighlightsInfo = []
+            self._HighlightsInfo = []
             for item in params.get("HighlightsInfo"):
                 obj = HighlightsInfomation()
                 obj._deserialize(item)
-                self.HighlightsInfo.append(obj)
-        self.Message = params.get("Message")
-        self.Status = params.get("Status")
+                self._HighlightsInfo.append(obj)
+        self._Message = params.get("Message")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3535,22 +6573,39 @@ class StatInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: 词汇库中的单词
+        :param _Keyword: 词汇库中的单词
         :type Keyword: str
-        :param Value: 单词出现在该音频中总次数
+        :param _Value: 单词出现在该音频中总次数
         :type Value: int
         """
-        self.Keyword = None
-        self.Value = None
+        self._Keyword = None
+        self._Value = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
-        self.Value = params.get("Value")
+        self._Keyword = params.get("Keyword")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3563,54 +6618,135 @@ class StudentBodyMovementResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Confidence: 置信度（已废弃）
+        :param _Confidence: 置信度（已废弃）
         :type Confidence: float
-        :param HandupConfidence: 举手识别结果置信度
+        :param _HandupConfidence: 举手识别结果置信度
         :type HandupConfidence: float
-        :param HandupStatus: 举手识别结果，包含举手（handup）和未举手（nothandup）
+        :param _HandupStatus: 举手识别结果，包含举手（handup）和未举手（nothandup）
         :type HandupStatus: str
-        :param Height: 识别结果高度
+        :param _Height: 识别结果高度
         :type Height: int
-        :param Left: 识别结果左坐标
+        :param _Left: 识别结果左坐标
         :type Left: int
-        :param Movements: 动作识别结果（已废弃）
+        :param _Movements: 动作识别结果（已废弃）
         :type Movements: str
-        :param StandConfidence: 站立识别结果置信度
+        :param _StandConfidence: 站立识别结果置信度
         :type StandConfidence: float
-        :param StandStatus: 站立识别结果，包含站立（stand）和坐着（sit）
+        :param _StandStatus: 站立识别结果，包含站立（stand）和坐着（sit）
         :type StandStatus: str
-        :param Top: 识别结果顶坐标
+        :param _Top: 识别结果顶坐标
         :type Top: int
-        :param Width: 识别结果宽度
+        :param _Width: 识别结果宽度
         :type Width: int
         """
-        self.Confidence = None
-        self.HandupConfidence = None
-        self.HandupStatus = None
-        self.Height = None
-        self.Left = None
-        self.Movements = None
-        self.StandConfidence = None
-        self.StandStatus = None
-        self.Top = None
-        self.Width = None
+        self._Confidence = None
+        self._HandupConfidence = None
+        self._HandupStatus = None
+        self._Height = None
+        self._Left = None
+        self._Movements = None
+        self._StandConfidence = None
+        self._StandStatus = None
+        self._Top = None
+        self._Width = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def HandupConfidence(self):
+        return self._HandupConfidence
+
+    @HandupConfidence.setter
+    def HandupConfidence(self, HandupConfidence):
+        self._HandupConfidence = HandupConfidence
+
+    @property
+    def HandupStatus(self):
+        return self._HandupStatus
+
+    @HandupStatus.setter
+    def HandupStatus(self, HandupStatus):
+        self._HandupStatus = HandupStatus
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Movements(self):
+        return self._Movements
+
+    @Movements.setter
+    def Movements(self, Movements):
+        self._Movements = Movements
+
+    @property
+    def StandConfidence(self):
+        return self._StandConfidence
+
+    @StandConfidence.setter
+    def StandConfidence(self, StandConfidence):
+        self._StandConfidence = StandConfidence
+
+    @property
+    def StandStatus(self):
+        return self._StandStatus
+
+    @StandStatus.setter
+    def StandStatus(self, StandStatus):
+        self._StandStatus = StandStatus
+
+    @property
+    def Top(self):
+        return self._Top
+
+    @Top.setter
+    def Top(self, Top):
+        self._Top = Top
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.HandupConfidence = params.get("HandupConfidence")
-        self.HandupStatus = params.get("HandupStatus")
-        self.Height = params.get("Height")
-        self.Left = params.get("Left")
-        self.Movements = params.get("Movements")
-        self.StandConfidence = params.get("StandConfidence")
-        self.StandStatus = params.get("StandStatus")
-        self.Top = params.get("Top")
-        self.Width = params.get("Width")
+        self._Confidence = params.get("Confidence")
+        self._HandupConfidence = params.get("HandupConfidence")
+        self._HandupStatus = params.get("HandupStatus")
+        self._Height = params.get("Height")
+        self._Left = params.get("Left")
+        self._Movements = params.get("Movements")
+        self._StandConfidence = params.get("StandConfidence")
+        self._StandStatus = params.get("StandStatus")
+        self._Top = params.get("Top")
+        self._Width = params.get("Width")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3623,48 +6759,113 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :param _Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
-        :param Url: 音频URL。客户请求为URL方式时必须带此字段指名音频的url。
+        :param _Url: 音频URL。客户请求为URL方式时必须带此字段指名音频的url。
         :type Url: str
-        :param VoiceEncodeType: 语音编码类型 1:pcm
+        :param _VoiceEncodeType: 语音编码类型 1:pcm
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
+        :param _VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
         :type VoiceFileType: int
-        :param Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+        :param _Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
         :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
-        :param FileType: 视频文件类型，默认点播，直播填 live_url
+        :param _FileType: 视频文件类型，默认点播，直播填 live_url
         :type FileType: str
-        :param MuteThreshold: 静音阈值设置，如果静音检测开关开启，则静音时间超过这个阈值认为是静音片段，在结果中会返回, 没给的话默认值为3s
+        :param _MuteThreshold: 静音阈值设置，如果静音检测开关开启，则静音时间超过这个阈值认为是静音片段，在结果中会返回, 没给的话默认值为3s
         :type MuteThreshold: int
-        :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :param _VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
         """
-        self.Lang = None
-        self.Url = None
-        self.VoiceEncodeType = None
-        self.VoiceFileType = None
-        self.Functions = None
-        self.FileType = None
-        self.MuteThreshold = None
-        self.VocabLibNameList = None
+        self._Lang = None
+        self._Url = None
+        self._VoiceEncodeType = None
+        self._VoiceFileType = None
+        self._Functions = None
+        self._FileType = None
+        self._MuteThreshold = None
+        self._VocabLibNameList = None
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def VoiceEncodeType(self):
+        return self._VoiceEncodeType
+
+    @VoiceEncodeType.setter
+    def VoiceEncodeType(self, VoiceEncodeType):
+        self._VoiceEncodeType = VoiceEncodeType
+
+    @property
+    def VoiceFileType(self):
+        return self._VoiceFileType
+
+    @VoiceFileType.setter
+    def VoiceFileType(self, VoiceFileType):
+        self._VoiceFileType = VoiceFileType
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def MuteThreshold(self):
+        return self._MuteThreshold
+
+    @MuteThreshold.setter
+    def MuteThreshold(self, MuteThreshold):
+        self._MuteThreshold = MuteThreshold
+
+    @property
+    def VocabLibNameList(self):
+        return self._VocabLibNameList
+
+    @VocabLibNameList.setter
+    def VocabLibNameList(self, VocabLibNameList):
+        self._VocabLibNameList = VocabLibNameList
 
 
     def _deserialize(self, params):
-        self.Lang = params.get("Lang")
-        self.Url = params.get("Url")
-        self.VoiceEncodeType = params.get("VoiceEncodeType")
-        self.VoiceFileType = params.get("VoiceFileType")
+        self._Lang = params.get("Lang")
+        self._Url = params.get("Url")
+        self._VoiceEncodeType = params.get("VoiceEncodeType")
+        self._VoiceFileType = params.get("VoiceFileType")
         if params.get("Functions") is not None:
-            self.Functions = Function()
-            self.Functions._deserialize(params.get("Functions"))
-        self.FileType = params.get("FileType")
-        self.MuteThreshold = params.get("MuteThreshold")
-        self.VocabLibNameList = params.get("VocabLibNameList")
+            self._Functions = Function()
+            self._Functions._deserialize(params.get("Functions"))
+        self._FileType = params.get("FileType")
+        self._MuteThreshold = params.get("MuteThreshold")
+        self._VocabLibNameList = params.get("VocabLibNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3677,18 +6878,34 @@ class SubmitAudioTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :param _JobId: 	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.RequestId = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
@@ -3698,52 +6915,125 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入数据
+        :param _FileContent: 输入数据
         :type FileContent: list of str
-        :param FileType: 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
+        :param _FileType: 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
         :type FileType: str
-        :param LibraryIds: 人员库 ID列表
+        :param _LibraryIds: 人员库 ID列表
         :type LibraryIds: list of str
-        :param AttendanceThreshold: 确定出勤阈值；默认为0.92
+        :param _AttendanceThreshold: 确定出勤阈值；默认为0.92
         :type AttendanceThreshold: float
-        :param EnableStranger: 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
+        :param _EnableStranger: 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
         :type EnableStranger: bool
-        :param EndTime: 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
+        :param _EndTime: 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
 对于直播场景，使用绝对时间戳，单位秒，默认当前时间往后12小时
         :type EndTime: int
-        :param NoticeUrl: 通知回调地址，要求方法为post，application/json格式
+        :param _NoticeUrl: 通知回调地址，要求方法为post，application/json格式
         :type NoticeUrl: str
-        :param StartTime: 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
+        :param _StartTime: 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
 对于直播场景，使用绝对时间戳，单位秒，默认当前时间
         :type StartTime: int
-        :param Threshold: 识别阈值；默认为0.8
+        :param _Threshold: 识别阈值；默认为0.8
         :type Threshold: float
         """
-        self.FileContent = None
-        self.FileType = None
-        self.LibraryIds = None
-        self.AttendanceThreshold = None
-        self.EnableStranger = None
-        self.EndTime = None
-        self.NoticeUrl = None
-        self.StartTime = None
-        self.Threshold = None
+        self._FileContent = None
+        self._FileType = None
+        self._LibraryIds = None
+        self._AttendanceThreshold = None
+        self._EnableStranger = None
+        self._EndTime = None
+        self._NoticeUrl = None
+        self._StartTime = None
+        self._Threshold = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def LibraryIds(self):
+        return self._LibraryIds
+
+    @LibraryIds.setter
+    def LibraryIds(self, LibraryIds):
+        self._LibraryIds = LibraryIds
+
+    @property
+    def AttendanceThreshold(self):
+        return self._AttendanceThreshold
+
+    @AttendanceThreshold.setter
+    def AttendanceThreshold(self, AttendanceThreshold):
+        self._AttendanceThreshold = AttendanceThreshold
+
+    @property
+    def EnableStranger(self):
+        return self._EnableStranger
+
+    @EnableStranger.setter
+    def EnableStranger(self, EnableStranger):
+        self._EnableStranger = EnableStranger
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NoticeUrl(self):
+        return self._NoticeUrl
+
+    @NoticeUrl.setter
+    def NoticeUrl(self, NoticeUrl):
+        self._NoticeUrl = NoticeUrl
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.LibraryIds = params.get("LibraryIds")
-        self.AttendanceThreshold = params.get("AttendanceThreshold")
-        self.EnableStranger = params.get("EnableStranger")
-        self.EndTime = params.get("EndTime")
-        self.NoticeUrl = params.get("NoticeUrl")
-        self.StartTime = params.get("StartTime")
-        self.Threshold = params.get("Threshold")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._LibraryIds = params.get("LibraryIds")
+        self._AttendanceThreshold = params.get("AttendanceThreshold")
+        self._EnableStranger = params.get("EnableStranger")
+        self._EndTime = params.get("EndTime")
+        self._NoticeUrl = params.get("NoticeUrl")
+        self._StartTime = params.get("StartTime")
+        self._Threshold = params.get("Threshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3756,22 +7046,46 @@ class SubmitCheckAttendanceTaskPlusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务标识符
+        :param _JobId: 任务标识符
         :type JobId: int
-        :param NotRegisteredSet: 没有注册的人的ID列表
+        :param _NotRegisteredSet: 没有注册的人的ID列表
         :type NotRegisteredSet: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.NotRegisteredSet = None
-        self.RequestId = None
+        self._JobId = None
+        self._NotRegisteredSet = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def NotRegisteredSet(self):
+        return self._NotRegisteredSet
+
+    @NotRegisteredSet.setter
+    def NotRegisteredSet(self, NotRegisteredSet):
+        self._NotRegisteredSet = NotRegisteredSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.NotRegisteredSet = params.get("NotRegisteredSet")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._NotRegisteredSet = params.get("NotRegisteredSet")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitCheckAttendanceTaskRequest(AbstractModel):
@@ -3781,52 +7095,125 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入数据
+        :param _FileContent: 输入数据
         :type FileContent: str
-        :param FileType: 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
+        :param _FileType: 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
         :type FileType: str
-        :param LibraryIds: 人员库 ID列表
+        :param _LibraryIds: 人员库 ID列表
         :type LibraryIds: list of str
-        :param AttendanceThreshold: 确定出勤阈值；默认为0.92
+        :param _AttendanceThreshold: 确定出勤阈值；默认为0.92
         :type AttendanceThreshold: float
-        :param EnableStranger: 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
+        :param _EnableStranger: 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
         :type EnableStranger: bool
-        :param EndTime: 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
+        :param _EndTime: 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
 对于直播场景，使用绝对时间戳，单位秒，默认当前时间往后12小时
         :type EndTime: int
-        :param NoticeUrl: 通知回调地址，要求方法为post，application/json格式
+        :param _NoticeUrl: 通知回调地址，要求方法为post，application/json格式
         :type NoticeUrl: str
-        :param StartTime: 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
+        :param _StartTime: 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
 对于直播场景，使用绝对时间戳，单位秒，默认当前时间
         :type StartTime: int
-        :param Threshold: 识别阈值；默认为0.8
+        :param _Threshold: 识别阈值；默认为0.8
         :type Threshold: float
         """
-        self.FileContent = None
-        self.FileType = None
-        self.LibraryIds = None
-        self.AttendanceThreshold = None
-        self.EnableStranger = None
-        self.EndTime = None
-        self.NoticeUrl = None
-        self.StartTime = None
-        self.Threshold = None
+        self._FileContent = None
+        self._FileType = None
+        self._LibraryIds = None
+        self._AttendanceThreshold = None
+        self._EnableStranger = None
+        self._EndTime = None
+        self._NoticeUrl = None
+        self._StartTime = None
+        self._Threshold = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def LibraryIds(self):
+        return self._LibraryIds
+
+    @LibraryIds.setter
+    def LibraryIds(self, LibraryIds):
+        self._LibraryIds = LibraryIds
+
+    @property
+    def AttendanceThreshold(self):
+        return self._AttendanceThreshold
+
+    @AttendanceThreshold.setter
+    def AttendanceThreshold(self, AttendanceThreshold):
+        self._AttendanceThreshold = AttendanceThreshold
+
+    @property
+    def EnableStranger(self):
+        return self._EnableStranger
+
+    @EnableStranger.setter
+    def EnableStranger(self, EnableStranger):
+        self._EnableStranger = EnableStranger
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NoticeUrl(self):
+        return self._NoticeUrl
+
+    @NoticeUrl.setter
+    def NoticeUrl(self, NoticeUrl):
+        self._NoticeUrl = NoticeUrl
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.LibraryIds = params.get("LibraryIds")
-        self.AttendanceThreshold = params.get("AttendanceThreshold")
-        self.EnableStranger = params.get("EnableStranger")
-        self.EndTime = params.get("EndTime")
-        self.NoticeUrl = params.get("NoticeUrl")
-        self.StartTime = params.get("StartTime")
-        self.Threshold = params.get("Threshold")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._LibraryIds = params.get("LibraryIds")
+        self._AttendanceThreshold = params.get("AttendanceThreshold")
+        self._EnableStranger = params.get("EnableStranger")
+        self._EndTime = params.get("EndTime")
+        self._NoticeUrl = params.get("NoticeUrl")
+        self._StartTime = params.get("StartTime")
+        self._Threshold = params.get("Threshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3839,22 +7226,46 @@ class SubmitCheckAttendanceTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 任务标识符
+        :param _JobId: 任务标识符
         :type JobId: int
-        :param NotRegisteredSet: 没有注册的人的ID列表
+        :param _NotRegisteredSet: 没有注册的人的ID列表
         :type NotRegisteredSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.NotRegisteredSet = None
-        self.RequestId = None
+        self._JobId = None
+        self._NotRegisteredSet = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def NotRegisteredSet(self):
+        return self._NotRegisteredSet
+
+    @NotRegisteredSet.setter
+    def NotRegisteredSet(self, NotRegisteredSet):
+        self._NotRegisteredSet = NotRegisteredSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.NotRegisteredSet = params.get("NotRegisteredSet")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._NotRegisteredSet = params.get("NotRegisteredSet")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitConversationTaskRequest(AbstractModel):
@@ -3864,44 +7275,101 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :param _Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
-        :param StudentUrl: 学生音频流
+        :param _StudentUrl: 学生音频流
         :type StudentUrl: str
-        :param TeacherUrl: 教师音频流
+        :param _TeacherUrl: 教师音频流
         :type TeacherUrl: str
-        :param VoiceEncodeType: 语音编码类型 1:pcm
+        :param _VoiceEncodeType: 语音编码类型 1:pcm
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
+        :param _VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
         :type VoiceFileType: int
-        :param Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+        :param _Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
         :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
-        :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :param _VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
         """
-        self.Lang = None
-        self.StudentUrl = None
-        self.TeacherUrl = None
-        self.VoiceEncodeType = None
-        self.VoiceFileType = None
-        self.Functions = None
-        self.VocabLibNameList = None
+        self._Lang = None
+        self._StudentUrl = None
+        self._TeacherUrl = None
+        self._VoiceEncodeType = None
+        self._VoiceFileType = None
+        self._Functions = None
+        self._VocabLibNameList = None
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def StudentUrl(self):
+        return self._StudentUrl
+
+    @StudentUrl.setter
+    def StudentUrl(self, StudentUrl):
+        self._StudentUrl = StudentUrl
+
+    @property
+    def TeacherUrl(self):
+        return self._TeacherUrl
+
+    @TeacherUrl.setter
+    def TeacherUrl(self, TeacherUrl):
+        self._TeacherUrl = TeacherUrl
+
+    @property
+    def VoiceEncodeType(self):
+        return self._VoiceEncodeType
+
+    @VoiceEncodeType.setter
+    def VoiceEncodeType(self, VoiceEncodeType):
+        self._VoiceEncodeType = VoiceEncodeType
+
+    @property
+    def VoiceFileType(self):
+        return self._VoiceFileType
+
+    @VoiceFileType.setter
+    def VoiceFileType(self, VoiceFileType):
+        self._VoiceFileType = VoiceFileType
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def VocabLibNameList(self):
+        return self._VocabLibNameList
+
+    @VocabLibNameList.setter
+    def VocabLibNameList(self, VocabLibNameList):
+        self._VocabLibNameList = VocabLibNameList
 
 
     def _deserialize(self, params):
-        self.Lang = params.get("Lang")
-        self.StudentUrl = params.get("StudentUrl")
-        self.TeacherUrl = params.get("TeacherUrl")
-        self.VoiceEncodeType = params.get("VoiceEncodeType")
-        self.VoiceFileType = params.get("VoiceFileType")
+        self._Lang = params.get("Lang")
+        self._StudentUrl = params.get("StudentUrl")
+        self._TeacherUrl = params.get("TeacherUrl")
+        self._VoiceEncodeType = params.get("VoiceEncodeType")
+        self._VoiceFileType = params.get("VoiceFileType")
         if params.get("Functions") is not None:
-            self.Functions = Function()
-            self.Functions._deserialize(params.get("Functions"))
-        self.VocabLibNameList = params.get("VocabLibNameList")
+            self._Functions = Function()
+            self._Functions._deserialize(params.get("Functions"))
+        self._VocabLibNameList = params.get("VocabLibNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3914,18 +7382,34 @@ class SubmitConversationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :param _JobId: 	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.RequestId = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitDoubleVideoHighlightsRequest(AbstractModel):
@@ -3935,53 +7419,118 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 学生视频url
+        :param _FileContent: 学生视频url
         :type FileContent: str
-        :param LibIds: 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦；目前仅支持输入一个人脸库。
+        :param _LibIds: 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦；目前仅支持输入一个人脸库。
         :type LibIds: list of str
-        :param Functions: 详细功能开关配置项
+        :param _Functions: 详细功能开关配置项
         :type Functions: :class:`tencentcloud.tci.v20190318.models.DoubleVideoFunction`
-        :param PersonInfoList: 需要匹配的人员信息列表。
+        :param _PersonInfoList: 需要匹配的人员信息列表。
         :type PersonInfoList: list of PersonInfo
-        :param FrameInterval: 视频处理的抽帧间隔，单位毫秒。建议留空。
+        :param _FrameInterval: 视频处理的抽帧间隔，单位毫秒。建议留空。
         :type FrameInterval: int
-        :param PersonIds: 旧版本需要匹配的人员信息列表。
+        :param _PersonIds: 旧版本需要匹配的人员信息列表。
         :type PersonIds: list of str
-        :param SimThreshold: 人脸检索的相似度阈值，默认值0.89。建议留空。
+        :param _SimThreshold: 人脸检索的相似度阈值，默认值0.89。建议留空。
         :type SimThreshold: float
-        :param TeacherFileContent: 老师视频url
+        :param _TeacherFileContent: 老师视频url
         :type TeacherFileContent: str
         """
-        self.FileContent = None
-        self.LibIds = None
-        self.Functions = None
-        self.PersonInfoList = None
-        self.FrameInterval = None
-        self.PersonIds = None
-        self.SimThreshold = None
-        self.TeacherFileContent = None
+        self._FileContent = None
+        self._LibIds = None
+        self._Functions = None
+        self._PersonInfoList = None
+        self._FrameInterval = None
+        self._PersonIds = None
+        self._SimThreshold = None
+        self._TeacherFileContent = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def LibIds(self):
+        return self._LibIds
+
+    @LibIds.setter
+    def LibIds(self, LibIds):
+        self._LibIds = LibIds
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def PersonInfoList(self):
+        return self._PersonInfoList
+
+    @PersonInfoList.setter
+    def PersonInfoList(self, PersonInfoList):
+        self._PersonInfoList = PersonInfoList
+
+    @property
+    def FrameInterval(self):
+        return self._FrameInterval
+
+    @FrameInterval.setter
+    def FrameInterval(self, FrameInterval):
+        self._FrameInterval = FrameInterval
+
+    @property
+    def PersonIds(self):
+        return self._PersonIds
+
+    @PersonIds.setter
+    def PersonIds(self, PersonIds):
+        self._PersonIds = PersonIds
+
+    @property
+    def SimThreshold(self):
+        return self._SimThreshold
+
+    @SimThreshold.setter
+    def SimThreshold(self, SimThreshold):
+        self._SimThreshold = SimThreshold
+
+    @property
+    def TeacherFileContent(self):
+        return self._TeacherFileContent
+
+    @TeacherFileContent.setter
+    def TeacherFileContent(self, TeacherFileContent):
+        self._TeacherFileContent = TeacherFileContent
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.LibIds = params.get("LibIds")
+        self._FileContent = params.get("FileContent")
+        self._LibIds = params.get("LibIds")
         if params.get("Functions") is not None:
-            self.Functions = DoubleVideoFunction()
-            self.Functions._deserialize(params.get("Functions"))
+            self._Functions = DoubleVideoFunction()
+            self._Functions._deserialize(params.get("Functions"))
         if params.get("PersonInfoList") is not None:
-            self.PersonInfoList = []
+            self._PersonInfoList = []
             for item in params.get("PersonInfoList"):
                 obj = PersonInfo()
                 obj._deserialize(item)
-                self.PersonInfoList.append(obj)
-        self.FrameInterval = params.get("FrameInterval")
-        self.PersonIds = params.get("PersonIds")
-        self.SimThreshold = params.get("SimThreshold")
-        self.TeacherFileContent = params.get("TeacherFileContent")
+                self._PersonInfoList.append(obj)
+        self._FrameInterval = params.get("FrameInterval")
+        self._PersonIds = params.get("PersonIds")
+        self._SimThreshold = params.get("SimThreshold")
+        self._TeacherFileContent = params.get("TeacherFileContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3994,22 +7543,46 @@ class SubmitDoubleVideoHighlightsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 视频拆条任务ID，用来唯一标识视频拆条任务。
+        :param _JobId: 视频拆条任务ID，用来唯一标识视频拆条任务。
         :type JobId: int
-        :param NotRegistered: 未注册的人员ID列表。若出现此项，代表评估出现了问题，输入的PersonId中有不在库中的人员ID。
+        :param _NotRegistered: 未注册的人员ID列表。若出现此项，代表评估出现了问题，输入的PersonId中有不在库中的人员ID。
         :type NotRegistered: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.NotRegistered = None
-        self.RequestId = None
+        self._JobId = None
+        self._NotRegistered = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def NotRegistered(self):
+        return self._NotRegistered
+
+    @NotRegistered.setter
+    def NotRegistered(self, NotRegistered):
+        self._NotRegistered = NotRegistered
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.NotRegistered = params.get("NotRegistered")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._NotRegistered = params.get("NotRegistered")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitFullBodyClassTaskRequest(AbstractModel):
@@ -4019,46 +7592,111 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :param _FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
         :type FileType: str
-        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :param _Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
-        :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
+        :param _LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
-        :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+        :param _VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
         :type VocabLibNameList: list of str
-        :param VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :param _VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :param _VoiceFileType: 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
         :type VoiceFileType: int
         """
-        self.FileContent = None
-        self.FileType = None
-        self.Lang = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
-        self.VocabLibNameList = None
-        self.VoiceEncodeType = None
-        self.VoiceFileType = None
+        self._FileContent = None
+        self._FileType = None
+        self._Lang = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+        self._VocabLibNameList = None
+        self._VoiceEncodeType = None
+        self._VoiceFileType = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
+
+    @property
+    def VocabLibNameList(self):
+        return self._VocabLibNameList
+
+    @VocabLibNameList.setter
+    def VocabLibNameList(self, VocabLibNameList):
+        self._VocabLibNameList = VocabLibNameList
+
+    @property
+    def VoiceEncodeType(self):
+        return self._VoiceEncodeType
+
+    @VoiceEncodeType.setter
+    def VoiceEncodeType(self, VoiceEncodeType):
+        self._VoiceEncodeType = VoiceEncodeType
+
+    @property
+    def VoiceFileType(self):
+        return self._VoiceFileType
+
+    @VoiceFileType.setter
+    def VoiceFileType(self, VoiceFileType):
+        self._VoiceFileType = VoiceFileType
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.Lang = params.get("Lang")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
-        self.VocabLibNameList = params.get("VocabLibNameList")
-        self.VoiceEncodeType = params.get("VoiceEncodeType")
-        self.VoiceFileType = params.get("VoiceFileType")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._Lang = params.get("Lang")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
+        self._VocabLibNameList = params.get("VocabLibNameList")
+        self._VoiceEncodeType = params.get("VoiceEncodeType")
+        self._VoiceFileType = params.get("VoiceFileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4071,27 +7709,51 @@ class SubmitFullBodyClassTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageResults: 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TeacherBodyMovement、TimeInfo
+        :param _ImageResults: 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TeacherBodyMovement、TimeInfo
         :type ImageResults: list of ImageTaskResult
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageResults = None
-        self.TaskId = None
-        self.RequestId = None
+        self._ImageResults = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ImageResults(self):
+        return self._ImageResults
+
+    @ImageResults.setter
+    def ImageResults(self, ImageResults):
+        self._ImageResults = ImageResults
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImageResults") is not None:
-            self.ImageResults = []
+            self._ImageResults = []
             for item in params.get("ImageResults"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ImageResults.append(obj)
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+                self._ImageResults.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitHighlightsRequest(AbstractModel):
@@ -4101,52 +7763,125 @@ class SubmitHighlightsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Functions: 表情配置开关项。
+        :param _Functions: 表情配置开关项。
         :type Functions: :class:`tencentcloud.tci.v20190318.models.HLFunction`
-        :param FileContent: 视频url。
+        :param _FileContent: 视频url。
         :type FileContent: str
-        :param FileType: 视频类型及来源，目前只支持点播类型："vod_url"。
+        :param _FileType: 视频类型及来源，目前只支持点播类型："vod_url"。
         :type FileType: str
-        :param LibIds: 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦。
+        :param _LibIds: 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦。
         :type LibIds: list of str
-        :param FrameInterval: 视频处理的抽帧间隔，单位毫秒。建议留空。
+        :param _FrameInterval: 视频处理的抽帧间隔，单位毫秒。建议留空。
         :type FrameInterval: int
-        :param KeywordsLanguage: 关键词语言类型，0为英文，1为中文。
+        :param _KeywordsLanguage: 关键词语言类型，0为英文，1为中文。
         :type KeywordsLanguage: int
-        :param KeywordsStrings: 关键词数组，当且仅当Funtions中的EnableKeywordWonderfulTime为true时有意义，匹配相应的关键字。
+        :param _KeywordsStrings: 关键词数组，当且仅当Funtions中的EnableKeywordWonderfulTime为true时有意义，匹配相应的关键字。
         :type KeywordsStrings: list of str
-        :param MaxVideoDuration: 处理视频的总时长，单位毫秒。该值为0或未设置时，默认值两小时生效；当该值大于视频实际时长时，视频实际时长生效；当该值小于视频实际时长时，该值生效；当获取视频实际时长失败时，若该值设置则生效，否则默认值生效。建议留空。
+        :param _MaxVideoDuration: 处理视频的总时长，单位毫秒。该值为0或未设置时，默认值两小时生效；当该值大于视频实际时长时，视频实际时长生效；当该值小于视频实际时长时，该值生效；当获取视频实际时长失败时，若该值设置则生效，否则默认值生效。建议留空。
         :type MaxVideoDuration: int
-        :param SimThreshold: 人脸检索的相似度阈值，默认值0.89。建议留空。
+        :param _SimThreshold: 人脸检索的相似度阈值，默认值0.89。建议留空。
         :type SimThreshold: float
         """
-        self.Functions = None
-        self.FileContent = None
-        self.FileType = None
-        self.LibIds = None
-        self.FrameInterval = None
-        self.KeywordsLanguage = None
-        self.KeywordsStrings = None
-        self.MaxVideoDuration = None
-        self.SimThreshold = None
+        self._Functions = None
+        self._FileContent = None
+        self._FileType = None
+        self._LibIds = None
+        self._FrameInterval = None
+        self._KeywordsLanguage = None
+        self._KeywordsStrings = None
+        self._MaxVideoDuration = None
+        self._SimThreshold = None
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def LibIds(self):
+        return self._LibIds
+
+    @LibIds.setter
+    def LibIds(self, LibIds):
+        self._LibIds = LibIds
+
+    @property
+    def FrameInterval(self):
+        return self._FrameInterval
+
+    @FrameInterval.setter
+    def FrameInterval(self, FrameInterval):
+        self._FrameInterval = FrameInterval
+
+    @property
+    def KeywordsLanguage(self):
+        return self._KeywordsLanguage
+
+    @KeywordsLanguage.setter
+    def KeywordsLanguage(self, KeywordsLanguage):
+        self._KeywordsLanguage = KeywordsLanguage
+
+    @property
+    def KeywordsStrings(self):
+        return self._KeywordsStrings
+
+    @KeywordsStrings.setter
+    def KeywordsStrings(self, KeywordsStrings):
+        self._KeywordsStrings = KeywordsStrings
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
+
+    @property
+    def SimThreshold(self):
+        return self._SimThreshold
+
+    @SimThreshold.setter
+    def SimThreshold(self, SimThreshold):
+        self._SimThreshold = SimThreshold
 
 
     def _deserialize(self, params):
         if params.get("Functions") is not None:
-            self.Functions = HLFunction()
-            self.Functions._deserialize(params.get("Functions"))
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.LibIds = params.get("LibIds")
-        self.FrameInterval = params.get("FrameInterval")
-        self.KeywordsLanguage = params.get("KeywordsLanguage")
-        self.KeywordsStrings = params.get("KeywordsStrings")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
-        self.SimThreshold = params.get("SimThreshold")
+            self._Functions = HLFunction()
+            self._Functions._deserialize(params.get("Functions"))
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._LibIds = params.get("LibIds")
+        self._FrameInterval = params.get("FrameInterval")
+        self._KeywordsLanguage = params.get("KeywordsLanguage")
+        self._KeywordsStrings = params.get("KeywordsStrings")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
+        self._SimThreshold = params.get("SimThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4159,18 +7894,34 @@ class SubmitHighlightsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 视频拆条任务ID，用来唯一标识视频拆条任务。
+        :param _JobId: 视频拆条任务ID，用来唯一标识视频拆条任务。
         :type JobId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.JobId = None
-        self.RequestId = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitImageTaskPlusRequest(AbstractModel):
@@ -4180,53 +7931,118 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: list of str
-        :param FileType: 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
+        :param _FileType: 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
         :type FileType: str
-        :param Functions: 任务控制选项
+        :param _Functions: 任务控制选项
         :type Functions: :class:`tencentcloud.tci.v20190318.models.ImageTaskFunction`
-        :param LightStandardSet: 光照标准列表
+        :param _LightStandardSet: 光照标准列表
         :type LightStandardSet: list of LightStandard
-        :param FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
+        :param _FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
         :type FrameInterval: int
-        :param LibrarySet: 查询人员库列表
+        :param _LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
-        :param SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
+        :param _SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
         :type SimThreshold: float
         """
-        self.FileContent = None
-        self.FileType = None
-        self.Functions = None
-        self.LightStandardSet = None
-        self.FrameInterval = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
-        self.SimThreshold = None
+        self._FileContent = None
+        self._FileType = None
+        self._Functions = None
+        self._LightStandardSet = None
+        self._FrameInterval = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+        self._SimThreshold = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def LightStandardSet(self):
+        return self._LightStandardSet
+
+    @LightStandardSet.setter
+    def LightStandardSet(self, LightStandardSet):
+        self._LightStandardSet = LightStandardSet
+
+    @property
+    def FrameInterval(self):
+        return self._FrameInterval
+
+    @FrameInterval.setter
+    def FrameInterval(self, FrameInterval):
+        self._FrameInterval = FrameInterval
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
+
+    @property
+    def SimThreshold(self):
+        return self._SimThreshold
+
+    @SimThreshold.setter
+    def SimThreshold(self, SimThreshold):
+        self._SimThreshold = SimThreshold
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
         if params.get("Functions") is not None:
-            self.Functions = ImageTaskFunction()
-            self.Functions._deserialize(params.get("Functions"))
+            self._Functions = ImageTaskFunction()
+            self._Functions._deserialize(params.get("Functions"))
         if params.get("LightStandardSet") is not None:
-            self.LightStandardSet = []
+            self._LightStandardSet = []
             for item in params.get("LightStandardSet"):
                 obj = LightStandard()
                 obj._deserialize(item)
-                self.LightStandardSet.append(obj)
-        self.FrameInterval = params.get("FrameInterval")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
-        self.SimThreshold = params.get("SimThreshold")
+                self._LightStandardSet.append(obj)
+        self._FrameInterval = params.get("FrameInterval")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
+        self._SimThreshold = params.get("SimThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4239,35 +8055,75 @@ class SubmitImageTaskPlusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: 识别结果
+        :param _ResultSet: 识别结果
         :type ResultSet: list of ImageTaskResult
-        :param JobId: 任务标识符
+        :param _JobId: 任务标识符
         :type JobId: int
-        :param Progress: 任务进度
+        :param _Progress: 任务进度
         :type Progress: int
-        :param TotalCount: 结果总数目
+        :param _TotalCount: 结果总数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResultSet = None
-        self.JobId = None
-        self.Progress = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ResultSet = None
+        self._JobId = None
+        self._Progress = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResultSet") is not None:
-            self.ResultSet = []
+            self._ResultSet = []
             for item in params.get("ResultSet"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ResultSet.append(obj)
-        self.JobId = params.get("JobId")
-        self.Progress = params.get("Progress")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ResultSet.append(obj)
+        self._JobId = params.get("JobId")
+        self._Progress = params.get("Progress")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitImageTaskRequest(AbstractModel):
@@ -4277,57 +8133,130 @@ class SubmitImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
+        :param _FileType: 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
         :type FileType: str
-        :param Functions: 任务控制选项
+        :param _Functions: 任务控制选项
         :type Functions: :class:`tencentcloud.tci.v20190318.models.ImageTaskFunction`
-        :param LightStandardSet: 光照标准列表
+        :param _LightStandardSet: 光照标准列表
         :type LightStandardSet: list of LightStandard
-        :param EventsCallBack: 结果更新回调地址。
+        :param _EventsCallBack: 结果更新回调地址。
         :type EventsCallBack: str
-        :param FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
+        :param _FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
         :type FrameInterval: int
-        :param LibrarySet: 查询人员库列表
+        :param _LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
-        :param SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
+        :param _SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
         :type SimThreshold: float
         """
-        self.FileContent = None
-        self.FileType = None
-        self.Functions = None
-        self.LightStandardSet = None
-        self.EventsCallBack = None
-        self.FrameInterval = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
-        self.SimThreshold = None
+        self._FileContent = None
+        self._FileType = None
+        self._Functions = None
+        self._LightStandardSet = None
+        self._EventsCallBack = None
+        self._FrameInterval = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+        self._SimThreshold = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def LightStandardSet(self):
+        return self._LightStandardSet
+
+    @LightStandardSet.setter
+    def LightStandardSet(self, LightStandardSet):
+        self._LightStandardSet = LightStandardSet
+
+    @property
+    def EventsCallBack(self):
+        return self._EventsCallBack
+
+    @EventsCallBack.setter
+    def EventsCallBack(self, EventsCallBack):
+        self._EventsCallBack = EventsCallBack
+
+    @property
+    def FrameInterval(self):
+        return self._FrameInterval
+
+    @FrameInterval.setter
+    def FrameInterval(self, FrameInterval):
+        self._FrameInterval = FrameInterval
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
+
+    @property
+    def SimThreshold(self):
+        return self._SimThreshold
+
+    @SimThreshold.setter
+    def SimThreshold(self, SimThreshold):
+        self._SimThreshold = SimThreshold
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
         if params.get("Functions") is not None:
-            self.Functions = ImageTaskFunction()
-            self.Functions._deserialize(params.get("Functions"))
+            self._Functions = ImageTaskFunction()
+            self._Functions._deserialize(params.get("Functions"))
         if params.get("LightStandardSet") is not None:
-            self.LightStandardSet = []
+            self._LightStandardSet = []
             for item in params.get("LightStandardSet"):
                 obj = LightStandard()
                 obj._deserialize(item)
-                self.LightStandardSet.append(obj)
-        self.EventsCallBack = params.get("EventsCallBack")
-        self.FrameInterval = params.get("FrameInterval")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
-        self.SimThreshold = params.get("SimThreshold")
+                self._LightStandardSet.append(obj)
+        self._EventsCallBack = params.get("EventsCallBack")
+        self._FrameInterval = params.get("FrameInterval")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
+        self._SimThreshold = params.get("SimThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4340,35 +8269,75 @@ class SubmitImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultSet: 识别结果
+        :param _ResultSet: 识别结果
         :type ResultSet: list of ImageTaskResult
-        :param JobId: 任务标识符
+        :param _JobId: 任务标识符
         :type JobId: int
-        :param Progress: 任务进度
+        :param _Progress: 任务进度
         :type Progress: int
-        :param TotalCount: 结果总数目
+        :param _TotalCount: 结果总数目
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResultSet = None
-        self.JobId = None
-        self.Progress = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ResultSet = None
+        self._JobId = None
+        self._Progress = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResultSet") is not None:
-            self.ResultSet = []
+            self._ResultSet = []
             for item in params.get("ResultSet"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ResultSet.append(obj)
-        self.JobId = params.get("JobId")
-        self.Progress = params.get("Progress")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ResultSet.append(obj)
+        self._JobId = params.get("JobId")
+        self._Progress = params.get("Progress")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitOneByOneClassTaskRequest(AbstractModel):
@@ -4378,46 +8347,111 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :param _FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
         :type FileType: str
-        :param Lang: 音频源的语言，默认0为英文，1为中文 
+        :param _Lang: 音频源的语言，默认0为英文，1为中文 
         :type Lang: int
-        :param LibrarySet: 查询人员库列表，可填写学生的注册照所在人员库
+        :param _LibrarySet: 查询人员库列表，可填写学生的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
-        :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
+        :param _VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
         :type VocabLibNameList: list of str
-        :param VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :param _VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :param _VoiceFileType: 语音文件类型10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
         :type VoiceFileType: int
         """
-        self.FileContent = None
-        self.FileType = None
-        self.Lang = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
-        self.VocabLibNameList = None
-        self.VoiceEncodeType = None
-        self.VoiceFileType = None
+        self._FileContent = None
+        self._FileType = None
+        self._Lang = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+        self._VocabLibNameList = None
+        self._VoiceEncodeType = None
+        self._VoiceFileType = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
+
+    @property
+    def VocabLibNameList(self):
+        return self._VocabLibNameList
+
+    @VocabLibNameList.setter
+    def VocabLibNameList(self, VocabLibNameList):
+        self._VocabLibNameList = VocabLibNameList
+
+    @property
+    def VoiceEncodeType(self):
+        return self._VoiceEncodeType
+
+    @VoiceEncodeType.setter
+    def VoiceEncodeType(self, VoiceEncodeType):
+        self._VoiceEncodeType = VoiceEncodeType
+
+    @property
+    def VoiceFileType(self):
+        return self._VoiceFileType
+
+    @VoiceFileType.setter
+    def VoiceFileType(self, VoiceFileType):
+        self._VoiceFileType = VoiceFileType
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.Lang = params.get("Lang")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
-        self.VocabLibNameList = params.get("VocabLibNameList")
-        self.VoiceEncodeType = params.get("VoiceEncodeType")
-        self.VoiceFileType = params.get("VoiceFileType")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._Lang = params.get("Lang")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
+        self._VocabLibNameList = params.get("VocabLibNameList")
+        self._VoiceEncodeType = params.get("VoiceEncodeType")
+        self._VoiceFileType = params.get("VoiceFileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4430,27 +8464,51 @@ class SubmitOneByOneClassTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageResults: 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、TimeInfo
+        :param _ImageResults: 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、TimeInfo
         :type ImageResults: list of ImageTaskResult
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageResults = None
-        self.TaskId = None
-        self.RequestId = None
+        self._ImageResults = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ImageResults(self):
+        return self._ImageResults
+
+    @ImageResults.setter
+    def ImageResults(self, ImageResults):
+        self._ImageResults = ImageResults
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImageResults") is not None:
-            self.ImageResults = []
+            self._ImageResults = []
             for item in params.get("ImageResults"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ImageResults.append(obj)
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+                self._ImageResults.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitOpenClassTaskRequest(AbstractModel):
@@ -4460,30 +8518,63 @@ class SubmitOpenClassTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,picture: 图片二进制数据的BASE64编码
+        :param _FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,picture: 图片二进制数据的BASE64编码
         :type FileType: str
-        :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
+        :param _LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         """
-        self.FileContent = None
-        self.FileType = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
+        self._FileContent = None
+        self._FileType = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4496,27 +8587,51 @@ class SubmitOpenClassTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageResults: 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 StudentBodyMovement、TimeInfo
+        :param _ImageResults: 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 StudentBodyMovement、TimeInfo
         :type ImageResults: list of ImageTaskResult
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageResults = None
-        self.TaskId = None
-        self.RequestId = None
+        self._ImageResults = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ImageResults(self):
+        return self._ImageResults
+
+    @ImageResults.setter
+    def ImageResults(self, ImageResults):
+        self._ImageResults = ImageResults
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImageResults") is not None:
-            self.ImageResults = []
+            self._ImageResults = []
             for item in params.get("ImageResults"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ImageResults.append(obj)
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+                self._ImageResults.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitPartialBodyClassTaskRequest(AbstractModel):
@@ -4526,46 +8641,111 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :param _FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
         :type FileType: str
-        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :param _Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
-        :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
+        :param _LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
-        :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+        :param _VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
         :type VocabLibNameList: list of str
-        :param VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :param _VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :param _VoiceFileType: 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
         :type VoiceFileType: int
         """
-        self.FileContent = None
-        self.FileType = None
-        self.Lang = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
-        self.VocabLibNameList = None
-        self.VoiceEncodeType = None
-        self.VoiceFileType = None
+        self._FileContent = None
+        self._FileType = None
+        self._Lang = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+        self._VocabLibNameList = None
+        self._VoiceEncodeType = None
+        self._VoiceFileType = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
+
+    @property
+    def VocabLibNameList(self):
+        return self._VocabLibNameList
+
+    @VocabLibNameList.setter
+    def VocabLibNameList(self, VocabLibNameList):
+        self._VocabLibNameList = VocabLibNameList
+
+    @property
+    def VoiceEncodeType(self):
+        return self._VoiceEncodeType
+
+    @VoiceEncodeType.setter
+    def VoiceEncodeType(self, VoiceEncodeType):
+        self._VoiceEncodeType = VoiceEncodeType
+
+    @property
+    def VoiceFileType(self):
+        return self._VoiceFileType
+
+    @VoiceFileType.setter
+    def VoiceFileType(self, VoiceFileType):
+        self._VoiceFileType = VoiceFileType
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.Lang = params.get("Lang")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
-        self.VocabLibNameList = params.get("VocabLibNameList")
-        self.VoiceEncodeType = params.get("VoiceEncodeType")
-        self.VoiceFileType = params.get("VoiceFileType")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._Lang = params.get("Lang")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
+        self._VocabLibNameList = params.get("VocabLibNameList")
+        self._VoiceEncodeType = params.get("VoiceEncodeType")
+        self._VoiceFileType = params.get("VoiceFileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4578,27 +8758,51 @@ class SubmitPartialBodyClassTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageResults: 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 Gesture 、 Light、 TimeInfo
+        :param _ImageResults: 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 Gesture 、 Light、 TimeInfo
         :type ImageResults: list of ImageTaskResult
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageResults = None
-        self.TaskId = None
-        self.RequestId = None
+        self._ImageResults = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ImageResults(self):
+        return self._ImageResults
+
+    @ImageResults.setter
+    def ImageResults(self, ImageResults):
+        self._ImageResults = ImageResults
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImageResults") is not None:
-            self.ImageResults = []
+            self._ImageResults = []
             for item in params.get("ImageResults"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ImageResults.append(obj)
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+                self._ImageResults.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitTraditionalClassTaskRequest(AbstractModel):
@@ -4608,30 +8812,63 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :param _FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture：图片二进制数据的BASE64编码
+        :param _FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture：图片二进制数据的BASE64编码
         :type FileType: str
-        :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
+        :param _LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param _MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         """
-        self.FileContent = None
-        self.FileType = None
-        self.LibrarySet = None
-        self.MaxVideoDuration = None
+        self._FileContent = None
+        self._FileType = None
+        self._LibrarySet = None
+        self._MaxVideoDuration = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def LibrarySet(self):
+        return self._LibrarySet
+
+    @LibrarySet.setter
+    def LibrarySet(self, LibrarySet):
+        self._LibrarySet = LibrarySet
+
+    @property
+    def MaxVideoDuration(self):
+        return self._MaxVideoDuration
+
+    @MaxVideoDuration.setter
+    def MaxVideoDuration(self, MaxVideoDuration):
+        self._MaxVideoDuration = MaxVideoDuration
 
 
     def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.LibrarySet = params.get("LibrarySet")
-        self.MaxVideoDuration = params.get("MaxVideoDuration")
+        self._FileContent = params.get("FileContent")
+        self._FileType = params.get("FileType")
+        self._LibrarySet = params.get("LibrarySet")
+        self._MaxVideoDuration = params.get("MaxVideoDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4644,27 +8881,51 @@ class SubmitTraditionalClassTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageResults: 图像任务直接返回结果，包括： ActionInfo、FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TimeInfo
+        :param _ImageResults: 图像任务直接返回结果，包括： ActionInfo、FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TimeInfo
         :type ImageResults: list of ImageTaskResult
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageResults = None
-        self.TaskId = None
-        self.RequestId = None
+        self._ImageResults = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ImageResults(self):
+        return self._ImageResults
+
+    @ImageResults.setter
+    def ImageResults(self, ImageResults):
+        self._ImageResults = ImageResults
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImageResults") is not None:
-            self.ImageResults = []
+            self._ImageResults = []
             for item in params.get("ImageResults"):
                 obj = ImageTaskResult()
                 obj._deserialize(item)
-                self.ImageResults.append(obj)
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+                self._ImageResults.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SuspectedInfo(AbstractModel):
@@ -4674,27 +8935,44 @@ class SuspectedInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceSet: TopN匹配信息列表
+        :param _FaceSet: TopN匹配信息列表
         :type FaceSet: list of FrameInfo
-        :param PersonId: 识别到的人员id
+        :param _PersonId: 识别到的人员id
         :type PersonId: str
         """
-        self.FaceSet = None
-        self.PersonId = None
+        self._FaceSet = None
+        self._PersonId = None
+
+    @property
+    def FaceSet(self):
+        return self._FaceSet
+
+    @FaceSet.setter
+    def FaceSet(self, FaceSet):
+        self._FaceSet = FaceSet
+
+    @property
+    def PersonId(self):
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
 
 
     def _deserialize(self, params):
         if params.get("FaceSet") is not None:
-            self.FaceSet = []
+            self._FaceSet = []
             for item in params.get("FaceSet"):
                 obj = FrameInfo()
                 obj._deserialize(item)
-                self.FaceSet.append(obj)
-        self.PersonId = params.get("PersonId")
+                self._FaceSet.append(obj)
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4707,35 +8985,76 @@ class TeacherOutScreenResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Class: 动作识别结果，InScreen：在屏幕内
+        :param _Class: 动作识别结果，InScreen：在屏幕内
 OutScreen：不在屏幕内
         :type Class: str
-        :param Height: 识别结果高度
+        :param _Height: 识别结果高度
         :type Height: int
-        :param Left: 识别结果左坐标
+        :param _Left: 识别结果左坐标
         :type Left: int
-        :param Top: 识别结果顶坐标
+        :param _Top: 识别结果顶坐标
         :type Top: int
-        :param Width: 识别结果宽度
+        :param _Width: 识别结果宽度
         :type Width: int
         """
-        self.Class = None
-        self.Height = None
-        self.Left = None
-        self.Top = None
-        self.Width = None
+        self._Class = None
+        self._Height = None
+        self._Left = None
+        self._Top = None
+        self._Width = None
+
+    @property
+    def Class(self):
+        return self._Class
+
+    @Class.setter
+    def Class(self, Class):
+        self._Class = Class
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Top(self):
+        return self._Top
+
+    @Top.setter
+    def Top(self, Top):
+        self._Top = Top
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
 
 
     def _deserialize(self, params):
-        self.Class = params.get("Class")
-        self.Height = params.get("Height")
-        self.Left = params.get("Left")
-        self.Top = params.get("Top")
-        self.Width = params.get("Width")
+        self._Class = params.get("Class")
+        self._Height = params.get("Height")
+        self._Left = params.get("Left")
+        self._Top = params.get("Top")
+        self._Width = params.get("Width")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4748,47 +9067,104 @@ class TextItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Words: 当前句子包含的所有单词信息
+        :param _Words: 当前句子包含的所有单词信息
         :type Words: list of Word
-        :param Confidence: 当前句子的置信度
+        :param _Confidence: 当前句子的置信度
         :type Confidence: float
-        :param Mbtm: 当前句子语音的起始时间点，单位为ms
+        :param _Mbtm: 当前句子语音的起始时间点，单位为ms
         :type Mbtm: int
-        :param Metm: 当前句子语音的终止时间点，单位为ms
+        :param _Metm: 当前句子语音的终止时间点，单位为ms
         :type Metm: int
-        :param Tag: 保留参数，暂无意义
+        :param _Tag: 保留参数，暂无意义
         :type Tag: int
-        :param Text: 当前句子
+        :param _Text: 当前句子
         :type Text: str
-        :param TextSize: 当前句子的字节数
+        :param _TextSize: 当前句子的字节数
         :type TextSize: int
         """
-        self.Words = None
-        self.Confidence = None
-        self.Mbtm = None
-        self.Metm = None
-        self.Tag = None
-        self.Text = None
-        self.TextSize = None
+        self._Words = None
+        self._Confidence = None
+        self._Mbtm = None
+        self._Metm = None
+        self._Tag = None
+        self._Text = None
+        self._TextSize = None
+
+    @property
+    def Words(self):
+        return self._Words
+
+    @Words.setter
+    def Words(self, Words):
+        self._Words = Words
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Mbtm(self):
+        return self._Mbtm
+
+    @Mbtm.setter
+    def Mbtm(self, Mbtm):
+        self._Mbtm = Mbtm
+
+    @property
+    def Metm(self):
+        return self._Metm
+
+    @Metm.setter
+    def Metm(self, Metm):
+        self._Metm = Metm
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TextSize(self):
+        return self._TextSize
+
+    @TextSize.setter
+    def TextSize(self, TextSize):
+        self._TextSize = TextSize
 
 
     def _deserialize(self, params):
         if params.get("Words") is not None:
-            self.Words = []
+            self._Words = []
             for item in params.get("Words"):
                 obj = Word()
                 obj._deserialize(item)
-                self.Words.append(obj)
-        self.Confidence = params.get("Confidence")
-        self.Mbtm = params.get("Mbtm")
-        self.Metm = params.get("Metm")
-        self.Tag = params.get("Tag")
-        self.Text = params.get("Text")
-        self.TextSize = params.get("TextSize")
+                self._Words.append(obj)
+        self._Confidence = params.get("Confidence")
+        self._Mbtm = params.get("Mbtm")
+        self._Metm = params.get("Metm")
+        self._Tag = params.get("Tag")
+        self._Text = params.get("Text")
+        self._TextSize = params.get("TextSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4801,26 +9177,51 @@ class TimeInfoResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Duration: 持续时间，单位毫秒
+        :param _Duration: 持续时间，单位毫秒
         :type Duration: int
-        :param EndTs: 结束时间戳，单位毫秒
+        :param _EndTs: 结束时间戳，单位毫秒
         :type EndTs: int
-        :param StartTs: 开始时间戳，单位毫秒
+        :param _StartTs: 开始时间戳，单位毫秒
         :type StartTs: int
         """
-        self.Duration = None
-        self.EndTs = None
-        self.StartTs = None
+        self._Duration = None
+        self._EndTs = None
+        self._StartTs = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def EndTs(self):
+        return self._EndTs
+
+    @EndTs.setter
+    def EndTs(self, EndTs):
+        self._EndTs = EndTs
+
+    @property
+    def StartTs(self):
+        return self._StartTs
+
+    @StartTs.setter
+    def StartTs(self, StartTs):
+        self._StartTs = StartTs
 
 
     def _deserialize(self, params):
-        self.Duration = params.get("Duration")
-        self.EndTs = params.get("EndTs")
-        self.StartTs = params.get("StartTs")
+        self._Duration = params.get("Duration")
+        self._EndTs = params.get("EndTs")
+        self._StartTs = params.get("StartTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4833,22 +9234,39 @@ class TimeType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EndTime: 结束时间戳
+        :param _EndTime: 结束时间戳
         :type EndTime: int
-        :param StartTime: 起始时间戳
+        :param _StartTime: 起始时间戳
         :type StartTime: int
         """
-        self.EndTime = None
-        self.StartTime = None
+        self._EndTime = None
+        self._StartTime = None
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
 
 
     def _deserialize(self, params):
-        self.EndTime = params.get("EndTime")
-        self.StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4861,56 +9279,137 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+        :param _Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
         :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
-        :param SeqId: 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义。
+        :param _SeqId: 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义。
         :type SeqId: int
-        :param SessionId: 语音段唯一标识，一个完整语音一个SessionId。
+        :param _SessionId: 语音段唯一标识，一个完整语音一个SessionId。
         :type SessionId: str
-        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络良好的情况下，建议设置为0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+        :param _UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络良好的情况下，建议设置为0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
         :type UserVoiceData: str
-        :param VoiceEncodeType: 语音编码类型 1:pcm。
+        :param _VoiceEncodeType: 语音编码类型 1:pcm。
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型 	1: raw, 2: wav, 3: mp3 (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
+        :param _VoiceFileType: 语音文件类型 	1: raw, 2: wav, 3: mp3 (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
         :type VoiceFileType: int
-        :param IsEnd: 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
+        :param _IsEnd: 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         :type IsEnd: int
-        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :param _Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
-        :param StorageMode: 是否临时保存 音频链接
+        :param _StorageMode: 是否临时保存 音频链接
         :type StorageMode: int
-        :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :param _VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
         """
-        self.Functions = None
-        self.SeqId = None
-        self.SessionId = None
-        self.UserVoiceData = None
-        self.VoiceEncodeType = None
-        self.VoiceFileType = None
-        self.IsEnd = None
-        self.Lang = None
-        self.StorageMode = None
-        self.VocabLibNameList = None
+        self._Functions = None
+        self._SeqId = None
+        self._SessionId = None
+        self._UserVoiceData = None
+        self._VoiceEncodeType = None
+        self._VoiceFileType = None
+        self._IsEnd = None
+        self._Lang = None
+        self._StorageMode = None
+        self._VocabLibNameList = None
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def SeqId(self):
+        return self._SeqId
+
+    @SeqId.setter
+    def SeqId(self, SeqId):
+        self._SeqId = SeqId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def UserVoiceData(self):
+        return self._UserVoiceData
+
+    @UserVoiceData.setter
+    def UserVoiceData(self, UserVoiceData):
+        self._UserVoiceData = UserVoiceData
+
+    @property
+    def VoiceEncodeType(self):
+        return self._VoiceEncodeType
+
+    @VoiceEncodeType.setter
+    def VoiceEncodeType(self, VoiceEncodeType):
+        self._VoiceEncodeType = VoiceEncodeType
+
+    @property
+    def VoiceFileType(self):
+        return self._VoiceFileType
+
+    @VoiceFileType.setter
+    def VoiceFileType(self, VoiceFileType):
+        self._VoiceFileType = VoiceFileType
+
+    @property
+    def IsEnd(self):
+        return self._IsEnd
+
+    @IsEnd.setter
+    def IsEnd(self, IsEnd):
+        self._IsEnd = IsEnd
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def StorageMode(self):
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def VocabLibNameList(self):
+        return self._VocabLibNameList
+
+    @VocabLibNameList.setter
+    def VocabLibNameList(self, VocabLibNameList):
+        self._VocabLibNameList = VocabLibNameList
 
 
     def _deserialize(self, params):
         if params.get("Functions") is not None:
-            self.Functions = Function()
-            self.Functions._deserialize(params.get("Functions"))
-        self.SeqId = params.get("SeqId")
-        self.SessionId = params.get("SessionId")
-        self.UserVoiceData = params.get("UserVoiceData")
-        self.VoiceEncodeType = params.get("VoiceEncodeType")
-        self.VoiceFileType = params.get("VoiceFileType")
-        self.IsEnd = params.get("IsEnd")
-        self.Lang = params.get("Lang")
-        self.StorageMode = params.get("StorageMode")
-        self.VocabLibNameList = params.get("VocabLibNameList")
+            self._Functions = Function()
+            self._Functions._deserialize(params.get("Functions"))
+        self._SeqId = params.get("SeqId")
+        self._SessionId = params.get("SessionId")
+        self._UserVoiceData = params.get("UserVoiceData")
+        self._VoiceEncodeType = params.get("VoiceEncodeType")
+        self._VoiceFileType = params.get("VoiceFileType")
+        self._IsEnd = params.get("IsEnd")
+        self._Lang = params.get("Lang")
+        self._StorageMode = params.get("StorageMode")
+        self._VocabLibNameList = params.get("VocabLibNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4923,55 +9422,111 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
+        :param _AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
         :type AsrStat: :class:`tencentcloud.tci.v20190318.models.ASRStat`
-        :param Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :param _Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
         :type Texts: list of WholeTextItem
-        :param VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
+        :param _VocabAnalysisDetailInfo: 返回词汇库中的单词出现的详细时间信息。
         :type VocabAnalysisDetailInfo: list of VocabDetailInfomation
-        :param VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
+        :param _VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
-        :param AllTexts: 音频全部文本。
+        :param _AllTexts: 音频全部文本。
         :type AllTexts: str
-        :param AudioUrl: 临时保存的音频链接
+        :param _AudioUrl: 临时保存的音频链接
         :type AudioUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsrStat = None
-        self.Texts = None
-        self.VocabAnalysisDetailInfo = None
-        self.VocabAnalysisStatInfo = None
-        self.AllTexts = None
-        self.AudioUrl = None
-        self.RequestId = None
+        self._AsrStat = None
+        self._Texts = None
+        self._VocabAnalysisDetailInfo = None
+        self._VocabAnalysisStatInfo = None
+        self._AllTexts = None
+        self._AudioUrl = None
+        self._RequestId = None
+
+    @property
+    def AsrStat(self):
+        return self._AsrStat
+
+    @AsrStat.setter
+    def AsrStat(self, AsrStat):
+        self._AsrStat = AsrStat
+
+    @property
+    def Texts(self):
+        return self._Texts
+
+    @Texts.setter
+    def Texts(self, Texts):
+        self._Texts = Texts
+
+    @property
+    def VocabAnalysisDetailInfo(self):
+        return self._VocabAnalysisDetailInfo
+
+    @VocabAnalysisDetailInfo.setter
+    def VocabAnalysisDetailInfo(self, VocabAnalysisDetailInfo):
+        self._VocabAnalysisDetailInfo = VocabAnalysisDetailInfo
+
+    @property
+    def VocabAnalysisStatInfo(self):
+        return self._VocabAnalysisStatInfo
+
+    @VocabAnalysisStatInfo.setter
+    def VocabAnalysisStatInfo(self, VocabAnalysisStatInfo):
+        self._VocabAnalysisStatInfo = VocabAnalysisStatInfo
+
+    @property
+    def AllTexts(self):
+        return self._AllTexts
+
+    @AllTexts.setter
+    def AllTexts(self, AllTexts):
+        self._AllTexts = AllTexts
+
+    @property
+    def AudioUrl(self):
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AsrStat") is not None:
-            self.AsrStat = ASRStat()
-            self.AsrStat._deserialize(params.get("AsrStat"))
+            self._AsrStat = ASRStat()
+            self._AsrStat._deserialize(params.get("AsrStat"))
         if params.get("Texts") is not None:
-            self.Texts = []
+            self._Texts = []
             for item in params.get("Texts"):
                 obj = WholeTextItem()
                 obj._deserialize(item)
-                self.Texts.append(obj)
+                self._Texts.append(obj)
         if params.get("VocabAnalysisDetailInfo") is not None:
-            self.VocabAnalysisDetailInfo = []
+            self._VocabAnalysisDetailInfo = []
             for item in params.get("VocabAnalysisDetailInfo"):
                 obj = VocabDetailInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisDetailInfo.append(obj)
+                self._VocabAnalysisDetailInfo.append(obj)
         if params.get("VocabAnalysisStatInfo") is not None:
-            self.VocabAnalysisStatInfo = []
+            self._VocabAnalysisStatInfo = []
             for item in params.get("VocabAnalysisStatInfo"):
                 obj = VocabStatInfomation()
                 obj._deserialize(item)
-                self.VocabAnalysisStatInfo.append(obj)
-        self.AllTexts = params.get("AllTexts")
-        self.AudioUrl = params.get("AudioUrl")
-        self.RequestId = params.get("RequestId")
+                self._VocabAnalysisStatInfo.append(obj)
+        self._AllTexts = params.get("AllTexts")
+        self._AudioUrl = params.get("AudioUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class VocabDetailInfomation(AbstractModel):
@@ -4981,27 +9536,44 @@ class VocabDetailInfomation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabDetailInfo: 词汇库中的单词出现在该音频中的那个句子的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
+        :param _VocabDetailInfo: 词汇库中的单词出现在该音频中的那个句子的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
         :type VocabDetailInfo: list of DetailInfo
-        :param VocabLibName: 词汇库名
+        :param _VocabLibName: 词汇库名
         :type VocabLibName: str
         """
-        self.VocabDetailInfo = None
-        self.VocabLibName = None
+        self._VocabDetailInfo = None
+        self._VocabLibName = None
+
+    @property
+    def VocabDetailInfo(self):
+        return self._VocabDetailInfo
+
+    @VocabDetailInfo.setter
+    def VocabDetailInfo(self, VocabDetailInfo):
+        self._VocabDetailInfo = VocabDetailInfo
+
+    @property
+    def VocabLibName(self):
+        return self._VocabLibName
+
+    @VocabLibName.setter
+    def VocabLibName(self, VocabLibName):
+        self._VocabLibName = VocabLibName
 
 
     def _deserialize(self, params):
         if params.get("VocabDetailInfo") is not None:
-            self.VocabDetailInfo = []
+            self._VocabDetailInfo = []
             for item in params.get("VocabDetailInfo"):
                 obj = DetailInfo()
                 obj._deserialize(item)
-                self.VocabDetailInfo.append(obj)
-        self.VocabLibName = params.get("VocabLibName")
+                self._VocabDetailInfo.append(obj)
+        self._VocabLibName = params.get("VocabLibName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5014,27 +9586,44 @@ class VocabStatInfomation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VocabDetailInfo: 单词出现在该音频中总次数
+        :param _VocabDetailInfo: 单词出现在该音频中总次数
         :type VocabDetailInfo: list of StatInfo
-        :param VocabLibName: 词汇库名称
+        :param _VocabLibName: 词汇库名称
         :type VocabLibName: str
         """
-        self.VocabDetailInfo = None
-        self.VocabLibName = None
+        self._VocabDetailInfo = None
+        self._VocabLibName = None
+
+    @property
+    def VocabDetailInfo(self):
+        return self._VocabDetailInfo
+
+    @VocabDetailInfo.setter
+    def VocabDetailInfo(self, VocabDetailInfo):
+        self._VocabDetailInfo = VocabDetailInfo
+
+    @property
+    def VocabLibName(self):
+        return self._VocabLibName
+
+    @VocabLibName.setter
+    def VocabLibName(self, VocabLibName):
+        self._VocabLibName = VocabLibName
 
 
     def _deserialize(self, params):
         if params.get("VocabDetailInfo") is not None:
-            self.VocabDetailInfo = []
+            self._VocabDetailInfo = []
             for item in params.get("VocabDetailInfo"):
                 obj = StatInfo()
                 obj._deserialize(item)
-                self.VocabDetailInfo.append(obj)
-        self.VocabLibName = params.get("VocabLibName")
+                self._VocabDetailInfo.append(obj)
+        self._VocabLibName = params.get("VocabLibName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5047,36 +9636,77 @@ class WholeTextItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TextItem: 当前句子的信息
+        :param _TextItem: 当前句子的信息
         :type TextItem: :class:`tencentcloud.tci.v20190318.models.TextItem`
-        :param AvgVolume: Vad的平均音量
+        :param _AvgVolume: Vad的平均音量
         :type AvgVolume: float
-        :param MaxVolume: Vad的最大音量
+        :param _MaxVolume: Vad的最大音量
         :type MaxVolume: float
-        :param MinVolume: Vad的最小音量
+        :param _MinVolume: Vad的最小音量
         :type MinVolume: float
-        :param Speed: 当前句子的语速
+        :param _Speed: 当前句子的语速
         :type Speed: float
         """
-        self.TextItem = None
-        self.AvgVolume = None
-        self.MaxVolume = None
-        self.MinVolume = None
-        self.Speed = None
+        self._TextItem = None
+        self._AvgVolume = None
+        self._MaxVolume = None
+        self._MinVolume = None
+        self._Speed = None
+
+    @property
+    def TextItem(self):
+        return self._TextItem
+
+    @TextItem.setter
+    def TextItem(self, TextItem):
+        self._TextItem = TextItem
+
+    @property
+    def AvgVolume(self):
+        return self._AvgVolume
+
+    @AvgVolume.setter
+    def AvgVolume(self, AvgVolume):
+        self._AvgVolume = AvgVolume
+
+    @property
+    def MaxVolume(self):
+        return self._MaxVolume
+
+    @MaxVolume.setter
+    def MaxVolume(self, MaxVolume):
+        self._MaxVolume = MaxVolume
+
+    @property
+    def MinVolume(self):
+        return self._MinVolume
+
+    @MinVolume.setter
+    def MinVolume(self, MinVolume):
+        self._MinVolume = MinVolume
+
+    @property
+    def Speed(self):
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
 
 
     def _deserialize(self, params):
         if params.get("TextItem") is not None:
-            self.TextItem = TextItem()
-            self.TextItem._deserialize(params.get("TextItem"))
-        self.AvgVolume = params.get("AvgVolume")
-        self.MaxVolume = params.get("MaxVolume")
-        self.MinVolume = params.get("MinVolume")
-        self.Speed = params.get("Speed")
+            self._TextItem = TextItem()
+            self._TextItem._deserialize(params.get("TextItem"))
+        self._AvgVolume = params.get("AvgVolume")
+        self._MaxVolume = params.get("MaxVolume")
+        self._MinVolume = params.get("MinVolume")
+        self._Speed = params.get("Speed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5089,34 +9719,75 @@ class Word(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Confidence: 当前词的置信度
+        :param _Confidence: 当前词的置信度
         :type Confidence: float
-        :param Mbtm: 当前单词语音的起始时间点，单位为ms
+        :param _Mbtm: 当前单词语音的起始时间点，单位为ms
         :type Mbtm: int
-        :param Metm: 当前单词语音的终止时间点，单位为ms
+        :param _Metm: 当前单词语音的终止时间点，单位为ms
         :type Metm: int
-        :param Text: 当前词
+        :param _Text: 当前词
         :type Text: str
-        :param Wsize: 当前词的字节数
+        :param _Wsize: 当前词的字节数
         :type Wsize: int
         """
-        self.Confidence = None
-        self.Mbtm = None
-        self.Metm = None
-        self.Text = None
-        self.Wsize = None
+        self._Confidence = None
+        self._Mbtm = None
+        self._Metm = None
+        self._Text = None
+        self._Wsize = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Mbtm(self):
+        return self._Mbtm
+
+    @Mbtm.setter
+    def Mbtm(self, Mbtm):
+        self._Mbtm = Mbtm
+
+    @property
+    def Metm(self):
+        return self._Metm
+
+    @Metm.setter
+    def Metm(self, Metm):
+        self._Metm = Metm
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Wsize(self):
+        return self._Wsize
+
+    @Wsize.setter
+    def Wsize(self, Wsize):
+        self._Wsize = Wsize
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Mbtm = params.get("Mbtm")
-        self.Metm = params.get("Metm")
-        self.Text = params.get("Text")
-        self.Wsize = params.get("Wsize")
+        self._Confidence = params.get("Confidence")
+        self._Mbtm = params.get("Mbtm")
+        self._Metm = params.get("Metm")
+        self._Text = params.get("Text")
+        self._Wsize = params.get("Wsize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5129,22 +9800,39 @@ class WordTimePair(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mbtm: 单词出现的那个句子的起始时间
+        :param _Mbtm: 单词出现的那个句子的起始时间
         :type Mbtm: int
-        :param Metm: 	单词出现的那个句子的结束时间
+        :param _Metm: 	单词出现的那个句子的结束时间
         :type Metm: int
         """
-        self.Mbtm = None
-        self.Metm = None
+        self._Mbtm = None
+        self._Metm = None
+
+    @property
+    def Mbtm(self):
+        return self._Mbtm
+
+    @Mbtm.setter
+    def Mbtm(self, Mbtm):
+        self._Mbtm = Mbtm
+
+    @property
+    def Metm(self):
+        return self._Metm
+
+    @Metm.setter
+    def Metm(self, Metm):
+        self._Metm = Metm
 
 
     def _deserialize(self, params):
-        self.Mbtm = params.get("Mbtm")
-        self.Metm = params.get("Metm")
+        self._Mbtm = params.get("Mbtm")
+        self._Metm = params.get("Metm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

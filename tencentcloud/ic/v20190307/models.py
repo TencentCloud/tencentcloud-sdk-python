@@ -25,47 +25,112 @@ class AppInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: str
-        :param Appkey: 应用key
+        :param _Appkey: 应用key
         :type Appkey: str
-        :param CloudAppid: 用户appid
+        :param _CloudAppid: 用户appid
         :type CloudAppid: str
-        :param Name: 应用名称
+        :param _Name: 应用名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Description: 应用描述
+        :param _Description: 应用描述
         :type Description: str
-        :param CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间
         :type CreatedTime: str
-        :param BizType: 应用类型
+        :param _BizType: 应用类型
         :type BizType: int
-        :param Uin: 用户Uin
+        :param _Uin: 用户Uin
         :type Uin: str
         """
-        self.Sdkappid = None
-        self.Appkey = None
-        self.CloudAppid = None
-        self.Name = None
-        self.Description = None
-        self.CreatedTime = None
-        self.BizType = None
-        self.Uin = None
+        self._Sdkappid = None
+        self._Appkey = None
+        self._CloudAppid = None
+        self._Name = None
+        self._Description = None
+        self._CreatedTime = None
+        self._BizType = None
+        self._Uin = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Appkey(self):
+        return self._Appkey
+
+    @Appkey.setter
+    def Appkey(self, Appkey):
+        self._Appkey = Appkey
+
+    @property
+    def CloudAppid(self):
+        return self._CloudAppid
+
+    @CloudAppid.setter
+    def CloudAppid(self, CloudAppid):
+        self._CloudAppid = CloudAppid
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Appkey = params.get("Appkey")
-        self.CloudAppid = params.get("CloudAppid")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.CreatedTime = params.get("CreatedTime")
-        self.BizType = params.get("BizType")
-        self.Uin = params.get("Uin")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Appkey = params.get("Appkey")
+        self._CloudAppid = params.get("CloudAppid")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreatedTime = params.get("CreatedTime")
+        self._BizType = params.get("BizType")
+        self._Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -78,145 +143,370 @@ class CardInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Iccid: 卡片ID
+        :param _Iccid: 卡片ID
         :type Iccid: str
-        :param Msisdn: 卡电话号码
+        :param _Msisdn: 卡电话号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msisdn: str
-        :param Imsi: 卡imsi
+        :param _Imsi: 卡imsi
 注意：此字段可能返回 null，表示取不到有效值。
         :type Imsi: str
-        :param Imei: 卡imei
+        :param _Imei: 卡imei
 注意：此字段可能返回 null，表示取不到有效值。
         :type Imei: str
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: str
-        :param Teleoperator: 运营商编号
+        :param _Teleoperator: 运营商编号
         :type Teleoperator: int
-        :param CardStatus: 卡片状态 1:未激活 2：激活 3：停卡 5：销卡
+        :param _CardStatus: 卡片状态 1:未激活 2：激活 3：停卡 5：销卡
         :type CardStatus: int
-        :param NetworkStatus: 网络状态
+        :param _NetworkStatus: 网络状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkStatus: int
-        :param ActivitedTime: 激活时间
+        :param _ActivitedTime: 激活时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivitedTime: str
-        :param Type: 资费类型，1 单卡，2 流量池
+        :param _Type: 资费类型，1 单卡，2 流量池
         :type Type: int
-        :param ProductId: 套餐类型
+        :param _ProductId: 套餐类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param PoolId: 流量池ID
+        :param _PoolId: 流量池ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoolId: str
-        :param DataUsedInPeriod: 周期套餐流量使用
+        :param _DataUsedInPeriod: 周期套餐流量使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataUsedInPeriod: float
-        :param DataTotalInPeriod: 周期套餐总量
+        :param _DataTotalInPeriod: 周期套餐总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataTotalInPeriod: float
-        :param ProductExpiredTime: 过期时间
+        :param _ProductExpiredTime: 过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductExpiredTime: str
-        :param Description: 描述信息
+        :param _Description: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间
         :type CreatedTime: str
-        :param ModifiedTime: 修改时间
+        :param _ModifiedTime: 修改时间
         :type ModifiedTime: str
-        :param PreorderCnt: 套餐周期
+        :param _PreorderCnt: 套餐周期
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreorderCnt: int
-        :param IsActivated: 激活被回调标志
+        :param _IsActivated: 激活被回调标志
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsActivated: int
-        :param OrderId: 订单ID
+        :param _OrderId: 订单ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
-        :param AutoRenew: 是否自动续费
+        :param _AutoRenew: 是否自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenew: int
-        :param Remark: 备注
+        :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param AllowArrears: 0 不需要开通达量不停卡 1 需要开通达量不停卡
+        :param _AllowArrears: 0 不需要开通达量不停卡 1 需要开通达量不停卡
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowArrears: int
-        :param NeedSms: 是否开通短信0:未开短信 1:开通短信
+        :param _NeedSms: 是否开通短信0:未开短信 1:开通短信
         :type NeedSms: int
-        :param Provider: 供应商
+        :param _Provider: 供应商
         :type Provider: int
-        :param CertificationState: 实名认证 0:无 1:未实名 2:已实名
+        :param _CertificationState: 实名认证 0:无 1:未实名 2:已实名
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificationState: int
-        :param OtherData: 其他流量信息,流量分离统计其他流量
+        :param _OtherData: 其他流量信息,流量分离统计其他流量
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherData: float
         """
-        self.Iccid = None
-        self.Msisdn = None
-        self.Imsi = None
-        self.Imei = None
-        self.Sdkappid = None
-        self.Teleoperator = None
-        self.CardStatus = None
-        self.NetworkStatus = None
-        self.ActivitedTime = None
-        self.Type = None
-        self.ProductId = None
-        self.PoolId = None
-        self.DataUsedInPeriod = None
-        self.DataTotalInPeriod = None
-        self.ProductExpiredTime = None
-        self.Description = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.PreorderCnt = None
-        self.IsActivated = None
-        self.OrderId = None
-        self.AutoRenew = None
-        self.Remark = None
-        self.AllowArrears = None
-        self.NeedSms = None
-        self.Provider = None
-        self.CertificationState = None
-        self.OtherData = None
+        self._Iccid = None
+        self._Msisdn = None
+        self._Imsi = None
+        self._Imei = None
+        self._Sdkappid = None
+        self._Teleoperator = None
+        self._CardStatus = None
+        self._NetworkStatus = None
+        self._ActivitedTime = None
+        self._Type = None
+        self._ProductId = None
+        self._PoolId = None
+        self._DataUsedInPeriod = None
+        self._DataTotalInPeriod = None
+        self._ProductExpiredTime = None
+        self._Description = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._PreorderCnt = None
+        self._IsActivated = None
+        self._OrderId = None
+        self._AutoRenew = None
+        self._Remark = None
+        self._AllowArrears = None
+        self._NeedSms = None
+        self._Provider = None
+        self._CertificationState = None
+        self._OtherData = None
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Msisdn(self):
+        return self._Msisdn
+
+    @Msisdn.setter
+    def Msisdn(self, Msisdn):
+        self._Msisdn = Msisdn
+
+    @property
+    def Imsi(self):
+        return self._Imsi
+
+    @Imsi.setter
+    def Imsi(self, Imsi):
+        self._Imsi = Imsi
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Teleoperator(self):
+        return self._Teleoperator
+
+    @Teleoperator.setter
+    def Teleoperator(self, Teleoperator):
+        self._Teleoperator = Teleoperator
+
+    @property
+    def CardStatus(self):
+        return self._CardStatus
+
+    @CardStatus.setter
+    def CardStatus(self, CardStatus):
+        self._CardStatus = CardStatus
+
+    @property
+    def NetworkStatus(self):
+        return self._NetworkStatus
+
+    @NetworkStatus.setter
+    def NetworkStatus(self, NetworkStatus):
+        self._NetworkStatus = NetworkStatus
+
+    @property
+    def ActivitedTime(self):
+        return self._ActivitedTime
+
+    @ActivitedTime.setter
+    def ActivitedTime(self, ActivitedTime):
+        self._ActivitedTime = ActivitedTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def PoolId(self):
+        return self._PoolId
+
+    @PoolId.setter
+    def PoolId(self, PoolId):
+        self._PoolId = PoolId
+
+    @property
+    def DataUsedInPeriod(self):
+        return self._DataUsedInPeriod
+
+    @DataUsedInPeriod.setter
+    def DataUsedInPeriod(self, DataUsedInPeriod):
+        self._DataUsedInPeriod = DataUsedInPeriod
+
+    @property
+    def DataTotalInPeriod(self):
+        return self._DataTotalInPeriod
+
+    @DataTotalInPeriod.setter
+    def DataTotalInPeriod(self, DataTotalInPeriod):
+        self._DataTotalInPeriod = DataTotalInPeriod
+
+    @property
+    def ProductExpiredTime(self):
+        return self._ProductExpiredTime
+
+    @ProductExpiredTime.setter
+    def ProductExpiredTime(self, ProductExpiredTime):
+        self._ProductExpiredTime = ProductExpiredTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def PreorderCnt(self):
+        return self._PreorderCnt
+
+    @PreorderCnt.setter
+    def PreorderCnt(self, PreorderCnt):
+        self._PreorderCnt = PreorderCnt
+
+    @property
+    def IsActivated(self):
+        return self._IsActivated
+
+    @IsActivated.setter
+    def IsActivated(self, IsActivated):
+        self._IsActivated = IsActivated
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AllowArrears(self):
+        return self._AllowArrears
+
+    @AllowArrears.setter
+    def AllowArrears(self, AllowArrears):
+        self._AllowArrears = AllowArrears
+
+    @property
+    def NeedSms(self):
+        return self._NeedSms
+
+    @NeedSms.setter
+    def NeedSms(self, NeedSms):
+        self._NeedSms = NeedSms
+
+    @property
+    def Provider(self):
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def CertificationState(self):
+        return self._CertificationState
+
+    @CertificationState.setter
+    def CertificationState(self, CertificationState):
+        self._CertificationState = CertificationState
+
+    @property
+    def OtherData(self):
+        return self._OtherData
+
+    @OtherData.setter
+    def OtherData(self, OtherData):
+        self._OtherData = OtherData
 
 
     def _deserialize(self, params):
-        self.Iccid = params.get("Iccid")
-        self.Msisdn = params.get("Msisdn")
-        self.Imsi = params.get("Imsi")
-        self.Imei = params.get("Imei")
-        self.Sdkappid = params.get("Sdkappid")
-        self.Teleoperator = params.get("Teleoperator")
-        self.CardStatus = params.get("CardStatus")
-        self.NetworkStatus = params.get("NetworkStatus")
-        self.ActivitedTime = params.get("ActivitedTime")
-        self.Type = params.get("Type")
-        self.ProductId = params.get("ProductId")
-        self.PoolId = params.get("PoolId")
-        self.DataUsedInPeriod = params.get("DataUsedInPeriod")
-        self.DataTotalInPeriod = params.get("DataTotalInPeriod")
-        self.ProductExpiredTime = params.get("ProductExpiredTime")
-        self.Description = params.get("Description")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.PreorderCnt = params.get("PreorderCnt")
-        self.IsActivated = params.get("IsActivated")
-        self.OrderId = params.get("OrderId")
-        self.AutoRenew = params.get("AutoRenew")
-        self.Remark = params.get("Remark")
-        self.AllowArrears = params.get("AllowArrears")
-        self.NeedSms = params.get("NeedSms")
-        self.Provider = params.get("Provider")
-        self.CertificationState = params.get("CertificationState")
-        self.OtherData = params.get("OtherData")
+        self._Iccid = params.get("Iccid")
+        self._Msisdn = params.get("Msisdn")
+        self._Imsi = params.get("Imsi")
+        self._Imei = params.get("Imei")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Teleoperator = params.get("Teleoperator")
+        self._CardStatus = params.get("CardStatus")
+        self._NetworkStatus = params.get("NetworkStatus")
+        self._ActivitedTime = params.get("ActivitedTime")
+        self._Type = params.get("Type")
+        self._ProductId = params.get("ProductId")
+        self._PoolId = params.get("PoolId")
+        self._DataUsedInPeriod = params.get("DataUsedInPeriod")
+        self._DataTotalInPeriod = params.get("DataTotalInPeriod")
+        self._ProductExpiredTime = params.get("ProductExpiredTime")
+        self._Description = params.get("Description")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._PreorderCnt = params.get("PreorderCnt")
+        self._IsActivated = params.get("IsActivated")
+        self._OrderId = params.get("OrderId")
+        self._AutoRenew = params.get("AutoRenew")
+        self._Remark = params.get("Remark")
+        self._AllowArrears = params.get("AllowArrears")
+        self._NeedSms = params.get("NeedSms")
+        self._Provider = params.get("Provider")
+        self._CertificationState = params.get("CertificationState")
+        self._OtherData = params.get("OtherData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -229,28 +519,45 @@ class CardList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 卡片总数
+        :param _Total: 卡片总数
         :type Total: str
-        :param List: 卡片列表信息
+        :param _List: 卡片列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of CardInfo
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = CardInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -263,18 +570,27 @@ class DescribeAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 物联卡应用ID
+        :param _Sdkappid: 物联卡应用ID
         :type Sdkappid: int
         """
-        self.Sdkappid = None
+        self._Sdkappid = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
+        self._Sdkappid = params.get("Sdkappid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -287,21 +603,37 @@ class DescribeAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 应用信息详情
+        :param _Data: 应用信息详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.AppInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = AppInfo()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = AppInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCardRequest(AbstractModel):
@@ -311,22 +643,39 @@ class DescribeCardRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: int
-        :param Iccid: 卡片ID
+        :param _Iccid: 卡片ID
         :type Iccid: str
         """
-        self.Sdkappid = None
-        self.Iccid = None
+        self._Sdkappid = None
+        self._Iccid = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Iccid = params.get("Iccid")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Iccid = params.get("Iccid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -339,21 +688,37 @@ class DescribeCardResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 卡片详细信息
+        :param _Data: 卡片详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.CardInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CardInfo()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CardInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCardsRequest(AbstractModel):
@@ -363,26 +728,51 @@ class DescribeCardsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: str
-        :param Offset: 偏移值
+        :param _Offset: 偏移值
         :type Offset: int
-        :param Limit: 列表限制
+        :param _Limit: 列表限制
         :type Limit: int
         """
-        self.Sdkappid = None
-        self.Offset = None
-        self.Limit = None
+        self._Sdkappid = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -395,20 +785,36 @@ class DescribeCardsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 卡片列表信息
+        :param _Data: 卡片列表信息
         :type Data: :class:`tencentcloud.ic.v20190307.models.CardList`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CardList()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CardList()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmsRequest(AbstractModel):
@@ -418,46 +824,111 @@ class DescribeSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: int
-        :param Iccid: 卡片ID
+        :param _Iccid: 卡片ID
         :type Iccid: str
-        :param Msisdn: 卡片号码
+        :param _Msisdn: 卡片号码
         :type Msisdn: str
-        :param SmsType: 短信类型
+        :param _SmsType: 短信类型
         :type SmsType: int
-        :param BeginTime: 开始时间  YYYY-MM-DD HH:mm:ss
+        :param _BeginTime: 开始时间  YYYY-MM-DD HH:mm:ss
         :type BeginTime: str
-        :param EndTime: 结束时间  YYYY-MM-DD HH:mm:ss
+        :param _EndTime: 结束时间  YYYY-MM-DD HH:mm:ss
         :type EndTime: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 小于200
+        :param _Limit: 小于200
         :type Limit: int
         """
-        self.Sdkappid = None
-        self.Iccid = None
-        self.Msisdn = None
-        self.SmsType = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.Offset = None
-        self.Limit = None
+        self._Sdkappid = None
+        self._Iccid = None
+        self._Msisdn = None
+        self._SmsType = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Msisdn(self):
+        return self._Msisdn
+
+    @Msisdn.setter
+    def Msisdn(self, Msisdn):
+        self._Msisdn = Msisdn
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Iccid = params.get("Iccid")
-        self.Msisdn = params.get("Msisdn")
-        self.SmsType = params.get("SmsType")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Iccid = params.get("Iccid")
+        self._Msisdn = params.get("Msisdn")
+        self._SmsType = params.get("SmsType")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -470,29 +941,53 @@ class DescribeSmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 总数
+        :param _Total: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param List: 短信列表
+        :param _List: 短信列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ResSms
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Total = None
-        self.List = None
-        self.RequestId = None
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = ResSms()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyUserCardRemarkRequest(AbstractModel):
@@ -502,26 +997,51 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: int
-        :param Iccid: 物联卡ICCID
+        :param _Iccid: 物联卡ICCID
         :type Iccid: str
-        :param Remark: 备注信息，限50字
+        :param _Remark: 备注信息，限50字
         :type Remark: str
         """
-        self.Sdkappid = None
-        self.Iccid = None
-        self.Remark = None
+        self._Sdkappid = None
+        self._Iccid = None
+        self._Remark = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Iccid = params.get("Iccid")
-        self.Remark = params.get("Remark")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Iccid = params.get("Iccid")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -534,14 +1054,22 @@ class ModifyUserCardRemarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class PayForExtendDataRequest(AbstractModel):
@@ -551,26 +1079,51 @@ class PayForExtendDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Iccid: 卡片ICCID
+        :param _Iccid: 卡片ICCID
         :type Iccid: str
-        :param ExtentData: 套外流量,单位MB
+        :param _ExtentData: 套外流量,单位MB
         :type ExtentData: int
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: int
         """
-        self.Iccid = None
-        self.ExtentData = None
-        self.Sdkappid = None
+        self._Iccid = None
+        self._ExtentData = None
+        self._Sdkappid = None
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def ExtentData(self):
+        return self._ExtentData
+
+    @ExtentData.setter
+    def ExtentData(self, ExtentData):
+        self._ExtentData = ExtentData
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
 
 
     def _deserialize(self, params):
-        self.Iccid = params.get("Iccid")
-        self.ExtentData = params.get("ExtentData")
-        self.Sdkappid = params.get("Sdkappid")
+        self._Iccid = params.get("Iccid")
+        self._ExtentData = params.get("ExtentData")
+        self._Sdkappid = params.get("Sdkappid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -583,20 +1136,36 @@ class PayForExtendDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 订单号
+        :param _Data: 订单号
         :type Data: :class:`tencentcloud.ic.v20190307.models.ResOrderIds`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = ResOrderIds()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = ResOrderIds()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class RenewCardsRequest(AbstractModel):
@@ -606,26 +1175,51 @@ class RenewCardsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: int
-        :param Iccids: 续费的iccid
+        :param _Iccids: 续费的iccid
         :type Iccids: list of str
-        :param RenewNum: 续费的周期（单位：月）
+        :param _RenewNum: 续费的周期（单位：月）
         :type RenewNum: int
         """
-        self.Sdkappid = None
-        self.Iccids = None
-        self.RenewNum = None
+        self._Sdkappid = None
+        self._Iccids = None
+        self._RenewNum = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Iccids(self):
+        return self._Iccids
+
+    @Iccids.setter
+    def Iccids(self, Iccids):
+        self._Iccids = Iccids
+
+    @property
+    def RenewNum(self):
+        return self._RenewNum
+
+    @RenewNum.setter
+    def RenewNum(self, RenewNum):
+        self._RenewNum = RenewNum
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Iccids = params.get("Iccids")
-        self.RenewNum = params.get("RenewNum")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Iccids = params.get("Iccids")
+        self._RenewNum = params.get("RenewNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -638,21 +1232,37 @@ class RenewCardsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 续费成功的订单id
+        :param _Data: 续费成功的订单id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.ResRenew`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = ResRenew()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = ResRenew()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ResOrderIds(AbstractModel):
@@ -662,19 +1272,28 @@ class ResOrderIds(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderIds: 每一张续费卡片的订单ID数组
+        :param _OrderIds: 每一张续费卡片的订单ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderIds: list of str
         """
-        self.OrderIds = None
+        self._OrderIds = None
+
+    @property
+    def OrderIds(self):
+        return self._OrderIds
+
+    @OrderIds.setter
+    def OrderIds(self, OrderIds):
+        self._OrderIds = OrderIds
 
 
     def _deserialize(self, params):
-        self.OrderIds = params.get("OrderIds")
+        self._OrderIds = params.get("OrderIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -687,19 +1306,28 @@ class ResRenew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderIds: 每一张续费卡片的订单ID数组
+        :param _OrderIds: 每一张续费卡片的订单ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderIds: list of str
         """
-        self.OrderIds = None
+        self._OrderIds = None
+
+    @property
+    def OrderIds(self):
+        return self._OrderIds
+
+    @OrderIds.setter
+    def OrderIds(self, OrderIds):
+        self._OrderIds = OrderIds
 
 
     def _deserialize(self, params):
-        self.OrderIds = params.get("OrderIds")
+        self._OrderIds = params.get("OrderIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -712,59 +1340,132 @@ class ResSms(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Iccid: 卡片ID
+        :param _Iccid: 卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Iccid: str
-        :param Msisdn: 卡片号码
+        :param _Msisdn: 卡片号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msisdn: str
-        :param SdkAppid: 应用ID
+        :param _SdkAppid: 应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SdkAppid: int
-        :param Content: 短信内容
+        :param _Content: 短信内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
-        :param SmsType: 短信类型
+        :param _SmsType: 短信类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmsType: int
-        :param SendTime: 发送时间
+        :param _SendTime: 发送时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SendTime: str
-        :param ReportTime: 推送时间
+        :param _ReportTime: 推送时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTime: str
-        :param Remark: SUCC：成功  FAIL 失败
+        :param _Remark: SUCC：成功  FAIL 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param Status: 回执状态
+        :param _Status: 回执状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
-        self.Iccid = None
-        self.Msisdn = None
-        self.SdkAppid = None
-        self.Content = None
-        self.SmsType = None
-        self.SendTime = None
-        self.ReportTime = None
-        self.Remark = None
-        self.Status = None
+        self._Iccid = None
+        self._Msisdn = None
+        self._SdkAppid = None
+        self._Content = None
+        self._SmsType = None
+        self._SendTime = None
+        self._ReportTime = None
+        self._Remark = None
+        self._Status = None
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Msisdn(self):
+        return self._Msisdn
+
+    @Msisdn.setter
+    def Msisdn(self, Msisdn):
+        self._Msisdn = Msisdn
+
+    @property
+    def SdkAppid(self):
+        return self._SdkAppid
+
+    @SdkAppid.setter
+    def SdkAppid(self, SdkAppid):
+        self._SdkAppid = SdkAppid
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
+
+    @property
+    def SendTime(self):
+        return self._SendTime
+
+    @SendTime.setter
+    def SendTime(self, SendTime):
+        self._SendTime = SendTime
+
+    @property
+    def ReportTime(self):
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Iccid = params.get("Iccid")
-        self.Msisdn = params.get("Msisdn")
-        self.SdkAppid = params.get("SdkAppid")
-        self.Content = params.get("Content")
-        self.SmsType = params.get("SmsType")
-        self.SendTime = params.get("SendTime")
-        self.ReportTime = params.get("ReportTime")
-        self.Remark = params.get("Remark")
-        self.Status = params.get("Status")
+        self._Iccid = params.get("Iccid")
+        self._Msisdn = params.get("Msisdn")
+        self._SdkAppid = params.get("SdkAppid")
+        self._Content = params.get("Content")
+        self._SmsType = params.get("SmsType")
+        self._SendTime = params.get("SendTime")
+        self._ReportTime = params.get("ReportTime")
+        self._Remark = params.get("Remark")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -777,26 +1478,51 @@ class SendMultiSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: str
-        :param Iccids: 卡片列表
+        :param _Iccids: 卡片列表
         :type Iccids: list of str
-        :param Content: 短信内容 长度限制 70
+        :param _Content: 短信内容 长度限制 70
         :type Content: str
         """
-        self.Sdkappid = None
-        self.Iccids = None
-        self.Content = None
+        self._Sdkappid = None
+        self._Iccids = None
+        self._Content = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Iccids(self):
+        return self._Iccids
+
+    @Iccids.setter
+    def Iccids(self, Iccids):
+        self._Iccids = Iccids
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Iccids = params.get("Iccids")
-        self.Content = params.get("Content")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Iccids = params.get("Iccids")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -809,24 +1535,40 @@ class SendMultiSmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 短信流水数组
+        :param _Data: 短信流水数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of SmsRet
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = SmsRet()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SendSmsRequest(AbstractModel):
@@ -836,26 +1578,51 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sdkappid: 应用ID
+        :param _Sdkappid: 应用ID
         :type Sdkappid: int
-        :param Iccid: 卡片ID
+        :param _Iccid: 卡片ID
         :type Iccid: str
-        :param Content: 短信内容长度70限制
+        :param _Content: 短信内容长度70限制
         :type Content: str
         """
-        self.Sdkappid = None
-        self.Iccid = None
-        self.Content = None
+        self._Sdkappid = None
+        self._Iccid = None
+        self._Content = None
+
+    @property
+    def Sdkappid(self):
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.Sdkappid = params.get("Sdkappid")
-        self.Iccid = params.get("Iccid")
-        self.Content = params.get("Content")
+        self._Sdkappid = params.get("Sdkappid")
+        self._Iccid = params.get("Iccid")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -868,21 +1635,37 @@ class SendSmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 短信流水信息
+        :param _Data: 短信流水信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.SmsSid`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsSid()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsSid()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class SmsRet(AbstractModel):
@@ -892,30 +1675,63 @@ class SmsRet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 该iccid请求状态
+        :param _Code: 该iccid请求状态
         :type Code: str
-        :param Msg: 短信发送返回信息
+        :param _Msg: 短信发送返回信息
         :type Msg: str
-        :param Iccid: 卡片ID
+        :param _Iccid: 卡片ID
         :type Iccid: str
-        :param Sid: 流水ID
+        :param _Sid: 流水ID
         :type Sid: str
         """
-        self.Code = None
-        self.Msg = None
-        self.Iccid = None
-        self.Sid = None
+        self._Code = None
+        self._Msg = None
+        self._Iccid = None
+        self._Sid = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Sid(self):
+        return self._Sid
+
+    @Sid.setter
+    def Sid(self, Sid):
+        self._Sid = Sid
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Msg = params.get("Msg")
-        self.Iccid = params.get("Iccid")
-        self.Sid = params.get("Sid")
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._Iccid = params.get("Iccid")
+        self._Sid = params.get("Sid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -928,23 +1744,40 @@ class SmsSid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Iccid: 卡片ID
+        :param _Iccid: 卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Iccid: str
-        :param Sid: 信息流水ID
+        :param _Sid: 信息流水ID
         :type Sid: str
         """
-        self.Iccid = None
-        self.Sid = None
+        self._Iccid = None
+        self._Sid = None
+
+    @property
+    def Iccid(self):
+        return self._Iccid
+
+    @Iccid.setter
+    def Iccid(self, Iccid):
+        self._Iccid = Iccid
+
+    @property
+    def Sid(self):
+        return self._Sid
+
+    @Sid.setter
+    def Sid(self, Sid):
+        self._Sid = Sid
 
 
     def _deserialize(self, params):
-        self.Iccid = params.get("Iccid")
-        self.Sid = params.get("Sid")
+        self._Iccid = params.get("Iccid")
+        self._Sid = params.get("Sid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

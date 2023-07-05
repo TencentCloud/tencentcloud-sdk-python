@@ -25,84 +25,213 @@ class Address(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressId: EIP的ID，是EIP的唯一标识。
+        :param _AddressId: EIP的ID，是EIP的唯一标识。
         :type AddressId: str
-        :param AddressName: EIP名称。
+        :param _AddressName: EIP名称。
         :type AddressName: str
-        :param AddressStatus: EIP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
+        :param _AddressStatus: EIP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
         :type AddressStatus: str
-        :param AddressIp: 外网IP地址
+        :param _AddressIp: 外网IP地址
         :type AddressIp: str
-        :param InstanceId: 绑定的资源实例ID。
+        :param _InstanceId: 绑定的资源实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param CreatedTime: 创建时间。ISO 8601 格式：YYYY-MM-DDTHH:mm:ss.sssZ
+        :param _CreatedTime: 创建时间。ISO 8601 格式：YYYY-MM-DDTHH:mm:ss.sssZ
         :type CreatedTime: str
-        :param NetworkInterfaceId: 绑定的弹性网卡ID
+        :param _NetworkInterfaceId: 绑定的弹性网卡ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkInterfaceId: str
-        :param PrivateAddressIp: 绑定的资源内网ip
+        :param _PrivateAddressIp: 绑定的资源内网ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateAddressIp: str
-        :param IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
+        :param _IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
         :type IsArrears: bool
-        :param IsBlocked: 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
+        :param _IsBlocked: 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
         :type IsBlocked: bool
-        :param IsEipDirectConnection: eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
+        :param _IsEipDirectConnection: eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
         :type IsEipDirectConnection: bool
-        :param AddressType: eip资源类型，包括"CalcIP","WanIP","EIP","AnycastEIP"。其中"CalcIP"表示设备ip，“WanIP”表示普通公网ip，“EIP”表示弹性公网ip，“AnycastEip”表示加速EIP
+        :param _AddressType: eip资源类型，包括"CalcIP","WanIP","EIP","AnycastEIP"。其中"CalcIP"表示设备ip，“WanIP”表示普通公网ip，“EIP”表示弹性公网ip，“AnycastEip”表示加速EIP
         :type AddressType: str
-        :param CascadeRelease: eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
+        :param _CascadeRelease: eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
         :type CascadeRelease: bool
-        :param InternetServiceProvider: 运营商，CTCC电信，CUCC联通，CMCC移动
+        :param _InternetServiceProvider: 运营商，CTCC电信，CUCC联通，CMCC移动
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetServiceProvider: str
-        :param Bandwidth: 带宽上限
+        :param _Bandwidth: 带宽上限
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
-        :param PayMode: 计费模式
+        :param _PayMode: 计费模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         """
-        self.AddressId = None
-        self.AddressName = None
-        self.AddressStatus = None
-        self.AddressIp = None
-        self.InstanceId = None
-        self.CreatedTime = None
-        self.NetworkInterfaceId = None
-        self.PrivateAddressIp = None
-        self.IsArrears = None
-        self.IsBlocked = None
-        self.IsEipDirectConnection = None
-        self.AddressType = None
-        self.CascadeRelease = None
-        self.InternetServiceProvider = None
-        self.Bandwidth = None
-        self.PayMode = None
+        self._AddressId = None
+        self._AddressName = None
+        self._AddressStatus = None
+        self._AddressIp = None
+        self._InstanceId = None
+        self._CreatedTime = None
+        self._NetworkInterfaceId = None
+        self._PrivateAddressIp = None
+        self._IsArrears = None
+        self._IsBlocked = None
+        self._IsEipDirectConnection = None
+        self._AddressType = None
+        self._CascadeRelease = None
+        self._InternetServiceProvider = None
+        self._Bandwidth = None
+        self._PayMode = None
+
+    @property
+    def AddressId(self):
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def AddressName(self):
+        return self._AddressName
+
+    @AddressName.setter
+    def AddressName(self, AddressName):
+        self._AddressName = AddressName
+
+    @property
+    def AddressStatus(self):
+        return self._AddressStatus
+
+    @AddressStatus.setter
+    def AddressStatus(self, AddressStatus):
+        self._AddressStatus = AddressStatus
+
+    @property
+    def AddressIp(self):
+        return self._AddressIp
+
+    @AddressIp.setter
+    def AddressIp(self, AddressIp):
+        self._AddressIp = AddressIp
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def PrivateAddressIp(self):
+        return self._PrivateAddressIp
+
+    @PrivateAddressIp.setter
+    def PrivateAddressIp(self, PrivateAddressIp):
+        self._PrivateAddressIp = PrivateAddressIp
+
+    @property
+    def IsArrears(self):
+        return self._IsArrears
+
+    @IsArrears.setter
+    def IsArrears(self, IsArrears):
+        self._IsArrears = IsArrears
+
+    @property
+    def IsBlocked(self):
+        return self._IsBlocked
+
+    @IsBlocked.setter
+    def IsBlocked(self, IsBlocked):
+        self._IsBlocked = IsBlocked
+
+    @property
+    def IsEipDirectConnection(self):
+        return self._IsEipDirectConnection
+
+    @IsEipDirectConnection.setter
+    def IsEipDirectConnection(self, IsEipDirectConnection):
+        self._IsEipDirectConnection = IsEipDirectConnection
+
+    @property
+    def AddressType(self):
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+    @property
+    def CascadeRelease(self):
+        return self._CascadeRelease
+
+    @CascadeRelease.setter
+    def CascadeRelease(self, CascadeRelease):
+        self._CascadeRelease = CascadeRelease
+
+    @property
+    def InternetServiceProvider(self):
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
 
 
     def _deserialize(self, params):
-        self.AddressId = params.get("AddressId")
-        self.AddressName = params.get("AddressName")
-        self.AddressStatus = params.get("AddressStatus")
-        self.AddressIp = params.get("AddressIp")
-        self.InstanceId = params.get("InstanceId")
-        self.CreatedTime = params.get("CreatedTime")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.PrivateAddressIp = params.get("PrivateAddressIp")
-        self.IsArrears = params.get("IsArrears")
-        self.IsBlocked = params.get("IsBlocked")
-        self.IsEipDirectConnection = params.get("IsEipDirectConnection")
-        self.AddressType = params.get("AddressType")
-        self.CascadeRelease = params.get("CascadeRelease")
-        self.InternetServiceProvider = params.get("InternetServiceProvider")
-        self.Bandwidth = params.get("Bandwidth")
-        self.PayMode = params.get("PayMode")
+        self._AddressId = params.get("AddressId")
+        self._AddressName = params.get("AddressName")
+        self._AddressStatus = params.get("AddressStatus")
+        self._AddressIp = params.get("AddressIp")
+        self._InstanceId = params.get("InstanceId")
+        self._CreatedTime = params.get("CreatedTime")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._PrivateAddressIp = params.get("PrivateAddressIp")
+        self._IsArrears = params.get("IsArrears")
+        self._IsBlocked = params.get("IsBlocked")
+        self._IsEipDirectConnection = params.get("IsEipDirectConnection")
+        self._AddressType = params.get("AddressType")
+        self._CascadeRelease = params.get("CascadeRelease")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._Bandwidth = params.get("Bandwidth")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -115,35 +244,60 @@ class AddressInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PublicIPAddressInfo: 实例的外网ip相关信息。
+        :param _PublicIPAddressInfo: 实例的外网ip相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIPAddressInfo: :class:`tencentcloud.ecm.v20190719.models.PublicIPAddressInfo`
-        :param PrivateIPAddressInfo: 实例的内网ip相关信息。
+        :param _PrivateIPAddressInfo: 实例的内网ip相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIPAddressInfo: :class:`tencentcloud.ecm.v20190719.models.PrivateIPAddressInfo`
-        :param PublicIPv6AddressInfo: 实例的外网ipv6相关信息。
+        :param _PublicIPv6AddressInfo: 实例的外网ipv6相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIPv6AddressInfo: :class:`tencentcloud.ecm.v20190719.models.PublicIPAddressInfo`
         """
-        self.PublicIPAddressInfo = None
-        self.PrivateIPAddressInfo = None
-        self.PublicIPv6AddressInfo = None
+        self._PublicIPAddressInfo = None
+        self._PrivateIPAddressInfo = None
+        self._PublicIPv6AddressInfo = None
+
+    @property
+    def PublicIPAddressInfo(self):
+        return self._PublicIPAddressInfo
+
+    @PublicIPAddressInfo.setter
+    def PublicIPAddressInfo(self, PublicIPAddressInfo):
+        self._PublicIPAddressInfo = PublicIPAddressInfo
+
+    @property
+    def PrivateIPAddressInfo(self):
+        return self._PrivateIPAddressInfo
+
+    @PrivateIPAddressInfo.setter
+    def PrivateIPAddressInfo(self, PrivateIPAddressInfo):
+        self._PrivateIPAddressInfo = PrivateIPAddressInfo
+
+    @property
+    def PublicIPv6AddressInfo(self):
+        return self._PublicIPv6AddressInfo
+
+    @PublicIPv6AddressInfo.setter
+    def PublicIPv6AddressInfo(self, PublicIPv6AddressInfo):
+        self._PublicIPv6AddressInfo = PublicIPv6AddressInfo
 
 
     def _deserialize(self, params):
         if params.get("PublicIPAddressInfo") is not None:
-            self.PublicIPAddressInfo = PublicIPAddressInfo()
-            self.PublicIPAddressInfo._deserialize(params.get("PublicIPAddressInfo"))
+            self._PublicIPAddressInfo = PublicIPAddressInfo()
+            self._PublicIPAddressInfo._deserialize(params.get("PublicIPAddressInfo"))
         if params.get("PrivateIPAddressInfo") is not None:
-            self.PrivateIPAddressInfo = PrivateIPAddressInfo()
-            self.PrivateIPAddressInfo._deserialize(params.get("PrivateIPAddressInfo"))
+            self._PrivateIPAddressInfo = PrivateIPAddressInfo()
+            self._PrivateIPAddressInfo._deserialize(params.get("PrivateIPAddressInfo"))
         if params.get("PublicIPv6AddressInfo") is not None:
-            self.PublicIPv6AddressInfo = PublicIPAddressInfo()
-            self.PublicIPv6AddressInfo._deserialize(params.get("PublicIPv6AddressInfo"))
+            self._PublicIPv6AddressInfo = PublicIPAddressInfo()
+            self._PublicIPv6AddressInfo._deserialize(params.get("PublicIPv6AddressInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -156,22 +310,39 @@ class AddressTemplateSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressId: IP地址ID，例如：eipm-2uw6ujo6。
+        :param _AddressId: IP地址ID，例如：eipm-2uw6ujo6。
         :type AddressId: str
-        :param AddressGroupId: IP地址组ID，例如：eipmg-2uw6ujo6。
+        :param _AddressGroupId: IP地址组ID，例如：eipmg-2uw6ujo6。
         :type AddressGroupId: str
         """
-        self.AddressId = None
-        self.AddressGroupId = None
+        self._AddressId = None
+        self._AddressGroupId = None
+
+    @property
+    def AddressId(self):
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def AddressGroupId(self):
+        return self._AddressGroupId
+
+    @AddressGroupId.setter
+    def AddressGroupId(self, AddressGroupId):
+        self._AddressGroupId = AddressGroupId
 
 
     def _deserialize(self, params):
-        self.AddressId = params.get("AddressId")
-        self.AddressGroupId = params.get("AddressGroupId")
+        self._AddressId = params.get("AddressId")
+        self._AddressGroupId = params.get("AddressGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -184,53 +355,118 @@ class AllocateAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param AddressCount: EIP数量。默认值：1。
+        :param _AddressCount: EIP数量。默认值：1。
         :type AddressCount: int
-        :param InternetServiceProvider: CMCC：中国移动
+        :param _InternetServiceProvider: CMCC：中国移动
 CTCC：中国电信
 CUCC：中国联通
         :type InternetServiceProvider: str
-        :param InternetMaxBandwidthOut: 1 Mbps 至 5000 Mbps，默认值：1 Mbps。
+        :param _InternetMaxBandwidthOut: 1 Mbps 至 5000 Mbps，默认值：1 Mbps。
         :type InternetMaxBandwidthOut: int
-        :param Tags: 需要关联的标签列表。
+        :param _Tags: 需要关联的标签列表。
         :type Tags: list of Tag
-        :param InstanceId: 要绑定的实例 ID。
+        :param _InstanceId: 要绑定的实例 ID。
         :type InstanceId: str
-        :param NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        :param _NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
         :type NetworkInterfaceId: str
-        :param PrivateIpAddress: 要绑定的内网 IP。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIpAddress ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIpAddress 是指定的 NetworkInterfaceId 上的一个内网 IP。指定弹性网卡的内网 IP 可通过DescribeNetworkInterfaces接口返回值中的privateIpAddress获取。
+        :param _PrivateIpAddress: 要绑定的内网 IP。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIpAddress ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIpAddress 是指定的 NetworkInterfaceId 上的一个内网 IP。指定弹性网卡的内网 IP 可通过DescribeNetworkInterfaces接口返回值中的privateIpAddress获取。
         :type PrivateIpAddress: str
         """
-        self.EcmRegion = None
-        self.AddressCount = None
-        self.InternetServiceProvider = None
-        self.InternetMaxBandwidthOut = None
-        self.Tags = None
-        self.InstanceId = None
-        self.NetworkInterfaceId = None
-        self.PrivateIpAddress = None
+        self._EcmRegion = None
+        self._AddressCount = None
+        self._InternetServiceProvider = None
+        self._InternetMaxBandwidthOut = None
+        self._Tags = None
+        self._InstanceId = None
+        self._NetworkInterfaceId = None
+        self._PrivateIpAddress = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def AddressCount(self):
+        return self._AddressCount
+
+    @AddressCount.setter
+    def AddressCount(self, AddressCount):
+        self._AddressCount = AddressCount
+
+    @property
+    def InternetServiceProvider(self):
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def PrivateIpAddress(self):
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.AddressCount = params.get("AddressCount")
-        self.InternetServiceProvider = params.get("InternetServiceProvider")
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._EcmRegion = params.get("EcmRegion")
+        self._AddressCount = params.get("AddressCount")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceId = params.get("InstanceId")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.PrivateIpAddress = params.get("PrivateIpAddress")
+                self._Tags.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -243,23 +479,47 @@ class AllocateAddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressSet: 申请到的 EIP 的唯一 ID 列表。
+        :param _AddressSet: 申请到的 EIP 的唯一 ID 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressSet: list of str
-        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :param _TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AddressSet = None
-        self.TaskId = None
-        self.RequestId = None
+        self._AddressSet = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def AddressSet(self):
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AddressSet = params.get("AddressSet")
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._AddressSet = params.get("AddressSet")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class Area(AbstractModel):
@@ -269,22 +529,39 @@ class Area(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AreaId: 区域ID
+        :param _AreaId: 区域ID
         :type AreaId: str
-        :param AreaName: 区域名称
+        :param _AreaName: 区域名称
         :type AreaName: str
         """
-        self.AreaId = None
-        self.AreaName = None
+        self._AreaId = None
+        self._AreaName = None
+
+    @property
+    def AreaId(self):
+        return self._AreaId
+
+    @AreaId.setter
+    def AreaId(self, AreaId):
+        self._AreaId = AreaId
+
+    @property
+    def AreaName(self):
+        return self._AreaName
+
+    @AreaName.setter
+    def AreaName(self, AreaName):
+        self._AreaName = AreaName
 
 
     def _deserialize(self, params):
-        self.AreaId = params.get("AreaId")
-        self.AreaName = params.get("AreaName")
+        self._AreaId = params.get("AreaId")
+        self._AreaName = params.get("AreaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -297,42 +574,83 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param NetworkInterfaceId: 弹性网卡实例ID，形如：eni-1snva0vd。目前只支持主网卡上分配。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，形如：eni-1snva0vd。目前只支持主网卡上分配。
         :type NetworkInterfaceId: str
-        :param Ipv6Addresses: 指定的IPv6地址列表，单次最多指定10个。与入参Ipv6AddressCount合并计算配额。与Ipv6AddressCount必填一个。
+        :param _Ipv6Addresses: 指定的IPv6地址列表，单次最多指定10个。与入参Ipv6AddressCount合并计算配额。与Ipv6AddressCount必填一个。
         :type Ipv6Addresses: list of Ipv6Address
-        :param Ipv6AddressCount: 自动分配IPv6地址个数，内网IP地址个数总和不能超过配数。与入参Ipv6Addresses合并计算配额。与Ipv6Addresses必填一个。
+        :param _Ipv6AddressCount: 自动分配IPv6地址个数，内网IP地址个数总和不能超过配数。与入参Ipv6Addresses合并计算配额。与Ipv6Addresses必填一个。
         :type Ipv6AddressCount: int
-        :param Ipv6ISP: ipv6运营商如下：
+        :param _Ipv6ISP: ipv6运营商如下：
 CTCC：中国电信
 CUCC：中国联通
 CMCC：中国移动
         :type Ipv6ISP: str
         """
-        self.EcmRegion = None
-        self.NetworkInterfaceId = None
-        self.Ipv6Addresses = None
-        self.Ipv6AddressCount = None
-        self.Ipv6ISP = None
+        self._EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._Ipv6Addresses = None
+        self._Ipv6AddressCount = None
+        self._Ipv6ISP = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def Ipv6Addresses(self):
+        return self._Ipv6Addresses
+
+    @Ipv6Addresses.setter
+    def Ipv6Addresses(self, Ipv6Addresses):
+        self._Ipv6Addresses = Ipv6Addresses
+
+    @property
+    def Ipv6AddressCount(self):
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
+
+    @property
+    def Ipv6ISP(self):
+        return self._Ipv6ISP
+
+    @Ipv6ISP.setter
+    def Ipv6ISP(self, Ipv6ISP):
+        self._Ipv6ISP = Ipv6ISP
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         if params.get("Ipv6Addresses") is not None:
-            self.Ipv6Addresses = []
+            self._Ipv6Addresses = []
             for item in params.get("Ipv6Addresses"):
                 obj = Ipv6Address()
                 obj._deserialize(item)
-                self.Ipv6Addresses.append(obj)
-        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
-        self.Ipv6ISP = params.get("Ipv6ISP")
+                self._Ipv6Addresses.append(obj)
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self._Ipv6ISP = params.get("Ipv6ISP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -345,23 +663,39 @@ class AssignIpv6AddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ipv6AddressSet: 分配给弹性网卡的IPv6地址列表。
+        :param _Ipv6AddressSet: 分配给弹性网卡的IPv6地址列表。
         :type Ipv6AddressSet: list of Ipv6Address
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Ipv6AddressSet = None
-        self.RequestId = None
+        self._Ipv6AddressSet = None
+        self._RequestId = None
+
+    @property
+    def Ipv6AddressSet(self):
+        return self._Ipv6AddressSet
+
+    @Ipv6AddressSet.setter
+    def Ipv6AddressSet(self, Ipv6AddressSet):
+        self._Ipv6AddressSet = Ipv6AddressSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Ipv6AddressSet") is not None:
-            self.Ipv6AddressSet = []
+            self._Ipv6AddressSet = []
             for item in params.get("Ipv6AddressSet"):
                 obj = Ipv6Address()
                 obj._deserialize(item)
-                self.Ipv6AddressSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Ipv6AddressSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class AssignPrivateIpAddressesRequest(AbstractModel):
@@ -371,35 +705,68 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
-        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
+        :param _PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数
+        :param _SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数
         :type SecondaryPrivateIpAddressCount: int
         """
-        self.NetworkInterfaceId = None
-        self.EcmRegion = None
-        self.PrivateIpAddresses = None
-        self.SecondaryPrivateIpAddressCount = None
+        self._NetworkInterfaceId = None
+        self._EcmRegion = None
+        self._PrivateIpAddresses = None
+        self._SecondaryPrivateIpAddressCount = None
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def SecondaryPrivateIpAddressCount(self):
+        return self._SecondaryPrivateIpAddressCount
+
+    @SecondaryPrivateIpAddressCount.setter
+    def SecondaryPrivateIpAddressCount(self, SecondaryPrivateIpAddressCount):
+        self._SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount
 
 
     def _deserialize(self, params):
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._EcmRegion = params.get("EcmRegion")
         if params.get("PrivateIpAddresses") is not None:
-            self.PrivateIpAddresses = []
+            self._PrivateIpAddresses = []
             for item in params.get("PrivateIpAddresses"):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
-                self.PrivateIpAddresses.append(obj)
-        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+                self._PrivateIpAddresses.append(obj)
+        self._SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -412,24 +779,40 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PrivateIpAddressSet: 内网IP详细信息。
+        :param _PrivateIpAddressSet: 内网IP详细信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PrivateIpAddressSet = None
-        self.RequestId = None
+        self._PrivateIpAddressSet = None
+        self._RequestId = None
+
+    @property
+    def PrivateIpAddressSet(self):
+        return self._PrivateIpAddressSet
+
+    @PrivateIpAddressSet.setter
+    def PrivateIpAddressSet(self, PrivateIpAddressSet):
+        self._PrivateIpAddressSet = PrivateIpAddressSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PrivateIpAddressSet") is not None:
-            self.PrivateIpAddressSet = []
+            self._PrivateIpAddressSet = []
             for item in params.get("PrivateIpAddressSet"):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
-                self.PrivateIpAddressSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PrivateIpAddressSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class AssistantCidr(AbstractModel):
@@ -439,37 +822,70 @@ class AssistantCidr(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。形如：vpc-6v2ht8q5
+        :param _VpcId: VPC实例ID。形如：vpc-6v2ht8q5
         :type VpcId: str
-        :param CidrBlock: 辅助CIDR。形如：172.16.0.0/16
+        :param _CidrBlock: 辅助CIDR。形如：172.16.0.0/16
         :type CidrBlock: str
-        :param AssistantType: 辅助CIDR类型（0：普通辅助CIDR，1：容器辅助CIDR），默认都是0。
+        :param _AssistantType: 辅助CIDR类型（0：普通辅助CIDR，1：容器辅助CIDR），默认都是0。
         :type AssistantType: int
-        :param SubnetSet: 辅助CIDR拆分的子网。
+        :param _SubnetSet: 辅助CIDR拆分的子网。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetSet: list of Subnet
         """
-        self.VpcId = None
-        self.CidrBlock = None
-        self.AssistantType = None
-        self.SubnetSet = None
+        self._VpcId = None
+        self._CidrBlock = None
+        self._AssistantType = None
+        self._SubnetSet = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def AssistantType(self):
+        return self._AssistantType
+
+    @AssistantType.setter
+    def AssistantType(self, AssistantType):
+        self._AssistantType = AssistantType
+
+    @property
+    def SubnetSet(self):
+        return self._SubnetSet
+
+    @SubnetSet.setter
+    def SubnetSet(self, SubnetSet):
+        self._SubnetSet = SubnetSet
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.CidrBlock = params.get("CidrBlock")
-        self.AssistantType = params.get("AssistantType")
+        self._VpcId = params.get("VpcId")
+        self._CidrBlock = params.get("CidrBlock")
+        self._AssistantType = params.get("AssistantType")
         if params.get("SubnetSet") is not None:
-            self.SubnetSet = []
+            self._SubnetSet = []
             for item in params.get("SubnetSet"):
                 obj = Subnet()
                 obj._deserialize(item)
-                self.SubnetSet.append(obj)
+                self._SubnetSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -482,34 +898,75 @@ class AssociateAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
+        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
         :type AddressId: str
-        :param InstanceId: 要绑定的实例 ID。
+        :param _InstanceId: 要绑定的实例 ID。
         :type InstanceId: str
-        :param NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        :param _NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
         :type NetworkInterfaceId: str
-        :param PrivateIpAddress: 要绑定的内网 IP。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIpAddress ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIpAddress 是指定的 NetworkInterfaceId 上的一个内网 IP。指定弹性网卡的内网 IP 可通过DescribeNetworkInterfaces接口返回值中的privateIpAddress获取。
+        :param _PrivateIpAddress: 要绑定的内网 IP。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIpAddress ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIpAddress 是指定的 NetworkInterfaceId 上的一个内网 IP。指定弹性网卡的内网 IP 可通过DescribeNetworkInterfaces接口返回值中的privateIpAddress获取。
         :type PrivateIpAddress: str
         """
-        self.EcmRegion = None
-        self.AddressId = None
-        self.InstanceId = None
-        self.NetworkInterfaceId = None
-        self.PrivateIpAddress = None
+        self._EcmRegion = None
+        self._AddressId = None
+        self._InstanceId = None
+        self._NetworkInterfaceId = None
+        self._PrivateIpAddress = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def AddressId(self):
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def PrivateIpAddress(self):
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.AddressId = params.get("AddressId")
-        self.InstanceId = params.get("InstanceId")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self._EcmRegion = params.get("EcmRegion")
+        self._AddressId = params.get("AddressId")
+        self._InstanceId = params.get("InstanceId")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -522,18 +979,34 @@ class AssociateAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :param _TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class AssociateSecurityGroupsRequest(AbstractModel):
@@ -543,22 +1016,39 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupIds: 要绑定的安全组ID，类似esg-efil73jd，只支持绑定单个安全组。
+        :param _SecurityGroupIds: 要绑定的安全组ID，类似esg-efil73jd，只支持绑定单个安全组。
         :type SecurityGroupIds: list of str
-        :param InstanceIds: 被绑定的实例ID，类似ein-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
+        :param _InstanceIds: 被绑定的实例ID，类似ein-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
         :type InstanceIds: list of str
         """
-        self.SecurityGroupIds = None
-        self.InstanceIds = None
+        self._SecurityGroupIds = None
+        self._InstanceIds = None
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
 
     def _deserialize(self, params):
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        self.InstanceIds = params.get("InstanceIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -571,14 +1061,22 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AttachDisksRequest(AbstractModel):
@@ -588,30 +1086,63 @@ class AttachDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
+        :param _InstanceId: 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
         :type InstanceId: str
-        :param DiskIds: 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
+        :param _DiskIds: 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
         :type DiskIds: list of str
-        :param DeleteWithInstance: 可选参数，不传该参数则仅执行挂载操作。传入`True`时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+        :param _DeleteWithInstance: 可选参数，不传该参数则仅执行挂载操作。传入`True`时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
         :type DeleteWithInstance: bool
-        :param AttachMode: 可选参数，用于控制云盘挂载时使用的挂载模式，目前仅对黑石裸金属机型有效。取值范围：<br><li>PF<br><li>VF
+        :param _AttachMode: 可选参数，用于控制云盘挂载时使用的挂载模式，目前仅对黑石裸金属机型有效。取值范围：<br><li>PF<br><li>VF
         :type AttachMode: str
         """
-        self.InstanceId = None
-        self.DiskIds = None
-        self.DeleteWithInstance = None
-        self.AttachMode = None
+        self._InstanceId = None
+        self._DiskIds = None
+        self._DeleteWithInstance = None
+        self._AttachMode = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def DeleteWithInstance(self):
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+    @property
+    def AttachMode(self):
+        return self._AttachMode
+
+    @AttachMode.setter
+    def AttachMode(self, AttachMode):
+        self._AttachMode = AttachMode
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.DiskIds = params.get("DiskIds")
-        self.DeleteWithInstance = params.get("DeleteWithInstance")
-        self.AttachMode = params.get("AttachMode")
+        self._InstanceId = params.get("InstanceId")
+        self._DiskIds = params.get("DiskIds")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        self._AttachMode = params.get("AttachMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -624,14 +1155,22 @@ class AttachDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AttachNetworkInterfaceRequest(AbstractModel):
@@ -641,26 +1180,51 @@ class AttachNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param InstanceId: 实例ID。形如：ein-r8hr2upy。
+        :param _InstanceId: 实例ID。形如：ein-r8hr2upy。
         :type InstanceId: str
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
-        self.NetworkInterfaceId = None
-        self.InstanceId = None
-        self.EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._InstanceId = None
+        self._EcmRegion = None
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.InstanceId = params.get("InstanceId")
-        self.EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._InstanceId = params.get("InstanceId")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -673,14 +1237,22 @@ class AttachNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Backend(AbstractModel):
@@ -690,54 +1262,119 @@ class Backend(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 后端服务的唯一 ID
+        :param _InstanceId: 后端服务的唯一 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param Port: 后端服务的监听端口
+        :param _Port: 后端服务的监听端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+        :param _Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param PrivateIpAddresses: 后端服务的内网 IP
+        :param _PrivateIpAddresses: 后端服务的内网 IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddresses: list of str
-        :param RegisteredTime: 后端服务被绑定的时间
+        :param _RegisteredTime: 后端服务被绑定的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegisteredTime: str
-        :param EniId: 弹性网卡唯一ID
+        :param _EniId: 弹性网卡唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type EniId: str
-        :param PublicIpAddresses: 后端服务的外网 IP
+        :param _PublicIpAddresses: 后端服务的外网 IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
-        :param InstanceName: 后端服务的实例名称
+        :param _InstanceName: 后端服务的实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         """
-        self.InstanceId = None
-        self.Port = None
-        self.Weight = None
-        self.PrivateIpAddresses = None
-        self.RegisteredTime = None
-        self.EniId = None
-        self.PublicIpAddresses = None
-        self.InstanceName = None
+        self._InstanceId = None
+        self._Port = None
+        self._Weight = None
+        self._PrivateIpAddresses = None
+        self._RegisteredTime = None
+        self._EniId = None
+        self._PublicIpAddresses = None
+        self._InstanceName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def RegisteredTime(self):
+        return self._RegisteredTime
+
+    @RegisteredTime.setter
+    def RegisteredTime(self, RegisteredTime):
+        self._RegisteredTime = RegisteredTime
+
+    @property
+    def EniId(self):
+        return self._EniId
+
+    @EniId.setter
+    def EniId(self, EniId):
+        self._EniId = EniId
+
+    @property
+    def PublicIpAddresses(self):
+        return self._PublicIpAddresses
+
+    @PublicIpAddresses.setter
+    def PublicIpAddresses(self, PublicIpAddresses):
+        self._PublicIpAddresses = PublicIpAddresses
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Port = params.get("Port")
-        self.Weight = params.get("Weight")
-        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
-        self.RegisteredTime = params.get("RegisteredTime")
-        self.EniId = params.get("EniId")
-        self.PublicIpAddresses = params.get("PublicIpAddresses")
-        self.InstanceName = params.get("InstanceName")
+        self._InstanceId = params.get("InstanceId")
+        self._Port = params.get("Port")
+        self._Weight = params.get("Weight")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self._RegisteredTime = params.get("RegisteredTime")
+        self._EniId = params.get("EniId")
+        self._PublicIpAddresses = params.get("PublicIpAddresses")
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -750,27 +1387,44 @@ class BatchDeregisterTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡ID
+        :param _LoadBalancerId: 负载均衡ID
         :type LoadBalancerId: str
-        :param Targets: 解绑目标
+        :param _Targets: 解绑目标
         :type Targets: list of BatchTarget
         """
-        self.LoadBalancerId = None
-        self.Targets = None
+        self._LoadBalancerId = None
+        self._Targets = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerId = params.get("LoadBalancerId")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = BatchTarget()
                 obj._deserialize(item)
-                self.Targets.append(obj)
+                self._Targets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -783,19 +1437,35 @@ class BatchDeregisterTargetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FailListenerIdSet: 解绑失败的监听器ID
+        :param _FailListenerIdSet: 解绑失败的监听器ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailListenerIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FailListenerIdSet = None
-        self.RequestId = None
+        self._FailListenerIdSet = None
+        self._RequestId = None
+
+    @property
+    def FailListenerIdSet(self):
+        return self._FailListenerIdSet
+
+    @FailListenerIdSet.setter
+    def FailListenerIdSet(self, FailListenerIdSet):
+        self._FailListenerIdSet = FailListenerIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FailListenerIdSet = params.get("FailListenerIdSet")
-        self.RequestId = params.get("RequestId")
+        self._FailListenerIdSet = params.get("FailListenerIdSet")
+        self._RequestId = params.get("RequestId")
 
 
 class BatchModifyTargetWeightRequest(AbstractModel):
@@ -805,27 +1475,44 @@ class BatchModifyTargetWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ModifyList: 要批量修改权重的列表
+        :param _ModifyList: 要批量修改权重的列表
         :type ModifyList: list of TargetsWeightRule
         """
-        self.LoadBalancerId = None
-        self.ModifyList = None
+        self._LoadBalancerId = None
+        self._ModifyList = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ModifyList(self):
+        return self._ModifyList
+
+    @ModifyList.setter
+    def ModifyList(self, ModifyList):
+        self._ModifyList = ModifyList
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerId = params.get("LoadBalancerId")
         if params.get("ModifyList") is not None:
-            self.ModifyList = []
+            self._ModifyList = []
             for item in params.get("ModifyList"):
                 obj = TargetsWeightRule()
                 obj._deserialize(item)
-                self.ModifyList.append(obj)
+                self._ModifyList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -838,14 +1525,22 @@ class BatchModifyTargetWeightResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class BatchRegisterTargetsRequest(AbstractModel):
@@ -855,27 +1550,44 @@ class BatchRegisterTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡ID
+        :param _LoadBalancerId: 负载均衡ID
         :type LoadBalancerId: str
-        :param Targets: 绑定目标
+        :param _Targets: 绑定目标
         :type Targets: list of BatchTarget
         """
-        self.LoadBalancerId = None
-        self.Targets = None
+        self._LoadBalancerId = None
+        self._Targets = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerId = params.get("LoadBalancerId")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = BatchTarget()
                 obj._deserialize(item)
-                self.Targets.append(obj)
+                self._Targets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -888,19 +1600,35 @@ class BatchRegisterTargetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FailListenerIdSet: 绑定失败的监听器ID，如为空表示全部绑定成功。
+        :param _FailListenerIdSet: 绑定失败的监听器ID，如为空表示全部绑定成功。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailListenerIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FailListenerIdSet = None
-        self.RequestId = None
+        self._FailListenerIdSet = None
+        self._RequestId = None
+
+    @property
+    def FailListenerIdSet(self):
+        return self._FailListenerIdSet
+
+    @FailListenerIdSet.setter
+    def FailListenerIdSet(self, FailListenerIdSet):
+        self._FailListenerIdSet = FailListenerIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FailListenerIdSet = params.get("FailListenerIdSet")
-        self.RequestId = params.get("RequestId")
+        self._FailListenerIdSet = params.get("FailListenerIdSet")
+        self._RequestId = params.get("RequestId")
 
 
 class BatchTarget(AbstractModel):
@@ -910,34 +1638,75 @@ class BatchTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerId: 监听器ID
+        :param _ListenerId: 监听器ID
         :type ListenerId: str
-        :param Port: 绑定端口
+        :param _Port: 绑定端口
         :type Port: int
-        :param InstanceId: 子机ID
+        :param _InstanceId: 子机ID
         :type InstanceId: str
-        :param EniIp: 弹性网卡ip
+        :param _EniIp: 弹性网卡ip
         :type EniIp: str
-        :param Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
+        :param _Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
         :type Weight: int
         """
-        self.ListenerId = None
-        self.Port = None
-        self.InstanceId = None
-        self.EniIp = None
-        self.Weight = None
+        self._ListenerId = None
+        self._Port = None
+        self._InstanceId = None
+        self._EniIp = None
+        self._Weight = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EniIp(self):
+        return self._EniIp
+
+    @EniIp.setter
+    def EniIp(self, EniIp):
+        self._EniIp = EniIp
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
 
 
     def _deserialize(self, params):
-        self.ListenerId = params.get("ListenerId")
-        self.Port = params.get("Port")
-        self.InstanceId = params.get("InstanceId")
-        self.EniIp = params.get("EniIp")
-        self.Weight = params.get("Weight")
+        self._ListenerId = params.get("ListenerId")
+        self._Port = params.get("Port")
+        self._InstanceId = params.get("InstanceId")
+        self._EniIp = params.get("EniIp")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -950,22 +1719,39 @@ class City(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CityId: 城市ID
+        :param _CityId: 城市ID
         :type CityId: str
-        :param CityName: 城市名称
+        :param _CityName: 城市名称
         :type CityName: str
         """
-        self.CityId = None
-        self.CityName = None
+        self._CityId = None
+        self._CityName = None
+
+    @property
+    def CityId(self):
+        return self._CityId
+
+    @CityId.setter
+    def CityId(self, CityId):
+        self._CityId = CityId
+
+    @property
+    def CityName(self):
+        return self._CityName
+
+    @CityName.setter
+    def CityName(self, CityName):
+        self._CityName = CityName
 
 
     def _deserialize(self, params):
-        self.CityId = params.get("CityId")
-        self.CityName = params.get("CityName")
+        self._CityId = params.get("CityId")
+        self._CityName = params.get("CityName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -978,22 +1764,39 @@ class Country(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CountryId: 国家ID
+        :param _CountryId: 国家ID
         :type CountryId: str
-        :param CountryName: 国家名称
+        :param _CountryName: 国家名称
         :type CountryName: str
         """
-        self.CountryId = None
-        self.CountryName = None
+        self._CountryId = None
+        self._CountryName = None
+
+    @property
+    def CountryId(self):
+        return self._CountryId
+
+    @CountryId.setter
+    def CountryId(self, CountryId):
+        self._CountryId = CountryId
+
+    @property
+    def CountryName(self):
+        return self._CountryName
+
+    @CountryName.setter
+    def CountryName(self, CountryName):
+        self._CountryName = CountryName
 
 
     def _deserialize(self, params):
-        self.CountryId = params.get("CountryId")
-        self.CountryName = params.get("CountryName")
+        self._CountryId = params.get("CountryId")
+        self._CountryName = params.get("CountryName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1006,75 +1809,180 @@ class CreateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
+        :param _Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
         :type Placement: :class:`tencentcloud.ecm.v20190719.models.Placement`
-        :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
+        :param _DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
         :type DiskChargeType: str
-        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+        :param _DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
         :type DiskType: str
-        :param DiskName: 云盘显示名称。不传则默认为“未命名”。最大长度不能超60个字节。
+        :param _DiskName: 云盘显示名称。不传则默认为“未命名”。最大长度不能超60个字节。
         :type DiskName: str
-        :param Tags: 云盘绑定的标签。
+        :param _Tags: 云盘绑定的标签。
         :type Tags: list of Tag
-        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
+        :param _DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
         :type DiskChargePrepaid: :class:`tencentcloud.ecm.v20190719.models.DiskChargePrepaid`
-        :param DiskCount: 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
+        :param _DiskCount: 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
         :type DiskCount: int
-        :param ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
+        :param _ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
         :type ThroughputPerformance: int
-        :param DiskSize: 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        :param _DiskSize: 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
-        :param Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
+        :param _Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
         :type Shareable: bool
-        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param Encrypt: 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
+        :param _Encrypt: 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
         :type Encrypt: str
-        :param SnapshotId: 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照，可通过[DescribeSnapshots](/document/product/362/15647)接口查询快照，见输出参数DiskUsage解释。
+        :param _SnapshotId: 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照，可通过[DescribeSnapshots](/document/product/362/15647)接口查询快照，见输出参数DiskUsage解释。
         :type SnapshotId: str
         """
-        self.Placement = None
-        self.DiskChargeType = None
-        self.DiskType = None
-        self.DiskName = None
-        self.Tags = None
-        self.DiskChargePrepaid = None
-        self.DiskCount = None
-        self.ThroughputPerformance = None
-        self.DiskSize = None
-        self.Shareable = None
-        self.ClientToken = None
-        self.Encrypt = None
-        self.SnapshotId = None
+        self._Placement = None
+        self._DiskChargeType = None
+        self._DiskType = None
+        self._DiskName = None
+        self._Tags = None
+        self._DiskChargePrepaid = None
+        self._DiskCount = None
+        self._ThroughputPerformance = None
+        self._DiskSize = None
+        self._Shareable = None
+        self._ClientToken = None
+        self._Encrypt = None
+        self._SnapshotId = None
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def DiskChargeType(self):
+        return self._DiskChargeType
+
+    @DiskChargeType.setter
+    def DiskChargeType(self, DiskChargeType):
+        self._DiskChargeType = DiskChargeType
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskName(self):
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DiskChargePrepaid(self):
+        return self._DiskChargePrepaid
+
+    @DiskChargePrepaid.setter
+    def DiskChargePrepaid(self, DiskChargePrepaid):
+        self._DiskChargePrepaid = DiskChargePrepaid
+
+    @property
+    def DiskCount(self):
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+    @property
+    def ThroughputPerformance(self):
+        return self._ThroughputPerformance
+
+    @ThroughputPerformance.setter
+    def ThroughputPerformance(self, ThroughputPerformance):
+        self._ThroughputPerformance = ThroughputPerformance
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def Shareable(self):
+        return self._Shareable
+
+    @Shareable.setter
+    def Shareable(self, Shareable):
+        self._Shareable = Shareable
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def SnapshotId(self):
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
 
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.DiskChargeType = params.get("DiskChargeType")
-        self.DiskType = params.get("DiskType")
-        self.DiskName = params.get("DiskName")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._DiskChargeType = params.get("DiskChargeType")
+        self._DiskType = params.get("DiskType")
+        self._DiskName = params.get("DiskName")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("DiskChargePrepaid") is not None:
-            self.DiskChargePrepaid = DiskChargePrepaid()
-            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
-        self.DiskCount = params.get("DiskCount")
-        self.ThroughputPerformance = params.get("ThroughputPerformance")
-        self.DiskSize = params.get("DiskSize")
-        self.Shareable = params.get("Shareable")
-        self.ClientToken = params.get("ClientToken")
-        self.Encrypt = params.get("Encrypt")
-        self.SnapshotId = params.get("SnapshotId")
+            self._DiskChargePrepaid = DiskChargePrepaid()
+            self._DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self._DiskCount = params.get("DiskCount")
+        self._ThroughputPerformance = params.get("ThroughputPerformance")
+        self._DiskSize = params.get("DiskSize")
+        self._Shareable = params.get("Shareable")
+        self._ClientToken = params.get("ClientToken")
+        self._Encrypt = params.get("Encrypt")
+        self._SnapshotId = params.get("SnapshotId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1087,18 +1995,34 @@ class CreateDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIdSet: 创建的云硬盘ID列表。
+        :param _DiskIdSet: 创建的云硬盘ID列表。
         :type DiskIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DiskIdSet = None
-        self.RequestId = None
+        self._DiskIdSet = None
+        self._RequestId = None
+
+    @property
+    def DiskIdSet(self):
+        return self._DiskIdSet
+
+    @DiskIdSet.setter
+    def DiskIdSet(self, DiskIdSet):
+        self._DiskIdSet = DiskIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DiskIdSet = params.get("DiskIdSet")
-        self.RequestId = params.get("RequestId")
+        self._DiskIdSet = params.get("DiskIdSet")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateHaVipRequest(AbstractModel):
@@ -1108,30 +2032,63 @@ class CreateHaVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: HAVIP所在私有网络ID。
+        :param _VpcId: HAVIP所在私有网络ID。
         :type VpcId: str
-        :param SubnetId: HAVIP所在子网ID。
+        :param _SubnetId: HAVIP所在子网ID。
         :type SubnetId: str
-        :param HaVipName: HAVIP名称。
+        :param _HaVipName: HAVIP名称。
         :type HaVipName: str
-        :param Vip: 指定虚拟IP地址，必须在VPC网段内且未被占用。不指定则自动分配。
+        :param _Vip: 指定虚拟IP地址，必须在VPC网段内且未被占用。不指定则自动分配。
         :type Vip: str
         """
-        self.VpcId = None
-        self.SubnetId = None
-        self.HaVipName = None
-        self.Vip = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._HaVipName = None
+        self._Vip = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def HaVipName(self):
+        return self._HaVipName
+
+    @HaVipName.setter
+    def HaVipName(self, HaVipName):
+        self._HaVipName = HaVipName
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.HaVipName = params.get("HaVipName")
-        self.Vip = params.get("Vip")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._HaVipName = params.get("HaVipName")
+        self._Vip = params.get("Vip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1144,20 +2101,36 @@ class CreateHaVipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HaVip: HAVIP对象。
+        :param _HaVip: HAVIP对象。
         :type HaVip: :class:`tencentcloud.ecm.v20190719.models.HaVip`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.HaVip = None
-        self.RequestId = None
+        self._HaVip = None
+        self._RequestId = None
+
+    @property
+    def HaVip(self):
+        return self._HaVip
+
+    @HaVip.setter
+    def HaVip(self, HaVip):
+        self._HaVip = HaVip
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("HaVip") is not None:
-            self.HaVip = HaVip()
-            self.HaVip._deserialize(params.get("HaVip"))
-        self.RequestId = params.get("RequestId")
+            self._HaVip = HaVip()
+            self._HaVip._deserialize(params.get("HaVip"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateImageRequest(AbstractModel):
@@ -1167,33 +2140,66 @@ class CreateImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageName: 镜像名称。
+        :param _ImageName: 镜像名称。
         :type ImageName: str
-        :param InstanceId: 需要制作镜像的实例ID。
+        :param _InstanceId: 需要制作镜像的实例ID。
         :type InstanceId: str
-        :param ImageDescription: 镜像描述。
+        :param _ImageDescription: 镜像描述。
         :type ImageDescription: str
-        :param ForcePoweroff: 是否执行强制关机以制作镜像。取值范围：
+        :param _ForcePoweroff: 是否执行强制关机以制作镜像。取值范围：
 TRUE：表示自动关机后制作镜像
 FALSE：表示开机状态制作，目前不支持，需要先手动关机
 默认取值：FALSE。
         :type ForcePoweroff: str
         """
-        self.ImageName = None
-        self.InstanceId = None
-        self.ImageDescription = None
-        self.ForcePoweroff = None
+        self._ImageName = None
+        self._InstanceId = None
+        self._ImageDescription = None
+        self._ForcePoweroff = None
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ImageDescription(self):
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
+
+    @property
+    def ForcePoweroff(self):
+        return self._ForcePoweroff
+
+    @ForcePoweroff.setter
+    def ForcePoweroff(self, ForcePoweroff):
+        self._ForcePoweroff = ForcePoweroff
 
 
     def _deserialize(self, params):
-        self.ImageName = params.get("ImageName")
-        self.InstanceId = params.get("InstanceId")
-        self.ImageDescription = params.get("ImageDescription")
-        self.ForcePoweroff = params.get("ForcePoweroff")
+        self._ImageName = params.get("ImageName")
+        self._InstanceId = params.get("InstanceId")
+        self._ImageDescription = params.get("ImageDescription")
+        self._ForcePoweroff = params.get("ForcePoweroff")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1206,18 +2212,34 @@ class CreateImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务id
+        :param _TaskId: 任务id
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateKeyPairRequest(AbstractModel):
@@ -1227,18 +2249,27 @@ class CreateKeyPairRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeyName: 密钥对名称，可由数字，字母和下划线组成，长度不超过25个字符。
+        :param _KeyName: 密钥对名称，可由数字，字母和下划线组成，长度不超过25个字符。
         :type KeyName: str
         """
-        self.KeyName = None
+        self._KeyName = None
+
+    @property
+    def KeyName(self):
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
 
 
     def _deserialize(self, params):
-        self.KeyName = params.get("KeyName")
+        self._KeyName = params.get("KeyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1251,20 +2282,36 @@ class CreateKeyPairResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeyPair: 密钥对信息。
+        :param _KeyPair: 密钥对信息。
         :type KeyPair: :class:`tencentcloud.ecm.v20190719.models.KeyPair`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KeyPair = None
-        self.RequestId = None
+        self._KeyPair = None
+        self._RequestId = None
+
+    @property
+    def KeyPair(self):
+        return self._KeyPair
+
+    @KeyPair.setter
+    def KeyPair(self, KeyPair):
+        self._KeyPair = KeyPair
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("KeyPair") is not None:
-            self.KeyPair = KeyPair()
-            self.KeyPair._deserialize(params.get("KeyPair"))
-        self.RequestId = params.get("RequestId")
+            self._KeyPair = KeyPair()
+            self._KeyPair._deserialize(params.get("KeyPair"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateListenerRequest(AbstractModel):
@@ -1274,53 +2321,126 @@ class CreateListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param Ports: 要将监听器创建到哪些端口，每个端口对应一个新的监听器
+        :param _Ports: 要将监听器创建到哪些端口，每个端口对应一个新的监听器
         :type Ports: list of int
-        :param Protocol: 监听器协议： TCP | UDP
+        :param _Protocol: 监听器协议： TCP | UDP
         :type Protocol: str
-        :param ListenerNames: 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数
+        :param _ListenerNames: 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数
         :type ListenerNames: list of str
-        :param HealthCheck: 健康检查相关参数
+        :param _HealthCheck: 健康检查相关参数
         :type HealthCheck: :class:`tencentcloud.ecm.v20190719.models.HealthCheck`
-        :param SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
         :type SessionExpireTime: int
-        :param Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
+        :param _Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
 分别表示按权重轮询、最小连接数， 默认为 WRR。
         :type Scheduler: str
-        :param SessionType: 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+        :param _SessionType: 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
         :type SessionType: str
-        :param EndPorts: 批量端口段的结束端口，必须和Ports长度一样。
+        :param _EndPorts: 批量端口段的结束端口，必须和Ports长度一样。
         :type EndPorts: list of int
         """
-        self.LoadBalancerId = None
-        self.Ports = None
-        self.Protocol = None
-        self.ListenerNames = None
-        self.HealthCheck = None
-        self.SessionExpireTime = None
-        self.Scheduler = None
-        self.SessionType = None
-        self.EndPorts = None
+        self._LoadBalancerId = None
+        self._Ports = None
+        self._Protocol = None
+        self._ListenerNames = None
+        self._HealthCheck = None
+        self._SessionExpireTime = None
+        self._Scheduler = None
+        self._SessionType = None
+        self._EndPorts = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def Ports(self):
+        return self._Ports
+
+    @Ports.setter
+    def Ports(self, Ports):
+        self._Ports = Ports
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ListenerNames(self):
+        return self._ListenerNames
+
+    @ListenerNames.setter
+    def ListenerNames(self, ListenerNames):
+        self._ListenerNames = ListenerNames
+
+    @property
+    def HealthCheck(self):
+        return self._HealthCheck
+
+    @HealthCheck.setter
+    def HealthCheck(self, HealthCheck):
+        self._HealthCheck = HealthCheck
+
+    @property
+    def SessionExpireTime(self):
+        return self._SessionExpireTime
+
+    @SessionExpireTime.setter
+    def SessionExpireTime(self, SessionExpireTime):
+        self._SessionExpireTime = SessionExpireTime
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def SessionType(self):
+        return self._SessionType
+
+    @SessionType.setter
+    def SessionType(self, SessionType):
+        self._SessionType = SessionType
+
+    @property
+    def EndPorts(self):
+        return self._EndPorts
+
+    @EndPorts.setter
+    def EndPorts(self, EndPorts):
+        self._EndPorts = EndPorts
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.Ports = params.get("Ports")
-        self.Protocol = params.get("Protocol")
-        self.ListenerNames = params.get("ListenerNames")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._Ports = params.get("Ports")
+        self._Protocol = params.get("Protocol")
+        self._ListenerNames = params.get("ListenerNames")
         if params.get("HealthCheck") is not None:
-            self.HealthCheck = HealthCheck()
-            self.HealthCheck._deserialize(params.get("HealthCheck"))
-        self.SessionExpireTime = params.get("SessionExpireTime")
-        self.Scheduler = params.get("Scheduler")
-        self.SessionType = params.get("SessionType")
-        self.EndPorts = params.get("EndPorts")
+            self._HealthCheck = HealthCheck()
+            self._HealthCheck._deserialize(params.get("HealthCheck"))
+        self._SessionExpireTime = params.get("SessionExpireTime")
+        self._Scheduler = params.get("Scheduler")
+        self._SessionType = params.get("SessionType")
+        self._EndPorts = params.get("EndPorts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1333,19 +2453,35 @@ class CreateListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerIds: 创建的监听器的唯一标识数组
+        :param _ListenerIds: 创建的监听器的唯一标识数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ListenerIds = None
-        self.RequestId = None
+        self._ListenerIds = None
+        self._RequestId = None
+
+    @property
+    def ListenerIds(self):
+        return self._ListenerIds
+
+    @ListenerIds.setter
+    def ListenerIds(self, ListenerIds):
+        self._ListenerIds = ListenerIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ListenerIds = params.get("ListenerIds")
-        self.RequestId = params.get("RequestId")
+        self._ListenerIds = params.get("ListenerIds")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLoadBalancerRequest(AbstractModel):
@@ -1355,66 +2491,155 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM区域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM区域，形如ap-xian-ecm。
         :type EcmRegion: str
-        :param LoadBalancerType: 负载均衡实例的网络类型。目前只支持传入OPEN，表示公网属性。
+        :param _LoadBalancerType: 负载均衡实例的网络类型。目前只支持传入OPEN，表示公网属性。
         :type LoadBalancerType: str
-        :param VipIsp: CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通。
+        :param _VipIsp: CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通。
         :type VipIsp: str
-        :param LoadBalancerName: 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-50 个英文、汉字、数字、连接线“-”或下划线“_”。
+        :param _LoadBalancerName: 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-50 个英文、汉字、数字、连接线“-”或下划线“_”。
 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
         :type LoadBalancerName: str
-        :param VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678。
+        :param _VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678。
         :type VpcId: str
-        :param Number: 创建负载均衡的个数，默认值 1。
+        :param _Number: 创建负载均衡的个数，默认值 1。
         :type Number: int
-        :param InternetAccessible: 负载均衡的带宽限制等信息。
+        :param _InternetAccessible: 负载均衡的带宽限制等信息。
         :type InternetAccessible: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
-        :param Tags: 标签。
+        :param _Tags: 标签。
         :type Tags: list of TagInfo
-        :param SecurityGroups: 安全组。
+        :param _SecurityGroups: 安全组。
         :type SecurityGroups: list of str
-        :param AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPv6FullChain，默认值 IPV4。说明：取值为IPv6FullChain，表示为IPv6版本。
+        :param _AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPv6FullChain，默认值 IPV4。说明：取值为IPv6FullChain，表示为IPv6版本。
         :type AddressIPVersion: str
-        :param SubnetId: 在购买IPV6负载均衡实例的情况下，必须指定子网 ID, 此参数必填。
+        :param _SubnetId: 在购买IPV6负载均衡实例的情况下，必须指定子网 ID, 此参数必填。
         :type SubnetId: str
         """
-        self.EcmRegion = None
-        self.LoadBalancerType = None
-        self.VipIsp = None
-        self.LoadBalancerName = None
-        self.VpcId = None
-        self.Number = None
-        self.InternetAccessible = None
-        self.Tags = None
-        self.SecurityGroups = None
-        self.AddressIPVersion = None
-        self.SubnetId = None
+        self._EcmRegion = None
+        self._LoadBalancerType = None
+        self._VipIsp = None
+        self._LoadBalancerName = None
+        self._VpcId = None
+        self._Number = None
+        self._InternetAccessible = None
+        self._Tags = None
+        self._SecurityGroups = None
+        self._AddressIPVersion = None
+        self._SubnetId = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def LoadBalancerType(self):
+        return self._LoadBalancerType
+
+    @LoadBalancerType.setter
+    def LoadBalancerType(self, LoadBalancerType):
+        self._LoadBalancerType = LoadBalancerType
+
+    @property
+    def VipIsp(self):
+        return self._VipIsp
+
+    @VipIsp.setter
+    def VipIsp(self, VipIsp):
+        self._VipIsp = VipIsp
+
+    @property
+    def LoadBalancerName(self):
+        return self._LoadBalancerName
+
+    @LoadBalancerName.setter
+    def LoadBalancerName(self, LoadBalancerName):
+        self._LoadBalancerName = LoadBalancerName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SecurityGroups(self):
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
+
+    @property
+    def AddressIPVersion(self):
+        return self._AddressIPVersion
+
+    @AddressIPVersion.setter
+    def AddressIPVersion(self, AddressIPVersion):
+        self._AddressIPVersion = AddressIPVersion
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.LoadBalancerType = params.get("LoadBalancerType")
-        self.VipIsp = params.get("VipIsp")
-        self.LoadBalancerName = params.get("LoadBalancerName")
-        self.VpcId = params.get("VpcId")
-        self.Number = params.get("Number")
+        self._EcmRegion = params.get("EcmRegion")
+        self._LoadBalancerType = params.get("LoadBalancerType")
+        self._VipIsp = params.get("VipIsp")
+        self._LoadBalancerName = params.get("LoadBalancerName")
+        self._VpcId = params.get("VpcId")
+        self._Number = params.get("Number")
         if params.get("InternetAccessible") is not None:
-            self.InternetAccessible = LoadBalancerInternetAccessible()
-            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+            self._InternetAccessible = LoadBalancerInternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfo()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.SecurityGroups = params.get("SecurityGroups")
-        self.AddressIPVersion = params.get("AddressIPVersion")
-        self.SubnetId = params.get("SubnetId")
+                self._Tags.append(obj)
+        self._SecurityGroups = params.get("SecurityGroups")
+        self._AddressIPVersion = params.get("AddressIPVersion")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1427,19 +2652,35 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerIds: 由负载均衡实例ID组成的数组
+        :param _LoadBalancerIds: 由负载均衡实例ID组成的数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LoadBalancerIds = None
-        self.RequestId = None
+        self._LoadBalancerIds = None
+        self._RequestId = None
+
+    @property
+    def LoadBalancerIds(self):
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LoadBalancerIds = params.get("LoadBalancerIds")
-        self.RequestId = params.get("RequestId")
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateModuleRequest(AbstractModel):
@@ -1449,80 +2690,185 @@ class CreateModuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleName: 模块名称，如视频直播模块。限制：模块名称不得以空格开头，长度不得超过60个字符。
+        :param _ModuleName: 模块名称，如视频直播模块。限制：模块名称不得以空格开头，长度不得超过60个字符。
         :type ModuleName: str
-        :param DefaultBandWidth: 默认带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
+        :param _DefaultBandWidth: 默认带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
         :type DefaultBandWidth: int
-        :param DefaultImageId: 默认镜像，如img-qsdf3ff2。
+        :param _DefaultImageId: 默认镜像，如img-qsdf3ff2。
         :type DefaultImageId: str
-        :param InstanceType: 机型ID。
+        :param _InstanceType: 机型ID。
         :type InstanceType: str
-        :param DefaultSystemDiskSize: 默认系统盘大小，单位：G，默认大小为50G。范围不得超过系统盘上下限制，详看DescribeConfig。
+        :param _DefaultSystemDiskSize: 默认系统盘大小，单位：G，默认大小为50G。范围不得超过系统盘上下限制，详看DescribeConfig。
         :type DefaultSystemDiskSize: int
-        :param DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+        :param _DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
         :type DefaultDataDiskSize: int
-        :param CloseIpDirect: 是否关闭IP直通。取值范围：
+        :param _CloseIpDirect: 是否关闭IP直通。取值范围：
 true：表示关闭IP直通
 false：表示开通IP直通
         :type CloseIpDirect: bool
-        :param TagSpecification: 标签列表。
+        :param _TagSpecification: 标签列表。
         :type TagSpecification: list of TagSpecification
-        :param SecurityGroups: 模块默认安全组列表
+        :param _SecurityGroups: 模块默认安全组列表
         :type SecurityGroups: list of str
-        :param DefaultBandWidthIn: 默认入带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
+        :param _DefaultBandWidthIn: 默认入带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
         :type DefaultBandWidthIn: int
-        :param DisableWanIp: 是否禁止分配外网IP
+        :param _DisableWanIp: 是否禁止分配外网IP
         :type DisableWanIp: bool
-        :param SystemDisk: 系统盘信息。
+        :param _SystemDisk: 系统盘信息。
         :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
-        :param DataDisks: 数据盘信息。
+        :param _DataDisks: 数据盘信息。
         :type DataDisks: list of DataDisk
         """
-        self.ModuleName = None
-        self.DefaultBandWidth = None
-        self.DefaultImageId = None
-        self.InstanceType = None
-        self.DefaultSystemDiskSize = None
-        self.DefaultDataDiskSize = None
-        self.CloseIpDirect = None
-        self.TagSpecification = None
-        self.SecurityGroups = None
-        self.DefaultBandWidthIn = None
-        self.DisableWanIp = None
-        self.SystemDisk = None
-        self.DataDisks = None
+        self._ModuleName = None
+        self._DefaultBandWidth = None
+        self._DefaultImageId = None
+        self._InstanceType = None
+        self._DefaultSystemDiskSize = None
+        self._DefaultDataDiskSize = None
+        self._CloseIpDirect = None
+        self._TagSpecification = None
+        self._SecurityGroups = None
+        self._DefaultBandWidthIn = None
+        self._DisableWanIp = None
+        self._SystemDisk = None
+        self._DataDisks = None
+
+    @property
+    def ModuleName(self):
+        return self._ModuleName
+
+    @ModuleName.setter
+    def ModuleName(self, ModuleName):
+        self._ModuleName = ModuleName
+
+    @property
+    def DefaultBandWidth(self):
+        return self._DefaultBandWidth
+
+    @DefaultBandWidth.setter
+    def DefaultBandWidth(self, DefaultBandWidth):
+        self._DefaultBandWidth = DefaultBandWidth
+
+    @property
+    def DefaultImageId(self):
+        return self._DefaultImageId
+
+    @DefaultImageId.setter
+    def DefaultImageId(self, DefaultImageId):
+        self._DefaultImageId = DefaultImageId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def DefaultSystemDiskSize(self):
+        return self._DefaultSystemDiskSize
+
+    @DefaultSystemDiskSize.setter
+    def DefaultSystemDiskSize(self, DefaultSystemDiskSize):
+        self._DefaultSystemDiskSize = DefaultSystemDiskSize
+
+    @property
+    def DefaultDataDiskSize(self):
+        return self._DefaultDataDiskSize
+
+    @DefaultDataDiskSize.setter
+    def DefaultDataDiskSize(self, DefaultDataDiskSize):
+        self._DefaultDataDiskSize = DefaultDataDiskSize
+
+    @property
+    def CloseIpDirect(self):
+        return self._CloseIpDirect
+
+    @CloseIpDirect.setter
+    def CloseIpDirect(self, CloseIpDirect):
+        self._CloseIpDirect = CloseIpDirect
+
+    @property
+    def TagSpecification(self):
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
+
+    @property
+    def SecurityGroups(self):
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
+
+    @property
+    def DefaultBandWidthIn(self):
+        return self._DefaultBandWidthIn
+
+    @DefaultBandWidthIn.setter
+    def DefaultBandWidthIn(self, DefaultBandWidthIn):
+        self._DefaultBandWidthIn = DefaultBandWidthIn
+
+    @property
+    def DisableWanIp(self):
+        return self._DisableWanIp
+
+    @DisableWanIp.setter
+    def DisableWanIp(self, DisableWanIp):
+        self._DisableWanIp = DisableWanIp
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
 
 
     def _deserialize(self, params):
-        self.ModuleName = params.get("ModuleName")
-        self.DefaultBandWidth = params.get("DefaultBandWidth")
-        self.DefaultImageId = params.get("DefaultImageId")
-        self.InstanceType = params.get("InstanceType")
-        self.DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
-        self.DefaultDataDiskSize = params.get("DefaultDataDiskSize")
-        self.CloseIpDirect = params.get("CloseIpDirect")
+        self._ModuleName = params.get("ModuleName")
+        self._DefaultBandWidth = params.get("DefaultBandWidth")
+        self._DefaultImageId = params.get("DefaultImageId")
+        self._InstanceType = params.get("InstanceType")
+        self._DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
+        self._DefaultDataDiskSize = params.get("DefaultDataDiskSize")
+        self._CloseIpDirect = params.get("CloseIpDirect")
         if params.get("TagSpecification") is not None:
-            self.TagSpecification = []
+            self._TagSpecification = []
             for item in params.get("TagSpecification"):
                 obj = TagSpecification()
                 obj._deserialize(item)
-                self.TagSpecification.append(obj)
-        self.SecurityGroups = params.get("SecurityGroups")
-        self.DefaultBandWidthIn = params.get("DefaultBandWidthIn")
-        self.DisableWanIp = params.get("DisableWanIp")
+                self._TagSpecification.append(obj)
+        self._SecurityGroups = params.get("SecurityGroups")
+        self._DefaultBandWidthIn = params.get("DefaultBandWidthIn")
+        self._DisableWanIp = params.get("DisableWanIp")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("DataDisks") is not None:
-            self.DataDisks = []
+            self._DataDisks = []
             for item in params.get("DataDisks"):
                 obj = DataDisk()
                 obj._deserialize(item)
-                self.DataDisks.append(obj)
+                self._DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1535,18 +2881,34 @@ class CreateModuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID，创建模块成功后分配给该模块的ID。
+        :param _ModuleId: 模块ID，创建模块成功后分配给该模块的ID。
         :type ModuleId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ModuleId = None
-        self.RequestId = None
+        self._ModuleId = None
+        self._RequestId = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.RequestId = params.get("RequestId")
+        self._ModuleId = params.get("ModuleId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateNetworkInterfaceRequest(AbstractModel):
@@ -1556,60 +2918,133 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param _VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
         :type VpcId: str
-        :param NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字节。
+        :param _NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字节。
         :type NetworkInterfaceName: str
-        :param SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
+        :param _SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
         :type SubnetId: str
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
-        :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
+        :param _NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
         :type NetworkInterfaceDescription: str
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
+        :param _SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
         :type SecondaryPrivateIpAddressCount: int
-        :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
+        :param _SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str
-        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :param _PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
         """
-        self.VpcId = None
-        self.NetworkInterfaceName = None
-        self.SubnetId = None
-        self.EcmRegion = None
-        self.NetworkInterfaceDescription = None
-        self.SecondaryPrivateIpAddressCount = None
-        self.SecurityGroupIds = None
-        self.PrivateIpAddresses = None
-        self.Tags = None
+        self._VpcId = None
+        self._NetworkInterfaceName = None
+        self._SubnetId = None
+        self._EcmRegion = None
+        self._NetworkInterfaceDescription = None
+        self._SecondaryPrivateIpAddressCount = None
+        self._SecurityGroupIds = None
+        self._PrivateIpAddresses = None
+        self._Tags = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def NetworkInterfaceName(self):
+        return self._NetworkInterfaceName
+
+    @NetworkInterfaceName.setter
+    def NetworkInterfaceName(self, NetworkInterfaceName):
+        self._NetworkInterfaceName = NetworkInterfaceName
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def NetworkInterfaceDescription(self):
+        return self._NetworkInterfaceDescription
+
+    @NetworkInterfaceDescription.setter
+    def NetworkInterfaceDescription(self, NetworkInterfaceDescription):
+        self._NetworkInterfaceDescription = NetworkInterfaceDescription
+
+    @property
+    def SecondaryPrivateIpAddressCount(self):
+        return self._SecondaryPrivateIpAddressCount
+
+    @SecondaryPrivateIpAddressCount.setter
+    def SecondaryPrivateIpAddressCount(self, SecondaryPrivateIpAddressCount):
+        self._SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
-        self.SubnetId = params.get("SubnetId")
-        self.EcmRegion = params.get("EcmRegion")
-        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
-        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self._VpcId = params.get("VpcId")
+        self._NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self._SubnetId = params.get("SubnetId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
+        self._SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("PrivateIpAddresses") is not None:
-            self.PrivateIpAddresses = []
+            self._PrivateIpAddresses = []
             for item in params.get("PrivateIpAddresses"):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
-                self.PrivateIpAddresses.append(obj)
+                self._PrivateIpAddresses.append(obj)
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1622,20 +3057,36 @@ class CreateNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterface: 弹性网卡实例。
+        :param _NetworkInterface: 弹性网卡实例。
         :type NetworkInterface: :class:`tencentcloud.ecm.v20190719.models.NetworkInterface`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NetworkInterface = None
-        self.RequestId = None
+        self._NetworkInterface = None
+        self._RequestId = None
+
+    @property
+    def NetworkInterface(self):
+        return self._NetworkInterface
+
+    @NetworkInterface.setter
+    def NetworkInterface(self, NetworkInterface):
+        self._NetworkInterface = NetworkInterface
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("NetworkInterface") is not None:
-            self.NetworkInterface = NetworkInterface()
-            self.NetworkInterface._deserialize(params.get("NetworkInterface"))
-        self.RequestId = params.get("RequestId")
+            self._NetworkInterface = NetworkInterface()
+            self._NetworkInterface._deserialize(params.get("NetworkInterface"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateRouteTableRequest(AbstractModel):
@@ -1645,26 +3096,51 @@ class CreateRouteTableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param _VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
         :type VpcId: str
-        :param RouteTableName: 路由表名称，最大长度不能超过60个字节。
+        :param _RouteTableName: 路由表名称，最大长度不能超过60个字节。
         :type RouteTableName: str
-        :param EcmRegion: ecm地域
+        :param _EcmRegion: ecm地域
         :type EcmRegion: str
         """
-        self.VpcId = None
-        self.RouteTableName = None
-        self.EcmRegion = None
+        self._VpcId = None
+        self._RouteTableName = None
+        self._EcmRegion = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def RouteTableName(self):
+        return self._RouteTableName
+
+    @RouteTableName.setter
+    def RouteTableName(self, RouteTableName):
+        self._RouteTableName = RouteTableName
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.RouteTableName = params.get("RouteTableName")
-        self.EcmRegion = params.get("EcmRegion")
+        self._VpcId = params.get("VpcId")
+        self._RouteTableName = params.get("RouteTableName")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1677,20 +3153,36 @@ class CreateRouteTableResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTable: 路由表对象
+        :param _RouteTable: 路由表对象
         :type RouteTable: :class:`tencentcloud.ecm.v20190719.models.RouteTable`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RouteTable = None
-        self.RequestId = None
+        self._RouteTable = None
+        self._RequestId = None
+
+    @property
+    def RouteTable(self):
+        return self._RouteTable
+
+    @RouteTable.setter
+    def RouteTable(self, RouteTable):
+        self._RouteTable = RouteTable
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RouteTable") is not None:
-            self.RouteTable = RouteTable()
-            self.RouteTable._deserialize(params.get("RouteTable"))
-        self.RequestId = params.get("RequestId")
+            self._RouteTable = RouteTable()
+            self._RouteTable._deserialize(params.get("RouteTable"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateRoutesRequest(AbstractModel):
@@ -1700,27 +3192,44 @@ class CreateRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表实例ID。
+        :param _RouteTableId: 路由表实例ID。
         :type RouteTableId: str
-        :param Routes: 要创建的路由策略对象。
+        :param _Routes: 要创建的路由策略对象。
         :type Routes: list of Route
         """
-        self.RouteTableId = None
-        self.Routes = None
+        self._RouteTableId = None
+        self._Routes = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Routes(self):
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
+        self._RouteTableId = params.get("RouteTableId")
         if params.get("Routes") is not None:
-            self.Routes = []
+            self._Routes = []
             for item in params.get("Routes"):
                 obj = Route()
                 obj._deserialize(item)
-                self.Routes.append(obj)
+                self._Routes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1733,28 +3242,52 @@ class CreateRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 新增的实例个数。
+        :param _TotalCount: 新增的实例个数。
         :type TotalCount: int
-        :param RouteTableSet: 路由表对象。
+        :param _RouteTableSet: 路由表对象。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableSet: list of RouteTable
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.RouteTableSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._RouteTableSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RouteTableSet(self):
+        return self._RouteTableSet
+
+    @RouteTableSet.setter
+    def RouteTableSet(self, RouteTableSet):
+        self._RouteTableSet = RouteTableSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("RouteTableSet") is not None:
-            self.RouteTableSet = []
+            self._RouteTableSet = []
             for item in params.get("RouteTableSet"):
                 obj = RouteTable()
                 obj._deserialize(item)
-                self.RouteTableSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RouteTableSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSecurityGroupPoliciesRequest(AbstractModel):
@@ -1764,24 +3297,41 @@ class CreateSecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
         :type SecurityGroupId: str
-        :param SecurityGroupPolicySet: 安全组规则集合。
+        :param _SecurityGroupPolicySet: 安全组规则集合。
         :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
         """
-        self.SecurityGroupId = None
-        self.SecurityGroupPolicySet = None
+        self._SecurityGroupId = None
+        self._SecurityGroupPolicySet = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def SecurityGroupPolicySet(self):
+        return self._SecurityGroupPolicySet
+
+    @SecurityGroupPolicySet.setter
+    def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
+        self._SecurityGroupPolicySet = SecurityGroupPolicySet
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         if params.get("SecurityGroupPolicySet") is not None:
-            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
-            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+            self._SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1794,14 +3344,22 @@ class CreateSecurityGroupPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSecurityGroupRequest(AbstractModel):
@@ -1811,31 +3369,56 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :param _GroupName: 安全组名称，可任意命名，但不得超过60个字符。
         :type GroupName: str
-        :param GroupDescription: 安全组备注，最多100个字符。
+        :param _GroupDescription: 安全组备注，最多100个字符。
         :type GroupDescription: str
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
         """
-        self.GroupName = None
-        self.GroupDescription = None
-        self.Tags = None
+        self._GroupName = None
+        self._GroupDescription = None
+        self._Tags = None
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupDescription(self):
+        return self._GroupDescription
+
+    @GroupDescription.setter
+    def GroupDescription(self, GroupDescription):
+        self._GroupDescription = GroupDescription
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.GroupName = params.get("GroupName")
-        self.GroupDescription = params.get("GroupDescription")
+        self._GroupName = params.get("GroupName")
+        self._GroupDescription = params.get("GroupDescription")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1848,20 +3431,36 @@ class CreateSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroup: 安全组对象。
+        :param _SecurityGroup: 安全组对象。
         :type SecurityGroup: :class:`tencentcloud.ecm.v20190719.models.SecurityGroup`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SecurityGroup = None
-        self.RequestId = None
+        self._SecurityGroup = None
+        self._RequestId = None
+
+    @property
+    def SecurityGroup(self):
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SecurityGroup") is not None:
-            self.SecurityGroup = SecurityGroup()
-            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
-        self.RequestId = params.get("RequestId")
+            self._SecurityGroup = SecurityGroup()
+            self._SecurityGroup._deserialize(params.get("SecurityGroup"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSubnetRequest(AbstractModel):
@@ -1871,43 +3470,92 @@ class CreateSubnetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param _VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
         :type VpcId: str
-        :param SubnetName: 子网名称，最大长度不能超过60个字节。
+        :param _SubnetName: 子网名称，最大长度不能超过60个字节。
         :type SubnetName: str
-        :param CidrBlock: 子网网段，子网网段必须在VPC网段内，相同VPC内子网网段不能重叠。
+        :param _CidrBlock: 子网网段，子网网段必须在VPC网段内，相同VPC内子网网段不能重叠。
         :type CidrBlock: str
-        :param Zone: 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
+        :param _Zone: 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
         :type Zone: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
         """
-        self.VpcId = None
-        self.SubnetName = None
-        self.CidrBlock = None
-        self.Zone = None
-        self.EcmRegion = None
-        self.Tags = None
+        self._VpcId = None
+        self._SubnetName = None
+        self._CidrBlock = None
+        self._Zone = None
+        self._EcmRegion = None
+        self._Tags = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetName = params.get("SubnetName")
-        self.CidrBlock = params.get("CidrBlock")
-        self.Zone = params.get("Zone")
-        self.EcmRegion = params.get("EcmRegion")
+        self._VpcId = params.get("VpcId")
+        self._SubnetName = params.get("SubnetName")
+        self._CidrBlock = params.get("CidrBlock")
+        self._Zone = params.get("Zone")
+        self._EcmRegion = params.get("EcmRegion")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1920,20 +3568,36 @@ class CreateSubnetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Subnet: 子网对象。
+        :param _Subnet: 子网对象。
         :type Subnet: :class:`tencentcloud.ecm.v20190719.models.Subnet`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Subnet = None
-        self.RequestId = None
+        self._Subnet = None
+        self._RequestId = None
+
+    @property
+    def Subnet(self):
+        return self._Subnet
+
+    @Subnet.setter
+    def Subnet(self, Subnet):
+        self._Subnet = Subnet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Subnet") is not None:
-            self.Subnet = Subnet()
-            self.Subnet._deserialize(params.get("Subnet"))
-        self.RequestId = params.get("RequestId")
+            self._Subnet = Subnet()
+            self._Subnet._deserialize(params.get("Subnet"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateVpcRequest(AbstractModel):
@@ -1943,51 +3607,116 @@ class CreateVpcRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcName: vpc名称，最大长度不能超过60个字节。
+        :param _VpcName: vpc名称，最大长度不能超过60个字节。
         :type VpcName: str
-        :param CidrBlock: vpc的cidr，只能为10.*.0.0/16，172.[16-31].0.0/16，192.168.0.0/16这三个内网网段内。
+        :param _CidrBlock: vpc的cidr，只能为10.*.0.0/16，172.[16-31].0.0/16，192.168.0.0/16这三个内网网段内。
         :type CidrBlock: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。暂不支持
+        :param _EnableMulticast: 是否开启组播。true: 开启, false: 不开启。暂不支持
         :type EnableMulticast: str
-        :param DnsServers: DNS地址，最多支持4个，暂不支持
+        :param _DnsServers: DNS地址，最多支持4个，暂不支持
         :type DnsServers: list of str
-        :param DomainName: 域名，暂不支持
+        :param _DomainName: 域名，暂不支持
         :type DomainName: str
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
-        :param Description: 描述信息
+        :param _Description: 描述信息
         :type Description: str
         """
-        self.VpcName = None
-        self.CidrBlock = None
-        self.EcmRegion = None
-        self.EnableMulticast = None
-        self.DnsServers = None
-        self.DomainName = None
-        self.Tags = None
-        self.Description = None
+        self._VpcName = None
+        self._CidrBlock = None
+        self._EcmRegion = None
+        self._EnableMulticast = None
+        self._DnsServers = None
+        self._DomainName = None
+        self._Tags = None
+        self._Description = None
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def EnableMulticast(self):
+        return self._EnableMulticast
+
+    @EnableMulticast.setter
+    def EnableMulticast(self, EnableMulticast):
+        self._EnableMulticast = EnableMulticast
+
+    @property
+    def DnsServers(self):
+        return self._DnsServers
+
+    @DnsServers.setter
+    def DnsServers(self, DnsServers):
+        self._DnsServers = DnsServers
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.VpcName = params.get("VpcName")
-        self.CidrBlock = params.get("CidrBlock")
-        self.EcmRegion = params.get("EcmRegion")
-        self.EnableMulticast = params.get("EnableMulticast")
-        self.DnsServers = params.get("DnsServers")
-        self.DomainName = params.get("DomainName")
+        self._VpcName = params.get("VpcName")
+        self._CidrBlock = params.get("CidrBlock")
+        self._EcmRegion = params.get("EcmRegion")
+        self._EnableMulticast = params.get("EnableMulticast")
+        self._DnsServers = params.get("DnsServers")
+        self._DomainName = params.get("DomainName")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Description = params.get("Description")
+                self._Tags.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2000,20 +3729,36 @@ class CreateVpcResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Vpc: Vpc对象。
+        :param _Vpc: Vpc对象。
         :type Vpc: :class:`tencentcloud.ecm.v20190719.models.VpcInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Vpc = None
-        self.RequestId = None
+        self._Vpc = None
+        self._RequestId = None
+
+    @property
+    def Vpc(self):
+        return self._Vpc
+
+    @Vpc.setter
+    def Vpc(self, Vpc):
+        self._Vpc = Vpc
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Vpc") is not None:
-            self.Vpc = VpcInfo()
-            self.Vpc._deserialize(params.get("Vpc"))
-        self.RequestId = params.get("RequestId")
+            self._Vpc = VpcInfo()
+            self._Vpc._deserialize(params.get("Vpc"))
+        self._RequestId = params.get("RequestId")
 
 
 class DataDisk(AbstractModel):
@@ -2023,26 +3768,43 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskSize: 数据盘大小。单位GB。
+        :param _DiskSize: 数据盘大小。单位GB。
         :type DiskSize: int
-        :param DiskType: 数据盘类型，取值范围：
+        :param _DiskType: 数据盘类型，取值范围：
 - LOCAL_BASIC：本地硬盘
 - CLOUD_PREMIUM：高性能云硬盘
 
 默认取值： LOCAL_BASIC。
         :type DiskType: str
         """
-        self.DiskSize = None
-        self.DiskType = None
+        self._DiskSize = None
+        self._DiskType = None
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
 
 
     def _deserialize(self, params):
-        self.DiskSize = params.get("DiskSize")
-        self.DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2055,18 +3817,27 @@ class DeleteHaVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HaVipId: HAVIP唯一ID，形如：havip-9o233uri。
+        :param _HaVipId: HAVIP唯一ID，形如：havip-9o233uri。
         :type HaVipId: str
         """
-        self.HaVipId = None
+        self._HaVipId = None
+
+    @property
+    def HaVipId(self):
+        return self._HaVipId
+
+    @HaVipId.setter
+    def HaVipId(self, HaVipId):
+        self._HaVipId = HaVipId
 
 
     def _deserialize(self, params):
-        self.HaVipId = params.get("HaVipId")
+        self._HaVipId = params.get("HaVipId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2079,14 +3850,22 @@ class DeleteHaVipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteImageRequest(AbstractModel):
@@ -2096,18 +3875,27 @@ class DeleteImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageIDSet: 镜像ID列表。
+        :param _ImageIDSet: 镜像ID列表。
         :type ImageIDSet: list of str
         """
-        self.ImageIDSet = None
+        self._ImageIDSet = None
+
+    @property
+    def ImageIDSet(self):
+        return self._ImageIDSet
+
+    @ImageIDSet.setter
+    def ImageIDSet(self, ImageIDSet):
+        self._ImageIDSet = ImageIDSet
 
 
     def _deserialize(self, params):
-        self.ImageIDSet = params.get("ImageIDSet")
+        self._ImageIDSet = params.get("ImageIDSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2120,14 +3908,22 @@ class DeleteImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteListenerRequest(AbstractModel):
@@ -2137,22 +3933,39 @@ class DeleteListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerId: 要删除的监听器 ID
+        :param _ListenerId: 要删除的监听器 ID
         :type ListenerId: str
         """
-        self.LoadBalancerId = None
-        self.ListenerId = None
+        self._LoadBalancerId = None
+        self._ListenerId = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerId = params.get("ListenerId")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerId = params.get("ListenerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2165,14 +3978,22 @@ class DeleteListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLoadBalancerListenersRequest(AbstractModel):
@@ -2182,22 +4003,39 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerIds: 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器
+        :param _ListenerIds: 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器
         :type ListenerIds: list of str
         """
-        self.LoadBalancerId = None
-        self.ListenerIds = None
+        self._LoadBalancerId = None
+        self._ListenerIds = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerIds(self):
+        return self._ListenerIds
+
+    @ListenerIds.setter
+    def ListenerIds(self, ListenerIds):
+        self._ListenerIds = ListenerIds
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerIds = params.get("ListenerIds")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerIds = params.get("ListenerIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2210,14 +4048,22 @@ class DeleteLoadBalancerListenersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLoadBalancerRequest(AbstractModel):
@@ -2227,18 +4073,27 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerIds: 要删除的负载均衡实例 ID数组，数组大小最大支持20
+        :param _LoadBalancerIds: 要删除的负载均衡实例 ID数组，数组大小最大支持20
         :type LoadBalancerIds: list of str
         """
-        self.LoadBalancerIds = None
+        self._LoadBalancerIds = None
+
+    @property
+    def LoadBalancerIds(self):
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
 
 
     def _deserialize(self, params):
-        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2251,14 +4106,22 @@ class DeleteLoadBalancerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteModuleRequest(AbstractModel):
@@ -2268,18 +4131,27 @@ class DeleteModuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID。如：em-qn46snq8
+        :param _ModuleId: 模块ID。如：em-qn46snq8
         :type ModuleId: str
         """
-        self.ModuleId = None
+        self._ModuleId = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
+        self._ModuleId = params.get("ModuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2292,14 +4164,22 @@ class DeleteModuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteNetworkInterfaceRequest(AbstractModel):
@@ -2309,22 +4189,39 @@ class DeleteNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
-        self.NetworkInterfaceId = None
-        self.EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._EcmRegion = None
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2337,14 +4234,22 @@ class DeleteNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteRouteTableRequest(AbstractModel):
@@ -2354,18 +4259,27 @@ class DeleteRouteTableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c
+        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c
         :type RouteTableId: str
         """
-        self.RouteTableId = None
+        self._RouteTableId = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
+        self._RouteTableId = params.get("RouteTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2378,14 +4292,22 @@ class DeleteRouteTableResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteRoutesRequest(AbstractModel):
@@ -2395,27 +4317,44 @@ class DeleteRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表唯一ID。
+        :param _RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param Routes: 路由策略对象。
+        :param _Routes: 路由策略对象。
         :type Routes: list of Route
         """
-        self.RouteTableId = None
-        self.Routes = None
+        self._RouteTableId = None
+        self._Routes = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Routes(self):
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
+        self._RouteTableId = params.get("RouteTableId")
         if params.get("Routes") is not None:
-            self.Routes = []
+            self._Routes = []
             for item in params.get("Routes"):
                 obj = Route()
                 obj._deserialize(item)
-                self.Routes.append(obj)
+                self._Routes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2428,14 +4367,22 @@ class DeleteRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSecurityGroupPoliciesRequest(AbstractModel):
@@ -2445,24 +4392,41 @@ class DeleteSecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
         :type SecurityGroupId: str
-        :param SecurityGroupPolicySet: 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
+        :param _SecurityGroupPolicySet: 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
         :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
         """
-        self.SecurityGroupId = None
-        self.SecurityGroupPolicySet = None
+        self._SecurityGroupId = None
+        self._SecurityGroupPolicySet = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def SecurityGroupPolicySet(self):
+        return self._SecurityGroupPolicySet
+
+    @SecurityGroupPolicySet.setter
+    def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
+        self._SecurityGroupPolicySet = SecurityGroupPolicySet
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         if params.get("SecurityGroupPolicySet") is not None:
-            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
-            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+            self._SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2475,14 +4439,22 @@ class DeleteSecurityGroupPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSecurityGroupRequest(AbstractModel):
@@ -2492,18 +4464,27 @@ class DeleteSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
         :type SecurityGroupId: str
         """
-        self.SecurityGroupId = None
+        self._SecurityGroupId = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2516,14 +4497,22 @@ class DeleteSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSnapshotsRequest(AbstractModel):
@@ -2533,22 +4522,39 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SnapshotIds: 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
+        :param _SnapshotIds: 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
         :type SnapshotIds: list of str
-        :param DeleteBindImages: 是否强制删除快照关联的镜像
+        :param _DeleteBindImages: 是否强制删除快照关联的镜像
         :type DeleteBindImages: bool
         """
-        self.SnapshotIds = None
-        self.DeleteBindImages = None
+        self._SnapshotIds = None
+        self._DeleteBindImages = None
+
+    @property
+    def SnapshotIds(self):
+        return self._SnapshotIds
+
+    @SnapshotIds.setter
+    def SnapshotIds(self, SnapshotIds):
+        self._SnapshotIds = SnapshotIds
+
+    @property
+    def DeleteBindImages(self):
+        return self._DeleteBindImages
+
+    @DeleteBindImages.setter
+    def DeleteBindImages(self, DeleteBindImages):
+        self._DeleteBindImages = DeleteBindImages
 
 
     def _deserialize(self, params):
-        self.SnapshotIds = params.get("SnapshotIds")
-        self.DeleteBindImages = params.get("DeleteBindImages")
+        self._SnapshotIds = params.get("SnapshotIds")
+        self._DeleteBindImages = params.get("DeleteBindImages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2561,14 +4567,22 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSubnetRequest(AbstractModel):
@@ -2578,22 +4592,39 @@ class DeleteSubnetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubnetId: 子网实例ID。可通过DescribeSubnets接口返回值中的SubnetId获取。
+        :param _SubnetId: 子网实例ID。可通过DescribeSubnets接口返回值中的SubnetId获取。
         :type SubnetId: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
         """
-        self.SubnetId = None
-        self.EcmRegion = None
+        self._SubnetId = None
+        self._EcmRegion = None
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.SubnetId = params.get("SubnetId")
-        self.EcmRegion = params.get("EcmRegion")
+        self._SubnetId = params.get("SubnetId")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2606,14 +4637,22 @@ class DeleteSubnetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteVpcRequest(AbstractModel):
@@ -2623,22 +4662,39 @@ class DeleteVpcRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param _VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
         :type VpcId: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
         """
-        self.VpcId = None
-        self.EcmRegion = None
+        self._VpcId = None
+        self._EcmRegion = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.EcmRegion = params.get("EcmRegion")
+        self._VpcId = params.get("VpcId")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2651,14 +4707,22 @@ class DeleteVpcResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAddressQuotaRequest(AbstractModel):
@@ -2668,18 +4732,27 @@ class DescribeAddressQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
         """
-        self.EcmRegion = None
+        self._EcmRegion = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2692,23 +4765,39 @@ class DescribeAddressQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QuotaSet: 账户 EIP 配额信息。
+        :param _QuotaSet: 账户 EIP 配额信息。
         :type QuotaSet: list of EipQuota
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.QuotaSet = None
-        self.RequestId = None
+        self._QuotaSet = None
+        self._RequestId = None
+
+    @property
+    def QuotaSet(self):
+        return self._QuotaSet
+
+    @QuotaSet.setter
+    def QuotaSet(self, QuotaSet):
+        self._QuotaSet = QuotaSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("QuotaSet") is not None:
-            self.QuotaSet = []
+            self._QuotaSet = []
             for item in params.get("QuotaSet"):
                 obj = EipQuota()
                 obj._deserialize(item)
-                self.QuotaSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._QuotaSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAddressesRequest(AbstractModel):
@@ -2718,11 +4807,11 @@ class DescribeAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param AddressIds: 标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：eip-11112222。参数不支持同时指定AddressIds和Filters。
+        :param _AddressIds: 标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：eip-11112222。参数不支持同时指定AddressIds和Filters。
         :type AddressIds: list of str
-        :param Filters: 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定AddressIds和Filters。详细的过滤条件如下：
+        :param _Filters: 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定AddressIds和Filters。详细的过滤条件如下：
 address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的唯一 ID 过滤。EIP 唯一 ID 形如：eip-11112222。
 address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
 address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。
@@ -2732,33 +4821,74 @@ private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 
 network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。
 is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
-        self.EcmRegion = None
-        self.AddressIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._EcmRegion = None
+        self._AddressIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def AddressIds(self):
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.AddressIds = params.get("AddressIds")
+        self._EcmRegion = params.get("EcmRegion")
+        self._AddressIds = params.get("AddressIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2771,27 +4901,51 @@ class DescribeAddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的 EIP 数量。
+        :param _TotalCount: 符合条件的 EIP 数量。
         :type TotalCount: int
-        :param AddressSet: EIP 详细信息列表。
+        :param _AddressSet: EIP 详细信息列表。
         :type AddressSet: list of Address
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.AddressSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._AddressSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AddressSet(self):
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("AddressSet") is not None:
-            self.AddressSet = []
+            self._AddressSet = []
             for item in params.get("AddressSet"):
                 obj = Address()
                 obj._deserialize(item)
-                self.AddressSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AddressSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBaseOverviewRequest(AbstractModel):
@@ -2807,58 +4961,154 @@ class DescribeBaseOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleNum: 模块数量，单位：个
+        :param _ModuleNum: 模块数量，单位：个
         :type ModuleNum: int
-        :param NodeNum: 节点数量，单位：个
+        :param _NodeNum: 节点数量，单位：个
         :type NodeNum: int
-        :param VcpuNum: cpu核数，单位：个
+        :param _VcpuNum: cpu核数，单位：个
         :type VcpuNum: int
-        :param MemoryNum: 内存大小，单位：G
+        :param _MemoryNum: 内存大小，单位：G
         :type MemoryNum: int
-        :param StorageNum: 硬盘大小，单位：G
+        :param _StorageNum: 硬盘大小，单位：G
         :type StorageNum: int
-        :param NetworkNum: 昨日网络峰值,单位：M
+        :param _NetworkNum: 昨日网络峰值,单位：M
         :type NetworkNum: int
-        :param InstanceNum: 实例数量，单位：台
+        :param _InstanceNum: 实例数量，单位：台
         :type InstanceNum: int
-        :param RunningNum: 运行中数量，单位：台
+        :param _RunningNum: 运行中数量，单位：台
         :type RunningNum: int
-        :param IsolationNum: 安全隔离数量，单位：台
+        :param _IsolationNum: 安全隔离数量，单位：台
         :type IsolationNum: int
-        :param ExpiredNum: 过期实例数量，单位：台
+        :param _ExpiredNum: 过期实例数量，单位：台
         :type ExpiredNum: int
-        :param WillExpireNum: 即将过期实例数量，单位：台
+        :param _WillExpireNum: 即将过期实例数量，单位：台
         :type WillExpireNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ModuleNum = None
-        self.NodeNum = None
-        self.VcpuNum = None
-        self.MemoryNum = None
-        self.StorageNum = None
-        self.NetworkNum = None
-        self.InstanceNum = None
-        self.RunningNum = None
-        self.IsolationNum = None
-        self.ExpiredNum = None
-        self.WillExpireNum = None
-        self.RequestId = None
+        self._ModuleNum = None
+        self._NodeNum = None
+        self._VcpuNum = None
+        self._MemoryNum = None
+        self._StorageNum = None
+        self._NetworkNum = None
+        self._InstanceNum = None
+        self._RunningNum = None
+        self._IsolationNum = None
+        self._ExpiredNum = None
+        self._WillExpireNum = None
+        self._RequestId = None
+
+    @property
+    def ModuleNum(self):
+        return self._ModuleNum
+
+    @ModuleNum.setter
+    def ModuleNum(self, ModuleNum):
+        self._ModuleNum = ModuleNum
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def VcpuNum(self):
+        return self._VcpuNum
+
+    @VcpuNum.setter
+    def VcpuNum(self, VcpuNum):
+        self._VcpuNum = VcpuNum
+
+    @property
+    def MemoryNum(self):
+        return self._MemoryNum
+
+    @MemoryNum.setter
+    def MemoryNum(self, MemoryNum):
+        self._MemoryNum = MemoryNum
+
+    @property
+    def StorageNum(self):
+        return self._StorageNum
+
+    @StorageNum.setter
+    def StorageNum(self, StorageNum):
+        self._StorageNum = StorageNum
+
+    @property
+    def NetworkNum(self):
+        return self._NetworkNum
+
+    @NetworkNum.setter
+    def NetworkNum(self, NetworkNum):
+        self._NetworkNum = NetworkNum
+
+    @property
+    def InstanceNum(self):
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def RunningNum(self):
+        return self._RunningNum
+
+    @RunningNum.setter
+    def RunningNum(self, RunningNum):
+        self._RunningNum = RunningNum
+
+    @property
+    def IsolationNum(self):
+        return self._IsolationNum
+
+    @IsolationNum.setter
+    def IsolationNum(self, IsolationNum):
+        self._IsolationNum = IsolationNum
+
+    @property
+    def ExpiredNum(self):
+        return self._ExpiredNum
+
+    @ExpiredNum.setter
+    def ExpiredNum(self, ExpiredNum):
+        self._ExpiredNum = ExpiredNum
+
+    @property
+    def WillExpireNum(self):
+        return self._WillExpireNum
+
+    @WillExpireNum.setter
+    def WillExpireNum(self, WillExpireNum):
+        self._WillExpireNum = WillExpireNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ModuleNum = params.get("ModuleNum")
-        self.NodeNum = params.get("NodeNum")
-        self.VcpuNum = params.get("VcpuNum")
-        self.MemoryNum = params.get("MemoryNum")
-        self.StorageNum = params.get("StorageNum")
-        self.NetworkNum = params.get("NetworkNum")
-        self.InstanceNum = params.get("InstanceNum")
-        self.RunningNum = params.get("RunningNum")
-        self.IsolationNum = params.get("IsolationNum")
-        self.ExpiredNum = params.get("ExpiredNum")
-        self.WillExpireNum = params.get("WillExpireNum")
-        self.RequestId = params.get("RequestId")
+        self._ModuleNum = params.get("ModuleNum")
+        self._NodeNum = params.get("NodeNum")
+        self._VcpuNum = params.get("VcpuNum")
+        self._MemoryNum = params.get("MemoryNum")
+        self._StorageNum = params.get("StorageNum")
+        self._NetworkNum = params.get("NetworkNum")
+        self._InstanceNum = params.get("InstanceNum")
+        self._RunningNum = params.get("RunningNum")
+        self._IsolationNum = params.get("IsolationNum")
+        self._ExpiredNum = params.get("ExpiredNum")
+        self._WillExpireNum = params.get("WillExpireNum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeConfigRequest(AbstractModel):
@@ -2874,46 +5124,94 @@ class DescribeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkStorageRange: 网络带宽硬盘大小的范围信息。
+        :param _NetworkStorageRange: 网络带宽硬盘大小的范围信息。
         :type NetworkStorageRange: :class:`tencentcloud.ecm.v20190719.models.NetworkStorageRange`
-        :param ImageWhiteSet: 镜像操作系统白名单。
+        :param _ImageWhiteSet: 镜像操作系统白名单。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageWhiteSet: list of str
-        :param InstanceNetworkLimitConfigs: 网络限额信息。
+        :param _InstanceNetworkLimitConfigs: 网络限额信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNetworkLimitConfigs: list of InstanceNetworkLimitConfig
-        :param ImageLimits: 镜像限额信息。
+        :param _ImageLimits: 镜像限额信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageLimits: :class:`tencentcloud.ecm.v20190719.models.ImageLimitConfig`
-        :param DefaultIPDirect: 默认是否IP直通，用于模块创建，虚机购买等具有直通参数场景时的默认参数。
+        :param _DefaultIPDirect: 默认是否IP直通，用于模块创建，虚机购买等具有直通参数场景时的默认参数。
         :type DefaultIPDirect: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NetworkStorageRange = None
-        self.ImageWhiteSet = None
-        self.InstanceNetworkLimitConfigs = None
-        self.ImageLimits = None
-        self.DefaultIPDirect = None
-        self.RequestId = None
+        self._NetworkStorageRange = None
+        self._ImageWhiteSet = None
+        self._InstanceNetworkLimitConfigs = None
+        self._ImageLimits = None
+        self._DefaultIPDirect = None
+        self._RequestId = None
+
+    @property
+    def NetworkStorageRange(self):
+        return self._NetworkStorageRange
+
+    @NetworkStorageRange.setter
+    def NetworkStorageRange(self, NetworkStorageRange):
+        self._NetworkStorageRange = NetworkStorageRange
+
+    @property
+    def ImageWhiteSet(self):
+        return self._ImageWhiteSet
+
+    @ImageWhiteSet.setter
+    def ImageWhiteSet(self, ImageWhiteSet):
+        self._ImageWhiteSet = ImageWhiteSet
+
+    @property
+    def InstanceNetworkLimitConfigs(self):
+        return self._InstanceNetworkLimitConfigs
+
+    @InstanceNetworkLimitConfigs.setter
+    def InstanceNetworkLimitConfigs(self, InstanceNetworkLimitConfigs):
+        self._InstanceNetworkLimitConfigs = InstanceNetworkLimitConfigs
+
+    @property
+    def ImageLimits(self):
+        return self._ImageLimits
+
+    @ImageLimits.setter
+    def ImageLimits(self, ImageLimits):
+        self._ImageLimits = ImageLimits
+
+    @property
+    def DefaultIPDirect(self):
+        return self._DefaultIPDirect
+
+    @DefaultIPDirect.setter
+    def DefaultIPDirect(self, DefaultIPDirect):
+        self._DefaultIPDirect = DefaultIPDirect
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("NetworkStorageRange") is not None:
-            self.NetworkStorageRange = NetworkStorageRange()
-            self.NetworkStorageRange._deserialize(params.get("NetworkStorageRange"))
-        self.ImageWhiteSet = params.get("ImageWhiteSet")
+            self._NetworkStorageRange = NetworkStorageRange()
+            self._NetworkStorageRange._deserialize(params.get("NetworkStorageRange"))
+        self._ImageWhiteSet = params.get("ImageWhiteSet")
         if params.get("InstanceNetworkLimitConfigs") is not None:
-            self.InstanceNetworkLimitConfigs = []
+            self._InstanceNetworkLimitConfigs = []
             for item in params.get("InstanceNetworkLimitConfigs"):
                 obj = InstanceNetworkLimitConfig()
                 obj._deserialize(item)
-                self.InstanceNetworkLimitConfigs.append(obj)
+                self._InstanceNetworkLimitConfigs.append(obj)
         if params.get("ImageLimits") is not None:
-            self.ImageLimits = ImageLimitConfig()
-            self.ImageLimits._deserialize(params.get("ImageLimits"))
-        self.DefaultIPDirect = params.get("DefaultIPDirect")
-        self.RequestId = params.get("RequestId")
+            self._ImageLimits = ImageLimitConfig()
+            self._ImageLimits._deserialize(params.get("ImageLimits"))
+        self._DefaultIPDirect = params.get("DefaultIPDirect")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomImageTaskRequest(AbstractModel):
@@ -2923,26 +5221,35 @@ class DescribeCustomImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 支持key,value查询
+        :param _Filters: 支持key,value查询
 task-id: 异步任务ID
 image-id: 镜像ID
 image-name: 镜像名称
         :type Filters: list of Filter
         """
-        self.Filters = None
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2955,28 +5262,52 @@ class DescribeCustomImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageTaskSet: 导入任务详情
+        :param _ImageTaskSet: 导入任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageTaskSet: list of ImageTask
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageTaskSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ImageTaskSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ImageTaskSet(self):
+        return self._ImageTaskSet
+
+    @ImageTaskSet.setter
+    def ImageTaskSet(self, ImageTaskSet):
+        self._ImageTaskSet = ImageTaskSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImageTaskSet") is not None:
-            self.ImageTaskSet = []
+            self._ImageTaskSet = []
             for item in params.get("ImageTaskSet"):
                 obj = ImageTask()
                 obj._deserialize(item)
-                self.ImageTaskSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ImageTaskSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDefaultSubnetRequest(AbstractModel):
@@ -2986,22 +5317,39 @@ class DescribeDefaultSubnetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM地域
+        :param _EcmRegion: ECM地域
         :type EcmRegion: str
-        :param Zone: ECM可用区
+        :param _Zone: ECM可用区
         :type Zone: str
         """
-        self.EcmRegion = None
-        self.Zone = None
+        self._EcmRegion = None
+        self._Zone = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.Zone = params.get("Zone")
+        self._EcmRegion = params.get("EcmRegion")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3014,20 +5362,36 @@ class DescribeDefaultSubnetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Subnet: 默认子网信息，若无子网，则为空数据。
+        :param _Subnet: 默认子网信息，若无子网，则为空数据。
         :type Subnet: :class:`tencentcloud.ecm.v20190719.models.Subnet`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Subnet = None
-        self.RequestId = None
+        self._Subnet = None
+        self._RequestId = None
+
+    @property
+    def Subnet(self):
+        return self._Subnet
+
+    @Subnet.setter
+    def Subnet(self, Subnet):
+        self._Subnet = Subnet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Subnet") is not None:
-            self.Subnet = Subnet()
-            self.Subnet._deserialize(params.get("Subnet"))
-        self.RequestId = params.get("RequestId")
+            self._Subnet = Subnet()
+            self._Subnet._deserialize(params.get("Subnet"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDisksRequest(AbstractModel):
@@ -3037,47 +5401,104 @@ class DescribeDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+        :param _Filters: 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
         :type Filters: list of Filter
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
         :type Limit: int
-        :param OrderField: 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
+        :param _OrderField: 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
         :type OrderField: str
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
-        :param ReturnBindAutoSnapshotPolicy: 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
+        :param _ReturnBindAutoSnapshotPolicy: 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
         :type ReturnBindAutoSnapshotPolicy: bool
-        :param DiskIds: 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
+        :param _DiskIds: 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
         :type DiskIds: list of str
-        :param Order: 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+        :param _Order: 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
         :type Order: str
         """
-        self.Filters = None
-        self.Limit = None
-        self.OrderField = None
-        self.Offset = None
-        self.ReturnBindAutoSnapshotPolicy = None
-        self.DiskIds = None
-        self.Order = None
+        self._Filters = None
+        self._Limit = None
+        self._OrderField = None
+        self._Offset = None
+        self._ReturnBindAutoSnapshotPolicy = None
+        self._DiskIds = None
+        self._Order = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ReturnBindAutoSnapshotPolicy(self):
+        return self._ReturnBindAutoSnapshotPolicy
+
+    @ReturnBindAutoSnapshotPolicy.setter
+    def ReturnBindAutoSnapshotPolicy(self, ReturnBindAutoSnapshotPolicy):
+        self._ReturnBindAutoSnapshotPolicy = ReturnBindAutoSnapshotPolicy
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.OrderField = params.get("OrderField")
-        self.Offset = params.get("Offset")
-        self.ReturnBindAutoSnapshotPolicy = params.get("ReturnBindAutoSnapshotPolicy")
-        self.DiskIds = params.get("DiskIds")
-        self.Order = params.get("Order")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Offset = params.get("Offset")
+        self._ReturnBindAutoSnapshotPolicy = params.get("ReturnBindAutoSnapshotPolicy")
+        self._DiskIds = params.get("DiskIds")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3090,27 +5511,51 @@ class DescribeDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的云硬盘数量。
+        :param _TotalCount: 符合条件的云硬盘数量。
         :type TotalCount: int
-        :param DiskSet: 云硬盘的详细信息列表。
+        :param _DiskSet: 云硬盘的详细信息列表。
         :type DiskSet: list of Disk
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.DiskSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._DiskSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DiskSet(self):
+        return self._DiskSet
+
+    @DiskSet.setter
+    def DiskSet(self, DiskSet):
+        self._DiskSet = DiskSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("DiskSet") is not None:
-            self.DiskSet = []
+            self._DiskSet = []
             for item in params.get("DiskSet"):
                 obj = Disk()
                 obj._deserialize(item)
-                self.DiskSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DiskSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeHaVipsRequest(AbstractModel):
@@ -3120,43 +5565,84 @@ class DescribeHaVipsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HaVipIds: HAVIP数组，HAVIP唯一ID，形如：havip-9o233uri。
+        :param _HaVipIds: HAVIP数组，HAVIP唯一ID，形如：havip-9o233uri。
         :type HaVipIds: list of str
-        :param Filters: 过滤条件，参数不支持同时指定HaVipIds和Filters。
+        :param _Filters: 过滤条件，参数不支持同时指定HaVipIds和Filters。
 havip-id - String - HAVIP唯一ID，形如：havip-9o233uri。
 havip-name - String - HAVIP名称。
 vpc-id - String - HAVIP所在私有网络ID。
 subnet-id - String - HAVIP所在子网ID。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认值是0。
+        :param _Offset: 偏移量，默认值是0。
         :type Offset: int
-        :param Limit: 返回数量，默认值是20，最大是100。
+        :param _Limit: 返回数量，默认值是20，最大是100。
         :type Limit: int
-        :param EcmRegion: Ecm 区域，不填代表全部区域。
+        :param _EcmRegion: Ecm 区域，不填代表全部区域。
         :type EcmRegion: str
         """
-        self.HaVipIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.EcmRegion = None
+        self._HaVipIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._EcmRegion = None
+
+    @property
+    def HaVipIds(self):
+        return self._HaVipIds
+
+    @HaVipIds.setter
+    def HaVipIds(self, HaVipIds):
+        self._HaVipIds = HaVipIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.HaVipIds = params.get("HaVipIds")
+        self._HaVipIds = params.get("HaVipIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.EcmRegion = params.get("EcmRegion")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3169,28 +5655,52 @@ class DescribeHaVipsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的对象数。
+        :param _TotalCount: 符合条件的对象数。
         :type TotalCount: int
-        :param HaVipSet: HAVIP对象数组。
+        :param _HaVipSet: HAVIP对象数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HaVipSet: list of HaVip
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.HaVipSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._HaVipSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def HaVipSet(self):
+        return self._HaVipSet
+
+    @HaVipSet.setter
+    def HaVipSet(self, HaVipSet):
+        self._HaVipSet = HaVipSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("HaVipSet") is not None:
-            self.HaVipSet = []
+            self._HaVipSet = []
             for item in params.get("HaVipSet"):
                 obj = HaVip()
                 obj._deserialize(item)
-                self.HaVipSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._HaVipSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImageRequest(AbstractModel):
@@ -3200,7 +5710,7 @@ class DescribeImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤条件，每次请求的Filters的上限为10，详细的过滤条件如下：
+        :param _Filters: 过滤条件，每次请求的Filters的上限为10，详细的过滤条件如下：
 image-id - String - 是否必填： 否 - （过滤条件）按照镜像ID进行过滤
 image-type - String - 是否必填： 否 - （过滤条件）按照镜像类型进行过滤。取值范围：
 PRIVATE_IMAGE: 私有镜像 (本帐户创建的镜像) 
@@ -3209,29 +5719,54 @@ instance-type -String - 是否必填: 否 - (过滤条件) 按机型过滤支持
 image-name - String - 是否必填：否 - (过滤条件) 按镜像的名称模糊匹配，只能提供一个值
 image-os - String - 是否必填：否 - (过滤条件) 按镜像系统的名称模糊匹配，只能提供一个值
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
         :type Limit: int
         """
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3244,28 +5779,52 @@ class DescribeImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 镜像总数
+        :param _TotalCount: 镜像总数
         :type TotalCount: int
-        :param ImageSet: 镜像数组
+        :param _ImageSet: 镜像数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSet: list of Image
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.ImageSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._ImageSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ImageSet(self):
+        return self._ImageSet
+
+    @ImageSet.setter
+    def ImageSet(self, ImageSet):
+        self._ImageSet = ImageSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ImageSet") is not None:
-            self.ImageSet = []
+            self._ImageSet = []
             for item in params.get("ImageSet"):
                 obj = Image()
                 obj._deserialize(item)
-                self.ImageSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ImageSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImportImageOsRequest(AbstractModel):
@@ -3281,29 +5840,53 @@ class DescribeImportImageOsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImportImageOsListSupported: 支持的导入镜像的操作系统类型
+        :param _ImportImageOsListSupported: 支持的导入镜像的操作系统类型
         :type ImportImageOsListSupported: :class:`tencentcloud.ecm.v20190719.models.ImageOsList`
-        :param ImportImageOsVersionSet: 支持的导入镜像的操作系统版本
+        :param _ImportImageOsVersionSet: 支持的导入镜像的操作系统版本
         :type ImportImageOsVersionSet: list of OsVersion
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImportImageOsListSupported = None
-        self.ImportImageOsVersionSet = None
-        self.RequestId = None
+        self._ImportImageOsListSupported = None
+        self._ImportImageOsVersionSet = None
+        self._RequestId = None
+
+    @property
+    def ImportImageOsListSupported(self):
+        return self._ImportImageOsListSupported
+
+    @ImportImageOsListSupported.setter
+    def ImportImageOsListSupported(self, ImportImageOsListSupported):
+        self._ImportImageOsListSupported = ImportImageOsListSupported
+
+    @property
+    def ImportImageOsVersionSet(self):
+        return self._ImportImageOsVersionSet
+
+    @ImportImageOsVersionSet.setter
+    def ImportImageOsVersionSet(self, ImportImageOsVersionSet):
+        self._ImportImageOsVersionSet = ImportImageOsVersionSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ImportImageOsListSupported") is not None:
-            self.ImportImageOsListSupported = ImageOsList()
-            self.ImportImageOsListSupported._deserialize(params.get("ImportImageOsListSupported"))
+            self._ImportImageOsListSupported = ImageOsList()
+            self._ImportImageOsListSupported._deserialize(params.get("ImportImageOsListSupported"))
         if params.get("ImportImageOsVersionSet") is not None:
-            self.ImportImageOsVersionSet = []
+            self._ImportImageOsVersionSet = []
             for item in params.get("ImportImageOsVersionSet"):
                 obj = OsVersion()
                 obj._deserialize(item)
-                self.ImportImageOsVersionSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ImportImageOsVersionSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceTypeConfigRequest(AbstractModel):
@@ -3319,28 +5902,52 @@ class DescribeInstanceTypeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总数
+        :param _TotalCount: 总数
         :type TotalCount: int
-        :param InstanceTypeConfigSet: 机型配置信息
+        :param _InstanceTypeConfigSet: 机型配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeConfigSet: list of InstanceTypeConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InstanceTypeConfigSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InstanceTypeConfigSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceTypeConfigSet(self):
+        return self._InstanceTypeConfigSet
+
+    @InstanceTypeConfigSet.setter
+    def InstanceTypeConfigSet(self, InstanceTypeConfigSet):
+        self._InstanceTypeConfigSet = InstanceTypeConfigSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InstanceTypeConfigSet") is not None:
-            self.InstanceTypeConfigSet = []
+            self._InstanceTypeConfigSet = []
             for item in params.get("InstanceTypeConfigSet"):
                 obj = InstanceTypeConfig()
                 obj._deserialize(item)
-                self.InstanceTypeConfigSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceTypeConfigSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceVncUrlRequest(AbstractModel):
@@ -3350,18 +5957,27 @@ class DescribeInstanceVncUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 一个操作的实例ID。可通过DescribeInstances API返回值中的InstanceId获取。
+        :param _InstanceId: 一个操作的实例ID。可通过DescribeInstances API返回值中的InstanceId获取。
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3374,18 +5990,34 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceVncUrl: 实例的管理终端地址。
+        :param _InstanceVncUrl: 实例的管理终端地址。
         :type InstanceVncUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstanceVncUrl = None
-        self.RequestId = None
+        self._InstanceVncUrl = None
+        self._RequestId = None
+
+    @property
+    def InstanceVncUrl(self):
+        return self._InstanceVncUrl
+
+    @InstanceVncUrl.setter
+    def InstanceVncUrl(self, InstanceVncUrl):
+        self._InstanceVncUrl = InstanceVncUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceVncUrl = params.get("InstanceVncUrl")
-        self.RequestId = params.get("RequestId")
+        self._InstanceVncUrl = params.get("InstanceVncUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesDeniedActionsRequest(AbstractModel):
@@ -3395,18 +6027,27 @@ class DescribeInstancesDeniedActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 无
+        :param _InstanceIdSet: 无
         :type InstanceIdSet: list of str
         """
-        self.InstanceIdSet = None
+        self._InstanceIdSet = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
+        self._InstanceIdSet = params.get("InstanceIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3419,23 +6060,39 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceOperatorSet: 实例对应的禁止操作
+        :param _InstanceOperatorSet: 实例对应的禁止操作
         :type InstanceOperatorSet: list of InstanceOperator
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstanceOperatorSet = None
-        self.RequestId = None
+        self._InstanceOperatorSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceOperatorSet(self):
+        return self._InstanceOperatorSet
+
+    @InstanceOperatorSet.setter
+    def InstanceOperatorSet(self, InstanceOperatorSet):
+        self._InstanceOperatorSet = InstanceOperatorSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstanceOperatorSet") is not None:
-            self.InstanceOperatorSet = []
+            self._InstanceOperatorSet = []
             for item in params.get("InstanceOperatorSet"):
                 obj = InstanceOperator()
                 obj._deserialize(item)
-                self.InstanceOperatorSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceOperatorSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesRequest(AbstractModel):
@@ -3445,7 +6102,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤条件。
+        :param _Filters: 过滤条件。
 zone      String      是否必填：否     （过滤条件）按照可用区英文标识符过滤。
 zone-name      String      是否必填：否     （过滤条件）按照可用区中文名过滤,支持模糊匹配。
 module-id      String      是否必填：否     （过滤条件）按照模块ID过滤。
@@ -3466,40 +6123,81 @@ subnet-id String      是否必填：否      （过滤条件）按照实例的s
 若不传Filters参数则表示查询所有相关的实例信息。
 单次请求的Filter.Values的上限为5。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量，默认为20(如果查询结果数目大于等于20)，最大值为100。
+        :param _Limit: 返回数量，默认为20(如果查询结果数目大于等于20)，最大值为100。
         :type Limit: int
-        :param OrderByField: 指定排序字段。目前支持的可选值如下
+        :param _OrderByField: 指定排序字段。目前支持的可选值如下
 timestamp 按实例创建时间排序。
 注意：目前仅支持按创建时间排序，后续可能会有扩展。
 如果不传，默认按实例创建时间排序
         :type OrderByField: str
-        :param OrderDirection: 指定排序是降序还是升序。0表示降序； 1表示升序。如果不传默认为降序
+        :param _OrderDirection: 指定排序是降序还是升序。0表示降序； 1表示升序。如果不传默认为降序
         :type OrderDirection: int
         """
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderByField = None
-        self.OrderDirection = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderByField = None
+        self._OrderDirection = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderByField(self):
+        return self._OrderByField
+
+    @OrderByField.setter
+    def OrderByField(self, OrderByField):
+        self._OrderByField = OrderByField
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderByField = params.get("OrderByField")
-        self.OrderDirection = params.get("OrderDirection")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderByField = params.get("OrderByField")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3512,28 +6210,52 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 返回的实例相关信息列表的长度。
+        :param _TotalCount: 返回的实例相关信息列表的长度。
         :type TotalCount: int
-        :param InstanceSet: 返回的实例相关信息列表。
+        :param _InstanceSet: 返回的实例相关信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSet: list of Instance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InstanceSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceSet(self):
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InstanceSet") is not None:
-            self.InstanceSet = []
+            self._InstanceSet = []
             for item in params.get("InstanceSet"):
                 obj = Instance()
                 obj._deserialize(item)
-                self.InstanceSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeListenersRequest(AbstractModel):
@@ -3543,30 +6265,63 @@ class DescribeListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerIds: 要查询的负载均衡监听器 ID数组
+        :param _ListenerIds: 要查询的负载均衡监听器 ID数组
         :type ListenerIds: list of str
-        :param Protocol: 要查询的监听器协议类型，取值 TCP | UDP
+        :param _Protocol: 要查询的监听器协议类型，取值 TCP | UDP
         :type Protocol: str
-        :param Port: 要查询的监听器的端口
+        :param _Port: 要查询的监听器的端口
         :type Port: int
         """
-        self.LoadBalancerId = None
-        self.ListenerIds = None
-        self.Protocol = None
-        self.Port = None
+        self._LoadBalancerId = None
+        self._ListenerIds = None
+        self._Protocol = None
+        self._Port = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerIds(self):
+        return self._ListenerIds
+
+    @ListenerIds.setter
+    def ListenerIds(self, ListenerIds):
+        self._ListenerIds = ListenerIds
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerIds = params.get("ListenerIds")
-        self.Protocol = params.get("Protocol")
-        self.Port = params.get("Port")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerIds = params.get("ListenerIds")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3579,29 +6334,53 @@ class DescribeListenersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Listeners: 监听器列表
+        :param _Listeners: 监听器列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of Listener
-        :param TotalCount: 总的监听器个数
+        :param _TotalCount: 总的监听器个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Listeners = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Listeners = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Listeners(self):
+        return self._Listeners
+
+    @Listeners.setter
+    def Listeners(self, Listeners):
+        self._Listeners = Listeners
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Listeners") is not None:
-            self.Listeners = []
+            self._Listeners = []
             for item in params.get("Listeners"):
                 obj = Listener()
                 obj._deserialize(item)
-                self.Listeners.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Listeners.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLoadBalanceTaskStatusRequest(AbstractModel):
@@ -3611,18 +6390,27 @@ class DescribeLoadBalanceTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 请求ID，即接口返回的 RequestId 参数
+        :param _TaskId: 请求ID，即接口返回的 RequestId 参数
         :type TaskId: str
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3635,19 +6423,35 @@ class DescribeLoadBalanceTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 任务的当前状态。 0：成功，1：失败，2：进行中。
+        :param _Status: 任务的当前状态。 0：成功，1：失败，2：进行中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLoadBalancersRequest(AbstractModel):
@@ -3657,65 +6461,154 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: 区域。如果不传则默认查询所有区域。
+        :param _EcmRegion: 区域。如果不传则默认查询所有区域。
         :type EcmRegion: str
-        :param LoadBalancerIds: 负载均衡实例 ID。
+        :param _LoadBalancerIds: 负载均衡实例 ID。
         :type LoadBalancerIds: list of str
-        :param LoadBalancerName: 负载均衡实例的名称。
+        :param _LoadBalancerName: 负载均衡实例的名称。
         :type LoadBalancerName: str
-        :param LoadBalancerVips: 负载均衡实例的 VIP 地址，支持多个。
+        :param _LoadBalancerVips: 负载均衡实例的 VIP 地址，支持多个。
         :type LoadBalancerVips: list of str
-        :param BackendPrivateIps: 负载均衡绑定的后端服务的内网 IP。
+        :param _BackendPrivateIps: 负载均衡绑定的后端服务的内网 IP。
         :type BackendPrivateIps: list of str
-        :param Offset: 数据偏移量，默认为 0。
+        :param _Offset: 数据偏移量，默认为 0。
         :type Offset: int
-        :param Limit: 返回负载均衡实例的数量，默认为20，最大值为100。
+        :param _Limit: 返回负载均衡实例的数量，默认为20，最大值为100。
         :type Limit: int
-        :param WithBackend: 负载均衡是否绑定后端服务，0：没有绑定后端服务，1：绑定后端服务，-1：查询全部。 
+        :param _WithBackend: 负载均衡是否绑定后端服务，0：没有绑定后端服务，1：绑定后端服务，-1：查询全部。 
 如果不传则默认查询全部。
         :type WithBackend: int
-        :param VpcId: 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx。
+        :param _VpcId: 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx。
         :type VpcId: str
-        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
+        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
 tag-key - String - 是否必填：否 - （过滤条件）按照标签的键过滤。
         :type Filters: list of Filter
-        :param SecurityGroup: 安全组。
+        :param _SecurityGroup: 安全组。
         :type SecurityGroup: str
         """
-        self.EcmRegion = None
-        self.LoadBalancerIds = None
-        self.LoadBalancerName = None
-        self.LoadBalancerVips = None
-        self.BackendPrivateIps = None
-        self.Offset = None
-        self.Limit = None
-        self.WithBackend = None
-        self.VpcId = None
-        self.Filters = None
-        self.SecurityGroup = None
+        self._EcmRegion = None
+        self._LoadBalancerIds = None
+        self._LoadBalancerName = None
+        self._LoadBalancerVips = None
+        self._BackendPrivateIps = None
+        self._Offset = None
+        self._Limit = None
+        self._WithBackend = None
+        self._VpcId = None
+        self._Filters = None
+        self._SecurityGroup = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def LoadBalancerIds(self):
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+    @property
+    def LoadBalancerName(self):
+        return self._LoadBalancerName
+
+    @LoadBalancerName.setter
+    def LoadBalancerName(self, LoadBalancerName):
+        self._LoadBalancerName = LoadBalancerName
+
+    @property
+    def LoadBalancerVips(self):
+        return self._LoadBalancerVips
+
+    @LoadBalancerVips.setter
+    def LoadBalancerVips(self, LoadBalancerVips):
+        self._LoadBalancerVips = LoadBalancerVips
+
+    @property
+    def BackendPrivateIps(self):
+        return self._BackendPrivateIps
+
+    @BackendPrivateIps.setter
+    def BackendPrivateIps(self, BackendPrivateIps):
+        self._BackendPrivateIps = BackendPrivateIps
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def WithBackend(self):
+        return self._WithBackend
+
+    @WithBackend.setter
+    def WithBackend(self, WithBackend):
+        self._WithBackend = WithBackend
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SecurityGroup(self):
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.LoadBalancerIds = params.get("LoadBalancerIds")
-        self.LoadBalancerName = params.get("LoadBalancerName")
-        self.LoadBalancerVips = params.get("LoadBalancerVips")
-        self.BackendPrivateIps = params.get("BackendPrivateIps")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.WithBackend = params.get("WithBackend")
-        self.VpcId = params.get("VpcId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        self._LoadBalancerName = params.get("LoadBalancerName")
+        self._LoadBalancerVips = params.get("LoadBalancerVips")
+        self._BackendPrivateIps = params.get("BackendPrivateIps")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._WithBackend = params.get("WithBackend")
+        self._VpcId = params.get("VpcId")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.SecurityGroup = params.get("SecurityGroup")
+                self._Filters.append(obj)
+        self._SecurityGroup = params.get("SecurityGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3728,29 +6621,53 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
+        :param _TotalCount: 满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param LoadBalancerSet: 返回的负载均衡实例数组。
+        :param _LoadBalancerSet: 返回的负载均衡实例数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerSet: list of LoadBalancer
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.LoadBalancerSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._LoadBalancerSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LoadBalancerSet(self):
+        return self._LoadBalancerSet
+
+    @LoadBalancerSet.setter
+    def LoadBalancerSet(self, LoadBalancerSet):
+        self._LoadBalancerSet = LoadBalancerSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("LoadBalancerSet") is not None:
-            self.LoadBalancerSet = []
+            self._LoadBalancerSet = []
             for item in params.get("LoadBalancerSet"):
                 obj = LoadBalancer()
                 obj._deserialize(item)
-                self.LoadBalancerSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._LoadBalancerSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeModuleDetailRequest(AbstractModel):
@@ -3760,18 +6677,27 @@ class DescribeModuleDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID，如em-qn46snq8。
+        :param _ModuleId: 模块ID，如em-qn46snq8。
         :type ModuleId: str
         """
-        self.ModuleId = None
+        self._ModuleId = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
+        self._ModuleId = params.get("ModuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3784,28 +6710,52 @@ class DescribeModuleDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Module: 模块的详细信息，详细见数据结构中的ModuleInfo。
+        :param _Module: 模块的详细信息，详细见数据结构中的ModuleInfo。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Module: :class:`tencentcloud.ecm.v20190719.models.Module`
-        :param ModuleCounter: 模块的统计信息，详细见数据结构中的ModuleCounterInfo。
+        :param _ModuleCounter: 模块的统计信息，详细见数据结构中的ModuleCounterInfo。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModuleCounter: :class:`tencentcloud.ecm.v20190719.models.ModuleCounter`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Module = None
-        self.ModuleCounter = None
-        self.RequestId = None
+        self._Module = None
+        self._ModuleCounter = None
+        self._RequestId = None
+
+    @property
+    def Module(self):
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ModuleCounter(self):
+        return self._ModuleCounter
+
+    @ModuleCounter.setter
+    def ModuleCounter(self, ModuleCounter):
+        self._ModuleCounter = ModuleCounter
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Module") is not None:
-            self.Module = Module()
-            self.Module._deserialize(params.get("Module"))
+            self._Module = Module()
+            self._Module._deserialize(params.get("Module"))
         if params.get("ModuleCounter") is not None:
-            self.ModuleCounter = ModuleCounter()
-            self.ModuleCounter._deserialize(params.get("ModuleCounter"))
-        self.RequestId = params.get("RequestId")
+            self._ModuleCounter = ModuleCounter()
+            self._ModuleCounter._deserialize(params.get("ModuleCounter"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeModuleRequest(AbstractModel):
@@ -3815,7 +6765,7 @@ class DescribeModuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤条件。
+        :param _Filters: 过滤条件。
 module-name - string - 是否必填：否 - （过滤条件）按照模块名称过滤。
 module-id - string - 是否必填：否 - （过滤条件）按照模块ID过滤。
 image-id      String      是否必填：否      （过滤条件）按照镜像ID过滤。
@@ -3823,41 +6773,82 @@ instance-family      String      是否必填：否      （过滤条件）按�
 security-group-id - string 是否必填：否 - （过滤条件）按照模块绑定的安全组id过滤。
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
         :type Limit: int
-        :param OrderByField: 指定排序字段。目前支持的可选值如下
+        :param _OrderByField: 指定排序字段。目前支持的可选值如下
 instance-num 按实例数量排序。
 node-num 按节点数量排序。
 timestamp 按实例创建时间排序。
 如果不传，默认按实例创建时间排序
         :type OrderByField: str
-        :param OrderDirection: 指定排序是降序还是升序。0表示降序； 1表示升序。如果不传默认为降序
+        :param _OrderDirection: 指定排序是降序还是升序。0表示降序； 1表示升序。如果不传默认为降序
         :type OrderDirection: int
         """
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderByField = None
-        self.OrderDirection = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderByField = None
+        self._OrderDirection = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderByField(self):
+        return self._OrderByField
+
+    @OrderByField.setter
+    def OrderByField(self, OrderByField):
+        self._OrderByField = OrderByField
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderByField = params.get("OrderByField")
-        self.OrderDirection = params.get("OrderDirection")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderByField = params.get("OrderByField")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3870,29 +6861,53 @@ class DescribeModuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的模块数量。
+        :param _TotalCount: 符合条件的模块数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param ModuleItemSet: 模块详情信息的列表。
+        :param _ModuleItemSet: 模块详情信息的列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModuleItemSet: list of ModuleItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.ModuleItemSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._ModuleItemSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ModuleItemSet(self):
+        return self._ModuleItemSet
+
+    @ModuleItemSet.setter
+    def ModuleItemSet(self, ModuleItemSet):
+        self._ModuleItemSet = ModuleItemSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ModuleItemSet") is not None:
-            self.ModuleItemSet = []
+            self._ModuleItemSet = []
             for item in params.get("ModuleItemSet"):
                 obj = ModuleItem()
                 obj._deserialize(item)
-                self.ModuleItemSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ModuleItemSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMonthPeakNetworkRequest(AbstractModel):
@@ -3902,27 +6917,44 @@ class DescribeMonthPeakNetworkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Month: 月份时间(xxxx-xx) 如2021-03,默认取当前时间的上一个月份
+        :param _Month: 月份时间(xxxx-xx) 如2021-03,默认取当前时间的上一个月份
         :type Month: str
-        :param Filters: 过滤条件
+        :param _Filters: 过滤条件
         :type Filters: list of Filter
         """
-        self.Month = None
-        self.Filters = None
+        self._Month = None
+        self._Filters = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Month = params.get("Month")
+        self._Month = params.get("Month")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3935,24 +6967,40 @@ class DescribeMonthPeakNetworkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MonthNetWorkData: 无
+        :param _MonthNetWorkData: 无
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonthNetWorkData: list of MonthNetwork
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MonthNetWorkData = None
-        self.RequestId = None
+        self._MonthNetWorkData = None
+        self._RequestId = None
+
+    @property
+    def MonthNetWorkData(self):
+        return self._MonthNetWorkData
+
+    @MonthNetWorkData.setter
+    def MonthNetWorkData(self, MonthNetWorkData):
+        self._MonthNetWorkData = MonthNetWorkData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("MonthNetWorkData") is not None:
-            self.MonthNetWorkData = []
+            self._MonthNetWorkData = []
             for item in params.get("MonthNetWorkData"):
                 obj = MonthNetwork()
                 obj._deserialize(item)
-                self.MonthNetWorkData.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._MonthNetWorkData.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeNetworkInterfacesRequest(AbstractModel):
@@ -3962,9 +7010,9 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterfaceIds: 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
+        :param _NetworkInterfaceIds: 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
         :type NetworkInterfaceIds: list of str
-        :param Filters: 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
+        :param _Filters: 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
 vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
 subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
 network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。
@@ -3977,35 +7025,76 @@ tag-key - String -是否必填：否- （过滤条件）按照标签键进行过
 tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。
 is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；次过滤参数为提供时，同时过滤主网卡和辅助网卡。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
-        self.NetworkInterfaceIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.EcmRegion = None
+        self._NetworkInterfaceIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._EcmRegion = None
+
+    @property
+    def NetworkInterfaceIds(self):
+        return self._NetworkInterfaceIds
+
+    @NetworkInterfaceIds.setter
+    def NetworkInterfaceIds(self, NetworkInterfaceIds):
+        self._NetworkInterfaceIds = NetworkInterfaceIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        self._NetworkInterfaceIds = params.get("NetworkInterfaceIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.EcmRegion = params.get("EcmRegion")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4018,28 +7107,52 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的实例数量。
+        :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
-        :param NetworkInterfaceSet: 实例详细信息列表。
+        :param _NetworkInterfaceSet: 实例详细信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkInterfaceSet: list of NetworkInterface
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.NetworkInterfaceSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._NetworkInterfaceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NetworkInterfaceSet(self):
+        return self._NetworkInterfaceSet
+
+    @NetworkInterfaceSet.setter
+    def NetworkInterfaceSet(self, NetworkInterfaceSet):
+        self._NetworkInterfaceSet = NetworkInterfaceSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("NetworkInterfaceSet") is not None:
-            self.NetworkInterfaceSet = []
+            self._NetworkInterfaceSet = []
             for item in params.get("NetworkInterfaceSet"):
                 obj = NetworkInterface()
                 obj._deserialize(item)
-                self.NetworkInterfaceSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._NetworkInterfaceSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeNodeRequest(AbstractModel):
@@ -4049,23 +7162,32 @@ class DescribeNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤条件，name取值为： InstanceFamily-实例系列
+        :param _Filters: 过滤条件，name取值为： InstanceFamily-实例系列
         :type Filters: list of Filter
         """
-        self.Filters = None
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4078,28 +7200,52 @@ class DescribeNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeSet: 节点详细信息的列表
+        :param _NodeSet: 节点详细信息的列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeSet: list of Node
-        :param TotalCount: 所有的节点数量。
+        :param _TotalCount: 所有的节点数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NodeSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._NodeSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def NodeSet(self):
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("NodeSet") is not None:
-            self.NodeSet = []
+            self._NodeSet = []
             for item in params.get("NodeSet"):
                 obj = Node()
                 obj._deserialize(item)
-                self.NodeSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._NodeSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePackingQuotaGroupRequest(AbstractModel):
@@ -4109,23 +7255,32 @@ class DescribePackingQuotaGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤条件，name取值为：Zone-可用区， InstanceType-实例类型，DataDiskSize - 数据盘大小
+        :param _Filters: 过滤条件，name取值为：Zone-可用区， InstanceType-实例类型，DataDiskSize - 数据盘大小
         :type Filters: list of Filter
         """
-        self.Filters = None
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4138,23 +7293,39 @@ class DescribePackingQuotaGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackingQuotaSet: 装箱配额组
+        :param _PackingQuotaSet: 装箱配额组
         :type PackingQuotaSet: list of PackingQuotaGroup
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PackingQuotaSet = None
-        self.RequestId = None
+        self._PackingQuotaSet = None
+        self._RequestId = None
+
+    @property
+    def PackingQuotaSet(self):
+        return self._PackingQuotaSet
+
+    @PackingQuotaSet.setter
+    def PackingQuotaSet(self, PackingQuotaSet):
+        self._PackingQuotaSet = PackingQuotaSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PackingQuotaSet") is not None:
-            self.PackingQuotaSet = []
+            self._PackingQuotaSet = []
             for item in params.get("PackingQuotaSet"):
                 obj = PackingQuotaGroup()
                 obj._deserialize(item)
-                self.PackingQuotaSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PackingQuotaSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePeakBaseOverviewRequest(AbstractModel):
@@ -4164,22 +7335,39 @@ class DescribePeakBaseOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间（xxxx-xx-xx）如2019-08-14，默认为一周之前的日期，不应与当前日期间隔超过90天。
+        :param _StartTime: 开始时间（xxxx-xx-xx）如2019-08-14，默认为一周之前的日期，不应与当前日期间隔超过90天。
         :type StartTime: str
-        :param EndTime: 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过90天。当开始与结束间隔不超过30天时返回1小时粒度的数据，否则返回3小时粒度的数据。
+        :param _EndTime: 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过90天。当开始与结束间隔不超过30天时返回1小时粒度的数据，否则返回3小时粒度的数据。
         :type EndTime: str
         """
-        self.StartTime = None
-        self.EndTime = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4192,24 +7380,40 @@ class DescribePeakBaseOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PeakFamilyInfoSet: 基础峰值列表。
+        :param _PeakFamilyInfoSet: 基础峰值列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeakFamilyInfoSet: list of PeakFamilyInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PeakFamilyInfoSet = None
-        self.RequestId = None
+        self._PeakFamilyInfoSet = None
+        self._RequestId = None
+
+    @property
+    def PeakFamilyInfoSet(self):
+        return self._PeakFamilyInfoSet
+
+    @PeakFamilyInfoSet.setter
+    def PeakFamilyInfoSet(self, PeakFamilyInfoSet):
+        self._PeakFamilyInfoSet = PeakFamilyInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PeakFamilyInfoSet") is not None:
-            self.PeakFamilyInfoSet = []
+            self._PeakFamilyInfoSet = []
             for item in params.get("PeakFamilyInfoSet"):
                 obj = PeakFamilyInfo()
                 obj._deserialize(item)
-                self.PeakFamilyInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PeakFamilyInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePeakNetworkOverviewRequest(AbstractModel):
@@ -4219,11 +7423,11 @@ class DescribePeakNetworkOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间（xxxx-xx-xx）如2019-08-14，默认为一周之前的日期，不应与当前日期间隔超过30天。
+        :param _StartTime: 开始时间（xxxx-xx-xx）如2019-08-14，默认为一周之前的日期，不应与当前日期间隔超过30天。
         :type StartTime: str
-        :param EndTime: 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过30天。当开始与结束间隔不超过1天时会返回1分钟粒度的数据，不超过7天时返回5分钟粒度的数据，否则返回1小时粒度的数据。
+        :param _EndTime: 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过30天。当开始与结束间隔不超过1天时会返回1分钟粒度的数据，不超过7天时返回5分钟粒度的数据，否则返回1小时粒度的数据。
         :type EndTime: str
-        :param Filters: 过滤条件。
+        :param _Filters: 过滤条件。
 
 region    String      是否必填：否     （过滤条件）按照region过滤，不支持模糊匹配。注意 region 填上需要查询ecm region才能返回数据。
 area       String      是否必填：否     （过滤条件）按照大区过滤，不支持模糊匹配。大区包括：china-central、china-east等等，可以通过DescribeNode获得所有大区；也可使用ALL_REGION表示所有地区。
@@ -4231,29 +7435,62 @@ isp         String      是否必填：否     （过滤条件）按照运营商
 
 region和area只应填写一个。
         :type Filters: list of Filter
-        :param Period: 统计周期，单位秒。取值60/300。
+        :param _Period: 统计周期，单位秒。取值60/300。
         :type Period: int
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Filters = None
-        self.Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._Period = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Period = params.get("Period")
+                self._Filters.append(obj)
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4266,24 +7503,40 @@ class DescribePeakNetworkOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PeakNetworkRegionSet: 网络峰值数组。
+        :param _PeakNetworkRegionSet: 网络峰值数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeakNetworkRegionSet: list of PeakNetworkRegionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PeakNetworkRegionSet = None
-        self.RequestId = None
+        self._PeakNetworkRegionSet = None
+        self._RequestId = None
+
+    @property
+    def PeakNetworkRegionSet(self):
+        return self._PeakNetworkRegionSet
+
+    @PeakNetworkRegionSet.setter
+    def PeakNetworkRegionSet(self, PeakNetworkRegionSet):
+        self._PeakNetworkRegionSet = PeakNetworkRegionSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PeakNetworkRegionSet") is not None:
-            self.PeakNetworkRegionSet = []
+            self._PeakNetworkRegionSet = []
             for item in params.get("PeakNetworkRegionSet"):
                 obj = PeakNetworkRegionInfo()
                 obj._deserialize(item)
-                self.PeakNetworkRegionSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PeakNetworkRegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePriceRunInstanceRequest(AbstractModel):
@@ -4293,45 +7546,86 @@ class DescribePriceRunInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceType: 实例的机型信息
+        :param _InstanceType: 实例的机型信息
         :type InstanceType: str
-        :param SystemDisk: 系统盘信息
+        :param _SystemDisk: 系统盘信息
         :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
-        :param InstanceCount: 实例个数
+        :param _InstanceCount: 实例个数
         :type InstanceCount: int
-        :param DataDisk: 数据盘信息
+        :param _DataDisk: 数据盘信息
         :type DataDisk: list of DataDisk
-        :param InstanceChargeType: 实例计费类型。其中：
+        :param _InstanceChargeType: 实例计费类型。其中：
 0，按资源维度后付费，计算当日用量峰值，例如CPU，内存，硬盘等，仅适用于非GNR系列机型；
 1，按小时后付费，单价：xx元/实例/小时，仅适用于GNR机型，如需开通该计费方式请提工单申请；
 2，按月后付费，单价：xx元/实例/月，仅适用于GNR机型；
 该字段不填时，非GNR机型会默认选择0；GNR机型默认选择2。
         :type InstanceChargeType: int
         """
-        self.InstanceType = None
-        self.SystemDisk = None
-        self.InstanceCount = None
-        self.DataDisk = None
-        self.InstanceChargeType = None
+        self._InstanceType = None
+        self._SystemDisk = None
+        self._InstanceCount = None
+        self._DataDisk = None
+        self._InstanceChargeType = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def InstanceCount(self):
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def DataDisk(self):
+        return self._DataDisk
+
+    @DataDisk.setter
+    def DataDisk(self, DataDisk):
+        self._DataDisk = DataDisk
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
 
 
     def _deserialize(self, params):
-        self.InstanceType = params.get("InstanceType")
+        self._InstanceType = params.get("InstanceType")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
-        self.InstanceCount = params.get("InstanceCount")
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        self._InstanceCount = params.get("InstanceCount")
         if params.get("DataDisk") is not None:
-            self.DataDisk = []
+            self._DataDisk = []
             for item in params.get("DataDisk"):
                 obj = DataDisk()
                 obj._deserialize(item)
-                self.DataDisk.append(obj)
-        self.InstanceChargeType = params.get("InstanceChargeType")
+                self._DataDisk.append(obj)
+        self._InstanceChargeType = params.get("InstanceChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4344,20 +7638,36 @@ class DescribePriceRunInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstancePrice: 实例价格信息
+        :param _InstancePrice: 实例价格信息
         :type InstancePrice: :class:`tencentcloud.ecm.v20190719.models.InstancesPrice`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstancePrice = None
-        self.RequestId = None
+        self._InstancePrice = None
+        self._RequestId = None
+
+    @property
+    def InstancePrice(self):
+        return self._InstancePrice
+
+    @InstancePrice.setter
+    def InstancePrice(self, InstancePrice):
+        self._InstancePrice = InstancePrice
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstancePrice") is not None:
-            self.InstancePrice = InstancesPrice()
-            self.InstancePrice._deserialize(params.get("InstancePrice"))
-        self.RequestId = params.get("RequestId")
+            self._InstancePrice = InstancesPrice()
+            self._InstancePrice._deserialize(params.get("InstancePrice"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRouteConflictsRequest(AbstractModel):
@@ -4367,22 +7677,39 @@ class DescribeRouteConflictsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
-        :param DestinationCidrBlocks: 要检查的与之冲突的目的端列表
+        :param _DestinationCidrBlocks: 要检查的与之冲突的目的端列表
         :type DestinationCidrBlocks: list of str
         """
-        self.RouteTableId = None
-        self.DestinationCidrBlocks = None
+        self._RouteTableId = None
+        self._DestinationCidrBlocks = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def DestinationCidrBlocks(self):
+        return self._DestinationCidrBlocks
+
+    @DestinationCidrBlocks.setter
+    def DestinationCidrBlocks(self, DestinationCidrBlocks):
+        self._DestinationCidrBlocks = DestinationCidrBlocks
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
-        self.DestinationCidrBlocks = params.get("DestinationCidrBlocks")
+        self._RouteTableId = params.get("RouteTableId")
+        self._DestinationCidrBlocks = params.get("DestinationCidrBlocks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4395,24 +7722,40 @@ class DescribeRouteConflictsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteConflictSet: 路由策略冲突列表
+        :param _RouteConflictSet: 路由策略冲突列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteConflictSet: list of RouteConflict
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RouteConflictSet = None
-        self.RequestId = None
+        self._RouteConflictSet = None
+        self._RequestId = None
+
+    @property
+    def RouteConflictSet(self):
+        return self._RouteConflictSet
+
+    @RouteConflictSet.setter
+    def RouteConflictSet(self, RouteConflictSet):
+        self._RouteConflictSet = RouteConflictSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RouteConflictSet") is not None:
-            self.RouteConflictSet = []
+            self._RouteConflictSet = []
             for item in params.get("RouteConflictSet"):
                 obj = RouteConflict()
                 obj._deserialize(item)
-                self.RouteConflictSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RouteConflictSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRouteTablesRequest(AbstractModel):
@@ -4422,43 +7765,84 @@ class DescribeRouteTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableIds: 路由表实例ID，例如：rtb-azd4dt1c。
+        :param _RouteTableIds: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableIds: list of str
-        :param Filters: 过滤条件，参数不支持同时指定RouteTableIds和Filters。
+        :param _Filters: 过滤条件，参数不支持同时指定RouteTableIds和Filters。
 route-table-id - String - （过滤条件）路由表实例ID。
 route-table-name - String - （过滤条件）路由表名称。
 vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
 association.main - String - （过滤条件）是否主路由表。
         :type Filters: list of Filter
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限数
+        :param _Limit: 限数
         :type Limit: int
-        :param EcmRegion: ECM 地域，传空或不传表示所有区域
+        :param _EcmRegion: ECM 地域，传空或不传表示所有区域
         :type EcmRegion: str
         """
-        self.RouteTableIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.EcmRegion = None
+        self._RouteTableIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._EcmRegion = None
+
+    @property
+    def RouteTableIds(self):
+        return self._RouteTableIds
+
+    @RouteTableIds.setter
+    def RouteTableIds(self, RouteTableIds):
+        self._RouteTableIds = RouteTableIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.RouteTableIds = params.get("RouteTableIds")
+        self._RouteTableIds = params.get("RouteTableIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.EcmRegion = params.get("EcmRegion")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4471,28 +7855,52 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的实例数量
+        :param _TotalCount: 符合条件的实例数量
         :type TotalCount: int
-        :param RouteTableSet: 路由表列表
+        :param _RouteTableSet: 路由表列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableSet: list of RouteTable
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.RouteTableSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._RouteTableSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RouteTableSet(self):
+        return self._RouteTableSet
+
+    @RouteTableSet.setter
+    def RouteTableSet(self, RouteTableSet):
+        self._RouteTableSet = RouteTableSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("RouteTableSet") is not None:
-            self.RouteTableSet = []
+            self._RouteTableSet = []
             for item in params.get("RouteTableSet"):
                 obj = RouteTable()
                 obj._deserialize(item)
-                self.RouteTableSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RouteTableSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
@@ -4502,18 +7910,27 @@ class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupIds: 安全实例ID，例如esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
+        :param _SecurityGroupIds: 安全实例ID，例如esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
         :type SecurityGroupIds: list of str
         """
-        self.SecurityGroupIds = None
+        self._SecurityGroupIds = None
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
 
 
     def _deserialize(self, params):
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4526,23 +7943,39 @@ class DescribeSecurityGroupAssociationStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupAssociationStatisticsSet: 安全组关联实例统计。
+        :param _SecurityGroupAssociationStatisticsSet: 安全组关联实例统计。
         :type SecurityGroupAssociationStatisticsSet: list of SecurityGroupAssociationStatistics
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SecurityGroupAssociationStatisticsSet = None
-        self.RequestId = None
+        self._SecurityGroupAssociationStatisticsSet = None
+        self._RequestId = None
+
+    @property
+    def SecurityGroupAssociationStatisticsSet(self):
+        return self._SecurityGroupAssociationStatisticsSet
+
+    @SecurityGroupAssociationStatisticsSet.setter
+    def SecurityGroupAssociationStatisticsSet(self, SecurityGroupAssociationStatisticsSet):
+        self._SecurityGroupAssociationStatisticsSet = SecurityGroupAssociationStatisticsSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SecurityGroupAssociationStatisticsSet") is not None:
-            self.SecurityGroupAssociationStatisticsSet = []
+            self._SecurityGroupAssociationStatisticsSet = []
             for item in params.get("SecurityGroupAssociationStatisticsSet"):
                 obj = SecurityGroupAssociationStatistics()
                 obj._deserialize(item)
-                self.SecurityGroupAssociationStatisticsSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SecurityGroupAssociationStatisticsSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSecurityGroupLimitsRequest(AbstractModel):
@@ -4558,20 +7991,36 @@ class DescribeSecurityGroupLimitsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupLimitSet: 用户安全组配额限制。
+        :param _SecurityGroupLimitSet: 用户安全组配额限制。
         :type SecurityGroupLimitSet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupLimitSet`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SecurityGroupLimitSet = None
-        self.RequestId = None
+        self._SecurityGroupLimitSet = None
+        self._RequestId = None
+
+    @property
+    def SecurityGroupLimitSet(self):
+        return self._SecurityGroupLimitSet
+
+    @SecurityGroupLimitSet.setter
+    def SecurityGroupLimitSet(self, SecurityGroupLimitSet):
+        self._SecurityGroupLimitSet = SecurityGroupLimitSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SecurityGroupLimitSet") is not None:
-            self.SecurityGroupLimitSet = SecurityGroupLimitSet()
-            self.SecurityGroupLimitSet._deserialize(params.get("SecurityGroupLimitSet"))
-        self.RequestId = params.get("RequestId")
+            self._SecurityGroupLimitSet = SecurityGroupLimitSet()
+            self._SecurityGroupLimitSet._deserialize(params.get("SecurityGroupLimitSet"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSecurityGroupPoliciesRequest(AbstractModel):
@@ -4581,18 +8030,27 @@ class DescribeSecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
+        :param _SecurityGroupId: 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
         :type SecurityGroupId: str
         """
-        self.SecurityGroupId = None
+        self._SecurityGroupId = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4605,20 +8063,36 @@ class DescribeSecurityGroupPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupPolicySet: 安全组规则集合。
+        :param _SecurityGroupPolicySet: 安全组规则集合。
         :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SecurityGroupPolicySet = None
-        self.RequestId = None
+        self._SecurityGroupPolicySet = None
+        self._RequestId = None
+
+    @property
+    def SecurityGroupPolicySet(self):
+        return self._SecurityGroupPolicySet
+
+    @SecurityGroupPolicySet.setter
+    def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
+        self._SecurityGroupPolicySet = SecurityGroupPolicySet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SecurityGroupPolicySet") is not None:
-            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
-            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
-        self.RequestId = params.get("RequestId")
+            self._SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSecurityGroupsRequest(AbstractModel):
@@ -4628,39 +8102,72 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupIds: 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+        :param _SecurityGroupIds: 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
         :type SecurityGroupIds: list of str
-        :param Filters: 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
+        :param _Filters: 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
 security-group-id - String - （过滤条件）安全组ID。
 security-group-name - String - （过滤条件）安全组名称。
 tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
 tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
-        self.SecurityGroupIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._SecurityGroupIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4673,27 +8180,51 @@ class DescribeSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的实例数量。
+        :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
-        :param SecurityGroupSet: 安全组对象。
+        :param _SecurityGroupSet: 安全组对象。
         :type SecurityGroupSet: list of SecurityGroup
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SecurityGroupSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SecurityGroupSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SecurityGroupSet(self):
+        return self._SecurityGroupSet
+
+    @SecurityGroupSet.setter
+    def SecurityGroupSet(self, SecurityGroupSet):
+        self._SecurityGroupSet = SecurityGroupSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("SecurityGroupSet") is not None:
-            self.SecurityGroupSet = []
+            self._SecurityGroupSet = []
             for item in params.get("SecurityGroupSet"):
                 obj = SecurityGroup()
                 obj._deserialize(item)
-                self.SecurityGroupSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SecurityGroupSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSnapshotsRequest(AbstractModel):
@@ -4703,45 +8234,94 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SnapshotIds: 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
+        :param _SnapshotIds: 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
         :type SnapshotIds: list of str
-        :param Filters: 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>encrypt - Array of String - 是否必填：否 -（过滤条件）按是否加密盘快照过滤。 (TRUE：表示加密盘快照 | FALSE：表示非加密盘快照。)
+        :param _Filters: 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>encrypt - Array of String - 是否必填：否 -（过滤条件）按是否加密盘快照过滤。 (TRUE：表示加密盘快照 | FALSE：表示非加密盘快照。)
 <li>snapshot-type- Array of String - 是否必填：否 -（过滤条件）根据snapshot-type指定的快照类型查询对应的快照。
 (SHARED_SNAPSHOT：表示共享过来的快照 | PRIVATE_SNAPSHOT：表示自己私有快照。)
         :type Filters: list of Filter
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
         :type Limit: int
-        :param OrderField: 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
+        :param _OrderField: 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
         :type OrderField: str
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
-        :param Order: 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+        :param _Order: 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
         :type Order: str
         """
-        self.SnapshotIds = None
-        self.Filters = None
-        self.Limit = None
-        self.OrderField = None
-        self.Offset = None
-        self.Order = None
+        self._SnapshotIds = None
+        self._Filters = None
+        self._Limit = None
+        self._OrderField = None
+        self._Offset = None
+        self._Order = None
+
+    @property
+    def SnapshotIds(self):
+        return self._SnapshotIds
+
+    @SnapshotIds.setter
+    def SnapshotIds(self, SnapshotIds):
+        self._SnapshotIds = SnapshotIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
 
     def _deserialize(self, params):
-        self.SnapshotIds = params.get("SnapshotIds")
+        self._SnapshotIds = params.get("SnapshotIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.OrderField = params.get("OrderField")
-        self.Offset = params.get("Offset")
-        self.Order = params.get("Order")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4754,27 +8334,51 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 快照的数量。
+        :param _TotalCount: 快照的数量。
         :type TotalCount: int
-        :param SnapshotSet: 快照的详情列表。
+        :param _SnapshotSet: 快照的详情列表。
         :type SnapshotSet: list of Snapshot
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SnapshotSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SnapshotSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SnapshotSet(self):
+        return self._SnapshotSet
+
+    @SnapshotSet.setter
+    def SnapshotSet(self, SnapshotSet):
+        self._SnapshotSet = SnapshotSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("SnapshotSet") is not None:
-            self.SnapshotSet = []
+            self._SnapshotSet = []
             for item in params.get("SnapshotSet"):
                 obj = Snapshot()
                 obj._deserialize(item)
-                self.SnapshotSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SnapshotSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSubnetsRequest(AbstractModel):
@@ -4784,9 +8388,9 @@ class DescribeSubnetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubnetIds: 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定SubnetIds和Filters。
+        :param _SubnetIds: 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定SubnetIds和Filters。
         :type SubnetIds: list of str
-        :param Filters: 过滤条件，参数不支持同时指定SubnetIds和Filters。
+        :param _Filters: 过滤条件，参数不支持同时指定SubnetIds和Filters。
 subnet-id - String - Subnet实例名称。
 subnet-name - String - 子网名称。只支持单值的模糊查询。
 cidr-block - String - 子网网段，形如: 192.168.1.0 。只支持单值的模糊查询。
@@ -4797,39 +8401,88 @@ zone - String - 可用区。
 tag-key - String -是否必填：否- 按照标签键进行过滤。
 tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
         :type Filters: list of Filter
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: str
-        :param Limit: 返回数量
+        :param _Limit: 返回数量
         :type Limit: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param Sort: 排序方式：time时间倒序, default按照网络规划排序
+        :param _Sort: 排序方式：time时间倒序, default按照网络规划排序
         :type Sort: str
         """
-        self.SubnetIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.EcmRegion = None
-        self.Sort = None
+        self._SubnetIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._EcmRegion = None
+        self._Sort = None
+
+    @property
+    def SubnetIds(self):
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
 
 
     def _deserialize(self, params):
-        self.SubnetIds = params.get("SubnetIds")
+        self._SubnetIds = params.get("SubnetIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.EcmRegion = params.get("EcmRegion")
-        self.Sort = params.get("Sort")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._EcmRegion = params.get("EcmRegion")
+        self._Sort = params.get("Sort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4842,28 +8495,52 @@ class DescribeSubnetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的实例数量。
+        :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
-        :param SubnetSet: 子网对象。
+        :param _SubnetSet: 子网对象。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetSet: list of Subnet
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SubnetSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SubnetSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SubnetSet(self):
+        return self._SubnetSet
+
+    @SubnetSet.setter
+    def SubnetSet(self, SubnetSet):
+        self._SubnetSet = SubnetSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("SubnetSet") is not None:
-            self.SubnetSet = []
+            self._SubnetSet = []
             for item in params.get("SubnetSet"):
                 obj = Subnet()
                 obj._deserialize(item)
-                self.SubnetSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SubnetSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTargetHealthRequest(AbstractModel):
@@ -4873,18 +8550,27 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerIds: 要查询的负载均衡实例 ID列表
+        :param _LoadBalancerIds: 要查询的负载均衡实例 ID列表
         :type LoadBalancerIds: list of str
         """
-        self.LoadBalancerIds = None
+        self._LoadBalancerIds = None
+
+    @property
+    def LoadBalancerIds(self):
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
 
 
     def _deserialize(self, params):
-        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4897,24 +8583,40 @@ class DescribeTargetHealthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancers: 负载均衡实例列表
+        :param _LoadBalancers: 负载均衡实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancers: list of LoadBalancerHealth
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LoadBalancers = None
-        self.RequestId = None
+        self._LoadBalancers = None
+        self._RequestId = None
+
+    @property
+    def LoadBalancers(self):
+        return self._LoadBalancers
+
+    @LoadBalancers.setter
+    def LoadBalancers(self, LoadBalancers):
+        self._LoadBalancers = LoadBalancers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LoadBalancers") is not None:
-            self.LoadBalancers = []
+            self._LoadBalancers = []
             for item in params.get("LoadBalancers"):
                 obj = LoadBalancerHealth()
                 obj._deserialize(item)
-                self.LoadBalancers.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._LoadBalancers.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTargetsRequest(AbstractModel):
@@ -4924,30 +8626,63 @@ class DescribeTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerIds: 监听器 ID列表
+        :param _ListenerIds: 监听器 ID列表
         :type ListenerIds: list of str
-        :param Protocol: 监听器协议类型
+        :param _Protocol: 监听器协议类型
         :type Protocol: int
-        :param Port: 监听器端口
+        :param _Port: 监听器端口
         :type Port: int
         """
-        self.LoadBalancerId = None
-        self.ListenerIds = None
-        self.Protocol = None
-        self.Port = None
+        self._LoadBalancerId = None
+        self._ListenerIds = None
+        self._Protocol = None
+        self._Port = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerIds(self):
+        return self._ListenerIds
+
+    @ListenerIds.setter
+    def ListenerIds(self, ListenerIds):
+        self._ListenerIds = ListenerIds
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerIds = params.get("ListenerIds")
-        self.Protocol = params.get("Protocol")
-        self.Port = params.get("Port")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerIds = params.get("ListenerIds")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4960,24 +8695,40 @@ class DescribeTargetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Listeners: 监听器后端绑定的机器信息
+        :param _Listeners: 监听器后端绑定的机器信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of ListenerBackend
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Listeners = None
-        self.RequestId = None
+        self._Listeners = None
+        self._RequestId = None
+
+    @property
+    def Listeners(self):
+        return self._Listeners
+
+    @Listeners.setter
+    def Listeners(self, Listeners):
+        self._Listeners = Listeners
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Listeners") is not None:
-            self.Listeners = []
+            self._Listeners = []
             for item in params.get("Listeners"):
                 obj = ListenerBackend()
                 obj._deserialize(item)
-                self.Listeners.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Listeners.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskResultRequest(AbstractModel):
@@ -4987,22 +8738,39 @@ class DescribeTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param TaskId: 异步任务ID。
+        :param _TaskId: 异步任务ID。
         :type TaskId: str
         """
-        self.EcmRegion = None
-        self.TaskId = None
+        self._EcmRegion = None
+        self._TaskId = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.TaskId = params.get("TaskId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5015,22 +8783,46 @@ class DescribeTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务ID。
+        :param _TaskId: 异步任务ID。
         :type TaskId: str
-        :param Result: 执行结果，包括"SUCCESS", "FAILED", "RUNNING"
+        :param _Result: 执行结果，包括"SUCCESS", "FAILED", "RUNNING"
         :type Result: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.Result = None
-        self.RequestId = None
+        self._TaskId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskStatusRequest(AbstractModel):
@@ -5040,23 +8832,32 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskSet: 任务描述
+        :param _TaskSet: 任务描述
         :type TaskSet: list of TaskInput
         """
-        self.TaskSet = None
+        self._TaskSet = None
+
+    @property
+    def TaskSet(self):
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
 
 
     def _deserialize(self, params):
         if params.get("TaskSet") is not None:
-            self.TaskSet = []
+            self._TaskSet = []
             for item in params.get("TaskSet"):
                 obj = TaskInput()
                 obj._deserialize(item)
-                self.TaskSet.append(obj)
+                self._TaskSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5069,23 +8870,39 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskSet: 任务描述
+        :param _TaskSet: 任务描述
         :type TaskSet: list of TaskOutput
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskSet = None
-        self.RequestId = None
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskSet") is not None:
-            self.TaskSet = []
+            self._TaskSet = []
             for item in params.get("TaskSet"):
                 obj = TaskOutput()
                 obj._deserialize(item)
-                self.TaskSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVpcsRequest(AbstractModel):
@@ -5095,9 +8912,9 @@ class DescribeVpcsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcIds: VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+        :param _VpcIds: VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
         :type VpcIds: list of str
-        :param Filters: 过滤条件，参数不支持同时指定VpcIds和Filters。
+        :param _Filters: 过滤条件，参数不支持同时指定VpcIds和Filters。
 vpc-name - String - VPC实例名称，只支持单值的模糊查询。
 vpc-id - String - VPC实例ID形如：vpc-f49l6u0z。
 cidr-block - String - vpc的cidr，只支持单值的模糊查询。
@@ -5105,39 +8922,88 @@ region - String - vpc的region。
 tag-key - String -是否必填：否- 按照标签键进行过滤。
 tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
         :type Filters: list of Filter
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 返回数量
+        :param _Limit: 返回数量
         :type Limit: int
-        :param EcmRegion: 地域
+        :param _EcmRegion: 地域
         :type EcmRegion: str
-        :param Sort: 排序方式：time时间倒序, default按照网络规划排序
+        :param _Sort: 排序方式：time时间倒序, default按照网络规划排序
         :type Sort: str
         """
-        self.VpcIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.EcmRegion = None
-        self.Sort = None
+        self._VpcIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._EcmRegion = None
+        self._Sort = None
+
+    @property
+    def VpcIds(self):
+        return self._VpcIds
+
+    @VpcIds.setter
+    def VpcIds(self, VpcIds):
+        self._VpcIds = VpcIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
 
 
     def _deserialize(self, params):
-        self.VpcIds = params.get("VpcIds")
+        self._VpcIds = params.get("VpcIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.EcmRegion = params.get("EcmRegion")
-        self.Sort = params.get("Sort")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._EcmRegion = params.get("EcmRegion")
+        self._Sort = params.get("Sort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5150,28 +9016,52 @@ class DescribeVpcsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的对象数。
+        :param _TotalCount: 符合条件的对象数。
         :type TotalCount: int
-        :param VpcSet: 私有网络对象。
+        :param _VpcSet: 私有网络对象。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcSet: list of VpcInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.VpcSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._VpcSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VpcSet(self):
+        return self._VpcSet
+
+    @VpcSet.setter
+    def VpcSet(self, VpcSet):
+        self._VpcSet = VpcSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("VpcSet") is not None:
-            self.VpcSet = []
+            self._VpcSet = []
             for item in params.get("VpcSet"):
                 obj = VpcInfo()
                 obj._deserialize(item)
-                self.VpcSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._VpcSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DetachDisksRequest(AbstractModel):
@@ -5181,22 +9071,39 @@ class DetachDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
+        :param _DiskIds: 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
         :type DiskIds: list of str
-        :param InstanceId: 对于非共享型云盘，会忽略该参数；对于共享型云盘，该参数表示要从哪个CVM实例上卸载云盘。
+        :param _InstanceId: 对于非共享型云盘，会忽略该参数；对于共享型云盘，该参数表示要从哪个CVM实例上卸载云盘。
         :type InstanceId: str
         """
-        self.DiskIds = None
-        self.InstanceId = None
+        self._DiskIds = None
+        self._InstanceId = None
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
-        self.InstanceId = params.get("InstanceId")
+        self._DiskIds = params.get("DiskIds")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5209,14 +9116,22 @@ class DetachDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DetachNetworkInterfaceRequest(AbstractModel):
@@ -5226,26 +9141,51 @@ class DetachNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param InstanceId: 实例ID。形如：ein-hcs7jkg4
+        :param _InstanceId: 实例ID。形如：ein-hcs7jkg4
         :type InstanceId: str
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
-        self.NetworkInterfaceId = None
-        self.InstanceId = None
-        self.EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._InstanceId = None
+        self._EcmRegion = None
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.InstanceId = params.get("InstanceId")
-        self.EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._InstanceId = params.get("InstanceId")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5258,14 +9198,22 @@ class DetachNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DisableRoutesRequest(AbstractModel):
@@ -5275,22 +9223,39 @@ class DisableRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表唯一ID。
+        :param _RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param RouteIds: 路由策略ID。
+        :param _RouteIds: 路由策略ID。
         :type RouteIds: list of int non-negative
         """
-        self.RouteTableId = None
-        self.RouteIds = None
+        self._RouteTableId = None
+        self._RouteIds = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RouteIds(self):
+        return self._RouteIds
+
+    @RouteIds.setter
+    def RouteIds(self, RouteIds):
+        self._RouteIds = RouteIds
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
-        self.RouteIds = params.get("RouteIds")
+        self._RouteTableId = params.get("RouteTableId")
+        self._RouteIds = params.get("RouteIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5303,14 +9268,22 @@ class DisableRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DisassociateAddressRequest(AbstractModel):
@@ -5320,11 +9293,11 @@ class DisassociateAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
+        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
         :type AddressId: str
-        :param ReallocateNormalPublicIp: 表示解绑 EIP 之后是否分配普通公网 IP。取值范围：
+        :param _ReallocateNormalPublicIp: 表示解绑 EIP 之后是否分配普通公网 IP。取值范围：
 TRUE：表示解绑 EIP 之后分配普通公网 IP。
 FALSE：表示解绑 EIP 之后不分配普通公网 IP。
 默认取值：FALSE。
@@ -5334,19 +9307,44 @@ FALSE：表示解绑 EIP 之后不分配普通公网 IP。
 解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 DescribeAddressQuota 接口获取。
         :type ReallocateNormalPublicIp: bool
         """
-        self.EcmRegion = None
-        self.AddressId = None
-        self.ReallocateNormalPublicIp = None
+        self._EcmRegion = None
+        self._AddressId = None
+        self._ReallocateNormalPublicIp = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def AddressId(self):
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def ReallocateNormalPublicIp(self):
+        return self._ReallocateNormalPublicIp
+
+    @ReallocateNormalPublicIp.setter
+    def ReallocateNormalPublicIp(self, ReallocateNormalPublicIp):
+        self._ReallocateNormalPublicIp = ReallocateNormalPublicIp
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.AddressId = params.get("AddressId")
-        self.ReallocateNormalPublicIp = params.get("ReallocateNormalPublicIp")
+        self._EcmRegion = params.get("EcmRegion")
+        self._AddressId = params.get("AddressId")
+        self._ReallocateNormalPublicIp = params.get("ReallocateNormalPublicIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5359,18 +9357,34 @@ class DisassociateAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :param _TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
@@ -5380,36 +9394,61 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 可以通过以下方式获取可用的实例ID：
+        :param _InstanceIds: 可以通过以下方式获取可用的实例ID：
 通过登录控制台查询实例ID。
 通过调用接口 DescribeInstances ，取返回信息中的 InstanceId 获取实例ID。
         :type InstanceIds: list of str
-        :param KeyIds: 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：skey-11112222。
+        :param _KeyIds: 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：skey-11112222。
 
 可以通过以下方式获取可用的密钥ID：
 通过登录控制台查询密钥ID。
 通过调用接口 DescribeKeyPairs ，取返回信息中的 KeyId 获取密钥对ID。
         :type KeyIds: list of str
-        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再解绑密钥。取值范围：
+        :param _ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再解绑密钥。取值范围：
 TRUE：表示在正常关机失败后进行强制关机。
 FALSE：表示在正常关机失败后不进行强制关机。
 
 默认取值：FALSE。
         :type ForceStop: bool
         """
-        self.InstanceIds = None
-        self.KeyIds = None
-        self.ForceStop = None
+        self._InstanceIds = None
+        self._KeyIds = None
+        self._ForceStop = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def ForceStop(self):
+        return self._ForceStop
+
+    @ForceStop.setter
+    def ForceStop(self, ForceStop):
+        self._ForceStop = ForceStop
 
 
     def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        self.KeyIds = params.get("KeyIds")
-        self.ForceStop = params.get("ForceStop")
+        self._InstanceIds = params.get("InstanceIds")
+        self._KeyIds = params.get("KeyIds")
+        self._ForceStop = params.get("ForceStop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5422,14 +9461,22 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DisassociateSecurityGroupsRequest(AbstractModel):
@@ -5439,22 +9486,39 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupIds: 要解绑的安全组ID，类似esg-efil73jd，只支持解绑单个安全组。
+        :param _SecurityGroupIds: 要解绑的安全组ID，类似esg-efil73jd，只支持解绑单个安全组。
         :type SecurityGroupIds: list of str
-        :param InstanceIds: 被解绑的实例ID，类似ein-lesecurk，支持指定多个实例 。
+        :param _InstanceIds: 被解绑的实例ID，类似ein-lesecurk，支持指定多个实例 。
         :type InstanceIds: list of str
         """
-        self.SecurityGroupIds = None
-        self.InstanceIds = None
+        self._SecurityGroupIds = None
+        self._InstanceIds = None
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
 
     def _deserialize(self, params):
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        self.InstanceIds = params.get("InstanceIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5467,14 +9531,22 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Disk(AbstractModel):
@@ -5484,174 +9556,455 @@ class Disk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteWithInstance: 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
+        :param _DeleteWithInstance: 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
-        :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
-        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+        :param _DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
         :type DiskType: str
-        :param DiskState: 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
+        :param _DiskState: 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
         :type DiskState: str
-        :param SnapshotCount: 云盘拥有的快照总数。
+        :param _SnapshotCount: 云盘拥有的快照总数。
         :type SnapshotCount: int
-        :param AutoRenewFlagError: 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
+        :param _AutoRenewFlagError: 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlagError: bool
-        :param Rollbacking: 云盘是否处于快照回滚状态。取值范围：<br><li>false:表示不处于快照回滚状态<br><li>true:表示处于快照回滚状态。
+        :param _Rollbacking: 云盘是否处于快照回滚状态。取值范围：<br><li>false:表示不处于快照回滚状态<br><li>true:表示处于快照回滚状态。
         :type Rollbacking: bool
-        :param InstanceIdList: 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
+        :param _InstanceIdList: 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
         :type InstanceIdList: list of str
-        :param Encrypt: 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
+        :param _Encrypt: 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
         :type Encrypt: bool
-        :param DiskName: 云硬盘名称。
+        :param _DiskName: 云硬盘名称。
         :type DiskName: str
-        :param BackupDisk: 云硬盘因欠费销毁或者到期销毁时， 是否使用快照备份数据的标识。true表示销毁时创建快照进行数据备份。false表示直接销毁，不进行数据备份。
+        :param _BackupDisk: 云硬盘因欠费销毁或者到期销毁时， 是否使用快照备份数据的标识。true表示销毁时创建快照进行数据备份。false表示直接销毁，不进行数据备份。
         :type BackupDisk: bool
-        :param Tags: 与云盘绑定的标签，云盘未绑定标签则取值为空。
+        :param _Tags: 与云盘绑定的标签，云盘未绑定标签则取值为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param InstanceId: 云硬盘挂载的云主机ID。
+        :param _InstanceId: 云硬盘挂载的云主机ID。
         :type InstanceId: str
-        :param AutoSnapshotPolicyIds: 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
+        :param _AutoSnapshotPolicyIds: 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoSnapshotPolicyIds: list of str
-        :param ThroughputPerformance: 云硬盘额外性能值，单位MB/s。
+        :param _ThroughputPerformance: 云硬盘额外性能值，单位MB/s。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputPerformance: int
-        :param Migrating: 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
+        :param _Migrating: 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Migrating: bool
-        :param DiskId: 云硬盘ID。
+        :param _DiskId: 云硬盘ID。
         :type DiskId: str
-        :param SnapshotSize: 云盘拥有的快照总容量，单位为MB。
+        :param _SnapshotSize: 云盘拥有的快照总容量，单位为MB。
         :type SnapshotSize: int
-        :param Placement: 云硬盘所在的位置。
+        :param _Placement: 云硬盘所在的位置。
         :type Placement: :class:`tencentcloud.ecm.v20190719.models.Placement`
-        :param IsReturnable: 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
+        :param _IsReturnable: 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsReturnable: bool
-        :param Attached: 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
+        :param _Attached: 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
         :type Attached: bool
-        :param DiskSize: 云硬盘大小，单位GB。
+        :param _DiskSize: 云硬盘大小，单位GB。
         :type DiskSize: int
-        :param MigratePercent: 云盘类型变更的迁移进度，取值0到100。
+        :param _MigratePercent: 云盘类型变更的迁移进度，取值0到100。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MigratePercent: int
-        :param DiskUsage: 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+        :param _DiskUsage: 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
         :type DiskUsage: str
-        :param DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：后付费，即按量计费。
+        :param _DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：后付费，即按量计费。
         :type DiskChargeType: str
-        :param Portable: 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。
+        :param _Portable: 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。
         :type Portable: bool
-        :param SnapshotAbility: 云盘是否具备创建快照的能力。取值范围：<br><li>false表示不具备<br><li>true表示具备。
+        :param _SnapshotAbility: 云盘是否具备创建快照的能力。取值范围：<br><li>false表示不具备<br><li>true表示具备。
         :type SnapshotAbility: bool
-        :param DeadlineError: 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
+        :param _DeadlineError: 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadlineError: bool
-        :param RollbackPercent: 云盘快照回滚的进度。
+        :param _RollbackPercent: 云盘快照回滚的进度。
         :type RollbackPercent: int
-        :param DifferDaysOfDeadline: 当前时间距离盘到期的天数（仅对预付费盘有意义）。
+        :param _DifferDaysOfDeadline: 当前时间距离盘到期的天数（仅对预付费盘有意义）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DifferDaysOfDeadline: int
-        :param ReturnFailCode: 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
+        :param _ReturnFailCode: 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnFailCode: int
-        :param Shareable: 云盘是否为共享型云盘。
+        :param _Shareable: 云盘是否为共享型云盘。
         :type Shareable: bool
-        :param CreateTime: 云硬盘的创建时间。
+        :param _CreateTime: 云硬盘的创建时间。
         :type CreateTime: str
-        :param DeadlineTime: 云硬盘的到期时间。
+        :param _DeadlineTime: 云硬盘的到期时间。
         :type DeadlineTime: str
-        :param AttachMode: 云盘的挂载类型。取值范围：<br><li>PF: PF挂载<br><li>VF: VF挂载
+        :param _AttachMode: 云盘的挂载类型。取值范围：<br><li>PF: PF挂载<br><li>VF: VF挂载
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachMode: str
         """
-        self.DeleteWithInstance = None
-        self.RenewFlag = None
-        self.DiskType = None
-        self.DiskState = None
-        self.SnapshotCount = None
-        self.AutoRenewFlagError = None
-        self.Rollbacking = None
-        self.InstanceIdList = None
-        self.Encrypt = None
-        self.DiskName = None
-        self.BackupDisk = None
-        self.Tags = None
-        self.InstanceId = None
-        self.AutoSnapshotPolicyIds = None
-        self.ThroughputPerformance = None
-        self.Migrating = None
-        self.DiskId = None
-        self.SnapshotSize = None
-        self.Placement = None
-        self.IsReturnable = None
-        self.Attached = None
-        self.DiskSize = None
-        self.MigratePercent = None
-        self.DiskUsage = None
-        self.DiskChargeType = None
-        self.Portable = None
-        self.SnapshotAbility = None
-        self.DeadlineError = None
-        self.RollbackPercent = None
-        self.DifferDaysOfDeadline = None
-        self.ReturnFailCode = None
-        self.Shareable = None
-        self.CreateTime = None
-        self.DeadlineTime = None
-        self.AttachMode = None
+        self._DeleteWithInstance = None
+        self._RenewFlag = None
+        self._DiskType = None
+        self._DiskState = None
+        self._SnapshotCount = None
+        self._AutoRenewFlagError = None
+        self._Rollbacking = None
+        self._InstanceIdList = None
+        self._Encrypt = None
+        self._DiskName = None
+        self._BackupDisk = None
+        self._Tags = None
+        self._InstanceId = None
+        self._AutoSnapshotPolicyIds = None
+        self._ThroughputPerformance = None
+        self._Migrating = None
+        self._DiskId = None
+        self._SnapshotSize = None
+        self._Placement = None
+        self._IsReturnable = None
+        self._Attached = None
+        self._DiskSize = None
+        self._MigratePercent = None
+        self._DiskUsage = None
+        self._DiskChargeType = None
+        self._Portable = None
+        self._SnapshotAbility = None
+        self._DeadlineError = None
+        self._RollbackPercent = None
+        self._DifferDaysOfDeadline = None
+        self._ReturnFailCode = None
+        self._Shareable = None
+        self._CreateTime = None
+        self._DeadlineTime = None
+        self._AttachMode = None
+
+    @property
+    def DeleteWithInstance(self):
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskState(self):
+        return self._DiskState
+
+    @DiskState.setter
+    def DiskState(self, DiskState):
+        self._DiskState = DiskState
+
+    @property
+    def SnapshotCount(self):
+        return self._SnapshotCount
+
+    @SnapshotCount.setter
+    def SnapshotCount(self, SnapshotCount):
+        self._SnapshotCount = SnapshotCount
+
+    @property
+    def AutoRenewFlagError(self):
+        return self._AutoRenewFlagError
+
+    @AutoRenewFlagError.setter
+    def AutoRenewFlagError(self, AutoRenewFlagError):
+        self._AutoRenewFlagError = AutoRenewFlagError
+
+    @property
+    def Rollbacking(self):
+        return self._Rollbacking
+
+    @Rollbacking.setter
+    def Rollbacking(self, Rollbacking):
+        self._Rollbacking = Rollbacking
+
+    @property
+    def InstanceIdList(self):
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def DiskName(self):
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+    @property
+    def BackupDisk(self):
+        return self._BackupDisk
+
+    @BackupDisk.setter
+    def BackupDisk(self, BackupDisk):
+        self._BackupDisk = BackupDisk
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AutoSnapshotPolicyIds(self):
+        return self._AutoSnapshotPolicyIds
+
+    @AutoSnapshotPolicyIds.setter
+    def AutoSnapshotPolicyIds(self, AutoSnapshotPolicyIds):
+        self._AutoSnapshotPolicyIds = AutoSnapshotPolicyIds
+
+    @property
+    def ThroughputPerformance(self):
+        return self._ThroughputPerformance
+
+    @ThroughputPerformance.setter
+    def ThroughputPerformance(self, ThroughputPerformance):
+        self._ThroughputPerformance = ThroughputPerformance
+
+    @property
+    def Migrating(self):
+        return self._Migrating
+
+    @Migrating.setter
+    def Migrating(self, Migrating):
+        self._Migrating = Migrating
+
+    @property
+    def DiskId(self):
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def SnapshotSize(self):
+        return self._SnapshotSize
+
+    @SnapshotSize.setter
+    def SnapshotSize(self, SnapshotSize):
+        self._SnapshotSize = SnapshotSize
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def IsReturnable(self):
+        return self._IsReturnable
+
+    @IsReturnable.setter
+    def IsReturnable(self, IsReturnable):
+        self._IsReturnable = IsReturnable
+
+    @property
+    def Attached(self):
+        return self._Attached
+
+    @Attached.setter
+    def Attached(self, Attached):
+        self._Attached = Attached
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def MigratePercent(self):
+        return self._MigratePercent
+
+    @MigratePercent.setter
+    def MigratePercent(self, MigratePercent):
+        self._MigratePercent = MigratePercent
+
+    @property
+    def DiskUsage(self):
+        return self._DiskUsage
+
+    @DiskUsage.setter
+    def DiskUsage(self, DiskUsage):
+        self._DiskUsage = DiskUsage
+
+    @property
+    def DiskChargeType(self):
+        return self._DiskChargeType
+
+    @DiskChargeType.setter
+    def DiskChargeType(self, DiskChargeType):
+        self._DiskChargeType = DiskChargeType
+
+    @property
+    def Portable(self):
+        return self._Portable
+
+    @Portable.setter
+    def Portable(self, Portable):
+        self._Portable = Portable
+
+    @property
+    def SnapshotAbility(self):
+        return self._SnapshotAbility
+
+    @SnapshotAbility.setter
+    def SnapshotAbility(self, SnapshotAbility):
+        self._SnapshotAbility = SnapshotAbility
+
+    @property
+    def DeadlineError(self):
+        return self._DeadlineError
+
+    @DeadlineError.setter
+    def DeadlineError(self, DeadlineError):
+        self._DeadlineError = DeadlineError
+
+    @property
+    def RollbackPercent(self):
+        return self._RollbackPercent
+
+    @RollbackPercent.setter
+    def RollbackPercent(self, RollbackPercent):
+        self._RollbackPercent = RollbackPercent
+
+    @property
+    def DifferDaysOfDeadline(self):
+        return self._DifferDaysOfDeadline
+
+    @DifferDaysOfDeadline.setter
+    def DifferDaysOfDeadline(self, DifferDaysOfDeadline):
+        self._DifferDaysOfDeadline = DifferDaysOfDeadline
+
+    @property
+    def ReturnFailCode(self):
+        return self._ReturnFailCode
+
+    @ReturnFailCode.setter
+    def ReturnFailCode(self, ReturnFailCode):
+        self._ReturnFailCode = ReturnFailCode
+
+    @property
+    def Shareable(self):
+        return self._Shareable
+
+    @Shareable.setter
+    def Shareable(self, Shareable):
+        self._Shareable = Shareable
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DeadlineTime(self):
+        return self._DeadlineTime
+
+    @DeadlineTime.setter
+    def DeadlineTime(self, DeadlineTime):
+        self._DeadlineTime = DeadlineTime
+
+    @property
+    def AttachMode(self):
+        return self._AttachMode
+
+    @AttachMode.setter
+    def AttachMode(self, AttachMode):
+        self._AttachMode = AttachMode
 
 
     def _deserialize(self, params):
-        self.DeleteWithInstance = params.get("DeleteWithInstance")
-        self.RenewFlag = params.get("RenewFlag")
-        self.DiskType = params.get("DiskType")
-        self.DiskState = params.get("DiskState")
-        self.SnapshotCount = params.get("SnapshotCount")
-        self.AutoRenewFlagError = params.get("AutoRenewFlagError")
-        self.Rollbacking = params.get("Rollbacking")
-        self.InstanceIdList = params.get("InstanceIdList")
-        self.Encrypt = params.get("Encrypt")
-        self.DiskName = params.get("DiskName")
-        self.BackupDisk = params.get("BackupDisk")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        self._RenewFlag = params.get("RenewFlag")
+        self._DiskType = params.get("DiskType")
+        self._DiskState = params.get("DiskState")
+        self._SnapshotCount = params.get("SnapshotCount")
+        self._AutoRenewFlagError = params.get("AutoRenewFlagError")
+        self._Rollbacking = params.get("Rollbacking")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._Encrypt = params.get("Encrypt")
+        self._DiskName = params.get("DiskName")
+        self._BackupDisk = params.get("BackupDisk")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceId = params.get("InstanceId")
-        self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
-        self.ThroughputPerformance = params.get("ThroughputPerformance")
-        self.Migrating = params.get("Migrating")
-        self.DiskId = params.get("DiskId")
-        self.SnapshotSize = params.get("SnapshotSize")
+                self._Tags.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        self._ThroughputPerformance = params.get("ThroughputPerformance")
+        self._Migrating = params.get("Migrating")
+        self._DiskId = params.get("DiskId")
+        self._SnapshotSize = params.get("SnapshotSize")
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.IsReturnable = params.get("IsReturnable")
-        self.Attached = params.get("Attached")
-        self.DiskSize = params.get("DiskSize")
-        self.MigratePercent = params.get("MigratePercent")
-        self.DiskUsage = params.get("DiskUsage")
-        self.DiskChargeType = params.get("DiskChargeType")
-        self.Portable = params.get("Portable")
-        self.SnapshotAbility = params.get("SnapshotAbility")
-        self.DeadlineError = params.get("DeadlineError")
-        self.RollbackPercent = params.get("RollbackPercent")
-        self.DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
-        self.ReturnFailCode = params.get("ReturnFailCode")
-        self.Shareable = params.get("Shareable")
-        self.CreateTime = params.get("CreateTime")
-        self.DeadlineTime = params.get("DeadlineTime")
-        self.AttachMode = params.get("AttachMode")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._IsReturnable = params.get("IsReturnable")
+        self._Attached = params.get("Attached")
+        self._DiskSize = params.get("DiskSize")
+        self._MigratePercent = params.get("MigratePercent")
+        self._DiskUsage = params.get("DiskUsage")
+        self._DiskChargeType = params.get("DiskChargeType")
+        self._Portable = params.get("Portable")
+        self._SnapshotAbility = params.get("SnapshotAbility")
+        self._DeadlineError = params.get("DeadlineError")
+        self._RollbackPercent = params.get("RollbackPercent")
+        self._DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
+        self._ReturnFailCode = params.get("ReturnFailCode")
+        self._Shareable = params.get("Shareable")
+        self._CreateTime = params.get("CreateTime")
+        self._DeadlineTime = params.get("DeadlineTime")
+        self._AttachMode = params.get("AttachMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5664,26 +10017,51 @@ class DiskChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :param _Period: 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
-        :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
+        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
         :type RenewFlag: str
-        :param CurInstanceDeadline: 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
+        :param _CurInstanceDeadline: 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
         :type CurInstanceDeadline: str
         """
-        self.Period = None
-        self.RenewFlag = None
-        self.CurInstanceDeadline = None
+        self._Period = None
+        self._RenewFlag = None
+        self._CurInstanceDeadline = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def CurInstanceDeadline(self):
+        return self._CurInstanceDeadline
+
+    @CurInstanceDeadline.setter
+    def CurInstanceDeadline(self, CurInstanceDeadline):
+        self._CurInstanceDeadline = CurInstanceDeadline
 
 
     def _deserialize(self, params):
-        self.Period = params.get("Period")
-        self.RenewFlag = params.get("RenewFlag")
-        self.CurInstanceDeadline = params.get("CurInstanceDeadline")
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        self._CurInstanceDeadline = params.get("CurInstanceDeadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5696,35 +10074,76 @@ class DiskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: 磁盘类型：LOCAL_BASIC
+        :param _DiskType: 磁盘类型：LOCAL_BASIC
         :type DiskType: str
-        :param DiskId: 磁盘ID
+        :param _DiskId: 磁盘ID
         :type DiskId: str
-        :param DiskSize: 磁盘大小（GB）
+        :param _DiskSize: 磁盘大小（GB）
         :type DiskSize: int
-        :param DeleteWithInstance: 是否随实例删除。
+        :param _DeleteWithInstance: 是否随实例删除。
         :type DeleteWithInstance: bool
-        :param SnapshotId: 快照ID
+        :param _SnapshotId: 快照ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
         """
-        self.DiskType = None
-        self.DiskId = None
-        self.DiskSize = None
-        self.DeleteWithInstance = None
-        self.SnapshotId = None
+        self._DiskType = None
+        self._DiskId = None
+        self._DiskSize = None
+        self._DeleteWithInstance = None
+        self._SnapshotId = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskId(self):
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DeleteWithInstance(self):
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+    @property
+    def SnapshotId(self):
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
 
 
     def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.DiskId = params.get("DiskId")
-        self.DiskSize = params.get("DiskSize")
-        self.DeleteWithInstance = params.get("DeleteWithInstance")
-        self.SnapshotId = params.get("SnapshotId")
+        self._DiskType = params.get("DiskType")
+        self._DiskId = params.get("DiskId")
+        self._DiskSize = params.get("DiskSize")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        self._SnapshotId = params.get("SnapshotId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5737,29 +10156,54 @@ class EipQuota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QuotaId: 配额名称，取值范围：
+        :param _QuotaId: 配额名称，取值范围：
 TOTAL_EIP_QUOTA：用户当前地域下EIP的配额数；
 DAILY_EIP_APPLY：用户当前地域下今日申购次数；
 DAILY_PUBLIC_IP_ASSIGN：用户当前地域下，重新分配公网 IP次数。
         :type QuotaId: str
-        :param QuotaCurrent: 当前数量
+        :param _QuotaCurrent: 当前数量
         :type QuotaCurrent: int
-        :param QuotaLimit: 配额数量
+        :param _QuotaLimit: 配额数量
         :type QuotaLimit: int
         """
-        self.QuotaId = None
-        self.QuotaCurrent = None
-        self.QuotaLimit = None
+        self._QuotaId = None
+        self._QuotaCurrent = None
+        self._QuotaLimit = None
+
+    @property
+    def QuotaId(self):
+        return self._QuotaId
+
+    @QuotaId.setter
+    def QuotaId(self, QuotaId):
+        self._QuotaId = QuotaId
+
+    @property
+    def QuotaCurrent(self):
+        return self._QuotaCurrent
+
+    @QuotaCurrent.setter
+    def QuotaCurrent(self, QuotaCurrent):
+        self._QuotaCurrent = QuotaCurrent
+
+    @property
+    def QuotaLimit(self):
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
 
 
     def _deserialize(self, params):
-        self.QuotaId = params.get("QuotaId")
-        self.QuotaCurrent = params.get("QuotaCurrent")
-        self.QuotaLimit = params.get("QuotaLimit")
+        self._QuotaId = params.get("QuotaId")
+        self._QuotaCurrent = params.get("QuotaCurrent")
+        self._QuotaLimit = params.get("QuotaLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5772,22 +10216,39 @@ class EnableRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表唯一ID。
+        :param _RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param RouteIds: 路由策略ID。
+        :param _RouteIds: 路由策略ID。
         :type RouteIds: list of int non-negative
         """
-        self.RouteTableId = None
-        self.RouteIds = None
+        self._RouteTableId = None
+        self._RouteIds = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RouteIds(self):
+        return self._RouteIds
+
+    @RouteIds.setter
+    def RouteIds(self, RouteIds):
+        self._RouteIds = RouteIds
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
-        self.RouteIds = params.get("RouteIds")
+        self._RouteTableId = params.get("RouteTableId")
+        self._RouteIds = params.get("RouteIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5800,14 +10261,22 @@ class EnableRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class EnhancedService(AbstractModel):
@@ -5817,32 +10286,57 @@ class EnhancedService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityService: 是否开启云镜服务。
+        :param _SecurityService: 是否开启云镜服务。
         :type SecurityService: :class:`tencentcloud.ecm.v20190719.models.RunSecurityServiceEnabled`
-        :param MonitorService: 是否开启云监控服务。
+        :param _MonitorService: 是否开启云监控服务。
         :type MonitorService: :class:`tencentcloud.ecm.v20190719.models.RunMonitorServiceEnabled`
-        :param EIPDirectService: 是否开通IP直通。若不指定该参数，则Linux镜像默认开通，windows镜像暂不支持IP直通。
+        :param _EIPDirectService: 是否开通IP直通。若不指定该参数，则Linux镜像默认开通，windows镜像暂不支持IP直通。
         :type EIPDirectService: :class:`tencentcloud.ecm.v20190719.models.RunEIPDirectServiceEnabled`
         """
-        self.SecurityService = None
-        self.MonitorService = None
-        self.EIPDirectService = None
+        self._SecurityService = None
+        self._MonitorService = None
+        self._EIPDirectService = None
+
+    @property
+    def SecurityService(self):
+        return self._SecurityService
+
+    @SecurityService.setter
+    def SecurityService(self, SecurityService):
+        self._SecurityService = SecurityService
+
+    @property
+    def MonitorService(self):
+        return self._MonitorService
+
+    @MonitorService.setter
+    def MonitorService(self, MonitorService):
+        self._MonitorService = MonitorService
+
+    @property
+    def EIPDirectService(self):
+        return self._EIPDirectService
+
+    @EIPDirectService.setter
+    def EIPDirectService(self, EIPDirectService):
+        self._EIPDirectService = EIPDirectService
 
 
     def _deserialize(self, params):
         if params.get("SecurityService") is not None:
-            self.SecurityService = RunSecurityServiceEnabled()
-            self.SecurityService._deserialize(params.get("SecurityService"))
+            self._SecurityService = RunSecurityServiceEnabled()
+            self._SecurityService._deserialize(params.get("SecurityService"))
         if params.get("MonitorService") is not None:
-            self.MonitorService = RunMonitorServiceEnabled()
-            self.MonitorService._deserialize(params.get("MonitorService"))
+            self._MonitorService = RunMonitorServiceEnabled()
+            self._MonitorService._deserialize(params.get("MonitorService"))
         if params.get("EIPDirectService") is not None:
-            self.EIPDirectService = RunEIPDirectServiceEnabled()
-            self.EIPDirectService._deserialize(params.get("EIPDirectService"))
+            self._EIPDirectService = RunEIPDirectServiceEnabled()
+            self._EIPDirectService._deserialize(params.get("EIPDirectService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5855,22 +10349,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Values: 一个或者多个过滤值。
+        :param _Values: 一个或者多个过滤值。
         :type Values: list of str
-        :param Name: 过滤键的名称。
+        :param _Name: 过滤键的名称。
         :type Name: str
         """
-        self.Values = None
-        self.Name = None
+        self._Values = None
+        self._Name = None
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Values = params.get("Values")
-        self.Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5883,60 +10394,149 @@ class HaVip(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HaVipId: HAVIP的ID，是HAVIP的唯一标识。
+        :param _HaVipId: HAVIP的ID，是HAVIP的唯一标识。
         :type HaVipId: str
-        :param HaVipName: HAVIP名称。
+        :param _HaVipName: HAVIP名称。
         :type HaVipName: str
-        :param Vip: 虚拟IP地址。
+        :param _Vip: 虚拟IP地址。
         :type Vip: str
-        :param VpcId: HAVIP所在私有网络ID。
+        :param _VpcId: HAVIP所在私有网络ID。
         :type VpcId: str
-        :param SubnetId: HAVIP所在子网ID。
+        :param _SubnetId: HAVIP所在子网ID。
         :type SubnetId: str
-        :param NetworkInterfaceId: HAVIP关联弹性网卡ID。
+        :param _NetworkInterfaceId: HAVIP关联弹性网卡ID。
         :type NetworkInterfaceId: str
-        :param InstanceId: 被绑定的实例ID。
+        :param _InstanceId: 被绑定的实例ID。
         :type InstanceId: str
-        :param AddressIp: 绑定EIP。
+        :param _AddressIp: 绑定EIP。
         :type AddressIp: str
-        :param State: 状态：
+        :param _State: 状态：
 AVAILABLE：运行中。
 UNBIND：未绑定。
         :type State: str
-        :param CreatedTime: 创建时间。
+        :param _CreatedTime: 创建时间。
         :type CreatedTime: str
-        :param Business: 使用havip的业务标识。
+        :param _Business: 使用havip的业务标识。
         :type Business: str
         """
-        self.HaVipId = None
-        self.HaVipName = None
-        self.Vip = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.NetworkInterfaceId = None
-        self.InstanceId = None
-        self.AddressIp = None
-        self.State = None
-        self.CreatedTime = None
-        self.Business = None
+        self._HaVipId = None
+        self._HaVipName = None
+        self._Vip = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._NetworkInterfaceId = None
+        self._InstanceId = None
+        self._AddressIp = None
+        self._State = None
+        self._CreatedTime = None
+        self._Business = None
+
+    @property
+    def HaVipId(self):
+        return self._HaVipId
+
+    @HaVipId.setter
+    def HaVipId(self, HaVipId):
+        self._HaVipId = HaVipId
+
+    @property
+    def HaVipName(self):
+        return self._HaVipName
+
+    @HaVipName.setter
+    def HaVipName(self, HaVipName):
+        self._HaVipName = HaVipName
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AddressIp(self):
+        return self._AddressIp
+
+    @AddressIp.setter
+    def AddressIp(self, AddressIp):
+        self._AddressIp = AddressIp
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
 
 
     def _deserialize(self, params):
-        self.HaVipId = params.get("HaVipId")
-        self.HaVipName = params.get("HaVipName")
-        self.Vip = params.get("Vip")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.InstanceId = params.get("InstanceId")
-        self.AddressIp = params.get("AddressIp")
-        self.State = params.get("State")
-        self.CreatedTime = params.get("CreatedTime")
-        self.Business = params.get("Business")
+        self._HaVipId = params.get("HaVipId")
+        self._HaVipName = params.get("HaVipName")
+        self._Vip = params.get("Vip")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._InstanceId = params.get("InstanceId")
+        self._AddressIp = params.get("AddressIp")
+        self._State = params.get("State")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Business = params.get("Business")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5949,64 +10549,145 @@ class HealthCheck(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）
+        :param _HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthSwitch: int
-        :param TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+        :param _TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOut: int
-        :param IntervalTime: 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
+        :param _IntervalTime: 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntervalTime: int
-        :param HealthNum: 健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2~10，单位：次。
+        :param _HealthNum: 健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2~10，单位：次。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthNum: int
-        :param UnHealthyNum: 不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发异常，可选值：2~10，单位：次。
+        :param _UnHealthyNum: 不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发异常，可选值：2~10，单位：次。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnHealthyNum: int
-        :param CheckPort: 自定义探测相关参数。健康检查端口，默认为后端服务的端口，除非您希望指定特定端口，否则建议留空。
+        :param _CheckPort: 自定义探测相关参数。健康检查端口，默认为后端服务的端口，除非您希望指定特定端口，否则建议留空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckPort: int
-        :param ContextType: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查的输入格式，可取值：HEX或TEXT；取值为HEX时，SendContext和RecvContext的字符只能在0123456789ABCDEF中选取且长度必须是偶数位。
+        :param _ContextType: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查的输入格式，可取值：HEX或TEXT；取值为HEX时，SendContext和RecvContext的字符只能在0123456789ABCDEF中选取且长度必须是偶数位。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContextType: str
-        :param SendContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查发送的请求内容，只允许ASCII可见字符，最大长度限制500。
+        :param _SendContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查发送的请求内容，只允许ASCII可见字符，最大长度限制500。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SendContext: str
-        :param RecvContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查返回的结果，只允许ASCII可见字符，最大长度限制500。
+        :param _RecvContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查返回的结果，只允许ASCII可见字符，最大长度限制500。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecvContext: str
-        :param CheckType: 自定义探测相关参数。健康检查使用的协议：TCP | CUSTOM（UDP监听器只支持CUSTOM；如果使用自定义健康检查功能，则必传）。
+        :param _CheckType: 自定义探测相关参数。健康检查使用的协议：TCP | CUSTOM（UDP监听器只支持CUSTOM；如果使用自定义健康检查功能，则必传）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckType: str
         """
-        self.HealthSwitch = None
-        self.TimeOut = None
-        self.IntervalTime = None
-        self.HealthNum = None
-        self.UnHealthyNum = None
-        self.CheckPort = None
-        self.ContextType = None
-        self.SendContext = None
-        self.RecvContext = None
-        self.CheckType = None
+        self._HealthSwitch = None
+        self._TimeOut = None
+        self._IntervalTime = None
+        self._HealthNum = None
+        self._UnHealthyNum = None
+        self._CheckPort = None
+        self._ContextType = None
+        self._SendContext = None
+        self._RecvContext = None
+        self._CheckType = None
+
+    @property
+    def HealthSwitch(self):
+        return self._HealthSwitch
+
+    @HealthSwitch.setter
+    def HealthSwitch(self, HealthSwitch):
+        self._HealthSwitch = HealthSwitch
+
+    @property
+    def TimeOut(self):
+        return self._TimeOut
+
+    @TimeOut.setter
+    def TimeOut(self, TimeOut):
+        self._TimeOut = TimeOut
+
+    @property
+    def IntervalTime(self):
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def HealthNum(self):
+        return self._HealthNum
+
+    @HealthNum.setter
+    def HealthNum(self, HealthNum):
+        self._HealthNum = HealthNum
+
+    @property
+    def UnHealthyNum(self):
+        return self._UnHealthyNum
+
+    @UnHealthyNum.setter
+    def UnHealthyNum(self, UnHealthyNum):
+        self._UnHealthyNum = UnHealthyNum
+
+    @property
+    def CheckPort(self):
+        return self._CheckPort
+
+    @CheckPort.setter
+    def CheckPort(self, CheckPort):
+        self._CheckPort = CheckPort
+
+    @property
+    def ContextType(self):
+        return self._ContextType
+
+    @ContextType.setter
+    def ContextType(self, ContextType):
+        self._ContextType = ContextType
+
+    @property
+    def SendContext(self):
+        return self._SendContext
+
+    @SendContext.setter
+    def SendContext(self, SendContext):
+        self._SendContext = SendContext
+
+    @property
+    def RecvContext(self):
+        return self._RecvContext
+
+    @RecvContext.setter
+    def RecvContext(self, RecvContext):
+        self._RecvContext = RecvContext
+
+    @property
+    def CheckType(self):
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
 
 
     def _deserialize(self, params):
-        self.HealthSwitch = params.get("HealthSwitch")
-        self.TimeOut = params.get("TimeOut")
-        self.IntervalTime = params.get("IntervalTime")
-        self.HealthNum = params.get("HealthNum")
-        self.UnHealthyNum = params.get("UnHealthyNum")
-        self.CheckPort = params.get("CheckPort")
-        self.ContextType = params.get("ContextType")
-        self.SendContext = params.get("SendContext")
-        self.RecvContext = params.get("RecvContext")
-        self.CheckType = params.get("CheckType")
+        self._HealthSwitch = params.get("HealthSwitch")
+        self._TimeOut = params.get("TimeOut")
+        self._IntervalTime = params.get("IntervalTime")
+        self._HealthNum = params.get("HealthNum")
+        self._UnHealthyNum = params.get("UnHealthyNum")
+        self._CheckPort = params.get("CheckPort")
+        self._ContextType = params.get("ContextType")
+        self._SendContext = params.get("SendContext")
+        self._RecvContext = params.get("RecvContext")
+        self._CheckType = params.get("CheckType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6019,22 +10700,39 @@ class ISP(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ISPId: 运营商ID
+        :param _ISPId: 运营商ID
         :type ISPId: str
-        :param ISPName: 运营商名称
+        :param _ISPName: 运营商名称
         :type ISPName: str
         """
-        self.ISPId = None
-        self.ISPName = None
+        self._ISPId = None
+        self._ISPName = None
+
+    @property
+    def ISPId(self):
+        return self._ISPId
+
+    @ISPId.setter
+    def ISPId(self, ISPId):
+        self._ISPId = ISPId
+
+    @property
+    def ISPName(self):
+        return self._ISPName
+
+    @ISPName.setter
+    def ISPName(self, ISPName):
+        self._ISPName = ISPName
 
 
     def _deserialize(self, params):
-        self.ISPId = params.get("ISPId")
-        self.ISPName = params.get("ISPName")
+        self._ISPId = params.get("ISPId")
+        self._ISPName = params.get("ISPName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6047,35 +10745,68 @@ class ISPCounter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProviderName: 运营商名称
+        :param _ProviderName: 运营商名称
         :type ProviderName: str
-        :param ProviderNodeNum: 节点数量
+        :param _ProviderNodeNum: 节点数量
         :type ProviderNodeNum: int
-        :param ProvederInstanceNum: 实例数量
+        :param _ProvederInstanceNum: 实例数量
         :type ProvederInstanceNum: int
-        :param ZoneInstanceInfoSet: Zone实例信息结构体数组
+        :param _ZoneInstanceInfoSet: Zone实例信息结构体数组
         :type ZoneInstanceInfoSet: list of ZoneInstanceInfo
         """
-        self.ProviderName = None
-        self.ProviderNodeNum = None
-        self.ProvederInstanceNum = None
-        self.ZoneInstanceInfoSet = None
+        self._ProviderName = None
+        self._ProviderNodeNum = None
+        self._ProvederInstanceNum = None
+        self._ZoneInstanceInfoSet = None
+
+    @property
+    def ProviderName(self):
+        return self._ProviderName
+
+    @ProviderName.setter
+    def ProviderName(self, ProviderName):
+        self._ProviderName = ProviderName
+
+    @property
+    def ProviderNodeNum(self):
+        return self._ProviderNodeNum
+
+    @ProviderNodeNum.setter
+    def ProviderNodeNum(self, ProviderNodeNum):
+        self._ProviderNodeNum = ProviderNodeNum
+
+    @property
+    def ProvederInstanceNum(self):
+        return self._ProvederInstanceNum
+
+    @ProvederInstanceNum.setter
+    def ProvederInstanceNum(self, ProvederInstanceNum):
+        self._ProvederInstanceNum = ProvederInstanceNum
+
+    @property
+    def ZoneInstanceInfoSet(self):
+        return self._ZoneInstanceInfoSet
+
+    @ZoneInstanceInfoSet.setter
+    def ZoneInstanceInfoSet(self, ZoneInstanceInfoSet):
+        self._ZoneInstanceInfoSet = ZoneInstanceInfoSet
 
 
     def _deserialize(self, params):
-        self.ProviderName = params.get("ProviderName")
-        self.ProviderNodeNum = params.get("ProviderNodeNum")
-        self.ProvederInstanceNum = params.get("ProvederInstanceNum")
+        self._ProviderName = params.get("ProviderName")
+        self._ProviderNodeNum = params.get("ProviderNodeNum")
+        self._ProvederInstanceNum = params.get("ProvederInstanceNum")
         if params.get("ZoneInstanceInfoSet") is not None:
-            self.ZoneInstanceInfoSet = []
+            self._ZoneInstanceInfoSet = []
             for item in params.get("ZoneInstanceInfoSet"):
                 obj = ZoneInstanceInfo()
                 obj._deserialize(item)
-                self.ZoneInstanceInfoSet.append(obj)
+                self._ZoneInstanceInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6088,84 +10819,221 @@ class Image(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 镜像ID
+        :param _ImageId: 镜像ID
         :type ImageId: str
-        :param ImageName: 镜像名称
+        :param _ImageName: 镜像名称
         :type ImageName: str
-        :param ImageState: 镜像状态
+        :param _ImageState: 镜像状态
         :type ImageState: str
-        :param ImageType: 镜像类型
+        :param _ImageType: 镜像类型
         :type ImageType: str
-        :param ImageOsName: 操作系统名称
+        :param _ImageOsName: 操作系统名称
         :type ImageOsName: str
-        :param ImageDescription: 镜像描述
+        :param _ImageDescription: 镜像描述
         :type ImageDescription: str
-        :param ImageCreateTime: 镜像导入时间
+        :param _ImageCreateTime: 镜像导入时间
         :type ImageCreateTime: str
-        :param Architecture: 操作系统位数
+        :param _Architecture: 操作系统位数
         :type Architecture: str
-        :param OsType: 操作系统类型
+        :param _OsType: 操作系统类型
         :type OsType: str
-        :param OsVersion: 操作系统版本
+        :param _OsVersion: 操作系统版本
         :type OsVersion: str
-        :param Platform: 操作系统平台
+        :param _Platform: 操作系统平台
         :type Platform: str
-        :param ImageOwner: 镜像所有者
+        :param _ImageOwner: 镜像所有者
         :type ImageOwner: int
-        :param ImageSize: 镜像大小。单位：GB
+        :param _ImageSize: 镜像大小。单位：GB
         :type ImageSize: int
-        :param SrcImage: 镜像来源信息
+        :param _SrcImage: 镜像来源信息
         :type SrcImage: :class:`tencentcloud.ecm.v20190719.models.SrcImage`
-        :param ImageSource: 镜像来源类型
+        :param _ImageSource: 镜像来源类型
         :type ImageSource: str
-        :param TaskId: 中间态和失败时候的任务ID
+        :param _TaskId: 中间态和失败时候的任务ID
         :type TaskId: str
-        :param IsSupportCloudInit: 是否支持CloudInit
+        :param _IsSupportCloudInit: 是否支持CloudInit
         :type IsSupportCloudInit: bool
         """
-        self.ImageId = None
-        self.ImageName = None
-        self.ImageState = None
-        self.ImageType = None
-        self.ImageOsName = None
-        self.ImageDescription = None
-        self.ImageCreateTime = None
-        self.Architecture = None
-        self.OsType = None
-        self.OsVersion = None
-        self.Platform = None
-        self.ImageOwner = None
-        self.ImageSize = None
-        self.SrcImage = None
-        self.ImageSource = None
-        self.TaskId = None
-        self.IsSupportCloudInit = None
+        self._ImageId = None
+        self._ImageName = None
+        self._ImageState = None
+        self._ImageType = None
+        self._ImageOsName = None
+        self._ImageDescription = None
+        self._ImageCreateTime = None
+        self._Architecture = None
+        self._OsType = None
+        self._OsVersion = None
+        self._Platform = None
+        self._ImageOwner = None
+        self._ImageSize = None
+        self._SrcImage = None
+        self._ImageSource = None
+        self._TaskId = None
+        self._IsSupportCloudInit = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageState(self):
+        return self._ImageState
+
+    @ImageState.setter
+    def ImageState(self, ImageState):
+        self._ImageState = ImageState
+
+    @property
+    def ImageType(self):
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def ImageOsName(self):
+        return self._ImageOsName
+
+    @ImageOsName.setter
+    def ImageOsName(self, ImageOsName):
+        self._ImageOsName = ImageOsName
+
+    @property
+    def ImageDescription(self):
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
+
+    @property
+    def ImageCreateTime(self):
+        return self._ImageCreateTime
+
+    @ImageCreateTime.setter
+    def ImageCreateTime(self, ImageCreateTime):
+        self._ImageCreateTime = ImageCreateTime
+
+    @property
+    def Architecture(self):
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+    @property
+    def OsType(self):
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def OsVersion(self):
+        return self._OsVersion
+
+    @OsVersion.setter
+    def OsVersion(self, OsVersion):
+        self._OsVersion = OsVersion
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ImageOwner(self):
+        return self._ImageOwner
+
+    @ImageOwner.setter
+    def ImageOwner(self, ImageOwner):
+        self._ImageOwner = ImageOwner
+
+    @property
+    def ImageSize(self):
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
+
+    @property
+    def SrcImage(self):
+        return self._SrcImage
+
+    @SrcImage.setter
+    def SrcImage(self, SrcImage):
+        self._SrcImage = SrcImage
+
+    @property
+    def ImageSource(self):
+        return self._ImageSource
+
+    @ImageSource.setter
+    def ImageSource(self, ImageSource):
+        self._ImageSource = ImageSource
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def IsSupportCloudInit(self):
+        return self._IsSupportCloudInit
+
+    @IsSupportCloudInit.setter
+    def IsSupportCloudInit(self, IsSupportCloudInit):
+        self._IsSupportCloudInit = IsSupportCloudInit
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.ImageName = params.get("ImageName")
-        self.ImageState = params.get("ImageState")
-        self.ImageType = params.get("ImageType")
-        self.ImageOsName = params.get("ImageOsName")
-        self.ImageDescription = params.get("ImageDescription")
-        self.ImageCreateTime = params.get("ImageCreateTime")
-        self.Architecture = params.get("Architecture")
-        self.OsType = params.get("OsType")
-        self.OsVersion = params.get("OsVersion")
-        self.Platform = params.get("Platform")
-        self.ImageOwner = params.get("ImageOwner")
-        self.ImageSize = params.get("ImageSize")
+        self._ImageId = params.get("ImageId")
+        self._ImageName = params.get("ImageName")
+        self._ImageState = params.get("ImageState")
+        self._ImageType = params.get("ImageType")
+        self._ImageOsName = params.get("ImageOsName")
+        self._ImageDescription = params.get("ImageDescription")
+        self._ImageCreateTime = params.get("ImageCreateTime")
+        self._Architecture = params.get("Architecture")
+        self._OsType = params.get("OsType")
+        self._OsVersion = params.get("OsVersion")
+        self._Platform = params.get("Platform")
+        self._ImageOwner = params.get("ImageOwner")
+        self._ImageSize = params.get("ImageSize")
         if params.get("SrcImage") is not None:
-            self.SrcImage = SrcImage()
-            self.SrcImage._deserialize(params.get("SrcImage"))
-        self.ImageSource = params.get("ImageSource")
-        self.TaskId = params.get("TaskId")
-        self.IsSupportCloudInit = params.get("IsSupportCloudInit")
+            self._SrcImage = SrcImage()
+            self._SrcImage._deserialize(params.get("SrcImage"))
+        self._ImageSource = params.get("ImageSource")
+        self._TaskId = params.get("TaskId")
+        self._IsSupportCloudInit = params.get("IsSupportCloudInit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6178,18 +11046,27 @@ class ImageLimitConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaxImageSize: 支持的最大镜像大小，包括可导入的自定义镜像大小，中心云镜像大小，单位为GB。
+        :param _MaxImageSize: 支持的最大镜像大小，包括可导入的自定义镜像大小，中心云镜像大小，单位为GB。
         :type MaxImageSize: int
         """
-        self.MaxImageSize = None
+        self._MaxImageSize = None
+
+    @property
+    def MaxImageSize(self):
+        return self._MaxImageSize
+
+    @MaxImageSize.setter
+    def MaxImageSize(self, MaxImageSize):
+        self._MaxImageSize = MaxImageSize
 
 
     def _deserialize(self, params):
-        self.MaxImageSize = params.get("MaxImageSize")
+        self._MaxImageSize = params.get("MaxImageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6202,24 +11079,41 @@ class ImageOsList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Windows: 支持的windows操作系统
+        :param _Windows: 支持的windows操作系统
 注意：此字段可能返回 null，表示取不到有效值。
         :type Windows: list of str
-        :param Linux: 支持的linux操作系统
+        :param _Linux: 支持的linux操作系统
 注意：此字段可能返回 null，表示取不到有效值。
         :type Linux: list of str
         """
-        self.Windows = None
-        self.Linux = None
+        self._Windows = None
+        self._Linux = None
+
+    @property
+    def Windows(self):
+        return self._Windows
+
+    @Windows.setter
+    def Windows(self, Windows):
+        self._Windows = Windows
+
+    @property
+    def Linux(self):
+        return self._Linux
+
+    @Linux.setter
+    def Linux(self, Linux):
+        self._Linux = Linux
 
 
     def _deserialize(self, params):
-        self.Windows = params.get("Windows")
-        self.Linux = params.get("Linux")
+        self._Windows = params.get("Windows")
+        self._Linux = params.get("Linux")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6232,31 +11126,64 @@ class ImageTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param State: 镜像导入状态， PENDING, PROCESSING, SUCCESS, FAILED
+        :param _State: 镜像导入状态， PENDING, PROCESSING, SUCCESS, FAILED
         :type State: str
-        :param Message: 导入失败(FAILED)时， 说明失败原因
+        :param _Message: 导入失败(FAILED)时， 说明失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param ImageName: 镜像名称
+        :param _ImageName: 镜像名称
         :type ImageName: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.State = None
-        self.Message = None
-        self.ImageName = None
-        self.CreateTime = None
+        self._State = None
+        self._Message = None
+        self._ImageName = None
+        self._CreateTime = None
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.State = params.get("State")
-        self.Message = params.get("Message")
-        self.ImageName = params.get("ImageName")
-        self.CreateTime = params.get("CreateTime")
+        self._State = params.get("State")
+        self._Message = params.get("Message")
+        self._ImageName = params.get("ImageName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6269,18 +11196,27 @@ class ImageUrl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageFile: 镜像文件COS链接，如设置私有读写，需授权腾讯云ECM运营账号访问权限。
+        :param _ImageFile: 镜像文件COS链接，如设置私有读写，需授权腾讯云ECM运营账号访问权限。
         :type ImageFile: str
         """
-        self.ImageFile = None
+        self._ImageFile = None
+
+    @property
+    def ImageFile(self):
+        return self._ImageFile
+
+    @ImageFile.setter
+    def ImageFile(self, ImageFile):
+        self._ImageFile = ImageFile
 
 
     def _deserialize(self, params):
-        self.ImageFile = params.get("ImageFile")
+        self._ImageFile = params.get("ImageFile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6293,47 +11229,104 @@ class ImportCustomImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageName: 镜像名称
+        :param _ImageName: 镜像名称
         :type ImageName: str
-        :param Architecture: 导入镜像的操作系统架构，x86_64 或 i386
+        :param _Architecture: 导入镜像的操作系统架构，x86_64 或 i386
         :type Architecture: str
-        :param OsType: 导入镜像的操作系统类型，通过DescribeImportImageOs获取
+        :param _OsType: 导入镜像的操作系统类型，通过DescribeImportImageOs获取
         :type OsType: str
-        :param OsVersion: 导入镜像的操作系统版本，通过DescribeImportImageOs获取
+        :param _OsVersion: 导入镜像的操作系统版本，通过DescribeImportImageOs获取
         :type OsVersion: str
-        :param ImageDescription: 镜像描述
+        :param _ImageDescription: 镜像描述
         :type ImageDescription: str
-        :param InitFlag: 镜像启动方式，cloudinit或nbd， 默认cloudinit
+        :param _InitFlag: 镜像启动方式，cloudinit或nbd， 默认cloudinit
         :type InitFlag: str
-        :param ImageUrls: 镜像文件描述，多层镜像按顺序传入
+        :param _ImageUrls: 镜像文件描述，多层镜像按顺序传入
         :type ImageUrls: list of ImageUrl
         """
-        self.ImageName = None
-        self.Architecture = None
-        self.OsType = None
-        self.OsVersion = None
-        self.ImageDescription = None
-        self.InitFlag = None
-        self.ImageUrls = None
+        self._ImageName = None
+        self._Architecture = None
+        self._OsType = None
+        self._OsVersion = None
+        self._ImageDescription = None
+        self._InitFlag = None
+        self._ImageUrls = None
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def Architecture(self):
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+    @property
+    def OsType(self):
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def OsVersion(self):
+        return self._OsVersion
+
+    @OsVersion.setter
+    def OsVersion(self, OsVersion):
+        self._OsVersion = OsVersion
+
+    @property
+    def ImageDescription(self):
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
+
+    @property
+    def InitFlag(self):
+        return self._InitFlag
+
+    @InitFlag.setter
+    def InitFlag(self, InitFlag):
+        self._InitFlag = InitFlag
+
+    @property
+    def ImageUrls(self):
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
 
 
     def _deserialize(self, params):
-        self.ImageName = params.get("ImageName")
-        self.Architecture = params.get("Architecture")
-        self.OsType = params.get("OsType")
-        self.OsVersion = params.get("OsVersion")
-        self.ImageDescription = params.get("ImageDescription")
-        self.InitFlag = params.get("InitFlag")
+        self._ImageName = params.get("ImageName")
+        self._Architecture = params.get("Architecture")
+        self._OsType = params.get("OsType")
+        self._OsVersion = params.get("OsVersion")
+        self._ImageDescription = params.get("ImageDescription")
+        self._InitFlag = params.get("InitFlag")
         if params.get("ImageUrls") is not None:
-            self.ImageUrls = []
+            self._ImageUrls = []
             for item in params.get("ImageUrls"):
                 obj = ImageUrl()
                 obj._deserialize(item)
-                self.ImageUrls.append(obj)
+                self._ImageUrls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6346,22 +11339,46 @@ class ImportCustomImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 镜像ID
+        :param _ImageId: 镜像ID
         :type ImageId: str
-        :param TaskId: 异步任务ID，可根据DescribeCustomImageTask查询任务信息
+        :param _TaskId: 异步任务ID，可根据DescribeCustomImageTask查询任务信息
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageId = None
-        self.TaskId = None
-        self.RequestId = None
+        self._ImageId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._ImageId = params.get("ImageId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ImportImageRequest(AbstractModel):
@@ -6371,26 +11388,51 @@ class ImportImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 镜像的Id。
+        :param _ImageId: 镜像的Id。
         :type ImageId: str
-        :param ImageDescription: 镜像的描述。
+        :param _ImageDescription: 镜像的描述。
         :type ImageDescription: str
-        :param SourceRegion: 源地域
+        :param _SourceRegion: 源地域
         :type SourceRegion: str
         """
-        self.ImageId = None
-        self.ImageDescription = None
-        self.SourceRegion = None
+        self._ImageId = None
+        self._ImageDescription = None
+        self._SourceRegion = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageDescription(self):
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
+
+    @property
+    def SourceRegion(self):
+        return self._SourceRegion
+
+    @SourceRegion.setter
+    def SourceRegion(self, SourceRegion):
+        self._SourceRegion = SourceRegion
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.ImageDescription = params.get("ImageDescription")
-        self.SourceRegion = params.get("SourceRegion")
+        self._ImageId = params.get("ImageId")
+        self._ImageDescription = params.get("ImageDescription")
+        self._SourceRegion = params.get("SourceRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6403,14 +11445,22 @@ class ImportImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Instance(AbstractModel):
@@ -6420,12 +11470,12 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param InstanceName: 实例名称，如ens-34241f3s。
+        :param _InstanceName: 实例名称，如ens-34241f3s。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param InstanceState: 实例状态。取值范围：
+        :param _InstanceState: 实例状态。取值范围：
 PENDING：表示创建中
 LAUNCH_FAILED：表示创建失败
 RUNNING：表示运行中
@@ -6436,181 +11486,406 @@ REBOOTING：表示重启中
 SHUTDOWN：表示停止待销毁
 TERMINATING：表示销毁中。
         :type InstanceState: str
-        :param Image: 实例当前使用的镜像的信息。
+        :param _Image: 实例当前使用的镜像的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Image: :class:`tencentcloud.ecm.v20190719.models.Image`
-        :param SimpleModule: 实例当前所属的模块简要信息。
+        :param _SimpleModule: 实例当前所属的模块简要信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SimpleModule: :class:`tencentcloud.ecm.v20190719.models.SimpleModule`
-        :param Position: 实例所在的位置相关信息。
+        :param _Position: 实例所在的位置相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Position: :class:`tencentcloud.ecm.v20190719.models.Position`
-        :param Internet: 实例的网络相关信息。
+        :param _Internet: 实例的网络相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Internet: :class:`tencentcloud.ecm.v20190719.models.Internet`
-        :param InstanceTypeConfig: 实例的配置相关信息。
+        :param _InstanceTypeConfig: 实例的配置相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeConfig: :class:`tencentcloud.ecm.v20190719.models.InstanceTypeConfig`
-        :param CreateTime: 实例的创建时间。
+        :param _CreateTime: 实例的创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param TagSet: 实例的标签信息。
+        :param _TagSet: 实例的标签信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
-        :param LatestOperation: 实例最后一次操作。
+        :param _LatestOperation: 实例最后一次操作。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperation: str
-        :param LatestOperationState: 实例最后一次操作结果。
+        :param _LatestOperationState: 实例最后一次操作结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
-        :param RestrictState: 实例业务状态。取值范围：
+        :param _RestrictState: 实例业务状态。取值范围：
 NORMAL：表示正常状态的实例
 EXPIRED：表示过期的实例
 PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestrictState: str
-        :param SystemDiskSize: 系统盘大小，单位GB。
+        :param _SystemDiskSize: 系统盘大小，单位GB。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDiskSize: int
-        :param DataDiskSize: 数据盘大小，单位GB。
+        :param _DataDiskSize: 数据盘大小，单位GB。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDiskSize: int
-        :param UUID: 实例UUID
+        :param _UUID: 实例UUID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UUID: str
-        :param PayMode: 付费方式。
+        :param _PayMode: 付费方式。
     0为后付费。
     1为预付费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
-        :param ExpireTime: 过期时间。格式为yyyy-mm-dd HH:mm:ss。
+        :param _ExpireTime: 过期时间。格式为yyyy-mm-dd HH:mm:ss。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param IsolatedTime: 隔离时间。格式为yyyy-mm-dd HH:mm:ss。
+        :param _IsolatedTime: 隔离时间。格式为yyyy-mm-dd HH:mm:ss。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTime: str
-        :param RenewFlag: 是否自动续费。
+        :param _RenewFlag: 是否自动续费。
       0为不自动续费。
       1为自动续费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
-        :param ExpireState: 过期状态。
+        :param _ExpireState: 过期状态。
     NORMAL 表示机器运行正常。
     WILL_EXPIRE 表示即将过期。
     EXPIRED 表示已过期。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireState: str
-        :param SystemDisk: 系统盘信息
+        :param _SystemDisk: 系统盘信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.DiskInfo`
-        :param DataDisks: 数据盘信息
+        :param _DataDisks: 数据盘信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DiskInfo
-        :param NewFlag: 新实例标志
+        :param _NewFlag: 新实例标志
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewFlag: int
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。
+        :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
-        :param VirtualPrivateCloud: VPC属性
+        :param _VirtualPrivateCloud: VPC属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualPrivateCloud: :class:`tencentcloud.ecm.v20190719.models.VirtualPrivateCloud`
-        :param ISP: 实例运营商字段。
+        :param _ISP: 实例运营商字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ISP: str
-        :param PhysicalPosition: 物理位置信息。注意该字段目前为保留字段，均为空值。
+        :param _PhysicalPosition: 物理位置信息。注意该字段目前为保留字段，均为空值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalPosition: :class:`tencentcloud.ecm.v20190719.models.PhysicalPosition`
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.InstanceState = None
-        self.Image = None
-        self.SimpleModule = None
-        self.Position = None
-        self.Internet = None
-        self.InstanceTypeConfig = None
-        self.CreateTime = None
-        self.TagSet = None
-        self.LatestOperation = None
-        self.LatestOperationState = None
-        self.RestrictState = None
-        self.SystemDiskSize = None
-        self.DataDiskSize = None
-        self.UUID = None
-        self.PayMode = None
-        self.ExpireTime = None
-        self.IsolatedTime = None
-        self.RenewFlag = None
-        self.ExpireState = None
-        self.SystemDisk = None
-        self.DataDisks = None
-        self.NewFlag = None
-        self.SecurityGroupIds = None
-        self.VirtualPrivateCloud = None
-        self.ISP = None
-        self.PhysicalPosition = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceState = None
+        self._Image = None
+        self._SimpleModule = None
+        self._Position = None
+        self._Internet = None
+        self._InstanceTypeConfig = None
+        self._CreateTime = None
+        self._TagSet = None
+        self._LatestOperation = None
+        self._LatestOperationState = None
+        self._RestrictState = None
+        self._SystemDiskSize = None
+        self._DataDiskSize = None
+        self._UUID = None
+        self._PayMode = None
+        self._ExpireTime = None
+        self._IsolatedTime = None
+        self._RenewFlag = None
+        self._ExpireState = None
+        self._SystemDisk = None
+        self._DataDisks = None
+        self._NewFlag = None
+        self._SecurityGroupIds = None
+        self._VirtualPrivateCloud = None
+        self._ISP = None
+        self._PhysicalPosition = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceState(self):
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def SimpleModule(self):
+        return self._SimpleModule
+
+    @SimpleModule.setter
+    def SimpleModule(self, SimpleModule):
+        self._SimpleModule = SimpleModule
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def Internet(self):
+        return self._Internet
+
+    @Internet.setter
+    def Internet(self, Internet):
+        self._Internet = Internet
+
+    @property
+    def InstanceTypeConfig(self):
+        return self._InstanceTypeConfig
+
+    @InstanceTypeConfig.setter
+    def InstanceTypeConfig(self, InstanceTypeConfig):
+        self._InstanceTypeConfig = InstanceTypeConfig
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def LatestOperation(self):
+        return self._LatestOperation
+
+    @LatestOperation.setter
+    def LatestOperation(self, LatestOperation):
+        self._LatestOperation = LatestOperation
+
+    @property
+    def LatestOperationState(self):
+        return self._LatestOperationState
+
+    @LatestOperationState.setter
+    def LatestOperationState(self, LatestOperationState):
+        self._LatestOperationState = LatestOperationState
+
+    @property
+    def RestrictState(self):
+        return self._RestrictState
+
+    @RestrictState.setter
+    def RestrictState(self, RestrictState):
+        self._RestrictState = RestrictState
+
+    @property
+    def SystemDiskSize(self):
+        return self._SystemDiskSize
+
+    @SystemDiskSize.setter
+    def SystemDiskSize(self, SystemDiskSize):
+        self._SystemDiskSize = SystemDiskSize
+
+    @property
+    def DataDiskSize(self):
+        return self._DataDiskSize
+
+    @DataDiskSize.setter
+    def DataDiskSize(self, DataDiskSize):
+        self._DataDiskSize = DataDiskSize
+
+    @property
+    def UUID(self):
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def IsolatedTime(self):
+        return self._IsolatedTime
+
+    @IsolatedTime.setter
+    def IsolatedTime(self, IsolatedTime):
+        self._IsolatedTime = IsolatedTime
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ExpireState(self):
+        return self._ExpireState
+
+    @ExpireState.setter
+    def ExpireState(self, ExpireState):
+        self._ExpireState = ExpireState
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def NewFlag(self):
+        return self._NewFlag
+
+    @NewFlag.setter
+    def NewFlag(self, NewFlag):
+        self._NewFlag = NewFlag
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def VirtualPrivateCloud(self):
+        return self._VirtualPrivateCloud
+
+    @VirtualPrivateCloud.setter
+    def VirtualPrivateCloud(self, VirtualPrivateCloud):
+        self._VirtualPrivateCloud = VirtualPrivateCloud
+
+    @property
+    def ISP(self):
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def PhysicalPosition(self):
+        return self._PhysicalPosition
+
+    @PhysicalPosition.setter
+    def PhysicalPosition(self, PhysicalPosition):
+        self._PhysicalPosition = PhysicalPosition
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.InstanceState = params.get("InstanceState")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceState = params.get("InstanceState")
         if params.get("Image") is not None:
-            self.Image = Image()
-            self.Image._deserialize(params.get("Image"))
+            self._Image = Image()
+            self._Image._deserialize(params.get("Image"))
         if params.get("SimpleModule") is not None:
-            self.SimpleModule = SimpleModule()
-            self.SimpleModule._deserialize(params.get("SimpleModule"))
+            self._SimpleModule = SimpleModule()
+            self._SimpleModule._deserialize(params.get("SimpleModule"))
         if params.get("Position") is not None:
-            self.Position = Position()
-            self.Position._deserialize(params.get("Position"))
+            self._Position = Position()
+            self._Position._deserialize(params.get("Position"))
         if params.get("Internet") is not None:
-            self.Internet = Internet()
-            self.Internet._deserialize(params.get("Internet"))
+            self._Internet = Internet()
+            self._Internet._deserialize(params.get("Internet"))
         if params.get("InstanceTypeConfig") is not None:
-            self.InstanceTypeConfig = InstanceTypeConfig()
-            self.InstanceTypeConfig._deserialize(params.get("InstanceTypeConfig"))
-        self.CreateTime = params.get("CreateTime")
+            self._InstanceTypeConfig = InstanceTypeConfig()
+            self._InstanceTypeConfig._deserialize(params.get("InstanceTypeConfig"))
+        self._CreateTime = params.get("CreateTime")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
-        self.LatestOperation = params.get("LatestOperation")
-        self.LatestOperationState = params.get("LatestOperationState")
-        self.RestrictState = params.get("RestrictState")
-        self.SystemDiskSize = params.get("SystemDiskSize")
-        self.DataDiskSize = params.get("DataDiskSize")
-        self.UUID = params.get("UUID")
-        self.PayMode = params.get("PayMode")
-        self.ExpireTime = params.get("ExpireTime")
-        self.IsolatedTime = params.get("IsolatedTime")
-        self.RenewFlag = params.get("RenewFlag")
-        self.ExpireState = params.get("ExpireState")
+                self._TagSet.append(obj)
+        self._LatestOperation = params.get("LatestOperation")
+        self._LatestOperationState = params.get("LatestOperationState")
+        self._RestrictState = params.get("RestrictState")
+        self._SystemDiskSize = params.get("SystemDiskSize")
+        self._DataDiskSize = params.get("DataDiskSize")
+        self._UUID = params.get("UUID")
+        self._PayMode = params.get("PayMode")
+        self._ExpireTime = params.get("ExpireTime")
+        self._IsolatedTime = params.get("IsolatedTime")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ExpireState = params.get("ExpireState")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = DiskInfo()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
+            self._SystemDisk = DiskInfo()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("DataDisks") is not None:
-            self.DataDisks = []
+            self._DataDisks = []
             for item in params.get("DataDisks"):
                 obj = DiskInfo()
                 obj._deserialize(item)
-                self.DataDisks.append(obj)
-        self.NewFlag = params.get("NewFlag")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
+                self._DataDisks.append(obj)
+        self._NewFlag = params.get("NewFlag")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("VirtualPrivateCloud") is not None:
-            self.VirtualPrivateCloud = VirtualPrivateCloud()
-            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
-        self.ISP = params.get("ISP")
+            self._VirtualPrivateCloud = VirtualPrivateCloud()
+            self._VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        self._ISP = params.get("ISP")
         if params.get("PhysicalPosition") is not None:
-            self.PhysicalPosition = PhysicalPosition()
-            self.PhysicalPosition._deserialize(params.get("PhysicalPosition"))
+            self._PhysicalPosition = PhysicalPosition()
+            self._PhysicalPosition._deserialize(params.get("PhysicalPosition"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6623,22 +11898,39 @@ class InstanceFamilyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceFamilyName: 机型名称
+        :param _InstanceFamilyName: 机型名称
         :type InstanceFamilyName: str
-        :param InstanceFamily: 机型ID
+        :param _InstanceFamily: 机型ID
         :type InstanceFamily: str
         """
-        self.InstanceFamilyName = None
-        self.InstanceFamily = None
+        self._InstanceFamilyName = None
+        self._InstanceFamily = None
+
+    @property
+    def InstanceFamilyName(self):
+        return self._InstanceFamilyName
+
+    @InstanceFamilyName.setter
+    def InstanceFamilyName(self, InstanceFamilyName):
+        self._InstanceFamilyName = InstanceFamilyName
+
+    @property
+    def InstanceFamily(self):
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
 
 
     def _deserialize(self, params):
-        self.InstanceFamilyName = params.get("InstanceFamilyName")
-        self.InstanceFamily = params.get("InstanceFamily")
+        self._InstanceFamilyName = params.get("InstanceFamilyName")
+        self._InstanceFamily = params.get("InstanceFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6651,22 +11943,39 @@ class InstanceFamilyTypeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceFamilyType: 实例机型系列类型Id
+        :param _InstanceFamilyType: 实例机型系列类型Id
         :type InstanceFamilyType: str
-        :param InstanceFamilyTypeName: 实例机型系列类型名称
+        :param _InstanceFamilyTypeName: 实例机型系列类型名称
         :type InstanceFamilyTypeName: str
         """
-        self.InstanceFamilyType = None
-        self.InstanceFamilyTypeName = None
+        self._InstanceFamilyType = None
+        self._InstanceFamilyTypeName = None
+
+    @property
+    def InstanceFamilyType(self):
+        return self._InstanceFamilyType
+
+    @InstanceFamilyType.setter
+    def InstanceFamilyType(self, InstanceFamilyType):
+        self._InstanceFamilyType = InstanceFamilyType
+
+    @property
+    def InstanceFamilyTypeName(self):
+        return self._InstanceFamilyTypeName
+
+    @InstanceFamilyTypeName.setter
+    def InstanceFamilyTypeName(self, InstanceFamilyTypeName):
+        self._InstanceFamilyTypeName = InstanceFamilyTypeName
 
 
     def _deserialize(self, params):
-        self.InstanceFamilyType = params.get("InstanceFamilyType")
-        self.InstanceFamilyTypeName = params.get("InstanceFamilyTypeName")
+        self._InstanceFamilyType = params.get("InstanceFamilyType")
+        self._InstanceFamilyTypeName = params.get("InstanceFamilyTypeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6679,37 +11988,70 @@ class InstanceNetworkInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressInfoSet: 实例内外网ip相关信息。
+        :param _AddressInfoSet: 实例内外网ip相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressInfoSet: list of AddressInfo
-        :param NetworkInterfaceId: 网卡ID。
+        :param _NetworkInterfaceId: 网卡ID。
         :type NetworkInterfaceId: str
-        :param NetworkInterfaceName: 网卡名称。
+        :param _NetworkInterfaceName: 网卡名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkInterfaceName: str
-        :param Primary: 主网卡属性。true为主网卡，false为辅助网卡。
+        :param _Primary: 主网卡属性。true为主网卡，false为辅助网卡。
         :type Primary: bool
         """
-        self.AddressInfoSet = None
-        self.NetworkInterfaceId = None
-        self.NetworkInterfaceName = None
-        self.Primary = None
+        self._AddressInfoSet = None
+        self._NetworkInterfaceId = None
+        self._NetworkInterfaceName = None
+        self._Primary = None
+
+    @property
+    def AddressInfoSet(self):
+        return self._AddressInfoSet
+
+    @AddressInfoSet.setter
+    def AddressInfoSet(self, AddressInfoSet):
+        self._AddressInfoSet = AddressInfoSet
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def NetworkInterfaceName(self):
+        return self._NetworkInterfaceName
+
+    @NetworkInterfaceName.setter
+    def NetworkInterfaceName(self, NetworkInterfaceName):
+        self._NetworkInterfaceName = NetworkInterfaceName
+
+    @property
+    def Primary(self):
+        return self._Primary
+
+    @Primary.setter
+    def Primary(self, Primary):
+        self._Primary = Primary
 
 
     def _deserialize(self, params):
         if params.get("AddressInfoSet") is not None:
-            self.AddressInfoSet = []
+            self._AddressInfoSet = []
             for item in params.get("AddressInfoSet"):
                 obj = AddressInfo()
                 obj._deserialize(item)
-                self.AddressInfoSet.append(obj)
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
-        self.Primary = params.get("Primary")
+                self._AddressInfoSet.append(obj)
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self._Primary = params.get("Primary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6722,30 +12064,63 @@ class InstanceNetworkLimitConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CpuNum: cpu核数
+        :param _CpuNum: cpu核数
         :type CpuNum: int
-        :param NetworkInterfaceLimit: 网卡数量限制
+        :param _NetworkInterfaceLimit: 网卡数量限制
         :type NetworkInterfaceLimit: int
-        :param InnerIpPerNetworkInterface: 每张网卡内网ip数量限制
+        :param _InnerIpPerNetworkInterface: 每张网卡内网ip数量限制
         :type InnerIpPerNetworkInterface: int
-        :param PublicIpPerInstance: 每个实例的外网ip限制
+        :param _PublicIpPerInstance: 每个实例的外网ip限制
         :type PublicIpPerInstance: int
         """
-        self.CpuNum = None
-        self.NetworkInterfaceLimit = None
-        self.InnerIpPerNetworkInterface = None
-        self.PublicIpPerInstance = None
+        self._CpuNum = None
+        self._NetworkInterfaceLimit = None
+        self._InnerIpPerNetworkInterface = None
+        self._PublicIpPerInstance = None
+
+    @property
+    def CpuNum(self):
+        return self._CpuNum
+
+    @CpuNum.setter
+    def CpuNum(self, CpuNum):
+        self._CpuNum = CpuNum
+
+    @property
+    def NetworkInterfaceLimit(self):
+        return self._NetworkInterfaceLimit
+
+    @NetworkInterfaceLimit.setter
+    def NetworkInterfaceLimit(self, NetworkInterfaceLimit):
+        self._NetworkInterfaceLimit = NetworkInterfaceLimit
+
+    @property
+    def InnerIpPerNetworkInterface(self):
+        return self._InnerIpPerNetworkInterface
+
+    @InnerIpPerNetworkInterface.setter
+    def InnerIpPerNetworkInterface(self, InnerIpPerNetworkInterface):
+        self._InnerIpPerNetworkInterface = InnerIpPerNetworkInterface
+
+    @property
+    def PublicIpPerInstance(self):
+        return self._PublicIpPerInstance
+
+    @PublicIpPerInstance.setter
+    def PublicIpPerInstance(self, PublicIpPerInstance):
+        self._PublicIpPerInstance = PublicIpPerInstance
 
 
     def _deserialize(self, params):
-        self.CpuNum = params.get("CpuNum")
-        self.NetworkInterfaceLimit = params.get("NetworkInterfaceLimit")
-        self.InnerIpPerNetworkInterface = params.get("InnerIpPerNetworkInterface")
-        self.PublicIpPerInstance = params.get("PublicIpPerInstance")
+        self._CpuNum = params.get("CpuNum")
+        self._NetworkInterfaceLimit = params.get("NetworkInterfaceLimit")
+        self._InnerIpPerNetworkInterface = params.get("InnerIpPerNetworkInterface")
+        self._PublicIpPerInstance = params.get("PublicIpPerInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6758,28 +12133,45 @@ class InstanceOperator(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例id
+        :param _InstanceId: 实例id
         :type InstanceId: str
-        :param DeniedActions: 实例禁止的操作
+        :param _DeniedActions: 实例禁止的操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeniedActions: list of OperatorAction
         """
-        self.InstanceId = None
-        self.DeniedActions = None
+        self._InstanceId = None
+        self._DeniedActions = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeniedActions(self):
+        return self._DeniedActions
+
+    @DeniedActions.setter
+    def DeniedActions(self, DeniedActions):
+        self._DeniedActions = DeniedActions
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         if params.get("DeniedActions") is not None:
-            self.DeniedActions = []
+            self._DeniedActions = []
             for item in params.get("DeniedActions"):
                 obj = OperatorAction()
                 obj._deserialize(item)
-                self.DeniedActions.append(obj)
+                self._DeniedActions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6792,32 +12184,57 @@ class InstancePricesPartDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CpuPrice: cpu的价格信息
+        :param _CpuPrice: cpu的价格信息
         :type CpuPrice: :class:`tencentcloud.ecm.v20190719.models.PriceDetail`
-        :param MemPrice: 内存价格信息
+        :param _MemPrice: 内存价格信息
         :type MemPrice: :class:`tencentcloud.ecm.v20190719.models.PriceDetail`
-        :param DisksPrice: 磁盘价格信息
+        :param _DisksPrice: 磁盘价格信息
         :type DisksPrice: :class:`tencentcloud.ecm.v20190719.models.PriceDetail`
         """
-        self.CpuPrice = None
-        self.MemPrice = None
-        self.DisksPrice = None
+        self._CpuPrice = None
+        self._MemPrice = None
+        self._DisksPrice = None
+
+    @property
+    def CpuPrice(self):
+        return self._CpuPrice
+
+    @CpuPrice.setter
+    def CpuPrice(self, CpuPrice):
+        self._CpuPrice = CpuPrice
+
+    @property
+    def MemPrice(self):
+        return self._MemPrice
+
+    @MemPrice.setter
+    def MemPrice(self, MemPrice):
+        self._MemPrice = MemPrice
+
+    @property
+    def DisksPrice(self):
+        return self._DisksPrice
+
+    @DisksPrice.setter
+    def DisksPrice(self, DisksPrice):
+        self._DisksPrice = DisksPrice
 
 
     def _deserialize(self, params):
         if params.get("CpuPrice") is not None:
-            self.CpuPrice = PriceDetail()
-            self.CpuPrice._deserialize(params.get("CpuPrice"))
+            self._CpuPrice = PriceDetail()
+            self._CpuPrice._deserialize(params.get("CpuPrice"))
         if params.get("MemPrice") is not None:
-            self.MemPrice = PriceDetail()
-            self.MemPrice._deserialize(params.get("MemPrice"))
+            self._MemPrice = PriceDetail()
+            self._MemPrice._deserialize(params.get("MemPrice"))
         if params.get("DisksPrice") is not None:
-            self.DisksPrice = PriceDetail()
-            self.DisksPrice._deserialize(params.get("DisksPrice"))
+            self._DisksPrice = PriceDetail()
+            self._DisksPrice._deserialize(params.get("DisksPrice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6830,22 +12247,39 @@ class InstanceStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceType: 实例的类型
+        :param _InstanceType: 实例的类型
         :type InstanceType: str
-        :param InstanceCount: 实例的个数
+        :param _InstanceCount: 实例的个数
         :type InstanceCount: int
         """
-        self.InstanceType = None
-        self.InstanceCount = None
+        self._InstanceType = None
+        self._InstanceCount = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceCount(self):
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
 
 
     def _deserialize(self, params):
-        self.InstanceType = params.get("InstanceType")
-        self.InstanceCount = params.get("InstanceCount")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceCount = params.get("InstanceCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6858,61 +12292,142 @@ class InstanceTypeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceFamilyConfig: 机型族配置信息
+        :param _InstanceFamilyConfig: 机型族配置信息
         :type InstanceFamilyConfig: :class:`tencentcloud.ecm.v20190719.models.InstanceFamilyConfig`
-        :param InstanceType: 机型
+        :param _InstanceType: 机型
         :type InstanceType: str
-        :param Vcpu: CPU核数
+        :param _Vcpu: CPU核数
         :type Vcpu: int
-        :param Memory: 内存大小
+        :param _Memory: 内存大小
         :type Memory: int
-        :param Frequency: 主频
+        :param _Frequency: 主频
         :type Frequency: str
-        :param CpuModelName: 处理器型号
+        :param _CpuModelName: 处理器型号
         :type CpuModelName: str
-        :param InstanceFamilyTypeConfig: 机型族类别配置信息
+        :param _InstanceFamilyTypeConfig: 机型族类别配置信息
         :type InstanceFamilyTypeConfig: :class:`tencentcloud.ecm.v20190719.models.InstanceFamilyTypeConfig`
-        :param ExtInfo: 机型额外信息 是一个json字符串，如果存在则表示特殊机型，格式如下：{"dataDiskSize":3200,"systemDiskSize":60, "systemDiskSizeShow":"系统盘默认60G","dataDiskSizeShow":"本地NVMe SSD 硬盘3200 GB"}
+        :param _ExtInfo: 机型额外信息 是一个json字符串，如果存在则表示特殊机型，格式如下：{"dataDiskSize":3200,"systemDiskSize":60, "systemDiskSizeShow":"系统盘默认60G","dataDiskSizeShow":"本地NVMe SSD 硬盘3200 GB"}
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtInfo: str
-        :param Vgpu: GPU卡数
+        :param _Vgpu: GPU卡数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vgpu: float
-        :param GpuModelName: GPU型号
+        :param _GpuModelName: GPU型号
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuModelName: str
         """
-        self.InstanceFamilyConfig = None
-        self.InstanceType = None
-        self.Vcpu = None
-        self.Memory = None
-        self.Frequency = None
-        self.CpuModelName = None
-        self.InstanceFamilyTypeConfig = None
-        self.ExtInfo = None
-        self.Vgpu = None
-        self.GpuModelName = None
+        self._InstanceFamilyConfig = None
+        self._InstanceType = None
+        self._Vcpu = None
+        self._Memory = None
+        self._Frequency = None
+        self._CpuModelName = None
+        self._InstanceFamilyTypeConfig = None
+        self._ExtInfo = None
+        self._Vgpu = None
+        self._GpuModelName = None
+
+    @property
+    def InstanceFamilyConfig(self):
+        return self._InstanceFamilyConfig
+
+    @InstanceFamilyConfig.setter
+    def InstanceFamilyConfig(self, InstanceFamilyConfig):
+        self._InstanceFamilyConfig = InstanceFamilyConfig
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Vcpu(self):
+        return self._Vcpu
+
+    @Vcpu.setter
+    def Vcpu(self, Vcpu):
+        self._Vcpu = Vcpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Frequency(self):
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def CpuModelName(self):
+        return self._CpuModelName
+
+    @CpuModelName.setter
+    def CpuModelName(self, CpuModelName):
+        self._CpuModelName = CpuModelName
+
+    @property
+    def InstanceFamilyTypeConfig(self):
+        return self._InstanceFamilyTypeConfig
+
+    @InstanceFamilyTypeConfig.setter
+    def InstanceFamilyTypeConfig(self, InstanceFamilyTypeConfig):
+        self._InstanceFamilyTypeConfig = InstanceFamilyTypeConfig
+
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def Vgpu(self):
+        return self._Vgpu
+
+    @Vgpu.setter
+    def Vgpu(self, Vgpu):
+        self._Vgpu = Vgpu
+
+    @property
+    def GpuModelName(self):
+        return self._GpuModelName
+
+    @GpuModelName.setter
+    def GpuModelName(self, GpuModelName):
+        self._GpuModelName = GpuModelName
 
 
     def _deserialize(self, params):
         if params.get("InstanceFamilyConfig") is not None:
-            self.InstanceFamilyConfig = InstanceFamilyConfig()
-            self.InstanceFamilyConfig._deserialize(params.get("InstanceFamilyConfig"))
-        self.InstanceType = params.get("InstanceType")
-        self.Vcpu = params.get("Vcpu")
-        self.Memory = params.get("Memory")
-        self.Frequency = params.get("Frequency")
-        self.CpuModelName = params.get("CpuModelName")
+            self._InstanceFamilyConfig = InstanceFamilyConfig()
+            self._InstanceFamilyConfig._deserialize(params.get("InstanceFamilyConfig"))
+        self._InstanceType = params.get("InstanceType")
+        self._Vcpu = params.get("Vcpu")
+        self._Memory = params.get("Memory")
+        self._Frequency = params.get("Frequency")
+        self._CpuModelName = params.get("CpuModelName")
         if params.get("InstanceFamilyTypeConfig") is not None:
-            self.InstanceFamilyTypeConfig = InstanceFamilyTypeConfig()
-            self.InstanceFamilyTypeConfig._deserialize(params.get("InstanceFamilyTypeConfig"))
-        self.ExtInfo = params.get("ExtInfo")
-        self.Vgpu = params.get("Vgpu")
-        self.GpuModelName = params.get("GpuModelName")
+            self._InstanceFamilyTypeConfig = InstanceFamilyTypeConfig()
+            self._InstanceFamilyTypeConfig._deserialize(params.get("InstanceFamilyTypeConfig"))
+        self._ExtInfo = params.get("ExtInfo")
+        self._Vgpu = params.get("Vgpu")
+        self._GpuModelName = params.get("GpuModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6925,32 +12440,65 @@ class InstancesPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstancePricesPartDetail: 分部描述实例子维度的价格
+        :param _InstancePricesPartDetail: 分部描述实例子维度的价格
         :type InstancePricesPartDetail: :class:`tencentcloud.ecm.v20190719.models.InstancePricesPartDetail`
-        :param Discount: 实例总价折扣
+        :param _Discount: 实例总价折扣
         :type Discount: int
-        :param DiscountPrice: 折扣后价格
+        :param _DiscountPrice: 折扣后价格
         :type DiscountPrice: int
-        :param OriginalPrice: 折扣前价格，原始总价
+        :param _OriginalPrice: 折扣前价格，原始总价
         :type OriginalPrice: int
         """
-        self.InstancePricesPartDetail = None
-        self.Discount = None
-        self.DiscountPrice = None
-        self.OriginalPrice = None
+        self._InstancePricesPartDetail = None
+        self._Discount = None
+        self._DiscountPrice = None
+        self._OriginalPrice = None
+
+    @property
+    def InstancePricesPartDetail(self):
+        return self._InstancePricesPartDetail
+
+    @InstancePricesPartDetail.setter
+    def InstancePricesPartDetail(self, InstancePricesPartDetail):
+        self._InstancePricesPartDetail = InstancePricesPartDetail
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def DiscountPrice(self):
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def OriginalPrice(self):
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
 
 
     def _deserialize(self, params):
         if params.get("InstancePricesPartDetail") is not None:
-            self.InstancePricesPartDetail = InstancePricesPartDetail()
-            self.InstancePricesPartDetail._deserialize(params.get("InstancePricesPartDetail"))
-        self.Discount = params.get("Discount")
-        self.DiscountPrice = params.get("DiscountPrice")
-        self.OriginalPrice = params.get("OriginalPrice")
+            self._InstancePricesPartDetail = InstancePricesPartDetail()
+            self._InstancePricesPartDetail._deserialize(params.get("InstancePricesPartDetail"))
+        self._Discount = params.get("Discount")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._OriginalPrice = params.get("OriginalPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6963,44 +12511,69 @@ class Internet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PrivateIPAddressSet: 实例的内网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
+        :param _PrivateIPAddressSet: 实例的内网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIPAddressSet: list of PrivateIPAddressInfo
-        :param PublicIPAddressSet: 实例的公网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
+        :param _PublicIPAddressSet: 实例的公网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIPAddressSet: list of PublicIPAddressInfo
-        :param InstanceNetworkInfoSet: 实例网络相关信息。
+        :param _InstanceNetworkInfoSet: 实例网络相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNetworkInfoSet: list of InstanceNetworkInfo
         """
-        self.PrivateIPAddressSet = None
-        self.PublicIPAddressSet = None
-        self.InstanceNetworkInfoSet = None
+        self._PrivateIPAddressSet = None
+        self._PublicIPAddressSet = None
+        self._InstanceNetworkInfoSet = None
+
+    @property
+    def PrivateIPAddressSet(self):
+        return self._PrivateIPAddressSet
+
+    @PrivateIPAddressSet.setter
+    def PrivateIPAddressSet(self, PrivateIPAddressSet):
+        self._PrivateIPAddressSet = PrivateIPAddressSet
+
+    @property
+    def PublicIPAddressSet(self):
+        return self._PublicIPAddressSet
+
+    @PublicIPAddressSet.setter
+    def PublicIPAddressSet(self, PublicIPAddressSet):
+        self._PublicIPAddressSet = PublicIPAddressSet
+
+    @property
+    def InstanceNetworkInfoSet(self):
+        return self._InstanceNetworkInfoSet
+
+    @InstanceNetworkInfoSet.setter
+    def InstanceNetworkInfoSet(self, InstanceNetworkInfoSet):
+        self._InstanceNetworkInfoSet = InstanceNetworkInfoSet
 
 
     def _deserialize(self, params):
         if params.get("PrivateIPAddressSet") is not None:
-            self.PrivateIPAddressSet = []
+            self._PrivateIPAddressSet = []
             for item in params.get("PrivateIPAddressSet"):
                 obj = PrivateIPAddressInfo()
                 obj._deserialize(item)
-                self.PrivateIPAddressSet.append(obj)
+                self._PrivateIPAddressSet.append(obj)
         if params.get("PublicIPAddressSet") is not None:
-            self.PublicIPAddressSet = []
+            self._PublicIPAddressSet = []
             for item in params.get("PublicIPAddressSet"):
                 obj = PublicIPAddressInfo()
                 obj._deserialize(item)
-                self.PublicIPAddressSet.append(obj)
+                self._PublicIPAddressSet.append(obj)
         if params.get("InstanceNetworkInfoSet") is not None:
-            self.InstanceNetworkInfoSet = []
+            self._InstanceNetworkInfoSet = []
             for item in params.get("InstanceNetworkInfoSet"):
                 obj = InstanceNetworkInfo()
                 obj._deserialize(item)
-                self.InstanceNetworkInfoSet.append(obj)
+                self._InstanceNetworkInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7013,42 +12586,91 @@ class Ipv6Address(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Address: IPv6地址，形如：3402:4e00:20:100:0:8cd9:2a67:71f3
+        :param _Address: IPv6地址，形如：3402:4e00:20:100:0:8cd9:2a67:71f3
         :type Address: str
-        :param Primary: 是否是主IP。
+        :param _Primary: 是否是主IP。
         :type Primary: bool
-        :param AddressId: EIP实例ID，形如：eip-hxlqja90。
+        :param _AddressId: EIP实例ID，形如：eip-hxlqja90。
         :type AddressId: str
-        :param Description: 描述信息。
+        :param _Description: 描述信息。
         :type Description: str
-        :param IsWanIpBlocked: 公网IP是否被封堵。
+        :param _IsWanIpBlocked: 公网IP是否被封堵。
         :type IsWanIpBlocked: bool
-        :param State: IPv6地址状态：
+        :param _State: IPv6地址状态：
 PENDING：生产中
 MIGRATING：迁移中
 DELETING：删除中
 AVAILABLE：可用的
         :type State: str
         """
-        self.Address = None
-        self.Primary = None
-        self.AddressId = None
-        self.Description = None
-        self.IsWanIpBlocked = None
-        self.State = None
+        self._Address = None
+        self._Primary = None
+        self._AddressId = None
+        self._Description = None
+        self._IsWanIpBlocked = None
+        self._State = None
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Primary(self):
+        return self._Primary
+
+    @Primary.setter
+    def Primary(self, Primary):
+        self._Primary = Primary
+
+    @property
+    def AddressId(self):
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsWanIpBlocked(self):
+        return self._IsWanIpBlocked
+
+    @IsWanIpBlocked.setter
+    def IsWanIpBlocked(self, IsWanIpBlocked):
+        self._IsWanIpBlocked = IsWanIpBlocked
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
-        self.Address = params.get("Address")
-        self.Primary = params.get("Primary")
-        self.AddressId = params.get("AddressId")
-        self.Description = params.get("Description")
-        self.IsWanIpBlocked = params.get("IsWanIpBlocked")
-        self.State = params.get("State")
+        self._Address = params.get("Address")
+        self._Primary = params.get("Primary")
+        self._AddressId = params.get("AddressId")
+        self._Description = params.get("Description")
+        self._IsWanIpBlocked = params.get("IsWanIpBlocked")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7061,54 +12683,119 @@ class KeyPair(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeyId: 密钥对的ID，是密钥对的唯一标识。
+        :param _KeyId: 密钥对的ID，是密钥对的唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyId: str
-        :param KeyName: 密钥对名称。
+        :param _KeyName: 密钥对名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyName: str
-        :param ProjectId: 密钥对所属的项目ID。
+        :param _ProjectId: 密钥对所属的项目ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
-        :param Description: 密钥对描述信息。
+        :param _Description: 密钥对描述信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param PublicKey: 密钥对的纯文本公钥。
+        :param _PublicKey: 密钥对的纯文本公钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicKey: str
-        :param PrivateKey: 钥对的纯文本私钥。腾讯云不会保管私钥，请用户自行妥善保存。
+        :param _PrivateKey: 钥对的纯文本私钥。腾讯云不会保管私钥，请用户自行妥善保存。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateKey: str
-        :param AssociatedInstanceIds: 钥关联的实例ID列表。
+        :param _AssociatedInstanceIds: 钥关联的实例ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIds: list of str
-        :param CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :param _CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
-        self.KeyId = None
-        self.KeyName = None
-        self.ProjectId = None
-        self.Description = None
-        self.PublicKey = None
-        self.PrivateKey = None
-        self.AssociatedInstanceIds = None
-        self.CreatedTime = None
+        self._KeyId = None
+        self._KeyName = None
+        self._ProjectId = None
+        self._Description = None
+        self._PublicKey = None
+        self._PrivateKey = None
+        self._AssociatedInstanceIds = None
+        self._CreatedTime = None
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyName(self):
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def AssociatedInstanceIds(self):
+        return self._AssociatedInstanceIds
+
+    @AssociatedInstanceIds.setter
+    def AssociatedInstanceIds(self, AssociatedInstanceIds):
+        self._AssociatedInstanceIds = AssociatedInstanceIds
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
 
 
     def _deserialize(self, params):
-        self.KeyId = params.get("KeyId")
-        self.KeyName = params.get("KeyName")
-        self.ProjectId = params.get("ProjectId")
-        self.Description = params.get("Description")
-        self.PublicKey = params.get("PublicKey")
-        self.PrivateKey = params.get("PrivateKey")
-        self.AssociatedInstanceIds = params.get("AssociatedInstanceIds")
-        self.CreatedTime = params.get("CreatedTime")
+        self._KeyId = params.get("KeyId")
+        self._KeyName = params.get("KeyName")
+        self._ProjectId = params.get("ProjectId")
+        self._Description = params.get("Description")
+        self._PublicKey = params.get("PublicKey")
+        self._PrivateKey = params.get("PrivateKey")
+        self._AssociatedInstanceIds = params.get("AssociatedInstanceIds")
+        self._CreatedTime = params.get("CreatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7121,66 +12808,147 @@ class Listener(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerId: 负载均衡监听器 ID
+        :param _ListenerId: 负载均衡监听器 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
-        :param Protocol: 监听器协议
+        :param _Protocol: 监听器协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param Port: 监听器端口
+        :param _Port: 监听器端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param HealthCheck: 监听器的健康检查信息
+        :param _HealthCheck: 监听器的健康检查信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheck: :class:`tencentcloud.ecm.v20190719.models.HealthCheck`
-        :param Scheduler: 请求的调度方式
+        :param _Scheduler: 请求的调度方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scheduler: str
-        :param SessionExpireTime: 会话保持时间
+        :param _SessionExpireTime: 会话保持时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionExpireTime: int
-        :param ListenerName: 监听器的名称
+        :param _ListenerName: 监听器的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerName: str
-        :param CreateTime: 监听器的创建时间
+        :param _CreateTime: 监听器的创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param SessionType: 监听器的会话类型
+        :param _SessionType: 监听器的会话类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionType: str
-        :param EndPort: 端口段结束端口
+        :param _EndPort: 端口段结束端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndPort: int
         """
-        self.ListenerId = None
-        self.Protocol = None
-        self.Port = None
-        self.HealthCheck = None
-        self.Scheduler = None
-        self.SessionExpireTime = None
-        self.ListenerName = None
-        self.CreateTime = None
-        self.SessionType = None
-        self.EndPort = None
+        self._ListenerId = None
+        self._Protocol = None
+        self._Port = None
+        self._HealthCheck = None
+        self._Scheduler = None
+        self._SessionExpireTime = None
+        self._ListenerName = None
+        self._CreateTime = None
+        self._SessionType = None
+        self._EndPort = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def HealthCheck(self):
+        return self._HealthCheck
+
+    @HealthCheck.setter
+    def HealthCheck(self, HealthCheck):
+        self._HealthCheck = HealthCheck
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def SessionExpireTime(self):
+        return self._SessionExpireTime
+
+    @SessionExpireTime.setter
+    def SessionExpireTime(self, SessionExpireTime):
+        self._SessionExpireTime = SessionExpireTime
+
+    @property
+    def ListenerName(self):
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SessionType(self):
+        return self._SessionType
+
+    @SessionType.setter
+    def SessionType(self, SessionType):
+        self._SessionType = SessionType
+
+    @property
+    def EndPort(self):
+        return self._EndPort
+
+    @EndPort.setter
+    def EndPort(self, EndPort):
+        self._EndPort = EndPort
 
 
     def _deserialize(self, params):
-        self.ListenerId = params.get("ListenerId")
-        self.Protocol = params.get("Protocol")
-        self.Port = params.get("Port")
+        self._ListenerId = params.get("ListenerId")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         if params.get("HealthCheck") is not None:
-            self.HealthCheck = HealthCheck()
-            self.HealthCheck._deserialize(params.get("HealthCheck"))
-        self.Scheduler = params.get("Scheduler")
-        self.SessionExpireTime = params.get("SessionExpireTime")
-        self.ListenerName = params.get("ListenerName")
-        self.CreateTime = params.get("CreateTime")
-        self.SessionType = params.get("SessionType")
-        self.EndPort = params.get("EndPort")
+            self._HealthCheck = HealthCheck()
+            self._HealthCheck._deserialize(params.get("HealthCheck"))
+        self._Scheduler = params.get("Scheduler")
+        self._SessionExpireTime = params.get("SessionExpireTime")
+        self._ListenerName = params.get("ListenerName")
+        self._CreateTime = params.get("CreateTime")
+        self._SessionType = params.get("SessionType")
+        self._EndPort = params.get("EndPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7193,39 +12961,72 @@ class ListenerBackend(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerId: 监听器 ID
+        :param _ListenerId: 监听器 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
-        :param Protocol: 监听器的协议
+        :param _Protocol: 监听器的协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param Port: 监听器的端口
+        :param _Port: 监听器的端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param Targets: 监听器上绑定的后端服务列表
+        :param _Targets: 监听器上绑定的后端服务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of Backend
         """
-        self.ListenerId = None
-        self.Protocol = None
-        self.Port = None
-        self.Targets = None
+        self._ListenerId = None
+        self._Protocol = None
+        self._Port = None
+        self._Targets = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
 
     def _deserialize(self, params):
-        self.ListenerId = params.get("ListenerId")
-        self.Protocol = params.get("Protocol")
-        self.Port = params.get("Port")
+        self._ListenerId = params.get("ListenerId")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = Backend()
                 obj._deserialize(item)
-                self.Targets.append(obj)
+                self._Targets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7238,44 +13039,85 @@ class ListenerHealth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerId: 监听器ID
+        :param _ListenerId: 监听器ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
-        :param ListenerName: 监听器名称
+        :param _ListenerName: 监听器名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerName: str
-        :param Protocol: 监听器的协议
+        :param _Protocol: 监听器的协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param Port: 监听器的端口
+        :param _Port: 监听器的端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param Rules: 监听器的转发规则列表
+        :param _Rules: 监听器的转发规则列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of RuleHealth
         """
-        self.ListenerId = None
-        self.ListenerName = None
-        self.Protocol = None
-        self.Port = None
-        self.Rules = None
+        self._ListenerId = None
+        self._ListenerName = None
+        self._Protocol = None
+        self._Port = None
+        self._Rules = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ListenerName(self):
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
 
 
     def _deserialize(self, params):
-        self.ListenerId = params.get("ListenerId")
-        self.ListenerName = params.get("ListenerName")
-        self.Protocol = params.get("Protocol")
-        self.Port = params.get("Port")
+        self._ListenerId = params.get("ListenerId")
+        self._ListenerName = params.get("ListenerName")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = RuleHealth()
                 obj._deserialize(item)
-                self.Rules.append(obj)
+                self._Rules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7288,104 +13130,233 @@ class LoadBalancer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 区域。
+        :param _Region: 区域。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param Position: 位置信息。
+        :param _Position: 位置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Position: :class:`tencentcloud.ecm.v20190719.models.Position`
-        :param LoadBalancerId: 负载均衡实例 ID。
+        :param _LoadBalancerId: 负载均衡实例 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerId: str
-        :param LoadBalancerName: 负载均衡实例的名称。
+        :param _LoadBalancerName: 负载均衡实例的名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerName: str
-        :param LoadBalancerType: 负载均衡实例的网络类型：OPEN：公网属性
+        :param _LoadBalancerType: 负载均衡实例的网络类型：OPEN：公网属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerType: str
-        :param LoadBalancerVips: 负载均衡实例的 VIP 列表。
+        :param _LoadBalancerVips: 负载均衡实例的 VIP 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerVips: list of str
-        :param Status: 负载均衡实例的状态，包括
+        :param _Status: 负载均衡实例的状态，包括
  0：创建中，1：正常运行。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param CreateTime: 负载均衡实例的创建时间。
+        :param _CreateTime: 负载均衡实例的创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param StatusTime: 负载均衡实例的上次状态转换时间。
+        :param _StatusTime: 负载均衡实例的上次状态转换时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusTime: str
-        :param VpcId: 私有网络的 ID。
+        :param _VpcId: 私有网络的 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param Tags: 负载均衡实例的标签信息。
+        :param _Tags: 负载均衡实例的标签信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
-        :param VipIsp: 负载均衡IP地址所属的ISP。
+        :param _VipIsp: 负载均衡IP地址所属的ISP。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VipIsp: str
-        :param NetworkAttributes: 负载均衡实例的网络属性。
+        :param _NetworkAttributes: 负载均衡实例的网络属性。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkAttributes: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
-        :param SecureGroups: 安全组。
+        :param _SecureGroups: 安全组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecureGroups: list of str
-        :param LoadBalancerPassToTarget: 后端机器是否放通来自ELB的流量。
+        :param _LoadBalancerPassToTarget: 后端机器是否放通来自ELB的流量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerPassToTarget: bool
-        :param AddressIPv6: 负载均衡实例的IPv6地址
+        :param _AddressIPv6: 负载均衡实例的IPv6地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressIPv6: str
         """
-        self.Region = None
-        self.Position = None
-        self.LoadBalancerId = None
-        self.LoadBalancerName = None
-        self.LoadBalancerType = None
-        self.LoadBalancerVips = None
-        self.Status = None
-        self.CreateTime = None
-        self.StatusTime = None
-        self.VpcId = None
-        self.Tags = None
-        self.VipIsp = None
-        self.NetworkAttributes = None
-        self.SecureGroups = None
-        self.LoadBalancerPassToTarget = None
-        self.AddressIPv6 = None
+        self._Region = None
+        self._Position = None
+        self._LoadBalancerId = None
+        self._LoadBalancerName = None
+        self._LoadBalancerType = None
+        self._LoadBalancerVips = None
+        self._Status = None
+        self._CreateTime = None
+        self._StatusTime = None
+        self._VpcId = None
+        self._Tags = None
+        self._VipIsp = None
+        self._NetworkAttributes = None
+        self._SecureGroups = None
+        self._LoadBalancerPassToTarget = None
+        self._AddressIPv6 = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def LoadBalancerName(self):
+        return self._LoadBalancerName
+
+    @LoadBalancerName.setter
+    def LoadBalancerName(self, LoadBalancerName):
+        self._LoadBalancerName = LoadBalancerName
+
+    @property
+    def LoadBalancerType(self):
+        return self._LoadBalancerType
+
+    @LoadBalancerType.setter
+    def LoadBalancerType(self, LoadBalancerType):
+        self._LoadBalancerType = LoadBalancerType
+
+    @property
+    def LoadBalancerVips(self):
+        return self._LoadBalancerVips
+
+    @LoadBalancerVips.setter
+    def LoadBalancerVips(self, LoadBalancerVips):
+        self._LoadBalancerVips = LoadBalancerVips
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StatusTime(self):
+        return self._StatusTime
+
+    @StatusTime.setter
+    def StatusTime(self, StatusTime):
+        self._StatusTime = StatusTime
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def VipIsp(self):
+        return self._VipIsp
+
+    @VipIsp.setter
+    def VipIsp(self, VipIsp):
+        self._VipIsp = VipIsp
+
+    @property
+    def NetworkAttributes(self):
+        return self._NetworkAttributes
+
+    @NetworkAttributes.setter
+    def NetworkAttributes(self, NetworkAttributes):
+        self._NetworkAttributes = NetworkAttributes
+
+    @property
+    def SecureGroups(self):
+        return self._SecureGroups
+
+    @SecureGroups.setter
+    def SecureGroups(self, SecureGroups):
+        self._SecureGroups = SecureGroups
+
+    @property
+    def LoadBalancerPassToTarget(self):
+        return self._LoadBalancerPassToTarget
+
+    @LoadBalancerPassToTarget.setter
+    def LoadBalancerPassToTarget(self, LoadBalancerPassToTarget):
+        self._LoadBalancerPassToTarget = LoadBalancerPassToTarget
+
+    @property
+    def AddressIPv6(self):
+        return self._AddressIPv6
+
+    @AddressIPv6.setter
+    def AddressIPv6(self, AddressIPv6):
+        self._AddressIPv6 = AddressIPv6
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
+        self._Region = params.get("Region")
         if params.get("Position") is not None:
-            self.Position = Position()
-            self.Position._deserialize(params.get("Position"))
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.LoadBalancerName = params.get("LoadBalancerName")
-        self.LoadBalancerType = params.get("LoadBalancerType")
-        self.LoadBalancerVips = params.get("LoadBalancerVips")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.StatusTime = params.get("StatusTime")
-        self.VpcId = params.get("VpcId")
+            self._Position = Position()
+            self._Position._deserialize(params.get("Position"))
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerName = params.get("LoadBalancerName")
+        self._LoadBalancerType = params.get("LoadBalancerType")
+        self._LoadBalancerVips = params.get("LoadBalancerVips")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._StatusTime = params.get("StatusTime")
+        self._VpcId = params.get("VpcId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfo()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.VipIsp = params.get("VipIsp")
+                self._Tags.append(obj)
+        self._VipIsp = params.get("VipIsp")
         if params.get("NetworkAttributes") is not None:
-            self.NetworkAttributes = LoadBalancerInternetAccessible()
-            self.NetworkAttributes._deserialize(params.get("NetworkAttributes"))
-        self.SecureGroups = params.get("SecureGroups")
-        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
-        self.AddressIPv6 = params.get("AddressIPv6")
+            self._NetworkAttributes = LoadBalancerInternetAccessible()
+            self._NetworkAttributes._deserialize(params.get("NetworkAttributes"))
+        self._SecureGroups = params.get("SecureGroups")
+        self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self._AddressIPv6 = params.get("AddressIPv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7398,34 +13369,59 @@ class LoadBalancerHealth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例ID
+        :param _LoadBalancerId: 负载均衡实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerId: str
-        :param LoadBalancerName: 负载均衡实例名称
+        :param _LoadBalancerName: 负载均衡实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerName: str
-        :param Listeners: 监听器列表
+        :param _Listeners: 监听器列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of ListenerHealth
         """
-        self.LoadBalancerId = None
-        self.LoadBalancerName = None
-        self.Listeners = None
+        self._LoadBalancerId = None
+        self._LoadBalancerName = None
+        self._Listeners = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def LoadBalancerName(self):
+        return self._LoadBalancerName
+
+    @LoadBalancerName.setter
+    def LoadBalancerName(self, LoadBalancerName):
+        self._LoadBalancerName = LoadBalancerName
+
+    @property
+    def Listeners(self):
+        return self._Listeners
+
+    @Listeners.setter
+    def Listeners(self, Listeners):
+        self._Listeners = Listeners
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.LoadBalancerName = params.get("LoadBalancerName")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerName = params.get("LoadBalancerName")
         if params.get("Listeners") is not None:
-            self.Listeners = []
+            self._Listeners = []
             for item in params.get("Listeners"):
                 obj = ListenerHealth()
                 obj._deserialize(item)
-                self.Listeners.append(obj)
+                self._Listeners.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7438,18 +13434,27 @@ class LoadBalancerInternetAccessible(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps。默认值10
+        :param _InternetMaxBandwidthOut: 最大出带宽，单位Mbps。默认值10
         :type InternetMaxBandwidthOut: int
         """
-        self.InternetMaxBandwidthOut = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
 
 
     def _deserialize(self, params):
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7462,30 +13467,63 @@ class MigrateNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param SourceInstanceId: 弹性网卡当前绑定的ECM实例ID。形如：ein-r8hr2upy。
+        :param _SourceInstanceId: 弹性网卡当前绑定的ECM实例ID。形如：ein-r8hr2upy。
         :type SourceInstanceId: str
-        :param DestinationInstanceId: 待迁移的目的ECM实例ID。
+        :param _DestinationInstanceId: 待迁移的目的ECM实例ID。
         :type DestinationInstanceId: str
         """
-        self.EcmRegion = None
-        self.NetworkInterfaceId = None
-        self.SourceInstanceId = None
-        self.DestinationInstanceId = None
+        self._EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._SourceInstanceId = None
+        self._DestinationInstanceId = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def SourceInstanceId(self):
+        return self._SourceInstanceId
+
+    @SourceInstanceId.setter
+    def SourceInstanceId(self, SourceInstanceId):
+        self._SourceInstanceId = SourceInstanceId
+
+    @property
+    def DestinationInstanceId(self):
+        return self._DestinationInstanceId
+
+    @DestinationInstanceId.setter
+    def DestinationInstanceId(self, DestinationInstanceId):
+        self._DestinationInstanceId = DestinationInstanceId
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.SourceInstanceId = params.get("SourceInstanceId")
-        self.DestinationInstanceId = params.get("DestinationInstanceId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._SourceInstanceId = params.get("SourceInstanceId")
+        self._DestinationInstanceId = params.get("DestinationInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7498,14 +13536,22 @@ class MigrateNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class MigratePrivateIpAddressRequest(AbstractModel):
@@ -7515,30 +13561,63 @@ class MigratePrivateIpAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
-        :param SourceNetworkInterfaceId: 当前内网IP绑定的弹性网卡实例ID，例如：eni-11112222。
+        :param _SourceNetworkInterfaceId: 当前内网IP绑定的弹性网卡实例ID，例如：eni-11112222。
         :type SourceNetworkInterfaceId: str
-        :param DestinationNetworkInterfaceId: 待迁移的目的弹性网卡实例ID。
+        :param _DestinationNetworkInterfaceId: 待迁移的目的弹性网卡实例ID。
         :type DestinationNetworkInterfaceId: str
-        :param PrivateIpAddress: 迁移的内网IP地址，例如：10.0.0.6。
+        :param _PrivateIpAddress: 迁移的内网IP地址，例如：10.0.0.6。
         :type PrivateIpAddress: str
         """
-        self.EcmRegion = None
-        self.SourceNetworkInterfaceId = None
-        self.DestinationNetworkInterfaceId = None
-        self.PrivateIpAddress = None
+        self._EcmRegion = None
+        self._SourceNetworkInterfaceId = None
+        self._DestinationNetworkInterfaceId = None
+        self._PrivateIpAddress = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def SourceNetworkInterfaceId(self):
+        return self._SourceNetworkInterfaceId
+
+    @SourceNetworkInterfaceId.setter
+    def SourceNetworkInterfaceId(self, SourceNetworkInterfaceId):
+        self._SourceNetworkInterfaceId = SourceNetworkInterfaceId
+
+    @property
+    def DestinationNetworkInterfaceId(self):
+        return self._DestinationNetworkInterfaceId
+
+    @DestinationNetworkInterfaceId.setter
+    def DestinationNetworkInterfaceId(self, DestinationNetworkInterfaceId):
+        self._DestinationNetworkInterfaceId = DestinationNetworkInterfaceId
+
+    @property
+    def PrivateIpAddress(self):
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.SourceNetworkInterfaceId = params.get("SourceNetworkInterfaceId")
-        self.DestinationNetworkInterfaceId = params.get("DestinationNetworkInterfaceId")
-        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self._EcmRegion = params.get("EcmRegion")
+        self._SourceNetworkInterfaceId = params.get("SourceNetworkInterfaceId")
+        self._DestinationNetworkInterfaceId = params.get("DestinationNetworkInterfaceId")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7551,14 +13630,22 @@ class MigratePrivateIpAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAddressAttributeRequest(AbstractModel):
@@ -7568,30 +13655,63 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
+        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
         :type AddressId: str
-        :param AddressName: 修改后的 EIP 名称。长度上限为20个字符。
+        :param _AddressName: 修改后的 EIP 名称。长度上限为20个字符。
         :type AddressName: str
-        :param EipDirectConnection: 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
+        :param _EipDirectConnection: 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
         :type EipDirectConnection: str
         """
-        self.EcmRegion = None
-        self.AddressId = None
-        self.AddressName = None
-        self.EipDirectConnection = None
+        self._EcmRegion = None
+        self._AddressId = None
+        self._AddressName = None
+        self._EipDirectConnection = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def AddressId(self):
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def AddressName(self):
+        return self._AddressName
+
+    @AddressName.setter
+    def AddressName(self, AddressName):
+        self._AddressName = AddressName
+
+    @property
+    def EipDirectConnection(self):
+        return self._EipDirectConnection
+
+    @EipDirectConnection.setter
+    def EipDirectConnection(self, EipDirectConnection):
+        self._EipDirectConnection = EipDirectConnection
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.AddressId = params.get("AddressId")
-        self.AddressName = params.get("AddressName")
-        self.EipDirectConnection = params.get("EipDirectConnection")
+        self._EcmRegion = params.get("EcmRegion")
+        self._AddressId = params.get("AddressId")
+        self._AddressName = params.get("AddressName")
+        self._EipDirectConnection = params.get("EipDirectConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7604,14 +13724,22 @@ class ModifyAddressAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAddressesBandwidthRequest(AbstractModel):
@@ -7621,26 +13749,51 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param AddressIds: EIP唯一标识ID，形如'eip-xxxxxxx'
+        :param _AddressIds: EIP唯一标识ID，形如'eip-xxxxxxx'
         :type AddressIds: list of str
-        :param InternetMaxBandwidthOut: 调整带宽目标值
+        :param _InternetMaxBandwidthOut: 调整带宽目标值
         :type InternetMaxBandwidthOut: int
         """
-        self.EcmRegion = None
-        self.AddressIds = None
-        self.InternetMaxBandwidthOut = None
+        self._EcmRegion = None
+        self._AddressIds = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def AddressIds(self):
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.AddressIds = params.get("AddressIds")
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._EcmRegion = params.get("EcmRegion")
+        self._AddressIds = params.get("AddressIds")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7653,18 +13806,34 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务TaskId。
+        :param _TaskId: 异步任务TaskId。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyDefaultSubnetRequest(AbstractModel):
@@ -7674,30 +13843,63 @@ class ModifyDefaultSubnetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM地域
+        :param _EcmRegion: ECM地域
         :type EcmRegion: str
-        :param Zone: ECM可用区
+        :param _Zone: ECM可用区
         :type Zone: str
-        :param VpcId: 私有网络ID
+        :param _VpcId: 私有网络ID
         :type VpcId: str
-        :param SubnetId: 子网ID
+        :param _SubnetId: 子网ID
         :type SubnetId: str
         """
-        self.EcmRegion = None
-        self.Zone = None
-        self.VpcId = None
-        self.SubnetId = None
+        self._EcmRegion = None
+        self._Zone = None
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.Zone = params.get("Zone")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._Zone = params.get("Zone")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7710,14 +13912,22 @@ class ModifyDefaultSubnetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyHaVipAttributeRequest(AbstractModel):
@@ -7727,22 +13937,39 @@ class ModifyHaVipAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HaVipId: HAVIP唯一ID，形如：havip-9o233uri。
+        :param _HaVipId: HAVIP唯一ID，形如：havip-9o233uri。
         :type HaVipId: str
-        :param HaVipName: HAVIP名称，可任意命名，但不得超过60个字符。
+        :param _HaVipName: HAVIP名称，可任意命名，但不得超过60个字符。
         :type HaVipName: str
         """
-        self.HaVipId = None
-        self.HaVipName = None
+        self._HaVipId = None
+        self._HaVipName = None
+
+    @property
+    def HaVipId(self):
+        return self._HaVipId
+
+    @HaVipId.setter
+    def HaVipId(self, HaVipId):
+        self._HaVipId = HaVipId
+
+    @property
+    def HaVipName(self):
+        return self._HaVipName
+
+    @HaVipName.setter
+    def HaVipName(self, HaVipName):
+        self._HaVipName = HaVipName
 
 
     def _deserialize(self, params):
-        self.HaVipId = params.get("HaVipId")
-        self.HaVipName = params.get("HaVipName")
+        self._HaVipId = params.get("HaVipId")
+        self._HaVipName = params.get("HaVipName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7755,14 +13982,22 @@ class ModifyHaVipAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyImageAttributeRequest(AbstractModel):
@@ -7772,29 +14007,54 @@ class ModifyImageAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 镜像ID，形如img-gvbnzy6f
+        :param _ImageId: 镜像ID，形如img-gvbnzy6f
         :type ImageId: str
-        :param ImageName: 设置新的镜像名称；必须满足下列限制：
+        :param _ImageName: 设置新的镜像名称；必须满足下列限制：
 不得超过20个字符。
 - 镜像名称不能与已有镜像重复。
         :type ImageName: str
-        :param ImageDescription: 设置新的镜像描述；必须满足下列限制：
+        :param _ImageDescription: 设置新的镜像描述；必须满足下列限制：
 - 不得超过60个字符。
         :type ImageDescription: str
         """
-        self.ImageId = None
-        self.ImageName = None
-        self.ImageDescription = None
+        self._ImageId = None
+        self._ImageName = None
+        self._ImageDescription = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageDescription(self):
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.ImageName = params.get("ImageName")
-        self.ImageDescription = params.get("ImageDescription")
+        self._ImageId = params.get("ImageId")
+        self._ImageName = params.get("ImageName")
+        self._ImageDescription = params.get("ImageDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7807,14 +14067,22 @@ class ModifyImageAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyInstancesAttributeRequest(AbstractModel):
@@ -7824,26 +14092,51 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 待修改的实例ID列表。在单次请求的过程中，请求实例数上限为100。
+        :param _InstanceIdSet: 待修改的实例ID列表。在单次请求的过程中，请求实例数上限为100。
         :type InstanceIdSet: list of str
-        :param InstanceName: 修改成功后显示的实例名称，不得超过60个字符，不传则名称显示为空。
+        :param _InstanceName: 修改成功后显示的实例名称，不得超过60个字符，不传则名称显示为空。
         :type InstanceName: str
-        :param SecurityGroups: 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。限制不超过5个。
+        :param _SecurityGroups: 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。限制不超过5个。
         :type SecurityGroups: list of str
         """
-        self.InstanceIdSet = None
-        self.InstanceName = None
-        self.SecurityGroups = None
+        self._InstanceIdSet = None
+        self._InstanceName = None
+        self._SecurityGroups = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def SecurityGroups(self):
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.InstanceName = params.get("InstanceName")
-        self.SecurityGroups = params.get("SecurityGroups")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._InstanceName = params.get("InstanceName")
+        self._SecurityGroups = params.get("SecurityGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7856,14 +14149,22 @@ class ModifyInstancesAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyIpv6AddressesAttributeRequest(AbstractModel):
@@ -7873,31 +14174,56 @@ class ModifyIpv6AddressesAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param NetworkInterfaceId: 弹性网卡实例ID，形如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，形如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param Ipv6Addresses: 指定的IPv6地址信息。
+        :param _Ipv6Addresses: 指定的IPv6地址信息。
         :type Ipv6Addresses: list of Ipv6Address
         """
-        self.EcmRegion = None
-        self.NetworkInterfaceId = None
-        self.Ipv6Addresses = None
+        self._EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._Ipv6Addresses = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def Ipv6Addresses(self):
+        return self._Ipv6Addresses
+
+    @Ipv6Addresses.setter
+    def Ipv6Addresses(self, Ipv6Addresses):
+        self._Ipv6Addresses = Ipv6Addresses
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         if params.get("Ipv6Addresses") is not None:
-            self.Ipv6Addresses = []
+            self._Ipv6Addresses = []
             for item in params.get("Ipv6Addresses"):
                 obj = Ipv6Address()
                 obj._deserialize(item)
-                self.Ipv6Addresses.append(obj)
+                self._Ipv6Addresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7910,14 +14236,22 @@ class ModifyIpv6AddressesAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyListenerRequest(AbstractModel):
@@ -7927,41 +14261,90 @@ class ModifyListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerId: 负载均衡监听器 ID
+        :param _ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param ListenerName: 新的监听器名称
+        :param _ListenerName: 新的监听器名称
         :type ListenerName: str
-        :param SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
         :type SessionExpireTime: int
-        :param HealthCheck: 健康检查相关参数
+        :param _HealthCheck: 健康检查相关参数
         :type HealthCheck: :class:`tencentcloud.ecm.v20190719.models.HealthCheck`
-        :param Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
+        :param _Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
 分别表示按权重轮询、最小连接数， 默认为 WRR。
         :type Scheduler: str
         """
-        self.LoadBalancerId = None
-        self.ListenerId = None
-        self.ListenerName = None
-        self.SessionExpireTime = None
-        self.HealthCheck = None
-        self.Scheduler = None
+        self._LoadBalancerId = None
+        self._ListenerId = None
+        self._ListenerName = None
+        self._SessionExpireTime = None
+        self._HealthCheck = None
+        self._Scheduler = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ListenerName(self):
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def SessionExpireTime(self):
+        return self._SessionExpireTime
+
+    @SessionExpireTime.setter
+    def SessionExpireTime(self, SessionExpireTime):
+        self._SessionExpireTime = SessionExpireTime
+
+    @property
+    def HealthCheck(self):
+        return self._HealthCheck
+
+    @HealthCheck.setter
+    def HealthCheck(self, HealthCheck):
+        self._HealthCheck = HealthCheck
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerId = params.get("ListenerId")
-        self.ListenerName = params.get("ListenerName")
-        self.SessionExpireTime = params.get("SessionExpireTime")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerId = params.get("ListenerId")
+        self._ListenerName = params.get("ListenerName")
+        self._SessionExpireTime = params.get("SessionExpireTime")
         if params.get("HealthCheck") is not None:
-            self.HealthCheck = HealthCheck()
-            self.HealthCheck._deserialize(params.get("HealthCheck"))
-        self.Scheduler = params.get("Scheduler")
+            self._HealthCheck = HealthCheck()
+            self._HealthCheck._deserialize(params.get("HealthCheck"))
+        self._Scheduler = params.get("Scheduler")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7974,14 +14357,22 @@ class ModifyListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLoadBalancerAttributesRequest(AbstractModel):
@@ -7991,32 +14382,65 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡的唯一ID
+        :param _LoadBalancerId: 负载均衡的唯一ID
         :type LoadBalancerId: str
-        :param LoadBalancerName: 负载均衡实例名称
+        :param _LoadBalancerName: 负载均衡实例名称
         :type LoadBalancerName: str
-        :param InternetChargeInfo: 网络计费及带宽相关参数
+        :param _InternetChargeInfo: 网络计费及带宽相关参数
         :type InternetChargeInfo: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
-        :param LoadBalancerPassToTarget: Target是否放通来自ELB的流量。开启放通（true）：只验证ELB上的安全组；不开启放通（false）：需同时验证ELB和后端实例上的安全组。
+        :param _LoadBalancerPassToTarget: Target是否放通来自ELB的流量。开启放通（true）：只验证ELB上的安全组；不开启放通（false）：需同时验证ELB和后端实例上的安全组。
         :type LoadBalancerPassToTarget: bool
         """
-        self.LoadBalancerId = None
-        self.LoadBalancerName = None
-        self.InternetChargeInfo = None
-        self.LoadBalancerPassToTarget = None
+        self._LoadBalancerId = None
+        self._LoadBalancerName = None
+        self._InternetChargeInfo = None
+        self._LoadBalancerPassToTarget = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def LoadBalancerName(self):
+        return self._LoadBalancerName
+
+    @LoadBalancerName.setter
+    def LoadBalancerName(self, LoadBalancerName):
+        self._LoadBalancerName = LoadBalancerName
+
+    @property
+    def InternetChargeInfo(self):
+        return self._InternetChargeInfo
+
+    @InternetChargeInfo.setter
+    def InternetChargeInfo(self, InternetChargeInfo):
+        self._InternetChargeInfo = InternetChargeInfo
+
+    @property
+    def LoadBalancerPassToTarget(self):
+        return self._LoadBalancerPassToTarget
+
+    @LoadBalancerPassToTarget.setter
+    def LoadBalancerPassToTarget(self, LoadBalancerPassToTarget):
+        self._LoadBalancerPassToTarget = LoadBalancerPassToTarget
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.LoadBalancerName = params.get("LoadBalancerName")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerName = params.get("LoadBalancerName")
         if params.get("InternetChargeInfo") is not None:
-            self.InternetChargeInfo = LoadBalancerInternetAccessible()
-            self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
-        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+            self._InternetChargeInfo = LoadBalancerInternetAccessible()
+            self._InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
+        self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8029,14 +14453,22 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModuleConfigRequest(AbstractModel):
@@ -8046,45 +14478,94 @@ class ModifyModuleConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID。
+        :param _ModuleId: 模块ID。
         :type ModuleId: str
-        :param InstanceType: 机型ID。
+        :param _InstanceType: 机型ID。
         :type InstanceType: str
-        :param DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+        :param _DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
         :type DefaultDataDiskSize: int
-        :param DefaultSystemDiskSize: 默认系统盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+        :param _DefaultSystemDiskSize: 默认系统盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
         :type DefaultSystemDiskSize: int
-        :param SystemDisk: 系统盘
+        :param _SystemDisk: 系统盘
         :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
-        :param DataDisks: 数据盘
+        :param _DataDisks: 数据盘
         :type DataDisks: list of DataDisk
         """
-        self.ModuleId = None
-        self.InstanceType = None
-        self.DefaultDataDiskSize = None
-        self.DefaultSystemDiskSize = None
-        self.SystemDisk = None
-        self.DataDisks = None
+        self._ModuleId = None
+        self._InstanceType = None
+        self._DefaultDataDiskSize = None
+        self._DefaultSystemDiskSize = None
+        self._SystemDisk = None
+        self._DataDisks = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def DefaultDataDiskSize(self):
+        return self._DefaultDataDiskSize
+
+    @DefaultDataDiskSize.setter
+    def DefaultDataDiskSize(self, DefaultDataDiskSize):
+        self._DefaultDataDiskSize = DefaultDataDiskSize
+
+    @property
+    def DefaultSystemDiskSize(self):
+        return self._DefaultSystemDiskSize
+
+    @DefaultSystemDiskSize.setter
+    def DefaultSystemDiskSize(self, DefaultSystemDiskSize):
+        self._DefaultSystemDiskSize = DefaultSystemDiskSize
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.InstanceType = params.get("InstanceType")
-        self.DefaultDataDiskSize = params.get("DefaultDataDiskSize")
-        self.DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
+        self._ModuleId = params.get("ModuleId")
+        self._InstanceType = params.get("InstanceType")
+        self._DefaultDataDiskSize = params.get("DefaultDataDiskSize")
+        self._DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("DataDisks") is not None:
-            self.DataDisks = []
+            self._DataDisks = []
             for item in params.get("DataDisks"):
                 obj = DataDisk()
                 obj._deserialize(item)
-                self.DataDisks.append(obj)
+                self._DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8097,14 +14578,22 @@ class ModifyModuleConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModuleDisableWanIpRequest(AbstractModel):
@@ -8114,22 +14603,39 @@ class ModifyModuleDisableWanIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID
+        :param _ModuleId: 模块ID
         :type ModuleId: str
-        :param DisableWanIp: 是否禁止分配外网ip,true：统一分配外网ip，false：禁止分配外网ip.
+        :param _DisableWanIp: 是否禁止分配外网ip,true：统一分配外网ip，false：禁止分配外网ip.
         :type DisableWanIp: bool
         """
-        self.ModuleId = None
-        self.DisableWanIp = None
+        self._ModuleId = None
+        self._DisableWanIp = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def DisableWanIp(self):
+        return self._DisableWanIp
+
+    @DisableWanIp.setter
+    def DisableWanIp(self, DisableWanIp):
+        self._DisableWanIp = DisableWanIp
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.DisableWanIp = params.get("DisableWanIp")
+        self._ModuleId = params.get("ModuleId")
+        self._DisableWanIp = params.get("DisableWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8142,14 +14648,22 @@ class ModifyModuleDisableWanIpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModuleImageRequest(AbstractModel):
@@ -8159,22 +14673,39 @@ class ModifyModuleImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DefaultImageId: 默认镜像ID
+        :param _DefaultImageId: 默认镜像ID
         :type DefaultImageId: str
-        :param ModuleId: 模块ID
+        :param _ModuleId: 模块ID
         :type ModuleId: str
         """
-        self.DefaultImageId = None
-        self.ModuleId = None
+        self._DefaultImageId = None
+        self._ModuleId = None
+
+    @property
+    def DefaultImageId(self):
+        return self._DefaultImageId
+
+    @DefaultImageId.setter
+    def DefaultImageId(self, DefaultImageId):
+        self._DefaultImageId = DefaultImageId
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
 
 
     def _deserialize(self, params):
-        self.DefaultImageId = params.get("DefaultImageId")
-        self.ModuleId = params.get("ModuleId")
+        self._DefaultImageId = params.get("DefaultImageId")
+        self._ModuleId = params.get("ModuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8187,14 +14718,22 @@ class ModifyModuleImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModuleIpDirectRequest(AbstractModel):
@@ -8204,24 +14743,41 @@ class ModifyModuleIpDirectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID。
+        :param _ModuleId: 模块ID。
         :type ModuleId: str
-        :param CloseIpDirect: 是否关闭IP直通。取值范围：
+        :param _CloseIpDirect: 是否关闭IP直通。取值范围：
 true：表示关闭IP直通
 false：表示开通IP直通
         :type CloseIpDirect: bool
         """
-        self.ModuleId = None
-        self.CloseIpDirect = None
+        self._ModuleId = None
+        self._CloseIpDirect = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def CloseIpDirect(self):
+        return self._CloseIpDirect
+
+    @CloseIpDirect.setter
+    def CloseIpDirect(self, CloseIpDirect):
+        self._CloseIpDirect = CloseIpDirect
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.CloseIpDirect = params.get("CloseIpDirect")
+        self._ModuleId = params.get("ModuleId")
+        self._CloseIpDirect = params.get("CloseIpDirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8234,14 +14790,22 @@ class ModifyModuleIpDirectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModuleNameRequest(AbstractModel):
@@ -8251,22 +14815,39 @@ class ModifyModuleNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID。
+        :param _ModuleId: 模块ID。
         :type ModuleId: str
-        :param ModuleName: 模块名称。
+        :param _ModuleName: 模块名称。
         :type ModuleName: str
         """
-        self.ModuleId = None
-        self.ModuleName = None
+        self._ModuleId = None
+        self._ModuleName = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def ModuleName(self):
+        return self._ModuleName
+
+    @ModuleName.setter
+    def ModuleName(self, ModuleName):
+        self._ModuleName = ModuleName
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.ModuleName = params.get("ModuleName")
+        self._ModuleId = params.get("ModuleId")
+        self._ModuleName = params.get("ModuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8279,14 +14860,22 @@ class ModifyModuleNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModuleNetworkRequest(AbstractModel):
@@ -8296,26 +14885,51 @@ class ModifyModuleNetworkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块Id
+        :param _ModuleId: 模块Id
         :type ModuleId: str
-        :param DefaultBandwidth: 默认出带宽上限
+        :param _DefaultBandwidth: 默认出带宽上限
         :type DefaultBandwidth: int
-        :param DefaultBandwidthIn: 默认入带宽上限
+        :param _DefaultBandwidthIn: 默认入带宽上限
         :type DefaultBandwidthIn: int
         """
-        self.ModuleId = None
-        self.DefaultBandwidth = None
-        self.DefaultBandwidthIn = None
+        self._ModuleId = None
+        self._DefaultBandwidth = None
+        self._DefaultBandwidthIn = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def DefaultBandwidth(self):
+        return self._DefaultBandwidth
+
+    @DefaultBandwidth.setter
+    def DefaultBandwidth(self, DefaultBandwidth):
+        self._DefaultBandwidth = DefaultBandwidth
+
+    @property
+    def DefaultBandwidthIn(self):
+        return self._DefaultBandwidthIn
+
+    @DefaultBandwidthIn.setter
+    def DefaultBandwidthIn(self, DefaultBandwidthIn):
+        self._DefaultBandwidthIn = DefaultBandwidthIn
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.DefaultBandwidth = params.get("DefaultBandwidth")
-        self.DefaultBandwidthIn = params.get("DefaultBandwidthIn")
+        self._ModuleId = params.get("ModuleId")
+        self._DefaultBandwidth = params.get("DefaultBandwidth")
+        self._DefaultBandwidthIn = params.get("DefaultBandwidthIn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8328,14 +14942,22 @@ class ModifyModuleNetworkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModuleSecurityGroupsRequest(AbstractModel):
@@ -8345,22 +14967,39 @@ class ModifyModuleSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupIdSet: 安全组列表。不超过5个。
+        :param _SecurityGroupIdSet: 安全组列表。不超过5个。
         :type SecurityGroupIdSet: list of str
-        :param ModuleId: 模块id。
+        :param _ModuleId: 模块id。
         :type ModuleId: str
         """
-        self.SecurityGroupIdSet = None
-        self.ModuleId = None
+        self._SecurityGroupIdSet = None
+        self._ModuleId = None
+
+    @property
+    def SecurityGroupIdSet(self):
+        return self._SecurityGroupIdSet
+
+    @SecurityGroupIdSet.setter
+    def SecurityGroupIdSet(self, SecurityGroupIdSet):
+        self._SecurityGroupIdSet = SecurityGroupIdSet
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
 
 
     def _deserialize(self, params):
-        self.SecurityGroupIdSet = params.get("SecurityGroupIdSet")
-        self.ModuleId = params.get("ModuleId")
+        self._SecurityGroupIdSet = params.get("SecurityGroupIdSet")
+        self._ModuleId = params.get("ModuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8373,14 +15012,22 @@ class ModifyModuleSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyPrivateIpAddressesAttributeRequest(AbstractModel):
@@ -8390,31 +15037,56 @@ class ModifyPrivateIpAddressesAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param PrivateIpAddresses: 指定的内网IP信息。
+        :param _PrivateIpAddresses: 指定的内网IP信息。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param EcmRegion: ECM 节点Region信息，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 节点Region信息，形如ap-xian-ecm。
         :type EcmRegion: str
         """
-        self.NetworkInterfaceId = None
-        self.PrivateIpAddresses = None
-        self.EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._PrivateIpAddresses = None
+        self._EcmRegion = None
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         if params.get("PrivateIpAddresses") is not None:
-            self.PrivateIpAddresses = []
+            self._PrivateIpAddresses = []
             for item in params.get("PrivateIpAddresses"):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
-                self.PrivateIpAddresses.append(obj)
-        self.EcmRegion = params.get("EcmRegion")
+                self._PrivateIpAddresses.append(obj)
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8427,14 +15099,22 @@ class ModifyPrivateIpAddressesAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyRouteTableAttributeRequest(AbstractModel):
@@ -8444,22 +15124,39 @@ class ModifyRouteTableAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c
+        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c
         :type RouteTableId: str
-        :param RouteTableName: 路由表名称
+        :param _RouteTableName: 路由表名称
         :type RouteTableName: str
         """
-        self.RouteTableId = None
-        self.RouteTableName = None
+        self._RouteTableId = None
+        self._RouteTableName = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RouteTableName(self):
+        return self._RouteTableName
+
+    @RouteTableName.setter
+    def RouteTableName(self, RouteTableName):
+        self._RouteTableName = RouteTableName
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
-        self.RouteTableName = params.get("RouteTableName")
+        self._RouteTableId = params.get("RouteTableId")
+        self._RouteTableName = params.get("RouteTableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8472,14 +15169,22 @@ class ModifyRouteTableAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySecurityGroupAttributeRequest(AbstractModel):
@@ -8489,26 +15194,51 @@ class ModifySecurityGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
         :type SecurityGroupId: str
-        :param GroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :param _GroupName: 安全组名称，可任意命名，但不得超过60个字符。
         :type GroupName: str
-        :param GroupDescription: 安全组备注，最多100个字符。
+        :param _GroupDescription: 安全组备注，最多100个字符。
         :type GroupDescription: str
         """
-        self.SecurityGroupId = None
-        self.GroupName = None
-        self.GroupDescription = None
+        self._SecurityGroupId = None
+        self._GroupName = None
+        self._GroupDescription = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupDescription(self):
+        return self._GroupDescription
+
+    @GroupDescription.setter
+    def GroupDescription(self, GroupDescription):
+        self._GroupDescription = GroupDescription
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
-        self.GroupName = params.get("GroupName")
-        self.GroupDescription = params.get("GroupDescription")
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupDescription = params.get("GroupDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8521,14 +15251,22 @@ class ModifySecurityGroupAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySecurityGroupPoliciesRequest(AbstractModel):
@@ -8538,28 +15276,53 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
         :type SecurityGroupId: str
-        :param SecurityGroupPolicySet: 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
+        :param _SecurityGroupPolicySet: 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
         :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
-        :param SortPolicys: 排序安全组标识。值为True时，支持安全组排序；SortPolicys不存在或SortPolicys为False时，为修改安全组规则。
+        :param _SortPolicys: 排序安全组标识。值为True时，支持安全组排序；SortPolicys不存在或SortPolicys为False时，为修改安全组规则。
         :type SortPolicys: bool
         """
-        self.SecurityGroupId = None
-        self.SecurityGroupPolicySet = None
-        self.SortPolicys = None
+        self._SecurityGroupId = None
+        self._SecurityGroupPolicySet = None
+        self._SortPolicys = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def SecurityGroupPolicySet(self):
+        return self._SecurityGroupPolicySet
+
+    @SecurityGroupPolicySet.setter
+    def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
+        self._SecurityGroupPolicySet = SecurityGroupPolicySet
+
+    @property
+    def SortPolicys(self):
+        return self._SortPolicys
+
+    @SortPolicys.setter
+    def SortPolicys(self, SortPolicys):
+        self._SortPolicys = SortPolicys
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         if params.get("SecurityGroupPolicySet") is not None:
-            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
-            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
-        self.SortPolicys = params.get("SortPolicys")
+            self._SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        self._SortPolicys = params.get("SortPolicys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8572,14 +15335,22 @@ class ModifySecurityGroupPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubnetAttributeRequest(AbstractModel):
@@ -8589,39 +15360,80 @@ class ModifySubnetAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubnetId: 子网实例ID。形如：subnet-pxir56ns。
+        :param _SubnetId: 子网实例ID。形如：subnet-pxir56ns。
         :type SubnetId: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param SubnetName: 子网名称，最大长度不能超过60个字节。
+        :param _SubnetName: 子网名称，最大长度不能超过60个字节。
         :type SubnetName: str
-        :param EnableBroadcast: 子网是否开启广播。
+        :param _EnableBroadcast: 子网是否开启广播。
         :type EnableBroadcast: str
-        :param Tags: 子网的标签键值
+        :param _Tags: 子网的标签键值
         :type Tags: list of Tag
         """
-        self.SubnetId = None
-        self.EcmRegion = None
-        self.SubnetName = None
-        self.EnableBroadcast = None
-        self.Tags = None
+        self._SubnetId = None
+        self._EcmRegion = None
+        self._SubnetName = None
+        self._EnableBroadcast = None
+        self._Tags = None
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def EnableBroadcast(self):
+        return self._EnableBroadcast
+
+    @EnableBroadcast.setter
+    def EnableBroadcast(self, EnableBroadcast):
+        self._EnableBroadcast = EnableBroadcast
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.SubnetId = params.get("SubnetId")
-        self.EcmRegion = params.get("EcmRegion")
-        self.SubnetName = params.get("SubnetName")
-        self.EnableBroadcast = params.get("EnableBroadcast")
+        self._SubnetId = params.get("SubnetId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._SubnetName = params.get("SubnetName")
+        self._EnableBroadcast = params.get("EnableBroadcast")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8634,14 +15446,22 @@ class ModifySubnetAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTargetPortRequest(AbstractModel):
@@ -8651,35 +15471,68 @@ class ModifyTargetPortRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerId: 负载均衡监听器 ID
+        :param _ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param Targets: 要修改端口的后端服务列表
+        :param _Targets: 要修改端口的后端服务列表
         :type Targets: list of Target
-        :param NewPort: 后端服务绑定到监听器或转发规则的新端口
+        :param _NewPort: 后端服务绑定到监听器或转发规则的新端口
         :type NewPort: int
         """
-        self.LoadBalancerId = None
-        self.ListenerId = None
-        self.Targets = None
-        self.NewPort = None
+        self._LoadBalancerId = None
+        self._ListenerId = None
+        self._Targets = None
+        self._NewPort = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def NewPort(self):
+        return self._NewPort
+
+    @NewPort.setter
+    def NewPort(self, NewPort):
+        self._NewPort = NewPort
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerId = params.get("ListenerId")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerId = params.get("ListenerId")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = Target()
                 obj._deserialize(item)
-                self.Targets.append(obj)
-        self.NewPort = params.get("NewPort")
+                self._Targets.append(obj)
+        self._NewPort = params.get("NewPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8692,14 +15545,22 @@ class ModifyTargetPortResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTargetWeightRequest(AbstractModel):
@@ -8709,35 +15570,68 @@ class ModifyTargetWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerId: 负载均衡监听器 ID
+        :param _ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param Targets: 要修改权重的后端服务列表
+        :param _Targets: 要修改权重的后端服务列表
         :type Targets: list of Target
-        :param Weight: 后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
+        :param _Weight: 后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
         :type Weight: int
         """
-        self.LoadBalancerId = None
-        self.ListenerId = None
-        self.Targets = None
-        self.Weight = None
+        self._LoadBalancerId = None
+        self._ListenerId = None
+        self._Targets = None
+        self._Weight = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerId = params.get("ListenerId")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerId = params.get("ListenerId")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = Target()
                 obj._deserialize(item)
-                self.Targets.append(obj)
-        self.Weight = params.get("Weight")
+                self._Targets.append(obj)
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8750,14 +15644,22 @@ class ModifyTargetWeightResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyVpcAttributeRequest(AbstractModel):
@@ -8767,39 +15669,80 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。形如：vpc-f49l6u0z。
+        :param _VpcId: VPC实例ID。形如：vpc-f49l6u0z。
         :type VpcId: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param VpcName: 私有网络名称，可任意命名，但不得超过60个字符。
+        :param _VpcName: 私有网络名称，可任意命名，但不得超过60个字符。
         :type VpcName: str
-        :param Tags: 标签
+        :param _Tags: 标签
         :type Tags: list of Tag
-        :param Description: 私有网络描述
+        :param _Description: 私有网络描述
         :type Description: str
         """
-        self.VpcId = None
-        self.EcmRegion = None
-        self.VpcName = None
-        self.Tags = None
-        self.Description = None
+        self._VpcId = None
+        self._EcmRegion = None
+        self._VpcName = None
+        self._Tags = None
+        self._Description = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.EcmRegion = params.get("EcmRegion")
-        self.VpcName = params.get("VpcName")
+        self._VpcId = params.get("VpcId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._VpcName = params.get("VpcName")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Description = params.get("Description")
+                self._Tags.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8812,14 +15755,22 @@ class ModifyVpcAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Module(AbstractModel):
@@ -8829,102 +15780,239 @@ class Module(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块Id。
+        :param _ModuleId: 模块Id。
         :type ModuleId: str
-        :param ModuleName: 模块名称。
+        :param _ModuleName: 模块名称。
         :type ModuleName: str
-        :param ModuleState: 模块状态：
+        :param _ModuleState: 模块状态：
 NORMAL：正常。
 DELETING：删除中 
 DELETEFAILED：删除失败。
         :type ModuleState: str
-        :param DefaultSystemDiskSize: 默认系统盘大小。
+        :param _DefaultSystemDiskSize: 默认系统盘大小。
         :type DefaultSystemDiskSize: int
-        :param DefaultDataDiskSize: 默认数据盘大小。
+        :param _DefaultDataDiskSize: 默认数据盘大小。
         :type DefaultDataDiskSize: int
-        :param InstanceTypeConfig: 默认机型。
+        :param _InstanceTypeConfig: 默认机型。
         :type InstanceTypeConfig: :class:`tencentcloud.ecm.v20190719.models.InstanceTypeConfig`
-        :param DefaultImage: 默认镜像。
+        :param _DefaultImage: 默认镜像。
         :type DefaultImage: :class:`tencentcloud.ecm.v20190719.models.Image`
-        :param CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。
         :type CreateTime: str
-        :param DefaultBandwidth: 默认出带宽。
+        :param _DefaultBandwidth: 默认出带宽。
         :type DefaultBandwidth: int
-        :param TagSet: 标签集合。
+        :param _TagSet: 标签集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
-        :param CloseIpDirect: 是否关闭IP直通。
+        :param _CloseIpDirect: 是否关闭IP直通。
         :type CloseIpDirect: int
-        :param SecurityGroupIds: 默认安全组id列表。
+        :param _SecurityGroupIds: 默认安全组id列表。
         :type SecurityGroupIds: list of str
-        :param DefaultBandwidthIn: 默认入带宽。
+        :param _DefaultBandwidthIn: 默认入带宽。
         :type DefaultBandwidthIn: int
-        :param UserData: 自定义脚本数据
+        :param _UserData: 自定义脚本数据
         :type UserData: str
-        :param SystemDisk: 系统盘信息。
+        :param _SystemDisk: 系统盘信息。
         :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
-        :param DataDisks: 数据盘信息。
+        :param _DataDisks: 数据盘信息。
         :type DataDisks: list of DataDisk
-        :param DisableWanIp: 是否禁止外网ip
+        :param _DisableWanIp: 是否禁止外网ip
         :type DisableWanIp: int
         """
-        self.ModuleId = None
-        self.ModuleName = None
-        self.ModuleState = None
-        self.DefaultSystemDiskSize = None
-        self.DefaultDataDiskSize = None
-        self.InstanceTypeConfig = None
-        self.DefaultImage = None
-        self.CreateTime = None
-        self.DefaultBandwidth = None
-        self.TagSet = None
-        self.CloseIpDirect = None
-        self.SecurityGroupIds = None
-        self.DefaultBandwidthIn = None
-        self.UserData = None
-        self.SystemDisk = None
-        self.DataDisks = None
-        self.DisableWanIp = None
+        self._ModuleId = None
+        self._ModuleName = None
+        self._ModuleState = None
+        self._DefaultSystemDiskSize = None
+        self._DefaultDataDiskSize = None
+        self._InstanceTypeConfig = None
+        self._DefaultImage = None
+        self._CreateTime = None
+        self._DefaultBandwidth = None
+        self._TagSet = None
+        self._CloseIpDirect = None
+        self._SecurityGroupIds = None
+        self._DefaultBandwidthIn = None
+        self._UserData = None
+        self._SystemDisk = None
+        self._DataDisks = None
+        self._DisableWanIp = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def ModuleName(self):
+        return self._ModuleName
+
+    @ModuleName.setter
+    def ModuleName(self, ModuleName):
+        self._ModuleName = ModuleName
+
+    @property
+    def ModuleState(self):
+        return self._ModuleState
+
+    @ModuleState.setter
+    def ModuleState(self, ModuleState):
+        self._ModuleState = ModuleState
+
+    @property
+    def DefaultSystemDiskSize(self):
+        return self._DefaultSystemDiskSize
+
+    @DefaultSystemDiskSize.setter
+    def DefaultSystemDiskSize(self, DefaultSystemDiskSize):
+        self._DefaultSystemDiskSize = DefaultSystemDiskSize
+
+    @property
+    def DefaultDataDiskSize(self):
+        return self._DefaultDataDiskSize
+
+    @DefaultDataDiskSize.setter
+    def DefaultDataDiskSize(self, DefaultDataDiskSize):
+        self._DefaultDataDiskSize = DefaultDataDiskSize
+
+    @property
+    def InstanceTypeConfig(self):
+        return self._InstanceTypeConfig
+
+    @InstanceTypeConfig.setter
+    def InstanceTypeConfig(self, InstanceTypeConfig):
+        self._InstanceTypeConfig = InstanceTypeConfig
+
+    @property
+    def DefaultImage(self):
+        return self._DefaultImage
+
+    @DefaultImage.setter
+    def DefaultImage(self, DefaultImage):
+        self._DefaultImage = DefaultImage
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DefaultBandwidth(self):
+        return self._DefaultBandwidth
+
+    @DefaultBandwidth.setter
+    def DefaultBandwidth(self, DefaultBandwidth):
+        self._DefaultBandwidth = DefaultBandwidth
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def CloseIpDirect(self):
+        return self._CloseIpDirect
+
+    @CloseIpDirect.setter
+    def CloseIpDirect(self, CloseIpDirect):
+        self._CloseIpDirect = CloseIpDirect
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def DefaultBandwidthIn(self):
+        return self._DefaultBandwidthIn
+
+    @DefaultBandwidthIn.setter
+    def DefaultBandwidthIn(self, DefaultBandwidthIn):
+        self._DefaultBandwidthIn = DefaultBandwidthIn
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def DisableWanIp(self):
+        return self._DisableWanIp
+
+    @DisableWanIp.setter
+    def DisableWanIp(self, DisableWanIp):
+        self._DisableWanIp = DisableWanIp
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.ModuleName = params.get("ModuleName")
-        self.ModuleState = params.get("ModuleState")
-        self.DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
-        self.DefaultDataDiskSize = params.get("DefaultDataDiskSize")
+        self._ModuleId = params.get("ModuleId")
+        self._ModuleName = params.get("ModuleName")
+        self._ModuleState = params.get("ModuleState")
+        self._DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
+        self._DefaultDataDiskSize = params.get("DefaultDataDiskSize")
         if params.get("InstanceTypeConfig") is not None:
-            self.InstanceTypeConfig = InstanceTypeConfig()
-            self.InstanceTypeConfig._deserialize(params.get("InstanceTypeConfig"))
+            self._InstanceTypeConfig = InstanceTypeConfig()
+            self._InstanceTypeConfig._deserialize(params.get("InstanceTypeConfig"))
         if params.get("DefaultImage") is not None:
-            self.DefaultImage = Image()
-            self.DefaultImage._deserialize(params.get("DefaultImage"))
-        self.CreateTime = params.get("CreateTime")
-        self.DefaultBandwidth = params.get("DefaultBandwidth")
+            self._DefaultImage = Image()
+            self._DefaultImage._deserialize(params.get("DefaultImage"))
+        self._CreateTime = params.get("CreateTime")
+        self._DefaultBandwidth = params.get("DefaultBandwidth")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
-        self.CloseIpDirect = params.get("CloseIpDirect")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        self.DefaultBandwidthIn = params.get("DefaultBandwidthIn")
-        self.UserData = params.get("UserData")
+                self._TagSet.append(obj)
+        self._CloseIpDirect = params.get("CloseIpDirect")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DefaultBandwidthIn = params.get("DefaultBandwidthIn")
+        self._UserData = params.get("UserData")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("DataDisks") is not None:
-            self.DataDisks = []
+            self._DataDisks = []
             for item in params.get("DataDisks"):
                 obj = DataDisk()
                 obj._deserialize(item)
-                self.DataDisks.append(obj)
-        self.DisableWanIp = params.get("DisableWanIp")
+                self._DataDisks.append(obj)
+        self._DisableWanIp = params.get("DisableWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8937,39 +16025,80 @@ class ModuleCounter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ISPCounterSet: 运营商统计信息列表
+        :param _ISPCounterSet: 运营商统计信息列表
         :type ISPCounterSet: list of ISPCounter
-        :param ProvinceNum: 省份数量
+        :param _ProvinceNum: 省份数量
         :type ProvinceNum: int
-        :param CityNum: 城市数量
+        :param _CityNum: 城市数量
         :type CityNum: int
-        :param NodeNum: 节点数量
+        :param _NodeNum: 节点数量
         :type NodeNum: int
-        :param InstanceNum: 实例数量
+        :param _InstanceNum: 实例数量
         :type InstanceNum: int
         """
-        self.ISPCounterSet = None
-        self.ProvinceNum = None
-        self.CityNum = None
-        self.NodeNum = None
-        self.InstanceNum = None
+        self._ISPCounterSet = None
+        self._ProvinceNum = None
+        self._CityNum = None
+        self._NodeNum = None
+        self._InstanceNum = None
+
+    @property
+    def ISPCounterSet(self):
+        return self._ISPCounterSet
+
+    @ISPCounterSet.setter
+    def ISPCounterSet(self, ISPCounterSet):
+        self._ISPCounterSet = ISPCounterSet
+
+    @property
+    def ProvinceNum(self):
+        return self._ProvinceNum
+
+    @ProvinceNum.setter
+    def ProvinceNum(self, ProvinceNum):
+        self._ProvinceNum = ProvinceNum
+
+    @property
+    def CityNum(self):
+        return self._CityNum
+
+    @CityNum.setter
+    def CityNum(self, CityNum):
+        self._CityNum = CityNum
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def InstanceNum(self):
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
 
 
     def _deserialize(self, params):
         if params.get("ISPCounterSet") is not None:
-            self.ISPCounterSet = []
+            self._ISPCounterSet = []
             for item in params.get("ISPCounterSet"):
                 obj = ISPCounter()
                 obj._deserialize(item)
-                self.ISPCounterSet.append(obj)
-        self.ProvinceNum = params.get("ProvinceNum")
-        self.CityNum = params.get("CityNum")
-        self.NodeNum = params.get("NodeNum")
-        self.InstanceNum = params.get("InstanceNum")
+                self._ISPCounterSet.append(obj)
+        self._ProvinceNum = params.get("ProvinceNum")
+        self._CityNum = params.get("CityNum")
+        self._NodeNum = params.get("NodeNum")
+        self._InstanceNum = params.get("InstanceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8982,26 +16111,43 @@ class ModuleItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeInstanceNum: 节点实例统计信息
+        :param _NodeInstanceNum: 节点实例统计信息
         :type NodeInstanceNum: :class:`tencentcloud.ecm.v20190719.models.NodeInstanceNum`
-        :param Module: 模块信息
+        :param _Module: 模块信息
         :type Module: :class:`tencentcloud.ecm.v20190719.models.Module`
         """
-        self.NodeInstanceNum = None
-        self.Module = None
+        self._NodeInstanceNum = None
+        self._Module = None
+
+    @property
+    def NodeInstanceNum(self):
+        return self._NodeInstanceNum
+
+    @NodeInstanceNum.setter
+    def NodeInstanceNum(self, NodeInstanceNum):
+        self._NodeInstanceNum = NodeInstanceNum
+
+    @property
+    def Module(self):
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
 
 
     def _deserialize(self, params):
         if params.get("NodeInstanceNum") is not None:
-            self.NodeInstanceNum = NodeInstanceNum()
-            self.NodeInstanceNum._deserialize(params.get("NodeInstanceNum"))
+            self._NodeInstanceNum = NodeInstanceNum()
+            self._NodeInstanceNum._deserialize(params.get("NodeInstanceNum"))
         if params.get("Module") is not None:
-            self.Module = Module()
-            self.Module._deserialize(params.get("Module"))
+            self._Module = Module()
+            self._Module._deserialize(params.get("Module"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9014,68 +16160,173 @@ class MonthNetwork(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneInfo: 节点zone信息
+        :param _ZoneInfo: 节点zone信息
         :type ZoneInfo: :class:`tencentcloud.ecm.v20190719.models.ZoneInfo`
-        :param Month: 带宽月份 示例"202103"
+        :param _Month: 带宽月份 示例"202103"
         :type Month: str
-        :param BandwidthPkgId: 带宽包id 格式如"bwp-xxxxxxxx"
+        :param _BandwidthPkgId: 带宽包id 格式如"bwp-xxxxxxxx"
         :type BandwidthPkgId: str
-        :param Isp: 运营商简称 取值范围"CUCC;CTCC;CMCC"
+        :param _Isp: 运营商简称 取值范围"CUCC;CTCC;CMCC"
         :type Isp: str
-        :param TrafficMaxIn: 入网带宽包峰值,取值范围0.0-xxx.xxx
+        :param _TrafficMaxIn: 入网带宽包峰值,取值范围0.0-xxx.xxx
         :type TrafficMaxIn: float
-        :param TrafficMaxOut: 出网带宽包峰值,取值范围0.0-xxx.xxx
+        :param _TrafficMaxOut: 出网带宽包峰值,取值范围0.0-xxx.xxx
         :type TrafficMaxOut: float
-        :param FeeTraffic: 计费带宽,取值范围0.0-xxx.xxx
+        :param _FeeTraffic: 计费带宽,取值范围0.0-xxx.xxx
         :type FeeTraffic: float
-        :param StartTime: 月计费带宽起始时间 格式"yyyy-mm-dd HH:mm:ss"
+        :param _StartTime: 月计费带宽起始时间 格式"yyyy-mm-dd HH:mm:ss"
         :type StartTime: str
-        :param EndTime: 月计费带宽结束时间 格式"yyyy-mm-dd HH:mm:ss"
+        :param _EndTime: 月计费带宽结束时间 格式"yyyy-mm-dd HH:mm:ss"
         :type EndTime: str
-        :param EffectiveDays: 月计费带宽实际有效天数 整形必须大于等于0
+        :param _EffectiveDays: 月计费带宽实际有效天数 整形必须大于等于0
         :type EffectiveDays: int
-        :param MonthDays: 指定月份的实际天数 实例 30
+        :param _MonthDays: 指定月份的实际天数 实例 30
         :type MonthDays: int
-        :param EffectiveDaysRate: 有效天占比 保留小数点后四位0.2134
+        :param _EffectiveDaysRate: 有效天占比 保留小数点后四位0.2134
         :type EffectiveDaysRate: float
-        :param BandwidthPkgType: 计费带宽包类型 实例"Address","LoadBalance","AddressIpv6"
+        :param _BandwidthPkgType: 计费带宽包类型 实例"Address","LoadBalance","AddressIpv6"
         :type BandwidthPkgType: str
         """
-        self.ZoneInfo = None
-        self.Month = None
-        self.BandwidthPkgId = None
-        self.Isp = None
-        self.TrafficMaxIn = None
-        self.TrafficMaxOut = None
-        self.FeeTraffic = None
-        self.StartTime = None
-        self.EndTime = None
-        self.EffectiveDays = None
-        self.MonthDays = None
-        self.EffectiveDaysRate = None
-        self.BandwidthPkgType = None
+        self._ZoneInfo = None
+        self._Month = None
+        self._BandwidthPkgId = None
+        self._Isp = None
+        self._TrafficMaxIn = None
+        self._TrafficMaxOut = None
+        self._FeeTraffic = None
+        self._StartTime = None
+        self._EndTime = None
+        self._EffectiveDays = None
+        self._MonthDays = None
+        self._EffectiveDaysRate = None
+        self._BandwidthPkgType = None
+
+    @property
+    def ZoneInfo(self):
+        return self._ZoneInfo
+
+    @ZoneInfo.setter
+    def ZoneInfo(self, ZoneInfo):
+        self._ZoneInfo = ZoneInfo
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def BandwidthPkgId(self):
+        return self._BandwidthPkgId
+
+    @BandwidthPkgId.setter
+    def BandwidthPkgId(self, BandwidthPkgId):
+        self._BandwidthPkgId = BandwidthPkgId
+
+    @property
+    def Isp(self):
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def TrafficMaxIn(self):
+        return self._TrafficMaxIn
+
+    @TrafficMaxIn.setter
+    def TrafficMaxIn(self, TrafficMaxIn):
+        self._TrafficMaxIn = TrafficMaxIn
+
+    @property
+    def TrafficMaxOut(self):
+        return self._TrafficMaxOut
+
+    @TrafficMaxOut.setter
+    def TrafficMaxOut(self, TrafficMaxOut):
+        self._TrafficMaxOut = TrafficMaxOut
+
+    @property
+    def FeeTraffic(self):
+        return self._FeeTraffic
+
+    @FeeTraffic.setter
+    def FeeTraffic(self, FeeTraffic):
+        self._FeeTraffic = FeeTraffic
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EffectiveDays(self):
+        return self._EffectiveDays
+
+    @EffectiveDays.setter
+    def EffectiveDays(self, EffectiveDays):
+        self._EffectiveDays = EffectiveDays
+
+    @property
+    def MonthDays(self):
+        return self._MonthDays
+
+    @MonthDays.setter
+    def MonthDays(self, MonthDays):
+        self._MonthDays = MonthDays
+
+    @property
+    def EffectiveDaysRate(self):
+        return self._EffectiveDaysRate
+
+    @EffectiveDaysRate.setter
+    def EffectiveDaysRate(self, EffectiveDaysRate):
+        self._EffectiveDaysRate = EffectiveDaysRate
+
+    @property
+    def BandwidthPkgType(self):
+        return self._BandwidthPkgType
+
+    @BandwidthPkgType.setter
+    def BandwidthPkgType(self, BandwidthPkgType):
+        self._BandwidthPkgType = BandwidthPkgType
 
 
     def _deserialize(self, params):
         if params.get("ZoneInfo") is not None:
-            self.ZoneInfo = ZoneInfo()
-            self.ZoneInfo._deserialize(params.get("ZoneInfo"))
-        self.Month = params.get("Month")
-        self.BandwidthPkgId = params.get("BandwidthPkgId")
-        self.Isp = params.get("Isp")
-        self.TrafficMaxIn = params.get("TrafficMaxIn")
-        self.TrafficMaxOut = params.get("TrafficMaxOut")
-        self.FeeTraffic = params.get("FeeTraffic")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.EffectiveDays = params.get("EffectiveDays")
-        self.MonthDays = params.get("MonthDays")
-        self.EffectiveDaysRate = params.get("EffectiveDaysRate")
-        self.BandwidthPkgType = params.get("BandwidthPkgType")
+            self._ZoneInfo = ZoneInfo()
+            self._ZoneInfo._deserialize(params.get("ZoneInfo"))
+        self._Month = params.get("Month")
+        self._BandwidthPkgId = params.get("BandwidthPkgId")
+        self._Isp = params.get("Isp")
+        self._TrafficMaxIn = params.get("TrafficMaxIn")
+        self._TrafficMaxOut = params.get("TrafficMaxOut")
+        self._FeeTraffic = params.get("FeeTraffic")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._EffectiveDays = params.get("EffectiveDays")
+        self._MonthDays = params.get("MonthDays")
+        self._EffectiveDaysRate = params.get("EffectiveDaysRate")
+        self._BandwidthPkgType = params.get("BandwidthPkgType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9088,115 +16339,260 @@ class NetworkInterface(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-f1xjkw1b。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-f1xjkw1b。
         :type NetworkInterfaceId: str
-        :param NetworkInterfaceName: 弹性网卡名称。
+        :param _NetworkInterfaceName: 弹性网卡名称。
         :type NetworkInterfaceName: str
-        :param NetworkInterfaceDescription: 弹性网卡描述。
+        :param _NetworkInterfaceDescription: 弹性网卡描述。
         :type NetworkInterfaceDescription: str
-        :param SubnetId: 子网实例ID。
+        :param _SubnetId: 子网实例ID。
         :type SubnetId: str
-        :param VpcId: VPC实例ID。
+        :param _VpcId: VPC实例ID。
         :type VpcId: str
-        :param GroupSet: 绑定的安全组。
+        :param _GroupSet: 绑定的安全组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupSet: list of str
-        :param Primary: 是否是主网卡。
+        :param _Primary: 是否是主网卡。
         :type Primary: bool
-        :param MacAddress: MAC地址。
+        :param _MacAddress: MAC地址。
         :type MacAddress: str
-        :param State: 弹性网卡状态：
+        :param _State: 弹性网卡状态：
 PENDING：创建中
 AVAILABLE：可用的
 ATTACHING：绑定中
 DETACHING：解绑中
 DELETING：删除中
         :type State: str
-        :param PrivateIpAddressSet: 内网IP信息。
+        :param _PrivateIpAddressSet: 内网IP信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
-        :param Attachment: 绑定的云服务器对象。
+        :param _Attachment: 绑定的云服务器对象。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Attachment: :class:`tencentcloud.ecm.v20190719.models.NetworkInterfaceAttachment`
-        :param Zone: 可用区。
+        :param _Zone: 可用区。
         :type Zone: str
-        :param CreatedTime: 创建时间。
+        :param _CreatedTime: 创建时间。
         :type CreatedTime: str
-        :param Ipv6AddressSet: IPv6地址列表。
+        :param _Ipv6AddressSet: IPv6地址列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6AddressSet: list of Ipv6Address
-        :param TagSet: 标签键值对。
+        :param _TagSet: 标签键值对。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
-        :param EniType: 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
+        :param _EniType: 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
         :type EniType: int
-        :param EcmRegion: EcmRegion ecm区域
+        :param _EcmRegion: EcmRegion ecm区域
         :type EcmRegion: str
-        :param Business: 网卡绑定的子机类型：cvm，eks。
+        :param _Business: 网卡绑定的子机类型：cvm，eks。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Business: str
         """
-        self.NetworkInterfaceId = None
-        self.NetworkInterfaceName = None
-        self.NetworkInterfaceDescription = None
-        self.SubnetId = None
-        self.VpcId = None
-        self.GroupSet = None
-        self.Primary = None
-        self.MacAddress = None
-        self.State = None
-        self.PrivateIpAddressSet = None
-        self.Attachment = None
-        self.Zone = None
-        self.CreatedTime = None
-        self.Ipv6AddressSet = None
-        self.TagSet = None
-        self.EniType = None
-        self.EcmRegion = None
-        self.Business = None
+        self._NetworkInterfaceId = None
+        self._NetworkInterfaceName = None
+        self._NetworkInterfaceDescription = None
+        self._SubnetId = None
+        self._VpcId = None
+        self._GroupSet = None
+        self._Primary = None
+        self._MacAddress = None
+        self._State = None
+        self._PrivateIpAddressSet = None
+        self._Attachment = None
+        self._Zone = None
+        self._CreatedTime = None
+        self._Ipv6AddressSet = None
+        self._TagSet = None
+        self._EniType = None
+        self._EcmRegion = None
+        self._Business = None
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def NetworkInterfaceName(self):
+        return self._NetworkInterfaceName
+
+    @NetworkInterfaceName.setter
+    def NetworkInterfaceName(self, NetworkInterfaceName):
+        self._NetworkInterfaceName = NetworkInterfaceName
+
+    @property
+    def NetworkInterfaceDescription(self):
+        return self._NetworkInterfaceDescription
+
+    @NetworkInterfaceDescription.setter
+    def NetworkInterfaceDescription(self, NetworkInterfaceDescription):
+        self._NetworkInterfaceDescription = NetworkInterfaceDescription
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def GroupSet(self):
+        return self._GroupSet
+
+    @GroupSet.setter
+    def GroupSet(self, GroupSet):
+        self._GroupSet = GroupSet
+
+    @property
+    def Primary(self):
+        return self._Primary
+
+    @Primary.setter
+    def Primary(self, Primary):
+        self._Primary = Primary
+
+    @property
+    def MacAddress(self):
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def PrivateIpAddressSet(self):
+        return self._PrivateIpAddressSet
+
+    @PrivateIpAddressSet.setter
+    def PrivateIpAddressSet(self, PrivateIpAddressSet):
+        self._PrivateIpAddressSet = PrivateIpAddressSet
+
+    @property
+    def Attachment(self):
+        return self._Attachment
+
+    @Attachment.setter
+    def Attachment(self, Attachment):
+        self._Attachment = Attachment
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Ipv6AddressSet(self):
+        return self._Ipv6AddressSet
+
+    @Ipv6AddressSet.setter
+    def Ipv6AddressSet(self, Ipv6AddressSet):
+        self._Ipv6AddressSet = Ipv6AddressSet
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def EniType(self):
+        return self._EniType
+
+    @EniType.setter
+    def EniType(self, EniType):
+        self._EniType = EniType
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
 
 
     def _deserialize(self, params):
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
-        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
-        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
-        self.SubnetId = params.get("SubnetId")
-        self.VpcId = params.get("VpcId")
-        self.GroupSet = params.get("GroupSet")
-        self.Primary = params.get("Primary")
-        self.MacAddress = params.get("MacAddress")
-        self.State = params.get("State")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self._NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
+        self._SubnetId = params.get("SubnetId")
+        self._VpcId = params.get("VpcId")
+        self._GroupSet = params.get("GroupSet")
+        self._Primary = params.get("Primary")
+        self._MacAddress = params.get("MacAddress")
+        self._State = params.get("State")
         if params.get("PrivateIpAddressSet") is not None:
-            self.PrivateIpAddressSet = []
+            self._PrivateIpAddressSet = []
             for item in params.get("PrivateIpAddressSet"):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
-                self.PrivateIpAddressSet.append(obj)
+                self._PrivateIpAddressSet.append(obj)
         if params.get("Attachment") is not None:
-            self.Attachment = NetworkInterfaceAttachment()
-            self.Attachment._deserialize(params.get("Attachment"))
-        self.Zone = params.get("Zone")
-        self.CreatedTime = params.get("CreatedTime")
+            self._Attachment = NetworkInterfaceAttachment()
+            self._Attachment._deserialize(params.get("Attachment"))
+        self._Zone = params.get("Zone")
+        self._CreatedTime = params.get("CreatedTime")
         if params.get("Ipv6AddressSet") is not None:
-            self.Ipv6AddressSet = []
+            self._Ipv6AddressSet = []
             for item in params.get("Ipv6AddressSet"):
                 obj = Ipv6Address()
                 obj._deserialize(item)
-                self.Ipv6AddressSet.append(obj)
+                self._Ipv6AddressSet.append(obj)
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
-        self.EniType = params.get("EniType")
-        self.EcmRegion = params.get("EcmRegion")
-        self.Business = params.get("Business")
+                self._TagSet.append(obj)
+        self._EniType = params.get("EniType")
+        self._EcmRegion = params.get("EcmRegion")
+        self._Business = params.get("Business")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9209,30 +16605,63 @@ class NetworkInterfaceAttachment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 云主机实例ID。
+        :param _InstanceId: 云主机实例ID。
         :type InstanceId: str
-        :param DeviceIndex: 网卡在云主机实例内的序号。
+        :param _DeviceIndex: 网卡在云主机实例内的序号。
         :type DeviceIndex: int
-        :param InstanceAccountId: 云主机所有者账户信息。
+        :param _InstanceAccountId: 云主机所有者账户信息。
         :type InstanceAccountId: str
-        :param AttachTime: 绑定时间。
+        :param _AttachTime: 绑定时间。
         :type AttachTime: str
         """
-        self.InstanceId = None
-        self.DeviceIndex = None
-        self.InstanceAccountId = None
-        self.AttachTime = None
+        self._InstanceId = None
+        self._DeviceIndex = None
+        self._InstanceAccountId = None
+        self._AttachTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceIndex(self):
+        return self._DeviceIndex
+
+    @DeviceIndex.setter
+    def DeviceIndex(self, DeviceIndex):
+        self._DeviceIndex = DeviceIndex
+
+    @property
+    def InstanceAccountId(self):
+        return self._InstanceAccountId
+
+    @InstanceAccountId.setter
+    def InstanceAccountId(self, InstanceAccountId):
+        self._InstanceAccountId = InstanceAccountId
+
+    @property
+    def AttachTime(self):
+        return self._AttachTime
+
+    @AttachTime.setter
+    def AttachTime(self, AttachTime):
+        self._AttachTime = AttachTime
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.DeviceIndex = params.get("DeviceIndex")
-        self.InstanceAccountId = params.get("InstanceAccountId")
-        self.AttachTime = params.get("AttachTime")
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceIndex = params.get("DeviceIndex")
+        self._InstanceAccountId = params.get("InstanceAccountId")
+        self._AttachTime = params.get("AttachTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9245,74 +16674,195 @@ class NetworkStorageRange(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaxBandwidth: 网络带宽上限
+        :param _MaxBandwidth: 网络带宽上限
         :type MaxBandwidth: int
-        :param MaxSystemDiskSize: 数据盘上限
+        :param _MaxSystemDiskSize: 数据盘上限
         :type MaxSystemDiskSize: int
-        :param MinBandwidth: 网络带宽下限
+        :param _MinBandwidth: 网络带宽下限
         :type MinBandwidth: int
-        :param MinSystemDiskSize: 数据盘下限
+        :param _MinSystemDiskSize: 数据盘下限
         :type MinSystemDiskSize: int
-        :param MaxDataDiskSize: 最大数据盘大小
+        :param _MaxDataDiskSize: 最大数据盘大小
         :type MaxDataDiskSize: int
-        :param MinDataDiskSize: 最小数据盘大小
+        :param _MinDataDiskSize: 最小数据盘大小
         :type MinDataDiskSize: int
-        :param SuggestBandwidth: 建议带宽
+        :param _SuggestBandwidth: 建议带宽
         :type SuggestBandwidth: int
-        :param SuggestDataDiskSize: 建议硬盘大小
+        :param _SuggestDataDiskSize: 建议硬盘大小
         :type SuggestDataDiskSize: int
-        :param SuggestSystemDiskSize: 建议系统盘大小
+        :param _SuggestSystemDiskSize: 建议系统盘大小
         :type SuggestSystemDiskSize: int
-        :param MaxVcpu: Cpu核数峰值
+        :param _MaxVcpu: Cpu核数峰值
         :type MaxVcpu: int
-        :param MinVcpu: Cpu核最小值
+        :param _MinVcpu: Cpu核最小值
         :type MinVcpu: int
-        :param MaxVcpuPerReq: 单次请求最大cpu核数
+        :param _MaxVcpuPerReq: 单次请求最大cpu核数
         :type MaxVcpuPerReq: int
-        :param PerBandwidth: 带宽步长
+        :param _PerBandwidth: 带宽步长
         :type PerBandwidth: int
-        :param PerDataDisk: 数据盘步长
+        :param _PerDataDisk: 数据盘步长
         :type PerDataDisk: int
-        :param MaxModuleNum: 总模块数量
+        :param _MaxModuleNum: 总模块数量
         :type MaxModuleNum: int
         """
-        self.MaxBandwidth = None
-        self.MaxSystemDiskSize = None
-        self.MinBandwidth = None
-        self.MinSystemDiskSize = None
-        self.MaxDataDiskSize = None
-        self.MinDataDiskSize = None
-        self.SuggestBandwidth = None
-        self.SuggestDataDiskSize = None
-        self.SuggestSystemDiskSize = None
-        self.MaxVcpu = None
-        self.MinVcpu = None
-        self.MaxVcpuPerReq = None
-        self.PerBandwidth = None
-        self.PerDataDisk = None
-        self.MaxModuleNum = None
+        self._MaxBandwidth = None
+        self._MaxSystemDiskSize = None
+        self._MinBandwidth = None
+        self._MinSystemDiskSize = None
+        self._MaxDataDiskSize = None
+        self._MinDataDiskSize = None
+        self._SuggestBandwidth = None
+        self._SuggestDataDiskSize = None
+        self._SuggestSystemDiskSize = None
+        self._MaxVcpu = None
+        self._MinVcpu = None
+        self._MaxVcpuPerReq = None
+        self._PerBandwidth = None
+        self._PerDataDisk = None
+        self._MaxModuleNum = None
+
+    @property
+    def MaxBandwidth(self):
+        return self._MaxBandwidth
+
+    @MaxBandwidth.setter
+    def MaxBandwidth(self, MaxBandwidth):
+        self._MaxBandwidth = MaxBandwidth
+
+    @property
+    def MaxSystemDiskSize(self):
+        return self._MaxSystemDiskSize
+
+    @MaxSystemDiskSize.setter
+    def MaxSystemDiskSize(self, MaxSystemDiskSize):
+        self._MaxSystemDiskSize = MaxSystemDiskSize
+
+    @property
+    def MinBandwidth(self):
+        return self._MinBandwidth
+
+    @MinBandwidth.setter
+    def MinBandwidth(self, MinBandwidth):
+        self._MinBandwidth = MinBandwidth
+
+    @property
+    def MinSystemDiskSize(self):
+        return self._MinSystemDiskSize
+
+    @MinSystemDiskSize.setter
+    def MinSystemDiskSize(self, MinSystemDiskSize):
+        self._MinSystemDiskSize = MinSystemDiskSize
+
+    @property
+    def MaxDataDiskSize(self):
+        return self._MaxDataDiskSize
+
+    @MaxDataDiskSize.setter
+    def MaxDataDiskSize(self, MaxDataDiskSize):
+        self._MaxDataDiskSize = MaxDataDiskSize
+
+    @property
+    def MinDataDiskSize(self):
+        return self._MinDataDiskSize
+
+    @MinDataDiskSize.setter
+    def MinDataDiskSize(self, MinDataDiskSize):
+        self._MinDataDiskSize = MinDataDiskSize
+
+    @property
+    def SuggestBandwidth(self):
+        return self._SuggestBandwidth
+
+    @SuggestBandwidth.setter
+    def SuggestBandwidth(self, SuggestBandwidth):
+        self._SuggestBandwidth = SuggestBandwidth
+
+    @property
+    def SuggestDataDiskSize(self):
+        return self._SuggestDataDiskSize
+
+    @SuggestDataDiskSize.setter
+    def SuggestDataDiskSize(self, SuggestDataDiskSize):
+        self._SuggestDataDiskSize = SuggestDataDiskSize
+
+    @property
+    def SuggestSystemDiskSize(self):
+        return self._SuggestSystemDiskSize
+
+    @SuggestSystemDiskSize.setter
+    def SuggestSystemDiskSize(self, SuggestSystemDiskSize):
+        self._SuggestSystemDiskSize = SuggestSystemDiskSize
+
+    @property
+    def MaxVcpu(self):
+        return self._MaxVcpu
+
+    @MaxVcpu.setter
+    def MaxVcpu(self, MaxVcpu):
+        self._MaxVcpu = MaxVcpu
+
+    @property
+    def MinVcpu(self):
+        return self._MinVcpu
+
+    @MinVcpu.setter
+    def MinVcpu(self, MinVcpu):
+        self._MinVcpu = MinVcpu
+
+    @property
+    def MaxVcpuPerReq(self):
+        return self._MaxVcpuPerReq
+
+    @MaxVcpuPerReq.setter
+    def MaxVcpuPerReq(self, MaxVcpuPerReq):
+        self._MaxVcpuPerReq = MaxVcpuPerReq
+
+    @property
+    def PerBandwidth(self):
+        return self._PerBandwidth
+
+    @PerBandwidth.setter
+    def PerBandwidth(self, PerBandwidth):
+        self._PerBandwidth = PerBandwidth
+
+    @property
+    def PerDataDisk(self):
+        return self._PerDataDisk
+
+    @PerDataDisk.setter
+    def PerDataDisk(self, PerDataDisk):
+        self._PerDataDisk = PerDataDisk
+
+    @property
+    def MaxModuleNum(self):
+        return self._MaxModuleNum
+
+    @MaxModuleNum.setter
+    def MaxModuleNum(self, MaxModuleNum):
+        self._MaxModuleNum = MaxModuleNum
 
 
     def _deserialize(self, params):
-        self.MaxBandwidth = params.get("MaxBandwidth")
-        self.MaxSystemDiskSize = params.get("MaxSystemDiskSize")
-        self.MinBandwidth = params.get("MinBandwidth")
-        self.MinSystemDiskSize = params.get("MinSystemDiskSize")
-        self.MaxDataDiskSize = params.get("MaxDataDiskSize")
-        self.MinDataDiskSize = params.get("MinDataDiskSize")
-        self.SuggestBandwidth = params.get("SuggestBandwidth")
-        self.SuggestDataDiskSize = params.get("SuggestDataDiskSize")
-        self.SuggestSystemDiskSize = params.get("SuggestSystemDiskSize")
-        self.MaxVcpu = params.get("MaxVcpu")
-        self.MinVcpu = params.get("MinVcpu")
-        self.MaxVcpuPerReq = params.get("MaxVcpuPerReq")
-        self.PerBandwidth = params.get("PerBandwidth")
-        self.PerDataDisk = params.get("PerDataDisk")
-        self.MaxModuleNum = params.get("MaxModuleNum")
+        self._MaxBandwidth = params.get("MaxBandwidth")
+        self._MaxSystemDiskSize = params.get("MaxSystemDiskSize")
+        self._MinBandwidth = params.get("MinBandwidth")
+        self._MinSystemDiskSize = params.get("MinSystemDiskSize")
+        self._MaxDataDiskSize = params.get("MaxDataDiskSize")
+        self._MinDataDiskSize = params.get("MinDataDiskSize")
+        self._SuggestBandwidth = params.get("SuggestBandwidth")
+        self._SuggestDataDiskSize = params.get("SuggestDataDiskSize")
+        self._SuggestSystemDiskSize = params.get("SuggestSystemDiskSize")
+        self._MaxVcpu = params.get("MaxVcpu")
+        self._MinVcpu = params.get("MinVcpu")
+        self._MaxVcpuPerReq = params.get("MaxVcpuPerReq")
+        self._PerBandwidth = params.get("PerBandwidth")
+        self._PerDataDisk = params.get("PerDataDisk")
+        self._MaxModuleNum = params.get("MaxModuleNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9325,67 +16875,140 @@ class Node(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneInfo: zone信息。
+        :param _ZoneInfo: zone信息。
         :type ZoneInfo: :class:`tencentcloud.ecm.v20190719.models.ZoneInfo`
-        :param Country: 国家信息。
+        :param _Country: 国家信息。
         :type Country: :class:`tencentcloud.ecm.v20190719.models.Country`
-        :param Area: 区域信息。
+        :param _Area: 区域信息。
         :type Area: :class:`tencentcloud.ecm.v20190719.models.Area`
-        :param Province: 省份信息。
+        :param _Province: 省份信息。
         :type Province: :class:`tencentcloud.ecm.v20190719.models.Province`
-        :param City: 城市信息。
+        :param _City: 城市信息。
         :type City: :class:`tencentcloud.ecm.v20190719.models.City`
-        :param RegionInfo: Region信息。
+        :param _RegionInfo: Region信息。
         :type RegionInfo: :class:`tencentcloud.ecm.v20190719.models.RegionInfo`
-        :param ISPSet: 运营商列表。
+        :param _ISPSet: 运营商列表。
         :type ISPSet: list of ISP
-        :param ISPNum: 运营商数量。
+        :param _ISPNum: 运营商数量。
         :type ISPNum: int
-        :param LBSupported: 节点是否支持LB
+        :param _LBSupported: 节点是否支持LB
         :type LBSupported: bool
         """
-        self.ZoneInfo = None
-        self.Country = None
-        self.Area = None
-        self.Province = None
-        self.City = None
-        self.RegionInfo = None
-        self.ISPSet = None
-        self.ISPNum = None
-        self.LBSupported = None
+        self._ZoneInfo = None
+        self._Country = None
+        self._Area = None
+        self._Province = None
+        self._City = None
+        self._RegionInfo = None
+        self._ISPSet = None
+        self._ISPNum = None
+        self._LBSupported = None
+
+    @property
+    def ZoneInfo(self):
+        return self._ZoneInfo
+
+    @ZoneInfo.setter
+    def ZoneInfo(self, ZoneInfo):
+        self._ZoneInfo = ZoneInfo
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def RegionInfo(self):
+        return self._RegionInfo
+
+    @RegionInfo.setter
+    def RegionInfo(self, RegionInfo):
+        self._RegionInfo = RegionInfo
+
+    @property
+    def ISPSet(self):
+        return self._ISPSet
+
+    @ISPSet.setter
+    def ISPSet(self, ISPSet):
+        self._ISPSet = ISPSet
+
+    @property
+    def ISPNum(self):
+        return self._ISPNum
+
+    @ISPNum.setter
+    def ISPNum(self, ISPNum):
+        self._ISPNum = ISPNum
+
+    @property
+    def LBSupported(self):
+        return self._LBSupported
+
+    @LBSupported.setter
+    def LBSupported(self, LBSupported):
+        self._LBSupported = LBSupported
 
 
     def _deserialize(self, params):
         if params.get("ZoneInfo") is not None:
-            self.ZoneInfo = ZoneInfo()
-            self.ZoneInfo._deserialize(params.get("ZoneInfo"))
+            self._ZoneInfo = ZoneInfo()
+            self._ZoneInfo._deserialize(params.get("ZoneInfo"))
         if params.get("Country") is not None:
-            self.Country = Country()
-            self.Country._deserialize(params.get("Country"))
+            self._Country = Country()
+            self._Country._deserialize(params.get("Country"))
         if params.get("Area") is not None:
-            self.Area = Area()
-            self.Area._deserialize(params.get("Area"))
+            self._Area = Area()
+            self._Area._deserialize(params.get("Area"))
         if params.get("Province") is not None:
-            self.Province = Province()
-            self.Province._deserialize(params.get("Province"))
+            self._Province = Province()
+            self._Province._deserialize(params.get("Province"))
         if params.get("City") is not None:
-            self.City = City()
-            self.City._deserialize(params.get("City"))
+            self._City = City()
+            self._City._deserialize(params.get("City"))
         if params.get("RegionInfo") is not None:
-            self.RegionInfo = RegionInfo()
-            self.RegionInfo._deserialize(params.get("RegionInfo"))
+            self._RegionInfo = RegionInfo()
+            self._RegionInfo._deserialize(params.get("RegionInfo"))
         if params.get("ISPSet") is not None:
-            self.ISPSet = []
+            self._ISPSet = []
             for item in params.get("ISPSet"):
                 obj = ISP()
                 obj._deserialize(item)
-                self.ISPSet.append(obj)
-        self.ISPNum = params.get("ISPNum")
-        self.LBSupported = params.get("LBSupported")
+                self._ISPSet.append(obj)
+        self._ISPNum = params.get("ISPNum")
+        self._LBSupported = params.get("LBSupported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9398,22 +17021,39 @@ class NodeInstanceNum(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeNum: 节点数量
+        :param _NodeNum: 节点数量
         :type NodeNum: int
-        :param InstanceNum: 实例数量
+        :param _InstanceNum: 实例数量
         :type InstanceNum: int
         """
-        self.NodeNum = None
-        self.InstanceNum = None
+        self._NodeNum = None
+        self._InstanceNum = None
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def InstanceNum(self):
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
 
 
     def _deserialize(self, params):
-        self.NodeNum = params.get("NodeNum")
-        self.InstanceNum = params.get("InstanceNum")
+        self._NodeNum = params.get("NodeNum")
+        self._InstanceNum = params.get("InstanceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9426,28 +17066,53 @@ class OperatorAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Action: 可执行操作
+        :param _Action: 可执行操作
         :type Action: str
-        :param Code: 编码Code
+        :param _Code: 编码Code
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Message: 具体信息
+        :param _Message: 具体信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
-        self.Action = None
-        self.Code = None
-        self.Message = None
+        self._Action = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.Action = params.get("Action")
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._Action = params.get("Action")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9460,28 +17125,53 @@ class OsVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OsName: 操作系统类型
+        :param _OsName: 操作系统类型
         :type OsName: str
-        :param OsVersions: 支持的操作系统版本
+        :param _OsVersions: 支持的操作系统版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type OsVersions: list of str
-        :param Architecture: 支持的操作系统架构
+        :param _Architecture: 支持的操作系统架构
 注意：此字段可能返回 null，表示取不到有效值。
         :type Architecture: list of str
         """
-        self.OsName = None
-        self.OsVersions = None
-        self.Architecture = None
+        self._OsName = None
+        self._OsVersions = None
+        self._Architecture = None
+
+    @property
+    def OsName(self):
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def OsVersions(self):
+        return self._OsVersions
+
+    @OsVersions.setter
+    def OsVersions(self, OsVersions):
+        self._OsVersions = OsVersions
+
+    @property
+    def Architecture(self):
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
 
 
     def _deserialize(self, params):
-        self.OsName = params.get("OsName")
-        self.OsVersions = params.get("OsVersions")
-        self.Architecture = params.get("Architecture")
+        self._OsName = params.get("OsName")
+        self._OsVersions = params.get("OsVersions")
+        self._Architecture = params.get("Architecture")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9494,35 +17184,68 @@ class PackingQuotaGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param ZoneId: 可用区id
+        :param _ZoneId: 可用区id
         :type ZoneId: int
-        :param ISPId: ISP id
+        :param _ISPId: ISP id
         :type ISPId: str
-        :param PackingQuotaInfos: 一组相互关联的装箱配额
+        :param _PackingQuotaInfos: 一组相互关联的装箱配额
         :type PackingQuotaInfos: list of PackingQuotaInfo
         """
-        self.Zone = None
-        self.ZoneId = None
-        self.ISPId = None
-        self.PackingQuotaInfos = None
+        self._Zone = None
+        self._ZoneId = None
+        self._ISPId = None
+        self._PackingQuotaInfos = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ISPId(self):
+        return self._ISPId
+
+    @ISPId.setter
+    def ISPId(self, ISPId):
+        self._ISPId = ISPId
+
+    @property
+    def PackingQuotaInfos(self):
+        return self._PackingQuotaInfos
+
+    @PackingQuotaInfos.setter
+    def PackingQuotaInfos(self, PackingQuotaInfos):
+        self._PackingQuotaInfos = PackingQuotaInfos
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.ZoneId = params.get("ZoneId")
-        self.ISPId = params.get("ISPId")
+        self._Zone = params.get("Zone")
+        self._ZoneId = params.get("ZoneId")
+        self._ISPId = params.get("ISPId")
         if params.get("PackingQuotaInfos") is not None:
-            self.PackingQuotaInfos = []
+            self._PackingQuotaInfos = []
             for item in params.get("PackingQuotaInfos"):
                 obj = PackingQuotaInfo()
                 obj._deserialize(item)
-                self.PackingQuotaInfos.append(obj)
+                self._PackingQuotaInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9535,22 +17258,39 @@ class PackingQuotaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceType: 实例类型
+        :param _InstanceType: 实例类型
         :type InstanceType: str
-        :param PackingQuota: 装箱配额
+        :param _PackingQuota: 装箱配额
         :type PackingQuota: int
         """
-        self.InstanceType = None
-        self.PackingQuota = None
+        self._InstanceType = None
+        self._PackingQuota = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def PackingQuota(self):
+        return self._PackingQuota
+
+    @PackingQuota.setter
+    def PackingQuota(self, PackingQuota):
+        self._PackingQuota = PackingQuota
 
 
     def _deserialize(self, params):
-        self.InstanceType = params.get("InstanceType")
-        self.PackingQuota = params.get("PackingQuota")
+        self._InstanceType = params.get("InstanceType")
+        self._PackingQuota = params.get("PackingQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9563,30 +17303,63 @@ class PeakBase(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PeakCpuNum: CPU峰值
+        :param _PeakCpuNum: CPU峰值
         :type PeakCpuNum: int
-        :param PeakMemoryNum: 内存峰值
+        :param _PeakMemoryNum: 内存峰值
         :type PeakMemoryNum: int
-        :param PeakStorageNum: 硬盘峰值
+        :param _PeakStorageNum: 硬盘峰值
         :type PeakStorageNum: int
-        :param RecordTime: 记录时间
+        :param _RecordTime: 记录时间
         :type RecordTime: str
         """
-        self.PeakCpuNum = None
-        self.PeakMemoryNum = None
-        self.PeakStorageNum = None
-        self.RecordTime = None
+        self._PeakCpuNum = None
+        self._PeakMemoryNum = None
+        self._PeakStorageNum = None
+        self._RecordTime = None
+
+    @property
+    def PeakCpuNum(self):
+        return self._PeakCpuNum
+
+    @PeakCpuNum.setter
+    def PeakCpuNum(self, PeakCpuNum):
+        self._PeakCpuNum = PeakCpuNum
+
+    @property
+    def PeakMemoryNum(self):
+        return self._PeakMemoryNum
+
+    @PeakMemoryNum.setter
+    def PeakMemoryNum(self, PeakMemoryNum):
+        self._PeakMemoryNum = PeakMemoryNum
+
+    @property
+    def PeakStorageNum(self):
+        return self._PeakStorageNum
+
+    @PeakStorageNum.setter
+    def PeakStorageNum(self, PeakStorageNum):
+        self._PeakStorageNum = PeakStorageNum
+
+    @property
+    def RecordTime(self):
+        return self._RecordTime
+
+    @RecordTime.setter
+    def RecordTime(self, RecordTime):
+        self._RecordTime = RecordTime
 
 
     def _deserialize(self, params):
-        self.PeakCpuNum = params.get("PeakCpuNum")
-        self.PeakMemoryNum = params.get("PeakMemoryNum")
-        self.PeakStorageNum = params.get("PeakStorageNum")
-        self.RecordTime = params.get("RecordTime")
+        self._PeakCpuNum = params.get("PeakCpuNum")
+        self._PeakMemoryNum = params.get("PeakMemoryNum")
+        self._PeakStorageNum = params.get("PeakStorageNum")
+        self._RecordTime = params.get("RecordTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9599,29 +17372,46 @@ class PeakFamilyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceFamily: 机型类别信息。
+        :param _InstanceFamily: 机型类别信息。
         :type InstanceFamily: :class:`tencentcloud.ecm.v20190719.models.InstanceFamilyTypeConfig`
-        :param PeakBaseSet: 基础数据峰值信息。
+        :param _PeakBaseSet: 基础数据峰值信息。
         :type PeakBaseSet: list of PeakBase
         """
-        self.InstanceFamily = None
-        self.PeakBaseSet = None
+        self._InstanceFamily = None
+        self._PeakBaseSet = None
+
+    @property
+    def InstanceFamily(self):
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def PeakBaseSet(self):
+        return self._PeakBaseSet
+
+    @PeakBaseSet.setter
+    def PeakBaseSet(self, PeakBaseSet):
+        self._PeakBaseSet = PeakBaseSet
 
 
     def _deserialize(self, params):
         if params.get("InstanceFamily") is not None:
-            self.InstanceFamily = InstanceFamilyTypeConfig()
-            self.InstanceFamily._deserialize(params.get("InstanceFamily"))
+            self._InstanceFamily = InstanceFamilyTypeConfig()
+            self._InstanceFamily._deserialize(params.get("InstanceFamily"))
         if params.get("PeakBaseSet") is not None:
-            self.PeakBaseSet = []
+            self._PeakBaseSet = []
             for item in params.get("PeakBaseSet"):
                 obj = PeakBase()
                 obj._deserialize(item)
-                self.PeakBaseSet.append(obj)
+                self._PeakBaseSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9634,30 +17424,63 @@ class PeakNetwork(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecordTime: 记录时间。
+        :param _RecordTime: 记录时间。
         :type RecordTime: str
-        :param PeakInNetwork: 入带宽数据。
+        :param _PeakInNetwork: 入带宽数据。
         :type PeakInNetwork: str
-        :param PeakOutNetwork: 出带宽数据。
+        :param _PeakOutNetwork: 出带宽数据。
         :type PeakOutNetwork: str
-        :param ChargeNetwork: 计费带宽。单位bps
+        :param _ChargeNetwork: 计费带宽。单位bps
         :type ChargeNetwork: str
         """
-        self.RecordTime = None
-        self.PeakInNetwork = None
-        self.PeakOutNetwork = None
-        self.ChargeNetwork = None
+        self._RecordTime = None
+        self._PeakInNetwork = None
+        self._PeakOutNetwork = None
+        self._ChargeNetwork = None
+
+    @property
+    def RecordTime(self):
+        return self._RecordTime
+
+    @RecordTime.setter
+    def RecordTime(self, RecordTime):
+        self._RecordTime = RecordTime
+
+    @property
+    def PeakInNetwork(self):
+        return self._PeakInNetwork
+
+    @PeakInNetwork.setter
+    def PeakInNetwork(self, PeakInNetwork):
+        self._PeakInNetwork = PeakInNetwork
+
+    @property
+    def PeakOutNetwork(self):
+        return self._PeakOutNetwork
+
+    @PeakOutNetwork.setter
+    def PeakOutNetwork(self, PeakOutNetwork):
+        self._PeakOutNetwork = PeakOutNetwork
+
+    @property
+    def ChargeNetwork(self):
+        return self._ChargeNetwork
+
+    @ChargeNetwork.setter
+    def ChargeNetwork(self, ChargeNetwork):
+        self._ChargeNetwork = ChargeNetwork
 
 
     def _deserialize(self, params):
-        self.RecordTime = params.get("RecordTime")
-        self.PeakInNetwork = params.get("PeakInNetwork")
-        self.PeakOutNetwork = params.get("PeakOutNetwork")
-        self.ChargeNetwork = params.get("ChargeNetwork")
+        self._RecordTime = params.get("RecordTime")
+        self._PeakInNetwork = params.get("PeakInNetwork")
+        self._PeakOutNetwork = params.get("PeakOutNetwork")
+        self._ChargeNetwork = params.get("ChargeNetwork")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9670,28 +17493,45 @@ class PeakNetworkRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: region信息
+        :param _Region: region信息
         :type Region: str
-        :param PeakNetworkSet: 网络峰值集合
+        :param _PeakNetworkSet: 网络峰值集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeakNetworkSet: list of PeakNetwork
         """
-        self.Region = None
-        self.PeakNetworkSet = None
+        self._Region = None
+        self._PeakNetworkSet = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PeakNetworkSet(self):
+        return self._PeakNetworkSet
+
+    @PeakNetworkSet.setter
+    def PeakNetworkSet(self, PeakNetworkSet):
+        self._PeakNetworkSet = PeakNetworkSet
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
+        self._Region = params.get("Region")
         if params.get("PeakNetworkSet") is not None:
-            self.PeakNetworkSet = []
+            self._PeakNetworkSet = []
             for item in params.get("PeakNetworkSet"):
                 obj = PeakNetwork()
                 obj._deserialize(item)
-                self.PeakNetworkSet.append(obj)
+                self._PeakNetworkSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9704,29 +17544,54 @@ class PhysicalPosition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PosId: 机位
+        :param _PosId: 机位
 注意：此字段可能返回 null，表示取不到有效值。
         :type PosId: str
-        :param RackId: 机架
+        :param _RackId: 机架
 注意：此字段可能返回 null，表示取不到有效值。
         :type RackId: str
-        :param SwitchId: 交换机
+        :param _SwitchId: 交换机
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchId: str
         """
-        self.PosId = None
-        self.RackId = None
-        self.SwitchId = None
+        self._PosId = None
+        self._RackId = None
+        self._SwitchId = None
+
+    @property
+    def PosId(self):
+        return self._PosId
+
+    @PosId.setter
+    def PosId(self, PosId):
+        self._PosId = PosId
+
+    @property
+    def RackId(self):
+        return self._RackId
+
+    @RackId.setter
+    def RackId(self, RackId):
+        self._RackId = RackId
+
+    @property
+    def SwitchId(self):
+        return self._SwitchId
+
+    @SwitchId.setter
+    def SwitchId(self, SwitchId):
+        self._SwitchId = SwitchId
 
 
     def _deserialize(self, params):
-        self.PosId = params.get("PosId")
-        self.RackId = params.get("RackId")
-        self.SwitchId = params.get("SwitchId")
+        self._PosId = params.get("PosId")
+        self._RackId = params.get("RackId")
+        self._SwitchId = params.get("SwitchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9739,37 +17604,78 @@ class Placement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
+        :param _Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
-        :param CageId: 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+        :param _CageId: 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
-        :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :param _ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
-        :param CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+        :param _CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcName: str
-        :param CdcId: 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+        :param _CdcId: 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         """
-        self.Zone = None
-        self.CageId = None
-        self.ProjectId = None
-        self.CdcName = None
-        self.CdcId = None
+        self._Zone = None
+        self._CageId = None
+        self._ProjectId = None
+        self._CdcName = None
+        self._CdcId = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def CageId(self):
+        return self._CageId
+
+    @CageId.setter
+    def CageId(self, CageId):
+        self._CageId = CageId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CdcName(self):
+        return self._CdcName
+
+    @CdcName.setter
+    def CdcName(self, CdcName):
+        self._CdcName = CdcName
+
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.CageId = params.get("CageId")
-        self.ProjectId = params.get("ProjectId")
-        self.CdcName = params.get("CdcName")
-        self.CdcId = params.get("CdcId")
+        self._Zone = params.get("Zone")
+        self._CageId = params.get("CageId")
+        self._ProjectId = params.get("ProjectId")
+        self._CdcName = params.get("CdcName")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9782,50 +17688,99 @@ class Position(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneInfo: 实例所在的Zone的信息。
+        :param _ZoneInfo: 实例所在的Zone的信息。
         :type ZoneInfo: :class:`tencentcloud.ecm.v20190719.models.ZoneInfo`
-        :param Country: 实例所在的国家的信息。
+        :param _Country: 实例所在的国家的信息。
         :type Country: :class:`tencentcloud.ecm.v20190719.models.Country`
-        :param Area: 实例所在的Area的信息。
+        :param _Area: 实例所在的Area的信息。
         :type Area: :class:`tencentcloud.ecm.v20190719.models.Area`
-        :param Province: 实例所在的省份的信息。
+        :param _Province: 实例所在的省份的信息。
         :type Province: :class:`tencentcloud.ecm.v20190719.models.Province`
-        :param City: 实例所在的城市的信息。
+        :param _City: 实例所在的城市的信息。
         :type City: :class:`tencentcloud.ecm.v20190719.models.City`
-        :param RegionInfo: 实例所在的Region的信息。
+        :param _RegionInfo: 实例所在的Region的信息。
         :type RegionInfo: :class:`tencentcloud.ecm.v20190719.models.RegionInfo`
         """
-        self.ZoneInfo = None
-        self.Country = None
-        self.Area = None
-        self.Province = None
-        self.City = None
-        self.RegionInfo = None
+        self._ZoneInfo = None
+        self._Country = None
+        self._Area = None
+        self._Province = None
+        self._City = None
+        self._RegionInfo = None
+
+    @property
+    def ZoneInfo(self):
+        return self._ZoneInfo
+
+    @ZoneInfo.setter
+    def ZoneInfo(self, ZoneInfo):
+        self._ZoneInfo = ZoneInfo
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def RegionInfo(self):
+        return self._RegionInfo
+
+    @RegionInfo.setter
+    def RegionInfo(self, RegionInfo):
+        self._RegionInfo = RegionInfo
 
 
     def _deserialize(self, params):
         if params.get("ZoneInfo") is not None:
-            self.ZoneInfo = ZoneInfo()
-            self.ZoneInfo._deserialize(params.get("ZoneInfo"))
+            self._ZoneInfo = ZoneInfo()
+            self._ZoneInfo._deserialize(params.get("ZoneInfo"))
         if params.get("Country") is not None:
-            self.Country = Country()
-            self.Country._deserialize(params.get("Country"))
+            self._Country = Country()
+            self._Country._deserialize(params.get("Country"))
         if params.get("Area") is not None:
-            self.Area = Area()
-            self.Area._deserialize(params.get("Area"))
+            self._Area = Area()
+            self._Area._deserialize(params.get("Area"))
         if params.get("Province") is not None:
-            self.Province = Province()
-            self.Province._deserialize(params.get("Province"))
+            self._Province = Province()
+            self._Province._deserialize(params.get("Province"))
         if params.get("City") is not None:
-            self.City = City()
-            self.City._deserialize(params.get("City"))
+            self._City = City()
+            self._City._deserialize(params.get("City"))
         if params.get("RegionInfo") is not None:
-            self.RegionInfo = RegionInfo()
-            self.RegionInfo._deserialize(params.get("RegionInfo"))
+            self._RegionInfo = RegionInfo()
+            self._RegionInfo._deserialize(params.get("RegionInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9838,26 +17793,51 @@ class PriceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Discount: 表示折扣，20 表示20%，打2折
+        :param _Discount: 表示折扣，20 表示20%，打2折
         :type Discount: int
-        :param DiscountPrice: 打折后价格，单位分
+        :param _DiscountPrice: 打折后价格，单位分
         :type DiscountPrice: int
-        :param OriginalPrice: 折扣前价格，单位分
+        :param _OriginalPrice: 折扣前价格，单位分
         :type OriginalPrice: int
         """
-        self.Discount = None
-        self.DiscountPrice = None
-        self.OriginalPrice = None
+        self._Discount = None
+        self._DiscountPrice = None
+        self._OriginalPrice = None
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def DiscountPrice(self):
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def OriginalPrice(self):
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
 
 
     def _deserialize(self, params):
-        self.Discount = params.get("Discount")
-        self.DiscountPrice = params.get("DiscountPrice")
-        self.OriginalPrice = params.get("OriginalPrice")
+        self._Discount = params.get("Discount")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._OriginalPrice = params.get("OriginalPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9870,19 +17850,28 @@ class PrivateIPAddressInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PrivateIPAddress: 实例的内网ip。
+        :param _PrivateIPAddress: 实例的内网ip。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIPAddress: str
         """
-        self.PrivateIPAddress = None
+        self._PrivateIPAddress = None
+
+    @property
+    def PrivateIPAddress(self):
+        return self._PrivateIPAddress
+
+    @PrivateIPAddress.setter
+    def PrivateIPAddress(self, PrivateIPAddress):
+        self._PrivateIPAddress = PrivateIPAddress
 
 
     def _deserialize(self, params):
-        self.PrivateIPAddress = params.get("PrivateIPAddress")
+        self._PrivateIPAddress = params.get("PrivateIPAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9895,48 +17884,105 @@ class PrivateIpAddressSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PrivateIpAddress: 内网IP地址。
+        :param _PrivateIpAddress: 内网IP地址。
         :type PrivateIpAddress: str
-        :param Primary: 是否是主IP。
+        :param _Primary: 是否是主IP。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Primary: bool
-        :param PublicIpAddress: 公网IP地址。
+        :param _PublicIpAddress: 公网IP地址。
         :type PublicIpAddress: str
-        :param AddressId: EIP实例ID，例如：eip-11112222。
+        :param _AddressId: EIP实例ID，例如：eip-11112222。
         :type AddressId: str
-        :param Description: 内网IP描述信息。
+        :param _Description: 内网IP描述信息。
         :type Description: str
-        :param IsWanIpBlocked: 公网IP是否被封堵。
+        :param _IsWanIpBlocked: 公网IP是否被封堵。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsWanIpBlocked: bool
-        :param State: IP状态：
+        :param _State: IP状态：
 PENDING：生产中
 MIGRATING：迁移中
 DELETING：删除中
 AVAILABLE：可用的
         :type State: str
         """
-        self.PrivateIpAddress = None
-        self.Primary = None
-        self.PublicIpAddress = None
-        self.AddressId = None
-        self.Description = None
-        self.IsWanIpBlocked = None
-        self.State = None
+        self._PrivateIpAddress = None
+        self._Primary = None
+        self._PublicIpAddress = None
+        self._AddressId = None
+        self._Description = None
+        self._IsWanIpBlocked = None
+        self._State = None
+
+    @property
+    def PrivateIpAddress(self):
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
+
+    @property
+    def Primary(self):
+        return self._Primary
+
+    @Primary.setter
+    def Primary(self, Primary):
+        self._Primary = Primary
+
+    @property
+    def PublicIpAddress(self):
+        return self._PublicIpAddress
+
+    @PublicIpAddress.setter
+    def PublicIpAddress(self, PublicIpAddress):
+        self._PublicIpAddress = PublicIpAddress
+
+    @property
+    def AddressId(self):
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsWanIpBlocked(self):
+        return self._IsWanIpBlocked
+
+    @IsWanIpBlocked.setter
+    def IsWanIpBlocked(self, IsWanIpBlocked):
+        self._IsWanIpBlocked = IsWanIpBlocked
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
-        self.PrivateIpAddress = params.get("PrivateIpAddress")
-        self.Primary = params.get("Primary")
-        self.PublicIpAddress = params.get("PublicIpAddress")
-        self.AddressId = params.get("AddressId")
-        self.Description = params.get("Description")
-        self.IsWanIpBlocked = params.get("IsWanIpBlocked")
-        self.State = params.get("State")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
+        self._Primary = params.get("Primary")
+        self._PublicIpAddress = params.get("PublicIpAddress")
+        self._AddressId = params.get("AddressId")
+        self._Description = params.get("Description")
+        self._IsWanIpBlocked = params.get("IsWanIpBlocked")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9949,22 +17995,39 @@ class Province(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProvinceId: 省份Id
+        :param _ProvinceId: 省份Id
         :type ProvinceId: str
-        :param ProvinceName: 省份名称
+        :param _ProvinceName: 省份名称
         :type ProvinceName: str
         """
-        self.ProvinceId = None
-        self.ProvinceName = None
+        self._ProvinceId = None
+        self._ProvinceName = None
+
+    @property
+    def ProvinceId(self):
+        return self._ProvinceId
+
+    @ProvinceId.setter
+    def ProvinceId(self, ProvinceId):
+        self._ProvinceId = ProvinceId
+
+    @property
+    def ProvinceName(self):
+        return self._ProvinceName
+
+    @ProvinceName.setter
+    def ProvinceName(self, ProvinceName):
+        self._ProvinceName = ProvinceName
 
 
     def _deserialize(self, params):
-        self.ProvinceId = params.get("ProvinceId")
-        self.ProvinceName = params.get("ProvinceName")
+        self._ProvinceId = params.get("ProvinceId")
+        self._ProvinceName = params.get("ProvinceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9977,36 +18040,77 @@ class PublicIPAddressInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChargeMode: 计费模式。
+        :param _ChargeMode: 计费模式。
         :type ChargeMode: str
-        :param PublicIPAddress: 实例的公网ip。
+        :param _PublicIPAddress: 实例的公网ip。
         :type PublicIPAddress: str
-        :param ISP: 实例的公网ip所属的运营商。
+        :param _ISP: 实例的公网ip所属的运营商。
         :type ISP: :class:`tencentcloud.ecm.v20190719.models.ISP`
-        :param MaxBandwidthOut: 实例的最大出带宽上限，单位为Mbps。
+        :param _MaxBandwidthOut: 实例的最大出带宽上限，单位为Mbps。
         :type MaxBandwidthOut: int
-        :param MaxBandwidthIn: 实例的最大入带宽上限，单位为Mbps。
+        :param _MaxBandwidthIn: 实例的最大入带宽上限，单位为Mbps。
         :type MaxBandwidthIn: int
         """
-        self.ChargeMode = None
-        self.PublicIPAddress = None
-        self.ISP = None
-        self.MaxBandwidthOut = None
-        self.MaxBandwidthIn = None
+        self._ChargeMode = None
+        self._PublicIPAddress = None
+        self._ISP = None
+        self._MaxBandwidthOut = None
+        self._MaxBandwidthIn = None
+
+    @property
+    def ChargeMode(self):
+        return self._ChargeMode
+
+    @ChargeMode.setter
+    def ChargeMode(self, ChargeMode):
+        self._ChargeMode = ChargeMode
+
+    @property
+    def PublicIPAddress(self):
+        return self._PublicIPAddress
+
+    @PublicIPAddress.setter
+    def PublicIPAddress(self, PublicIPAddress):
+        self._PublicIPAddress = PublicIPAddress
+
+    @property
+    def ISP(self):
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def MaxBandwidthOut(self):
+        return self._MaxBandwidthOut
+
+    @MaxBandwidthOut.setter
+    def MaxBandwidthOut(self, MaxBandwidthOut):
+        self._MaxBandwidthOut = MaxBandwidthOut
+
+    @property
+    def MaxBandwidthIn(self):
+        return self._MaxBandwidthIn
+
+    @MaxBandwidthIn.setter
+    def MaxBandwidthIn(self, MaxBandwidthIn):
+        self._MaxBandwidthIn = MaxBandwidthIn
 
 
     def _deserialize(self, params):
-        self.ChargeMode = params.get("ChargeMode")
-        self.PublicIPAddress = params.get("PublicIPAddress")
+        self._ChargeMode = params.get("ChargeMode")
+        self._PublicIPAddress = params.get("PublicIPAddress")
         if params.get("ISP") is not None:
-            self.ISP = ISP()
-            self.ISP._deserialize(params.get("ISP"))
-        self.MaxBandwidthOut = params.get("MaxBandwidthOut")
-        self.MaxBandwidthIn = params.get("MaxBandwidthIn")
+            self._ISP = ISP()
+            self._ISP._deserialize(params.get("ISP"))
+        self._MaxBandwidthOut = params.get("MaxBandwidthOut")
+        self._MaxBandwidthIn = params.get("MaxBandwidthIn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10019,14 +18123,14 @@ class RebootInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 待重启的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :param _InstanceIdSet: 待重启的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
         :type InstanceIdSet: list of str
-        :param ForceReboot: 是否在正常重启失败后选择强制重启实例。取值范围：
+        :param _ForceReboot: 是否在正常重启失败后选择强制重启实例。取值范围：
 TRUE：表示在正常重启失败后进行强制重启；
 FALSE：表示在正常重启失败后不进行强制重启；
 默认取值：FALSE。
         :type ForceReboot: bool
-        :param StopType: 关机类型。取值范围：
+        :param _StopType: 关机类型。取值范围：
 SOFT：表示软关机
 HARD：表示硬关机
 SOFT_FIRST：表示优先软关机，失败再执行硬关机
@@ -10034,19 +18138,44 @@ SOFT_FIRST：表示优先软关机，失败再执行硬关机
 默认取值：SOFT。
         :type StopType: str
         """
-        self.InstanceIdSet = None
-        self.ForceReboot = None
-        self.StopType = None
+        self._InstanceIdSet = None
+        self._ForceReboot = None
+        self._StopType = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def ForceReboot(self):
+        return self._ForceReboot
+
+    @ForceReboot.setter
+    def ForceReboot(self, ForceReboot):
+        self._ForceReboot = ForceReboot
+
+    @property
+    def StopType(self):
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.ForceReboot = params.get("ForceReboot")
-        self.StopType = params.get("StopType")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._ForceReboot = params.get("ForceReboot")
+        self._StopType = params.get("StopType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10059,14 +18188,22 @@ class RebootInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RegionInfo(AbstractModel):
@@ -10076,26 +18213,51 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: Region
+        :param _Region: Region
         :type Region: str
-        :param RegionName: Region名称
+        :param _RegionName: Region名称
         :type RegionName: str
-        :param RegionId: RegionID
+        :param _RegionId: RegionID
         :type RegionId: int
         """
-        self.Region = None
-        self.RegionName = None
-        self.RegionId = None
+        self._Region = None
+        self._RegionName = None
+        self._RegionId = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.RegionName = params.get("RegionName")
-        self.RegionId = params.get("RegionId")
+        self._Region = params.get("Region")
+        self._RegionName = params.get("RegionName")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10108,22 +18270,39 @@ class ReleaseAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param AddressIds: 标识 EIP 的唯一 ID 列表。
+        :param _AddressIds: 标识 EIP 的唯一 ID 列表。
         :type AddressIds: list of str
         """
-        self.EcmRegion = None
-        self.AddressIds = None
+        self._EcmRegion = None
+        self._AddressIds = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def AddressIds(self):
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.AddressIds = params.get("AddressIds")
+        self._EcmRegion = params.get("EcmRegion")
+        self._AddressIds = params.get("AddressIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10136,18 +18315,34 @@ class ReleaseAddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :param _TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ReleaseIpv6AddressesRequest(AbstractModel):
@@ -10157,31 +18352,56 @@ class ReleaseIpv6AddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param NetworkInterfaceId: 弹性网卡实例ID，形如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，形如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param Ipv6Addresses: 指定的IPv6地址列表，单次最多指定10个。
+        :param _Ipv6Addresses: 指定的IPv6地址列表，单次最多指定10个。
         :type Ipv6Addresses: list of Ipv6Address
         """
-        self.EcmRegion = None
-        self.NetworkInterfaceId = None
-        self.Ipv6Addresses = None
+        self._EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._Ipv6Addresses = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def Ipv6Addresses(self):
+        return self._Ipv6Addresses
+
+    @Ipv6Addresses.setter
+    def Ipv6Addresses(self, Ipv6Addresses):
+        self._Ipv6Addresses = Ipv6Addresses
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         if params.get("Ipv6Addresses") is not None:
-            self.Ipv6Addresses = []
+            self._Ipv6Addresses = []
             for item in params.get("Ipv6Addresses"):
                 obj = Ipv6Address()
                 obj._deserialize(item)
-                self.Ipv6Addresses.append(obj)
+                self._Ipv6Addresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10194,18 +18414,34 @@ class ReleaseIpv6AddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID，可以通过DescribeTaskResult查询任务状态
+        :param _TaskId: 任务ID，可以通过DescribeTaskResult查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class RemovePrivateIpAddressesRequest(AbstractModel):
@@ -10215,31 +18451,56 @@ class RemovePrivateIpAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
+        :param _EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
-        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-11112222。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-11112222。
         :type NetworkInterfaceId: str
-        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :param _PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         """
-        self.EcmRegion = None
-        self.NetworkInterfaceId = None
-        self.PrivateIpAddresses = None
+        self._EcmRegion = None
+        self._NetworkInterfaceId = None
+        self._PrivateIpAddresses = None
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
+
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._EcmRegion = params.get("EcmRegion")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         if params.get("PrivateIpAddresses") is not None:
-            self.PrivateIpAddresses = []
+            self._PrivateIpAddresses = []
             for item in params.get("PrivateIpAddresses"):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
-                self.PrivateIpAddresses.append(obj)
+                self._PrivateIpAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10252,14 +18513,22 @@ class RemovePrivateIpAddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ReplaceRouteTableAssociationRequest(AbstractModel):
@@ -10269,26 +18538,51 @@ class ReplaceRouteTableAssociationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubnetId: 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
+        :param _SubnetId: 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
         :type SubnetId: str
-        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
-        :param EcmRegion: ECM 地域
+        :param _EcmRegion: ECM 地域
         :type EcmRegion: str
         """
-        self.SubnetId = None
-        self.RouteTableId = None
-        self.EcmRegion = None
+        self._SubnetId = None
+        self._RouteTableId = None
+        self._EcmRegion = None
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def EcmRegion(self):
+        return self._EcmRegion
+
+    @EcmRegion.setter
+    def EcmRegion(self, EcmRegion):
+        self._EcmRegion = EcmRegion
 
 
     def _deserialize(self, params):
-        self.SubnetId = params.get("SubnetId")
-        self.RouteTableId = params.get("RouteTableId")
-        self.EcmRegion = params.get("EcmRegion")
+        self._SubnetId = params.get("SubnetId")
+        self._RouteTableId = params.get("RouteTableId")
+        self._EcmRegion = params.get("EcmRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10301,14 +18595,22 @@ class ReplaceRouteTableAssociationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ReplaceRoutesRequest(AbstractModel):
@@ -10318,27 +18620,44 @@ class ReplaceRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表实例ID。
+        :param _RouteTableId: 路由表实例ID。
         :type RouteTableId: str
-        :param Routes: 路由策略对象。
+        :param _Routes: 路由策略对象。
         :type Routes: list of Route
         """
-        self.RouteTableId = None
-        self.Routes = None
+        self._RouteTableId = None
+        self._Routes = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Routes(self):
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
+        self._RouteTableId = params.get("RouteTableId")
         if params.get("Routes") is not None:
-            self.Routes = []
+            self._Routes = []
             for item in params.get("Routes"):
                 obj = Route()
                 obj._deserialize(item)
-                self.Routes.append(obj)
+                self._Routes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10351,14 +18670,22 @@ class ReplaceRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ReplaceSecurityGroupPolicyRequest(AbstractModel):
@@ -10368,24 +18695,41 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取
+        :param _SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取
         :type SecurityGroupId: str
-        :param SecurityGroupPolicySet: 安全组规则集合对象。
+        :param _SecurityGroupPolicySet: 安全组规则集合对象。
         :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
         """
-        self.SecurityGroupId = None
-        self.SecurityGroupPolicySet = None
+        self._SecurityGroupId = None
+        self._SecurityGroupPolicySet = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def SecurityGroupPolicySet(self):
+        return self._SecurityGroupPolicySet
+
+    @SecurityGroupPolicySet.setter
+    def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
+        self._SecurityGroupPolicySet = SecurityGroupPolicySet
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         if params.get("SecurityGroupPolicySet") is not None:
-            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
-            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+            self._SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10398,14 +18742,22 @@ class ReplaceSecurityGroupPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResetInstancesMaxBandwidthRequest(AbstractModel):
@@ -10415,26 +18767,51 @@ class ResetInstancesMaxBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 待重置带宽上限的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :param _InstanceIdSet: 待重置带宽上限的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
         :type InstanceIdSet: list of str
-        :param MaxBandwidthOut: 修改后的最大出带宽上限。
+        :param _MaxBandwidthOut: 修改后的最大出带宽上限。
         :type MaxBandwidthOut: int
-        :param MaxBandwidthIn: 修改后的最大入带宽上限。
+        :param _MaxBandwidthIn: 修改后的最大入带宽上限。
         :type MaxBandwidthIn: int
         """
-        self.InstanceIdSet = None
-        self.MaxBandwidthOut = None
-        self.MaxBandwidthIn = None
+        self._InstanceIdSet = None
+        self._MaxBandwidthOut = None
+        self._MaxBandwidthIn = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def MaxBandwidthOut(self):
+        return self._MaxBandwidthOut
+
+    @MaxBandwidthOut.setter
+    def MaxBandwidthOut(self, MaxBandwidthOut):
+        self._MaxBandwidthOut = MaxBandwidthOut
+
+    @property
+    def MaxBandwidthIn(self):
+        return self._MaxBandwidthIn
+
+    @MaxBandwidthIn.setter
+    def MaxBandwidthIn(self, MaxBandwidthIn):
+        self._MaxBandwidthIn = MaxBandwidthIn
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.MaxBandwidthOut = params.get("MaxBandwidthOut")
-        self.MaxBandwidthIn = params.get("MaxBandwidthIn")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._MaxBandwidthOut = params.get("MaxBandwidthOut")
+        self._MaxBandwidthIn = params.get("MaxBandwidthIn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10447,14 +18824,22 @@ class ResetInstancesMaxBandwidthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResetInstancesPasswordRequest(AbstractModel):
@@ -10464,32 +18849,65 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 待重置密码的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :param _InstanceIdSet: 待重置密码的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
         :type InstanceIdSet: list of str
-        :param Password: 新密码，Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9]和[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]中的符号。密码不允许以/符号开头。
+        :param _Password: 新密码，Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9]和[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]中的符号。密码不允许以/符号开头。
 Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9]和[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]中的符号。密码不允许以/符号开头。
 如果实例即包含Linux实例又包含Windows实例，则密码复杂度限制按照Windows实例的限制。
         :type Password: str
-        :param ForceStop: 是否强制关机，默认为false。
+        :param _ForceStop: 是否强制关机，默认为false。
         :type ForceStop: bool
-        :param UserName: 待重置密码的实例的用户名，不得超过64个字符。若未指定用户名，则对于Linux而言，默认重置root用户的密码，对于Windows而言，默认重置administrator的密码。
+        :param _UserName: 待重置密码的实例的用户名，不得超过64个字符。若未指定用户名，则对于Linux而言，默认重置root用户的密码，对于Windows而言，默认重置administrator的密码。
         :type UserName: str
         """
-        self.InstanceIdSet = None
-        self.Password = None
-        self.ForceStop = None
-        self.UserName = None
+        self._InstanceIdSet = None
+        self._Password = None
+        self._ForceStop = None
+        self._UserName = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ForceStop(self):
+        return self._ForceStop
+
+    @ForceStop.setter
+    def ForceStop(self, ForceStop):
+        self._ForceStop = ForceStop
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.Password = params.get("Password")
-        self.ForceStop = params.get("ForceStop")
-        self.UserName = params.get("UserName")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._Password = params.get("Password")
+        self._ForceStop = params.get("ForceStop")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10502,14 +18920,22 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResetInstancesRequest(AbstractModel):
@@ -10519,17 +18945,17 @@ class ResetInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 待重装的实例ID列表。
+        :param _InstanceIdSet: 待重装的实例ID列表。
         :type InstanceIdSet: list of str
-        :param ImageId: 重装使用的镜像ID，若未指定，则使用各个实例当前的镜像进行重装。
+        :param _ImageId: 重装使用的镜像ID，若未指定，则使用各个实例当前的镜像进行重装。
         :type ImageId: str
-        :param Password: 密码设置，若未指定，则后续将以站内信的形式通知密码。
+        :param _Password: 密码设置，若未指定，则后续将以站内信的形式通知密码。
         :type Password: str
-        :param EnhancedService: 是否开启云监控和云镜服务，未指定时默认开启。
+        :param _EnhancedService: 是否开启云监控和云镜服务，未指定时默认开启。
         :type EnhancedService: :class:`tencentcloud.ecm.v20190719.models.EnhancedService`
-        :param KeepData: 是否保留数据盘数据，取值"true"/"false"。默认为"true"
+        :param _KeepData: 是否保留数据盘数据，取值"true"/"false"。默认为"true"
         :type KeepData: str
-        :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
+        :param _KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
 TRUE：表示保持镜像的登录设置
 FALSE：表示不保持镜像的登录设置
 
@@ -10537,27 +18963,76 @@ FALSE：表示不保持镜像的登录设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
-        self.InstanceIdSet = None
-        self.ImageId = None
-        self.Password = None
-        self.EnhancedService = None
-        self.KeepData = None
-        self.KeepImageLogin = None
+        self._InstanceIdSet = None
+        self._ImageId = None
+        self._Password = None
+        self._EnhancedService = None
+        self._KeepData = None
+        self._KeepImageLogin = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EnhancedService(self):
+        return self._EnhancedService
+
+    @EnhancedService.setter
+    def EnhancedService(self, EnhancedService):
+        self._EnhancedService = EnhancedService
+
+    @property
+    def KeepData(self):
+        return self._KeepData
+
+    @KeepData.setter
+    def KeepData(self, KeepData):
+        self._KeepData = KeepData
+
+    @property
+    def KeepImageLogin(self):
+        return self._KeepImageLogin
+
+    @KeepImageLogin.setter
+    def KeepImageLogin(self, KeepImageLogin):
+        self._KeepImageLogin = KeepImageLogin
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.ImageId = params.get("ImageId")
-        self.Password = params.get("Password")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._ImageId = params.get("ImageId")
+        self._Password = params.get("Password")
         if params.get("EnhancedService") is not None:
-            self.EnhancedService = EnhancedService()
-            self.EnhancedService._deserialize(params.get("EnhancedService"))
-        self.KeepData = params.get("KeepData")
-        self.KeepImageLogin = params.get("KeepImageLogin")
+            self._EnhancedService = EnhancedService()
+            self._EnhancedService._deserialize(params.get("EnhancedService"))
+        self._KeepData = params.get("KeepData")
+        self._KeepImageLogin = params.get("KeepImageLogin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10570,14 +19045,22 @@ class ResetInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResetRoutesRequest(AbstractModel):
@@ -10587,31 +19070,56 @@ class ResetRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
-        :param RouteTableName: 路由表名称，最大长度不能超过60个字节。
+        :param _RouteTableName: 路由表名称，最大长度不能超过60个字节。
         :type RouteTableName: str
-        :param Routes: 路由策略。
+        :param _Routes: 路由策略。
         :type Routes: list of Route
         """
-        self.RouteTableId = None
-        self.RouteTableName = None
-        self.Routes = None
+        self._RouteTableId = None
+        self._RouteTableName = None
+        self._Routes = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RouteTableName(self):
+        return self._RouteTableName
+
+    @RouteTableName.setter
+    def RouteTableName(self, RouteTableName):
+        self._RouteTableName = RouteTableName
+
+    @property
+    def Routes(self):
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
-        self.RouteTableName = params.get("RouteTableName")
+        self._RouteTableId = params.get("RouteTableId")
+        self._RouteTableName = params.get("RouteTableName")
         if params.get("Routes") is not None:
-            self.Routes = []
+            self._Routes = []
             for item in params.get("Routes"):
                 obj = Route()
                 obj._deserialize(item)
-                self.Routes.append(obj)
+                self._Routes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10624,14 +19132,22 @@ class ResetRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Route(AbstractModel):
@@ -10641,57 +19157,130 @@ class Route(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DestinationCidrBlock: 目的IPv4网段
+        :param _DestinationCidrBlock: 目的IPv4网段
         :type DestinationCidrBlock: str
-        :param GatewayType: 下一跳类型
+        :param _GatewayType: 下一跳类型
 NORMAL_CVM：普通云服务器；
         :type GatewayType: str
-        :param GatewayId: 下一跳地址
+        :param _GatewayId: 下一跳地址
 这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址
 当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
         :type GatewayId: str
-        :param RouteItemId: 路由策略唯一ID
+        :param _RouteItemId: 路由策略唯一ID
         :type RouteItemId: str
-        :param RouteDescription: 路由策略描述
+        :param _RouteDescription: 路由策略描述
         :type RouteDescription: str
-        :param Enabled: 是否启用
+        :param _Enabled: 是否启用
         :type Enabled: bool
-        :param RouteType: 路由类型，目前我们支持的类型有：
+        :param _RouteType: 路由类型，目前我们支持的类型有：
 USER：用户路由；
 NETD：网络探测路由，创建网络探测实例时，系统默认下发，不可编辑与删除；
 CCN：云联网路由，系统默认下发，不可编辑与删除。
 用户只能添加和操作 USER 类型的路由。
         :type RouteType: str
-        :param RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略
+        :param _RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略
         :type RouteId: int
-        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
         """
-        self.DestinationCidrBlock = None
-        self.GatewayType = None
-        self.GatewayId = None
-        self.RouteItemId = None
-        self.RouteDescription = None
-        self.Enabled = None
-        self.RouteType = None
-        self.RouteId = None
-        self.RouteTableId = None
+        self._DestinationCidrBlock = None
+        self._GatewayType = None
+        self._GatewayId = None
+        self._RouteItemId = None
+        self._RouteDescription = None
+        self._Enabled = None
+        self._RouteType = None
+        self._RouteId = None
+        self._RouteTableId = None
+
+    @property
+    def DestinationCidrBlock(self):
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def RouteItemId(self):
+        return self._RouteItemId
+
+    @RouteItemId.setter
+    def RouteItemId(self, RouteItemId):
+        self._RouteItemId = RouteItemId
+
+    @property
+    def RouteDescription(self):
+        return self._RouteDescription
+
+    @RouteDescription.setter
+    def RouteDescription(self, RouteDescription):
+        self._RouteDescription = RouteDescription
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RouteType(self):
+        return self._RouteType
+
+    @RouteType.setter
+    def RouteType(self, RouteType):
+        self._RouteType = RouteType
+
+    @property
+    def RouteId(self):
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
 
 
     def _deserialize(self, params):
-        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
-        self.GatewayType = params.get("GatewayType")
-        self.GatewayId = params.get("GatewayId")
-        self.RouteItemId = params.get("RouteItemId")
-        self.RouteDescription = params.get("RouteDescription")
-        self.Enabled = params.get("Enabled")
-        self.RouteType = params.get("RouteType")
-        self.RouteId = params.get("RouteId")
-        self.RouteTableId = params.get("RouteTableId")
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayId = params.get("GatewayId")
+        self._RouteItemId = params.get("RouteItemId")
+        self._RouteDescription = params.get("RouteDescription")
+        self._Enabled = params.get("Enabled")
+        self._RouteType = params.get("RouteType")
+        self._RouteId = params.get("RouteId")
+        self._RouteTableId = params.get("RouteTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10704,32 +19293,57 @@ class RouteConflict(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteTableId: 路由表实例ID
+        :param _RouteTableId: 路由表实例ID
         :type RouteTableId: str
-        :param DestinationCidrBlock: 要检查的与之冲突的目的端
+        :param _DestinationCidrBlock: 要检查的与之冲突的目的端
         :type DestinationCidrBlock: str
-        :param ConflictSet: 冲突的路由策略列表
+        :param _ConflictSet: 冲突的路由策略列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConflictSet: list of Route
         """
-        self.RouteTableId = None
-        self.DestinationCidrBlock = None
-        self.ConflictSet = None
+        self._RouteTableId = None
+        self._DestinationCidrBlock = None
+        self._ConflictSet = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def DestinationCidrBlock(self):
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def ConflictSet(self):
+        return self._ConflictSet
+
+    @ConflictSet.setter
+    def ConflictSet(self, ConflictSet):
+        self._ConflictSet = ConflictSet
 
 
     def _deserialize(self, params):
-        self.RouteTableId = params.get("RouteTableId")
-        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._RouteTableId = params.get("RouteTableId")
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
         if params.get("ConflictSet") is not None:
-            self.ConflictSet = []
+            self._ConflictSet = []
             for item in params.get("ConflictSet"):
                 obj = Route()
                 obj._deserialize(item)
-                self.ConflictSet.append(obj)
+                self._ConflictSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10742,54 +19356,111 @@ class RouteTable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID
+        :param _VpcId: VPC实例ID
         :type VpcId: str
-        :param RouteTableId: 路由表实例ID
+        :param _RouteTableId: 路由表实例ID
         :type RouteTableId: str
-        :param RouteTableName: 路由表名称
+        :param _RouteTableName: 路由表名称
         :type RouteTableName: str
-        :param AssociationSet: 路由表关联关系
+        :param _AssociationSet: 路由表关联关系
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociationSet: list of RouteTableAssociation
-        :param RouteSet: IPv4路由策略集合
+        :param _RouteSet: IPv4路由策略集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteSet: list of Route
-        :param Main: 是否默认路由表
+        :param _Main: 是否默认路由表
         :type Main: bool
-        :param CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间
         :type CreatedTime: str
         """
-        self.VpcId = None
-        self.RouteTableId = None
-        self.RouteTableName = None
-        self.AssociationSet = None
-        self.RouteSet = None
-        self.Main = None
-        self.CreatedTime = None
+        self._VpcId = None
+        self._RouteTableId = None
+        self._RouteTableName = None
+        self._AssociationSet = None
+        self._RouteSet = None
+        self._Main = None
+        self._CreatedTime = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RouteTableName(self):
+        return self._RouteTableName
+
+    @RouteTableName.setter
+    def RouteTableName(self, RouteTableName):
+        self._RouteTableName = RouteTableName
+
+    @property
+    def AssociationSet(self):
+        return self._AssociationSet
+
+    @AssociationSet.setter
+    def AssociationSet(self, AssociationSet):
+        self._AssociationSet = AssociationSet
+
+    @property
+    def RouteSet(self):
+        return self._RouteSet
+
+    @RouteSet.setter
+    def RouteSet(self, RouteSet):
+        self._RouteSet = RouteSet
+
+    @property
+    def Main(self):
+        return self._Main
+
+    @Main.setter
+    def Main(self, Main):
+        self._Main = Main
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.RouteTableId = params.get("RouteTableId")
-        self.RouteTableName = params.get("RouteTableName")
+        self._VpcId = params.get("VpcId")
+        self._RouteTableId = params.get("RouteTableId")
+        self._RouteTableName = params.get("RouteTableName")
         if params.get("AssociationSet") is not None:
-            self.AssociationSet = []
+            self._AssociationSet = []
             for item in params.get("AssociationSet"):
                 obj = RouteTableAssociation()
                 obj._deserialize(item)
-                self.AssociationSet.append(obj)
+                self._AssociationSet.append(obj)
         if params.get("RouteSet") is not None:
-            self.RouteSet = []
+            self._RouteSet = []
             for item in params.get("RouteSet"):
                 obj = Route()
                 obj._deserialize(item)
-                self.RouteSet.append(obj)
-        self.Main = params.get("Main")
-        self.CreatedTime = params.get("CreatedTime")
+                self._RouteSet.append(obj)
+        self._Main = params.get("Main")
+        self._CreatedTime = params.get("CreatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10802,22 +19473,39 @@ class RouteTableAssociation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubnetId: 子网实例ID
+        :param _SubnetId: 子网实例ID
         :type SubnetId: str
-        :param RouteTableId: 路由表实例ID
+        :param _RouteTableId: 路由表实例ID
         :type RouteTableId: str
         """
-        self.SubnetId = None
-        self.RouteTableId = None
+        self._SubnetId = None
+        self._RouteTableId = None
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
 
 
     def _deserialize(self, params):
-        self.SubnetId = params.get("SubnetId")
-        self.RouteTableId = params.get("RouteTableId")
+        self._SubnetId = params.get("SubnetId")
+        self._RouteTableId = params.get("RouteTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10830,24 +19518,33 @@ class RuleHealth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Targets: 本规则上绑定的后端的健康检查状态
+        :param _Targets: 本规则上绑定的后端的健康检查状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of TargetHealth
         """
-        self.Targets = None
+        self._Targets = None
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
 
     def _deserialize(self, params):
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = TargetHealth()
                 obj._deserialize(item)
-                self.Targets.append(obj)
+                self._Targets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10860,22 +19557,31 @@ class RunEIPDirectServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enabled: 是否开通IP直通。取值范围：
+        :param _Enabled: 是否开通IP直通。取值范围：
 TRUE：表示开通IP直通
 FALSE：表示不开通IP直通
 默认取值：TRUE。
 windows镜像目前不支持IP直通。
         :type Enabled: bool
         """
-        self.Enabled = None
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
 
 
     def _deserialize(self, params):
-        self.Enabled = params.get("Enabled")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10888,20 +19594,20 @@ class RunInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneInstanceCountISPSet: 需要创建实例的可用区及创建数目及运营商的列表。在单次请求的过程中，单个region下的请求创建实例数上限为100
+        :param _ZoneInstanceCountISPSet: 需要创建实例的可用区及创建数目及运营商的列表。在单次请求的过程中，单个region下的请求创建实例数上限为100
         :type ZoneInstanceCountISPSet: list of ZoneInstanceCountISP
-        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
+        :param _Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
 Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? / ]中的特殊符。Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? /]中的特殊符号。
         :type Password: str
-        :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。
+        :param _InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。
 1.如果未传该参数或者传的值为0，则使用模块下的默认值。
 2.如果未传该参数或者传的值为0且未指定模块，则使用InternetMaxBandwidthIn的值
         :type InternetMaxBandwidthOut: int
-        :param ModuleId: 模块ID。如果未传该参数，则必须传ImageId，InstanceType，DataDiskSize，InternetMaxBandwidthOut参数
+        :param _ModuleId: 模块ID。如果未传该参数，则必须传ImageId，InstanceType，DataDiskSize，InternetMaxBandwidthOut参数
         :type ModuleId: str
-        :param ImageId: 镜像ID。如果未传该参数或者传的值为空，则使用模块下的默认值
+        :param _ImageId: 镜像ID。如果未传该参数或者传的值为空，则使用模块下的默认值
         :type ImageId: str
-        :param InstanceName: 实例显示名称。
+        :param _InstanceName: 实例显示名称。
 不指定实例显示名称则默认显示‘未命名’。
 购买多台实例，如果指定模式串{R:x}，表示生成数字[x, x+n-1]，其中n表示购买实例的数量，例如server\_{R:3}，购买1台时，实例显示名称为server\_3；购买2台时，实例显示名称分别为server\_3，server\_4。
 支持指定多个模式串{R:x}。
@@ -10909,119 +19615,288 @@ Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [
 如果购买的实例属于不同的地域或运营商，则上述规则在每个地域和运营商内独立计数。
 最多支持60个字符（包含模式串）。
         :type InstanceName: str
-        :param HostName: 主机名称
+        :param _HostName: 主机名称
 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。
 Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。
 其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
         :type HostName: str
-        :param ClientToken: 用于保证请求幂等性的字符串。目前为保留参数，请勿使用。
+        :param _ClientToken: 用于保证请求幂等性的字符串。目前为保留参数，请勿使用。
         :type ClientToken: str
-        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务
+        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务
         :type EnhancedService: :class:`tencentcloud.ecm.v20190719.models.EnhancedService`
-        :param TagSpecification: 标签列表
+        :param _TagSpecification: 标签列表
         :type TagSpecification: list of TagSpecification
-        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB
+        :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB
         :type UserData: str
-        :param InstanceType: 机型。如果未传该参数或者传的值为空，则使用模块下的默认值
+        :param _InstanceType: 机型。如果未传该参数或者传的值为空，则使用模块下的默认值
         :type InstanceType: str
-        :param DataDiskSize: 数据盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
+        :param _DataDiskSize: 数据盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
         :type DataDiskSize: int
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
-        :param SystemDiskSize: 系统盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
+        :param _SystemDiskSize: 系统盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
         :type SystemDiskSize: int
-        :param InternetMaxBandwidthIn: 公网入带宽上限，单位：Mbps。
+        :param _InternetMaxBandwidthIn: 公网入带宽上限，单位：Mbps。
 1.如果未传该参数或者传的值为0，则使用对应模块的默认值。
 2.如果未传该参数或者传的值为0且未指定模块，则使用InternetMaxBandwidthOut
         :type InternetMaxBandwidthIn: int
-        :param InstanceChargeType: 实例计费类型。其中：
+        :param _InstanceChargeType: 实例计费类型。其中：
 0，按资源维度后付费，计算当日用量峰值，例如CPU，内存，硬盘等，仅适用于非GNR系列机型；
 1，按小时后付费，单价：xx元/实例/小时，仅适用于GNR机型，如需开通该计费方式请提工单申请；
 2，按月后付费，单价：xx元/实例/月，仅适用于GNR机型；
 该字段不填时，非GNR机型会默认选择0；GNR机型默认选择2。
         :type InstanceChargeType: int
-        :param KeyIds: 密钥对。
+        :param _KeyIds: 密钥对。
         :type KeyIds: list of str
-        :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
+        :param _KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
 TRUE：表示保持镜像的登录设置
 FALSE：表示不保持镜像的登录设置
 
 默认取值：FALSE。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
-        :param SystemDisk: 系统盘信息。
+        :param _SystemDisk: 系统盘信息。
         :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
-        :param DataDisks: 数据盘信息。
+        :param _DataDisks: 数据盘信息。
         :type DataDisks: list of DataDisk
         """
-        self.ZoneInstanceCountISPSet = None
-        self.Password = None
-        self.InternetMaxBandwidthOut = None
-        self.ModuleId = None
-        self.ImageId = None
-        self.InstanceName = None
-        self.HostName = None
-        self.ClientToken = None
-        self.EnhancedService = None
-        self.TagSpecification = None
-        self.UserData = None
-        self.InstanceType = None
-        self.DataDiskSize = None
-        self.SecurityGroupIds = None
-        self.SystemDiskSize = None
-        self.InternetMaxBandwidthIn = None
-        self.InstanceChargeType = None
-        self.KeyIds = None
-        self.KeepImageLogin = None
-        self.SystemDisk = None
-        self.DataDisks = None
+        self._ZoneInstanceCountISPSet = None
+        self._Password = None
+        self._InternetMaxBandwidthOut = None
+        self._ModuleId = None
+        self._ImageId = None
+        self._InstanceName = None
+        self._HostName = None
+        self._ClientToken = None
+        self._EnhancedService = None
+        self._TagSpecification = None
+        self._UserData = None
+        self._InstanceType = None
+        self._DataDiskSize = None
+        self._SecurityGroupIds = None
+        self._SystemDiskSize = None
+        self._InternetMaxBandwidthIn = None
+        self._InstanceChargeType = None
+        self._KeyIds = None
+        self._KeepImageLogin = None
+        self._SystemDisk = None
+        self._DataDisks = None
+
+    @property
+    def ZoneInstanceCountISPSet(self):
+        return self._ZoneInstanceCountISPSet
+
+    @ZoneInstanceCountISPSet.setter
+    def ZoneInstanceCountISPSet(self, ZoneInstanceCountISPSet):
+        self._ZoneInstanceCountISPSet = ZoneInstanceCountISPSet
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def HostName(self):
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def EnhancedService(self):
+        return self._EnhancedService
+
+    @EnhancedService.setter
+    def EnhancedService(self, EnhancedService):
+        self._EnhancedService = EnhancedService
+
+    @property
+    def TagSpecification(self):
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def DataDiskSize(self):
+        return self._DataDiskSize
+
+    @DataDiskSize.setter
+    def DataDiskSize(self, DataDiskSize):
+        self._DataDiskSize = DataDiskSize
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def SystemDiskSize(self):
+        return self._SystemDiskSize
+
+    @SystemDiskSize.setter
+    def SystemDiskSize(self, SystemDiskSize):
+        self._SystemDiskSize = SystemDiskSize
+
+    @property
+    def InternetMaxBandwidthIn(self):
+        return self._InternetMaxBandwidthIn
+
+    @InternetMaxBandwidthIn.setter
+    def InternetMaxBandwidthIn(self, InternetMaxBandwidthIn):
+        self._InternetMaxBandwidthIn = InternetMaxBandwidthIn
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def KeepImageLogin(self):
+        return self._KeepImageLogin
+
+    @KeepImageLogin.setter
+    def KeepImageLogin(self, KeepImageLogin):
+        self._KeepImageLogin = KeepImageLogin
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
 
 
     def _deserialize(self, params):
         if params.get("ZoneInstanceCountISPSet") is not None:
-            self.ZoneInstanceCountISPSet = []
+            self._ZoneInstanceCountISPSet = []
             for item in params.get("ZoneInstanceCountISPSet"):
                 obj = ZoneInstanceCountISP()
                 obj._deserialize(item)
-                self.ZoneInstanceCountISPSet.append(obj)
-        self.Password = params.get("Password")
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
-        self.ModuleId = params.get("ModuleId")
-        self.ImageId = params.get("ImageId")
-        self.InstanceName = params.get("InstanceName")
-        self.HostName = params.get("HostName")
-        self.ClientToken = params.get("ClientToken")
+                self._ZoneInstanceCountISPSet.append(obj)
+        self._Password = params.get("Password")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._ModuleId = params.get("ModuleId")
+        self._ImageId = params.get("ImageId")
+        self._InstanceName = params.get("InstanceName")
+        self._HostName = params.get("HostName")
+        self._ClientToken = params.get("ClientToken")
         if params.get("EnhancedService") is not None:
-            self.EnhancedService = EnhancedService()
-            self.EnhancedService._deserialize(params.get("EnhancedService"))
+            self._EnhancedService = EnhancedService()
+            self._EnhancedService._deserialize(params.get("EnhancedService"))
         if params.get("TagSpecification") is not None:
-            self.TagSpecification = []
+            self._TagSpecification = []
             for item in params.get("TagSpecification"):
                 obj = TagSpecification()
                 obj._deserialize(item)
-                self.TagSpecification.append(obj)
-        self.UserData = params.get("UserData")
-        self.InstanceType = params.get("InstanceType")
-        self.DataDiskSize = params.get("DataDiskSize")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        self.SystemDiskSize = params.get("SystemDiskSize")
-        self.InternetMaxBandwidthIn = params.get("InternetMaxBandwidthIn")
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        self.KeyIds = params.get("KeyIds")
-        self.KeepImageLogin = params.get("KeepImageLogin")
+                self._TagSpecification.append(obj)
+        self._UserData = params.get("UserData")
+        self._InstanceType = params.get("InstanceType")
+        self._DataDiskSize = params.get("DataDiskSize")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._SystemDiskSize = params.get("SystemDiskSize")
+        self._InternetMaxBandwidthIn = params.get("InternetMaxBandwidthIn")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._KeyIds = params.get("KeyIds")
+        self._KeepImageLogin = params.get("KeepImageLogin")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("DataDisks") is not None:
-            self.DataDisks = []
+            self._DataDisks = []
             for item in params.get("DataDisks"):
                 obj = DataDisk()
                 obj._deserialize(item)
-                self.DataDisks.append(obj)
+                self._DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11034,19 +19909,35 @@ class RunInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 创建中的实例ID列表
+        :param _InstanceIdSet: 创建中的实例ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstanceIdSet = None
-        self.RequestId = None
+        self._InstanceIdSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.RequestId = params.get("RequestId")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._RequestId = params.get("RequestId")
 
 
 class RunMonitorServiceEnabled(AbstractModel):
@@ -11056,18 +19947,27 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enabled: 是否开启。
+        :param _Enabled: 是否开启。
         :type Enabled: bool
         """
-        self.Enabled = None
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
 
 
     def _deserialize(self, params):
-        self.Enabled = params.get("Enabled")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11080,22 +19980,39 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enabled: 是否开启。
+        :param _Enabled: 是否开启。
         :type Enabled: bool
-        :param Version: 云镜版本：0 基础版，1 专业版。目前仅支持基础版
+        :param _Version: 云镜版本：0 基础版，1 专业版。目前仅支持基础版
         :type Version: int
         """
-        self.Enabled = None
-        self.Version = None
+        self._Enabled = None
+        self._Version = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
-        self.Enabled = params.get("Enabled")
-        self.Version = params.get("Version")
+        self._Enabled = params.get("Enabled")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11108,43 +20025,92 @@ class SecurityGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID，例如：esg-ohuuioma。
+        :param _SecurityGroupId: 安全组实例ID，例如：esg-ohuuioma。
         :type SecurityGroupId: str
-        :param SecurityGroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :param _SecurityGroupName: 安全组名称，可任意命名，但不得超过60个字符。
         :type SecurityGroupName: str
-        :param SecurityGroupDesc: 安全组备注，最多100个字符。
+        :param _SecurityGroupDesc: 安全组备注，最多100个字符。
         :type SecurityGroupDesc: str
-        :param IsDefault: 是否是默认安全组，默认安全组不支持删除。
+        :param _IsDefault: 是否是默认安全组，默认安全组不支持删除。
         :type IsDefault: bool
-        :param CreatedTime: 安全组创建时间。
+        :param _CreatedTime: 安全组创建时间。
         :type CreatedTime: str
-        :param TagSet: 标签键值对。
+        :param _TagSet: 标签键值对。
         :type TagSet: list of Tag
         """
-        self.SecurityGroupId = None
-        self.SecurityGroupName = None
-        self.SecurityGroupDesc = None
-        self.IsDefault = None
-        self.CreatedTime = None
-        self.TagSet = None
+        self._SecurityGroupId = None
+        self._SecurityGroupName = None
+        self._SecurityGroupDesc = None
+        self._IsDefault = None
+        self._CreatedTime = None
+        self._TagSet = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def SecurityGroupName(self):
+        return self._SecurityGroupName
+
+    @SecurityGroupName.setter
+    def SecurityGroupName(self, SecurityGroupName):
+        self._SecurityGroupName = SecurityGroupName
+
+    @property
+    def SecurityGroupDesc(self):
+        return self._SecurityGroupDesc
+
+    @SecurityGroupDesc.setter
+    def SecurityGroupDesc(self, SecurityGroupDesc):
+        self._SecurityGroupDesc = SecurityGroupDesc
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
-        self.SecurityGroupName = params.get("SecurityGroupName")
-        self.SecurityGroupDesc = params.get("SecurityGroupDesc")
-        self.IsDefault = params.get("IsDefault")
-        self.CreatedTime = params.get("CreatedTime")
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupName = params.get("SecurityGroupName")
+        self._SecurityGroupDesc = params.get("SecurityGroupDesc")
+        self._IsDefault = params.get("IsDefault")
+        self._CreatedTime = params.get("CreatedTime")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11157,51 +20123,116 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupId: 安全组实例ID。
+        :param _SecurityGroupId: 安全组实例ID。
         :type SecurityGroupId: str
-        :param ECM: ECM实例数。
+        :param _ECM: ECM实例数。
         :type ECM: int
-        :param Module: ECM模块数。
+        :param _Module: ECM模块数。
         :type Module: int
-        :param ENI: 弹性网卡实例数。
+        :param _ENI: 弹性网卡实例数。
         :type ENI: int
-        :param SG: 被安全组引用数。
+        :param _SG: 被安全组引用数。
         :type SG: int
-        :param CLB: 负载均衡实例数。
+        :param _CLB: 负载均衡实例数。
         :type CLB: int
-        :param InstanceStatistics: 全量实例的绑定统计。
+        :param _InstanceStatistics: 全量实例的绑定统计。
         :type InstanceStatistics: list of InstanceStatistic
-        :param TotalCount: 所有资源的总计数（不包含被安全组引用数）。
+        :param _TotalCount: 所有资源的总计数（不包含被安全组引用数）。
         :type TotalCount: int
         """
-        self.SecurityGroupId = None
-        self.ECM = None
-        self.Module = None
-        self.ENI = None
-        self.SG = None
-        self.CLB = None
-        self.InstanceStatistics = None
-        self.TotalCount = None
+        self._SecurityGroupId = None
+        self._ECM = None
+        self._Module = None
+        self._ENI = None
+        self._SG = None
+        self._CLB = None
+        self._InstanceStatistics = None
+        self._TotalCount = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def ECM(self):
+        return self._ECM
+
+    @ECM.setter
+    def ECM(self, ECM):
+        self._ECM = ECM
+
+    @property
+    def Module(self):
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ENI(self):
+        return self._ENI
+
+    @ENI.setter
+    def ENI(self, ENI):
+        self._ENI = ENI
+
+    @property
+    def SG(self):
+        return self._SG
+
+    @SG.setter
+    def SG(self, SG):
+        self._SG = SG
+
+    @property
+    def CLB(self):
+        return self._CLB
+
+    @CLB.setter
+    def CLB(self, CLB):
+        self._CLB = CLB
+
+    @property
+    def InstanceStatistics(self):
+        return self._InstanceStatistics
+
+    @InstanceStatistics.setter
+    def InstanceStatistics(self, InstanceStatistics):
+        self._InstanceStatistics = InstanceStatistics
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
 
     def _deserialize(self, params):
-        self.SecurityGroupId = params.get("SecurityGroupId")
-        self.ECM = params.get("ECM")
-        self.Module = params.get("Module")
-        self.ENI = params.get("ENI")
-        self.SG = params.get("SG")
-        self.CLB = params.get("CLB")
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        self._ECM = params.get("ECM")
+        self._Module = params.get("Module")
+        self._ENI = params.get("ENI")
+        self._SG = params.get("SG")
+        self._CLB = params.get("CLB")
         if params.get("InstanceStatistics") is not None:
-            self.InstanceStatistics = []
+            self._InstanceStatistics = []
             for item in params.get("InstanceStatistics"):
                 obj = InstanceStatistic()
                 obj._deserialize(item)
-                self.InstanceStatistics.append(obj)
-        self.TotalCount = params.get("TotalCount")
+                self._InstanceStatistics.append(obj)
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11214,42 +20245,99 @@ class SecurityGroupLimitSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupLimit: 可创建安全组总数
+        :param _SecurityGroupLimit: 可创建安全组总数
         :type SecurityGroupLimit: int
-        :param SecurityGroupPolicyLimit: 安全组下的最大规则数
+        :param _SecurityGroupPolicyLimit: 安全组下的最大规则数
         :type SecurityGroupPolicyLimit: int
-        :param ReferedSecurityGroupLimit: 安全组下嵌套安全组规则数
+        :param _ReferedSecurityGroupLimit: 安全组下嵌套安全组规则数
         :type ReferedSecurityGroupLimit: int
-        :param SecurityGroupInstanceLimit: 单安全组关联实例数
+        :param _SecurityGroupInstanceLimit: 单安全组关联实例数
         :type SecurityGroupInstanceLimit: int
-        :param InstanceSecurityGroupLimit: 实例关联安全组数
+        :param _InstanceSecurityGroupLimit: 实例关联安全组数
         :type InstanceSecurityGroupLimit: int
-        :param SecurityGroupModuleLimit: 单安全组关联的模块数
+        :param _SecurityGroupModuleLimit: 单安全组关联的模块数
         :type SecurityGroupModuleLimit: int
-        :param ModuleSecurityGroupLimit: 模块关联的安全组数
+        :param _ModuleSecurityGroupLimit: 模块关联的安全组数
         :type ModuleSecurityGroupLimit: int
         """
-        self.SecurityGroupLimit = None
-        self.SecurityGroupPolicyLimit = None
-        self.ReferedSecurityGroupLimit = None
-        self.SecurityGroupInstanceLimit = None
-        self.InstanceSecurityGroupLimit = None
-        self.SecurityGroupModuleLimit = None
-        self.ModuleSecurityGroupLimit = None
+        self._SecurityGroupLimit = None
+        self._SecurityGroupPolicyLimit = None
+        self._ReferedSecurityGroupLimit = None
+        self._SecurityGroupInstanceLimit = None
+        self._InstanceSecurityGroupLimit = None
+        self._SecurityGroupModuleLimit = None
+        self._ModuleSecurityGroupLimit = None
+
+    @property
+    def SecurityGroupLimit(self):
+        return self._SecurityGroupLimit
+
+    @SecurityGroupLimit.setter
+    def SecurityGroupLimit(self, SecurityGroupLimit):
+        self._SecurityGroupLimit = SecurityGroupLimit
+
+    @property
+    def SecurityGroupPolicyLimit(self):
+        return self._SecurityGroupPolicyLimit
+
+    @SecurityGroupPolicyLimit.setter
+    def SecurityGroupPolicyLimit(self, SecurityGroupPolicyLimit):
+        self._SecurityGroupPolicyLimit = SecurityGroupPolicyLimit
+
+    @property
+    def ReferedSecurityGroupLimit(self):
+        return self._ReferedSecurityGroupLimit
+
+    @ReferedSecurityGroupLimit.setter
+    def ReferedSecurityGroupLimit(self, ReferedSecurityGroupLimit):
+        self._ReferedSecurityGroupLimit = ReferedSecurityGroupLimit
+
+    @property
+    def SecurityGroupInstanceLimit(self):
+        return self._SecurityGroupInstanceLimit
+
+    @SecurityGroupInstanceLimit.setter
+    def SecurityGroupInstanceLimit(self, SecurityGroupInstanceLimit):
+        self._SecurityGroupInstanceLimit = SecurityGroupInstanceLimit
+
+    @property
+    def InstanceSecurityGroupLimit(self):
+        return self._InstanceSecurityGroupLimit
+
+    @InstanceSecurityGroupLimit.setter
+    def InstanceSecurityGroupLimit(self, InstanceSecurityGroupLimit):
+        self._InstanceSecurityGroupLimit = InstanceSecurityGroupLimit
+
+    @property
+    def SecurityGroupModuleLimit(self):
+        return self._SecurityGroupModuleLimit
+
+    @SecurityGroupModuleLimit.setter
+    def SecurityGroupModuleLimit(self, SecurityGroupModuleLimit):
+        self._SecurityGroupModuleLimit = SecurityGroupModuleLimit
+
+    @property
+    def ModuleSecurityGroupLimit(self):
+        return self._ModuleSecurityGroupLimit
+
+    @ModuleSecurityGroupLimit.setter
+    def ModuleSecurityGroupLimit(self, ModuleSecurityGroupLimit):
+        self._ModuleSecurityGroupLimit = ModuleSecurityGroupLimit
 
 
     def _deserialize(self, params):
-        self.SecurityGroupLimit = params.get("SecurityGroupLimit")
-        self.SecurityGroupPolicyLimit = params.get("SecurityGroupPolicyLimit")
-        self.ReferedSecurityGroupLimit = params.get("ReferedSecurityGroupLimit")
-        self.SecurityGroupInstanceLimit = params.get("SecurityGroupInstanceLimit")
-        self.InstanceSecurityGroupLimit = params.get("InstanceSecurityGroupLimit")
-        self.SecurityGroupModuleLimit = params.get("SecurityGroupModuleLimit")
-        self.ModuleSecurityGroupLimit = params.get("ModuleSecurityGroupLimit")
+        self._SecurityGroupLimit = params.get("SecurityGroupLimit")
+        self._SecurityGroupPolicyLimit = params.get("SecurityGroupPolicyLimit")
+        self._ReferedSecurityGroupLimit = params.get("ReferedSecurityGroupLimit")
+        self._SecurityGroupInstanceLimit = params.get("SecurityGroupInstanceLimit")
+        self._InstanceSecurityGroupLimit = params.get("InstanceSecurityGroupLimit")
+        self._SecurityGroupModuleLimit = params.get("SecurityGroupModuleLimit")
+        self._ModuleSecurityGroupLimit = params.get("ModuleSecurityGroupLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11262,64 +20350,153 @@ class SecurityGroupPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyIndex: 安全组规则索引号
+        :param _PolicyIndex: 安全组规则索引号
         :type PolicyIndex: int
-        :param Protocol: 协议, 取值: TCP,UDP, ICMP。
+        :param _Protocol: 协议, 取值: TCP,UDP, ICMP。
         :type Protocol: str
-        :param Port: 端口(all, 离散port, range)。
+        :param _Port: 端口(all, 离散port, range)。
         :type Port: str
-        :param ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+        :param _ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
         :type ServiceTemplate: :class:`tencentcloud.ecm.v20190719.models.ServiceTemplateSpecification`
-        :param CidrBlock: 网段或IP(互斥)。
+        :param _CidrBlock: 网段或IP(互斥)。
         :type CidrBlock: str
-        :param SecurityGroupId: 安全组实例ID，例如：esg-ohuuioma。
+        :param _SecurityGroupId: 安全组实例ID，例如：esg-ohuuioma。
         :type SecurityGroupId: str
-        :param AddressTemplate: IP地址ID或者ID地址组ID。
+        :param _AddressTemplate: IP地址ID或者ID地址组ID。
         :type AddressTemplate: :class:`tencentcloud.ecm.v20190719.models.AddressTemplateSpecification`
-        :param Action: ACCEPT 或 DROP。
+        :param _Action: ACCEPT 或 DROP。
         :type Action: str
-        :param PolicyDescription: 安全组规则描述。
+        :param _PolicyDescription: 安全组规则描述。
         :type PolicyDescription: str
-        :param ModifyTime: 修改时间，例如 2020-07-22 19：27：23
+        :param _ModifyTime: 修改时间，例如 2020-07-22 19：27：23
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
-        :param Ipv6CidrBlock: 网段或IPv6(互斥)。
+        :param _Ipv6CidrBlock: 网段或IPv6(互斥)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6CidrBlock: str
         """
-        self.PolicyIndex = None
-        self.Protocol = None
-        self.Port = None
-        self.ServiceTemplate = None
-        self.CidrBlock = None
-        self.SecurityGroupId = None
-        self.AddressTemplate = None
-        self.Action = None
-        self.PolicyDescription = None
-        self.ModifyTime = None
-        self.Ipv6CidrBlock = None
+        self._PolicyIndex = None
+        self._Protocol = None
+        self._Port = None
+        self._ServiceTemplate = None
+        self._CidrBlock = None
+        self._SecurityGroupId = None
+        self._AddressTemplate = None
+        self._Action = None
+        self._PolicyDescription = None
+        self._ModifyTime = None
+        self._Ipv6CidrBlock = None
+
+    @property
+    def PolicyIndex(self):
+        return self._PolicyIndex
+
+    @PolicyIndex.setter
+    def PolicyIndex(self, PolicyIndex):
+        self._PolicyIndex = PolicyIndex
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def ServiceTemplate(self):
+        return self._ServiceTemplate
+
+    @ServiceTemplate.setter
+    def ServiceTemplate(self, ServiceTemplate):
+        self._ServiceTemplate = ServiceTemplate
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def AddressTemplate(self):
+        return self._AddressTemplate
+
+    @AddressTemplate.setter
+    def AddressTemplate(self, AddressTemplate):
+        self._AddressTemplate = AddressTemplate
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def PolicyDescription(self):
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Ipv6CidrBlock(self):
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
 
 
     def _deserialize(self, params):
-        self.PolicyIndex = params.get("PolicyIndex")
-        self.Protocol = params.get("Protocol")
-        self.Port = params.get("Port")
+        self._PolicyIndex = params.get("PolicyIndex")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         if params.get("ServiceTemplate") is not None:
-            self.ServiceTemplate = ServiceTemplateSpecification()
-            self.ServiceTemplate._deserialize(params.get("ServiceTemplate"))
-        self.CidrBlock = params.get("CidrBlock")
-        self.SecurityGroupId = params.get("SecurityGroupId")
+            self._ServiceTemplate = ServiceTemplateSpecification()
+            self._ServiceTemplate._deserialize(params.get("ServiceTemplate"))
+        self._CidrBlock = params.get("CidrBlock")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         if params.get("AddressTemplate") is not None:
-            self.AddressTemplate = AddressTemplateSpecification()
-            self.AddressTemplate._deserialize(params.get("AddressTemplate"))
-        self.Action = params.get("Action")
-        self.PolicyDescription = params.get("PolicyDescription")
-        self.ModifyTime = params.get("ModifyTime")
-        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+            self._AddressTemplate = AddressTemplateSpecification()
+            self._AddressTemplate._deserialize(params.get("AddressTemplate"))
+        self._Action = params.get("Action")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11332,36 +20509,61 @@ class SecurityGroupPolicySet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Version: 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
+        :param _Version: 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
         :type Version: str
-        :param Egress: 出站规则。其中出站规则和入站规则必须选一个。
+        :param _Egress: 出站规则。其中出站规则和入站规则必须选一个。
         :type Egress: list of SecurityGroupPolicy
-        :param Ingress: 入站规则。其中出站规则和入站规则必须选一个。
+        :param _Ingress: 入站规则。其中出站规则和入站规则必须选一个。
         :type Ingress: list of SecurityGroupPolicy
         """
-        self.Version = None
-        self.Egress = None
-        self.Ingress = None
+        self._Version = None
+        self._Egress = None
+        self._Ingress = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
+    @property
+    def Ingress(self):
+        return self._Ingress
+
+    @Ingress.setter
+    def Ingress(self, Ingress):
+        self._Ingress = Ingress
 
 
     def _deserialize(self, params):
-        self.Version = params.get("Version")
+        self._Version = params.get("Version")
         if params.get("Egress") is not None:
-            self.Egress = []
+            self._Egress = []
             for item in params.get("Egress"):
                 obj = SecurityGroupPolicy()
                 obj._deserialize(item)
-                self.Egress.append(obj)
+                self._Egress.append(obj)
         if params.get("Ingress") is not None:
-            self.Ingress = []
+            self._Ingress = []
             for item in params.get("Ingress"):
                 obj = SecurityGroupPolicy()
                 obj._deserialize(item)
-                self.Ingress.append(obj)
+                self._Ingress.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11374,22 +20576,39 @@ class ServiceTemplateSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: 协议端口ID，例如：eppm-f5n1f8da。
+        :param _ServiceId: 协议端口ID，例如：eppm-f5n1f8da。
         :type ServiceId: str
-        :param ServiceGroupId: 协议端口组ID，例如：eppmg-f5n1f8da。
+        :param _ServiceGroupId: 协议端口组ID，例如：eppmg-f5n1f8da。
         :type ServiceGroupId: str
         """
-        self.ServiceId = None
-        self.ServiceGroupId = None
+        self._ServiceId = None
+        self._ServiceGroupId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceGroupId(self):
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceGroupId = params.get("ServiceGroupId")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceGroupId = params.get("ServiceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11402,22 +20621,39 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多可绑定5个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组
+        :param _SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多可绑定5个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组
         :type SecurityGroups: list of str
         """
-        self.LoadBalancerId = None
-        self.SecurityGroups = None
+        self._LoadBalancerId = None
+        self._SecurityGroups = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def SecurityGroups(self):
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
 
 
     def _deserialize(self, params):
-        self.LoadBalancerId = params.get("LoadBalancerId")
-        self.SecurityGroups = params.get("SecurityGroups")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._SecurityGroups = params.get("SecurityGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11430,14 +20666,22 @@ class SetLoadBalancerSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetSecurityGroupForLoadbalancersRequest(AbstractModel):
@@ -11447,27 +20691,52 @@ class SetSecurityGroupForLoadbalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerIds: 负载均衡实例ID数组
+        :param _LoadBalancerIds: 负载均衡实例ID数组
         :type LoadBalancerIds: list of str
-        :param SecurityGroup: 安全组ID，如 esg-12345678
+        :param _SecurityGroup: 安全组ID，如 esg-12345678
         :type SecurityGroup: str
-        :param OperationType: ADD 绑定安全组；
+        :param _OperationType: ADD 绑定安全组；
 DEL 解绑安全组
         :type OperationType: str
         """
-        self.LoadBalancerIds = None
-        self.SecurityGroup = None
-        self.OperationType = None
+        self._LoadBalancerIds = None
+        self._SecurityGroup = None
+        self._OperationType = None
+
+    @property
+    def LoadBalancerIds(self):
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+    @property
+    def SecurityGroup(self):
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
 
 
     def _deserialize(self, params):
-        self.LoadBalancerIds = params.get("LoadBalancerIds")
-        self.SecurityGroup = params.get("SecurityGroup")
-        self.OperationType = params.get("OperationType")
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        self._SecurityGroup = params.get("SecurityGroup")
+        self._OperationType = params.get("OperationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11480,14 +20749,22 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SimpleModule(AbstractModel):
@@ -11497,22 +20774,39 @@ class SimpleModule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModuleId: 模块ID
+        :param _ModuleId: 模块ID
         :type ModuleId: str
-        :param ModuleName: 模块名称
+        :param _ModuleName: 模块名称
         :type ModuleName: str
         """
-        self.ModuleId = None
-        self.ModuleName = None
+        self._ModuleId = None
+        self._ModuleName = None
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def ModuleName(self):
+        return self._ModuleName
+
+    @ModuleName.setter
+    def ModuleName(self, ModuleName):
+        self._ModuleName = ModuleName
 
 
     def _deserialize(self, params):
-        self.ModuleId = params.get("ModuleId")
-        self.ModuleName = params.get("ModuleName")
+        self._ModuleId = params.get("ModuleId")
+        self._ModuleName = params.get("ModuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11525,98 +20819,251 @@ class Snapshot(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Placement: 快照所在的位置。
+        :param _Placement: 快照所在的位置。
         :type Placement: :class:`tencentcloud.ecm.v20190719.models.Placement`
-        :param CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
+        :param _CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
         :type CopyFromRemote: bool
-        :param IsPermanent: 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
+        :param _IsPermanent: 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
         :type IsPermanent: bool
-        :param SnapshotName: 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
+        :param _SnapshotName: 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
         :type SnapshotName: str
-        :param Percent: 快照创建进度百分比，快照创建成功后此字段恒为100。
+        :param _Percent: 快照创建进度百分比，快照创建成功后此字段恒为100。
         :type Percent: int
-        :param Images: 快照关联的镜像列表。
+        :param _Images: 快照关联的镜像列表。
         :type Images: list of Image
-        :param ShareReference: 快照当前被共享数。
+        :param _ShareReference: 快照当前被共享数。
         :type ShareReference: int
-        :param SnapshotType: 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
+        :param _SnapshotType: 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
         :type SnapshotType: str
-        :param DiskSize: 创建此快照的云硬盘大小，单位GB。
+        :param _DiskSize: 创建此快照的云硬盘大小，单位GB。
         :type DiskSize: int
-        :param DiskId: 创建此快照的云硬盘ID。
+        :param _DiskId: 创建此快照的云硬盘ID。
         :type DiskId: str
-        :param CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
+        :param _CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
         :type CopyingToRegions: list of str
-        :param SnapshotId: 快照ID。
+        :param _SnapshotId: 快照ID。
         :type SnapshotId: str
-        :param DiskUsage: 创建此快照的云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+        :param _DiskUsage: 创建此快照的云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
         :type DiskUsage: str
-        :param Encrypt: 是否为加密盘创建的快照。取值范围：<br><li>true：该快照为加密盘创建的<br><li>false:非加密盘创建的快照。
+        :param _Encrypt: 是否为加密盘创建的快照。取值范围：<br><li>true：该快照为加密盘创建的<br><li>false:非加密盘创建的快照。
         :type Encrypt: bool
-        :param CreateTime: 快照的创建时间。
+        :param _CreateTime: 快照的创建时间。
         :type CreateTime: str
-        :param ImageCount: 快照关联的镜像个数。
+        :param _ImageCount: 快照关联的镜像个数。
         :type ImageCount: int
-        :param SnapshotState: 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制中<br><li>CHECKING_COPIED：复制校验中<br><li>TORECYCLE：待回收。
+        :param _SnapshotState: 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制中<br><li>CHECKING_COPIED：复制校验中<br><li>TORECYCLE：待回收。
         :type SnapshotState: str
-        :param DeadlineTime: 快照的到期时间。
+        :param _DeadlineTime: 快照的到期时间。
         :type DeadlineTime: str
-        :param TimeStartShare: 快照开始共享的时间。
+        :param _TimeStartShare: 快照开始共享的时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeStartShare: str
         """
-        self.Placement = None
-        self.CopyFromRemote = None
-        self.IsPermanent = None
-        self.SnapshotName = None
-        self.Percent = None
-        self.Images = None
-        self.ShareReference = None
-        self.SnapshotType = None
-        self.DiskSize = None
-        self.DiskId = None
-        self.CopyingToRegions = None
-        self.SnapshotId = None
-        self.DiskUsage = None
-        self.Encrypt = None
-        self.CreateTime = None
-        self.ImageCount = None
-        self.SnapshotState = None
-        self.DeadlineTime = None
-        self.TimeStartShare = None
+        self._Placement = None
+        self._CopyFromRemote = None
+        self._IsPermanent = None
+        self._SnapshotName = None
+        self._Percent = None
+        self._Images = None
+        self._ShareReference = None
+        self._SnapshotType = None
+        self._DiskSize = None
+        self._DiskId = None
+        self._CopyingToRegions = None
+        self._SnapshotId = None
+        self._DiskUsage = None
+        self._Encrypt = None
+        self._CreateTime = None
+        self._ImageCount = None
+        self._SnapshotState = None
+        self._DeadlineTime = None
+        self._TimeStartShare = None
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def CopyFromRemote(self):
+        return self._CopyFromRemote
+
+    @CopyFromRemote.setter
+    def CopyFromRemote(self, CopyFromRemote):
+        self._CopyFromRemote = CopyFromRemote
+
+    @property
+    def IsPermanent(self):
+        return self._IsPermanent
+
+    @IsPermanent.setter
+    def IsPermanent(self, IsPermanent):
+        self._IsPermanent = IsPermanent
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Images(self):
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def ShareReference(self):
+        return self._ShareReference
+
+    @ShareReference.setter
+    def ShareReference(self, ShareReference):
+        self._ShareReference = ShareReference
+
+    @property
+    def SnapshotType(self):
+        return self._SnapshotType
+
+    @SnapshotType.setter
+    def SnapshotType(self, SnapshotType):
+        self._SnapshotType = SnapshotType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskId(self):
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def CopyingToRegions(self):
+        return self._CopyingToRegions
+
+    @CopyingToRegions.setter
+    def CopyingToRegions(self, CopyingToRegions):
+        self._CopyingToRegions = CopyingToRegions
+
+    @property
+    def SnapshotId(self):
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def DiskUsage(self):
+        return self._DiskUsage
+
+    @DiskUsage.setter
+    def DiskUsage(self, DiskUsage):
+        self._DiskUsage = DiskUsage
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ImageCount(self):
+        return self._ImageCount
+
+    @ImageCount.setter
+    def ImageCount(self, ImageCount):
+        self._ImageCount = ImageCount
+
+    @property
+    def SnapshotState(self):
+        return self._SnapshotState
+
+    @SnapshotState.setter
+    def SnapshotState(self, SnapshotState):
+        self._SnapshotState = SnapshotState
+
+    @property
+    def DeadlineTime(self):
+        return self._DeadlineTime
+
+    @DeadlineTime.setter
+    def DeadlineTime(self, DeadlineTime):
+        self._DeadlineTime = DeadlineTime
+
+    @property
+    def TimeStartShare(self):
+        return self._TimeStartShare
+
+    @TimeStartShare.setter
+    def TimeStartShare(self, TimeStartShare):
+        self._TimeStartShare = TimeStartShare
 
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.CopyFromRemote = params.get("CopyFromRemote")
-        self.IsPermanent = params.get("IsPermanent")
-        self.SnapshotName = params.get("SnapshotName")
-        self.Percent = params.get("Percent")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._CopyFromRemote = params.get("CopyFromRemote")
+        self._IsPermanent = params.get("IsPermanent")
+        self._SnapshotName = params.get("SnapshotName")
+        self._Percent = params.get("Percent")
         if params.get("Images") is not None:
-            self.Images = []
+            self._Images = []
             for item in params.get("Images"):
                 obj = Image()
                 obj._deserialize(item)
-                self.Images.append(obj)
-        self.ShareReference = params.get("ShareReference")
-        self.SnapshotType = params.get("SnapshotType")
-        self.DiskSize = params.get("DiskSize")
-        self.DiskId = params.get("DiskId")
-        self.CopyingToRegions = params.get("CopyingToRegions")
-        self.SnapshotId = params.get("SnapshotId")
-        self.DiskUsage = params.get("DiskUsage")
-        self.Encrypt = params.get("Encrypt")
-        self.CreateTime = params.get("CreateTime")
-        self.ImageCount = params.get("ImageCount")
-        self.SnapshotState = params.get("SnapshotState")
-        self.DeadlineTime = params.get("DeadlineTime")
-        self.TimeStartShare = params.get("TimeStartShare")
+                self._Images.append(obj)
+        self._ShareReference = params.get("ShareReference")
+        self._SnapshotType = params.get("SnapshotType")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskId = params.get("DiskId")
+        self._CopyingToRegions = params.get("CopyingToRegions")
+        self._SnapshotId = params.get("SnapshotId")
+        self._DiskUsage = params.get("DiskUsage")
+        self._Encrypt = params.get("Encrypt")
+        self._CreateTime = params.get("CreateTime")
+        self._ImageCount = params.get("ImageCount")
+        self._SnapshotState = params.get("SnapshotState")
+        self._DeadlineTime = params.get("DeadlineTime")
+        self._TimeStartShare = params.get("TimeStartShare")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11629,54 +21076,135 @@ class SrcImage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 镜像id
+        :param _ImageId: 镜像id
         :type ImageId: str
-        :param ImageName: 镜像名称
+        :param _ImageName: 镜像名称
         :type ImageName: str
-        :param ImageOsName: 系统名称
+        :param _ImageOsName: 系统名称
         :type ImageOsName: str
-        :param ImageDescription: 镜像描述
+        :param _ImageDescription: 镜像描述
         :type ImageDescription: str
-        :param Region: 区域
+        :param _Region: 区域
         :type Region: str
-        :param RegionID: 区域ID
+        :param _RegionID: 区域ID
         :type RegionID: int
-        :param RegionName: 区域名称
+        :param _RegionName: 区域名称
         :type RegionName: str
-        :param InstanceName: 来源实例名称
+        :param _InstanceName: 来源实例名称
         :type InstanceName: str
-        :param InstanceId: 来源实例ID
+        :param _InstanceId: 来源实例ID
         :type InstanceId: str
-        :param ImageType: 来源镜像类型
+        :param _ImageType: 来源镜像类型
         :type ImageType: str
         """
-        self.ImageId = None
-        self.ImageName = None
-        self.ImageOsName = None
-        self.ImageDescription = None
-        self.Region = None
-        self.RegionID = None
-        self.RegionName = None
-        self.InstanceName = None
-        self.InstanceId = None
-        self.ImageType = None
+        self._ImageId = None
+        self._ImageName = None
+        self._ImageOsName = None
+        self._ImageDescription = None
+        self._Region = None
+        self._RegionID = None
+        self._RegionName = None
+        self._InstanceName = None
+        self._InstanceId = None
+        self._ImageType = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageOsName(self):
+        return self._ImageOsName
+
+    @ImageOsName.setter
+    def ImageOsName(self, ImageOsName):
+        self._ImageOsName = ImageOsName
+
+    @property
+    def ImageDescription(self):
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionID(self):
+        return self._RegionID
+
+    @RegionID.setter
+    def RegionID(self, RegionID):
+        self._RegionID = RegionID
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ImageType(self):
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.ImageName = params.get("ImageName")
-        self.ImageOsName = params.get("ImageOsName")
-        self.ImageDescription = params.get("ImageDescription")
-        self.Region = params.get("Region")
-        self.RegionID = params.get("RegionID")
-        self.RegionName = params.get("RegionName")
-        self.InstanceName = params.get("InstanceName")
-        self.InstanceId = params.get("InstanceId")
-        self.ImageType = params.get("ImageType")
+        self._ImageId = params.get("ImageId")
+        self._ImageName = params.get("ImageName")
+        self._ImageOsName = params.get("ImageOsName")
+        self._ImageDescription = params.get("ImageDescription")
+        self._Region = params.get("Region")
+        self._RegionID = params.get("RegionID")
+        self._RegionName = params.get("RegionName")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceId = params.get("InstanceId")
+        self._ImageType = params.get("ImageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11689,18 +21217,27 @@ class StartInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 待开启的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :param _InstanceIdSet: 待开启的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
         :type InstanceIdSet: list of str
         """
-        self.InstanceIdSet = None
+        self._InstanceIdSet = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
+        self._InstanceIdSet = params.get("InstanceIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11713,14 +21250,22 @@ class StartInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopInstancesRequest(AbstractModel):
@@ -11730,30 +21275,55 @@ class StopInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 需要关机的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :param _InstanceIdSet: 需要关机的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
         :type InstanceIdSet: list of str
-        :param ForceStop: 是否在正常关闭失败后选择强制关闭实例，默认为false，即否。
+        :param _ForceStop: 是否在正常关闭失败后选择强制关闭实例，默认为false，即否。
         :type ForceStop: bool
-        :param StopType: 实例的关闭模式。取值范围：
+        :param _StopType: 实例的关闭模式。取值范围：
 SOFT_FIRST：表示在正常关闭失败后进行强制关闭;
 HARD：直接强制关闭;
 SOFT：仅软关机；
 默认为SOFT。
         :type StopType: str
         """
-        self.InstanceIdSet = None
-        self.ForceStop = None
-        self.StopType = None
+        self._InstanceIdSet = None
+        self._ForceStop = None
+        self._StopType = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def ForceStop(self):
+        return self._ForceStop
+
+    @ForceStop.setter
+    def ForceStop(self, ForceStop):
+        self._ForceStop = ForceStop
+
+    @property
+    def StopType(self):
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.ForceStop = params.get("ForceStop")
-        self.StopType = params.get("StopType")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._ForceStop = params.get("ForceStop")
+        self._StopType = params.get("StopType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11766,14 +21336,22 @@ class StopInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Subnet(AbstractModel):
@@ -11783,101 +21361,254 @@ class Subnet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。
+        :param _VpcId: VPC实例ID。
         :type VpcId: str
-        :param SubnetId: 子网实例ID，例如：subnet-bthucmmy。
+        :param _SubnetId: 子网实例ID，例如：subnet-bthucmmy。
         :type SubnetId: str
-        :param SubnetName: 子网名称。
+        :param _SubnetName: 子网名称。
         :type SubnetName: str
-        :param CidrBlock: 子网的 IPv4 CIDR。
+        :param _CidrBlock: 子网的 IPv4 CIDR。
         :type CidrBlock: str
-        :param IsDefault: 是否默认子网。
+        :param _IsDefault: 是否默认子网。
         :type IsDefault: bool
-        :param EnableBroadcast: 是否开启广播。
+        :param _EnableBroadcast: 是否开启广播。
         :type EnableBroadcast: bool
-        :param RouteTableId: 路由表实例ID，例如：rtb-l2h8d7c2。
+        :param _RouteTableId: 路由表实例ID，例如：rtb-l2h8d7c2。
         :type RouteTableId: str
-        :param CreatedTime: 创建时间。
+        :param _CreatedTime: 创建时间。
         :type CreatedTime: str
-        :param AvailableIpAddressCount: 可用IP数。
+        :param _AvailableIpAddressCount: 可用IP数。
         :type AvailableIpAddressCount: int
-        :param Ipv6CidrBlock: 子网的 IPv6 CIDR。
+        :param _Ipv6CidrBlock: 子网的 IPv6 CIDR。
         :type Ipv6CidrBlock: str
-        :param NetworkAclId: 关联ACLID
+        :param _NetworkAclId: 关联ACLID
         :type NetworkAclId: str
-        :param IsRemoteVpcSnat: 是否为 SNAT 地址池子网。
+        :param _IsRemoteVpcSnat: 是否为 SNAT 地址池子网。
         :type IsRemoteVpcSnat: bool
-        :param TagSet: 标签键值对。
+        :param _TagSet: 标签键值对。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
-        :param Zone: 所在区域
+        :param _Zone: 所在区域
         :type Zone: str
-        :param ZoneName: 可用区名称
+        :param _ZoneName: 可用区名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
-        :param InstanceCount: 实例数量
+        :param _InstanceCount: 实例数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
-        :param VpcCidrBlock: VPC的 IPv4 CIDR。
+        :param _VpcCidrBlock: VPC的 IPv4 CIDR。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcCidrBlock: str
-        :param VpcIpv6CidrBlock: VPC的 IPv6 CIDR。
+        :param _VpcIpv6CidrBlock: VPC的 IPv6 CIDR。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcIpv6CidrBlock: str
-        :param Region: 地域
+        :param _Region: 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
-        self.VpcId = None
-        self.SubnetId = None
-        self.SubnetName = None
-        self.CidrBlock = None
-        self.IsDefault = None
-        self.EnableBroadcast = None
-        self.RouteTableId = None
-        self.CreatedTime = None
-        self.AvailableIpAddressCount = None
-        self.Ipv6CidrBlock = None
-        self.NetworkAclId = None
-        self.IsRemoteVpcSnat = None
-        self.TagSet = None
-        self.Zone = None
-        self.ZoneName = None
-        self.InstanceCount = None
-        self.VpcCidrBlock = None
-        self.VpcIpv6CidrBlock = None
-        self.Region = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._SubnetName = None
+        self._CidrBlock = None
+        self._IsDefault = None
+        self._EnableBroadcast = None
+        self._RouteTableId = None
+        self._CreatedTime = None
+        self._AvailableIpAddressCount = None
+        self._Ipv6CidrBlock = None
+        self._NetworkAclId = None
+        self._IsRemoteVpcSnat = None
+        self._TagSet = None
+        self._Zone = None
+        self._ZoneName = None
+        self._InstanceCount = None
+        self._VpcCidrBlock = None
+        self._VpcIpv6CidrBlock = None
+        self._Region = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def EnableBroadcast(self):
+        return self._EnableBroadcast
+
+    @EnableBroadcast.setter
+    def EnableBroadcast(self, EnableBroadcast):
+        self._EnableBroadcast = EnableBroadcast
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def AvailableIpAddressCount(self):
+        return self._AvailableIpAddressCount
+
+    @AvailableIpAddressCount.setter
+    def AvailableIpAddressCount(self, AvailableIpAddressCount):
+        self._AvailableIpAddressCount = AvailableIpAddressCount
+
+    @property
+    def Ipv6CidrBlock(self):
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
+    def NetworkAclId(self):
+        return self._NetworkAclId
+
+    @NetworkAclId.setter
+    def NetworkAclId(self, NetworkAclId):
+        self._NetworkAclId = NetworkAclId
+
+    @property
+    def IsRemoteVpcSnat(self):
+        return self._IsRemoteVpcSnat
+
+    @IsRemoteVpcSnat.setter
+    def IsRemoteVpcSnat(self, IsRemoteVpcSnat):
+        self._IsRemoteVpcSnat = IsRemoteVpcSnat
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def InstanceCount(self):
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def VpcCidrBlock(self):
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def VpcIpv6CidrBlock(self):
+        return self._VpcIpv6CidrBlock
+
+    @VpcIpv6CidrBlock.setter
+    def VpcIpv6CidrBlock(self, VpcIpv6CidrBlock):
+        self._VpcIpv6CidrBlock = VpcIpv6CidrBlock
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.SubnetName = params.get("SubnetName")
-        self.CidrBlock = params.get("CidrBlock")
-        self.IsDefault = params.get("IsDefault")
-        self.EnableBroadcast = params.get("EnableBroadcast")
-        self.RouteTableId = params.get("RouteTableId")
-        self.CreatedTime = params.get("CreatedTime")
-        self.AvailableIpAddressCount = params.get("AvailableIpAddressCount")
-        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
-        self.NetworkAclId = params.get("NetworkAclId")
-        self.IsRemoteVpcSnat = params.get("IsRemoteVpcSnat")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._CidrBlock = params.get("CidrBlock")
+        self._IsDefault = params.get("IsDefault")
+        self._EnableBroadcast = params.get("EnableBroadcast")
+        self._RouteTableId = params.get("RouteTableId")
+        self._CreatedTime = params.get("CreatedTime")
+        self._AvailableIpAddressCount = params.get("AvailableIpAddressCount")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self._NetworkAclId = params.get("NetworkAclId")
+        self._IsRemoteVpcSnat = params.get("IsRemoteVpcSnat")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
-        self.Zone = params.get("Zone")
-        self.ZoneName = params.get("ZoneName")
-        self.InstanceCount = params.get("InstanceCount")
-        self.VpcCidrBlock = params.get("VpcCidrBlock")
-        self.VpcIpv6CidrBlock = params.get("VpcIpv6CidrBlock")
-        self.Region = params.get("Region")
+                self._TagSet.append(obj)
+        self._Zone = params.get("Zone")
+        self._ZoneName = params.get("ZoneName")
+        self._InstanceCount = params.get("InstanceCount")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._VpcIpv6CidrBlock = params.get("VpcIpv6CidrBlock")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11890,29 +21621,54 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: 硬盘类型。取值范围：
+        :param _DiskType: 硬盘类型。取值范围：
 - LOCAL_BASIC：本地硬盘；
 - CLOUD_PREMIUM：高性能云硬盘；
 默认取值：CLOUD_BASIC。
         :type DiskType: str
-        :param DiskId: 硬盘ID。此参数暂不可用。
+        :param _DiskId: 硬盘ID。此参数暂不可用。
         :type DiskId: str
-        :param DiskSize: 硬盘容量大小。单位GB。
+        :param _DiskSize: 硬盘容量大小。单位GB。
         :type DiskSize: int
         """
-        self.DiskType = None
-        self.DiskId = None
-        self.DiskSize = None
+        self._DiskType = None
+        self._DiskId = None
+        self._DiskSize = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskId(self):
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
 
 
     def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.DiskId = params.get("DiskId")
-        self.DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._DiskId = params.get("DiskId")
+        self._DiskSize = params.get("DiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11925,24 +21681,41 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 标签健。
+        :param _Key: 标签健。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
-        :param Value: 标签值。
+        :param _Value: 标签值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11955,22 +21728,39 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签的键。
+        :param _TagKey: 标签的键。
         :type TagKey: str
-        :param TagValue: 标签的值。
+        :param _TagValue: 标签的值。
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -11983,27 +21773,44 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型，目前仅支持"instance"、"module"
+        :param _ResourceType: 资源类型，目前仅支持"instance"、"module"
         :type ResourceType: str
-        :param Tags: 标签列表
+        :param _Tags: 标签列表
         :type Tags: list of Tag
         """
-        self.ResourceType = None
-        self.Tags = None
+        self._ResourceType = None
+        self._Tags = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.ResourceType = params.get("ResourceType")
+        self._ResourceType = params.get("ResourceType")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12016,30 +21823,63 @@ class Target(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Port: 后端服务的监听端口
+        :param _Port: 后端服务的监听端口
         :type Port: int
-        :param InstanceId: 子机ID
+        :param _InstanceId: 子机ID
         :type InstanceId: str
-        :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+        :param _Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
         :type Weight: int
-        :param EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至子机，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
+        :param _EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至子机，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
         :type EniIp: str
         """
-        self.Port = None
-        self.InstanceId = None
-        self.Weight = None
-        self.EniIp = None
+        self._Port = None
+        self._InstanceId = None
+        self._Weight = None
+        self._EniIp = None
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def EniIp(self):
+        return self._EniIp
+
+    @EniIp.setter
+    def EniIp(self, EniIp):
+        self._EniIp = EniIp
 
 
     def _deserialize(self, params):
-        self.Port = params.get("Port")
-        self.InstanceId = params.get("InstanceId")
-        self.Weight = params.get("Weight")
-        self.EniIp = params.get("EniIp")
+        self._Port = params.get("Port")
+        self._InstanceId = params.get("InstanceId")
+        self._Weight = params.get("Weight")
+        self._EniIp = params.get("EniIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12052,39 +21892,80 @@ class TargetHealth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IP: Target的内网IP
+        :param _IP: Target的内网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
-        :param Port: Target绑定的端口
+        :param _Port: Target绑定的端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param HealthStatus: 当前健康状态，true：健康，false：不健康（包括尚未开始探测、探测中、状态异常等几种状态）。只有处于健康状态（且权重大于0），负载均衡才会向其转发流量。
+        :param _HealthStatus: 当前健康状态，true：健康，false：不健康（包括尚未开始探测、探测中、状态异常等几种状态）。只有处于健康状态（且权重大于0），负载均衡才会向其转发流量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthStatus: bool
-        :param TargetId: Target的实例ID
+        :param _TargetId: Target的实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetId: str
-        :param HealthStatusDetail: 当前健康状态的详细信息。如：Alive、Dead、Unknown、Close。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知，Close为未配置健康检查。
+        :param _HealthStatusDetail: 当前健康状态的详细信息。如：Alive、Dead、Unknown、Close。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知，Close为未配置健康检查。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthStatusDetail: str
         """
-        self.IP = None
-        self.Port = None
-        self.HealthStatus = None
-        self.TargetId = None
-        self.HealthStatusDetail = None
+        self._IP = None
+        self._Port = None
+        self._HealthStatus = None
+        self._TargetId = None
+        self._HealthStatusDetail = None
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def HealthStatus(self):
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def HealthStatusDetail(self):
+        return self._HealthStatusDetail
+
+    @HealthStatusDetail.setter
+    def HealthStatusDetail(self, HealthStatusDetail):
+        self._HealthStatusDetail = HealthStatusDetail
 
 
     def _deserialize(self, params):
-        self.IP = params.get("IP")
-        self.Port = params.get("Port")
-        self.HealthStatus = params.get("HealthStatus")
-        self.TargetId = params.get("TargetId")
-        self.HealthStatusDetail = params.get("HealthStatusDetail")
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        self._HealthStatus = params.get("HealthStatus")
+        self._TargetId = params.get("TargetId")
+        self._HealthStatusDetail = params.get("HealthStatusDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12097,31 +21978,56 @@ class TargetsWeightRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListenerId: 负载均衡监听器 ID
+        :param _ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param Targets: 要修改权重的后端机器列表
+        :param _Targets: 要修改权重的后端机器列表
         :type Targets: list of Target
-        :param Weight: 后端服务新的转发权重，取值范围：0~100。
+        :param _Weight: 后端服务新的转发权重，取值范围：0~100。
         :type Weight: int
         """
-        self.ListenerId = None
-        self.Targets = None
-        self.Weight = None
+        self._ListenerId = None
+        self._Targets = None
+        self._Weight = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
 
 
     def _deserialize(self, params):
-        self.ListenerId = params.get("ListenerId")
+        self._ListenerId = params.get("ListenerId")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = Target()
                 obj._deserialize(item)
-                self.Targets.append(obj)
-        self.Weight = params.get("Weight")
+                self._Targets.append(obj)
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12134,22 +22040,39 @@ class TaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operation: 操作名，即API名称，比如：CreateImage
+        :param _Operation: 操作名，即API名称，比如：CreateImage
         :type Operation: str
-        :param TaskId: 任务id
+        :param _TaskId: 任务id
         :type TaskId: str
         """
-        self.Operation = None
-        self.TaskId = None
+        self._Operation = None
+        self._TaskId = None
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.Operation = params.get("Operation")
-        self.TaskId = params.get("TaskId")
+        self._Operation = params.get("Operation")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12162,38 +22085,87 @@ class TaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务id
+        :param _TaskId: 任务id
         :type TaskId: str
-        :param Message: 状态描述
+        :param _Message: 状态描述
         :type Message: str
-        :param Status: 状态值，SUCCESS/FAILED/OPERATING
+        :param _Status: 状态值，SUCCESS/FAILED/OPERATING
         :type Status: str
-        :param AddTime: 任务提交时间
+        :param _AddTime: 任务提交时间
         :type AddTime: str
-        :param EndTime: 任务结束时间
+        :param _EndTime: 任务结束时间
         :type EndTime: str
-        :param Operation: 操作名
+        :param _Operation: 操作名
         :type Operation: str
         """
-        self.TaskId = None
-        self.Message = None
-        self.Status = None
-        self.AddTime = None
-        self.EndTime = None
-        self.Operation = None
+        self._TaskId = None
+        self._Message = None
+        self._Status = None
+        self._AddTime = None
+        self._EndTime = None
+        self._Operation = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Message = params.get("Message")
-        self.Status = params.get("Status")
-        self.AddTime = params.get("AddTime")
-        self.EndTime = params.get("EndTime")
-        self.Operation = params.get("Operation")
+        self._TaskId = params.get("TaskId")
+        self._Message = params.get("Message")
+        self._Status = params.get("Status")
+        self._AddTime = params.get("AddTime")
+        self._EndTime = params.get("EndTime")
+        self._Operation = params.get("Operation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12206,18 +22178,27 @@ class TerminateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 需退还的云盘ID列表。
+        :param _DiskIds: 需退还的云盘ID列表。
         :type DiskIds: list of str
         """
-        self.DiskIds = None
+        self._DiskIds = None
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
 
 
     def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
+        self._DiskIds = params.get("DiskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12230,14 +22211,22 @@ class TerminateDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TerminateInstancesRequest(AbstractModel):
@@ -12247,32 +22236,65 @@ class TerminateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIdSet: 待销毁的实例ID列表。
+        :param _InstanceIdSet: 待销毁的实例ID列表。
         :type InstanceIdSet: list of str
-        :param TerminateDelay: 是否定时销毁，默认为否。
+        :param _TerminateDelay: 是否定时销毁，默认为否。
         :type TerminateDelay: bool
-        :param TerminateTime: 定时销毁的时间，格式形如："2019-08-05 12:01:30"，若非定时销毁，则此参数被忽略。
+        :param _TerminateTime: 定时销毁的时间，格式形如："2019-08-05 12:01:30"，若非定时销毁，则此参数被忽略。
         :type TerminateTime: str
-        :param AssociatedResourceDestroy: 是否关联删除已绑定的弹性网卡和弹性IP，默认为true。
+        :param _AssociatedResourceDestroy: 是否关联删除已绑定的弹性网卡和弹性IP，默认为true。
 当为true时，一并删除弹性网卡和弹性IP；
 当为false时，只销毁主机，保留弹性网卡和弹性IP。
         :type AssociatedResourceDestroy: bool
         """
-        self.InstanceIdSet = None
-        self.TerminateDelay = None
-        self.TerminateTime = None
-        self.AssociatedResourceDestroy = None
+        self._InstanceIdSet = None
+        self._TerminateDelay = None
+        self._TerminateTime = None
+        self._AssociatedResourceDestroy = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def TerminateDelay(self):
+        return self._TerminateDelay
+
+    @TerminateDelay.setter
+    def TerminateDelay(self, TerminateDelay):
+        self._TerminateDelay = TerminateDelay
+
+    @property
+    def TerminateTime(self):
+        return self._TerminateTime
+
+    @TerminateTime.setter
+    def TerminateTime(self, TerminateTime):
+        self._TerminateTime = TerminateTime
+
+    @property
+    def AssociatedResourceDestroy(self):
+        return self._AssociatedResourceDestroy
+
+    @AssociatedResourceDestroy.setter
+    def AssociatedResourceDestroy(self, AssociatedResourceDestroy):
+        self._AssociatedResourceDestroy = AssociatedResourceDestroy
 
 
     def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
-        self.TerminateDelay = params.get("TerminateDelay")
-        self.TerminateTime = params.get("TerminateTime")
-        self.AssociatedResourceDestroy = params.get("AssociatedResourceDestroy")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._TerminateDelay = params.get("TerminateDelay")
+        self._TerminateTime = params.get("TerminateTime")
+        self._AssociatedResourceDestroy = params.get("AssociatedResourceDestroy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12285,14 +22307,22 @@ class TerminateInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class VirtualPrivateCloud(AbstractModel):
@@ -12302,38 +22332,79 @@ class VirtualPrivateCloud(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 私有网络ID，形如vpc-xxx。
+        :param _VpcId: 私有网络ID，形如vpc-xxx。
         :type VpcId: str
-        :param SubnetId: 私有网络子网ID，形如subnet-xxx。
+        :param _SubnetId: 私有网络子网ID，形如subnet-xxx。
         :type SubnetId: str
-        :param AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：
+        :param _AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：
 TRUE：表示用作公网网关
 FALSE：表示不用作公网网关
 
 默认取值：FALSE。
         :type AsVpcGateway: bool
-        :param PrivateIpAddresses: 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。
+        :param _PrivateIpAddresses: 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。
         :type PrivateIpAddresses: list of str
-        :param Ipv6AddressCount: 为弹性网卡指定随机生成的 IPv6 地址数量。
+        :param _Ipv6AddressCount: 为弹性网卡指定随机生成的 IPv6 地址数量。
         :type Ipv6AddressCount: int
         """
-        self.VpcId = None
-        self.SubnetId = None
-        self.AsVpcGateway = None
-        self.PrivateIpAddresses = None
-        self.Ipv6AddressCount = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._AsVpcGateway = None
+        self._PrivateIpAddresses = None
+        self._Ipv6AddressCount = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AsVpcGateway(self):
+        return self._AsVpcGateway
+
+    @AsVpcGateway.setter
+    def AsVpcGateway(self, AsVpcGateway):
+        self._AsVpcGateway = AsVpcGateway
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def Ipv6AddressCount(self):
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.AsVpcGateway = params.get("AsVpcGateway")
-        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
-        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._AsVpcGateway = params.get("AsVpcGateway")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12346,99 +22417,244 @@ class VpcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcName: VPC名称。
+        :param _VpcName: VPC名称。
         :type VpcName: str
-        :param VpcId: VPC实例ID，例如：vpc-azd4dt1c。
+        :param _VpcId: VPC实例ID，例如：vpc-azd4dt1c。
         :type VpcId: str
-        :param CidrBlock: VPC的IPv4 CIDR。
+        :param _CidrBlock: VPC的IPv4 CIDR。
         :type CidrBlock: str
-        :param IsDefault: 是否默认VPC。
+        :param _IsDefault: 是否默认VPC。
         :type IsDefault: bool
-        :param EnableMulticast: 是否开启组播。
+        :param _EnableMulticast: 是否开启组播。
         :type EnableMulticast: bool
-        :param CreatedTime: 创建时间。
+        :param _CreatedTime: 创建时间。
         :type CreatedTime: str
-        :param DnsServerSet: DNS列表。
+        :param _DnsServerSet: DNS列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DnsServerSet: list of str
-        :param DomainName: DHCP域名选项值。
+        :param _DomainName: DHCP域名选项值。
         :type DomainName: str
-        :param DhcpOptionsId: DHCP选项集ID。
+        :param _DhcpOptionsId: DHCP选项集ID。
         :type DhcpOptionsId: str
-        :param EnableDhcp: 是否开启DHCP。
+        :param _EnableDhcp: 是否开启DHCP。
         :type EnableDhcp: bool
-        :param Ipv6CidrBlock: VPC的IPv6 CIDR。
+        :param _Ipv6CidrBlock: VPC的IPv6 CIDR。
         :type Ipv6CidrBlock: str
-        :param TagSet: 标签键值对
+        :param _TagSet: 标签键值对
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
-        :param AssistantCidrSet: 辅助CIDR
+        :param _AssistantCidrSet: 辅助CIDR
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
-        :param RegionName: 地域中文名
+        :param _RegionName: 地域中文名
         :type RegionName: str
-        :param SubnetCount: 包含子网数量
+        :param _SubnetCount: 包含子网数量
         :type SubnetCount: int
-        :param InstanceCount: 包含实例数量
+        :param _InstanceCount: 包含实例数量
         :type InstanceCount: int
         """
-        self.VpcName = None
-        self.VpcId = None
-        self.CidrBlock = None
-        self.IsDefault = None
-        self.EnableMulticast = None
-        self.CreatedTime = None
-        self.DnsServerSet = None
-        self.DomainName = None
-        self.DhcpOptionsId = None
-        self.EnableDhcp = None
-        self.Ipv6CidrBlock = None
-        self.TagSet = None
-        self.AssistantCidrSet = None
-        self.Region = None
-        self.Description = None
-        self.RegionName = None
-        self.SubnetCount = None
-        self.InstanceCount = None
+        self._VpcName = None
+        self._VpcId = None
+        self._CidrBlock = None
+        self._IsDefault = None
+        self._EnableMulticast = None
+        self._CreatedTime = None
+        self._DnsServerSet = None
+        self._DomainName = None
+        self._DhcpOptionsId = None
+        self._EnableDhcp = None
+        self._Ipv6CidrBlock = None
+        self._TagSet = None
+        self._AssistantCidrSet = None
+        self._Region = None
+        self._Description = None
+        self._RegionName = None
+        self._SubnetCount = None
+        self._InstanceCount = None
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def EnableMulticast(self):
+        return self._EnableMulticast
+
+    @EnableMulticast.setter
+    def EnableMulticast(self, EnableMulticast):
+        self._EnableMulticast = EnableMulticast
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def DnsServerSet(self):
+        return self._DnsServerSet
+
+    @DnsServerSet.setter
+    def DnsServerSet(self, DnsServerSet):
+        self._DnsServerSet = DnsServerSet
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def DhcpOptionsId(self):
+        return self._DhcpOptionsId
+
+    @DhcpOptionsId.setter
+    def DhcpOptionsId(self, DhcpOptionsId):
+        self._DhcpOptionsId = DhcpOptionsId
+
+    @property
+    def EnableDhcp(self):
+        return self._EnableDhcp
+
+    @EnableDhcp.setter
+    def EnableDhcp(self, EnableDhcp):
+        self._EnableDhcp = EnableDhcp
+
+    @property
+    def Ipv6CidrBlock(self):
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def AssistantCidrSet(self):
+        return self._AssistantCidrSet
+
+    @AssistantCidrSet.setter
+    def AssistantCidrSet(self, AssistantCidrSet):
+        self._AssistantCidrSet = AssistantCidrSet
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def SubnetCount(self):
+        return self._SubnetCount
+
+    @SubnetCount.setter
+    def SubnetCount(self, SubnetCount):
+        self._SubnetCount = SubnetCount
+
+    @property
+    def InstanceCount(self):
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
 
 
     def _deserialize(self, params):
-        self.VpcName = params.get("VpcName")
-        self.VpcId = params.get("VpcId")
-        self.CidrBlock = params.get("CidrBlock")
-        self.IsDefault = params.get("IsDefault")
-        self.EnableMulticast = params.get("EnableMulticast")
-        self.CreatedTime = params.get("CreatedTime")
-        self.DnsServerSet = params.get("DnsServerSet")
-        self.DomainName = params.get("DomainName")
-        self.DhcpOptionsId = params.get("DhcpOptionsId")
-        self.EnableDhcp = params.get("EnableDhcp")
-        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self._VpcName = params.get("VpcName")
+        self._VpcId = params.get("VpcId")
+        self._CidrBlock = params.get("CidrBlock")
+        self._IsDefault = params.get("IsDefault")
+        self._EnableMulticast = params.get("EnableMulticast")
+        self._CreatedTime = params.get("CreatedTime")
+        self._DnsServerSet = params.get("DnsServerSet")
+        self._DomainName = params.get("DomainName")
+        self._DhcpOptionsId = params.get("DhcpOptionsId")
+        self._EnableDhcp = params.get("EnableDhcp")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
+                self._TagSet.append(obj)
         if params.get("AssistantCidrSet") is not None:
-            self.AssistantCidrSet = []
+            self._AssistantCidrSet = []
             for item in params.get("AssistantCidrSet"):
                 obj = AssistantCidr()
                 obj._deserialize(item)
-                self.AssistantCidrSet.append(obj)
-        self.Region = params.get("Region")
-        self.Description = params.get("Description")
-        self.RegionName = params.get("RegionName")
-        self.SubnetCount = params.get("SubnetCount")
-        self.InstanceCount = params.get("InstanceCount")
+                self._AssistantCidrSet.append(obj)
+        self._Region = params.get("Region")
+        self._Description = params.get("Description")
+        self._RegionName = params.get("RegionName")
+        self._SubnetCount = params.get("SubnetCount")
+        self._InstanceCount = params.get("InstanceCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12451,26 +22667,51 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: ZoneId
+        :param _ZoneId: ZoneId
         :type ZoneId: int
-        :param ZoneName: ZoneName
+        :param _ZoneName: ZoneName
         :type ZoneName: str
-        :param Zone: Zone
+        :param _Zone: Zone
         :type Zone: str
         """
-        self.ZoneId = None
-        self.ZoneName = None
-        self.Zone = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._Zone = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneName = params.get("ZoneName")
-        self.Zone = params.get("Zone")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12483,46 +22724,103 @@ class ZoneInstanceCountISP(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 创建实例的可用区。
+        :param _Zone: 创建实例的可用区。
         :type Zone: str
-        :param InstanceCount: 在当前可用区欲创建的实例数目。
+        :param _InstanceCount: 在当前可用区欲创建的实例数目。
         :type InstanceCount: int
-        :param ISP: 运营商如下：
+        :param _ISP: 运营商如下：
 CTCC：中国电信
 CUCC：中国联通
 CMCC：中国移动
 多个运营商用英文分号连接";"，例如："CMCC;CUCC;CTCC"。多运营商需要开通白名单，请直接联系腾讯云客服。
         :type ISP: str
-        :param VpcId: 指定私有网络编号，SubnetId与VpcId必须同时指定或不指定
+        :param _VpcId: 指定私有网络编号，SubnetId与VpcId必须同时指定或不指定
         :type VpcId: str
-        :param SubnetId: 指定子网编号，SubnetId与VpcId必须同时指定或不指定
+        :param _SubnetId: 指定子网编号，SubnetId与VpcId必须同时指定或不指定
         :type SubnetId: str
-        :param PrivateIpAddresses: 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
+        :param _PrivateIpAddresses: 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
         :type PrivateIpAddresses: list of str
-        :param Ipv6AddressCount: 为弹性网卡指定随机生成的IPv6地址数量，目前数量不能大于1。
+        :param _Ipv6AddressCount: 为弹性网卡指定随机生成的IPv6地址数量，目前数量不能大于1。
         :type Ipv6AddressCount: int
         """
-        self.Zone = None
-        self.InstanceCount = None
-        self.ISP = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.PrivateIpAddresses = None
-        self.Ipv6AddressCount = None
+        self._Zone = None
+        self._InstanceCount = None
+        self._ISP = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._PrivateIpAddresses = None
+        self._Ipv6AddressCount = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceCount(self):
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def ISP(self):
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def Ipv6AddressCount(self):
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.InstanceCount = params.get("InstanceCount")
-        self.ISP = params.get("ISP")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
-        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self._Zone = params.get("Zone")
+        self._InstanceCount = params.get("InstanceCount")
+        self._ISP = params.get("ISP")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -12535,22 +22833,39 @@ class ZoneInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneName: Zone名称
+        :param _ZoneName: Zone名称
         :type ZoneName: str
-        :param InstanceNum: 实例数量
+        :param _InstanceNum: 实例数量
         :type InstanceNum: int
         """
-        self.ZoneName = None
-        self.InstanceNum = None
+        self._ZoneName = None
+        self._InstanceNum = None
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def InstanceNum(self):
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
 
 
     def _deserialize(self, params):
-        self.ZoneName = params.get("ZoneName")
-        self.InstanceNum = params.get("InstanceNum")
+        self._ZoneName = params.get("ZoneName")
+        self._InstanceNum = params.get("InstanceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

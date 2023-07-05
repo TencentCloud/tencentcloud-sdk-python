@@ -25,42 +25,99 @@ class CreateSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientSession: 客户端session信息，从JSSDK请求中获得
+        :param _ClientSession: 客户端session信息，从JSSDK请求中获得
         :type ClientSession: str
-        :param GameId: 游戏ID
+        :param _GameId: 游戏ID
         :type GameId: str
-        :param UserId: 游戏用户ID
+        :param _UserId: 游戏用户ID
         :type UserId: str
-        :param GameParas: 游戏参数
+        :param _GameParas: 游戏参数
         :type GameParas: str
-        :param GameRegion: 游戏区域
+        :param _GameRegion: 游戏区域
         :type GameRegion: str
-        :param ImageUrl: 背景图url
+        :param _ImageUrl: 背景图url
         :type ImageUrl: str
-        :param Resolution: 分辨率
+        :param _Resolution: 分辨率
         :type Resolution: str
         """
-        self.ClientSession = None
-        self.GameId = None
-        self.UserId = None
-        self.GameParas = None
-        self.GameRegion = None
-        self.ImageUrl = None
-        self.Resolution = None
+        self._ClientSession = None
+        self._GameId = None
+        self._UserId = None
+        self._GameParas = None
+        self._GameRegion = None
+        self._ImageUrl = None
+        self._Resolution = None
+
+    @property
+    def ClientSession(self):
+        return self._ClientSession
+
+    @ClientSession.setter
+    def ClientSession(self, ClientSession):
+        self._ClientSession = ClientSession
+
+    @property
+    def GameId(self):
+        return self._GameId
+
+    @GameId.setter
+    def GameId(self, GameId):
+        self._GameId = GameId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def GameParas(self):
+        return self._GameParas
+
+    @GameParas.setter
+    def GameParas(self, GameParas):
+        self._GameParas = GameParas
+
+    @property
+    def GameRegion(self):
+        return self._GameRegion
+
+    @GameRegion.setter
+    def GameRegion(self, GameRegion):
+        self._GameRegion = GameRegion
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
 
 
     def _deserialize(self, params):
-        self.ClientSession = params.get("ClientSession")
-        self.GameId = params.get("GameId")
-        self.UserId = params.get("UserId")
-        self.GameParas = params.get("GameParas")
-        self.GameRegion = params.get("GameRegion")
-        self.ImageUrl = params.get("ImageUrl")
-        self.Resolution = params.get("Resolution")
+        self._ClientSession = params.get("ClientSession")
+        self._GameId = params.get("GameId")
+        self._UserId = params.get("UserId")
+        self._GameParas = params.get("GameParas")
+        self._GameRegion = params.get("GameRegion")
+        self._ImageUrl = params.get("ImageUrl")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -73,18 +130,34 @@ class CreateSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerSession: 服务端session信息，返回给JSSDK
+        :param _ServerSession: 服务端session信息，返回给JSSDK
         :type ServerSession: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ServerSession = None
-        self.RequestId = None
+        self._ServerSession = None
+        self._RequestId = None
+
+    @property
+    def ServerSession(self):
+        return self._ServerSession
+
+    @ServerSession.setter
+    def ServerSession(self, ServerSession):
+        self._ServerSession = ServerSession
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ServerSession = params.get("ServerSession")
-        self.RequestId = params.get("RequestId")
+        self._ServerSession = params.get("ServerSession")
+        self._RequestId = params.get("RequestId")
 
 
 class DayStreamPlayInfo(AbstractModel):
@@ -94,34 +167,75 @@ class DayStreamPlayInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bandwidth: 带宽（单位Mbps）。
+        :param _Bandwidth: 带宽（单位Mbps）。
         :type Bandwidth: float
-        :param Flux: 流量 （单位MB）。
+        :param _Flux: 流量 （单位MB）。
         :type Flux: float
-        :param Online: 在线人数。
+        :param _Online: 在线人数。
         :type Online: int
-        :param Request: 请求数。
+        :param _Request: 请求数。
         :type Request: int
-        :param Time: 数据时间点，格式：yyyy-mm-dd HH:MM:SS。
+        :param _Time: 数据时间点，格式：yyyy-mm-dd HH:MM:SS。
         :type Time: str
         """
-        self.Bandwidth = None
-        self.Flux = None
-        self.Online = None
-        self.Request = None
-        self.Time = None
+        self._Bandwidth = None
+        self._Flux = None
+        self._Online = None
+        self._Request = None
+        self._Time = None
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Flux(self):
+        return self._Flux
+
+    @Flux.setter
+    def Flux(self, Flux):
+        self._Flux = Flux
+
+    @property
+    def Online(self):
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
+
+    @property
+    def Request(self):
+        return self._Request
+
+    @Request.setter
+    def Request(self, Request):
+        self._Request = Request
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
 
 
     def _deserialize(self, params):
-        self.Bandwidth = params.get("Bandwidth")
-        self.Flux = params.get("Flux")
-        self.Online = params.get("Online")
-        self.Request = params.get("Request")
-        self.Time = params.get("Time")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Flux = params.get("Flux")
+        self._Online = params.get("Online")
+        self._Request = params.get("Request")
+        self._Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -134,33 +248,66 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EndTime: 结束时间，北京时间，格式：2019-04-28 10:36:00
+        :param _EndTime: 结束时间，北京时间，格式：2019-04-28 10:36:00
 结束时间 和 开始时间  必须在同一天内。
         :type EndTime: str
-        :param PlayDomain: 播放域名。
+        :param _PlayDomain: 播放域名。
         :type PlayDomain: str
-        :param StartTime: 开始时间，北京时间，格式：2019-04-28 10:36:00
+        :param _StartTime: 开始时间，北京时间，格式：2019-04-28 10:36:00
 当前时间 和 开始时间 间隔不超过30天。
         :type StartTime: str
-        :param StreamName: 流名称，精确匹配。
+        :param _StreamName: 流名称，精确匹配。
 若不填，则为查询总体播放数据。
         :type StreamName: str
         """
-        self.EndTime = None
-        self.PlayDomain = None
-        self.StartTime = None
-        self.StreamName = None
+        self._EndTime = None
+        self._PlayDomain = None
+        self._StartTime = None
+        self._StreamName = None
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayDomain(self):
+        return self._PlayDomain
+
+    @PlayDomain.setter
+    def PlayDomain(self, PlayDomain):
+        self._PlayDomain = PlayDomain
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.EndTime = params.get("EndTime")
-        self.PlayDomain = params.get("PlayDomain")
-        self.StartTime = params.get("StartTime")
-        self.StreamName = params.get("StreamName")
+        self._EndTime = params.get("EndTime")
+        self._PlayDomain = params.get("PlayDomain")
+        self._StartTime = params.get("StartTime")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -173,23 +320,39 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: 统计信息列表。
+        :param _DataInfoList: 统计信息列表。
         :type DataInfoList: list of DayStreamPlayInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = DayStreamPlayInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeWorkersRequest(AbstractModel):
@@ -205,31 +368,63 @@ class DescribeWorkersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionDetail: 各个区域的机器情况
+        :param _RegionDetail: 各个区域的机器情况
         :type RegionDetail: list of WorkerRegionInfo
-        :param Idle: 空闲机器总数量
+        :param _Idle: 空闲机器总数量
         :type Idle: int
-        :param RegionNum: 区域个数
+        :param _RegionNum: 区域个数
         :type RegionNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RegionDetail = None
-        self.Idle = None
-        self.RegionNum = None
-        self.RequestId = None
+        self._RegionDetail = None
+        self._Idle = None
+        self._RegionNum = None
+        self._RequestId = None
+
+    @property
+    def RegionDetail(self):
+        return self._RegionDetail
+
+    @RegionDetail.setter
+    def RegionDetail(self, RegionDetail):
+        self._RegionDetail = RegionDetail
+
+    @property
+    def Idle(self):
+        return self._Idle
+
+    @Idle.setter
+    def Idle(self, Idle):
+        self._Idle = Idle
+
+    @property
+    def RegionNum(self):
+        return self._RegionNum
+
+    @RegionNum.setter
+    def RegionNum(self, RegionNum):
+        self._RegionNum = RegionNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RegionDetail") is not None:
-            self.RegionDetail = []
+            self._RegionDetail = []
             for item in params.get("RegionDetail"):
                 obj = WorkerRegionInfo()
                 obj._deserialize(item)
-                self.RegionDetail.append(obj)
-        self.Idle = params.get("Idle")
-        self.RegionNum = params.get("RegionNum")
-        self.RequestId = params.get("RequestId")
+                self._RegionDetail.append(obj)
+        self._Idle = params.get("Idle")
+        self._RegionNum = params.get("RegionNum")
+        self._RequestId = params.get("RequestId")
 
 
 class ForbidLiveStreamRequest(AbstractModel):
@@ -239,31 +434,64 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: 应用名称。
+        :param _AppName: 应用名称。
         :type AppName: str
-        :param DomainName: 您的推流域名。
+        :param _DomainName: 您的推流域名。
         :type DomainName: str
-        :param StreamName: 流名称。
+        :param _StreamName: 流名称。
         :type StreamName: str
-        :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+        :param _ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：默认禁播90天，且最长支持禁播90天。
         :type ResumeTime: str
         """
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
-        self.ResumeTime = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+        self._ResumeTime = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def ResumeTime(self):
+        return self._ResumeTime
+
+    @ResumeTime.setter
+    def ResumeTime(self, ResumeTime):
+        self._ResumeTime = ResumeTime
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
-        self.ResumeTime = params.get("ResumeTime")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
+        self._ResumeTime = params.get("ResumeTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -276,14 +504,22 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RegisterIMRequest(AbstractModel):
@@ -293,30 +529,63 @@ class RegisterIMRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Nickname: 用户昵称
+        :param _Nickname: 用户昵称
         :type Nickname: str
-        :param UserId: 用户唯一ID，建议采用用户小程序OpenID加盐形式
+        :param _UserId: 用户唯一ID，建议采用用户小程序OpenID加盐形式
         :type UserId: str
-        :param HeadImgUrl: 用户头像URL
+        :param _HeadImgUrl: 用户头像URL
         :type HeadImgUrl: str
-        :param Level: 用户身份，默认值：0，表示无特殊身份
+        :param _Level: 用户身份，默认值：0，表示无特殊身份
         :type Level: int
         """
-        self.Nickname = None
-        self.UserId = None
-        self.HeadImgUrl = None
-        self.Level = None
+        self._Nickname = None
+        self._UserId = None
+        self._HeadImgUrl = None
+        self._Level = None
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def HeadImgUrl(self):
+        return self._HeadImgUrl
+
+    @HeadImgUrl.setter
+    def HeadImgUrl(self, HeadImgUrl):
+        self._HeadImgUrl = HeadImgUrl
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
 
 
     def _deserialize(self, params):
-        self.Nickname = params.get("Nickname")
-        self.UserId = params.get("UserId")
-        self.HeadImgUrl = params.get("HeadImgUrl")
-        self.Level = params.get("Level")
+        self._Nickname = params.get("Nickname")
+        self._UserId = params.get("UserId")
+        self._HeadImgUrl = params.get("HeadImgUrl")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -329,18 +598,34 @@ class RegisterIMResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserKey: 用来传递给插件的关键字段
+        :param _UserKey: 用来传递给插件的关键字段
         :type UserKey: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.UserKey = None
-        self.RequestId = None
+        self._UserKey = None
+        self._RequestId = None
+
+    @property
+    def UserKey(self):
+        return self._UserKey
+
+    @UserKey.setter
+    def UserKey(self, UserKey):
+        self._UserKey = UserKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserKey = params.get("UserKey")
-        self.RequestId = params.get("RequestId")
+        self._UserKey = params.get("UserKey")
+        self._RequestId = params.get("RequestId")
 
 
 class StopGameRequest(AbstractModel):
@@ -350,18 +635,27 @@ class StopGameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 游戏用户ID
+        :param _UserId: 游戏用户ID
         :type UserId: str
         """
-        self.UserId = None
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -374,14 +668,22 @@ class StopGameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class WorkerRegionInfo(AbstractModel):
@@ -391,22 +693,39 @@ class WorkerRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Idle: 该区域空闲机器数量
+        :param _Idle: 该区域空闲机器数量
         :type Idle: int
-        :param Region: 区域
+        :param _Region: 区域
         :type Region: str
         """
-        self.Idle = None
-        self.Region = None
+        self._Idle = None
+        self._Region = None
+
+    @property
+    def Idle(self):
+        return self._Idle
+
+    @Idle.setter
+    def Idle(self, Idle):
+        self._Idle = Idle
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
-        self.Idle = params.get("Idle")
-        self.Region = params.get("Region")
+        self._Idle = params.get("Idle")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

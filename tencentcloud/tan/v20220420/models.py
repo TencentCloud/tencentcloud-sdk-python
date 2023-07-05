@@ -25,26 +25,51 @@ class CreateBlockNodeRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 盘查组id，可在“盘查组概览”功能中获取。
+        :param _GroupId: 盘查组id，可在“盘查组概览”功能中获取。
         :type GroupId: str
-        :param NodeId: 节点id，可在“数据接入管理”中获取。
+        :param _NodeId: 节点id，可在“数据接入管理”中获取。
         :type NodeId: str
-        :param Records: 节点数据json，具体demo请参考输入示例，其中key为数据接入管理中节点内创建的属性变量名，value为期望的推送值。
+        :param _Records: 节点数据json，具体demo请参考输入示例，其中key为数据接入管理中节点内创建的属性变量名，value为期望的推送值。
         :type Records: str
         """
-        self.GroupId = None
-        self.NodeId = None
-        self.Records = None
+        self._GroupId = None
+        self._NodeId = None
+        self._Records = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Records(self):
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.NodeId = params.get("NodeId")
-        self.Records = params.get("Records")
+        self._GroupId = params.get("GroupId")
+        self._NodeId = params.get("NodeId")
+        self._Records = params.get("Records")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,11 +82,19 @@ class CreateBlockNodeRecordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

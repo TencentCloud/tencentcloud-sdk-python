@@ -25,30 +25,63 @@ class DescribeMaterialListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActivityId: 活动Id
+        :param _ActivityId: 活动Id
         :type ActivityId: str
-        :param MaterialId: 素材Id
+        :param _MaterialId: 素材Id
         :type MaterialId: str
-        :param Limit: 每次拉取条数
+        :param _Limit: 每次拉取条数
         :type Limit: int
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
         """
-        self.ActivityId = None
-        self.MaterialId = None
-        self.Limit = None
-        self.Offset = None
+        self._ActivityId = None
+        self._MaterialId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def MaterialId(self):
+        return self._MaterialId
+
+    @MaterialId.setter
+    def MaterialId(self, MaterialId):
+        self._MaterialId = MaterialId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ActivityId = params.get("ActivityId")
-        self.MaterialId = params.get("MaterialId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ActivityId = params.get("ActivityId")
+        self._MaterialId = params.get("MaterialId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -61,27 +94,51 @@ class DescribeMaterialListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaterialInfos: 素材列表数据
+        :param _MaterialInfos: 素材列表数据
         :type MaterialInfos: list of PublicMaterialInfos
-        :param Count: 素材条数
+        :param _Count: 素材条数
         :type Count: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MaterialInfos = None
-        self.Count = None
-        self.RequestId = None
+        self._MaterialInfos = None
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def MaterialInfos(self):
+        return self._MaterialInfos
+
+    @MaterialInfos.setter
+    def MaterialInfos(self, MaterialInfos):
+        self._MaterialInfos = MaterialInfos
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("MaterialInfos") is not None:
-            self.MaterialInfos = []
+            self._MaterialInfos = []
             for item in params.get("MaterialInfos"):
                 obj = PublicMaterialInfos()
                 obj._deserialize(item)
-                self.MaterialInfos.append(obj)
-        self.Count = params.get("Count")
-        self.RequestId = params.get("RequestId")
+                self._MaterialInfos.append(obj)
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
 
 
 class FaceInfo(AbstractModel):
@@ -91,30 +148,63 @@ class FaceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: 人脸框的横坐标
+        :param _X: 人脸框的横坐标
         :type X: int
-        :param Y: 人脸框的纵坐标
+        :param _Y: 人脸框的纵坐标
         :type Y: int
-        :param Width: 人脸框的宽度
+        :param _Width: 人脸框的宽度
         :type Width: int
-        :param Height: 人脸框的高度
+        :param _Height: 人脸框的高度
         :type Height: int
         """
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -127,30 +217,63 @@ class FaceRect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: 人脸框左上角横坐标。
+        :param _X: 人脸框左上角横坐标。
         :type X: int
-        :param Y: 人脸框左上角纵坐标。
+        :param _Y: 人脸框左上角纵坐标。
         :type Y: int
-        :param Width: 人脸框宽度。
+        :param _Width: 人脸框宽度。
         :type Width: int
-        :param Height: 人脸框高度。
+        :param _Height: 人脸框高度。
         :type Height: int
         """
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -163,60 +286,125 @@ class FuseFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 活动 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
+        :param _ProjectId: 活动 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
         :type ProjectId: str
-        :param ModelId: 素材 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
+        :param _ModelId: 素材 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
         :type ModelId: str
-        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
+        :param _RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
         :type RspImgType: str
-        :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。
+        :param _MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。
         :type MergeInfos: list of MergeInfo
-        :param FuseProfileDegree: 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
+        :param _FuseProfileDegree: 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）
         :type FuseProfileDegree: int
-        :param FuseFaceDegree: 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
+        :param _FuseFaceDegree: 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中五官参数数值。（换脸版算法暂不支持此参数调整）
         :type FuseFaceDegree: int
-        :param LogoAdd: 为融合结果图添加合成标识的开关，默认为1。
+        :param _LogoAdd: 为融合结果图添加合成标识的开关，默认为1。
 1：添加标识。
 0：不添加标识。
 其他数值：默认按1处理。
 建议您使用显著标识来提示结果图使用了人脸融合技术，是AI合成的图片。
         :type LogoAdd: int
-        :param LogoParam: 标识内容设置。
+        :param _LogoParam: 标识内容设置。
 默认在融合结果图右下角添加“本图片为AI合成图片”字样，您可根据自身需要替换为其他的Logo图片。
         :type LogoParam: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
         """
-        self.ProjectId = None
-        self.ModelId = None
-        self.RspImgType = None
-        self.MergeInfos = None
-        self.FuseProfileDegree = None
-        self.FuseFaceDegree = None
-        self.LogoAdd = None
-        self.LogoParam = None
+        self._ProjectId = None
+        self._ModelId = None
+        self._RspImgType = None
+        self._MergeInfos = None
+        self._FuseProfileDegree = None
+        self._FuseFaceDegree = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def RspImgType(self):
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+    @property
+    def MergeInfos(self):
+        return self._MergeInfos
+
+    @MergeInfos.setter
+    def MergeInfos(self, MergeInfos):
+        self._MergeInfos = MergeInfos
+
+    @property
+    def FuseProfileDegree(self):
+        return self._FuseProfileDegree
+
+    @FuseProfileDegree.setter
+    def FuseProfileDegree(self, FuseProfileDegree):
+        self._FuseProfileDegree = FuseProfileDegree
+
+    @property
+    def FuseFaceDegree(self):
+        return self._FuseFaceDegree
+
+    @FuseFaceDegree.setter
+    def FuseFaceDegree(self, FuseFaceDegree):
+        self._FuseFaceDegree = FuseFaceDegree
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.ModelId = params.get("ModelId")
-        self.RspImgType = params.get("RspImgType")
+        self._ProjectId = params.get("ProjectId")
+        self._ModelId = params.get("ModelId")
+        self._RspImgType = params.get("RspImgType")
         if params.get("MergeInfos") is not None:
-            self.MergeInfos = []
+            self._MergeInfos = []
             for item in params.get("MergeInfos"):
                 obj = MergeInfo()
                 obj._deserialize(item)
-                self.MergeInfos.append(obj)
-        self.FuseProfileDegree = params.get("FuseProfileDegree")
-        self.FuseFaceDegree = params.get("FuseFaceDegree")
-        self.LogoAdd = params.get("LogoAdd")
+                self._MergeInfos.append(obj)
+        self._FuseProfileDegree = params.get("FuseProfileDegree")
+        self._FuseFaceDegree = params.get("FuseFaceDegree")
+        self._LogoAdd = params.get("LogoAdd")
         if params.get("LogoParam") is not None:
-            self.LogoParam = LogoParam()
-            self.LogoParam._deserialize(params.get("LogoParam"))
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -229,18 +417,34 @@ class FuseFaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FusedImage: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+        :param _FusedImage: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
         :type FusedImage: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FusedImage = None
-        self.RequestId = None
+        self._FusedImage = None
+        self._RequestId = None
+
+    @property
+    def FusedImage(self):
+        return self._FusedImage
+
+    @FusedImage.setter
+    def FusedImage(self, FusedImage):
+        self._FusedImage = FusedImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FusedImage = params.get("FusedImage")
-        self.RequestId = params.get("RequestId")
+        self._FusedImage = params.get("FusedImage")
+        self._RequestId = params.get("RequestId")
 
 
 class LogoParam(AbstractModel):
@@ -250,28 +454,53 @@ class LogoParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogoRect: 标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+        :param _LogoRect: 标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
         :type LogoRect: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
-        :param LogoUrl: 标识图片Url地址
+        :param _LogoUrl: 标识图片Url地址
         :type LogoUrl: str
-        :param LogoImage: 标识图片base64
+        :param _LogoImage: 标识图片base64
         :type LogoImage: str
         """
-        self.LogoRect = None
-        self.LogoUrl = None
-        self.LogoImage = None
+        self._LogoRect = None
+        self._LogoUrl = None
+        self._LogoImage = None
+
+    @property
+    def LogoRect(self):
+        return self._LogoRect
+
+    @LogoRect.setter
+    def LogoRect(self, LogoRect):
+        self._LogoRect = LogoRect
+
+    @property
+    def LogoUrl(self):
+        return self._LogoUrl
+
+    @LogoUrl.setter
+    def LogoUrl(self, LogoUrl):
+        self._LogoUrl = LogoUrl
+
+    @property
+    def LogoImage(self):
+        return self._LogoImage
+
+    @LogoImage.setter
+    def LogoImage(self, LogoImage):
+        self._LogoImage = LogoImage
 
 
     def _deserialize(self, params):
         if params.get("LogoRect") is not None:
-            self.LogoRect = FaceRect()
-            self.LogoRect._deserialize(params.get("LogoRect"))
-        self.LogoUrl = params.get("LogoUrl")
-        self.LogoImage = params.get("LogoImage")
+            self._LogoRect = FaceRect()
+            self._LogoRect._deserialize(params.get("LogoRect"))
+        self._LogoUrl = params.get("LogoUrl")
+        self._LogoImage = params.get("LogoImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -284,24 +513,41 @@ class MaterialFaces(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FaceId: 人脸序号
+        :param _FaceId: 人脸序号
         :type FaceId: str
-        :param FaceInfo: 人脸框信息
+        :param _FaceInfo: 人脸框信息
         :type FaceInfo: :class:`tencentcloud.facefusion.v20220927.models.FaceInfo`
         """
-        self.FaceId = None
-        self.FaceInfo = None
+        self._FaceId = None
+        self._FaceInfo = None
+
+    @property
+    def FaceId(self):
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def FaceInfo(self):
+        return self._FaceInfo
+
+    @FaceInfo.setter
+    def FaceInfo(self, FaceInfo):
+        self._FaceInfo = FaceInfo
 
 
     def _deserialize(self, params):
-        self.FaceId = params.get("FaceId")
+        self._FaceId = params.get("FaceId")
         if params.get("FaceInfo") is not None:
-            self.FaceInfo = FaceInfo()
-            self.FaceInfo._deserialize(params.get("FaceInfo"))
+            self._FaceInfo = FaceInfo()
+            self._FaceInfo._deserialize(params.get("FaceInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -314,32 +560,65 @@ class MergeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Image: 输入图片base64
+        :param _Image: 输入图片base64
         :type Image: str
-        :param Url: 输入图片url
+        :param _Url: 输入图片url
         :type Url: str
-        :param InputImageFaceRect: 上传的图片人脸位置信息（人脸框）
+        :param _InputImageFaceRect: 上传的图片人脸位置信息（人脸框）
         :type InputImageFaceRect: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
-        :param TemplateFaceID: 控制台上传的素材人脸ID，不填默认取最大人脸
+        :param _TemplateFaceID: 控制台上传的素材人脸ID，不填默认取最大人脸
         :type TemplateFaceID: str
         """
-        self.Image = None
-        self.Url = None
-        self.InputImageFaceRect = None
-        self.TemplateFaceID = None
+        self._Image = None
+        self._Url = None
+        self._InputImageFaceRect = None
+        self._TemplateFaceID = None
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def InputImageFaceRect(self):
+        return self._InputImageFaceRect
+
+    @InputImageFaceRect.setter
+    def InputImageFaceRect(self, InputImageFaceRect):
+        self._InputImageFaceRect = InputImageFaceRect
+
+    @property
+    def TemplateFaceID(self):
+        return self._TemplateFaceID
+
+    @TemplateFaceID.setter
+    def TemplateFaceID(self, TemplateFaceID):
+        self._TemplateFaceID = TemplateFaceID
 
 
     def _deserialize(self, params):
-        self.Image = params.get("Image")
-        self.Url = params.get("Url")
+        self._Image = params.get("Image")
+        self._Url = params.get("Url")
         if params.get("InputImageFaceRect") is not None:
-            self.InputImageFaceRect = FaceRect()
-            self.InputImageFaceRect._deserialize(params.get("InputImageFaceRect"))
-        self.TemplateFaceID = params.get("TemplateFaceID")
+            self._InputImageFaceRect = FaceRect()
+            self._InputImageFaceRect._deserialize(params.get("InputImageFaceRect"))
+        self._TemplateFaceID = params.get("TemplateFaceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -352,48 +631,105 @@ class PublicMaterialInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaterialId: 素材Id
+        :param _MaterialId: 素材Id
         :type MaterialId: str
-        :param MaterialStatus: 素材状态
+        :param _MaterialStatus: 素材状态
         :type MaterialStatus: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param UpdateTime: 修改时间
+        :param _UpdateTime: 修改时间
         :type UpdateTime: str
-        :param MaterialFaceList: 人脸信息
+        :param _MaterialFaceList: 人脸信息
         :type MaterialFaceList: list of MaterialFaces
-        :param MaterialName: 素材名
+        :param _MaterialName: 素材名
         :type MaterialName: str
-        :param AuditResult: 审核原因
+        :param _AuditResult: 审核原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditResult: str
         """
-        self.MaterialId = None
-        self.MaterialStatus = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.MaterialFaceList = None
-        self.MaterialName = None
-        self.AuditResult = None
+        self._MaterialId = None
+        self._MaterialStatus = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._MaterialFaceList = None
+        self._MaterialName = None
+        self._AuditResult = None
+
+    @property
+    def MaterialId(self):
+        return self._MaterialId
+
+    @MaterialId.setter
+    def MaterialId(self, MaterialId):
+        self._MaterialId = MaterialId
+
+    @property
+    def MaterialStatus(self):
+        return self._MaterialStatus
+
+    @MaterialStatus.setter
+    def MaterialStatus(self, MaterialStatus):
+        self._MaterialStatus = MaterialStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MaterialFaceList(self):
+        return self._MaterialFaceList
+
+    @MaterialFaceList.setter
+    def MaterialFaceList(self, MaterialFaceList):
+        self._MaterialFaceList = MaterialFaceList
+
+    @property
+    def MaterialName(self):
+        return self._MaterialName
+
+    @MaterialName.setter
+    def MaterialName(self, MaterialName):
+        self._MaterialName = MaterialName
+
+    @property
+    def AuditResult(self):
+        return self._AuditResult
+
+    @AuditResult.setter
+    def AuditResult(self, AuditResult):
+        self._AuditResult = AuditResult
 
 
     def _deserialize(self, params):
-        self.MaterialId = params.get("MaterialId")
-        self.MaterialStatus = params.get("MaterialStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._MaterialId = params.get("MaterialId")
+        self._MaterialStatus = params.get("MaterialStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         if params.get("MaterialFaceList") is not None:
-            self.MaterialFaceList = []
+            self._MaterialFaceList = []
             for item in params.get("MaterialFaceList"):
                 obj = MaterialFaces()
                 obj._deserialize(item)
-                self.MaterialFaceList.append(obj)
-        self.MaterialName = params.get("MaterialName")
-        self.AuditResult = params.get("AuditResult")
+                self._MaterialFaceList.append(obj)
+        self._MaterialName = params.get("MaterialName")
+        self._AuditResult = params.get("AuditResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

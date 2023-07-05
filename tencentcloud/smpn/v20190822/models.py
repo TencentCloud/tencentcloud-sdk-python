@@ -25,18 +25,27 @@ class CHPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumber: 电话号码
+        :param _PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
-        self.PhoneNumber = None
+        self._PhoneNumber = None
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
 
 
     def _deserialize(self, params):
-        self.PhoneNumber = params.get("PhoneNumber")
+        self._PhoneNumber = params.get("PhoneNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -49,7 +58,7 @@ class CHPResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagType: 标记类型
+        :param _TagType: 标记类型
  0: 无标记
  50:骚扰电话
  51:房产中介
@@ -59,20 +68,37 @@ class CHPResponse(AbstractModel):
  55:快递电话
  56:出租车专车
         :type TagType: int
-        :param TagCount: 标记次数
+        :param _TagCount: 标记次数
         :type TagCount: int
         """
-        self.TagType = None
-        self.TagCount = None
+        self._TagType = None
+        self._TagCount = None
+
+    @property
+    def TagType(self):
+        return self._TagType
+
+    @TagType.setter
+    def TagType(self, TagType):
+        self._TagType = TagType
+
+    @property
+    def TagCount(self):
+        return self._TagCount
+
+    @TagCount.setter
+    def TagCount(self, TagCount):
+        self._TagCount = TagCount
 
 
     def _deserialize(self, params):
-        self.TagType = params.get("TagType")
-        self.TagCount = params.get("TagCount")
+        self._TagType = params.get("TagType")
+        self._TagCount = params.get("TagCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -85,24 +111,41 @@ class CreateSmpnEpaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestData: 企业号码认证请求内容
+        :param _RequestData: 企业号码认证请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.EPARequest`
-        :param ResourceId: 用于计费的资源ID
+        :param _ResourceId: 用于计费的资源ID
         :type ResourceId: str
         """
-        self.RequestData = None
-        self.ResourceId = None
+        self._RequestData = None
+        self._ResourceId = None
+
+    @property
+    def RequestData(self):
+        return self._RequestData
+
+    @RequestData.setter
+    def RequestData(self, RequestData):
+        self._RequestData = RequestData
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
         if params.get("RequestData") is not None:
-            self.RequestData = EPARequest()
-            self.RequestData._deserialize(params.get("RequestData"))
-        self.ResourceId = params.get("ResourceId")
+            self._RequestData = EPARequest()
+            self._RequestData._deserialize(params.get("RequestData"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -115,20 +158,36 @@ class CreateSmpnEpaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResponseData: 业号码认证回应内容
+        :param _ResponseData: 业号码认证回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.EPAResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResponseData = None
-        self.RequestId = None
+        self._ResponseData = None
+        self._RequestId = None
+
+    @property
+    def ResponseData(self):
+        return self._ResponseData
+
+    @ResponseData.setter
+    def ResponseData(self, ResponseData):
+        self._ResponseData = ResponseData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResponseData") is not None:
-            self.ResponseData = EPAResponse()
-            self.ResponseData._deserialize(params.get("ResponseData"))
-        self.RequestId = params.get("RequestId")
+            self._ResponseData = EPAResponse()
+            self._ResponseData._deserialize(params.get("ResponseData"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmpnChpRequest(AbstractModel):
@@ -138,24 +197,41 @@ class DescribeSmpnChpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 客户用于计费的资源Id
+        :param _ResourceId: 客户用于计费的资源Id
         :type ResourceId: str
-        :param RequestData: 终端骚扰保护请求
+        :param _RequestData: 终端骚扰保护请求
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.CHPRequest`
         """
-        self.ResourceId = None
-        self.RequestData = None
+        self._ResourceId = None
+        self._RequestData = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestData(self):
+        return self._RequestData
+
+    @RequestData.setter
+    def RequestData(self, RequestData):
+        self._RequestData = RequestData
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
+        self._ResourceId = params.get("ResourceId")
         if params.get("RequestData") is not None:
-            self.RequestData = CHPRequest()
-            self.RequestData._deserialize(params.get("RequestData"))
+            self._RequestData = CHPRequest()
+            self._RequestData._deserialize(params.get("RequestData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -168,20 +244,36 @@ class DescribeSmpnChpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResponseData: 终端骚扰保护回应
+        :param _ResponseData: 终端骚扰保护回应
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.CHPResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResponseData = None
-        self.RequestId = None
+        self._ResponseData = None
+        self._RequestId = None
+
+    @property
+    def ResponseData(self):
+        return self._ResponseData
+
+    @ResponseData.setter
+    def ResponseData(self, ResponseData):
+        self._ResponseData = ResponseData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResponseData") is not None:
-            self.ResponseData = CHPResponse()
-            self.ResponseData._deserialize(params.get("ResponseData"))
-        self.RequestId = params.get("RequestId")
+            self._ResponseData = CHPResponse()
+            self._ResponseData._deserialize(params.get("ResponseData"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmpnFnrRequest(AbstractModel):
@@ -191,24 +283,41 @@ class DescribeSmpnFnrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestData: 虚假号码识别请求内容
+        :param _RequestData: 虚假号码识别请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.FNRRequest`
-        :param ResourceId: 用于计费的资源ID
+        :param _ResourceId: 用于计费的资源ID
         :type ResourceId: str
         """
-        self.RequestData = None
-        self.ResourceId = None
+        self._RequestData = None
+        self._ResourceId = None
+
+    @property
+    def RequestData(self):
+        return self._RequestData
+
+    @RequestData.setter
+    def RequestData(self, RequestData):
+        self._RequestData = RequestData
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
         if params.get("RequestData") is not None:
-            self.RequestData = FNRRequest()
-            self.RequestData._deserialize(params.get("RequestData"))
-        self.ResourceId = params.get("ResourceId")
+            self._RequestData = FNRRequest()
+            self._RequestData._deserialize(params.get("RequestData"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -221,20 +330,36 @@ class DescribeSmpnFnrResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResponseData: 虚假号码识别回应内容
+        :param _ResponseData: 虚假号码识别回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.FNRResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResponseData = None
-        self.RequestId = None
+        self._ResponseData = None
+        self._RequestId = None
+
+    @property
+    def ResponseData(self):
+        return self._ResponseData
+
+    @ResponseData.setter
+    def ResponseData(self, ResponseData):
+        self._ResponseData = ResponseData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResponseData") is not None:
-            self.ResponseData = FNRResponse()
-            self.ResponseData._deserialize(params.get("ResponseData"))
-        self.RequestId = params.get("RequestId")
+            self._ResponseData = FNRResponse()
+            self._ResponseData._deserialize(params.get("ResponseData"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmpnMhmRequest(AbstractModel):
@@ -244,24 +369,41 @@ class DescribeSmpnMhmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestData: 号码营销监控请求内容
+        :param _RequestData: 号码营销监控请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.MHMRequest`
-        :param ResourceId: 用于计费的资源ID
+        :param _ResourceId: 用于计费的资源ID
         :type ResourceId: str
         """
-        self.RequestData = None
-        self.ResourceId = None
+        self._RequestData = None
+        self._ResourceId = None
+
+    @property
+    def RequestData(self):
+        return self._RequestData
+
+    @RequestData.setter
+    def RequestData(self, RequestData):
+        self._RequestData = RequestData
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
         if params.get("RequestData") is not None:
-            self.RequestData = MHMRequest()
-            self.RequestData._deserialize(params.get("RequestData"))
-        self.ResourceId = params.get("ResourceId")
+            self._RequestData = MHMRequest()
+            self._RequestData._deserialize(params.get("RequestData"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -274,20 +416,36 @@ class DescribeSmpnMhmResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResponseData: 号码营销监控回应内容
+        :param _ResponseData: 号码营销监控回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.MHMResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResponseData = None
-        self.RequestId = None
+        self._ResponseData = None
+        self._RequestId = None
+
+    @property
+    def ResponseData(self):
+        return self._ResponseData
+
+    @ResponseData.setter
+    def ResponseData(self, ResponseData):
+        self._ResponseData = ResponseData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResponseData") is not None:
-            self.ResponseData = MHMResponse()
-            self.ResponseData._deserialize(params.get("ResponseData"))
-        self.RequestId = params.get("RequestId")
+            self._ResponseData = MHMResponse()
+            self._ResponseData._deserialize(params.get("ResponseData"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmpnMrlRequest(AbstractModel):
@@ -297,24 +455,41 @@ class DescribeSmpnMrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestData: 恶意标记等级请求内容
+        :param _RequestData: 恶意标记等级请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.MRLRequest`
-        :param ResourceId: 用于计费的资源ID
+        :param _ResourceId: 用于计费的资源ID
         :type ResourceId: str
         """
-        self.RequestData = None
-        self.ResourceId = None
+        self._RequestData = None
+        self._ResourceId = None
+
+    @property
+    def RequestData(self):
+        return self._RequestData
+
+    @RequestData.setter
+    def RequestData(self, RequestData):
+        self._RequestData = RequestData
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
         if params.get("RequestData") is not None:
-            self.RequestData = MRLRequest()
-            self.RequestData._deserialize(params.get("RequestData"))
-        self.ResourceId = params.get("ResourceId")
+            self._RequestData = MRLRequest()
+            self._RequestData._deserialize(params.get("RequestData"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -327,20 +502,36 @@ class DescribeSmpnMrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResponseData: 恶意标记等级回应内容
+        :param _ResponseData: 恶意标记等级回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.MRLResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ResponseData = None
-        self.RequestId = None
+        self._ResponseData = None
+        self._RequestId = None
+
+    @property
+    def ResponseData(self):
+        return self._ResponseData
+
+    @ResponseData.setter
+    def ResponseData(self, ResponseData):
+        self._ResponseData = ResponseData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResponseData") is not None:
-            self.ResponseData = MRLResponse()
-            self.ResponseData._deserialize(params.get("ResponseData"))
-        self.RequestId = params.get("RequestId")
+            self._ResponseData = MRLResponse()
+            self._ResponseData._deserialize(params.get("ResponseData"))
+        self._RequestId = params.get("RequestId")
 
 
 class EPARequest(AbstractModel):
@@ -350,22 +541,39 @@ class EPARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumber: 电话号码
+        :param _PhoneNumber: 电话号码
         :type PhoneNumber: str
-        :param Name: 黄页名称
+        :param _Name: 黄页名称
         :type Name: str
         """
-        self.PhoneNumber = None
-        self.Name = None
+        self._PhoneNumber = None
+        self._Name = None
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Name = params.get("Name")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -378,18 +586,27 @@ class EPAResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RetCode: 0成功 其他失败
+        :param _RetCode: 0成功 其他失败
         :type RetCode: int
         """
-        self.RetCode = None
+        self._RetCode = None
+
+    @property
+    def RetCode(self):
+        return self._RetCode
+
+    @RetCode.setter
+    def RetCode(self, RetCode):
+        self._RetCode = RetCode
 
 
     def _deserialize(self, params):
-        self.RetCode = params.get("RetCode")
+        self._RetCode = params.get("RetCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -402,18 +619,27 @@ class FNRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumber: 电话号码
+        :param _PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
-        self.PhoneNumber = None
+        self._PhoneNumber = None
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
 
 
     def _deserialize(self, params):
-        self.PhoneNumber = params.get("PhoneNumber")
+        self._PhoneNumber = params.get("PhoneNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -426,18 +652,27 @@ class FNRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 虚假号码描述
+        :param _Status: 虚假号码描述
         :type Status: int
         """
-        self.Status = None
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -450,18 +685,27 @@ class MHMRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumber: 电话号码
+        :param _PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
-        self.PhoneNumber = None
+        self._PhoneNumber = None
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
 
 
     def _deserialize(self, params):
-        self.PhoneNumber = params.get("PhoneNumber")
+        self._PhoneNumber = params.get("PhoneNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -474,7 +718,7 @@ class MHMResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagType: 标记类型
+        :param _TagType: 标记类型
  0: 无标记
  50:骚扰电话
  51:房产中介
@@ -484,20 +728,37 @@ class MHMResponse(AbstractModel):
  55:快递电话
  56:出租车专车
         :type TagType: int
-        :param TagCount: 标记次数
+        :param _TagCount: 标记次数
         :type TagCount: int
         """
-        self.TagType = None
-        self.TagCount = None
+        self._TagType = None
+        self._TagCount = None
+
+    @property
+    def TagType(self):
+        return self._TagType
+
+    @TagType.setter
+    def TagType(self, TagType):
+        self._TagType = TagType
+
+    @property
+    def TagCount(self):
+        return self._TagCount
+
+    @TagCount.setter
+    def TagCount(self, TagCount):
+        self._TagCount = TagCount
 
 
     def _deserialize(self, params):
-        self.TagType = params.get("TagType")
-        self.TagCount = params.get("TagCount")
+        self._TagType = params.get("TagType")
+        self._TagCount = params.get("TagCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -510,18 +771,27 @@ class MRLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumber: 电话号码
+        :param _PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
-        self.PhoneNumber = None
+        self._PhoneNumber = None
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
 
 
     def _deserialize(self, params):
-        self.PhoneNumber = params.get("PhoneNumber")
+        self._PhoneNumber = params.get("PhoneNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -534,34 +804,75 @@ class MRLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisturbLevel: 骚扰电话恶意标记等级
+        :param _DisturbLevel: 骚扰电话恶意标记等级
         :type DisturbLevel: int
-        :param HouseAgentLevel: 房产中介恶意标记等级
+        :param _HouseAgentLevel: 房产中介恶意标记等级
         :type HouseAgentLevel: int
-        :param InsuranceLevel: 保险理财恶意标记等级
+        :param _InsuranceLevel: 保险理财恶意标记等级
         :type InsuranceLevel: int
-        :param SalesLevel: 广告推销恶意标记等级
+        :param _SalesLevel: 广告推销恶意标记等级
         :type SalesLevel: int
-        :param CheatLevel: 诈骗电话恶意标记等级
+        :param _CheatLevel: 诈骗电话恶意标记等级
         :type CheatLevel: int
         """
-        self.DisturbLevel = None
-        self.HouseAgentLevel = None
-        self.InsuranceLevel = None
-        self.SalesLevel = None
-        self.CheatLevel = None
+        self._DisturbLevel = None
+        self._HouseAgentLevel = None
+        self._InsuranceLevel = None
+        self._SalesLevel = None
+        self._CheatLevel = None
+
+    @property
+    def DisturbLevel(self):
+        return self._DisturbLevel
+
+    @DisturbLevel.setter
+    def DisturbLevel(self, DisturbLevel):
+        self._DisturbLevel = DisturbLevel
+
+    @property
+    def HouseAgentLevel(self):
+        return self._HouseAgentLevel
+
+    @HouseAgentLevel.setter
+    def HouseAgentLevel(self, HouseAgentLevel):
+        self._HouseAgentLevel = HouseAgentLevel
+
+    @property
+    def InsuranceLevel(self):
+        return self._InsuranceLevel
+
+    @InsuranceLevel.setter
+    def InsuranceLevel(self, InsuranceLevel):
+        self._InsuranceLevel = InsuranceLevel
+
+    @property
+    def SalesLevel(self):
+        return self._SalesLevel
+
+    @SalesLevel.setter
+    def SalesLevel(self, SalesLevel):
+        self._SalesLevel = SalesLevel
+
+    @property
+    def CheatLevel(self):
+        return self._CheatLevel
+
+    @CheatLevel.setter
+    def CheatLevel(self, CheatLevel):
+        self._CheatLevel = CheatLevel
 
 
     def _deserialize(self, params):
-        self.DisturbLevel = params.get("DisturbLevel")
-        self.HouseAgentLevel = params.get("HouseAgentLevel")
-        self.InsuranceLevel = params.get("InsuranceLevel")
-        self.SalesLevel = params.get("SalesLevel")
-        self.CheatLevel = params.get("CheatLevel")
+        self._DisturbLevel = params.get("DisturbLevel")
+        self._HouseAgentLevel = params.get("HouseAgentLevel")
+        self._InsuranceLevel = params.get("InsuranceLevel")
+        self._SalesLevel = params.get("SalesLevel")
+        self._CheatLevel = params.get("CheatLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

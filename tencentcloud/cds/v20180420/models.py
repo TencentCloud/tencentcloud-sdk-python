@@ -25,82 +25,211 @@ class CdsAuditInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param AppId: 用户AppId
+        :param _AppId: 用户AppId
         :type AppId: str
-        :param Uin: 用户Uin
+        :param _Uin: 用户Uin
         :type Uin: str
-        :param ProjectId: 项目ID
+        :param _ProjectId: 项目ID
         :type ProjectId: int
-        :param RenewFlag: 续费标识
+        :param _RenewFlag: 续费标识
         :type RenewFlag: int
-        :param Region: 所属地域
+        :param _Region: 所属地域
         :type Region: str
-        :param PayMode: 付费模式（数据安全审计只支持预付费：1）
+        :param _PayMode: 付费模式（数据安全审计只支持预付费：1）
         :type PayMode: int
-        :param Status: 实例状态： 0，未生效；1：正常运行； 2：被隔离； 3，已过期
+        :param _Status: 实例状态： 0，未生效；1：正常运行； 2：被隔离； 3，已过期
         :type Status: int
-        :param IsolatedTimestamp: 实例被隔离时间，格式：yyyy-mm-dd HH:ii:ss
+        :param _IsolatedTimestamp: 实例被隔离时间，格式：yyyy-mm-dd HH:ii:ss
         :type IsolatedTimestamp: str
-        :param CreateTime: 实例创建时间，格式： yyyy-mm-dd HH:ii:ss
+        :param _CreateTime: 实例创建时间，格式： yyyy-mm-dd HH:ii:ss
         :type CreateTime: str
-        :param ExpireTime: 实例过期时间，格式：yyyy-mm-dd HH:ii:ss
+        :param _ExpireTime: 实例过期时间，格式：yyyy-mm-dd HH:ii:ss
         :type ExpireTime: str
-        :param InstanceName: 实例名称
+        :param _InstanceName: 实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param PublicIp: 实例公网IP
+        :param _PublicIp: 实例公网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIp: str
-        :param PrivateIp: 实例私网IP
+        :param _PrivateIp: 实例私网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIp: str
-        :param InstanceType: 实例类型（版本）
+        :param _InstanceType: 实例类型（版本）
         :type InstanceType: str
-        :param Pdomain: 实例域名
+        :param _Pdomain: 实例域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pdomain: str
         """
-        self.InstanceId = None
-        self.AppId = None
-        self.Uin = None
-        self.ProjectId = None
-        self.RenewFlag = None
-        self.Region = None
-        self.PayMode = None
-        self.Status = None
-        self.IsolatedTimestamp = None
-        self.CreateTime = None
-        self.ExpireTime = None
-        self.InstanceName = None
-        self.PublicIp = None
-        self.PrivateIp = None
-        self.InstanceType = None
-        self.Pdomain = None
+        self._InstanceId = None
+        self._AppId = None
+        self._Uin = None
+        self._ProjectId = None
+        self._RenewFlag = None
+        self._Region = None
+        self._PayMode = None
+        self._Status = None
+        self._IsolatedTimestamp = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._InstanceName = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._InstanceType = None
+        self._Pdomain = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsolatedTimestamp(self):
+        return self._IsolatedTimestamp
+
+    @IsolatedTimestamp.setter
+    def IsolatedTimestamp(self, IsolatedTimestamp):
+        self._IsolatedTimestamp = IsolatedTimestamp
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PublicIp(self):
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Pdomain(self):
+        return self._Pdomain
+
+    @Pdomain.setter
+    def Pdomain(self, Pdomain):
+        self._Pdomain = Pdomain
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.AppId = params.get("AppId")
-        self.Uin = params.get("Uin")
-        self.ProjectId = params.get("ProjectId")
-        self.RenewFlag = params.get("RenewFlag")
-        self.Region = params.get("Region")
-        self.PayMode = params.get("PayMode")
-        self.Status = params.get("Status")
-        self.IsolatedTimestamp = params.get("IsolatedTimestamp")
-        self.CreateTime = params.get("CreateTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.InstanceName = params.get("InstanceName")
-        self.PublicIp = params.get("PublicIp")
-        self.PrivateIp = params.get("PrivateIp")
-        self.InstanceType = params.get("InstanceType")
-        self.Pdomain = params.get("Pdomain")
+        self._InstanceId = params.get("InstanceId")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._ProjectId = params.get("ProjectId")
+        self._RenewFlag = params.get("RenewFlag")
+        self._Region = params.get("Region")
+        self._PayMode = params.get("PayMode")
+        self._Status = params.get("Status")
+        self._IsolatedTimestamp = params.get("IsolatedTimestamp")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._InstanceName = params.get("InstanceName")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._InstanceType = params.get("InstanceType")
+        self._Pdomain = params.get("Pdomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -113,42 +242,99 @@ class DbauditTypesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceVersionName: 规格描述
+        :param _InstanceVersionName: 规格描述
         :type InstanceVersionName: str
-        :param InstanceVersionKey: 规格名称
+        :param _InstanceVersionKey: 规格名称
         :type InstanceVersionKey: str
-        :param Qps: 最大吞吐量
+        :param _Qps: 最大吞吐量
         :type Qps: int
-        :param MaxInstances: 最大实例数
+        :param _MaxInstances: 最大实例数
         :type MaxInstances: int
-        :param InsertSpeed: 入库速率（每小时）
+        :param _InsertSpeed: 入库速率（每小时）
         :type InsertSpeed: int
-        :param OnlineStorageCapacity: 最大在线存储量，单位：条
+        :param _OnlineStorageCapacity: 最大在线存储量，单位：条
         :type OnlineStorageCapacity: int
-        :param ArchivingStorageCapacity: 最大归档存储量，单位：条
+        :param _ArchivingStorageCapacity: 最大归档存储量，单位：条
         :type ArchivingStorageCapacity: int
         """
-        self.InstanceVersionName = None
-        self.InstanceVersionKey = None
-        self.Qps = None
-        self.MaxInstances = None
-        self.InsertSpeed = None
-        self.OnlineStorageCapacity = None
-        self.ArchivingStorageCapacity = None
+        self._InstanceVersionName = None
+        self._InstanceVersionKey = None
+        self._Qps = None
+        self._MaxInstances = None
+        self._InsertSpeed = None
+        self._OnlineStorageCapacity = None
+        self._ArchivingStorageCapacity = None
+
+    @property
+    def InstanceVersionName(self):
+        return self._InstanceVersionName
+
+    @InstanceVersionName.setter
+    def InstanceVersionName(self, InstanceVersionName):
+        self._InstanceVersionName = InstanceVersionName
+
+    @property
+    def InstanceVersionKey(self):
+        return self._InstanceVersionKey
+
+    @InstanceVersionKey.setter
+    def InstanceVersionKey(self, InstanceVersionKey):
+        self._InstanceVersionKey = InstanceVersionKey
+
+    @property
+    def Qps(self):
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
+
+    @property
+    def MaxInstances(self):
+        return self._MaxInstances
+
+    @MaxInstances.setter
+    def MaxInstances(self, MaxInstances):
+        self._MaxInstances = MaxInstances
+
+    @property
+    def InsertSpeed(self):
+        return self._InsertSpeed
+
+    @InsertSpeed.setter
+    def InsertSpeed(self, InsertSpeed):
+        self._InsertSpeed = InsertSpeed
+
+    @property
+    def OnlineStorageCapacity(self):
+        return self._OnlineStorageCapacity
+
+    @OnlineStorageCapacity.setter
+    def OnlineStorageCapacity(self, OnlineStorageCapacity):
+        self._OnlineStorageCapacity = OnlineStorageCapacity
+
+    @property
+    def ArchivingStorageCapacity(self):
+        return self._ArchivingStorageCapacity
+
+    @ArchivingStorageCapacity.setter
+    def ArchivingStorageCapacity(self, ArchivingStorageCapacity):
+        self._ArchivingStorageCapacity = ArchivingStorageCapacity
 
 
     def _deserialize(self, params):
-        self.InstanceVersionName = params.get("InstanceVersionName")
-        self.InstanceVersionKey = params.get("InstanceVersionKey")
-        self.Qps = params.get("Qps")
-        self.MaxInstances = params.get("MaxInstances")
-        self.InsertSpeed = params.get("InsertSpeed")
-        self.OnlineStorageCapacity = params.get("OnlineStorageCapacity")
-        self.ArchivingStorageCapacity = params.get("ArchivingStorageCapacity")
+        self._InstanceVersionName = params.get("InstanceVersionName")
+        self._InstanceVersionKey = params.get("InstanceVersionKey")
+        self._Qps = params.get("Qps")
+        self._MaxInstances = params.get("MaxInstances")
+        self._InsertSpeed = params.get("InsertSpeed")
+        self._OnlineStorageCapacity = params.get("OnlineStorageCapacity")
+        self._ArchivingStorageCapacity = params.get("ArchivingStorageCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -167,22 +353,46 @@ class DescribeDasbImageIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BaseImageId: 基础镜像ID
+        :param _BaseImageId: 基础镜像ID
         :type BaseImageId: str
-        :param AiImageId: AI镜像ID
+        :param _AiImageId: AI镜像ID
         :type AiImageId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.BaseImageId = None
-        self.AiImageId = None
-        self.RequestId = None
+        self._BaseImageId = None
+        self._AiImageId = None
+        self._RequestId = None
+
+    @property
+    def BaseImageId(self):
+        return self._BaseImageId
+
+    @BaseImageId.setter
+    def BaseImageId(self, BaseImageId):
+        self._BaseImageId = BaseImageId
+
+    @property
+    def AiImageId(self):
+        return self._AiImageId
+
+    @AiImageId.setter
+    def AiImageId(self, AiImageId):
+        self._AiImageId = AiImageId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BaseImageId = params.get("BaseImageId")
-        self.AiImageId = params.get("AiImageId")
-        self.RequestId = params.get("RequestId")
+        self._BaseImageId = params.get("BaseImageId")
+        self._AiImageId = params.get("AiImageId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDbauditInstanceTypeRequest(AbstractModel):
@@ -198,23 +408,39 @@ class DescribeDbauditInstanceTypeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DbauditTypesSet: 数据安全审计产品规格信息列表
+        :param _DbauditTypesSet: 数据安全审计产品规格信息列表
         :type DbauditTypesSet: list of DbauditTypesInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DbauditTypesSet = None
-        self.RequestId = None
+        self._DbauditTypesSet = None
+        self._RequestId = None
+
+    @property
+    def DbauditTypesSet(self):
+        return self._DbauditTypesSet
+
+    @DbauditTypesSet.setter
+    def DbauditTypesSet(self, DbauditTypesSet):
+        self._DbauditTypesSet = DbauditTypesSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DbauditTypesSet") is not None:
-            self.DbauditTypesSet = []
+            self._DbauditTypesSet = []
             for item in params.get("DbauditTypesSet"):
                 obj = DbauditTypesInfo()
                 obj._deserialize(item)
-                self.DbauditTypesSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DbauditTypesSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDbauditInstancesRequest(AbstractModel):
@@ -224,26 +450,51 @@ class DescribeDbauditInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SearchRegion: 查询条件地域
+        :param _SearchRegion: 查询条件地域
         :type SearchRegion: str
-        :param Limit: 限制数目，默认10， 最大50
+        :param _Limit: 限制数目，默认10， 最大50
         :type Limit: int
-        :param Offset: 偏移量，默认1
+        :param _Offset: 偏移量，默认1
         :type Offset: int
         """
-        self.SearchRegion = None
-        self.Limit = None
-        self.Offset = None
+        self._SearchRegion = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SearchRegion(self):
+        return self._SearchRegion
+
+    @SearchRegion.setter
+    def SearchRegion(self, SearchRegion):
+        self._SearchRegion = SearchRegion
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.SearchRegion = params.get("SearchRegion")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._SearchRegion = params.get("SearchRegion")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -256,27 +507,51 @@ class DescribeDbauditInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总实例数
+        :param _TotalCount: 总实例数
         :type TotalCount: int
-        :param CdsAuditInstanceSet: 数据安全审计实例信息列表
+        :param _CdsAuditInstanceSet: 数据安全审计实例信息列表
         :type CdsAuditInstanceSet: list of CdsAuditInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.CdsAuditInstanceSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._CdsAuditInstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CdsAuditInstanceSet(self):
+        return self._CdsAuditInstanceSet
+
+    @CdsAuditInstanceSet.setter
+    def CdsAuditInstanceSet(self, CdsAuditInstanceSet):
+        self._CdsAuditInstanceSet = CdsAuditInstanceSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("CdsAuditInstanceSet") is not None:
-            self.CdsAuditInstanceSet = []
+            self._CdsAuditInstanceSet = []
             for item in params.get("CdsAuditInstanceSet"):
                 obj = CdsAuditInstance()
                 obj._deserialize(item)
-                self.CdsAuditInstanceSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CdsAuditInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDbauditUsedRegionsRequest(AbstractModel):
@@ -292,23 +567,39 @@ class DescribeDbauditUsedRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionSet: 可售卖地域信息列表
+        :param _RegionSet: 可售卖地域信息列表
         :type RegionSet: list of RegionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RegionSet = None
-        self.RequestId = None
+        self._RegionSet = None
+        self._RequestId = None
+
+    @property
+    def RegionSet(self):
+        return self._RegionSet
+
+    @RegionSet.setter
+    def RegionSet(self, RegionSet):
+        self._RegionSet = RegionSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RegionSet") is not None:
-            self.RegionSet = []
+            self._RegionSet = []
             for item in params.get("RegionSet"):
                 obj = RegionInfo()
                 obj._deserialize(item)
-                self.RegionSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InquiryPriceDbauditInstanceRequest(AbstractModel):
@@ -318,34 +609,75 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceVersion: 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
+        :param _InstanceVersion: 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
         :type InstanceVersion: str
-        :param InquiryType: 询价类型： renew，续费；newbuy，新购
+        :param _InquiryType: 询价类型： renew，续费；newbuy，新购
         :type InquiryType: str
-        :param TimeSpan: 购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）
+        :param _TimeSpan: 购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）
         :type TimeSpan: int
-        :param TimeUnit: 购买时长单位，y：年；m：月
+        :param _TimeUnit: 购买时长单位，y：年；m：月
         :type TimeUnit: str
-        :param ServiceRegion: 实例所在地域
+        :param _ServiceRegion: 实例所在地域
         :type ServiceRegion: str
         """
-        self.InstanceVersion = None
-        self.InquiryType = None
-        self.TimeSpan = None
-        self.TimeUnit = None
-        self.ServiceRegion = None
+        self._InstanceVersion = None
+        self._InquiryType = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ServiceRegion = None
+
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
+    @property
+    def InquiryType(self):
+        return self._InquiryType
+
+    @InquiryType.setter
+    def InquiryType(self, InquiryType):
+        self._InquiryType = InquiryType
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ServiceRegion(self):
+        return self._ServiceRegion
+
+    @ServiceRegion.setter
+    def ServiceRegion(self, ServiceRegion):
+        self._ServiceRegion = ServiceRegion
 
 
     def _deserialize(self, params):
-        self.InstanceVersion = params.get("InstanceVersion")
-        self.InquiryType = params.get("InquiryType")
-        self.TimeSpan = params.get("TimeSpan")
-        self.TimeUnit = params.get("TimeUnit")
-        self.ServiceRegion = params.get("ServiceRegion")
+        self._InstanceVersion = params.get("InstanceVersion")
+        self._InquiryType = params.get("InquiryType")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ServiceRegion = params.get("ServiceRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -358,22 +690,46 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalPrice: 总价，单位：元
+        :param _TotalPrice: 总价，单位：元
         :type TotalPrice: float
-        :param RealTotalCost: 真实价钱，预支费用的折扣价，单位：元
+        :param _RealTotalCost: 真实价钱，预支费用的折扣价，单位：元
         :type RealTotalCost: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalPrice = None
-        self.RealTotalCost = None
-        self.RequestId = None
+        self._TotalPrice = None
+        self._RealTotalCost = None
+        self._RequestId = None
+
+    @property
+    def TotalPrice(self):
+        return self._TotalPrice
+
+    @TotalPrice.setter
+    def TotalPrice(self, TotalPrice):
+        self._TotalPrice = TotalPrice
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalPrice = params.get("TotalPrice")
-        self.RealTotalCost = params.get("RealTotalCost")
-        self.RequestId = params.get("RequestId")
+        self._TotalPrice = params.get("TotalPrice")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
@@ -383,22 +739,39 @@ class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param AutoRenewFlag: 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
+        :param _AutoRenewFlag: 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
         :type AutoRenewFlag: int
         """
-        self.InstanceId = None
-        self.AutoRenewFlag = None
+        self._InstanceId = None
+        self._AutoRenewFlag = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self._InstanceId = params.get("InstanceId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -411,14 +784,22 @@ class ModifyDbauditInstancesRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RegionInfo(AbstractModel):
@@ -428,30 +809,63 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: 地域ID
+        :param _RegionId: 地域ID
         :type RegionId: int
-        :param Region: 地域名称
+        :param _Region: 地域名称
         :type Region: str
-        :param RegionName: 地域描述
+        :param _RegionName: 地域描述
         :type RegionName: str
-        :param RegionState: 地域可用状态
+        :param _RegionState: 地域可用状态
         :type RegionState: int
         """
-        self.RegionId = None
-        self.Region = None
-        self.RegionName = None
-        self.RegionState = None
+        self._RegionId = None
+        self._Region = None
+        self._RegionName = None
+        self._RegionState = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionState(self):
+        return self._RegionState
+
+    @RegionState.setter
+    def RegionState(self, RegionState):
+        self._RegionState = RegionState
 
 
     def _deserialize(self, params):
-        self.RegionId = params.get("RegionId")
-        self.Region = params.get("Region")
-        self.RegionName = params.get("RegionName")
-        self.RegionState = params.get("RegionState")
+        self._RegionId = params.get("RegionId")
+        self._Region = params.get("Region")
+        self._RegionName = params.get("RegionName")
+        self._RegionState = params.get("RegionState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

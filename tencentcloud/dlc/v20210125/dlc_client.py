@@ -648,7 +648,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkSessionBatchSQL(self, request):
-        """本接口（CreateSparkSessionBatchSQL）用于提交Spark SQL批任务。
+        """本接口（CreateSparkSessionBatchSQL）用于向Spark作业引擎提交Spark SQL批任务。
 
         :param request: Request instance for CreateSparkSessionBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLRequest`

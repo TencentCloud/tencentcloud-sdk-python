@@ -25,12 +25,12 @@ class AudioResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HitFlag: 是否命中
+        :param _HitFlag: 是否命中
 0 未命中
 1 命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Label: 命中的标签
+        :param _Label: 命中的标签
 Porn 色情
 Polity 政治
 Illegal 违法
@@ -40,81 +40,170 @@ Ad 广告
 Moan 呻吟
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 审核建议，可选值：
+        :param _Suggestion: 审核建议，可选值：
 Pass 通过，
 Review 建议人审，
 Block 确认违规
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 得分，0-100
+        :param _Score: 得分，0-100
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Text: 音频ASR文本
+        :param _Text: 音频ASR文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param Url: 音频片段存储URL，有效期为1天
+        :param _Url: 音频片段存储URL，有效期为1天
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param Duration: 音频时长
+        :param _Duration: 音频时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
-        :param Extra: 拓展字段
+        :param _Extra: 拓展字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param TextResults: 文本审核结果
+        :param _TextResults: 文本审核结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextResults: list of AudioResultDetailTextResult
-        :param MoanResults: 音频呻吟审核结果
+        :param _MoanResults: 音频呻吟审核结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type MoanResults: list of AudioResultDetailMoanResult
-        :param LanguageResults: 音频语种检测结果
+        :param _LanguageResults: 音频语种检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type LanguageResults: list of AudioResultDetailLanguageResult
         """
-        self.HitFlag = None
-        self.Label = None
-        self.Suggestion = None
-        self.Score = None
-        self.Text = None
-        self.Url = None
-        self.Duration = None
-        self.Extra = None
-        self.TextResults = None
-        self.MoanResults = None
-        self.LanguageResults = None
+        self._HitFlag = None
+        self._Label = None
+        self._Suggestion = None
+        self._Score = None
+        self._Text = None
+        self._Url = None
+        self._Duration = None
+        self._Extra = None
+        self._TextResults = None
+        self._MoanResults = None
+        self._LanguageResults = None
+
+    @property
+    def HitFlag(self):
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def TextResults(self):
+        return self._TextResults
+
+    @TextResults.setter
+    def TextResults(self, TextResults):
+        self._TextResults = TextResults
+
+    @property
+    def MoanResults(self):
+        return self._MoanResults
+
+    @MoanResults.setter
+    def MoanResults(self, MoanResults):
+        self._MoanResults = MoanResults
+
+    @property
+    def LanguageResults(self):
+        return self._LanguageResults
+
+    @LanguageResults.setter
+    def LanguageResults(self, LanguageResults):
+        self._LanguageResults = LanguageResults
 
 
     def _deserialize(self, params):
-        self.HitFlag = params.get("HitFlag")
-        self.Label = params.get("Label")
-        self.Suggestion = params.get("Suggestion")
-        self.Score = params.get("Score")
-        self.Text = params.get("Text")
-        self.Url = params.get("Url")
-        self.Duration = params.get("Duration")
-        self.Extra = params.get("Extra")
+        self._HitFlag = params.get("HitFlag")
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        self._Score = params.get("Score")
+        self._Text = params.get("Text")
+        self._Url = params.get("Url")
+        self._Duration = params.get("Duration")
+        self._Extra = params.get("Extra")
         if params.get("TextResults") is not None:
-            self.TextResults = []
+            self._TextResults = []
             for item in params.get("TextResults"):
                 obj = AudioResultDetailTextResult()
                 obj._deserialize(item)
-                self.TextResults.append(obj)
+                self._TextResults.append(obj)
         if params.get("MoanResults") is not None:
-            self.MoanResults = []
+            self._MoanResults = []
             for item in params.get("MoanResults"):
                 obj = AudioResultDetailMoanResult()
                 obj._deserialize(item)
-                self.MoanResults.append(obj)
+                self._MoanResults.append(obj)
         if params.get("LanguageResults") is not None:
-            self.LanguageResults = []
+            self._LanguageResults = []
             for item in params.get("LanguageResults"):
                 obj = AudioResultDetailLanguageResult()
                 obj._deserialize(item)
-                self.LanguageResults.append(obj)
+                self._LanguageResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -127,39 +216,80 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 语种
+        :param _Label: 语种
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 得分
+        :param _Score: 得分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param StartTime: 开始时间
+        :param _StartTime: 开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
-        :param EndTime: 结束时间
+        :param _EndTime: 结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
-        :param SubLabelCode: 子标签码
+        :param _SubLabelCode: 子标签码
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabelCode: str
         """
-        self.Label = None
-        self.Score = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SubLabelCode = None
+        self._Label = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubLabelCode = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubLabelCode(self):
+        return self._SubLabelCode
+
+    @SubLabelCode.setter
+    def SubLabelCode(self, SubLabelCode):
+        self._SubLabelCode = SubLabelCode
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Score = params.get("Score")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SubLabelCode = params.get("SubLabelCode")
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubLabelCode = params.get("SubLabelCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -172,35 +302,76 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 固定为Moan
+        :param _Label: 固定为Moan
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 分数
+        :param _Score: 分数
         :type Score: int
-        :param StartTime: 开始时间
+        :param _StartTime: 开始时间
         :type StartTime: float
-        :param EndTime: 结束时间
+        :param _EndTime: 结束时间
         :type EndTime: float
-        :param SubLabelCode: 子标签码
+        :param _SubLabelCode: 子标签码
         :type SubLabelCode: str
         """
-        self.Label = None
-        self.Score = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SubLabelCode = None
+        self._Label = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubLabelCode = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubLabelCode(self):
+        return self._SubLabelCode
+
+    @SubLabelCode.setter
+    def SubLabelCode(self, SubLabelCode):
+        self._SubLabelCode = SubLabelCode
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Score = params.get("Score")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SubLabelCode = params.get("SubLabelCode")
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubLabelCode = params.get("SubLabelCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -213,49 +384,106 @@ class AudioResultDetailTextResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 标签
+        :param _Label: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Keywords: 命中的关键词
+        :param _Keywords: 命中的关键词
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param LibId: 命中的LibId
+        :param _LibId: 命中的LibId
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param LibName: 命中的LibName
+        :param _LibName: 命中的LibName
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
-        :param Score: 得分
+        :param _Score: 得分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param LibType: 词库类型 1 黑白库 2 自定义库
+        :param _LibType: 词库类型 1 黑白库 2 自定义库
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibType: int
-        :param Suggestion: 审核建议
+        :param _Suggestion: 审核建议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         """
-        self.Label = None
-        self.Keywords = None
-        self.LibId = None
-        self.LibName = None
-        self.Score = None
-        self.LibType = None
-        self.Suggestion = None
+        self._Label = None
+        self._Keywords = None
+        self._LibId = None
+        self._LibName = None
+        self._Score = None
+        self._LibType = None
+        self._Suggestion = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def LibId(self):
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def LibType(self):
+        return self._LibType
+
+    @LibType.setter
+    def LibType(self, LibType):
+        self._LibType = LibType
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Keywords = params.get("Keywords")
-        self.LibId = params.get("LibId")
-        self.LibName = params.get("LibName")
-        self.Score = params.get("Score")
-        self.LibType = params.get("LibType")
-        self.Suggestion = params.get("Suggestion")
+        self._Label = params.get("Label")
+        self._Keywords = params.get("Keywords")
+        self._LibId = params.get("LibId")
+        self._LibName = params.get("LibName")
+        self._Score = params.get("Score")
+        self._LibType = params.get("LibType")
+        self._Suggestion = params.get("Suggestion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -268,28 +496,45 @@ class AudioSegments(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OffsetTime: 截帧时间。
+        :param _OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetTime: str
-        :param Result: 结果集
+        :param _Result: 结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.vm.v20200709.models.AudioResult`
         """
-        self.OffsetTime = None
-        self.Result = None
+        self._OffsetTime = None
+        self._Result = None
+
+    @property
+    def OffsetTime(self):
+        return self._OffsetTime
+
+    @OffsetTime.setter
+    def OffsetTime(self, OffsetTime):
+        self._OffsetTime = OffsetTime
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
 
     def _deserialize(self, params):
-        self.OffsetTime = params.get("OffsetTime")
+        self._OffsetTime = params.get("OffsetTime")
         if params.get("Result") is not None:
-            self.Result = AudioResult()
-            self.Result._deserialize(params.get("Result"))
+            self._Result = AudioResult()
+            self._Result._deserialize(params.get("Result"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -303,26 +548,51 @@ class BucketInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bucket: 腾讯云对象存储，存储桶名称
+        :param _Bucket: 腾讯云对象存储，存储桶名称
         :type Bucket: str
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param Object: 对象Key
+        :param _Object: 对象Key
         :type Object: str
         """
-        self.Bucket = None
-        self.Region = None
-        self.Object = None
+        self._Bucket = None
+        self._Region = None
+        self._Object = None
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
 
 
     def _deserialize(self, params):
-        self.Bucket = params.get("Bucket")
-        self.Region = params.get("Region")
-        self.Object = params.get("Object")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._Object = params.get("Object")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -335,18 +605,27 @@ class CancelTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: str
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -359,14 +638,22 @@ class CancelTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBizConfigRequest(AbstractModel):
@@ -376,32 +663,65 @@ class CreateBizConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizType: 业务ID，仅限英文字母、数字和下划线（_）组成，长度不超过8位
+        :param _BizType: 业务ID，仅限英文字母、数字和下划线（_）组成，长度不超过8位
         :type BizType: str
-        :param MediaModeration: 审核分类信息
+        :param _MediaModeration: 审核分类信息
         :type MediaModeration: :class:`tencentcloud.vm.v20200709.models.MediaModerationConfig`
-        :param BizName: 业务名称，用于标识业务场景，长度不超过32位
+        :param _BizName: 业务名称，用于标识业务场景，长度不超过32位
         :type BizName: str
-        :param ModerationCategories: 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告); Custom (自定义);
+        :param _ModerationCategories: 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告); Custom (自定义);
         :type ModerationCategories: list of str
         """
-        self.BizType = None
-        self.MediaModeration = None
-        self.BizName = None
-        self.ModerationCategories = None
+        self._BizType = None
+        self._MediaModeration = None
+        self._BizName = None
+        self._ModerationCategories = None
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def MediaModeration(self):
+        return self._MediaModeration
+
+    @MediaModeration.setter
+    def MediaModeration(self, MediaModeration):
+        self._MediaModeration = MediaModeration
+
+    @property
+    def BizName(self):
+        return self._BizName
+
+    @BizName.setter
+    def BizName(self, BizName):
+        self._BizName = BizName
+
+    @property
+    def ModerationCategories(self):
+        return self._ModerationCategories
+
+    @ModerationCategories.setter
+    def ModerationCategories(self, ModerationCategories):
+        self._ModerationCategories = ModerationCategories
 
 
     def _deserialize(self, params):
-        self.BizType = params.get("BizType")
+        self._BizType = params.get("BizType")
         if params.get("MediaModeration") is not None:
-            self.MediaModeration = MediaModerationConfig()
-            self.MediaModeration._deserialize(params.get("MediaModeration"))
-        self.BizName = params.get("BizName")
-        self.ModerationCategories = params.get("ModerationCategories")
+            self._MediaModeration = MediaModerationConfig()
+            self._MediaModeration._deserialize(params.get("MediaModeration"))
+        self._BizName = params.get("BizName")
+        self._ModerationCategories = params.get("ModerationCategories")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -414,14 +734,22 @@ class CreateBizConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateVideoModerationTaskRequest(AbstractModel):
@@ -431,43 +759,92 @@ class CreateVideoModerationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
+        :param _BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
         :type BizType: str
-        :param Type: 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
+        :param _Type: 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
         :type Type: str
-        :param Tasks: 输入的任务信息，最多可以同时创建10个任务
+        :param _Tasks: 输入的任务信息，最多可以同时创建10个任务
         :type Tasks: list of TaskInput
-        :param Seed: 回调签名key，具体可以查看签名文档。
+        :param _Seed: 回调签名key，具体可以查看签名文档。
         :type Seed: str
-        :param CallbackUrl: 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
+        :param _CallbackUrl: 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
         :type CallbackUrl: str
-        :param Priority: 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
+        :param _Priority: 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
         :type Priority: int
         """
-        self.BizType = None
-        self.Type = None
-        self.Tasks = None
-        self.Seed = None
-        self.CallbackUrl = None
-        self.Priority = None
+        self._BizType = None
+        self._Type = None
+        self._Tasks = None
+        self._Seed = None
+        self._CallbackUrl = None
+        self._Priority = None
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Seed(self):
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
 
 
     def _deserialize(self, params):
-        self.BizType = params.get("BizType")
-        self.Type = params.get("Type")
+        self._BizType = params.get("BizType")
+        self._Type = params.get("Type")
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = TaskInput()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.Seed = params.get("Seed")
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.Priority = params.get("Priority")
+                self._Tasks.append(obj)
+        self._Seed = params.get("Seed")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -480,24 +857,40 @@ class CreateVideoModerationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Results: 任务创建结果
+        :param _Results: 任务创建结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Results = None
-        self.RequestId = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = TaskResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskDetailRequest(AbstractModel):
@@ -507,22 +900,39 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID，创建任务后返回的TaskId字段
+        :param _TaskId: 任务ID，创建任务后返回的TaskId字段
         :type TaskId: str
-        :param ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
+        :param _ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
         :type ShowAllSegments: bool
         """
-        self.TaskId = None
-        self.ShowAllSegments = None
+        self._TaskId = None
+        self._ShowAllSegments = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ShowAllSegments(self):
+        return self._ShowAllSegments
+
+    @ShowAllSegments.setter
+    def ShowAllSegments(self, ShowAllSegments):
+        self._ShowAllSegments = ShowAllSegments
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.ShowAllSegments = params.get("ShowAllSegments")
+        self._TaskId = params.get("TaskId")
+        self._ShowAllSegments = params.get("ShowAllSegments")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -535,19 +945,19 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务Id
+        :param _TaskId: 任务Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param DataId: 审核时传入的数据Id
+        :param _DataId: 审核时传入的数据Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param BizType: 业务类型
+        :param _BizType: 业务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
-        :param Name: 任务名称
+        :param _Name: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Status: 状态，可选值：
+        :param _Status: 状态，可选值：
 FINISH 已完成
 PENDING 等待中
 RUNNING 进行中
@@ -555,111 +965,255 @@ ERROR 出错
 CANCELLED 已取消
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Type: 类型
+        :param _Type: 类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Suggestion: 审核建议
+        :param _Suggestion: 审核建议
 可选：
 Pass 通过
 Reveiw 建议复审
 Block 确认违规
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Labels: 审核结果
+        :param _Labels: 审核结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
-        :param MediaInfo: 媒体解码信息
+        :param _MediaInfo: 媒体解码信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfo: :class:`tencentcloud.vm.v20200709.models.MediaInfo`
-        :param InputInfo: 任务信息
+        :param _InputInfo: 任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.vm.v20200709.models.InputInfo`
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 更新时间
+        :param _UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param TryInSeconds: 在秒后重试
+        :param _TryInSeconds: 在秒后重试
 注意：此字段可能返回 null，表示取不到有效值。
         :type TryInSeconds: int
-        :param ImageSegments: 图片结果
+        :param _ImageSegments: 图片结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSegments: list of ImageSegments
-        :param AudioSegments: 音频结果
+        :param _AudioSegments: 音频结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
-        :param ErrorType: 如果返回的状态为ERROR，该字段会标记错误类型。
+        :param _ErrorType: 如果返回的状态为ERROR，该字段会标记错误类型。
 可选值：：
 DECODE_ERROR: 解码失败。（输入资源中可能包含无法解码的视频）
 URL_ERROR：下载地址验证失败。
 TIMEOUT_ERROR：处理超时。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorType: str
-        :param ErrorDescription: 审核任务错误日志。当Error不为空时，会展示该字段
+        :param _ErrorDescription: 审核任务错误日志。当Error不为空时，会展示该字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDescription: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.DataId = None
-        self.BizType = None
-        self.Name = None
-        self.Status = None
-        self.Type = None
-        self.Suggestion = None
-        self.Labels = None
-        self.MediaInfo = None
-        self.InputInfo = None
-        self.CreatedAt = None
-        self.UpdatedAt = None
-        self.TryInSeconds = None
-        self.ImageSegments = None
-        self.AudioSegments = None
-        self.ErrorType = None
-        self.ErrorDescription = None
-        self.RequestId = None
+        self._TaskId = None
+        self._DataId = None
+        self._BizType = None
+        self._Name = None
+        self._Status = None
+        self._Type = None
+        self._Suggestion = None
+        self._Labels = None
+        self._MediaInfo = None
+        self._InputInfo = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._TryInSeconds = None
+        self._ImageSegments = None
+        self._AudioSegments = None
+        self._ErrorType = None
+        self._ErrorDescription = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def MediaInfo(self):
+        return self._MediaInfo
+
+    @MediaInfo.setter
+    def MediaInfo(self, MediaInfo):
+        self._MediaInfo = MediaInfo
+
+    @property
+    def InputInfo(self):
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def TryInSeconds(self):
+        return self._TryInSeconds
+
+    @TryInSeconds.setter
+    def TryInSeconds(self, TryInSeconds):
+        self._TryInSeconds = TryInSeconds
+
+    @property
+    def ImageSegments(self):
+        return self._ImageSegments
+
+    @ImageSegments.setter
+    def ImageSegments(self, ImageSegments):
+        self._ImageSegments = ImageSegments
+
+    @property
+    def AudioSegments(self):
+        return self._AudioSegments
+
+    @AudioSegments.setter
+    def AudioSegments(self, AudioSegments):
+        self._AudioSegments = AudioSegments
+
+    @property
+    def ErrorType(self):
+        return self._ErrorType
+
+    @ErrorType.setter
+    def ErrorType(self, ErrorType):
+        self._ErrorType = ErrorType
+
+    @property
+    def ErrorDescription(self):
+        return self._ErrorDescription
+
+    @ErrorDescription.setter
+    def ErrorDescription(self, ErrorDescription):
+        self._ErrorDescription = ErrorDescription
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.DataId = params.get("DataId")
-        self.BizType = params.get("BizType")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.Type = params.get("Type")
-        self.Suggestion = params.get("Suggestion")
+        self._TaskId = params.get("TaskId")
+        self._DataId = params.get("DataId")
+        self._BizType = params.get("BizType")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._Suggestion = params.get("Suggestion")
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = TaskLabel()
                 obj._deserialize(item)
-                self.Labels.append(obj)
+                self._Labels.append(obj)
         if params.get("MediaInfo") is not None:
-            self.MediaInfo = MediaInfo()
-            self.MediaInfo._deserialize(params.get("MediaInfo"))
+            self._MediaInfo = MediaInfo()
+            self._MediaInfo._deserialize(params.get("MediaInfo"))
         if params.get("InputInfo") is not None:
-            self.InputInfo = InputInfo()
-            self.InputInfo._deserialize(params.get("InputInfo"))
-        self.CreatedAt = params.get("CreatedAt")
-        self.UpdatedAt = params.get("UpdatedAt")
-        self.TryInSeconds = params.get("TryInSeconds")
+            self._InputInfo = InputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._TryInSeconds = params.get("TryInSeconds")
         if params.get("ImageSegments") is not None:
-            self.ImageSegments = []
+            self._ImageSegments = []
             for item in params.get("ImageSegments"):
                 obj = ImageSegments()
                 obj._deserialize(item)
-                self.ImageSegments.append(obj)
+                self._ImageSegments.append(obj)
         if params.get("AudioSegments") is not None:
-            self.AudioSegments = []
+            self._AudioSegments = []
             for item in params.get("AudioSegments"):
                 obj = AudioSegments()
                 obj._deserialize(item)
-                self.AudioSegments.append(obj)
-        self.ErrorType = params.get("ErrorType")
-        self.ErrorDescription = params.get("ErrorDescription")
-        self.RequestId = params.get("RequestId")
+                self._AudioSegments.append(obj)
+        self._ErrorType = params.get("ErrorType")
+        self._ErrorDescription = params.get("ErrorDescription")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVideoStatRequest(AbstractModel):
@@ -669,27 +1223,44 @@ class DescribeVideoStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
+        :param _AuditType: 审核类型 1: 机器审核; 2: 人工审核
         :type AuditType: int
-        :param Filters: 查询条件
+        :param _Filters: 查询条件
         :type Filters: list of Filters
         """
-        self.AuditType = None
-        self.Filters = None
+        self._AuditType = None
+        self._Filters = None
+
+    @property
+    def AuditType(self):
+        return self._AuditType
+
+    @AuditType.setter
+    def AuditType(self, AuditType):
+        self._AuditType = AuditType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.AuditType = params.get("AuditType")
+        self._AuditType = params.get("AuditType")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filters()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -702,38 +1273,70 @@ class DescribeVideoStatResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Overview: 识别结果统计
+        :param _Overview: 识别结果统计
         :type Overview: :class:`tencentcloud.vm.v20200709.models.Overview`
-        :param TrendCount: 识别量统计
+        :param _TrendCount: 识别量统计
         :type TrendCount: list of TrendCount
-        :param EvilCount: 违规数据分布
+        :param _EvilCount: 违规数据分布
         :type EvilCount: list of EvilCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Overview = None
-        self.TrendCount = None
-        self.EvilCount = None
-        self.RequestId = None
+        self._Overview = None
+        self._TrendCount = None
+        self._EvilCount = None
+        self._RequestId = None
+
+    @property
+    def Overview(self):
+        return self._Overview
+
+    @Overview.setter
+    def Overview(self, Overview):
+        self._Overview = Overview
+
+    @property
+    def TrendCount(self):
+        return self._TrendCount
+
+    @TrendCount.setter
+    def TrendCount(self, TrendCount):
+        self._TrendCount = TrendCount
+
+    @property
+    def EvilCount(self):
+        return self._EvilCount
+
+    @EvilCount.setter
+    def EvilCount(self, EvilCount):
+        self._EvilCount = EvilCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Overview") is not None:
-            self.Overview = Overview()
-            self.Overview._deserialize(params.get("Overview"))
+            self._Overview = Overview()
+            self._Overview._deserialize(params.get("Overview"))
         if params.get("TrendCount") is not None:
-            self.TrendCount = []
+            self._TrendCount = []
             for item in params.get("TrendCount"):
                 obj = TrendCount()
                 obj._deserialize(item)
-                self.TrendCount.append(obj)
+                self._TrendCount.append(obj)
         if params.get("EvilCount") is not None:
-            self.EvilCount = []
+            self._EvilCount = []
             for item in params.get("EvilCount"):
                 obj = EvilCount()
                 obj._deserialize(item)
-                self.EvilCount.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EvilCount.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class EvilCount(AbstractModel):
@@ -743,7 +1346,7 @@ class EvilCount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EvilType: 违规类型：
+        :param _EvilType: 违规类型：
 Terror	24001
 Porn	20002
 Polity	20001
@@ -753,20 +1356,37 @@ Illegal	20006
 Spam	25001	
 Moan	26001
         :type EvilType: str
-        :param Count: 分布类型总量
+        :param _Count: 分布类型总量
         :type Count: int
         """
-        self.EvilType = None
-        self.Count = None
+        self._EvilType = None
+        self._Count = None
+
+    @property
+    def EvilType(self):
+        return self._EvilType
+
+    @EvilType.setter
+    def EvilType(self, EvilType):
+        self._EvilType = EvilType
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.EvilType = params.get("EvilType")
-        self.Count = params.get("Count")
+        self._EvilType = params.get("EvilType")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -779,26 +1399,51 @@ class FileOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bucket: 存储的Bucket
+        :param _Bucket: 存储的Bucket
         :type Bucket: str
-        :param Region: Cos Region
+        :param _Region: Cos Region
         :type Region: str
-        :param ObjectPrefix: 对象前缀
+        :param _ObjectPrefix: 对象前缀
         :type ObjectPrefix: str
         """
-        self.Bucket = None
-        self.Region = None
-        self.ObjectPrefix = None
+        self._Bucket = None
+        self._Region = None
+        self._ObjectPrefix = None
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ObjectPrefix(self):
+        return self._ObjectPrefix
+
+    @ObjectPrefix.setter
+    def ObjectPrefix(self, ObjectPrefix):
+        self._ObjectPrefix = ObjectPrefix
 
 
     def _deserialize(self, params):
-        self.Bucket = params.get("Bucket")
-        self.Region = params.get("Region")
-        self.ObjectPrefix = params.get("ObjectPrefix")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._ObjectPrefix = params.get("ObjectPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -811,25 +1456,42 @@ class Filters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 查询字段：
+        :param _Name: 查询字段：
 策略BizType
 子账号SubUin
 日期区间DateRange
         :type Name: str
-        :param Values: 查询值
+        :param _Values: 查询值
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -842,12 +1504,12 @@ class ImageResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HitFlag: 违规标志
+        :param _HitFlag: 违规标志
 0 未命中
 1 命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Label: 命中的标签
+        :param _Label: 命中的标签
 Porn 色情
 Sexy 性感
 Polity 政治
@@ -857,51 +1519,108 @@ Terror 暴恐
 Ad 广告
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 审核建议，可选值：
+        :param _Suggestion: 审核建议，可选值：
 Pass 通过，
 Review 建议人审，
 Block 确认违规
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 得分
+        :param _Score: 得分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Results: 画面截帧图片结果集
+        :param _Results: 画面截帧图片结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of ImageResultResult
-        :param Url: 图片URL地址
+        :param _Url: 图片URL地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param Extra: 附加字段
+        :param _Extra: 附加字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         """
-        self.HitFlag = None
-        self.Label = None
-        self.Suggestion = None
-        self.Score = None
-        self.Results = None
-        self.Url = None
-        self.Extra = None
+        self._HitFlag = None
+        self._Label = None
+        self._Suggestion = None
+        self._Score = None
+        self._Results = None
+        self._Url = None
+        self._Extra = None
+
+    @property
+    def HitFlag(self):
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
 
 
     def _deserialize(self, params):
-        self.HitFlag = params.get("HitFlag")
-        self.Label = params.get("Label")
-        self.Suggestion = params.get("Suggestion")
-        self.Score = params.get("Score")
+        self._HitFlag = params.get("HitFlag")
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        self._Score = params.get("Score")
         if params.get("Results") is not None:
-            self.Results = []
+            self._Results = []
             for item in params.get("Results"):
                 obj = ImageResultResult()
                 obj._deserialize(item)
-                self.Results.append(obj)
-        self.Url = params.get("Url")
-        self.Extra = params.get("Extra")
+                self._Results.append(obj)
+        self._Url = params.get("Url")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -914,7 +1633,7 @@ class ImageResultResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Scene: 场景
+        :param _Scene: 场景
 Porn 色情
 Sexy 性感
 Polity 政治
@@ -924,66 +1643,139 @@ Terror 暴恐
 Ad 广告
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
-        :param HitFlag: 是否命中
+        :param _HitFlag: 是否命中
 0 未命中
 1 命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Suggestion: 审核建议，可选值：
+        :param _Suggestion: 审核建议，可选值：
 Pass 通过，
 Review 建议人审，
 Block 确认违规
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Label: 标签
+        :param _Label: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param SubLabel: 子标签
+        :param _SubLabel: 子标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
-        :param Score: 分数
+        :param _Score: 分数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Names: 如果命中场景为涉政，则该数据为人物姓名列表，否则null
+        :param _Names: 如果命中场景为涉政，则该数据为人物姓名列表，否则null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Names: list of str
-        :param Text: 图片OCR文本
+        :param _Text: 图片OCR文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param Details: 其他详情
+        :param _Details: 其他详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of ImageResultsResultDetail
         """
-        self.Scene = None
-        self.HitFlag = None
-        self.Suggestion = None
-        self.Label = None
-        self.SubLabel = None
-        self.Score = None
-        self.Names = None
-        self.Text = None
-        self.Details = None
+        self._Scene = None
+        self._HitFlag = None
+        self._Suggestion = None
+        self._Label = None
+        self._SubLabel = None
+        self._Score = None
+        self._Names = None
+        self._Text = None
+        self._Details = None
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def HitFlag(self):
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Names(self):
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
 
 
     def _deserialize(self, params):
-        self.Scene = params.get("Scene")
-        self.HitFlag = params.get("HitFlag")
-        self.Suggestion = params.get("Suggestion")
-        self.Label = params.get("Label")
-        self.SubLabel = params.get("SubLabel")
-        self.Score = params.get("Score")
-        self.Names = params.get("Names")
-        self.Text = params.get("Text")
+        self._Scene = params.get("Scene")
+        self._HitFlag = params.get("HitFlag")
+        self._Suggestion = params.get("Suggestion")
+        self._Label = params.get("Label")
+        self._SubLabel = params.get("SubLabel")
+        self._Score = params.get("Score")
+        self._Names = params.get("Names")
+        self._Text = params.get("Text")
         if params.get("Details") is not None:
-            self.Details = []
+            self._Details = []
             for item in params.get("Details"):
                 obj = ImageResultsResultDetail()
                 obj._deserialize(item)
-                self.Details.append(obj)
+                self._Details.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -996,66 +1788,147 @@ class ImageResultsResultDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 任务名称
+        :param _Name: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Text: OCR识别文本
+        :param _Text: OCR识别文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param Location: 位置信息
+        :param _Location: 位置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: :class:`tencentcloud.vm.v20200709.models.ImageResultsResultDetailLocation`
-        :param Label: 标签
+        :param _Label: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param LibId: 库ID
+        :param _LibId: 库ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param LibName: 库名称
+        :param _LibName: 库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
-        :param Keywords: 命中的关键词
+        :param _Keywords: 命中的关键词
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param Suggestion: 建议
+        :param _Suggestion: 建议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 得分
+        :param _Score: 得分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param SubLabelCode: 子标签码
+        :param _SubLabelCode: 子标签码
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabelCode: str
         """
-        self.Name = None
-        self.Text = None
-        self.Location = None
-        self.Label = None
-        self.LibId = None
-        self.LibName = None
-        self.Keywords = None
-        self.Suggestion = None
-        self.Score = None
-        self.SubLabelCode = None
+        self._Name = None
+        self._Text = None
+        self._Location = None
+        self._Label = None
+        self._LibId = None
+        self._LibName = None
+        self._Keywords = None
+        self._Suggestion = None
+        self._Score = None
+        self._SubLabelCode = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def LibId(self):
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def SubLabelCode(self):
+        return self._SubLabelCode
+
+    @SubLabelCode.setter
+    def SubLabelCode(self, SubLabelCode):
+        self._SubLabelCode = SubLabelCode
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Text = params.get("Text")
+        self._Name = params.get("Name")
+        self._Text = params.get("Text")
         if params.get("Location") is not None:
-            self.Location = ImageResultsResultDetailLocation()
-            self.Location._deserialize(params.get("Location"))
-        self.Label = params.get("Label")
-        self.LibId = params.get("LibId")
-        self.LibName = params.get("LibName")
-        self.Keywords = params.get("Keywords")
-        self.Suggestion = params.get("Suggestion")
-        self.Score = params.get("Score")
-        self.SubLabelCode = params.get("SubLabelCode")
+            self._Location = ImageResultsResultDetailLocation()
+            self._Location._deserialize(params.get("Location"))
+        self._Label = params.get("Label")
+        self._LibId = params.get("LibId")
+        self._LibName = params.get("LibName")
+        self._Keywords = params.get("Keywords")
+        self._Suggestion = params.get("Suggestion")
+        self._Score = params.get("Score")
+        self._SubLabelCode = params.get("SubLabelCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1068,39 +1941,80 @@ class ImageResultsResultDetailLocation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param X: x坐标
+        :param _X: x坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type X: float
-        :param Y: y坐标
+        :param _Y: y坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Y: float
-        :param Width: 宽度
+        :param _Width: 宽度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
-        :param Height: 高度
+        :param _Height: 高度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
-        :param Rotate: 旋转角度
+        :param _Rotate: 旋转角度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rotate: float
         """
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
-        self.Rotate = None
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+        self._Rotate = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Rotate(self):
+        return self._Rotate
+
+    @Rotate.setter
+    def Rotate(self, Rotate):
+        self._Rotate = Rotate
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.Rotate = params.get("Rotate")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Rotate = params.get("Rotate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1113,26 +2027,43 @@ class ImageSegments(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OffsetTime: 截帧时间。
+        :param _OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
         :type OffsetTime: str
-        :param Result: 画面截帧结果详情
+        :param _Result: 画面截帧结果详情
         :type Result: :class:`tencentcloud.vm.v20200709.models.ImageResult`
         """
-        self.OffsetTime = None
-        self.Result = None
+        self._OffsetTime = None
+        self._Result = None
+
+    @property
+    def OffsetTime(self):
+        return self._OffsetTime
+
+    @OffsetTime.setter
+    def OffsetTime(self, OffsetTime):
+        self._OffsetTime = OffsetTime
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
 
     def _deserialize(self, params):
-        self.OffsetTime = params.get("OffsetTime")
+        self._OffsetTime = params.get("OffsetTime")
         if params.get("Result") is not None:
-            self.Result = ImageResult()
-            self.Result._deserialize(params.get("Result"))
+            self._Result = ImageResult()
+            self._Result._deserialize(params.get("Result"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1145,29 +2076,54 @@ class InputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 传入的类型可选：URL，COS
+        :param _Type: 传入的类型可选：URL，COS
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Url: Url地址
+        :param _Url: Url地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param BucketInfo: 桶信息。当输入当时COS时，该字段不为空
+        :param _BucketInfo: 桶信息。当输入当时COS时，该字段不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketInfo: str
         """
-        self.Type = None
-        self.Url = None
-        self.BucketInfo = None
+        self._Type = None
+        self._Url = None
+        self._BucketInfo = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def BucketInfo(self):
+        return self._BucketInfo
+
+    @BucketInfo.setter
+    def BucketInfo(self, BucketInfo):
+        self._BucketInfo = BucketInfo
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Url = params.get("Url")
-        self.BucketInfo = params.get("BucketInfo")
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
+        self._BucketInfo = params.get("BucketInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1180,31 +2136,64 @@ class MediaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Codecs: 编码格式
+        :param _Codecs: 编码格式
         :type Codecs: str
-        :param Duration: 流检测时分片时长
+        :param _Duration: 流检测时分片时长
 注意：此字段可能返回 0，表示取不到有效值。
         :type Duration: int
-        :param Width: 宽，单位为像素
+        :param _Width: 宽，单位为像素
         :type Width: int
-        :param Height: 高，单位为像素
+        :param _Height: 高，单位为像素
         :type Height: int
         """
-        self.Codecs = None
-        self.Duration = None
-        self.Width = None
-        self.Height = None
+        self._Codecs = None
+        self._Duration = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Codecs(self):
+        return self._Codecs
+
+    @Codecs.setter
+    def Codecs(self, Codecs):
+        self._Codecs = Codecs
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.Codecs = params.get("Codecs")
-        self.Duration = params.get("Duration")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._Codecs = params.get("Codecs")
+        self._Duration = params.get("Duration")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1217,40 +2206,89 @@ class MediaModerationConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UseOCR: 是否使用OCR，默认为true
+        :param _UseOCR: 是否使用OCR，默认为true
         :type UseOCR: bool
-        :param UseAudio: 是否使用音频，默认为true。视频场景下，默认为 false
+        :param _UseAudio: 是否使用音频，默认为true。视频场景下，默认为 false
         :type UseAudio: bool
-        :param ImageFrequency: 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300
+        :param _ImageFrequency: 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300
         :type ImageFrequency: int
-        :param AudioFrequency: 音频片段长度。单位为：秒
+        :param _AudioFrequency: 音频片段长度。单位为：秒
         :type AudioFrequency: int
-        :param SegmentOutput: 临时文件存储位置
+        :param _SegmentOutput: 临时文件存储位置
         :type SegmentOutput: :class:`tencentcloud.vm.v20200709.models.FileOutput`
-        :param CallbackUrl: 回调地址
+        :param _CallbackUrl: 回调地址
         :type CallbackUrl: str
         """
-        self.UseOCR = None
-        self.UseAudio = None
-        self.ImageFrequency = None
-        self.AudioFrequency = None
-        self.SegmentOutput = None
-        self.CallbackUrl = None
+        self._UseOCR = None
+        self._UseAudio = None
+        self._ImageFrequency = None
+        self._AudioFrequency = None
+        self._SegmentOutput = None
+        self._CallbackUrl = None
+
+    @property
+    def UseOCR(self):
+        return self._UseOCR
+
+    @UseOCR.setter
+    def UseOCR(self, UseOCR):
+        self._UseOCR = UseOCR
+
+    @property
+    def UseAudio(self):
+        return self._UseAudio
+
+    @UseAudio.setter
+    def UseAudio(self, UseAudio):
+        self._UseAudio = UseAudio
+
+    @property
+    def ImageFrequency(self):
+        return self._ImageFrequency
+
+    @ImageFrequency.setter
+    def ImageFrequency(self, ImageFrequency):
+        self._ImageFrequency = ImageFrequency
+
+    @property
+    def AudioFrequency(self):
+        return self._AudioFrequency
+
+    @AudioFrequency.setter
+    def AudioFrequency(self, AudioFrequency):
+        self._AudioFrequency = AudioFrequency
+
+    @property
+    def SegmentOutput(self):
+        return self._SegmentOutput
+
+    @SegmentOutput.setter
+    def SegmentOutput(self, SegmentOutput):
+        self._SegmentOutput = SegmentOutput
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
 
 
     def _deserialize(self, params):
-        self.UseOCR = params.get("UseOCR")
-        self.UseAudio = params.get("UseAudio")
-        self.ImageFrequency = params.get("ImageFrequency")
-        self.AudioFrequency = params.get("AudioFrequency")
+        self._UseOCR = params.get("UseOCR")
+        self._UseAudio = params.get("UseAudio")
+        self._ImageFrequency = params.get("ImageFrequency")
+        self._AudioFrequency = params.get("AudioFrequency")
         if params.get("SegmentOutput") is not None:
-            self.SegmentOutput = FileOutput()
-            self.SegmentOutput._deserialize(params.get("SegmentOutput"))
-        self.CallbackUrl = params.get("CallbackUrl")
+            self._SegmentOutput = FileOutput()
+            self._SegmentOutput._deserialize(params.get("SegmentOutput"))
+        self._CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1263,46 +2301,111 @@ class Overview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总调用量
+        :param _TotalCount: 总调用量
         :type TotalCount: int
-        :param TotalHour: 总调用时长
+        :param _TotalHour: 总调用时长
         :type TotalHour: int
-        :param PassCount: 通过量
+        :param _PassCount: 通过量
         :type PassCount: int
-        :param PassHour: 通过时长
+        :param _PassHour: 通过时长
         :type PassHour: int
-        :param EvilCount: 违规量
+        :param _EvilCount: 违规量
         :type EvilCount: int
-        :param EvilHour: 违规时长
+        :param _EvilHour: 违规时长
         :type EvilHour: int
-        :param SuspectCount: 疑似违规量
+        :param _SuspectCount: 疑似违规量
         :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
+        :param _SuspectHour: 疑似违规时长
         :type SuspectHour: int
         """
-        self.TotalCount = None
-        self.TotalHour = None
-        self.PassCount = None
-        self.PassHour = None
-        self.EvilCount = None
-        self.EvilHour = None
-        self.SuspectCount = None
-        self.SuspectHour = None
+        self._TotalCount = None
+        self._TotalHour = None
+        self._PassCount = None
+        self._PassHour = None
+        self._EvilCount = None
+        self._EvilHour = None
+        self._SuspectCount = None
+        self._SuspectHour = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalHour(self):
+        return self._TotalHour
+
+    @TotalHour.setter
+    def TotalHour(self, TotalHour):
+        self._TotalHour = TotalHour
+
+    @property
+    def PassCount(self):
+        return self._PassCount
+
+    @PassCount.setter
+    def PassCount(self, PassCount):
+        self._PassCount = PassCount
+
+    @property
+    def PassHour(self):
+        return self._PassHour
+
+    @PassHour.setter
+    def PassHour(self, PassHour):
+        self._PassHour = PassHour
+
+    @property
+    def EvilCount(self):
+        return self._EvilCount
+
+    @EvilCount.setter
+    def EvilCount(self, EvilCount):
+        self._EvilCount = EvilCount
+
+    @property
+    def EvilHour(self):
+        return self._EvilHour
+
+    @EvilHour.setter
+    def EvilHour(self, EvilHour):
+        self._EvilHour = EvilHour
+
+    @property
+    def SuspectCount(self):
+        return self._SuspectCount
+
+    @SuspectCount.setter
+    def SuspectCount(self, SuspectCount):
+        self._SuspectCount = SuspectCount
+
+    @property
+    def SuspectHour(self):
+        return self._SuspectHour
+
+    @SuspectHour.setter
+    def SuspectHour(self, SuspectHour):
+        self._SuspectHour = SuspectHour
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.TotalHour = params.get("TotalHour")
-        self.PassCount = params.get("PassCount")
-        self.PassHour = params.get("PassHour")
-        self.EvilCount = params.get("EvilCount")
-        self.EvilHour = params.get("EvilHour")
-        self.SuspectCount = params.get("SuspectCount")
-        self.SuspectHour = params.get("SuspectHour")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalHour = params.get("TotalHour")
+        self._PassCount = params.get("PassCount")
+        self._PassHour = params.get("PassHour")
+        self._EvilCount = params.get("EvilCount")
+        self._EvilHour = params.get("EvilHour")
+        self._SuspectCount = params.get("SuspectCount")
+        self._SuspectHour = params.get("SuspectHour")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1315,30 +2418,55 @@ class StorageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 类型 可选：
+        :param _Type: 类型 可选：
 URL 资源链接类型
 COS 腾讯云对象存储类型
         :type Type: str
-        :param Url: 资源链接
+        :param _Url: 资源链接
         :type Url: str
-        :param BucketInfo: 腾讯云存储桶信息
+        :param _BucketInfo: 腾讯云存储桶信息
         :type BucketInfo: :class:`tencentcloud.vm.v20200709.models.BucketInfo`
         """
-        self.Type = None
-        self.Url = None
-        self.BucketInfo = None
+        self._Type = None
+        self._Url = None
+        self._BucketInfo = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def BucketInfo(self):
+        return self._BucketInfo
+
+    @BucketInfo.setter
+    def BucketInfo(self, BucketInfo):
+        self._BucketInfo = BucketInfo
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Url = params.get("Url")
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
         if params.get("BucketInfo") is not None:
-            self.BucketInfo = BucketInfo()
-            self.BucketInfo._deserialize(params.get("BucketInfo"))
+            self._BucketInfo = BucketInfo()
+            self._BucketInfo._deserialize(params.get("BucketInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1351,28 +2479,53 @@ class TaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 数据ID
+        :param _DataId: 数据ID
         :type DataId: str
-        :param Name: 任务名
+        :param _Name: 任务名
         :type Name: str
-        :param Input: 任务输入
+        :param _Input: 任务输入
         :type Input: :class:`tencentcloud.vm.v20200709.models.StorageInfo`
         """
-        self.DataId = None
-        self.Name = None
-        self.Input = None
+        self._DataId = None
+        self._Name = None
+        self._Input = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.Name = params.get("Name")
+        self._DataId = params.get("DataId")
+        self._Name = params.get("Name")
         if params.get("Input") is not None:
-            self.Input = StorageInfo()
-            self.Input._deserialize(params.get("Input"))
+            self._Input = StorageInfo()
+            self._Input._deserialize(params.get("Input"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1385,7 +2538,7 @@ class TaskLabel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 命中的标签
+        :param _Label: 命中的标签
 Porn 色情
 Sexy 性感
 Polity 政治
@@ -1395,29 +2548,54 @@ Terror 暴恐
 Ad 广告
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 审核建议，可选值：
+        :param _Suggestion: 审核建议，可选值：
 Pass 通过，
 Review 建议人审，
 Block 确认违规
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 得分，分数是 0 ～ 100
+        :param _Score: 得分，分数是 0 ～ 100
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         """
-        self.Label = None
-        self.Suggestion = None
-        self.Score = None
+        self._Label = None
+        self._Suggestion = None
+        self._Score = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
-        self.Suggestion = params.get("Suggestion")
-        self.Score = params.get("Score")
+        self._Label = params.get("Label")
+        self._Suggestion = params.get("Suggestion")
+        self._Score = params.get("Score")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1430,34 +2608,67 @@ class TaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataId: 请求时传入的DataId
+        :param _DataId: 请求时传入的DataId
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param TaskId: TaskId，任务ID
+        :param _TaskId: TaskId，任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param Code: 错误码。如果code为OK，则表示创建成功，其他则参考公共错误码
+        :param _Code: 错误码。如果code为OK，则表示创建成功，其他则参考公共错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Message: 如果错误，该字段表示错误详情
+        :param _Message: 如果错误，该字段表示错误详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
-        self.DataId = None
-        self.TaskId = None
-        self.Code = None
-        self.Message = None
+        self._DataId = None
+        self._TaskId = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.DataId = params.get("DataId")
-        self.TaskId = params.get("TaskId")
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._DataId = params.get("DataId")
+        self._TaskId = params.get("TaskId")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1470,50 +2681,123 @@ class TrendCount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 总调用量
+        :param _TotalCount: 总调用量
         :type TotalCount: int
-        :param TotalHour: 总调用时长
+        :param _TotalHour: 总调用时长
         :type TotalHour: int
-        :param PassCount: 通过量
+        :param _PassCount: 通过量
         :type PassCount: int
-        :param PassHour: 通过时长
+        :param _PassHour: 通过时长
         :type PassHour: int
-        :param EvilCount: 违规量
+        :param _EvilCount: 违规量
         :type EvilCount: int
-        :param EvilHour: 违规时长
+        :param _EvilHour: 违规时长
         :type EvilHour: int
-        :param SuspectCount: 疑似违规量
+        :param _SuspectCount: 疑似违规量
         :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
+        :param _SuspectHour: 疑似违规时长
         :type SuspectHour: int
-        :param Date: 日期
+        :param _Date: 日期
         :type Date: str
         """
-        self.TotalCount = None
-        self.TotalHour = None
-        self.PassCount = None
-        self.PassHour = None
-        self.EvilCount = None
-        self.EvilHour = None
-        self.SuspectCount = None
-        self.SuspectHour = None
-        self.Date = None
+        self._TotalCount = None
+        self._TotalHour = None
+        self._PassCount = None
+        self._PassHour = None
+        self._EvilCount = None
+        self._EvilHour = None
+        self._SuspectCount = None
+        self._SuspectHour = None
+        self._Date = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalHour(self):
+        return self._TotalHour
+
+    @TotalHour.setter
+    def TotalHour(self, TotalHour):
+        self._TotalHour = TotalHour
+
+    @property
+    def PassCount(self):
+        return self._PassCount
+
+    @PassCount.setter
+    def PassCount(self, PassCount):
+        self._PassCount = PassCount
+
+    @property
+    def PassHour(self):
+        return self._PassHour
+
+    @PassHour.setter
+    def PassHour(self, PassHour):
+        self._PassHour = PassHour
+
+    @property
+    def EvilCount(self):
+        return self._EvilCount
+
+    @EvilCount.setter
+    def EvilCount(self, EvilCount):
+        self._EvilCount = EvilCount
+
+    @property
+    def EvilHour(self):
+        return self._EvilHour
+
+    @EvilHour.setter
+    def EvilHour(self, EvilHour):
+        self._EvilHour = EvilHour
+
+    @property
+    def SuspectCount(self):
+        return self._SuspectCount
+
+    @SuspectCount.setter
+    def SuspectCount(self, SuspectCount):
+        self._SuspectCount = SuspectCount
+
+    @property
+    def SuspectHour(self):
+        return self._SuspectHour
+
+    @SuspectHour.setter
+    def SuspectHour(self, SuspectHour):
+        self._SuspectHour = SuspectHour
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.TotalHour = params.get("TotalHour")
-        self.PassCount = params.get("PassCount")
-        self.PassHour = params.get("PassHour")
-        self.EvilCount = params.get("EvilCount")
-        self.EvilHour = params.get("EvilHour")
-        self.SuspectCount = params.get("SuspectCount")
-        self.SuspectHour = params.get("SuspectHour")
-        self.Date = params.get("Date")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalHour = params.get("TotalHour")
+        self._PassCount = params.get("PassCount")
+        self._PassHour = params.get("PassHour")
+        self._EvilCount = params.get("EvilCount")
+        self._EvilHour = params.get("EvilHour")
+        self._SuspectCount = params.get("SuspectCount")
+        self._SuspectHour = params.get("SuspectHour")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

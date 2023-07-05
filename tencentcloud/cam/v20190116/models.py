@@ -25,26 +25,51 @@ class AccessKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: 访问密钥标识
+        :param _AccessKeyId: 访问密钥标识
         :type AccessKeyId: str
-        :param Status: 密钥状态，激活（Active）或未激活（Inactive）
+        :param _Status: 密钥状态，激活（Active）或未激活（Inactive）
         :type Status: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.AccessKeyId = None
-        self.Status = None
-        self.CreateTime = None
+        self._AccessKeyId = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,30 +82,63 @@ class AccessKeyDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: 访问密钥标识
+        :param _AccessKeyId: 访问密钥标识
         :type AccessKeyId: str
-        :param SecretAccessKey: 访问密钥（密钥仅创建时可见，请妥善保存）
+        :param _SecretAccessKey: 访问密钥（密钥仅创建时可见，请妥善保存）
         :type SecretAccessKey: str
-        :param Status: 密钥状态，激活（Active）或未激活（Inactive）
+        :param _Status: 密钥状态，激活（Active）或未激活（Inactive）
         :type Status: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.AccessKeyId = None
-        self.SecretAccessKey = None
-        self.Status = None
-        self.CreateTime = None
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.SecretAccessKey = params.get("SecretAccessKey")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -93,50 +151,123 @@ class AddUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Remark: 子用户备注
+        :param _Remark: 子用户备注
         :type Remark: str
-        :param ConsoleLogin: 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+        :param _ConsoleLogin: 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
         :type ConsoleLogin: int
-        :param UseApi: 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
+        :param _UseApi: 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
         :type UseApi: int
-        :param Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+        :param _Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
         :type Password: str
-        :param NeedResetPassword: 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+        :param _NeedResetPassword: 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
         :type NeedResetPassword: int
-        :param PhoneNum: 手机号
+        :param _PhoneNum: 手机号
         :type PhoneNum: str
-        :param CountryCode: 区号
+        :param _CountryCode: 区号
         :type CountryCode: str
-        :param Email: 邮箱
+        :param _Email: 邮箱
         :type Email: str
         """
-        self.Name = None
-        self.Remark = None
-        self.ConsoleLogin = None
-        self.UseApi = None
-        self.Password = None
-        self.NeedResetPassword = None
-        self.PhoneNum = None
-        self.CountryCode = None
-        self.Email = None
+        self._Name = None
+        self._Remark = None
+        self._ConsoleLogin = None
+        self._UseApi = None
+        self._Password = None
+        self._NeedResetPassword = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._Email = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def UseApi(self):
+        return self._UseApi
+
+    @UseApi.setter
+    def UseApi(self, UseApi):
+        self._UseApi = UseApi
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def NeedResetPassword(self):
+        return self._NeedResetPassword
+
+    @NeedResetPassword.setter
+    def NeedResetPassword(self, NeedResetPassword):
+        self._NeedResetPassword = NeedResetPassword
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.UseApi = params.get("UseApi")
-        self.Password = params.get("Password")
-        self.NeedResetPassword = params.get("NeedResetPassword")
-        self.PhoneNum = params.get("PhoneNum")
-        self.CountryCode = params.get("CountryCode")
-        self.Email = params.get("Email")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._UseApi = params.get("UseApi")
+        self._Password = params.get("Password")
+        self._NeedResetPassword = params.get("NeedResetPassword")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._Email = params.get("Email")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -149,38 +280,94 @@ class AddUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 子用户 UIN
+        :param _Uin: 子用户 UIN
         :type Uin: int
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Password: 如果输入参数组合为自动生成随机密码，则返回生成的密码
+        :param _Password: 如果输入参数组合为自动生成随机密码，则返回生成的密码
         :type Password: str
-        :param SecretId: 子用户密钥 ID
+        :param _SecretId: 子用户密钥 ID
         :type SecretId: str
-        :param SecretKey: 子用户密钥 Key
+        :param _SecretKey: 子用户密钥 Key
         :type SecretKey: str
-        :param Uid: 子用户 UID
+        :param _Uid: 子用户 UID
         :type Uid: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Password = None
-        self.SecretId = None
-        self.SecretKey = None
-        self.Uid = None
-        self.RequestId = None
+        self._Uin = None
+        self._Name = None
+        self._Password = None
+        self._SecretId = None
+        self._SecretKey = None
+        self._Uid = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Password = params.get("Password")
-        self.SecretId = params.get("SecretId")
-        self.SecretKey = params.get("SecretKey")
-        self.Uid = params.get("Uid")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Password = params.get("Password")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._Uid = params.get("Uid")
+        self._RequestId = params.get("RequestId")
 
 
 class AddUserToGroupRequest(AbstractModel):
@@ -190,23 +377,32 @@ class AddUserToGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: 添加的子用户 UIN/UID 和用户组 ID 关联关系
+        :param _Info: 添加的子用户 UIN/UID 和用户组 ID 关联关系
         :type Info: list of GroupIdOfUidInfo
         """
-        self.Info = None
+        self._Info = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = []
+            self._Info = []
             for item in params.get("Info"):
                 obj = GroupIdOfUidInfo()
                 obj._deserialize(item)
-                self.Info.append(obj)
+                self._Info.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -219,14 +415,22 @@ class AddUserToGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AttachEntityOfPolicy(AbstractModel):
@@ -236,37 +440,78 @@ class AttachEntityOfPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 实体ID
+        :param _Id: 实体ID
         :type Id: str
-        :param Name: 实体名称
+        :param _Name: 实体名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Uin: 实体Uin
+        :param _Uin: 实体Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: int
-        :param RelatedType: 关联类型。1 用户关联 ； 2 用户组关联
+        :param _RelatedType: 关联类型。1 用户关联 ； 2 用户组关联
         :type RelatedType: int
-        :param AttachmentTime: 策略关联时间
+        :param _AttachmentTime: 策略关联时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachmentTime: str
         """
-        self.Id = None
-        self.Name = None
-        self.Uin = None
-        self.RelatedType = None
-        self.AttachmentTime = None
+        self._Id = None
+        self._Name = None
+        self._Uin = None
+        self._RelatedType = None
+        self._AttachmentTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def RelatedType(self):
+        return self._RelatedType
+
+    @RelatedType.setter
+    def RelatedType(self, RelatedType):
+        self._RelatedType = RelatedType
+
+    @property
+    def AttachmentTime(self):
+        return self._AttachmentTime
+
+    @AttachmentTime.setter
+    def AttachmentTime(self, AttachmentTime):
+        self._AttachmentTime = AttachmentTime
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.Uin = params.get("Uin")
-        self.RelatedType = params.get("RelatedType")
-        self.AttachmentTime = params.get("AttachmentTime")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Uin = params.get("Uin")
+        self._RelatedType = params.get("RelatedType")
+        self._AttachmentTime = params.get("AttachmentTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -279,22 +524,39 @@ class AttachGroupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略 id
+        :param _PolicyId: 策略 id
         :type PolicyId: int
-        :param AttachGroupId: 用户组 id
+        :param _AttachGroupId: 用户组 id
         :type AttachGroupId: int
         """
-        self.PolicyId = None
-        self.AttachGroupId = None
+        self._PolicyId = None
+        self._AttachGroupId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def AttachGroupId(self):
+        return self._AttachGroupId
+
+    @AttachGroupId.setter
+    def AttachGroupId(self, AttachGroupId):
+        self._AttachGroupId = AttachGroupId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.AttachGroupId = params.get("AttachGroupId")
+        self._PolicyId = params.get("PolicyId")
+        self._AttachGroupId = params.get("AttachGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -307,14 +569,22 @@ class AttachGroupPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AttachPolicyInfo(AbstractModel):
@@ -324,68 +594,157 @@ class AttachPolicyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略id
+        :param _PolicyId: 策略id
         :type PolicyId: int
-        :param PolicyName: 策略名称
+        :param _PolicyName: 策略名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
-        :param AddTime: 创建时间
+        :param _AddTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
-        :param CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建。
+        :param _CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateMode: int
-        :param PolicyType: 取值为user和QCS
+        :param _PolicyType: 取值为user和QCS
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
-        :param Remark: 策略备注
+        :param _Remark: 策略备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param OperateOwnerUin: 策略关联操作者主帐号
+        :param _OperateOwnerUin: 策略关联操作者主帐号
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateOwnerUin: str
-        :param OperateUin: 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
+        :param _OperateUin: 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
-        :param OperateUinType: UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
+        :param _OperateUinType: UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUinType: int
-        :param Deactived: 是否已下线
+        :param _Deactived: 是否已下线
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
-        :param DeactivedDetail: 已下线的产品列表
+        :param _DeactivedDetail: 已下线的产品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.AddTime = None
-        self.CreateMode = None
-        self.PolicyType = None
-        self.Remark = None
-        self.OperateOwnerUin = None
-        self.OperateUin = None
-        self.OperateUinType = None
-        self.Deactived = None
-        self.DeactivedDetail = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._AddTime = None
+        self._CreateMode = None
+        self._PolicyType = None
+        self._Remark = None
+        self._OperateOwnerUin = None
+        self._OperateUin = None
+        self._OperateUinType = None
+        self._Deactived = None
+        self._DeactivedDetail = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def CreateMode(self):
+        return self._CreateMode
+
+    @CreateMode.setter
+    def CreateMode(self, CreateMode):
+        self._CreateMode = CreateMode
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def OperateOwnerUin(self):
+        return self._OperateOwnerUin
+
+    @OperateOwnerUin.setter
+    def OperateOwnerUin(self, OperateOwnerUin):
+        self._OperateOwnerUin = OperateOwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def OperateUinType(self):
+        return self._OperateUinType
+
+    @OperateUinType.setter
+    def OperateUinType(self, OperateUinType):
+        self._OperateUinType = OperateUinType
+
+    @property
+    def Deactived(self):
+        return self._Deactived
+
+    @Deactived.setter
+    def Deactived(self, Deactived):
+        self._Deactived = Deactived
+
+    @property
+    def DeactivedDetail(self):
+        return self._DeactivedDetail
+
+    @DeactivedDetail.setter
+    def DeactivedDetail(self, DeactivedDetail):
+        self._DeactivedDetail = DeactivedDetail
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.AddTime = params.get("AddTime")
-        self.CreateMode = params.get("CreateMode")
-        self.PolicyType = params.get("PolicyType")
-        self.Remark = params.get("Remark")
-        self.OperateOwnerUin = params.get("OperateOwnerUin")
-        self.OperateUin = params.get("OperateUin")
-        self.OperateUinType = params.get("OperateUinType")
-        self.Deactived = params.get("Deactived")
-        self.DeactivedDetail = params.get("DeactivedDetail")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._AddTime = params.get("AddTime")
+        self._CreateMode = params.get("CreateMode")
+        self._PolicyType = params.get("PolicyType")
+        self._Remark = params.get("Remark")
+        self._OperateOwnerUin = params.get("OperateOwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._OperateUinType = params.get("OperateUinType")
+        self._Deactived = params.get("Deactived")
+        self._DeactivedDetail = params.get("DeactivedDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -398,30 +757,63 @@ class AttachRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID，入参PolicyId与PolicyName二选一
+        :param _PolicyId: 策略ID，入参PolicyId与PolicyName二选一
         :type PolicyId: int
-        :param AttachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :param _AttachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
         :type AttachRoleId: str
-        :param AttachRoleName: 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :param _AttachRoleName: 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
         :type AttachRoleName: str
-        :param PolicyName: 策略名，入参PolicyId与PolicyName二选一
+        :param _PolicyName: 策略名，入参PolicyId与PolicyName二选一
         :type PolicyName: str
         """
-        self.PolicyId = None
-        self.AttachRoleId = None
-        self.AttachRoleName = None
-        self.PolicyName = None
+        self._PolicyId = None
+        self._AttachRoleId = None
+        self._AttachRoleName = None
+        self._PolicyName = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def AttachRoleId(self):
+        return self._AttachRoleId
+
+    @AttachRoleId.setter
+    def AttachRoleId(self, AttachRoleId):
+        self._AttachRoleId = AttachRoleId
+
+    @property
+    def AttachRoleName(self):
+        return self._AttachRoleName
+
+    @AttachRoleName.setter
+    def AttachRoleName(self, AttachRoleName):
+        self._AttachRoleName = AttachRoleName
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.AttachRoleId = params.get("AttachRoleId")
-        self.AttachRoleName = params.get("AttachRoleName")
-        self.PolicyName = params.get("PolicyName")
+        self._PolicyId = params.get("PolicyId")
+        self._AttachRoleId = params.get("AttachRoleId")
+        self._AttachRoleName = params.get("AttachRoleName")
+        self._PolicyName = params.get("PolicyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -434,14 +826,22 @@ class AttachRolePolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AttachUserPolicyRequest(AbstractModel):
@@ -451,22 +851,39 @@ class AttachUserPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略 id
+        :param _PolicyId: 策略 id
         :type PolicyId: int
-        :param AttachUin: 子账号 uin
+        :param _AttachUin: 子账号 uin
         :type AttachUin: int
         """
-        self.PolicyId = None
-        self.AttachUin = None
+        self._PolicyId = None
+        self._AttachUin = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def AttachUin(self):
+        return self._AttachUin
+
+    @AttachUin.setter
+    def AttachUin(self, AttachUin):
+        self._AttachUin = AttachUin
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.AttachUin = params.get("AttachUin")
+        self._PolicyId = params.get("PolicyId")
+        self._AttachUin = params.get("AttachUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -479,14 +896,22 @@ class AttachUserPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AttachedPolicyOfRole(AbstractModel):
@@ -496,50 +921,115 @@ class AttachedPolicyOfRole(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
-        :param PolicyName: 策略名称
+        :param _PolicyName: 策略名称
         :type PolicyName: str
-        :param AddTime: 绑定时间
+        :param _AddTime: 绑定时间
         :type AddTime: str
-        :param PolicyType: 策略类型，User表示自定义策略，QCS表示预设策略
+        :param _PolicyType: 策略类型，User表示自定义策略，QCS表示预设策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
-        :param CreateMode: 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
+        :param _CreateMode: 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
         :type CreateMode: int
-        :param Deactived: 是否已下线(0:否 1:是)
+        :param _Deactived: 是否已下线(0:否 1:是)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
-        :param DeactivedDetail: 已下线的产品列表
+        :param _DeactivedDetail: 已下线的产品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
-        :param Description: 策略描述
+        :param _Description: 策略描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.AddTime = None
-        self.PolicyType = None
-        self.CreateMode = None
-        self.Deactived = None
-        self.DeactivedDetail = None
-        self.Description = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._AddTime = None
+        self._PolicyType = None
+        self._CreateMode = None
+        self._Deactived = None
+        self._DeactivedDetail = None
+        self._Description = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def CreateMode(self):
+        return self._CreateMode
+
+    @CreateMode.setter
+    def CreateMode(self, CreateMode):
+        self._CreateMode = CreateMode
+
+    @property
+    def Deactived(self):
+        return self._Deactived
+
+    @Deactived.setter
+    def Deactived(self, Deactived):
+        self._Deactived = Deactived
+
+    @property
+    def DeactivedDetail(self):
+        return self._DeactivedDetail
+
+    @DeactivedDetail.setter
+    def DeactivedDetail(self, DeactivedDetail):
+        self._DeactivedDetail = DeactivedDetail
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.AddTime = params.get("AddTime")
-        self.PolicyType = params.get("PolicyType")
-        self.CreateMode = params.get("CreateMode")
-        self.Deactived = params.get("Deactived")
-        self.DeactivedDetail = params.get("DeactivedDetail")
-        self.Description = params.get("Description")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._AddTime = params.get("AddTime")
+        self._PolicyType = params.get("PolicyType")
+        self._CreateMode = params.get("CreateMode")
+        self._Deactived = params.get("Deactived")
+        self._DeactivedDetail = params.get("DeactivedDetail")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -552,58 +1042,131 @@ class AttachedUserPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: str
-        :param PolicyName: 策略名
+        :param _PolicyName: 策略名
         :type PolicyName: str
-        :param Description: 策略描述
+        :param _Description: 策略描述
         :type Description: str
-        :param AddTime: 创建时间
+        :param _AddTime: 创建时间
         :type AddTime: str
-        :param StrategyType: 策略类型(1表示自定义策略，2表示预设策略)
+        :param _StrategyType: 策略类型(1表示自定义策略，2表示预设策略)
         :type StrategyType: str
-        :param CreateMode: 创建模式(1表示按产品或项目权限创建的策略，其他表示策略语法创建的策略)
+        :param _CreateMode: 创建模式(1表示按产品或项目权限创建的策略，其他表示策略语法创建的策略)
         :type CreateMode: str
-        :param Groups: 随组关联信息
+        :param _Groups: 随组关联信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of AttachedUserPolicyGroupInfo
-        :param Deactived: 是否已下线(0:否 1:是)
+        :param _Deactived: 是否已下线(0:否 1:是)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
-        :param DeactivedDetail: 已下线的产品列表
+        :param _DeactivedDetail: 已下线的产品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.Description = None
-        self.AddTime = None
-        self.StrategyType = None
-        self.CreateMode = None
-        self.Groups = None
-        self.Deactived = None
-        self.DeactivedDetail = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._Description = None
+        self._AddTime = None
+        self._StrategyType = None
+        self._CreateMode = None
+        self._Groups = None
+        self._Deactived = None
+        self._DeactivedDetail = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def CreateMode(self):
+        return self._CreateMode
+
+    @CreateMode.setter
+    def CreateMode(self, CreateMode):
+        self._CreateMode = CreateMode
+
+    @property
+    def Groups(self):
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Deactived(self):
+        return self._Deactived
+
+    @Deactived.setter
+    def Deactived(self, Deactived):
+        self._Deactived = Deactived
+
+    @property
+    def DeactivedDetail(self):
+        return self._DeactivedDetail
+
+    @DeactivedDetail.setter
+    def DeactivedDetail(self, DeactivedDetail):
+        self._DeactivedDetail = DeactivedDetail
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.Description = params.get("Description")
-        self.AddTime = params.get("AddTime")
-        self.StrategyType = params.get("StrategyType")
-        self.CreateMode = params.get("CreateMode")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._Description = params.get("Description")
+        self._AddTime = params.get("AddTime")
+        self._StrategyType = params.get("StrategyType")
+        self._CreateMode = params.get("CreateMode")
         if params.get("Groups") is not None:
-            self.Groups = []
+            self._Groups = []
             for item in params.get("Groups"):
                 obj = AttachedUserPolicyGroupInfo()
                 obj._deserialize(item)
-                self.Groups.append(obj)
-        self.Deactived = params.get("Deactived")
-        self.DeactivedDetail = params.get("DeactivedDetail")
+                self._Groups.append(obj)
+        self._Deactived = params.get("Deactived")
+        self._DeactivedDetail = params.get("DeactivedDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -616,22 +1179,39 @@ class AttachedUserPolicyGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 分组ID
+        :param _GroupId: 分组ID
         :type GroupId: int
-        :param GroupName: 分组名称
+        :param _GroupName: 分组名称
         :type GroupName: str
         """
-        self.GroupId = None
-        self.GroupName = None
+        self._GroupId = None
+        self._GroupName = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -644,18 +1224,27 @@ class ConsumeCustomMFATokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MFAToken: 自定义多因子验证Token
+        :param _MFAToken: 自定义多因子验证Token
         :type MFAToken: str
         """
-        self.MFAToken = None
+        self._MFAToken = None
+
+    @property
+    def MFAToken(self):
+        return self._MFAToken
+
+    @MFAToken.setter
+    def MFAToken(self, MFAToken):
+        self._MFAToken = MFAToken
 
 
     def _deserialize(self, params):
-        self.MFAToken = params.get("MFAToken")
+        self._MFAToken = params.get("MFAToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -668,14 +1257,22 @@ class ConsumeCustomMFATokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAccessKeyRequest(AbstractModel):
@@ -685,18 +1282,27 @@ class CreateAccessKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 指定用户Uin，不填默认为当前用户创建访问密钥
+        :param _TargetUin: 指定用户Uin，不填默认为当前用户创建访问密钥
         :type TargetUin: int
         """
-        self.TargetUin = None
+        self._TargetUin = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
+        self._TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -709,21 +1315,37 @@ class CreateAccessKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKey: 访问密钥
+        :param _AccessKey: 访问密钥
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKey: :class:`tencentcloud.cam.v20190116.models.AccessKeyDetail`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AccessKey = None
-        self.RequestId = None
+        self._AccessKey = None
+        self._RequestId = None
+
+    @property
+    def AccessKey(self):
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AccessKey") is not None:
-            self.AccessKey = AccessKeyDetail()
-            self.AccessKey._deserialize(params.get("AccessKey"))
-        self.RequestId = params.get("RequestId")
+            self._AccessKey = AccessKeyDetail()
+            self._AccessKey._deserialize(params.get("AccessKey"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateGroupRequest(AbstractModel):
@@ -733,22 +1355,39 @@ class CreateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupName: 用户组名
+        :param _GroupName: 用户组名
         :type GroupName: str
-        :param Remark: 用户组描述
+        :param _Remark: 用户组描述
         :type Remark: str
         """
-        self.GroupName = None
-        self.Remark = None
+        self._GroupName = None
+        self._Remark = None
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.GroupName = params.get("GroupName")
-        self.Remark = params.get("Remark")
+        self._GroupName = params.get("GroupName")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -761,18 +1400,34 @@ class CreateGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID
+        :param _GroupId: 用户组 ID
         :type GroupId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GroupId = None
-        self.RequestId = None
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.RequestId = params.get("RequestId")
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateOIDCConfigRequest(AbstractModel):
@@ -782,34 +1437,75 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityUrl: 身份提供商URL
+        :param _IdentityUrl: 身份提供商URL
         :type IdentityUrl: str
-        :param IdentityKey: 签名公钥，需要base64
+        :param _IdentityKey: 签名公钥，需要base64
         :type IdentityKey: str
-        :param ClientId: 客户端ID
+        :param _ClientId: 客户端ID
         :type ClientId: list of str
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
         """
-        self.IdentityUrl = None
-        self.IdentityKey = None
-        self.ClientId = None
-        self.Name = None
-        self.Description = None
+        self._IdentityUrl = None
+        self._IdentityKey = None
+        self._ClientId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def IdentityUrl(self):
+        return self._IdentityUrl
+
+    @IdentityUrl.setter
+    def IdentityUrl(self, IdentityUrl):
+        self._IdentityUrl = IdentityUrl
+
+    @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.IdentityUrl = params.get("IdentityUrl")
-        self.IdentityKey = params.get("IdentityKey")
-        self.ClientId = params.get("ClientId")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._IdentityUrl = params.get("IdentityUrl")
+        self._IdentityKey = params.get("IdentityKey")
+        self._ClientId = params.get("ClientId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -822,14 +1518,22 @@ class CreateOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePolicyRequest(AbstractModel):
@@ -839,26 +1543,51 @@ class CreatePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyName: 策略名称。长度为1~128个字符，可包含英文字母、数字和+=,.@-_。
+        :param _PolicyName: 策略名称。长度为1~128个字符，可包含英文字母、数字和+=,.@-_。
         :type PolicyName: str
-        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+        :param _PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
-        :param Description: 策略描述
+        :param _Description: 策略描述
         :type Description: str
         """
-        self.PolicyName = None
-        self.PolicyDocument = None
-        self.Description = None
+        self._PolicyName = None
+        self._PolicyDocument = None
+        self._Description = None
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.PolicyName = params.get("PolicyName")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.Description = params.get("Description")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -871,18 +1600,34 @@ class CreatePolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 新增策略ID
+        :param _PolicyId: 新增策略ID
         :type PolicyId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PolicyId = None
-        self.RequestId = None
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.RequestId = params.get("RequestId")
+        self._PolicyId = params.get("PolicyId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePolicyVersionRequest(AbstractModel):
@@ -892,26 +1637,51 @@ class CreatePolicyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
-        :param PolicyDocument: 策略文本信息
+        :param _PolicyDocument: 策略文本信息
         :type PolicyDocument: str
-        :param SetAsDefault: 是否设置为当前策略的版本
+        :param _SetAsDefault: 是否设置为当前策略的版本
         :type SetAsDefault: bool
         """
-        self.PolicyId = None
-        self.PolicyDocument = None
-        self.SetAsDefault = None
+        self._PolicyId = None
+        self._PolicyDocument = None
+        self._SetAsDefault = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def SetAsDefault(self):
+        return self._SetAsDefault
+
+    @SetAsDefault.setter
+    def SetAsDefault(self, SetAsDefault):
+        self._SetAsDefault = SetAsDefault
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.SetAsDefault = params.get("SetAsDefault")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._SetAsDefault = params.get("SetAsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -924,19 +1694,35 @@ class CreatePolicyVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: 策略版本号
+        :param _VersionId: 策略版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.VersionId = None
-        self.RequestId = None
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
-        self.RequestId = params.get("RequestId")
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateRoleRequest(AbstractModel):
@@ -946,43 +1732,92 @@ class CreateRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleName: 角色名称。长度为1~128个字符，可包含英文字母、数字和+=,.@-_。
+        :param _RoleName: 角色名称。长度为1~128个字符，可包含英文字母、数字和+=,.@-_。
         :type RoleName: str
-        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+        :param _PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
-        :param Description: 角色描述
+        :param _Description: 角色描述
         :type Description: str
-        :param ConsoleLogin: 是否允许登录 1 为允许 0 为不允许
+        :param _ConsoleLogin: 是否允许登录 1 为允许 0 为不允许
         :type ConsoleLogin: int
-        :param SessionDuration: 申请角色临时密钥的最长有效期限制(范围：0~43200)
+        :param _SessionDuration: 申请角色临时密钥的最长有效期限制(范围：0~43200)
         :type SessionDuration: int
-        :param Tags: 角色绑定标签
+        :param _Tags: 角色绑定标签
         :type Tags: list of RoleTags
         """
-        self.RoleName = None
-        self.PolicyDocument = None
-        self.Description = None
-        self.ConsoleLogin = None
-        self.SessionDuration = None
-        self.Tags = None
+        self._RoleName = None
+        self._PolicyDocument = None
+        self._Description = None
+        self._ConsoleLogin = None
+        self._SessionDuration = None
+        self._Tags = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def SessionDuration(self):
+        return self._SessionDuration
+
+    @SessionDuration.setter
+    def SessionDuration(self, SessionDuration):
+        self._SessionDuration = SessionDuration
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.RoleName = params.get("RoleName")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.Description = params.get("Description")
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.SessionDuration = params.get("SessionDuration")
+        self._RoleName = params.get("RoleName")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._Description = params.get("Description")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._SessionDuration = params.get("SessionDuration")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = RoleTags()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -995,19 +1830,35 @@ class CreateRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色ID
+        :param _RoleId: 角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RoleId = None
-        self.RequestId = None
+        self._RoleId = None
+        self._RequestId = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RequestId = params.get("RequestId")
+        self._RoleId = params.get("RoleId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSAMLProviderRequest(AbstractModel):
@@ -1017,26 +1868,51 @@ class CreateSAMLProviderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: SAML身份提供商名称
+        :param _Name: SAML身份提供商名称
         :type Name: str
-        :param Description: SAML身份提供商描述
+        :param _Description: SAML身份提供商描述
         :type Description: str
-        :param SAMLMetadataDocument: SAML身份提供商Base64编码的元数据文档
+        :param _SAMLMetadataDocument: SAML身份提供商Base64编码的元数据文档
         :type SAMLMetadataDocument: str
         """
-        self.Name = None
-        self.Description = None
-        self.SAMLMetadataDocument = None
+        self._Name = None
+        self._Description = None
+        self._SAMLMetadataDocument = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SAMLMetadataDocument(self):
+        return self._SAMLMetadataDocument
+
+    @SAMLMetadataDocument.setter
+    def SAMLMetadataDocument(self, SAMLMetadataDocument):
+        self._SAMLMetadataDocument = SAMLMetadataDocument
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._SAMLMetadataDocument = params.get("SAMLMetadataDocument")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1049,18 +1925,34 @@ class CreateSAMLProviderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProviderArn: SAML身份提供商资源描述符
+        :param _ProviderArn: SAML身份提供商资源描述符
         :type ProviderArn: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProviderArn = None
-        self.RequestId = None
+        self._ProviderArn = None
+        self._RequestId = None
+
+    @property
+    def ProviderArn(self):
+        return self._ProviderArn
+
+    @ProviderArn.setter
+    def ProviderArn(self, ProviderArn):
+        self._ProviderArn = ProviderArn
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProviderArn = params.get("ProviderArn")
-        self.RequestId = params.get("RequestId")
+        self._ProviderArn = params.get("ProviderArn")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateServiceLinkedRoleRequest(AbstractModel):
@@ -1070,35 +1962,68 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QCSServiceName: 授权服务，附加了此角色的腾讯云服务主体。
+        :param _QCSServiceName: 授权服务，附加了此角色的腾讯云服务主体。
         :type QCSServiceName: list of str
-        :param CustomSuffix: 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
+        :param _CustomSuffix: 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
         :type CustomSuffix: str
-        :param Description: 角色说明。
+        :param _Description: 角色说明。
         :type Description: str
-        :param Tags: 角色绑定标签。
+        :param _Tags: 角色绑定标签。
         :type Tags: list of RoleTags
         """
-        self.QCSServiceName = None
-        self.CustomSuffix = None
-        self.Description = None
-        self.Tags = None
+        self._QCSServiceName = None
+        self._CustomSuffix = None
+        self._Description = None
+        self._Tags = None
+
+    @property
+    def QCSServiceName(self):
+        return self._QCSServiceName
+
+    @QCSServiceName.setter
+    def QCSServiceName(self, QCSServiceName):
+        self._QCSServiceName = QCSServiceName
+
+    @property
+    def CustomSuffix(self):
+        return self._CustomSuffix
+
+    @CustomSuffix.setter
+    def CustomSuffix(self, CustomSuffix):
+        self._CustomSuffix = CustomSuffix
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.QCSServiceName = params.get("QCSServiceName")
-        self.CustomSuffix = params.get("CustomSuffix")
-        self.Description = params.get("Description")
+        self._QCSServiceName = params.get("QCSServiceName")
+        self._CustomSuffix = params.get("CustomSuffix")
+        self._Description = params.get("Description")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = RoleTags()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1111,18 +2036,34 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色ID
+        :param _RoleId: 角色ID
         :type RoleId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RoleId = None
-        self.RequestId = None
+        self._RoleId = None
+        self._RequestId = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RequestId = params.get("RequestId")
+        self._RoleId = params.get("RoleId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUserOIDCConfigRequest(AbstractModel):
@@ -1132,51 +2073,124 @@ class CreateUserOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
+        :param _IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
         :type IdentityUrl: str
-        :param IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+        :param _IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
         :type IdentityKey: str
-        :param ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+        :param _ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
         :type ClientId: str
-        :param AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+        :param _AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
         :type AuthorizationEndpoint: str
-        :param ResponseType: 授权请求Response type，固定值id_token
+        :param _ResponseType: 授权请求Response type，固定值id_token
         :type ResponseType: str
-        :param ResponseMode: 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+        :param _ResponseMode: 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
         :type ResponseMode: str
-        :param MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+        :param _MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
         :type MappingFiled: str
-        :param Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+        :param _Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
         :type Scope: list of str
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
         """
-        self.IdentityUrl = None
-        self.IdentityKey = None
-        self.ClientId = None
-        self.AuthorizationEndpoint = None
-        self.ResponseType = None
-        self.ResponseMode = None
-        self.MappingFiled = None
-        self.Scope = None
-        self.Description = None
+        self._IdentityUrl = None
+        self._IdentityKey = None
+        self._ClientId = None
+        self._AuthorizationEndpoint = None
+        self._ResponseType = None
+        self._ResponseMode = None
+        self._MappingFiled = None
+        self._Scope = None
+        self._Description = None
+
+    @property
+    def IdentityUrl(self):
+        return self._IdentityUrl
+
+    @IdentityUrl.setter
+    def IdentityUrl(self, IdentityUrl):
+        self._IdentityUrl = IdentityUrl
+
+    @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def AuthorizationEndpoint(self):
+        return self._AuthorizationEndpoint
+
+    @AuthorizationEndpoint.setter
+    def AuthorizationEndpoint(self, AuthorizationEndpoint):
+        self._AuthorizationEndpoint = AuthorizationEndpoint
+
+    @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def ResponseMode(self):
+        return self._ResponseMode
+
+    @ResponseMode.setter
+    def ResponseMode(self, ResponseMode):
+        self._ResponseMode = ResponseMode
+
+    @property
+    def MappingFiled(self):
+        return self._MappingFiled
+
+    @MappingFiled.setter
+    def MappingFiled(self, MappingFiled):
+        self._MappingFiled = MappingFiled
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.IdentityUrl = params.get("IdentityUrl")
-        self.IdentityKey = params.get("IdentityKey")
-        self.ClientId = params.get("ClientId")
-        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
-        self.ResponseType = params.get("ResponseType")
-        self.ResponseMode = params.get("ResponseMode")
-        self.MappingFiled = params.get("MappingFiled")
-        self.Scope = params.get("Scope")
-        self.Description = params.get("Description")
+        self._IdentityUrl = params.get("IdentityUrl")
+        self._IdentityKey = params.get("IdentityKey")
+        self._ClientId = params.get("ClientId")
+        self._AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self._ResponseType = params.get("ResponseType")
+        self._ResponseMode = params.get("ResponseMode")
+        self._MappingFiled = params.get("MappingFiled")
+        self._Scope = params.get("Scope")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1189,14 +2203,22 @@ class CreateUserOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUserSAMLConfigRequest(AbstractModel):
@@ -1206,22 +2228,39 @@ class CreateUserSAMLConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SAMLMetadataDocument: SAML元数据文档，需要base64 encode
+        :param _SAMLMetadataDocument: SAML元数据文档，需要base64 encode
         :type SAMLMetadataDocument: str
-        :param AuxiliaryDomain: 辅助域名
+        :param _AuxiliaryDomain: 辅助域名
         :type AuxiliaryDomain: str
         """
-        self.SAMLMetadataDocument = None
-        self.AuxiliaryDomain = None
+        self._SAMLMetadataDocument = None
+        self._AuxiliaryDomain = None
+
+    @property
+    def SAMLMetadataDocument(self):
+        return self._SAMLMetadataDocument
+
+    @SAMLMetadataDocument.setter
+    def SAMLMetadataDocument(self, SAMLMetadataDocument):
+        self._SAMLMetadataDocument = SAMLMetadataDocument
+
+    @property
+    def AuxiliaryDomain(self):
+        return self._AuxiliaryDomain
+
+    @AuxiliaryDomain.setter
+    def AuxiliaryDomain(self, AuxiliaryDomain):
+        self._AuxiliaryDomain = AuxiliaryDomain
 
 
     def _deserialize(self, params):
-        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
-        self.AuxiliaryDomain = params.get("AuxiliaryDomain")
+        self._SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        self._AuxiliaryDomain = params.get("AuxiliaryDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1234,14 +2273,22 @@ class CreateUserSAMLConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAccessKeyRequest(AbstractModel):
@@ -1251,22 +2298,39 @@ class DeleteAccessKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: 指定需要删除的AccessKeyId
+        :param _AccessKeyId: 指定需要删除的AccessKeyId
         :type AccessKeyId: str
-        :param TargetUin: 指定用户Uin，不填默认为当前用户删除访问密钥
+        :param _TargetUin: 指定用户Uin，不填默认为当前用户删除访问密钥
         :type TargetUin: int
         """
-        self.AccessKeyId = None
-        self.TargetUin = None
+        self._AccessKeyId = None
+        self._TargetUin = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.TargetUin = params.get("TargetUin")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1279,14 +2343,22 @@ class DeleteAccessKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteGroupRequest(AbstractModel):
@@ -1296,18 +2368,27 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID
+        :param _GroupId: 用户组 ID
         :type GroupId: int
         """
-        self.GroupId = None
+        self._GroupId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1320,14 +2401,22 @@ class DeleteGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOIDCConfigRequest(AbstractModel):
@@ -1337,18 +2426,27 @@ class DeleteOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: OIDC身份提供商名称
+        :param _Name: OIDC身份提供商名称
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1361,14 +2459,22 @@ class DeleteOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeletePolicyRequest(AbstractModel):
@@ -1378,18 +2484,27 @@ class DeletePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 数组，数组成员是策略 id，支持批量删除策略
+        :param _PolicyId: 数组，数组成员是策略 id，支持批量删除策略
         :type PolicyId: list of int non-negative
         """
-        self.PolicyId = None
+        self._PolicyId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1402,14 +2517,22 @@ class DeletePolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeletePolicyVersionRequest(AbstractModel):
@@ -1419,22 +2542,39 @@ class DeletePolicyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
-        :param VersionId: 策略版本号
+        :param _VersionId: 策略版本号
         :type VersionId: list of int non-negative
         """
-        self.PolicyId = None
-        self.VersionId = None
+        self._PolicyId = None
+        self._VersionId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.VersionId = params.get("VersionId")
+        self._PolicyId = params.get("PolicyId")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1447,14 +2587,22 @@ class DeletePolicyVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteRolePermissionsBoundaryRequest(AbstractModel):
@@ -1464,22 +2612,39 @@ class DeleteRolePermissionsBoundaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色ID（与角色名至少填一个）
+        :param _RoleId: 角色ID（与角色名至少填一个）
         :type RoleId: str
-        :param RoleName: 角色名（与角色ID至少填一个）
+        :param _RoleName: 角色名（与角色ID至少填一个）
         :type RoleName: str
         """
-        self.RoleId = None
-        self.RoleName = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1492,14 +2657,22 @@ class DeleteRolePermissionsBoundaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteRoleRequest(AbstractModel):
@@ -1509,22 +2682,39 @@ class DeleteRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str
-        :param RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleName: str
         """
-        self.RoleId = None
-        self.RoleName = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1537,14 +2727,22 @@ class DeleteRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSAMLProviderRequest(AbstractModel):
@@ -1554,18 +2752,27 @@ class DeleteSAMLProviderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: SAML身份提供商名称
+        :param _Name: SAML身份提供商名称
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1578,14 +2785,22 @@ class DeleteSAMLProviderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteServiceLinkedRoleRequest(AbstractModel):
@@ -1595,18 +2810,27 @@ class DeleteServiceLinkedRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleName: 要删除的服务相关角色的名称。
+        :param _RoleName: 要删除的服务相关角色的名称。
         :type RoleName: str
         """
-        self.RoleName = None
+        self._RoleName = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.RoleName = params.get("RoleName")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1619,18 +2843,34 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeletionTaskId: 删除任务ID，可用于检查删除服务相关角色状态。
+        :param _DeletionTaskId: 删除任务ID，可用于检查删除服务相关角色状态。
         :type DeletionTaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DeletionTaskId = None
-        self.RequestId = None
+        self._DeletionTaskId = None
+        self._RequestId = None
+
+    @property
+    def DeletionTaskId(self):
+        return self._DeletionTaskId
+
+    @DeletionTaskId.setter
+    def DeletionTaskId(self, DeletionTaskId):
+        self._DeletionTaskId = DeletionTaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DeletionTaskId = params.get("DeletionTaskId")
-        self.RequestId = params.get("RequestId")
+        self._DeletionTaskId = params.get("DeletionTaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUserPermissionsBoundaryRequest(AbstractModel):
@@ -1640,18 +2880,27 @@ class DeleteUserPermissionsBoundaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 子账号Uin
+        :param _TargetUin: 子账号Uin
         :type TargetUin: int
         """
-        self.TargetUin = None
+        self._TargetUin = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
+        self._TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1664,14 +2913,22 @@ class DeleteUserPermissionsBoundaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUserRequest(AbstractModel):
@@ -1681,22 +2938,39 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Force: 是否强制删除该子用户，默认入参为0。0：若该用户存在未删除API密钥，则不删除用户；1：若该用户存在未删除API密钥，则先删除密钥后删除用户。删除密钥需要您拥有cam:DeleteApiKey权限，您将可以删除该用户下启用或禁用状态的所有密钥，无权限则删除密钥和用户失败
+        :param _Force: 是否强制删除该子用户，默认入参为0。0：若该用户存在未删除API密钥，则不删除用户；1：若该用户存在未删除API密钥，则先删除密钥后删除用户。删除密钥需要您拥有cam:DeleteApiKey权限，您将可以删除该用户下启用或禁用状态的所有密钥，无权限则删除密钥和用户失败
         :type Force: int
         """
-        self.Name = None
-        self.Force = None
+        self._Name = None
+        self._Force = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Force(self):
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Force = params.get("Force")
+        self._Name = params.get("Name")
+        self._Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1709,14 +2983,22 @@ class DeleteUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOIDCConfigRequest(AbstractModel):
@@ -1726,18 +3008,27 @@ class DescribeOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1750,42 +3041,106 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProviderType: 身份提供商类型 11角色身份提供商
+        :param _ProviderType: 身份提供商类型 11角色身份提供商
         :type ProviderType: int
-        :param IdentityUrl: 身份提供商URL
+        :param _IdentityUrl: 身份提供商URL
         :type IdentityUrl: str
-        :param IdentityKey: 签名公钥
+        :param _IdentityKey: 签名公钥
         :type IdentityKey: str
-        :param ClientId: 客户端id
+        :param _ClientId: 客户端id
         :type ClientId: list of str
-        :param Status: 状态：0:未设置，11:已开启，2:已禁用
+        :param _Status: 状态：0:未设置，11:已开启，2:已禁用
         :type Status: int
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProviderType = None
-        self.IdentityUrl = None
-        self.IdentityKey = None
-        self.ClientId = None
-        self.Status = None
-        self.Description = None
-        self.Name = None
-        self.RequestId = None
+        self._ProviderType = None
+        self._IdentityUrl = None
+        self._IdentityKey = None
+        self._ClientId = None
+        self._Status = None
+        self._Description = None
+        self._Name = None
+        self._RequestId = None
+
+    @property
+    def ProviderType(self):
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def IdentityUrl(self):
+        return self._IdentityUrl
+
+    @IdentityUrl.setter
+    def IdentityUrl(self, IdentityUrl):
+        self._IdentityUrl = IdentityUrl
+
+    @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProviderType = params.get("ProviderType")
-        self.IdentityUrl = params.get("IdentityUrl")
-        self.IdentityKey = params.get("IdentityKey")
-        self.ClientId = params.get("ClientId")
-        self.Status = params.get("Status")
-        self.Description = params.get("Description")
-        self.Name = params.get("Name")
-        self.RequestId = params.get("RequestId")
+        self._ProviderType = params.get("ProviderType")
+        self._IdentityUrl = params.get("IdentityUrl")
+        self._IdentityKey = params.get("IdentityKey")
+        self._ClientId = params.get("ClientId")
+        self._Status = params.get("Status")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRoleListRequest(AbstractModel):
@@ -1795,31 +3150,56 @@ class DescribeRoleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Page: 页码，从1开始
+        :param _Page: 页码，从1开始
         :type Page: int
-        :param Rp: 每页行数，不能大于200
+        :param _Rp: 每页行数，不能大于200
         :type Rp: int
-        :param Tags: 标签筛选
+        :param _Tags: 标签筛选
         :type Tags: list of RoleTags
         """
-        self.Page = None
-        self.Rp = None
-        self.Tags = None
+        self._Page = None
+        self._Rp = None
+        self._Tags = None
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.Page = params.get("Page")
-        self.Rp = params.get("Rp")
+        self._Page = params.get("Page")
+        self._Rp = params.get("Rp")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = RoleTags()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1832,28 +3212,52 @@ class DescribeRoleListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: 角色详情列表。
+        :param _List: 角色详情列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of RoleInfo
-        :param TotalNum: 角色总数
+        :param _TotalNum: 角色总数
         :type TotalNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.List = None
-        self.TotalNum = None
-        self.RequestId = None
+        self._List = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = RoleInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSafeAuthFlagCollRequest(AbstractModel):
@@ -1863,18 +3267,27 @@ class DescribeSafeAuthFlagCollRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubUin: 子账号
+        :param _SubUin: 子账号
         :type SubUin: int
         """
-        self.SubUin = None
+        self._SubUin = None
+
+    @property
+    def SubUin(self):
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
 
 
     def _deserialize(self, params):
-        self.SubUin = params.get("SubUin")
+        self._SubUin = params.get("SubUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1887,37 +3300,77 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoginFlag: 登录保护设置
+        :param _LoginFlag: 登录保护设置
         :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param ActionFlag: 敏感操作保护设置
+        :param _ActionFlag: 敏感操作保护设置
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param OffsiteFlag: 异地登录保护设置
+        :param _OffsiteFlag: 异地登录保护设置
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param PromptTrust: 是否提示信任设备1 ：提示 0: 不提示
+        :param _PromptTrust: 是否提示信任设备1 ：提示 0: 不提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type PromptTrust: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LoginFlag = None
-        self.ActionFlag = None
-        self.OffsiteFlag = None
-        self.PromptTrust = None
-        self.RequestId = None
+        self._LoginFlag = None
+        self._ActionFlag = None
+        self._OffsiteFlag = None
+        self._PromptTrust = None
+        self._RequestId = None
+
+    @property
+    def LoginFlag(self):
+        return self._LoginFlag
+
+    @LoginFlag.setter
+    def LoginFlag(self, LoginFlag):
+        self._LoginFlag = LoginFlag
+
+    @property
+    def ActionFlag(self):
+        return self._ActionFlag
+
+    @ActionFlag.setter
+    def ActionFlag(self, ActionFlag):
+        self._ActionFlag = ActionFlag
+
+    @property
+    def OffsiteFlag(self):
+        return self._OffsiteFlag
+
+    @OffsiteFlag.setter
+    def OffsiteFlag(self, OffsiteFlag):
+        self._OffsiteFlag = OffsiteFlag
+
+    @property
+    def PromptTrust(self):
+        return self._PromptTrust
+
+    @PromptTrust.setter
+    def PromptTrust(self, PromptTrust):
+        self._PromptTrust = PromptTrust
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LoginFlag") is not None:
-            self.LoginFlag = LoginActionFlag()
-            self.LoginFlag._deserialize(params.get("LoginFlag"))
+            self._LoginFlag = LoginActionFlag()
+            self._LoginFlag._deserialize(params.get("LoginFlag"))
         if params.get("ActionFlag") is not None:
-            self.ActionFlag = LoginActionFlag()
-            self.ActionFlag._deserialize(params.get("ActionFlag"))
+            self._ActionFlag = LoginActionFlag()
+            self._ActionFlag._deserialize(params.get("ActionFlag"))
         if params.get("OffsiteFlag") is not None:
-            self.OffsiteFlag = OffsiteFlag()
-            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
-        self.PromptTrust = params.get("PromptTrust")
-        self.RequestId = params.get("RequestId")
+            self._OffsiteFlag = OffsiteFlag()
+            self._OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self._PromptTrust = params.get("PromptTrust")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSafeAuthFlagIntlRequest(AbstractModel):
@@ -1933,32 +3386,64 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoginFlag: 登录保护设置
+        :param _LoginFlag: 登录保护设置
         :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
-        :param ActionFlag: 敏感操作保护设置
+        :param _ActionFlag: 敏感操作保护设置
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
-        :param OffsiteFlag: 异地登录保护设置
+        :param _OffsiteFlag: 异地登录保护设置
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LoginFlag = None
-        self.ActionFlag = None
-        self.OffsiteFlag = None
-        self.RequestId = None
+        self._LoginFlag = None
+        self._ActionFlag = None
+        self._OffsiteFlag = None
+        self._RequestId = None
+
+    @property
+    def LoginFlag(self):
+        return self._LoginFlag
+
+    @LoginFlag.setter
+    def LoginFlag(self, LoginFlag):
+        self._LoginFlag = LoginFlag
+
+    @property
+    def ActionFlag(self):
+        return self._ActionFlag
+
+    @ActionFlag.setter
+    def ActionFlag(self, ActionFlag):
+        self._ActionFlag = ActionFlag
+
+    @property
+    def OffsiteFlag(self):
+        return self._OffsiteFlag
+
+    @OffsiteFlag.setter
+    def OffsiteFlag(self, OffsiteFlag):
+        self._OffsiteFlag = OffsiteFlag
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LoginFlag") is not None:
-            self.LoginFlag = LoginActionFlagIntl()
-            self.LoginFlag._deserialize(params.get("LoginFlag"))
+            self._LoginFlag = LoginActionFlagIntl()
+            self._LoginFlag._deserialize(params.get("LoginFlag"))
         if params.get("ActionFlag") is not None:
-            self.ActionFlag = LoginActionFlagIntl()
-            self.ActionFlag._deserialize(params.get("ActionFlag"))
+            self._ActionFlag = LoginActionFlagIntl()
+            self._ActionFlag._deserialize(params.get("ActionFlag"))
         if params.get("OffsiteFlag") is not None:
-            self.OffsiteFlag = OffsiteFlag()
-            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
-        self.RequestId = params.get("RequestId")
+            self._OffsiteFlag = OffsiteFlag()
+            self._OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSafeAuthFlagRequest(AbstractModel):
@@ -1974,36 +3459,76 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoginFlag: 登录保护设置
+        :param _LoginFlag: 登录保护设置
         :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param ActionFlag: 敏感操作保护设置
+        :param _ActionFlag: 敏感操作保护设置
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param OffsiteFlag: 异地登录保护设置
+        :param _OffsiteFlag: 异地登录保护设置
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param PromptTrust: 1: 提示7天信任设备 0: 不提示
+        :param _PromptTrust: 1: 提示7天信任设备 0: 不提示
         :type PromptTrust: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.LoginFlag = None
-        self.ActionFlag = None
-        self.OffsiteFlag = None
-        self.PromptTrust = None
-        self.RequestId = None
+        self._LoginFlag = None
+        self._ActionFlag = None
+        self._OffsiteFlag = None
+        self._PromptTrust = None
+        self._RequestId = None
+
+    @property
+    def LoginFlag(self):
+        return self._LoginFlag
+
+    @LoginFlag.setter
+    def LoginFlag(self, LoginFlag):
+        self._LoginFlag = LoginFlag
+
+    @property
+    def ActionFlag(self):
+        return self._ActionFlag
+
+    @ActionFlag.setter
+    def ActionFlag(self, ActionFlag):
+        self._ActionFlag = ActionFlag
+
+    @property
+    def OffsiteFlag(self):
+        return self._OffsiteFlag
+
+    @OffsiteFlag.setter
+    def OffsiteFlag(self, OffsiteFlag):
+        self._OffsiteFlag = OffsiteFlag
+
+    @property
+    def PromptTrust(self):
+        return self._PromptTrust
+
+    @PromptTrust.setter
+    def PromptTrust(self, PromptTrust):
+        self._PromptTrust = PromptTrust
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LoginFlag") is not None:
-            self.LoginFlag = LoginActionFlag()
-            self.LoginFlag._deserialize(params.get("LoginFlag"))
+            self._LoginFlag = LoginActionFlag()
+            self._LoginFlag._deserialize(params.get("LoginFlag"))
         if params.get("ActionFlag") is not None:
-            self.ActionFlag = LoginActionFlag()
-            self.ActionFlag._deserialize(params.get("ActionFlag"))
+            self._ActionFlag = LoginActionFlag()
+            self._ActionFlag._deserialize(params.get("ActionFlag"))
         if params.get("OffsiteFlag") is not None:
-            self.OffsiteFlag = OffsiteFlag()
-            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
-        self.PromptTrust = params.get("PromptTrust")
-        self.RequestId = params.get("RequestId")
+            self._OffsiteFlag = OffsiteFlag()
+            self._OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self._PromptTrust = params.get("PromptTrust")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSubAccountsRequest(AbstractModel):
@@ -2013,18 +3538,27 @@ class DescribeSubAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FilterSubAccountUin: 子用户UIN列表，最多支持50个UIN
+        :param _FilterSubAccountUin: 子用户UIN列表，最多支持50个UIN
         :type FilterSubAccountUin: list of int non-negative
         """
-        self.FilterSubAccountUin = None
+        self._FilterSubAccountUin = None
+
+    @property
+    def FilterSubAccountUin(self):
+        return self._FilterSubAccountUin
+
+    @FilterSubAccountUin.setter
+    def FilterSubAccountUin(self, FilterSubAccountUin):
+        self._FilterSubAccountUin = FilterSubAccountUin
 
 
     def _deserialize(self, params):
-        self.FilterSubAccountUin = params.get("FilterSubAccountUin")
+        self._FilterSubAccountUin = params.get("FilterSubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2037,23 +3571,39 @@ class DescribeSubAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAccounts: 子用户列表
+        :param _SubAccounts: 子用户列表
         :type SubAccounts: list of SubAccountUser
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SubAccounts = None
-        self.RequestId = None
+        self._SubAccounts = None
+        self._RequestId = None
+
+    @property
+    def SubAccounts(self):
+        return self._SubAccounts
+
+    @SubAccounts.setter
+    def SubAccounts(self, SubAccounts):
+        self._SubAccounts = SubAccounts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SubAccounts") is not None:
-            self.SubAccounts = []
+            self._SubAccounts = []
             for item in params.get("SubAccounts"):
                 obj = SubAccountUser()
                 obj._deserialize(item)
-                self.SubAccounts.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SubAccounts.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserOIDCConfigRequest(AbstractModel):
@@ -2069,58 +3619,154 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProviderType: 身份提供商类型。 12：用户OIDC身份提供商
+        :param _ProviderType: 身份提供商类型。 12：用户OIDC身份提供商
         :type ProviderType: int
-        :param IdentityUrl: 身份提供商URL
+        :param _IdentityUrl: 身份提供商URL
         :type IdentityUrl: str
-        :param IdentityKey: 签名公钥
+        :param _IdentityKey: 签名公钥
         :type IdentityKey: str
-        :param ClientId: 客户端id
+        :param _ClientId: 客户端id
         :type ClientId: str
-        :param Status: 状态：0:未设置，11:已开启，2:已禁用
+        :param _Status: 状态：0:未设置，11:已开启，2:已禁用
         :type Status: int
-        :param AuthorizationEndpoint: 授权请求Endpoint
+        :param _AuthorizationEndpoint: 授权请求Endpoint
         :type AuthorizationEndpoint: str
-        :param Scope: 授权请求Scope
+        :param _Scope: 授权请求Scope
         :type Scope: list of str
-        :param ResponseType: 授权请求Response type
+        :param _ResponseType: 授权请求Response type
         :type ResponseType: str
-        :param ResponseMode: 授权请求Response mode
+        :param _ResponseMode: 授权请求Response mode
         :type ResponseMode: str
-        :param MappingFiled: 映射字段名称
+        :param _MappingFiled: 映射字段名称
         :type MappingFiled: str
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProviderType = None
-        self.IdentityUrl = None
-        self.IdentityKey = None
-        self.ClientId = None
-        self.Status = None
-        self.AuthorizationEndpoint = None
-        self.Scope = None
-        self.ResponseType = None
-        self.ResponseMode = None
-        self.MappingFiled = None
-        self.Description = None
-        self.RequestId = None
+        self._ProviderType = None
+        self._IdentityUrl = None
+        self._IdentityKey = None
+        self._ClientId = None
+        self._Status = None
+        self._AuthorizationEndpoint = None
+        self._Scope = None
+        self._ResponseType = None
+        self._ResponseMode = None
+        self._MappingFiled = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def ProviderType(self):
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def IdentityUrl(self):
+        return self._IdentityUrl
+
+    @IdentityUrl.setter
+    def IdentityUrl(self, IdentityUrl):
+        self._IdentityUrl = IdentityUrl
+
+    @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AuthorizationEndpoint(self):
+        return self._AuthorizationEndpoint
+
+    @AuthorizationEndpoint.setter
+    def AuthorizationEndpoint(self, AuthorizationEndpoint):
+        self._AuthorizationEndpoint = AuthorizationEndpoint
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def ResponseMode(self):
+        return self._ResponseMode
+
+    @ResponseMode.setter
+    def ResponseMode(self, ResponseMode):
+        self._ResponseMode = ResponseMode
+
+    @property
+    def MappingFiled(self):
+        return self._MappingFiled
+
+    @MappingFiled.setter
+    def MappingFiled(self, MappingFiled):
+        self._MappingFiled = MappingFiled
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProviderType = params.get("ProviderType")
-        self.IdentityUrl = params.get("IdentityUrl")
-        self.IdentityKey = params.get("IdentityKey")
-        self.ClientId = params.get("ClientId")
-        self.Status = params.get("Status")
-        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
-        self.Scope = params.get("Scope")
-        self.ResponseType = params.get("ResponseType")
-        self.ResponseMode = params.get("ResponseMode")
-        self.MappingFiled = params.get("MappingFiled")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._ProviderType = params.get("ProviderType")
+        self._IdentityUrl = params.get("IdentityUrl")
+        self._IdentityKey = params.get("IdentityKey")
+        self._ClientId = params.get("ClientId")
+        self._Status = params.get("Status")
+        self._AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self._Scope = params.get("Scope")
+        self._ResponseType = params.get("ResponseType")
+        self._ResponseMode = params.get("ResponseMode")
+        self._MappingFiled = params.get("MappingFiled")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserSAMLConfigRequest(AbstractModel):
@@ -2136,26 +3782,58 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SAMLMetadata: SAML元数据文档
+        :param _SAMLMetadata: SAML元数据文档
         :type SAMLMetadata: str
-        :param Status: 状态：0:未设置，1:已开启，2:已禁用
+        :param _Status: 状态：0:未设置，1:已开启，2:已禁用
         :type Status: int
-        :param AuxiliaryDomain: 辅助域名
+        :param _AuxiliaryDomain: 辅助域名
         :type AuxiliaryDomain: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SAMLMetadata = None
-        self.Status = None
-        self.AuxiliaryDomain = None
-        self.RequestId = None
+        self._SAMLMetadata = None
+        self._Status = None
+        self._AuxiliaryDomain = None
+        self._RequestId = None
+
+    @property
+    def SAMLMetadata(self):
+        return self._SAMLMetadata
+
+    @SAMLMetadata.setter
+    def SAMLMetadata(self, SAMLMetadata):
+        self._SAMLMetadata = SAMLMetadata
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AuxiliaryDomain(self):
+        return self._AuxiliaryDomain
+
+    @AuxiliaryDomain.setter
+    def AuxiliaryDomain(self, AuxiliaryDomain):
+        self._AuxiliaryDomain = AuxiliaryDomain
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SAMLMetadata = params.get("SAMLMetadata")
-        self.Status = params.get("Status")
-        self.AuxiliaryDomain = params.get("AuxiliaryDomain")
-        self.RequestId = params.get("RequestId")
+        self._SAMLMetadata = params.get("SAMLMetadata")
+        self._Status = params.get("Status")
+        self._AuxiliaryDomain = params.get("AuxiliaryDomain")
+        self._RequestId = params.get("RequestId")
 
 
 class DetachGroupPolicyRequest(AbstractModel):
@@ -2165,22 +3843,39 @@ class DetachGroupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略 id
+        :param _PolicyId: 策略 id
         :type PolicyId: int
-        :param DetachGroupId: 用户组 id
+        :param _DetachGroupId: 用户组 id
         :type DetachGroupId: int
         """
-        self.PolicyId = None
-        self.DetachGroupId = None
+        self._PolicyId = None
+        self._DetachGroupId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def DetachGroupId(self):
+        return self._DetachGroupId
+
+    @DetachGroupId.setter
+    def DetachGroupId(self, DetachGroupId):
+        self._DetachGroupId = DetachGroupId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.DetachGroupId = params.get("DetachGroupId")
+        self._PolicyId = params.get("PolicyId")
+        self._DetachGroupId = params.get("DetachGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2193,14 +3888,22 @@ class DetachGroupPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DetachRolePolicyRequest(AbstractModel):
@@ -2210,30 +3913,63 @@ class DetachRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID，入参PolicyId与PolicyName二选一
+        :param _PolicyId: 策略ID，入参PolicyId与PolicyName二选一
         :type PolicyId: int
-        :param DetachRoleId: 角色ID，用于指定角色，入参 DetachRoleId 与 DetachRoleName 二选一
+        :param _DetachRoleId: 角色ID，用于指定角色，入参 DetachRoleId 与 DetachRoleName 二选一
         :type DetachRoleId: str
-        :param DetachRoleName: 角色名称，用于指定角色，入参 DetachRoleId 与 DetachRoleName 二选一
+        :param _DetachRoleName: 角色名称，用于指定角色，入参 DetachRoleId 与 DetachRoleName 二选一
         :type DetachRoleName: str
-        :param PolicyName: 策略名，入参PolicyId与PolicyName二选一
+        :param _PolicyName: 策略名，入参PolicyId与PolicyName二选一
         :type PolicyName: str
         """
-        self.PolicyId = None
-        self.DetachRoleId = None
-        self.DetachRoleName = None
-        self.PolicyName = None
+        self._PolicyId = None
+        self._DetachRoleId = None
+        self._DetachRoleName = None
+        self._PolicyName = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def DetachRoleId(self):
+        return self._DetachRoleId
+
+    @DetachRoleId.setter
+    def DetachRoleId(self, DetachRoleId):
+        self._DetachRoleId = DetachRoleId
+
+    @property
+    def DetachRoleName(self):
+        return self._DetachRoleName
+
+    @DetachRoleName.setter
+    def DetachRoleName(self, DetachRoleName):
+        self._DetachRoleName = DetachRoleName
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.DetachRoleId = params.get("DetachRoleId")
-        self.DetachRoleName = params.get("DetachRoleName")
-        self.PolicyName = params.get("PolicyName")
+        self._PolicyId = params.get("PolicyId")
+        self._DetachRoleId = params.get("DetachRoleId")
+        self._DetachRoleName = params.get("DetachRoleName")
+        self._PolicyName = params.get("PolicyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2246,14 +3982,22 @@ class DetachRolePolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DetachUserPolicyRequest(AbstractModel):
@@ -2263,22 +4007,39 @@ class DetachUserPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略 id
+        :param _PolicyId: 策略 id
         :type PolicyId: int
-        :param DetachUin: 子账号 uin
+        :param _DetachUin: 子账号 uin
         :type DetachUin: int
         """
-        self.PolicyId = None
-        self.DetachUin = None
+        self._PolicyId = None
+        self._DetachUin = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def DetachUin(self):
+        return self._DetachUin
+
+    @DetachUin.setter
+    def DetachUin(self, DetachUin):
+        self._DetachUin = DetachUin
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.DetachUin = params.get("DetachUin")
+        self._PolicyId = params.get("PolicyId")
+        self._DetachUin = params.get("DetachUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2291,14 +4052,22 @@ class DetachUserPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DisableUserSSORequest(AbstractModel):
@@ -2314,14 +4083,22 @@ class DisableUserSSOResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class GetAccountSummaryRequest(AbstractModel):
@@ -2337,38 +4114,94 @@ class GetAccountSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Policies: 策略数
+        :param _Policies: 策略数
         :type Policies: int
-        :param Roles: 角色数
+        :param _Roles: 角色数
         :type Roles: int
-        :param Idps: 身份提供商数
+        :param _Idps: 身份提供商数
         :type Idps: int
-        :param User: 子账户数
+        :param _User: 子账户数
         :type User: int
-        :param Group: 分组数
+        :param _Group: 分组数
         :type Group: int
-        :param Member: 分组用户总数
+        :param _Member: 分组用户总数
         :type Member: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Policies = None
-        self.Roles = None
-        self.Idps = None
-        self.User = None
-        self.Group = None
-        self.Member = None
-        self.RequestId = None
+        self._Policies = None
+        self._Roles = None
+        self._Idps = None
+        self._User = None
+        self._Group = None
+        self._Member = None
+        self._RequestId = None
+
+    @property
+    def Policies(self):
+        return self._Policies
+
+    @Policies.setter
+    def Policies(self, Policies):
+        self._Policies = Policies
+
+    @property
+    def Roles(self):
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def Idps(self):
+        return self._Idps
+
+    @Idps.setter
+    def Idps(self, Idps):
+        self._Idps = Idps
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Member(self):
+        return self._Member
+
+    @Member.setter
+    def Member(self, Member):
+        self._Member = Member
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Policies = params.get("Policies")
-        self.Roles = params.get("Roles")
-        self.Idps = params.get("Idps")
-        self.User = params.get("User")
-        self.Group = params.get("Group")
-        self.Member = params.get("Member")
-        self.RequestId = params.get("RequestId")
+        self._Policies = params.get("Policies")
+        self._Roles = params.get("Roles")
+        self._Idps = params.get("Idps")
+        self._User = params.get("User")
+        self._Group = params.get("Group")
+        self._Member = params.get("Member")
+        self._RequestId = params.get("RequestId")
 
 
 class GetCustomMFATokenInfoRequest(AbstractModel):
@@ -2378,18 +4211,27 @@ class GetCustomMFATokenInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MFAToken: 自定义多因子验证Token
+        :param _MFAToken: 自定义多因子验证Token
         :type MFAToken: str
         """
-        self.MFAToken = None
+        self._MFAToken = None
+
+    @property
+    def MFAToken(self):
+        return self._MFAToken
+
+    @MFAToken.setter
+    def MFAToken(self, MFAToken):
+        self._MFAToken = MFAToken
 
 
     def _deserialize(self, params):
-        self.MFAToken = params.get("MFAToken")
+        self._MFAToken = params.get("MFAToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2402,18 +4244,34 @@ class GetCustomMFATokenInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 自定义多因子验证Token对应的帐号Id
+        :param _Uin: 自定义多因子验证Token对应的帐号Id
         :type Uin: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Uin = None
-        self.RequestId = None
+        self._Uin = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._RequestId = params.get("RequestId")
 
 
 class GetGroupRequest(AbstractModel):
@@ -2423,18 +4281,27 @@ class GetGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID
+        :param _GroupId: 用户组 ID
         :type GroupId: int
         """
-        self.GroupId = None
+        self._GroupId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2447,43 +4314,99 @@ class GetGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID
+        :param _GroupId: 用户组 ID
         :type GroupId: int
-        :param GroupName: 用户组名称
+        :param _GroupName: 用户组名称
         :type GroupName: str
-        :param GroupNum: 用户组成员数量
+        :param _GroupNum: 用户组成员数量
         :type GroupNum: int
-        :param Remark: 用户组描述
+        :param _Remark: 用户组描述
         :type Remark: str
-        :param CreateTime: 用户组创建时间
+        :param _CreateTime: 用户组创建时间
         :type CreateTime: str
-        :param UserInfo: 用户组成员信息
+        :param _UserInfo: 用户组成员信息
         :type UserInfo: list of GroupMemberInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GroupId = None
-        self.GroupName = None
-        self.GroupNum = None
-        self.Remark = None
-        self.CreateTime = None
-        self.UserInfo = None
-        self.RequestId = None
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupNum = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UserInfo = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupNum(self):
+        return self._GroupNum
+
+    @GroupNum.setter
+    def GroupNum(self, GroupNum):
+        self._GroupNum = GroupNum
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.GroupNum = params.get("GroupNum")
-        self.Remark = params.get("Remark")
-        self.CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupNum = params.get("GroupNum")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
         if params.get("UserInfo") is not None:
-            self.UserInfo = []
+            self._UserInfo = []
             for item in params.get("UserInfo"):
                 obj = GroupMemberInfo()
                 obj._deserialize(item)
-                self.UserInfo.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._UserInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetPolicyRequest(AbstractModel):
@@ -2493,18 +4416,27 @@ class GetPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略Id
+        :param _PolicyId: 策略Id
         :type PolicyId: int
         """
-        self.PolicyId = None
+        self._PolicyId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2517,54 +4449,126 @@ class GetPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyName: 策略名
+        :param _PolicyName: 策略名
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
-        :param Description: 策略描述
+        :param _Description: 策略描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param Type: 1 表示自定义策略，2 表示预设策略
+        :param _Type: 1 表示自定义策略，2 表示预设策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param AddTime: 创建时间
+        :param _AddTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
-        :param UpdateTime: 最近更新时间
+        :param _UpdateTime: 最近更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param PolicyDocument: 策略文档
+        :param _PolicyDocument: 策略文档
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
-        :param PresetAlias: 备注
+        :param _PresetAlias: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type PresetAlias: str
-        :param IsServiceLinkedRolePolicy: 是否服务相关策略
+        :param _IsServiceLinkedRolePolicy: 是否服务相关策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsServiceLinkedRolePolicy: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PolicyName = None
-        self.Description = None
-        self.Type = None
-        self.AddTime = None
-        self.UpdateTime = None
-        self.PolicyDocument = None
-        self.PresetAlias = None
-        self.IsServiceLinkedRolePolicy = None
-        self.RequestId = None
+        self._PolicyName = None
+        self._Description = None
+        self._Type = None
+        self._AddTime = None
+        self._UpdateTime = None
+        self._PolicyDocument = None
+        self._PresetAlias = None
+        self._IsServiceLinkedRolePolicy = None
+        self._RequestId = None
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def PresetAlias(self):
+        return self._PresetAlias
+
+    @PresetAlias.setter
+    def PresetAlias(self, PresetAlias):
+        self._PresetAlias = PresetAlias
+
+    @property
+    def IsServiceLinkedRolePolicy(self):
+        return self._IsServiceLinkedRolePolicy
+
+    @IsServiceLinkedRolePolicy.setter
+    def IsServiceLinkedRolePolicy(self, IsServiceLinkedRolePolicy):
+        self._IsServiceLinkedRolePolicy = IsServiceLinkedRolePolicy
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PolicyName = params.get("PolicyName")
-        self.Description = params.get("Description")
-        self.Type = params.get("Type")
-        self.AddTime = params.get("AddTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.PresetAlias = params.get("PresetAlias")
-        self.IsServiceLinkedRolePolicy = params.get("IsServiceLinkedRolePolicy")
-        self.RequestId = params.get("RequestId")
+        self._PolicyName = params.get("PolicyName")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._AddTime = params.get("AddTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._PresetAlias = params.get("PresetAlias")
+        self._IsServiceLinkedRolePolicy = params.get("IsServiceLinkedRolePolicy")
+        self._RequestId = params.get("RequestId")
 
 
 class GetPolicyVersionRequest(AbstractModel):
@@ -2574,22 +4578,39 @@ class GetPolicyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
-        :param VersionId: 策略版本号，可由ListPolicyVersions获取
+        :param _VersionId: 策略版本号，可由ListPolicyVersions获取
         :type VersionId: int
         """
-        self.PolicyId = None
-        self.VersionId = None
+        self._PolicyId = None
+        self._VersionId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.VersionId = params.get("VersionId")
+        self._PolicyId = params.get("PolicyId")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2602,21 +4623,37 @@ class GetPolicyVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyVersion: 策略版本详情
+        :param _PolicyVersion: 策略版本详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyVersion: :class:`tencentcloud.cam.v20190116.models.PolicyVersionDetail`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PolicyVersion = None
-        self.RequestId = None
+        self._PolicyVersion = None
+        self._RequestId = None
+
+    @property
+    def PolicyVersion(self):
+        return self._PolicyVersion
+
+    @PolicyVersion.setter
+    def PolicyVersion(self, PolicyVersion):
+        self._PolicyVersion = PolicyVersion
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PolicyVersion") is not None:
-            self.PolicyVersion = PolicyVersionDetail()
-            self.PolicyVersion._deserialize(params.get("PolicyVersion"))
-        self.RequestId = params.get("RequestId")
+            self._PolicyVersion = PolicyVersionDetail()
+            self._PolicyVersion._deserialize(params.get("PolicyVersion"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetRolePermissionBoundaryRequest(AbstractModel):
@@ -2626,18 +4663,27 @@ class GetRolePermissionBoundaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色ID
+        :param _RoleId: 角色ID
         :type RoleId: str
         """
-        self.RoleId = None
+        self._RoleId = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
+        self._RoleId = params.get("RoleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2650,39 +4696,87 @@ class GetRolePermissionBoundaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
-        :param PolicyName: 策略名
+        :param _PolicyName: 策略名
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
-        :param PolicyDocument: 策略语法
+        :param _PolicyDocument: 策略语法
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
-        :param PolicyType: 策略类型：1.自定义策略，2.预设策略
+        :param _PolicyType: 策略类型：1.自定义策略，2.预设策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: int
-        :param CreateMode: 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+        :param _CreateMode: 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateMode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.PolicyDocument = None
-        self.PolicyType = None
-        self.CreateMode = None
-        self.RequestId = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._PolicyDocument = None
+        self._PolicyType = None
+        self._CreateMode = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def CreateMode(self):
+        return self._CreateMode
+
+    @CreateMode.setter
+    def CreateMode(self, CreateMode):
+        self._CreateMode = CreateMode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.PolicyType = params.get("PolicyType")
-        self.CreateMode = params.get("CreateMode")
-        self.RequestId = params.get("RequestId")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._PolicyType = params.get("PolicyType")
+        self._CreateMode = params.get("CreateMode")
+        self._RequestId = params.get("RequestId")
 
 
 class GetRoleRequest(AbstractModel):
@@ -2692,22 +4786,39 @@ class GetRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色 ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleId: 角色 ID，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str
-        :param RoleName: 角色名，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleName: 角色名，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleName: str
         """
-        self.RoleId = None
-        self.RoleName = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2720,20 +4831,36 @@ class GetRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleInfo: 角色详情
+        :param _RoleInfo: 角色详情
         :type RoleInfo: :class:`tencentcloud.cam.v20190116.models.RoleInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RoleInfo = None
-        self.RequestId = None
+        self._RoleInfo = None
+        self._RequestId = None
+
+    @property
+    def RoleInfo(self):
+        return self._RoleInfo
+
+    @RoleInfo.setter
+    def RoleInfo(self, RoleInfo):
+        self._RoleInfo = RoleInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RoleInfo") is not None:
-            self.RoleInfo = RoleInfo()
-            self.RoleInfo._deserialize(params.get("RoleInfo"))
-        self.RequestId = params.get("RequestId")
+            self._RoleInfo = RoleInfo()
+            self._RoleInfo._deserialize(params.get("RoleInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetSAMLProviderRequest(AbstractModel):
@@ -2743,18 +4870,27 @@ class GetSAMLProviderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: SAML身份提供商名称
+        :param _Name: SAML身份提供商名称
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2767,34 +4903,82 @@ class GetSAMLProviderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: SAML身份提供商名称
+        :param _Name: SAML身份提供商名称
         :type Name: str
-        :param Description: SAML身份提供商描述
+        :param _Description: SAML身份提供商描述
         :type Description: str
-        :param CreateTime: SAML身份提供商创建时间
+        :param _CreateTime: SAML身份提供商创建时间
         :type CreateTime: str
-        :param ModifyTime: SAML身份提供商上次修改时间
+        :param _ModifyTime: SAML身份提供商上次修改时间
         :type ModifyTime: str
-        :param SAMLMetadata: SAML身份提供商元数据文档
+        :param _SAMLMetadata: SAML身份提供商元数据文档
         :type SAMLMetadata: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Name = None
-        self.Description = None
-        self.CreateTime = None
-        self.ModifyTime = None
-        self.SAMLMetadata = None
-        self.RequestId = None
+        self._Name = None
+        self._Description = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._SAMLMetadata = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def SAMLMetadata(self):
+        return self._SAMLMetadata
+
+    @SAMLMetadata.setter
+    def SAMLMetadata(self, SAMLMetadata):
+        self._SAMLMetadata = SAMLMetadata
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
-        self.ModifyTime = params.get("ModifyTime")
-        self.SAMLMetadata = params.get("SAMLMetadata")
-        self.RequestId = params.get("RequestId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._SAMLMetadata = params.get("SAMLMetadata")
+        self._RequestId = params.get("RequestId")
 
 
 class GetSecurityLastUsedRequest(AbstractModel):
@@ -2804,18 +4988,27 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretIdList: 查询密钥ID列表。最多支持10个。
+        :param _SecretIdList: 查询密钥ID列表。最多支持10个。
         :type SecretIdList: list of str
         """
-        self.SecretIdList = None
+        self._SecretIdList = None
+
+    @property
+    def SecretIdList(self):
+        return self._SecretIdList
+
+    @SecretIdList.setter
+    def SecretIdList(self, SecretIdList):
+        self._SecretIdList = SecretIdList
 
 
     def _deserialize(self, params):
-        self.SecretIdList = params.get("SecretIdList")
+        self._SecretIdList = params.get("SecretIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2828,23 +5021,39 @@ class GetSecurityLastUsedResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretIdLastUsedRows: 密钥ID最近访问列表
+        :param _SecretIdLastUsedRows: 密钥ID最近访问列表
         :type SecretIdLastUsedRows: list of SecretIdLastUsed
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SecretIdLastUsedRows = None
-        self.RequestId = None
+        self._SecretIdLastUsedRows = None
+        self._RequestId = None
+
+    @property
+    def SecretIdLastUsedRows(self):
+        return self._SecretIdLastUsedRows
+
+    @SecretIdLastUsedRows.setter
+    def SecretIdLastUsedRows(self, SecretIdLastUsedRows):
+        self._SecretIdLastUsedRows = SecretIdLastUsedRows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SecretIdLastUsedRows") is not None:
-            self.SecretIdLastUsedRows = []
+            self._SecretIdLastUsedRows = []
             for item in params.get("SecretIdLastUsedRows"):
                 obj = SecretIdLastUsed()
                 obj._deserialize(item)
-                self.SecretIdLastUsedRows.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SecretIdLastUsedRows.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
@@ -2854,18 +5063,27 @@ class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeletionTaskId: 删除任务ID
+        :param _DeletionTaskId: 删除任务ID
         :type DeletionTaskId: str
         """
-        self.DeletionTaskId = None
+        self._DeletionTaskId = None
+
+    @property
+    def DeletionTaskId(self):
+        return self._DeletionTaskId
+
+    @DeletionTaskId.setter
+    def DeletionTaskId(self, DeletionTaskId):
+        self._DeletionTaskId = DeletionTaskId
 
 
     def _deserialize(self, params):
-        self.DeletionTaskId = params.get("DeletionTaskId")
+        self._DeletionTaskId = params.get("DeletionTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2878,32 +5096,72 @@ class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 状态：NOT_STARTED，IN_PROGRESS，SUCCEEDED，FAILED
+        :param _Status: 状态：NOT_STARTED，IN_PROGRESS，SUCCEEDED，FAILED
         :type Status: str
-        :param Reason: 失败原因
+        :param _Reason: 失败原因
         :type Reason: str
-        :param ServiceType: 服务类型
+        :param _ServiceType: 服务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
-        :param ServiceName: 服务名称
+        :param _ServiceName: 服务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.Reason = None
-        self.ServiceType = None
-        self.ServiceName = None
-        self.RequestId = None
+        self._Status = None
+        self._Reason = None
+        self._ServiceType = None
+        self._ServiceName = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Reason = params.get("Reason")
-        self.ServiceType = params.get("ServiceType")
-        self.ServiceName = params.get("ServiceName")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceName = params.get("ServiceName")
+        self._RequestId = params.get("RequestId")
 
 
 class GetUserAppIdRequest(AbstractModel):
@@ -2919,26 +5177,58 @@ class GetUserAppIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 当前账号Uin
+        :param _Uin: 当前账号Uin
         :type Uin: str
-        :param OwnerUin: 当前账号OwnerUin
+        :param _OwnerUin: 当前账号OwnerUin
         :type OwnerUin: str
-        :param AppId: 当前账号AppId
+        :param _AppId: 当前账号AppId
         :type AppId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Uin = None
-        self.OwnerUin = None
-        self.AppId = None
-        self.RequestId = None
+        self._Uin = None
+        self._OwnerUin = None
+        self._AppId = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.OwnerUin = params.get("OwnerUin")
-        self.AppId = params.get("AppId")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._AppId = params.get("AppId")
+        self._RequestId = params.get("RequestId")
 
 
 class GetUserPermissionBoundaryRequest(AbstractModel):
@@ -2948,18 +5238,27 @@ class GetUserPermissionBoundaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 子账号Uin
+        :param _TargetUin: 子账号Uin
         :type TargetUin: int
         """
-        self.TargetUin = None
+        self._TargetUin = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
+        self._TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2972,39 +5271,87 @@ class GetUserPermissionBoundaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
-        :param PolicyName: 策略名
+        :param _PolicyName: 策略名
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
-        :param PolicyDocument: 策略语法
+        :param _PolicyDocument: 策略语法
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
-        :param PolicyType: 策略类型：1.自定义策略，2.预设策略
+        :param _PolicyType: 策略类型：1.自定义策略，2.预设策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: int
-        :param CreateMode: 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+        :param _CreateMode: 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateMode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.PolicyDocument = None
-        self.PolicyType = None
-        self.CreateMode = None
-        self.RequestId = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._PolicyDocument = None
+        self._PolicyType = None
+        self._CreateMode = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def CreateMode(self):
+        return self._CreateMode
+
+    @CreateMode.setter
+    def CreateMode(self, CreateMode):
+        self._CreateMode = CreateMode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.PolicyType = params.get("PolicyType")
-        self.CreateMode = params.get("CreateMode")
-        self.RequestId = params.get("RequestId")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._PolicyType = params.get("PolicyType")
+        self._CreateMode = params.get("CreateMode")
+        self._RequestId = params.get("RequestId")
 
 
 class GetUserRequest(AbstractModel):
@@ -3014,18 +5361,27 @@ class GetUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3038,57 +5394,145 @@ class GetUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 子用户用户 UIN
+        :param _Uin: 子用户用户 UIN
         :type Uin: int
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Uid: 子用户 UID
+        :param _Uid: 子用户 UID
         :type Uid: int
-        :param Remark: 子用户备注
+        :param _Remark: 子用户备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param ConsoleLogin: 子用户能否登录控制台 0-无法登录控制台，1-可以登录控制台
+        :param _ConsoleLogin: 子用户能否登录控制台 0-无法登录控制台，1-可以登录控制台
         :type ConsoleLogin: int
-        :param PhoneNum: 手机号
+        :param _PhoneNum: 手机号
         :type PhoneNum: str
-        :param CountryCode: 区号
+        :param _CountryCode: 区号
         :type CountryCode: str
-        :param Email: 邮箱
+        :param _Email: 邮箱
         :type Email: str
-        :param RecentlyLoginIP: 最近一次登录ip
+        :param _RecentlyLoginIP: 最近一次登录ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecentlyLoginIP: str
-        :param RecentlyLoginTime: 最近一次登录时间
+        :param _RecentlyLoginTime: 最近一次登录时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecentlyLoginTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Uid = None
-        self.Remark = None
-        self.ConsoleLogin = None
-        self.PhoneNum = None
-        self.CountryCode = None
-        self.Email = None
-        self.RecentlyLoginIP = None
-        self.RecentlyLoginTime = None
-        self.RequestId = None
+        self._Uin = None
+        self._Name = None
+        self._Uid = None
+        self._Remark = None
+        self._ConsoleLogin = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._Email = None
+        self._RecentlyLoginIP = None
+        self._RecentlyLoginTime = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def RecentlyLoginIP(self):
+        return self._RecentlyLoginIP
+
+    @RecentlyLoginIP.setter
+    def RecentlyLoginIP(self, RecentlyLoginIP):
+        self._RecentlyLoginIP = RecentlyLoginIP
+
+    @property
+    def RecentlyLoginTime(self):
+        return self._RecentlyLoginTime
+
+    @RecentlyLoginTime.setter
+    def RecentlyLoginTime(self, RecentlyLoginTime):
+        self._RecentlyLoginTime = RecentlyLoginTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Uid = params.get("Uid")
-        self.Remark = params.get("Remark")
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.PhoneNum = params.get("PhoneNum")
-        self.CountryCode = params.get("CountryCode")
-        self.Email = params.get("Email")
-        self.RecentlyLoginIP = params.get("RecentlyLoginIP")
-        self.RecentlyLoginTime = params.get("RecentlyLoginTime")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Uid = params.get("Uid")
+        self._Remark = params.get("Remark")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._Email = params.get("Email")
+        self._RecentlyLoginIP = params.get("RecentlyLoginIP")
+        self._RecentlyLoginTime = params.get("RecentlyLoginTime")
+        self._RequestId = params.get("RequestId")
 
 
 class GroupIdOfUidInfo(AbstractModel):
@@ -3098,26 +5542,51 @@ class GroupIdOfUidInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID
+        :param _GroupId: 用户组 ID
         :type GroupId: int
-        :param Uid: 子用户 UID
+        :param _Uid: 子用户 UID
         :type Uid: int
-        :param Uin: 子用户 Uin，Uid和Uin至少有一个必填
+        :param _Uin: 子用户 Uin，Uid和Uin至少有一个必填
         :type Uin: int
         """
-        self.GroupId = None
-        self.Uid = None
-        self.Uin = None
+        self._GroupId = None
+        self._Uid = None
+        self._Uin = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.Uid = params.get("Uid")
-        self.Uin = params.get("Uin")
+        self._GroupId = params.get("GroupId")
+        self._Uid = params.get("Uid")
+        self._Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3130,30 +5599,63 @@ class GroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID。
+        :param _GroupId: 用户组 ID。
         :type GroupId: int
-        :param GroupName: 用户组名称。
+        :param _GroupName: 用户组名称。
         :type GroupName: str
-        :param CreateTime: 用户组创建时间。
+        :param _CreateTime: 用户组创建时间。
         :type CreateTime: str
-        :param Remark: 用户组描述。
+        :param _Remark: 用户组描述。
         :type Remark: str
         """
-        self.GroupId = None
-        self.GroupName = None
-        self.CreateTime = None
-        self.Remark = None
+        self._GroupId = None
+        self._GroupName = None
+        self._CreateTime = None
+        self._Remark = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.CreateTime = params.get("CreateTime")
-        self.Remark = params.get("Remark")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._CreateTime = params.get("CreateTime")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3166,58 +5668,147 @@ class GroupMemberInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uid: 子用户 Uid。
+        :param _Uid: 子用户 Uid。
         :type Uid: int
-        :param Uin: 子用户 Uin。
+        :param _Uin: 子用户 Uin。
         :type Uin: int
-        :param Name: 子用户名称。
+        :param _Name: 子用户名称。
         :type Name: str
-        :param PhoneNum: 手机号。
+        :param _PhoneNum: 手机号。
         :type PhoneNum: str
-        :param CountryCode: 手机区域代码。
+        :param _CountryCode: 手机区域代码。
         :type CountryCode: str
-        :param PhoneFlag: 是否已验证手机。0-未验证  1-验证
+        :param _PhoneFlag: 是否已验证手机。0-未验证  1-验证
         :type PhoneFlag: int
-        :param Email: 邮箱地址。
+        :param _Email: 邮箱地址。
         :type Email: str
-        :param EmailFlag: 是否已验证邮箱。0-未验证  1-验证
+        :param _EmailFlag: 是否已验证邮箱。0-未验证  1-验证
         :type EmailFlag: int
-        :param UserType: 用户类型。1-全局协作者 2-项目协作者 3-消息接收者
+        :param _UserType: 用户类型。1-全局协作者 2-项目协作者 3-消息接收者
         :type UserType: int
-        :param CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。
         :type CreateTime: str
-        :param IsReceiverOwner: 是否为主消息接收人。0-否 1-是
+        :param _IsReceiverOwner: 是否为主消息接收人。0-否 1-是
         :type IsReceiverOwner: int
         """
-        self.Uid = None
-        self.Uin = None
-        self.Name = None
-        self.PhoneNum = None
-        self.CountryCode = None
-        self.PhoneFlag = None
-        self.Email = None
-        self.EmailFlag = None
-        self.UserType = None
-        self.CreateTime = None
-        self.IsReceiverOwner = None
+        self._Uid = None
+        self._Uin = None
+        self._Name = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._PhoneFlag = None
+        self._Email = None
+        self._EmailFlag = None
+        self._UserType = None
+        self._CreateTime = None
+        self._IsReceiverOwner = None
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def PhoneFlag(self):
+        return self._PhoneFlag
+
+    @PhoneFlag.setter
+    def PhoneFlag(self, PhoneFlag):
+        self._PhoneFlag = PhoneFlag
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def EmailFlag(self):
+        return self._EmailFlag
+
+    @EmailFlag.setter
+    def EmailFlag(self, EmailFlag):
+        self._EmailFlag = EmailFlag
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsReceiverOwner(self):
+        return self._IsReceiverOwner
+
+    @IsReceiverOwner.setter
+    def IsReceiverOwner(self, IsReceiverOwner):
+        self._IsReceiverOwner = IsReceiverOwner
 
 
     def _deserialize(self, params):
-        self.Uid = params.get("Uid")
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.PhoneNum = params.get("PhoneNum")
-        self.CountryCode = params.get("CountryCode")
-        self.PhoneFlag = params.get("PhoneFlag")
-        self.Email = params.get("Email")
-        self.EmailFlag = params.get("EmailFlag")
-        self.UserType = params.get("UserType")
-        self.CreateTime = params.get("CreateTime")
-        self.IsReceiverOwner = params.get("IsReceiverOwner")
+        self._Uid = params.get("Uid")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._PhoneFlag = params.get("PhoneFlag")
+        self._Email = params.get("Email")
+        self._EmailFlag = params.get("EmailFlag")
+        self._UserType = params.get("UserType")
+        self._CreateTime = params.get("CreateTime")
+        self._IsReceiverOwner = params.get("IsReceiverOwner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3230,18 +5821,27 @@ class ListAccessKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 指定用户Uin，不填默认列出当前用户访问密钥
+        :param _TargetUin: 指定用户Uin，不填默认列出当前用户访问密钥
         :type TargetUin: int
         """
-        self.TargetUin = None
+        self._TargetUin = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
+        self._TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3254,24 +5854,40 @@ class ListAccessKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeys: 访问密钥列表
+        :param _AccessKeys: 访问密钥列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKeys: list of AccessKey
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AccessKeys = None
-        self.RequestId = None
+        self._AccessKeys = None
+        self._RequestId = None
+
+    @property
+    def AccessKeys(self):
+        return self._AccessKeys
+
+    @AccessKeys.setter
+    def AccessKeys(self, AccessKeys):
+        self._AccessKeys = AccessKeys
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AccessKeys") is not None:
-            self.AccessKeys = []
+            self._AccessKeys = []
             for item in params.get("AccessKeys"):
                 obj = AccessKey()
                 obj._deserialize(item)
-                self.AccessKeys.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AccessKeys.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListAttachedGroupPoliciesRequest(AbstractModel):
@@ -3281,30 +5897,63 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetGroupId: 用户组ID
+        :param _TargetGroupId: 用户组ID
         :type TargetGroupId: int
-        :param Page: 页码，默认值是 1，从 1 开始
+        :param _Page: 页码，默认值是 1，从 1 开始
         :type Page: int
-        :param Rp: 每页大小，默认值是 20
+        :param _Rp: 每页大小，默认值是 20
         :type Rp: int
-        :param Keyword: 搜索关键字
+        :param _Keyword: 搜索关键字
         :type Keyword: str
         """
-        self.TargetGroupId = None
-        self.Page = None
-        self.Rp = None
-        self.Keyword = None
+        self._TargetGroupId = None
+        self._Page = None
+        self._Rp = None
+        self._Keyword = None
+
+    @property
+    def TargetGroupId(self):
+        return self._TargetGroupId
+
+    @TargetGroupId.setter
+    def TargetGroupId(self, TargetGroupId):
+        self._TargetGroupId = TargetGroupId
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.TargetGroupId = params.get("TargetGroupId")
-        self.Page = params.get("Page")
-        self.Rp = params.get("Rp")
-        self.Keyword = params.get("Keyword")
+        self._TargetGroupId = params.get("TargetGroupId")
+        self._Page = params.get("Page")
+        self._Rp = params.get("Rp")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3317,27 +5966,51 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 策略总数
+        :param _TotalNum: 策略总数
         :type TotalNum: int
-        :param List: 策略列表
+        :param _List: 策略列表
         :type List: list of AttachPolicyInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.List = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = AttachPolicyInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListAttachedRolePoliciesRequest(AbstractModel):
@@ -3347,38 +6020,87 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Page: 页码，从 1 开始
+        :param _Page: 页码，从 1 开始
         :type Page: int
-        :param Rp: 每页行数，不能大于200
+        :param _Rp: 每页行数，不能大于200
         :type Rp: int
-        :param RoleId: 角色 ID。用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleId: 角色 ID。用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str
-        :param RoleName: 角色名。用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleName: 角色名。用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleName: str
-        :param PolicyType: 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
+        :param _PolicyType: 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
         :type PolicyType: str
-        :param Keyword: 搜索关键字
+        :param _Keyword: 搜索关键字
         :type Keyword: str
         """
-        self.Page = None
-        self.Rp = None
-        self.RoleId = None
-        self.RoleName = None
-        self.PolicyType = None
-        self.Keyword = None
+        self._Page = None
+        self._Rp = None
+        self._RoleId = None
+        self._RoleName = None
+        self._PolicyType = None
+        self._Keyword = None
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Page = params.get("Page")
-        self.Rp = params.get("Rp")
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
-        self.PolicyType = params.get("PolicyType")
-        self.Keyword = params.get("Keyword")
+        self._Page = params.get("Page")
+        self._Rp = params.get("Rp")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._PolicyType = params.get("PolicyType")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3391,27 +6113,51 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: 角色关联的策略列表
+        :param _List: 角色关联的策略列表
         :type List: list of AttachedPolicyOfRole
-        :param TotalNum: 角色关联的策略总数
+        :param _TotalNum: 角色关联的策略总数
         :type TotalNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.List = None
-        self.TotalNum = None
-        self.RequestId = None
+        self._List = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = AttachedPolicyOfRole()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
 
 
 class ListAttachedUserAllPoliciesRequest(AbstractModel):
@@ -3421,38 +6167,87 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 目标用户ID
+        :param _TargetUin: 目标用户ID
         :type TargetUin: int
-        :param Rp: 每页数量，必须大于 0 且小于或等于 200
+        :param _Rp: 每页数量，必须大于 0 且小于或等于 200
         :type Rp: int
-        :param Page: 页码，从 1开始，不能大于 200
+        :param _Page: 页码，从 1开始，不能大于 200
         :type Page: int
-        :param AttachType: 0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略
+        :param _AttachType: 0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略
         :type AttachType: int
-        :param StrategyType: 策略类型
+        :param _StrategyType: 策略类型
         :type StrategyType: int
-        :param Keyword: 搜索关键字
+        :param _Keyword: 搜索关键字
         :type Keyword: str
         """
-        self.TargetUin = None
-        self.Rp = None
-        self.Page = None
-        self.AttachType = None
-        self.StrategyType = None
-        self.Keyword = None
+        self._TargetUin = None
+        self._Rp = None
+        self._Page = None
+        self._AttachType = None
+        self._StrategyType = None
+        self._Keyword = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def AttachType(self):
+        return self._AttachType
+
+    @AttachType.setter
+    def AttachType(self, AttachType):
+        self._AttachType = AttachType
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
-        self.Rp = params.get("Rp")
-        self.Page = params.get("Page")
-        self.AttachType = params.get("AttachType")
-        self.StrategyType = params.get("StrategyType")
-        self.Keyword = params.get("Keyword")
+        self._TargetUin = params.get("TargetUin")
+        self._Rp = params.get("Rp")
+        self._Page = params.get("Page")
+        self._AttachType = params.get("AttachType")
+        self._StrategyType = params.get("StrategyType")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3465,27 +6260,51 @@ class ListAttachedUserAllPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyList: 策略列表数据
+        :param _PolicyList: 策略列表数据
         :type PolicyList: list of AttachedUserPolicy
-        :param TotalNum: 策略总数
+        :param _TotalNum: 策略总数
         :type TotalNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PolicyList = None
-        self.TotalNum = None
-        self.RequestId = None
+        self._PolicyList = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def PolicyList(self):
+        return self._PolicyList
+
+    @PolicyList.setter
+    def PolicyList(self, PolicyList):
+        self._PolicyList = PolicyList
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PolicyList") is not None:
-            self.PolicyList = []
+            self._PolicyList = []
             for item in params.get("PolicyList"):
                 obj = AttachedUserPolicy()
                 obj._deserialize(item)
-                self.PolicyList.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.RequestId = params.get("RequestId")
+                self._PolicyList.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
 
 
 class ListAttachedUserPoliciesRequest(AbstractModel):
@@ -3495,26 +6314,51 @@ class ListAttachedUserPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 子账号 uin
+        :param _TargetUin: 子账号 uin
         :type TargetUin: int
-        :param Page: 页码，默认值是 1，从 1 开始
+        :param _Page: 页码，默认值是 1，从 1 开始
         :type Page: int
-        :param Rp: 每页大小，默认值是 20
+        :param _Rp: 每页大小，默认值是 20
         :type Rp: int
         """
-        self.TargetUin = None
-        self.Page = None
-        self.Rp = None
+        self._TargetUin = None
+        self._Page = None
+        self._Rp = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
-        self.Page = params.get("Page")
-        self.Rp = params.get("Rp")
+        self._TargetUin = params.get("TargetUin")
+        self._Page = params.get("Page")
+        self._Rp = params.get("Rp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3527,27 +6371,51 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 策略总数
+        :param _TotalNum: 策略总数
         :type TotalNum: int
-        :param List: 策略列表
+        :param _List: 策略列表
         :type List: list of AttachPolicyInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.List = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = AttachPolicyInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListCollaboratorsRequest(AbstractModel):
@@ -3557,22 +6425,39 @@ class ListCollaboratorsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 分页条数，缺省为20
+        :param _Limit: 分页条数，缺省为20
         :type Limit: int
-        :param Offset: 分页起始值，缺省为0
+        :param _Offset: 分页起始值，缺省为0
         :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3585,27 +6470,51 @@ class ListCollaboratorsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 总数
+        :param _TotalNum: 总数
         :type TotalNum: int
-        :param Data: 协作者信息
+        :param _Data: 协作者信息
         :type Data: list of SubAccountInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.Data = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = SubAccountInfo()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListEntitiesForPolicyRequest(AbstractModel):
@@ -3615,30 +6524,63 @@ class ListEntitiesForPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略 id
+        :param _PolicyId: 策略 id
         :type PolicyId: int
-        :param Page: 页码，默认值是 1，从 1 开始
+        :param _Page: 页码，默认值是 1，从 1 开始
         :type Page: int
-        :param Rp: 每页大小，默认值是 20
+        :param _Rp: 每页大小，默认值是 20
         :type Rp: int
-        :param EntityFilter: 可取值 'All'、'User'、'Group' 和 'Role'，'All' 表示获取所有实体类型，'User' 表示只获取子账号，'Group' 表示只获取用户组，'Role' 表示只获取角色，默认取 'All'
+        :param _EntityFilter: 可取值 'All'、'User'、'Group' 和 'Role'，'All' 表示获取所有实体类型，'User' 表示只获取子账号，'Group' 表示只获取用户组，'Role' 表示只获取角色，默认取 'All'
         :type EntityFilter: str
         """
-        self.PolicyId = None
-        self.Page = None
-        self.Rp = None
-        self.EntityFilter = None
+        self._PolicyId = None
+        self._Page = None
+        self._Rp = None
+        self._EntityFilter = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def EntityFilter(self):
+        return self._EntityFilter
+
+    @EntityFilter.setter
+    def EntityFilter(self, EntityFilter):
+        self._EntityFilter = EntityFilter
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.Page = params.get("Page")
-        self.Rp = params.get("Rp")
-        self.EntityFilter = params.get("EntityFilter")
+        self._PolicyId = params.get("PolicyId")
+        self._Page = params.get("Page")
+        self._Rp = params.get("Rp")
+        self._EntityFilter = params.get("EntityFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3651,29 +6593,53 @@ class ListEntitiesForPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 实体总数
+        :param _TotalNum: 实体总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
-        :param List: 实体列表
+        :param _List: 实体列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of AttachEntityOfPolicy
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.List = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = AttachEntityOfPolicy()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListGrantServiceAccessActionNode(AbstractModel):
@@ -3683,22 +6649,39 @@ class ListGrantServiceAccessActionNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 接口名
+        :param _Name: 接口名
         :type Name: str
-        :param Description: 接口描述
+        :param _Description: 接口描述
         :type Description: str
         """
-        self.Name = None
-        self.Description = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3711,38 +6694,63 @@ class ListGrantServiceAccessNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Service: 服务
+        :param _Service: 服务
         :type Service: :class:`tencentcloud.cam.v20190116.models.ListGrantServiceAccessService`
-        :param Action: 接口信息
+        :param _Action: 接口信息
         :type Action: list of ListGrantServiceAccessActionNode
-        :param Policy: 授权的策略
+        :param _Policy: 授权的策略
         :type Policy: list of ListGrantServiceAccessPolicy
         """
-        self.Service = None
-        self.Action = None
-        self.Policy = None
+        self._Service = None
+        self._Action = None
+        self._Policy = None
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
 
 
     def _deserialize(self, params):
         if params.get("Service") is not None:
-            self.Service = ListGrantServiceAccessService()
-            self.Service._deserialize(params.get("Service"))
+            self._Service = ListGrantServiceAccessService()
+            self._Service._deserialize(params.get("Service"))
         if params.get("Action") is not None:
-            self.Action = []
+            self._Action = []
             for item in params.get("Action"):
                 obj = ListGrantServiceAccessActionNode()
                 obj._deserialize(item)
-                self.Action.append(obj)
+                self._Action.append(obj)
         if params.get("Policy") is not None:
-            self.Policy = []
+            self._Policy = []
             for item in params.get("Policy"):
                 obj = ListGrantServiceAccessPolicy()
                 obj._deserialize(item)
-                self.Policy.append(obj)
+                self._Policy.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3755,30 +6763,63 @@ class ListGrantServiceAccessPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: str
-        :param PolicyName: 策略名
+        :param _PolicyName: 策略名
         :type PolicyName: str
-        :param PolicyType: 策略类型: Custom自定义策略，Presetting预设策略
+        :param _PolicyType: 策略类型: Custom自定义策略，Presetting预设策略
         :type PolicyType: str
-        :param PolicyDescription: 策略描述
+        :param _PolicyDescription: 策略描述
         :type PolicyDescription: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.PolicyType = None
-        self.PolicyDescription = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._PolicyType = None
+        self._PolicyDescription = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyDescription(self):
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.PolicyType = params.get("PolicyType")
-        self.PolicyDescription = params.get("PolicyDescription")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyDescription = params.get("PolicyDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3791,22 +6832,39 @@ class ListGrantServiceAccessService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceType: 服务
+        :param _ServiceType: 服务
         :type ServiceType: str
-        :param ServiceName: 服务名
+        :param _ServiceName: 服务名
         :type ServiceName: str
         """
-        self.ServiceType = None
-        self.ServiceName = None
+        self._ServiceType = None
+        self._ServiceName = None
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
 
 
     def _deserialize(self, params):
-        self.ServiceType = params.get("ServiceType")
-        self.ServiceName = params.get("ServiceName")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3819,30 +6877,63 @@ class ListGroupsForUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uid: 子用户 UID
+        :param _Uid: 子用户 UID
         :type Uid: int
-        :param Rp: 每页数量。默认为20。
+        :param _Rp: 每页数量。默认为20。
         :type Rp: int
-        :param Page: 页码。默认为1。
+        :param _Page: 页码。默认为1。
         :type Page: int
-        :param SubUin: 子账号UIN
+        :param _SubUin: 子账号UIN
         :type SubUin: int
         """
-        self.Uid = None
-        self.Rp = None
-        self.Page = None
-        self.SubUin = None
+        self._Uid = None
+        self._Rp = None
+        self._Page = None
+        self._SubUin = None
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def SubUin(self):
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
 
 
     def _deserialize(self, params):
-        self.Uid = params.get("Uid")
-        self.Rp = params.get("Rp")
-        self.Page = params.get("Page")
-        self.SubUin = params.get("SubUin")
+        self._Uid = params.get("Uid")
+        self._Rp = params.get("Rp")
+        self._Page = params.get("Page")
+        self._SubUin = params.get("SubUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3855,27 +6946,51 @@ class ListGroupsForUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 子用户加入的用户组总数
+        :param _TotalNum: 子用户加入的用户组总数
         :type TotalNum: int
-        :param GroupInfo: 用户组信息
+        :param _GroupInfo: 用户组信息
         :type GroupInfo: list of GroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.GroupInfo = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._GroupInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def GroupInfo(self):
+        return self._GroupInfo
+
+    @GroupInfo.setter
+    def GroupInfo(self, GroupInfo):
+        self._GroupInfo = GroupInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("GroupInfo") is not None:
-            self.GroupInfo = []
+            self._GroupInfo = []
             for item in params.get("GroupInfo"):
                 obj = GroupInfo()
                 obj._deserialize(item)
-                self.GroupInfo.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._GroupInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListGroupsRequest(AbstractModel):
@@ -3885,26 +7000,51 @@ class ListGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Page: 页码。默认为1。
+        :param _Page: 页码。默认为1。
         :type Page: int
-        :param Rp: 每页数量。默认为20。
+        :param _Rp: 每页数量。默认为20。
         :type Rp: int
-        :param Keyword: 按用户组名称匹配。
+        :param _Keyword: 按用户组名称匹配。
         :type Keyword: str
         """
-        self.Page = None
-        self.Rp = None
-        self.Keyword = None
+        self._Page = None
+        self._Rp = None
+        self._Keyword = None
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Page = params.get("Page")
-        self.Rp = params.get("Rp")
-        self.Keyword = params.get("Keyword")
+        self._Page = params.get("Page")
+        self._Rp = params.get("Rp")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3917,27 +7057,51 @@ class ListGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 用户组总数。
+        :param _TotalNum: 用户组总数。
         :type TotalNum: int
-        :param GroupInfo: 用户组数组信息。
+        :param _GroupInfo: 用户组数组信息。
         :type GroupInfo: list of GroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.GroupInfo = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._GroupInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def GroupInfo(self):
+        return self._GroupInfo
+
+    @GroupInfo.setter
+    def GroupInfo(self, GroupInfo):
+        self._GroupInfo = GroupInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("GroupInfo") is not None:
-            self.GroupInfo = []
+            self._GroupInfo = []
             for item in params.get("GroupInfo"):
                 obj = GroupInfo()
                 obj._deserialize(item)
-                self.GroupInfo.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._GroupInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListPoliciesGrantingServiceAccessRequest(AbstractModel):
@@ -3947,30 +7111,63 @@ class ListPoliciesGrantingServiceAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 子账号uin，与RoleId、GroupId三选一必传
+        :param _TargetUin: 子账号uin，与RoleId、GroupId三选一必传
         :type TargetUin: int
-        :param RoleId: 角色ID，与TargetUin、GroupId三选一必传
+        :param _RoleId: 角色ID，与TargetUin、GroupId三选一必传
         :type RoleId: int
-        :param GroupId: 用户组ID，与TargetUin、RoleId三选一必传
+        :param _GroupId: 用户组ID，与TargetUin、RoleId三选一必传
         :type GroupId: int
-        :param ServiceType: 服务名，查看服务授权接口详情时需传该字段
+        :param _ServiceType: 服务名，查看服务授权接口详情时需传该字段
         :type ServiceType: str
         """
-        self.TargetUin = None
-        self.RoleId = None
-        self.GroupId = None
-        self.ServiceType = None
+        self._TargetUin = None
+        self._RoleId = None
+        self._GroupId = None
+        self._ServiceType = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
-        self.RoleId = params.get("RoleId")
-        self.GroupId = params.get("GroupId")
-        self.ServiceType = params.get("ServiceType")
+        self._TargetUin = params.get("TargetUin")
+        self._RoleId = params.get("RoleId")
+        self._GroupId = params.get("GroupId")
+        self._ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3983,23 +7180,39 @@ class ListPoliciesGrantingServiceAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: 列表
+        :param _List: 列表
         :type List: list of ListGrantServiceAccessNode
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.List = None
-        self.RequestId = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = ListGrantServiceAccessNode()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListPoliciesRequest(AbstractModel):
@@ -4009,30 +7222,63 @@ class ListPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rp: 每页数量，默认值是 20，必须大于 0 且小于或等于 200
+        :param _Rp: 每页数量，默认值是 20，必须大于 0 且小于或等于 200
         :type Rp: int
-        :param Page: 页码，默认值是 1，从 1开始，不能大于 200
+        :param _Page: 页码，默认值是 1，从 1开始，不能大于 200
         :type Page: int
-        :param Scope: 可取值 'All'、'QCS' 和 'Local'，'All' 获取所有策略，'QCS' 只获取预设策略，'Local' 只获取自定义策略，默认取 'All'
+        :param _Scope: 可取值 'All'、'QCS' 和 'Local'，'All' 获取所有策略，'QCS' 只获取预设策略，'Local' 只获取自定义策略，默认取 'All'
         :type Scope: str
-        :param Keyword: 按策略名匹配
+        :param _Keyword: 按策略名匹配
         :type Keyword: str
         """
-        self.Rp = None
-        self.Page = None
-        self.Scope = None
-        self.Keyword = None
+        self._Rp = None
+        self._Page = None
+        self._Scope = None
+        self._Keyword = None
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Rp = params.get("Rp")
-        self.Page = params.get("Page")
-        self.Scope = params.get("Scope")
-        self.Keyword = params.get("Keyword")
+        self._Rp = params.get("Rp")
+        self._Page = params.get("Page")
+        self._Scope = params.get("Scope")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4045,9 +7291,9 @@ class ListPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 策略总数
+        :param _TotalNum: 策略总数
         :type TotalNum: int
-        :param List: 策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
+        :param _List: 策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
 policyId：策略 id 
 policyName：策略名
 addTime：策略创建时间
@@ -4058,28 +7304,60 @@ Attachments: 关联的用户数
 ServiceType: 策略关联的产品
 IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
         :type List: list of StrategyInfo
-        :param ServiceTypeList: 保留字段
+        :param _ServiceTypeList: 保留字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTypeList: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.List = None
-        self.ServiceTypeList = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._List = None
+        self._ServiceTypeList = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def ServiceTypeList(self):
+        return self._ServiceTypeList
+
+    @ServiceTypeList.setter
+    def ServiceTypeList(self, ServiceTypeList):
+        self._ServiceTypeList = ServiceTypeList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = StrategyInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
-        self.ServiceTypeList = params.get("ServiceTypeList")
-        self.RequestId = params.get("RequestId")
+                self._List.append(obj)
+        self._ServiceTypeList = params.get("ServiceTypeList")
+        self._RequestId = params.get("RequestId")
 
 
 class ListPolicyVersionsRequest(AbstractModel):
@@ -4089,18 +7367,27 @@ class ListPolicyVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
         """
-        self.PolicyId = None
+        self._PolicyId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4113,24 +7400,40 @@ class ListPolicyVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Versions: 策略版本列表
+        :param _Versions: 策略版本列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of PolicyVersionItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Versions = None
-        self.RequestId = None
+        self._Versions = None
+        self._RequestId = None
+
+    @property
+    def Versions(self):
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Versions") is not None:
-            self.Versions = []
+            self._Versions = []
             for item in params.get("Versions"):
                 obj = PolicyVersionItem()
                 obj._deserialize(item)
-                self.Versions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Versions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListSAMLProvidersRequest(AbstractModel):
@@ -4146,27 +7449,51 @@ class ListSAMLProvidersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: SAML身份提供商总数
+        :param _TotalCount: SAML身份提供商总数
         :type TotalCount: int
-        :param SAMLProviderSet: SAML身份提供商列表
+        :param _SAMLProviderSet: SAML身份提供商列表
         :type SAMLProviderSet: list of SAMLProviderInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SAMLProviderSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SAMLProviderSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SAMLProviderSet(self):
+        return self._SAMLProviderSet
+
+    @SAMLProviderSet.setter
+    def SAMLProviderSet(self, SAMLProviderSet):
+        self._SAMLProviderSet = SAMLProviderSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("SAMLProviderSet") is not None:
-            self.SAMLProviderSet = []
+            self._SAMLProviderSet = []
             for item in params.get("SAMLProviderSet"):
                 obj = SAMLProviderInfo()
                 obj._deserialize(item)
-                self.SAMLProviderSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SAMLProviderSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListUsersForGroupRequest(AbstractModel):
@@ -4176,26 +7503,51 @@ class ListUsersForGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID。
+        :param _GroupId: 用户组 ID。
         :type GroupId: int
-        :param Page: 页码。默认为1。
+        :param _Page: 页码。默认为1。
         :type Page: int
-        :param Rp: 每页数量。默认为20。
+        :param _Rp: 每页数量。默认为20。
         :type Rp: int
         """
-        self.GroupId = None
-        self.Page = None
-        self.Rp = None
+        self._GroupId = None
+        self._Page = None
+        self._Rp = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.Page = params.get("Page")
-        self.Rp = params.get("Rp")
+        self._GroupId = params.get("GroupId")
+        self._Page = params.get("Page")
+        self._Rp = params.get("Rp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4208,27 +7560,51 @@ class ListUsersForGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: 用户组关联的用户总数。
+        :param _TotalNum: 用户组关联的用户总数。
         :type TotalNum: int
-        :param UserInfo: 子用户信息。
+        :param _UserInfo: 子用户信息。
         :type UserInfo: list of GroupMemberInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.UserInfo = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._UserInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("UserInfo") is not None:
-            self.UserInfo = []
+            self._UserInfo = []
             for item in params.get("UserInfo"):
                 obj = GroupMemberInfo()
                 obj._deserialize(item)
-                self.UserInfo.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._UserInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListUsersRequest(AbstractModel):
@@ -4244,23 +7620,39 @@ class ListUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 子用户信息
+        :param _Data: 子用户信息
         :type Data: list of SubAccountInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = SubAccountInfo()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListWeChatWorkSubAccountsRequest(AbstractModel):
@@ -4270,22 +7662,39 @@ class ListWeChatWorkSubAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param _Limit: 限制数目
         :type Limit: int
         """
-        self.Offset = None
-        self.Limit = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4298,27 +7707,51 @@ class ListWeChatWorkSubAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 企业微信子用户列表。
+        :param _Data: 企业微信子用户列表。
         :type Data: list of WeChatWorkSubAccount
-        :param TotalCount: 总数目。
+        :param _TotalCount: 总数目。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = WeChatWorkSubAccount()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class LoginActionFlag(AbstractModel):
@@ -4328,34 +7761,75 @@ class LoginActionFlag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Phone: 手机
+        :param _Phone: 手机
         :type Phone: int
-        :param Token: 硬token
+        :param _Token: 硬token
         :type Token: int
-        :param Stoken: 软token
+        :param _Stoken: 软token
         :type Stoken: int
-        :param Wechat: 微信
+        :param _Wechat: 微信
         :type Wechat: int
-        :param Custom: 自定义
+        :param _Custom: 自定义
         :type Custom: int
         """
-        self.Phone = None
-        self.Token = None
-        self.Stoken = None
-        self.Wechat = None
-        self.Custom = None
+        self._Phone = None
+        self._Token = None
+        self._Stoken = None
+        self._Wechat = None
+        self._Custom = None
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Stoken(self):
+        return self._Stoken
+
+    @Stoken.setter
+    def Stoken(self, Stoken):
+        self._Stoken = Stoken
+
+    @property
+    def Wechat(self):
+        return self._Wechat
+
+    @Wechat.setter
+    def Wechat(self, Wechat):
+        self._Wechat = Wechat
+
+    @property
+    def Custom(self):
+        return self._Custom
+
+    @Custom.setter
+    def Custom(self, Custom):
+        self._Custom = Custom
 
 
     def _deserialize(self, params):
-        self.Phone = params.get("Phone")
-        self.Token = params.get("Token")
-        self.Stoken = params.get("Stoken")
-        self.Wechat = params.get("Wechat")
-        self.Custom = params.get("Custom")
+        self._Phone = params.get("Phone")
+        self._Token = params.get("Token")
+        self._Stoken = params.get("Stoken")
+        self._Wechat = params.get("Wechat")
+        self._Custom = params.get("Custom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4368,38 +7842,87 @@ class LoginActionFlagIntl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Phone: 手机
+        :param _Phone: 手机
         :type Phone: int
-        :param Token: 硬token
+        :param _Token: 硬token
         :type Token: int
-        :param Stoken: 软token
+        :param _Stoken: 软token
         :type Stoken: int
-        :param Wechat: 微信
+        :param _Wechat: 微信
         :type Wechat: int
-        :param Custom: 自定义
+        :param _Custom: 自定义
         :type Custom: int
-        :param Mail: 邮件
+        :param _Mail: 邮件
         :type Mail: int
         """
-        self.Phone = None
-        self.Token = None
-        self.Stoken = None
-        self.Wechat = None
-        self.Custom = None
-        self.Mail = None
+        self._Phone = None
+        self._Token = None
+        self._Stoken = None
+        self._Wechat = None
+        self._Custom = None
+        self._Mail = None
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Stoken(self):
+        return self._Stoken
+
+    @Stoken.setter
+    def Stoken(self, Stoken):
+        self._Stoken = Stoken
+
+    @property
+    def Wechat(self):
+        return self._Wechat
+
+    @Wechat.setter
+    def Wechat(self, Wechat):
+        self._Wechat = Wechat
+
+    @property
+    def Custom(self):
+        return self._Custom
+
+    @Custom.setter
+    def Custom(self, Custom):
+        self._Custom = Custom
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
 
 
     def _deserialize(self, params):
-        self.Phone = params.get("Phone")
-        self.Token = params.get("Token")
-        self.Stoken = params.get("Stoken")
-        self.Wechat = params.get("Wechat")
-        self.Custom = params.get("Custom")
-        self.Mail = params.get("Mail")
+        self._Phone = params.get("Phone")
+        self._Token = params.get("Token")
+        self._Stoken = params.get("Stoken")
+        self._Wechat = params.get("Wechat")
+        self._Custom = params.get("Custom")
+        self._Mail = params.get("Mail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4412,26 +7935,51 @@ class LoginActionMfaFlag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Phone: 手机
+        :param _Phone: 手机
         :type Phone: int
-        :param Stoken: 软token
+        :param _Stoken: 软token
         :type Stoken: int
-        :param Wechat: 微信
+        :param _Wechat: 微信
         :type Wechat: int
         """
-        self.Phone = None
-        self.Stoken = None
-        self.Wechat = None
+        self._Phone = None
+        self._Stoken = None
+        self._Wechat = None
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Stoken(self):
+        return self._Stoken
+
+    @Stoken.setter
+    def Stoken(self, Stoken):
+        self._Stoken = Stoken
+
+    @property
+    def Wechat(self):
+        return self._Wechat
+
+    @Wechat.setter
+    def Wechat(self, Wechat):
+        self._Wechat = Wechat
 
 
     def _deserialize(self, params):
-        self.Phone = params.get("Phone")
-        self.Stoken = params.get("Stoken")
-        self.Wechat = params.get("Wechat")
+        self._Phone = params.get("Phone")
+        self._Stoken = params.get("Stoken")
+        self._Wechat = params.get("Wechat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4444,34 +7992,75 @@ class OffsiteFlag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VerifyFlag: 验证标识
+        :param _VerifyFlag: 验证标识
         :type VerifyFlag: int
-        :param NotifyPhone: 手机通知
+        :param _NotifyPhone: 手机通知
         :type NotifyPhone: int
-        :param NotifyEmail: 邮箱通知
+        :param _NotifyEmail: 邮箱通知
         :type NotifyEmail: int
-        :param NotifyWechat: 微信通知
+        :param _NotifyWechat: 微信通知
         :type NotifyWechat: int
-        :param Tips: 提示
+        :param _Tips: 提示
         :type Tips: int
         """
-        self.VerifyFlag = None
-        self.NotifyPhone = None
-        self.NotifyEmail = None
-        self.NotifyWechat = None
-        self.Tips = None
+        self._VerifyFlag = None
+        self._NotifyPhone = None
+        self._NotifyEmail = None
+        self._NotifyWechat = None
+        self._Tips = None
+
+    @property
+    def VerifyFlag(self):
+        return self._VerifyFlag
+
+    @VerifyFlag.setter
+    def VerifyFlag(self, VerifyFlag):
+        self._VerifyFlag = VerifyFlag
+
+    @property
+    def NotifyPhone(self):
+        return self._NotifyPhone
+
+    @NotifyPhone.setter
+    def NotifyPhone(self, NotifyPhone):
+        self._NotifyPhone = NotifyPhone
+
+    @property
+    def NotifyEmail(self):
+        return self._NotifyEmail
+
+    @NotifyEmail.setter
+    def NotifyEmail(self, NotifyEmail):
+        self._NotifyEmail = NotifyEmail
+
+    @property
+    def NotifyWechat(self):
+        return self._NotifyWechat
+
+    @NotifyWechat.setter
+    def NotifyWechat(self, NotifyWechat):
+        self._NotifyWechat = NotifyWechat
+
+    @property
+    def Tips(self):
+        return self._Tips
+
+    @Tips.setter
+    def Tips(self, Tips):
+        self._Tips = Tips
 
 
     def _deserialize(self, params):
-        self.VerifyFlag = params.get("VerifyFlag")
-        self.NotifyPhone = params.get("NotifyPhone")
-        self.NotifyEmail = params.get("NotifyEmail")
-        self.NotifyWechat = params.get("NotifyWechat")
-        self.Tips = params.get("Tips")
+        self._VerifyFlag = params.get("VerifyFlag")
+        self._NotifyPhone = params.get("NotifyPhone")
+        self._NotifyEmail = params.get("NotifyEmail")
+        self._NotifyWechat = params.get("NotifyWechat")
+        self._Tips = params.get("Tips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4484,34 +8073,67 @@ class PolicyVersionDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: 策略版本号
+        :param _VersionId: 策略版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
-        :param CreateDate: 策略版本创建时间
+        :param _CreateDate: 策略版本创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateDate: str
-        :param IsDefaultVersion: 是否是正在生效的版本。0表示不是，1表示是
+        :param _IsDefaultVersion: 是否是正在生效的版本。0表示不是，1表示是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefaultVersion: int
-        :param Document: 策略语法文本
+        :param _Document: 策略语法文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Document: str
         """
-        self.VersionId = None
-        self.CreateDate = None
-        self.IsDefaultVersion = None
-        self.Document = None
+        self._VersionId = None
+        self._CreateDate = None
+        self._IsDefaultVersion = None
+        self._Document = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def CreateDate(self):
+        return self._CreateDate
+
+    @CreateDate.setter
+    def CreateDate(self, CreateDate):
+        self._CreateDate = CreateDate
+
+    @property
+    def IsDefaultVersion(self):
+        return self._IsDefaultVersion
+
+    @IsDefaultVersion.setter
+    def IsDefaultVersion(self, IsDefaultVersion):
+        self._IsDefaultVersion = IsDefaultVersion
+
+    @property
+    def Document(self):
+        return self._Document
+
+    @Document.setter
+    def Document(self, Document):
+        self._Document = Document
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
-        self.CreateDate = params.get("CreateDate")
-        self.IsDefaultVersion = params.get("IsDefaultVersion")
-        self.Document = params.get("Document")
+        self._VersionId = params.get("VersionId")
+        self._CreateDate = params.get("CreateDate")
+        self._IsDefaultVersion = params.get("IsDefaultVersion")
+        self._Document = params.get("Document")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4524,29 +8146,54 @@ class PolicyVersionItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: 策略版本号
+        :param _VersionId: 策略版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
-        :param CreateDate: 策略版本创建时间
+        :param _CreateDate: 策略版本创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateDate: str
-        :param IsDefaultVersion: 是否是正在生效的版本。0表示不是，1表示是
+        :param _IsDefaultVersion: 是否是正在生效的版本。0表示不是，1表示是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefaultVersion: int
         """
-        self.VersionId = None
-        self.CreateDate = None
-        self.IsDefaultVersion = None
+        self._VersionId = None
+        self._CreateDate = None
+        self._IsDefaultVersion = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def CreateDate(self):
+        return self._CreateDate
+
+    @CreateDate.setter
+    def CreateDate(self, CreateDate):
+        self._CreateDate = CreateDate
+
+    @property
+    def IsDefaultVersion(self):
+        return self._IsDefaultVersion
+
+    @IsDefaultVersion.setter
+    def IsDefaultVersion(self, IsDefaultVersion):
+        self._IsDefaultVersion = IsDefaultVersion
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
-        self.CreateDate = params.get("CreateDate")
-        self.IsDefaultVersion = params.get("IsDefaultVersion")
+        self._VersionId = params.get("VersionId")
+        self._CreateDate = params.get("CreateDate")
+        self._IsDefaultVersion = params.get("IsDefaultVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4559,26 +8206,51 @@ class PutRolePermissionsBoundaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
-        :param RoleId: 角色ID（与角色名至少填一个）
+        :param _RoleId: 角色ID（与角色名至少填一个）
         :type RoleId: str
-        :param RoleName: 角色名（与角色ID至少填一个）
+        :param _RoleName: 角色名（与角色ID至少填一个）
         :type RoleName: str
         """
-        self.PolicyId = None
-        self.RoleId = None
-        self.RoleName = None
+        self._PolicyId = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._PolicyId = params.get("PolicyId")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4591,14 +8263,22 @@ class PutRolePermissionsBoundaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class PutUserPermissionsBoundaryRequest(AbstractModel):
@@ -4608,22 +8288,39 @@ class PutUserPermissionsBoundaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetUin: 子账号Uin
+        :param _TargetUin: 子账号Uin
         :type TargetUin: int
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
         """
-        self.TargetUin = None
-        self.PolicyId = None
+        self._TargetUin = None
+        self._PolicyId = None
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
-        self.TargetUin = params.get("TargetUin")
-        self.PolicyId = params.get("PolicyId")
+        self._TargetUin = params.get("TargetUin")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4636,14 +8333,22 @@ class PutUserPermissionsBoundaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RemoveUserFromGroupRequest(AbstractModel):
@@ -4653,23 +8358,32 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: 要删除的用户 UIN/UID和用户组 ID对应数组
+        :param _Info: 要删除的用户 UIN/UID和用户组 ID对应数组
         :type Info: list of GroupIdOfUidInfo
         """
-        self.Info = None
+        self._Info = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = []
+            self._Info = []
             for item in params.get("Info"):
                 obj = GroupIdOfUidInfo()
                 obj._deserialize(item)
-                self.Info.append(obj)
+                self._Info.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4682,14 +8396,22 @@ class RemoveUserFromGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RoleInfo(AbstractModel):
@@ -4699,67 +8421,156 @@ class RoleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleId: 角色ID
+        :param _RoleId: 角色ID
         :type RoleId: str
-        :param RoleName: 角色名称
+        :param _RoleName: 角色名称
         :type RoleName: str
-        :param PolicyDocument: 角色的策略文档
+        :param _PolicyDocument: 角色的策略文档
         :type PolicyDocument: str
-        :param Description: 角色描述
+        :param _Description: 角色描述
         :type Description: str
-        :param AddTime: 角色的创建时间
+        :param _AddTime: 角色的创建时间
         :type AddTime: str
-        :param UpdateTime: 角色的最近一次时间
+        :param _UpdateTime: 角色的最近一次时间
         :type UpdateTime: str
-        :param ConsoleLogin: 角色是否允许登录
+        :param _ConsoleLogin: 角色是否允许登录
         :type ConsoleLogin: int
-        :param RoleType: 角色类型，取user、system或service_linked
+        :param _RoleType: 角色类型，取user、system或service_linked
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleType: str
-        :param SessionDuration: 有效时间
+        :param _SessionDuration: 有效时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionDuration: int
-        :param DeletionTaskId: 服务相关角色删除TaskId
+        :param _DeletionTaskId: 服务相关角色删除TaskId
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionTaskId: str
-        :param Tags: 标签
+        :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of RoleTags
         """
-        self.RoleId = None
-        self.RoleName = None
-        self.PolicyDocument = None
-        self.Description = None
-        self.AddTime = None
-        self.UpdateTime = None
-        self.ConsoleLogin = None
-        self.RoleType = None
-        self.SessionDuration = None
-        self.DeletionTaskId = None
-        self.Tags = None
+        self._RoleId = None
+        self._RoleName = None
+        self._PolicyDocument = None
+        self._Description = None
+        self._AddTime = None
+        self._UpdateTime = None
+        self._ConsoleLogin = None
+        self._RoleType = None
+        self._SessionDuration = None
+        self._DeletionTaskId = None
+        self._Tags = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def RoleType(self):
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def SessionDuration(self):
+        return self._SessionDuration
+
+    @SessionDuration.setter
+    def SessionDuration(self, SessionDuration):
+        self._SessionDuration = SessionDuration
+
+    @property
+    def DeletionTaskId(self):
+        return self._DeletionTaskId
+
+    @DeletionTaskId.setter
+    def DeletionTaskId(self, DeletionTaskId):
+        self._DeletionTaskId = DeletionTaskId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.Description = params.get("Description")
-        self.AddTime = params.get("AddTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.RoleType = params.get("RoleType")
-        self.SessionDuration = params.get("SessionDuration")
-        self.DeletionTaskId = params.get("DeletionTaskId")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._Description = params.get("Description")
+        self._AddTime = params.get("AddTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._RoleType = params.get("RoleType")
+        self._SessionDuration = params.get("SessionDuration")
+        self._DeletionTaskId = params.get("DeletionTaskId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = RoleTags()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4772,22 +8583,39 @@ class RoleTags(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 标签键
+        :param _Key: 标签键
         :type Key: str
-        :param Value: 标签值
+        :param _Value: 标签值
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4800,30 +8628,63 @@ class SAMLProviderInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: SAML身份提供商名称
+        :param _Name: SAML身份提供商名称
         :type Name: str
-        :param Description: SAML身份提供商描述
+        :param _Description: SAML身份提供商描述
         :type Description: str
-        :param CreateTime: SAML身份提供商创建时间
+        :param _CreateTime: SAML身份提供商创建时间
         :type CreateTime: str
-        :param ModifyTime: SAML身份提供商上次修改时间
+        :param _ModifyTime: SAML身份提供商上次修改时间
         :type ModifyTime: str
         """
-        self.Name = None
-        self.Description = None
-        self.CreateTime = None
-        self.ModifyTime = None
+        self._Name = None
+        self._Description = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
-        self.ModifyTime = params.get("ModifyTime")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4836,28 +8697,53 @@ class SecretIdLastUsed(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretId: 密钥ID
+        :param _SecretId: 密钥ID
         :type SecretId: str
-        :param LastUsedDate: 最后访问日期(有1天延迟)
+        :param _LastUsedDate: 最后访问日期(有1天延迟)
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUsedDate: str
-        :param LastSecretUsedDate: 最后密钥访问日期
+        :param _LastSecretUsedDate: 最后密钥访问日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastSecretUsedDate: int
         """
-        self.SecretId = None
-        self.LastUsedDate = None
-        self.LastSecretUsedDate = None
+        self._SecretId = None
+        self._LastUsedDate = None
+        self._LastSecretUsedDate = None
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def LastUsedDate(self):
+        return self._LastUsedDate
+
+    @LastUsedDate.setter
+    def LastUsedDate(self, LastUsedDate):
+        self._LastUsedDate = LastUsedDate
+
+    @property
+    def LastSecretUsedDate(self):
+        return self._LastSecretUsedDate
+
+    @LastSecretUsedDate.setter
+    def LastSecretUsedDate(self, LastSecretUsedDate):
+        self._LastSecretUsedDate = LastSecretUsedDate
 
 
     def _deserialize(self, params):
-        self.SecretId = params.get("SecretId")
-        self.LastUsedDate = params.get("LastUsedDate")
-        self.LastSecretUsedDate = params.get("LastSecretUsedDate")
+        self._SecretId = params.get("SecretId")
+        self._LastUsedDate = params.get("LastUsedDate")
+        self._LastSecretUsedDate = params.get("LastSecretUsedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4870,22 +8756,39 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID
+        :param _PolicyId: 策略ID
         :type PolicyId: int
-        :param VersionId: 策略版本号，可由ListPolicyVersions获取
+        :param _VersionId: 策略版本号，可由ListPolicyVersions获取
         :type VersionId: int
         """
-        self.PolicyId = None
-        self.VersionId = None
+        self._PolicyId = None
+        self._VersionId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.VersionId = params.get("VersionId")
+        self._PolicyId = params.get("PolicyId")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4898,14 +8801,22 @@ class SetDefaultPolicyVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetMfaFlagRequest(AbstractModel):
@@ -4915,30 +8826,55 @@ class SetMfaFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpUin: 设置用户的uin
+        :param _OpUin: 设置用户的uin
         :type OpUin: int
-        :param LoginFlag: 登录保护设置
+        :param _LoginFlag: 登录保护设置
         :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
-        :param ActionFlag: 操作保护设置
+        :param _ActionFlag: 操作保护设置
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
         """
-        self.OpUin = None
-        self.LoginFlag = None
-        self.ActionFlag = None
+        self._OpUin = None
+        self._LoginFlag = None
+        self._ActionFlag = None
+
+    @property
+    def OpUin(self):
+        return self._OpUin
+
+    @OpUin.setter
+    def OpUin(self, OpUin):
+        self._OpUin = OpUin
+
+    @property
+    def LoginFlag(self):
+        return self._LoginFlag
+
+    @LoginFlag.setter
+    def LoginFlag(self, LoginFlag):
+        self._LoginFlag = LoginFlag
+
+    @property
+    def ActionFlag(self):
+        return self._ActionFlag
+
+    @ActionFlag.setter
+    def ActionFlag(self, ActionFlag):
+        self._ActionFlag = ActionFlag
 
 
     def _deserialize(self, params):
-        self.OpUin = params.get("OpUin")
+        self._OpUin = params.get("OpUin")
         if params.get("LoginFlag") is not None:
-            self.LoginFlag = LoginActionMfaFlag()
-            self.LoginFlag._deserialize(params.get("LoginFlag"))
+            self._LoginFlag = LoginActionMfaFlag()
+            self._LoginFlag._deserialize(params.get("LoginFlag"))
         if params.get("ActionFlag") is not None:
-            self.ActionFlag = LoginActionMfaFlag()
-            self.ActionFlag._deserialize(params.get("ActionFlag"))
+            self._ActionFlag = LoginActionMfaFlag()
+            self._ActionFlag._deserialize(params.get("ActionFlag"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4951,14 +8887,22 @@ class SetMfaFlagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StrategyInfo(AbstractModel):
@@ -4968,84 +8912,205 @@ class StrategyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID。
+        :param _PolicyId: 策略ID。
         :type PolicyId: int
-        :param PolicyName: 策略名称。
+        :param _PolicyName: 策略名称。
         :type PolicyName: str
-        :param AddTime: 策略创建时间。
+        :param _AddTime: 策略创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
-        :param Type: 策略类型。1 表示自定义策略，2 表示预设策略。
+        :param _Type: 策略类型。1 表示自定义策略，2 表示预设策略。
         :type Type: int
-        :param Description: 策略描述。
+        :param _Description: 策略描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建。
+        :param _CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建。
         :type CreateMode: int
-        :param Attachments: 关联的用户数
+        :param _Attachments: 关联的用户数
         :type Attachments: int
-        :param ServiceType: 策略关联的产品
+        :param _ServiceType: 策略关联的产品
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
-        :param IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+        :param _IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAttached: int
-        :param Deactived: 是否已下线
+        :param _Deactived: 是否已下线
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
-        :param DeactivedDetail: 已下线产品列表
+        :param _DeactivedDetail: 已下线产品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
-        :param IsServiceLinkedPolicy: 是否是服务相关角色策略
+        :param _IsServiceLinkedPolicy: 是否是服务相关角色策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsServiceLinkedPolicy: int
-        :param AttachEntityCount: 关联策略实体数
+        :param _AttachEntityCount: 关联策略实体数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachEntityCount: int
-        :param AttachEntityBoundaryCount: 关联权限边界实体数
+        :param _AttachEntityBoundaryCount: 关联权限边界实体数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachEntityBoundaryCount: int
-        :param UpdateTime: 最后编辑时间
+        :param _UpdateTime: 最后编辑时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.AddTime = None
-        self.Type = None
-        self.Description = None
-        self.CreateMode = None
-        self.Attachments = None
-        self.ServiceType = None
-        self.IsAttached = None
-        self.Deactived = None
-        self.DeactivedDetail = None
-        self.IsServiceLinkedPolicy = None
-        self.AttachEntityCount = None
-        self.AttachEntityBoundaryCount = None
-        self.UpdateTime = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._AddTime = None
+        self._Type = None
+        self._Description = None
+        self._CreateMode = None
+        self._Attachments = None
+        self._ServiceType = None
+        self._IsAttached = None
+        self._Deactived = None
+        self._DeactivedDetail = None
+        self._IsServiceLinkedPolicy = None
+        self._AttachEntityCount = None
+        self._AttachEntityBoundaryCount = None
+        self._UpdateTime = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateMode(self):
+        return self._CreateMode
+
+    @CreateMode.setter
+    def CreateMode(self, CreateMode):
+        self._CreateMode = CreateMode
+
+    @property
+    def Attachments(self):
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def IsAttached(self):
+        return self._IsAttached
+
+    @IsAttached.setter
+    def IsAttached(self, IsAttached):
+        self._IsAttached = IsAttached
+
+    @property
+    def Deactived(self):
+        return self._Deactived
+
+    @Deactived.setter
+    def Deactived(self, Deactived):
+        self._Deactived = Deactived
+
+    @property
+    def DeactivedDetail(self):
+        return self._DeactivedDetail
+
+    @DeactivedDetail.setter
+    def DeactivedDetail(self, DeactivedDetail):
+        self._DeactivedDetail = DeactivedDetail
+
+    @property
+    def IsServiceLinkedPolicy(self):
+        return self._IsServiceLinkedPolicy
+
+    @IsServiceLinkedPolicy.setter
+    def IsServiceLinkedPolicy(self, IsServiceLinkedPolicy):
+        self._IsServiceLinkedPolicy = IsServiceLinkedPolicy
+
+    @property
+    def AttachEntityCount(self):
+        return self._AttachEntityCount
+
+    @AttachEntityCount.setter
+    def AttachEntityCount(self, AttachEntityCount):
+        self._AttachEntityCount = AttachEntityCount
+
+    @property
+    def AttachEntityBoundaryCount(self):
+        return self._AttachEntityBoundaryCount
+
+    @AttachEntityBoundaryCount.setter
+    def AttachEntityBoundaryCount(self, AttachEntityBoundaryCount):
+        self._AttachEntityBoundaryCount = AttachEntityBoundaryCount
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.AddTime = params.get("AddTime")
-        self.Type = params.get("Type")
-        self.Description = params.get("Description")
-        self.CreateMode = params.get("CreateMode")
-        self.Attachments = params.get("Attachments")
-        self.ServiceType = params.get("ServiceType")
-        self.IsAttached = params.get("IsAttached")
-        self.Deactived = params.get("Deactived")
-        self.DeactivedDetail = params.get("DeactivedDetail")
-        self.IsServiceLinkedPolicy = params.get("IsServiceLinkedPolicy")
-        self.AttachEntityCount = params.get("AttachEntityCount")
-        self.AttachEntityBoundaryCount = params.get("AttachEntityBoundaryCount")
-        self.UpdateTime = params.get("UpdateTime")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._AddTime = params.get("AddTime")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._CreateMode = params.get("CreateMode")
+        self._Attachments = params.get("Attachments")
+        self._ServiceType = params.get("ServiceType")
+        self._IsAttached = params.get("IsAttached")
+        self._Deactived = params.get("Deactived")
+        self._DeactivedDetail = params.get("DeactivedDetail")
+        self._IsServiceLinkedPolicy = params.get("IsServiceLinkedPolicy")
+        self._AttachEntityCount = params.get("AttachEntityCount")
+        self._AttachEntityBoundaryCount = params.get("AttachEntityBoundaryCount")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5058,56 +9123,137 @@ class SubAccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 子用户用户 ID
+        :param _Uin: 子用户用户 ID
         :type Uin: int
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Uid: 子用户 UID
+        :param _Uid: 子用户 UID
         :type Uid: int
-        :param Remark: 子用户备注
+        :param _Remark: 子用户备注
         :type Remark: str
-        :param ConsoleLogin: 子用户能否登录控制台
+        :param _ConsoleLogin: 子用户能否登录控制台
         :type ConsoleLogin: int
-        :param PhoneNum: 手机号
+        :param _PhoneNum: 手机号
         :type PhoneNum: str
-        :param CountryCode: 区号
+        :param _CountryCode: 区号
         :type CountryCode: str
-        :param Email: 邮箱
+        :param _Email: 邮箱
         :type Email: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param NickName: 昵称
+        :param _NickName: 昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type NickName: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Uid = None
-        self.Remark = None
-        self.ConsoleLogin = None
-        self.PhoneNum = None
-        self.CountryCode = None
-        self.Email = None
-        self.CreateTime = None
-        self.NickName = None
+        self._Uin = None
+        self._Name = None
+        self._Uid = None
+        self._Remark = None
+        self._ConsoleLogin = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._Email = None
+        self._CreateTime = None
+        self._NickName = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def NickName(self):
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Uid = params.get("Uid")
-        self.Remark = params.get("Remark")
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.PhoneNum = params.get("PhoneNum")
-        self.CountryCode = params.get("CountryCode")
-        self.Email = params.get("Email")
-        self.CreateTime = params.get("CreateTime")
-        self.NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Uid = params.get("Uid")
+        self._Remark = params.get("Remark")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._Email = params.get("Email")
+        self._CreateTime = params.get("CreateTime")
+        self._NickName = params.get("NickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5120,48 +9266,113 @@ class SubAccountUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 子用户用户 ID
+        :param _Uin: 子用户用户 ID
         :type Uin: int
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Uid: 子用户 UID，UID是用户作为消息接收人时的唯一标识，和 UIN 一样可以唯一标识一个用户，可通过接口https://cloud.tencent.com/document/api/598/53486 获取
+        :param _Uid: 子用户 UID，UID是用户作为消息接收人时的唯一标识，和 UIN 一样可以唯一标识一个用户，可通过接口https://cloud.tencent.com/document/api/598/53486 获取
         :type Uid: int
-        :param Remark: 子用户备注
+        :param _Remark: 子用户备注
         :type Remark: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param UserType: 用户类型(2:子用户;3:企业微信子用户;4:协作者;5:消息接收人)
+        :param _UserType: 用户类型(2:子用户;3:企业微信子用户;4:协作者;5:消息接收人)
         :type UserType: int
-        :param LastLoginIp: 最近登录IP
+        :param _LastLoginIp: 最近登录IP
         :type LastLoginIp: str
-        :param LastLoginTime: 最近登录时间
+        :param _LastLoginTime: 最近登录时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastLoginTime: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Uid = None
-        self.Remark = None
-        self.CreateTime = None
-        self.UserType = None
-        self.LastLoginIp = None
-        self.LastLoginTime = None
+        self._Uin = None
+        self._Name = None
+        self._Uid = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UserType = None
+        self._LastLoginIp = None
+        self._LastLoginTime = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def LastLoginIp(self):
+        return self._LastLoginIp
+
+    @LastLoginIp.setter
+    def LastLoginIp(self, LastLoginIp):
+        self._LastLoginIp = LastLoginIp
+
+    @property
+    def LastLoginTime(self):
+        return self._LastLoginTime
+
+    @LastLoginTime.setter
+    def LastLoginTime(self, LastLoginTime):
+        self._LastLoginTime = LastLoginTime
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Uid = params.get("Uid")
-        self.Remark = params.get("Remark")
-        self.CreateTime = params.get("CreateTime")
-        self.UserType = params.get("UserType")
-        self.LastLoginIp = params.get("LastLoginIp")
-        self.LastLoginTime = params.get("LastLoginTime")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Uid = params.get("Uid")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UserType = params.get("UserType")
+        self._LastLoginIp = params.get("LastLoginIp")
+        self._LastLoginTime = params.get("LastLoginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5174,31 +9385,56 @@ class TagRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tags: 标签
+        :param _Tags: 标签
         :type Tags: list of RoleTags
-        :param RoleName: 角色名，与角色ID至少输入一个
+        :param _RoleName: 角色名，与角色ID至少输入一个
         :type RoleName: str
-        :param RoleId: 角色ID，与角色名至少输入一个
+        :param _RoleId: 角色ID，与角色名至少输入一个
         :type RoleId: str
         """
-        self.Tags = None
-        self.RoleName = None
-        self.RoleId = None
+        self._Tags = None
+        self._RoleName = None
+        self._RoleId = None
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
 
 
     def _deserialize(self, params):
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = RoleTags()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RoleName = params.get("RoleName")
-        self.RoleId = params.get("RoleId")
+                self._Tags.append(obj)
+        self._RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5211,14 +9447,22 @@ class TagRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UntagRoleRequest(AbstractModel):
@@ -5228,26 +9472,51 @@ class UntagRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKeys: 标签键
+        :param _TagKeys: 标签键
         :type TagKeys: list of str
-        :param RoleName: 角色名，与角色ID至少输入一个
+        :param _RoleName: 角色名，与角色ID至少输入一个
         :type RoleName: str
-        :param RoleId: 角色ID，与角色名至少输入一个
+        :param _RoleId: 角色ID，与角色名至少输入一个
         :type RoleId: str
         """
-        self.TagKeys = None
-        self.RoleName = None
-        self.RoleId = None
+        self._TagKeys = None
+        self._RoleName = None
+        self._RoleId = None
+
+    @property
+    def TagKeys(self):
+        return self._TagKeys
+
+    @TagKeys.setter
+    def TagKeys(self, TagKeys):
+        self._TagKeys = TagKeys
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
 
 
     def _deserialize(self, params):
-        self.TagKeys = params.get("TagKeys")
-        self.RoleName = params.get("RoleName")
-        self.RoleId = params.get("RoleId")
+        self._TagKeys = params.get("TagKeys")
+        self._RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5260,14 +9529,22 @@ class UntagRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateAccessKeyRequest(AbstractModel):
@@ -5277,26 +9554,51 @@ class UpdateAccessKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: 指定需要更新的AccessKeyId
+        :param _AccessKeyId: 指定需要更新的AccessKeyId
         :type AccessKeyId: str
-        :param Status: 密钥状态，激活（Active）或未激活（Inactive）
+        :param _Status: 密钥状态，激活（Active）或未激活（Inactive）
         :type Status: str
-        :param TargetUin: 指定用户Uin，不填默认为当前用户更新访问密钥
+        :param _TargetUin: 指定用户Uin，不填默认为当前用户更新访问密钥
         :type TargetUin: int
         """
-        self.AccessKeyId = None
-        self.Status = None
-        self.TargetUin = None
+        self._AccessKeyId = None
+        self._Status = None
+        self._TargetUin = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.Status = params.get("Status")
-        self.TargetUin = params.get("TargetUin")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._Status = params.get("Status")
+        self._TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5309,14 +9611,22 @@ class UpdateAccessKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateAssumeRolePolicyRequest(AbstractModel):
@@ -5326,26 +9636,51 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+        :param _PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
-        :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str
-        :param RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleName: str
         """
-        self.PolicyDocument = None
-        self.RoleId = None
-        self.RoleName = None
+        self._PolicyDocument = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5358,14 +9693,22 @@ class UpdateAssumeRolePolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateGroupRequest(AbstractModel):
@@ -5375,26 +9718,51 @@ class UpdateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 用户组 ID
+        :param _GroupId: 用户组 ID
         :type GroupId: int
-        :param GroupName: 用户组名
+        :param _GroupName: 用户组名
         :type GroupName: str
-        :param Remark: 用户组描述
+        :param _Remark: 用户组描述
         :type Remark: str
         """
-        self.GroupId = None
-        self.GroupName = None
-        self.Remark = None
+        self._GroupId = None
+        self._GroupName = None
+        self._Remark = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.Remark = params.get("Remark")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5407,14 +9775,22 @@ class UpdateGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateOIDCConfigRequest(AbstractModel):
@@ -5424,34 +9800,75 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityUrl: 身份提供商URL
+        :param _IdentityUrl: 身份提供商URL
         :type IdentityUrl: str
-        :param IdentityKey: 签名公钥，需要base64
+        :param _IdentityKey: 签名公钥，需要base64
         :type IdentityKey: str
-        :param ClientId: 客户端ID
+        :param _ClientId: 客户端ID
         :type ClientId: list of str
-        :param Name: 名称
+        :param _Name: 名称
         :type Name: str
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
         """
-        self.IdentityUrl = None
-        self.IdentityKey = None
-        self.ClientId = None
-        self.Name = None
-        self.Description = None
+        self._IdentityUrl = None
+        self._IdentityKey = None
+        self._ClientId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def IdentityUrl(self):
+        return self._IdentityUrl
+
+    @IdentityUrl.setter
+    def IdentityUrl(self, IdentityUrl):
+        self._IdentityUrl = IdentityUrl
+
+    @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.IdentityUrl = params.get("IdentityUrl")
-        self.IdentityKey = params.get("IdentityKey")
-        self.ClientId = params.get("ClientId")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._IdentityUrl = params.get("IdentityUrl")
+        self._IdentityKey = params.get("IdentityKey")
+        self._ClientId = params.get("ClientId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5464,14 +9881,22 @@ class UpdateOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdatePolicyRequest(AbstractModel):
@@ -5481,34 +9906,75 @@ class UpdatePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略ID，与PolicyName二选一必填
+        :param _PolicyId: 策略ID，与PolicyName二选一必填
         :type PolicyId: int
-        :param PolicyName: 策略名，与PolicyId二选一必填
+        :param _PolicyName: 策略名，与PolicyId二选一必填
         :type PolicyName: str
-        :param Description: 策略描述
+        :param _Description: 策略描述
         :type Description: str
-        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+        :param _PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
-        :param Alias: 预设策略备注
+        :param _Alias: 预设策略备注
         :type Alias: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.Description = None
-        self.PolicyDocument = None
-        self.Alias = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._Description = None
+        self._PolicyDocument = None
+        self._Alias = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.Description = params.get("Description")
-        self.PolicyDocument = params.get("PolicyDocument")
-        self.Alias = params.get("Alias")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._Description = params.get("Description")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5521,19 +9987,35 @@ class UpdatePolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略id，入参是PolicyName时，才会返回
+        :param _PolicyId: 策略id，入参是PolicyName时，才会返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.PolicyId = None
-        self.RequestId = None
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.RequestId = params.get("RequestId")
+        self._PolicyId = params.get("PolicyId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateRoleConsoleLoginRequest(AbstractModel):
@@ -5543,26 +10025,51 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsoleLogin: 是否可登录，可登录：1，不可登录：0
+        :param _ConsoleLogin: 是否可登录，可登录：1，不可登录：0
         :type ConsoleLogin: int
-        :param RoleId: 角色ID，入参 RoleId 与 RoleName 二选一
+        :param _RoleId: 角色ID，入参 RoleId 与 RoleName 二选一
         :type RoleId: int
-        :param RoleName: 角色名，入参 RoleId 与 RoleName 二选一
+        :param _RoleName: 角色名，入参 RoleId 与 RoleName 二选一
         :type RoleName: str
         """
-        self.ConsoleLogin = None
-        self.RoleId = None
-        self.RoleName = None
+        self._ConsoleLogin = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5575,14 +10082,22 @@ class UpdateRoleConsoleLoginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateRoleDescriptionRequest(AbstractModel):
@@ -5592,26 +10107,51 @@ class UpdateRoleDescriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Description: 角色描述
+        :param _Description: 角色描述
         :type Description: str
-        :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str
-        :param RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :param _RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleName: str
         """
-        self.Description = None
-        self.RoleId = None
-        self.RoleName = None
+        self._Description = None
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
 
 
     def _deserialize(self, params):
-        self.Description = params.get("Description")
-        self.RoleId = params.get("RoleId")
-        self.RoleName = params.get("RoleName")
+        self._Description = params.get("Description")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5624,14 +10164,22 @@ class UpdateRoleDescriptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateSAMLProviderRequest(AbstractModel):
@@ -5641,26 +10189,51 @@ class UpdateSAMLProviderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: SAML身份提供商名称
+        :param _Name: SAML身份提供商名称
         :type Name: str
-        :param Description: SAML身份提供商描述
+        :param _Description: SAML身份提供商描述
         :type Description: str
-        :param SAMLMetadataDocument: SAML身份提供商Base64编码的元数据文档
+        :param _SAMLMetadataDocument: SAML身份提供商Base64编码的元数据文档
         :type SAMLMetadataDocument: str
         """
-        self.Name = None
-        self.Description = None
-        self.SAMLMetadataDocument = None
+        self._Name = None
+        self._Description = None
+        self._SAMLMetadataDocument = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SAMLMetadataDocument(self):
+        return self._SAMLMetadataDocument
+
+    @SAMLMetadataDocument.setter
+    def SAMLMetadataDocument(self, SAMLMetadataDocument):
+        self._SAMLMetadataDocument = SAMLMetadataDocument
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._SAMLMetadataDocument = params.get("SAMLMetadataDocument")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5673,14 +10246,22 @@ class UpdateSAMLProviderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateUserOIDCConfigRequest(AbstractModel):
@@ -5690,51 +10271,124 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
+        :param _IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
         :type IdentityUrl: str
-        :param IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+        :param _IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
         :type IdentityKey: str
-        :param ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+        :param _ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
         :type ClientId: str
-        :param AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+        :param _AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
         :type AuthorizationEndpoint: str
-        :param ResponseType: 授权请求Response type，固定值id_token。
+        :param _ResponseType: 授权请求Response type，固定值id_token。
         :type ResponseType: str
-        :param ResponseMode: 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+        :param _ResponseMode: 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
         :type ResponseMode: str
-        :param MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+        :param _MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
         :type MappingFiled: str
-        :param Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+        :param _Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
         :type Scope: list of str
-        :param Description: 描述
+        :param _Description: 描述
         :type Description: str
         """
-        self.IdentityUrl = None
-        self.IdentityKey = None
-        self.ClientId = None
-        self.AuthorizationEndpoint = None
-        self.ResponseType = None
-        self.ResponseMode = None
-        self.MappingFiled = None
-        self.Scope = None
-        self.Description = None
+        self._IdentityUrl = None
+        self._IdentityKey = None
+        self._ClientId = None
+        self._AuthorizationEndpoint = None
+        self._ResponseType = None
+        self._ResponseMode = None
+        self._MappingFiled = None
+        self._Scope = None
+        self._Description = None
+
+    @property
+    def IdentityUrl(self):
+        return self._IdentityUrl
+
+    @IdentityUrl.setter
+    def IdentityUrl(self, IdentityUrl):
+        self._IdentityUrl = IdentityUrl
+
+    @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def AuthorizationEndpoint(self):
+        return self._AuthorizationEndpoint
+
+    @AuthorizationEndpoint.setter
+    def AuthorizationEndpoint(self, AuthorizationEndpoint):
+        self._AuthorizationEndpoint = AuthorizationEndpoint
+
+    @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def ResponseMode(self):
+        return self._ResponseMode
+
+    @ResponseMode.setter
+    def ResponseMode(self, ResponseMode):
+        self._ResponseMode = ResponseMode
+
+    @property
+    def MappingFiled(self):
+        return self._MappingFiled
+
+    @MappingFiled.setter
+    def MappingFiled(self, MappingFiled):
+        self._MappingFiled = MappingFiled
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.IdentityUrl = params.get("IdentityUrl")
-        self.IdentityKey = params.get("IdentityKey")
-        self.ClientId = params.get("ClientId")
-        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
-        self.ResponseType = params.get("ResponseType")
-        self.ResponseMode = params.get("ResponseMode")
-        self.MappingFiled = params.get("MappingFiled")
-        self.Scope = params.get("Scope")
-        self.Description = params.get("Description")
+        self._IdentityUrl = params.get("IdentityUrl")
+        self._IdentityKey = params.get("IdentityKey")
+        self._ClientId = params.get("ClientId")
+        self._AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self._ResponseType = params.get("ResponseType")
+        self._ResponseMode = params.get("ResponseMode")
+        self._MappingFiled = params.get("MappingFiled")
+        self._Scope = params.get("Scope")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5747,14 +10401,22 @@ class UpdateUserOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateUserRequest(AbstractModel):
@@ -5764,46 +10426,111 @@ class UpdateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Remark: 子用户备注
+        :param _Remark: 子用户备注
         :type Remark: str
-        :param ConsoleLogin: 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+        :param _ConsoleLogin: 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
         :type ConsoleLogin: int
-        :param Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+        :param _Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
         :type Password: str
-        :param NeedResetPassword: 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+        :param _NeedResetPassword: 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
         :type NeedResetPassword: int
-        :param PhoneNum: 手机号
+        :param _PhoneNum: 手机号
         :type PhoneNum: str
-        :param CountryCode: 区号
+        :param _CountryCode: 区号
         :type CountryCode: str
-        :param Email: 邮箱
+        :param _Email: 邮箱
         :type Email: str
         """
-        self.Name = None
-        self.Remark = None
-        self.ConsoleLogin = None
-        self.Password = None
-        self.NeedResetPassword = None
-        self.PhoneNum = None
-        self.CountryCode = None
-        self.Email = None
+        self._Name = None
+        self._Remark = None
+        self._ConsoleLogin = None
+        self._Password = None
+        self._NeedResetPassword = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._Email = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def NeedResetPassword(self):
+        return self._NeedResetPassword
+
+    @NeedResetPassword.setter
+    def NeedResetPassword(self, NeedResetPassword):
+        self._NeedResetPassword = NeedResetPassword
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.Password = params.get("Password")
-        self.NeedResetPassword = params.get("NeedResetPassword")
-        self.PhoneNum = params.get("PhoneNum")
-        self.CountryCode = params.get("CountryCode")
-        self.Email = params.get("Email")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._Password = params.get("Password")
+        self._NeedResetPassword = params.get("NeedResetPassword")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._Email = params.get("Email")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5816,14 +10543,22 @@ class UpdateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateUserSAMLConfigRequest(AbstractModel):
@@ -5833,26 +10568,51 @@ class UpdateUserSAMLConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operate: 修改的操作类型:enable:启用,disable:禁用,updateSAML:修改元数据文档
+        :param _Operate: 修改的操作类型:enable:启用,disable:禁用,updateSAML:修改元数据文档
         :type Operate: str
-        :param SAMLMetadataDocument: 元数据文档，需要base64 encode，仅当Operate为updateSAML时需要此参数
+        :param _SAMLMetadataDocument: 元数据文档，需要base64 encode，仅当Operate为updateSAML时需要此参数
         :type SAMLMetadataDocument: str
-        :param AuxiliaryDomain: 辅助域名
+        :param _AuxiliaryDomain: 辅助域名
         :type AuxiliaryDomain: str
         """
-        self.Operate = None
-        self.SAMLMetadataDocument = None
-        self.AuxiliaryDomain = None
+        self._Operate = None
+        self._SAMLMetadataDocument = None
+        self._AuxiliaryDomain = None
+
+    @property
+    def Operate(self):
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def SAMLMetadataDocument(self):
+        return self._SAMLMetadataDocument
+
+    @SAMLMetadataDocument.setter
+    def SAMLMetadataDocument(self, SAMLMetadataDocument):
+        self._SAMLMetadataDocument = SAMLMetadataDocument
+
+    @property
+    def AuxiliaryDomain(self):
+        return self._AuxiliaryDomain
+
+    @AuxiliaryDomain.setter
+    def AuxiliaryDomain(self, AuxiliaryDomain):
+        self._AuxiliaryDomain = AuxiliaryDomain
 
 
     def _deserialize(self, params):
-        self.Operate = params.get("Operate")
-        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
-        self.AuxiliaryDomain = params.get("AuxiliaryDomain")
+        self._Operate = params.get("Operate")
+        self._SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        self._AuxiliaryDomain = params.get("AuxiliaryDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5865,14 +10625,22 @@ class UpdateUserSAMLConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class WeChatWorkSubAccount(AbstractModel):
@@ -5882,56 +10650,137 @@ class WeChatWorkSubAccount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 子用户用户 ID
+        :param _Uin: 子用户用户 ID
         :type Uin: int
-        :param Name: 子用户用户名
+        :param _Name: 子用户用户名
         :type Name: str
-        :param Uid: 子用户 UID
+        :param _Uid: 子用户 UID
         :type Uid: int
-        :param Remark: 备注
+        :param _Remark: 备注
         :type Remark: str
-        :param ConsoleLogin: 子用户能否登录控制台
+        :param _ConsoleLogin: 子用户能否登录控制台
         :type ConsoleLogin: int
-        :param PhoneNum: 手机号
+        :param _PhoneNum: 手机号
         :type PhoneNum: str
-        :param CountryCode: 区号
+        :param _CountryCode: 区号
         :type CountryCode: str
-        :param Email: 邮箱
+        :param _Email: 邮箱
         :type Email: str
-        :param WeChatWorkUserId: 企业微信UserId
+        :param _WeChatWorkUserId: 企业微信UserId
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeChatWorkUserId: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
-        self.Uin = None
-        self.Name = None
-        self.Uid = None
-        self.Remark = None
-        self.ConsoleLogin = None
-        self.PhoneNum = None
-        self.CountryCode = None
-        self.Email = None
-        self.WeChatWorkUserId = None
-        self.CreateTime = None
+        self._Uin = None
+        self._Name = None
+        self._Uid = None
+        self._Remark = None
+        self._ConsoleLogin = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._Email = None
+        self._WeChatWorkUserId = None
+        self._CreateTime = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsoleLogin(self):
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def WeChatWorkUserId(self):
+        return self._WeChatWorkUserId
+
+    @WeChatWorkUserId.setter
+    def WeChatWorkUserId(self, WeChatWorkUserId):
+        self._WeChatWorkUserId = WeChatWorkUserId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.Name = params.get("Name")
-        self.Uid = params.get("Uid")
-        self.Remark = params.get("Remark")
-        self.ConsoleLogin = params.get("ConsoleLogin")
-        self.PhoneNum = params.get("PhoneNum")
-        self.CountryCode = params.get("CountryCode")
-        self.Email = params.get("Email")
-        self.WeChatWorkUserId = params.get("WeChatWorkUserId")
-        self.CreateTime = params.get("CreateTime")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Uid = params.get("Uid")
+        self._Remark = params.get("Remark")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._Email = params.get("Email")
+        self._WeChatWorkUserId = params.get("WeChatWorkUserId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

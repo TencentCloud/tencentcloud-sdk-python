@@ -25,98 +25,267 @@ class DBInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: DB实例Id
+        :param _InstanceId: DB实例Id
         :type InstanceId: str
-        :param InstanceName: DB实例名称
+        :param _InstanceName: DB实例名称
         :type InstanceName: str
-        :param Status: DB实例状态,-1:已隔离, 0:创建中, 1:流程中, 2:运行中, 3:未初始化
+        :param _Status: DB实例状态,-1:已隔离, 0:创建中, 1:流程中, 2:运行中, 3:未初始化
         :type Status: int
-        :param StatusDesc: DB实例状态描述,-1:已隔离, 0:创建中, 1:流程中, 2:运行中, 3:未初始化
+        :param _StatusDesc: DB实例状态描述,-1:已隔离, 0:创建中, 1:流程中, 2:运行中, 3:未初始化
         :type StatusDesc: str
-        :param DbVersion: DB实例版本
+        :param _DbVersion: DB实例版本
         :type DbVersion: str
-        :param Vip: Vip信息
+        :param _Vip: Vip信息
         :type Vip: str
-        :param Vport: Vip使用的端口号
+        :param _Vport: Vip使用的端口号
         :type Vport: int
-        :param UniqueVpcId: 字符串型的私有网络ID
+        :param _UniqueVpcId: 字符串型的私有网络ID
         :type UniqueVpcId: str
-        :param UniqueSubnetId: 字符串型的私有网络子网ID
+        :param _UniqueSubnetId: 字符串型的私有网络子网ID
         :type UniqueSubnetId: str
-        :param Shard: 是否为分布式版本,0:否,1:是
+        :param _Shard: 是否为分布式版本,0:否,1:是
         :type Shard: int
-        :param NodeNum: DB实例节点数
+        :param _NodeNum: DB实例节点数
         :type NodeNum: int
-        :param Cpu: CPU规格(单位:核数)
+        :param _Cpu: CPU规格(单位:核数)
         :type Cpu: int
-        :param Memory: 内存规格(单位:GB)
+        :param _Memory: 内存规格(单位:GB)
         :type Memory: int
-        :param Disk: 磁盘规格(单位:GB)
+        :param _Disk: 磁盘规格(单位:GB)
         :type Disk: int
-        :param ShardNum: 分布式类型的实例的分片数
+        :param _ShardNum: 分布式类型的实例的分片数
         :type ShardNum: int
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param DbHosts: Db所在主机列表, 格式: m1,s1|m2,s2
+        :param _DbHosts: Db所在主机列表, 格式: m1,s1|m2,s2
         :type DbHosts: str
-        :param HostRole: 主机角色, 1:主, 2:从, 3:主+从
+        :param _HostRole: 主机角色, 1:主, 2:从, 3:主+从
         :type HostRole: int
-        :param DbEngine: DB引擎，MySQL,Percona,MariaDB
+        :param _DbEngine: DB引擎，MySQL,Percona,MariaDB
         :type DbEngine: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Status = None
-        self.StatusDesc = None
-        self.DbVersion = None
-        self.Vip = None
-        self.Vport = None
-        self.UniqueVpcId = None
-        self.UniqueSubnetId = None
-        self.Shard = None
-        self.NodeNum = None
-        self.Cpu = None
-        self.Memory = None
-        self.Disk = None
-        self.ShardNum = None
-        self.Region = None
-        self.Zone = None
-        self.DbHosts = None
-        self.HostRole = None
-        self.DbEngine = None
-        self.CreateTime = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Status = None
+        self._StatusDesc = None
+        self._DbVersion = None
+        self._Vip = None
+        self._Vport = None
+        self._UniqueVpcId = None
+        self._UniqueSubnetId = None
+        self._Shard = None
+        self._NodeNum = None
+        self._Cpu = None
+        self._Memory = None
+        self._Disk = None
+        self._ShardNum = None
+        self._Region = None
+        self._Zone = None
+        self._DbHosts = None
+        self._HostRole = None
+        self._DbEngine = None
+        self._CreateTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def DbVersion(self):
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def UniqueVpcId(self):
+        return self._UniqueVpcId
+
+    @UniqueVpcId.setter
+    def UniqueVpcId(self, UniqueVpcId):
+        self._UniqueVpcId = UniqueVpcId
+
+    @property
+    def UniqueSubnetId(self):
+        return self._UniqueSubnetId
+
+    @UniqueSubnetId.setter
+    def UniqueSubnetId(self, UniqueSubnetId):
+        self._UniqueSubnetId = UniqueSubnetId
+
+    @property
+    def Shard(self):
+        return self._Shard
+
+    @Shard.setter
+    def Shard(self, Shard):
+        self._Shard = Shard
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Disk(self):
+        return self._Disk
+
+    @Disk.setter
+    def Disk(self, Disk):
+        self._Disk = Disk
+
+    @property
+    def ShardNum(self):
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def DbHosts(self):
+        return self._DbHosts
+
+    @DbHosts.setter
+    def DbHosts(self, DbHosts):
+        self._DbHosts = DbHosts
+
+    @property
+    def HostRole(self):
+        return self._HostRole
+
+    @HostRole.setter
+    def HostRole(self, HostRole):
+        self._HostRole = HostRole
+
+    @property
+    def DbEngine(self):
+        return self._DbEngine
+
+    @DbEngine.setter
+    def DbEngine(self, DbEngine):
+        self._DbEngine = DbEngine
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Status = params.get("Status")
-        self.StatusDesc = params.get("StatusDesc")
-        self.DbVersion = params.get("DbVersion")
-        self.Vip = params.get("Vip")
-        self.Vport = params.get("Vport")
-        self.UniqueVpcId = params.get("UniqueVpcId")
-        self.UniqueSubnetId = params.get("UniqueSubnetId")
-        self.Shard = params.get("Shard")
-        self.NodeNum = params.get("NodeNum")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.Disk = params.get("Disk")
-        self.ShardNum = params.get("ShardNum")
-        self.Region = params.get("Region")
-        self.Zone = params.get("Zone")
-        self.DbHosts = params.get("DbHosts")
-        self.HostRole = params.get("HostRole")
-        self.DbEngine = params.get("DbEngine")
-        self.CreateTime = params.get("CreateTime")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._DbVersion = params.get("DbVersion")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._UniqueVpcId = params.get("UniqueVpcId")
+        self._UniqueSubnetId = params.get("UniqueSubnetId")
+        self._Shard = params.get("Shard")
+        self._NodeNum = params.get("NodeNum")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Disk = params.get("Disk")
+        self._ShardNum = params.get("ShardNum")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._DbHosts = params.get("DbHosts")
+        self._HostRole = params.get("HostRole")
+        self._DbEngine = params.get("DbEngine")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -129,34 +298,75 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 独享集群实例Id
+        :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
-        :param HostId: 独享集群主机Id
+        :param _HostId: 独享集群主机Id
         :type HostId: str
-        :param Limit: 分页返回数量
+        :param _Limit: 分页返回数量
         :type Limit: int
-        :param Offset: 分页偏移量
+        :param _Offset: 分页偏移量
         :type Offset: int
-        :param ShardType: 实例类型,0:mariadb, 1:tdsql
+        :param _ShardType: 实例类型,0:mariadb, 1:tdsql
         :type ShardType: list of int
         """
-        self.InstanceId = None
-        self.HostId = None
-        self.Limit = None
-        self.Offset = None
-        self.ShardType = None
+        self._InstanceId = None
+        self._HostId = None
+        self._Limit = None
+        self._Offset = None
+        self._ShardType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def HostId(self):
+        return self._HostId
+
+    @HostId.setter
+    def HostId(self, HostId):
+        self._HostId = HostId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ShardType(self):
+        return self._ShardType
+
+    @ShardType.setter
+    def ShardType(self, ShardType):
+        self._ShardType = ShardType
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.HostId = params.get("HostId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.ShardType = params.get("ShardType")
+        self._InstanceId = params.get("InstanceId")
+        self._HostId = params.get("HostId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ShardType = params.get("ShardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -169,27 +379,51 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Instances: 独享集群内的DB实例列表
+        :param _Instances: 独享集群内的DB实例列表
         :type Instances: list of DBInstanceDetail
-        :param TotalCount: 独享集群内的DB实例总数
+        :param _TotalCount: 独享集群内的DB实例总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Instances = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Instances = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
-            self.Instances = []
+            self._Instances = []
             for item in params.get("Instances"):
                 obj = DBInstanceDetail()
                 obj._deserialize(item)
-                self.Instances.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Instances.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeHostListRequest(AbstractModel):
@@ -199,30 +433,63 @@ class DescribeHostListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 独享集群实例Id
+        :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
-        :param Limit: 分页返回数量
+        :param _Limit: 分页返回数量
         :type Limit: int
-        :param Offset: 分页偏移量
+        :param _Offset: 分页偏移量
         :type Offset: int
-        :param AssignStatus: 分配状态过滤，0-可分配，1-禁止分配
+        :param _AssignStatus: 分配状态过滤，0-可分配，1-禁止分配
         :type AssignStatus: list of int
         """
-        self.InstanceId = None
-        self.Limit = None
-        self.Offset = None
-        self.AssignStatus = None
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._AssignStatus = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def AssignStatus(self):
+        return self._AssignStatus
+
+    @AssignStatus.setter
+    def AssignStatus(self, AssignStatus):
+        self._AssignStatus = AssignStatus
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.AssignStatus = params.get("AssignStatus")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._AssignStatus = params.get("AssignStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -235,27 +502,51 @@ class DescribeHostListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 主机总数
+        :param _TotalCount: 主机总数
         :type TotalCount: int
-        :param Hosts: 主机详情
+        :param _Hosts: 主机详情
         :type Hosts: list of HostDetail
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Hosts = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Hosts = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Hosts(self):
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Hosts") is not None:
-            self.Hosts = []
+            self._Hosts = []
             for item in params.get("Hosts"):
                 obj = HostDetail()
                 obj._deserialize(item)
-                self.Hosts.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Hosts.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceDetail(AbstractModel):
@@ -265,120 +556,329 @@ class DescribeInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 独享集群实例Id
+        :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
-        :param InstanceName: 独享集群实例名称
+        :param _InstanceName: 独享集群实例名称
         :type InstanceName: str
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param ProductId: 产品ID, 0:CDB, 1:TDSQL
+        :param _ProductId: 产品ID, 0:CDB, 1:TDSQL
         :type ProductId: int
-        :param Type: 集群类型, 0:公有云, 1:金融围笼, 2:CDC集群
+        :param _Type: 集群类型, 0:公有云, 1:金融围笼, 2:CDC集群
         :type Type: int
-        :param HostType: 主机类型, 0:物理机, 1:CVM机型, 2:CDC机型
+        :param _HostType: 主机类型, 0:物理机, 1:CVM机型, 2:CDC机型
         :type HostType: int
-        :param AutoRenewFlag: 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
+        :param _AutoRenewFlag: 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
         :type AutoRenewFlag: int
-        :param Status: 集群状态
+        :param _Status: 集群状态
         :type Status: int
-        :param StatusDesc: 集群状态描述
+        :param _StatusDesc: 集群状态描述
         :type StatusDesc: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param PeriodEndTime: 到期时间
+        :param _PeriodEndTime: 到期时间
         :type PeriodEndTime: str
-        :param HostNum: 主机数
+        :param _HostNum: 主机数
         :type HostNum: int
-        :param DbNum: DB实例数
+        :param _DbNum: DB实例数
         :type DbNum: int
-        :param AssignStrategy: 分配策略, 0:紧凑, 1:均匀
+        :param _AssignStrategy: 分配策略, 0:紧凑, 1:均匀
         :type AssignStrategy: int
-        :param CpuSpec: 总主机CPU(单位:核数)
+        :param _CpuSpec: 总主机CPU(单位:核数)
         :type CpuSpec: int
-        :param CpuAssigned: 总已分配CPU(单位:核数)
+        :param _CpuAssigned: 总已分配CPU(单位:核数)
         :type CpuAssigned: int
-        :param CpuAssignable: 总可分配CPU(单位:核数)
+        :param _CpuAssignable: 总可分配CPU(单位:核数)
         :type CpuAssignable: int
-        :param MemorySpec: 总主机内存(单位:GB)
+        :param _MemorySpec: 总主机内存(单位:GB)
         :type MemorySpec: int
-        :param MemoryAssigned: 总已分配内存(单位:GB)
+        :param _MemoryAssigned: 总已分配内存(单位:GB)
         :type MemoryAssigned: int
-        :param MemoryAssignable: 总可分配内存(单位:GB)
+        :param _MemoryAssignable: 总可分配内存(单位:GB)
         :type MemoryAssignable: int
-        :param DiskSpec: 总机器磁盘(单位:GB)
+        :param _DiskSpec: 总机器磁盘(单位:GB)
         :type DiskSpec: int
-        :param DiskAssigned: 总已分配磁盘(单位:GB)
+        :param _DiskAssigned: 总已分配磁盘(单位:GB)
         :type DiskAssigned: int
-        :param DiskAssignable: 总可分配磁盘(单位:GB)
+        :param _DiskAssignable: 总可分配磁盘(单位:GB)
         :type DiskAssignable: int
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param FenceId: 金融围笼ID
+        :param _FenceId: 金融围笼ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FenceId: str
-        :param ClusterId: 所属集群ID(默认集群为空)
+        :param _ClusterId: 所属集群ID(默认集群为空)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Region = None
-        self.ProductId = None
-        self.Type = None
-        self.HostType = None
-        self.AutoRenewFlag = None
-        self.Status = None
-        self.StatusDesc = None
-        self.CreateTime = None
-        self.PeriodEndTime = None
-        self.HostNum = None
-        self.DbNum = None
-        self.AssignStrategy = None
-        self.CpuSpec = None
-        self.CpuAssigned = None
-        self.CpuAssignable = None
-        self.MemorySpec = None
-        self.MemoryAssigned = None
-        self.MemoryAssignable = None
-        self.DiskSpec = None
-        self.DiskAssigned = None
-        self.DiskAssignable = None
-        self.Zone = None
-        self.FenceId = None
-        self.ClusterId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Region = None
+        self._ProductId = None
+        self._Type = None
+        self._HostType = None
+        self._AutoRenewFlag = None
+        self._Status = None
+        self._StatusDesc = None
+        self._CreateTime = None
+        self._PeriodEndTime = None
+        self._HostNum = None
+        self._DbNum = None
+        self._AssignStrategy = None
+        self._CpuSpec = None
+        self._CpuAssigned = None
+        self._CpuAssignable = None
+        self._MemorySpec = None
+        self._MemoryAssigned = None
+        self._MemoryAssignable = None
+        self._DiskSpec = None
+        self._DiskAssigned = None
+        self._DiskAssignable = None
+        self._Zone = None
+        self._FenceId = None
+        self._ClusterId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def HostType(self):
+        return self._HostType
+
+    @HostType.setter
+    def HostType(self, HostType):
+        self._HostType = HostType
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PeriodEndTime(self):
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def HostNum(self):
+        return self._HostNum
+
+    @HostNum.setter
+    def HostNum(self, HostNum):
+        self._HostNum = HostNum
+
+    @property
+    def DbNum(self):
+        return self._DbNum
+
+    @DbNum.setter
+    def DbNum(self, DbNum):
+        self._DbNum = DbNum
+
+    @property
+    def AssignStrategy(self):
+        return self._AssignStrategy
+
+    @AssignStrategy.setter
+    def AssignStrategy(self, AssignStrategy):
+        self._AssignStrategy = AssignStrategy
+
+    @property
+    def CpuSpec(self):
+        return self._CpuSpec
+
+    @CpuSpec.setter
+    def CpuSpec(self, CpuSpec):
+        self._CpuSpec = CpuSpec
+
+    @property
+    def CpuAssigned(self):
+        return self._CpuAssigned
+
+    @CpuAssigned.setter
+    def CpuAssigned(self, CpuAssigned):
+        self._CpuAssigned = CpuAssigned
+
+    @property
+    def CpuAssignable(self):
+        return self._CpuAssignable
+
+    @CpuAssignable.setter
+    def CpuAssignable(self, CpuAssignable):
+        self._CpuAssignable = CpuAssignable
+
+    @property
+    def MemorySpec(self):
+        return self._MemorySpec
+
+    @MemorySpec.setter
+    def MemorySpec(self, MemorySpec):
+        self._MemorySpec = MemorySpec
+
+    @property
+    def MemoryAssigned(self):
+        return self._MemoryAssigned
+
+    @MemoryAssigned.setter
+    def MemoryAssigned(self, MemoryAssigned):
+        self._MemoryAssigned = MemoryAssigned
+
+    @property
+    def MemoryAssignable(self):
+        return self._MemoryAssignable
+
+    @MemoryAssignable.setter
+    def MemoryAssignable(self, MemoryAssignable):
+        self._MemoryAssignable = MemoryAssignable
+
+    @property
+    def DiskSpec(self):
+        return self._DiskSpec
+
+    @DiskSpec.setter
+    def DiskSpec(self, DiskSpec):
+        self._DiskSpec = DiskSpec
+
+    @property
+    def DiskAssigned(self):
+        return self._DiskAssigned
+
+    @DiskAssigned.setter
+    def DiskAssigned(self, DiskAssigned):
+        self._DiskAssigned = DiskAssigned
+
+    @property
+    def DiskAssignable(self):
+        return self._DiskAssignable
+
+    @DiskAssignable.setter
+    def DiskAssignable(self, DiskAssignable):
+        self._DiskAssignable = DiskAssignable
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def FenceId(self):
+        return self._FenceId
+
+    @FenceId.setter
+    def FenceId(self, FenceId):
+        self._FenceId = FenceId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Region = params.get("Region")
-        self.ProductId = params.get("ProductId")
-        self.Type = params.get("Type")
-        self.HostType = params.get("HostType")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.Status = params.get("Status")
-        self.StatusDesc = params.get("StatusDesc")
-        self.CreateTime = params.get("CreateTime")
-        self.PeriodEndTime = params.get("PeriodEndTime")
-        self.HostNum = params.get("HostNum")
-        self.DbNum = params.get("DbNum")
-        self.AssignStrategy = params.get("AssignStrategy")
-        self.CpuSpec = params.get("CpuSpec")
-        self.CpuAssigned = params.get("CpuAssigned")
-        self.CpuAssignable = params.get("CpuAssignable")
-        self.MemorySpec = params.get("MemorySpec")
-        self.MemoryAssigned = params.get("MemoryAssigned")
-        self.MemoryAssignable = params.get("MemoryAssignable")
-        self.DiskSpec = params.get("DiskSpec")
-        self.DiskAssigned = params.get("DiskAssigned")
-        self.DiskAssignable = params.get("DiskAssignable")
-        self.Zone = params.get("Zone")
-        self.FenceId = params.get("FenceId")
-        self.ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Region = params.get("Region")
+        self._ProductId = params.get("ProductId")
+        self._Type = params.get("Type")
+        self._HostType = params.get("HostType")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._CreateTime = params.get("CreateTime")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._HostNum = params.get("HostNum")
+        self._DbNum = params.get("DbNum")
+        self._AssignStrategy = params.get("AssignStrategy")
+        self._CpuSpec = params.get("CpuSpec")
+        self._CpuAssigned = params.get("CpuAssigned")
+        self._CpuAssignable = params.get("CpuAssignable")
+        self._MemorySpec = params.get("MemorySpec")
+        self._MemoryAssigned = params.get("MemoryAssigned")
+        self._MemoryAssignable = params.get("MemoryAssignable")
+        self._DiskSpec = params.get("DiskSpec")
+        self._DiskAssigned = params.get("DiskAssigned")
+        self._DiskAssignable = params.get("DiskAssignable")
+        self._Zone = params.get("Zone")
+        self._FenceId = params.get("FenceId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -391,18 +891,27 @@ class DescribeInstanceDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 独享集群实例Id
+        :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -415,120 +924,336 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 独享集群实例Id
+        :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
-        :param InstanceName: 独享集群实例名称
+        :param _InstanceName: 独享集群实例名称
         :type InstanceName: str
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param ProductId: 产品ID, 0:CDB, 1:TDSQL
+        :param _ProductId: 产品ID, 0:CDB, 1:TDSQL
         :type ProductId: int
-        :param Type: 集群类型, 0:公有云, 1:金融围笼
+        :param _Type: 集群类型, 0:公有云, 1:金融围笼
         :type Type: int
-        :param HostType: 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+        :param _HostType: 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
         :type HostType: int
-        :param AutoRenewFlag: 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
+        :param _AutoRenewFlag: 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
         :type AutoRenewFlag: int
-        :param Status: 集群状态
+        :param _Status: 集群状态
         :type Status: int
-        :param StatusDesc: 集群状态描述
+        :param _StatusDesc: 集群状态描述
         :type StatusDesc: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param PeriodEndTime: 到期时间
+        :param _PeriodEndTime: 到期时间
         :type PeriodEndTime: str
-        :param HostNum: 主机数
+        :param _HostNum: 主机数
         :type HostNum: int
-        :param DbNum: Db实例数
+        :param _DbNum: Db实例数
         :type DbNum: int
-        :param AssignStrategy: 分配策略, 0:紧凑, 1:均匀
+        :param _AssignStrategy: 分配策略, 0:紧凑, 1:均匀
         :type AssignStrategy: int
-        :param CpuSpec: 总主机CPU(单位:核)
+        :param _CpuSpec: 总主机CPU(单位:核)
         :type CpuSpec: int
-        :param CpuAssigned: 总已分配CPU(单位:核)
+        :param _CpuAssigned: 总已分配CPU(单位:核)
         :type CpuAssigned: int
-        :param CpuAssignable: 总可分配CPU(单位:核)
+        :param _CpuAssignable: 总可分配CPU(单位:核)
         :type CpuAssignable: int
-        :param MemorySpec: 总主机内存(单位:GB)
+        :param _MemorySpec: 总主机内存(单位:GB)
         :type MemorySpec: int
-        :param MemoryAssigned: 总已分配内存(单位:GB)
+        :param _MemoryAssigned: 总已分配内存(单位:GB)
         :type MemoryAssigned: int
-        :param MemoryAssignable: 总可分配内存(单位:GB)
+        :param _MemoryAssignable: 总可分配内存(单位:GB)
         :type MemoryAssignable: int
-        :param DiskSpec: 总机器磁盘(单位:GB)
+        :param _DiskSpec: 总机器磁盘(单位:GB)
         :type DiskSpec: int
-        :param DiskAssigned: 总已分配磁盘(单位:GB)
+        :param _DiskAssigned: 总已分配磁盘(单位:GB)
         :type DiskAssigned: int
-        :param DiskAssignable: 总可分配磁盘(单位:GB)
+        :param _DiskAssignable: 总可分配磁盘(单位:GB)
         :type DiskAssignable: int
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param FenceId: 金融围笼ID
+        :param _FenceId: 金融围笼ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FenceId: str
-        :param ClusterId: 所属集群ID(默认集群为空)
+        :param _ClusterId: 所属集群ID(默认集群为空)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Region = None
-        self.ProductId = None
-        self.Type = None
-        self.HostType = None
-        self.AutoRenewFlag = None
-        self.Status = None
-        self.StatusDesc = None
-        self.CreateTime = None
-        self.PeriodEndTime = None
-        self.HostNum = None
-        self.DbNum = None
-        self.AssignStrategy = None
-        self.CpuSpec = None
-        self.CpuAssigned = None
-        self.CpuAssignable = None
-        self.MemorySpec = None
-        self.MemoryAssigned = None
-        self.MemoryAssignable = None
-        self.DiskSpec = None
-        self.DiskAssigned = None
-        self.DiskAssignable = None
-        self.Zone = None
-        self.FenceId = None
-        self.ClusterId = None
-        self.RequestId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Region = None
+        self._ProductId = None
+        self._Type = None
+        self._HostType = None
+        self._AutoRenewFlag = None
+        self._Status = None
+        self._StatusDesc = None
+        self._CreateTime = None
+        self._PeriodEndTime = None
+        self._HostNum = None
+        self._DbNum = None
+        self._AssignStrategy = None
+        self._CpuSpec = None
+        self._CpuAssigned = None
+        self._CpuAssignable = None
+        self._MemorySpec = None
+        self._MemoryAssigned = None
+        self._MemoryAssignable = None
+        self._DiskSpec = None
+        self._DiskAssigned = None
+        self._DiskAssignable = None
+        self._Zone = None
+        self._FenceId = None
+        self._ClusterId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def HostType(self):
+        return self._HostType
+
+    @HostType.setter
+    def HostType(self, HostType):
+        self._HostType = HostType
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PeriodEndTime(self):
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def HostNum(self):
+        return self._HostNum
+
+    @HostNum.setter
+    def HostNum(self, HostNum):
+        self._HostNum = HostNum
+
+    @property
+    def DbNum(self):
+        return self._DbNum
+
+    @DbNum.setter
+    def DbNum(self, DbNum):
+        self._DbNum = DbNum
+
+    @property
+    def AssignStrategy(self):
+        return self._AssignStrategy
+
+    @AssignStrategy.setter
+    def AssignStrategy(self, AssignStrategy):
+        self._AssignStrategy = AssignStrategy
+
+    @property
+    def CpuSpec(self):
+        return self._CpuSpec
+
+    @CpuSpec.setter
+    def CpuSpec(self, CpuSpec):
+        self._CpuSpec = CpuSpec
+
+    @property
+    def CpuAssigned(self):
+        return self._CpuAssigned
+
+    @CpuAssigned.setter
+    def CpuAssigned(self, CpuAssigned):
+        self._CpuAssigned = CpuAssigned
+
+    @property
+    def CpuAssignable(self):
+        return self._CpuAssignable
+
+    @CpuAssignable.setter
+    def CpuAssignable(self, CpuAssignable):
+        self._CpuAssignable = CpuAssignable
+
+    @property
+    def MemorySpec(self):
+        return self._MemorySpec
+
+    @MemorySpec.setter
+    def MemorySpec(self, MemorySpec):
+        self._MemorySpec = MemorySpec
+
+    @property
+    def MemoryAssigned(self):
+        return self._MemoryAssigned
+
+    @MemoryAssigned.setter
+    def MemoryAssigned(self, MemoryAssigned):
+        self._MemoryAssigned = MemoryAssigned
+
+    @property
+    def MemoryAssignable(self):
+        return self._MemoryAssignable
+
+    @MemoryAssignable.setter
+    def MemoryAssignable(self, MemoryAssignable):
+        self._MemoryAssignable = MemoryAssignable
+
+    @property
+    def DiskSpec(self):
+        return self._DiskSpec
+
+    @DiskSpec.setter
+    def DiskSpec(self, DiskSpec):
+        self._DiskSpec = DiskSpec
+
+    @property
+    def DiskAssigned(self):
+        return self._DiskAssigned
+
+    @DiskAssigned.setter
+    def DiskAssigned(self, DiskAssigned):
+        self._DiskAssigned = DiskAssigned
+
+    @property
+    def DiskAssignable(self):
+        return self._DiskAssignable
+
+    @DiskAssignable.setter
+    def DiskAssignable(self, DiskAssignable):
+        self._DiskAssignable = DiskAssignable
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def FenceId(self):
+        return self._FenceId
+
+    @FenceId.setter
+    def FenceId(self, FenceId):
+        self._FenceId = FenceId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Region = params.get("Region")
-        self.ProductId = params.get("ProductId")
-        self.Type = params.get("Type")
-        self.HostType = params.get("HostType")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.Status = params.get("Status")
-        self.StatusDesc = params.get("StatusDesc")
-        self.CreateTime = params.get("CreateTime")
-        self.PeriodEndTime = params.get("PeriodEndTime")
-        self.HostNum = params.get("HostNum")
-        self.DbNum = params.get("DbNum")
-        self.AssignStrategy = params.get("AssignStrategy")
-        self.CpuSpec = params.get("CpuSpec")
-        self.CpuAssigned = params.get("CpuAssigned")
-        self.CpuAssignable = params.get("CpuAssignable")
-        self.MemorySpec = params.get("MemorySpec")
-        self.MemoryAssigned = params.get("MemoryAssigned")
-        self.MemoryAssignable = params.get("MemoryAssignable")
-        self.DiskSpec = params.get("DiskSpec")
-        self.DiskAssigned = params.get("DiskAssigned")
-        self.DiskAssignable = params.get("DiskAssignable")
-        self.Zone = params.get("Zone")
-        self.FenceId = params.get("FenceId")
-        self.ClusterId = params.get("ClusterId")
-        self.RequestId = params.get("RequestId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Region = params.get("Region")
+        self._ProductId = params.get("ProductId")
+        self._Type = params.get("Type")
+        self._HostType = params.get("HostType")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._CreateTime = params.get("CreateTime")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._HostNum = params.get("HostNum")
+        self._DbNum = params.get("DbNum")
+        self._AssignStrategy = params.get("AssignStrategy")
+        self._CpuSpec = params.get("CpuSpec")
+        self._CpuAssigned = params.get("CpuAssigned")
+        self._CpuAssignable = params.get("CpuAssignable")
+        self._MemorySpec = params.get("MemorySpec")
+        self._MemoryAssigned = params.get("MemoryAssigned")
+        self._MemoryAssignable = params.get("MemoryAssignable")
+        self._DiskSpec = params.get("DiskSpec")
+        self._DiskAssigned = params.get("DiskAssigned")
+        self._DiskAssignable = params.get("DiskAssignable")
+        self._Zone = params.get("Zone")
+        self._FenceId = params.get("FenceId")
+        self._ClusterId = params.get("ClusterId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceListRequest(AbstractModel):
@@ -538,54 +1263,135 @@ class DescribeInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 分页返回数量
+        :param _Limit: 分页返回数量
         :type Limit: int
-        :param Offset: 分页偏移量
+        :param _Offset: 分页偏移量
         :type Offset: int
-        :param OrderBy: 排序字段，createTime,instancename两者之一
+        :param _OrderBy: 排序字段，createTime,instancename两者之一
         :type OrderBy: str
-        :param SortBy: 排序规则，desc,asc两者之一
+        :param _SortBy: 排序规则，desc,asc两者之一
         :type SortBy: str
-        :param ProductId: 按产品过滤，0:CDB, 1:TDSQL
+        :param _ProductId: 按产品过滤，0:CDB, 1:TDSQL
         :type ProductId: list of int
-        :param InstanceId: 按实例ID过滤
+        :param _InstanceId: 按实例ID过滤
         :type InstanceId: list of str
-        :param InstanceName: 按实例名称过滤
+        :param _InstanceName: 按实例名称过滤
         :type InstanceName: list of str
-        :param FenceId: 按金融围笼ID过滤
+        :param _FenceId: 按金融围笼ID过滤
         :type FenceId: list of str
-        :param Status: 按实例状态过滤, -1:已隔离, 0:创建中, 1:运行中, 2:扩容中, 3:删除中
+        :param _Status: 按实例状态过滤, -1:已隔离, 0:创建中, 1:运行中, 2:扩容中, 3:删除中
         :type Status: list of int
-        :param ClusterId: 按所属集群ID过滤
+        :param _ClusterId: 按所属集群ID过滤
         :type ClusterId: list of str
         """
-        self.Limit = None
-        self.Offset = None
-        self.OrderBy = None
-        self.SortBy = None
-        self.ProductId = None
-        self.InstanceId = None
-        self.InstanceName = None
-        self.FenceId = None
-        self.Status = None
-        self.ClusterId = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._SortBy = None
+        self._ProductId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._FenceId = None
+        self._Status = None
+        self._ClusterId = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def FenceId(self):
+        return self._FenceId
+
+    @FenceId.setter
+    def FenceId(self, FenceId):
+        self._FenceId = FenceId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.OrderBy = params.get("OrderBy")
-        self.SortBy = params.get("SortBy")
-        self.ProductId = params.get("ProductId")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.FenceId = params.get("FenceId")
-        self.Status = params.get("Status")
-        self.ClusterId = params.get("ClusterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._SortBy = params.get("SortBy")
+        self._ProductId = params.get("ProductId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._FenceId = params.get("FenceId")
+        self._Status = params.get("Status")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -598,27 +1404,51 @@ class DescribeInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Instances: 独享集群列表
+        :param _Instances: 独享集群列表
         :type Instances: list of DescribeInstanceDetail
-        :param TotalCount: 独享集群实例总数
+        :param _TotalCount: 独享集群实例总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Instances = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Instances = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
-            self.Instances = []
+            self._Instances = []
             for item in params.get("Instances"):
                 obj = DescribeInstanceDetail()
                 obj._deserialize(item)
-                self.Instances.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Instances.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesRequest(AbstractModel):
@@ -628,54 +1458,135 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceTypes: 集群类型: 0 一主一备, 1 一主两备...N-1 一主N备
+        :param _InstanceTypes: 集群类型: 0 一主一备, 1 一主两备...N-1 一主N备
         :type InstanceTypes: list of int
-        :param ProductIds: 产品ID:  0 MYSQL，1 TDSQL
+        :param _ProductIds: 产品ID:  0 MYSQL，1 TDSQL
         :type ProductIds: list of int
-        :param InstanceIds: 集群uuid: 如 dbdc-q810131s
+        :param _InstanceIds: 集群uuid: 如 dbdc-q810131s
         :type InstanceIds: list of str
-        :param FenceFlag: 是否按金融围笼标志搜索
+        :param _FenceFlag: 是否按金融围笼标志搜索
         :type FenceFlag: bool
-        :param InstanceName: 按实例名字模糊匹配
+        :param _InstanceName: 按实例名字模糊匹配
         :type InstanceName: str
-        :param PageSize: 每页数目, 整型
+        :param _PageSize: 每页数目, 整型
         :type PageSize: int
-        :param PageNumber: 页码, 整型
+        :param _PageNumber: 页码, 整型
         :type PageNumber: int
-        :param OrderBy: 排序字段，枚举：createtime,groupname
+        :param _OrderBy: 排序字段，枚举：createtime,groupname
         :type OrderBy: str
-        :param OrderByType: 排序方式: asc升序, desc降序
+        :param _OrderByType: 排序方式: asc升序, desc降序
         :type OrderByType: str
-        :param InstanceStatus: 集群状态: -2 已删除, -1 已隔离, 0 创建中, 1 运行中, 2 扩容中, 3 删除中
+        :param _InstanceStatus: 集群状态: -2 已删除, -1 已隔离, 0 创建中, 1 运行中, 2 扩容中, 3 删除中
         :type InstanceStatus: int
         """
-        self.InstanceTypes = None
-        self.ProductIds = None
-        self.InstanceIds = None
-        self.FenceFlag = None
-        self.InstanceName = None
-        self.PageSize = None
-        self.PageNumber = None
-        self.OrderBy = None
-        self.OrderByType = None
-        self.InstanceStatus = None
+        self._InstanceTypes = None
+        self._ProductIds = None
+        self._InstanceIds = None
+        self._FenceFlag = None
+        self._InstanceName = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._InstanceStatus = None
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def ProductIds(self):
+        return self._ProductIds
+
+    @ProductIds.setter
+    def ProductIds(self, ProductIds):
+        self._ProductIds = ProductIds
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def FenceFlag(self):
+        return self._FenceFlag
+
+    @FenceFlag.setter
+    def FenceFlag(self, FenceFlag):
+        self._FenceFlag = FenceFlag
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
 
 
     def _deserialize(self, params):
-        self.InstanceTypes = params.get("InstanceTypes")
-        self.ProductIds = params.get("ProductIds")
-        self.InstanceIds = params.get("InstanceIds")
-        self.FenceFlag = params.get("FenceFlag")
-        self.InstanceName = params.get("InstanceName")
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.OrderBy = params.get("OrderBy")
-        self.OrderByType = params.get("OrderByType")
-        self.InstanceStatus = params.get("InstanceStatus")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._ProductIds = params.get("ProductIds")
+        self._InstanceIds = params.get("InstanceIds")
+        self._FenceFlag = params.get("FenceFlag")
+        self._InstanceName = params.get("InstanceName")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -688,27 +1599,51 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 集群数量
+        :param _TotalCount: 集群数量
         :type TotalCount: int
-        :param Instances: 集群扩展信息
+        :param _Instances: 集群扩展信息
         :type Instances: list of InstanceExpand
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Instances = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Instances = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Instances") is not None:
-            self.Instances = []
+            self._Instances = []
             for item in params.get("Instances"):
                 obj = InstanceExpand()
                 obj._deserialize(item)
-                self.Instances.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Instances.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeviceInfo(AbstractModel):
@@ -718,50 +1653,123 @@ class DeviceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceId: 设备ID
+        :param _DeviceId: 设备ID
         :type DeviceId: int
-        :param DeviceNo: 设备No
+        :param _DeviceNo: 设备No
         :type DeviceNo: str
-        :param DevClass: 设备类型
+        :param _DevClass: 设备类型
         :type DevClass: str
-        :param MaxMemory: 设备总内存，单位GB
+        :param _MaxMemory: 设备总内存，单位GB
         :type MaxMemory: float
-        :param MaxDisk: 设备总磁盘，单位GB
+        :param _MaxDisk: 设备总磁盘，单位GB
         :type MaxDisk: float
-        :param RestMemory: 设备剩余内存，单位GB
+        :param _RestMemory: 设备剩余内存，单位GB
         :type RestMemory: float
-        :param RestDisk: 设备剩余磁盘，单位GB
+        :param _RestDisk: 设备剩余磁盘，单位GB
         :type RestDisk: float
-        :param RawDeviceNum: 设备机器个数
+        :param _RawDeviceNum: 设备机器个数
         :type RawDeviceNum: int
-        :param InstanceNum: 数据库实例个数
+        :param _InstanceNum: 数据库实例个数
         :type InstanceNum: int
         """
-        self.DeviceId = None
-        self.DeviceNo = None
-        self.DevClass = None
-        self.MaxMemory = None
-        self.MaxDisk = None
-        self.RestMemory = None
-        self.RestDisk = None
-        self.RawDeviceNum = None
-        self.InstanceNum = None
+        self._DeviceId = None
+        self._DeviceNo = None
+        self._DevClass = None
+        self._MaxMemory = None
+        self._MaxDisk = None
+        self._RestMemory = None
+        self._RestDisk = None
+        self._RawDeviceNum = None
+        self._InstanceNum = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceNo(self):
+        return self._DeviceNo
+
+    @DeviceNo.setter
+    def DeviceNo(self, DeviceNo):
+        self._DeviceNo = DeviceNo
+
+    @property
+    def DevClass(self):
+        return self._DevClass
+
+    @DevClass.setter
+    def DevClass(self, DevClass):
+        self._DevClass = DevClass
+
+    @property
+    def MaxMemory(self):
+        return self._MaxMemory
+
+    @MaxMemory.setter
+    def MaxMemory(self, MaxMemory):
+        self._MaxMemory = MaxMemory
+
+    @property
+    def MaxDisk(self):
+        return self._MaxDisk
+
+    @MaxDisk.setter
+    def MaxDisk(self, MaxDisk):
+        self._MaxDisk = MaxDisk
+
+    @property
+    def RestMemory(self):
+        return self._RestMemory
+
+    @RestMemory.setter
+    def RestMemory(self, RestMemory):
+        self._RestMemory = RestMemory
+
+    @property
+    def RestDisk(self):
+        return self._RestDisk
+
+    @RestDisk.setter
+    def RestDisk(self, RestDisk):
+        self._RestDisk = RestDisk
+
+    @property
+    def RawDeviceNum(self):
+        return self._RawDeviceNum
+
+    @RawDeviceNum.setter
+    def RawDeviceNum(self, RawDeviceNum):
+        self._RawDeviceNum = RawDeviceNum
+
+    @property
+    def InstanceNum(self):
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
 
 
     def _deserialize(self, params):
-        self.DeviceId = params.get("DeviceId")
-        self.DeviceNo = params.get("DeviceNo")
-        self.DevClass = params.get("DevClass")
-        self.MaxMemory = params.get("MaxMemory")
-        self.MaxDisk = params.get("MaxDisk")
-        self.RestMemory = params.get("RestMemory")
-        self.RestDisk = params.get("RestDisk")
-        self.RawDeviceNum = params.get("RawDeviceNum")
-        self.InstanceNum = params.get("InstanceNum")
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceNo = params.get("DeviceNo")
+        self._DevClass = params.get("DevClass")
+        self._MaxMemory = params.get("MaxMemory")
+        self._MaxDisk = params.get("MaxDisk")
+        self._RestMemory = params.get("RestMemory")
+        self._RestDisk = params.get("RestDisk")
+        self._RawDeviceNum = params.get("RawDeviceNum")
+        self._InstanceNum = params.get("InstanceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -774,110 +1782,303 @@ class HostDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HostId: 主机Id
+        :param _HostId: 主机Id
         :type HostId: str
-        :param HostName: 主机名称
+        :param _HostName: 主机名称
         :type HostName: str
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param Status: 主机状态
+        :param _Status: 主机状态
         :type Status: int
-        :param AssignStatus: 分配DB实例状态,0:可分配,1:不可分配
+        :param _AssignStatus: 分配DB实例状态,0:可分配,1:不可分配
         :type AssignStatus: int
-        :param HostType: 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+        :param _HostType: 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
         :type HostType: int
-        :param DbNum: DB实例数
+        :param _DbNum: DB实例数
         :type DbNum: int
-        :param CpuSpec: 主机CPU(单位:核数)
+        :param _CpuSpec: 主机CPU(单位:核数)
         :type CpuSpec: int
-        :param CpuAssigned: 已分配CPU(单位:核数)
+        :param _CpuAssigned: 已分配CPU(单位:核数)
         :type CpuAssigned: int
-        :param CpuAssignable: 可分配CPU(单位:核数)
+        :param _CpuAssignable: 可分配CPU(单位:核数)
         :type CpuAssignable: int
-        :param MemorySpec: 主机内存(单位:GB)
+        :param _MemorySpec: 主机内存(单位:GB)
         :type MemorySpec: int
-        :param MemoryAssigned: 已分配内存(单位:GB)
+        :param _MemoryAssigned: 已分配内存(单位:GB)
         :type MemoryAssigned: int
-        :param MemoryAssignable: 可分配内存(单位:GB)
+        :param _MemoryAssignable: 可分配内存(单位:GB)
         :type MemoryAssignable: int
-        :param DiskSpec: 主机磁盘(单位:GB)
+        :param _DiskSpec: 主机磁盘(单位:GB)
         :type DiskSpec: int
-        :param DiskAssigned: 已分配磁盘(单位:GB)
+        :param _DiskAssigned: 已分配磁盘(单位:GB)
         :type DiskAssigned: int
-        :param DiskAssignable: 可分配磁盘(GB)
+        :param _DiskAssignable: 可分配磁盘(GB)
         :type DiskAssignable: int
-        :param CpuRatio: CPU分配比
+        :param _CpuRatio: CPU分配比
         :type CpuRatio: float
-        :param MemoryRatio: 内存分配比
+        :param _MemoryRatio: 内存分配比
         :type MemoryRatio: float
-        :param DiskRatio: 磁盘分配比
+        :param _DiskRatio: 磁盘分配比
         :type DiskRatio: float
-        :param MachineName: 机型名称
+        :param _MachineName: 机型名称
         :type MachineName: str
-        :param MachineType: 机型类别
+        :param _MachineType: 机型类别
         :type MachineType: str
-        :param PidTag: 计费标签
+        :param _PidTag: 计费标签
         :type PidTag: str
-        :param Pid: 计费ID
+        :param _Pid: 计费ID
         :type Pid: int
-        :param InstanceId: 独享集群实例Id
+        :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
         """
-        self.HostId = None
-        self.HostName = None
-        self.Zone = None
-        self.Status = None
-        self.AssignStatus = None
-        self.HostType = None
-        self.DbNum = None
-        self.CpuSpec = None
-        self.CpuAssigned = None
-        self.CpuAssignable = None
-        self.MemorySpec = None
-        self.MemoryAssigned = None
-        self.MemoryAssignable = None
-        self.DiskSpec = None
-        self.DiskAssigned = None
-        self.DiskAssignable = None
-        self.CpuRatio = None
-        self.MemoryRatio = None
-        self.DiskRatio = None
-        self.MachineName = None
-        self.MachineType = None
-        self.PidTag = None
-        self.Pid = None
-        self.InstanceId = None
+        self._HostId = None
+        self._HostName = None
+        self._Zone = None
+        self._Status = None
+        self._AssignStatus = None
+        self._HostType = None
+        self._DbNum = None
+        self._CpuSpec = None
+        self._CpuAssigned = None
+        self._CpuAssignable = None
+        self._MemorySpec = None
+        self._MemoryAssigned = None
+        self._MemoryAssignable = None
+        self._DiskSpec = None
+        self._DiskAssigned = None
+        self._DiskAssignable = None
+        self._CpuRatio = None
+        self._MemoryRatio = None
+        self._DiskRatio = None
+        self._MachineName = None
+        self._MachineType = None
+        self._PidTag = None
+        self._Pid = None
+        self._InstanceId = None
+
+    @property
+    def HostId(self):
+        return self._HostId
+
+    @HostId.setter
+    def HostId(self, HostId):
+        self._HostId = HostId
+
+    @property
+    def HostName(self):
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AssignStatus(self):
+        return self._AssignStatus
+
+    @AssignStatus.setter
+    def AssignStatus(self, AssignStatus):
+        self._AssignStatus = AssignStatus
+
+    @property
+    def HostType(self):
+        return self._HostType
+
+    @HostType.setter
+    def HostType(self, HostType):
+        self._HostType = HostType
+
+    @property
+    def DbNum(self):
+        return self._DbNum
+
+    @DbNum.setter
+    def DbNum(self, DbNum):
+        self._DbNum = DbNum
+
+    @property
+    def CpuSpec(self):
+        return self._CpuSpec
+
+    @CpuSpec.setter
+    def CpuSpec(self, CpuSpec):
+        self._CpuSpec = CpuSpec
+
+    @property
+    def CpuAssigned(self):
+        return self._CpuAssigned
+
+    @CpuAssigned.setter
+    def CpuAssigned(self, CpuAssigned):
+        self._CpuAssigned = CpuAssigned
+
+    @property
+    def CpuAssignable(self):
+        return self._CpuAssignable
+
+    @CpuAssignable.setter
+    def CpuAssignable(self, CpuAssignable):
+        self._CpuAssignable = CpuAssignable
+
+    @property
+    def MemorySpec(self):
+        return self._MemorySpec
+
+    @MemorySpec.setter
+    def MemorySpec(self, MemorySpec):
+        self._MemorySpec = MemorySpec
+
+    @property
+    def MemoryAssigned(self):
+        return self._MemoryAssigned
+
+    @MemoryAssigned.setter
+    def MemoryAssigned(self, MemoryAssigned):
+        self._MemoryAssigned = MemoryAssigned
+
+    @property
+    def MemoryAssignable(self):
+        return self._MemoryAssignable
+
+    @MemoryAssignable.setter
+    def MemoryAssignable(self, MemoryAssignable):
+        self._MemoryAssignable = MemoryAssignable
+
+    @property
+    def DiskSpec(self):
+        return self._DiskSpec
+
+    @DiskSpec.setter
+    def DiskSpec(self, DiskSpec):
+        self._DiskSpec = DiskSpec
+
+    @property
+    def DiskAssigned(self):
+        return self._DiskAssigned
+
+    @DiskAssigned.setter
+    def DiskAssigned(self, DiskAssigned):
+        self._DiskAssigned = DiskAssigned
+
+    @property
+    def DiskAssignable(self):
+        return self._DiskAssignable
+
+    @DiskAssignable.setter
+    def DiskAssignable(self, DiskAssignable):
+        self._DiskAssignable = DiskAssignable
+
+    @property
+    def CpuRatio(self):
+        return self._CpuRatio
+
+    @CpuRatio.setter
+    def CpuRatio(self, CpuRatio):
+        self._CpuRatio = CpuRatio
+
+    @property
+    def MemoryRatio(self):
+        return self._MemoryRatio
+
+    @MemoryRatio.setter
+    def MemoryRatio(self, MemoryRatio):
+        self._MemoryRatio = MemoryRatio
+
+    @property
+    def DiskRatio(self):
+        return self._DiskRatio
+
+    @DiskRatio.setter
+    def DiskRatio(self, DiskRatio):
+        self._DiskRatio = DiskRatio
+
+    @property
+    def MachineName(self):
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def PidTag(self):
+        return self._PidTag
+
+    @PidTag.setter
+    def PidTag(self, PidTag):
+        self._PidTag = PidTag
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.HostId = params.get("HostId")
-        self.HostName = params.get("HostName")
-        self.Zone = params.get("Zone")
-        self.Status = params.get("Status")
-        self.AssignStatus = params.get("AssignStatus")
-        self.HostType = params.get("HostType")
-        self.DbNum = params.get("DbNum")
-        self.CpuSpec = params.get("CpuSpec")
-        self.CpuAssigned = params.get("CpuAssigned")
-        self.CpuAssignable = params.get("CpuAssignable")
-        self.MemorySpec = params.get("MemorySpec")
-        self.MemoryAssigned = params.get("MemoryAssigned")
-        self.MemoryAssignable = params.get("MemoryAssignable")
-        self.DiskSpec = params.get("DiskSpec")
-        self.DiskAssigned = params.get("DiskAssigned")
-        self.DiskAssignable = params.get("DiskAssignable")
-        self.CpuRatio = params.get("CpuRatio")
-        self.MemoryRatio = params.get("MemoryRatio")
-        self.DiskRatio = params.get("DiskRatio")
-        self.MachineName = params.get("MachineName")
-        self.MachineType = params.get("MachineType")
-        self.PidTag = params.get("PidTag")
-        self.Pid = params.get("Pid")
-        self.InstanceId = params.get("InstanceId")
+        self._HostId = params.get("HostId")
+        self._HostName = params.get("HostName")
+        self._Zone = params.get("Zone")
+        self._Status = params.get("Status")
+        self._AssignStatus = params.get("AssignStatus")
+        self._HostType = params.get("HostType")
+        self._DbNum = params.get("DbNum")
+        self._CpuSpec = params.get("CpuSpec")
+        self._CpuAssigned = params.get("CpuAssigned")
+        self._CpuAssignable = params.get("CpuAssignable")
+        self._MemorySpec = params.get("MemorySpec")
+        self._MemoryAssigned = params.get("MemoryAssigned")
+        self._MemoryAssignable = params.get("MemoryAssignable")
+        self._DiskSpec = params.get("DiskSpec")
+        self._DiskAssigned = params.get("DiskAssigned")
+        self._DiskAssignable = params.get("DiskAssignable")
+        self._CpuRatio = params.get("CpuRatio")
+        self._MemoryRatio = params.get("MemoryRatio")
+        self._DiskRatio = params.get("DiskRatio")
+        self._MachineName = params.get("MachineName")
+        self._MachineType = params.get("MachineType")
+        self._PidTag = params.get("PidTag")
+        self._Pid = params.get("Pid")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -890,59 +2091,140 @@ class InstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 集群状态，0：运行中，1：不在运行
+        :param _Status: 集群状态，0：运行中，1：不在运行
         :type Status: int
-        :param ReadWriteTotalLeaveMemory: 读写集群剩余内存容量，单位GB
+        :param _ReadWriteTotalLeaveMemory: 读写集群剩余内存容量，单位GB
         :type ReadWriteTotalLeaveMemory: float
-        :param ReadWriteTotalLeaveDisk: 读写集群剩余磁盘容量，单位GB
+        :param _ReadWriteTotalLeaveDisk: 读写集群剩余磁盘容量，单位GB
         :type ReadWriteTotalLeaveDisk: float
-        :param ReadWriteTotalMemory: 读写集群总内存容量，单位GB
+        :param _ReadWriteTotalMemory: 读写集群总内存容量，单位GB
         :type ReadWriteTotalMemory: float
-        :param ReadWriteTotalDisk: 读写集群总磁盘容量，单位GB
+        :param _ReadWriteTotalDisk: 读写集群总磁盘容量，单位GB
         :type ReadWriteTotalDisk: float
-        :param ReadOnlyTotalLeaveMemory: 只读集群剩余内存容量，单位GB
+        :param _ReadOnlyTotalLeaveMemory: 只读集群剩余内存容量，单位GB
         :type ReadOnlyTotalLeaveMemory: float
-        :param ReadOnlyTotalLeaveDisk: 只读集群剩余磁盘容量，单位GB
+        :param _ReadOnlyTotalLeaveDisk: 只读集群剩余磁盘容量，单位GB
         :type ReadOnlyTotalLeaveDisk: float
-        :param ReadOnlyTotalMemory: 只读集群总内存容量，单位GB
+        :param _ReadOnlyTotalMemory: 只读集群总内存容量，单位GB
         :type ReadOnlyTotalMemory: float
-        :param ReadOnlyTotalDisk: 只读集群总磁盘容量，单位GB
+        :param _ReadOnlyTotalDisk: 只读集群总磁盘容量，单位GB
         :type ReadOnlyTotalDisk: float
-        :param InstanceDeviceInfos: 集群设备详情
+        :param _InstanceDeviceInfos: 集群设备详情
         :type InstanceDeviceInfos: list of InstanceDeviceInfo
         """
-        self.Status = None
-        self.ReadWriteTotalLeaveMemory = None
-        self.ReadWriteTotalLeaveDisk = None
-        self.ReadWriteTotalMemory = None
-        self.ReadWriteTotalDisk = None
-        self.ReadOnlyTotalLeaveMemory = None
-        self.ReadOnlyTotalLeaveDisk = None
-        self.ReadOnlyTotalMemory = None
-        self.ReadOnlyTotalDisk = None
-        self.InstanceDeviceInfos = None
+        self._Status = None
+        self._ReadWriteTotalLeaveMemory = None
+        self._ReadWriteTotalLeaveDisk = None
+        self._ReadWriteTotalMemory = None
+        self._ReadWriteTotalDisk = None
+        self._ReadOnlyTotalLeaveMemory = None
+        self._ReadOnlyTotalLeaveDisk = None
+        self._ReadOnlyTotalMemory = None
+        self._ReadOnlyTotalDisk = None
+        self._InstanceDeviceInfos = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ReadWriteTotalLeaveMemory(self):
+        return self._ReadWriteTotalLeaveMemory
+
+    @ReadWriteTotalLeaveMemory.setter
+    def ReadWriteTotalLeaveMemory(self, ReadWriteTotalLeaveMemory):
+        self._ReadWriteTotalLeaveMemory = ReadWriteTotalLeaveMemory
+
+    @property
+    def ReadWriteTotalLeaveDisk(self):
+        return self._ReadWriteTotalLeaveDisk
+
+    @ReadWriteTotalLeaveDisk.setter
+    def ReadWriteTotalLeaveDisk(self, ReadWriteTotalLeaveDisk):
+        self._ReadWriteTotalLeaveDisk = ReadWriteTotalLeaveDisk
+
+    @property
+    def ReadWriteTotalMemory(self):
+        return self._ReadWriteTotalMemory
+
+    @ReadWriteTotalMemory.setter
+    def ReadWriteTotalMemory(self, ReadWriteTotalMemory):
+        self._ReadWriteTotalMemory = ReadWriteTotalMemory
+
+    @property
+    def ReadWriteTotalDisk(self):
+        return self._ReadWriteTotalDisk
+
+    @ReadWriteTotalDisk.setter
+    def ReadWriteTotalDisk(self, ReadWriteTotalDisk):
+        self._ReadWriteTotalDisk = ReadWriteTotalDisk
+
+    @property
+    def ReadOnlyTotalLeaveMemory(self):
+        return self._ReadOnlyTotalLeaveMemory
+
+    @ReadOnlyTotalLeaveMemory.setter
+    def ReadOnlyTotalLeaveMemory(self, ReadOnlyTotalLeaveMemory):
+        self._ReadOnlyTotalLeaveMemory = ReadOnlyTotalLeaveMemory
+
+    @property
+    def ReadOnlyTotalLeaveDisk(self):
+        return self._ReadOnlyTotalLeaveDisk
+
+    @ReadOnlyTotalLeaveDisk.setter
+    def ReadOnlyTotalLeaveDisk(self, ReadOnlyTotalLeaveDisk):
+        self._ReadOnlyTotalLeaveDisk = ReadOnlyTotalLeaveDisk
+
+    @property
+    def ReadOnlyTotalMemory(self):
+        return self._ReadOnlyTotalMemory
+
+    @ReadOnlyTotalMemory.setter
+    def ReadOnlyTotalMemory(self, ReadOnlyTotalMemory):
+        self._ReadOnlyTotalMemory = ReadOnlyTotalMemory
+
+    @property
+    def ReadOnlyTotalDisk(self):
+        return self._ReadOnlyTotalDisk
+
+    @ReadOnlyTotalDisk.setter
+    def ReadOnlyTotalDisk(self, ReadOnlyTotalDisk):
+        self._ReadOnlyTotalDisk = ReadOnlyTotalDisk
+
+    @property
+    def InstanceDeviceInfos(self):
+        return self._InstanceDeviceInfos
+
+    @InstanceDeviceInfos.setter
+    def InstanceDeviceInfos(self, InstanceDeviceInfos):
+        self._InstanceDeviceInfos = InstanceDeviceInfos
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ReadWriteTotalLeaveMemory = params.get("ReadWriteTotalLeaveMemory")
-        self.ReadWriteTotalLeaveDisk = params.get("ReadWriteTotalLeaveDisk")
-        self.ReadWriteTotalMemory = params.get("ReadWriteTotalMemory")
-        self.ReadWriteTotalDisk = params.get("ReadWriteTotalDisk")
-        self.ReadOnlyTotalLeaveMemory = params.get("ReadOnlyTotalLeaveMemory")
-        self.ReadOnlyTotalLeaveDisk = params.get("ReadOnlyTotalLeaveDisk")
-        self.ReadOnlyTotalMemory = params.get("ReadOnlyTotalMemory")
-        self.ReadOnlyTotalDisk = params.get("ReadOnlyTotalDisk")
+        self._Status = params.get("Status")
+        self._ReadWriteTotalLeaveMemory = params.get("ReadWriteTotalLeaveMemory")
+        self._ReadWriteTotalLeaveDisk = params.get("ReadWriteTotalLeaveDisk")
+        self._ReadWriteTotalMemory = params.get("ReadWriteTotalMemory")
+        self._ReadWriteTotalDisk = params.get("ReadWriteTotalDisk")
+        self._ReadOnlyTotalLeaveMemory = params.get("ReadOnlyTotalLeaveMemory")
+        self._ReadOnlyTotalLeaveDisk = params.get("ReadOnlyTotalLeaveDisk")
+        self._ReadOnlyTotalMemory = params.get("ReadOnlyTotalMemory")
+        self._ReadOnlyTotalDisk = params.get("ReadOnlyTotalDisk")
         if params.get("InstanceDeviceInfos") is not None:
-            self.InstanceDeviceInfos = []
+            self._InstanceDeviceInfos = []
             for item in params.get("InstanceDeviceInfos"):
                 obj = InstanceDeviceInfo()
                 obj._deserialize(item)
-                self.InstanceDeviceInfos.append(obj)
+                self._InstanceDeviceInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -955,49 +2237,82 @@ class InstanceDeviceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 集群ID
+        :param _InstanceId: 集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param ReadWriteDevice: 读写设备组
+        :param _ReadWriteDevice: 读写设备组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadWriteDevice: list of DeviceInfo
-        :param ReadOnlyDevice: 只读设备组
+        :param _ReadOnlyDevice: 只读设备组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnlyDevice: list of DeviceInfo
-        :param FreeDevice: 空闲设备组
+        :param _FreeDevice: 空闲设备组
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreeDevice: list of DeviceInfo
         """
-        self.InstanceId = None
-        self.ReadWriteDevice = None
-        self.ReadOnlyDevice = None
-        self.FreeDevice = None
+        self._InstanceId = None
+        self._ReadWriteDevice = None
+        self._ReadOnlyDevice = None
+        self._FreeDevice = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ReadWriteDevice(self):
+        return self._ReadWriteDevice
+
+    @ReadWriteDevice.setter
+    def ReadWriteDevice(self, ReadWriteDevice):
+        self._ReadWriteDevice = ReadWriteDevice
+
+    @property
+    def ReadOnlyDevice(self):
+        return self._ReadOnlyDevice
+
+    @ReadOnlyDevice.setter
+    def ReadOnlyDevice(self, ReadOnlyDevice):
+        self._ReadOnlyDevice = ReadOnlyDevice
+
+    @property
+    def FreeDevice(self):
+        return self._FreeDevice
+
+    @FreeDevice.setter
+    def FreeDevice(self, FreeDevice):
+        self._FreeDevice = FreeDevice
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         if params.get("ReadWriteDevice") is not None:
-            self.ReadWriteDevice = []
+            self._ReadWriteDevice = []
             for item in params.get("ReadWriteDevice"):
                 obj = DeviceInfo()
                 obj._deserialize(item)
-                self.ReadWriteDevice.append(obj)
+                self._ReadWriteDevice.append(obj)
         if params.get("ReadOnlyDevice") is not None:
-            self.ReadOnlyDevice = []
+            self._ReadOnlyDevice = []
             for item in params.get("ReadOnlyDevice"):
                 obj = DeviceInfo()
                 obj._deserialize(item)
-                self.ReadOnlyDevice.append(obj)
+                self._ReadOnlyDevice.append(obj)
         if params.get("FreeDevice") is not None:
-            self.FreeDevice = []
+            self._FreeDevice = []
             for item in params.get("FreeDevice"):
                 obj = DeviceInfo()
                 obj._deserialize(item)
-                self.FreeDevice.append(obj)
+                self._FreeDevice.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1010,68 +2325,173 @@ class InstanceExpand(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 集群ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param InstanceName: 集群名称
+        :param _InstanceName: 集群名称
         :type InstanceName: str
-        :param AppId: 用户ID
+        :param _AppId: 用户ID
         :type AppId: int
-        :param Region: 地域
+        :param _Region: 地域
         :type Region: str
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param InstanceType: 集群类型： 0：一主一备，1：一主两备
+        :param _InstanceType: 集群类型： 0：一主一备，1：一主两备
         :type InstanceType: int
-        :param InstanceStatus: 集群状态: 0 集群创建中, 1 集群有效, 2 集群扩容中, 3 集群删除中, 4 集群缩容中 -1 集群已隔离 -2 集群已删除
+        :param _InstanceStatus: 集群状态: 0 集群创建中, 1 集群有效, 2 集群扩容中, 3 集群删除中, 4 集群缩容中 -1 集群已隔离 -2 集群已删除
         :type InstanceStatus: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param AutoRenewFlag: 实例自动续费标识： 0正常续费 1自动续费 2到期不续费
+        :param _AutoRenewFlag: 实例自动续费标识： 0正常续费 1自动续费 2到期不续费
         :type AutoRenewFlag: int
-        :param Machine: 机型
+        :param _Machine: 机型
         :type Machine: str
-        :param PeriodEndTime: 过期时间
+        :param _PeriodEndTime: 过期时间
         :type PeriodEndTime: str
-        :param InstanceDetail: 集群信息
+        :param _InstanceDetail: 集群信息
         :type InstanceDetail: :class:`tencentcloud.dbdc.v20201029.models.InstanceDetail`
-        :param Pid: 计费侧的产品ID
+        :param _Pid: 计费侧的产品ID
         :type Pid: int
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.AppId = None
-        self.Region = None
-        self.Zone = None
-        self.InstanceType = None
-        self.InstanceStatus = None
-        self.CreateTime = None
-        self.AutoRenewFlag = None
-        self.Machine = None
-        self.PeriodEndTime = None
-        self.InstanceDetail = None
-        self.Pid = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._AppId = None
+        self._Region = None
+        self._Zone = None
+        self._InstanceType = None
+        self._InstanceStatus = None
+        self._CreateTime = None
+        self._AutoRenewFlag = None
+        self._Machine = None
+        self._PeriodEndTime = None
+        self._InstanceDetail = None
+        self._Pid = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Machine(self):
+        return self._Machine
+
+    @Machine.setter
+    def Machine(self, Machine):
+        self._Machine = Machine
+
+    @property
+    def PeriodEndTime(self):
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def InstanceDetail(self):
+        return self._InstanceDetail
+
+    @InstanceDetail.setter
+    def InstanceDetail(self, InstanceDetail):
+        self._InstanceDetail = InstanceDetail
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.AppId = params.get("AppId")
-        self.Region = params.get("Region")
-        self.Zone = params.get("Zone")
-        self.InstanceType = params.get("InstanceType")
-        self.InstanceStatus = params.get("InstanceStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.Machine = params.get("Machine")
-        self.PeriodEndTime = params.get("PeriodEndTime")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._AppId = params.get("AppId")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Machine = params.get("Machine")
+        self._PeriodEndTime = params.get("PeriodEndTime")
         if params.get("InstanceDetail") is not None:
-            self.InstanceDetail = InstanceDetail()
-            self.InstanceDetail._deserialize(params.get("InstanceDetail"))
-        self.Pid = params.get("Pid")
+            self._InstanceDetail = InstanceDetail()
+            self._InstanceDetail._deserialize(params.get("InstanceDetail"))
+        self._Pid = params.get("Pid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1084,22 +2504,39 @@ class ModifyInstanceNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 独享集群实例Id
+        :param _InstanceId: 独享集群实例Id
         :type InstanceId: str
-        :param InstanceName: 独享集群实例名称
+        :param _InstanceName: 独享集群实例名称
         :type InstanceName: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
+        self._InstanceId = None
+        self._InstanceName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1112,11 +2549,19 @@ class ModifyInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

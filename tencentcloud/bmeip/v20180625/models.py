@@ -25,23 +25,32 @@ class BindEipAclsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipIdAclIdList: 待关联的 EIP 与 ACL关系列表
+        :param _EipIdAclIdList: 待关联的 EIP 与 ACL关系列表
         :type EipIdAclIdList: list of EipAclMap
         """
-        self.EipIdAclIdList = None
+        self._EipIdAclIdList = None
+
+    @property
+    def EipIdAclIdList(self):
+        return self._EipIdAclIdList
+
+    @EipIdAclIdList.setter
+    def EipIdAclIdList(self, EipIdAclIdList):
+        self._EipIdAclIdList = EipIdAclIdList
 
 
     def _deserialize(self, params):
         if params.get("EipIdAclIdList") is not None:
-            self.EipIdAclIdList = []
+            self._EipIdAclIdList = []
             for item in params.get("EipIdAclIdList"):
                 obj = EipAclMap()
                 obj._deserialize(item)
-                self.EipIdAclIdList.append(obj)
+                self._EipIdAclIdList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -54,14 +63,22 @@ class BindEipAclsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class BindHostedRequest(AbstractModel):
@@ -71,22 +88,39 @@ class BindHostedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
+        :param _EipId: Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
         :type EipId: str
-        :param InstanceId: 托管机器实例ID
+        :param _InstanceId: 托管机器实例ID
         :type InstanceId: str
         """
-        self.EipId = None
-        self.InstanceId = None
+        self._EipId = None
+        self._InstanceId = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.InstanceId = params.get("InstanceId")
+        self._EipId = params.get("EipId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -99,18 +133,34 @@ class BindHostedResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务ID，可以通过EipBmQueryTask查询任务状态
+        :param _TaskId: 异步任务ID，可以通过EipBmQueryTask查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class BindRsRequest(AbstractModel):
@@ -120,22 +170,39 @@ class BindRsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: Eip实例ID
+        :param _EipId: Eip实例ID
         :type EipId: str
-        :param InstanceId: 物理服务器实例ID
+        :param _InstanceId: 物理服务器实例ID
         :type InstanceId: str
         """
-        self.EipId = None
-        self.InstanceId = None
+        self._EipId = None
+        self._InstanceId = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.InstanceId = params.get("InstanceId")
+        self._EipId = params.get("EipId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -148,18 +215,34 @@ class BindRsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 绑定黑石物理机异步任务ID，可以通过DescribeEipTask查询任务状态
+        :param _TaskId: 绑定黑石物理机异步任务ID，可以通过DescribeEipTask查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class BindVpcIpRequest(AbstractModel):
@@ -169,26 +252,51 @@ class BindVpcIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: Eip实例ID
+        :param _EipId: Eip实例ID
         :type EipId: str
-        :param VpcId: EIP归属VpcId，例如vpc-k7j1t2x1
+        :param _VpcId: EIP归属VpcId，例如vpc-k7j1t2x1
         :type VpcId: str
-        :param VpcIp: 绑定的VPC内IP地址
+        :param _VpcIp: 绑定的VPC内IP地址
         :type VpcIp: str
         """
-        self.EipId = None
-        self.VpcId = None
-        self.VpcIp = None
+        self._EipId = None
+        self._VpcId = None
+        self._VpcIp = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcIp(self):
+        return self._VpcIp
+
+    @VpcIp.setter
+    def VpcIp(self, VpcIp):
+        self._VpcIp = VpcIp
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.VpcId = params.get("VpcId")
-        self.VpcIp = params.get("VpcIp")
+        self._EipId = params.get("EipId")
+        self._VpcId = params.get("VpcId")
+        self._VpcIp = params.get("VpcIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -201,18 +309,34 @@ class BindVpcIpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: EIP绑定VPC网络IP异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :param _TaskId: EIP绑定VPC网络IP异步任务ID，可以通过查询EIP任务状态查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEipAclRequest(AbstractModel):
@@ -222,22 +346,39 @@ class CreateEipAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AclName: ACL 名称
+        :param _AclName: ACL 名称
         :type AclName: str
-        :param Status: ACL 状态 0：无状态，1：有状态
+        :param _Status: ACL 状态 0：无状态，1：有状态
         :type Status: int
         """
-        self.AclName = None
-        self.Status = None
+        self._AclName = None
+        self._Status = None
+
+    @property
+    def AclName(self):
+        return self._AclName
+
+    @AclName.setter
+    def AclName(self, AclName):
+        self._AclName = AclName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.AclName = params.get("AclName")
-        self.Status = params.get("Status")
+        self._AclName = params.get("AclName")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -250,30 +391,70 @@ class CreateEipAclResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AclId: ACL 实例 ID
+        :param _AclId: ACL 实例 ID
         :type AclId: str
-        :param Status: ACL 实例状态
+        :param _Status: ACL 实例状态
         :type Status: int
-        :param AclName: ACL 实例名称
+        :param _AclName: ACL 实例名称
         :type AclName: str
-        :param CreatedAt: ACL 实例创建时间
+        :param _CreatedAt: ACL 实例创建时间
         :type CreatedAt: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AclId = None
-        self.Status = None
-        self.AclName = None
-        self.CreatedAt = None
-        self.RequestId = None
+        self._AclId = None
+        self._Status = None
+        self._AclName = None
+        self._CreatedAt = None
+        self._RequestId = None
+
+    @property
+    def AclId(self):
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AclName(self):
+        return self._AclName
+
+    @AclName.setter
+    def AclName(self, AclName):
+        self._AclName = AclName
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AclId = params.get("AclId")
-        self.Status = params.get("Status")
-        self.AclName = params.get("AclName")
-        self.CreatedAt = params.get("CreatedAt")
-        self.RequestId = params.get("RequestId")
+        self._AclId = params.get("AclId")
+        self._Status = params.get("Status")
+        self._AclName = params.get("AclName")
+        self._CreatedAt = params.get("CreatedAt")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEipRequest(AbstractModel):
@@ -283,42 +464,99 @@ class CreateEipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GoodsNum: 申请数量，默认为1, 最大 20
+        :param _GoodsNum: 申请数量，默认为1, 最大 20
         :type GoodsNum: int
-        :param PayMode: EIP计费方式，flow-流量计费；bandwidth-带宽计费
+        :param _PayMode: EIP计费方式，flow-流量计费；bandwidth-带宽计费
         :type PayMode: str
-        :param Bandwidth: 带宽设定值（只在带宽计费时生效）
+        :param _Bandwidth: 带宽设定值（只在带宽计费时生效）
         :type Bandwidth: int
-        :param SetType: EIP模式，目前支持tunnel和fullnat
+        :param _SetType: EIP模式，目前支持tunnel和fullnat
         :type SetType: str
-        :param Exclusive: 是否使用独占集群，0：不使用，1：使用。默认为0
+        :param _Exclusive: 是否使用独占集群，0：不使用，1：使用。默认为0
         :type Exclusive: int
-        :param VpcId: EIP归属私有网络ID，例如vpc-k7j1t2x1
+        :param _VpcId: EIP归属私有网络ID，例如vpc-k7j1t2x1
         :type VpcId: str
-        :param IpList: 指定申请的IP列表
+        :param _IpList: 指定申请的IP列表
         :type IpList: list of str
         """
-        self.GoodsNum = None
-        self.PayMode = None
-        self.Bandwidth = None
-        self.SetType = None
-        self.Exclusive = None
-        self.VpcId = None
-        self.IpList = None
+        self._GoodsNum = None
+        self._PayMode = None
+        self._Bandwidth = None
+        self._SetType = None
+        self._Exclusive = None
+        self._VpcId = None
+        self._IpList = None
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def SetType(self):
+        return self._SetType
+
+    @SetType.setter
+    def SetType(self, SetType):
+        self._SetType = SetType
+
+    @property
+    def Exclusive(self):
+        return self._Exclusive
+
+    @Exclusive.setter
+    def Exclusive(self, Exclusive):
+        self._Exclusive = Exclusive
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
 
 
     def _deserialize(self, params):
-        self.GoodsNum = params.get("GoodsNum")
-        self.PayMode = params.get("PayMode")
-        self.Bandwidth = params.get("Bandwidth")
-        self.SetType = params.get("SetType")
-        self.Exclusive = params.get("Exclusive")
-        self.VpcId = params.get("VpcId")
-        self.IpList = params.get("IpList")
+        self._GoodsNum = params.get("GoodsNum")
+        self._PayMode = params.get("PayMode")
+        self._Bandwidth = params.get("Bandwidth")
+        self._SetType = params.get("SetType")
+        self._Exclusive = params.get("Exclusive")
+        self._VpcId = params.get("VpcId")
+        self._IpList = params.get("IpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -331,22 +569,46 @@ class CreateEipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipIds: EIP列表
+        :param _EipIds: EIP列表
         :type EipIds: list of str
-        :param TaskId: 任务ID
+        :param _TaskId: 任务ID
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EipIds = None
-        self.TaskId = None
-        self.RequestId = None
+        self._EipIds = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def EipIds(self):
+        return self._EipIds
+
+    @EipIds.setter
+    def EipIds(self, EipIds):
+        self._EipIds = EipIds
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EipIds = params.get("EipIds")
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._EipIds = params.get("EipIds")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteEipAclRequest(AbstractModel):
@@ -356,18 +618,27 @@ class DeleteEipAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AclId: 待删除的 ACL 实例 ID
+        :param _AclId: 待删除的 ACL 实例 ID
         :type AclId: str
         """
-        self.AclId = None
+        self._AclId = None
+
+    @property
+    def AclId(self):
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
 
 
     def _deserialize(self, params):
-        self.AclId = params.get("AclId")
+        self._AclId = params.get("AclId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -380,14 +651,22 @@ class DeleteEipAclResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteEipRequest(AbstractModel):
@@ -397,18 +676,27 @@ class DeleteEipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipIds: Eip实例ID列表
+        :param _EipIds: Eip实例ID列表
         :type EipIds: list of str
         """
-        self.EipIds = None
+        self._EipIds = None
+
+    @property
+    def EipIds(self):
+        return self._EipIds
+
+    @EipIds.setter
+    def EipIds(self, EipIds):
+        self._EipIds = EipIds
 
 
     def _deserialize(self, params):
-        self.EipIds = params.get("EipIds")
+        self._EipIds = params.get("EipIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -421,18 +709,34 @@ class DeleteEipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务Id
+        :param _TaskId: 任务Id
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEipAclsRequest(AbstractModel):
@@ -442,54 +746,135 @@ class DescribeEipAclsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AclName: ACL 名称，支持模糊查找
+        :param _AclName: ACL 名称，支持模糊查找
         :type AclName: str
-        :param AclIds: ACL 实例 ID 列表，数组下标从 0 开始
+        :param _AclIds: ACL 实例 ID 列表，数组下标从 0 开始
         :type AclIds: list of str
-        :param Offset: 分页参数。偏移量，默认为 0
+        :param _Offset: 分页参数。偏移量，默认为 0
         :type Offset: int
-        :param Limit: 分页参数。每一页的 EIPACL 列表数目
+        :param _Limit: 分页参数。每一页的 EIPACL 列表数目
         :type Limit: int
-        :param EipIds: EIP实例ID列表
+        :param _EipIds: EIP实例ID列表
         :type EipIds: list of str
-        :param EipIps: EIP IP地址列表
+        :param _EipIps: EIP IP地址列表
         :type EipIps: list of str
-        :param EipNames: EIP名称列表
+        :param _EipNames: EIP名称列表
         :type EipNames: list of str
-        :param OrderField: 排序字段
+        :param _OrderField: 排序字段
         :type OrderField: str
-        :param Order: 排序方式，取值：0:增序(默认)，1:降序
+        :param _Order: 排序方式，取值：0:增序(默认)，1:降序
         :type Order: int
-        :param AclNames: ACL名称列表，支持模糊查找
+        :param _AclNames: ACL名称列表，支持模糊查找
         :type AclNames: list of str
         """
-        self.AclName = None
-        self.AclIds = None
-        self.Offset = None
-        self.Limit = None
-        self.EipIds = None
-        self.EipIps = None
-        self.EipNames = None
-        self.OrderField = None
-        self.Order = None
-        self.AclNames = None
+        self._AclName = None
+        self._AclIds = None
+        self._Offset = None
+        self._Limit = None
+        self._EipIds = None
+        self._EipIps = None
+        self._EipNames = None
+        self._OrderField = None
+        self._Order = None
+        self._AclNames = None
+
+    @property
+    def AclName(self):
+        return self._AclName
+
+    @AclName.setter
+    def AclName(self, AclName):
+        self._AclName = AclName
+
+    @property
+    def AclIds(self):
+        return self._AclIds
+
+    @AclIds.setter
+    def AclIds(self, AclIds):
+        self._AclIds = AclIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def EipIds(self):
+        return self._EipIds
+
+    @EipIds.setter
+    def EipIds(self, EipIds):
+        self._EipIds = EipIds
+
+    @property
+    def EipIps(self):
+        return self._EipIps
+
+    @EipIps.setter
+    def EipIps(self, EipIps):
+        self._EipIps = EipIps
+
+    @property
+    def EipNames(self):
+        return self._EipNames
+
+    @EipNames.setter
+    def EipNames(self, EipNames):
+        self._EipNames = EipNames
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def AclNames(self):
+        return self._AclNames
+
+    @AclNames.setter
+    def AclNames(self, AclNames):
+        self._AclNames = AclNames
 
 
     def _deserialize(self, params):
-        self.AclName = params.get("AclName")
-        self.AclIds = params.get("AclIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.EipIds = params.get("EipIds")
-        self.EipIps = params.get("EipIps")
-        self.EipNames = params.get("EipNames")
-        self.OrderField = params.get("OrderField")
-        self.Order = params.get("Order")
-        self.AclNames = params.get("AclNames")
+        self._AclName = params.get("AclName")
+        self._AclIds = params.get("AclIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._EipIds = params.get("EipIds")
+        self._EipIps = params.get("EipIps")
+        self._EipNames = params.get("EipNames")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        self._AclNames = params.get("AclNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -502,27 +887,51 @@ class DescribeEipAclsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 返回 EIPACL 列表总数
+        :param _TotalCount: 返回 EIPACL 列表总数
         :type TotalCount: int
-        :param EipAclList: EIPACL列表
+        :param _EipAclList: EIPACL列表
         :type EipAclList: list of EipAcl
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.EipAclList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._EipAclList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EipAclList(self):
+        return self._EipAclList
+
+    @EipAclList.setter
+    def EipAclList(self, EipAclList):
+        self._EipAclList = EipAclList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("EipAclList") is not None:
-            self.EipAclList = []
+            self._EipAclList = []
             for item in params.get("EipAclList"):
                 obj = EipAcl()
                 obj._deserialize(item)
-                self.EipAclList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EipAclList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEipQuotaRequest(AbstractModel):
@@ -538,34 +947,82 @@ class DescribeEipQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipNumQuota: 能拥有的EIP个数的总配额，默认是100个
+        :param _EipNumQuota: 能拥有的EIP个数的总配额，默认是100个
         :type EipNumQuota: int
-        :param CurrentEipNum: 当前已使用的EIP个数，包括创建中、绑定中、已绑定、解绑中、未绑定几种状态的EIP个数总和
+        :param _CurrentEipNum: 当前已使用的EIP个数，包括创建中、绑定中、已绑定、解绑中、未绑定几种状态的EIP个数总和
         :type CurrentEipNum: int
-        :param DailyApplyCount: 当天申请EIP次数
+        :param _DailyApplyCount: 当天申请EIP次数
         :type DailyApplyCount: int
-        :param DailyApplyQuota: 每日申请EIP的次数限制
+        :param _DailyApplyQuota: 每日申请EIP的次数限制
         :type DailyApplyQuota: int
-        :param BatchApplyMax: BatchApplyMax
+        :param _BatchApplyMax: BatchApplyMax
         :type BatchApplyMax: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EipNumQuota = None
-        self.CurrentEipNum = None
-        self.DailyApplyCount = None
-        self.DailyApplyQuota = None
-        self.BatchApplyMax = None
-        self.RequestId = None
+        self._EipNumQuota = None
+        self._CurrentEipNum = None
+        self._DailyApplyCount = None
+        self._DailyApplyQuota = None
+        self._BatchApplyMax = None
+        self._RequestId = None
+
+    @property
+    def EipNumQuota(self):
+        return self._EipNumQuota
+
+    @EipNumQuota.setter
+    def EipNumQuota(self, EipNumQuota):
+        self._EipNumQuota = EipNumQuota
+
+    @property
+    def CurrentEipNum(self):
+        return self._CurrentEipNum
+
+    @CurrentEipNum.setter
+    def CurrentEipNum(self, CurrentEipNum):
+        self._CurrentEipNum = CurrentEipNum
+
+    @property
+    def DailyApplyCount(self):
+        return self._DailyApplyCount
+
+    @DailyApplyCount.setter
+    def DailyApplyCount(self, DailyApplyCount):
+        self._DailyApplyCount = DailyApplyCount
+
+    @property
+    def DailyApplyQuota(self):
+        return self._DailyApplyQuota
+
+    @DailyApplyQuota.setter
+    def DailyApplyQuota(self, DailyApplyQuota):
+        self._DailyApplyQuota = DailyApplyQuota
+
+    @property
+    def BatchApplyMax(self):
+        return self._BatchApplyMax
+
+    @BatchApplyMax.setter
+    def BatchApplyMax(self, BatchApplyMax):
+        self._BatchApplyMax = BatchApplyMax
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EipNumQuota = params.get("EipNumQuota")
-        self.CurrentEipNum = params.get("CurrentEipNum")
-        self.DailyApplyCount = params.get("DailyApplyCount")
-        self.DailyApplyQuota = params.get("DailyApplyQuota")
-        self.BatchApplyMax = params.get("BatchApplyMax")
-        self.RequestId = params.get("RequestId")
+        self._EipNumQuota = params.get("EipNumQuota")
+        self._CurrentEipNum = params.get("CurrentEipNum")
+        self._DailyApplyCount = params.get("DailyApplyCount")
+        self._DailyApplyQuota = params.get("DailyApplyQuota")
+        self._BatchApplyMax = params.get("BatchApplyMax")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEipTaskRequest(AbstractModel):
@@ -575,18 +1032,27 @@ class DescribeEipTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: EIP查询任务ID
+        :param _TaskId: EIP查询任务ID
         :type TaskId: int
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -599,18 +1065,34 @@ class DescribeEipTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 当前任务状态码：0-成功，1-失败，2-进行中
+        :param _Status: 当前任务状态码：0-成功，1-失败，2-进行中
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEipsRequest(AbstractModel):
@@ -620,74 +1102,195 @@ class DescribeEipsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipIds: EIP实例ID列表
+        :param _EipIds: EIP实例ID列表
         :type EipIds: list of str
-        :param Eips: EIP IP 列表
+        :param _Eips: EIP IP 列表
         :type Eips: list of str
-        :param InstanceIds: 主机实例ID 列表
+        :param _InstanceIds: 主机实例ID 列表
         :type InstanceIds: list of str
-        :param SearchKey: EIP名称,模糊匹配
+        :param _SearchKey: EIP名称,模糊匹配
         :type SearchKey: str
-        :param Status: 状态列表, 默认所有
+        :param _Status: 状态列表, 默认所有
         :type Status: list of int
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param Limit: 返回EIP数量，默认 20, 最大值 100
+        :param _Limit: 返回EIP数量，默认 20, 最大值 100
         :type Limit: int
-        :param OrderField: 排序字段，支持： EipId,Eip,Status, InstanceId,CreatedAt
+        :param _OrderField: 排序字段，支持： EipId,Eip,Status, InstanceId,CreatedAt
         :type OrderField: str
-        :param Order: 排序方式 0:递增 1:递减(默认)
+        :param _Order: 排序方式 0:递增 1:递减(默认)
         :type Order: int
-        :param PayMode: 计费模式,流量：flow，带宽：bandwidth
+        :param _PayMode: 计费模式,流量：flow，带宽：bandwidth
         :type PayMode: str
-        :param VpcId: EIP归属VpcId，例如vpc-k7j1t2x1
+        :param _VpcId: EIP归属VpcId，例如vpc-k7j1t2x1
         :type VpcId: str
-        :param BindTypes: 绑定类型，-1：未绑定，0：物理机，1：nat网关，2：虚拟IP, 3:托管机器
+        :param _BindTypes: 绑定类型，-1：未绑定，0：物理机，1：nat网关，2：虚拟IP, 3:托管机器
         :type BindTypes: list of int
-        :param ExclusiveTag: 独占标志，0：共享，1：独占
+        :param _ExclusiveTag: 独占标志，0：共享，1：独占
         :type ExclusiveTag: int
-        :param AclId: EIP ACL实例ID
+        :param _AclId: EIP ACL实例ID
         :type AclId: str
-        :param BindAcl: 搜索条件，是否绑定了EIP ACL， 0：未绑定，1：绑定
+        :param _BindAcl: 搜索条件，是否绑定了EIP ACL， 0：未绑定，1：绑定
         :type BindAcl: int
         """
-        self.EipIds = None
-        self.Eips = None
-        self.InstanceIds = None
-        self.SearchKey = None
-        self.Status = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderField = None
-        self.Order = None
-        self.PayMode = None
-        self.VpcId = None
-        self.BindTypes = None
-        self.ExclusiveTag = None
-        self.AclId = None
-        self.BindAcl = None
+        self._EipIds = None
+        self._Eips = None
+        self._InstanceIds = None
+        self._SearchKey = None
+        self._Status = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Order = None
+        self._PayMode = None
+        self._VpcId = None
+        self._BindTypes = None
+        self._ExclusiveTag = None
+        self._AclId = None
+        self._BindAcl = None
+
+    @property
+    def EipIds(self):
+        return self._EipIds
+
+    @EipIds.setter
+    def EipIds(self, EipIds):
+        self._EipIds = EipIds
+
+    @property
+    def Eips(self):
+        return self._Eips
+
+    @Eips.setter
+    def Eips(self, Eips):
+        self._Eips = Eips
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def BindTypes(self):
+        return self._BindTypes
+
+    @BindTypes.setter
+    def BindTypes(self, BindTypes):
+        self._BindTypes = BindTypes
+
+    @property
+    def ExclusiveTag(self):
+        return self._ExclusiveTag
+
+    @ExclusiveTag.setter
+    def ExclusiveTag(self, ExclusiveTag):
+        self._ExclusiveTag = ExclusiveTag
+
+    @property
+    def AclId(self):
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
+
+    @property
+    def BindAcl(self):
+        return self._BindAcl
+
+    @BindAcl.setter
+    def BindAcl(self, BindAcl):
+        self._BindAcl = BindAcl
 
 
     def _deserialize(self, params):
-        self.EipIds = params.get("EipIds")
-        self.Eips = params.get("Eips")
-        self.InstanceIds = params.get("InstanceIds")
-        self.SearchKey = params.get("SearchKey")
-        self.Status = params.get("Status")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderField = params.get("OrderField")
-        self.Order = params.get("Order")
-        self.PayMode = params.get("PayMode")
-        self.VpcId = params.get("VpcId")
-        self.BindTypes = params.get("BindTypes")
-        self.ExclusiveTag = params.get("ExclusiveTag")
-        self.AclId = params.get("AclId")
-        self.BindAcl = params.get("BindAcl")
+        self._EipIds = params.get("EipIds")
+        self._Eips = params.get("Eips")
+        self._InstanceIds = params.get("InstanceIds")
+        self._SearchKey = params.get("SearchKey")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        self._PayMode = params.get("PayMode")
+        self._VpcId = params.get("VpcId")
+        self._BindTypes = params.get("BindTypes")
+        self._ExclusiveTag = params.get("ExclusiveTag")
+        self._AclId = params.get("AclId")
+        self._BindAcl = params.get("BindAcl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -700,27 +1303,51 @@ class DescribeEipsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipSet: 返回EIP信息数组
+        :param _EipSet: 返回EIP信息数组
         :type EipSet: list of EipInfo
-        :param TotalCount: 返回EIP数量
+        :param _TotalCount: 返回EIP数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.EipSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._EipSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def EipSet(self):
+        return self._EipSet
+
+    @EipSet.setter
+    def EipSet(self, EipSet):
+        self._EipSet = EipSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EipSet") is not None:
-            self.EipSet = []
+            self._EipSet = []
             for item in params.get("EipSet"):
                 obj = EipInfo()
                 obj._deserialize(item)
-                self.EipSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._EipSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class EipAcl(AbstractModel):
@@ -730,52 +1357,109 @@ class EipAcl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AclId: ACL 实例 ID。
+        :param _AclId: ACL 实例 ID。
         :type AclId: str
-        :param AclName: ACL 实例名称
+        :param _AclName: ACL 实例名称
         :type AclName: str
-        :param Status: ACL 状态。0：无状态，1：有状态
+        :param _Status: ACL 状态。0：无状态，1：有状态
         :type Status: str
-        :param CreatedAt: EIPACL 创建时间
+        :param _CreatedAt: EIPACL 创建时间
         :type CreatedAt: str
-        :param EipNum: EIPACL 已关联的 eip 数目
+        :param _EipNum: EIPACL 已关联的 eip 数目
         :type EipNum: int
-        :param OutRules: 出站规则
+        :param _OutRules: 出站规则
         :type OutRules: list of EipAclRule
-        :param InRules: 入站规则
+        :param _InRules: 入站规则
         :type InRules: list of EipAclRule
         """
-        self.AclId = None
-        self.AclName = None
-        self.Status = None
-        self.CreatedAt = None
-        self.EipNum = None
-        self.OutRules = None
-        self.InRules = None
+        self._AclId = None
+        self._AclName = None
+        self._Status = None
+        self._CreatedAt = None
+        self._EipNum = None
+        self._OutRules = None
+        self._InRules = None
+
+    @property
+    def AclId(self):
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
+
+    @property
+    def AclName(self):
+        return self._AclName
+
+    @AclName.setter
+    def AclName(self, AclName):
+        self._AclName = AclName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def EipNum(self):
+        return self._EipNum
+
+    @EipNum.setter
+    def EipNum(self, EipNum):
+        self._EipNum = EipNum
+
+    @property
+    def OutRules(self):
+        return self._OutRules
+
+    @OutRules.setter
+    def OutRules(self, OutRules):
+        self._OutRules = OutRules
+
+    @property
+    def InRules(self):
+        return self._InRules
+
+    @InRules.setter
+    def InRules(self, InRules):
+        self._InRules = InRules
 
 
     def _deserialize(self, params):
-        self.AclId = params.get("AclId")
-        self.AclName = params.get("AclName")
-        self.Status = params.get("Status")
-        self.CreatedAt = params.get("CreatedAt")
-        self.EipNum = params.get("EipNum")
+        self._AclId = params.get("AclId")
+        self._AclName = params.get("AclName")
+        self._Status = params.get("Status")
+        self._CreatedAt = params.get("CreatedAt")
+        self._EipNum = params.get("EipNum")
         if params.get("OutRules") is not None:
-            self.OutRules = []
+            self._OutRules = []
             for item in params.get("OutRules"):
                 obj = EipAclRule()
                 obj._deserialize(item)
-                self.OutRules.append(obj)
+                self._OutRules.append(obj)
         if params.get("InRules") is not None:
-            self.InRules = []
+            self._InRules = []
             for item in params.get("InRules"):
                 obj = EipAclRule()
                 obj._deserialize(item)
-                self.InRules.append(obj)
+                self._InRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -788,22 +1472,39 @@ class EipAclMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: EIP 实例 ID
+        :param _EipId: EIP 实例 ID
         :type EipId: str
-        :param AclId: ACL 实例 ID
+        :param _AclId: ACL 实例 ID
         :type AclId: str
         """
-        self.EipId = None
-        self.AclId = None
+        self._EipId = None
+        self._AclId = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def AclId(self):
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.AclId = params.get("AclId")
+        self._EipId = params.get("EipId")
+        self._AclId = params.get("AclId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -816,34 +1517,75 @@ class EipAclRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: 源 IP
+        :param _Ip: 源 IP
         :type Ip: str
-        :param Port: 目标端口
+        :param _Port: 目标端口
         :type Port: str
-        :param Protocol: 协议(TCP/UDP/ICMP/ANY)
+        :param _Protocol: 协议(TCP/UDP/ICMP/ANY)
         :type Protocol: str
-        :param Action: 策略（accept/drop）
+        :param _Action: 策略（accept/drop）
         :type Action: str
-        :param Description: 备注
+        :param _Description: 备注
         :type Description: str
         """
-        self.Ip = None
-        self.Port = None
-        self.Protocol = None
-        self.Action = None
-        self.Description = None
+        self._Ip = None
+        self._Port = None
+        self._Protocol = None
+        self._Action = None
+        self._Description = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        self.Protocol = params.get("Protocol")
-        self.Action = params.get("Action")
-        self.Description = params.get("Description")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._Protocol = params.get("Protocol")
+        self._Action = params.get("Action")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -856,126 +1598,351 @@ class EipInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: EIP实例ID
+        :param _EipId: EIP实例ID
         :type EipId: str
-        :param EipName: EIP名称
+        :param _EipName: EIP名称
         :type EipName: str
-        :param Eip: EIP地址
+        :param _Eip: EIP地址
         :type Eip: str
-        :param IspId: 运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：中国香港
+        :param _IspId: 运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：中国香港
         :type IspId: int
-        :param Status: 状态 0：创建中； 1：绑定中； 2：已绑定； 3：解绑中； 4：未绑定； 6：下线中； 9：创建失败
+        :param _Status: 状态 0：创建中； 1：绑定中； 2：已绑定； 3：解绑中； 4：未绑定； 6：下线中； 9：创建失败
         :type Status: int
-        :param Arrears: 是否欠费隔离 1： 欠费隔离； 0： 正常。处在欠费隔离情况下的EIP不能进行任何管理操作。
+        :param _Arrears: 是否欠费隔离 1： 欠费隔离； 0： 正常。处在欠费隔离情况下的EIP不能进行任何管理操作。
         :type Arrears: int
-        :param InstanceId: EIP所绑定的服务器实例ID，未绑定则为空
+        :param _InstanceId: EIP所绑定的服务器实例ID，未绑定则为空
         :type InstanceId: str
-        :param InstanceAlias: 服务器别名
+        :param _InstanceAlias: 服务器别名
         :type InstanceAlias: str
-        :param FreeAt: EIP解绑时间
+        :param _FreeAt: EIP解绑时间
         :type FreeAt: str
-        :param CreatedAt: EIP创建时间
+        :param _CreatedAt: EIP创建时间
         :type CreatedAt: str
-        :param UpdatedAt: EIP更新时间
+        :param _UpdatedAt: EIP更新时间
         :type UpdatedAt: str
-        :param FreeSecond: EIP未绑定服务器时长（单位：秒）
+        :param _FreeSecond: EIP未绑定服务器时长（单位：秒）
         :type FreeSecond: int
-        :param Type: EIP所绑定的资源类型，-1：未绑定资源；0：黑石物理机，字段对应unInstanceId；1：Nat网关，字段对应natUid；2：云服务器字段对应vpcIp; 3: 托管机器，字段对应HInstanceId, HInstanceAlias
+        :param _Type: EIP所绑定的资源类型，-1：未绑定资源；0：黑石物理机，字段对应unInstanceId；1：Nat网关，字段对应natUid；2：云服务器字段对应vpcIp; 3: 托管机器，字段对应HInstanceId, HInstanceAlias
         :type Type: int
-        :param PayMode: EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
+        :param _PayMode: EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
         :type PayMode: str
-        :param Bandwidth: EIP带宽计费模式下的带宽上限（单位：MB）
+        :param _Bandwidth: EIP带宽计费模式下的带宽上限（单位：MB）
         :type Bandwidth: int
-        :param LatestPayMode: 最近一次操作变更的EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
+        :param _LatestPayMode: 最近一次操作变更的EIP计费模式，"flow"：流量计费； "bandwidth"：带宽计费
         :type LatestPayMode: str
-        :param LatestBandwidth: 最近一次操作变更的EIP计费模式对应的带宽上限值，仅在带宽计费模式下有效（单位：MB）
+        :param _LatestBandwidth: 最近一次操作变更的EIP计费模式对应的带宽上限值，仅在带宽计费模式下有效（单位：MB）
         :type LatestBandwidth: int
-        :param VpcName: 私有网络名称
+        :param _VpcName: 私有网络名称
         :type VpcName: str
-        :param NatId: EIP所绑定的NAT网关的数字ID，形如：1001,，未绑定则为空
+        :param _NatId: EIP所绑定的NAT网关的数字ID，形如：1001,，未绑定则为空
         :type NatId: int
-        :param NatUid: EIP所绑定的NAT网关实例ID，形如："nat-n47xxxxx"，未绑定则为空
+        :param _NatUid: EIP所绑定的NAT网关实例ID，形如："nat-n47xxxxx"，未绑定则为空
         :type NatUid: str
-        :param VpcIp: EIP所绑定的云服务器IP(托管或者云服务器的IP），形如："10.1.1.3"。 注意：IP资源需要通过bmvpc模块注册或者申请后才可以绑定eip，接口使用申请子网IP和注册子网IP：,未绑定则为空
+        :param _VpcIp: EIP所绑定的云服务器IP(托管或者云服务器的IP），形如："10.1.1.3"。 注意：IP资源需要通过bmvpc模块注册或者申请后才可以绑定eip，接口使用申请子网IP和注册子网IP：,未绑定则为空
         :type VpcIp: str
-        :param VpcId: 私有网络实例ID
+        :param _VpcId: 私有网络实例ID
         :type VpcId: str
-        :param Exclusive: 是否为独占类型EIP
+        :param _Exclusive: 是否为独占类型EIP
         :type Exclusive: int
-        :param VpcCidr: 私有网络的cidr
+        :param _VpcCidr: 私有网络的cidr
         :type VpcCidr: str
-        :param AclId: EIP ACL实例ID
+        :param _AclId: EIP ACL实例ID
         :type AclId: str
-        :param AclName: EIP ACL名称
+        :param _AclName: EIP ACL名称
         :type AclName: str
-        :param HInstanceId: 托管机器实例ID
+        :param _HInstanceId: 托管机器实例ID
         :type HInstanceId: str
-        :param HInstanceAlias: 托管机器别名
+        :param _HInstanceAlias: 托管机器别名
         :type HInstanceAlias: str
         """
-        self.EipId = None
-        self.EipName = None
-        self.Eip = None
-        self.IspId = None
-        self.Status = None
-        self.Arrears = None
-        self.InstanceId = None
-        self.InstanceAlias = None
-        self.FreeAt = None
-        self.CreatedAt = None
-        self.UpdatedAt = None
-        self.FreeSecond = None
-        self.Type = None
-        self.PayMode = None
-        self.Bandwidth = None
-        self.LatestPayMode = None
-        self.LatestBandwidth = None
-        self.VpcName = None
-        self.NatId = None
-        self.NatUid = None
-        self.VpcIp = None
-        self.VpcId = None
-        self.Exclusive = None
-        self.VpcCidr = None
-        self.AclId = None
-        self.AclName = None
-        self.HInstanceId = None
-        self.HInstanceAlias = None
+        self._EipId = None
+        self._EipName = None
+        self._Eip = None
+        self._IspId = None
+        self._Status = None
+        self._Arrears = None
+        self._InstanceId = None
+        self._InstanceAlias = None
+        self._FreeAt = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._FreeSecond = None
+        self._Type = None
+        self._PayMode = None
+        self._Bandwidth = None
+        self._LatestPayMode = None
+        self._LatestBandwidth = None
+        self._VpcName = None
+        self._NatId = None
+        self._NatUid = None
+        self._VpcIp = None
+        self._VpcId = None
+        self._Exclusive = None
+        self._VpcCidr = None
+        self._AclId = None
+        self._AclName = None
+        self._HInstanceId = None
+        self._HInstanceAlias = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def EipName(self):
+        return self._EipName
+
+    @EipName.setter
+    def EipName(self, EipName):
+        self._EipName = EipName
+
+    @property
+    def Eip(self):
+        return self._Eip
+
+    @Eip.setter
+    def Eip(self, Eip):
+        self._Eip = Eip
+
+    @property
+    def IspId(self):
+        return self._IspId
+
+    @IspId.setter
+    def IspId(self, IspId):
+        self._IspId = IspId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Arrears(self):
+        return self._Arrears
+
+    @Arrears.setter
+    def Arrears(self, Arrears):
+        self._Arrears = Arrears
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceAlias(self):
+        return self._InstanceAlias
+
+    @InstanceAlias.setter
+    def InstanceAlias(self, InstanceAlias):
+        self._InstanceAlias = InstanceAlias
+
+    @property
+    def FreeAt(self):
+        return self._FreeAt
+
+    @FreeAt.setter
+    def FreeAt(self, FreeAt):
+        self._FreeAt = FreeAt
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def FreeSecond(self):
+        return self._FreeSecond
+
+    @FreeSecond.setter
+    def FreeSecond(self, FreeSecond):
+        self._FreeSecond = FreeSecond
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def LatestPayMode(self):
+        return self._LatestPayMode
+
+    @LatestPayMode.setter
+    def LatestPayMode(self, LatestPayMode):
+        self._LatestPayMode = LatestPayMode
+
+    @property
+    def LatestBandwidth(self):
+        return self._LatestBandwidth
+
+    @LatestBandwidth.setter
+    def LatestBandwidth(self, LatestBandwidth):
+        self._LatestBandwidth = LatestBandwidth
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def NatId(self):
+        return self._NatId
+
+    @NatId.setter
+    def NatId(self, NatId):
+        self._NatId = NatId
+
+    @property
+    def NatUid(self):
+        return self._NatUid
+
+    @NatUid.setter
+    def NatUid(self, NatUid):
+        self._NatUid = NatUid
+
+    @property
+    def VpcIp(self):
+        return self._VpcIp
+
+    @VpcIp.setter
+    def VpcIp(self, VpcIp):
+        self._VpcIp = VpcIp
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Exclusive(self):
+        return self._Exclusive
+
+    @Exclusive.setter
+    def Exclusive(self, Exclusive):
+        self._Exclusive = Exclusive
+
+    @property
+    def VpcCidr(self):
+        return self._VpcCidr
+
+    @VpcCidr.setter
+    def VpcCidr(self, VpcCidr):
+        self._VpcCidr = VpcCidr
+
+    @property
+    def AclId(self):
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
+
+    @property
+    def AclName(self):
+        return self._AclName
+
+    @AclName.setter
+    def AclName(self, AclName):
+        self._AclName = AclName
+
+    @property
+    def HInstanceId(self):
+        return self._HInstanceId
+
+    @HInstanceId.setter
+    def HInstanceId(self, HInstanceId):
+        self._HInstanceId = HInstanceId
+
+    @property
+    def HInstanceAlias(self):
+        return self._HInstanceAlias
+
+    @HInstanceAlias.setter
+    def HInstanceAlias(self, HInstanceAlias):
+        self._HInstanceAlias = HInstanceAlias
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.EipName = params.get("EipName")
-        self.Eip = params.get("Eip")
-        self.IspId = params.get("IspId")
-        self.Status = params.get("Status")
-        self.Arrears = params.get("Arrears")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceAlias = params.get("InstanceAlias")
-        self.FreeAt = params.get("FreeAt")
-        self.CreatedAt = params.get("CreatedAt")
-        self.UpdatedAt = params.get("UpdatedAt")
-        self.FreeSecond = params.get("FreeSecond")
-        self.Type = params.get("Type")
-        self.PayMode = params.get("PayMode")
-        self.Bandwidth = params.get("Bandwidth")
-        self.LatestPayMode = params.get("LatestPayMode")
-        self.LatestBandwidth = params.get("LatestBandwidth")
-        self.VpcName = params.get("VpcName")
-        self.NatId = params.get("NatId")
-        self.NatUid = params.get("NatUid")
-        self.VpcIp = params.get("VpcIp")
-        self.VpcId = params.get("VpcId")
-        self.Exclusive = params.get("Exclusive")
-        self.VpcCidr = params.get("VpcCidr")
-        self.AclId = params.get("AclId")
-        self.AclName = params.get("AclName")
-        self.HInstanceId = params.get("HInstanceId")
-        self.HInstanceAlias = params.get("HInstanceAlias")
+        self._EipId = params.get("EipId")
+        self._EipName = params.get("EipName")
+        self._Eip = params.get("Eip")
+        self._IspId = params.get("IspId")
+        self._Status = params.get("Status")
+        self._Arrears = params.get("Arrears")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceAlias = params.get("InstanceAlias")
+        self._FreeAt = params.get("FreeAt")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._FreeSecond = params.get("FreeSecond")
+        self._Type = params.get("Type")
+        self._PayMode = params.get("PayMode")
+        self._Bandwidth = params.get("Bandwidth")
+        self._LatestPayMode = params.get("LatestPayMode")
+        self._LatestBandwidth = params.get("LatestBandwidth")
+        self._VpcName = params.get("VpcName")
+        self._NatId = params.get("NatId")
+        self._NatUid = params.get("NatUid")
+        self._VpcIp = params.get("VpcIp")
+        self._VpcId = params.get("VpcId")
+        self._Exclusive = params.get("Exclusive")
+        self._VpcCidr = params.get("VpcCidr")
+        self._AclId = params.get("AclId")
+        self._AclName = params.get("AclName")
+        self._HInstanceId = params.get("HInstanceId")
+        self._HInstanceAlias = params.get("HInstanceAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -988,22 +1955,39 @@ class EipRsMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: EIP实例 ID
+        :param _EipId: EIP实例 ID
         :type EipId: str
-        :param InstanceId: 黑石物理机实例ID
+        :param _InstanceId: 黑石物理机实例ID
         :type InstanceId: str
         """
-        self.EipId = None
-        self.InstanceId = None
+        self._EipId = None
+        self._InstanceId = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.InstanceId = params.get("InstanceId")
+        self._EipId = params.get("EipId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1016,39 +2000,80 @@ class ModifyEipAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AclId: ACL 实例 ID
+        :param _AclId: ACL 实例 ID
         :type AclId: str
-        :param AclName: ACL 名称
+        :param _AclName: ACL 名称
         :type AclName: str
-        :param Status: ACL 状态。0：无状态 1：有状态
+        :param _Status: ACL 状态。0：无状态 1：有状态
         :type Status: int
-        :param Type: 规则类型（in/out）。in：入站规则 out：出站规则
+        :param _Type: 规则类型（in/out）。in：入站规则 out：出站规则
         :type Type: str
-        :param Rules: ACL规则列表
+        :param _Rules: ACL规则列表
         :type Rules: list of EipAclRule
         """
-        self.AclId = None
-        self.AclName = None
-        self.Status = None
-        self.Type = None
-        self.Rules = None
+        self._AclId = None
+        self._AclName = None
+        self._Status = None
+        self._Type = None
+        self._Rules = None
+
+    @property
+    def AclId(self):
+        return self._AclId
+
+    @AclId.setter
+    def AclId(self, AclId):
+        self._AclId = AclId
+
+    @property
+    def AclName(self):
+        return self._AclName
+
+    @AclName.setter
+    def AclName(self, AclName):
+        self._AclName = AclName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
 
 
     def _deserialize(self, params):
-        self.AclId = params.get("AclId")
-        self.AclName = params.get("AclName")
-        self.Status = params.get("Status")
-        self.Type = params.get("Type")
+        self._AclId = params.get("AclId")
+        self._AclName = params.get("AclName")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = EipAclRule()
                 obj._deserialize(item)
-                self.Rules.append(obj)
+                self._Rules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1061,14 +2086,22 @@ class ModifyEipAclResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyEipChargeRequest(AbstractModel):
@@ -1078,26 +2111,51 @@ class ModifyEipChargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PayMode: EIP计费方式，flow-流量计费；bandwidth-带宽计费
+        :param _PayMode: EIP计费方式，flow-流量计费；bandwidth-带宽计费
         :type PayMode: str
-        :param EipIds: Eip实例ID列表
+        :param _EipIds: Eip实例ID列表
         :type EipIds: list of str
-        :param Bandwidth: 带宽设定值（只在带宽计费时生效）
+        :param _Bandwidth: 带宽设定值（只在带宽计费时生效）
         :type Bandwidth: int
         """
-        self.PayMode = None
-        self.EipIds = None
-        self.Bandwidth = None
+        self._PayMode = None
+        self._EipIds = None
+        self._Bandwidth = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def EipIds(self):
+        return self._EipIds
+
+    @EipIds.setter
+    def EipIds(self, EipIds):
+        self._EipIds = EipIds
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
 
 
     def _deserialize(self, params):
-        self.PayMode = params.get("PayMode")
-        self.EipIds = params.get("EipIds")
-        self.Bandwidth = params.get("Bandwidth")
+        self._PayMode = params.get("PayMode")
+        self._EipIds = params.get("EipIds")
+        self._Bandwidth = params.get("Bandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1110,18 +2168,34 @@ class ModifyEipChargeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 修改计费模式的异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :param _TaskId: 修改计费模式的异步任务ID，可以通过查询EIP任务状态查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyEipNameRequest(AbstractModel):
@@ -1131,22 +2205,39 @@ class ModifyEipNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: Eip实例ID，可通过/v2/DescribeEip 接口返回字段中的 eipId获取
+        :param _EipId: Eip实例ID，可通过/v2/DescribeEip 接口返回字段中的 eipId获取
         :type EipId: str
-        :param EipName: EIP 实例别名
+        :param _EipName: EIP 实例别名
         :type EipName: str
         """
-        self.EipId = None
-        self.EipName = None
+        self._EipId = None
+        self._EipName = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def EipName(self):
+        return self._EipName
+
+    @EipName.setter
+    def EipName(self, EipName):
+        self._EipName = EipName
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.EipName = params.get("EipName")
+        self._EipId = params.get("EipId")
+        self._EipName = params.get("EipName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1159,14 +2250,22 @@ class ModifyEipNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindEipAclsRequest(AbstractModel):
@@ -1176,23 +2275,32 @@ class UnbindEipAclsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipIdAclIdList: 待解关联的 EIP 与 ACL列表
+        :param _EipIdAclIdList: 待解关联的 EIP 与 ACL列表
         :type EipIdAclIdList: list of EipAclMap
         """
-        self.EipIdAclIdList = None
+        self._EipIdAclIdList = None
+
+    @property
+    def EipIdAclIdList(self):
+        return self._EipIdAclIdList
+
+    @EipIdAclIdList.setter
+    def EipIdAclIdList(self, EipIdAclIdList):
+        self._EipIdAclIdList = EipIdAclIdList
 
 
     def _deserialize(self, params):
         if params.get("EipIdAclIdList") is not None:
-            self.EipIdAclIdList = []
+            self._EipIdAclIdList = []
             for item in params.get("EipIdAclIdList"):
                 obj = EipAclMap()
                 obj._deserialize(item)
-                self.EipIdAclIdList.append(obj)
+                self._EipIdAclIdList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1205,14 +2313,22 @@ class UnbindEipAclsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindHostedRequest(AbstractModel):
@@ -1222,26 +2338,51 @@ class UnbindHostedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 托管机器实例ID
+        :param _InstanceId: 托管机器实例ID
         :type InstanceId: str
-        :param EipId: Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
+        :param _EipId: Eip实例ID，可通过DescribeBmEip 接口返回字段中的 eipId获取。Eip和EipId参数必须要填写一个。
         :type EipId: str
-        :param Eip: 弹性IP。Eip和EipId参数必须要填写一个。
+        :param _Eip: 弹性IP。Eip和EipId参数必须要填写一个。
         :type Eip: str
         """
-        self.InstanceId = None
-        self.EipId = None
-        self.Eip = None
+        self._InstanceId = None
+        self._EipId = None
+        self._Eip = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def Eip(self):
+        return self._Eip
+
+    @Eip.setter
+    def Eip(self, Eip):
+        self._Eip = Eip
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.EipId = params.get("EipId")
-        self.Eip = params.get("Eip")
+        self._InstanceId = params.get("InstanceId")
+        self._EipId = params.get("EipId")
+        self._Eip = params.get("Eip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1254,18 +2395,34 @@ class UnbindHostedResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务ID，可以通过EipBmQueryTask查询任务状态
+        :param _TaskId: 异步任务ID，可以通过EipBmQueryTask查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindRsListRequest(AbstractModel):
@@ -1275,23 +2432,32 @@ class UnbindRsListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipRsList: 物理机绑定的EIP列表
+        :param _EipRsList: 物理机绑定的EIP列表
         :type EipRsList: list of EipRsMap
         """
-        self.EipRsList = None
+        self._EipRsList = None
+
+    @property
+    def EipRsList(self):
+        return self._EipRsList
+
+    @EipRsList.setter
+    def EipRsList(self, EipRsList):
+        self._EipRsList = EipRsList
 
 
     def _deserialize(self, params):
         if params.get("EipRsList") is not None:
-            self.EipRsList = []
+            self._EipRsList = []
             for item in params.get("EipRsList"):
                 obj = EipRsMap()
                 obj._deserialize(item)
-                self.EipRsList.append(obj)
+                self._EipRsList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1304,18 +2470,34 @@ class UnbindRsListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :param _TaskId: 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindRsRequest(AbstractModel):
@@ -1325,22 +2507,39 @@ class UnbindRsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: Eip实例ID
+        :param _EipId: Eip实例ID
         :type EipId: str
-        :param InstanceId: 物理服务器实例ID
+        :param _InstanceId: 物理服务器实例ID
         :type InstanceId: str
         """
-        self.EipId = None
-        self.InstanceId = None
+        self._EipId = None
+        self._InstanceId = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.InstanceId = params.get("InstanceId")
+        self._EipId = params.get("EipId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1353,18 +2552,34 @@ class UnbindRsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :param _TaskId: 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindVpcIpRequest(AbstractModel):
@@ -1374,26 +2589,51 @@ class UnbindVpcIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EipId: Eip实例ID
+        :param _EipId: Eip实例ID
         :type EipId: str
-        :param VpcId: EIP归属VpcId，例如vpc-k7j1t2x1
+        :param _VpcId: EIP归属VpcId，例如vpc-k7j1t2x1
         :type VpcId: str
-        :param VpcIp: 绑定的VPC内IP地址
+        :param _VpcIp: 绑定的VPC内IP地址
         :type VpcIp: str
         """
-        self.EipId = None
-        self.VpcId = None
-        self.VpcIp = None
+        self._EipId = None
+        self._VpcId = None
+        self._VpcIp = None
+
+    @property
+    def EipId(self):
+        return self._EipId
+
+    @EipId.setter
+    def EipId(self, EipId):
+        self._EipId = EipId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcIp(self):
+        return self._VpcIp
+
+    @VpcIp.setter
+    def VpcIp(self, VpcIp):
+        self._VpcIp = VpcIp
 
 
     def _deserialize(self, params):
-        self.EipId = params.get("EipId")
-        self.VpcId = params.get("VpcId")
-        self.VpcIp = params.get("VpcIp")
+        self._EipId = params.get("EipId")
+        self._VpcId = params.get("VpcId")
+        self._VpcIp = params.get("VpcIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1406,15 +2646,31 @@ class UnbindVpcIpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 绑定黑石物理机异步任务ID，可以通过查询EIP任务状态查询任务状态
+        :param _TaskId: 绑定黑石物理机异步任务ID，可以通过查询EIP任务状态查询任务状态
         :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")

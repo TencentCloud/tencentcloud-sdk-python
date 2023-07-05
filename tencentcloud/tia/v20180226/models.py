@@ -25,70 +25,183 @@ class CreateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 任务名称
+        :param _Name: 任务名称
         :type Name: str
-        :param Cluster: 运行任务的集群，详见 [使用集群](https://cloud.tencent.com/document/product/851/17317)
+        :param _Cluster: 运行任务的集群，详见 [使用集群](https://cloud.tencent.com/document/product/851/17317)
         :type Cluster: str
-        :param RuntimeVersion: 运行任务的环境，详见 [运行环境](https://cloud.tencent.com/document/product/851/17320)
+        :param _RuntimeVersion: 运行任务的环境，详见 [运行环境](https://cloud.tencent.com/document/product/851/17320)
         :type RuntimeVersion: str
-        :param PackageDir: 挂载的路径，支持 NFS，[CFS](https://cloud.tencent.com/product/cfs) 和 [COS](https://cloud.tencent.com/product/cos)，其中 COS 只在 [TI-A 定制环境](https://cloud.tencent.com/document/product/851/17320#ti-a-.E5.AE.9A.E5.88.B6.E7.8E.AF.E5.A2.83) 中支持
+        :param _PackageDir: 挂载的路径，支持 NFS，[CFS](https://cloud.tencent.com/product/cfs) 和 [COS](https://cloud.tencent.com/product/cos)，其中 COS 只在 [TI-A 定制环境](https://cloud.tencent.com/document/product/851/17320#ti-a-.E5.AE.9A.E5.88.B6.E7.8E.AF.E5.A2.83) 中支持
         :type PackageDir: list of str
-        :param Command: 任务启动命令
+        :param _Command: 任务启动命令
         :type Command: list of str
-        :param Args: 任务启动参数
+        :param _Args: 任务启动参数
         :type Args: list of str
-        :param ScaleTier: 运行任务的配置信息，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        :param _ScaleTier: 运行任务的配置信息，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type ScaleTier: str
-        :param MasterType: Master 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        :param _MasterType: Master 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type MasterType: str
-        :param WorkerType: Worker 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        :param _WorkerType: Worker 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type WorkerType: str
-        :param ParameterServerType: Parameter server 机器类型，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        :param _ParameterServerType: Parameter server 机器类型，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type ParameterServerType: str
-        :param WorkerCount: Worker 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        :param _WorkerCount: Worker 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type WorkerCount: int
-        :param ParameterServerCount: Parameter server 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
+        :param _ParameterServerCount: Parameter server 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type ParameterServerCount: int
-        :param Debug: 启动 debug 模式，默认为 false
+        :param _Debug: 启动 debug 模式，默认为 false
         :type Debug: bool
-        :param RuntimeConf: 运行任务的其他配置信息
+        :param _RuntimeConf: 运行任务的其他配置信息
         :type RuntimeConf: list of str
         """
-        self.Name = None
-        self.Cluster = None
-        self.RuntimeVersion = None
-        self.PackageDir = None
-        self.Command = None
-        self.Args = None
-        self.ScaleTier = None
-        self.MasterType = None
-        self.WorkerType = None
-        self.ParameterServerType = None
-        self.WorkerCount = None
-        self.ParameterServerCount = None
-        self.Debug = None
-        self.RuntimeConf = None
+        self._Name = None
+        self._Cluster = None
+        self._RuntimeVersion = None
+        self._PackageDir = None
+        self._Command = None
+        self._Args = None
+        self._ScaleTier = None
+        self._MasterType = None
+        self._WorkerType = None
+        self._ParameterServerType = None
+        self._WorkerCount = None
+        self._ParameterServerCount = None
+        self._Debug = None
+        self._RuntimeConf = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def RuntimeVersion(self):
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+    @property
+    def PackageDir(self):
+        return self._PackageDir
+
+    @PackageDir.setter
+    def PackageDir(self, PackageDir):
+        self._PackageDir = PackageDir
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Args(self):
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def ScaleTier(self):
+        return self._ScaleTier
+
+    @ScaleTier.setter
+    def ScaleTier(self, ScaleTier):
+        self._ScaleTier = ScaleTier
+
+    @property
+    def MasterType(self):
+        return self._MasterType
+
+    @MasterType.setter
+    def MasterType(self, MasterType):
+        self._MasterType = MasterType
+
+    @property
+    def WorkerType(self):
+        return self._WorkerType
+
+    @WorkerType.setter
+    def WorkerType(self, WorkerType):
+        self._WorkerType = WorkerType
+
+    @property
+    def ParameterServerType(self):
+        return self._ParameterServerType
+
+    @ParameterServerType.setter
+    def ParameterServerType(self, ParameterServerType):
+        self._ParameterServerType = ParameterServerType
+
+    @property
+    def WorkerCount(self):
+        return self._WorkerCount
+
+    @WorkerCount.setter
+    def WorkerCount(self, WorkerCount):
+        self._WorkerCount = WorkerCount
+
+    @property
+    def ParameterServerCount(self):
+        return self._ParameterServerCount
+
+    @ParameterServerCount.setter
+    def ParameterServerCount(self, ParameterServerCount):
+        self._ParameterServerCount = ParameterServerCount
+
+    @property
+    def Debug(self):
+        return self._Debug
+
+    @Debug.setter
+    def Debug(self, Debug):
+        self._Debug = Debug
+
+    @property
+    def RuntimeConf(self):
+        return self._RuntimeConf
+
+    @RuntimeConf.setter
+    def RuntimeConf(self, RuntimeConf):
+        self._RuntimeConf = RuntimeConf
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Cluster = params.get("Cluster")
-        self.RuntimeVersion = params.get("RuntimeVersion")
-        self.PackageDir = params.get("PackageDir")
-        self.Command = params.get("Command")
-        self.Args = params.get("Args")
-        self.ScaleTier = params.get("ScaleTier")
-        self.MasterType = params.get("MasterType")
-        self.WorkerType = params.get("WorkerType")
-        self.ParameterServerType = params.get("ParameterServerType")
-        self.WorkerCount = params.get("WorkerCount")
-        self.ParameterServerCount = params.get("ParameterServerCount")
-        self.Debug = params.get("Debug")
-        self.RuntimeConf = params.get("RuntimeConf")
+        self._Name = params.get("Name")
+        self._Cluster = params.get("Cluster")
+        self._RuntimeVersion = params.get("RuntimeVersion")
+        self._PackageDir = params.get("PackageDir")
+        self._Command = params.get("Command")
+        self._Args = params.get("Args")
+        self._ScaleTier = params.get("ScaleTier")
+        self._MasterType = params.get("MasterType")
+        self._WorkerType = params.get("WorkerType")
+        self._ParameterServerType = params.get("ParameterServerType")
+        self._WorkerCount = params.get("WorkerCount")
+        self._ParameterServerCount = params.get("ParameterServerCount")
+        self._Debug = params.get("Debug")
+        self._RuntimeConf = params.get("RuntimeConf")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -101,20 +214,36 @@ class CreateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Job: 训练任务信息
+        :param _Job: 训练任务信息
         :type Job: :class:`tencentcloud.tia.v20180226.models.Job`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Job = None
-        self.RequestId = None
+        self._Job = None
+        self._RequestId = None
+
+    @property
+    def Job(self):
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Job") is not None:
-            self.Job = Job()
-            self.Job._deserialize(params.get("Job"))
-        self.RequestId = params.get("RequestId")
+            self._Job = Job()
+            self._Job._deserialize(params.get("Job"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateModelRequest(AbstractModel):
@@ -124,50 +253,123 @@ class CreateModelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 模型名称
+        :param _Name: 模型名称
         :type Name: str
-        :param Model: 要部署的模型文件路径名
+        :param _Model: 要部署的模型文件路径名
         :type Model: str
-        :param Description: 关于模型的描述
+        :param _Description: 关于模型的描述
         :type Description: str
-        :param Cluster: 部署目标集群的名称，`集群模式` 必填
+        :param _Cluster: 部署目标集群的名称，`集群模式` 必填
         :type Cluster: str
-        :param RuntimeVersion: 运行环境镜像的标签，详见 [Serving 环境](https://cloud.tencent.com/document/product/851/17320#serving-.E7.8E.AF.E5.A2.83)
+        :param _RuntimeVersion: 运行环境镜像的标签，详见 [Serving 环境](https://cloud.tencent.com/document/product/851/17320#serving-.E7.8E.AF.E5.A2.83)
         :type RuntimeVersion: str
-        :param Replicas: 要部署的模型副本数目，`集群模式` 选填
+        :param _Replicas: 要部署的模型副本数目，`集群模式` 选填
         :type Replicas: int
-        :param Expose: 暴露外网或内网，默认暴露外网，`集群模式` 选填
+        :param _Expose: 暴露外网或内网，默认暴露外网，`集群模式` 选填
         :type Expose: str
-        :param ServType: 部署模式，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式` 下服务的运行规模，形如 `2U4G1P`，详见 [自定义的训练规模](https://cloud.tencent.com/document/product/851/17319#.E8.87.AA.E5.AE.9A.E4.B9.89.E7.9A.84.E8.AE.AD.E7.BB.83.E8.A7.84.E6.A8.A1)
+        :param _ServType: 部署模式，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式` 下服务的运行规模，形如 `2U4G1P`，详见 [自定义的训练规模](https://cloud.tencent.com/document/product/851/17319#.E8.87.AA.E5.AE.9A.E4.B9.89.E7.9A.84.E8.AE.AD.E7.BB.83.E8.A7.84.E6.A8.A1)
         :type ServType: str
-        :param RuntimeConf: `无服务器模式` 可选的其他配置信息，详见 [利用无服务器函数部署](https://cloud.tencent.com/document/product/851/17049#.E5.88.A9.E7.94.A8.E6.97.A0.E6.9C.8D.E5.8A.A1.E5.99.A8.E5.87.BD.E6.95.B0.E9.83.A8.E7.BD.B2)
+        :param _RuntimeConf: `无服务器模式` 可选的其他配置信息，详见 [利用无服务器函数部署](https://cloud.tencent.com/document/product/851/17049#.E5.88.A9.E7.94.A8.E6.97.A0.E6.9C.8D.E5.8A.A1.E5.99.A8.E5.87.BD.E6.95.B0.E9.83.A8.E7.BD.B2)
         :type RuntimeConf: list of str
         """
-        self.Name = None
-        self.Model = None
-        self.Description = None
-        self.Cluster = None
-        self.RuntimeVersion = None
-        self.Replicas = None
-        self.Expose = None
-        self.ServType = None
-        self.RuntimeConf = None
+        self._Name = None
+        self._Model = None
+        self._Description = None
+        self._Cluster = None
+        self._RuntimeVersion = None
+        self._Replicas = None
+        self._Expose = None
+        self._ServType = None
+        self._RuntimeConf = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def RuntimeVersion(self):
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+    @property
+    def Replicas(self):
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def Expose(self):
+        return self._Expose
+
+    @Expose.setter
+    def Expose(self, Expose):
+        self._Expose = Expose
+
+    @property
+    def ServType(self):
+        return self._ServType
+
+    @ServType.setter
+    def ServType(self, ServType):
+        self._ServType = ServType
+
+    @property
+    def RuntimeConf(self):
+        return self._RuntimeConf
+
+    @RuntimeConf.setter
+    def RuntimeConf(self, RuntimeConf):
+        self._RuntimeConf = RuntimeConf
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Model = params.get("Model")
-        self.Description = params.get("Description")
-        self.Cluster = params.get("Cluster")
-        self.RuntimeVersion = params.get("RuntimeVersion")
-        self.Replicas = params.get("Replicas")
-        self.Expose = params.get("Expose")
-        self.ServType = params.get("ServType")
-        self.RuntimeConf = params.get("RuntimeConf")
+        self._Name = params.get("Name")
+        self._Model = params.get("Model")
+        self._Description = params.get("Description")
+        self._Cluster = params.get("Cluster")
+        self._RuntimeVersion = params.get("RuntimeVersion")
+        self._Replicas = params.get("Replicas")
+        self._Expose = params.get("Expose")
+        self._ServType = params.get("ServType")
+        self._RuntimeConf = params.get("RuntimeConf")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -180,20 +382,36 @@ class CreateModelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Model: 模型的详细信息
+        :param _Model: 模型的详细信息
         :type Model: :class:`tencentcloud.tia.v20180226.models.Model`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Model = None
-        self.RequestId = None
+        self._Model = None
+        self._RequestId = None
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Model") is not None:
-            self.Model = Model()
-            self.Model._deserialize(params.get("Model"))
-        self.RequestId = params.get("RequestId")
+            self._Model = Model()
+            self._Model._deserialize(params.get("Model"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteJobRequest(AbstractModel):
@@ -203,22 +421,39 @@ class DeleteJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 任务名称
+        :param _Name: 任务名称
         :type Name: str
-        :param Cluster: 运行任务的集群
+        :param _Cluster: 运行任务的集群
         :type Cluster: str
         """
-        self.Name = None
-        self.Cluster = None
+        self._Name = None
+        self._Cluster = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Cluster = params.get("Cluster")
+        self._Name = params.get("Name")
+        self._Cluster = params.get("Cluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -231,14 +466,22 @@ class DeleteJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteModelRequest(AbstractModel):
@@ -248,26 +491,51 @@ class DeleteModelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 要删除的模型名称
+        :param _Name: 要删除的模型名称
         :type Name: str
-        :param Cluster: 要删除的模型所在的集群名称，`集群模式` 必填
+        :param _Cluster: 要删除的模型所在的集群名称，`集群模式` 必填
         :type Cluster: str
-        :param ServType: 模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
+        :param _ServType: 模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
         :type ServType: str
         """
-        self.Name = None
-        self.Cluster = None
-        self.ServType = None
+        self._Name = None
+        self._Cluster = None
+        self._ServType = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def ServType(self):
+        return self._ServType
+
+    @ServType.setter
+    def ServType(self, ServType):
+        self._ServType = ServType
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Cluster = params.get("Cluster")
-        self.ServType = params.get("ServType")
+        self._Name = params.get("Name")
+        self._Cluster = params.get("Cluster")
+        self._ServType = params.get("ServType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -280,14 +548,22 @@ class DeleteModelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobRequest(AbstractModel):
@@ -297,22 +573,39 @@ class DescribeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 任务名称
+        :param _Name: 任务名称
         :type Name: str
-        :param Cluster: 运行任务的集群
+        :param _Cluster: 运行任务的集群
         :type Cluster: str
         """
-        self.Name = None
-        self.Cluster = None
+        self._Name = None
+        self._Cluster = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Cluster = params.get("Cluster")
+        self._Name = params.get("Name")
+        self._Cluster = params.get("Cluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -325,20 +618,36 @@ class DescribeJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Job: 训练任务信息
+        :param _Job: 训练任务信息
         :type Job: :class:`tencentcloud.tia.v20180226.models.Job`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Job = None
-        self.RequestId = None
+        self._Job = None
+        self._RequestId = None
+
+    @property
+    def Job(self):
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Job") is not None:
-            self.Job = Job()
-            self.Job._deserialize(params.get("Job"))
-        self.RequestId = params.get("RequestId")
+            self._Job = Job()
+            self._Job._deserialize(params.get("Job"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeModelRequest(AbstractModel):
@@ -348,26 +657,51 @@ class DescribeModelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 模型名称
+        :param _Name: 模型名称
         :type Name: str
-        :param Cluster: 模型所在集群名称，`集群模式` 必填
+        :param _Cluster: 模型所在集群名称，`集群模式` 必填
         :type Cluster: str
-        :param ServType: 模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
+        :param _ServType: 模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
         :type ServType: str
         """
-        self.Name = None
-        self.Cluster = None
-        self.ServType = None
+        self._Name = None
+        self._Cluster = None
+        self._ServType = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def ServType(self):
+        return self._ServType
+
+    @ServType.setter
+    def ServType(self, ServType):
+        self._ServType = ServType
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Cluster = params.get("Cluster")
-        self.ServType = params.get("ServType")
+        self._Name = params.get("Name")
+        self._Cluster = params.get("Cluster")
+        self._ServType = params.get("ServType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -380,20 +714,36 @@ class DescribeModelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Model: 模型信息
+        :param _Model: 模型信息
         :type Model: :class:`tencentcloud.tia.v20180226.models.Model`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Model = None
-        self.RequestId = None
+        self._Model = None
+        self._RequestId = None
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Model") is not None:
-            self.Model = Model()
-            self.Model._deserialize(params.get("Model"))
-        self.RequestId = params.get("RequestId")
+            self._Model = Model()
+            self._Model._deserialize(params.get("Model"))
+        self._RequestId = params.get("RequestId")
 
 
 class InstallAgentRequest(AbstractModel):
@@ -403,26 +753,51 @@ class InstallAgentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cluster: 集群名称
+        :param _Cluster: 集群名称
         :type Cluster: str
-        :param TiaVersion: Agent版本, 用于私有集群的agent安装，默认为“private-training”
+        :param _TiaVersion: Agent版本, 用于私有集群的agent安装，默认为“private-training”
         :type TiaVersion: str
-        :param Update: 是否允许更新Agent
+        :param _Update: 是否允许更新Agent
         :type Update: bool
         """
-        self.Cluster = None
-        self.TiaVersion = None
-        self.Update = None
+        self._Cluster = None
+        self._TiaVersion = None
+        self._Update = None
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def TiaVersion(self):
+        return self._TiaVersion
+
+    @TiaVersion.setter
+    def TiaVersion(self, TiaVersion):
+        self._TiaVersion = TiaVersion
+
+    @property
+    def Update(self):
+        return self._Update
+
+    @Update.setter
+    def Update(self, Update):
+        self._Update = Update
 
 
     def _deserialize(self, params):
-        self.Cluster = params.get("Cluster")
-        self.TiaVersion = params.get("TiaVersion")
-        self.Update = params.get("Update")
+        self._Cluster = params.get("Cluster")
+        self._TiaVersion = params.get("TiaVersion")
+        self._Update = params.get("Update")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -435,18 +810,34 @@ class InstallAgentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TiaVersion: Agent版本, 用于私有集群的agent安装
+        :param _TiaVersion: Agent版本, 用于私有集群的agent安装
         :type TiaVersion: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TiaVersion = None
-        self.RequestId = None
+        self._TiaVersion = None
+        self._RequestId = None
+
+    @property
+    def TiaVersion(self):
+        return self._TiaVersion
+
+    @TiaVersion.setter
+    def TiaVersion(self, TiaVersion):
+        self._TiaVersion = TiaVersion
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TiaVersion = params.get("TiaVersion")
-        self.RequestId = params.get("RequestId")
+        self._TiaVersion = params.get("TiaVersion")
+        self._RequestId = params.get("RequestId")
 
 
 class Job(AbstractModel):
@@ -456,106 +847,291 @@ class Job(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 任务名称
+        :param _Name: 任务名称
         :type Name: str
-        :param CreateTime: 任务创建时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        :param _CreateTime: 任务创建时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :type CreateTime: str
-        :param StartTime: 任务开始时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        :param _StartTime: 任务开始时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :type StartTime: str
-        :param EndTime: 任务结束时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        :param _EndTime: 任务结束时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :type EndTime: str
-        :param State: 任务状态，可能的状态为Created（已创建），Running（运行中），Succeeded（运行完成：成功），Failed（运行完成：失败）
+        :param _State: 任务状态，可能的状态为Created（已创建），Running（运行中），Succeeded（运行完成：成功），Failed（运行完成：失败）
         :type State: str
-        :param Message: 任务状态信息
+        :param _Message: 任务状态信息
         :type Message: str
-        :param ScaleTier: 运行任务的配置信息
+        :param _ScaleTier: 运行任务的配置信息
         :type ScaleTier: str
-        :param MasterType: （ScaleTier为Custom时）master机器类型
+        :param _MasterType: （ScaleTier为Custom时）master机器类型
         :type MasterType: str
-        :param WorkerType: （ScaleTier为Custom时）worker机器类型
+        :param _WorkerType: （ScaleTier为Custom时）worker机器类型
         :type WorkerType: str
-        :param ParameterServerType: （ScaleTier为Custom时）parameter server机器类型
+        :param _ParameterServerType: （ScaleTier为Custom时）parameter server机器类型
         :type ParameterServerType: str
-        :param WorkerCount: （ScaleTier为Custom时）worker机器数量
+        :param _WorkerCount: （ScaleTier为Custom时）worker机器数量
         :type WorkerCount: int
-        :param ParameterServerCount: （ScaleTier为Custom时）parameter server机器数量
+        :param _ParameterServerCount: （ScaleTier为Custom时）parameter server机器数量
         :type ParameterServerCount: int
-        :param PackageDir: 挂载的路径
+        :param _PackageDir: 挂载的路径
         :type PackageDir: list of str
-        :param Command: 任务启动命令
+        :param _Command: 任务启动命令
         :type Command: list of str
-        :param Args: 任务启动参数
+        :param _Args: 任务启动参数
         :type Args: list of str
-        :param Cluster: 运行任务的集群
+        :param _Cluster: 运行任务的集群
         :type Cluster: str
-        :param RuntimeVersion: 运行任务的环境
+        :param _RuntimeVersion: 运行任务的环境
         :type RuntimeVersion: str
-        :param DelTime: 任务删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        :param _DelTime: 任务删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :type DelTime: str
-        :param AppId: 创建任务的AppId
+        :param _AppId: 创建任务的AppId
         :type AppId: int
-        :param Uin: 创建任务的Uin
+        :param _Uin: 创建任务的Uin
         :type Uin: str
-        :param Debug: 创建任务的Debug模式
+        :param _Debug: 创建任务的Debug模式
         :type Debug: bool
-        :param RuntimeConf: Runtime的额外配置信息
+        :param _RuntimeConf: Runtime的额外配置信息
         :type RuntimeConf: list of str
-        :param Id: 任务Id
+        :param _Id: 任务Id
         :type Id: str
         """
-        self.Name = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.EndTime = None
-        self.State = None
-        self.Message = None
-        self.ScaleTier = None
-        self.MasterType = None
-        self.WorkerType = None
-        self.ParameterServerType = None
-        self.WorkerCount = None
-        self.ParameterServerCount = None
-        self.PackageDir = None
-        self.Command = None
-        self.Args = None
-        self.Cluster = None
-        self.RuntimeVersion = None
-        self.DelTime = None
-        self.AppId = None
-        self.Uin = None
-        self.Debug = None
-        self.RuntimeConf = None
-        self.Id = None
+        self._Name = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._State = None
+        self._Message = None
+        self._ScaleTier = None
+        self._MasterType = None
+        self._WorkerType = None
+        self._ParameterServerType = None
+        self._WorkerCount = None
+        self._ParameterServerCount = None
+        self._PackageDir = None
+        self._Command = None
+        self._Args = None
+        self._Cluster = None
+        self._RuntimeVersion = None
+        self._DelTime = None
+        self._AppId = None
+        self._Uin = None
+        self._Debug = None
+        self._RuntimeConf = None
+        self._Id = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ScaleTier(self):
+        return self._ScaleTier
+
+    @ScaleTier.setter
+    def ScaleTier(self, ScaleTier):
+        self._ScaleTier = ScaleTier
+
+    @property
+    def MasterType(self):
+        return self._MasterType
+
+    @MasterType.setter
+    def MasterType(self, MasterType):
+        self._MasterType = MasterType
+
+    @property
+    def WorkerType(self):
+        return self._WorkerType
+
+    @WorkerType.setter
+    def WorkerType(self, WorkerType):
+        self._WorkerType = WorkerType
+
+    @property
+    def ParameterServerType(self):
+        return self._ParameterServerType
+
+    @ParameterServerType.setter
+    def ParameterServerType(self, ParameterServerType):
+        self._ParameterServerType = ParameterServerType
+
+    @property
+    def WorkerCount(self):
+        return self._WorkerCount
+
+    @WorkerCount.setter
+    def WorkerCount(self, WorkerCount):
+        self._WorkerCount = WorkerCount
+
+    @property
+    def ParameterServerCount(self):
+        return self._ParameterServerCount
+
+    @ParameterServerCount.setter
+    def ParameterServerCount(self, ParameterServerCount):
+        self._ParameterServerCount = ParameterServerCount
+
+    @property
+    def PackageDir(self):
+        return self._PackageDir
+
+    @PackageDir.setter
+    def PackageDir(self, PackageDir):
+        self._PackageDir = PackageDir
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Args(self):
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def RuntimeVersion(self):
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+    @property
+    def DelTime(self):
+        return self._DelTime
+
+    @DelTime.setter
+    def DelTime(self, DelTime):
+        self._DelTime = DelTime
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Debug(self):
+        return self._Debug
+
+    @Debug.setter
+    def Debug(self, Debug):
+        self._Debug = Debug
+
+    @property
+    def RuntimeConf(self):
+        return self._RuntimeConf
+
+    @RuntimeConf.setter
+    def RuntimeConf(self, RuntimeConf):
+        self._RuntimeConf = RuntimeConf
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.State = params.get("State")
-        self.Message = params.get("Message")
-        self.ScaleTier = params.get("ScaleTier")
-        self.MasterType = params.get("MasterType")
-        self.WorkerType = params.get("WorkerType")
-        self.ParameterServerType = params.get("ParameterServerType")
-        self.WorkerCount = params.get("WorkerCount")
-        self.ParameterServerCount = params.get("ParameterServerCount")
-        self.PackageDir = params.get("PackageDir")
-        self.Command = params.get("Command")
-        self.Args = params.get("Args")
-        self.Cluster = params.get("Cluster")
-        self.RuntimeVersion = params.get("RuntimeVersion")
-        self.DelTime = params.get("DelTime")
-        self.AppId = params.get("AppId")
-        self.Uin = params.get("Uin")
-        self.Debug = params.get("Debug")
-        self.RuntimeConf = params.get("RuntimeConf")
-        self.Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._State = params.get("State")
+        self._Message = params.get("Message")
+        self._ScaleTier = params.get("ScaleTier")
+        self._MasterType = params.get("MasterType")
+        self._WorkerType = params.get("WorkerType")
+        self._ParameterServerType = params.get("ParameterServerType")
+        self._WorkerCount = params.get("WorkerCount")
+        self._ParameterServerCount = params.get("ParameterServerCount")
+        self._PackageDir = params.get("PackageDir")
+        self._Command = params.get("Command")
+        self._Args = params.get("Args")
+        self._Cluster = params.get("Cluster")
+        self._RuntimeVersion = params.get("RuntimeVersion")
+        self._DelTime = params.get("DelTime")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Debug = params.get("Debug")
+        self._RuntimeConf = params.get("RuntimeConf")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -568,26 +1144,51 @@ class ListJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cluster: 运行任务的集群
+        :param _Cluster: 运行任务的集群
         :type Cluster: str
-        :param Limit: 分页参数，返回数量
+        :param _Limit: 分页参数，返回数量
         :type Limit: int
-        :param Offset: 分页参数，起始位置
+        :param _Offset: 分页参数，起始位置
         :type Offset: int
         """
-        self.Cluster = None
-        self.Limit = None
-        self.Offset = None
+        self._Cluster = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Cluster = params.get("Cluster")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Cluster = params.get("Cluster")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -600,23 +1201,39 @@ class ListJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Jobs: 训练任务列表
+        :param _Jobs: 训练任务列表
         :type Jobs: list of Job
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Jobs = None
-        self.RequestId = None
+        self._Jobs = None
+        self._RequestId = None
+
+    @property
+    def Jobs(self):
+        return self._Jobs
+
+    @Jobs.setter
+    def Jobs(self, Jobs):
+        self._Jobs = Jobs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Jobs") is not None:
-            self.Jobs = []
+            self._Jobs = []
             for item in params.get("Jobs"):
                 obj = Job()
                 obj._deserialize(item)
-                self.Jobs.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Jobs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListModelsRequest(AbstractModel):
@@ -626,30 +1243,63 @@ class ListModelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cluster: 部署模型的集群， `集群模式` 必填
+        :param _Cluster: 部署模型的集群， `集群模式` 必填
         :type Cluster: str
-        :param Limit: 分页参数，返回数量上限
+        :param _Limit: 分页参数，返回数量上限
         :type Limit: int
-        :param Offset: 分页参数，分页起始位置
+        :param _Offset: 分页参数，分页起始位置
         :type Offset: int
-        :param ServType: 部署类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`。
+        :param _ServType: 部署类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`。
         :type ServType: str
         """
-        self.Cluster = None
-        self.Limit = None
-        self.Offset = None
-        self.ServType = None
+        self._Cluster = None
+        self._Limit = None
+        self._Offset = None
+        self._ServType = None
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ServType(self):
+        return self._ServType
+
+    @ServType.setter
+    def ServType(self, ServType):
+        self._ServType = ServType
 
 
     def _deserialize(self, params):
-        self.Cluster = params.get("Cluster")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.ServType = params.get("ServType")
+        self._Cluster = params.get("Cluster")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ServType = params.get("ServType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -662,23 +1312,39 @@ class ListModelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Models: Model 数组，用以显示所有模型的信息
+        :param _Models: Model 数组，用以显示所有模型的信息
         :type Models: list of Model
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Models = None
-        self.RequestId = None
+        self._Models = None
+        self._RequestId = None
+
+    @property
+    def Models(self):
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Models") is not None:
-            self.Models = []
+            self._Models = []
             for item in params.get("Models"):
                 obj = Model()
                 obj._deserialize(item)
-                self.Models.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Models.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class Log(AbstractModel):
@@ -688,38 +1354,87 @@ class Log(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ContainerName: 容器名
+        :param _ContainerName: 容器名
         :type ContainerName: str
-        :param Log: 日志内容
+        :param _Log: 日志内容
         :type Log: str
-        :param Namespace: 空间名
+        :param _Namespace: 空间名
         :type Namespace: str
-        :param PodId: Pod Id
+        :param _PodId: Pod Id
         :type PodId: str
-        :param PodName: Pod名
+        :param _PodName: Pod名
         :type PodName: str
-        :param Time: 日志日期，格式为“2018-07-02T09:10:04.916553368Z”
+        :param _Time: 日志日期，格式为“2018-07-02T09:10:04.916553368Z”
         :type Time: str
         """
-        self.ContainerName = None
-        self.Log = None
-        self.Namespace = None
-        self.PodId = None
-        self.PodName = None
-        self.Time = None
+        self._ContainerName = None
+        self._Log = None
+        self._Namespace = None
+        self._PodId = None
+        self._PodName = None
+        self._Time = None
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def PodId(self):
+        return self._PodId
+
+    @PodId.setter
+    def PodId(self, PodId):
+        self._PodId = PodId
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
 
 
     def _deserialize(self, params):
-        self.ContainerName = params.get("ContainerName")
-        self.Log = params.get("Log")
-        self.Namespace = params.get("Namespace")
-        self.PodId = params.get("PodId")
-        self.PodName = params.get("PodName")
-        self.Time = params.get("Time")
+        self._ContainerName = params.get("ContainerName")
+        self._Log = params.get("Log")
+        self._Namespace = params.get("Namespace")
+        self._PodId = params.get("PodId")
+        self._PodName = params.get("PodName")
+        self._Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -745,78 +1460,207 @@ class Model(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 模型名称
+        :param _Name: 模型名称
         :type Name: str
-        :param Description: 模型描述
+        :param _Description: 模型描述
         :type Description: str
-        :param Cluster: 集群名称
+        :param _Cluster: 集群名称
         :type Cluster: str
-        :param Model: 模型地址
+        :param _Model: 模型地址
         :type Model: str
-        :param RuntimeVersion: 运行环境编号
+        :param _RuntimeVersion: 运行环境编号
         :type RuntimeVersion: str
-        :param CreateTime: 模型创建时间
+        :param _CreateTime: 模型创建时间
         :type CreateTime: str
-        :param State: 模型运行状态
+        :param _State: 模型运行状态
         :type State: str
-        :param ServingUrl: 提供服务的url
+        :param _ServingUrl: 提供服务的url
         :type ServingUrl: str
-        :param Message: 相关消息
+        :param _Message: 相关消息
         :type Message: str
-        :param AppId: 编号
+        :param _AppId: 编号
         :type AppId: int
-        :param ServType: 机型
+        :param _ServType: 机型
         :type ServType: str
-        :param Expose: 模型暴露方式
+        :param _Expose: 模型暴露方式
         :type Expose: str
-        :param Replicas: 部署副本数量
+        :param _Replicas: 部署副本数量
         :type Replicas: int
-        :param Id: 模型Id
+        :param _Id: 模型Id
         :type Id: str
-        :param Uin: 创建任务的Uin
+        :param _Uin: 创建任务的Uin
         :type Uin: str
-        :param DelTime: 模型删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        :param _DelTime: 模型删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
         :type DelTime: str
         """
-        self.Name = None
-        self.Description = None
-        self.Cluster = None
-        self.Model = None
-        self.RuntimeVersion = None
-        self.CreateTime = None
-        self.State = None
-        self.ServingUrl = None
-        self.Message = None
-        self.AppId = None
-        self.ServType = None
-        self.Expose = None
-        self.Replicas = None
-        self.Id = None
-        self.Uin = None
-        self.DelTime = None
+        self._Name = None
+        self._Description = None
+        self._Cluster = None
+        self._Model = None
+        self._RuntimeVersion = None
+        self._CreateTime = None
+        self._State = None
+        self._ServingUrl = None
+        self._Message = None
+        self._AppId = None
+        self._ServType = None
+        self._Expose = None
+        self._Replicas = None
+        self._Id = None
+        self._Uin = None
+        self._DelTime = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def RuntimeVersion(self):
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ServingUrl(self):
+        return self._ServingUrl
+
+    @ServingUrl.setter
+    def ServingUrl(self, ServingUrl):
+        self._ServingUrl = ServingUrl
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ServType(self):
+        return self._ServType
+
+    @ServType.setter
+    def ServType(self, ServType):
+        self._ServType = ServType
+
+    @property
+    def Expose(self):
+        return self._Expose
+
+    @Expose.setter
+    def Expose(self, Expose):
+        self._Expose = Expose
+
+    @property
+    def Replicas(self):
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def DelTime(self):
+        return self._DelTime
+
+    @DelTime.setter
+    def DelTime(self, DelTime):
+        self._DelTime = DelTime
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.Cluster = params.get("Cluster")
-        self.Model = params.get("Model")
-        self.RuntimeVersion = params.get("RuntimeVersion")
-        self.CreateTime = params.get("CreateTime")
-        self.State = params.get("State")
-        self.ServingUrl = params.get("ServingUrl")
-        self.Message = params.get("Message")
-        self.AppId = params.get("AppId")
-        self.ServType = params.get("ServType")
-        self.Expose = params.get("Expose")
-        self.Replicas = params.get("Replicas")
-        self.Id = params.get("Id")
-        self.Uin = params.get("Uin")
-        self.DelTime = params.get("DelTime")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Cluster = params.get("Cluster")
+        self._Model = params.get("Model")
+        self._RuntimeVersion = params.get("RuntimeVersion")
+        self._CreateTime = params.get("CreateTime")
+        self._State = params.get("State")
+        self._ServingUrl = params.get("ServingUrl")
+        self._Message = params.get("Message")
+        self._AppId = params.get("AppId")
+        self._ServType = params.get("ServType")
+        self._Expose = params.get("Expose")
+        self._Replicas = params.get("Replicas")
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._DelTime = params.get("DelTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -829,38 +1673,87 @@ class QueryLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobName: 任务的名称
+        :param _JobName: 任务的名称
         :type JobName: str
-        :param Cluster: 任务所在集群的名称
+        :param _Cluster: 任务所在集群的名称
         :type Cluster: str
-        :param StartTime: 查询日志的开始时间，格式：2019-01-01 00:00:00
+        :param _StartTime: 查询日志的开始时间，格式：2019-01-01 00:00:00
         :type StartTime: str
-        :param EndTime: 查询日志的结束时间，格式：2019-01-01 00:00:00
+        :param _EndTime: 查询日志的结束时间，格式：2019-01-01 00:00:00
         :type EndTime: str
-        :param Limit: 单次要返回的日志条数上限
+        :param _Limit: 单次要返回的日志条数上限
         :type Limit: int
-        :param Context: 加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容；使用 Context 翻页最多能获取 10000 条日志
+        :param _Context: 加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容；使用 Context 翻页最多能获取 10000 条日志
         :type Context: str
         """
-        self.JobName = None
-        self.Cluster = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Limit = None
-        self.Context = None
+        self._JobName = None
+        self._Cluster = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Context = None
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
 
 
     def _deserialize(self, params):
-        self.JobName = params.get("JobName")
-        self.Cluster = params.get("Cluster")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Limit = params.get("Limit")
-        self.Context = params.get("Context")
+        self._JobName = params.get("JobName")
+        self._Cluster = params.get("Cluster")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Context = params.get("Context")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -873,28 +1766,60 @@ class QueryLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Context: 日志查询上下文，用于加载更多日志
+        :param _Context: 日志查询上下文，用于加载更多日志
         :type Context: str
-        :param Logs: 日志内容列表
+        :param _Logs: 日志内容列表
         :type Logs: list of Log
-        :param Listover: 是否已经返回所有符合条件的日志
+        :param _Listover: 是否已经返回所有符合条件的日志
         :type Listover: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Context = None
-        self.Logs = None
-        self.Listover = None
-        self.RequestId = None
+        self._Context = None
+        self._Logs = None
+        self._Listover = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Logs(self):
+        return self._Logs
+
+    @Logs.setter
+    def Logs(self, Logs):
+        self._Logs = Logs
+
+    @property
+    def Listover(self):
+        return self._Listover
+
+    @Listover.setter
+    def Listover(self, Listover):
+        self._Listover = Listover
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Context = params.get("Context")
+        self._Context = params.get("Context")
         if params.get("Logs") is not None:
-            self.Logs = []
+            self._Logs = []
             for item in params.get("Logs"):
                 obj = Log()
                 obj._deserialize(item)
-                self.Logs.append(obj)
-        self.Listover = params.get("Listover")
-        self.RequestId = params.get("RequestId")
+                self._Logs.append(obj)
+        self._Listover = params.get("Listover")
+        self._RequestId = params.get("RequestId")

@@ -25,88 +25,233 @@ class CreateSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param GameId: 【已废弃】只在TrylockWorker时生效
+        :param _GameId: 【已废弃】只在TrylockWorker时生效
         :type GameId: str
-        :param GameRegion: 【已废弃】只在TrylockWorker时生效
+        :param _GameRegion: 【已废弃】只在TrylockWorker时生效
         :type GameRegion: str
-        :param GameParas: 游戏参数
+        :param _GameParas: 游戏参数
         :type GameParas: str
-        :param ClientSession: 客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+        :param _ClientSession: 客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
         :type ClientSession: str
-        :param Resolution: 分辨率,，可设置为1080p或720p或1920x1080格式
+        :param _Resolution: 分辨率,，可设置为1080p或720p或1920x1080格式
         :type Resolution: str
-        :param ImageUrl: 背景图url，格式为png或jpeg，宽高1920*1080
+        :param _ImageUrl: 背景图url，格式为png或jpeg，宽高1920*1080
         :type ImageUrl: str
-        :param SetNo: 【已废弃】
+        :param _SetNo: 【已废弃】
         :type SetNo: int
-        :param Bitrate: 【已废弃】
+        :param _Bitrate: 【已废弃】
         :type Bitrate: int
-        :param MaxBitrate: 单位Mbps，动态调整最大码率建议值，会按实际情况调整
+        :param _MaxBitrate: 单位Mbps，动态调整最大码率建议值，会按实际情况调整
         :type MaxBitrate: int
-        :param MinBitrate: 单位Mbps，动态调整最小码率建议值，会按实际情况调整
+        :param _MinBitrate: 单位Mbps，动态调整最小码率建议值，会按实际情况调整
         :type MinBitrate: int
-        :param Fps: 帧率，可设置为30、45、60、90、120、144
+        :param _Fps: 帧率，可设置为30、45、60、90、120、144
         :type Fps: int
-        :param UserIp: 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        :param _UserIp: 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :type UserIp: str
-        :param Optimization: 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
+        :param _Optimization: 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
         :type Optimization: int
-        :param HostUserId: 【互动云游】游戏主机用户ID
+        :param _HostUserId: 【互动云游】游戏主机用户ID
         :type HostUserId: str
-        :param Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者
+        :param _Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者
         :type Role: str
-        :param GameContext: 游戏相关参数
+        :param _GameContext: 游戏相关参数
         :type GameContext: str
-        :param RunMode: 云端运行模式。
+        :param _RunMode: 云端运行模式。
 RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
         :type RunMode: str
         """
-        self.UserId = None
-        self.GameId = None
-        self.GameRegion = None
-        self.GameParas = None
-        self.ClientSession = None
-        self.Resolution = None
-        self.ImageUrl = None
-        self.SetNo = None
-        self.Bitrate = None
-        self.MaxBitrate = None
-        self.MinBitrate = None
-        self.Fps = None
-        self.UserIp = None
-        self.Optimization = None
-        self.HostUserId = None
-        self.Role = None
-        self.GameContext = None
-        self.RunMode = None
+        self._UserId = None
+        self._GameId = None
+        self._GameRegion = None
+        self._GameParas = None
+        self._ClientSession = None
+        self._Resolution = None
+        self._ImageUrl = None
+        self._SetNo = None
+        self._Bitrate = None
+        self._MaxBitrate = None
+        self._MinBitrate = None
+        self._Fps = None
+        self._UserIp = None
+        self._Optimization = None
+        self._HostUserId = None
+        self._Role = None
+        self._GameContext = None
+        self._RunMode = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def GameId(self):
+        return self._GameId
+
+    @GameId.setter
+    def GameId(self, GameId):
+        self._GameId = GameId
+
+    @property
+    def GameRegion(self):
+        return self._GameRegion
+
+    @GameRegion.setter
+    def GameRegion(self, GameRegion):
+        self._GameRegion = GameRegion
+
+    @property
+    def GameParas(self):
+        return self._GameParas
+
+    @GameParas.setter
+    def GameParas(self, GameParas):
+        self._GameParas = GameParas
+
+    @property
+    def ClientSession(self):
+        return self._ClientSession
+
+    @ClientSession.setter
+    def ClientSession(self, ClientSession):
+        self._ClientSession = ClientSession
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def SetNo(self):
+        return self._SetNo
+
+    @SetNo.setter
+    def SetNo(self, SetNo):
+        self._SetNo = SetNo
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+    @property
+    def MaxBitrate(self):
+        return self._MaxBitrate
+
+    @MaxBitrate.setter
+    def MaxBitrate(self, MaxBitrate):
+        self._MaxBitrate = MaxBitrate
+
+    @property
+    def MinBitrate(self):
+        return self._MinBitrate
+
+    @MinBitrate.setter
+    def MinBitrate(self, MinBitrate):
+        self._MinBitrate = MinBitrate
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def Optimization(self):
+        return self._Optimization
+
+    @Optimization.setter
+    def Optimization(self, Optimization):
+        self._Optimization = Optimization
+
+    @property
+    def HostUserId(self):
+        return self._HostUserId
+
+    @HostUserId.setter
+    def HostUserId(self, HostUserId):
+        self._HostUserId = HostUserId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def GameContext(self):
+        return self._GameContext
+
+    @GameContext.setter
+    def GameContext(self, GameContext):
+        self._GameContext = GameContext
+
+    @property
+    def RunMode(self):
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.GameId = params.get("GameId")
-        self.GameRegion = params.get("GameRegion")
-        self.GameParas = params.get("GameParas")
-        self.ClientSession = params.get("ClientSession")
-        self.Resolution = params.get("Resolution")
-        self.ImageUrl = params.get("ImageUrl")
-        self.SetNo = params.get("SetNo")
-        self.Bitrate = params.get("Bitrate")
-        self.MaxBitrate = params.get("MaxBitrate")
-        self.MinBitrate = params.get("MinBitrate")
-        self.Fps = params.get("Fps")
-        self.UserIp = params.get("UserIp")
-        self.Optimization = params.get("Optimization")
-        self.HostUserId = params.get("HostUserId")
-        self.Role = params.get("Role")
-        self.GameContext = params.get("GameContext")
-        self.RunMode = params.get("RunMode")
+        self._UserId = params.get("UserId")
+        self._GameId = params.get("GameId")
+        self._GameRegion = params.get("GameRegion")
+        self._GameParas = params.get("GameParas")
+        self._ClientSession = params.get("ClientSession")
+        self._Resolution = params.get("Resolution")
+        self._ImageUrl = params.get("ImageUrl")
+        self._SetNo = params.get("SetNo")
+        self._Bitrate = params.get("Bitrate")
+        self._MaxBitrate = params.get("MaxBitrate")
+        self._MinBitrate = params.get("MinBitrate")
+        self._Fps = params.get("Fps")
+        self._UserIp = params.get("UserIp")
+        self._Optimization = params.get("Optimization")
+        self._HostUserId = params.get("HostUserId")
+        self._Role = params.get("Role")
+        self._GameContext = params.get("GameContext")
+        self._RunMode = params.get("RunMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -119,26 +264,58 @@ class CreateSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerSession: 服务端session信息，返回给JSSDK
+        :param _ServerSession: 服务端session信息，返回给JSSDK
         :type ServerSession: str
-        :param RoleNumber: 【已废弃】
+        :param _RoleNumber: 【已废弃】
         :type RoleNumber: str
-        :param Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者
+        :param _Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者
         :type Role: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ServerSession = None
-        self.RoleNumber = None
-        self.Role = None
-        self.RequestId = None
+        self._ServerSession = None
+        self._RoleNumber = None
+        self._Role = None
+        self._RequestId = None
+
+    @property
+    def ServerSession(self):
+        return self._ServerSession
+
+    @ServerSession.setter
+    def ServerSession(self, ServerSession):
+        self._ServerSession = ServerSession
+
+    @property
+    def RoleNumber(self):
+        return self._RoleNumber
+
+    @RoleNumber.setter
+    def RoleNumber(self, RoleNumber):
+        self._RoleNumber = RoleNumber
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ServerSession = params.get("ServerSession")
-        self.RoleNumber = params.get("RoleNumber")
-        self.Role = params.get("Role")
-        self.RequestId = params.get("RequestId")
+        self._ServerSession = params.get("ServerSession")
+        self._RoleNumber = params.get("RoleNumber")
+        self._Role = params.get("Role")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesCountRequest(AbstractModel):
@@ -148,32 +325,65 @@ class DescribeInstancesCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GameId: 游戏ID
+        :param _GameId: 游戏ID
         :type GameId: str
-        :param GroupId: 实例分组ID
+        :param _GroupId: 实例分组ID
         :type GroupId: str
-        :param GameRegion: 游戏区域
+        :param _GameRegion: 游戏区域
         :type GameRegion: str
-        :param GameType: 游戏类型。
+        :param _GameType: 游戏类型。
 MOBILE：手游
 PC：默认值，端游
         :type GameType: str
         """
-        self.GameId = None
-        self.GroupId = None
-        self.GameRegion = None
-        self.GameType = None
+        self._GameId = None
+        self._GroupId = None
+        self._GameRegion = None
+        self._GameType = None
+
+    @property
+    def GameId(self):
+        return self._GameId
+
+    @GameId.setter
+    def GameId(self, GameId):
+        self._GameId = GameId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GameRegion(self):
+        return self._GameRegion
+
+    @GameRegion.setter
+    def GameRegion(self, GameRegion):
+        self._GameRegion = GameRegion
+
+    @property
+    def GameType(self):
+        return self._GameType
+
+    @GameType.setter
+    def GameType(self, GameType):
+        self._GameType = GameType
 
 
     def _deserialize(self, params):
-        self.GameId = params.get("GameId")
-        self.GroupId = params.get("GroupId")
-        self.GameRegion = params.get("GameRegion")
-        self.GameType = params.get("GameType")
+        self._GameId = params.get("GameId")
+        self._GroupId = params.get("GroupId")
+        self._GameRegion = params.get("GameRegion")
+        self._GameType = params.get("GameType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -186,22 +396,46 @@ class DescribeInstancesCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 客户的实例总数
+        :param _Total: 客户的实例总数
         :type Total: int
-        :param Running: 客户的实例运行数
+        :param _Running: 客户的实例运行数
         :type Running: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Total = None
-        self.Running = None
-        self.RequestId = None
+        self._Total = None
+        self._Running = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Running(self):
+        return self._Running
+
+    @Running.setter
+    def Running(self, Running):
+        self._Running = Running
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
-        self.Running = params.get("Running")
-        self.RequestId = params.get("RequestId")
+        self._Total = params.get("Total")
+        self._Running = params.get("Running")
+        self._RequestId = params.get("RequestId")
 
 
 class SaveGameArchiveRequest(AbstractModel):
@@ -211,22 +445,39 @@ class SaveGameArchiveRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 游戏用户ID
+        :param _UserId: 游戏用户ID
         :type UserId: str
-        :param GameId: 游戏ID
+        :param _GameId: 游戏ID
         :type GameId: str
         """
-        self.UserId = None
-        self.GameId = None
+        self._UserId = None
+        self._GameId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def GameId(self):
+        return self._GameId
+
+    @GameId.setter
+    def GameId(self, GameId):
+        self._GameId = GameId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.GameId = params.get("GameId")
+        self._UserId = params.get("UserId")
+        self._GameId = params.get("GameId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -239,14 +490,22 @@ class SaveGameArchiveResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartPublishStreamRequest(AbstractModel):
@@ -256,22 +515,39 @@ class StartPublishStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param PublishUrl: 推流地址，仅支持rtmp协议
+        :param _PublishUrl: 推流地址，仅支持rtmp协议
         :type PublishUrl: str
         """
-        self.UserId = None
-        self.PublishUrl = None
+        self._UserId = None
+        self._PublishUrl = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PublishUrl(self):
+        return self._PublishUrl
+
+    @PublishUrl.setter
+    def PublishUrl(self, PublishUrl):
+        self._PublishUrl = PublishUrl
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.PublishUrl = params.get("PublishUrl")
+        self._UserId = params.get("UserId")
+        self._PublishUrl = params.get("PublishUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -284,14 +560,22 @@ class StartPublishStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopGameRequest(AbstractModel):
@@ -301,22 +585,39 @@ class StopGameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param HostUserId: 【多人游戏】游戏主机用户ID
+        :param _HostUserId: 【多人游戏】游戏主机用户ID
         :type HostUserId: str
         """
-        self.UserId = None
-        self.HostUserId = None
+        self._UserId = None
+        self._HostUserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def HostUserId(self):
+        return self._HostUserId
+
+    @HostUserId.setter
+    def HostUserId(self, HostUserId):
+        self._HostUserId = HostUserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.HostUserId = params.get("HostUserId")
+        self._UserId = params.get("UserId")
+        self._HostUserId = params.get("HostUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -329,14 +630,22 @@ class StopGameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopPublishStreamRequest(AbstractModel):
@@ -346,18 +655,27 @@ class StopPublishStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
         """
-        self.UserId = None
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -370,14 +688,22 @@ class StopPublishStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SwitchGameArchiveRequest(AbstractModel):
@@ -387,30 +713,63 @@ class SwitchGameArchiveRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 游戏用户ID
+        :param _UserId: 游戏用户ID
         :type UserId: str
-        :param GameId: 游戏ID
+        :param _GameId: 游戏ID
         :type GameId: str
-        :param GameArchiveUrl: 游戏存档Url
+        :param _GameArchiveUrl: 游戏存档Url
         :type GameArchiveUrl: str
-        :param GameContext: 游戏相关参数
+        :param _GameContext: 游戏相关参数
         :type GameContext: str
         """
-        self.UserId = None
-        self.GameId = None
-        self.GameArchiveUrl = None
-        self.GameContext = None
+        self._UserId = None
+        self._GameId = None
+        self._GameArchiveUrl = None
+        self._GameContext = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def GameId(self):
+        return self._GameId
+
+    @GameId.setter
+    def GameId(self, GameId):
+        self._GameId = GameId
+
+    @property
+    def GameArchiveUrl(self):
+        return self._GameArchiveUrl
+
+    @GameArchiveUrl.setter
+    def GameArchiveUrl(self, GameArchiveUrl):
+        self._GameArchiveUrl = GameArchiveUrl
+
+    @property
+    def GameContext(self):
+        return self._GameContext
+
+    @GameContext.setter
+    def GameContext(self, GameContext):
+        self._GameContext = GameContext
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.GameId = params.get("GameId")
-        self.GameArchiveUrl = params.get("GameArchiveUrl")
-        self.GameContext = params.get("GameContext")
+        self._UserId = params.get("UserId")
+        self._GameId = params.get("GameId")
+        self._GameArchiveUrl = params.get("GameArchiveUrl")
+        self._GameContext = params.get("GameContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -423,14 +782,22 @@ class SwitchGameArchiveResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TrylockWorkerRequest(AbstractModel):
@@ -440,38 +807,87 @@ class TrylockWorkerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param GameId: 游戏ID
+        :param _GameId: 游戏ID
         :type GameId: str
-        :param GameRegion: 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
+        :param _GameRegion: 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
         :type GameRegion: str
-        :param SetNo: 【废弃】资源池编号
+        :param _SetNo: 【废弃】资源池编号
         :type SetNo: int
-        :param UserIp: 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
+        :param _UserIp: 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
         :type UserIp: str
-        :param GroupId: 分组ID
+        :param _GroupId: 分组ID
         :type GroupId: str
         """
-        self.UserId = None
-        self.GameId = None
-        self.GameRegion = None
-        self.SetNo = None
-        self.UserIp = None
-        self.GroupId = None
+        self._UserId = None
+        self._GameId = None
+        self._GameRegion = None
+        self._SetNo = None
+        self._UserIp = None
+        self._GroupId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def GameId(self):
+        return self._GameId
+
+    @GameId.setter
+    def GameId(self, GameId):
+        self._GameId = GameId
+
+    @property
+    def GameRegion(self):
+        return self._GameRegion
+
+    @GameRegion.setter
+    def GameRegion(self, GameRegion):
+        self._GameRegion = GameRegion
+
+    @property
+    def SetNo(self):
+        return self._SetNo
+
+    @SetNo.setter
+    def SetNo(self, SetNo):
+        self._SetNo = SetNo
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.GameId = params.get("GameId")
-        self.GameRegion = params.get("GameRegion")
-        self.SetNo = params.get("SetNo")
-        self.UserIp = params.get("UserIp")
-        self.GroupId = params.get("GroupId")
+        self._UserId = params.get("UserId")
+        self._GameId = params.get("GameId")
+        self._GameRegion = params.get("GameRegion")
+        self._SetNo = params.get("SetNo")
+        self._UserIp = params.get("UserIp")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -484,11 +900,19 @@ class TrylockWorkerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

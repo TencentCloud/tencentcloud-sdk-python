@@ -25,77 +25,190 @@ class BrandData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompanyId: 品牌Id
+        :param _CompanyId: 品牌Id
         :type CompanyId: int
-        :param CompanyName: 企业名称
+        :param _CompanyName: 企业名称
         :type CompanyName: str
-        :param BrandName: 品牌名称
+        :param _BrandName: 品牌名称
         :type BrandName: str
-        :param Phone: 联系电话
+        :param _Phone: 联系电话
         :type Phone: str
-        :param License: 营业执照
+        :param _License: 营业执照
         :type License: str
-        :param LicenseStatus: 营业执照审核状态
+        :param _LicenseStatus: 营业执照审核状态
         :type LicenseStatus: int
-        :param LicenseNote: 营业执照审核状态说明
+        :param _LicenseNote: 营业执照审核状态说明
         :type LicenseNote: str
-        :param Authorization: 授权书
+        :param _Authorization: 授权书
         :type Authorization: str
-        :param AuthorizationStatus: 授权书审核状态
+        :param _AuthorizationStatus: 授权书审核状态
         :type AuthorizationStatus: int
-        :param AuthorizationNote: 授权书审核状态说明
+        :param _AuthorizationNote: 授权书审核状态说明
         :type AuthorizationNote: str
-        :param Trademarks: 商标信息
+        :param _Trademarks: 商标信息
         :type Trademarks: list of TrademarkData
-        :param InsertTime: 新增时间
+        :param _InsertTime: 新增时间
         :type InsertTime: str
-        :param Services: 服务信息
+        :param _Services: 服务信息
         :type Services: :class:`tencentcloud.bma.v20221115.models.ServiceData`
-        :param Uin: 账号id
+        :param _Uin: 账号id
         :type Uin: str
         """
-        self.CompanyId = None
-        self.CompanyName = None
-        self.BrandName = None
-        self.Phone = None
-        self.License = None
-        self.LicenseStatus = None
-        self.LicenseNote = None
-        self.Authorization = None
-        self.AuthorizationStatus = None
-        self.AuthorizationNote = None
-        self.Trademarks = None
-        self.InsertTime = None
-        self.Services = None
-        self.Uin = None
+        self._CompanyId = None
+        self._CompanyName = None
+        self._BrandName = None
+        self._Phone = None
+        self._License = None
+        self._LicenseStatus = None
+        self._LicenseNote = None
+        self._Authorization = None
+        self._AuthorizationStatus = None
+        self._AuthorizationNote = None
+        self._Trademarks = None
+        self._InsertTime = None
+        self._Services = None
+        self._Uin = None
+
+    @property
+    def CompanyId(self):
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def BrandName(self):
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def LicenseStatus(self):
+        return self._LicenseStatus
+
+    @LicenseStatus.setter
+    def LicenseStatus(self, LicenseStatus):
+        self._LicenseStatus = LicenseStatus
+
+    @property
+    def LicenseNote(self):
+        return self._LicenseNote
+
+    @LicenseNote.setter
+    def LicenseNote(self, LicenseNote):
+        self._LicenseNote = LicenseNote
+
+    @property
+    def Authorization(self):
+        return self._Authorization
+
+    @Authorization.setter
+    def Authorization(self, Authorization):
+        self._Authorization = Authorization
+
+    @property
+    def AuthorizationStatus(self):
+        return self._AuthorizationStatus
+
+    @AuthorizationStatus.setter
+    def AuthorizationStatus(self, AuthorizationStatus):
+        self._AuthorizationStatus = AuthorizationStatus
+
+    @property
+    def AuthorizationNote(self):
+        return self._AuthorizationNote
+
+    @AuthorizationNote.setter
+    def AuthorizationNote(self, AuthorizationNote):
+        self._AuthorizationNote = AuthorizationNote
+
+    @property
+    def Trademarks(self):
+        return self._Trademarks
+
+    @Trademarks.setter
+    def Trademarks(self, Trademarks):
+        self._Trademarks = Trademarks
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def Services(self):
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
 
 
     def _deserialize(self, params):
-        self.CompanyId = params.get("CompanyId")
-        self.CompanyName = params.get("CompanyName")
-        self.BrandName = params.get("BrandName")
-        self.Phone = params.get("Phone")
-        self.License = params.get("License")
-        self.LicenseStatus = params.get("LicenseStatus")
-        self.LicenseNote = params.get("LicenseNote")
-        self.Authorization = params.get("Authorization")
-        self.AuthorizationStatus = params.get("AuthorizationStatus")
-        self.AuthorizationNote = params.get("AuthorizationNote")
+        self._CompanyId = params.get("CompanyId")
+        self._CompanyName = params.get("CompanyName")
+        self._BrandName = params.get("BrandName")
+        self._Phone = params.get("Phone")
+        self._License = params.get("License")
+        self._LicenseStatus = params.get("LicenseStatus")
+        self._LicenseNote = params.get("LicenseNote")
+        self._Authorization = params.get("Authorization")
+        self._AuthorizationStatus = params.get("AuthorizationStatus")
+        self._AuthorizationNote = params.get("AuthorizationNote")
         if params.get("Trademarks") is not None:
-            self.Trademarks = []
+            self._Trademarks = []
             for item in params.get("Trademarks"):
                 obj = TrademarkData()
                 obj._deserialize(item)
-                self.Trademarks.append(obj)
-        self.InsertTime = params.get("InsertTime")
+                self._Trademarks.append(obj)
+        self._InsertTime = params.get("InsertTime")
         if params.get("Services") is not None:
-            self.Services = ServiceData()
-            self.Services._deserialize(params.get("Services"))
-        self.Uin = params.get("Uin")
+            self._Services = ServiceData()
+            self._Services._deserialize(params.get("Services"))
+        self._Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -108,74 +221,195 @@ class CreateBPBrandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandName: 品牌名称
+        :param _BrandName: 品牌名称
         :type BrandName: str
-        :param CompanyName: 企业名称
+        :param _CompanyName: 企业名称
         :type CompanyName: str
-        :param BrandLogo: 品牌logo
+        :param _BrandLogo: 品牌logo
         :type BrandLogo: str
-        :param Phone: 联系电话
+        :param _Phone: 联系电话
         :type Phone: str
-        :param License: 营业执照
+        :param _License: 营业执照
         :type License: str
-        :param Authorization: 授权书
+        :param _Authorization: 授权书
         :type Authorization: str
-        :param TrademarkNames: 商标名称
+        :param _TrademarkNames: 商标名称
         :type TrademarkNames: list of str
-        :param Trademarks: 商标证明
+        :param _Trademarks: 商标证明
         :type Trademarks: list of str
-        :param IsTransfers: 是否涉及转让: 0-不转让 1-转让
+        :param _IsTransfers: 是否涉及转让: 0-不转让 1-转让
         :type IsTransfers: list of str
-        :param Transfers: 转让证明
+        :param _Transfers: 转让证明
         :type Transfers: list of str
-        :param ProtectURLs: 保护网址
+        :param _ProtectURLs: 保护网址
         :type ProtectURLs: list of str
-        :param ProtectAPPs: 保护应用
+        :param _ProtectAPPs: 保护应用
         :type ProtectAPPs: list of str
-        :param ProtectOfficialAccounts: 保护公众号
+        :param _ProtectOfficialAccounts: 保护公众号
         :type ProtectOfficialAccounts: list of str
-        :param ProtectMiniPrograms: 保护小程序
+        :param _ProtectMiniPrograms: 保护小程序
         :type ProtectMiniPrograms: list of str
-        :param APISource: 请求来源：0-反钓鱼 2-反假冒
+        :param _APISource: 请求来源：0-反钓鱼 2-反假冒
         :type APISource: int
         """
-        self.BrandName = None
-        self.CompanyName = None
-        self.BrandLogo = None
-        self.Phone = None
-        self.License = None
-        self.Authorization = None
-        self.TrademarkNames = None
-        self.Trademarks = None
-        self.IsTransfers = None
-        self.Transfers = None
-        self.ProtectURLs = None
-        self.ProtectAPPs = None
-        self.ProtectOfficialAccounts = None
-        self.ProtectMiniPrograms = None
-        self.APISource = None
+        self._BrandName = None
+        self._CompanyName = None
+        self._BrandLogo = None
+        self._Phone = None
+        self._License = None
+        self._Authorization = None
+        self._TrademarkNames = None
+        self._Trademarks = None
+        self._IsTransfers = None
+        self._Transfers = None
+        self._ProtectURLs = None
+        self._ProtectAPPs = None
+        self._ProtectOfficialAccounts = None
+        self._ProtectMiniPrograms = None
+        self._APISource = None
+
+    @property
+    def BrandName(self):
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def BrandLogo(self):
+        return self._BrandLogo
+
+    @BrandLogo.setter
+    def BrandLogo(self, BrandLogo):
+        self._BrandLogo = BrandLogo
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def Authorization(self):
+        return self._Authorization
+
+    @Authorization.setter
+    def Authorization(self, Authorization):
+        self._Authorization = Authorization
+
+    @property
+    def TrademarkNames(self):
+        return self._TrademarkNames
+
+    @TrademarkNames.setter
+    def TrademarkNames(self, TrademarkNames):
+        self._TrademarkNames = TrademarkNames
+
+    @property
+    def Trademarks(self):
+        return self._Trademarks
+
+    @Trademarks.setter
+    def Trademarks(self, Trademarks):
+        self._Trademarks = Trademarks
+
+    @property
+    def IsTransfers(self):
+        return self._IsTransfers
+
+    @IsTransfers.setter
+    def IsTransfers(self, IsTransfers):
+        self._IsTransfers = IsTransfers
+
+    @property
+    def Transfers(self):
+        return self._Transfers
+
+    @Transfers.setter
+    def Transfers(self, Transfers):
+        self._Transfers = Transfers
+
+    @property
+    def ProtectURLs(self):
+        return self._ProtectURLs
+
+    @ProtectURLs.setter
+    def ProtectURLs(self, ProtectURLs):
+        self._ProtectURLs = ProtectURLs
+
+    @property
+    def ProtectAPPs(self):
+        return self._ProtectAPPs
+
+    @ProtectAPPs.setter
+    def ProtectAPPs(self, ProtectAPPs):
+        self._ProtectAPPs = ProtectAPPs
+
+    @property
+    def ProtectOfficialAccounts(self):
+        return self._ProtectOfficialAccounts
+
+    @ProtectOfficialAccounts.setter
+    def ProtectOfficialAccounts(self, ProtectOfficialAccounts):
+        self._ProtectOfficialAccounts = ProtectOfficialAccounts
+
+    @property
+    def ProtectMiniPrograms(self):
+        return self._ProtectMiniPrograms
+
+    @ProtectMiniPrograms.setter
+    def ProtectMiniPrograms(self, ProtectMiniPrograms):
+        self._ProtectMiniPrograms = ProtectMiniPrograms
+
+    @property
+    def APISource(self):
+        return self._APISource
+
+    @APISource.setter
+    def APISource(self, APISource):
+        self._APISource = APISource
 
 
     def _deserialize(self, params):
-        self.BrandName = params.get("BrandName")
-        self.CompanyName = params.get("CompanyName")
-        self.BrandLogo = params.get("BrandLogo")
-        self.Phone = params.get("Phone")
-        self.License = params.get("License")
-        self.Authorization = params.get("Authorization")
-        self.TrademarkNames = params.get("TrademarkNames")
-        self.Trademarks = params.get("Trademarks")
-        self.IsTransfers = params.get("IsTransfers")
-        self.Transfers = params.get("Transfers")
-        self.ProtectURLs = params.get("ProtectURLs")
-        self.ProtectAPPs = params.get("ProtectAPPs")
-        self.ProtectOfficialAccounts = params.get("ProtectOfficialAccounts")
-        self.ProtectMiniPrograms = params.get("ProtectMiniPrograms")
-        self.APISource = params.get("APISource")
+        self._BrandName = params.get("BrandName")
+        self._CompanyName = params.get("CompanyName")
+        self._BrandLogo = params.get("BrandLogo")
+        self._Phone = params.get("Phone")
+        self._License = params.get("License")
+        self._Authorization = params.get("Authorization")
+        self._TrademarkNames = params.get("TrademarkNames")
+        self._Trademarks = params.get("Trademarks")
+        self._IsTransfers = params.get("IsTransfers")
+        self._Transfers = params.get("Transfers")
+        self._ProtectURLs = params.get("ProtectURLs")
+        self._ProtectAPPs = params.get("ProtectAPPs")
+        self._ProtectOfficialAccounts = params.get("ProtectOfficialAccounts")
+        self._ProtectMiniPrograms = params.get("ProtectMiniPrograms")
+        self._APISource = params.get("APISource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -188,18 +422,34 @@ class CreateBPBrandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompanyId: 企业id
+        :param _CompanyId: 企业id
         :type CompanyId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CompanyId = None
-        self.RequestId = None
+        self._CompanyId = None
+        self._RequestId = None
+
+    @property
+    def CompanyId(self):
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CompanyId = params.get("CompanyId")
-        self.RequestId = params.get("RequestId")
+        self._CompanyId = params.get("CompanyId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBPFakeAPPListRequest(AbstractModel):
@@ -209,18 +459,27 @@ class CreateBPFakeAPPListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeAPPs: 批量模板
+        :param _FakeAPPs: 批量模板
         :type FakeAPPs: str
         """
-        self.FakeAPPs = None
+        self._FakeAPPs = None
+
+    @property
+    def FakeAPPs(self):
+        return self._FakeAPPs
+
+    @FakeAPPs.setter
+    def FakeAPPs(self, FakeAPPs):
+        self._FakeAPPs = FakeAPPs
 
 
     def _deserialize(self, params):
-        self.FakeAPPs = params.get("FakeAPPs")
+        self._FakeAPPs = params.get("FakeAPPs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -233,14 +492,22 @@ class CreateBPFakeAPPListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBPFakeAPPRequest(AbstractModel):
@@ -250,46 +517,111 @@ class CreateBPFakeAPPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompanyId: 企业id
+        :param _CompanyId: 企业id
         :type CompanyId: int
-        :param FakeAPPName: 仿冒应用名称
+        :param _FakeAPPName: 仿冒应用名称
         :type FakeAPPName: str
-        :param APPChan: 仿冒来源
+        :param _APPChan: 仿冒来源
         :type APPChan: str
-        :param FakeAPPPackageName: 仿冒应用包名
+        :param _FakeAPPPackageName: 仿冒应用包名
         :type FakeAPPPackageName: str
-        :param FakeAPPCert: 仿冒应用证书
+        :param _FakeAPPCert: 仿冒应用证书
         :type FakeAPPCert: str
-        :param FakeAPPSize: 仿冒应用大小
+        :param _FakeAPPSize: 仿冒应用大小
         :type FakeAPPSize: str
-        :param FakeAPPSnapshots: 仿冒截图
+        :param _FakeAPPSnapshots: 仿冒截图
         :type FakeAPPSnapshots: list of str
-        :param Note: 备注
+        :param _Note: 备注
         :type Note: str
         """
-        self.CompanyId = None
-        self.FakeAPPName = None
-        self.APPChan = None
-        self.FakeAPPPackageName = None
-        self.FakeAPPCert = None
-        self.FakeAPPSize = None
-        self.FakeAPPSnapshots = None
-        self.Note = None
+        self._CompanyId = None
+        self._FakeAPPName = None
+        self._APPChan = None
+        self._FakeAPPPackageName = None
+        self._FakeAPPCert = None
+        self._FakeAPPSize = None
+        self._FakeAPPSnapshots = None
+        self._Note = None
+
+    @property
+    def CompanyId(self):
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def FakeAPPName(self):
+        return self._FakeAPPName
+
+    @FakeAPPName.setter
+    def FakeAPPName(self, FakeAPPName):
+        self._FakeAPPName = FakeAPPName
+
+    @property
+    def APPChan(self):
+        return self._APPChan
+
+    @APPChan.setter
+    def APPChan(self, APPChan):
+        self._APPChan = APPChan
+
+    @property
+    def FakeAPPPackageName(self):
+        return self._FakeAPPPackageName
+
+    @FakeAPPPackageName.setter
+    def FakeAPPPackageName(self, FakeAPPPackageName):
+        self._FakeAPPPackageName = FakeAPPPackageName
+
+    @property
+    def FakeAPPCert(self):
+        return self._FakeAPPCert
+
+    @FakeAPPCert.setter
+    def FakeAPPCert(self, FakeAPPCert):
+        self._FakeAPPCert = FakeAPPCert
+
+    @property
+    def FakeAPPSize(self):
+        return self._FakeAPPSize
+
+    @FakeAPPSize.setter
+    def FakeAPPSize(self, FakeAPPSize):
+        self._FakeAPPSize = FakeAPPSize
+
+    @property
+    def FakeAPPSnapshots(self):
+        return self._FakeAPPSnapshots
+
+    @FakeAPPSnapshots.setter
+    def FakeAPPSnapshots(self, FakeAPPSnapshots):
+        self._FakeAPPSnapshots = FakeAPPSnapshots
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
 
 
     def _deserialize(self, params):
-        self.CompanyId = params.get("CompanyId")
-        self.FakeAPPName = params.get("FakeAPPName")
-        self.APPChan = params.get("APPChan")
-        self.FakeAPPPackageName = params.get("FakeAPPPackageName")
-        self.FakeAPPCert = params.get("FakeAPPCert")
-        self.FakeAPPSize = params.get("FakeAPPSize")
-        self.FakeAPPSnapshots = params.get("FakeAPPSnapshots")
-        self.Note = params.get("Note")
+        self._CompanyId = params.get("CompanyId")
+        self._FakeAPPName = params.get("FakeAPPName")
+        self._APPChan = params.get("APPChan")
+        self._FakeAPPPackageName = params.get("FakeAPPPackageName")
+        self._FakeAPPCert = params.get("FakeAPPCert")
+        self._FakeAPPSize = params.get("FakeAPPSize")
+        self._FakeAPPSnapshots = params.get("FakeAPPSnapshots")
+        self._Note = params.get("Note")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -302,14 +634,22 @@ class CreateBPFakeAPPResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBPFakeURLRequest(AbstractModel):
@@ -319,30 +659,63 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompanyId: 企业id
+        :param _CompanyId: 企业id
         :type CompanyId: int
-        :param FakeURL: 仿冒网址
+        :param _FakeURL: 仿冒网址
         :type FakeURL: str
-        :param FakeURLSnapshots: 仿冒网址截图
+        :param _FakeURLSnapshots: 仿冒网址截图
         :type FakeURLSnapshots: list of str
-        :param Note: 备注
+        :param _Note: 备注
         :type Note: str
         """
-        self.CompanyId = None
-        self.FakeURL = None
-        self.FakeURLSnapshots = None
-        self.Note = None
+        self._CompanyId = None
+        self._FakeURL = None
+        self._FakeURLSnapshots = None
+        self._Note = None
+
+    @property
+    def CompanyId(self):
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def FakeURL(self):
+        return self._FakeURL
+
+    @FakeURL.setter
+    def FakeURL(self, FakeURL):
+        self._FakeURL = FakeURL
+
+    @property
+    def FakeURLSnapshots(self):
+        return self._FakeURLSnapshots
+
+    @FakeURLSnapshots.setter
+    def FakeURLSnapshots(self, FakeURLSnapshots):
+        self._FakeURLSnapshots = FakeURLSnapshots
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
 
 
     def _deserialize(self, params):
-        self.CompanyId = params.get("CompanyId")
-        self.FakeURL = params.get("FakeURL")
-        self.FakeURLSnapshots = params.get("FakeURLSnapshots")
-        self.Note = params.get("Note")
+        self._CompanyId = params.get("CompanyId")
+        self._FakeURL = params.get("FakeURL")
+        self._FakeURLSnapshots = params.get("FakeURLSnapshots")
+        self._Note = params.get("Note")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -355,14 +728,22 @@ class CreateBPFakeURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBPFakeURLsRequest(AbstractModel):
@@ -372,18 +753,27 @@ class CreateBPFakeURLsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLs: 批量模板
+        :param _FakeURLs: 批量模板
         :type FakeURLs: str
         """
-        self.FakeURLs = None
+        self._FakeURLs = None
+
+    @property
+    def FakeURLs(self):
+        return self._FakeURLs
+
+    @FakeURLs.setter
+    def FakeURLs(self, FakeURLs):
+        self._FakeURLs = FakeURLs
 
 
     def _deserialize(self, params):
-        self.FakeURLs = params.get("FakeURLs")
+        self._FakeURLs = params.get("FakeURLs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -396,14 +786,22 @@ class CreateBPFakeURLsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBPWhiteListRequest(AbstractModel):
@@ -413,26 +811,51 @@ class CreateBPWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompanyId: 企业Id
+        :param _CompanyId: 企业Id
         :type CompanyId: int
-        :param WhiteListType: 白名单类型：0-网站 1-应用 2-公众号 3-小程
+        :param _WhiteListType: 白名单类型：0-网站 1-应用 2-公众号 3-小程
         :type WhiteListType: int
-        :param WhiteLists: 白名单名称
+        :param _WhiteLists: 白名单名称
         :type WhiteLists: list of str
         """
-        self.CompanyId = None
-        self.WhiteListType = None
-        self.WhiteLists = None
+        self._CompanyId = None
+        self._WhiteListType = None
+        self._WhiteLists = None
+
+    @property
+    def CompanyId(self):
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def WhiteListType(self):
+        return self._WhiteListType
+
+    @WhiteListType.setter
+    def WhiteListType(self, WhiteListType):
+        self._WhiteListType = WhiteListType
+
+    @property
+    def WhiteLists(self):
+        return self._WhiteLists
+
+    @WhiteLists.setter
+    def WhiteLists(self, WhiteLists):
+        self._WhiteLists = WhiteLists
 
 
     def _deserialize(self, params):
-        self.CompanyId = params.get("CompanyId")
-        self.WhiteListType = params.get("WhiteListType")
-        self.WhiteLists = params.get("WhiteLists")
+        self._CompanyId = params.get("CompanyId")
+        self._WhiteListType = params.get("WhiteListType")
+        self._WhiteLists = params.get("WhiteLists")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -445,14 +868,22 @@ class CreateBPWhiteListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteBPWhiteListRequest(AbstractModel):
@@ -462,18 +893,27 @@ class DeleteBPWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WhiteListId: 白名单id
+        :param _WhiteListId: 白名单id
         :type WhiteListId: int
         """
-        self.WhiteListId = None
+        self._WhiteListId = None
+
+    @property
+    def WhiteListId(self):
+        return self._WhiteListId
+
+    @WhiteListId.setter
+    def WhiteListId(self, WhiteListId):
+        self._WhiteListId = WhiteListId
 
 
     def _deserialize(self, params):
-        self.WhiteListId = params.get("WhiteListId")
+        self._WhiteListId = params.get("WhiteListId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -486,14 +926,22 @@ class DeleteBPWhiteListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBPBrandsRequest(AbstractModel):
@@ -509,27 +957,51 @@ class DescribeBPBrandsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Brands: 品牌信息
+        :param _Brands: 品牌信息
         :type Brands: list of BrandData
-        :param NoticeStatus: 品牌审核通知栏状态：0 不显示 1 显示
+        :param _NoticeStatus: 品牌审核通知栏状态：0 不显示 1 显示
         :type NoticeStatus: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Brands = None
-        self.NoticeStatus = None
-        self.RequestId = None
+        self._Brands = None
+        self._NoticeStatus = None
+        self._RequestId = None
+
+    @property
+    def Brands(self):
+        return self._Brands
+
+    @Brands.setter
+    def Brands(self, Brands):
+        self._Brands = Brands
+
+    @property
+    def NoticeStatus(self):
+        return self._NoticeStatus
+
+    @NoticeStatus.setter
+    def NoticeStatus(self, NoticeStatus):
+        self._NoticeStatus = NoticeStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Brands") is not None:
-            self.Brands = []
+            self._Brands = []
             for item in params.get("Brands"):
                 obj = BrandData()
                 obj._deserialize(item)
-                self.Brands.append(obj)
-        self.NoticeStatus = params.get("NoticeStatus")
-        self.RequestId = params.get("RequestId")
+                self._Brands.append(obj)
+        self._NoticeStatus = params.get("NoticeStatus")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBPFakeAPPListRequest(AbstractModel):
@@ -539,31 +1011,56 @@ class DescribeBPFakeAPPListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤参数
+        :param _Filters: 过滤参数
         :type Filters: list of Filter
-        :param PageSize: 页数
+        :param _PageSize: 页数
         :type PageSize: int
-        :param PageNumber: 页码
+        :param _PageNumber: 页码
         :type PageNumber: int
         """
-        self.Filters = None
-        self.PageSize = None
-        self.PageNumber = None
+        self._Filters = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
+                self._Filters.append(obj)
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -576,27 +1073,51 @@ class DescribeBPFakeAPPListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeAPPList: 仿冒应用列表
+        :param _FakeAPPList: 仿冒应用列表
         :type FakeAPPList: list of FakeAPPData
-        :param TotalCount: 仿冒应用总数
+        :param _TotalCount: 仿冒应用总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FakeAPPList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FakeAPPList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FakeAPPList(self):
+        return self._FakeAPPList
+
+    @FakeAPPList.setter
+    def FakeAPPList(self, FakeAPPList):
+        self._FakeAPPList = FakeAPPList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FakeAPPList") is not None:
-            self.FakeAPPList = []
+            self._FakeAPPList = []
             for item in params.get("FakeAPPList"):
                 obj = FakeAPPData()
                 obj._deserialize(item)
-                self.FakeAPPList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FakeAPPList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBPFakeURLsRequest(AbstractModel):
@@ -606,31 +1127,56 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤参数
+        :param _Filters: 过滤参数
         :type Filters: list of Filter
-        :param PageSize: 页数
+        :param _PageSize: 页数
         :type PageSize: int
-        :param PageNumber: 页码
+        :param _PageNumber: 页码
         :type PageNumber: int
         """
-        self.Filters = None
-        self.PageSize = None
-        self.PageNumber = None
+        self._Filters = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
+                self._Filters.append(obj)
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -643,27 +1189,51 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLs: 仿冒网址列表
+        :param _FakeURLs: 仿冒网址列表
         :type FakeURLs: list of FakeURLData
-        :param TotalCount: 仿冒网址总数
+        :param _TotalCount: 仿冒网址总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FakeURLs = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FakeURLs = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FakeURLs(self):
+        return self._FakeURLs
+
+    @FakeURLs.setter
+    def FakeURLs(self, FakeURLs):
+        self._FakeURLs = FakeURLs
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("FakeURLs") is not None:
-            self.FakeURLs = []
+            self._FakeURLs = []
             for item in params.get("FakeURLs"):
                 obj = FakeURLData()
                 obj._deserialize(item)
-                self.FakeURLs.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._FakeURLs.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBPWhiteListsRequest(AbstractModel):
@@ -673,31 +1243,56 @@ class DescribeBPWhiteListsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤参数
+        :param _Filters: 过滤参数
         :type Filters: list of Filter
-        :param PageSize: 页数
+        :param _PageSize: 页数
         :type PageSize: int
-        :param PageNumber: 页码
+        :param _PageNumber: 页码
         :type PageNumber: int
         """
-        self.Filters = None
-        self.PageSize = None
-        self.PageNumber = None
+        self._Filters = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
+                self._Filters.append(obj)
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -710,27 +1305,51 @@ class DescribeBPWhiteListsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WhiteLists: 白名单列表
+        :param _WhiteLists: 白名单列表
         :type WhiteLists: list of WhiteListData
-        :param TotalCount: 白名单总数
+        :param _TotalCount: 白名单总数
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.WhiteLists = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._WhiteLists = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def WhiteLists(self):
+        return self._WhiteLists
+
+    @WhiteLists.setter
+    def WhiteLists(self, WhiteLists):
+        self._WhiteLists = WhiteLists
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("WhiteLists") is not None:
-            self.WhiteLists = []
+            self._WhiteLists = []
             for item in params.get("WhiteLists"):
                 obj = WhiteListData()
                 obj._deserialize(item)
-                self.WhiteLists.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._WhiteLists.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class FakeAPPData(AbstractModel):
@@ -740,94 +1359,223 @@ class FakeAPPData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeAPPId: 仿冒应用id
+        :param _FakeAPPId: 仿冒应用id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeAPPId: int
-        :param BrandName: 品牌名称
+        :param _BrandName: 品牌名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrandName: str
-        :param Origin: 仿冒来源：0-系统检测 1-人工举报
+        :param _Origin: 仿冒来源：0-系统检测 1-人工举报
 注意：此字段可能返回 null，表示取不到有效值。
         :type Origin: int
-        :param FakeAPPName: 仿冒应用名称
+        :param _FakeAPPName: 仿冒应用名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeAPPName: str
-        :param FakeAPPPackageName: 仿冒应用包名
+        :param _FakeAPPPackageName: 仿冒应用包名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeAPPPackageName: str
-        :param FakeAPPCert: 仿冒应用证书
+        :param _FakeAPPCert: 仿冒应用证书
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeAPPCert: str
-        :param FakeAPPSize: 仿冒应用大小
+        :param _FakeAPPSize: 仿冒应用大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeAPPSize: str
-        :param Heat: 热度
+        :param _Heat: 热度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Heat: int
-        :param BlockStatus: 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+        :param _BlockStatus: 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockStatus: int
-        :param BlockNote: 协助处置状态说明
+        :param _BlockNote: 协助处置状态说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockNote: str
-        :param OfflineStatus: 关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
+        :param _OfflineStatus: 关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineStatus: int
-        :param OfflineNote: 关停状态说明
+        :param _OfflineNote: 关停状态说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineNote: str
-        :param DownloadWay: app来源
+        :param _DownloadWay: app来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadWay: str
-        :param InsertTime: 新增时间
+        :param _InsertTime: 新增时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
-        :param DownloadCosURL: App下载链接
+        :param _DownloadCosURL: App下载链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadCosURL: str
-        :param CertificationStatus: 资质证明状态:0-不可用 1-可用
+        :param _CertificationStatus: 资质证明状态:0-不可用 1-可用
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificationStatus: int
         """
-        self.FakeAPPId = None
-        self.BrandName = None
-        self.Origin = None
-        self.FakeAPPName = None
-        self.FakeAPPPackageName = None
-        self.FakeAPPCert = None
-        self.FakeAPPSize = None
-        self.Heat = None
-        self.BlockStatus = None
-        self.BlockNote = None
-        self.OfflineStatus = None
-        self.OfflineNote = None
-        self.DownloadWay = None
-        self.InsertTime = None
-        self.DownloadCosURL = None
-        self.CertificationStatus = None
+        self._FakeAPPId = None
+        self._BrandName = None
+        self._Origin = None
+        self._FakeAPPName = None
+        self._FakeAPPPackageName = None
+        self._FakeAPPCert = None
+        self._FakeAPPSize = None
+        self._Heat = None
+        self._BlockStatus = None
+        self._BlockNote = None
+        self._OfflineStatus = None
+        self._OfflineNote = None
+        self._DownloadWay = None
+        self._InsertTime = None
+        self._DownloadCosURL = None
+        self._CertificationStatus = None
+
+    @property
+    def FakeAPPId(self):
+        return self._FakeAPPId
+
+    @FakeAPPId.setter
+    def FakeAPPId(self, FakeAPPId):
+        self._FakeAPPId = FakeAPPId
+
+    @property
+    def BrandName(self):
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
+    @property
+    def Origin(self):
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def FakeAPPName(self):
+        return self._FakeAPPName
+
+    @FakeAPPName.setter
+    def FakeAPPName(self, FakeAPPName):
+        self._FakeAPPName = FakeAPPName
+
+    @property
+    def FakeAPPPackageName(self):
+        return self._FakeAPPPackageName
+
+    @FakeAPPPackageName.setter
+    def FakeAPPPackageName(self, FakeAPPPackageName):
+        self._FakeAPPPackageName = FakeAPPPackageName
+
+    @property
+    def FakeAPPCert(self):
+        return self._FakeAPPCert
+
+    @FakeAPPCert.setter
+    def FakeAPPCert(self, FakeAPPCert):
+        self._FakeAPPCert = FakeAPPCert
+
+    @property
+    def FakeAPPSize(self):
+        return self._FakeAPPSize
+
+    @FakeAPPSize.setter
+    def FakeAPPSize(self, FakeAPPSize):
+        self._FakeAPPSize = FakeAPPSize
+
+    @property
+    def Heat(self):
+        return self._Heat
+
+    @Heat.setter
+    def Heat(self, Heat):
+        self._Heat = Heat
+
+    @property
+    def BlockStatus(self):
+        return self._BlockStatus
+
+    @BlockStatus.setter
+    def BlockStatus(self, BlockStatus):
+        self._BlockStatus = BlockStatus
+
+    @property
+    def BlockNote(self):
+        return self._BlockNote
+
+    @BlockNote.setter
+    def BlockNote(self, BlockNote):
+        self._BlockNote = BlockNote
+
+    @property
+    def OfflineStatus(self):
+        return self._OfflineStatus
+
+    @OfflineStatus.setter
+    def OfflineStatus(self, OfflineStatus):
+        self._OfflineStatus = OfflineStatus
+
+    @property
+    def OfflineNote(self):
+        return self._OfflineNote
+
+    @OfflineNote.setter
+    def OfflineNote(self, OfflineNote):
+        self._OfflineNote = OfflineNote
+
+    @property
+    def DownloadWay(self):
+        return self._DownloadWay
+
+    @DownloadWay.setter
+    def DownloadWay(self, DownloadWay):
+        self._DownloadWay = DownloadWay
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def DownloadCosURL(self):
+        return self._DownloadCosURL
+
+    @DownloadCosURL.setter
+    def DownloadCosURL(self, DownloadCosURL):
+        self._DownloadCosURL = DownloadCosURL
+
+    @property
+    def CertificationStatus(self):
+        return self._CertificationStatus
+
+    @CertificationStatus.setter
+    def CertificationStatus(self, CertificationStatus):
+        self._CertificationStatus = CertificationStatus
 
 
     def _deserialize(self, params):
-        self.FakeAPPId = params.get("FakeAPPId")
-        self.BrandName = params.get("BrandName")
-        self.Origin = params.get("Origin")
-        self.FakeAPPName = params.get("FakeAPPName")
-        self.FakeAPPPackageName = params.get("FakeAPPPackageName")
-        self.FakeAPPCert = params.get("FakeAPPCert")
-        self.FakeAPPSize = params.get("FakeAPPSize")
-        self.Heat = params.get("Heat")
-        self.BlockStatus = params.get("BlockStatus")
-        self.BlockNote = params.get("BlockNote")
-        self.OfflineStatus = params.get("OfflineStatus")
-        self.OfflineNote = params.get("OfflineNote")
-        self.DownloadWay = params.get("DownloadWay")
-        self.InsertTime = params.get("InsertTime")
-        self.DownloadCosURL = params.get("DownloadCosURL")
-        self.CertificationStatus = params.get("CertificationStatus")
+        self._FakeAPPId = params.get("FakeAPPId")
+        self._BrandName = params.get("BrandName")
+        self._Origin = params.get("Origin")
+        self._FakeAPPName = params.get("FakeAPPName")
+        self._FakeAPPPackageName = params.get("FakeAPPPackageName")
+        self._FakeAPPCert = params.get("FakeAPPCert")
+        self._FakeAPPSize = params.get("FakeAPPSize")
+        self._Heat = params.get("Heat")
+        self._BlockStatus = params.get("BlockStatus")
+        self._BlockNote = params.get("BlockNote")
+        self._OfflineStatus = params.get("OfflineStatus")
+        self._OfflineNote = params.get("OfflineNote")
+        self._DownloadWay = params.get("DownloadWay")
+        self._InsertTime = params.get("InsertTime")
+        self._DownloadCosURL = params.get("DownloadCosURL")
+        self._CertificationStatus = params.get("CertificationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -840,124 +1588,301 @@ class FakeURLData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLId: 仿冒网址id
+        :param _FakeURLId: 仿冒网址id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeURLId: int
-        :param BrandName: 品牌名称
+        :param _BrandName: 品牌名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrandName: str
-        :param Origin: 仿冒来源：0-系统检测 1-人工举报
+        :param _Origin: 仿冒来源：0-系统检测 1-人工举报
 注意：此字段可能返回 null，表示取不到有效值。
         :type Origin: int
-        :param FakeURL: 仿冒网址
+        :param _FakeURL: 仿冒网址
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeURL: str
-        :param FakeDomain: 仿冒域名
+        :param _FakeDomain: 仿冒域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeDomain: str
-        :param Heat: 热度
+        :param _Heat: 热度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Heat: int
-        :param BlockStatus: 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+        :param _BlockStatus: 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockStatus: int
-        :param BlockNote: 协助处置状态说明
+        :param _BlockNote: 协助处置状态说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockNote: str
-        :param OfflineStatus: 关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
+        :param _OfflineStatus: 关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineStatus: int
-        :param OfflineNote: 关停状态说明
+        :param _OfflineNote: 关停状态说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineNote: str
-        :param IP: ip地址
+        :param _IP: ip地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
-        :param IPLocation: ip地理位置
+        :param _IPLocation: ip地理位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPLocation: str
-        :param WebCompany: 网站所属单位
+        :param _WebCompany: 网站所属单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebCompany: str
-        :param WebAttribute: 网站性质
+        :param _WebAttribute: 网站性质
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebAttribute: str
-        :param WebName: 网站名称
+        :param _WebName: 网站名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebName: str
-        :param WebICP: 备案号
+        :param _WebICP: 备案号
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebICP: str
-        :param WebCreateTime: 网站创建时间
+        :param _WebCreateTime: 网站创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebCreateTime: str
-        :param WebExpireTime: 网站过期时间
+        :param _WebExpireTime: 网站过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebExpireTime: str
-        :param InsertTime: 新增时间
+        :param _InsertTime: 新增时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
-        :param CertificationStatus: 资质证明状态：0-不可用 1-可用
+        :param _CertificationStatus: 资质证明状态：0-不可用 1-可用
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificationStatus: int
-        :param Snapshot: 网址截图
+        :param _Snapshot: 网址截图
 注意：此字段可能返回 null，表示取不到有效值。
         :type Snapshot: str
-        :param AccountStatus: 账户资源状态：0-不可用 1-可用
+        :param _AccountStatus: 账户资源状态：0-不可用 1-可用
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountStatus: int
         """
-        self.FakeURLId = None
-        self.BrandName = None
-        self.Origin = None
-        self.FakeURL = None
-        self.FakeDomain = None
-        self.Heat = None
-        self.BlockStatus = None
-        self.BlockNote = None
-        self.OfflineStatus = None
-        self.OfflineNote = None
-        self.IP = None
-        self.IPLocation = None
-        self.WebCompany = None
-        self.WebAttribute = None
-        self.WebName = None
-        self.WebICP = None
-        self.WebCreateTime = None
-        self.WebExpireTime = None
-        self.InsertTime = None
-        self.CertificationStatus = None
-        self.Snapshot = None
-        self.AccountStatus = None
+        self._FakeURLId = None
+        self._BrandName = None
+        self._Origin = None
+        self._FakeURL = None
+        self._FakeDomain = None
+        self._Heat = None
+        self._BlockStatus = None
+        self._BlockNote = None
+        self._OfflineStatus = None
+        self._OfflineNote = None
+        self._IP = None
+        self._IPLocation = None
+        self._WebCompany = None
+        self._WebAttribute = None
+        self._WebName = None
+        self._WebICP = None
+        self._WebCreateTime = None
+        self._WebExpireTime = None
+        self._InsertTime = None
+        self._CertificationStatus = None
+        self._Snapshot = None
+        self._AccountStatus = None
+
+    @property
+    def FakeURLId(self):
+        return self._FakeURLId
+
+    @FakeURLId.setter
+    def FakeURLId(self, FakeURLId):
+        self._FakeURLId = FakeURLId
+
+    @property
+    def BrandName(self):
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
+    @property
+    def Origin(self):
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def FakeURL(self):
+        return self._FakeURL
+
+    @FakeURL.setter
+    def FakeURL(self, FakeURL):
+        self._FakeURL = FakeURL
+
+    @property
+    def FakeDomain(self):
+        return self._FakeDomain
+
+    @FakeDomain.setter
+    def FakeDomain(self, FakeDomain):
+        self._FakeDomain = FakeDomain
+
+    @property
+    def Heat(self):
+        return self._Heat
+
+    @Heat.setter
+    def Heat(self, Heat):
+        self._Heat = Heat
+
+    @property
+    def BlockStatus(self):
+        return self._BlockStatus
+
+    @BlockStatus.setter
+    def BlockStatus(self, BlockStatus):
+        self._BlockStatus = BlockStatus
+
+    @property
+    def BlockNote(self):
+        return self._BlockNote
+
+    @BlockNote.setter
+    def BlockNote(self, BlockNote):
+        self._BlockNote = BlockNote
+
+    @property
+    def OfflineStatus(self):
+        return self._OfflineStatus
+
+    @OfflineStatus.setter
+    def OfflineStatus(self, OfflineStatus):
+        self._OfflineStatus = OfflineStatus
+
+    @property
+    def OfflineNote(self):
+        return self._OfflineNote
+
+    @OfflineNote.setter
+    def OfflineNote(self, OfflineNote):
+        self._OfflineNote = OfflineNote
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def IPLocation(self):
+        return self._IPLocation
+
+    @IPLocation.setter
+    def IPLocation(self, IPLocation):
+        self._IPLocation = IPLocation
+
+    @property
+    def WebCompany(self):
+        return self._WebCompany
+
+    @WebCompany.setter
+    def WebCompany(self, WebCompany):
+        self._WebCompany = WebCompany
+
+    @property
+    def WebAttribute(self):
+        return self._WebAttribute
+
+    @WebAttribute.setter
+    def WebAttribute(self, WebAttribute):
+        self._WebAttribute = WebAttribute
+
+    @property
+    def WebName(self):
+        return self._WebName
+
+    @WebName.setter
+    def WebName(self, WebName):
+        self._WebName = WebName
+
+    @property
+    def WebICP(self):
+        return self._WebICP
+
+    @WebICP.setter
+    def WebICP(self, WebICP):
+        self._WebICP = WebICP
+
+    @property
+    def WebCreateTime(self):
+        return self._WebCreateTime
+
+    @WebCreateTime.setter
+    def WebCreateTime(self, WebCreateTime):
+        self._WebCreateTime = WebCreateTime
+
+    @property
+    def WebExpireTime(self):
+        return self._WebExpireTime
+
+    @WebExpireTime.setter
+    def WebExpireTime(self, WebExpireTime):
+        self._WebExpireTime = WebExpireTime
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def CertificationStatus(self):
+        return self._CertificationStatus
+
+    @CertificationStatus.setter
+    def CertificationStatus(self, CertificationStatus):
+        self._CertificationStatus = CertificationStatus
+
+    @property
+    def Snapshot(self):
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def AccountStatus(self):
+        return self._AccountStatus
+
+    @AccountStatus.setter
+    def AccountStatus(self, AccountStatus):
+        self._AccountStatus = AccountStatus
 
 
     def _deserialize(self, params):
-        self.FakeURLId = params.get("FakeURLId")
-        self.BrandName = params.get("BrandName")
-        self.Origin = params.get("Origin")
-        self.FakeURL = params.get("FakeURL")
-        self.FakeDomain = params.get("FakeDomain")
-        self.Heat = params.get("Heat")
-        self.BlockStatus = params.get("BlockStatus")
-        self.BlockNote = params.get("BlockNote")
-        self.OfflineStatus = params.get("OfflineStatus")
-        self.OfflineNote = params.get("OfflineNote")
-        self.IP = params.get("IP")
-        self.IPLocation = params.get("IPLocation")
-        self.WebCompany = params.get("WebCompany")
-        self.WebAttribute = params.get("WebAttribute")
-        self.WebName = params.get("WebName")
-        self.WebICP = params.get("WebICP")
-        self.WebCreateTime = params.get("WebCreateTime")
-        self.WebExpireTime = params.get("WebExpireTime")
-        self.InsertTime = params.get("InsertTime")
-        self.CertificationStatus = params.get("CertificationStatus")
-        self.Snapshot = params.get("Snapshot")
-        self.AccountStatus = params.get("AccountStatus")
+        self._FakeURLId = params.get("FakeURLId")
+        self._BrandName = params.get("BrandName")
+        self._Origin = params.get("Origin")
+        self._FakeURL = params.get("FakeURL")
+        self._FakeDomain = params.get("FakeDomain")
+        self._Heat = params.get("Heat")
+        self._BlockStatus = params.get("BlockStatus")
+        self._BlockNote = params.get("BlockNote")
+        self._OfflineStatus = params.get("OfflineStatus")
+        self._OfflineNote = params.get("OfflineNote")
+        self._IP = params.get("IP")
+        self._IPLocation = params.get("IPLocation")
+        self._WebCompany = params.get("WebCompany")
+        self._WebAttribute = params.get("WebAttribute")
+        self._WebName = params.get("WebName")
+        self._WebICP = params.get("WebICP")
+        self._WebCreateTime = params.get("WebCreateTime")
+        self._WebExpireTime = params.get("WebExpireTime")
+        self._InsertTime = params.get("InsertTime")
+        self._CertificationStatus = params.get("CertificationStatus")
+        self._Snapshot = params.get("Snapshot")
+        self._AccountStatus = params.get("AccountStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -970,22 +1895,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 过滤参数键
+        :param _Name: 过滤参数键
         :type Name: str
-        :param Value: 过滤参数值
+        :param _Value: 过滤参数值
         :type Value: str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -998,50 +1940,123 @@ class ServiceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProtectURLCount: 网站保护关联资产数
+        :param _ProtectURLCount: 网站保护关联资产数
         :type ProtectURLCount: int
-        :param ProtectURLExpireTime: 网站保护服务到期时间
+        :param _ProtectURLExpireTime: 网站保护服务到期时间
         :type ProtectURLExpireTime: str
-        :param ProtectAPPCount: 应用保护关联资产数
+        :param _ProtectAPPCount: 应用保护关联资产数
         :type ProtectAPPCount: int
-        :param ProtectAPPExpireTime: 应用保护服务到期时间
+        :param _ProtectAPPExpireTime: 应用保护服务到期时间
         :type ProtectAPPExpireTime: str
-        :param ProtectOfficialAccountCount: 公众号保护关联资产数
+        :param _ProtectOfficialAccountCount: 公众号保护关联资产数
         :type ProtectOfficialAccountCount: int
-        :param ProtectOfficialAccountExpireTime: 公众号保护服务到期时间
+        :param _ProtectOfficialAccountExpireTime: 公众号保护服务到期时间
         :type ProtectOfficialAccountExpireTime: str
-        :param ProtectMiniProgramCount: 小程序保护关联资产数
+        :param _ProtectMiniProgramCount: 小程序保护关联资产数
         :type ProtectMiniProgramCount: int
-        :param ProtectMiniProgramExpireTime: 小程序保护服务到期时间
+        :param _ProtectMiniProgramExpireTime: 小程序保护服务到期时间
         :type ProtectMiniProgramExpireTime: str
-        :param OfflineCount: 关停下架使用次数
+        :param _OfflineCount: 关停下架使用次数
         :type OfflineCount: int
         """
-        self.ProtectURLCount = None
-        self.ProtectURLExpireTime = None
-        self.ProtectAPPCount = None
-        self.ProtectAPPExpireTime = None
-        self.ProtectOfficialAccountCount = None
-        self.ProtectOfficialAccountExpireTime = None
-        self.ProtectMiniProgramCount = None
-        self.ProtectMiniProgramExpireTime = None
-        self.OfflineCount = None
+        self._ProtectURLCount = None
+        self._ProtectURLExpireTime = None
+        self._ProtectAPPCount = None
+        self._ProtectAPPExpireTime = None
+        self._ProtectOfficialAccountCount = None
+        self._ProtectOfficialAccountExpireTime = None
+        self._ProtectMiniProgramCount = None
+        self._ProtectMiniProgramExpireTime = None
+        self._OfflineCount = None
+
+    @property
+    def ProtectURLCount(self):
+        return self._ProtectURLCount
+
+    @ProtectURLCount.setter
+    def ProtectURLCount(self, ProtectURLCount):
+        self._ProtectURLCount = ProtectURLCount
+
+    @property
+    def ProtectURLExpireTime(self):
+        return self._ProtectURLExpireTime
+
+    @ProtectURLExpireTime.setter
+    def ProtectURLExpireTime(self, ProtectURLExpireTime):
+        self._ProtectURLExpireTime = ProtectURLExpireTime
+
+    @property
+    def ProtectAPPCount(self):
+        return self._ProtectAPPCount
+
+    @ProtectAPPCount.setter
+    def ProtectAPPCount(self, ProtectAPPCount):
+        self._ProtectAPPCount = ProtectAPPCount
+
+    @property
+    def ProtectAPPExpireTime(self):
+        return self._ProtectAPPExpireTime
+
+    @ProtectAPPExpireTime.setter
+    def ProtectAPPExpireTime(self, ProtectAPPExpireTime):
+        self._ProtectAPPExpireTime = ProtectAPPExpireTime
+
+    @property
+    def ProtectOfficialAccountCount(self):
+        return self._ProtectOfficialAccountCount
+
+    @ProtectOfficialAccountCount.setter
+    def ProtectOfficialAccountCount(self, ProtectOfficialAccountCount):
+        self._ProtectOfficialAccountCount = ProtectOfficialAccountCount
+
+    @property
+    def ProtectOfficialAccountExpireTime(self):
+        return self._ProtectOfficialAccountExpireTime
+
+    @ProtectOfficialAccountExpireTime.setter
+    def ProtectOfficialAccountExpireTime(self, ProtectOfficialAccountExpireTime):
+        self._ProtectOfficialAccountExpireTime = ProtectOfficialAccountExpireTime
+
+    @property
+    def ProtectMiniProgramCount(self):
+        return self._ProtectMiniProgramCount
+
+    @ProtectMiniProgramCount.setter
+    def ProtectMiniProgramCount(self, ProtectMiniProgramCount):
+        self._ProtectMiniProgramCount = ProtectMiniProgramCount
+
+    @property
+    def ProtectMiniProgramExpireTime(self):
+        return self._ProtectMiniProgramExpireTime
+
+    @ProtectMiniProgramExpireTime.setter
+    def ProtectMiniProgramExpireTime(self, ProtectMiniProgramExpireTime):
+        self._ProtectMiniProgramExpireTime = ProtectMiniProgramExpireTime
+
+    @property
+    def OfflineCount(self):
+        return self._OfflineCount
+
+    @OfflineCount.setter
+    def OfflineCount(self, OfflineCount):
+        self._OfflineCount = OfflineCount
 
 
     def _deserialize(self, params):
-        self.ProtectURLCount = params.get("ProtectURLCount")
-        self.ProtectURLExpireTime = params.get("ProtectURLExpireTime")
-        self.ProtectAPPCount = params.get("ProtectAPPCount")
-        self.ProtectAPPExpireTime = params.get("ProtectAPPExpireTime")
-        self.ProtectOfficialAccountCount = params.get("ProtectOfficialAccountCount")
-        self.ProtectOfficialAccountExpireTime = params.get("ProtectOfficialAccountExpireTime")
-        self.ProtectMiniProgramCount = params.get("ProtectMiniProgramCount")
-        self.ProtectMiniProgramExpireTime = params.get("ProtectMiniProgramExpireTime")
-        self.OfflineCount = params.get("OfflineCount")
+        self._ProtectURLCount = params.get("ProtectURLCount")
+        self._ProtectURLExpireTime = params.get("ProtectURLExpireTime")
+        self._ProtectAPPCount = params.get("ProtectAPPCount")
+        self._ProtectAPPExpireTime = params.get("ProtectAPPExpireTime")
+        self._ProtectOfficialAccountCount = params.get("ProtectOfficialAccountCount")
+        self._ProtectOfficialAccountExpireTime = params.get("ProtectOfficialAccountExpireTime")
+        self._ProtectMiniProgramCount = params.get("ProtectMiniProgramCount")
+        self._ProtectMiniProgramExpireTime = params.get("ProtectMiniProgramExpireTime")
+        self._OfflineCount = params.get("OfflineCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1054,46 +2069,111 @@ class TrademarkData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Trademark: 商标证明
+        :param _Trademark: 商标证明
         :type Trademark: str
-        :param TrademarkStatus: 商标审核状态
+        :param _TrademarkStatus: 商标审核状态
         :type TrademarkStatus: int
-        :param TrademarkNote: 商标审核状态说明
+        :param _TrademarkNote: 商标审核状态说明
         :type TrademarkNote: str
-        :param TrademarkId: 商标id
+        :param _TrademarkId: 商标id
         :type TrademarkId: int
-        :param Transfer: 商标转让书
+        :param _Transfer: 商标转让书
         :type Transfer: str
-        :param TransferStatus: 商标转让书审核状态
+        :param _TransferStatus: 商标转让书审核状态
         :type TransferStatus: int
-        :param TransferNote: 商标转让书审核状态说明
+        :param _TransferNote: 商标转让书审核状态说明
         :type TransferNote: str
-        :param TrademarkName: 商标名称
+        :param _TrademarkName: 商标名称
         :type TrademarkName: str
         """
-        self.Trademark = None
-        self.TrademarkStatus = None
-        self.TrademarkNote = None
-        self.TrademarkId = None
-        self.Transfer = None
-        self.TransferStatus = None
-        self.TransferNote = None
-        self.TrademarkName = None
+        self._Trademark = None
+        self._TrademarkStatus = None
+        self._TrademarkNote = None
+        self._TrademarkId = None
+        self._Transfer = None
+        self._TransferStatus = None
+        self._TransferNote = None
+        self._TrademarkName = None
+
+    @property
+    def Trademark(self):
+        return self._Trademark
+
+    @Trademark.setter
+    def Trademark(self, Trademark):
+        self._Trademark = Trademark
+
+    @property
+    def TrademarkStatus(self):
+        return self._TrademarkStatus
+
+    @TrademarkStatus.setter
+    def TrademarkStatus(self, TrademarkStatus):
+        self._TrademarkStatus = TrademarkStatus
+
+    @property
+    def TrademarkNote(self):
+        return self._TrademarkNote
+
+    @TrademarkNote.setter
+    def TrademarkNote(self, TrademarkNote):
+        self._TrademarkNote = TrademarkNote
+
+    @property
+    def TrademarkId(self):
+        return self._TrademarkId
+
+    @TrademarkId.setter
+    def TrademarkId(self, TrademarkId):
+        self._TrademarkId = TrademarkId
+
+    @property
+    def Transfer(self):
+        return self._Transfer
+
+    @Transfer.setter
+    def Transfer(self, Transfer):
+        self._Transfer = Transfer
+
+    @property
+    def TransferStatus(self):
+        return self._TransferStatus
+
+    @TransferStatus.setter
+    def TransferStatus(self, TransferStatus):
+        self._TransferStatus = TransferStatus
+
+    @property
+    def TransferNote(self):
+        return self._TransferNote
+
+    @TransferNote.setter
+    def TransferNote(self, TransferNote):
+        self._TransferNote = TransferNote
+
+    @property
+    def TrademarkName(self):
+        return self._TrademarkName
+
+    @TrademarkName.setter
+    def TrademarkName(self, TrademarkName):
+        self._TrademarkName = TrademarkName
 
 
     def _deserialize(self, params):
-        self.Trademark = params.get("Trademark")
-        self.TrademarkStatus = params.get("TrademarkStatus")
-        self.TrademarkNote = params.get("TrademarkNote")
-        self.TrademarkId = params.get("TrademarkId")
-        self.Transfer = params.get("Transfer")
-        self.TransferStatus = params.get("TransferStatus")
-        self.TransferNote = params.get("TransferNote")
-        self.TrademarkName = params.get("TrademarkName")
+        self._Trademark = params.get("Trademark")
+        self._TrademarkStatus = params.get("TrademarkStatus")
+        self._TrademarkNote = params.get("TrademarkNote")
+        self._TrademarkId = params.get("TrademarkId")
+        self._Transfer = params.get("Transfer")
+        self._TransferStatus = params.get("TransferStatus")
+        self._TransferNote = params.get("TransferNote")
+        self._TrademarkName = params.get("TrademarkName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1106,44 +2186,93 @@ class WhiteListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WhiteListId: 白名单id
+        :param _WhiteListId: 白名单id
 注意：此字段可能返回 null，表示取不到有效值。
         :type WhiteListId: int
-        :param CompanyId: 企业id
+        :param _CompanyId: 企业id
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompanyId: int
-        :param BrandName: 品牌名称
+        :param _BrandName: 品牌名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrandName: str
-        :param AssetsType: 资产类型：0-网站 1-app 2-公众号 3-小程序
+        :param _AssetsType: 资产类型：0-网站 1-app 2-公众号 3-小程序
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsType: int
-        :param WhiteList: 白名单
+        :param _WhiteList: 白名单
 注意：此字段可能返回 null，表示取不到有效值。
         :type WhiteList: str
-        :param InsertTime: 新增时间
+        :param _InsertTime: 新增时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
         """
-        self.WhiteListId = None
-        self.CompanyId = None
-        self.BrandName = None
-        self.AssetsType = None
-        self.WhiteList = None
-        self.InsertTime = None
+        self._WhiteListId = None
+        self._CompanyId = None
+        self._BrandName = None
+        self._AssetsType = None
+        self._WhiteList = None
+        self._InsertTime = None
+
+    @property
+    def WhiteListId(self):
+        return self._WhiteListId
+
+    @WhiteListId.setter
+    def WhiteListId(self, WhiteListId):
+        self._WhiteListId = WhiteListId
+
+    @property
+    def CompanyId(self):
+        return self._CompanyId
+
+    @CompanyId.setter
+    def CompanyId(self, CompanyId):
+        self._CompanyId = CompanyId
+
+    @property
+    def BrandName(self):
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
+    @property
+    def AssetsType(self):
+        return self._AssetsType
+
+    @AssetsType.setter
+    def AssetsType(self, AssetsType):
+        self._AssetsType = AssetsType
+
+    @property
+    def WhiteList(self):
+        return self._WhiteList
+
+    @WhiteList.setter
+    def WhiteList(self, WhiteList):
+        self._WhiteList = WhiteList
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
 
 
     def _deserialize(self, params):
-        self.WhiteListId = params.get("WhiteListId")
-        self.CompanyId = params.get("CompanyId")
-        self.BrandName = params.get("BrandName")
-        self.AssetsType = params.get("AssetsType")
-        self.WhiteList = params.get("WhiteList")
-        self.InsertTime = params.get("InsertTime")
+        self._WhiteListId = params.get("WhiteListId")
+        self._CompanyId = params.get("CompanyId")
+        self._BrandName = params.get("BrandName")
+        self._AssetsType = params.get("AssetsType")
+        self._WhiteList = params.get("WhiteList")
+        self._InsertTime = params.get("InsertTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

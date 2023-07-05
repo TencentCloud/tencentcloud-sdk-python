@@ -25,26 +25,51 @@ class AddUserContactRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
+        :param _Name: 联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
         :type Name: str
-        :param ContactInfo: 邮箱地址，支持大小写字母、数字、下划线及@字符， 不能以下划线开头，邮箱地址不可重复。
+        :param _ContactInfo: 邮箱地址，支持大小写字母、数字、下划线及@字符， 不能以下划线开头，邮箱地址不可重复。
         :type ContactInfo: str
-        :param Product: 服务产品类型，固定值："mysql"。
+        :param _Product: 服务产品类型，固定值："mysql"。
         :type Product: str
         """
-        self.Name = None
-        self.ContactInfo = None
-        self.Product = None
+        self._Name = None
+        self._ContactInfo = None
+        self._Product = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContactInfo(self):
+        return self._ContactInfo
+
+    @ContactInfo.setter
+    def ContactInfo(self, ContactInfo):
+        self._ContactInfo = ContactInfo
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ContactInfo = params.get("ContactInfo")
-        self.Product = params.get("Product")
+        self._Name = params.get("Name")
+        self._ContactInfo = params.get("ContactInfo")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,18 +82,34 @@ class AddUserContactResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 添加成功的联系人id。
+        :param _Id: 添加成功的联系人id。
         :type Id: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Id = None
-        self.RequestId = None
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.RequestId = params.get("RequestId")
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
 
 
 class AuditLogFile(AbstractModel):
@@ -78,56 +119,129 @@ class AuditLogFile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 审计日志文件生成异步任务ID。
+        :param _AsyncRequestId: 审计日志文件生成异步任务ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: int
-        :param FileName: 审计日志文件名称。
+        :param _FileName: 审计日志文件名称。
         :type FileName: str
-        :param CreateTime: 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+        :param _CreateTime: 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param Status: 文件状态值。可能返回的值为：
+        :param _Status: 文件状态值。可能返回的值为：
 "creating" - 生成中;
 "failed" - 创建失败;
 "success" - 已生成;
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param FileSize: 文件大小，单位为 KB。
+        :param _FileSize: 文件大小，单位为 KB。
         :type FileSize: float
-        :param DownloadUrl: 审计日志下载地址。
+        :param _DownloadUrl: 审计日志下载地址。
         :type DownloadUrl: str
-        :param ErrMsg: 错误信息。
+        :param _ErrMsg: 错误信息。
         :type ErrMsg: str
-        :param Progress: 文件生成进度。
+        :param _Progress: 文件生成进度。
         :type Progress: float
-        :param FinishTime: 文件生成成功时间。
+        :param _FinishTime: 文件生成成功时间。
         :type FinishTime: str
         """
-        self.AsyncRequestId = None
-        self.FileName = None
-        self.CreateTime = None
-        self.Status = None
-        self.FileSize = None
-        self.DownloadUrl = None
-        self.ErrMsg = None
-        self.Progress = None
-        self.FinishTime = None
+        self._AsyncRequestId = None
+        self._FileName = None
+        self._CreateTime = None
+        self._Status = None
+        self._FileSize = None
+        self._DownloadUrl = None
+        self._ErrMsg = None
+        self._Progress = None
+        self._FinishTime = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def DownloadUrl(self):
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def FinishTime(self):
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.FileName = params.get("FileName")
-        self.CreateTime = params.get("CreateTime")
-        self.Status = params.get("Status")
-        self.FileSize = params.get("FileSize")
-        self.DownloadUrl = params.get("DownloadUrl")
-        self.ErrMsg = params.get("ErrMsg")
-        self.Progress = params.get("Progress")
-        self.FinishTime = params.get("FinishTime")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._FileName = params.get("FileName")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._FileSize = params.get("FileSize")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._ErrMsg = params.get("ErrMsg")
+        self._Progress = params.get("Progress")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -140,38 +254,87 @@ class AuditLogFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Host: 客户端地址。
+        :param _Host: 客户端地址。
         :type Host: list of str
-        :param DBName: 数据库名称。
+        :param _DBName: 数据库名称。
         :type DBName: list of str
-        :param User: 用户名。
+        :param _User: 用户名。
         :type User: list of str
-        :param SentRows: 返回行数。表示筛选返回行数大于该值的审计日志。
+        :param _SentRows: 返回行数。表示筛选返回行数大于该值的审计日志。
         :type SentRows: int
-        :param AffectRows: 影响行数。表示筛选影响行数大于该值的审计日志。
+        :param _AffectRows: 影响行数。表示筛选影响行数大于该值的审计日志。
         :type AffectRows: int
-        :param ExecTime: 执行时间。单位为：µs。表示筛选执行时间大于该值的审计日志。
+        :param _ExecTime: 执行时间。单位为：µs。表示筛选执行时间大于该值的审计日志。
         :type ExecTime: int
         """
-        self.Host = None
-        self.DBName = None
-        self.User = None
-        self.SentRows = None
-        self.AffectRows = None
-        self.ExecTime = None
+        self._Host = None
+        self._DBName = None
+        self._User = None
+        self._SentRows = None
+        self._AffectRows = None
+        self._ExecTime = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DBName(self):
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def SentRows(self):
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def AffectRows(self):
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def ExecTime(self):
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
 
 
     def _deserialize(self, params):
-        self.Host = params.get("Host")
-        self.DBName = params.get("DBName")
-        self.User = params.get("User")
-        self.SentRows = params.get("SentRows")
-        self.AffectRows = params.get("AffectRows")
-        self.ExecTime = params.get("ExecTime")
+        self._Host = params.get("Host")
+        self._DBName = params.get("DBName")
+        self._User = params.get("User")
+        self._SentRows = params.get("SentRows")
+        self._AffectRows = params.get("AffectRows")
+        self._ExecTime = params.get("ExecTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -184,22 +347,39 @@ class CancelKillTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Product = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -212,18 +392,34 @@ class CancelKillTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: kill会话任务终止成功返回1。
+        :param _Status: kill会话任务终止成功返回1。
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class ContactItem(AbstractModel):
@@ -233,26 +429,51 @@ class ContactItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 联系人id。
+        :param _Id: 联系人id。
         :type Id: int
-        :param Name: 联系人姓名。
+        :param _Name: 联系人姓名。
         :type Name: str
-        :param Mail: 联系人绑定的邮箱。
+        :param _Mail: 联系人绑定的邮箱。
         :type Mail: str
         """
-        self.Id = None
-        self.Name = None
-        self.Mail = None
+        self._Id = None
+        self._Name = None
+        self._Mail = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.Mail = params.get("Mail")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Mail = params.get("Mail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -265,40 +486,89 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
         :type Product: str
-        :param NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"
+        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"
         :type NodeRequestType: str
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param StartTime: 开始时间，如“2019-09-10 12:13:14”。	
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。	
         :type StartTime: str
-        :param EndTime: 截止时间，如“2019-09-11 10:13:14”。
+        :param _EndTime: 截止时间，如“2019-09-11 10:13:14”。
         :type EndTime: str
-        :param Filter: 过滤条件。可按设置的过滤条件过滤日志。
+        :param _Filter: 过滤条件。可按设置的过滤条件过滤日志。
         :type Filter: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogFilter`
         """
-        self.Product = None
-        self.NodeRequestType = None
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Filter = None
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filter = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.NodeRequestType = params.get("NodeRequestType")
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("Filter") is not None:
-            self.Filter = AuditLogFilter()
-            self.Filter._deserialize(params.get("Filter"))
+            self._Filter = AuditLogFilter()
+            self._Filter._deserialize(params.get("Filter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -311,18 +581,34 @@ class CreateAuditLogFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 审计日志文件下载的任务ID
+        :param _AsyncRequestId: 审计日志文件下载的任务ID
         :type AsyncRequestId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsyncRequestId = None
-        self.RequestId = None
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDBDiagReportTaskRequest(AbstractModel):
@@ -332,42 +618,99 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param StartTime: 开始时间，如“2020-11-08T14:00:00+08:00”。
+        :param _StartTime: 开始时间，如“2020-11-08T14:00:00+08:00”。
         :type StartTime: str
-        :param EndTime: 结束时间，如“2020-11-09T14:00:00+08:00”。
+        :param _EndTime: 结束时间，如“2020-11-09T14:00:00+08:00”。
         :type EndTime: str
-        :param SendMailFlag: 是否发送邮件: 0 - 否，1 - 是。
+        :param _SendMailFlag: 是否发送邮件: 0 - 否，1 - 是。
         :type SendMailFlag: int
-        :param ContactPerson: 接收邮件的联系人ID数组。
+        :param _ContactPerson: 接收邮件的联系人ID数组。
         :type ContactPerson: list of int
-        :param ContactGroup: 接收邮件的联系组ID数组。
+        :param _ContactGroup: 接收邮件的联系组ID数组。
         :type ContactGroup: list of int
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SendMailFlag = None
-        self.ContactPerson = None
-        self.ContactGroup = None
-        self.Product = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SendMailFlag = None
+        self._ContactPerson = None
+        self._ContactGroup = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SendMailFlag(self):
+        return self._SendMailFlag
+
+    @SendMailFlag.setter
+    def SendMailFlag(self, SendMailFlag):
+        self._SendMailFlag = SendMailFlag
+
+    @property
+    def ContactPerson(self):
+        return self._ContactPerson
+
+    @ContactPerson.setter
+    def ContactPerson(self, ContactPerson):
+        self._ContactPerson = ContactPerson
+
+    @property
+    def ContactGroup(self):
+        return self._ContactGroup
+
+    @ContactGroup.setter
+    def ContactGroup(self, ContactGroup):
+        self._ContactGroup = ContactGroup
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SendMailFlag = params.get("SendMailFlag")
-        self.ContactPerson = params.get("ContactPerson")
-        self.ContactGroup = params.get("ContactGroup")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SendMailFlag = params.get("SendMailFlag")
+        self._ContactPerson = params.get("ContactPerson")
+        self._ContactGroup = params.get("ContactGroup")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -380,19 +723,35 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsyncRequestId = None
-        self.RequestId = None
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDBDiagReportUrlRequest(AbstractModel):
@@ -402,26 +761,51 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param AsyncRequestId: 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
+        :param _AsyncRequestId: 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
         :type AsyncRequestId: int
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.AsyncRequestId = None
-        self.Product = None
+        self._InstanceId = None
+        self._AsyncRequestId = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -434,22 +818,46 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportUrl: 健康报告浏览地址。
+        :param _ReportUrl: 健康报告浏览地址。
         :type ReportUrl: str
-        :param ExpireTime: 健康报告浏览地址到期时间戳（秒）。
+        :param _ExpireTime: 健康报告浏览地址到期时间戳（秒）。
         :type ExpireTime: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ReportUrl = None
-        self.ExpireTime = None
-        self.RequestId = None
+        self._ReportUrl = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def ReportUrl(self):
+        return self._ReportUrl
+
+    @ReportUrl.setter
+    def ReportUrl(self, ReportUrl):
+        self._ReportUrl = ReportUrl
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ReportUrl = params.get("ReportUrl")
-        self.ExpireTime = params.get("ExpireTime")
-        self.RequestId = params.get("RequestId")
+        self._ReportUrl = params.get("ReportUrl")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateKillTaskRequest(AbstractModel):
@@ -459,50 +867,123 @@ class CreateKillTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: kill会话任务的关联实例ID。
+        :param _InstanceId: kill会话任务的关联实例ID。
         :type InstanceId: str
-        :param Duration: 任务持续时间，单位秒，手动关闭任务传-1。
+        :param _Duration: 任务持续时间，单位秒，手动关闭任务传-1。
         :type Duration: int
-        :param Host: 任务过滤条件，客户端IP。
+        :param _Host: 任务过滤条件，客户端IP。
         :type Host: str
-        :param DB: 任务过滤条件，数据库库名,多个","隔开。
+        :param _DB: 任务过滤条件，数据库库名,多个","隔开。
         :type DB: str
-        :param Command: 任务过滤条件，相关命令，多个","隔开。
+        :param _Command: 任务过滤条件，相关命令，多个","隔开。
         :type Command: str
-        :param Info: 任务过滤条件，支持单条件前缀匹配。
+        :param _Info: 任务过滤条件，支持单条件前缀匹配。
         :type Info: str
-        :param User: 任务过滤条件，用户类型。
+        :param _User: 任务过滤条件，用户类型。
         :type User: str
-        :param Time: 任务过滤条件，会话持续时长，单位秒。
+        :param _Time: 任务过滤条件，会话持续时长，单位秒。
         :type Time: int
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Duration = None
-        self.Host = None
-        self.DB = None
-        self.Command = None
-        self.Info = None
-        self.User = None
-        self.Time = None
-        self.Product = None
+        self._InstanceId = None
+        self._Duration = None
+        self._Host = None
+        self._DB = None
+        self._Command = None
+        self._Info = None
+        self._User = None
+        self._Time = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DB(self):
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Duration = params.get("Duration")
-        self.Host = params.get("Host")
-        self.DB = params.get("DB")
-        self.Command = params.get("Command")
-        self.Info = params.get("Info")
-        self.User = params.get("User")
-        self.Time = params.get("Time")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Duration = params.get("Duration")
+        self._Host = params.get("Host")
+        self._DB = params.get("DB")
+        self._Command = params.get("Command")
+        self._Info = params.get("Info")
+        self._User = params.get("User")
+        self._Time = params.get("Time")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -515,18 +996,34 @@ class CreateKillTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: kill会话任务创建成功返回1
+        :param _Status: kill会话任务创建成功返回1
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMailProfileRequest(AbstractModel):
@@ -536,40 +1033,89 @@ class CreateMailProfileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProfileInfo: 邮件配置内容。
+        :param _ProfileInfo: 邮件配置内容。
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
-        :param ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
+        :param _ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
         :type ProfileLevel: str
-        :param ProfileName: 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :param _ProfileName: 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
         :type ProfileName: str
-        :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+        :param _ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
         :type ProfileType: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
         :type Product: str
-        :param BindInstanceIds: 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
+        :param _BindInstanceIds: 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
         :type BindInstanceIds: list of str
         """
-        self.ProfileInfo = None
-        self.ProfileLevel = None
-        self.ProfileName = None
-        self.ProfileType = None
-        self.Product = None
-        self.BindInstanceIds = None
+        self._ProfileInfo = None
+        self._ProfileLevel = None
+        self._ProfileName = None
+        self._ProfileType = None
+        self._Product = None
+        self._BindInstanceIds = None
+
+    @property
+    def ProfileInfo(self):
+        return self._ProfileInfo
+
+    @ProfileInfo.setter
+    def ProfileInfo(self, ProfileInfo):
+        self._ProfileInfo = ProfileInfo
+
+    @property
+    def ProfileLevel(self):
+        return self._ProfileLevel
+
+    @ProfileLevel.setter
+    def ProfileLevel(self, ProfileLevel):
+        self._ProfileLevel = ProfileLevel
+
+    @property
+    def ProfileName(self):
+        return self._ProfileName
+
+    @ProfileName.setter
+    def ProfileName(self, ProfileName):
+        self._ProfileName = ProfileName
+
+    @property
+    def ProfileType(self):
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def BindInstanceIds(self):
+        return self._BindInstanceIds
+
+    @BindInstanceIds.setter
+    def BindInstanceIds(self, BindInstanceIds):
+        self._BindInstanceIds = BindInstanceIds
 
 
     def _deserialize(self, params):
         if params.get("ProfileInfo") is not None:
-            self.ProfileInfo = ProfileInfo()
-            self.ProfileInfo._deserialize(params.get("ProfileInfo"))
-        self.ProfileLevel = params.get("ProfileLevel")
-        self.ProfileName = params.get("ProfileName")
-        self.ProfileType = params.get("ProfileType")
-        self.Product = params.get("Product")
-        self.BindInstanceIds = params.get("BindInstanceIds")
+            self._ProfileInfo = ProfileInfo()
+            self._ProfileInfo._deserialize(params.get("ProfileInfo"))
+        self._ProfileLevel = params.get("ProfileLevel")
+        self._ProfileName = params.get("ProfileName")
+        self._ProfileType = params.get("ProfileType")
+        self._Product = params.get("Product")
+        self._BindInstanceIds = params.get("BindInstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -582,14 +1128,22 @@ class CreateMailProfileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateProxySessionKillTaskRequest(AbstractModel):
@@ -599,22 +1153,39 @@ class CreateProxySessionKillTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Product = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -627,18 +1198,34 @@ class CreateProxySessionKillTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 创建 kill 会话任务返回的异步任务 id
+        :param _AsyncRequestId: 创建 kill 会话任务返回的异步任务 id
         :type AsyncRequestId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsyncRequestId = None
-        self.RequestId = None
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSchedulerMailProfileRequest(AbstractModel):
@@ -648,36 +1235,77 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WeekConfiguration: 取值范围1-7，分别代表周一至周日。
+        :param _WeekConfiguration: 取值范围1-7，分别代表周一至周日。
         :type WeekConfiguration: list of int
-        :param ProfileInfo: 邮件配置内容。
+        :param _ProfileInfo: 邮件配置内容。
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
-        :param ProfileName: 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :param _ProfileName: 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
         :type ProfileName: str
-        :param BindInstanceId: 配置订阅的实例ID。
+        :param _BindInstanceId: 配置订阅的实例ID。
         :type BindInstanceId: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.WeekConfiguration = None
-        self.ProfileInfo = None
-        self.ProfileName = None
-        self.BindInstanceId = None
-        self.Product = None
+        self._WeekConfiguration = None
+        self._ProfileInfo = None
+        self._ProfileName = None
+        self._BindInstanceId = None
+        self._Product = None
+
+    @property
+    def WeekConfiguration(self):
+        return self._WeekConfiguration
+
+    @WeekConfiguration.setter
+    def WeekConfiguration(self, WeekConfiguration):
+        self._WeekConfiguration = WeekConfiguration
+
+    @property
+    def ProfileInfo(self):
+        return self._ProfileInfo
+
+    @ProfileInfo.setter
+    def ProfileInfo(self, ProfileInfo):
+        self._ProfileInfo = ProfileInfo
+
+    @property
+    def ProfileName(self):
+        return self._ProfileName
+
+    @ProfileName.setter
+    def ProfileName(self, ProfileName):
+        self._ProfileName = ProfileName
+
+    @property
+    def BindInstanceId(self):
+        return self._BindInstanceId
+
+    @BindInstanceId.setter
+    def BindInstanceId(self, BindInstanceId):
+        self._BindInstanceId = BindInstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.WeekConfiguration = params.get("WeekConfiguration")
+        self._WeekConfiguration = params.get("WeekConfiguration")
         if params.get("ProfileInfo") is not None:
-            self.ProfileInfo = ProfileInfo()
-            self.ProfileInfo._deserialize(params.get("ProfileInfo"))
-        self.ProfileName = params.get("ProfileName")
-        self.BindInstanceId = params.get("BindInstanceId")
-        self.Product = params.get("Product")
+            self._ProfileInfo = ProfileInfo()
+            self._ProfileInfo._deserialize(params.get("ProfileInfo"))
+        self._ProfileName = params.get("ProfileName")
+        self._BindInstanceId = params.get("BindInstanceId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -690,14 +1318,22 @@ class CreateSchedulerMailProfileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
@@ -707,34 +1343,75 @@ class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecAuditGroupId: 安全审计组Id。
+        :param _SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
-        :param StartTime: 导出日志开始时间，例如2020-12-28 00:00:00。
+        :param _StartTime: 导出日志开始时间，例如2020-12-28 00:00:00。
         :type StartTime: str
-        :param EndTime: 导出日志结束时间，例如2020-12-28 01:00:00。
+        :param _EndTime: 导出日志结束时间，例如2020-12-28 01:00:00。
         :type EndTime: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
         :type Product: str
-        :param DangerLevels: 日志风险等级列表，支持值包括：0 无风险；1 低风险；2 中风险；3 高风险。
+        :param _DangerLevels: 日志风险等级列表，支持值包括：0 无风险；1 低风险；2 中风险；3 高风险。
         :type DangerLevels: list of int
         """
-        self.SecAuditGroupId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Product = None
-        self.DangerLevels = None
+        self._SecAuditGroupId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+        self._DangerLevels = None
+
+    @property
+    def SecAuditGroupId(self):
+        return self._SecAuditGroupId
+
+    @SecAuditGroupId.setter
+    def SecAuditGroupId(self, SecAuditGroupId):
+        self._SecAuditGroupId = SecAuditGroupId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def DangerLevels(self):
+        return self._DangerLevels
+
+    @DangerLevels.setter
+    def DangerLevels(self, DangerLevels):
+        self._DangerLevels = DangerLevels
 
 
     def _deserialize(self, params):
-        self.SecAuditGroupId = params.get("SecAuditGroupId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Product = params.get("Product")
-        self.DangerLevels = params.get("DangerLevels")
+        self._SecAuditGroupId = params.get("SecAuditGroupId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        self._DangerLevels = params.get("DangerLevels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -747,18 +1424,34 @@ class CreateSecurityAuditLogExportTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 日志导出任务Id。
+        :param _AsyncRequestId: 日志导出任务Id。
         :type AsyncRequestId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AsyncRequestId = None
-        self.RequestId = None
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSqlFilterRequest(AbstractModel):
@@ -768,42 +1461,99 @@ class CreateSqlFilterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        :param _SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
         :type SqlType: str
-        :param FilterKey: 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
+        :param _FilterKey: 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
         :type FilterKey: str
-        :param MaxConcurrency: 最大并发度，取值不能小于0，如果该值设为 0，则表示限制所有匹配的SQL执行。
+        :param _MaxConcurrency: 最大并发度，取值不能小于0，如果该值设为 0，则表示限制所有匹配的SQL执行。
         :type MaxConcurrency: int
-        :param Duration: 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
+        :param _Duration: 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
         :type Duration: int
-        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :param _SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :type SessionToken: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.SqlType = None
-        self.FilterKey = None
-        self.MaxConcurrency = None
-        self.Duration = None
-        self.SessionToken = None
-        self.Product = None
+        self._InstanceId = None
+        self._SqlType = None
+        self._FilterKey = None
+        self._MaxConcurrency = None
+        self._Duration = None
+        self._SessionToken = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SqlType(self):
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def FilterKey(self):
+        return self._FilterKey
+
+    @FilterKey.setter
+    def FilterKey(self, FilterKey):
+        self._FilterKey = FilterKey
+
+    @property
+    def MaxConcurrency(self):
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def SessionToken(self):
+        return self._SessionToken
+
+    @SessionToken.setter
+    def SessionToken(self, SessionToken):
+        self._SessionToken = SessionToken
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.SqlType = params.get("SqlType")
-        self.FilterKey = params.get("FilterKey")
-        self.MaxConcurrency = params.get("MaxConcurrency")
-        self.Duration = params.get("Duration")
-        self.SessionToken = params.get("SessionToken")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._SqlType = params.get("SqlType")
+        self._FilterKey = params.get("FilterKey")
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        self._Duration = params.get("Duration")
+        self._SessionToken = params.get("SessionToken")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -816,18 +1566,34 @@ class CreateSqlFilterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FilterId: 限流任务ID。
+        :param _FilterId: 限流任务ID。
         :type FilterId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FilterId = None
-        self.RequestId = None
+        self._FilterId = None
+        self._RequestId = None
+
+    @property
+    def FilterId(self):
+        return self._FilterId
+
+    @FilterId.setter
+    def FilterId(self, FilterId):
+        self._FilterId = FilterId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FilterId = params.get("FilterId")
-        self.RequestId = params.get("RequestId")
+        self._FilterId = params.get("FilterId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAuditLogFileRequest(AbstractModel):
@@ -837,30 +1603,63 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
         :type Product: str
-        :param NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"	
+        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"	
         :type NodeRequestType: str
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param AsyncRequestId: 审计日志文件生成异步任务ID。
+        :param _AsyncRequestId: 审计日志文件生成异步任务ID。
         :type AsyncRequestId: int
         """
-        self.Product = None
-        self.NodeRequestType = None
-        self.InstanceId = None
-        self.AsyncRequestId = None
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+        self._AsyncRequestId = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.NodeRequestType = params.get("NodeRequestType")
-        self.InstanceId = params.get("InstanceId")
-        self.AsyncRequestId = params.get("AsyncRequestId")
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -873,14 +1672,22 @@ class DeleteAuditLogFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteDBDiagReportTasksRequest(AbstractModel):
@@ -890,26 +1697,51 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestIds: 需要删除的任务id列表
+        :param _AsyncRequestIds: 需要删除的任务id列表
         :type AsyncRequestIds: list of int
-        :param InstanceId: 实例ID
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.AsyncRequestIds = None
-        self.InstanceId = None
-        self.Product = None
+        self._AsyncRequestIds = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def AsyncRequestIds(self):
+        return self._AsyncRequestIds
+
+    @AsyncRequestIds.setter
+    def AsyncRequestIds(self, AsyncRequestIds):
+        self._AsyncRequestIds = AsyncRequestIds
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.AsyncRequestIds = params.get("AsyncRequestIds")
-        self.InstanceId = params.get("InstanceId")
-        self.Product = params.get("Product")
+        self._AsyncRequestIds = params.get("AsyncRequestIds")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -922,18 +1754,34 @@ class DeleteDBDiagReportTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 任务删除状态, 0-删除成功
+        :param _Status: 任务删除状态, 0-删除成功
         :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Status = None
-        self.RequestId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
@@ -943,26 +1791,51 @@ class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecAuditGroupId: 安全审计组Id。
+        :param _SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
-        :param AsyncRequestIds: 日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
+        :param _AsyncRequestIds: 日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
         :type AsyncRequestIds: list of int non-negative
-        :param Product: 服务产品类型，支持值： "mysql" - 云数据库 MySQL。
+        :param _Product: 服务产品类型，支持值： "mysql" - 云数据库 MySQL。
         :type Product: str
         """
-        self.SecAuditGroupId = None
-        self.AsyncRequestIds = None
-        self.Product = None
+        self._SecAuditGroupId = None
+        self._AsyncRequestIds = None
+        self._Product = None
+
+    @property
+    def SecAuditGroupId(self):
+        return self._SecAuditGroupId
+
+    @SecAuditGroupId.setter
+    def SecAuditGroupId(self, SecAuditGroupId):
+        self._SecAuditGroupId = SecAuditGroupId
+
+    @property
+    def AsyncRequestIds(self):
+        return self._AsyncRequestIds
+
+    @AsyncRequestIds.setter
+    def AsyncRequestIds(self, AsyncRequestIds):
+        self._AsyncRequestIds = AsyncRequestIds
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.SecAuditGroupId = params.get("SecAuditGroupId")
-        self.AsyncRequestIds = params.get("AsyncRequestIds")
-        self.Product = params.get("Product")
+        self._SecAuditGroupId = params.get("SecAuditGroupId")
+        self._AsyncRequestIds = params.get("AsyncRequestIds")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -975,14 +1848,22 @@ class DeleteSecurityAuditLogExportTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSqlFiltersRequest(AbstractModel):
@@ -992,30 +1873,63 @@ class DeleteSqlFiltersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param FilterIds: 限流任务ID列表。
+        :param _FilterIds: 限流任务ID列表。
         :type FilterIds: list of int
-        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :param _SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :type SessionToken: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.FilterIds = None
-        self.SessionToken = None
-        self.Product = None
+        self._InstanceId = None
+        self._FilterIds = None
+        self._SessionToken = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FilterIds(self):
+        return self._FilterIds
+
+    @FilterIds.setter
+    def FilterIds(self, FilterIds):
+        self._FilterIds = FilterIds
+
+    @property
+    def SessionToken(self):
+        return self._SessionToken
+
+    @SessionToken.setter
+    def SessionToken(self, SessionToken):
+        self._SessionToken = SessionToken
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.FilterIds = params.get("FilterIds")
-        self.SessionToken = params.get("SessionToken")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._FilterIds = params.get("FilterIds")
+        self._SessionToken = params.get("SessionToken")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1028,14 +1942,22 @@ class DeleteSqlFiltersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAllUserContactRequest(AbstractModel):
@@ -1045,22 +1967,39 @@ class DescribeAllUserContactRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 服务产品类型，固定值：mysql。
+        :param _Product: 服务产品类型，固定值：mysql。
         :type Product: str
-        :param Names: 联系人名数组，支持模糊搜索。
+        :param _Names: 联系人名数组，支持模糊搜索。
         :type Names: list of str
         """
-        self.Product = None
-        self.Names = None
+        self._Product = None
+        self._Names = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Names(self):
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.Names = params.get("Names")
+        self._Product = params.get("Product")
+        self._Names = params.get("Names")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1073,28 +2012,52 @@ class DescribeAllUserContactResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 联系人的总数量。
+        :param _TotalCount: 联系人的总数量。
         :type TotalCount: int
-        :param Contacts: 联系人的信息。
+        :param _Contacts: 联系人的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Contacts: list of ContactItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Contacts = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Contacts = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Contacts(self):
+        return self._Contacts
+
+    @Contacts.setter
+    def Contacts(self, Contacts):
+        self._Contacts = Contacts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Contacts") is not None:
-            self.Contacts = []
+            self._Contacts = []
             for item in params.get("Contacts"):
                 obj = ContactItem()
                 obj._deserialize(item)
-                self.Contacts.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Contacts.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAllUserGroupRequest(AbstractModel):
@@ -1104,22 +2067,39 @@ class DescribeAllUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 服务产品类型，固定值：mysql。
+        :param _Product: 服务产品类型，固定值：mysql。
         :type Product: str
-        :param Names: 联系组名称数组，支持模糊搜索。
+        :param _Names: 联系组名称数组，支持模糊搜索。
         :type Names: list of str
         """
-        self.Product = None
-        self.Names = None
+        self._Product = None
+        self._Names = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Names(self):
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.Names = params.get("Names")
+        self._Product = params.get("Product")
+        self._Names = params.get("Names")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1132,28 +2112,52 @@ class DescribeAllUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 组总数。
+        :param _TotalCount: 组总数。
         :type TotalCount: int
-        :param Groups: 组信息。
+        :param _Groups: 组信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Groups = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Groups = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Groups(self):
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Groups") is not None:
-            self.Groups = []
+            self._Groups = []
             for item in params.get("Groups"):
                 obj = GroupItem()
                 obj._deserialize(item)
-                self.Groups.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Groups.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAuditLogFilesRequest(AbstractModel):
@@ -1163,34 +2167,75 @@ class DescribeAuditLogFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
         :type Product: str
-        :param NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"
+        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"
         :type NodeRequestType: str
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 查询数目，默认为20，最大为100。
+        :param _Limit: 查询数目，默认为20，最大为100。
         :type Limit: int
         """
-        self.Product = None
-        self.NodeRequestType = None
-        self.InstanceId = None
-        self.Offset = None
-        self.Limit = None
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.NodeRequestType = params.get("NodeRequestType")
-        self.InstanceId = params.get("InstanceId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1203,29 +2248,53 @@ class DescribeAuditLogFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的审计日志文件个数。
+        :param _TotalCount: 符合条件的审计日志文件个数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param Items: 审计日志文件详情。
+        :param _Items: 审计日志文件详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of AuditLogFile
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = AuditLogFile()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBDiagEventRequest(AbstractModel):
@@ -1235,26 +2304,51 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param EventId: 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
+        :param _EventId: 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
         :type EventId: int
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.EventId = None
-        self.Product = None
+        self._InstanceId = None
+        self._EventId = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.EventId = params.get("EventId")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._EventId = params.get("EventId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1267,59 +2361,155 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiagItem: 诊断项。
+        :param _DiagItem: 诊断项。
         :type DiagItem: str
-        :param DiagType: 诊断类型。
+        :param _DiagType: 诊断类型。
         :type DiagType: str
-        :param EventId: 事件 ID 。
+        :param _EventId: 事件 ID 。
         :type EventId: int
-        :param Explanation: 诊断事件详情，若无附加解释信息则输出为空。
+        :param _Explanation: 诊断事件详情，若无附加解释信息则输出为空。
         :type Explanation: str
-        :param Outline: 诊断概要。
+        :param _Outline: 诊断概要。
         :type Outline: str
-        :param Problem: 诊断出的问题。
+        :param _Problem: 诊断出的问题。
         :type Problem: str
-        :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :param _Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
-        :param StartTime: 开始时间
+        :param _StartTime: 开始时间
         :type StartTime: str
-        :param Suggestions: 诊断建议，若无建议则输出为空。
+        :param _Suggestions: 诊断建议，若无建议则输出为空。
         :type Suggestions: str
-        :param Metric: 保留字段。
+        :param _Metric: 保留字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
-        :param EndTime: 结束时间。
+        :param _EndTime: 结束时间。
         :type EndTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DiagItem = None
-        self.DiagType = None
-        self.EventId = None
-        self.Explanation = None
-        self.Outline = None
-        self.Problem = None
-        self.Severity = None
-        self.StartTime = None
-        self.Suggestions = None
-        self.Metric = None
-        self.EndTime = None
-        self.RequestId = None
+        self._DiagItem = None
+        self._DiagType = None
+        self._EventId = None
+        self._Explanation = None
+        self._Outline = None
+        self._Problem = None
+        self._Severity = None
+        self._StartTime = None
+        self._Suggestions = None
+        self._Metric = None
+        self._EndTime = None
+        self._RequestId = None
+
+    @property
+    def DiagItem(self):
+        return self._DiagItem
+
+    @DiagItem.setter
+    def DiagItem(self, DiagItem):
+        self._DiagItem = DiagItem
+
+    @property
+    def DiagType(self):
+        return self._DiagType
+
+    @DiagType.setter
+    def DiagType(self, DiagType):
+        self._DiagType = DiagType
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Explanation(self):
+        return self._Explanation
+
+    @Explanation.setter
+    def Explanation(self, Explanation):
+        self._Explanation = Explanation
+
+    @property
+    def Outline(self):
+        return self._Outline
+
+    @Outline.setter
+    def Outline(self, Outline):
+        self._Outline = Outline
+
+    @property
+    def Problem(self):
+        return self._Problem
+
+    @Problem.setter
+    def Problem(self, Problem):
+        self._Problem = Problem
+
+    @property
+    def Severity(self):
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Suggestions(self):
+        return self._Suggestions
+
+    @Suggestions.setter
+    def Suggestions(self, Suggestions):
+        self._Suggestions = Suggestions
+
+    @property
+    def Metric(self):
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DiagItem = params.get("DiagItem")
-        self.DiagType = params.get("DiagType")
-        self.EventId = params.get("EventId")
-        self.Explanation = params.get("Explanation")
-        self.Outline = params.get("Outline")
-        self.Problem = params.get("Problem")
-        self.Severity = params.get("Severity")
-        self.StartTime = params.get("StartTime")
-        self.Suggestions = params.get("Suggestions")
-        self.Metric = params.get("Metric")
-        self.EndTime = params.get("EndTime")
-        self.RequestId = params.get("RequestId")
+        self._DiagItem = params.get("DiagItem")
+        self._DiagType = params.get("DiagType")
+        self._EventId = params.get("EventId")
+        self._Explanation = params.get("Explanation")
+        self._Outline = params.get("Outline")
+        self._Problem = params.get("Problem")
+        self._Severity = params.get("Severity")
+        self._StartTime = params.get("StartTime")
+        self._Suggestions = params.get("Suggestions")
+        self._Metric = params.get("Metric")
+        self._EndTime = params.get("EndTime")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBDiagEventsRequest(AbstractModel):
@@ -1329,38 +2519,87 @@ class DescribeDBDiagEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :param _StartTime: 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
         :type StartTime: str
-        :param EndTime: 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
+        :param _EndTime: 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
         :type EndTime: str
-        :param Severities: 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
+        :param _Severities: 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
         :type Severities: list of int
-        :param InstanceIds: 实例ID列表。
+        :param _InstanceIds: 实例ID列表。
         :type InstanceIds: list of str
-        :param Offset: 偏移量，默认0。
+        :param _Offset: 偏移量，默认0。
         :type Offset: int
-        :param Limit: 返回数量，默认20，最大值为50。
+        :param _Limit: 返回数量，默认20，最大值为50。
         :type Limit: int
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Severities = None
-        self.InstanceIds = None
-        self.Offset = None
-        self.Limit = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Severities = None
+        self._InstanceIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Severities(self):
+        return self._Severities
+
+    @Severities.setter
+    def Severities(self, Severities):
+        self._Severities = Severities
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Severities = params.get("Severities")
-        self.InstanceIds = params.get("InstanceIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Severities = params.get("Severities")
+        self._InstanceIds = params.get("InstanceIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1373,27 +2612,51 @@ class DescribeDBDiagEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 诊断事件的总数目。
+        :param _TotalCount: 诊断事件的总数目。
         :type TotalCount: int
-        :param Items: 诊断事件的列表。
+        :param _Items: 诊断事件的列表。
         :type Items: list of DiagHistoryEventItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = DiagHistoryEventItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBDiagHistoryRequest(AbstractModel):
@@ -1403,30 +2666,63 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
         :type StartTime: str
-        :param EndTime: 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
+        :param _EndTime: 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
         :type EndTime: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Product = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1439,23 +2735,39 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Events: 事件描述。
+        :param _Events: 事件描述。
         :type Events: list of DiagHistoryEventItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Events = None
-        self.RequestId = None
+        self._Events = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Events") is not None:
-            self.Events = []
+            self._Events = []
             for item in params.get("Events"):
                 obj = DiagHistoryEventItem()
                 obj._deserialize(item)
-                self.Events.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Events.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBDiagReportTasksRequest(AbstractModel):
@@ -1465,50 +2777,123 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :param _StartTime: 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
         :type StartTime: str
-        :param EndTime: 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :param _EndTime: 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
         :type EndTime: str
-        :param InstanceIds: 实例ID数组，用于筛选指定实例的任务列表。
+        :param _InstanceIds: 实例ID数组，用于筛选指定实例的任务列表。
         :type InstanceIds: list of str
-        :param Sources: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :param _Sources: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
         :type Sources: list of str
-        :param HealthLevels: 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
+        :param _HealthLevels: 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
         :type HealthLevels: str
-        :param TaskStatuses: 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        :param _TaskStatuses: 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
         :type TaskStatuses: str
-        :param Offset: 偏移量，默认0。
+        :param _Offset: 偏移量，默认0。
         :type Offset: int
-        :param Limit: 返回数量，默认20，最大值为100。
+        :param _Limit: 返回数量，默认20，最大值为100。
         :type Limit: int
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.InstanceIds = None
-        self.Sources = None
-        self.HealthLevels = None
-        self.TaskStatuses = None
-        self.Offset = None
-        self.Limit = None
-        self.Product = None
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceIds = None
+        self._Sources = None
+        self._HealthLevels = None
+        self._TaskStatuses = None
+        self._Offset = None
+        self._Limit = None
+        self._Product = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Sources(self):
+        return self._Sources
+
+    @Sources.setter
+    def Sources(self, Sources):
+        self._Sources = Sources
+
+    @property
+    def HealthLevels(self):
+        return self._HealthLevels
+
+    @HealthLevels.setter
+    def HealthLevels(self, HealthLevels):
+        self._HealthLevels = HealthLevels
+
+    @property
+    def TaskStatuses(self):
+        return self._TaskStatuses
+
+    @TaskStatuses.setter
+    def TaskStatuses(self, TaskStatuses):
+        self._TaskStatuses = TaskStatuses
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.InstanceIds = params.get("InstanceIds")
-        self.Sources = params.get("Sources")
-        self.HealthLevels = params.get("HealthLevels")
-        self.TaskStatuses = params.get("TaskStatuses")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Product = params.get("Product")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceIds = params.get("InstanceIds")
+        self._Sources = params.get("Sources")
+        self._HealthLevels = params.get("HealthLevels")
+        self._TaskStatuses = params.get("TaskStatuses")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1521,27 +2906,51 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 任务总数目。
+        :param _TotalCount: 任务总数目。
         :type TotalCount: int
-        :param Tasks: 任务列表。
+        :param _Tasks: 任务列表。
         :type Tasks: list of HealthReportTask
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Tasks = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = HealthReportTask()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBSpaceStatusRequest(AbstractModel):
@@ -1551,26 +2960,51 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param RangeDays: 时间段天数，截止日期为当日，默认为7天。
+        :param _RangeDays: 时间段天数，截止日期为当日，默认为7天。
         :type RangeDays: int
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.RangeDays = None
-        self.Product = None
+        self._InstanceId = None
+        self._RangeDays = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RangeDays(self):
+        return self._RangeDays
+
+    @RangeDays.setter
+    def RangeDays(self, RangeDays):
+        self._RangeDays = RangeDays
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.RangeDays = params.get("RangeDays")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._RangeDays = params.get("RangeDays")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1583,30 +3017,70 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Growth: 磁盘增长量(MB)。
+        :param _Growth: 磁盘增长量(MB)。
         :type Growth: int
-        :param Remain: 磁盘剩余(MB)。
+        :param _Remain: 磁盘剩余(MB)。
         :type Remain: int
-        :param Total: 磁盘总量(MB)。
+        :param _Total: 磁盘总量(MB)。
         :type Total: int
-        :param AvailableDays: 预计可用天数。
+        :param _AvailableDays: 预计可用天数。
         :type AvailableDays: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Growth = None
-        self.Remain = None
-        self.Total = None
-        self.AvailableDays = None
-        self.RequestId = None
+        self._Growth = None
+        self._Remain = None
+        self._Total = None
+        self._AvailableDays = None
+        self._RequestId = None
+
+    @property
+    def Growth(self):
+        return self._Growth
+
+    @Growth.setter
+    def Growth(self, Growth):
+        self._Growth = Growth
+
+    @property
+    def Remain(self):
+        return self._Remain
+
+    @Remain.setter
+    def Remain(self, Remain):
+        self._Remain = Remain
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AvailableDays(self):
+        return self._AvailableDays
+
+    @AvailableDays.setter
+    def AvailableDays(self, AvailableDays):
+        self._AvailableDays = AvailableDays
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Growth = params.get("Growth")
-        self.Remain = params.get("Remain")
-        self.Total = params.get("Total")
-        self.AvailableDays = params.get("AvailableDays")
-        self.RequestId = params.get("RequestId")
+        self._Growth = params.get("Growth")
+        self._Remain = params.get("Remain")
+        self._Total = params.get("Total")
+        self._AvailableDays = params.get("AvailableDays")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDiagDBInstancesRequest(AbstractModel):
@@ -1616,42 +3090,99 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsSupported: 是否是DBbrain支持的实例，固定传 true。
+        :param _IsSupported: 是否是DBbrain支持的实例，固定传 true。
         :type IsSupported: bool
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
-        :param Offset: 分页参数，偏移量。
+        :param _Offset: 分页参数，偏移量。
         :type Offset: int
-        :param Limit: 分页参数，分页值，最大值为100。
+        :param _Limit: 分页参数，分页值，最大值为100。
         :type Limit: int
-        :param InstanceNames: 根据实例名称条件查询。
+        :param _InstanceNames: 根据实例名称条件查询。
         :type InstanceNames: list of str
-        :param InstanceIds: 根据实例ID条件查询。
+        :param _InstanceIds: 根据实例ID条件查询。
         :type InstanceIds: list of str
-        :param Regions: 根据地域条件查询。
+        :param _Regions: 根据地域条件查询。
         :type Regions: list of str
         """
-        self.IsSupported = None
-        self.Product = None
-        self.Offset = None
-        self.Limit = None
-        self.InstanceNames = None
-        self.InstanceIds = None
-        self.Regions = None
+        self._IsSupported = None
+        self._Product = None
+        self._Offset = None
+        self._Limit = None
+        self._InstanceNames = None
+        self._InstanceIds = None
+        self._Regions = None
+
+    @property
+    def IsSupported(self):
+        return self._IsSupported
+
+    @IsSupported.setter
+    def IsSupported(self, IsSupported):
+        self._IsSupported = IsSupported
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def InstanceNames(self):
+        return self._InstanceNames
+
+    @InstanceNames.setter
+    def InstanceNames(self, InstanceNames):
+        self._InstanceNames = InstanceNames
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
 
 
     def _deserialize(self, params):
-        self.IsSupported = params.get("IsSupported")
-        self.Product = params.get("Product")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.InstanceNames = params.get("InstanceNames")
-        self.InstanceIds = params.get("InstanceIds")
-        self.Regions = params.get("Regions")
+        self._IsSupported = params.get("IsSupported")
+        self._Product = params.get("Product")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._InstanceNames = params.get("InstanceNames")
+        self._InstanceIds = params.get("InstanceIds")
+        self._Regions = params.get("Regions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1664,31 +3195,63 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 实例总数。
+        :param _TotalCount: 实例总数。
         :type TotalCount: int
-        :param DbScanStatus: 全实例巡检状态：0：开启全实例巡检；1：未开启全实例巡检。
+        :param _DbScanStatus: 全实例巡检状态：0：开启全实例巡检；1：未开启全实例巡检。
         :type DbScanStatus: int
-        :param Items: 实例相关信息。
+        :param _Items: 实例相关信息。
         :type Items: list of InstanceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.DbScanStatus = None
-        self.Items = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._DbScanStatus = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DbScanStatus(self):
+        return self._DbScanStatus
+
+    @DbScanStatus.setter
+    def DbScanStatus(self, DbScanStatus):
+        self._DbScanStatus = DbScanStatus
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.DbScanStatus = params.get("DbScanStatus")
+        self._TotalCount = params.get("TotalCount")
+        self._DbScanStatus = params.get("DbScanStatus")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = InstanceInfo()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeHealthScoreRequest(AbstractModel):
@@ -1698,26 +3261,51 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 需要获取健康得分的实例ID。
+        :param _InstanceId: 需要获取健康得分的实例ID。
         :type InstanceId: str
-        :param Time: 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
+        :param _Time: 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
         :type Time: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Time = None
-        self.Product = None
+        self._InstanceId = None
+        self._Time = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Time = params.get("Time")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Time = params.get("Time")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1730,20 +3318,36 @@ class DescribeHealthScoreResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 健康得分以及异常扣分项。
+        :param _Data: 健康得分以及异常扣分项。
         :type Data: :class:`tencentcloud.dbbrain.v20210527.models.HealthScoreInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = HealthScoreInfo()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = HealthScoreInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMailProfileRequest(AbstractModel):
@@ -1753,34 +3357,75 @@ class DescribeMailProfileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+        :param _ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
         :type ProfileType: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
-        :param Offset: 分页偏移量。
+        :param _Offset: 分页偏移量。
         :type Offset: int
-        :param Limit: 分页单位，最大支持50。
+        :param _Limit: 分页单位，最大支持50。
         :type Limit: int
-        :param ProfileName: 根据邮件配置名称查询，定期发送的邮件配置名称遵循："scheduler_"+{instanceId}的规则。
+        :param _ProfileName: 根据邮件配置名称查询，定期发送的邮件配置名称遵循："scheduler_"+{instanceId}的规则。
         :type ProfileName: str
         """
-        self.ProfileType = None
-        self.Product = None
-        self.Offset = None
-        self.Limit = None
-        self.ProfileName = None
+        self._ProfileType = None
+        self._Product = None
+        self._Offset = None
+        self._Limit = None
+        self._ProfileName = None
+
+    @property
+    def ProfileType(self):
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ProfileName(self):
+        return self._ProfileName
+
+    @ProfileName.setter
+    def ProfileName(self, ProfileName):
+        self._ProfileName = ProfileName
 
 
     def _deserialize(self, params):
-        self.ProfileType = params.get("ProfileType")
-        self.Product = params.get("Product")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ProfileName = params.get("ProfileName")
+        self._ProfileType = params.get("ProfileType")
+        self._Product = params.get("Product")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ProfileName = params.get("ProfileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1793,29 +3438,53 @@ class DescribeMailProfileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProfileList: 邮件配置详情。
+        :param _ProfileList: 邮件配置详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileList: list of UserProfile
-        :param TotalCount: 邮件配置总数。
+        :param _TotalCount: 邮件配置总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProfileList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ProfileList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ProfileList(self):
+        return self._ProfileList
+
+    @ProfileList.setter
+    def ProfileList(self, ProfileList):
+        self._ProfileList = ProfileList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ProfileList") is not None:
-            self.ProfileList = []
+            self._ProfileList = []
             for item in params.get("ProfileList"):
                 obj = UserProfile()
                 obj._deserialize(item)
-                self.ProfileList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ProfileList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMySqlProcessListRequest(AbstractModel):
@@ -1825,58 +3494,147 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param ID: 线程的ID，用于筛选线程列表。
+        :param _ID: 线程的ID，用于筛选线程列表。
         :type ID: int
-        :param User: 线程的操作账号名，用于筛选线程列表。
+        :param _User: 线程的操作账号名，用于筛选线程列表。
         :type User: str
-        :param Host: 线程的操作主机地址，用于筛选线程列表。
+        :param _Host: 线程的操作主机地址，用于筛选线程列表。
         :type Host: str
-        :param DB: 线程的操作数据库，用于筛选线程列表。
+        :param _DB: 线程的操作数据库，用于筛选线程列表。
         :type DB: str
-        :param State: 线程的操作状态，用于筛选线程列表。
+        :param _State: 线程的操作状态，用于筛选线程列表。
         :type State: str
-        :param Command: 线程的执行类型，用于筛选线程列表。
+        :param _Command: 线程的执行类型，用于筛选线程列表。
         :type Command: str
-        :param Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :param _Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
         :type Time: int
-        :param Info: 线程的操作语句，用于筛选线程列表。
+        :param _Info: 线程的操作语句，用于筛选线程列表。
         :type Info: str
-        :param Limit: 返回数量，默认20。
+        :param _Limit: 返回数量，默认20。
         :type Limit: int
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.ID = None
-        self.User = None
-        self.Host = None
-        self.DB = None
-        self.State = None
-        self.Command = None
-        self.Time = None
-        self.Info = None
-        self.Limit = None
-        self.Product = None
+        self._InstanceId = None
+        self._ID = None
+        self._User = None
+        self._Host = None
+        self._DB = None
+        self._State = None
+        self._Command = None
+        self._Time = None
+        self._Info = None
+        self._Limit = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DB(self):
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ID = params.get("ID")
-        self.User = params.get("User")
-        self.Host = params.get("Host")
-        self.DB = params.get("DB")
-        self.State = params.get("State")
-        self.Command = params.get("Command")
-        self.Time = params.get("Time")
-        self.Info = params.get("Info")
-        self.Limit = params.get("Limit")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._ID = params.get("ID")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._DB = params.get("DB")
+        self._State = params.get("State")
+        self._Command = params.get("Command")
+        self._Time = params.get("Time")
+        self._Info = params.get("Info")
+        self._Limit = params.get("Limit")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1889,23 +3647,39 @@ class DescribeMySqlProcessListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProcessList: 实时线程列表。
+        :param _ProcessList: 实时线程列表。
         :type ProcessList: list of MySqlProcess
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProcessList = None
-        self.RequestId = None
+        self._ProcessList = None
+        self._RequestId = None
+
+    @property
+    def ProcessList(self):
+        return self._ProcessList
+
+    @ProcessList.setter
+    def ProcessList(self, ProcessList):
+        self._ProcessList = ProcessList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ProcessList") is not None:
-            self.ProcessList = []
+            self._ProcessList = []
             for item in params.get("ProcessList"):
                 obj = MySqlProcess()
                 obj._deserialize(item)
-                self.ProcessList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ProcessList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
@@ -1915,34 +3689,75 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param Date: 查询日期，如2021-05-27，最早为30天前的日期。
+        :param _Date: 查询日期，如2021-05-27，最早为30天前的日期。
         :type Date: str
-        :param Limit: 查询数目，默认为20，最大为100。
+        :param _Limit: 查询数目，默认为20，最大为100。
         :type Limit: int
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Date = None
-        self.Limit = None
-        self.Offset = None
-        self.Product = None
+        self._InstanceId = None
+        self._Date = None
+        self._Limit = None
+        self._Offset = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Date = params.get("Date")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Date = params.get("Date")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1955,39 +3770,87 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NoPrimaryKeyTableCount: 无主键表总数。
+        :param _NoPrimaryKeyTableCount: 无主键表总数。
         :type NoPrimaryKeyTableCount: int
-        :param NoPrimaryKeyTableCountDiff: 与昨日扫描无主键表的差值，正数为增加，负数为减少，0为无变化。
+        :param _NoPrimaryKeyTableCountDiff: 与昨日扫描无主键表的差值，正数为增加，负数为减少，0为无变化。
         :type NoPrimaryKeyTableCountDiff: int
-        :param NoPrimaryKeyTableRecordCount: 记录的无主键表总数（不超过无主键表总数），可用于分页查询。
+        :param _NoPrimaryKeyTableRecordCount: 记录的无主键表总数（不超过无主键表总数），可用于分页查询。
         :type NoPrimaryKeyTableRecordCount: int
-        :param NoPrimaryKeyTables: 无主键表列表。
+        :param _NoPrimaryKeyTables: 无主键表列表。
         :type NoPrimaryKeyTables: list of Table
-        :param Timestamp: 采集时间戳（秒）。
+        :param _Timestamp: 采集时间戳（秒）。
         :type Timestamp: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NoPrimaryKeyTableCount = None
-        self.NoPrimaryKeyTableCountDiff = None
-        self.NoPrimaryKeyTableRecordCount = None
-        self.NoPrimaryKeyTables = None
-        self.Timestamp = None
-        self.RequestId = None
+        self._NoPrimaryKeyTableCount = None
+        self._NoPrimaryKeyTableCountDiff = None
+        self._NoPrimaryKeyTableRecordCount = None
+        self._NoPrimaryKeyTables = None
+        self._Timestamp = None
+        self._RequestId = None
+
+    @property
+    def NoPrimaryKeyTableCount(self):
+        return self._NoPrimaryKeyTableCount
+
+    @NoPrimaryKeyTableCount.setter
+    def NoPrimaryKeyTableCount(self, NoPrimaryKeyTableCount):
+        self._NoPrimaryKeyTableCount = NoPrimaryKeyTableCount
+
+    @property
+    def NoPrimaryKeyTableCountDiff(self):
+        return self._NoPrimaryKeyTableCountDiff
+
+    @NoPrimaryKeyTableCountDiff.setter
+    def NoPrimaryKeyTableCountDiff(self, NoPrimaryKeyTableCountDiff):
+        self._NoPrimaryKeyTableCountDiff = NoPrimaryKeyTableCountDiff
+
+    @property
+    def NoPrimaryKeyTableRecordCount(self):
+        return self._NoPrimaryKeyTableRecordCount
+
+    @NoPrimaryKeyTableRecordCount.setter
+    def NoPrimaryKeyTableRecordCount(self, NoPrimaryKeyTableRecordCount):
+        self._NoPrimaryKeyTableRecordCount = NoPrimaryKeyTableRecordCount
+
+    @property
+    def NoPrimaryKeyTables(self):
+        return self._NoPrimaryKeyTables
+
+    @NoPrimaryKeyTables.setter
+    def NoPrimaryKeyTables(self, NoPrimaryKeyTables):
+        self._NoPrimaryKeyTables = NoPrimaryKeyTables
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.NoPrimaryKeyTableCount = params.get("NoPrimaryKeyTableCount")
-        self.NoPrimaryKeyTableCountDiff = params.get("NoPrimaryKeyTableCountDiff")
-        self.NoPrimaryKeyTableRecordCount = params.get("NoPrimaryKeyTableRecordCount")
+        self._NoPrimaryKeyTableCount = params.get("NoPrimaryKeyTableCount")
+        self._NoPrimaryKeyTableCountDiff = params.get("NoPrimaryKeyTableCountDiff")
+        self._NoPrimaryKeyTableRecordCount = params.get("NoPrimaryKeyTableRecordCount")
         if params.get("NoPrimaryKeyTables") is not None:
-            self.NoPrimaryKeyTables = []
+            self._NoPrimaryKeyTables = []
             for item in params.get("NoPrimaryKeyTables"):
                 obj = Table()
                 obj._deserialize(item)
-                self.NoPrimaryKeyTables.append(obj)
-        self.Timestamp = params.get("Timestamp")
-        self.RequestId = params.get("RequestId")
+                self._NoPrimaryKeyTables.append(obj)
+        self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProxyProcessStatisticsRequest(AbstractModel):
@@ -1997,42 +3860,99 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param InstanceProxyId: 该实例下需要查询的某一个 ProxyID 。
+        :param _InstanceProxyId: 该实例下需要查询的某一个 ProxyID 。
         :type InstanceProxyId: str
-        :param Limit: 返回数量。
+        :param _Limit: 返回数量。
         :type Limit: int
-        :param Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
-        :param Offset: 偏移量，默认0。
+        :param _Offset: 偏移量，默认0。
         :type Offset: int
-        :param SortBy: 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+        :param _SortBy: 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
         :type SortBy: str
-        :param OrderDirection: 排序方向。支持值包括："DESC"，"ASC"。
+        :param _OrderDirection: 排序方向。支持值包括："DESC"，"ASC"。
         :type OrderDirection: str
         """
-        self.InstanceId = None
-        self.InstanceProxyId = None
-        self.Limit = None
-        self.Product = None
-        self.Offset = None
-        self.SortBy = None
-        self.OrderDirection = None
+        self._InstanceId = None
+        self._InstanceProxyId = None
+        self._Limit = None
+        self._Product = None
+        self._Offset = None
+        self._SortBy = None
+        self._OrderDirection = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceProxyId(self):
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceProxyId = params.get("InstanceProxyId")
-        self.Limit = params.get("Limit")
-        self.Product = params.get("Product")
-        self.Offset = params.get("Offset")
-        self.SortBy = params.get("SortBy")
-        self.OrderDirection = params.get("OrderDirection")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceProxyId = params.get("InstanceProxyId")
+        self._Limit = params.get("Limit")
+        self._Product = params.get("Product")
+        self._Offset = params.get("Offset")
+        self._SortBy = params.get("SortBy")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2045,20 +3965,36 @@ class DescribeProxyProcessStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProcessStatistics: 实时会话统计详情。
+        :param _ProcessStatistics: 实时会话统计详情。
         :type ProcessStatistics: :class:`tencentcloud.dbbrain.v20210527.models.ProcessStatistic`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ProcessStatistics = None
-        self.RequestId = None
+        self._ProcessStatistics = None
+        self._RequestId = None
+
+    @property
+    def ProcessStatistics(self):
+        return self._ProcessStatistics
+
+    @ProcessStatistics.setter
+    def ProcessStatistics(self, ProcessStatistics):
+        self._ProcessStatistics = ProcessStatistics
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ProcessStatistics") is not None:
-            self.ProcessStatistics = ProcessStatistic()
-            self.ProcessStatistics._deserialize(params.get("ProcessStatistics"))
-        self.RequestId = params.get("RequestId")
+            self._ProcessStatistics = ProcessStatistic()
+            self._ProcessStatistics._deserialize(params.get("ProcessStatistics"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProxySessionKillTasksRequest(AbstractModel):
@@ -2068,26 +4004,51 @@ class DescribeProxySessionKillTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param AsyncRequestIds: kill 会话异步任务 ID,  接口 CreateProxySessionKillTask 调用成功后获取。
+        :param _AsyncRequestIds: kill 会话异步任务 ID,  接口 CreateProxySessionKillTask 调用成功后获取。
         :type AsyncRequestIds: list of int
-        :param Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
         """
-        self.InstanceId = None
-        self.AsyncRequestIds = None
-        self.Product = None
+        self._InstanceId = None
+        self._AsyncRequestIds = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AsyncRequestIds(self):
+        return self._AsyncRequestIds
+
+    @AsyncRequestIds.setter
+    def AsyncRequestIds(self, AsyncRequestIds):
+        self._AsyncRequestIds = AsyncRequestIds
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.AsyncRequestIds = params.get("AsyncRequestIds")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._AsyncRequestIds = params.get("AsyncRequestIds")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2100,27 +4061,51 @@ class DescribeProxySessionKillTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tasks: kill 任务的详情。
+        :param _Tasks: kill 任务的详情。
         :type Tasks: list of TaskInfo
-        :param TotalCount: 任务总数。
+        :param _TotalCount: 任务总数。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Tasks = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Tasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = TaskInfo()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Tasks.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRedisTopBigKeysRequest(AbstractModel):
@@ -2130,38 +4115,87 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param Date: 查询日期，如2021-05-27，最早可为前30天的日期。
+        :param _Date: 查询日期，如2021-05-27，最早可为前30天的日期。
         :type Date: str
-        :param Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
         :type Product: str
-        :param SortBy: 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
+        :param _SortBy: 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
         :type SortBy: str
-        :param KeyType: key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
+        :param _KeyType: key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
         :type KeyType: str
-        :param Limit: 查询数目，默认为20，最大值为100。
+        :param _Limit: 查询数目，默认为20，最大值为100。
         :type Limit: int
         """
-        self.InstanceId = None
-        self.Date = None
-        self.Product = None
-        self.SortBy = None
-        self.KeyType = None
-        self.Limit = None
+        self._InstanceId = None
+        self._Date = None
+        self._Product = None
+        self._SortBy = None
+        self._KeyType = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def KeyType(self):
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Date = params.get("Date")
-        self.Product = params.get("Product")
-        self.SortBy = params.get("SortBy")
-        self.KeyType = params.get("KeyType")
-        self.Limit = params.get("Limit")
+        self._InstanceId = params.get("InstanceId")
+        self._Date = params.get("Date")
+        self._Product = params.get("Product")
+        self._SortBy = params.get("SortBy")
+        self._KeyType = params.get("KeyType")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2174,27 +4208,51 @@ class DescribeRedisTopBigKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopKeys: top key列表。
+        :param _TopKeys: top key列表。
         :type TopKeys: list of RedisKeySpaceData
-        :param Timestamp: 采集时间戳（秒）。
+        :param _Timestamp: 采集时间戳（秒）。
         :type Timestamp: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TopKeys = None
-        self.Timestamp = None
-        self.RequestId = None
+        self._TopKeys = None
+        self._Timestamp = None
+        self._RequestId = None
+
+    @property
+    def TopKeys(self):
+        return self._TopKeys
+
+    @TopKeys.setter
+    def TopKeys(self, TopKeys):
+        self._TopKeys = TopKeys
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TopKeys") is not None:
-            self.TopKeys = []
+            self._TopKeys = []
             for item in params.get("TopKeys"):
                 obj = RedisKeySpaceData()
                 obj._deserialize(item)
-                self.TopKeys.append(obj)
-        self.Timestamp = params.get("Timestamp")
-        self.RequestId = params.get("RequestId")
+                self._TopKeys.append(obj)
+        self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
@@ -2204,30 +4262,63 @@ class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param Date: 查询日期，如2021-05-27，最早可为前30天的日期。
+        :param _Date: 查询日期，如2021-05-27，最早可为前30天的日期。
         :type Date: str
-        :param Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
         :type Product: str
-        :param Limit: 查询数目，默认为20，最大值为100。
+        :param _Limit: 查询数目，默认为20，最大值为100。
         :type Limit: int
         """
-        self.InstanceId = None
-        self.Date = None
-        self.Product = None
-        self.Limit = None
+        self._InstanceId = None
+        self._Date = None
+        self._Product = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Date = params.get("Date")
-        self.Product = params.get("Product")
-        self.Limit = params.get("Limit")
+        self._InstanceId = params.get("InstanceId")
+        self._Date = params.get("Date")
+        self._Product = params.get("Product")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2240,27 +4331,51 @@ class DescribeRedisTopKeyPrefixListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: top key前缀列表。
+        :param _Items: top key前缀列表。
         :type Items: list of RedisPreKeySpaceData
-        :param Timestamp: 采集时间戳（秒）。
+        :param _Timestamp: 采集时间戳（秒）。
         :type Timestamp: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Items = None
-        self.Timestamp = None
-        self.RequestId = None
+        self._Items = None
+        self._Timestamp = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = RedisPreKeySpaceData()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.Timestamp = params.get("Timestamp")
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
@@ -2270,26 +4385,51 @@ class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecAuditGroupId: 安全审计组Id。
+        :param _SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
-        :param AsyncRequestId: 异步任务Id。
+        :param _AsyncRequestId: 异步任务Id。
         :type AsyncRequestId: int
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
         :type Product: str
         """
-        self.SecAuditGroupId = None
-        self.AsyncRequestId = None
-        self.Product = None
+        self._SecAuditGroupId = None
+        self._AsyncRequestId = None
+        self._Product = None
+
+    @property
+    def SecAuditGroupId(self):
+        return self._SecAuditGroupId
+
+    @SecAuditGroupId.setter
+    def SecAuditGroupId(self, SecAuditGroupId):
+        self._SecAuditGroupId = SecAuditGroupId
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.SecAuditGroupId = params.get("SecAuditGroupId")
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.Product = params.get("Product")
+        self._SecAuditGroupId = params.get("SecAuditGroupId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2302,18 +4442,34 @@ class DescribeSecurityAuditLogDownloadUrlsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Urls: 导出结果的COS链接列表。当结果集很大时，可能会切分为多个url下载。
+        :param _Urls: 导出结果的COS链接列表。当结果集很大时，可能会切分为多个url下载。
         :type Urls: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Urls = None
-        self.RequestId = None
+        self._Urls = None
+        self._RequestId = None
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Urls = params.get("Urls")
-        self.RequestId = params.get("RequestId")
+        self._Urls = params.get("Urls")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
@@ -2323,34 +4479,75 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecAuditGroupId: 安全审计组Id。
+        :param _SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
         :type Product: str
-        :param AsyncRequestIds: 日志导出任务Id列表。
+        :param _AsyncRequestIds: 日志导出任务Id列表。
         :type AsyncRequestIds: list of int non-negative
-        :param Offset: 偏移量，默认0。
+        :param _Offset: 偏移量，默认0。
         :type Offset: int
-        :param Limit: 返回数量，默认20，最大值为100。
+        :param _Limit: 返回数量，默认20，最大值为100。
         :type Limit: int
         """
-        self.SecAuditGroupId = None
-        self.Product = None
-        self.AsyncRequestIds = None
-        self.Offset = None
-        self.Limit = None
+        self._SecAuditGroupId = None
+        self._Product = None
+        self._AsyncRequestIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SecAuditGroupId(self):
+        return self._SecAuditGroupId
+
+    @SecAuditGroupId.setter
+    def SecAuditGroupId(self, SecAuditGroupId):
+        self._SecAuditGroupId = SecAuditGroupId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def AsyncRequestIds(self):
+        return self._AsyncRequestIds
+
+    @AsyncRequestIds.setter
+    def AsyncRequestIds(self, AsyncRequestIds):
+        self._AsyncRequestIds = AsyncRequestIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.SecAuditGroupId = params.get("SecAuditGroupId")
-        self.Product = params.get("Product")
-        self.AsyncRequestIds = params.get("AsyncRequestIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._SecAuditGroupId = params.get("SecAuditGroupId")
+        self._Product = params.get("Product")
+        self._AsyncRequestIds = params.get("AsyncRequestIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2363,27 +4560,51 @@ class DescribeSecurityAuditLogExportTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tasks: 安全审计日志导出任务列表。
+        :param _Tasks: 安全审计日志导出任务列表。
         :type Tasks: list of SecLogExportTaskInfo
-        :param TotalCount: 安全审计日志导出任务总数。
+        :param _TotalCount: 安全审计日志导出任务总数。
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Tasks = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Tasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = SecLogExportTaskInfo()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Tasks.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
@@ -2393,30 +4614,63 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
         :type StartTime: str
-        :param EndTime: 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
+        :param _EndTime: 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
         :type EndTime: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Product = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2429,33 +4683,65 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: 柱间单位时间间隔，单位为秒。
+        :param _Period: 柱间单位时间间隔，单位为秒。
         :type Period: int
-        :param TimeSeries: 单位时间间隔内慢日志数量统计。
+        :param _TimeSeries: 单位时间间隔内慢日志数量统计。
         :type TimeSeries: list of TimeSlice
-        :param SeriesData: 单位时间间隔内的实例 cpu 利用率监控数据。
+        :param _SeriesData: 单位时间间隔内的实例 cpu 利用率监控数据。
         :type SeriesData: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Period = None
-        self.TimeSeries = None
-        self.SeriesData = None
-        self.RequestId = None
+        self._Period = None
+        self._TimeSeries = None
+        self._SeriesData = None
+        self._RequestId = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def TimeSeries(self):
+        return self._TimeSeries
+
+    @TimeSeries.setter
+    def TimeSeries(self, TimeSeries):
+        self._TimeSeries = TimeSeries
+
+    @property
+    def SeriesData(self):
+        return self._SeriesData
+
+    @SeriesData.setter
+    def SeriesData(self, SeriesData):
+        self._SeriesData = SeriesData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Period = params.get("Period")
+        self._Period = params.get("Period")
         if params.get("TimeSeries") is not None:
-            self.TimeSeries = []
+            self._TimeSeries = []
             for item in params.get("TimeSeries"):
                 obj = TimeSlice()
                 obj._deserialize(item)
-                self.TimeSeries.append(obj)
+                self._TimeSeries.append(obj)
         if params.get("SeriesData") is not None:
-            self.SeriesData = MonitorMetricSeriesData()
-            self.SeriesData._deserialize(params.get("SeriesData"))
-        self.RequestId = params.get("RequestId")
+            self._SeriesData = MonitorMetricSeriesData()
+            self._SeriesData._deserialize(params.get("SeriesData"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSlowLogTopSqlsRequest(AbstractModel):
@@ -2465,55 +4751,128 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
         :type StartTime: str
-        :param EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :param _EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
         :type EndTime: str
-        :param SortBy: 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
+        :param _SortBy: 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
         :type SortBy: str
-        :param OrderBy: 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+        :param _OrderBy: 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
         :type OrderBy: str
-        :param Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param SchemaList: 数据库名称数组。
+        :param _SchemaList: 数据库名称数组。
         :type SchemaList: list of SchemaItem
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SortBy = None
-        self.OrderBy = None
-        self.Limit = None
-        self.Offset = None
-        self.SchemaList = None
-        self.Product = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortBy = None
+        self._OrderBy = None
+        self._Limit = None
+        self._Offset = None
+        self._SchemaList = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SchemaList(self):
+        return self._SchemaList
+
+    @SchemaList.setter
+    def SchemaList(self, SchemaList):
+        self._SchemaList = SchemaList
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SortBy = params.get("SortBy")
-        self.OrderBy = params.get("OrderBy")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SortBy = params.get("SortBy")
+        self._OrderBy = params.get("OrderBy")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("SchemaList") is not None:
-            self.SchemaList = []
+            self._SchemaList = []
             for item in params.get("SchemaList"):
                 obj = SchemaItem()
                 obj._deserialize(item)
-                self.SchemaList.append(obj)
-        self.Product = params.get("Product")
+                self._SchemaList.append(obj)
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2526,27 +4885,51 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的记录总数。
+        :param _TotalCount: 符合条件的记录总数。
         :type TotalCount: int
-        :param Rows: 慢日志 top sql 列表
+        :param _Rows: 慢日志 top sql 列表
         :type Rows: list of SlowLogTopSqlItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Rows = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Rows") is not None:
-            self.Rows = []
+            self._Rows = []
             for item in params.get("Rows"):
                 obj = SlowLogTopSqlItem()
                 obj._deserialize(item)
-                self.Rows.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSlowLogUserHostStatsRequest(AbstractModel):
@@ -2556,34 +4939,75 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param StartTime: 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
+        :param _StartTime: 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
         :type StartTime: str
-        :param EndTime: 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
+        :param _EndTime: 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
         :type EndTime: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
-        :param Md5: SQL模板的MD5值
+        :param _Md5: SQL模板的MD5值
         :type Md5: str
         """
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Product = None
-        self.Md5 = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+        self._Md5 = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Md5(self):
+        return self._Md5
+
+    @Md5.setter
+    def Md5(self, Md5):
+        self._Md5 = Md5
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Product = params.get("Product")
-        self.Md5 = params.get("Md5")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        self._Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2596,40 +5020,80 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 来源地址数目。
+        :param _TotalCount: 来源地址数目。
         :type TotalCount: int
-        :param Items: 各来源地址的慢日志占比详情列表。
+        :param _Items: 各来源地址的慢日志占比详情列表。
         :type Items: list of SlowLogHost
-        :param UserNameItems: 各来源用户名的慢日志占比详情列表。
+        :param _UserNameItems: 各来源用户名的慢日志占比详情列表。
         :type UserNameItems: list of SlowLogUser
-        :param UserTotalCount: 来源用户数目。
+        :param _UserTotalCount: 来源用户数目。
         :type UserTotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Items = None
-        self.UserNameItems = None
-        self.UserTotalCount = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Items = None
+        self._UserNameItems = None
+        self._UserTotalCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def UserNameItems(self):
+        return self._UserNameItems
+
+    @UserNameItems.setter
+    def UserNameItems(self, UserNameItems):
+        self._UserNameItems = UserNameItems
+
+    @property
+    def UserTotalCount(self):
+        return self._UserTotalCount
+
+    @UserTotalCount.setter
+    def UserTotalCount(self, UserTotalCount):
+        self._UserTotalCount = UserTotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = SlowLogHost()
                 obj._deserialize(item)
-                self.Items.append(obj)
+                self._Items.append(obj)
         if params.get("UserNameItems") is not None:
-            self.UserNameItems = []
+            self._UserNameItems = []
             for item in params.get("UserNameItems"):
                 obj = SlowLogUser()
                 obj._deserialize(item)
-                self.UserNameItems.append(obj)
-        self.UserTotalCount = params.get("UserTotalCount")
-        self.RequestId = params.get("RequestId")
+                self._UserNameItems.append(obj)
+        self._UserTotalCount = params.get("UserTotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSlowLogsRequest(AbstractModel):
@@ -2639,62 +5103,159 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
         :type Product: str
-        :param InstanceId: 实例id。
+        :param _InstanceId: 实例id。
         :type InstanceId: str
-        :param Md5: sql模板的md5值
+        :param _Md5: sql模板的md5值
         :type Md5: str
-        :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
         :type StartTime: str
-        :param EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :param _EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
         :type EndTime: str
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 查询数目，默认为20，最大为100。
+        :param _Limit: 查询数目，默认为20，最大为100。
         :type Limit: int
-        :param DB: 数据库列表
+        :param _DB: 数据库列表
         :type DB: list of str
-        :param Key: 关键字
+        :param _Key: 关键字
         :type Key: list of str
-        :param User: 用户
+        :param _User: 用户
         :type User: list of str
-        :param Ip: IP
+        :param _Ip: IP
         :type Ip: list of str
-        :param Time: 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
+        :param _Time: 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
         :type Time: list of int
         """
-        self.Product = None
-        self.InstanceId = None
-        self.Md5 = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Offset = None
-        self.Limit = None
-        self.DB = None
-        self.Key = None
-        self.User = None
-        self.Ip = None
-        self.Time = None
+        self._Product = None
+        self._InstanceId = None
+        self._Md5 = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._DB = None
+        self._Key = None
+        self._User = None
+        self._Ip = None
+        self._Time = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Md5(self):
+        return self._Md5
+
+    @Md5.setter
+    def Md5(self, Md5):
+        self._Md5 = Md5
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def DB(self):
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.InstanceId = params.get("InstanceId")
-        self.Md5 = params.get("Md5")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.DB = params.get("DB")
-        self.Key = params.get("Key")
-        self.User = params.get("User")
-        self.Ip = params.get("Ip")
-        self.Time = params.get("Time")
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Md5 = params.get("Md5")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._DB = params.get("DB")
+        self._Key = params.get("Key")
+        self._User = params.get("User")
+        self._Ip = params.get("Ip")
+        self._Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2707,27 +5268,51 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的记录总数。
+        :param _TotalCount: 符合条件的记录总数。
         :type TotalCount: int
-        :param Rows: 慢日志明细
+        :param _Rows: 慢日志明细
         :type Rows: list of SlowLogInfoItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Rows = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Rows") is not None:
-            self.Rows = []
+            self._Rows = []
             for item in params.get("Rows"):
                 obj = SlowLogInfoItem()
                 obj._deserialize(item)
-                self.Rows.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSqlFiltersRequest(AbstractModel):
@@ -2737,38 +5322,87 @@ class DescribeSqlFiltersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param FilterIds: 任务ID列表，用于筛选任务列表。
+        :param _FilterIds: 任务ID列表，用于筛选任务列表。
         :type FilterIds: list of int
-        :param Statuses: 任务状态列表，用于筛选任务列表，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+        :param _Statuses: 任务状态列表，用于筛选任务列表，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
         :type Statuses: list of str
-        :param Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.FilterIds = None
-        self.Statuses = None
-        self.Offset = None
-        self.Limit = None
-        self.Product = None
+        self._InstanceId = None
+        self._FilterIds = None
+        self._Statuses = None
+        self._Offset = None
+        self._Limit = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FilterIds(self):
+        return self._FilterIds
+
+    @FilterIds.setter
+    def FilterIds(self, FilterIds):
+        self._FilterIds = FilterIds
+
+    @property
+    def Statuses(self):
+        return self._Statuses
+
+    @Statuses.setter
+    def Statuses(self, Statuses):
+        self._Statuses = Statuses
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.FilterIds = params.get("FilterIds")
-        self.Statuses = params.get("Statuses")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._FilterIds = params.get("FilterIds")
+        self._Statuses = params.get("Statuses")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2781,27 +5415,51 @@ class DescribeSqlFiltersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 限流任务总数目。
+        :param _TotalCount: 限流任务总数目。
         :type TotalCount: int
-        :param Items: 限流任务列表。
+        :param _Items: 限流任务列表。
         :type Items: list of SQLFilter
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = SQLFilter()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSqlTemplateRequest(AbstractModel):
@@ -2811,30 +5469,63 @@ class DescribeSqlTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param Schema: 数据库名。
+        :param _Schema: 数据库名。
         :type Schema: str
-        :param SqlText: SQL语句。
+        :param _SqlText: SQL语句。
         :type SqlText: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Schema = None
-        self.SqlText = None
-        self.Product = None
+        self._InstanceId = None
+        self._Schema = None
+        self._SqlText = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Schema(self):
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def SqlText(self):
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Schema = params.get("Schema")
-        self.SqlText = params.get("SqlText")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Schema = params.get("Schema")
+        self._SqlText = params.get("SqlText")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2847,34 +5538,82 @@ class DescribeSqlTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Schema: 数据库名。
+        :param _Schema: 数据库名。
         :type Schema: str
-        :param SqlText: SQL语句。
+        :param _SqlText: SQL语句。
         :type SqlText: str
-        :param SqlType: SQL类型。
+        :param _SqlType: SQL类型。
         :type SqlType: str
-        :param SqlTemplate: SQL模版内容。
+        :param _SqlTemplate: SQL模版内容。
         :type SqlTemplate: str
-        :param SqlId: SQL模版ID。
+        :param _SqlId: SQL模版ID。
         :type SqlId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Schema = None
-        self.SqlText = None
-        self.SqlType = None
-        self.SqlTemplate = None
-        self.SqlId = None
-        self.RequestId = None
+        self._Schema = None
+        self._SqlText = None
+        self._SqlType = None
+        self._SqlTemplate = None
+        self._SqlId = None
+        self._RequestId = None
+
+    @property
+    def Schema(self):
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def SqlText(self):
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def SqlType(self):
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def SqlTemplate(self):
+        return self._SqlTemplate
+
+    @SqlTemplate.setter
+    def SqlTemplate(self, SqlTemplate):
+        self._SqlTemplate = SqlTemplate
+
+    @property
+    def SqlId(self):
+        return self._SqlId
+
+    @SqlId.setter
+    def SqlId(self, SqlId):
+        self._SqlId = SqlId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Schema = params.get("Schema")
-        self.SqlText = params.get("SqlText")
-        self.SqlType = params.get("SqlType")
-        self.SqlTemplate = params.get("SqlTemplate")
-        self.SqlId = params.get("SqlId")
-        self.RequestId = params.get("RequestId")
+        self._Schema = params.get("Schema")
+        self._SqlText = params.get("SqlText")
+        self._SqlType = params.get("SqlType")
+        self._SqlTemplate = params.get("SqlTemplate")
+        self._SqlId = params.get("SqlId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
@@ -2884,38 +5623,87 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param Limit: 返回的Top库数量，最大值为100，默认为20。
+        :param _Limit: 返回的Top库数量，最大值为100，默认为20。
         :type Limit: int
-        :param SortBy: 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :param _SortBy: 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
         :type SortBy: str
-        :param StartDate: 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
+        :param _StartDate: 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
         :type StartDate: str
-        :param EndDate: 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
+        :param _EndDate: 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
         :type EndDate: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Limit = None
-        self.SortBy = None
-        self.StartDate = None
-        self.EndDate = None
-        self.Product = None
+        self._InstanceId = None
+        self._Limit = None
+        self._SortBy = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Limit = params.get("Limit")
-        self.SortBy = params.get("SortBy")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2928,23 +5716,39 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopSpaceSchemaTimeSeries: 返回的Top库空间统计信息的时序数据列表。
+        :param _TopSpaceSchemaTimeSeries: 返回的Top库空间统计信息的时序数据列表。
         :type TopSpaceSchemaTimeSeries: list of SchemaSpaceTimeSeries
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TopSpaceSchemaTimeSeries = None
-        self.RequestId = None
+        self._TopSpaceSchemaTimeSeries = None
+        self._RequestId = None
+
+    @property
+    def TopSpaceSchemaTimeSeries(self):
+        return self._TopSpaceSchemaTimeSeries
+
+    @TopSpaceSchemaTimeSeries.setter
+    def TopSpaceSchemaTimeSeries(self, TopSpaceSchemaTimeSeries):
+        self._TopSpaceSchemaTimeSeries = TopSpaceSchemaTimeSeries
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TopSpaceSchemaTimeSeries") is not None:
-            self.TopSpaceSchemaTimeSeries = []
+            self._TopSpaceSchemaTimeSeries = []
             for item in params.get("TopSpaceSchemaTimeSeries"):
                 obj = SchemaSpaceTimeSeries()
                 obj._deserialize(item)
-                self.TopSpaceSchemaTimeSeries.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TopSpaceSchemaTimeSeries.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTopSpaceSchemasRequest(AbstractModel):
@@ -2954,30 +5758,63 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param Limit: 返回的Top库数量，最大值为100，默认为20。
+        :param _Limit: 返回的Top库数量，最大值为100，默认为20。
         :type Limit: int
-        :param SortBy: 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :param _SortBy: 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
         :type SortBy: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Limit = None
-        self.SortBy = None
-        self.Product = None
+        self._InstanceId = None
+        self._Limit = None
+        self._SortBy = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Limit = params.get("Limit")
-        self.SortBy = params.get("SortBy")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2990,27 +5827,51 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopSpaceSchemas: 返回的Top库空间统计信息列表。
+        :param _TopSpaceSchemas: 返回的Top库空间统计信息列表。
         :type TopSpaceSchemas: list of SchemaSpaceData
-        :param Timestamp: 采集库空间数据的时间戳（秒）。
+        :param _Timestamp: 采集库空间数据的时间戳（秒）。
         :type Timestamp: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TopSpaceSchemas = None
-        self.Timestamp = None
-        self.RequestId = None
+        self._TopSpaceSchemas = None
+        self._Timestamp = None
+        self._RequestId = None
+
+    @property
+    def TopSpaceSchemas(self):
+        return self._TopSpaceSchemas
+
+    @TopSpaceSchemas.setter
+    def TopSpaceSchemas(self, TopSpaceSchemas):
+        self._TopSpaceSchemas = TopSpaceSchemas
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TopSpaceSchemas") is not None:
-            self.TopSpaceSchemas = []
+            self._TopSpaceSchemas = []
             for item in params.get("TopSpaceSchemas"):
                 obj = SchemaSpaceData()
                 obj._deserialize(item)
-                self.TopSpaceSchemas.append(obj)
-        self.Timestamp = params.get("Timestamp")
-        self.RequestId = params.get("RequestId")
+                self._TopSpaceSchemas.append(obj)
+        self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
@@ -3020,38 +5881,87 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param Limit: 返回的Top表数量，最大值为100，默认为20。
+        :param _Limit: 返回的Top表数量，最大值为100，默认为20。
         :type Limit: int
-        :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
+        :param _SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
         :type SortBy: str
-        :param StartDate: 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
+        :param _StartDate: 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
         :type StartDate: str
-        :param EndDate: 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
+        :param _EndDate: 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
         :type EndDate: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Limit = None
-        self.SortBy = None
-        self.StartDate = None
-        self.EndDate = None
-        self.Product = None
+        self._InstanceId = None
+        self._Limit = None
+        self._SortBy = None
+        self._StartDate = None
+        self._EndDate = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Limit = params.get("Limit")
-        self.SortBy = params.get("SortBy")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3064,23 +5974,39 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopSpaceTableTimeSeries: 返回的Top表空间统计信息的时序数据列表。
+        :param _TopSpaceTableTimeSeries: 返回的Top表空间统计信息的时序数据列表。
         :type TopSpaceTableTimeSeries: list of TableSpaceTimeSeries
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TopSpaceTableTimeSeries = None
-        self.RequestId = None
+        self._TopSpaceTableTimeSeries = None
+        self._RequestId = None
+
+    @property
+    def TopSpaceTableTimeSeries(self):
+        return self._TopSpaceTableTimeSeries
+
+    @TopSpaceTableTimeSeries.setter
+    def TopSpaceTableTimeSeries(self, TopSpaceTableTimeSeries):
+        self._TopSpaceTableTimeSeries = TopSpaceTableTimeSeries
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TopSpaceTableTimeSeries") is not None:
-            self.TopSpaceTableTimeSeries = []
+            self._TopSpaceTableTimeSeries = []
             for item in params.get("TopSpaceTableTimeSeries"):
                 obj = TableSpaceTimeSeries()
                 obj._deserialize(item)
-                self.TopSpaceTableTimeSeries.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TopSpaceTableTimeSeries.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTopSpaceTablesRequest(AbstractModel):
@@ -3090,30 +6016,63 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param Limit: 返回的Top表数量，最大值为100，默认为20。
+        :param _Limit: 返回的Top表数量，最大值为100，默认为20。
         :type Limit: int
-        :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :param _SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
         :type SortBy: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.Limit = None
-        self.SortBy = None
-        self.Product = None
+        self._InstanceId = None
+        self._Limit = None
+        self._SortBy = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Limit = params.get("Limit")
-        self.SortBy = params.get("SortBy")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3126,27 +6085,51 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopSpaceTables: 返回的Top表空间统计信息列表。
+        :param _TopSpaceTables: 返回的Top表空间统计信息列表。
         :type TopSpaceTables: list of TableSpaceData
-        :param Timestamp: 采集表空间数据的时间戳（秒）。
+        :param _Timestamp: 采集表空间数据的时间戳（秒）。
         :type Timestamp: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TopSpaceTables = None
-        self.Timestamp = None
-        self.RequestId = None
+        self._TopSpaceTables = None
+        self._Timestamp = None
+        self._RequestId = None
+
+    @property
+    def TopSpaceTables(self):
+        return self._TopSpaceTables
+
+    @TopSpaceTables.setter
+    def TopSpaceTables(self, TopSpaceTables):
+        self._TopSpaceTables = TopSpaceTables
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TopSpaceTables") is not None:
-            self.TopSpaceTables = []
+            self._TopSpaceTables = []
             for item in params.get("TopSpaceTables"):
                 obj = TableSpaceData()
                 obj._deserialize(item)
-                self.TopSpaceTables.append(obj)
-        self.Timestamp = params.get("Timestamp")
-        self.RequestId = params.get("RequestId")
+                self._TopSpaceTables.append(obj)
+        self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserSqlAdviceRequest(AbstractModel):
@@ -3156,30 +6139,63 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param SqlText: SQL语句。
+        :param _SqlText: SQL语句。
         :type SqlText: str
-        :param Schema: 库名。
+        :param _Schema: 库名。
         :type Schema: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.SqlText = None
-        self.Schema = None
-        self.Product = None
+        self._InstanceId = None
+        self._SqlText = None
+        self._Schema = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SqlText(self):
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def Schema(self):
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.SqlText = params.get("SqlText")
-        self.Schema = params.get("Schema")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._SqlText = params.get("SqlText")
+        self._Schema = params.get("Schema")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3192,42 +6208,106 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Advices: SQL优化建议，可解析为JSON数组，无需优化时输出为空。
+        :param _Advices: SQL优化建议，可解析为JSON数组，无需优化时输出为空。
         :type Advices: str
-        :param Comments: SQL优化建议备注，可解析为String数组，无需优化时输出为空。
+        :param _Comments: SQL优化建议备注，可解析为String数组，无需优化时输出为空。
         :type Comments: str
-        :param SqlText: SQL语句。
+        :param _SqlText: SQL语句。
         :type SqlText: str
-        :param Schema: 库名。
+        :param _Schema: 库名。
         :type Schema: str
-        :param Tables: 相关表的DDL信息，可解析为JSON数组。
+        :param _Tables: 相关表的DDL信息，可解析为JSON数组。
         :type Tables: str
-        :param SqlPlan: SQL执行计划，可解析为JSON，无需优化时输出为空。
+        :param _SqlPlan: SQL执行计划，可解析为JSON，无需优化时输出为空。
         :type SqlPlan: str
-        :param Cost: SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
+        :param _Cost: SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
         :type Cost: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Advices = None
-        self.Comments = None
-        self.SqlText = None
-        self.Schema = None
-        self.Tables = None
-        self.SqlPlan = None
-        self.Cost = None
-        self.RequestId = None
+        self._Advices = None
+        self._Comments = None
+        self._SqlText = None
+        self._Schema = None
+        self._Tables = None
+        self._SqlPlan = None
+        self._Cost = None
+        self._RequestId = None
+
+    @property
+    def Advices(self):
+        return self._Advices
+
+    @Advices.setter
+    def Advices(self, Advices):
+        self._Advices = Advices
+
+    @property
+    def Comments(self):
+        return self._Comments
+
+    @Comments.setter
+    def Comments(self, Comments):
+        self._Comments = Comments
+
+    @property
+    def SqlText(self):
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def Schema(self):
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def Tables(self):
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def SqlPlan(self):
+        return self._SqlPlan
+
+    @SqlPlan.setter
+    def SqlPlan(self, SqlPlan):
+        self._SqlPlan = SqlPlan
+
+    @property
+    def Cost(self):
+        return self._Cost
+
+    @Cost.setter
+    def Cost(self, Cost):
+        self._Cost = Cost
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Advices = params.get("Advices")
-        self.Comments = params.get("Comments")
-        self.SqlText = params.get("SqlText")
-        self.Schema = params.get("Schema")
-        self.Tables = params.get("Tables")
-        self.SqlPlan = params.get("SqlPlan")
-        self.Cost = params.get("Cost")
-        self.RequestId = params.get("RequestId")
+        self._Advices = params.get("Advices")
+        self._Comments = params.get("Comments")
+        self._SqlText = params.get("SqlText")
+        self._Schema = params.get("Schema")
+        self._Tables = params.get("Tables")
+        self._SqlPlan = params.get("SqlPlan")
+        self._Cost = params.get("Cost")
+        self._RequestId = params.get("RequestId")
 
 
 class DiagHistoryEventItem(AbstractModel):
@@ -3237,55 +6317,136 @@ class DiagHistoryEventItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiagType: 诊断类型。
+        :param _DiagType: 诊断类型。
         :type DiagType: str
-        :param EndTime: 结束时间。
+        :param _EndTime: 结束时间。
         :type EndTime: str
-        :param StartTime: 开始时间。
+        :param _StartTime: 开始时间。
         :type StartTime: str
-        :param EventId: 事件唯一ID 。
+        :param _EventId: 事件唯一ID 。
         :type EventId: int
-        :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :param _Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
-        :param Outline: 诊断概要。
+        :param _Outline: 诊断概要。
         :type Outline: str
-        :param DiagItem: 诊断项说明。
+        :param _DiagItem: 诊断项说明。
         :type DiagItem: str
-        :param InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param Metric: 保留字段。
+        :param _Metric: 保留字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
-        :param Region: 地域。
+        :param _Region: 地域。
         :type Region: str
         """
-        self.DiagType = None
-        self.EndTime = None
-        self.StartTime = None
-        self.EventId = None
-        self.Severity = None
-        self.Outline = None
-        self.DiagItem = None
-        self.InstanceId = None
-        self.Metric = None
-        self.Region = None
+        self._DiagType = None
+        self._EndTime = None
+        self._StartTime = None
+        self._EventId = None
+        self._Severity = None
+        self._Outline = None
+        self._DiagItem = None
+        self._InstanceId = None
+        self._Metric = None
+        self._Region = None
+
+    @property
+    def DiagType(self):
+        return self._DiagType
+
+    @DiagType.setter
+    def DiagType(self, DiagType):
+        self._DiagType = DiagType
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Severity(self):
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+    @property
+    def Outline(self):
+        return self._Outline
+
+    @Outline.setter
+    def Outline(self, Outline):
+        self._Outline = Outline
+
+    @property
+    def DiagItem(self):
+        return self._DiagItem
+
+    @DiagItem.setter
+    def DiagItem(self, DiagItem):
+        self._DiagItem = DiagItem
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Metric(self):
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
-        self.DiagType = params.get("DiagType")
-        self.EndTime = params.get("EndTime")
-        self.StartTime = params.get("StartTime")
-        self.EventId = params.get("EventId")
-        self.Severity = params.get("Severity")
-        self.Outline = params.get("Outline")
-        self.DiagItem = params.get("DiagItem")
-        self.InstanceId = params.get("InstanceId")
-        self.Metric = params.get("Metric")
-        self.Region = params.get("Region")
+        self._DiagType = params.get("DiagType")
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._EventId = params.get("EventId")
+        self._Severity = params.get("Severity")
+        self._Outline = params.get("Outline")
+        self._DiagItem = params.get("DiagItem")
+        self._InstanceId = params.get("InstanceId")
+        self._Metric = params.get("Metric")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3298,50 +6459,123 @@ class EventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 事件 ID 。
+        :param _EventId: 事件 ID 。
         :type EventId: int
-        :param DiagType: 诊断类型。
+        :param _DiagType: 诊断类型。
         :type DiagType: str
-        :param StartTime: 开始时间。
+        :param _StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间。
+        :param _EndTime: 结束时间。
         :type EndTime: str
-        :param Outline: 概要。
+        :param _Outline: 概要。
         :type Outline: str
-        :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :param _Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
-        :param ScoreLost: 扣分。
+        :param _ScoreLost: 扣分。
         :type ScoreLost: int
-        :param Metric: 保留字段。
+        :param _Metric: 保留字段。
         :type Metric: str
-        :param Count: 告警数目。
+        :param _Count: 告警数目。
         :type Count: int
         """
-        self.EventId = None
-        self.DiagType = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Outline = None
-        self.Severity = None
-        self.ScoreLost = None
-        self.Metric = None
-        self.Count = None
+        self._EventId = None
+        self._DiagType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Outline = None
+        self._Severity = None
+        self._ScoreLost = None
+        self._Metric = None
+        self._Count = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def DiagType(self):
+        return self._DiagType
+
+    @DiagType.setter
+    def DiagType(self, DiagType):
+        self._DiagType = DiagType
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Outline(self):
+        return self._Outline
+
+    @Outline.setter
+    def Outline(self, Outline):
+        self._Outline = Outline
+
+    @property
+    def Severity(self):
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+    @property
+    def ScoreLost(self):
+        return self._ScoreLost
+
+    @ScoreLost.setter
+    def ScoreLost(self, ScoreLost):
+        self._ScoreLost = ScoreLost
+
+    @property
+    def Metric(self):
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.EventId = params.get("EventId")
-        self.DiagType = params.get("DiagType")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Outline = params.get("Outline")
-        self.Severity = params.get("Severity")
-        self.ScoreLost = params.get("ScoreLost")
-        self.Metric = params.get("Metric")
-        self.Count = params.get("Count")
+        self._EventId = params.get("EventId")
+        self._DiagType = params.get("DiagType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Outline = params.get("Outline")
+        self._Severity = params.get("Severity")
+        self._ScoreLost = params.get("ScoreLost")
+        self._Metric = params.get("Metric")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3354,26 +6588,51 @@ class GroupItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 组id。
+        :param _Id: 组id。
         :type Id: int
-        :param Name: 组名称。
+        :param _Name: 组名称。
         :type Name: str
-        :param MemberCount: 组成员数量。
+        :param _MemberCount: 组成员数量。
         :type MemberCount: int
         """
-        self.Id = None
-        self.Name = None
-        self.MemberCount = None
+        self._Id = None
+        self._Name = None
+        self._MemberCount = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberCount(self):
+        return self._MemberCount
+
+    @MemberCount.setter
+    def MemberCount(self, MemberCount):
+        self._MemberCount = MemberCount
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.MemberCount = params.get("MemberCount")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._MemberCount = params.get("MemberCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3386,50 +6645,115 @@ class HealthReportTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 异步任务请求 ID。
+        :param _AsyncRequestId: 异步任务请求 ID。
         :type AsyncRequestId: int
-        :param Source: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :param _Source: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
         :type Source: str
-        :param Progress: 任务完成进度，单位%。
+        :param _Progress: 任务完成进度，单位%。
         :type Progress: int
-        :param CreateTime: 任务创建时间。
+        :param _CreateTime: 任务创建时间。
         :type CreateTime: str
-        :param StartTime: 任务开始执行时间。
+        :param _StartTime: 任务开始执行时间。
         :type StartTime: str
-        :param EndTime: 任务完成执行时间。
+        :param _EndTime: 任务完成执行时间。
         :type EndTime: str
-        :param InstanceInfo: 任务所属实例的基础信息。
+        :param _InstanceInfo: 任务所属实例的基础信息。
         :type InstanceInfo: :class:`tencentcloud.dbbrain.v20210527.models.InstanceBasicInfo`
-        :param HealthStatus: 健康报告中的健康信息。
+        :param _HealthStatus: 健康报告中的健康信息。
         :type HealthStatus: :class:`tencentcloud.dbbrain.v20210527.models.HealthStatus`
         """
-        self.AsyncRequestId = None
-        self.Source = None
-        self.Progress = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.EndTime = None
-        self.InstanceInfo = None
-        self.HealthStatus = None
+        self._AsyncRequestId = None
+        self._Source = None
+        self._Progress = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceInfo = None
+        self._HealthStatus = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceInfo(self):
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+    @property
+    def HealthStatus(self):
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.Source = params.get("Source")
-        self.Progress = params.get("Progress")
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._Source = params.get("Source")
+        self._Progress = params.get("Progress")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("InstanceInfo") is not None:
-            self.InstanceInfo = InstanceBasicInfo()
-            self.InstanceInfo._deserialize(params.get("InstanceInfo"))
+            self._InstanceInfo = InstanceBasicInfo()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
         if params.get("HealthStatus") is not None:
-            self.HealthStatus = HealthStatus()
-            self.HealthStatus._deserialize(params.get("HealthStatus"))
+            self._HealthStatus = HealthStatus()
+            self._HealthStatus._deserialize(params.get("HealthStatus"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3442,35 +6766,68 @@ class HealthScoreInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IssueTypes: 异常详情。
+        :param _IssueTypes: 异常详情。
         :type IssueTypes: list of IssueTypeInfo
-        :param EventsTotalCount: 异常事件总数。
+        :param _EventsTotalCount: 异常事件总数。
         :type EventsTotalCount: int
-        :param HealthScore: 健康得分。
+        :param _HealthScore: 健康得分。
         :type HealthScore: int
-        :param HealthLevel: 健康等级, 如："HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"。
+        :param _HealthLevel: 健康等级, 如："HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"。
         :type HealthLevel: str
         """
-        self.IssueTypes = None
-        self.EventsTotalCount = None
-        self.HealthScore = None
-        self.HealthLevel = None
+        self._IssueTypes = None
+        self._EventsTotalCount = None
+        self._HealthScore = None
+        self._HealthLevel = None
+
+    @property
+    def IssueTypes(self):
+        return self._IssueTypes
+
+    @IssueTypes.setter
+    def IssueTypes(self, IssueTypes):
+        self._IssueTypes = IssueTypes
+
+    @property
+    def EventsTotalCount(self):
+        return self._EventsTotalCount
+
+    @EventsTotalCount.setter
+    def EventsTotalCount(self, EventsTotalCount):
+        self._EventsTotalCount = EventsTotalCount
+
+    @property
+    def HealthScore(self):
+        return self._HealthScore
+
+    @HealthScore.setter
+    def HealthScore(self, HealthScore):
+        self._HealthScore = HealthScore
+
+    @property
+    def HealthLevel(self):
+        return self._HealthLevel
+
+    @HealthLevel.setter
+    def HealthLevel(self, HealthLevel):
+        self._HealthLevel = HealthLevel
 
 
     def _deserialize(self, params):
         if params.get("IssueTypes") is not None:
-            self.IssueTypes = []
+            self._IssueTypes = []
             for item in params.get("IssueTypes"):
                 obj = IssueTypeInfo()
                 obj._deserialize(item)
-                self.IssueTypes.append(obj)
-        self.EventsTotalCount = params.get("EventsTotalCount")
-        self.HealthScore = params.get("HealthScore")
-        self.HealthLevel = params.get("HealthLevel")
+                self._IssueTypes.append(obj)
+        self._EventsTotalCount = params.get("EventsTotalCount")
+        self._HealthScore = params.get("HealthScore")
+        self._HealthLevel = params.get("HealthLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3483,36 +6840,69 @@ class HealthStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HealthScore: 健康分数，满分100。
+        :param _HealthScore: 健康分数，满分100。
         :type HealthScore: int
-        :param HealthLevel: 健康等级，取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK"- 危险；"HIGH_RISK" - 高危。
+        :param _HealthLevel: 健康等级，取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK"- 危险；"HIGH_RISK" - 高危。
         :type HealthLevel: str
-        :param ScoreLost: 总扣分分数。
+        :param _ScoreLost: 总扣分分数。
         :type ScoreLost: int
-        :param ScoreDetails: 扣分详情。
+        :param _ScoreDetails: 扣分详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScoreDetails: list of ScoreDetail
         """
-        self.HealthScore = None
-        self.HealthLevel = None
-        self.ScoreLost = None
-        self.ScoreDetails = None
+        self._HealthScore = None
+        self._HealthLevel = None
+        self._ScoreLost = None
+        self._ScoreDetails = None
+
+    @property
+    def HealthScore(self):
+        return self._HealthScore
+
+    @HealthScore.setter
+    def HealthScore(self, HealthScore):
+        self._HealthScore = HealthScore
+
+    @property
+    def HealthLevel(self):
+        return self._HealthLevel
+
+    @HealthLevel.setter
+    def HealthLevel(self, HealthLevel):
+        self._HealthLevel = HealthLevel
+
+    @property
+    def ScoreLost(self):
+        return self._ScoreLost
+
+    @ScoreLost.setter
+    def ScoreLost(self, ScoreLost):
+        self._ScoreLost = ScoreLost
+
+    @property
+    def ScoreDetails(self):
+        return self._ScoreDetails
+
+    @ScoreDetails.setter
+    def ScoreDetails(self, ScoreDetails):
+        self._ScoreDetails = ScoreDetails
 
 
     def _deserialize(self, params):
-        self.HealthScore = params.get("HealthScore")
-        self.HealthLevel = params.get("HealthLevel")
-        self.ScoreLost = params.get("ScoreLost")
+        self._HealthScore = params.get("HealthScore")
+        self._HealthLevel = params.get("HealthLevel")
+        self._ScoreLost = params.get("ScoreLost")
         if params.get("ScoreDetails") is not None:
-            self.ScoreDetails = []
+            self._ScoreDetails = []
             for item in params.get("ScoreDetails"):
                 obj = ScoreDetail()
                 obj._deserialize(item)
-                self.ScoreDetails.append(obj)
+                self._ScoreDetails.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3525,38 +6915,87 @@ class InstanceBasicInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param InstanceName: 实例名称。
+        :param _InstanceName: 实例名称。
         :type InstanceName: str
-        :param Vip: 实例内网IP。
+        :param _Vip: 实例内网IP。
         :type Vip: str
-        :param Vport: 实例内网Port。
+        :param _Vport: 实例内网Port。
         :type Vport: int
-        :param Product: 实例产品。
+        :param _Product: 实例产品。
         :type Product: str
-        :param EngineVersion: 实例引擎版本。
+        :param _EngineVersion: 实例引擎版本。
         :type EngineVersion: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Vip = None
-        self.Vport = None
-        self.Product = None
-        self.EngineVersion = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Vip = None
+        self._Vport = None
+        self._Product = None
+        self._EngineVersion = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def EngineVersion(self):
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Vip = params.get("Vip")
-        self.Vport = params.get("Vport")
-        self.Product = params.get("Product")
-        self.EngineVersion = params.get("EngineVersion")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._Product = params.get("Product")
+        self._EngineVersion = params.get("EngineVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3569,27 +7008,52 @@ class InstanceConfs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DailyInspection: 数据库巡检开关, Yes/No。
+        :param _DailyInspection: 数据库巡检开关, Yes/No。
         :type DailyInspection: str
-        :param OverviewDisplay: 实例概览开关，Yes/No。
+        :param _OverviewDisplay: 实例概览开关，Yes/No。
         :type OverviewDisplay: str
-        :param KeyDelimiters: redis大key分析的自定义分割符，仅redis使用
+        :param _KeyDelimiters: redis大key分析的自定义分割符，仅redis使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyDelimiters: list of str
         """
-        self.DailyInspection = None
-        self.OverviewDisplay = None
-        self.KeyDelimiters = None
+        self._DailyInspection = None
+        self._OverviewDisplay = None
+        self._KeyDelimiters = None
+
+    @property
+    def DailyInspection(self):
+        return self._DailyInspection
+
+    @DailyInspection.setter
+    def DailyInspection(self, DailyInspection):
+        self._DailyInspection = DailyInspection
+
+    @property
+    def OverviewDisplay(self):
+        return self._OverviewDisplay
+
+    @OverviewDisplay.setter
+    def OverviewDisplay(self, OverviewDisplay):
+        self._OverviewDisplay = OverviewDisplay
+
+    @property
+    def KeyDelimiters(self):
+        return self._KeyDelimiters
+
+    @KeyDelimiters.setter
+    def KeyDelimiters(self, KeyDelimiters):
+        self._KeyDelimiters = KeyDelimiters
 
 
     def _deserialize(self, params):
-        self.DailyInspection = params.get("DailyInspection")
-        self.OverviewDisplay = params.get("OverviewDisplay")
-        self.KeyDelimiters = params.get("KeyDelimiters")
+        self._DailyInspection = params.get("DailyInspection")
+        self._OverviewDisplay = params.get("OverviewDisplay")
+        self._KeyDelimiters = params.get("KeyDelimiters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3602,152 +7066,417 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param InstanceName: 实例名称。
+        :param _InstanceName: 实例名称。
         :type InstanceName: str
-        :param Region: 实例所属地域。
+        :param _Region: 实例所属地域。
         :type Region: str
-        :param HealthScore: 健康得分。
+        :param _HealthScore: 健康得分。
         :type HealthScore: int
-        :param Product: 所属产品。
+        :param _Product: 所属产品。
         :type Product: str
-        :param EventCount: 异常事件数量。
+        :param _EventCount: 异常事件数量。
         :type EventCount: int
-        :param InstanceType: 实例类型：1:MASTER；2:DR，3：RO，4:SDR。
+        :param _InstanceType: 实例类型：1:MASTER；2:DR，3：RO，4:SDR。
         :type InstanceType: int
-        :param Cpu: 核心数。
+        :param _Cpu: 核心数。
         :type Cpu: int
-        :param Memory: 内存，单位MB。
+        :param _Memory: 内存，单位MB。
         :type Memory: int
-        :param Volume: 硬盘存储，单位GB。
+        :param _Volume: 硬盘存储，单位GB。
         :type Volume: int
-        :param EngineVersion: 数据库版本。
+        :param _EngineVersion: 数据库版本。
         :type EngineVersion: str
-        :param Vip: 内网地址。
+        :param _Vip: 内网地址。
         :type Vip: str
-        :param Vport: 内网端口。
+        :param _Vport: 内网端口。
         :type Vport: int
-        :param Source: 接入来源。
+        :param _Source: 接入来源。
         :type Source: str
-        :param GroupId: 分组ID。
+        :param _GroupId: 分组ID。
         :type GroupId: str
-        :param GroupName: 分组组名。
+        :param _GroupName: 分组组名。
         :type GroupName: str
-        :param Status: 实例状态：0：发货中；1：运行正常；4：销毁中；5：隔离中。
+        :param _Status: 实例状态：0：发货中；1：运行正常；4：销毁中；5：隔离中。
         :type Status: int
-        :param UniqSubnetId: 子网统一ID。
+        :param _UniqSubnetId: 子网统一ID。
         :type UniqSubnetId: str
-        :param DeployMode: cdb类型。
+        :param _DeployMode: cdb类型。
         :type DeployMode: str
-        :param InitFlag: cdb实例初始化标志：0：未初始化；1：已初始化。
+        :param _InitFlag: cdb实例初始化标志：0：未初始化；1：已初始化。
         :type InitFlag: int
-        :param TaskStatus: 任务状态。
+        :param _TaskStatus: 任务状态。
         :type TaskStatus: int
-        :param UniqVpcId: 私有网络统一ID。
+        :param _UniqVpcId: 私有网络统一ID。
         :type UniqVpcId: str
-        :param InstanceConf: 实例巡检/概览的状态。
+        :param _InstanceConf: 实例巡检/概览的状态。
         :type InstanceConf: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
-        :param DeadlineTime: 资源到期时间。
+        :param _DeadlineTime: 资源到期时间。
         :type DeadlineTime: str
-        :param IsSupported: 是否是DBbrain支持的实例。
+        :param _IsSupported: 是否是DBbrain支持的实例。
         :type IsSupported: bool
-        :param SecAuditStatus: 实例安全审计日志开启状态：ON： 安全审计开启；OFF： 未开启安全审计。
+        :param _SecAuditStatus: 实例安全审计日志开启状态：ON： 安全审计开启；OFF： 未开启安全审计。
         :type SecAuditStatus: str
-        :param AuditPolicyStatus: 实例审计日志开启状态，ALL_AUDIT： 开启全审计；RULE_AUDIT： 开启规则审计；UNBOUND： 未开启审计。
+        :param _AuditPolicyStatus: 实例审计日志开启状态，ALL_AUDIT： 开启全审计；RULE_AUDIT： 开启规则审计；UNBOUND： 未开启审计。
         :type AuditPolicyStatus: str
-        :param AuditRunningStatus: 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
+        :param _AuditRunningStatus: 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
         :type AuditRunningStatus: str
-        :param InternalVip: 内网vip。
+        :param _InternalVip: 内网vip。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVip: str
-        :param InternalVport: 内网port。
+        :param _InternalVport: 内网port。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVport: int
-        :param CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。
         :type CreateTime: str
-        :param ClusterId: 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
+        :param _ClusterId: 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param ClusterName: 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
+        :param _ClusterName: 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Region = None
-        self.HealthScore = None
-        self.Product = None
-        self.EventCount = None
-        self.InstanceType = None
-        self.Cpu = None
-        self.Memory = None
-        self.Volume = None
-        self.EngineVersion = None
-        self.Vip = None
-        self.Vport = None
-        self.Source = None
-        self.GroupId = None
-        self.GroupName = None
-        self.Status = None
-        self.UniqSubnetId = None
-        self.DeployMode = None
-        self.InitFlag = None
-        self.TaskStatus = None
-        self.UniqVpcId = None
-        self.InstanceConf = None
-        self.DeadlineTime = None
-        self.IsSupported = None
-        self.SecAuditStatus = None
-        self.AuditPolicyStatus = None
-        self.AuditRunningStatus = None
-        self.InternalVip = None
-        self.InternalVport = None
-        self.CreateTime = None
-        self.ClusterId = None
-        self.ClusterName = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Region = None
+        self._HealthScore = None
+        self._Product = None
+        self._EventCount = None
+        self._InstanceType = None
+        self._Cpu = None
+        self._Memory = None
+        self._Volume = None
+        self._EngineVersion = None
+        self._Vip = None
+        self._Vport = None
+        self._Source = None
+        self._GroupId = None
+        self._GroupName = None
+        self._Status = None
+        self._UniqSubnetId = None
+        self._DeployMode = None
+        self._InitFlag = None
+        self._TaskStatus = None
+        self._UniqVpcId = None
+        self._InstanceConf = None
+        self._DeadlineTime = None
+        self._IsSupported = None
+        self._SecAuditStatus = None
+        self._AuditPolicyStatus = None
+        self._AuditRunningStatus = None
+        self._InternalVip = None
+        self._InternalVport = None
+        self._CreateTime = None
+        self._ClusterId = None
+        self._ClusterName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def HealthScore(self):
+        return self._HealthScore
+
+    @HealthScore.setter
+    def HealthScore(self, HealthScore):
+        self._HealthScore = HealthScore
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def EventCount(self):
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def EngineVersion(self):
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def DeployMode(self):
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
+    @property
+    def InitFlag(self):
+        return self._InitFlag
+
+    @InitFlag.setter
+    def InitFlag(self, InitFlag):
+        self._InitFlag = InitFlag
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def InstanceConf(self):
+        return self._InstanceConf
+
+    @InstanceConf.setter
+    def InstanceConf(self, InstanceConf):
+        self._InstanceConf = InstanceConf
+
+    @property
+    def DeadlineTime(self):
+        return self._DeadlineTime
+
+    @DeadlineTime.setter
+    def DeadlineTime(self, DeadlineTime):
+        self._DeadlineTime = DeadlineTime
+
+    @property
+    def IsSupported(self):
+        return self._IsSupported
+
+    @IsSupported.setter
+    def IsSupported(self, IsSupported):
+        self._IsSupported = IsSupported
+
+    @property
+    def SecAuditStatus(self):
+        return self._SecAuditStatus
+
+    @SecAuditStatus.setter
+    def SecAuditStatus(self, SecAuditStatus):
+        self._SecAuditStatus = SecAuditStatus
+
+    @property
+    def AuditPolicyStatus(self):
+        return self._AuditPolicyStatus
+
+    @AuditPolicyStatus.setter
+    def AuditPolicyStatus(self, AuditPolicyStatus):
+        self._AuditPolicyStatus = AuditPolicyStatus
+
+    @property
+    def AuditRunningStatus(self):
+        return self._AuditRunningStatus
+
+    @AuditRunningStatus.setter
+    def AuditRunningStatus(self, AuditRunningStatus):
+        self._AuditRunningStatus = AuditRunningStatus
+
+    @property
+    def InternalVip(self):
+        return self._InternalVip
+
+    @InternalVip.setter
+    def InternalVip(self, InternalVip):
+        self._InternalVip = InternalVip
+
+    @property
+    def InternalVport(self):
+        return self._InternalVport
+
+    @InternalVport.setter
+    def InternalVport(self, InternalVport):
+        self._InternalVport = InternalVport
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Region = params.get("Region")
-        self.HealthScore = params.get("HealthScore")
-        self.Product = params.get("Product")
-        self.EventCount = params.get("EventCount")
-        self.InstanceType = params.get("InstanceType")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.EngineVersion = params.get("EngineVersion")
-        self.Vip = params.get("Vip")
-        self.Vport = params.get("Vport")
-        self.Source = params.get("Source")
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.Status = params.get("Status")
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.DeployMode = params.get("DeployMode")
-        self.InitFlag = params.get("InitFlag")
-        self.TaskStatus = params.get("TaskStatus")
-        self.UniqVpcId = params.get("UniqVpcId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Region = params.get("Region")
+        self._HealthScore = params.get("HealthScore")
+        self._Product = params.get("Product")
+        self._EventCount = params.get("EventCount")
+        self._InstanceType = params.get("InstanceType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        self._EngineVersion = params.get("EngineVersion")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._Source = params.get("Source")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._Status = params.get("Status")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._DeployMode = params.get("DeployMode")
+        self._InitFlag = params.get("InitFlag")
+        self._TaskStatus = params.get("TaskStatus")
+        self._UniqVpcId = params.get("UniqVpcId")
         if params.get("InstanceConf") is not None:
-            self.InstanceConf = InstanceConfs()
-            self.InstanceConf._deserialize(params.get("InstanceConf"))
-        self.DeadlineTime = params.get("DeadlineTime")
-        self.IsSupported = params.get("IsSupported")
-        self.SecAuditStatus = params.get("SecAuditStatus")
-        self.AuditPolicyStatus = params.get("AuditPolicyStatus")
-        self.AuditRunningStatus = params.get("AuditRunningStatus")
-        self.InternalVip = params.get("InternalVip")
-        self.InternalVport = params.get("InternalVport")
-        self.CreateTime = params.get("CreateTime")
-        self.ClusterId = params.get("ClusterId")
-        self.ClusterName = params.get("ClusterName")
+            self._InstanceConf = InstanceConfs()
+            self._InstanceConf._deserialize(params.get("InstanceConf"))
+        self._DeadlineTime = params.get("DeadlineTime")
+        self._IsSupported = params.get("IsSupported")
+        self._SecAuditStatus = params.get("SecAuditStatus")
+        self._AuditPolicyStatus = params.get("AuditPolicyStatus")
+        self._AuditRunningStatus = params.get("AuditRunningStatus")
+        self._InternalVip = params.get("InternalVip")
+        self._InternalVport = params.get("InternalVport")
+        self._CreateTime = params.get("CreateTime")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3760,31 +7489,56 @@ class IssueTypeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IssueType: 指标分类：AVAILABILITY：可用性，MAINTAINABILITY：可维护性，PERFORMANCE，性能，RELIABILITY可靠性。
+        :param _IssueType: 指标分类：AVAILABILITY：可用性，MAINTAINABILITY：可维护性，PERFORMANCE，性能，RELIABILITY可靠性。
         :type IssueType: str
-        :param Events: 异常事件。
+        :param _Events: 异常事件。
         :type Events: list of EventInfo
-        :param TotalCount: 异常事件总数。
+        :param _TotalCount: 异常事件总数。
         :type TotalCount: int
         """
-        self.IssueType = None
-        self.Events = None
-        self.TotalCount = None
+        self._IssueType = None
+        self._Events = None
+        self._TotalCount = None
+
+    @property
+    def IssueType(self):
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
 
     def _deserialize(self, params):
-        self.IssueType = params.get("IssueType")
+        self._IssueType = params.get("IssueType")
         if params.get("Events") is not None:
-            self.Events = []
+            self._Events = []
             for item in params.get("Events"):
                 obj = EventInfo()
                 obj._deserialize(item)
-                self.Events.append(obj)
-        self.TotalCount = params.get("TotalCount")
+                self._Events.append(obj)
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3797,38 +7551,87 @@ class KillMySqlThreadsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param Stage: kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
+        :param _Stage: kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
         :type Stage: str
-        :param Threads: 需要kill的sql会话ID列表，此参数用于Prepare阶段。
+        :param _Threads: 需要kill的sql会话ID列表，此参数用于Prepare阶段。
         :type Threads: list of int
-        :param SqlExecId: 执行ID，此参数用于Commit阶段。
+        :param _SqlExecId: 执行ID，此参数用于Commit阶段。
         :type SqlExecId: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
-        :param RecordHistory: 默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
+        :param _RecordHistory: 默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
         :type RecordHistory: bool
         """
-        self.InstanceId = None
-        self.Stage = None
-        self.Threads = None
-        self.SqlExecId = None
-        self.Product = None
-        self.RecordHistory = None
+        self._InstanceId = None
+        self._Stage = None
+        self._Threads = None
+        self._SqlExecId = None
+        self._Product = None
+        self._RecordHistory = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Stage(self):
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def Threads(self):
+        return self._Threads
+
+    @Threads.setter
+    def Threads(self, Threads):
+        self._Threads = Threads
+
+    @property
+    def SqlExecId(self):
+        return self._SqlExecId
+
+    @SqlExecId.setter
+    def SqlExecId(self, SqlExecId):
+        self._SqlExecId = SqlExecId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def RecordHistory(self):
+        return self._RecordHistory
+
+    @RecordHistory.setter
+    def RecordHistory(self, RecordHistory):
+        self._RecordHistory = RecordHistory
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Stage = params.get("Stage")
-        self.Threads = params.get("Threads")
-        self.SqlExecId = params.get("SqlExecId")
-        self.Product = params.get("Product")
-        self.RecordHistory = params.get("RecordHistory")
+        self._InstanceId = params.get("InstanceId")
+        self._Stage = params.get("Stage")
+        self._Threads = params.get("Threads")
+        self._SqlExecId = params.get("SqlExecId")
+        self._Product = params.get("Product")
+        self._RecordHistory = params.get("RecordHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3841,23 +7644,47 @@ class KillMySqlThreadsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Threads: kill完成的sql会话ID列表。
+        :param _Threads: kill完成的sql会话ID列表。
         :type Threads: list of int
-        :param SqlExecId: 执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
+        :param _SqlExecId: 执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SqlExecId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Threads = None
-        self.SqlExecId = None
-        self.RequestId = None
+        self._Threads = None
+        self._SqlExecId = None
+        self._RequestId = None
+
+    @property
+    def Threads(self):
+        return self._Threads
+
+    @Threads.setter
+    def Threads(self, Threads):
+        self._Threads = Threads
+
+    @property
+    def SqlExecId(self):
+        return self._SqlExecId
+
+    @SqlExecId.setter
+    def SqlExecId(self, SqlExecId):
+        self._SqlExecId = SqlExecId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Threads = params.get("Threads")
-        self.SqlExecId = params.get("SqlExecId")
-        self.RequestId = params.get("RequestId")
+        self._Threads = params.get("Threads")
+        self._SqlExecId = params.get("SqlExecId")
+        self._RequestId = params.get("RequestId")
 
 
 class MailConfiguration(AbstractModel):
@@ -3867,34 +7694,75 @@ class MailConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SendMail: 是否开启邮件发送: 0, 否; 1, 是。
+        :param _SendMail: 是否开启邮件发送: 0, 否; 1, 是。
         :type SendMail: int
-        :param Region: 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模板，配置需要发送巡检邮件的地域；订阅的邮件发送模板，配置当前订阅实例的所属地域。
+        :param _Region: 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模板，配置需要发送巡检邮件的地域；订阅的邮件发送模板，配置当前订阅实例的所属地域。
         :type Region: list of str
-        :param HealthStatus: 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
+        :param _HealthStatus: 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
         :type HealthStatus: list of str
-        :param ContactPerson: 联系人id, 联系人/联系组不能都为空。
+        :param _ContactPerson: 联系人id, 联系人/联系组不能都为空。
         :type ContactPerson: list of int
-        :param ContactGroup: 联系组id, 联系人/联系组不能都为空。
+        :param _ContactGroup: 联系组id, 联系人/联系组不能都为空。
         :type ContactGroup: list of int
         """
-        self.SendMail = None
-        self.Region = None
-        self.HealthStatus = None
-        self.ContactPerson = None
-        self.ContactGroup = None
+        self._SendMail = None
+        self._Region = None
+        self._HealthStatus = None
+        self._ContactPerson = None
+        self._ContactGroup = None
+
+    @property
+    def SendMail(self):
+        return self._SendMail
+
+    @SendMail.setter
+    def SendMail(self, SendMail):
+        self._SendMail = SendMail
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def HealthStatus(self):
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def ContactPerson(self):
+        return self._ContactPerson
+
+    @ContactPerson.setter
+    def ContactPerson(self, ContactPerson):
+        self._ContactPerson = ContactPerson
+
+    @property
+    def ContactGroup(self):
+        return self._ContactGroup
+
+    @ContactGroup.setter
+    def ContactGroup(self, ContactGroup):
+        self._ContactGroup = ContactGroup
 
 
     def _deserialize(self, params):
-        self.SendMail = params.get("SendMail")
-        self.Region = params.get("Region")
-        self.HealthStatus = params.get("HealthStatus")
-        self.ContactPerson = params.get("ContactPerson")
-        self.ContactGroup = params.get("ContactGroup")
+        self._SendMail = params.get("SendMail")
+        self._Region = params.get("Region")
+        self._HealthStatus = params.get("HealthStatus")
+        self._ContactPerson = params.get("ContactPerson")
+        self._ContactGroup = params.get("ContactGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3907,32 +7775,65 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceConfs: 实例配置，包括巡检、概览开关等。
+        :param _InstanceConfs: 实例配置，包括巡检、概览开关等。
         :type InstanceConfs: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
-        :param Regions: 生效实例地域，取值为"All"，代表全地域。
+        :param _Regions: 生效实例地域，取值为"All"，代表全地域。
         :type Regions: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
         :type Product: str
-        :param InstanceIds: 指定更改巡检状态的实例ID。
+        :param _InstanceIds: 指定更改巡检状态的实例ID。
         :type InstanceIds: list of str
         """
-        self.InstanceConfs = None
-        self.Regions = None
-        self.Product = None
-        self.InstanceIds = None
+        self._InstanceConfs = None
+        self._Regions = None
+        self._Product = None
+        self._InstanceIds = None
+
+    @property
+    def InstanceConfs(self):
+        return self._InstanceConfs
+
+    @InstanceConfs.setter
+    def InstanceConfs(self, InstanceConfs):
+        self._InstanceConfs = InstanceConfs
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
 
     def _deserialize(self, params):
         if params.get("InstanceConfs") is not None:
-            self.InstanceConfs = InstanceConfs()
-            self.InstanceConfs._deserialize(params.get("InstanceConfs"))
-        self.Regions = params.get("Regions")
-        self.Product = params.get("Product")
-        self.InstanceIds = params.get("InstanceIds")
+            self._InstanceConfs = InstanceConfs()
+            self._InstanceConfs._deserialize(params.get("InstanceConfs"))
+        self._Regions = params.get("Regions")
+        self._Product = params.get("Product")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3945,14 +7846,22 @@ class ModifyDiagDBInstanceConfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySqlFiltersRequest(AbstractModel):
@@ -3962,34 +7871,75 @@ class ModifySqlFiltersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param FilterIds: SQL限流任务ID列表。
+        :param _FilterIds: SQL限流任务ID列表。
         :type FilterIds: list of int
-        :param Status: 限流任务状态，取值支持TERMINATED - 终止。
+        :param _Status: 限流任务状态，取值支持TERMINATED - 终止。
         :type Status: str
-        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :param _SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
         :type SessionToken: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.FilterIds = None
-        self.Status = None
-        self.SessionToken = None
-        self.Product = None
+        self._InstanceId = None
+        self._FilterIds = None
+        self._Status = None
+        self._SessionToken = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FilterIds(self):
+        return self._FilterIds
+
+    @FilterIds.setter
+    def FilterIds(self, FilterIds):
+        self._FilterIds = FilterIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SessionToken(self):
+        return self._SessionToken
+
+    @SessionToken.setter
+    def SessionToken(self, SessionToken):
+        self._SessionToken = SessionToken
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.FilterIds = params.get("FilterIds")
-        self.Status = params.get("Status")
-        self.SessionToken = params.get("SessionToken")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._FilterIds = params.get("FilterIds")
+        self._Status = params.get("Status")
+        self._SessionToken = params.get("SessionToken")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4002,14 +7952,22 @@ class ModifySqlFiltersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class MonitorFloatMetric(AbstractModel):
@@ -4019,27 +7977,52 @@ class MonitorFloatMetric(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Metric: 指标名称。
+        :param _Metric: 指标名称。
         :type Metric: str
-        :param Unit: 指标单位。
+        :param _Unit: 指标单位。
         :type Unit: str
-        :param Values: 指标值。
+        :param _Values: 指标值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
-        self.Metric = None
-        self.Unit = None
-        self.Values = None
+        self._Metric = None
+        self._Unit = None
+        self._Values = None
+
+    @property
+    def Metric(self):
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Metric = params.get("Metric")
-        self.Unit = params.get("Unit")
-        self.Values = params.get("Values")
+        self._Metric = params.get("Metric")
+        self._Unit = params.get("Unit")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4052,27 +8035,44 @@ class MonitorFloatMetricSeriesData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Series: 监控指标。
+        :param _Series: 监控指标。
         :type Series: list of MonitorFloatMetric
-        :param Timestamp: 监控指标对应的时间戳。
+        :param _Timestamp: 监控指标对应的时间戳。
         :type Timestamp: list of int
         """
-        self.Series = None
-        self.Timestamp = None
+        self._Series = None
+        self._Timestamp = None
+
+    @property
+    def Series(self):
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
 
 
     def _deserialize(self, params):
         if params.get("Series") is not None:
-            self.Series = []
+            self._Series = []
             for item in params.get("Series"):
                 obj = MonitorFloatMetric()
                 obj._deserialize(item)
-                self.Series.append(obj)
-        self.Timestamp = params.get("Timestamp")
+                self._Series.append(obj)
+        self._Timestamp = params.get("Timestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4085,27 +8085,52 @@ class MonitorMetric(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Metric: 指标名称。
+        :param _Metric: 指标名称。
         :type Metric: str
-        :param Unit: 指标单位。
+        :param _Unit: 指标单位。
         :type Unit: str
-        :param Values: 指标值。
+        :param _Values: 指标值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
-        self.Metric = None
-        self.Unit = None
-        self.Values = None
+        self._Metric = None
+        self._Unit = None
+        self._Values = None
+
+    @property
+    def Metric(self):
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Metric = params.get("Metric")
-        self.Unit = params.get("Unit")
-        self.Values = params.get("Values")
+        self._Metric = params.get("Metric")
+        self._Unit = params.get("Unit")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4118,27 +8143,44 @@ class MonitorMetricSeriesData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Series: 监控指标。
+        :param _Series: 监控指标。
         :type Series: list of MonitorMetric
-        :param Timestamp: 监控指标对应的时间戳。
+        :param _Timestamp: 监控指标对应的时间戳。
         :type Timestamp: list of int
         """
-        self.Series = None
-        self.Timestamp = None
+        self._Series = None
+        self._Timestamp = None
+
+    @property
+    def Series(self):
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
 
 
     def _deserialize(self, params):
         if params.get("Series") is not None:
-            self.Series = []
+            self._Series = []
             for item in params.get("Series"):
                 obj = MonitorMetric()
                 obj._deserialize(item)
-                self.Series.append(obj)
-        self.Timestamp = params.get("Timestamp")
+                self._Series.append(obj)
+        self._Timestamp = params.get("Timestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4151,46 +8193,111 @@ class MySqlProcess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 线程ID。
+        :param _ID: 线程ID。
         :type ID: str
-        :param User: 线程的操作账号名。
+        :param _User: 线程的操作账号名。
         :type User: str
-        :param Host: 线程的操作主机地址。
+        :param _Host: 线程的操作主机地址。
         :type Host: str
-        :param DB: 线程的操作数据库。
+        :param _DB: 线程的操作数据库。
         :type DB: str
-        :param State: 线程的操作状态。
+        :param _State: 线程的操作状态。
         :type State: str
-        :param Command: 线程的执行类型。
+        :param _Command: 线程的执行类型。
         :type Command: str
-        :param Time: 线程的操作时长，单位秒。
+        :param _Time: 线程的操作时长，单位秒。
         :type Time: str
-        :param Info: 线程的操作语句。
+        :param _Info: 线程的操作语句。
         :type Info: str
         """
-        self.ID = None
-        self.User = None
-        self.Host = None
-        self.DB = None
-        self.State = None
-        self.Command = None
-        self.Time = None
-        self.Info = None
+        self._ID = None
+        self._User = None
+        self._Host = None
+        self._DB = None
+        self._State = None
+        self._Command = None
+        self._Time = None
+        self._Info = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DB(self):
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.User = params.get("User")
-        self.Host = params.get("Host")
-        self.DB = params.get("DB")
-        self.State = params.get("State")
-        self.Command = params.get("Command")
-        self.Time = params.get("Time")
-        self.Info = params.get("Info")
+        self._ID = params.get("ID")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._DB = params.get("DB")
+        self._State = params.get("State")
+        self._Command = params.get("Command")
+        self._Time = params.get("Time")
+        self._Info = params.get("Info")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4203,31 +8310,56 @@ class ProcessStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: 会话详情数组。
+        :param _Items: 会话详情数组。
         :type Items: list of SessionItem
-        :param AllConnSum: 总连接数。
+        :param _AllConnSum: 总连接数。
         :type AllConnSum: int
-        :param ActiveConnSum: 总活跃连接数。
+        :param _ActiveConnSum: 总活跃连接数。
         :type ActiveConnSum: int
         """
-        self.Items = None
-        self.AllConnSum = None
-        self.ActiveConnSum = None
+        self._Items = None
+        self._AllConnSum = None
+        self._ActiveConnSum = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def AllConnSum(self):
+        return self._AllConnSum
+
+    @AllConnSum.setter
+    def AllConnSum(self, AllConnSum):
+        self._AllConnSum = AllConnSum
+
+    @property
+    def ActiveConnSum(self):
+        return self._ActiveConnSum
+
+    @ActiveConnSum.setter
+    def ActiveConnSum(self, ActiveConnSum):
+        self._ActiveConnSum = ActiveConnSum
 
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = SessionItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.AllConnSum = params.get("AllConnSum")
-        self.ActiveConnSum = params.get("ActiveConnSum")
+                self._Items.append(obj)
+        self._AllConnSum = params.get("AllConnSum")
+        self._ActiveConnSum = params.get("ActiveConnSum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4240,24 +8372,41 @@ class ProfileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Language: 语言, 如"zh"。
+        :param _Language: 语言, 如"zh"。
         :type Language: str
-        :param MailConfiguration: 邮件模板的内容。
+        :param _MailConfiguration: 邮件模板的内容。
         :type MailConfiguration: :class:`tencentcloud.dbbrain.v20210527.models.MailConfiguration`
         """
-        self.Language = None
-        self.MailConfiguration = None
+        self._Language = None
+        self._MailConfiguration = None
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def MailConfiguration(self):
+        return self._MailConfiguration
+
+    @MailConfiguration.setter
+    def MailConfiguration(self, MailConfiguration):
+        self._MailConfiguration = MailConfiguration
 
 
     def _deserialize(self, params):
-        self.Language = params.get("Language")
+        self._Language = params.get("Language")
         if params.get("MailConfiguration") is not None:
-            self.MailConfiguration = MailConfiguration()
-            self.MailConfiguration._deserialize(params.get("MailConfiguration"))
+            self._MailConfiguration = MailConfiguration()
+            self._MailConfiguration._deserialize(params.get("MailConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4270,50 +8419,123 @@ class RedisKeySpaceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: key名。
+        :param _Key: key名。
         :type Key: str
-        :param Type: key类型。
+        :param _Type: key类型。
         :type Type: str
-        :param Encoding: key编码方式。
+        :param _Encoding: key编码方式。
         :type Encoding: str
-        :param ExpireTime: key过期时间戳（毫秒），0代表未设置过期时间。
+        :param _ExpireTime: key过期时间戳（毫秒），0代表未设置过期时间。
         :type ExpireTime: int
-        :param Length: key内存大小，单位Byte。
+        :param _Length: key内存大小，单位Byte。
         :type Length: int
-        :param ItemCount: 元素个数。
+        :param _ItemCount: 元素个数。
         :type ItemCount: int
-        :param MaxElementSize: 最大元素长度。
+        :param _MaxElementSize: 最大元素长度。
         :type MaxElementSize: int
-        :param AveElementSize: 平均元素长度。
+        :param _AveElementSize: 平均元素长度。
         :type AveElementSize: int
-        :param ShardId: 所属分片序号。
+        :param _ShardId: 所属分片序号。
         :type ShardId: str
         """
-        self.Key = None
-        self.Type = None
-        self.Encoding = None
-        self.ExpireTime = None
-        self.Length = None
-        self.ItemCount = None
-        self.MaxElementSize = None
-        self.AveElementSize = None
-        self.ShardId = None
+        self._Key = None
+        self._Type = None
+        self._Encoding = None
+        self._ExpireTime = None
+        self._Length = None
+        self._ItemCount = None
+        self._MaxElementSize = None
+        self._AveElementSize = None
+        self._ShardId = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Encoding(self):
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def ItemCount(self):
+        return self._ItemCount
+
+    @ItemCount.setter
+    def ItemCount(self, ItemCount):
+        self._ItemCount = ItemCount
+
+    @property
+    def MaxElementSize(self):
+        return self._MaxElementSize
+
+    @MaxElementSize.setter
+    def MaxElementSize(self, MaxElementSize):
+        self._MaxElementSize = MaxElementSize
+
+    @property
+    def AveElementSize(self):
+        return self._AveElementSize
+
+    @AveElementSize.setter
+    def AveElementSize(self, AveElementSize):
+        self._AveElementSize = AveElementSize
+
+    @property
+    def ShardId(self):
+        return self._ShardId
+
+    @ShardId.setter
+    def ShardId(self, ShardId):
+        self._ShardId = ShardId
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Type = params.get("Type")
-        self.Encoding = params.get("Encoding")
-        self.ExpireTime = params.get("ExpireTime")
-        self.Length = params.get("Length")
-        self.ItemCount = params.get("ItemCount")
-        self.MaxElementSize = params.get("MaxElementSize")
-        self.AveElementSize = params.get("AveElementSize")
-        self.ShardId = params.get("ShardId")
+        self._Key = params.get("Key")
+        self._Type = params.get("Type")
+        self._Encoding = params.get("Encoding")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Length = params.get("Length")
+        self._ItemCount = params.get("ItemCount")
+        self._MaxElementSize = params.get("MaxElementSize")
+        self._AveElementSize = params.get("AveElementSize")
+        self._ShardId = params.get("ShardId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4326,38 +8548,87 @@ class RedisPreKeySpaceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AveElementSize: 平均元素长度。
+        :param _AveElementSize: 平均元素长度。
         :type AveElementSize: int
-        :param Length: 总占用内存（Byte）。
+        :param _Length: 总占用内存（Byte）。
         :type Length: int
-        :param KeyPreIndex: key前缀。
+        :param _KeyPreIndex: key前缀。
         :type KeyPreIndex: str
-        :param ItemCount: 元素数量。
+        :param _ItemCount: 元素数量。
         :type ItemCount: int
-        :param Count: key个数。
+        :param _Count: key个数。
         :type Count: int
-        :param MaxElementSize: 最大元素长度。
+        :param _MaxElementSize: 最大元素长度。
         :type MaxElementSize: int
         """
-        self.AveElementSize = None
-        self.Length = None
-        self.KeyPreIndex = None
-        self.ItemCount = None
-        self.Count = None
-        self.MaxElementSize = None
+        self._AveElementSize = None
+        self._Length = None
+        self._KeyPreIndex = None
+        self._ItemCount = None
+        self._Count = None
+        self._MaxElementSize = None
+
+    @property
+    def AveElementSize(self):
+        return self._AveElementSize
+
+    @AveElementSize.setter
+    def AveElementSize(self, AveElementSize):
+        self._AveElementSize = AveElementSize
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def KeyPreIndex(self):
+        return self._KeyPreIndex
+
+    @KeyPreIndex.setter
+    def KeyPreIndex(self, KeyPreIndex):
+        self._KeyPreIndex = KeyPreIndex
+
+    @property
+    def ItemCount(self):
+        return self._ItemCount
+
+    @ItemCount.setter
+    def ItemCount(self, ItemCount):
+        self._ItemCount = ItemCount
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def MaxElementSize(self):
+        return self._MaxElementSize
+
+    @MaxElementSize.setter
+    def MaxElementSize(self, MaxElementSize):
+        self._MaxElementSize = MaxElementSize
 
 
     def _deserialize(self, params):
-        self.AveElementSize = params.get("AveElementSize")
-        self.Length = params.get("Length")
-        self.KeyPreIndex = params.get("KeyPreIndex")
-        self.ItemCount = params.get("ItemCount")
-        self.Count = params.get("Count")
-        self.MaxElementSize = params.get("MaxElementSize")
+        self._AveElementSize = params.get("AveElementSize")
+        self._Length = params.get("Length")
+        self._KeyPreIndex = params.get("KeyPreIndex")
+        self._ItemCount = params.get("ItemCount")
+        self._Count = params.get("Count")
+        self._MaxElementSize = params.get("MaxElementSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4370,58 +8641,147 @@ class SQLFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 任务ID。
+        :param _Id: 任务ID。
         :type Id: int
-        :param Status: 任务状态，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+        :param _Status: 任务状态，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
         :type Status: str
-        :param SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        :param _SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
         :type SqlType: str
-        :param OriginKeys: 筛选SQL的关键词，多个关键词用英文逗号拼接。
+        :param _OriginKeys: 筛选SQL的关键词，多个关键词用英文逗号拼接。
         :type OriginKeys: str
-        :param OriginRule: 筛选SQL的规则。
+        :param _OriginRule: 筛选SQL的规则。
         :type OriginRule: str
-        :param RejectedSqlCount: 已拒绝SQL数目。
+        :param _RejectedSqlCount: 已拒绝SQL数目。
         :type RejectedSqlCount: int
-        :param CurrentConcurrency: 当前并发数。
+        :param _CurrentConcurrency: 当前并发数。
         :type CurrentConcurrency: int
-        :param MaxConcurrency: 最大并发数。
+        :param _MaxConcurrency: 最大并发数。
         :type MaxConcurrency: int
-        :param CreateTime: 任务创建时间。
+        :param _CreateTime: 任务创建时间。
         :type CreateTime: str
-        :param CurrentTime: 当前时间。
+        :param _CurrentTime: 当前时间。
         :type CurrentTime: str
-        :param ExpireTime: 限流过期时间。
+        :param _ExpireTime: 限流过期时间。
         :type ExpireTime: str
         """
-        self.Id = None
-        self.Status = None
-        self.SqlType = None
-        self.OriginKeys = None
-        self.OriginRule = None
-        self.RejectedSqlCount = None
-        self.CurrentConcurrency = None
-        self.MaxConcurrency = None
-        self.CreateTime = None
-        self.CurrentTime = None
-        self.ExpireTime = None
+        self._Id = None
+        self._Status = None
+        self._SqlType = None
+        self._OriginKeys = None
+        self._OriginRule = None
+        self._RejectedSqlCount = None
+        self._CurrentConcurrency = None
+        self._MaxConcurrency = None
+        self._CreateTime = None
+        self._CurrentTime = None
+        self._ExpireTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SqlType(self):
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def OriginKeys(self):
+        return self._OriginKeys
+
+    @OriginKeys.setter
+    def OriginKeys(self, OriginKeys):
+        self._OriginKeys = OriginKeys
+
+    @property
+    def OriginRule(self):
+        return self._OriginRule
+
+    @OriginRule.setter
+    def OriginRule(self, OriginRule):
+        self._OriginRule = OriginRule
+
+    @property
+    def RejectedSqlCount(self):
+        return self._RejectedSqlCount
+
+    @RejectedSqlCount.setter
+    def RejectedSqlCount(self, RejectedSqlCount):
+        self._RejectedSqlCount = RejectedSqlCount
+
+    @property
+    def CurrentConcurrency(self):
+        return self._CurrentConcurrency
+
+    @CurrentConcurrency.setter
+    def CurrentConcurrency(self, CurrentConcurrency):
+        self._CurrentConcurrency = CurrentConcurrency
+
+    @property
+    def MaxConcurrency(self):
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CurrentTime(self):
+        return self._CurrentTime
+
+    @CurrentTime.setter
+    def CurrentTime(self, CurrentTime):
+        self._CurrentTime = CurrentTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Status = params.get("Status")
-        self.SqlType = params.get("SqlType")
-        self.OriginKeys = params.get("OriginKeys")
-        self.OriginRule = params.get("OriginRule")
-        self.RejectedSqlCount = params.get("RejectedSqlCount")
-        self.CurrentConcurrency = params.get("CurrentConcurrency")
-        self.MaxConcurrency = params.get("MaxConcurrency")
-        self.CreateTime = params.get("CreateTime")
-        self.CurrentTime = params.get("CurrentTime")
-        self.ExpireTime = params.get("ExpireTime")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._SqlType = params.get("SqlType")
+        self._OriginKeys = params.get("OriginKeys")
+        self._OriginRule = params.get("OriginRule")
+        self._RejectedSqlCount = params.get("RejectedSqlCount")
+        self._CurrentConcurrency = params.get("CurrentConcurrency")
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        self._CreateTime = params.get("CreateTime")
+        self._CurrentTime = params.get("CurrentTime")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4434,18 +8794,27 @@ class SchemaItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Schema: 数据库名称
+        :param _Schema: 数据库名称
         :type Schema: str
         """
-        self.Schema = None
+        self._Schema = None
+
+    @property
+    def Schema(self):
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
 
 
     def _deserialize(self, params):
-        self.Schema = params.get("Schema")
+        self._Schema = params.get("Schema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4458,47 +8827,112 @@ class SchemaSpaceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableSchema: 库名。
+        :param _TableSchema: 库名。
         :type TableSchema: str
-        :param DataLength: 数据空间（MB）。
+        :param _DataLength: 数据空间（MB）。
         :type DataLength: float
-        :param IndexLength: 索引空间（MB）。
+        :param _IndexLength: 索引空间（MB）。
         :type IndexLength: float
-        :param DataFree: 碎片空间（MB）。
+        :param _DataFree: 碎片空间（MB）。
         :type DataFree: float
-        :param TotalLength: 总使用空间（MB）。
+        :param _TotalLength: 总使用空间（MB）。
         :type TotalLength: float
-        :param FragRatio: 碎片率（%）。
+        :param _FragRatio: 碎片率（%）。
         :type FragRatio: float
-        :param TableRows: 行数。
+        :param _TableRows: 行数。
         :type TableRows: int
-        :param PhysicalFileSize: 库中所有表对应的独立物理文件大小加和（MB）。
+        :param _PhysicalFileSize: 库中所有表对应的独立物理文件大小加和（MB）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalFileSize: float
         """
-        self.TableSchema = None
-        self.DataLength = None
-        self.IndexLength = None
-        self.DataFree = None
-        self.TotalLength = None
-        self.FragRatio = None
-        self.TableRows = None
-        self.PhysicalFileSize = None
+        self._TableSchema = None
+        self._DataLength = None
+        self._IndexLength = None
+        self._DataFree = None
+        self._TotalLength = None
+        self._FragRatio = None
+        self._TableRows = None
+        self._PhysicalFileSize = None
+
+    @property
+    def TableSchema(self):
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def DataLength(self):
+        return self._DataLength
+
+    @DataLength.setter
+    def DataLength(self, DataLength):
+        self._DataLength = DataLength
+
+    @property
+    def IndexLength(self):
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
+    @property
+    def DataFree(self):
+        return self._DataFree
+
+    @DataFree.setter
+    def DataFree(self, DataFree):
+        self._DataFree = DataFree
+
+    @property
+    def TotalLength(self):
+        return self._TotalLength
+
+    @TotalLength.setter
+    def TotalLength(self, TotalLength):
+        self._TotalLength = TotalLength
+
+    @property
+    def FragRatio(self):
+        return self._FragRatio
+
+    @FragRatio.setter
+    def FragRatio(self, FragRatio):
+        self._FragRatio = FragRatio
+
+    @property
+    def TableRows(self):
+        return self._TableRows
+
+    @TableRows.setter
+    def TableRows(self, TableRows):
+        self._TableRows = TableRows
+
+    @property
+    def PhysicalFileSize(self):
+        return self._PhysicalFileSize
+
+    @PhysicalFileSize.setter
+    def PhysicalFileSize(self, PhysicalFileSize):
+        self._PhysicalFileSize = PhysicalFileSize
 
 
     def _deserialize(self, params):
-        self.TableSchema = params.get("TableSchema")
-        self.DataLength = params.get("DataLength")
-        self.IndexLength = params.get("IndexLength")
-        self.DataFree = params.get("DataFree")
-        self.TotalLength = params.get("TotalLength")
-        self.FragRatio = params.get("FragRatio")
-        self.TableRows = params.get("TableRows")
-        self.PhysicalFileSize = params.get("PhysicalFileSize")
+        self._TableSchema = params.get("TableSchema")
+        self._DataLength = params.get("DataLength")
+        self._IndexLength = params.get("IndexLength")
+        self._DataFree = params.get("DataFree")
+        self._TotalLength = params.get("TotalLength")
+        self._FragRatio = params.get("FragRatio")
+        self._TableRows = params.get("TableRows")
+        self._PhysicalFileSize = params.get("PhysicalFileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4511,24 +8945,41 @@ class SchemaSpaceTimeSeries(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableSchema: 库名
+        :param _TableSchema: 库名
         :type TableSchema: str
-        :param SeriesData: 单位时间间隔内的空间指标数据。
+        :param _SeriesData: 单位时间间隔内的空间指标数据。
         :type SeriesData: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
         """
-        self.TableSchema = None
-        self.SeriesData = None
+        self._TableSchema = None
+        self._SeriesData = None
+
+    @property
+    def TableSchema(self):
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def SeriesData(self):
+        return self._SeriesData
+
+    @SeriesData.setter
+    def SeriesData(self, SeriesData):
+        self._SeriesData = SeriesData
 
 
     def _deserialize(self, params):
-        self.TableSchema = params.get("TableSchema")
+        self._TableSchema = params.get("TableSchema")
         if params.get("SeriesData") is not None:
-            self.SeriesData = MonitorMetricSeriesData()
-            self.SeriesData._deserialize(params.get("SeriesData"))
+            self._SeriesData = MonitorMetricSeriesData()
+            self._SeriesData._deserialize(params.get("SeriesData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4541,36 +8992,69 @@ class ScoreDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IssueType: 扣分项分类，取值包括：可用性、可维护性、性能及可靠性。
+        :param _IssueType: 扣分项分类，取值包括：可用性、可维护性、性能及可靠性。
         :type IssueType: str
-        :param ScoreLost: 扣分总分。
+        :param _ScoreLost: 扣分总分。
         :type ScoreLost: int
-        :param ScoreLostMax: 扣分总分上限。
+        :param _ScoreLostMax: 扣分总分上限。
         :type ScoreLostMax: int
-        :param Items: 扣分项列表。
+        :param _Items: 扣分项列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ScoreItem
         """
-        self.IssueType = None
-        self.ScoreLost = None
-        self.ScoreLostMax = None
-        self.Items = None
+        self._IssueType = None
+        self._ScoreLost = None
+        self._ScoreLostMax = None
+        self._Items = None
+
+    @property
+    def IssueType(self):
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def ScoreLost(self):
+        return self._ScoreLost
+
+    @ScoreLost.setter
+    def ScoreLost(self, ScoreLost):
+        self._ScoreLost = ScoreLost
+
+    @property
+    def ScoreLostMax(self):
+        return self._ScoreLostMax
+
+    @ScoreLostMax.setter
+    def ScoreLostMax(self, ScoreLostMax):
+        self._ScoreLostMax = ScoreLostMax
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
 
 
     def _deserialize(self, params):
-        self.IssueType = params.get("IssueType")
-        self.ScoreLost = params.get("ScoreLost")
-        self.ScoreLostMax = params.get("ScoreLostMax")
+        self._IssueType = params.get("IssueType")
+        self._ScoreLost = params.get("ScoreLost")
+        self._ScoreLostMax = params.get("ScoreLostMax")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = ScoreItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4583,34 +9067,75 @@ class ScoreItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiagItem: 异常诊断项名称。
+        :param _DiagItem: 异常诊断项名称。
         :type DiagItem: str
-        :param IssueType: 诊断项分类，取值包括：可用性、可维护性、性能及可靠性。
+        :param _IssueType: 诊断项分类，取值包括：可用性、可维护性、性能及可靠性。
         :type IssueType: str
-        :param TopSeverity: 健康等级，取值包括：信息、提示、告警、严重、致命。
+        :param _TopSeverity: 健康等级，取值包括：信息、提示、告警、严重、致命。
         :type TopSeverity: str
-        :param Count: 该异常诊断项出现次数。
+        :param _Count: 该异常诊断项出现次数。
         :type Count: int
-        :param ScoreLost: 扣分分数。
+        :param _ScoreLost: 扣分分数。
         :type ScoreLost: int
         """
-        self.DiagItem = None
-        self.IssueType = None
-        self.TopSeverity = None
-        self.Count = None
-        self.ScoreLost = None
+        self._DiagItem = None
+        self._IssueType = None
+        self._TopSeverity = None
+        self._Count = None
+        self._ScoreLost = None
+
+    @property
+    def DiagItem(self):
+        return self._DiagItem
+
+    @DiagItem.setter
+    def DiagItem(self, DiagItem):
+        self._DiagItem = DiagItem
+
+    @property
+    def IssueType(self):
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def TopSeverity(self):
+        return self._TopSeverity
+
+    @TopSeverity.setter
+    def TopSeverity(self, TopSeverity):
+        self._TopSeverity = TopSeverity
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def ScoreLost(self):
+        return self._ScoreLost
+
+    @ScoreLost.setter
+    def ScoreLost(self, ScoreLost):
+        self._ScoreLost = ScoreLost
 
 
     def _deserialize(self, params):
-        self.DiagItem = params.get("DiagItem")
-        self.IssueType = params.get("IssueType")
-        self.TopSeverity = params.get("TopSeverity")
-        self.Count = params.get("Count")
-        self.ScoreLost = params.get("ScoreLost")
+        self._DiagItem = params.get("DiagItem")
+        self._IssueType = params.get("IssueType")
+        self._TopSeverity = params.get("TopSeverity")
+        self._Count = params.get("Count")
+        self._ScoreLost = params.get("ScoreLost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4623,60 +9148,141 @@ class SecLogExportTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 异步任务Id。
+        :param _AsyncRequestId: 异步任务Id。
         :type AsyncRequestId: int
-        :param StartTime: 任务开始时间。
+        :param _StartTime: 任务开始时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param EndTime: 任务结束时间。
+        :param _EndTime: 任务结束时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param CreateTime: 任务创建时间。
+        :param _CreateTime: 任务创建时间。
         :type CreateTime: str
-        :param Status: 任务状态。
+        :param _Status: 任务状态。
         :type Status: str
-        :param Progress: 任务执行进度。
+        :param _Progress: 任务执行进度。
         :type Progress: int
-        :param LogStartTime: 导出日志开始时间。
+        :param _LogStartTime: 导出日志开始时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogStartTime: str
-        :param LogEndTime: 导出日志结束时间。
+        :param _LogEndTime: 导出日志结束时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogEndTime: str
-        :param TotalSize: 日志文件总大小，单位KB。
+        :param _TotalSize: 日志文件总大小，单位KB。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: int
-        :param DangerLevels: 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
+        :param _DangerLevels: 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DangerLevels: list of int non-negative
         """
-        self.AsyncRequestId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.CreateTime = None
-        self.Status = None
-        self.Progress = None
-        self.LogStartTime = None
-        self.LogEndTime = None
-        self.TotalSize = None
-        self.DangerLevels = None
+        self._AsyncRequestId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CreateTime = None
+        self._Status = None
+        self._Progress = None
+        self._LogStartTime = None
+        self._LogEndTime = None
+        self._TotalSize = None
+        self._DangerLevels = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def LogStartTime(self):
+        return self._LogStartTime
+
+    @LogStartTime.setter
+    def LogStartTime(self, LogStartTime):
+        self._LogStartTime = LogStartTime
+
+    @property
+    def LogEndTime(self):
+        return self._LogEndTime
+
+    @LogEndTime.setter
+    def LogEndTime(self, LogEndTime):
+        self._LogEndTime = LogEndTime
+
+    @property
+    def TotalSize(self):
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
+    @property
+    def DangerLevels(self):
+        return self._DangerLevels
+
+    @DangerLevels.setter
+    def DangerLevels(self, DangerLevels):
+        self._DangerLevels = DangerLevels
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.CreateTime = params.get("CreateTime")
-        self.Status = params.get("Status")
-        self.Progress = params.get("Progress")
-        self.LogStartTime = params.get("LogStartTime")
-        self.LogEndTime = params.get("LogEndTime")
-        self.TotalSize = params.get("TotalSize")
-        self.DangerLevels = params.get("DangerLevels")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._LogStartTime = params.get("LogStartTime")
+        self._LogEndTime = params.get("LogEndTime")
+        self._TotalSize = params.get("TotalSize")
+        self._DangerLevels = params.get("DangerLevels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4689,26 +9295,51 @@ class SessionItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: 访问来源。
+        :param _Ip: 访问来源。
         :type Ip: str
-        :param ActiveConn: 当前访问来源活跃连接数
+        :param _ActiveConn: 当前访问来源活跃连接数
         :type ActiveConn: str
-        :param AllConn: 当前访问来源总连接数
+        :param _AllConn: 当前访问来源总连接数
         :type AllConn: int
         """
-        self.Ip = None
-        self.ActiveConn = None
-        self.AllConn = None
+        self._Ip = None
+        self._ActiveConn = None
+        self._AllConn = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def ActiveConn(self):
+        return self._ActiveConn
+
+    @ActiveConn.setter
+    def ActiveConn(self, ActiveConn):
+        self._ActiveConn = ActiveConn
+
+    @property
+    def AllConn(self):
+        return self._AllConn
+
+    @AllConn.setter
+    def AllConn(self, AllConn):
+        self._AllConn = AllConn
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.ActiveConn = params.get("ActiveConn")
-        self.AllConn = params.get("AllConn")
+        self._Ip = params.get("Ip")
+        self._ActiveConn = params.get("ActiveConn")
+        self._AllConn = params.get("AllConn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4721,26 +9352,51 @@ class SlowLogHost(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserHost: 来源地址。
+        :param _UserHost: 来源地址。
         :type UserHost: str
-        :param Ratio: 该来源地址的慢日志数目占总数目的比例，单位%。
+        :param _Ratio: 该来源地址的慢日志数目占总数目的比例，单位%。
         :type Ratio: float
-        :param Count: 该来源地址的慢日志数目。
+        :param _Count: 该来源地址的慢日志数目。
         :type Count: int
         """
-        self.UserHost = None
-        self.Ratio = None
-        self.Count = None
+        self._UserHost = None
+        self._Ratio = None
+        self._Count = None
+
+    @property
+    def UserHost(self):
+        return self._UserHost
+
+    @UserHost.setter
+    def UserHost(self, UserHost):
+        self._UserHost = UserHost
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.UserHost = params.get("UserHost")
-        self.Ratio = params.get("Ratio")
-        self.Count = params.get("Count")
+        self._UserHost = params.get("UserHost")
+        self._Ratio = params.get("Ratio")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4753,55 +9409,128 @@ class SlowLogInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamp: 慢日志开始时间
+        :param _Timestamp: 慢日志开始时间
         :type Timestamp: str
-        :param SqlText: sql语句
+        :param _SqlText: sql语句
         :type SqlText: str
-        :param Database: 数据库
+        :param _Database: 数据库
         :type Database: str
-        :param UserName: User来源
+        :param _UserName: User来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param UserHost: IP来源
+        :param _UserHost: IP来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserHost: str
-        :param QueryTime: 执行时间,单位秒
+        :param _QueryTime: 执行时间,单位秒
         :type QueryTime: int
-        :param LockTime: 锁时间,单位秒
+        :param _LockTime: 锁时间,单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type LockTime: int
-        :param RowsExamined: 扫描行数
+        :param _RowsExamined: 扫描行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowsExamined: int
-        :param RowsSent: 返回行数
+        :param _RowsSent: 返回行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowsSent: int
         """
-        self.Timestamp = None
-        self.SqlText = None
-        self.Database = None
-        self.UserName = None
-        self.UserHost = None
-        self.QueryTime = None
-        self.LockTime = None
-        self.RowsExamined = None
-        self.RowsSent = None
+        self._Timestamp = None
+        self._SqlText = None
+        self._Database = None
+        self._UserName = None
+        self._UserHost = None
+        self._QueryTime = None
+        self._LockTime = None
+        self._RowsExamined = None
+        self._RowsSent = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def SqlText(self):
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserHost(self):
+        return self._UserHost
+
+    @UserHost.setter
+    def UserHost(self, UserHost):
+        self._UserHost = UserHost
+
+    @property
+    def QueryTime(self):
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def LockTime(self):
+        return self._LockTime
+
+    @LockTime.setter
+    def LockTime(self, LockTime):
+        self._LockTime = LockTime
+
+    @property
+    def RowsExamined(self):
+        return self._RowsExamined
+
+    @RowsExamined.setter
+    def RowsExamined(self, RowsExamined):
+        self._RowsExamined = RowsExamined
+
+    @property
+    def RowsSent(self):
+        return self._RowsSent
+
+    @RowsSent.setter
+    def RowsSent(self, RowsSent):
+        self._RowsSent = RowsSent
 
 
     def _deserialize(self, params):
-        self.Timestamp = params.get("Timestamp")
-        self.SqlText = params.get("SqlText")
-        self.Database = params.get("Database")
-        self.UserName = params.get("UserName")
-        self.UserHost = params.get("UserHost")
-        self.QueryTime = params.get("QueryTime")
-        self.LockTime = params.get("LockTime")
-        self.RowsExamined = params.get("RowsExamined")
-        self.RowsSent = params.get("RowsSent")
+        self._Timestamp = params.get("Timestamp")
+        self._SqlText = params.get("SqlText")
+        self._Database = params.get("Database")
+        self._UserName = params.get("UserName")
+        self._UserHost = params.get("UserHost")
+        self._QueryTime = params.get("QueryTime")
+        self._LockTime = params.get("LockTime")
+        self._RowsExamined = params.get("RowsExamined")
+        self._RowsSent = params.get("RowsSent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4814,114 +9543,315 @@ class SlowLogTopSqlItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LockTime: sql总锁等待时间，单位秒
+        :param _LockTime: sql总锁等待时间，单位秒
         :type LockTime: float
-        :param LockTimeMax: 最大锁等待时间，单位秒
+        :param _LockTimeMax: 最大锁等待时间，单位秒
         :type LockTimeMax: float
-        :param LockTimeMin: 最小锁等待时间，单位秒
+        :param _LockTimeMin: 最小锁等待时间，单位秒
         :type LockTimeMin: float
-        :param RowsExamined: 总扫描行数
+        :param _RowsExamined: 总扫描行数
         :type RowsExamined: int
-        :param RowsExaminedMax: 最大扫描行数
+        :param _RowsExaminedMax: 最大扫描行数
         :type RowsExaminedMax: int
-        :param RowsExaminedMin: 最小扫描行数
+        :param _RowsExaminedMin: 最小扫描行数
         :type RowsExaminedMin: int
-        :param QueryTime: 总耗时，单位秒
+        :param _QueryTime: 总耗时，单位秒
         :type QueryTime: float
-        :param QueryTimeMax: 最大执行时间，单位秒
+        :param _QueryTimeMax: 最大执行时间，单位秒
         :type QueryTimeMax: float
-        :param QueryTimeMin: 最小执行时间，单位秒
+        :param _QueryTimeMin: 最小执行时间，单位秒
         :type QueryTimeMin: float
-        :param RowsSent: 总返回行数
+        :param _RowsSent: 总返回行数
         :type RowsSent: int
-        :param RowsSentMax: 最大返回行数
+        :param _RowsSentMax: 最大返回行数
         :type RowsSentMax: int
-        :param RowsSentMin: 最小返回行数
+        :param _RowsSentMin: 最小返回行数
         :type RowsSentMin: int
-        :param ExecTimes: 执行次数
+        :param _ExecTimes: 执行次数
         :type ExecTimes: int
-        :param SqlTemplate: sql模板
+        :param _SqlTemplate: sql模板
         :type SqlTemplate: str
-        :param SqlText: 带参数SQL（随机）
+        :param _SqlText: 带参数SQL（随机）
         :type SqlText: str
-        :param Schema: 数据库名
+        :param _Schema: 数据库名
         :type Schema: str
-        :param QueryTimeRatio: 总耗时占比，单位%
+        :param _QueryTimeRatio: 总耗时占比，单位%
         :type QueryTimeRatio: float
-        :param LockTimeRatio: sql总锁等待时间占比，单位%
+        :param _LockTimeRatio: sql总锁等待时间占比，单位%
         :type LockTimeRatio: float
-        :param RowsExaminedRatio: 总扫描行数占比，单位%
+        :param _RowsExaminedRatio: 总扫描行数占比，单位%
         :type RowsExaminedRatio: float
-        :param RowsSentRatio: 总返回行数占比，单位%
+        :param _RowsSentRatio: 总返回行数占比，单位%
         :type RowsSentRatio: float
-        :param QueryTimeAvg: 平均执行时间，单位秒
+        :param _QueryTimeAvg: 平均执行时间，单位秒
         :type QueryTimeAvg: float
-        :param RowsSentAvg: 平均返回行数
+        :param _RowsSentAvg: 平均返回行数
         :type RowsSentAvg: float
-        :param LockTimeAvg: 平均锁等待时间，单位秒
+        :param _LockTimeAvg: 平均锁等待时间，单位秒
         :type LockTimeAvg: float
-        :param RowsExaminedAvg: 平均扫描行数
+        :param _RowsExaminedAvg: 平均扫描行数
         :type RowsExaminedAvg: float
-        :param Md5: SQL模板的MD5值
+        :param _Md5: SQL模板的MD5值
         :type Md5: str
         """
-        self.LockTime = None
-        self.LockTimeMax = None
-        self.LockTimeMin = None
-        self.RowsExamined = None
-        self.RowsExaminedMax = None
-        self.RowsExaminedMin = None
-        self.QueryTime = None
-        self.QueryTimeMax = None
-        self.QueryTimeMin = None
-        self.RowsSent = None
-        self.RowsSentMax = None
-        self.RowsSentMin = None
-        self.ExecTimes = None
-        self.SqlTemplate = None
-        self.SqlText = None
-        self.Schema = None
-        self.QueryTimeRatio = None
-        self.LockTimeRatio = None
-        self.RowsExaminedRatio = None
-        self.RowsSentRatio = None
-        self.QueryTimeAvg = None
-        self.RowsSentAvg = None
-        self.LockTimeAvg = None
-        self.RowsExaminedAvg = None
-        self.Md5 = None
+        self._LockTime = None
+        self._LockTimeMax = None
+        self._LockTimeMin = None
+        self._RowsExamined = None
+        self._RowsExaminedMax = None
+        self._RowsExaminedMin = None
+        self._QueryTime = None
+        self._QueryTimeMax = None
+        self._QueryTimeMin = None
+        self._RowsSent = None
+        self._RowsSentMax = None
+        self._RowsSentMin = None
+        self._ExecTimes = None
+        self._SqlTemplate = None
+        self._SqlText = None
+        self._Schema = None
+        self._QueryTimeRatio = None
+        self._LockTimeRatio = None
+        self._RowsExaminedRatio = None
+        self._RowsSentRatio = None
+        self._QueryTimeAvg = None
+        self._RowsSentAvg = None
+        self._LockTimeAvg = None
+        self._RowsExaminedAvg = None
+        self._Md5 = None
+
+    @property
+    def LockTime(self):
+        return self._LockTime
+
+    @LockTime.setter
+    def LockTime(self, LockTime):
+        self._LockTime = LockTime
+
+    @property
+    def LockTimeMax(self):
+        return self._LockTimeMax
+
+    @LockTimeMax.setter
+    def LockTimeMax(self, LockTimeMax):
+        self._LockTimeMax = LockTimeMax
+
+    @property
+    def LockTimeMin(self):
+        return self._LockTimeMin
+
+    @LockTimeMin.setter
+    def LockTimeMin(self, LockTimeMin):
+        self._LockTimeMin = LockTimeMin
+
+    @property
+    def RowsExamined(self):
+        return self._RowsExamined
+
+    @RowsExamined.setter
+    def RowsExamined(self, RowsExamined):
+        self._RowsExamined = RowsExamined
+
+    @property
+    def RowsExaminedMax(self):
+        return self._RowsExaminedMax
+
+    @RowsExaminedMax.setter
+    def RowsExaminedMax(self, RowsExaminedMax):
+        self._RowsExaminedMax = RowsExaminedMax
+
+    @property
+    def RowsExaminedMin(self):
+        return self._RowsExaminedMin
+
+    @RowsExaminedMin.setter
+    def RowsExaminedMin(self, RowsExaminedMin):
+        self._RowsExaminedMin = RowsExaminedMin
+
+    @property
+    def QueryTime(self):
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def QueryTimeMax(self):
+        return self._QueryTimeMax
+
+    @QueryTimeMax.setter
+    def QueryTimeMax(self, QueryTimeMax):
+        self._QueryTimeMax = QueryTimeMax
+
+    @property
+    def QueryTimeMin(self):
+        return self._QueryTimeMin
+
+    @QueryTimeMin.setter
+    def QueryTimeMin(self, QueryTimeMin):
+        self._QueryTimeMin = QueryTimeMin
+
+    @property
+    def RowsSent(self):
+        return self._RowsSent
+
+    @RowsSent.setter
+    def RowsSent(self, RowsSent):
+        self._RowsSent = RowsSent
+
+    @property
+    def RowsSentMax(self):
+        return self._RowsSentMax
+
+    @RowsSentMax.setter
+    def RowsSentMax(self, RowsSentMax):
+        self._RowsSentMax = RowsSentMax
+
+    @property
+    def RowsSentMin(self):
+        return self._RowsSentMin
+
+    @RowsSentMin.setter
+    def RowsSentMin(self, RowsSentMin):
+        self._RowsSentMin = RowsSentMin
+
+    @property
+    def ExecTimes(self):
+        return self._ExecTimes
+
+    @ExecTimes.setter
+    def ExecTimes(self, ExecTimes):
+        self._ExecTimes = ExecTimes
+
+    @property
+    def SqlTemplate(self):
+        return self._SqlTemplate
+
+    @SqlTemplate.setter
+    def SqlTemplate(self, SqlTemplate):
+        self._SqlTemplate = SqlTemplate
+
+    @property
+    def SqlText(self):
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def Schema(self):
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def QueryTimeRatio(self):
+        return self._QueryTimeRatio
+
+    @QueryTimeRatio.setter
+    def QueryTimeRatio(self, QueryTimeRatio):
+        self._QueryTimeRatio = QueryTimeRatio
+
+    @property
+    def LockTimeRatio(self):
+        return self._LockTimeRatio
+
+    @LockTimeRatio.setter
+    def LockTimeRatio(self, LockTimeRatio):
+        self._LockTimeRatio = LockTimeRatio
+
+    @property
+    def RowsExaminedRatio(self):
+        return self._RowsExaminedRatio
+
+    @RowsExaminedRatio.setter
+    def RowsExaminedRatio(self, RowsExaminedRatio):
+        self._RowsExaminedRatio = RowsExaminedRatio
+
+    @property
+    def RowsSentRatio(self):
+        return self._RowsSentRatio
+
+    @RowsSentRatio.setter
+    def RowsSentRatio(self, RowsSentRatio):
+        self._RowsSentRatio = RowsSentRatio
+
+    @property
+    def QueryTimeAvg(self):
+        return self._QueryTimeAvg
+
+    @QueryTimeAvg.setter
+    def QueryTimeAvg(self, QueryTimeAvg):
+        self._QueryTimeAvg = QueryTimeAvg
+
+    @property
+    def RowsSentAvg(self):
+        return self._RowsSentAvg
+
+    @RowsSentAvg.setter
+    def RowsSentAvg(self, RowsSentAvg):
+        self._RowsSentAvg = RowsSentAvg
+
+    @property
+    def LockTimeAvg(self):
+        return self._LockTimeAvg
+
+    @LockTimeAvg.setter
+    def LockTimeAvg(self, LockTimeAvg):
+        self._LockTimeAvg = LockTimeAvg
+
+    @property
+    def RowsExaminedAvg(self):
+        return self._RowsExaminedAvg
+
+    @RowsExaminedAvg.setter
+    def RowsExaminedAvg(self, RowsExaminedAvg):
+        self._RowsExaminedAvg = RowsExaminedAvg
+
+    @property
+    def Md5(self):
+        return self._Md5
+
+    @Md5.setter
+    def Md5(self, Md5):
+        self._Md5 = Md5
 
 
     def _deserialize(self, params):
-        self.LockTime = params.get("LockTime")
-        self.LockTimeMax = params.get("LockTimeMax")
-        self.LockTimeMin = params.get("LockTimeMin")
-        self.RowsExamined = params.get("RowsExamined")
-        self.RowsExaminedMax = params.get("RowsExaminedMax")
-        self.RowsExaminedMin = params.get("RowsExaminedMin")
-        self.QueryTime = params.get("QueryTime")
-        self.QueryTimeMax = params.get("QueryTimeMax")
-        self.QueryTimeMin = params.get("QueryTimeMin")
-        self.RowsSent = params.get("RowsSent")
-        self.RowsSentMax = params.get("RowsSentMax")
-        self.RowsSentMin = params.get("RowsSentMin")
-        self.ExecTimes = params.get("ExecTimes")
-        self.SqlTemplate = params.get("SqlTemplate")
-        self.SqlText = params.get("SqlText")
-        self.Schema = params.get("Schema")
-        self.QueryTimeRatio = params.get("QueryTimeRatio")
-        self.LockTimeRatio = params.get("LockTimeRatio")
-        self.RowsExaminedRatio = params.get("RowsExaminedRatio")
-        self.RowsSentRatio = params.get("RowsSentRatio")
-        self.QueryTimeAvg = params.get("QueryTimeAvg")
-        self.RowsSentAvg = params.get("RowsSentAvg")
-        self.LockTimeAvg = params.get("LockTimeAvg")
-        self.RowsExaminedAvg = params.get("RowsExaminedAvg")
-        self.Md5 = params.get("Md5")
+        self._LockTime = params.get("LockTime")
+        self._LockTimeMax = params.get("LockTimeMax")
+        self._LockTimeMin = params.get("LockTimeMin")
+        self._RowsExamined = params.get("RowsExamined")
+        self._RowsExaminedMax = params.get("RowsExaminedMax")
+        self._RowsExaminedMin = params.get("RowsExaminedMin")
+        self._QueryTime = params.get("QueryTime")
+        self._QueryTimeMax = params.get("QueryTimeMax")
+        self._QueryTimeMin = params.get("QueryTimeMin")
+        self._RowsSent = params.get("RowsSent")
+        self._RowsSentMax = params.get("RowsSentMax")
+        self._RowsSentMin = params.get("RowsSentMin")
+        self._ExecTimes = params.get("ExecTimes")
+        self._SqlTemplate = params.get("SqlTemplate")
+        self._SqlText = params.get("SqlText")
+        self._Schema = params.get("Schema")
+        self._QueryTimeRatio = params.get("QueryTimeRatio")
+        self._LockTimeRatio = params.get("LockTimeRatio")
+        self._RowsExaminedRatio = params.get("RowsExaminedRatio")
+        self._RowsSentRatio = params.get("RowsSentRatio")
+        self._QueryTimeAvg = params.get("QueryTimeAvg")
+        self._RowsSentAvg = params.get("RowsSentAvg")
+        self._LockTimeAvg = params.get("LockTimeAvg")
+        self._RowsExaminedAvg = params.get("RowsExaminedAvg")
+        self._Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4934,26 +9864,51 @@ class SlowLogUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: 来源用户名。
+        :param _UserName: 来源用户名。
         :type UserName: str
-        :param Ratio: 该来源用户名的慢日志数目占总数目的比例，单位%。
+        :param _Ratio: 该来源用户名的慢日志数目占总数目的比例，单位%。
         :type Ratio: float
-        :param Count: 该来源用户名的慢日志数目。
+        :param _Count: 该来源用户名的慢日志数目。
         :type Count: int
         """
-        self.UserName = None
-        self.Ratio = None
-        self.Count = None
+        self._UserName = None
+        self._Ratio = None
+        self._Count = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.Ratio = params.get("Ratio")
-        self.Count = params.get("Count")
+        self._UserName = params.get("UserName")
+        self._Ratio = params.get("Ratio")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4966,34 +9921,75 @@ class Table(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableSchema: 库名。
+        :param _TableSchema: 库名。
         :type TableSchema: str
-        :param TableName: 表名。
+        :param _TableName: 表名。
         :type TableName: str
-        :param Engine: 库表的存储引擎。
+        :param _Engine: 库表的存储引擎。
         :type Engine: str
-        :param TableRows: 行数。
+        :param _TableRows: 行数。
         :type TableRows: int
-        :param TotalLength: 总使用空间（MB）。
+        :param _TotalLength: 总使用空间（MB）。
         :type TotalLength: float
         """
-        self.TableSchema = None
-        self.TableName = None
-        self.Engine = None
-        self.TableRows = None
-        self.TotalLength = None
+        self._TableSchema = None
+        self._TableName = None
+        self._Engine = None
+        self._TableRows = None
+        self._TotalLength = None
+
+    @property
+    def TableSchema(self):
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Engine(self):
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def TableRows(self):
+        return self._TableRows
+
+    @TableRows.setter
+    def TableRows(self, TableRows):
+        self._TableRows = TableRows
+
+    @property
+    def TotalLength(self):
+        return self._TotalLength
+
+    @TotalLength.setter
+    def TotalLength(self, TotalLength):
+        self._TotalLength = TotalLength
 
 
     def _deserialize(self, params):
-        self.TableSchema = params.get("TableSchema")
-        self.TableName = params.get("TableName")
-        self.Engine = params.get("Engine")
-        self.TableRows = params.get("TableRows")
-        self.TotalLength = params.get("TotalLength")
+        self._TableSchema = params.get("TableSchema")
+        self._TableName = params.get("TableName")
+        self._Engine = params.get("Engine")
+        self._TableRows = params.get("TableRows")
+        self._TotalLength = params.get("TotalLength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5006,54 +10002,135 @@ class TableSpaceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: 表名。
+        :param _TableName: 表名。
         :type TableName: str
-        :param TableSchema: 库名。
+        :param _TableSchema: 库名。
         :type TableSchema: str
-        :param Engine: 库表的存储引擎。
+        :param _Engine: 库表的存储引擎。
         :type Engine: str
-        :param DataLength: 数据空间（MB）。
+        :param _DataLength: 数据空间（MB）。
         :type DataLength: float
-        :param IndexLength: 索引空间（MB）。
+        :param _IndexLength: 索引空间（MB）。
         :type IndexLength: float
-        :param DataFree: 碎片空间（MB）。
+        :param _DataFree: 碎片空间（MB）。
         :type DataFree: float
-        :param TotalLength: 总使用空间（MB）。
+        :param _TotalLength: 总使用空间（MB）。
         :type TotalLength: float
-        :param FragRatio: 碎片率（%）。
+        :param _FragRatio: 碎片率（%）。
         :type FragRatio: float
-        :param TableRows: 行数。
+        :param _TableRows: 行数。
         :type TableRows: int
-        :param PhysicalFileSize: 表对应的独立物理文件大小（MB）。
+        :param _PhysicalFileSize: 表对应的独立物理文件大小（MB）。
         :type PhysicalFileSize: float
         """
-        self.TableName = None
-        self.TableSchema = None
-        self.Engine = None
-        self.DataLength = None
-        self.IndexLength = None
-        self.DataFree = None
-        self.TotalLength = None
-        self.FragRatio = None
-        self.TableRows = None
-        self.PhysicalFileSize = None
+        self._TableName = None
+        self._TableSchema = None
+        self._Engine = None
+        self._DataLength = None
+        self._IndexLength = None
+        self._DataFree = None
+        self._TotalLength = None
+        self._FragRatio = None
+        self._TableRows = None
+        self._PhysicalFileSize = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableSchema(self):
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def Engine(self):
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def DataLength(self):
+        return self._DataLength
+
+    @DataLength.setter
+    def DataLength(self, DataLength):
+        self._DataLength = DataLength
+
+    @property
+    def IndexLength(self):
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
+    @property
+    def DataFree(self):
+        return self._DataFree
+
+    @DataFree.setter
+    def DataFree(self, DataFree):
+        self._DataFree = DataFree
+
+    @property
+    def TotalLength(self):
+        return self._TotalLength
+
+    @TotalLength.setter
+    def TotalLength(self, TotalLength):
+        self._TotalLength = TotalLength
+
+    @property
+    def FragRatio(self):
+        return self._FragRatio
+
+    @FragRatio.setter
+    def FragRatio(self, FragRatio):
+        self._FragRatio = FragRatio
+
+    @property
+    def TableRows(self):
+        return self._TableRows
+
+    @TableRows.setter
+    def TableRows(self, TableRows):
+        self._TableRows = TableRows
+
+    @property
+    def PhysicalFileSize(self):
+        return self._PhysicalFileSize
+
+    @PhysicalFileSize.setter
+    def PhysicalFileSize(self, PhysicalFileSize):
+        self._PhysicalFileSize = PhysicalFileSize
 
 
     def _deserialize(self, params):
-        self.TableName = params.get("TableName")
-        self.TableSchema = params.get("TableSchema")
-        self.Engine = params.get("Engine")
-        self.DataLength = params.get("DataLength")
-        self.IndexLength = params.get("IndexLength")
-        self.DataFree = params.get("DataFree")
-        self.TotalLength = params.get("TotalLength")
-        self.FragRatio = params.get("FragRatio")
-        self.TableRows = params.get("TableRows")
-        self.PhysicalFileSize = params.get("PhysicalFileSize")
+        self._TableName = params.get("TableName")
+        self._TableSchema = params.get("TableSchema")
+        self._Engine = params.get("Engine")
+        self._DataLength = params.get("DataLength")
+        self._IndexLength = params.get("IndexLength")
+        self._DataFree = params.get("DataFree")
+        self._TotalLength = params.get("TotalLength")
+        self._FragRatio = params.get("FragRatio")
+        self._TableRows = params.get("TableRows")
+        self._PhysicalFileSize = params.get("PhysicalFileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5066,32 +10143,65 @@ class TableSpaceTimeSeries(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: 表名。
+        :param _TableName: 表名。
         :type TableName: str
-        :param TableSchema: 库名。
+        :param _TableSchema: 库名。
         :type TableSchema: str
-        :param Engine: 库表的存储引擎。
+        :param _Engine: 库表的存储引擎。
         :type Engine: str
-        :param SeriesData: 单位时间间隔内的空间指标数据。
+        :param _SeriesData: 单位时间间隔内的空间指标数据。
         :type SeriesData: :class:`tencentcloud.dbbrain.v20210527.models.MonitorFloatMetricSeriesData`
         """
-        self.TableName = None
-        self.TableSchema = None
-        self.Engine = None
-        self.SeriesData = None
+        self._TableName = None
+        self._TableSchema = None
+        self._Engine = None
+        self._SeriesData = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableSchema(self):
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def Engine(self):
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def SeriesData(self):
+        return self._SeriesData
+
+    @SeriesData.setter
+    def SeriesData(self, SeriesData):
+        self._SeriesData = SeriesData
 
 
     def _deserialize(self, params):
-        self.TableName = params.get("TableName")
-        self.TableSchema = params.get("TableSchema")
-        self.Engine = params.get("Engine")
+        self._TableName = params.get("TableName")
+        self._TableSchema = params.get("TableSchema")
+        self._Engine = params.get("Engine")
         if params.get("SeriesData") is not None:
-            self.SeriesData = MonitorFloatMetricSeriesData()
-            self.SeriesData._deserialize(params.get("SeriesData"))
+            self._SeriesData = MonitorFloatMetricSeriesData()
+            self._SeriesData._deserialize(params.get("SeriesData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5104,58 +10214,147 @@ class TaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncRequestId: 异步任务 ID。
+        :param _AsyncRequestId: 异步任务 ID。
         :type AsyncRequestId: int
-        :param InstProxyList: 当前实例所有 proxy 列表。
+        :param _InstProxyList: 当前实例所有 proxy 列表。
         :type InstProxyList: list of str
-        :param InstProxyCount: 当前实例所有 proxy 数量。
+        :param _InstProxyCount: 当前实例所有 proxy 数量。
         :type InstProxyCount: int
-        :param CreateTime: 任务创建时间。
+        :param _CreateTime: 任务创建时间。
         :type CreateTime: str
-        :param StartTime: 任务启动时间。
+        :param _StartTime: 任务启动时间。
         :type StartTime: str
-        :param TaskStatus: 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        :param _TaskStatus: 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
         :type TaskStatus: str
-        :param FinishedProxyList: 完成 kill 任务的 proxyId。
+        :param _FinishedProxyList: 完成 kill 任务的 proxyId。
         :type FinishedProxyList: list of str
-        :param FailedProxyList: kill 任务实行失败的 proxyId。
+        :param _FailedProxyList: kill 任务实行失败的 proxyId。
         :type FailedProxyList: list of str
-        :param EndTime: 任务结束时间。
+        :param _EndTime: 任务结束时间。
         :type EndTime: str
-        :param Progress: 任务执行进度。
+        :param _Progress: 任务执行进度。
         :type Progress: int
-        :param InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
         """
-        self.AsyncRequestId = None
-        self.InstProxyList = None
-        self.InstProxyCount = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.TaskStatus = None
-        self.FinishedProxyList = None
-        self.FailedProxyList = None
-        self.EndTime = None
-        self.Progress = None
-        self.InstanceId = None
+        self._AsyncRequestId = None
+        self._InstProxyList = None
+        self._InstProxyCount = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._TaskStatus = None
+        self._FinishedProxyList = None
+        self._FailedProxyList = None
+        self._EndTime = None
+        self._Progress = None
+        self._InstanceId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def InstProxyList(self):
+        return self._InstProxyList
+
+    @InstProxyList.setter
+    def InstProxyList(self, InstProxyList):
+        self._InstProxyList = InstProxyList
+
+    @property
+    def InstProxyCount(self):
+        return self._InstProxyCount
+
+    @InstProxyCount.setter
+    def InstProxyCount(self, InstProxyCount):
+        self._InstProxyCount = InstProxyCount
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def FinishedProxyList(self):
+        return self._FinishedProxyList
+
+    @FinishedProxyList.setter
+    def FinishedProxyList(self, FinishedProxyList):
+        self._FinishedProxyList = FinishedProxyList
+
+    @property
+    def FailedProxyList(self):
+        return self._FailedProxyList
+
+    @FailedProxyList.setter
+    def FailedProxyList(self, FailedProxyList):
+        self._FailedProxyList = FailedProxyList
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.InstProxyList = params.get("InstProxyList")
-        self.InstProxyCount = params.get("InstProxyCount")
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.TaskStatus = params.get("TaskStatus")
-        self.FinishedProxyList = params.get("FinishedProxyList")
-        self.FailedProxyList = params.get("FailedProxyList")
-        self.EndTime = params.get("EndTime")
-        self.Progress = params.get("Progress")
-        self.InstanceId = params.get("InstanceId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._InstProxyList = params.get("InstProxyList")
+        self._InstProxyCount = params.get("InstProxyCount")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._TaskStatus = params.get("TaskStatus")
+        self._FinishedProxyList = params.get("FinishedProxyList")
+        self._FailedProxyList = params.get("FailedProxyList")
+        self._EndTime = params.get("EndTime")
+        self._Progress = params.get("Progress")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5168,22 +10367,39 @@ class TimeSlice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Count: 总数
+        :param _Count: 总数
         :type Count: int
-        :param Timestamp: 统计开始时间
+        :param _Timestamp: 统计开始时间
         :type Timestamp: int
         """
-        self.Count = None
-        self.Timestamp = None
+        self._Count = None
+        self._Timestamp = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
 
 
     def _deserialize(self, params):
-        self.Count = params.get("Count")
-        self.Timestamp = params.get("Timestamp")
+        self._Count = params.get("Count")
+        self._Timestamp = params.get("Timestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5196,40 +10412,81 @@ class UserProfile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProfileId: 配置的id。
+        :param _ProfileId: 配置的id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileId: str
-        :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+        :param _ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileType: str
-        :param ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
+        :param _ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileLevel: str
-        :param ProfileName: 配置名称。
+        :param _ProfileName: 配置名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileName: str
-        :param ProfileInfo: 配置详情。
+        :param _ProfileInfo: 配置详情。
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
         """
-        self.ProfileId = None
-        self.ProfileType = None
-        self.ProfileLevel = None
-        self.ProfileName = None
-        self.ProfileInfo = None
+        self._ProfileId = None
+        self._ProfileType = None
+        self._ProfileLevel = None
+        self._ProfileName = None
+        self._ProfileInfo = None
+
+    @property
+    def ProfileId(self):
+        return self._ProfileId
+
+    @ProfileId.setter
+    def ProfileId(self, ProfileId):
+        self._ProfileId = ProfileId
+
+    @property
+    def ProfileType(self):
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def ProfileLevel(self):
+        return self._ProfileLevel
+
+    @ProfileLevel.setter
+    def ProfileLevel(self, ProfileLevel):
+        self._ProfileLevel = ProfileLevel
+
+    @property
+    def ProfileName(self):
+        return self._ProfileName
+
+    @ProfileName.setter
+    def ProfileName(self, ProfileName):
+        self._ProfileName = ProfileName
+
+    @property
+    def ProfileInfo(self):
+        return self._ProfileInfo
+
+    @ProfileInfo.setter
+    def ProfileInfo(self, ProfileInfo):
+        self._ProfileInfo = ProfileInfo
 
 
     def _deserialize(self, params):
-        self.ProfileId = params.get("ProfileId")
-        self.ProfileType = params.get("ProfileType")
-        self.ProfileLevel = params.get("ProfileLevel")
-        self.ProfileName = params.get("ProfileName")
+        self._ProfileId = params.get("ProfileId")
+        self._ProfileType = params.get("ProfileType")
+        self._ProfileLevel = params.get("ProfileLevel")
+        self._ProfileName = params.get("ProfileName")
         if params.get("ProfileInfo") is not None:
-            self.ProfileInfo = ProfileInfo()
-            self.ProfileInfo._deserialize(params.get("ProfileInfo"))
+            self._ProfileInfo = ProfileInfo()
+            self._ProfileInfo._deserialize(params.get("ProfileInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5242,30 +10499,63 @@ class VerifyUserAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param User: 数据库账号名。
+        :param _User: 数据库账号名。
         :type User: str
-        :param Password: 数据库账号密码。
+        :param _Password: 数据库账号密码。
         :type Password: str
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
-        self.InstanceId = None
-        self.User = None
-        self.Password = None
-        self.Product = None
+        self._InstanceId = None
+        self._User = None
+        self._Password = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.User = params.get("User")
-        self.Password = params.get("Password")
-        self.Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5278,15 +10568,31 @@ class VerifyUserAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SessionToken: 会话token，有效期为5分钟。
+        :param _SessionToken: 会话token，有效期为5分钟。
         :type SessionToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SessionToken = None
-        self.RequestId = None
+        self._SessionToken = None
+        self._RequestId = None
+
+    @property
+    def SessionToken(self):
+        return self._SessionToken
+
+    @SessionToken.setter
+    def SessionToken(self, SessionToken):
+        self._SessionToken = SessionToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SessionToken = params.get("SessionToken")
-        self.RequestId = params.get("RequestId")
+        self._SessionToken = params.get("SessionToken")
+        self._RequestId = params.get("RequestId")

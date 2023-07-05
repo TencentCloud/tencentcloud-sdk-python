@@ -25,38 +25,87 @@ class AddCrowdPackInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param Name: 人群包名称
+        :param _Name: 人群包名称
         :type Name: str
-        :param FileName: 人群包文件名称,人群包文件必须为utf8编码，动态参数只能是汉字、数字、英文字母的组合，不能包含其他字符
+        :param _FileName: 人群包文件名称,人群包文件必须为utf8编码，动态参数只能是汉字、数字、英文字母的组合，不能包含其他字符
         :type FileName: str
-        :param Desc: 人群包描述
+        :param _Desc: 人群包描述
         :type Desc: str
-        :param CosUrl: 已经上传好的人群包cos地址
+        :param _CosUrl: 已经上传好的人群包cos地址
         :type CosUrl: str
-        :param PhoneNum: 人群包手机号数量
+        :param _PhoneNum: 人群包手机号数量
         :type PhoneNum: int
         """
-        self.License = None
-        self.Name = None
-        self.FileName = None
-        self.Desc = None
-        self.CosUrl = None
-        self.PhoneNum = None
+        self._License = None
+        self._Name = None
+        self._FileName = None
+        self._Desc = None
+        self._CosUrl = None
+        self._PhoneNum = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def CosUrl(self):
+        return self._CosUrl
+
+    @CosUrl.setter
+    def CosUrl(self, CosUrl):
+        self._CosUrl = CosUrl
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.Name = params.get("Name")
-        self.FileName = params.get("FileName")
-        self.Desc = params.get("Desc")
-        self.CosUrl = params.get("CosUrl")
-        self.PhoneNum = params.get("PhoneNum")
+        self._License = params.get("License")
+        self._Name = params.get("Name")
+        self._FileName = params.get("FileName")
+        self._Desc = params.get("Desc")
+        self._CosUrl = params.get("CosUrl")
+        self._PhoneNum = params.get("PhoneNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -69,20 +118,36 @@ class AddCrowdPackInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 接口返回
+        :param _Data: 接口返回
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsAddCrowdPackInfoResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsAddCrowdPackInfoResponse()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsAddCrowdPackInfoResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class AddSmsSignRequest(AbstractModel):
@@ -92,9 +157,9 @@ class AddSmsSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+        :param _SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
 0：公司（0，1，2，3）。
 1：APP（0，1，2，3，4） 。
 2：网站（0，1，2，3，5）。
@@ -103,7 +168,7 @@ class AddSmsSignRequest(AbstractModel):
 5：政府/机关事业单位/其他机构（2，3）。
 注：必须按照对应关系选择证明类型，否则会审核失败。
         :type SignType: int
-        :param DocumentType: 证明类型：
+        :param _DocumentType: 证明类型：
 0：三证合一。
 1：企业营业执照。
 2：组织机构代码证书。
@@ -113,38 +178,95 @@ class AddSmsSignRequest(AbstractModel):
 6：小程序设置页面截图（个人认证小程序）。
 7：商标注册书
         :type DocumentType: int
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
-        :param ProofImage: 资质图片url
+        :param _ProofImage: 资质图片url
         :type ProofImage: str
-        :param SignName: 签名内容
+        :param _SignName: 签名内容
         :type SignName: str
-        :param Remark: 签名备注，比如申请原因，使用场景等,可以填空
+        :param _Remark: 签名备注，比如申请原因，使用场景等,可以填空
         :type Remark: str
         """
-        self.License = None
-        self.SignType = None
-        self.DocumentType = None
-        self.International = None
-        self.ProofImage = None
-        self.SignName = None
-        self.Remark = None
+        self._License = None
+        self._SignType = None
+        self._DocumentType = None
+        self._International = None
+        self._ProofImage = None
+        self._SignName = None
+        self._Remark = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def SignType(self):
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        self._SignType = SignType
+
+    @property
+    def DocumentType(self):
+        return self._DocumentType
+
+    @DocumentType.setter
+    def DocumentType(self, DocumentType):
+        self._DocumentType = DocumentType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def ProofImage(self):
+        return self._ProofImage
+
+    @ProofImage.setter
+    def ProofImage(self, ProofImage):
+        self._ProofImage = ProofImage
+
+    @property
+    def SignName(self):
+        return self._SignName
+
+    @SignName.setter
+    def SignName(self, SignName):
+        self._SignName = SignName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.SignType = params.get("SignType")
-        self.DocumentType = params.get("DocumentType")
-        self.International = params.get("International")
-        self.ProofImage = params.get("ProofImage")
-        self.SignName = params.get("SignName")
-        self.Remark = params.get("Remark")
+        self._License = params.get("License")
+        self._SignType = params.get("SignType")
+        self._DocumentType = params.get("DocumentType")
+        self._International = params.get("International")
+        self._ProofImage = params.get("ProofImage")
+        self._SignName = params.get("SignName")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -157,20 +279,36 @@ class AddSmsSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 签名id数组
+        :param _Data: 签名id数组
         :type Data: :class:`tencentcloud.zj.v20190121.models.PaasCreateSignResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = PaasCreateSignResp()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = PaasCreateSignResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class AddSmsTemplateDataStruct(AbstractModel):
@@ -180,18 +318,27 @@ class AddSmsTemplateDataStruct(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 短信模板ID
+        :param _TemplateId: 短信模板ID
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -204,56 +351,137 @@ class AddSmsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param SignID: 短信签名，创建签名时返回
+        :param _SignID: 短信签名，创建签名时返回
         :type SignID: int
-        :param TemplateName: 模板名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示
+        :param _TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示
         :type TemplateContent: str
-        :param SmsType: 短信类型：{0:普通短信，1:营销短信}
+        :param _SmsType: 短信类型：{0:普通短信，1:营销短信}
         :type SmsType: int
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
-        :param Remark: 短信模板标签
+        :param _Remark: 短信模板标签
         :type Remark: str
-        :param Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动
+        :param _Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动
         :type Urls: list of str
-        :param CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
+        :param _CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
         :type CommonParams: list of int
-        :param UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
+        :param _UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
         :type UrlParams: list of int
         """
-        self.License = None
-        self.SignID = None
-        self.TemplateName = None
-        self.TemplateContent = None
-        self.SmsType = None
-        self.International = None
-        self.Remark = None
-        self.Urls = None
-        self.CommonParams = None
-        self.UrlParams = None
+        self._License = None
+        self._SignID = None
+        self._TemplateName = None
+        self._TemplateContent = None
+        self._SmsType = None
+        self._International = None
+        self._Remark = None
+        self._Urls = None
+        self._CommonParams = None
+        self._UrlParams = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def SignID(self):
+        return self._SignID
+
+    @SignID.setter
+    def SignID(self, SignID):
+        self._SignID = SignID
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def CommonParams(self):
+        return self._CommonParams
+
+    @CommonParams.setter
+    def CommonParams(self, CommonParams):
+        self._CommonParams = CommonParams
+
+    @property
+    def UrlParams(self):
+        return self._UrlParams
+
+    @UrlParams.setter
+    def UrlParams(self, UrlParams):
+        self._UrlParams = UrlParams
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.SignID = params.get("SignID")
-        self.TemplateName = params.get("TemplateName")
-        self.TemplateContent = params.get("TemplateContent")
-        self.SmsType = params.get("SmsType")
-        self.International = params.get("International")
-        self.Remark = params.get("Remark")
-        self.Urls = params.get("Urls")
-        self.CommonParams = params.get("CommonParams")
-        self.UrlParams = params.get("UrlParams")
+        self._License = params.get("License")
+        self._SignID = params.get("SignID")
+        self._TemplateName = params.get("TemplateName")
+        self._TemplateContent = params.get("TemplateContent")
+        self._SmsType = params.get("SmsType")
+        self._International = params.get("International")
+        self._Remark = params.get("Remark")
+        self._Urls = params.get("Urls")
+        self._CommonParams = params.get("CommonParams")
+        self._UrlParams = params.get("UrlParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -266,20 +494,36 @@ class AddSmsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 短信模板创建接口返回
+        :param _Data: 短信模板创建接口返回
         :type Data: :class:`tencentcloud.zj.v20190121.models.AddSmsTemplateDataStruct`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = AddSmsTemplateDataStruct()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = AddSmsTemplateDataStruct()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class CancelActivityData(AbstractModel):
@@ -289,18 +533,27 @@ class CancelActivityData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Message: 成功返回时的文字描述
+        :param _Message: 成功返回时的文字描述
         :type Message: str
         """
-        self.Message = None
+        self._Message = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.Message = params.get("Message")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -313,22 +566,39 @@ class CancelCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param CampaignId: 短信活动id
+        :param _CampaignId: 短信活动id
         :type CampaignId: int
         """
-        self.License = None
-        self.CampaignId = None
+        self._License = None
+        self._CampaignId = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.CampaignId = params.get("CampaignId")
+        self._License = params.get("License")
+        self._CampaignId = params.get("CampaignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -341,20 +611,36 @@ class CancelCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 处理结果
+        :param _Data: 处理结果
         :type Data: :class:`tencentcloud.zj.v20190121.models.CancelActivityData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CancelActivityData()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CancelActivityData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCampaignRequest(AbstractModel):
@@ -364,47 +650,104 @@ class CreateCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param SendTime: 短信活动发送时间
+        :param _SendTime: 短信活动发送时间
         :type SendTime: int
-        :param Name: 短信活动名称
+        :param _Name: 短信活动名称
         :type Name: str
-        :param Strategies: 发送策略
+        :param _Strategies: 发送策略
         :type Strategies: list of PaasStrategy
-        :param TemplateId: 废弃
+        :param _TemplateId: 废弃
         :type TemplateId: int
-        :param CrowdID: 废弃
+        :param _CrowdID: 废弃
         :type CrowdID: int
-        :param SmsType: 活动类型(0-短信,1-超短,不填默认为超短)
+        :param _SmsType: 活动类型(0-短信,1-超短,不填默认为超短)
         :type SmsType: int
         """
-        self.License = None
-        self.SendTime = None
-        self.Name = None
-        self.Strategies = None
-        self.TemplateId = None
-        self.CrowdID = None
-        self.SmsType = None
+        self._License = None
+        self._SendTime = None
+        self._Name = None
+        self._Strategies = None
+        self._TemplateId = None
+        self._CrowdID = None
+        self._SmsType = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def SendTime(self):
+        return self._SendTime
+
+    @SendTime.setter
+    def SendTime(self, SendTime):
+        self._SendTime = SendTime
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Strategies(self):
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def CrowdID(self):
+        return self._CrowdID
+
+    @CrowdID.setter
+    def CrowdID(self, CrowdID):
+        self._CrowdID = CrowdID
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.SendTime = params.get("SendTime")
-        self.Name = params.get("Name")
+        self._License = params.get("License")
+        self._SendTime = params.get("SendTime")
+        self._Name = params.get("Name")
         if params.get("Strategies") is not None:
-            self.Strategies = []
+            self._Strategies = []
             for item in params.get("Strategies"):
                 obj = PaasStrategy()
                 obj._deserialize(item)
-                self.Strategies.append(obj)
-        self.TemplateId = params.get("TemplateId")
-        self.CrowdID = params.get("CrowdID")
-        self.SmsType = params.get("SmsType")
+                self._Strategies.append(obj)
+        self._TemplateId = params.get("TemplateId")
+        self._CrowdID = params.get("CrowdID")
+        self._SmsType = params.get("SmsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -417,20 +760,36 @@ class CreateCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 活动信息
+        :param _Data: 活动信息
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsCreateCampaignResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsCreateCampaignResponse()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsCreateCampaignResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateMmsInstanceItem(AbstractModel):
@@ -440,22 +799,39 @@ class CreateMmsInstanceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ContentType: 素材类型：1-文本 2-图片 3-视频 4-音频
+        :param _ContentType: 素材类型：1-文本 2-图片 3-视频 4-音频
         :type ContentType: int
-        :param Content: 素材内容：如果素材是文本类型，直接填写文本内容，否则填写素材文件上传到cos后的url地址
+        :param _Content: 素材内容：如果素材是文本类型，直接填写文本内容，否则填写素材文件上传到cos后的url地址
         :type Content: str
         """
-        self.ContentType = None
-        self.Content = None
+        self._ContentType = None
+        self._Content = None
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.ContentType = params.get("ContentType")
-        self.Content = params.get("Content")
+        self._ContentType = params.get("ContentType")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -468,55 +844,128 @@ class CreateMmsInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param InstanceName: 样例名称
+        :param _InstanceName: 样例名称
         :type InstanceName: str
-        :param Title: 标题
+        :param _Title: 标题
         :type Title: str
-        :param Sign: 签名
+        :param _Sign: 签名
         :type Sign: str
-        :param Contents: 素材内容
+        :param _Contents: 素材内容
         :type Contents: list of CreateMmsInstanceItem
-        :param Urls: 样例中链接动态变量对应的链接，和占位符顺序一致
+        :param _Urls: 样例中链接动态变量对应的链接，和占位符顺序一致
         :type Urls: list of str
-        :param PhoneType: 机型列表
+        :param _PhoneType: 机型列表
         :type PhoneType: list of int non-negative
-        :param CommonParams: 发送超短活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
+        :param _CommonParams: 发送超短活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
         :type CommonParams: list of int non-negative
-        :param UrlParams: 发送超短活动时用于展示短连接模板占位符序号,仅用作超短活动
+        :param _UrlParams: 发送超短活动时用于展示短连接模板占位符序号,仅用作超短活动
         :type UrlParams: list of int non-negative
         """
-        self.License = None
-        self.InstanceName = None
-        self.Title = None
-        self.Sign = None
-        self.Contents = None
-        self.Urls = None
-        self.PhoneType = None
-        self.CommonParams = None
-        self.UrlParams = None
+        self._License = None
+        self._InstanceName = None
+        self._Title = None
+        self._Sign = None
+        self._Contents = None
+        self._Urls = None
+        self._PhoneType = None
+        self._CommonParams = None
+        self._UrlParams = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
+    def Contents(self):
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def PhoneType(self):
+        return self._PhoneType
+
+    @PhoneType.setter
+    def PhoneType(self, PhoneType):
+        self._PhoneType = PhoneType
+
+    @property
+    def CommonParams(self):
+        return self._CommonParams
+
+    @CommonParams.setter
+    def CommonParams(self, CommonParams):
+        self._CommonParams = CommonParams
+
+    @property
+    def UrlParams(self):
+        return self._UrlParams
+
+    @UrlParams.setter
+    def UrlParams(self, UrlParams):
+        self._UrlParams = UrlParams
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.InstanceName = params.get("InstanceName")
-        self.Title = params.get("Title")
-        self.Sign = params.get("Sign")
+        self._License = params.get("License")
+        self._InstanceName = params.get("InstanceName")
+        self._Title = params.get("Title")
+        self._Sign = params.get("Sign")
         if params.get("Contents") is not None:
-            self.Contents = []
+            self._Contents = []
             for item in params.get("Contents"):
                 obj = CreateMmsInstanceItem()
                 obj._deserialize(item)
-                self.Contents.append(obj)
-        self.Urls = params.get("Urls")
-        self.PhoneType = params.get("PhoneType")
-        self.CommonParams = params.get("CommonParams")
-        self.UrlParams = params.get("UrlParams")
+                self._Contents.append(obj)
+        self._Urls = params.get("Urls")
+        self._PhoneType = params.get("PhoneType")
+        self._CommonParams = params.get("CommonParams")
+        self._UrlParams = params.get("UrlParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -529,26 +978,51 @@ class CreateMmsInstanceResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReturnCode: 返回码：0-成功 其它-失败
+        :param _ReturnCode: 返回码：0-成功 其它-失败
         :type ReturnCode: int
-        :param ReturnMsg: 返回信息
+        :param _ReturnMsg: 返回信息
         :type ReturnMsg: str
-        :param InstanceId: 样例id
+        :param _InstanceId: 样例id
         :type InstanceId: int
         """
-        self.ReturnCode = None
-        self.ReturnMsg = None
-        self.InstanceId = None
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._InstanceId = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.ReturnCode = params.get("ReturnCode")
-        self.ReturnMsg = params.get("ReturnMsg")
-        self.InstanceId = params.get("InstanceId")
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -561,20 +1035,36 @@ class CreateMmsInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 创建样例返回信息
+        :param _Data: 创建样例返回信息
         :type Data: :class:`tencentcloud.zj.v20190121.models.CreateMmsInstanceResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CreateMmsInstanceResp()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CreateMmsInstanceResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DelCrowdPackRequest(AbstractModel):
@@ -584,22 +1074,39 @@ class DelCrowdPackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param ID: 人群包id
+        :param _ID: 人群包id
         :type ID: int
         """
-        self.License = None
-        self.ID = None
+        self._License = None
+        self._ID = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.ID = params.get("ID")
+        self._License = params.get("License")
+        self._ID = params.get("ID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -612,20 +1119,36 @@ class DelCrowdPackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 接口返回
+        :param _Data: 接口返回
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsSuccessResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsSuccessResponse()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsSuccessResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DelMmsInstanceData(AbstractModel):
@@ -635,18 +1158,27 @@ class DelMmsInstanceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 样例id
+        :param _InstanceId: 样例id
         :type InstanceId: int
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -659,22 +1191,39 @@ class DelTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param TemplateID: 短信模板ID
+        :param _TemplateID: 短信模板ID
         :type TemplateID: int
         """
-        self.License = None
-        self.TemplateID = None
+        self._License = None
+        self._TemplateID = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.TemplateID = params.get("TemplateID")
+        self._License = params.get("License")
+        self._TemplateID = params.get("TemplateID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -687,20 +1236,36 @@ class DelTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 接口返回
+        :param _Data: 接口返回
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsSuccessResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsSuccessResponse()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsSuccessResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteMmsInstanceRequest(AbstractModel):
@@ -710,22 +1275,39 @@ class DeleteMmsInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param InstanceId: 超级短信样例id
+        :param _InstanceId: 超级短信样例id
         :type InstanceId: int
         """
-        self.License = None
-        self.InstanceId = None
+        self._License = None
+        self._InstanceId = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.InstanceId = params.get("InstanceId")
+        self._License = params.get("License")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -738,20 +1320,36 @@ class DeleteMmsInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 删除信息返回
+        :param _Data: 删除信息返回
         :type Data: :class:`tencentcloud.zj.v20190121.models.DelMmsInstanceData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = DelMmsInstanceData()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = DelMmsInstanceData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMmsInstanceInfoRequest(AbstractModel):
@@ -761,22 +1359,39 @@ class DescribeMmsInstanceInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param InstanceId: 彩信实例id
+        :param _InstanceId: 彩信实例id
         :type InstanceId: int
         """
-        self.License = None
-        self.InstanceId = None
+        self._License = None
+        self._InstanceId = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.InstanceId = params.get("InstanceId")
+        self._License = params.get("License")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -789,20 +1404,36 @@ class DescribeMmsInstanceInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 彩信实例信息
+        :param _Data: 彩信实例信息
         :type Data: :class:`tencentcloud.zj.v20190121.models.MmsInstanceInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = MmsInstanceInfo()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = MmsInstanceInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMmsInstanceListRequest(AbstractModel):
@@ -812,34 +1443,75 @@ class DescribeMmsInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 返回数量
+        :param _Limit: 返回数量
         :type Limit: int
-        :param AppSubId: 业务代码
+        :param _AppSubId: 业务代码
         :type AppSubId: str
-        :param Title: 实例标题
+        :param _Title: 实例标题
         :type Title: str
         """
-        self.License = None
-        self.Offset = None
-        self.Limit = None
-        self.AppSubId = None
-        self.Title = None
+        self._License = None
+        self._Offset = None
+        self._Limit = None
+        self._AppSubId = None
+        self._Title = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def AppSubId(self):
+        return self._AppSubId
+
+    @AppSubId.setter
+    def AppSubId(self, AppSubId):
+        self._AppSubId = AppSubId
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.AppSubId = params.get("AppSubId")
-        self.Title = params.get("Title")
+        self._License = params.get("License")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._AppSubId = params.get("AppSubId")
+        self._Title = params.get("Title")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -852,20 +1524,36 @@ class DescribeMmsInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 彩信实例信息列表返回
+        :param _Data: 彩信实例信息列表返回
         :type Data: :class:`tencentcloud.zj.v20190121.models.MmsInstanceInfoList`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = MmsInstanceInfoList()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = MmsInstanceInfoList()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmsCampaignStatisticsRequest(AbstractModel):
@@ -875,22 +1563,39 @@ class DescribeSmsCampaignStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CampaignId: 活动id
+        :param _CampaignId: 活动id
         :type CampaignId: int
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
         """
-        self.CampaignId = None
-        self.License = None
+        self._CampaignId = None
+        self._License = None
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
 
 
     def _deserialize(self, params):
-        self.CampaignId = params.get("CampaignId")
-        self.License = params.get("License")
+        self._CampaignId = params.get("CampaignId")
+        self._License = params.get("License")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -903,20 +1608,36 @@ class DescribeSmsCampaignStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 响应数据
+        :param _Data: 响应数据
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsCampaignStatisticsData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsCampaignStatisticsData()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsCampaignStatisticsData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmsSignListDataStruct(AbstractModel):
@@ -926,42 +1647,91 @@ class DescribeSmsSignListDataStruct(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: 签名Id
+        :param _SignId: 签名Id
         :type SignId: int
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
-        :param StatusCode: 申请签名状态。其中：
+        :param _StatusCode: 申请签名状态。其中：
 0：表示审核通过。
 -1：表示审核未通过或审核失败。
         :type StatusCode: int
-        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+        :param _ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
         :type ReviewReply: str
-        :param SignName: 签名名称。
+        :param _SignName: 签名名称。
         :type SignName: str
-        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
+        :param _CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
         :type CreateTime: int
         """
-        self.SignId = None
-        self.International = None
-        self.StatusCode = None
-        self.ReviewReply = None
-        self.SignName = None
-        self.CreateTime = None
+        self._SignId = None
+        self._International = None
+        self._StatusCode = None
+        self._ReviewReply = None
+        self._SignName = None
+        self._CreateTime = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def StatusCode(self):
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def ReviewReply(self):
+        return self._ReviewReply
+
+    @ReviewReply.setter
+    def ReviewReply(self, ReviewReply):
+        self._ReviewReply = ReviewReply
+
+    @property
+    def SignName(self):
+        return self._SignName
+
+    @SignName.setter
+    def SignName(self, SignName):
+        self._SignName = SignName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
-        self.International = params.get("International")
-        self.StatusCode = params.get("StatusCode")
-        self.ReviewReply = params.get("ReviewReply")
-        self.SignName = params.get("SignName")
-        self.CreateTime = params.get("CreateTime")
+        self._SignId = params.get("SignId")
+        self._International = params.get("International")
+        self._StatusCode = params.get("StatusCode")
+        self._ReviewReply = params.get("ReviewReply")
+        self._SignName = params.get("SignName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -974,28 +1744,53 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param SignIdSet: 签名ID数组
+        :param _SignIdSet: 签名ID数组
         :type SignIdSet: list of int non-negative
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
         """
-        self.License = None
-        self.SignIdSet = None
-        self.International = None
+        self._License = None
+        self._SignIdSet = None
+        self._International = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def SignIdSet(self):
+        return self._SignIdSet
+
+    @SignIdSet.setter
+    def SignIdSet(self, SignIdSet):
+        self._SignIdSet = SignIdSet
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.SignIdSet = params.get("SignIdSet")
-        self.International = params.get("International")
+        self._License = params.get("License")
+        self._SignIdSet = params.get("SignIdSet")
+        self._International = params.get("International")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1008,23 +1803,39 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 返回数据
+        :param _Data: 返回数据
         :type Data: list of DescribeSmsSignListDataStruct
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = DescribeSmsSignListDataStruct()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmsTemplateListDataStruct(AbstractModel):
@@ -1034,42 +1845,91 @@ class DescribeSmsTemplateListDataStruct(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 模板Id
+        :param _TemplateId: 模板Id
         :type TemplateId: int
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
-        :param StatusCode: 申请签名状态。其中：
+        :param _StatusCode: 申请签名状态。其中：
 0：表示审核通过。
 -1：表示审核未通过或审核失败。
         :type StatusCode: int
-        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+        :param _ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
         :type ReviewReply: str
-        :param TemplateName: 模板名称。
+        :param _TemplateName: 模板名称。
         :type TemplateName: str
-        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
+        :param _CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
         :type CreateTime: int
         """
-        self.TemplateId = None
-        self.International = None
-        self.StatusCode = None
-        self.ReviewReply = None
-        self.TemplateName = None
-        self.CreateTime = None
+        self._TemplateId = None
+        self._International = None
+        self._StatusCode = None
+        self._ReviewReply = None
+        self._TemplateName = None
+        self._CreateTime = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def StatusCode(self):
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def ReviewReply(self):
+        return self._ReviewReply
+
+    @ReviewReply.setter
+    def ReviewReply(self, ReviewReply):
+        self._ReviewReply = ReviewReply
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.International = params.get("International")
-        self.StatusCode = params.get("StatusCode")
-        self.ReviewReply = params.get("ReviewReply")
-        self.TemplateName = params.get("TemplateName")
-        self.CreateTime = params.get("CreateTime")
+        self._TemplateId = params.get("TemplateId")
+        self._International = params.get("International")
+        self._StatusCode = params.get("StatusCode")
+        self._ReviewReply = params.get("ReviewReply")
+        self._TemplateName = params.get("TemplateName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1082,28 +1942,53 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param TemplateIdSet: 短信模板id数组
+        :param _TemplateIdSet: 短信模板id数组
         :type TemplateIdSet: list of int non-negative
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
         """
-        self.License = None
-        self.TemplateIdSet = None
-        self.International = None
+        self._License = None
+        self._TemplateIdSet = None
+        self._International = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def TemplateIdSet(self):
+        return self._TemplateIdSet
+
+    @TemplateIdSet.setter
+    def TemplateIdSet(self, TemplateIdSet):
+        self._TemplateIdSet = TemplateIdSet
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.TemplateIdSet = params.get("TemplateIdSet")
-        self.International = params.get("International")
+        self._License = params.get("License")
+        self._TemplateIdSet = params.get("TemplateIdSet")
+        self._International = params.get("International")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1116,23 +2001,39 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 返回数据信息
+        :param _Data: 返回数据信息
         :type Data: list of DescribeSmsTemplateListDataStruct
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = DescribeSmsTemplateListDataStruct()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetCrowdPackListRequest(AbstractModel):
@@ -1142,34 +2043,75 @@ class GetCrowdPackListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param Offset: 偏移量
+        :param _Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制返回数量
+        :param _Limit: 限制返回数量
         :type Limit: int
-        :param Name: 人群包名称，用于过滤人群包
+        :param _Name: 人群包名称，用于过滤人群包
         :type Name: str
-        :param Status: 人群包状态，默认-1，用于过滤人群包
+        :param _Status: 人群包状态，默认-1，用于过滤人群包
         :type Status: int
         """
-        self.License = None
-        self.Offset = None
-        self.Limit = None
-        self.Name = None
-        self.Status = None
+        self._License = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
+        self._Status = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
+        self._License = params.get("License")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1182,20 +2124,36 @@ class GetCrowdPackListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 人群包信息列表
+        :param _Data: 人群包信息列表
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsGetCrowdPackListResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsGetCrowdPackListResponse()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsGetCrowdPackListResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetCrowdUploadInfoRequest(AbstractModel):
@@ -1205,22 +2163,39 @@ class GetCrowdUploadInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param FileName: 上传文件名称
+        :param _FileName: 上传文件名称
         :type FileName: str
         """
-        self.License = None
-        self.FileName = None
+        self._License = None
+        self._FileName = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.FileName = params.get("FileName")
+        self._License = params.get("License")
+        self._FileName = params.get("FileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1233,20 +2208,36 @@ class GetCrowdUploadInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 返回信息
+        :param _Data: 返回信息
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsGetCrowdUploadInfoResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsGetCrowdUploadInfoResponse()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsGetCrowdUploadInfoResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetSmsAmountInfoRequest(AbstractModel):
@@ -1256,18 +2247,27 @@ class GetSmsAmountInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
         """
-        self.License = None
+        self._License = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
+        self._License = params.get("License")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1280,20 +2280,36 @@ class GetSmsAmountInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 短信账号额度接口
+        :param _Data: 短信账号额度接口
         :type Data: :class:`tencentcloud.zj.v20190121.models.SmsAmountDataStruct`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SmsAmountDataStruct()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SmsAmountDataStruct()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetSmsCampaignStatusRequest(AbstractModel):
@@ -1303,22 +2319,39 @@ class GetSmsCampaignStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param CampaignId: 活动ID
+        :param _CampaignId: 活动ID
         :type CampaignId: int
         """
-        self.License = None
-        self.CampaignId = None
+        self._License = None
+        self._CampaignId = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.CampaignId = params.get("CampaignId")
+        self._License = params.get("License")
+        self._CampaignId = params.get("CampaignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1331,20 +2364,36 @@ class GetSmsCampaignStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 活动状态
+        :param _Data: 活动状态
         :type Data: :class:`tencentcloud.zj.v20190121.models.PaasSmsCampaignStatusResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = PaasSmsCampaignStatusResp()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = PaasSmsCampaignStatusResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class MmsInstanceInfo(AbstractModel):
@@ -1363,76 +2412,181 @@ class MmsInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 彩信实例id
+        :param _InstanceId: 彩信实例id
         :type InstanceId: int
-        :param InstanceName: 彩信实例名称
+        :param _InstanceName: 彩信实例名称
         :type InstanceName: str
-        :param Status: 状态是否通知
+        :param _Status: 状态是否通知
         :type Status: int
-        :param StatusInfo: 实例审核状态信息
+        :param _StatusInfo: 实例审核状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusInfo: list of MmsInstanceStateInfo
-        :param AppSubId: 业务码
+        :param _AppSubId: 业务码
         :type AppSubId: str
-        :param Title: 彩信标题
+        :param _Title: 彩信标题
         :type Title: str
-        :param Sign: 签名
+        :param _Sign: 签名
         :type Sign: str
-        :param Contents: 彩信内容
+        :param _Contents: 彩信内容
         :type Contents: str
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
         :type CreatedAt: str
-        :param Urls: 样例配置的链接地址
+        :param _Urls: 样例配置的链接地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Urls: list of str
-        :param PhoneType: 机型列表
+        :param _PhoneType: 机型列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneType: list of int non-negative
-        :param CommonParams: 普通参数序号数组
+        :param _CommonParams: 普通参数序号数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type CommonParams: list of int non-negative
-        :param UrlParams: 链接参数序号数组
+        :param _UrlParams: 链接参数序号数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlParams: list of int non-negative
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.Status = None
-        self.StatusInfo = None
-        self.AppSubId = None
-        self.Title = None
-        self.Sign = None
-        self.Contents = None
-        self.CreatedAt = None
-        self.Urls = None
-        self.PhoneType = None
-        self.CommonParams = None
-        self.UrlParams = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Status = None
+        self._StatusInfo = None
+        self._AppSubId = None
+        self._Title = None
+        self._Sign = None
+        self._Contents = None
+        self._CreatedAt = None
+        self._Urls = None
+        self._PhoneType = None
+        self._CommonParams = None
+        self._UrlParams = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusInfo(self):
+        return self._StatusInfo
+
+    @StatusInfo.setter
+    def StatusInfo(self, StatusInfo):
+        self._StatusInfo = StatusInfo
+
+    @property
+    def AppSubId(self):
+        return self._AppSubId
+
+    @AppSubId.setter
+    def AppSubId(self, AppSubId):
+        self._AppSubId = AppSubId
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
+    def Contents(self):
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def PhoneType(self):
+        return self._PhoneType
+
+    @PhoneType.setter
+    def PhoneType(self, PhoneType):
+        self._PhoneType = PhoneType
+
+    @property
+    def CommonParams(self):
+        return self._CommonParams
+
+    @CommonParams.setter
+    def CommonParams(self, CommonParams):
+        self._CommonParams = CommonParams
+
+    @property
+    def UrlParams(self):
+        return self._UrlParams
+
+    @UrlParams.setter
+    def UrlParams(self, UrlParams):
+        self._UrlParams = UrlParams
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Status = params.get("Status")
         if params.get("StatusInfo") is not None:
-            self.StatusInfo = []
+            self._StatusInfo = []
             for item in params.get("StatusInfo"):
                 obj = MmsInstanceStateInfo()
                 obj._deserialize(item)
-                self.StatusInfo.append(obj)
-        self.AppSubId = params.get("AppSubId")
-        self.Title = params.get("Title")
-        self.Sign = params.get("Sign")
-        self.Contents = params.get("Contents")
-        self.CreatedAt = params.get("CreatedAt")
-        self.Urls = params.get("Urls")
-        self.PhoneType = params.get("PhoneType")
-        self.CommonParams = params.get("CommonParams")
-        self.UrlParams = params.get("UrlParams")
+                self._StatusInfo.append(obj)
+        self._AppSubId = params.get("AppSubId")
+        self._Title = params.get("Title")
+        self._Sign = params.get("Sign")
+        self._Contents = params.get("Contents")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Urls = params.get("Urls")
+        self._PhoneType = params.get("PhoneType")
+        self._CommonParams = params.get("CommonParams")
+        self._UrlParams = params.get("UrlParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1445,27 +2599,44 @@ class MmsInstanceInfoList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 总数据量
+        :param _Total: 总数据量
         :type Total: int
-        :param List: 彩信实例状态信息列表
+        :param _List: 彩信实例状态信息列表
         :type List: list of MmsInstanceInfo
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = MmsInstanceInfo()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1478,22 +2649,39 @@ class MmsInstanceStateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 运营商
+        :param _Operator: 运营商
         :type Operator: str
-        :param State: 审核状态：0未审核，1审核通过，2审核拒绝
+        :param _State: 审核状态：0未审核，1审核通过，2审核拒绝
         :type State: int
         """
-        self.Operator = None
-        self.State = None
+        self._Operator = None
+        self._State = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
-        self.Operator = params.get("Operator")
-        self.State = params.get("State")
+        self._Operator = params.get("Operator")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1506,19 +2694,28 @@ class ModifySmsTemplateDataStruct(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 短信模板id
+        :param _TemplateId: 短信模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1531,60 +2728,149 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param TemplateId: 短信模板id
+        :param _TemplateId: 短信模板id
         :type TemplateId: int
-        :param SignID: 短信签名，创建签名时返回
+        :param _SignID: 短信签名，创建签名时返回
         :type SignID: int
-        :param TemplateName: 模板名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示
+        :param _TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示
         :type TemplateContent: str
-        :param SmsType: 短信类型：{0:普通短信，1:营销短信}
+        :param _SmsType: 短信类型：{0:普通短信，1:营销短信}
         :type SmsType: int
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
-        :param Remark: 短信模板标签
+        :param _Remark: 短信模板标签
         :type Remark: str
-        :param Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动
+        :param _Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动
         :type Urls: list of str
-        :param CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号,仅用作短信活动
+        :param _CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号,仅用作短信活动
         :type CommonParams: list of int
-        :param UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
+        :param _UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
         :type UrlParams: list of int
         """
-        self.License = None
-        self.TemplateId = None
-        self.SignID = None
-        self.TemplateName = None
-        self.TemplateContent = None
-        self.SmsType = None
-        self.International = None
-        self.Remark = None
-        self.Urls = None
-        self.CommonParams = None
-        self.UrlParams = None
+        self._License = None
+        self._TemplateId = None
+        self._SignID = None
+        self._TemplateName = None
+        self._TemplateContent = None
+        self._SmsType = None
+        self._International = None
+        self._Remark = None
+        self._Urls = None
+        self._CommonParams = None
+        self._UrlParams = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def SignID(self):
+        return self._SignID
+
+    @SignID.setter
+    def SignID(self, SignID):
+        self._SignID = SignID
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def CommonParams(self):
+        return self._CommonParams
+
+    @CommonParams.setter
+    def CommonParams(self, CommonParams):
+        self._CommonParams = CommonParams
+
+    @property
+    def UrlParams(self):
+        return self._UrlParams
+
+    @UrlParams.setter
+    def UrlParams(self, UrlParams):
+        self._UrlParams = UrlParams
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.TemplateId = params.get("TemplateId")
-        self.SignID = params.get("SignID")
-        self.TemplateName = params.get("TemplateName")
-        self.TemplateContent = params.get("TemplateContent")
-        self.SmsType = params.get("SmsType")
-        self.International = params.get("International")
-        self.Remark = params.get("Remark")
-        self.Urls = params.get("Urls")
-        self.CommonParams = params.get("CommonParams")
-        self.UrlParams = params.get("UrlParams")
+        self._License = params.get("License")
+        self._TemplateId = params.get("TemplateId")
+        self._SignID = params.get("SignID")
+        self._TemplateName = params.get("TemplateName")
+        self._TemplateContent = params.get("TemplateContent")
+        self._SmsType = params.get("SmsType")
+        self._International = params.get("International")
+        self._Remark = params.get("Remark")
+        self._Urls = params.get("Urls")
+        self._CommonParams = params.get("CommonParams")
+        self._UrlParams = params.get("UrlParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1597,20 +2883,36 @@ class ModifySmsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 返回
+        :param _Data: 返回
         :type Data: :class:`tencentcloud.zj.v20190121.models.ModifySmsTemplateDataStruct`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = ModifySmsTemplateDataStruct()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = ModifySmsTemplateDataStruct()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class PaasCreateSignResp(AbstractModel):
@@ -1620,18 +2922,27 @@ class PaasCreateSignResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: 签名id
+        :param _SignId: 签名id
         :type SignId: int
         """
-        self.SignId = None
+        self._SignId = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1644,18 +2955,27 @@ class PaasSmsCampaignStatusResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 0-未发送 1-发送中 2-发送结束 3-发送取消
+        :param _Status: 0-未发送 1-发送中 2-发送结束 3-发送取消
         :type Status: int
         """
-        self.Status = None
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1668,27 +2988,44 @@ class PaasStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CrowdID: 人群包id
+        :param _CrowdID: 人群包id
         :type CrowdID: int
-        :param Items: 待选素材数组
+        :param _Items: 待选素材数组
         :type Items: list of PaasStrategyItem
         """
-        self.CrowdID = None
-        self.Items = None
+        self._CrowdID = None
+        self._Items = None
+
+    @property
+    def CrowdID(self):
+        return self._CrowdID
+
+    @CrowdID.setter
+    def CrowdID(self, CrowdID):
+        self._CrowdID = CrowdID
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
 
 
     def _deserialize(self, params):
-        self.CrowdID = params.get("CrowdID")
+        self._CrowdID = params.get("CrowdID")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = PaasStrategyItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1701,22 +3038,39 @@ class PaasStrategyItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 短信模板id或超级短信样例id
+        :param _Id: 短信模板id或超级短信样例id
         :type Id: int
-        :param ContentType: 素材类型 0-普短 1-超短
+        :param _ContentType: 素材类型 0-普短 1-超短
         :type ContentType: int
         """
-        self.Id = None
-        self.ContentType = None
+        self._Id = None
+        self._ContentType = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.ContentType = params.get("ContentType")
+        self._Id = params.get("Id")
+        self._ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1729,38 +3083,87 @@ class PushMmsContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param InstanceId: 素材样例id
+        :param _InstanceId: 素材样例id
         :type InstanceId: int
-        :param Tel: 手机号
+        :param _Tel: 手机号
         :type Tel: str
-        :param Session: 附带数据字段
+        :param _Session: 附带数据字段
         :type Session: str
-        :param DynamicParaKey: 动态参数key(即申请样例时设置的u_或p_开头的动态参数,要求序号有序)
+        :param _DynamicParaKey: 动态参数key(即申请样例时设置的u_或p_开头的动态参数,要求序号有序)
         :type DynamicParaKey: list of str
-        :param DynamicParaValue: 动态参数值,和DynamicParaKey对应
+        :param _DynamicParaValue: 动态参数值,和DynamicParaKey对应
         :type DynamicParaValue: list of str
         """
-        self.License = None
-        self.InstanceId = None
-        self.Tel = None
-        self.Session = None
-        self.DynamicParaKey = None
-        self.DynamicParaValue = None
+        self._License = None
+        self._InstanceId = None
+        self._Tel = None
+        self._Session = None
+        self._DynamicParaKey = None
+        self._DynamicParaValue = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Tel(self):
+        return self._Tel
+
+    @Tel.setter
+    def Tel(self, Tel):
+        self._Tel = Tel
+
+    @property
+    def Session(self):
+        return self._Session
+
+    @Session.setter
+    def Session(self, Session):
+        self._Session = Session
+
+    @property
+    def DynamicParaKey(self):
+        return self._DynamicParaKey
+
+    @DynamicParaKey.setter
+    def DynamicParaKey(self, DynamicParaKey):
+        self._DynamicParaKey = DynamicParaKey
+
+    @property
+    def DynamicParaValue(self):
+        return self._DynamicParaValue
+
+    @DynamicParaValue.setter
+    def DynamicParaValue(self, DynamicParaValue):
+        self._DynamicParaValue = DynamicParaValue
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.InstanceId = params.get("InstanceId")
-        self.Tel = params.get("Tel")
-        self.Session = params.get("Session")
-        self.DynamicParaKey = params.get("DynamicParaKey")
-        self.DynamicParaValue = params.get("DynamicParaValue")
+        self._License = params.get("License")
+        self._InstanceId = params.get("InstanceId")
+        self._Tel = params.get("Tel")
+        self._Session = params.get("Session")
+        self._DynamicParaKey = params.get("DynamicParaKey")
+        self._DynamicParaValue = params.get("DynamicParaValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1773,26 +3176,51 @@ class PushMmsContentResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReturnCode: 返回码：0-成功 其它-失败
+        :param _ReturnCode: 返回码：0-成功 其它-失败
         :type ReturnCode: int
-        :param ReturnMsg: 返回信息
+        :param _ReturnMsg: 返回信息
         :type ReturnMsg: str
-        :param MessageId: 消息回执id
+        :param _MessageId: 消息回执id
         :type MessageId: int
         """
-        self.ReturnCode = None
-        self.ReturnMsg = None
-        self.MessageId = None
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._MessageId = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def MessageId(self):
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
 
 
     def _deserialize(self, params):
-        self.ReturnCode = params.get("ReturnCode")
-        self.ReturnMsg = params.get("ReturnMsg")
-        self.MessageId = params.get("MessageId")
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._MessageId = params.get("MessageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1805,20 +3233,36 @@ class PushMmsContentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 推送短信返回信息
+        :param _Data: 推送短信返回信息
         :type Data: :class:`tencentcloud.zj.v20190121.models.PushMmsContentResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = PushMmsContentResp()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = PushMmsContentResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class SendSmsPaasDataStruct(AbstractModel):
@@ -1828,34 +3272,75 @@ class SendSmsPaasDataStruct(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SerialNo: 发送流水号
+        :param _SerialNo: 发送流水号
         :type SerialNo: str
-        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :param _PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumber: str
-        :param Fee: 计费条数
+        :param _Fee: 计费条数
         :type Fee: int
-        :param Code: OK为成功
+        :param _Code: OK为成功
         :type Code: str
-        :param Message: 短信请求错误码描述
+        :param _Message: 短信请求错误码描述
         :type Message: str
         """
-        self.SerialNo = None
-        self.PhoneNumber = None
-        self.Fee = None
-        self.Code = None
-        self.Message = None
+        self._SerialNo = None
+        self._PhoneNumber = None
+        self._Fee = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def SerialNo(self):
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Fee(self):
+        return self._Fee
+
+    @Fee.setter
+    def Fee(self, Fee):
+        self._Fee = Fee
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.SerialNo = params.get("SerialNo")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Fee = params.get("Fee")
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._SerialNo = params.get("SerialNo")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Fee = params.get("Fee")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1868,52 +3353,125 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param License: 商户证书
+        :param _License: 商户证书
         :type License: str
-        :param Phone: 手机号码,采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号,如:+8613800138000
+        :param _Phone: 手机号码,采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号,如:+8613800138000
         :type Phone: list of str
-        :param TemplateId: 短信模板id(推荐使用模板id发送,使用内容发送时模板id留空)
+        :param _TemplateId: 短信模板id(推荐使用模板id发送,使用内容发送时模板id留空)
         :type TemplateId: str
-        :param Params: 模板参数，若无模板参数，则设置为空。
+        :param _Params: 模板参数，若无模板参数，则设置为空。
         :type Params: list of str
-        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名。注：国内短信为必填参数。
+        :param _Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名。注：国内短信为必填参数。
         :type Sign: str
-        :param SenderId: 国际/港澳台短信 senderid，国内短信填空
+        :param _SenderId: 国际/港澳台短信 senderid，国内短信填空
         :type SenderId: str
-        :param SmsType: 短信类型：{0:普通短信，1:营销短信}，使用内容发送时必填
+        :param _SmsType: 短信类型：{0:普通短信，1:营销短信}，使用内容发送时必填
         :type SmsType: int
-        :param International: 是否国际/港澳台短信：
+        :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。使用内容发送时必填
         :type International: int
-        :param Content: 发送使用的模板内容,如果有占位符,此处也包括占位符,占位符的实际内容通过Params参数传递,使用模板id发送时此字段为空
+        :param _Content: 发送使用的模板内容,如果有占位符,此处也包括占位符,占位符的实际内容通过Params参数传递,使用模板id发送时此字段为空
         :type Content: str
         """
-        self.License = None
-        self.Phone = None
-        self.TemplateId = None
-        self.Params = None
-        self.Sign = None
-        self.SenderId = None
-        self.SmsType = None
-        self.International = None
-        self.Content = None
+        self._License = None
+        self._Phone = None
+        self._TemplateId = None
+        self._Params = None
+        self._Sign = None
+        self._SenderId = None
+        self._SmsType = None
+        self._International = None
+        self._Content = None
+
+    @property
+    def License(self):
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
+    def SenderId(self):
+        return self._SenderId
+
+    @SenderId.setter
+    def SenderId(self, SenderId):
+        self._SenderId = SenderId
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.License = params.get("License")
-        self.Phone = params.get("Phone")
-        self.TemplateId = params.get("TemplateId")
-        self.Params = params.get("Params")
-        self.Sign = params.get("Sign")
-        self.SenderId = params.get("SenderId")
-        self.SmsType = params.get("SmsType")
-        self.International = params.get("International")
-        self.Content = params.get("Content")
+        self._License = params.get("License")
+        self._Phone = params.get("Phone")
+        self._TemplateId = params.get("TemplateId")
+        self._Params = params.get("Params")
+        self._Sign = params.get("Sign")
+        self._SenderId = params.get("SenderId")
+        self._SmsType = params.get("SmsType")
+        self._International = params.get("International")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1926,23 +3484,39 @@ class SendSmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 出参数据
+        :param _Data: 出参数据
         :type Data: list of SendSmsPaasDataStruct
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = SendSmsPaasDataStruct()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SmsAddCrowdPackInfoResponse(AbstractModel):
@@ -1952,18 +3526,27 @@ class SmsAddCrowdPackInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 人群包id
+        :param _ID: 人群包id
         :type ID: int
         """
-        self.ID = None
+        self._ID = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
+        self._ID = params.get("ID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1976,46 +3559,111 @@ class SmsAmountDataStruct(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SmsCampaignAmount: 短信活动配额
+        :param _SmsCampaignAmount: 短信活动配额
         :type SmsCampaignAmount: int
-        :param SmsCampaignConsume: 短信活动消耗配额
+        :param _SmsCampaignConsume: 短信活动消耗配额
         :type SmsCampaignConsume: int
-        :param SmsSendAmount: 短信发送额度
+        :param _SmsSendAmount: 短信发送额度
         :type SmsSendAmount: int
-        :param SmsSendConsume: 短信发送消耗额度
+        :param _SmsSendConsume: 短信发送消耗额度
         :type SmsSendConsume: int
-        :param MmsCampaignAmount: 超短活动额度
+        :param _MmsCampaignAmount: 超短活动额度
         :type MmsCampaignAmount: int
-        :param MmsCampaignConsume: 超短活动消耗额度
+        :param _MmsCampaignConsume: 超短活动消耗额度
         :type MmsCampaignConsume: int
-        :param MmsSendAmount: 超短短信额度
+        :param _MmsSendAmount: 超短短信额度
         :type MmsSendAmount: int
-        :param MmsSendConsume: 超短短信消耗额度
+        :param _MmsSendConsume: 超短短信消耗额度
         :type MmsSendConsume: int
         """
-        self.SmsCampaignAmount = None
-        self.SmsCampaignConsume = None
-        self.SmsSendAmount = None
-        self.SmsSendConsume = None
-        self.MmsCampaignAmount = None
-        self.MmsCampaignConsume = None
-        self.MmsSendAmount = None
-        self.MmsSendConsume = None
+        self._SmsCampaignAmount = None
+        self._SmsCampaignConsume = None
+        self._SmsSendAmount = None
+        self._SmsSendConsume = None
+        self._MmsCampaignAmount = None
+        self._MmsCampaignConsume = None
+        self._MmsSendAmount = None
+        self._MmsSendConsume = None
+
+    @property
+    def SmsCampaignAmount(self):
+        return self._SmsCampaignAmount
+
+    @SmsCampaignAmount.setter
+    def SmsCampaignAmount(self, SmsCampaignAmount):
+        self._SmsCampaignAmount = SmsCampaignAmount
+
+    @property
+    def SmsCampaignConsume(self):
+        return self._SmsCampaignConsume
+
+    @SmsCampaignConsume.setter
+    def SmsCampaignConsume(self, SmsCampaignConsume):
+        self._SmsCampaignConsume = SmsCampaignConsume
+
+    @property
+    def SmsSendAmount(self):
+        return self._SmsSendAmount
+
+    @SmsSendAmount.setter
+    def SmsSendAmount(self, SmsSendAmount):
+        self._SmsSendAmount = SmsSendAmount
+
+    @property
+    def SmsSendConsume(self):
+        return self._SmsSendConsume
+
+    @SmsSendConsume.setter
+    def SmsSendConsume(self, SmsSendConsume):
+        self._SmsSendConsume = SmsSendConsume
+
+    @property
+    def MmsCampaignAmount(self):
+        return self._MmsCampaignAmount
+
+    @MmsCampaignAmount.setter
+    def MmsCampaignAmount(self, MmsCampaignAmount):
+        self._MmsCampaignAmount = MmsCampaignAmount
+
+    @property
+    def MmsCampaignConsume(self):
+        return self._MmsCampaignConsume
+
+    @MmsCampaignConsume.setter
+    def MmsCampaignConsume(self, MmsCampaignConsume):
+        self._MmsCampaignConsume = MmsCampaignConsume
+
+    @property
+    def MmsSendAmount(self):
+        return self._MmsSendAmount
+
+    @MmsSendAmount.setter
+    def MmsSendAmount(self, MmsSendAmount):
+        self._MmsSendAmount = MmsSendAmount
+
+    @property
+    def MmsSendConsume(self):
+        return self._MmsSendConsume
+
+    @MmsSendConsume.setter
+    def MmsSendConsume(self, MmsSendConsume):
+        self._MmsSendConsume = MmsSendConsume
 
 
     def _deserialize(self, params):
-        self.SmsCampaignAmount = params.get("SmsCampaignAmount")
-        self.SmsCampaignConsume = params.get("SmsCampaignConsume")
-        self.SmsSendAmount = params.get("SmsSendAmount")
-        self.SmsSendConsume = params.get("SmsSendConsume")
-        self.MmsCampaignAmount = params.get("MmsCampaignAmount")
-        self.MmsCampaignConsume = params.get("MmsCampaignConsume")
-        self.MmsSendAmount = params.get("MmsSendAmount")
-        self.MmsSendConsume = params.get("MmsSendConsume")
+        self._SmsCampaignAmount = params.get("SmsCampaignAmount")
+        self._SmsCampaignConsume = params.get("SmsCampaignConsume")
+        self._SmsSendAmount = params.get("SmsSendAmount")
+        self._SmsSendConsume = params.get("SmsSendConsume")
+        self._MmsCampaignAmount = params.get("MmsCampaignAmount")
+        self._MmsCampaignConsume = params.get("MmsCampaignConsume")
+        self._MmsSendAmount = params.get("MmsSendAmount")
+        self._MmsSendConsume = params.get("MmsSendConsume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2028,35 +3676,68 @@ class SmsCampaignStatisticsCrowdData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CrowdId: 人群包id
+        :param _CrowdId: 人群包id
         :type CrowdId: int
-        :param CrowdName: 人群包名称
+        :param _CrowdName: 人群包名称
         :type CrowdName: str
-        :param CrowdCount: 人群包目标触达总数
+        :param _CrowdCount: 人群包目标触达总数
         :type CrowdCount: int
-        :param TemplateList: 模板列表
+        :param _TemplateList: 模板列表
         :type TemplateList: list of SmsCampaignStatisticsTemplateData
         """
-        self.CrowdId = None
-        self.CrowdName = None
-        self.CrowdCount = None
-        self.TemplateList = None
+        self._CrowdId = None
+        self._CrowdName = None
+        self._CrowdCount = None
+        self._TemplateList = None
+
+    @property
+    def CrowdId(self):
+        return self._CrowdId
+
+    @CrowdId.setter
+    def CrowdId(self, CrowdId):
+        self._CrowdId = CrowdId
+
+    @property
+    def CrowdName(self):
+        return self._CrowdName
+
+    @CrowdName.setter
+    def CrowdName(self, CrowdName):
+        self._CrowdName = CrowdName
+
+    @property
+    def CrowdCount(self):
+        return self._CrowdCount
+
+    @CrowdCount.setter
+    def CrowdCount(self, CrowdCount):
+        self._CrowdCount = CrowdCount
+
+    @property
+    def TemplateList(self):
+        return self._TemplateList
+
+    @TemplateList.setter
+    def TemplateList(self, TemplateList):
+        self._TemplateList = TemplateList
 
 
     def _deserialize(self, params):
-        self.CrowdId = params.get("CrowdId")
-        self.CrowdName = params.get("CrowdName")
-        self.CrowdCount = params.get("CrowdCount")
+        self._CrowdId = params.get("CrowdId")
+        self._CrowdName = params.get("CrowdName")
+        self._CrowdCount = params.get("CrowdCount")
         if params.get("TemplateList") is not None:
-            self.TemplateList = []
+            self._TemplateList = []
             for item in params.get("TemplateList"):
                 obj = SmsCampaignStatisticsTemplateData()
                 obj._deserialize(item)
-                self.TemplateList.append(obj)
+                self._TemplateList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2069,27 +3750,44 @@ class SmsCampaignStatisticsData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CampaignId: 活动Id
+        :param _CampaignId: 活动Id
         :type CampaignId: int
-        :param Statistics: 统计数据
+        :param _Statistics: 统计数据
         :type Statistics: list of SmsCampaignStatisticsCrowdData
         """
-        self.CampaignId = None
-        self.Statistics = None
+        self._CampaignId = None
+        self._Statistics = None
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def Statistics(self):
+        return self._Statistics
+
+    @Statistics.setter
+    def Statistics(self, Statistics):
+        self._Statistics = Statistics
 
 
     def _deserialize(self, params):
-        self.CampaignId = params.get("CampaignId")
+        self._CampaignId = params.get("CampaignId")
         if params.get("Statistics") is not None:
-            self.Statistics = []
+            self._Statistics = []
             for item in params.get("Statistics"):
                 obj = SmsCampaignStatisticsCrowdData()
                 obj._deserialize(item)
-                self.Statistics.append(obj)
+                self._Statistics.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2102,30 +3800,63 @@ class SmsCampaignStatisticsTemplateData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 模板或样例id
+        :param _TemplateId: 模板或样例id
         :type TemplateId: str
-        :param TemplateContent: 模板内容
+        :param _TemplateContent: 模板内容
         :type TemplateContent: str
-        :param SendCount: 触达成功数
+        :param _SendCount: 触达成功数
         :type SendCount: int
-        :param ClickCount: 短链点击数
+        :param _ClickCount: 短链点击数
         :type ClickCount: int
         """
-        self.TemplateId = None
-        self.TemplateContent = None
-        self.SendCount = None
-        self.ClickCount = None
+        self._TemplateId = None
+        self._TemplateContent = None
+        self._SendCount = None
+        self._ClickCount = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
+
+    @property
+    def SendCount(self):
+        return self._SendCount
+
+    @SendCount.setter
+    def SendCount(self, SendCount):
+        self._SendCount = SendCount
+
+    @property
+    def ClickCount(self):
+        return self._ClickCount
+
+    @ClickCount.setter
+    def ClickCount(self, ClickCount):
+        self._ClickCount = ClickCount
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateContent = params.get("TemplateContent")
-        self.SendCount = params.get("SendCount")
-        self.ClickCount = params.get("ClickCount")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateContent = params.get("TemplateContent")
+        self._SendCount = params.get("SendCount")
+        self._ClickCount = params.get("ClickCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2138,18 +3869,27 @@ class SmsCreateCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CampaignId: 活动id
+        :param _CampaignId: 活动id
         :type CampaignId: int
         """
-        self.CampaignId = None
+        self._CampaignId = None
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
 
 
     def _deserialize(self, params):
-        self.CampaignId = params.get("CampaignId")
+        self._CampaignId = params.get("CampaignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2162,50 +3902,123 @@ class SmsGetCrowdPackList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreatedAt: 创建时间
+        :param _CreatedAt: 创建时间
         :type CreatedAt: str
-        :param ID: 人群包id
+        :param _ID: 人群包id
         :type ID: int
-        :param Name: 人群包名称
+        :param _Name: 人群包名称
         :type Name: str
-        :param Status: 人群包状态
+        :param _Status: 人群包状态
         :type Status: int
-        :param PhoneNum: 人群包手机号数量
+        :param _PhoneNum: 人群包手机号数量
         :type PhoneNum: int
-        :param Tag: 人群包标签信息
+        :param _Tag: 人群包标签信息
         :type Tag: str
-        :param MD5: 人群包md5
+        :param _MD5: 人群包md5
         :type MD5: str
-        :param FileName: 人群包文件名称
+        :param _FileName: 人群包文件名称
         :type FileName: str
-        :param Desc: 人群包描述
+        :param _Desc: 人群包描述
         :type Desc: str
         """
-        self.CreatedAt = None
-        self.ID = None
-        self.Name = None
-        self.Status = None
-        self.PhoneNum = None
-        self.Tag = None
-        self.MD5 = None
-        self.FileName = None
-        self.Desc = None
+        self._CreatedAt = None
+        self._ID = None
+        self._Name = None
+        self._Status = None
+        self._PhoneNum = None
+        self._Tag = None
+        self._MD5 = None
+        self._FileName = None
+        self._Desc = None
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def MD5(self):
+        return self._MD5
+
+    @MD5.setter
+    def MD5(self, MD5):
+        self._MD5 = MD5
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
 
 
     def _deserialize(self, params):
-        self.CreatedAt = params.get("CreatedAt")
-        self.ID = params.get("ID")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.PhoneNum = params.get("PhoneNum")
-        self.Tag = params.get("Tag")
-        self.MD5 = params.get("MD5")
-        self.FileName = params.get("FileName")
-        self.Desc = params.get("Desc")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._PhoneNum = params.get("PhoneNum")
+        self._Tag = params.get("Tag")
+        self._MD5 = params.get("MD5")
+        self._FileName = params.get("FileName")
+        self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2218,28 +4031,45 @@ class SmsGetCrowdPackListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 人群包总数
+        :param _Total: 人群包总数
         :type Total: int
-        :param List: 人群包返回数据列表
+        :param _List: 人群包返回数据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of SmsGetCrowdPackList
         """
-        self.Total = None
-        self.List = None
+        self._Total = None
+        self._List = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("List") is not None:
-            self.List = []
+            self._List = []
             for item in params.get("List"):
                 obj = SmsGetCrowdPackList()
                 obj._deserialize(item)
-                self.List.append(obj)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2252,36 +4082,77 @@ class SmsGetCrowdUploadInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExpiredTime: 过期时间
+        :param _ExpiredTime: 过期时间
         :type ExpiredTime: int
-        :param SessionToken: 会话token
+        :param _SessionToken: 会话token
         :type SessionToken: str
-        :param TmpSecretId: 临时密钥id
+        :param _TmpSecretId: 临时密钥id
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时密钥
+        :param _TmpSecretKey: 临时密钥
         :type TmpSecretKey: str
-        :param CosInfo: cos信息
+        :param _CosInfo: cos信息
         :type CosInfo: :class:`tencentcloud.zj.v20190121.models.UploadFansInfoCosInfo`
         """
-        self.ExpiredTime = None
-        self.SessionToken = None
-        self.TmpSecretId = None
-        self.TmpSecretKey = None
-        self.CosInfo = None
+        self._ExpiredTime = None
+        self._SessionToken = None
+        self._TmpSecretId = None
+        self._TmpSecretKey = None
+        self._CosInfo = None
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def SessionToken(self):
+        return self._SessionToken
+
+    @SessionToken.setter
+    def SessionToken(self, SessionToken):
+        self._SessionToken = SessionToken
+
+    @property
+    def TmpSecretId(self):
+        return self._TmpSecretId
+
+    @TmpSecretId.setter
+    def TmpSecretId(self, TmpSecretId):
+        self._TmpSecretId = TmpSecretId
+
+    @property
+    def TmpSecretKey(self):
+        return self._TmpSecretKey
+
+    @TmpSecretKey.setter
+    def TmpSecretKey(self, TmpSecretKey):
+        self._TmpSecretKey = TmpSecretKey
+
+    @property
+    def CosInfo(self):
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
 
 
     def _deserialize(self, params):
-        self.ExpiredTime = params.get("ExpiredTime")
-        self.SessionToken = params.get("SessionToken")
-        self.TmpSecretId = params.get("TmpSecretId")
-        self.TmpSecretKey = params.get("TmpSecretKey")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._SessionToken = params.get("SessionToken")
+        self._TmpSecretId = params.get("TmpSecretId")
+        self._TmpSecretKey = params.get("TmpSecretKey")
         if params.get("CosInfo") is not None:
-            self.CosInfo = UploadFansInfoCosInfo()
-            self.CosInfo._deserialize(params.get("CosInfo"))
+            self._CosInfo = UploadFansInfoCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2294,18 +4165,27 @@ class SmsSuccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Message: 成功返回信息
+        :param _Message: 成功返回信息
         :type Message: str
         """
-        self.Message = None
+        self._Message = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.Message = params.get("Message")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2318,26 +4198,51 @@ class UploadFansInfoCosInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Bucket: COS bucket
+        :param _Bucket: COS bucket
         :type Bucket: str
-        :param Key: COS路径
+        :param _Key: COS路径
         :type Key: str
-        :param Region: COS区域
+        :param _Region: COS区域
         :type Region: str
         """
-        self.Bucket = None
-        self.Key = None
-        self.Region = None
+        self._Bucket = None
+        self._Key = None
+        self._Region = None
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
-        self.Bucket = params.get("Bucket")
-        self.Key = params.get("Key")
-        self.Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._Key = params.get("Key")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

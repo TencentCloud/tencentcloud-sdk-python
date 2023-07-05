@@ -25,34 +25,75 @@ class AuthInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 主键
+        :param _Id: 主键
         :type Id: str
-        :param Name: 授权人名称
+        :param _Name: 授权人名称
         :type Name: str
-        :param Code: 身份证号/社会信用代码
+        :param _Code: 身份证号/社会信用代码
         :type Code: str
-        :param Type: 授权人类型
+        :param _Type: 授权人类型
         :type Type: int
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         """
-        self.Id = None
-        self.Name = None
-        self.Code = None
-        self.Type = None
-        self.CreateTime = None
+        self._Id = None
+        self._Name = None
+        self._Code = None
+        self._Type = None
+        self._CreateTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.Code = params.get("Code")
-        self.Type = params.get("Type")
-        self.CreateTime = params.get("CreateTime")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Code = params.get("Code")
+        self._Type = params.get("Type")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -65,18 +106,27 @@ class BatchDescribeOrderCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderIds: 要下载授权书的订单id
+        :param _OrderIds: 要下载授权书的订单id
         :type OrderIds: list of str
         """
-        self.OrderIds = None
+        self._OrderIds = None
+
+    @property
+    def OrderIds(self):
+        return self._OrderIds
+
+    @OrderIds.setter
+    def OrderIds(self, OrderIds):
+        self._OrderIds = OrderIds
 
 
     def _deserialize(self, params):
-        self.OrderIds = params.get("OrderIds")
+        self._OrderIds = params.get("OrderIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -89,18 +139,34 @@ class BatchDescribeOrderCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertificateUrls: 授权书的下载地址
+        :param _CertificateUrls: 授权书的下载地址
         :type CertificateUrls: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CertificateUrls = None
-        self.RequestId = None
+        self._CertificateUrls = None
+        self._RequestId = None
+
+    @property
+    def CertificateUrls(self):
+        return self._CertificateUrls
+
+    @CertificateUrls.setter
+    def CertificateUrls(self, CertificateUrls):
+        self._CertificateUrls = CertificateUrls
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CertificateUrls = params.get("CertificateUrls")
-        self.RequestId = params.get("RequestId")
+        self._CertificateUrls = params.get("CertificateUrls")
+        self._RequestId = params.get("RequestId")
 
 
 class BatchDescribeOrderImageRequest(AbstractModel):
@@ -110,18 +176,27 @@ class BatchDescribeOrderImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderIds: 要下载图片的订单id
+        :param _OrderIds: 要下载图片的订单id
         :type OrderIds: list of str
         """
-        self.OrderIds = None
+        self._OrderIds = None
+
+    @property
+    def OrderIds(self):
+        return self._OrderIds
+
+    @OrderIds.setter
+    def OrderIds(self, OrderIds):
+        self._OrderIds = OrderIds
 
 
     def _deserialize(self, params):
-        self.OrderIds = params.get("OrderIds")
+        self._OrderIds = params.get("OrderIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -134,18 +209,34 @@ class BatchDescribeOrderImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrls: 图片的下载地址
+        :param _ImageUrls: 图片的下载地址
         :type ImageUrls: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageUrls = None
-        self.RequestId = None
+        self._ImageUrls = None
+        self._RequestId = None
+
+    @property
+    def ImageUrls(self):
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ImageUrls = params.get("ImageUrls")
-        self.RequestId = params.get("RequestId")
+        self._ImageUrls = params.get("ImageUrls")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateOrderAndDownloadsRequest(AbstractModel):
@@ -155,23 +246,32 @@ class CreateOrderAndDownloadsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageInfos: ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
+        :param _ImageInfos: ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
         :type ImageInfos: list of ImageInfo
         """
-        self.ImageInfos = None
+        self._ImageInfos = None
+
+    @property
+    def ImageInfos(self):
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
 
 
     def _deserialize(self, params):
         if params.get("ImageInfos") is not None:
-            self.ImageInfos = []
+            self._ImageInfos = []
             for item in params.get("ImageInfos"):
                 obj = ImageInfo()
                 obj._deserialize(item)
-                self.ImageInfos.append(obj)
+                self._ImageInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -184,28 +284,52 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadInfos: 成功核销后可以获取图片基本信息和原图地址
+        :param _DownloadInfos: 成功核销后可以获取图片基本信息和原图地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadInfos: list of DownloadInfo
-        :param TotalCount: 可下载图片数量
+        :param _TotalCount: 可下载图片数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DownloadInfos = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DownloadInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DownloadInfos(self):
+        return self._DownloadInfos
+
+    @DownloadInfos.setter
+    def DownloadInfos(self, DownloadInfos):
+        self._DownloadInfos = DownloadInfos
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DownloadInfos") is not None:
-            self.DownloadInfos = []
+            self._DownloadInfos = []
             for item in params.get("DownloadInfos"):
                 obj = DownloadInfo()
                 obj._deserialize(item)
-                self.DownloadInfos.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DownloadInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateOrderAndPayRequest(AbstractModel):
@@ -215,26 +339,51 @@ class CreateOrderAndPayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 图片ID
+        :param _ImageId: 图片ID
         :type ImageId: int
-        :param AuthUserId: 授权人ID
+        :param _AuthUserId: 授权人ID
         :type AuthUserId: str
-        :param MarshalId: 售卖组合id
+        :param _MarshalId: 售卖组合id
         :type MarshalId: int
         """
-        self.ImageId = None
-        self.AuthUserId = None
-        self.MarshalId = None
+        self._ImageId = None
+        self._AuthUserId = None
+        self._MarshalId = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def AuthUserId(self):
+        return self._AuthUserId
+
+    @AuthUserId.setter
+    def AuthUserId(self, AuthUserId):
+        self._AuthUserId = AuthUserId
+
+    @property
+    def MarshalId(self):
+        return self._MarshalId
+
+    @MarshalId.setter
+    def MarshalId(self, MarshalId):
+        self._MarshalId = MarshalId
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.AuthUserId = params.get("AuthUserId")
-        self.MarshalId = params.get("MarshalId")
+        self._ImageId = params.get("ImageId")
+        self._AuthUserId = params.get("AuthUserId")
+        self._MarshalId = params.get("MarshalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -247,18 +396,34 @@ class CreateOrderAndPayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderId: 订单ID
+        :param _OrderId: 订单ID
         :type OrderId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.OrderId = None
-        self.RequestId = None
+        self._OrderId = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OrderId = params.get("OrderId")
-        self.RequestId = params.get("RequestId")
+        self._OrderId = params.get("OrderId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAuthUsersRequest(AbstractModel):
@@ -268,22 +433,39 @@ class DescribeAuthUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 分页大小
+        :param _Limit: 分页大小
         :type Limit: int
-        :param Offset: 页偏移量
+        :param _Offset: 页偏移量
         :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -296,32 +478,64 @@ class DescribeAuthUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Users: 授权人信息数组
+        :param _Users: 授权人信息数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of AuthInfo
-        :param TotalCount: 总记录数
+        :param _TotalCount: 总记录数
         :type TotalCount: int
-        :param OldUser: 是否是老策略用户
+        :param _OldUser: 是否是老策略用户
         :type OldUser: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Users = None
-        self.TotalCount = None
-        self.OldUser = None
-        self.RequestId = None
+        self._Users = None
+        self._TotalCount = None
+        self._OldUser = None
+        self._RequestId = None
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OldUser(self):
+        return self._OldUser
+
+    @OldUser.setter
+    def OldUser(self, OldUser):
+        self._OldUser = OldUser
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Users") is not None:
-            self.Users = []
+            self._Users = []
             for item in params.get("Users"):
                 obj = AuthInfo()
                 obj._deserialize(item)
-                self.Users.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.OldUser = params.get("OldUser")
-        self.RequestId = params.get("RequestId")
+                self._Users.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._OldUser = params.get("OldUser")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDownloadInfosRequest(AbstractModel):
@@ -331,34 +545,75 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 默认10
+        :param _Limit: 默认10
         :type Limit: int
-        :param Offset: 默认0
+        :param _Offset: 默认0
         :type Offset: int
-        :param BeginTime: 开始时间晚于指定时间
+        :param _BeginTime: 开始时间晚于指定时间
         :type BeginTime: str
-        :param EndTime: 结束时间早于指定时间
+        :param _EndTime: 结束时间早于指定时间
         :type EndTime: str
-        :param ImageIds: 无效值，过滤结果为空
+        :param _ImageIds: 无效值，过滤结果为空
         :type ImageIds: list of int
         """
-        self.Limit = None
-        self.Offset = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.ImageIds = None
+        self._Limit = None
+        self._Offset = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._ImageIds = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ImageIds(self):
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.ImageIds = params.get("ImageIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._ImageIds = params.get("ImageIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -371,28 +626,52 @@ class DescribeDownloadInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadInfos: 核销下载记录
+        :param _DownloadInfos: 核销下载记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadInfos: list of DownloadInfo
-        :param TotalCount: 总记录数量
+        :param _TotalCount: 总记录数量
         :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DownloadInfos = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DownloadInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DownloadInfos(self):
+        return self._DownloadInfos
+
+    @DownloadInfos.setter
+    def DownloadInfos(self, DownloadInfos):
+        self._DownloadInfos = DownloadInfos
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DownloadInfos") is not None:
-            self.DownloadInfos = []
+            self._DownloadInfos = []
             for item in params.get("DownloadInfos"):
                 obj = DownloadInfo()
                 obj._deserialize(item)
-                self.DownloadInfos.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DownloadInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImageRequest(AbstractModel):
@@ -402,18 +681,27 @@ class DescribeImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 图片ID
+        :param _ImageId: 图片ID
         :type ImageId: int
         """
-        self.ImageId = None
+        self._ImageId = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
+        self._ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -426,75 +714,195 @@ class DescribeImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 图片ID
+        :param _ImageId: 图片ID
         :type ImageId: int
-        :param Title: 图片标题
+        :param _Title: 图片标题
         :type Title: str
-        :param Description: 图片描述
+        :param _Description: 图片描述
         :type Description: str
-        :param PreviewUrl: 图片预览链接
+        :param _PreviewUrl: 图片预览链接
         :type PreviewUrl: str
-        :param ThumbUrl: 图片缩略图
+        :param _ThumbUrl: 图片缩略图
         :type ThumbUrl: str
-        :param Vendor: 图片供应商
+        :param _Vendor: 图片供应商
         :type Vendor: str
-        :param Marshals: 图片售卖组合信息
+        :param _Marshals: 图片售卖组合信息
         :type Marshals: list of ImageMarshal
-        :param Width: 宽
+        :param _Width: 宽
         :type Width: int
-        :param Height: 高
+        :param _Height: 高
         :type Height: int
-        :param ImageFormat: 图片格式 jpg/eps/psd/...
+        :param _ImageFormat: 图片格式 jpg/eps/psd/...
         :type ImageFormat: str
-        :param ImageSenseType: 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
+        :param _ImageSenseType: 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
         :type ImageSenseType: str
-        :param Keywords: 关键词，多关键词用空格分隔
+        :param _Keywords: 关键词，多关键词用空格分隔
         :type Keywords: str
-        :param LayeredGalleryId: 分层图库id
+        :param _LayeredGalleryId: 分层图库id
         :type LayeredGalleryId: int
-        :param Orientation: 构图方式：horizontal:横图、vertical:竖图、square:方图
+        :param _Orientation: 构图方式：horizontal:横图、vertical:竖图、square:方图
         :type Orientation: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageId = None
-        self.Title = None
-        self.Description = None
-        self.PreviewUrl = None
-        self.ThumbUrl = None
-        self.Vendor = None
-        self.Marshals = None
-        self.Width = None
-        self.Height = None
-        self.ImageFormat = None
-        self.ImageSenseType = None
-        self.Keywords = None
-        self.LayeredGalleryId = None
-        self.Orientation = None
-        self.RequestId = None
+        self._ImageId = None
+        self._Title = None
+        self._Description = None
+        self._PreviewUrl = None
+        self._ThumbUrl = None
+        self._Vendor = None
+        self._Marshals = None
+        self._Width = None
+        self._Height = None
+        self._ImageFormat = None
+        self._ImageSenseType = None
+        self._Keywords = None
+        self._LayeredGalleryId = None
+        self._Orientation = None
+        self._RequestId = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PreviewUrl(self):
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
+    @property
+    def ThumbUrl(self):
+        return self._ThumbUrl
+
+    @ThumbUrl.setter
+    def ThumbUrl(self, ThumbUrl):
+        self._ThumbUrl = ThumbUrl
+
+    @property
+    def Vendor(self):
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Marshals(self):
+        return self._Marshals
+
+    @Marshals.setter
+    def Marshals(self, Marshals):
+        self._Marshals = Marshals
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ImageFormat(self):
+        return self._ImageFormat
+
+    @ImageFormat.setter
+    def ImageFormat(self, ImageFormat):
+        self._ImageFormat = ImageFormat
+
+    @property
+    def ImageSenseType(self):
+        return self._ImageSenseType
+
+    @ImageSenseType.setter
+    def ImageSenseType(self, ImageSenseType):
+        self._ImageSenseType = ImageSenseType
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def LayeredGalleryId(self):
+        return self._LayeredGalleryId
+
+    @LayeredGalleryId.setter
+    def LayeredGalleryId(self, LayeredGalleryId):
+        self._LayeredGalleryId = LayeredGalleryId
+
+    @property
+    def Orientation(self):
+        return self._Orientation
+
+    @Orientation.setter
+    def Orientation(self, Orientation):
+        self._Orientation = Orientation
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.Title = params.get("Title")
-        self.Description = params.get("Description")
-        self.PreviewUrl = params.get("PreviewUrl")
-        self.ThumbUrl = params.get("ThumbUrl")
-        self.Vendor = params.get("Vendor")
+        self._ImageId = params.get("ImageId")
+        self._Title = params.get("Title")
+        self._Description = params.get("Description")
+        self._PreviewUrl = params.get("PreviewUrl")
+        self._ThumbUrl = params.get("ThumbUrl")
+        self._Vendor = params.get("Vendor")
         if params.get("Marshals") is not None:
-            self.Marshals = []
+            self._Marshals = []
             for item in params.get("Marshals"):
                 obj = ImageMarshal()
                 obj._deserialize(item)
-                self.Marshals.append(obj)
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.ImageFormat = params.get("ImageFormat")
-        self.ImageSenseType = params.get("ImageSenseType")
-        self.Keywords = params.get("Keywords")
-        self.LayeredGalleryId = params.get("LayeredGalleryId")
-        self.Orientation = params.get("Orientation")
-        self.RequestId = params.get("RequestId")
+                self._Marshals.append(obj)
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._ImageFormat = params.get("ImageFormat")
+        self._ImageSenseType = params.get("ImageSenseType")
+        self._Keywords = params.get("Keywords")
+        self._LayeredGalleryId = params.get("LayeredGalleryId")
+        self._Orientation = params.get("Orientation")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImagesRequest(AbstractModel):
@@ -504,38 +912,87 @@ class DescribeImagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 页偏移量
+        :param _Offset: 页偏移量
         :type Offset: int
-        :param Limit: 页大小
+        :param _Limit: 页大小
         :type Limit: int
-        :param Keyword: 搜索关键字
+        :param _Keyword: 搜索关键字
         :type Keyword: str
-        :param Orientation: 构图方式，可选以下值：horizontal、vertical、square，分别代表以下含义：横图、竖图、方图
+        :param _Orientation: 构图方式，可选以下值：horizontal、vertical、square，分别代表以下含义：横图、竖图、方图
         :type Orientation: str
-        :param ImageSenseType: 图片类型，可选以下值：照片、插画
+        :param _ImageSenseType: 图片类型，可选以下值：照片、插画
         :type ImageSenseType: str
-        :param LayeredGalleryIds: 分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
+        :param _LayeredGalleryIds: 分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
         :type LayeredGalleryIds: list of int
         """
-        self.Offset = None
-        self.Limit = None
-        self.Keyword = None
-        self.Orientation = None
-        self.ImageSenseType = None
-        self.LayeredGalleryIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Keyword = None
+        self._Orientation = None
+        self._ImageSenseType = None
+        self._LayeredGalleryIds = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Orientation(self):
+        return self._Orientation
+
+    @Orientation.setter
+    def Orientation(self, Orientation):
+        self._Orientation = Orientation
+
+    @property
+    def ImageSenseType(self):
+        return self._ImageSenseType
+
+    @ImageSenseType.setter
+    def ImageSenseType(self, ImageSenseType):
+        self._ImageSenseType = ImageSenseType
+
+    @property
+    def LayeredGalleryIds(self):
+        return self._LayeredGalleryIds
+
+    @LayeredGalleryIds.setter
+    def LayeredGalleryIds(self, LayeredGalleryIds):
+        self._LayeredGalleryIds = LayeredGalleryIds
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Keyword = params.get("Keyword")
-        self.Orientation = params.get("Orientation")
-        self.ImageSenseType = params.get("ImageSenseType")
-        self.LayeredGalleryIds = params.get("LayeredGalleryIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
+        self._Orientation = params.get("Orientation")
+        self._ImageSenseType = params.get("ImageSenseType")
+        self._LayeredGalleryIds = params.get("LayeredGalleryIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -548,39 +1005,87 @@ class DescribeImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 页偏移量
+        :param _Offset: 页偏移量
         :type Offset: int
-        :param Limit: 页大小
+        :param _Limit: 页大小
         :type Limit: int
-        :param Total: 总条数
+        :param _Total: 总条数
         :type Total: int
-        :param HaveMore: 是否有下一页
+        :param _HaveMore: 是否有下一页
         :type HaveMore: bool
-        :param Items: 图片信息数组
+        :param _Items: 图片信息数组
         :type Items: list of ImageItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.Total = None
-        self.HaveMore = None
-        self.Items = None
-        self.RequestId = None
+        self._Offset = None
+        self._Limit = None
+        self._Total = None
+        self._HaveMore = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def HaveMore(self):
+        return self._HaveMore
+
+    @HaveMore.setter
+    def HaveMore(self, HaveMore):
+        self._HaveMore = HaveMore
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Total = params.get("Total")
-        self.HaveMore = params.get("HaveMore")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Total = params.get("Total")
+        self._HaveMore = params.get("HaveMore")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = ImageItem()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DownloadInfo(AbstractModel):
@@ -590,52 +1095,125 @@ class DownloadInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageInfo: 图片基础信息
+        :param _ImageInfo: 图片基础信息
         :type ImageInfo: :class:`tencentcloud.ape.v20200513.models.ImageInfo`
-        :param ImageUrl: 图片原图URL
+        :param _ImageUrl: 图片原图URL
         :type ImageUrl: str
-        :param ImageThumbUrl: 图片缩略图URL
+        :param _ImageThumbUrl: 图片缩略图URL
         :type ImageThumbUrl: str
-        :param OrderId: 订单Id
+        :param _OrderId: 订单Id
         :type OrderId: str
-        :param OrderCreateTime: 订单创建时间
+        :param _OrderCreateTime: 订单创建时间
         :type OrderCreateTime: str
-        :param DownloadId: 下载Id
+        :param _DownloadId: 下载Id
         :type DownloadId: str
-        :param DownloadTime: 下载时间
+        :param _DownloadTime: 下载时间
         :type DownloadTime: str
-        :param ConsumeType: 图片购买类型，单张/会员
+        :param _ConsumeType: 图片购买类型，单张/会员
         :type ConsumeType: int
-        :param FirstDownload: 是否首次下载
+        :param _FirstDownload: 是否首次下载
         :type FirstDownload: bool
         """
-        self.ImageInfo = None
-        self.ImageUrl = None
-        self.ImageThumbUrl = None
-        self.OrderId = None
-        self.OrderCreateTime = None
-        self.DownloadId = None
-        self.DownloadTime = None
-        self.ConsumeType = None
-        self.FirstDownload = None
+        self._ImageInfo = None
+        self._ImageUrl = None
+        self._ImageThumbUrl = None
+        self._OrderId = None
+        self._OrderCreateTime = None
+        self._DownloadId = None
+        self._DownloadTime = None
+        self._ConsumeType = None
+        self._FirstDownload = None
+
+    @property
+    def ImageInfo(self):
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageThumbUrl(self):
+        return self._ImageThumbUrl
+
+    @ImageThumbUrl.setter
+    def ImageThumbUrl(self, ImageThumbUrl):
+        self._ImageThumbUrl = ImageThumbUrl
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def OrderCreateTime(self):
+        return self._OrderCreateTime
+
+    @OrderCreateTime.setter
+    def OrderCreateTime(self, OrderCreateTime):
+        self._OrderCreateTime = OrderCreateTime
+
+    @property
+    def DownloadId(self):
+        return self._DownloadId
+
+    @DownloadId.setter
+    def DownloadId(self, DownloadId):
+        self._DownloadId = DownloadId
+
+    @property
+    def DownloadTime(self):
+        return self._DownloadTime
+
+    @DownloadTime.setter
+    def DownloadTime(self, DownloadTime):
+        self._DownloadTime = DownloadTime
+
+    @property
+    def ConsumeType(self):
+        return self._ConsumeType
+
+    @ConsumeType.setter
+    def ConsumeType(self, ConsumeType):
+        self._ConsumeType = ConsumeType
+
+    @property
+    def FirstDownload(self):
+        return self._FirstDownload
+
+    @FirstDownload.setter
+    def FirstDownload(self, FirstDownload):
+        self._FirstDownload = FirstDownload
 
 
     def _deserialize(self, params):
         if params.get("ImageInfo") is not None:
-            self.ImageInfo = ImageInfo()
-            self.ImageInfo._deserialize(params.get("ImageInfo"))
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageThumbUrl = params.get("ImageThumbUrl")
-        self.OrderId = params.get("OrderId")
-        self.OrderCreateTime = params.get("OrderCreateTime")
-        self.DownloadId = params.get("DownloadId")
-        self.DownloadTime = params.get("DownloadTime")
-        self.ConsumeType = params.get("ConsumeType")
-        self.FirstDownload = params.get("FirstDownload")
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageThumbUrl = params.get("ImageThumbUrl")
+        self._OrderId = params.get("OrderId")
+        self._OrderCreateTime = params.get("OrderCreateTime")
+        self._DownloadId = params.get("DownloadId")
+        self._DownloadTime = params.get("DownloadTime")
+        self._ConsumeType = params.get("ConsumeType")
+        self._FirstDownload = params.get("FirstDownload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -648,42 +1226,91 @@ class ImageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 图片Id
+        :param _ImageId: 图片Id
         :type ImageId: int
-        :param LicenseScopeId: 授权场景Id
+        :param _LicenseScopeId: 授权场景Id
         :type LicenseScopeId: int
-        :param DimensionsNameId: 尺寸名称Id
+        :param _DimensionsNameId: 尺寸名称Id
         :type DimensionsNameId: int
-        :param UserId: 平台用户标识
+        :param _UserId: 平台用户标识
         :type UserId: str
-        :param DownloadPrice: 平台用户下载图片购买的价格(单位:分)
+        :param _DownloadPrice: 平台用户下载图片购买的价格(单位:分)
         :type DownloadPrice: int
-        :param DownloadType: 下载类型。匹配集合中的任意元素：
+        :param _DownloadType: 下载类型。匹配集合中的任意元素：
 <li>Single: 单张购买下载</li>
 <li>BasicEnterpriseMember: 企业基础会员下载</li>
 <li>AdvancedEnterpriseMember: 企业高级会员下载</li>
 <li>DistinguishedEnterpriseMember: 企业尊享会员下载</li>
         :type DownloadType: str
         """
-        self.ImageId = None
-        self.LicenseScopeId = None
-        self.DimensionsNameId = None
-        self.UserId = None
-        self.DownloadPrice = None
-        self.DownloadType = None
+        self._ImageId = None
+        self._LicenseScopeId = None
+        self._DimensionsNameId = None
+        self._UserId = None
+        self._DownloadPrice = None
+        self._DownloadType = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def LicenseScopeId(self):
+        return self._LicenseScopeId
+
+    @LicenseScopeId.setter
+    def LicenseScopeId(self, LicenseScopeId):
+        self._LicenseScopeId = LicenseScopeId
+
+    @property
+    def DimensionsNameId(self):
+        return self._DimensionsNameId
+
+    @DimensionsNameId.setter
+    def DimensionsNameId(self, DimensionsNameId):
+        self._DimensionsNameId = DimensionsNameId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def DownloadPrice(self):
+        return self._DownloadPrice
+
+    @DownloadPrice.setter
+    def DownloadPrice(self, DownloadPrice):
+        self._DownloadPrice = DownloadPrice
+
+    @property
+    def DownloadType(self):
+        return self._DownloadType
+
+    @DownloadType.setter
+    def DownloadType(self, DownloadType):
+        self._DownloadType = DownloadType
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.LicenseScopeId = params.get("LicenseScopeId")
-        self.DimensionsNameId = params.get("DimensionsNameId")
-        self.UserId = params.get("UserId")
-        self.DownloadPrice = params.get("DownloadPrice")
-        self.DownloadType = params.get("DownloadType")
+        self._ImageId = params.get("ImageId")
+        self._LicenseScopeId = params.get("LicenseScopeId")
+        self._DimensionsNameId = params.get("DimensionsNameId")
+        self._UserId = params.get("UserId")
+        self._DownloadPrice = params.get("DownloadPrice")
+        self._DownloadType = params.get("DownloadType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -696,50 +1323,123 @@ class ImageItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 图片ID
+        :param _ImageId: 图片ID
         :type ImageId: int
-        :param Title: 图片标题
+        :param _Title: 图片标题
         :type Title: str
-        :param Description: 图片描述
+        :param _Description: 图片描述
         :type Description: str
-        :param PreviewUrl: 图片预览链接
+        :param _PreviewUrl: 图片预览链接
         :type PreviewUrl: str
-        :param ThumbUrl: 图片缩略图
+        :param _ThumbUrl: 图片缩略图
         :type ThumbUrl: str
-        :param Vendor: 图片供应商
+        :param _Vendor: 图片供应商
         :type Vendor: str
-        :param Keywords: 图片关键词
+        :param _Keywords: 图片关键词
         :type Keywords: str
-        :param Width: 宽
+        :param _Width: 宽
         :type Width: int
-        :param Height: 高
+        :param _Height: 高
         :type Height: int
         """
-        self.ImageId = None
-        self.Title = None
-        self.Description = None
-        self.PreviewUrl = None
-        self.ThumbUrl = None
-        self.Vendor = None
-        self.Keywords = None
-        self.Width = None
-        self.Height = None
+        self._ImageId = None
+        self._Title = None
+        self._Description = None
+        self._PreviewUrl = None
+        self._ThumbUrl = None
+        self._Vendor = None
+        self._Keywords = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PreviewUrl(self):
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
+    @property
+    def ThumbUrl(self):
+        return self._ThumbUrl
+
+    @ThumbUrl.setter
+    def ThumbUrl(self, ThumbUrl):
+        self._ThumbUrl = ThumbUrl
+
+    @property
+    def Vendor(self):
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.Title = params.get("Title")
-        self.Description = params.get("Description")
-        self.PreviewUrl = params.get("PreviewUrl")
-        self.ThumbUrl = params.get("ThumbUrl")
-        self.Vendor = params.get("Vendor")
-        self.Keywords = params.get("Keywords")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._ImageId = params.get("ImageId")
+        self._Title = params.get("Title")
+        self._Description = params.get("Description")
+        self._PreviewUrl = params.get("PreviewUrl")
+        self._ThumbUrl = params.get("ThumbUrl")
+        self._Vendor = params.get("Vendor")
+        self._Keywords = params.get("Keywords")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -752,58 +1452,147 @@ class ImageMarshal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MarshalId: 售卖组合唯一标识
+        :param _MarshalId: 售卖组合唯一标识
         :type MarshalId: int
-        :param Height: 图片高度
+        :param _Height: 图片高度
         :type Height: int
-        :param Width: 图片宽度
+        :param _Width: 图片宽度
         :type Width: int
-        :param Size: 图片大小
+        :param _Size: 图片大小
         :type Size: int
-        :param Format: 图片格式
+        :param _Format: 图片格式
         :type Format: str
-        :param Price: 图片价格(单位:分)
+        :param _Price: 图片价格(单位:分)
         :type Price: int
-        :param LicenseScope: 授权范围
+        :param _LicenseScope: 授权范围
         :type LicenseScope: str
-        :param IsVip: 是否支持VIP购买
+        :param _IsVip: 是否支持VIP购买
         :type IsVip: bool
-        :param LicenseScopeId: 授权范围id
+        :param _LicenseScopeId: 授权范围id
         :type LicenseScopeId: int
-        :param DimensionsName: 尺寸
+        :param _DimensionsName: 尺寸
         :type DimensionsName: str
-        :param DimensionsNameId: 尺寸id
+        :param _DimensionsNameId: 尺寸id
         :type DimensionsNameId: int
         """
-        self.MarshalId = None
-        self.Height = None
-        self.Width = None
-        self.Size = None
-        self.Format = None
-        self.Price = None
-        self.LicenseScope = None
-        self.IsVip = None
-        self.LicenseScopeId = None
-        self.DimensionsName = None
-        self.DimensionsNameId = None
+        self._MarshalId = None
+        self._Height = None
+        self._Width = None
+        self._Size = None
+        self._Format = None
+        self._Price = None
+        self._LicenseScope = None
+        self._IsVip = None
+        self._LicenseScopeId = None
+        self._DimensionsName = None
+        self._DimensionsNameId = None
+
+    @property
+    def MarshalId(self):
+        return self._MarshalId
+
+    @MarshalId.setter
+    def MarshalId(self, MarshalId):
+        self._MarshalId = MarshalId
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def LicenseScope(self):
+        return self._LicenseScope
+
+    @LicenseScope.setter
+    def LicenseScope(self, LicenseScope):
+        self._LicenseScope = LicenseScope
+
+    @property
+    def IsVip(self):
+        return self._IsVip
+
+    @IsVip.setter
+    def IsVip(self, IsVip):
+        self._IsVip = IsVip
+
+    @property
+    def LicenseScopeId(self):
+        return self._LicenseScopeId
+
+    @LicenseScopeId.setter
+    def LicenseScopeId(self, LicenseScopeId):
+        self._LicenseScopeId = LicenseScopeId
+
+    @property
+    def DimensionsName(self):
+        return self._DimensionsName
+
+    @DimensionsName.setter
+    def DimensionsName(self, DimensionsName):
+        self._DimensionsName = DimensionsName
+
+    @property
+    def DimensionsNameId(self):
+        return self._DimensionsNameId
+
+    @DimensionsNameId.setter
+    def DimensionsNameId(self, DimensionsNameId):
+        self._DimensionsNameId = DimensionsNameId
 
 
     def _deserialize(self, params):
-        self.MarshalId = params.get("MarshalId")
-        self.Height = params.get("Height")
-        self.Width = params.get("Width")
-        self.Size = params.get("Size")
-        self.Format = params.get("Format")
-        self.Price = params.get("Price")
-        self.LicenseScope = params.get("LicenseScope")
-        self.IsVip = params.get("IsVip")
-        self.LicenseScopeId = params.get("LicenseScopeId")
-        self.DimensionsName = params.get("DimensionsName")
-        self.DimensionsNameId = params.get("DimensionsNameId")
+        self._MarshalId = params.get("MarshalId")
+        self._Height = params.get("Height")
+        self._Width = params.get("Width")
+        self._Size = params.get("Size")
+        self._Format = params.get("Format")
+        self._Price = params.get("Price")
+        self._LicenseScope = params.get("LicenseScope")
+        self._IsVip = params.get("IsVip")
+        self._LicenseScopeId = params.get("LicenseScopeId")
+        self._DimensionsName = params.get("DimensionsName")
+        self._DimensionsNameId = params.get("DimensionsNameId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

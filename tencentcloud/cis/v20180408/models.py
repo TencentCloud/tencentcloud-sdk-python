@@ -25,71 +25,168 @@ class Container(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Command: 容器启动命令
+        :param _Command: 容器启动命令
         :type Command: str
-        :param Args: 容器启动参数
+        :param _Args: 容器启动参数
         :type Args: list of str
-        :param EnvironmentVars: 容器环境变量
+        :param _EnvironmentVars: 容器环境变量
         :type EnvironmentVars: list of EnvironmentVar
-        :param Image: 镜像
+        :param _Image: 镜像
         :type Image: str
-        :param Name: 容器名，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 63个字符
+        :param _Name: 容器名，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 63个字符
         :type Name: str
-        :param Cpu: CPU，单位：核
+        :param _Cpu: CPU，单位：核
         :type Cpu: float
-        :param Memory: 内存，单位：Gi
+        :param _Memory: 内存，单位：Gi
         :type Memory: float
-        :param RestartCount: 重启次数
+        :param _RestartCount: 重启次数
         :type RestartCount: int
-        :param CurrentState: 当前状态
+        :param _CurrentState: 当前状态
         :type CurrentState: :class:`tencentcloud.cis.v20180408.models.ContainerState`
-        :param PreviousState: 上一次状态
+        :param _PreviousState: 上一次状态
         :type PreviousState: :class:`tencentcloud.cis.v20180408.models.ContainerState`
-        :param WorkingDir: 容器工作目录
+        :param _WorkingDir: 容器工作目录
         :type WorkingDir: str
-        :param ContainerId: 容器ID
+        :param _ContainerId: 容器ID
         :type ContainerId: str
         """
-        self.Command = None
-        self.Args = None
-        self.EnvironmentVars = None
-        self.Image = None
-        self.Name = None
-        self.Cpu = None
-        self.Memory = None
-        self.RestartCount = None
-        self.CurrentState = None
-        self.PreviousState = None
-        self.WorkingDir = None
-        self.ContainerId = None
+        self._Command = None
+        self._Args = None
+        self._EnvironmentVars = None
+        self._Image = None
+        self._Name = None
+        self._Cpu = None
+        self._Memory = None
+        self._RestartCount = None
+        self._CurrentState = None
+        self._PreviousState = None
+        self._WorkingDir = None
+        self._ContainerId = None
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Args(self):
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def EnvironmentVars(self):
+        return self._EnvironmentVars
+
+    @EnvironmentVars.setter
+    def EnvironmentVars(self, EnvironmentVars):
+        self._EnvironmentVars = EnvironmentVars
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def RestartCount(self):
+        return self._RestartCount
+
+    @RestartCount.setter
+    def RestartCount(self, RestartCount):
+        self._RestartCount = RestartCount
+
+    @property
+    def CurrentState(self):
+        return self._CurrentState
+
+    @CurrentState.setter
+    def CurrentState(self, CurrentState):
+        self._CurrentState = CurrentState
+
+    @property
+    def PreviousState(self):
+        return self._PreviousState
+
+    @PreviousState.setter
+    def PreviousState(self, PreviousState):
+        self._PreviousState = PreviousState
+
+    @property
+    def WorkingDir(self):
+        return self._WorkingDir
+
+    @WorkingDir.setter
+    def WorkingDir(self, WorkingDir):
+        self._WorkingDir = WorkingDir
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
 
 
     def _deserialize(self, params):
-        self.Command = params.get("Command")
-        self.Args = params.get("Args")
+        self._Command = params.get("Command")
+        self._Args = params.get("Args")
         if params.get("EnvironmentVars") is not None:
-            self.EnvironmentVars = []
+            self._EnvironmentVars = []
             for item in params.get("EnvironmentVars"):
                 obj = EnvironmentVar()
                 obj._deserialize(item)
-                self.EnvironmentVars.append(obj)
-        self.Image = params.get("Image")
-        self.Name = params.get("Name")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.RestartCount = params.get("RestartCount")
+                self._EnvironmentVars.append(obj)
+        self._Image = params.get("Image")
+        self._Name = params.get("Name")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._RestartCount = params.get("RestartCount")
         if params.get("CurrentState") is not None:
-            self.CurrentState = ContainerState()
-            self.CurrentState._deserialize(params.get("CurrentState"))
+            self._CurrentState = ContainerState()
+            self._CurrentState._deserialize(params.get("CurrentState"))
         if params.get("PreviousState") is not None:
-            self.PreviousState = ContainerState()
-            self.PreviousState._deserialize(params.get("PreviousState"))
-        self.WorkingDir = params.get("WorkingDir")
-        self.ContainerId = params.get("ContainerId")
+            self._PreviousState = ContainerState()
+            self._PreviousState._deserialize(params.get("PreviousState"))
+        self._WorkingDir = params.get("WorkingDir")
+        self._ContainerId = params.get("ContainerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -102,79 +199,200 @@ class ContainerInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 容器实例ID
+        :param _InstanceId: 容器实例ID
         :type InstanceId: str
-        :param InstanceName: 容器实例名称
+        :param _InstanceName: 容器实例名称
         :type InstanceName: str
-        :param VpcId: 容器实例所属VpcId
+        :param _VpcId: 容器实例所属VpcId
         :type VpcId: str
-        :param SubnetId: 容器实例所属SubnetId
+        :param _SubnetId: 容器实例所属SubnetId
         :type SubnetId: str
-        :param State: 容器实例状态
+        :param _State: 容器实例状态
         :type State: str
-        :param Containers: 容器列表
+        :param _Containers: 容器列表
         :type Containers: list of Container
-        :param RestartPolicy: 重启策略
+        :param _RestartPolicy: 重启策略
         :type RestartPolicy: str
-        :param CreateTime: 创建时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param StartTime: 启动时间
+        :param _StartTime: 启动时间
         :type StartTime: str
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param VpcName: Vpc名称
+        :param _VpcName: Vpc名称
         :type VpcName: str
-        :param VpcCidr: VpcCidr
+        :param _VpcCidr: VpcCidr
         :type VpcCidr: str
-        :param SubnetName: SubnetName
+        :param _SubnetName: SubnetName
         :type SubnetName: str
-        :param SubnetCidr: 子网Cidr
+        :param _SubnetCidr: 子网Cidr
         :type SubnetCidr: str
-        :param LanIp: 内网IP
+        :param _LanIp: 内网IP
         :type LanIp: str
         """
-        self.InstanceId = None
-        self.InstanceName = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.State = None
-        self.Containers = None
-        self.RestartPolicy = None
-        self.CreateTime = None
-        self.StartTime = None
-        self.Zone = None
-        self.VpcName = None
-        self.VpcCidr = None
-        self.SubnetName = None
-        self.SubnetCidr = None
-        self.LanIp = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._State = None
+        self._Containers = None
+        self._RestartPolicy = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._Zone = None
+        self._VpcName = None
+        self._VpcCidr = None
+        self._SubnetName = None
+        self._SubnetCidr = None
+        self._LanIp = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Containers(self):
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+    @property
+    def RestartPolicy(self):
+        return self._RestartPolicy
+
+    @RestartPolicy.setter
+    def RestartPolicy(self, RestartPolicy):
+        self._RestartPolicy = RestartPolicy
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcCidr(self):
+        return self._VpcCidr
+
+    @VpcCidr.setter
+    def VpcCidr(self, VpcCidr):
+        self._VpcCidr = VpcCidr
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def SubnetCidr(self):
+        return self._SubnetCidr
+
+    @SubnetCidr.setter
+    def SubnetCidr(self, SubnetCidr):
+        self._SubnetCidr = SubnetCidr
+
+    @property
+    def LanIp(self):
+        return self._LanIp
+
+    @LanIp.setter
+    def LanIp(self, LanIp):
+        self._LanIp = LanIp
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.State = params.get("State")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._State = params.get("State")
         if params.get("Containers") is not None:
-            self.Containers = []
+            self._Containers = []
             for item in params.get("Containers"):
                 obj = Container()
                 obj._deserialize(item)
-                self.Containers.append(obj)
-        self.RestartPolicy = params.get("RestartPolicy")
-        self.CreateTime = params.get("CreateTime")
-        self.StartTime = params.get("StartTime")
-        self.Zone = params.get("Zone")
-        self.VpcName = params.get("VpcName")
-        self.VpcCidr = params.get("VpcCidr")
-        self.SubnetName = params.get("SubnetName")
-        self.SubnetCidr = params.get("SubnetCidr")
-        self.LanIp = params.get("LanIp")
+                self._Containers.append(obj)
+        self._RestartPolicy = params.get("RestartPolicy")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._Zone = params.get("Zone")
+        self._VpcName = params.get("VpcName")
+        self._VpcCidr = params.get("VpcCidr")
+        self._SubnetName = params.get("SubnetName")
+        self._SubnetCidr = params.get("SubnetCidr")
+        self._LanIp = params.get("LanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -187,26 +405,51 @@ class ContainerLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 容器名称
+        :param _Name: 容器名称
         :type Name: str
-        :param Log: 日志
+        :param _Log: 日志
         :type Log: str
-        :param Time: 日志记录时间
+        :param _Time: 日志记录时间
         :type Time: str
         """
-        self.Name = None
-        self.Log = None
-        self.Time = None
+        self._Name = None
+        self._Log = None
+        self._Time = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Log = params.get("Log")
-        self.Time = params.get("Time")
+        self._Name = params.get("Name")
+        self._Log = params.get("Log")
+        self._Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -219,34 +462,75 @@ class ContainerState(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 容器运行开始时间
+        :param _StartTime: 容器运行开始时间
         :type StartTime: str
-        :param State: 容器状态
+        :param _State: 容器状态
         :type State: str
-        :param Reason: 状态详情
+        :param _Reason: 状态详情
         :type Reason: str
-        :param FinishTime: 容器运行结束时间
+        :param _FinishTime: 容器运行结束时间
         :type FinishTime: str
-        :param ExitCode: 容器运行退出码
+        :param _ExitCode: 容器运行退出码
         :type ExitCode: int
         """
-        self.StartTime = None
-        self.State = None
-        self.Reason = None
-        self.FinishTime = None
-        self.ExitCode = None
+        self._StartTime = None
+        self._State = None
+        self._Reason = None
+        self._FinishTime = None
+        self._ExitCode = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def FinishTime(self):
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def ExitCode(self):
+        return self._ExitCode
+
+    @ExitCode.setter
+    def ExitCode(self, ExitCode):
+        self._ExitCode = ExitCode
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.State = params.get("State")
-        self.Reason = params.get("Reason")
-        self.FinishTime = params.get("FinishTime")
-        self.ExitCode = params.get("ExitCode")
+        self._StartTime = params.get("StartTime")
+        self._State = params.get("State")
+        self._Reason = params.get("Reason")
+        self._FinishTime = params.get("FinishTime")
+        self._ExitCode = params.get("ExitCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -259,43 +543,92 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param VpcId: vpcId
+        :param _VpcId: vpcId
         :type VpcId: str
-        :param SubnetId: subnetId
+        :param _SubnetId: subnetId
         :type SubnetId: str
-        :param InstanceName: 容器实例名称，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 40个字符
+        :param _InstanceName: 容器实例名称，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 40个字符
         :type InstanceName: str
-        :param RestartPolicy: 重启策略（Always,OnFailure,Never）
+        :param _RestartPolicy: 重启策略（Always,OnFailure,Never）
         :type RestartPolicy: str
-        :param Containers: 容器列表
+        :param _Containers: 容器列表
         :type Containers: list of Container
         """
-        self.Zone = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.InstanceName = None
-        self.RestartPolicy = None
-        self.Containers = None
+        self._Zone = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._InstanceName = None
+        self._RestartPolicy = None
+        self._Containers = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RestartPolicy(self):
+        return self._RestartPolicy
+
+    @RestartPolicy.setter
+    def RestartPolicy(self, RestartPolicy):
+        self._RestartPolicy = RestartPolicy
+
+    @property
+    def Containers(self):
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.InstanceName = params.get("InstanceName")
-        self.RestartPolicy = params.get("RestartPolicy")
+        self._Zone = params.get("Zone")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._InstanceName = params.get("InstanceName")
+        self._RestartPolicy = params.get("RestartPolicy")
         if params.get("Containers") is not None:
-            self.Containers = []
+            self._Containers = []
             for item in params.get("Containers"):
                 obj = Container()
                 obj._deserialize(item)
-                self.Containers.append(obj)
+                self._Containers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -308,18 +641,34 @@ class CreateContainerInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 容器实例ID
+        :param _InstanceId: 容器实例ID
         :type InstanceId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param _RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.InstanceId = None
-        self.RequestId = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.RequestId = params.get("RequestId")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteContainerInstanceRequest(AbstractModel):
@@ -329,18 +678,27 @@ class DeleteContainerInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceName: 容器实例名称
+        :param _InstanceName: 容器实例名称
         :type InstanceName: str
         """
-        self.InstanceName = None
+        self._InstanceName = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
 
     def _deserialize(self, params):
-        self.InstanceName = params.get("InstanceName")
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -353,18 +711,34 @@ class DeleteContainerInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Msg: 操作信息
+        :param _Msg: 操作信息
         :type Msg: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param _RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.Msg = None
-        self.RequestId = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Msg = params.get("Msg")
-        self.RequestId = params.get("RequestId")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeContainerInstanceEventsRequest(AbstractModel):
@@ -374,18 +748,27 @@ class DescribeContainerInstanceEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceName: 容器实例名称
+        :param _InstanceName: 容器实例名称
         :type InstanceName: str
         """
-        self.InstanceName = None
+        self._InstanceName = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
 
     def _deserialize(self, params):
-        self.InstanceName = params.get("InstanceName")
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -398,23 +781,39 @@ class DescribeContainerInstanceEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventList: 容器实例事件列表
+        :param _EventList: 容器实例事件列表
         :type EventList: list of Event
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param _RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.EventList = None
-        self.RequestId = None
+        self._EventList = None
+        self._RequestId = None
+
+    @property
+    def EventList(self):
+        return self._EventList
+
+    @EventList.setter
+    def EventList(self, EventList):
+        self._EventList = EventList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EventList") is not None:
-            self.EventList = []
+            self._EventList = []
             for item in params.get("EventList"):
                 obj = Event()
                 obj._deserialize(item)
-                self.EventList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EventList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeContainerInstanceRequest(AbstractModel):
@@ -424,18 +823,27 @@ class DescribeContainerInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceName: 容器实例名称
+        :param _InstanceName: 容器实例名称
         :type InstanceName: str
         """
-        self.InstanceName = None
+        self._InstanceName = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
 
     def _deserialize(self, params):
-        self.InstanceName = params.get("InstanceName")
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -448,20 +856,36 @@ class DescribeContainerInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ContainerInstance: 容器实例详细信息
+        :param _ContainerInstance: 容器实例详细信息
         :type ContainerInstance: :class:`tencentcloud.cis.v20180408.models.ContainerInstance`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param _RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.ContainerInstance = None
-        self.RequestId = None
+        self._ContainerInstance = None
+        self._RequestId = None
+
+    @property
+    def ContainerInstance(self):
+        return self._ContainerInstance
+
+    @ContainerInstance.setter
+    def ContainerInstance(self, ContainerInstance):
+        self._ContainerInstance = ContainerInstance
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ContainerInstance") is not None:
-            self.ContainerInstance = ContainerInstance()
-            self.ContainerInstance._deserialize(params.get("ContainerInstance"))
-        self.RequestId = params.get("RequestId")
+            self._ContainerInstance = ContainerInstance()
+            self._ContainerInstance._deserialize(params.get("ContainerInstance"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeContainerInstancesRequest(AbstractModel):
@@ -471,34 +895,59 @@ class DescribeContainerInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param Limit: 返回数量，默认为10
+        :param _Limit: 返回数量，默认为10
         :type Limit: int
-        :param Filters: 过滤条件。
+        :param _Filters: 过滤条件。
 - Zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。
 - VpcId - String - 是否必填：否 -（过滤条件）按照VpcId过滤。
 - InstanceName - String - 是否必填：否 -（过滤条件）按照容器实例名称做模糊查询。
         :type Filters: list of Filter
         """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -511,27 +960,51 @@ class DescribeContainerInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ContainerInstanceList: 容器实例列表
+        :param _ContainerInstanceList: 容器实例列表
         :type ContainerInstanceList: list of ContainerInstance
-        :param TotalCount: 容器实例总数
+        :param _TotalCount: 容器实例总数
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param _RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.ContainerInstanceList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ContainerInstanceList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ContainerInstanceList(self):
+        return self._ContainerInstanceList
+
+    @ContainerInstanceList.setter
+    def ContainerInstanceList(self, ContainerInstanceList):
+        self._ContainerInstanceList = ContainerInstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ContainerInstanceList") is not None:
-            self.ContainerInstanceList = []
+            self._ContainerInstanceList = []
             for item in params.get("ContainerInstanceList"):
                 obj = ContainerInstance()
                 obj._deserialize(item)
-                self.ContainerInstanceList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ContainerInstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeContainerLogRequest(AbstractModel):
@@ -541,30 +1014,63 @@ class DescribeContainerLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceName: 容器实例名称
+        :param _InstanceName: 容器实例名称
         :type InstanceName: str
-        :param ContainerName: 容器名称
+        :param _ContainerName: 容器名称
         :type ContainerName: str
-        :param Tail: 日志显示尾部行数
+        :param _Tail: 日志显示尾部行数
         :type Tail: int
-        :param SinceTime: 日志起始时间
+        :param _SinceTime: 日志起始时间
         :type SinceTime: str
         """
-        self.InstanceName = None
-        self.ContainerName = None
-        self.Tail = None
-        self.SinceTime = None
+        self._InstanceName = None
+        self._ContainerName = None
+        self._Tail = None
+        self._SinceTime = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def Tail(self):
+        return self._Tail
+
+    @Tail.setter
+    def Tail(self, Tail):
+        self._Tail = Tail
+
+    @property
+    def SinceTime(self):
+        return self._SinceTime
+
+    @SinceTime.setter
+    def SinceTime(self, SinceTime):
+        self._SinceTime = SinceTime
 
 
     def _deserialize(self, params):
-        self.InstanceName = params.get("InstanceName")
-        self.ContainerName = params.get("ContainerName")
-        self.Tail = params.get("Tail")
-        self.SinceTime = params.get("SinceTime")
+        self._InstanceName = params.get("InstanceName")
+        self._ContainerName = params.get("ContainerName")
+        self._Tail = params.get("Tail")
+        self._SinceTime = params.get("SinceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -577,23 +1083,39 @@ class DescribeContainerLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ContainerLogList: 容器日志数组
+        :param _ContainerLogList: 容器日志数组
         :type ContainerLogList: list of ContainerLog
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param _RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.ContainerLogList = None
-        self.RequestId = None
+        self._ContainerLogList = None
+        self._RequestId = None
+
+    @property
+    def ContainerLogList(self):
+        return self._ContainerLogList
+
+    @ContainerLogList.setter
+    def ContainerLogList(self, ContainerLogList):
+        self._ContainerLogList = ContainerLogList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ContainerLogList") is not None:
-            self.ContainerLogList = []
+            self._ContainerLogList = []
             for item in params.get("ContainerLogList"):
                 obj = ContainerLog()
                 obj._deserialize(item)
-                self.ContainerLogList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ContainerLogList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class EnvironmentVar(AbstractModel):
@@ -603,22 +1125,39 @@ class EnvironmentVar(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 环境变量名
+        :param _Name: 环境变量名
         :type Name: str
-        :param Value: 环境变量值
+        :param _Value: 环境变量值
         :type Value: str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -631,38 +1170,87 @@ class Event(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstSeen: 事件首次出现时间
+        :param _FirstSeen: 事件首次出现时间
         :type FirstSeen: str
-        :param LastSeen: 事件上次出现时间
+        :param _LastSeen: 事件上次出现时间
         :type LastSeen: str
-        :param Level: 事件等级
+        :param _Level: 事件等级
         :type Level: str
-        :param Count: 事件出现次数
+        :param _Count: 事件出现次数
         :type Count: str
-        :param Reason: 事件出现原因
+        :param _Reason: 事件出现原因
         :type Reason: str
-        :param Message: 事件消息
+        :param _Message: 事件消息
         :type Message: str
         """
-        self.FirstSeen = None
-        self.LastSeen = None
-        self.Level = None
-        self.Count = None
-        self.Reason = None
-        self.Message = None
+        self._FirstSeen = None
+        self._LastSeen = None
+        self._Level = None
+        self._Count = None
+        self._Reason = None
+        self._Message = None
+
+    @property
+    def FirstSeen(self):
+        return self._FirstSeen
+
+    @FirstSeen.setter
+    def FirstSeen(self, FirstSeen):
+        self._FirstSeen = FirstSeen
+
+    @property
+    def LastSeen(self):
+        return self._LastSeen
+
+    @LastSeen.setter
+    def LastSeen(self, LastSeen):
+        self._LastSeen = LastSeen
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.FirstSeen = params.get("FirstSeen")
-        self.LastSeen = params.get("LastSeen")
-        self.Level = params.get("Level")
-        self.Count = params.get("Count")
-        self.Reason = params.get("Reason")
-        self.Message = params.get("Message")
+        self._FirstSeen = params.get("FirstSeen")
+        self._LastSeen = params.get("LastSeen")
+        self._Level = params.get("Level")
+        self._Count = params.get("Count")
+        self._Reason = params.get("Reason")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -675,22 +1263,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 过滤字段，可选值 - Zone，VpcId，InstanceName
+        :param _Name: 过滤字段，可选值 - Zone，VpcId，InstanceName
         :type Name: str
-        :param ValueList: 过滤值列表
+        :param _ValueList: 过滤值列表
         :type ValueList: list of str
         """
-        self.Name = None
-        self.ValueList = None
+        self._Name = None
+        self._ValueList = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueList(self):
+        return self._ValueList
+
+    @ValueList.setter
+    def ValueList(self, ValueList):
+        self._ValueList = ValueList
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ValueList = params.get("ValueList")
+        self._Name = params.get("Name")
+        self._ValueList = params.get("ValueList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -703,26 +1308,51 @@ class InquiryPriceCreateCisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: 可用区
+        :param _Zone: 可用区
         :type Zone: str
-        :param Cpu: CPU，单位：核
+        :param _Cpu: CPU，单位：核
         :type Cpu: float
-        :param Memory: 内存，单位：Gi
+        :param _Memory: 内存，单位：Gi
         :type Memory: float
         """
-        self.Zone = None
-        self.Cpu = None
-        self.Memory = None
+        self._Zone = None
+        self._Cpu = None
+        self._Memory = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
+        self._Zone = params.get("Zone")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -735,20 +1365,36 @@ class InquiryPriceCreateCisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Price: 价格
+        :param _Price: 价格
         :type Price: :class:`tencentcloud.cis.v20180408.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param _RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.Price = None
-        self.RequestId = None
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Price") is not None:
-            self.Price = Price()
-            self.Price._deserialize(params.get("Price"))
-        self.RequestId = params.get("RequestId")
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
 
 
 class Price(AbstractModel):
@@ -758,22 +1404,39 @@ class Price(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiscountPrice: 原价，单位：元
+        :param _DiscountPrice: 原价，单位：元
         :type DiscountPrice: float
-        :param OriginalPrice: 折扣价，单位：元
+        :param _OriginalPrice: 折扣价，单位：元
         :type OriginalPrice: float
         """
-        self.DiscountPrice = None
-        self.OriginalPrice = None
+        self._DiscountPrice = None
+        self._OriginalPrice = None
+
+    @property
+    def DiscountPrice(self):
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def OriginalPrice(self):
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
 
 
     def _deserialize(self, params):
-        self.DiscountPrice = params.get("DiscountPrice")
-        self.OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._OriginalPrice = params.get("OriginalPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

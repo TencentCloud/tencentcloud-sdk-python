@@ -25,66 +25,171 @@ class EvaluationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SessionId: 图片唯一标识，一张图片一个SessionId；
+        :param _SessionId: 图片唯一标识，一张图片一个SessionId；
         :type SessionId: str
-        :param Image: 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
+        :param _Image: 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
         :type Image: str
-        :param HcmAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppid 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
+        :param _HcmAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppid 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
         :type HcmAppid: str
-        :param Url: 图片url，与Image参数二者填一即可；
+        :param _Url: 图片url，与Image参数二者填一即可；
         :type Url: str
-        :param SupportHorizontalImage: 横屏拍摄开关，若开启则支持传输横屏拍摄的图片；
+        :param _SupportHorizontalImage: 横屏拍摄开关，若开启则支持传输横屏拍摄的图片；
         :type SupportHorizontalImage: bool
-        :param RejectNonArithmeticImage: 拒绝非速算图（如风景图、人物图）开关，若开启，则遇到非速算图会快速返回拒绝的结果，但极端情况下可能会影响评估结果（比如算式截图贴到风景画里可能被判为非速算图直接返回了）。
+        :param _RejectNonArithmeticImage: 拒绝非速算图（如风景图、人物图）开关，若开启，则遇到非速算图会快速返回拒绝的结果，但极端情况下可能会影响评估结果（比如算式截图贴到风景画里可能被判为非速算图直接返回了）。
         :type RejectNonArithmeticImage: bool
-        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+        :param _IsAsync: 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
         :type IsAsync: int
-        :param EnableDispRelatedVertical: 是否展开耦合算式中的竖式计算
+        :param _EnableDispRelatedVertical: 是否展开耦合算式中的竖式计算
         :type EnableDispRelatedVertical: bool
-        :param EnableDispMidresult: 是否展示竖式算式的中间结果和格式控制字符
+        :param _EnableDispMidresult: 是否展示竖式算式的中间结果和格式控制字符
         :type EnableDispMidresult: bool
-        :param EnablePdfRecognize: 是否开启pdf识别，默认开启
+        :param _EnablePdfRecognize: 是否开启pdf识别，默认开启
         :type EnablePdfRecognize: bool
-        :param PdfPageIndex: pdf页码，从0开始，默认为0
+        :param _PdfPageIndex: pdf页码，从0开始，默认为0
         :type PdfPageIndex: int
-        :param LaTex: 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
+        :param _LaTex: 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
         :type LaTex: int
-        :param RejectVagueArithmetic: 用于选择是否拒绝模糊题 目。打开则丢弃模糊题目， 不进行后续的判题返回结 果。
+        :param _RejectVagueArithmetic: 用于选择是否拒绝模糊题 目。打开则丢弃模糊题目， 不进行后续的判题返回结 果。
         :type RejectVagueArithmetic: bool
         """
-        self.SessionId = None
-        self.Image = None
-        self.HcmAppid = None
-        self.Url = None
-        self.SupportHorizontalImage = None
-        self.RejectNonArithmeticImage = None
-        self.IsAsync = None
-        self.EnableDispRelatedVertical = None
-        self.EnableDispMidresult = None
-        self.EnablePdfRecognize = None
-        self.PdfPageIndex = None
-        self.LaTex = None
-        self.RejectVagueArithmetic = None
+        self._SessionId = None
+        self._Image = None
+        self._HcmAppid = None
+        self._Url = None
+        self._SupportHorizontalImage = None
+        self._RejectNonArithmeticImage = None
+        self._IsAsync = None
+        self._EnableDispRelatedVertical = None
+        self._EnableDispMidresult = None
+        self._EnablePdfRecognize = None
+        self._PdfPageIndex = None
+        self._LaTex = None
+        self._RejectVagueArithmetic = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def HcmAppid(self):
+        return self._HcmAppid
+
+    @HcmAppid.setter
+    def HcmAppid(self, HcmAppid):
+        self._HcmAppid = HcmAppid
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def SupportHorizontalImage(self):
+        return self._SupportHorizontalImage
+
+    @SupportHorizontalImage.setter
+    def SupportHorizontalImage(self, SupportHorizontalImage):
+        self._SupportHorizontalImage = SupportHorizontalImage
+
+    @property
+    def RejectNonArithmeticImage(self):
+        return self._RejectNonArithmeticImage
+
+    @RejectNonArithmeticImage.setter
+    def RejectNonArithmeticImage(self, RejectNonArithmeticImage):
+        self._RejectNonArithmeticImage = RejectNonArithmeticImage
+
+    @property
+    def IsAsync(self):
+        return self._IsAsync
+
+    @IsAsync.setter
+    def IsAsync(self, IsAsync):
+        self._IsAsync = IsAsync
+
+    @property
+    def EnableDispRelatedVertical(self):
+        return self._EnableDispRelatedVertical
+
+    @EnableDispRelatedVertical.setter
+    def EnableDispRelatedVertical(self, EnableDispRelatedVertical):
+        self._EnableDispRelatedVertical = EnableDispRelatedVertical
+
+    @property
+    def EnableDispMidresult(self):
+        return self._EnableDispMidresult
+
+    @EnableDispMidresult.setter
+    def EnableDispMidresult(self, EnableDispMidresult):
+        self._EnableDispMidresult = EnableDispMidresult
+
+    @property
+    def EnablePdfRecognize(self):
+        return self._EnablePdfRecognize
+
+    @EnablePdfRecognize.setter
+    def EnablePdfRecognize(self, EnablePdfRecognize):
+        self._EnablePdfRecognize = EnablePdfRecognize
+
+    @property
+    def PdfPageIndex(self):
+        return self._PdfPageIndex
+
+    @PdfPageIndex.setter
+    def PdfPageIndex(self, PdfPageIndex):
+        self._PdfPageIndex = PdfPageIndex
+
+    @property
+    def LaTex(self):
+        return self._LaTex
+
+    @LaTex.setter
+    def LaTex(self, LaTex):
+        self._LaTex = LaTex
+
+    @property
+    def RejectVagueArithmetic(self):
+        return self._RejectVagueArithmetic
+
+    @RejectVagueArithmetic.setter
+    def RejectVagueArithmetic(self, RejectVagueArithmetic):
+        self._RejectVagueArithmetic = RejectVagueArithmetic
 
 
     def _deserialize(self, params):
-        self.SessionId = params.get("SessionId")
-        self.Image = params.get("Image")
-        self.HcmAppid = params.get("HcmAppid")
-        self.Url = params.get("Url")
-        self.SupportHorizontalImage = params.get("SupportHorizontalImage")
-        self.RejectNonArithmeticImage = params.get("RejectNonArithmeticImage")
-        self.IsAsync = params.get("IsAsync")
-        self.EnableDispRelatedVertical = params.get("EnableDispRelatedVertical")
-        self.EnableDispMidresult = params.get("EnableDispMidresult")
-        self.EnablePdfRecognize = params.get("EnablePdfRecognize")
-        self.PdfPageIndex = params.get("PdfPageIndex")
-        self.LaTex = params.get("LaTex")
-        self.RejectVagueArithmetic = params.get("RejectVagueArithmetic")
+        self._SessionId = params.get("SessionId")
+        self._Image = params.get("Image")
+        self._HcmAppid = params.get("HcmAppid")
+        self._Url = params.get("Url")
+        self._SupportHorizontalImage = params.get("SupportHorizontalImage")
+        self._RejectNonArithmeticImage = params.get("RejectNonArithmeticImage")
+        self._IsAsync = params.get("IsAsync")
+        self._EnableDispRelatedVertical = params.get("EnableDispRelatedVertical")
+        self._EnableDispMidresult = params.get("EnableDispMidresult")
+        self._EnablePdfRecognize = params.get("EnablePdfRecognize")
+        self._PdfPageIndex = params.get("PdfPageIndex")
+        self._LaTex = params.get("LaTex")
+        self._RejectVagueArithmetic = params.get("RejectVagueArithmetic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -97,32 +202,64 @@ class EvaluationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SessionId: 图片唯一标识，一张图片一个SessionId；
+        :param _SessionId: 图片唯一标识，一张图片一个SessionId；
         :type SessionId: str
-        :param Items: 识别出的算式信息；
+        :param _Items: 识别出的算式信息；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of Item
-        :param TaskId: 任务 id，用于查询接口
+        :param _TaskId: 任务 id，用于查询接口
         :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SessionId = None
-        self.Items = None
-        self.TaskId = None
-        self.RequestId = None
+        self._SessionId = None
+        self._Items = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SessionId = params.get("SessionId")
+        self._SessionId = params.get("SessionId")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = Item()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class Item(AbstractModel):
@@ -132,52 +269,109 @@ class Item(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Item: 识别的算式是否正确，算式运算结果:
+        :param _Item: 识别的算式是否正确，算式运算结果:
 ‘YES’:正确 
 ‘NO’: 错误 
 ‘NA’: 非法参数
 ‘EMPTY’: 未作答
         :type Item: str
-        :param ItemString: 识别出的算式，识别出的文本行字符串
+        :param _ItemString: 识别出的算式，识别出的文本行字符串
         :type ItemString: str
-        :param ItemCoord: 识别的算式在图片上的位置信息，文本行在旋转纠正之后的图像中的像素坐 标，表示为(左上角 x, 左上角 y，宽 width， 高 height)
+        :param _ItemCoord: 识别的算式在图片上的位置信息，文本行在旋转纠正之后的图像中的像素坐 标，表示为(左上角 x, 左上角 y，宽 width， 高 height)
         :type ItemCoord: :class:`tencentcloud.hcm.v20181106.models.ItemCoord`
-        :param Answer: 错题推荐答案，算式运算结果正确返回为 ""，算式运算结果错误返回推荐答案 (注:暂不支持多个关系运算符(如 1<10<7)、 无关系运算符(如 frac(1,2)+frac(2,3))、单 位换算(如 1 元=100 角)错题的推荐答案 返回)
+        :param _Answer: 错题推荐答案，算式运算结果正确返回为 ""，算式运算结果错误返回推荐答案 (注:暂不支持多个关系运算符(如 1<10<7)、 无关系运算符(如 frac(1,2)+frac(2,3))、单 位换算(如 1 元=100 角)错题的推荐答案 返回)
 (注:使用@@标记答案填写区域)
         :type Answer: str
-        :param ExpressionType: 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
+        :param _ExpressionType: 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpressionType: str
-        :param ItemConf: 文本行置信度
+        :param _ItemConf: 文本行置信度
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemConf: float
-        :param QuestionId: 用于标识题目 id，如果有若干算式属于同一 题，则其对应的 id 相同。
+        :param _QuestionId: 用于标识题目 id，如果有若干算式属于同一 题，则其对应的 id 相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuestionId: str
         """
-        self.Item = None
-        self.ItemString = None
-        self.ItemCoord = None
-        self.Answer = None
-        self.ExpressionType = None
-        self.ItemConf = None
-        self.QuestionId = None
+        self._Item = None
+        self._ItemString = None
+        self._ItemCoord = None
+        self._Answer = None
+        self._ExpressionType = None
+        self._ItemConf = None
+        self._QuestionId = None
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def ItemString(self):
+        return self._ItemString
+
+    @ItemString.setter
+    def ItemString(self, ItemString):
+        self._ItemString = ItemString
+
+    @property
+    def ItemCoord(self):
+        return self._ItemCoord
+
+    @ItemCoord.setter
+    def ItemCoord(self, ItemCoord):
+        self._ItemCoord = ItemCoord
+
+    @property
+    def Answer(self):
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def ExpressionType(self):
+        return self._ExpressionType
+
+    @ExpressionType.setter
+    def ExpressionType(self, ExpressionType):
+        self._ExpressionType = ExpressionType
+
+    @property
+    def ItemConf(self):
+        return self._ItemConf
+
+    @ItemConf.setter
+    def ItemConf(self, ItemConf):
+        self._ItemConf = ItemConf
+
+    @property
+    def QuestionId(self):
+        return self._QuestionId
+
+    @QuestionId.setter
+    def QuestionId(self, QuestionId):
+        self._QuestionId = QuestionId
 
 
     def _deserialize(self, params):
-        self.Item = params.get("Item")
-        self.ItemString = params.get("ItemString")
+        self._Item = params.get("Item")
+        self._ItemString = params.get("ItemString")
         if params.get("ItemCoord") is not None:
-            self.ItemCoord = ItemCoord()
-            self.ItemCoord._deserialize(params.get("ItemCoord"))
-        self.Answer = params.get("Answer")
-        self.ExpressionType = params.get("ExpressionType")
-        self.ItemConf = params.get("ItemConf")
-        self.QuestionId = params.get("QuestionId")
+            self._ItemCoord = ItemCoord()
+            self._ItemCoord._deserialize(params.get("ItemCoord"))
+        self._Answer = params.get("Answer")
+        self._ExpressionType = params.get("ExpressionType")
+        self._ItemConf = params.get("ItemConf")
+        self._QuestionId = params.get("QuestionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -190,30 +384,63 @@ class ItemCoord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Height: 算式高度
+        :param _Height: 算式高度
         :type Height: int
-        :param Width: 算式宽度
+        :param _Width: 算式宽度
         :type Width: int
-        :param X: 算式图的左上角横坐标
+        :param _X: 算式图的左上角横坐标
         :type X: int
-        :param Y: 算式图的左上角纵坐标
+        :param _Y: 算式图的左上角纵坐标
         :type Y: int
         """
-        self.Height = None
-        self.Width = None
-        self.X = None
-        self.Y = None
+        self._Height = None
+        self._Width = None
+        self._X = None
+        self._Y = None
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
 
 
     def _deserialize(self, params):
-        self.Height = params.get("Height")
-        self.Width = params.get("Width")
-        self.X = params.get("X")
-        self.Y = params.get("Y")
+        self._Height = params.get("Height")
+        self._Width = params.get("Width")
+        self._X = params.get("X")
+        self._Y = params.get("Y")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

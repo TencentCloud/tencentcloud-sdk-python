@@ -188,6 +188,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeHiveQueries(self, request):
+        """获取hive查询信息
+
+        :param request: Request instance for DescribeHiveQueries.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHiveQueriesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHiveQueriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHiveQueries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHiveQueriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImpalaQueries(self, request):
+        """DescribeImpalaQueries
+
+        :param request: Request instance for DescribeImpalaQueries.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeImpalaQueriesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeImpalaQueriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImpalaQueries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImpalaQueriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceRenewNodes(self, request):
         """查询待续费节点信息
 
@@ -318,6 +364,29 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeUsersForUserManager", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUsersForUserManagerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeYarnApplications(self, request):
+        """DescribeYarnApplications
+
+        :param request: Request instance for DescribeYarnApplications.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnApplicationsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeYarnApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeYarnApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeYarnApplicationsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -25,30 +25,63 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DateKey: 时间
+        :param _DateKey: 时间
         :type DateKey: str
-        :param AllStopCnt: 停止验证数量
+        :param _AllStopCnt: 停止验证数量
         :type AllStopCnt: float
-        :param PicStopCnt: 图片停止加载数量
+        :param _PicStopCnt: 图片停止加载数量
         :type PicStopCnt: float
-        :param StrategyStopCnt: 策略拦截数量
+        :param _StrategyStopCnt: 策略拦截数量
         :type StrategyStopCnt: float
         """
-        self.DateKey = None
-        self.AllStopCnt = None
-        self.PicStopCnt = None
-        self.StrategyStopCnt = None
+        self._DateKey = None
+        self._AllStopCnt = None
+        self._PicStopCnt = None
+        self._StrategyStopCnt = None
+
+    @property
+    def DateKey(self):
+        return self._DateKey
+
+    @DateKey.setter
+    def DateKey(self, DateKey):
+        self._DateKey = DateKey
+
+    @property
+    def AllStopCnt(self):
+        return self._AllStopCnt
+
+    @AllStopCnt.setter
+    def AllStopCnt(self, AllStopCnt):
+        self._AllStopCnt = AllStopCnt
+
+    @property
+    def PicStopCnt(self):
+        return self._PicStopCnt
+
+    @PicStopCnt.setter
+    def PicStopCnt(self, PicStopCnt):
+        self._PicStopCnt = PicStopCnt
+
+    @property
+    def StrategyStopCnt(self):
+        return self._StrategyStopCnt
+
+    @StrategyStopCnt.setter
+    def StrategyStopCnt(self, StrategyStopCnt):
+        self._StrategyStopCnt = StrategyStopCnt
 
 
     def _deserialize(self, params):
-        self.DateKey = params.get("DateKey")
-        self.AllStopCnt = params.get("AllStopCnt")
-        self.PicStopCnt = params.get("PicStopCnt")
-        self.StrategyStopCnt = params.get("StrategyStopCnt")
+        self._DateKey = params.get("DateKey")
+        self._AllStopCnt = params.get("AllStopCnt")
+        self._PicStopCnt = params.get("PicStopCnt")
+        self._StrategyStopCnt = params.get("StrategyStopCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -61,26 +94,51 @@ class CaptchaOperDataLoadTimeUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DateKey: 时间
+        :param _DateKey: 时间
         :type DateKey: str
-        :param MarketLoadTime: Market加载时间
+        :param _MarketLoadTime: Market加载时间
         :type MarketLoadTime: float
-        :param AppIdLoadTime: AppId加载时间
+        :param _AppIdLoadTime: AppId加载时间
         :type AppIdLoadTime: float
         """
-        self.DateKey = None
-        self.MarketLoadTime = None
-        self.AppIdLoadTime = None
+        self._DateKey = None
+        self._MarketLoadTime = None
+        self._AppIdLoadTime = None
+
+    @property
+    def DateKey(self):
+        return self._DateKey
+
+    @DateKey.setter
+    def DateKey(self, DateKey):
+        self._DateKey = DateKey
+
+    @property
+    def MarketLoadTime(self):
+        return self._MarketLoadTime
+
+    @MarketLoadTime.setter
+    def MarketLoadTime(self, MarketLoadTime):
+        self._MarketLoadTime = MarketLoadTime
+
+    @property
+    def AppIdLoadTime(self):
+        return self._AppIdLoadTime
+
+    @AppIdLoadTime.setter
+    def AppIdLoadTime(self, AppIdLoadTime):
+        self._AppIdLoadTime = AppIdLoadTime
 
 
     def _deserialize(self, params):
-        self.DateKey = params.get("DateKey")
-        self.MarketLoadTime = params.get("MarketLoadTime")
-        self.AppIdLoadTime = params.get("AppIdLoadTime")
+        self._DateKey = params.get("DateKey")
+        self._MarketLoadTime = params.get("MarketLoadTime")
+        self._AppIdLoadTime = params.get("AppIdLoadTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -93,54 +151,87 @@ class CaptchaOperDataRes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OperDataLoadTimeUnitArray: 验证码加载耗时数据返回
+        :param _OperDataLoadTimeUnitArray: 验证码加载耗时数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperDataLoadTimeUnitArray: list of CaptchaOperDataLoadTimeUnit
-        :param OperDataInterceptUnitArray: 验证码拦截情况数据返回
+        :param _OperDataInterceptUnitArray: 验证码拦截情况数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperDataInterceptUnitArray: list of CaptchaOperDataInterceptUnit
-        :param OperDataTryTimesUnitArray: 验证码尝试次数数据返回
+        :param _OperDataTryTimesUnitArray: 验证码尝试次数数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperDataTryTimesUnitArray: list of CaptchaOperDataTryTimesUnit
-        :param OperDataTryTimesDistributeUnitArray: 验证码尝试次数分布数据返回
+        :param _OperDataTryTimesDistributeUnitArray: 验证码尝试次数分布数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperDataTryTimesDistributeUnitArray: list of CaptchaOperDataTryTimesDistributeUnit
         """
-        self.OperDataLoadTimeUnitArray = None
-        self.OperDataInterceptUnitArray = None
-        self.OperDataTryTimesUnitArray = None
-        self.OperDataTryTimesDistributeUnitArray = None
+        self._OperDataLoadTimeUnitArray = None
+        self._OperDataInterceptUnitArray = None
+        self._OperDataTryTimesUnitArray = None
+        self._OperDataTryTimesDistributeUnitArray = None
+
+    @property
+    def OperDataLoadTimeUnitArray(self):
+        return self._OperDataLoadTimeUnitArray
+
+    @OperDataLoadTimeUnitArray.setter
+    def OperDataLoadTimeUnitArray(self, OperDataLoadTimeUnitArray):
+        self._OperDataLoadTimeUnitArray = OperDataLoadTimeUnitArray
+
+    @property
+    def OperDataInterceptUnitArray(self):
+        return self._OperDataInterceptUnitArray
+
+    @OperDataInterceptUnitArray.setter
+    def OperDataInterceptUnitArray(self, OperDataInterceptUnitArray):
+        self._OperDataInterceptUnitArray = OperDataInterceptUnitArray
+
+    @property
+    def OperDataTryTimesUnitArray(self):
+        return self._OperDataTryTimesUnitArray
+
+    @OperDataTryTimesUnitArray.setter
+    def OperDataTryTimesUnitArray(self, OperDataTryTimesUnitArray):
+        self._OperDataTryTimesUnitArray = OperDataTryTimesUnitArray
+
+    @property
+    def OperDataTryTimesDistributeUnitArray(self):
+        return self._OperDataTryTimesDistributeUnitArray
+
+    @OperDataTryTimesDistributeUnitArray.setter
+    def OperDataTryTimesDistributeUnitArray(self, OperDataTryTimesDistributeUnitArray):
+        self._OperDataTryTimesDistributeUnitArray = OperDataTryTimesDistributeUnitArray
 
 
     def _deserialize(self, params):
         if params.get("OperDataLoadTimeUnitArray") is not None:
-            self.OperDataLoadTimeUnitArray = []
+            self._OperDataLoadTimeUnitArray = []
             for item in params.get("OperDataLoadTimeUnitArray"):
                 obj = CaptchaOperDataLoadTimeUnit()
                 obj._deserialize(item)
-                self.OperDataLoadTimeUnitArray.append(obj)
+                self._OperDataLoadTimeUnitArray.append(obj)
         if params.get("OperDataInterceptUnitArray") is not None:
-            self.OperDataInterceptUnitArray = []
+            self._OperDataInterceptUnitArray = []
             for item in params.get("OperDataInterceptUnitArray"):
                 obj = CaptchaOperDataInterceptUnit()
                 obj._deserialize(item)
-                self.OperDataInterceptUnitArray.append(obj)
+                self._OperDataInterceptUnitArray.append(obj)
         if params.get("OperDataTryTimesUnitArray") is not None:
-            self.OperDataTryTimesUnitArray = []
+            self._OperDataTryTimesUnitArray = []
             for item in params.get("OperDataTryTimesUnitArray"):
                 obj = CaptchaOperDataTryTimesUnit()
                 obj._deserialize(item)
-                self.OperDataTryTimesUnitArray.append(obj)
+                self._OperDataTryTimesUnitArray.append(obj)
         if params.get("OperDataTryTimesDistributeUnitArray") is not None:
-            self.OperDataTryTimesDistributeUnitArray = []
+            self._OperDataTryTimesDistributeUnitArray = []
             for item in params.get("OperDataTryTimesDistributeUnitArray"):
                 obj = CaptchaOperDataTryTimesDistributeUnit()
                 obj._deserialize(item)
-                self.OperDataTryTimesDistributeUnitArray.append(obj)
+                self._OperDataTryTimesDistributeUnitArray.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -153,22 +244,39 @@ class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TryCount: 尝试次数
+        :param _TryCount: 尝试次数
         :type TryCount: int
-        :param UserCount: 用户请求数量
+        :param _UserCount: 用户请求数量
         :type UserCount: int
         """
-        self.TryCount = None
-        self.UserCount = None
+        self._TryCount = None
+        self._UserCount = None
+
+    @property
+    def TryCount(self):
+        return self._TryCount
+
+    @TryCount.setter
+    def TryCount(self, TryCount):
+        self._TryCount = TryCount
+
+    @property
+    def UserCount(self):
+        return self._UserCount
+
+    @UserCount.setter
+    def UserCount(self, UserCount):
+        self._UserCount = UserCount
 
 
     def _deserialize(self, params):
-        self.TryCount = params.get("TryCount")
-        self.UserCount = params.get("UserCount")
+        self._TryCount = params.get("TryCount")
+        self._UserCount = params.get("UserCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -181,26 +289,51 @@ class CaptchaOperDataTryTimesUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DateKey: 时间
+        :param _DateKey: 时间
         :type DateKey: str
-        :param CntPerPass: 平均尝试次数
+        :param _CntPerPass: 平均尝试次数
         :type CntPerPass: list of float
-        :param MarketCntPerPass: market平均尝试次数
+        :param _MarketCntPerPass: market平均尝试次数
         :type MarketCntPerPass: float
         """
-        self.DateKey = None
-        self.CntPerPass = None
-        self.MarketCntPerPass = None
+        self._DateKey = None
+        self._CntPerPass = None
+        self._MarketCntPerPass = None
+
+    @property
+    def DateKey(self):
+        return self._DateKey
+
+    @DateKey.setter
+    def DateKey(self, DateKey):
+        self._DateKey = DateKey
+
+    @property
+    def CntPerPass(self):
+        return self._CntPerPass
+
+    @CntPerPass.setter
+    def CntPerPass(self, CntPerPass):
+        self._CntPerPass = CntPerPass
+
+    @property
+    def MarketCntPerPass(self):
+        return self._MarketCntPerPass
+
+    @MarketCntPerPass.setter
+    def MarketCntPerPass(self, MarketCntPerPass):
+        self._MarketCntPerPass = MarketCntPerPass
 
 
     def _deserialize(self, params):
-        self.DateKey = params.get("DateKey")
-        self.CntPerPass = params.get("CntPerPass")
-        self.MarketCntPerPass = params.get("MarketCntPerPass")
+        self._DateKey = params.get("DateKey")
+        self._CntPerPass = params.get("CntPerPass")
+        self._MarketCntPerPass = params.get("MarketCntPerPass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -213,22 +346,39 @@ class CaptchaQueryData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cnt: 数量
+        :param _Cnt: 数量
         :type Cnt: int
-        :param Date: 时间
+        :param _Date: 时间
         :type Date: str
         """
-        self.Cnt = None
-        self.Date = None
+        self._Cnt = None
+        self._Date = None
+
+    @property
+    def Cnt(self):
+        return self._Cnt
+
+    @Cnt.setter
+    def Cnt(self, Cnt):
+        self._Cnt = Cnt
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
 
 
     def _deserialize(self, params):
-        self.Cnt = params.get("Cnt")
-        self.Date = params.get("Date")
+        self._Cnt = params.get("Cnt")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -241,72 +391,153 @@ class CaptchaStatisticObj(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActionTotal: 请求总量
+        :param _ActionTotal: 请求总量
         :type ActionTotal: int
-        :param VerifyTotal: 验证总量
+        :param _VerifyTotal: 验证总量
         :type VerifyTotal: int
-        :param VerifyThroughTotal: 验证通过总量
+        :param _VerifyThroughTotal: 验证通过总量
         :type VerifyThroughTotal: int
-        :param VerifyInterceptTotal: 验证拦截总量
+        :param _VerifyInterceptTotal: 验证拦截总量
         :type VerifyInterceptTotal: int
-        :param TicketTotal: 票据校验总量
+        :param _TicketTotal: 票据校验总量
         :type TicketTotal: int
-        :param TicketThroughTotal: 票据通过总量
+        :param _TicketThroughTotal: 票据通过总量
         :type TicketThroughTotal: int
-        :param TicketInterceptTotal: 票据拦截总量
+        :param _TicketInterceptTotal: 票据拦截总量
         :type TicketInterceptTotal: int
-        :param RequestTrend: 请求趋势图
+        :param _RequestTrend: 请求趋势图
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestTrend: list of RequestTrendObj
-        :param InterceptPerTrend: 拦截率趋势图
+        :param _InterceptPerTrend: 拦截率趋势图
 注意：此字段可能返回 null，表示取不到有效值。
         :type InterceptPerTrend: list of InterceptPerTrendObj
-        :param TicketCheckTrend: 票据校验趋势图
+        :param _TicketCheckTrend: 票据校验趋势图
 注意：此字段可能返回 null，表示取不到有效值。
         :type TicketCheckTrend: list of TicketCheckTrendObj
         """
-        self.ActionTotal = None
-        self.VerifyTotal = None
-        self.VerifyThroughTotal = None
-        self.VerifyInterceptTotal = None
-        self.TicketTotal = None
-        self.TicketThroughTotal = None
-        self.TicketInterceptTotal = None
-        self.RequestTrend = None
-        self.InterceptPerTrend = None
-        self.TicketCheckTrend = None
+        self._ActionTotal = None
+        self._VerifyTotal = None
+        self._VerifyThroughTotal = None
+        self._VerifyInterceptTotal = None
+        self._TicketTotal = None
+        self._TicketThroughTotal = None
+        self._TicketInterceptTotal = None
+        self._RequestTrend = None
+        self._InterceptPerTrend = None
+        self._TicketCheckTrend = None
+
+    @property
+    def ActionTotal(self):
+        return self._ActionTotal
+
+    @ActionTotal.setter
+    def ActionTotal(self, ActionTotal):
+        self._ActionTotal = ActionTotal
+
+    @property
+    def VerifyTotal(self):
+        return self._VerifyTotal
+
+    @VerifyTotal.setter
+    def VerifyTotal(self, VerifyTotal):
+        self._VerifyTotal = VerifyTotal
+
+    @property
+    def VerifyThroughTotal(self):
+        return self._VerifyThroughTotal
+
+    @VerifyThroughTotal.setter
+    def VerifyThroughTotal(self, VerifyThroughTotal):
+        self._VerifyThroughTotal = VerifyThroughTotal
+
+    @property
+    def VerifyInterceptTotal(self):
+        return self._VerifyInterceptTotal
+
+    @VerifyInterceptTotal.setter
+    def VerifyInterceptTotal(self, VerifyInterceptTotal):
+        self._VerifyInterceptTotal = VerifyInterceptTotal
+
+    @property
+    def TicketTotal(self):
+        return self._TicketTotal
+
+    @TicketTotal.setter
+    def TicketTotal(self, TicketTotal):
+        self._TicketTotal = TicketTotal
+
+    @property
+    def TicketThroughTotal(self):
+        return self._TicketThroughTotal
+
+    @TicketThroughTotal.setter
+    def TicketThroughTotal(self, TicketThroughTotal):
+        self._TicketThroughTotal = TicketThroughTotal
+
+    @property
+    def TicketInterceptTotal(self):
+        return self._TicketInterceptTotal
+
+    @TicketInterceptTotal.setter
+    def TicketInterceptTotal(self, TicketInterceptTotal):
+        self._TicketInterceptTotal = TicketInterceptTotal
+
+    @property
+    def RequestTrend(self):
+        return self._RequestTrend
+
+    @RequestTrend.setter
+    def RequestTrend(self, RequestTrend):
+        self._RequestTrend = RequestTrend
+
+    @property
+    def InterceptPerTrend(self):
+        return self._InterceptPerTrend
+
+    @InterceptPerTrend.setter
+    def InterceptPerTrend(self, InterceptPerTrend):
+        self._InterceptPerTrend = InterceptPerTrend
+
+    @property
+    def TicketCheckTrend(self):
+        return self._TicketCheckTrend
+
+    @TicketCheckTrend.setter
+    def TicketCheckTrend(self, TicketCheckTrend):
+        self._TicketCheckTrend = TicketCheckTrend
 
 
     def _deserialize(self, params):
-        self.ActionTotal = params.get("ActionTotal")
-        self.VerifyTotal = params.get("VerifyTotal")
-        self.VerifyThroughTotal = params.get("VerifyThroughTotal")
-        self.VerifyInterceptTotal = params.get("VerifyInterceptTotal")
-        self.TicketTotal = params.get("TicketTotal")
-        self.TicketThroughTotal = params.get("TicketThroughTotal")
-        self.TicketInterceptTotal = params.get("TicketInterceptTotal")
+        self._ActionTotal = params.get("ActionTotal")
+        self._VerifyTotal = params.get("VerifyTotal")
+        self._VerifyThroughTotal = params.get("VerifyThroughTotal")
+        self._VerifyInterceptTotal = params.get("VerifyInterceptTotal")
+        self._TicketTotal = params.get("TicketTotal")
+        self._TicketThroughTotal = params.get("TicketThroughTotal")
+        self._TicketInterceptTotal = params.get("TicketInterceptTotal")
         if params.get("RequestTrend") is not None:
-            self.RequestTrend = []
+            self._RequestTrend = []
             for item in params.get("RequestTrend"):
                 obj = RequestTrendObj()
                 obj._deserialize(item)
-                self.RequestTrend.append(obj)
+                self._RequestTrend.append(obj)
         if params.get("InterceptPerTrend") is not None:
-            self.InterceptPerTrend = []
+            self._InterceptPerTrend = []
             for item in params.get("InterceptPerTrend"):
                 obj = InterceptPerTrendObj()
                 obj._deserialize(item)
-                self.InterceptPerTrend.append(obj)
+                self._InterceptPerTrend.append(obj)
         if params.get("TicketCheckTrend") is not None:
-            self.TicketCheckTrend = []
+            self._TicketCheckTrend = []
             for item in params.get("TicketCheckTrend"):
                 obj = TicketCheckTrendObj()
                 obj._deserialize(item)
-                self.TicketCheckTrend.append(obj)
+                self._TicketCheckTrend.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -319,41 +550,66 @@ class CaptchaTicketDataRes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TicketAmountArray: 票据验证总量返回
+        :param _TicketAmountArray: 票据验证总量返回
         :type TicketAmountArray: list of TicketAmountUnit
-        :param TicketThroughArray: 票据验证通过量返回
+        :param _TicketThroughArray: 票据验证通过量返回
         :type TicketThroughArray: list of TicketThroughUnit
-        :param TicketInterceptArray: 票据验证拦截量返回
+        :param _TicketInterceptArray: 票据验证拦截量返回
         :type TicketInterceptArray: list of TicketInterceptUnit
         """
-        self.TicketAmountArray = None
-        self.TicketThroughArray = None
-        self.TicketInterceptArray = None
+        self._TicketAmountArray = None
+        self._TicketThroughArray = None
+        self._TicketInterceptArray = None
+
+    @property
+    def TicketAmountArray(self):
+        return self._TicketAmountArray
+
+    @TicketAmountArray.setter
+    def TicketAmountArray(self, TicketAmountArray):
+        self._TicketAmountArray = TicketAmountArray
+
+    @property
+    def TicketThroughArray(self):
+        return self._TicketThroughArray
+
+    @TicketThroughArray.setter
+    def TicketThroughArray(self, TicketThroughArray):
+        self._TicketThroughArray = TicketThroughArray
+
+    @property
+    def TicketInterceptArray(self):
+        return self._TicketInterceptArray
+
+    @TicketInterceptArray.setter
+    def TicketInterceptArray(self, TicketInterceptArray):
+        self._TicketInterceptArray = TicketInterceptArray
 
 
     def _deserialize(self, params):
         if params.get("TicketAmountArray") is not None:
-            self.TicketAmountArray = []
+            self._TicketAmountArray = []
             for item in params.get("TicketAmountArray"):
                 obj = TicketAmountUnit()
                 obj._deserialize(item)
-                self.TicketAmountArray.append(obj)
+                self._TicketAmountArray.append(obj)
         if params.get("TicketThroughArray") is not None:
-            self.TicketThroughArray = []
+            self._TicketThroughArray = []
             for item in params.get("TicketThroughArray"):
                 obj = TicketThroughUnit()
                 obj._deserialize(item)
-                self.TicketThroughArray.append(obj)
+                self._TicketThroughArray.append(obj)
         if params.get("TicketInterceptArray") is not None:
-            self.TicketInterceptArray = []
+            self._TicketInterceptArray = []
             for item in params.get("TicketInterceptArray"):
                 obj = TicketInterceptUnit()
                 obj._deserialize(item)
-                self.TicketInterceptArray.append(obj)
+                self._TicketInterceptArray.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -366,30 +622,63 @@ class CaptchaUserAllAppId(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param AppName: 注册应用名称
+        :param _AppName: 注册应用名称
         :type AppName: str
-        :param TcAppId: 腾讯云APPID
+        :param _TcAppId: 腾讯云APPID
         :type TcAppId: int
-        :param ChannelInfo: 渠道信息
+        :param _ChannelInfo: 渠道信息
         :type ChannelInfo: str
         """
-        self.CaptchaAppId = None
-        self.AppName = None
-        self.TcAppId = None
-        self.ChannelInfo = None
+        self._CaptchaAppId = None
+        self._AppName = None
+        self._TcAppId = None
+        self._ChannelInfo = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def TcAppId(self):
+        return self._TcAppId
+
+    @TcAppId.setter
+    def TcAppId(self, TcAppId):
+        self._TcAppId = TcAppId
+
+    @property
+    def ChannelInfo(self):
+        return self._ChannelInfo
+
+    @ChannelInfo.setter
+    def ChannelInfo(self, ChannelInfo):
+        self._ChannelInfo = ChannelInfo
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.AppName = params.get("AppName")
-        self.TcAppId = params.get("TcAppId")
-        self.ChannelInfo = params.get("ChannelInfo")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppName = params.get("AppName")
+        self._TcAppId = params.get("TcAppId")
+        self._ChannelInfo = params.get("ChannelInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -402,18 +691,27 @@ class DescribeCaptchaAppIdInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用注册APPID
+        :param _CaptchaAppId: 验证码应用注册APPID
         :type CaptchaAppId: int
         """
-        self.CaptchaAppId = None
+        self._CaptchaAppId = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
+        self._CaptchaAppId = params.get("CaptchaAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -426,76 +724,204 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SchemeColor: 界面风格
+        :param _SchemeColor: 界面风格
         :type SchemeColor: str
-        :param Language: 语言
+        :param _Language: 语言
         :type Language: int
-        :param SceneType: 场景
+        :param _SceneType: 场景
         :type SceneType: int
-        :param EvilInterceptGrade: 防控风险等级
+        :param _EvilInterceptGrade: 防控风险等级
         :type EvilInterceptGrade: int
-        :param SmartVerify: 智能验证
+        :param _SmartVerify: 智能验证
         :type SmartVerify: int
-        :param SmartEngine: 智能引擎
+        :param _SmartEngine: 智能引擎
         :type SmartEngine: int
-        :param CapType: 验证码类型
+        :param _CapType: 验证码类型
         :type CapType: int
-        :param AppName: 应用名称
+        :param _AppName: 应用名称
         :type AppName: str
-        :param DomainLimit: 域名限制
+        :param _DomainLimit: 域名限制
         :type DomainLimit: str
-        :param MailAlarm: 邮件告警
+        :param _MailAlarm: 邮件告警
 注意：此字段可能返回 null，表示取不到有效值。
         :type MailAlarm: list of str
-        :param TrafficThreshold: 流量控制
+        :param _TrafficThreshold: 流量控制
         :type TrafficThreshold: int
-        :param EncryptKey: 加密key
+        :param _EncryptKey: 加密key
         :type EncryptKey: str
-        :param TopFullScreen: 是否全屏
+        :param _TopFullScreen: 是否全屏
         :type TopFullScreen: int
-        :param CaptchaCode: 成功返回0 其它失败
+        :param _CaptchaCode: 成功返回0 其它失败
         :type CaptchaCode: int
-        :param CaptchaMsg: 返回操作信息
+        :param _CaptchaMsg: 返回操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.SchemeColor = None
-        self.Language = None
-        self.SceneType = None
-        self.EvilInterceptGrade = None
-        self.SmartVerify = None
-        self.SmartEngine = None
-        self.CapType = None
-        self.AppName = None
-        self.DomainLimit = None
-        self.MailAlarm = None
-        self.TrafficThreshold = None
-        self.EncryptKey = None
-        self.TopFullScreen = None
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._SchemeColor = None
+        self._Language = None
+        self._SceneType = None
+        self._EvilInterceptGrade = None
+        self._SmartVerify = None
+        self._SmartEngine = None
+        self._CapType = None
+        self._AppName = None
+        self._DomainLimit = None
+        self._MailAlarm = None
+        self._TrafficThreshold = None
+        self._EncryptKey = None
+        self._TopFullScreen = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def SchemeColor(self):
+        return self._SchemeColor
+
+    @SchemeColor.setter
+    def SchemeColor(self, SchemeColor):
+        self._SchemeColor = SchemeColor
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def SceneType(self):
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def EvilInterceptGrade(self):
+        return self._EvilInterceptGrade
+
+    @EvilInterceptGrade.setter
+    def EvilInterceptGrade(self, EvilInterceptGrade):
+        self._EvilInterceptGrade = EvilInterceptGrade
+
+    @property
+    def SmartVerify(self):
+        return self._SmartVerify
+
+    @SmartVerify.setter
+    def SmartVerify(self, SmartVerify):
+        self._SmartVerify = SmartVerify
+
+    @property
+    def SmartEngine(self):
+        return self._SmartEngine
+
+    @SmartEngine.setter
+    def SmartEngine(self, SmartEngine):
+        self._SmartEngine = SmartEngine
+
+    @property
+    def CapType(self):
+        return self._CapType
+
+    @CapType.setter
+    def CapType(self, CapType):
+        self._CapType = CapType
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainLimit(self):
+        return self._DomainLimit
+
+    @DomainLimit.setter
+    def DomainLimit(self, DomainLimit):
+        self._DomainLimit = DomainLimit
+
+    @property
+    def MailAlarm(self):
+        return self._MailAlarm
+
+    @MailAlarm.setter
+    def MailAlarm(self, MailAlarm):
+        self._MailAlarm = MailAlarm
+
+    @property
+    def TrafficThreshold(self):
+        return self._TrafficThreshold
+
+    @TrafficThreshold.setter
+    def TrafficThreshold(self, TrafficThreshold):
+        self._TrafficThreshold = TrafficThreshold
+
+    @property
+    def EncryptKey(self):
+        return self._EncryptKey
+
+    @EncryptKey.setter
+    def EncryptKey(self, EncryptKey):
+        self._EncryptKey = EncryptKey
+
+    @property
+    def TopFullScreen(self):
+        return self._TopFullScreen
+
+    @TopFullScreen.setter
+    def TopFullScreen(self, TopFullScreen):
+        self._TopFullScreen = TopFullScreen
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SchemeColor = params.get("SchemeColor")
-        self.Language = params.get("Language")
-        self.SceneType = params.get("SceneType")
-        self.EvilInterceptGrade = params.get("EvilInterceptGrade")
-        self.SmartVerify = params.get("SmartVerify")
-        self.SmartEngine = params.get("SmartEngine")
-        self.CapType = params.get("CapType")
-        self.AppName = params.get("AppName")
-        self.DomainLimit = params.get("DomainLimit")
-        self.MailAlarm = params.get("MailAlarm")
-        self.TrafficThreshold = params.get("TrafficThreshold")
-        self.EncryptKey = params.get("EncryptKey")
-        self.TopFullScreen = params.get("TopFullScreen")
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+        self._SchemeColor = params.get("SchemeColor")
+        self._Language = params.get("Language")
+        self._SceneType = params.get("SceneType")
+        self._EvilInterceptGrade = params.get("EvilInterceptGrade")
+        self._SmartVerify = params.get("SmartVerify")
+        self._SmartEngine = params.get("SmartEngine")
+        self._CapType = params.get("CapType")
+        self._AppName = params.get("AppName")
+        self._DomainLimit = params.get("DomainLimit")
+        self._MailAlarm = params.get("MailAlarm")
+        self._TrafficThreshold = params.get("TrafficThreshold")
+        self._EncryptKey = params.get("EncryptKey")
+        self._TopFullScreen = params.get("TopFullScreen")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaDataRequest(AbstractModel):
@@ -505,30 +931,63 @@ class DescribeCaptchaDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间
+        :param _Start: 查询开始时间
         :type Start: int
-        :param End: 查询结束时间
+        :param _End: 查询结束时间
         :type End: int
-        :param Type: 查询类型
+        :param _Type: 查询类型
         :type Type: int
         """
-        self.CaptchaAppId = None
-        self.Start = None
-        self.End = None
-        self.Type = None
+        self._CaptchaAppId = None
+        self._Start = None
+        self._End = None
+        self._Type = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.Start = params.get("Start")
-        self.End = params.get("End")
-        self.Type = params.get("Type")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -541,33 +1000,65 @@ class DescribeCaptchaDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 返回码 0 成功 其它失败
+        :param _CaptchaCode: 返回码 0 成功 其它失败
         :type CaptchaCode: int
-        :param Data: 数据数组
+        :param _Data: 数据数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CaptchaQueryData
-        :param CaptchaMsg: 返回信息描述
+        :param _CaptchaMsg: 返回信息描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.Data = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._Data = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaCode = params.get("CaptchaCode")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = CaptchaQueryData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaDataSumRequest(AbstractModel):
@@ -577,26 +1068,51 @@ class DescribeCaptchaDataSumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间
+        :param _Start: 查询开始时间
         :type Start: int
-        :param End: 查询结束时间
+        :param _End: 查询结束时间
         :type End: int
         """
-        self.CaptchaAppId = None
-        self.Start = None
-        self.End = None
+        self._CaptchaAppId = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.Start = params.get("Start")
-        self.End = params.get("End")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -609,51 +1125,131 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GetSum: 请求总量
+        :param _GetSum: 请求总量
         :type GetSum: int
-        :param VfySuccSum: 请求验证成功量
+        :param _VfySuccSum: 请求验证成功量
         :type VfySuccSum: int
-        :param VfySum: 请求验证量
+        :param _VfySum: 请求验证量
         :type VfySum: int
-        :param AttackSum: 拦截攻击量
+        :param _AttackSum: 拦截攻击量
         :type AttackSum: int
-        :param CaptchaMsg: 返回信息
+        :param _CaptchaMsg: 返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param CaptchaCode: 成功返回0  其它失败
+        :param _CaptchaCode: 成功返回0  其它失败
         :type CaptchaCode: int
-        :param CheckTicketSum: 票据校验总量
+        :param _CheckTicketSum: 票据校验总量
         :type CheckTicketSum: int
-        :param TicketThroughputSum: 票据验证通过量
+        :param _TicketThroughputSum: 票据验证通过量
         :type TicketThroughputSum: int
-        :param TicketInterceptSum: 票据验证拦截量
+        :param _TicketInterceptSum: 票据验证拦截量
         :type TicketInterceptSum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GetSum = None
-        self.VfySuccSum = None
-        self.VfySum = None
-        self.AttackSum = None
-        self.CaptchaMsg = None
-        self.CaptchaCode = None
-        self.CheckTicketSum = None
-        self.TicketThroughputSum = None
-        self.TicketInterceptSum = None
-        self.RequestId = None
+        self._GetSum = None
+        self._VfySuccSum = None
+        self._VfySum = None
+        self._AttackSum = None
+        self._CaptchaMsg = None
+        self._CaptchaCode = None
+        self._CheckTicketSum = None
+        self._TicketThroughputSum = None
+        self._TicketInterceptSum = None
+        self._RequestId = None
+
+    @property
+    def GetSum(self):
+        return self._GetSum
+
+    @GetSum.setter
+    def GetSum(self, GetSum):
+        self._GetSum = GetSum
+
+    @property
+    def VfySuccSum(self):
+        return self._VfySuccSum
+
+    @VfySuccSum.setter
+    def VfySuccSum(self, VfySuccSum):
+        self._VfySuccSum = VfySuccSum
+
+    @property
+    def VfySum(self):
+        return self._VfySum
+
+    @VfySum.setter
+    def VfySum(self, VfySum):
+        self._VfySum = VfySum
+
+    @property
+    def AttackSum(self):
+        return self._AttackSum
+
+    @AttackSum.setter
+    def AttackSum(self, AttackSum):
+        self._AttackSum = AttackSum
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CheckTicketSum(self):
+        return self._CheckTicketSum
+
+    @CheckTicketSum.setter
+    def CheckTicketSum(self, CheckTicketSum):
+        self._CheckTicketSum = CheckTicketSum
+
+    @property
+    def TicketThroughputSum(self):
+        return self._TicketThroughputSum
+
+    @TicketThroughputSum.setter
+    def TicketThroughputSum(self, TicketThroughputSum):
+        self._TicketThroughputSum = TicketThroughputSum
+
+    @property
+    def TicketInterceptSum(self):
+        return self._TicketInterceptSum
+
+    @TicketInterceptSum.setter
+    def TicketInterceptSum(self, TicketInterceptSum):
+        self._TicketInterceptSum = TicketInterceptSum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.GetSum = params.get("GetSum")
-        self.VfySuccSum = params.get("VfySuccSum")
-        self.VfySum = params.get("VfySum")
-        self.AttackSum = params.get("AttackSum")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CheckTicketSum = params.get("CheckTicketSum")
-        self.TicketThroughputSum = params.get("TicketThroughputSum")
-        self.TicketInterceptSum = params.get("TicketInterceptSum")
-        self.RequestId = params.get("RequestId")
+        self._GetSum = params.get("GetSum")
+        self._VfySuccSum = params.get("VfySuccSum")
+        self._VfySum = params.get("VfySum")
+        self._AttackSum = params.get("AttackSum")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CheckTicketSum = params.get("CheckTicketSum")
+        self._TicketThroughputSum = params.get("TicketThroughputSum")
+        self._TicketInterceptSum = params.get("TicketInterceptSum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaMiniDataRequest(AbstractModel):
@@ -663,30 +1259,63 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间 例如：2019112900
+        :param _Start: 查询开始时间 例如：2019112900
         :type Start: int
-        :param End: 查询结束时间 例如：2019112902
+        :param _End: 查询结束时间 例如：2019112902
         :type End: int
-        :param Type: 查询类型 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
+        :param _Type: 查询类型 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
         :type Type: int
         """
-        self.CaptchaAppId = None
-        self.Start = None
-        self.End = None
-        self.Type = None
+        self._CaptchaAppId = None
+        self._Start = None
+        self._End = None
+        self._Type = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.Start = params.get("Start")
-        self.End = params.get("End")
-        self.Type = params.get("Type")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -699,33 +1328,65 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 返回码 0 成功 其它失败
+        :param _CaptchaCode: 返回码 0 成功 其它失败
         :type CaptchaCode: int
-        :param Data: 数据数组
+        :param _Data: 数据数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CaptchaQueryData
-        :param CaptchaMsg: 返回信息描述
+        :param _CaptchaMsg: 返回信息描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.Data = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._Data = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaCode = params.get("CaptchaCode")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = CaptchaQueryData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaMiniDataSumRequest(AbstractModel):
@@ -735,26 +1396,51 @@ class DescribeCaptchaMiniDataSumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间
+        :param _Start: 查询开始时间
         :type Start: int
-        :param End: 查询结束时间
+        :param _End: 查询结束时间
         :type End: int
         """
-        self.CaptchaAppId = None
-        self.Start = None
-        self.End = None
+        self._CaptchaAppId = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.Start = params.get("Start")
-        self.End = params.get("End")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -767,59 +1453,139 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GetSum: 请求总量
+        :param _GetSum: 请求总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type GetSum: int
-        :param VfySuccSum: 请求验证成功量
+        :param _VfySuccSum: 请求验证成功量
 注意：此字段可能返回 null，表示取不到有效值。
         :type VfySuccSum: int
-        :param VfySum: 请求验证量
+        :param _VfySum: 请求验证量
 注意：此字段可能返回 null，表示取不到有效值。
         :type VfySum: int
-        :param AttackSum: 拦截攻击量
+        :param _AttackSum: 拦截攻击量
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackSum: int
-        :param CaptchaMsg: 返回信息
+        :param _CaptchaMsg: 返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param CaptchaCode: 成功返回0  其它失败
+        :param _CaptchaCode: 成功返回0  其它失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaCode: int
-        :param CheckTicketSum: 票据校验总量
+        :param _CheckTicketSum: 票据校验总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckTicketSum: int
-        :param TicketThroughputSum: 票据验证通过量
+        :param _TicketThroughputSum: 票据验证通过量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TicketThroughputSum: int
-        :param TicketInterceptSum: 票据验证拦截量
+        :param _TicketInterceptSum: 票据验证拦截量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TicketInterceptSum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.GetSum = None
-        self.VfySuccSum = None
-        self.VfySum = None
-        self.AttackSum = None
-        self.CaptchaMsg = None
-        self.CaptchaCode = None
-        self.CheckTicketSum = None
-        self.TicketThroughputSum = None
-        self.TicketInterceptSum = None
-        self.RequestId = None
+        self._GetSum = None
+        self._VfySuccSum = None
+        self._VfySum = None
+        self._AttackSum = None
+        self._CaptchaMsg = None
+        self._CaptchaCode = None
+        self._CheckTicketSum = None
+        self._TicketThroughputSum = None
+        self._TicketInterceptSum = None
+        self._RequestId = None
+
+    @property
+    def GetSum(self):
+        return self._GetSum
+
+    @GetSum.setter
+    def GetSum(self, GetSum):
+        self._GetSum = GetSum
+
+    @property
+    def VfySuccSum(self):
+        return self._VfySuccSum
+
+    @VfySuccSum.setter
+    def VfySuccSum(self, VfySuccSum):
+        self._VfySuccSum = VfySuccSum
+
+    @property
+    def VfySum(self):
+        return self._VfySum
+
+    @VfySum.setter
+    def VfySum(self, VfySum):
+        self._VfySum = VfySum
+
+    @property
+    def AttackSum(self):
+        return self._AttackSum
+
+    @AttackSum.setter
+    def AttackSum(self, AttackSum):
+        self._AttackSum = AttackSum
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CheckTicketSum(self):
+        return self._CheckTicketSum
+
+    @CheckTicketSum.setter
+    def CheckTicketSum(self, CheckTicketSum):
+        self._CheckTicketSum = CheckTicketSum
+
+    @property
+    def TicketThroughputSum(self):
+        return self._TicketThroughputSum
+
+    @TicketThroughputSum.setter
+    def TicketThroughputSum(self, TicketThroughputSum):
+        self._TicketThroughputSum = TicketThroughputSum
+
+    @property
+    def TicketInterceptSum(self):
+        return self._TicketInterceptSum
+
+    @TicketInterceptSum.setter
+    def TicketInterceptSum(self, TicketInterceptSum):
+        self._TicketInterceptSum = TicketInterceptSum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.GetSum = params.get("GetSum")
-        self.VfySuccSum = params.get("VfySuccSum")
-        self.VfySum = params.get("VfySum")
-        self.AttackSum = params.get("AttackSum")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CheckTicketSum = params.get("CheckTicketSum")
-        self.TicketThroughputSum = params.get("TicketThroughputSum")
-        self.TicketInterceptSum = params.get("TicketInterceptSum")
-        self.RequestId = params.get("RequestId")
+        self._GetSum = params.get("GetSum")
+        self._VfySuccSum = params.get("VfySuccSum")
+        self._VfySum = params.get("VfySum")
+        self._AttackSum = params.get("AttackSum")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CheckTicketSum = params.get("CheckTicketSum")
+        self._TicketThroughputSum = params.get("TicketThroughputSum")
+        self._TicketInterceptSum = params.get("TicketInterceptSum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaMiniOperDataRequest(AbstractModel):
@@ -829,30 +1595,63 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间
+        :param _Start: 查询开始时间
         :type Start: int
-        :param Type: 查询类型
+        :param _Type: 查询类型
         :type Type: int
-        :param End: 查询结束时间
+        :param _End: 查询结束时间
         :type End: int
         """
-        self.CaptchaAppId = None
-        self.Start = None
-        self.Type = None
-        self.End = None
+        self._CaptchaAppId = None
+        self._Start = None
+        self._Type = None
+        self._End = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.Start = params.get("Start")
-        self.Type = params.get("Type")
-        self.End = params.get("End")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._Start = params.get("Start")
+        self._Type = params.get("Type")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -865,30 +1664,62 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 成功返回 0 其它失败
+        :param _CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
-        :param CaptchaMsg: 返回信息
+        :param _CaptchaMsg: 返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param Data: 用户操作数据
+        :param _Data: 用户操作数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.Data = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
         if params.get("Data") is not None:
-            self.Data = CaptchaOperDataRes()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CaptchaOperDataRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaMiniResultRequest(AbstractModel):
@@ -898,50 +1729,123 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaType: 固定填值：9（滑块验证码）
+        :param _CaptchaType: 固定填值：9（滑块验证码）
         :type CaptchaType: int
-        :param Ticket: 验证码返回给用户的票据
+        :param _Ticket: 验证码返回给用户的票据
         :type Ticket: str
-        :param UserIp: 业务侧获取到的验证码使用者的外网IP
+        :param _UserIp: 业务侧获取到的验证码使用者的外网IP
         :type UserIp: str
-        :param CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        :param _CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
         :type CaptchaAppId: int
-        :param AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        :param _AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :type AppSecretKey: str
-        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+        :param _BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
         :type BusinessId: int
-        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+        :param _SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
         :type SceneId: int
-        :param MacAddress: mac 地址或设备唯一标识
+        :param _MacAddress: mac 地址或设备唯一标识
         :type MacAddress: str
-        :param Imei: 手机设备号
+        :param _Imei: 手机设备号
         :type Imei: str
         """
-        self.CaptchaType = None
-        self.Ticket = None
-        self.UserIp = None
-        self.CaptchaAppId = None
-        self.AppSecretKey = None
-        self.BusinessId = None
-        self.SceneId = None
-        self.MacAddress = None
-        self.Imei = None
+        self._CaptchaType = None
+        self._Ticket = None
+        self._UserIp = None
+        self._CaptchaAppId = None
+        self._AppSecretKey = None
+        self._BusinessId = None
+        self._SceneId = None
+        self._MacAddress = None
+        self._Imei = None
+
+    @property
+    def CaptchaType(self):
+        return self._CaptchaType
+
+    @CaptchaType.setter
+    def CaptchaType(self, CaptchaType):
+        self._CaptchaType = CaptchaType
+
+    @property
+    def Ticket(self):
+        return self._Ticket
+
+    @Ticket.setter
+    def Ticket(self, Ticket):
+        self._Ticket = Ticket
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppSecretKey(self):
+        return self._AppSecretKey
+
+    @AppSecretKey.setter
+    def AppSecretKey(self, AppSecretKey):
+        self._AppSecretKey = AppSecretKey
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def SceneId(self):
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def MacAddress(self):
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
 
 
     def _deserialize(self, params):
-        self.CaptchaType = params.get("CaptchaType")
-        self.Ticket = params.get("Ticket")
-        self.UserIp = params.get("UserIp")
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.AppSecretKey = params.get("AppSecretKey")
-        self.BusinessId = params.get("BusinessId")
-        self.SceneId = params.get("SceneId")
-        self.MacAddress = params.get("MacAddress")
-        self.Imei = params.get("Imei")
+        self._CaptchaType = params.get("CaptchaType")
+        self._Ticket = params.get("Ticket")
+        self._UserIp = params.get("UserIp")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppSecretKey = params.get("AppSecretKey")
+        self._BusinessId = params.get("BusinessId")
+        self._SceneId = params.get("SceneId")
+        self._MacAddress = params.get("MacAddress")
+        self._Imei = params.get("Imei")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -954,7 +1858,7 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 1       ticket verification succeeded     票据验证成功
+        :param _CaptchaCode: 1       ticket verification succeeded     票据验证成功
 7       CaptchaAppId does not match     票据与验证码应用APPID不匹配
 8       ticket expired     票据超时
 10     ticket format error     票据格式不正确
@@ -966,21 +1870,45 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
 31 	   UnauthorizedOperation.Unauthorized	无有效套餐包/账户已欠费
 100   param err     参数校验错误
         :type CaptchaCode: int
-        :param CaptchaMsg: 状态描述及验证错误信息
+        :param _CaptchaMsg: 状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
@@ -990,58 +1918,147 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaType: 固定填值：9（滑块验证码）
+        :param _CaptchaType: 固定填值：9（滑块验证码）
         :type CaptchaType: int
-        :param Ticket: 验证码返回给用户的票据
+        :param _Ticket: 验证码返回给用户的票据
         :type Ticket: str
-        :param UserIp: 业务侧获取到的验证码使用者的外网IP
+        :param _UserIp: 业务侧获取到的验证码使用者的外网IP
         :type UserIp: str
-        :param CaptchaAppId: 验证码应用APPID
+        :param _CaptchaAppId: 验证码应用APPID
         :type CaptchaAppId: int
-        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+        :param _AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
         :type AppSecretKey: str
-        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+        :param _BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
         :type BusinessId: int
-        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+        :param _SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
         :type SceneId: int
-        :param MacAddress: mac 地址或设备唯一标识
+        :param _MacAddress: mac 地址或设备唯一标识
         :type MacAddress: str
-        :param Imei: 手机设备号
+        :param _Imei: 手机设备号
         :type Imei: str
-        :param SceneCode: 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
+        :param _SceneCode: 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
         :type SceneCode: int
-        :param WeChatOpenId: 用户操作来源的微信开放账号
+        :param _WeChatOpenId: 用户操作来源的微信开放账号
         :type WeChatOpenId: str
         """
-        self.CaptchaType = None
-        self.Ticket = None
-        self.UserIp = None
-        self.CaptchaAppId = None
-        self.AppSecretKey = None
-        self.BusinessId = None
-        self.SceneId = None
-        self.MacAddress = None
-        self.Imei = None
-        self.SceneCode = None
-        self.WeChatOpenId = None
+        self._CaptchaType = None
+        self._Ticket = None
+        self._UserIp = None
+        self._CaptchaAppId = None
+        self._AppSecretKey = None
+        self._BusinessId = None
+        self._SceneId = None
+        self._MacAddress = None
+        self._Imei = None
+        self._SceneCode = None
+        self._WeChatOpenId = None
+
+    @property
+    def CaptchaType(self):
+        return self._CaptchaType
+
+    @CaptchaType.setter
+    def CaptchaType(self, CaptchaType):
+        self._CaptchaType = CaptchaType
+
+    @property
+    def Ticket(self):
+        return self._Ticket
+
+    @Ticket.setter
+    def Ticket(self, Ticket):
+        self._Ticket = Ticket
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppSecretKey(self):
+        return self._AppSecretKey
+
+    @AppSecretKey.setter
+    def AppSecretKey(self, AppSecretKey):
+        self._AppSecretKey = AppSecretKey
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def SceneId(self):
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def MacAddress(self):
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+    @property
+    def WeChatOpenId(self):
+        return self._WeChatOpenId
+
+    @WeChatOpenId.setter
+    def WeChatOpenId(self, WeChatOpenId):
+        self._WeChatOpenId = WeChatOpenId
 
 
     def _deserialize(self, params):
-        self.CaptchaType = params.get("CaptchaType")
-        self.Ticket = params.get("Ticket")
-        self.UserIp = params.get("UserIp")
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.AppSecretKey = params.get("AppSecretKey")
-        self.BusinessId = params.get("BusinessId")
-        self.SceneId = params.get("SceneId")
-        self.MacAddress = params.get("MacAddress")
-        self.Imei = params.get("Imei")
-        self.SceneCode = params.get("SceneCode")
-        self.WeChatOpenId = params.get("WeChatOpenId")
+        self._CaptchaType = params.get("CaptchaType")
+        self._Ticket = params.get("Ticket")
+        self._UserIp = params.get("UserIp")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppSecretKey = params.get("AppSecretKey")
+        self._BusinessId = params.get("BusinessId")
+        self._SceneId = params.get("SceneId")
+        self._MacAddress = params.get("MacAddress")
+        self._Imei = params.get("Imei")
+        self._SceneCode = params.get("SceneCode")
+        self._WeChatOpenId = params.get("WeChatOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1054,7 +2071,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 1 ticket verification succeeded 票据验证成功
+        :param _CaptchaCode: 1 ticket verification succeeded 票据验证成功
 7 CaptchaAppId does not match 票据与验证码应用APPID不匹配
 8 ticket expired 票据超时
 10 ticket format error 票据格式不正确
@@ -1065,30 +2082,62 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 26 system internal error 系统内部错误
 100 param err 参数校验错误
         :type CaptchaCode: int
-        :param CaptchaMsg: 状态描述及验证错误信息
+        :param _CaptchaMsg: 状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param ManageMarketingRiskValue: 拦截策略返回信息
+        :param _ManageMarketingRiskValue: 拦截策略返回信息
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManageMarketingRiskValue: :class:`tencentcloud.captcha.v20190722.models.OutputManageMarketingRiskValue`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.ManageMarketingRiskValue = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._ManageMarketingRiskValue = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def ManageMarketingRiskValue(self):
+        return self._ManageMarketingRiskValue
+
+    @ManageMarketingRiskValue.setter
+    def ManageMarketingRiskValue(self, ManageMarketingRiskValue):
+        self._ManageMarketingRiskValue = ManageMarketingRiskValue
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
         if params.get("ManageMarketingRiskValue") is not None:
-            self.ManageMarketingRiskValue = OutputManageMarketingRiskValue()
-            self.ManageMarketingRiskValue._deserialize(params.get("ManageMarketingRiskValue"))
-        self.RequestId = params.get("RequestId")
+            self._ManageMarketingRiskValue = OutputManageMarketingRiskValue()
+            self._ManageMarketingRiskValue._deserialize(params.get("ManageMarketingRiskValue"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaOperDataRequest(AbstractModel):
@@ -1098,30 +2147,63 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间
+        :param _Start: 查询开始时间
         :type Start: int
-        :param Type: 查询类型
+        :param _Type: 查询类型
         :type Type: int
-        :param End: 查询结束时间
+        :param _End: 查询结束时间
         :type End: int
         """
-        self.CaptchaAppId = None
-        self.Start = None
-        self.Type = None
-        self.End = None
+        self._CaptchaAppId = None
+        self._Start = None
+        self._Type = None
+        self._End = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.Start = params.get("Start")
-        self.Type = params.get("Type")
-        self.End = params.get("End")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._Start = params.get("Start")
+        self._Type = params.get("Type")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1134,30 +2216,62 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 成功返回 0 其它失败
+        :param _CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
-        :param CaptchaMsg: 返回信息
+        :param _CaptchaMsg: 返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param Data: 用户操作数据
+        :param _Data: 用户操作数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.Data = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
         if params.get("Data") is not None:
-            self.Data = CaptchaOperDataRes()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CaptchaOperDataRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaResultRequest(AbstractModel):
@@ -1167,58 +2281,147 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
+        :param _CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
         :type CaptchaType: int
-        :param Ticket: 前端回调函数返回的用户验证票据
+        :param _Ticket: 前端回调函数返回的用户验证票据
         :type Ticket: str
-        :param UserIp: 业务侧获取到的验证码使用者的外网IP
+        :param _UserIp: 业务侧获取到的验证码使用者的外网IP
         :type UserIp: str
-        :param Randstr: 前端回调函数返回的随机字符串
+        :param _Randstr: 前端回调函数返回的随机字符串
         :type Randstr: str
-        :param CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        :param _CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
         :type CaptchaAppId: int
-        :param AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        :param _AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :type AppSecretKey: str
-        :param BusinessId: 预留字段
+        :param _BusinessId: 预留字段
         :type BusinessId: int
-        :param SceneId: 预留字段
+        :param _SceneId: 预留字段
         :type SceneId: int
-        :param MacAddress: mac 地址或设备唯一标识
+        :param _MacAddress: mac 地址或设备唯一标识
         :type MacAddress: str
-        :param Imei: 手机设备号
+        :param _Imei: 手机设备号
         :type Imei: str
-        :param NeedGetCaptchaTime: 是否返回前端获取验证码时间，取值1：需要返回
+        :param _NeedGetCaptchaTime: 是否返回前端获取验证码时间，取值1：需要返回
         :type NeedGetCaptchaTime: int
         """
-        self.CaptchaType = None
-        self.Ticket = None
-        self.UserIp = None
-        self.Randstr = None
-        self.CaptchaAppId = None
-        self.AppSecretKey = None
-        self.BusinessId = None
-        self.SceneId = None
-        self.MacAddress = None
-        self.Imei = None
-        self.NeedGetCaptchaTime = None
+        self._CaptchaType = None
+        self._Ticket = None
+        self._UserIp = None
+        self._Randstr = None
+        self._CaptchaAppId = None
+        self._AppSecretKey = None
+        self._BusinessId = None
+        self._SceneId = None
+        self._MacAddress = None
+        self._Imei = None
+        self._NeedGetCaptchaTime = None
+
+    @property
+    def CaptchaType(self):
+        return self._CaptchaType
+
+    @CaptchaType.setter
+    def CaptchaType(self, CaptchaType):
+        self._CaptchaType = CaptchaType
+
+    @property
+    def Ticket(self):
+        return self._Ticket
+
+    @Ticket.setter
+    def Ticket(self, Ticket):
+        self._Ticket = Ticket
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def Randstr(self):
+        return self._Randstr
+
+    @Randstr.setter
+    def Randstr(self, Randstr):
+        self._Randstr = Randstr
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppSecretKey(self):
+        return self._AppSecretKey
+
+    @AppSecretKey.setter
+    def AppSecretKey(self, AppSecretKey):
+        self._AppSecretKey = AppSecretKey
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def SceneId(self):
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def MacAddress(self):
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def NeedGetCaptchaTime(self):
+        return self._NeedGetCaptchaTime
+
+    @NeedGetCaptchaTime.setter
+    def NeedGetCaptchaTime(self, NeedGetCaptchaTime):
+        self._NeedGetCaptchaTime = NeedGetCaptchaTime
 
 
     def _deserialize(self, params):
-        self.CaptchaType = params.get("CaptchaType")
-        self.Ticket = params.get("Ticket")
-        self.UserIp = params.get("UserIp")
-        self.Randstr = params.get("Randstr")
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.AppSecretKey = params.get("AppSecretKey")
-        self.BusinessId = params.get("BusinessId")
-        self.SceneId = params.get("SceneId")
-        self.MacAddress = params.get("MacAddress")
-        self.Imei = params.get("Imei")
-        self.NeedGetCaptchaTime = params.get("NeedGetCaptchaTime")
+        self._CaptchaType = params.get("CaptchaType")
+        self._Ticket = params.get("Ticket")
+        self._UserIp = params.get("UserIp")
+        self._Randstr = params.get("Randstr")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppSecretKey = params.get("AppSecretKey")
+        self._BusinessId = params.get("BusinessId")
+        self._SceneId = params.get("SceneId")
+        self._MacAddress = params.get("MacAddress")
+        self._Imei = params.get("Imei")
+        self._NeedGetCaptchaTime = params.get("NeedGetCaptchaTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1231,7 +2434,7 @@ class DescribeCaptchaResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 1 OK 验证通过
+        :param _CaptchaCode: 1 OK 验证通过
 7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致
 8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验
 9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验
@@ -1240,42 +2443,98 @@ class DescribeCaptchaResultResponse(AbstractModel):
 21 diff 票据校验异常，可能的原因是（1）若Ticket包含terror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含terror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。
 100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
         :type CaptchaCode: int
-        :param CaptchaMsg: 状态描述及验证错误信息
+        :param _CaptchaMsg: 状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param EvilLevel: 无感验证模式下，该参数返回验证结果：
+        :param _EvilLevel: 无感验证模式下，该参数返回验证结果：
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvilLevel: int
-        :param GetCaptchaTime: 前端获取验证码时间，时间戳格式
+        :param _GetCaptchaTime: 前端获取验证码时间，时间戳格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type GetCaptchaTime: int
-        :param EvilBitmap: 拦截类型
+        :param _EvilBitmap: 拦截类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvilBitmap: int
-        :param SubmitCaptchaTime: 提交验证码时间
+        :param _SubmitCaptchaTime: 提交验证码时间
         :type SubmitCaptchaTime: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.EvilLevel = None
-        self.GetCaptchaTime = None
-        self.EvilBitmap = None
-        self.SubmitCaptchaTime = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._EvilLevel = None
+        self._GetCaptchaTime = None
+        self._EvilBitmap = None
+        self._SubmitCaptchaTime = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def EvilLevel(self):
+        return self._EvilLevel
+
+    @EvilLevel.setter
+    def EvilLevel(self, EvilLevel):
+        self._EvilLevel = EvilLevel
+
+    @property
+    def GetCaptchaTime(self):
+        return self._GetCaptchaTime
+
+    @GetCaptchaTime.setter
+    def GetCaptchaTime(self, GetCaptchaTime):
+        self._GetCaptchaTime = GetCaptchaTime
+
+    @property
+    def EvilBitmap(self):
+        return self._EvilBitmap
+
+    @EvilBitmap.setter
+    def EvilBitmap(self, EvilBitmap):
+        self._EvilBitmap = EvilBitmap
+
+    @property
+    def SubmitCaptchaTime(self):
+        return self._SubmitCaptchaTime
+
+    @SubmitCaptchaTime.setter
+    def SubmitCaptchaTime(self, SubmitCaptchaTime):
+        self._SubmitCaptchaTime = SubmitCaptchaTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.EvilLevel = params.get("EvilLevel")
-        self.GetCaptchaTime = params.get("GetCaptchaTime")
-        self.EvilBitmap = params.get("EvilBitmap")
-        self.SubmitCaptchaTime = params.get("SubmitCaptchaTime")
-        self.RequestId = params.get("RequestId")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._EvilLevel = params.get("EvilLevel")
+        self._GetCaptchaTime = params.get("GetCaptchaTime")
+        self._EvilBitmap = params.get("EvilBitmap")
+        self._SubmitCaptchaTime = params.get("SubmitCaptchaTime")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaTicketDataRequest(AbstractModel):
@@ -1285,26 +2544,51 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间 例如：20200909
+        :param _Start: 查询开始时间 例如：20200909
         :type Start: int
-        :param End: 查询结束时间 例如：20220314
+        :param _End: 查询结束时间 例如：20220314
         :type End: int
         """
-        self.CaptchaAppId = None
-        self.Start = None
-        self.End = None
+        self._CaptchaAppId = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.Start = params.get("Start")
-        self.End = params.get("End")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1317,30 +2601,62 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 成功返回 0 其它失败
+        :param _CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
-        :param CaptchaMsg: 返回信息
+        :param _CaptchaMsg: 返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param Data: 验证码票据信息
+        :param _Data: 验证码票据信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaTicketDataRes`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.Data = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
         if params.get("Data") is not None:
-            self.Data = CaptchaTicketDataRes()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = CaptchaTicketDataRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCaptchaUserAllAppIdRequest(AbstractModel):
@@ -1356,33 +2672,65 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 用户注册的所有Appid和应用名称
+        :param _Data: 用户注册的所有Appid和应用名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CaptchaUserAllAppId
-        :param CaptchaCode: 成功返回 0  其它失败
+        :param _CaptchaCode: 成功返回 0  其它失败
         :type CaptchaCode: int
-        :param CaptchaMsg: 返回操作信息
+        :param _CaptchaMsg: 返回操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._Data = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = CaptchaUserAllAppId()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class GetRequestStatisticsRequest(AbstractModel):
@@ -1392,30 +2740,63 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码AppId
+        :param _CaptchaAppId: 验证码AppId
         :type CaptchaAppId: str
-        :param StartTimeStr: 开始时间字符串
+        :param _StartTimeStr: 开始时间字符串
         :type StartTimeStr: str
-        :param EndTimeStr: 结束时间字符串
+        :param _EndTimeStr: 结束时间字符串
         :type EndTimeStr: str
-        :param Dimension: 查询粒度
+        :param _Dimension: 查询粒度
         :type Dimension: str
         """
-        self.CaptchaAppId = None
-        self.StartTimeStr = None
-        self.EndTimeStr = None
-        self.Dimension = None
+        self._CaptchaAppId = None
+        self._StartTimeStr = None
+        self._EndTimeStr = None
+        self._Dimension = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def StartTimeStr(self):
+        return self._StartTimeStr
+
+    @StartTimeStr.setter
+    def StartTimeStr(self, StartTimeStr):
+        self._StartTimeStr = StartTimeStr
+
+    @property
+    def EndTimeStr(self):
+        return self._EndTimeStr
+
+    @EndTimeStr.setter
+    def EndTimeStr(self, EndTimeStr):
+        self._EndTimeStr = EndTimeStr
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.StartTimeStr = params.get("StartTimeStr")
-        self.EndTimeStr = params.get("EndTimeStr")
-        self.Dimension = params.get("Dimension")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._StartTimeStr = params.get("StartTimeStr")
+        self._EndTimeStr = params.get("EndTimeStr")
+        self._Dimension = params.get("Dimension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1428,29 +2809,61 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 查询后数据块
+        :param _Data: 查询后数据块
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
-        :param CaptchaCode: 验证码返回码
+        :param _CaptchaCode: 验证码返回码
         :type CaptchaCode: int
-        :param CaptchaMsg: 验证码返回信息
+        :param _CaptchaMsg: 验证码返回信息
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._Data = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CaptchaStatisticObj()
-            self.Data._deserialize(params.get("Data"))
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+            self._Data = CaptchaStatisticObj()
+            self._Data._deserialize(params.get("Data"))
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class GetTicketStatisticsRequest(AbstractModel):
@@ -1460,30 +2873,63 @@ class GetTicketStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码AppId
+        :param _CaptchaAppId: 验证码AppId
         :type CaptchaAppId: str
-        :param StartTimeStr: 开始时间字符串
+        :param _StartTimeStr: 开始时间字符串
         :type StartTimeStr: str
-        :param EndTimeStr: 结束时间字符串
+        :param _EndTimeStr: 结束时间字符串
         :type EndTimeStr: str
-        :param Dimension: 查询粒度
+        :param _Dimension: 查询粒度
         :type Dimension: str
         """
-        self.CaptchaAppId = None
-        self.StartTimeStr = None
-        self.EndTimeStr = None
-        self.Dimension = None
+        self._CaptchaAppId = None
+        self._StartTimeStr = None
+        self._EndTimeStr = None
+        self._Dimension = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def StartTimeStr(self):
+        return self._StartTimeStr
+
+    @StartTimeStr.setter
+    def StartTimeStr(self, StartTimeStr):
+        self._StartTimeStr = StartTimeStr
+
+    @property
+    def EndTimeStr(self):
+        return self._EndTimeStr
+
+    @EndTimeStr.setter
+    def EndTimeStr(self, EndTimeStr):
+        self._EndTimeStr = EndTimeStr
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.StartTimeStr = params.get("StartTimeStr")
-        self.EndTimeStr = params.get("EndTimeStr")
-        self.Dimension = params.get("Dimension")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._StartTimeStr = params.get("StartTimeStr")
+        self._EndTimeStr = params.get("EndTimeStr")
+        self._Dimension = params.get("Dimension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1496,29 +2942,61 @@ class GetTicketStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 查询后数据块
+        :param _Data: 查询后数据块
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
-        :param CaptchaCode: 验证码返回码
+        :param _CaptchaCode: 验证码返回码
         :type CaptchaCode: int
-        :param CaptchaMsg: 验证码返回信息
+        :param _CaptchaMsg: 验证码返回信息
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._Data = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CaptchaStatisticObj()
-            self.Data._deserialize(params.get("Data"))
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+            self._Data = CaptchaStatisticObj()
+            self._Data._deserialize(params.get("Data"))
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class GetTotalRequestStatisticsRequest(AbstractModel):
@@ -1528,26 +3006,51 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTimeStr: 开始时间字符串
+        :param _StartTimeStr: 开始时间字符串
         :type StartTimeStr: str
-        :param EndTimeStr: 结束时间字符串
+        :param _EndTimeStr: 结束时间字符串
         :type EndTimeStr: str
-        :param Dimension: 查询粒度
+        :param _Dimension: 查询粒度
         :type Dimension: str
         """
-        self.StartTimeStr = None
-        self.EndTimeStr = None
-        self.Dimension = None
+        self._StartTimeStr = None
+        self._EndTimeStr = None
+        self._Dimension = None
+
+    @property
+    def StartTimeStr(self):
+        return self._StartTimeStr
+
+    @StartTimeStr.setter
+    def StartTimeStr(self, StartTimeStr):
+        self._StartTimeStr = StartTimeStr
+
+    @property
+    def EndTimeStr(self):
+        return self._EndTimeStr
+
+    @EndTimeStr.setter
+    def EndTimeStr(self, EndTimeStr):
+        self._EndTimeStr = EndTimeStr
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
 
 
     def _deserialize(self, params):
-        self.StartTimeStr = params.get("StartTimeStr")
-        self.EndTimeStr = params.get("EndTimeStr")
-        self.Dimension = params.get("Dimension")
+        self._StartTimeStr = params.get("StartTimeStr")
+        self._EndTimeStr = params.get("EndTimeStr")
+        self._Dimension = params.get("Dimension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1560,29 +3063,61 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 查询后数据块
+        :param _Data: 查询后数据块
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
-        :param CaptchaCode: 验证码返回码
+        :param _CaptchaCode: 验证码返回码
         :type CaptchaCode: int
-        :param CaptchaMsg: 验证码返回信息
+        :param _CaptchaMsg: 验证码返回信息
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._Data = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CaptchaStatisticObj()
-            self.Data._deserialize(params.get("Data"))
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+            self._Data = CaptchaStatisticObj()
+            self._Data._deserialize(params.get("Data"))
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class GetTotalTicketStatisticsRequest(AbstractModel):
@@ -1592,29 +3127,54 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTimeStr: 开始时间
+        :param _StartTimeStr: 开始时间
         :type StartTimeStr: str
-        :param EndTimeStr: 结束时间
+        :param _EndTimeStr: 结束时间
         :type EndTimeStr: str
-        :param Dimension: 查询粒度
+        :param _Dimension: 查询粒度
 分钟：“1”
 小时：“2”
 天：“3”
         :type Dimension: str
         """
-        self.StartTimeStr = None
-        self.EndTimeStr = None
-        self.Dimension = None
+        self._StartTimeStr = None
+        self._EndTimeStr = None
+        self._Dimension = None
+
+    @property
+    def StartTimeStr(self):
+        return self._StartTimeStr
+
+    @StartTimeStr.setter
+    def StartTimeStr(self, StartTimeStr):
+        self._StartTimeStr = StartTimeStr
+
+    @property
+    def EndTimeStr(self):
+        return self._EndTimeStr
+
+    @EndTimeStr.setter
+    def EndTimeStr(self, EndTimeStr):
+        self._EndTimeStr = EndTimeStr
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
 
 
     def _deserialize(self, params):
-        self.StartTimeStr = params.get("StartTimeStr")
-        self.EndTimeStr = params.get("EndTimeStr")
-        self.Dimension = params.get("Dimension")
+        self._StartTimeStr = params.get("StartTimeStr")
+        self._EndTimeStr = params.get("EndTimeStr")
+        self._Dimension = params.get("Dimension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1627,29 +3187,61 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 返回数据
+        :param _Data: 返回数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
-        :param CaptchaCode: 返回码
+        :param _CaptchaCode: 返回码
         :type CaptchaCode: int
-        :param CaptchaMsg: 返回信息
+        :param _CaptchaMsg: 返回信息
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._Data = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = CaptchaStatisticObj()
-            self.Data._deserialize(params.get("Data"))
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+            self._Data = CaptchaStatisticObj()
+            self._Data._deserialize(params.get("Data"))
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class InterceptPerTrendObj(AbstractModel):
@@ -1659,30 +3251,63 @@ class InterceptPerTrendObj(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ftime: 时间参数
+        :param _Ftime: 时间参数
         :type Ftime: str
-        :param RequestInterceptPer: 拦截率
+        :param _RequestInterceptPer: 拦截率
         :type RequestInterceptPer: float
-        :param AnswerInterceptPer: 答案拦截率
+        :param _AnswerInterceptPer: 答案拦截率
         :type AnswerInterceptPer: float
-        :param PolicyInterceptPer: 策略拦截率
+        :param _PolicyInterceptPer: 策略拦截率
         :type PolicyInterceptPer: float
         """
-        self.Ftime = None
-        self.RequestInterceptPer = None
-        self.AnswerInterceptPer = None
-        self.PolicyInterceptPer = None
+        self._Ftime = None
+        self._RequestInterceptPer = None
+        self._AnswerInterceptPer = None
+        self._PolicyInterceptPer = None
+
+    @property
+    def Ftime(self):
+        return self._Ftime
+
+    @Ftime.setter
+    def Ftime(self, Ftime):
+        self._Ftime = Ftime
+
+    @property
+    def RequestInterceptPer(self):
+        return self._RequestInterceptPer
+
+    @RequestInterceptPer.setter
+    def RequestInterceptPer(self, RequestInterceptPer):
+        self._RequestInterceptPer = RequestInterceptPer
+
+    @property
+    def AnswerInterceptPer(self):
+        return self._AnswerInterceptPer
+
+    @AnswerInterceptPer.setter
+    def AnswerInterceptPer(self, AnswerInterceptPer):
+        self._AnswerInterceptPer = AnswerInterceptPer
+
+    @property
+    def PolicyInterceptPer(self):
+        return self._PolicyInterceptPer
+
+    @PolicyInterceptPer.setter
+    def PolicyInterceptPer(self, PolicyInterceptPer):
+        self._PolicyInterceptPer = PolicyInterceptPer
 
 
     def _deserialize(self, params):
-        self.Ftime = params.get("Ftime")
-        self.RequestInterceptPer = params.get("RequestInterceptPer")
-        self.AnswerInterceptPer = params.get("AnswerInterceptPer")
-        self.PolicyInterceptPer = params.get("PolicyInterceptPer")
+        self._Ftime = params.get("Ftime")
+        self._RequestInterceptPer = params.get("RequestInterceptPer")
+        self._AnswerInterceptPer = params.get("AnswerInterceptPer")
+        self._PolicyInterceptPer = params.get("PolicyInterceptPer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1695,7 +3320,7 @@ class OutputManageMarketingRiskValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 账号 ID。对应输入参数： AccountType 是 1 时，对应 QQ 的 OpenID。
+        :param _UserId: 账号 ID。对应输入参数： AccountType 是 1 时，对应 QQ 的 OpenID。
 AccountType 是 2 时，对应微信的 OpenID/UnionID。
 AccountType 是 4 时，对应手机号。
 AccountType 是 8 时，对应 imei、idfa、imeiMD5 或者 idfaMD5。
@@ -1704,24 +3329,24 @@ AccountType 是 10004 时，对应手机号的 MD5。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param PostTime: 操作时间戳，单位秒（对应输入参数）。 
+        :param _PostTime: 操作时间戳，单位秒（对应输入参数）。 
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostTime: int
-        :param AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
+        :param _AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociateAccount: str
-        :param UserIp: 业务详情。 注意：此字段可能返回 null，表示取不到有效值。
+        :param _UserIp: 业务详情。 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserIp: str
-        :param RiskLevel: 风险值 pass : 无恶意
+        :param _RiskLevel: 风险值 pass : 无恶意
 review：需要人工审核
 reject：拒绝，高风险恶意
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
-        :param RiskType: 风险类型，请查看下面详细说明 注意：此字段可能返回 null，表示取不到有效值。
+        :param _RiskType: 风险类型，请查看下面详细说明 注意：此字段可能返回 null，表示取不到有效值。
 账号风险	
         账号信用低	1	账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 	疑似 低活跃账号	11	账号活跃度与正常用户有差异
@@ -1745,25 +3370,74 @@ reject：拒绝，高风险恶意
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: list of int
         """
-        self.UserId = None
-        self.PostTime = None
-        self.AssociateAccount = None
-        self.UserIp = None
-        self.RiskLevel = None
-        self.RiskType = None
+        self._UserId = None
+        self._PostTime = None
+        self._AssociateAccount = None
+        self._UserIp = None
+        self._RiskLevel = None
+        self._RiskType = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PostTime(self):
+        return self._PostTime
+
+    @PostTime.setter
+    def PostTime(self, PostTime):
+        self._PostTime = PostTime
+
+    @property
+    def AssociateAccount(self):
+        return self._AssociateAccount
+
+    @AssociateAccount.setter
+    def AssociateAccount(self, AssociateAccount):
+        self._AssociateAccount = AssociateAccount
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskType(self):
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.PostTime = params.get("PostTime")
-        self.AssociateAccount = params.get("AssociateAccount")
-        self.UserIp = params.get("UserIp")
-        self.RiskLevel = params.get("RiskLevel")
-        self.RiskType = params.get("RiskType")
+        self._UserId = params.get("UserId")
+        self._PostTime = params.get("PostTime")
+        self._AssociateAccount = params.get("AssociateAccount")
+        self._UserIp = params.get("UserIp")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskType = params.get("RiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1776,34 +3450,75 @@ class RequestTrendObj(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ftime: 时间参数
+        :param _Ftime: 时间参数
         :type Ftime: str
-        :param RequestAction: 请求量
+        :param _RequestAction: 请求量
         :type RequestAction: int
-        :param RequestVerify: 验证量
+        :param _RequestVerify: 验证量
         :type RequestVerify: int
-        :param RequestThroughput: 通过量
+        :param _RequestThroughput: 通过量
         :type RequestThroughput: int
-        :param RequestIntercept: 拦截量
+        :param _RequestIntercept: 拦截量
         :type RequestIntercept: int
         """
-        self.Ftime = None
-        self.RequestAction = None
-        self.RequestVerify = None
-        self.RequestThroughput = None
-        self.RequestIntercept = None
+        self._Ftime = None
+        self._RequestAction = None
+        self._RequestVerify = None
+        self._RequestThroughput = None
+        self._RequestIntercept = None
+
+    @property
+    def Ftime(self):
+        return self._Ftime
+
+    @Ftime.setter
+    def Ftime(self, Ftime):
+        self._Ftime = Ftime
+
+    @property
+    def RequestAction(self):
+        return self._RequestAction
+
+    @RequestAction.setter
+    def RequestAction(self, RequestAction):
+        self._RequestAction = RequestAction
+
+    @property
+    def RequestVerify(self):
+        return self._RequestVerify
+
+    @RequestVerify.setter
+    def RequestVerify(self, RequestVerify):
+        self._RequestVerify = RequestVerify
+
+    @property
+    def RequestThroughput(self):
+        return self._RequestThroughput
+
+    @RequestThroughput.setter
+    def RequestThroughput(self, RequestThroughput):
+        self._RequestThroughput = RequestThroughput
+
+    @property
+    def RequestIntercept(self):
+        return self._RequestIntercept
+
+    @RequestIntercept.setter
+    def RequestIntercept(self, RequestIntercept):
+        self._RequestIntercept = RequestIntercept
 
 
     def _deserialize(self, params):
-        self.Ftime = params.get("Ftime")
-        self.RequestAction = params.get("RequestAction")
-        self.RequestVerify = params.get("RequestVerify")
-        self.RequestThroughput = params.get("RequestThroughput")
-        self.RequestIntercept = params.get("RequestIntercept")
+        self._Ftime = params.get("Ftime")
+        self._RequestAction = params.get("RequestAction")
+        self._RequestVerify = params.get("RequestVerify")
+        self._RequestThroughput = params.get("RequestThroughput")
+        self._RequestIntercept = params.get("RequestIntercept")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1816,22 +3531,39 @@ class TicketAmountUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DateKey: 时间
+        :param _DateKey: 时间
         :type DateKey: str
-        :param Amount: 票据验证总量
+        :param _Amount: 票据验证总量
         :type Amount: int
         """
-        self.DateKey = None
-        self.Amount = None
+        self._DateKey = None
+        self._Amount = None
+
+    @property
+    def DateKey(self):
+        return self._DateKey
+
+    @DateKey.setter
+    def DateKey(self, DateKey):
+        self._DateKey = DateKey
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
 
 
     def _deserialize(self, params):
-        self.DateKey = params.get("DateKey")
-        self.Amount = params.get("Amount")
+        self._DateKey = params.get("DateKey")
+        self._Amount = params.get("Amount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1844,30 +3576,63 @@ class TicketCheckTrendObj(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ftime: 时间参数
+        :param _Ftime: 时间参数
         :type Ftime: str
-        :param TicketCount: 票据校验量
+        :param _TicketCount: 票据校验量
         :type TicketCount: int
-        :param TicketThroughput: 票据通过量
+        :param _TicketThroughput: 票据通过量
         :type TicketThroughput: int
-        :param TicketIntercept: 票据拦截量
+        :param _TicketIntercept: 票据拦截量
         :type TicketIntercept: int
         """
-        self.Ftime = None
-        self.TicketCount = None
-        self.TicketThroughput = None
-        self.TicketIntercept = None
+        self._Ftime = None
+        self._TicketCount = None
+        self._TicketThroughput = None
+        self._TicketIntercept = None
+
+    @property
+    def Ftime(self):
+        return self._Ftime
+
+    @Ftime.setter
+    def Ftime(self, Ftime):
+        self._Ftime = Ftime
+
+    @property
+    def TicketCount(self):
+        return self._TicketCount
+
+    @TicketCount.setter
+    def TicketCount(self, TicketCount):
+        self._TicketCount = TicketCount
+
+    @property
+    def TicketThroughput(self):
+        return self._TicketThroughput
+
+    @TicketThroughput.setter
+    def TicketThroughput(self, TicketThroughput):
+        self._TicketThroughput = TicketThroughput
+
+    @property
+    def TicketIntercept(self):
+        return self._TicketIntercept
+
+    @TicketIntercept.setter
+    def TicketIntercept(self, TicketIntercept):
+        self._TicketIntercept = TicketIntercept
 
 
     def _deserialize(self, params):
-        self.Ftime = params.get("Ftime")
-        self.TicketCount = params.get("TicketCount")
-        self.TicketThroughput = params.get("TicketThroughput")
-        self.TicketIntercept = params.get("TicketIntercept")
+        self._Ftime = params.get("Ftime")
+        self._TicketCount = params.get("TicketCount")
+        self._TicketThroughput = params.get("TicketThroughput")
+        self._TicketIntercept = params.get("TicketIntercept")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1880,22 +3645,39 @@ class TicketInterceptUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DateKey: 时间
+        :param _DateKey: 时间
         :type DateKey: str
-        :param Intercept: 票据验证拦截量
+        :param _Intercept: 票据验证拦截量
         :type Intercept: int
         """
-        self.DateKey = None
-        self.Intercept = None
+        self._DateKey = None
+        self._Intercept = None
+
+    @property
+    def DateKey(self):
+        return self._DateKey
+
+    @DateKey.setter
+    def DateKey(self, DateKey):
+        self._DateKey = DateKey
+
+    @property
+    def Intercept(self):
+        return self._Intercept
+
+    @Intercept.setter
+    def Intercept(self, Intercept):
+        self._Intercept = Intercept
 
 
     def _deserialize(self, params):
-        self.DateKey = params.get("DateKey")
-        self.Intercept = params.get("Intercept")
+        self._DateKey = params.get("DateKey")
+        self._Intercept = params.get("Intercept")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1908,22 +3690,39 @@ class TicketThroughUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DateKey: 时间
+        :param _DateKey: 时间
         :type DateKey: str
-        :param Through: 票据验证的通过量
+        :param _Through: 票据验证的通过量
         :type Through: int
         """
-        self.DateKey = None
-        self.Through = None
+        self._DateKey = None
+        self._Through = None
+
+    @property
+    def DateKey(self):
+        return self._DateKey
+
+    @DateKey.setter
+    def DateKey(self, DateKey):
+        self._DateKey = DateKey
+
+    @property
+    def Through(self):
+        return self._Through
+
+    @Through.setter
+    def Through(self, Through):
+        self._Through = Through
 
 
     def _deserialize(self, params):
-        self.DateKey = params.get("DateKey")
-        self.Through = params.get("Through")
+        self._DateKey = params.get("DateKey")
+        self._Through = params.get("Through")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1936,66 +3735,171 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码应用ID
+        :param _CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param AppName: 应用名
+        :param _AppName: 应用名
         :type AppName: str
-        :param DomainLimit: 域名限制
+        :param _DomainLimit: 域名限制
         :type DomainLimit: str
-        :param SceneType: 场景类型
+        :param _SceneType: 场景类型
         :type SceneType: int
-        :param CapType: 验证码类型
+        :param _CapType: 验证码类型
         :type CapType: int
-        :param EvilInterceptGrade: 风险级别
+        :param _EvilInterceptGrade: 风险级别
         :type EvilInterceptGrade: int
-        :param SmartVerify: 智能检测
+        :param _SmartVerify: 智能检测
         :type SmartVerify: int
-        :param SmartEngine: 开启智能引擎
+        :param _SmartEngine: 开启智能引擎
         :type SmartEngine: int
-        :param SchemeColor: web风格
+        :param _SchemeColor: web风格
         :type SchemeColor: str
-        :param CaptchaLanguage: 语言
+        :param _CaptchaLanguage: 语言
         :type CaptchaLanguage: int
-        :param MailAlarm: 告警邮箱
+        :param _MailAlarm: 告警邮箱
         :type MailAlarm: str
-        :param TopFullScreen: 是否全屏
+        :param _TopFullScreen: 是否全屏
         :type TopFullScreen: int
-        :param TrafficThreshold: 流量限制
+        :param _TrafficThreshold: 流量限制
         :type TrafficThreshold: int
         """
-        self.CaptchaAppId = None
-        self.AppName = None
-        self.DomainLimit = None
-        self.SceneType = None
-        self.CapType = None
-        self.EvilInterceptGrade = None
-        self.SmartVerify = None
-        self.SmartEngine = None
-        self.SchemeColor = None
-        self.CaptchaLanguage = None
-        self.MailAlarm = None
-        self.TopFullScreen = None
-        self.TrafficThreshold = None
+        self._CaptchaAppId = None
+        self._AppName = None
+        self._DomainLimit = None
+        self._SceneType = None
+        self._CapType = None
+        self._EvilInterceptGrade = None
+        self._SmartVerify = None
+        self._SmartEngine = None
+        self._SchemeColor = None
+        self._CaptchaLanguage = None
+        self._MailAlarm = None
+        self._TopFullScreen = None
+        self._TrafficThreshold = None
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainLimit(self):
+        return self._DomainLimit
+
+    @DomainLimit.setter
+    def DomainLimit(self, DomainLimit):
+        self._DomainLimit = DomainLimit
+
+    @property
+    def SceneType(self):
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def CapType(self):
+        return self._CapType
+
+    @CapType.setter
+    def CapType(self, CapType):
+        self._CapType = CapType
+
+    @property
+    def EvilInterceptGrade(self):
+        return self._EvilInterceptGrade
+
+    @EvilInterceptGrade.setter
+    def EvilInterceptGrade(self, EvilInterceptGrade):
+        self._EvilInterceptGrade = EvilInterceptGrade
+
+    @property
+    def SmartVerify(self):
+        return self._SmartVerify
+
+    @SmartVerify.setter
+    def SmartVerify(self, SmartVerify):
+        self._SmartVerify = SmartVerify
+
+    @property
+    def SmartEngine(self):
+        return self._SmartEngine
+
+    @SmartEngine.setter
+    def SmartEngine(self, SmartEngine):
+        self._SmartEngine = SmartEngine
+
+    @property
+    def SchemeColor(self):
+        return self._SchemeColor
+
+    @SchemeColor.setter
+    def SchemeColor(self, SchemeColor):
+        self._SchemeColor = SchemeColor
+
+    @property
+    def CaptchaLanguage(self):
+        return self._CaptchaLanguage
+
+    @CaptchaLanguage.setter
+    def CaptchaLanguage(self, CaptchaLanguage):
+        self._CaptchaLanguage = CaptchaLanguage
+
+    @property
+    def MailAlarm(self):
+        return self._MailAlarm
+
+    @MailAlarm.setter
+    def MailAlarm(self, MailAlarm):
+        self._MailAlarm = MailAlarm
+
+    @property
+    def TopFullScreen(self):
+        return self._TopFullScreen
+
+    @TopFullScreen.setter
+    def TopFullScreen(self, TopFullScreen):
+        self._TopFullScreen = TopFullScreen
+
+    @property
+    def TrafficThreshold(self):
+        return self._TrafficThreshold
+
+    @TrafficThreshold.setter
+    def TrafficThreshold(self, TrafficThreshold):
+        self._TrafficThreshold = TrafficThreshold
 
 
     def _deserialize(self, params):
-        self.CaptchaAppId = params.get("CaptchaAppId")
-        self.AppName = params.get("AppName")
-        self.DomainLimit = params.get("DomainLimit")
-        self.SceneType = params.get("SceneType")
-        self.CapType = params.get("CapType")
-        self.EvilInterceptGrade = params.get("EvilInterceptGrade")
-        self.SmartVerify = params.get("SmartVerify")
-        self.SmartEngine = params.get("SmartEngine")
-        self.SchemeColor = params.get("SchemeColor")
-        self.CaptchaLanguage = params.get("CaptchaLanguage")
-        self.MailAlarm = params.get("MailAlarm")
-        self.TopFullScreen = params.get("TopFullScreen")
-        self.TrafficThreshold = params.get("TrafficThreshold")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppName = params.get("AppName")
+        self._DomainLimit = params.get("DomainLimit")
+        self._SceneType = params.get("SceneType")
+        self._CapType = params.get("CapType")
+        self._EvilInterceptGrade = params.get("EvilInterceptGrade")
+        self._SmartVerify = params.get("SmartVerify")
+        self._SmartEngine = params.get("SmartEngine")
+        self._SchemeColor = params.get("SchemeColor")
+        self._CaptchaLanguage = params.get("CaptchaLanguage")
+        self._MailAlarm = params.get("MailAlarm")
+        self._TopFullScreen = params.get("TopFullScreen")
+        self._TrafficThreshold = params.get("TrafficThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2008,20 +3912,44 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaCode: 返回码 0 成功，其它失败
+        :param _CaptchaCode: 返回码 0 成功，其它失败
         :type CaptchaCode: int
-        :param CaptchaMsg: 返回操作信息
+        :param _CaptchaMsg: 返回操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CaptchaCode = None
-        self.CaptchaMsg = None
-        self.RequestId = None
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CaptchaCode = params.get("CaptchaCode")
-        self.CaptchaMsg = params.get("CaptchaMsg")
-        self.RequestId = params.get("RequestId")
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._RequestId = params.get("RequestId")

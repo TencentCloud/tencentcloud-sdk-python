@@ -25,30 +25,63 @@ class DataManipulationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpType: 操作类型，add或del
+        :param _OpType: 操作类型，add或del
         :type OpType: str
-        :param Encoding: 数据编码类型
+        :param _Encoding: 数据编码类型
         :type Encoding: str
-        :param Contents: 数据
+        :param _Contents: 数据
         :type Contents: str
-        :param ResourceId: 应用Id
+        :param _ResourceId: 应用Id
         :type ResourceId: int
         """
-        self.OpType = None
-        self.Encoding = None
-        self.Contents = None
-        self.ResourceId = None
+        self._OpType = None
+        self._Encoding = None
+        self._Contents = None
+        self._ResourceId = None
+
+    @property
+    def OpType(self):
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def Encoding(self):
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Contents(self):
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
-        self.OpType = params.get("OpType")
-        self.Encoding = params.get("Encoding")
-        self.Contents = params.get("Contents")
-        self.ResourceId = params.get("ResourceId")
+        self._OpType = params.get("OpType")
+        self._Encoding = params.get("Encoding")
+        self._Contents = params.get("Contents")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -61,20 +94,36 @@ class DataManipulationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 数据操作结果
+        :param _Data: 数据操作结果
         :type Data: :class:`tencentcloud.yunsou.v20191115.models.DataManipulationResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = DataManipulationResult()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = DataManipulationResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DataManipulationResult(AbstractModel):
@@ -84,41 +133,82 @@ class DataManipulationResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: 应用ID
+        :param _AppId: 应用ID
         :type AppId: int
-        :param Seq: 序号
+        :param _Seq: 序号
         :type Seq: int
-        :param TotalResult: 结果
+        :param _TotalResult: 结果
         :type TotalResult: str
-        :param Result: 操作结果明细
+        :param _Result: 操作结果明细
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of DataManipulationResultItem
-        :param ErrorResult: 异常信息
+        :param _ErrorResult: 异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorResult: str
         """
-        self.AppId = None
-        self.Seq = None
-        self.TotalResult = None
-        self.Result = None
-        self.ErrorResult = None
+        self._AppId = None
+        self._Seq = None
+        self._TotalResult = None
+        self._Result = None
+        self._ErrorResult = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Seq(self):
+        return self._Seq
+
+    @Seq.setter
+    def Seq(self, Seq):
+        self._Seq = Seq
+
+    @property
+    def TotalResult(self):
+        return self._TotalResult
+
+    @TotalResult.setter
+    def TotalResult(self, TotalResult):
+        self._TotalResult = TotalResult
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorResult(self):
+        return self._ErrorResult
+
+    @ErrorResult.setter
+    def ErrorResult(self, ErrorResult):
+        self._ErrorResult = ErrorResult
 
 
     def _deserialize(self, params):
-        self.AppId = params.get("AppId")
-        self.Seq = params.get("Seq")
-        self.TotalResult = params.get("TotalResult")
+        self._AppId = params.get("AppId")
+        self._Seq = params.get("Seq")
+        self._TotalResult = params.get("TotalResult")
         if params.get("Result") is not None:
-            self.Result = []
+            self._Result = []
             for item in params.get("Result"):
                 obj = DataManipulationResultItem()
                 obj._deserialize(item)
-                self.Result.append(obj)
-        self.ErrorResult = params.get("ErrorResult")
+                self._Result.append(obj)
+        self._ErrorResult = params.get("ErrorResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -131,26 +221,51 @@ class DataManipulationResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 结果
+        :param _Result: 结果
         :type Result: str
-        :param DocId: 文档ID
+        :param _DocId: 文档ID
         :type DocId: str
-        :param Errno: 错误码
+        :param _Errno: 错误码
         :type Errno: int
         """
-        self.Result = None
-        self.DocId = None
-        self.Errno = None
+        self._Result = None
+        self._DocId = None
+        self._Errno = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def DocId(self):
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def Errno(self):
+        return self._Errno
+
+    @Errno.setter
+    def Errno(self, Errno):
+        self._Errno = Errno
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.DocId = params.get("DocId")
-        self.Errno = params.get("Errno")
+        self._Result = params.get("Result")
+        self._DocId = params.get("DocId")
+        self._Errno = params.get("Errno")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -163,106 +278,291 @@ class DataSearchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 云搜的业务ID，用以表明当前数据请求的业务
+        :param _ResourceId: 云搜的业务ID，用以表明当前数据请求的业务
         :type ResourceId: int
-        :param SearchQuery: 检索串
+        :param _SearchQuery: 检索串
         :type SearchQuery: str
-        :param PageId: 当前页，从第0页开始计算
+        :param _PageId: 当前页，从第0页开始计算
         :type PageId: int
-        :param NumPerPage: 每页结果数
+        :param _NumPerPage: 每页结果数
         :type NumPerPage: int
-        :param SearchId: 当前检索号，用于定位问题，建议指定并且全局唯一
+        :param _SearchId: 当前检索号，用于定位问题，建议指定并且全局唯一
         :type SearchId: str
-        :param QueryEncode: 请求编码，0表示utf8，1表示gbk，建议指定
+        :param _QueryEncode: 请求编码，0表示utf8，1表示gbk，建议指定
         :type QueryEncode: int
-        :param RankType: 排序类型
+        :param _RankType: 排序类型
         :type RankType: int
-        :param NumFilter: 数值过滤，结果中按属性过滤
+        :param _NumFilter: 数值过滤，结果中按属性过滤
         :type NumFilter: str
-        :param ClFilter: 分类过滤，导航类检索请求
+        :param _ClFilter: 分类过滤，导航类检索请求
         :type ClFilter: str
-        :param Extra: 检索用户相关字段
+        :param _Extra: 检索用户相关字段
         :type Extra: str
-        :param SourceId: 检索来源
+        :param _SourceId: 检索来源
         :type SourceId: int
-        :param SecondSearch: 是否进行二次检索，0关闭，1打开
+        :param _SecondSearch: 是否进行二次检索，0关闭，1打开
         :type SecondSearch: int
-        :param MaxDocReturn: 指定返回最大篇数，无特殊原因不建议指定
+        :param _MaxDocReturn: 指定返回最大篇数，无特殊原因不建议指定
         :type MaxDocReturn: int
-        :param IsSmartbox: 是否smartbox检索，0关闭，1打开
+        :param _IsSmartbox: 是否smartbox检索，0关闭，1打开
         :type IsSmartbox: int
-        :param EnableAbsHighlight: 是否打开高红标亮，0关闭，1打开
+        :param _EnableAbsHighlight: 是否打开高红标亮，0关闭，1打开
         :type EnableAbsHighlight: int
-        :param QcBid: 指定访问QC纠错业务ID
+        :param _QcBid: 指定访问QC纠错业务ID
         :type QcBid: int
-        :param GroupBy: 按指定字段进行group by，只能对数值字段进行操作
+        :param _GroupBy: 按指定字段进行group by，只能对数值字段进行操作
         :type GroupBy: str
-        :param Distinct: 按指定字段进行distinct，只能对数值字段进行操作
+        :param _Distinct: 按指定字段进行distinct，只能对数值字段进行操作
         :type Distinct: str
-        :param L4RankExpression: 高级排序参数，具体参见高级排序说明
+        :param _L4RankExpression: 高级排序参数，具体参见高级排序说明
         :type L4RankExpression: str
-        :param MatchValue: 高级排序参数，具体参见高级排序说明
+        :param _MatchValue: 高级排序参数，具体参见高级排序说明
         :type MatchValue: str
-        :param Longitude: 经度信息
+        :param _Longitude: 经度信息
         :type Longitude: float
-        :param Latitude: 纬度信息
+        :param _Latitude: 纬度信息
         :type Latitude: float
-        :param MultiFilter: 分类过滤并集
+        :param _MultiFilter: 分类过滤并集
         :type MultiFilter: list of str
         """
-        self.ResourceId = None
-        self.SearchQuery = None
-        self.PageId = None
-        self.NumPerPage = None
-        self.SearchId = None
-        self.QueryEncode = None
-        self.RankType = None
-        self.NumFilter = None
-        self.ClFilter = None
-        self.Extra = None
-        self.SourceId = None
-        self.SecondSearch = None
-        self.MaxDocReturn = None
-        self.IsSmartbox = None
-        self.EnableAbsHighlight = None
-        self.QcBid = None
-        self.GroupBy = None
-        self.Distinct = None
-        self.L4RankExpression = None
-        self.MatchValue = None
-        self.Longitude = None
-        self.Latitude = None
-        self.MultiFilter = None
+        self._ResourceId = None
+        self._SearchQuery = None
+        self._PageId = None
+        self._NumPerPage = None
+        self._SearchId = None
+        self._QueryEncode = None
+        self._RankType = None
+        self._NumFilter = None
+        self._ClFilter = None
+        self._Extra = None
+        self._SourceId = None
+        self._SecondSearch = None
+        self._MaxDocReturn = None
+        self._IsSmartbox = None
+        self._EnableAbsHighlight = None
+        self._QcBid = None
+        self._GroupBy = None
+        self._Distinct = None
+        self._L4RankExpression = None
+        self._MatchValue = None
+        self._Longitude = None
+        self._Latitude = None
+        self._MultiFilter = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def SearchQuery(self):
+        return self._SearchQuery
+
+    @SearchQuery.setter
+    def SearchQuery(self, SearchQuery):
+        self._SearchQuery = SearchQuery
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def NumPerPage(self):
+        return self._NumPerPage
+
+    @NumPerPage.setter
+    def NumPerPage(self, NumPerPage):
+        self._NumPerPage = NumPerPage
+
+    @property
+    def SearchId(self):
+        return self._SearchId
+
+    @SearchId.setter
+    def SearchId(self, SearchId):
+        self._SearchId = SearchId
+
+    @property
+    def QueryEncode(self):
+        return self._QueryEncode
+
+    @QueryEncode.setter
+    def QueryEncode(self, QueryEncode):
+        self._QueryEncode = QueryEncode
+
+    @property
+    def RankType(self):
+        return self._RankType
+
+    @RankType.setter
+    def RankType(self, RankType):
+        self._RankType = RankType
+
+    @property
+    def NumFilter(self):
+        return self._NumFilter
+
+    @NumFilter.setter
+    def NumFilter(self, NumFilter):
+        self._NumFilter = NumFilter
+
+    @property
+    def ClFilter(self):
+        return self._ClFilter
+
+    @ClFilter.setter
+    def ClFilter(self, ClFilter):
+        self._ClFilter = ClFilter
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def SourceId(self):
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SecondSearch(self):
+        return self._SecondSearch
+
+    @SecondSearch.setter
+    def SecondSearch(self, SecondSearch):
+        self._SecondSearch = SecondSearch
+
+    @property
+    def MaxDocReturn(self):
+        return self._MaxDocReturn
+
+    @MaxDocReturn.setter
+    def MaxDocReturn(self, MaxDocReturn):
+        self._MaxDocReturn = MaxDocReturn
+
+    @property
+    def IsSmartbox(self):
+        return self._IsSmartbox
+
+    @IsSmartbox.setter
+    def IsSmartbox(self, IsSmartbox):
+        self._IsSmartbox = IsSmartbox
+
+    @property
+    def EnableAbsHighlight(self):
+        return self._EnableAbsHighlight
+
+    @EnableAbsHighlight.setter
+    def EnableAbsHighlight(self, EnableAbsHighlight):
+        self._EnableAbsHighlight = EnableAbsHighlight
+
+    @property
+    def QcBid(self):
+        return self._QcBid
+
+    @QcBid.setter
+    def QcBid(self, QcBid):
+        self._QcBid = QcBid
+
+    @property
+    def GroupBy(self):
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
+    def Distinct(self):
+        return self._Distinct
+
+    @Distinct.setter
+    def Distinct(self, Distinct):
+        self._Distinct = Distinct
+
+    @property
+    def L4RankExpression(self):
+        return self._L4RankExpression
+
+    @L4RankExpression.setter
+    def L4RankExpression(self, L4RankExpression):
+        self._L4RankExpression = L4RankExpression
+
+    @property
+    def MatchValue(self):
+        return self._MatchValue
+
+    @MatchValue.setter
+    def MatchValue(self, MatchValue):
+        self._MatchValue = MatchValue
+
+    @property
+    def Longitude(self):
+        return self._Longitude
+
+    @Longitude.setter
+    def Longitude(self, Longitude):
+        self._Longitude = Longitude
+
+    @property
+    def Latitude(self):
+        return self._Latitude
+
+    @Latitude.setter
+    def Latitude(self, Latitude):
+        self._Latitude = Latitude
+
+    @property
+    def MultiFilter(self):
+        return self._MultiFilter
+
+    @MultiFilter.setter
+    def MultiFilter(self, MultiFilter):
+        self._MultiFilter = MultiFilter
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.SearchQuery = params.get("SearchQuery")
-        self.PageId = params.get("PageId")
-        self.NumPerPage = params.get("NumPerPage")
-        self.SearchId = params.get("SearchId")
-        self.QueryEncode = params.get("QueryEncode")
-        self.RankType = params.get("RankType")
-        self.NumFilter = params.get("NumFilter")
-        self.ClFilter = params.get("ClFilter")
-        self.Extra = params.get("Extra")
-        self.SourceId = params.get("SourceId")
-        self.SecondSearch = params.get("SecondSearch")
-        self.MaxDocReturn = params.get("MaxDocReturn")
-        self.IsSmartbox = params.get("IsSmartbox")
-        self.EnableAbsHighlight = params.get("EnableAbsHighlight")
-        self.QcBid = params.get("QcBid")
-        self.GroupBy = params.get("GroupBy")
-        self.Distinct = params.get("Distinct")
-        self.L4RankExpression = params.get("L4RankExpression")
-        self.MatchValue = params.get("MatchValue")
-        self.Longitude = params.get("Longitude")
-        self.Latitude = params.get("Latitude")
-        self.MultiFilter = params.get("MultiFilter")
+        self._ResourceId = params.get("ResourceId")
+        self._SearchQuery = params.get("SearchQuery")
+        self._PageId = params.get("PageId")
+        self._NumPerPage = params.get("NumPerPage")
+        self._SearchId = params.get("SearchId")
+        self._QueryEncode = params.get("QueryEncode")
+        self._RankType = params.get("RankType")
+        self._NumFilter = params.get("NumFilter")
+        self._ClFilter = params.get("ClFilter")
+        self._Extra = params.get("Extra")
+        self._SourceId = params.get("SourceId")
+        self._SecondSearch = params.get("SecondSearch")
+        self._MaxDocReturn = params.get("MaxDocReturn")
+        self._IsSmartbox = params.get("IsSmartbox")
+        self._EnableAbsHighlight = params.get("EnableAbsHighlight")
+        self._QcBid = params.get("QcBid")
+        self._GroupBy = params.get("GroupBy")
+        self._Distinct = params.get("Distinct")
+        self._L4RankExpression = params.get("L4RankExpression")
+        self._MatchValue = params.get("MatchValue")
+        self._Longitude = params.get("Longitude")
+        self._Latitude = params.get("Latitude")
+        self._MultiFilter = params.get("MultiFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -275,20 +575,36 @@ class DataSearchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 检索结果
+        :param _Data: 检索结果
         :type Data: :class:`tencentcloud.yunsou.v20191115.models.SearchResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = SearchResult()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
+            self._Data = SearchResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class SearchResult(AbstractModel):
@@ -298,54 +614,111 @@ class SearchResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CostTime: 检索耗时，单位ms
+        :param _CostTime: 检索耗时，单位ms
         :type CostTime: int
-        :param DisplayNum: 搜索最多可以展示的结果数，多页
+        :param _DisplayNum: 搜索最多可以展示的结果数，多页
         :type DisplayNum: int
-        :param Echo: 和检索请求中的echo相对应
+        :param _Echo: 和检索请求中的echo相对应
         :type Echo: str
-        :param EResultNum: 检索结果的估算篇数，由索引平台估算
+        :param _EResultNum: 检索结果的估算篇数，由索引平台估算
         :type EResultNum: int
-        :param ResultNum: 检索返回的当前页码结果数
+        :param _ResultNum: 检索返回的当前页码结果数
         :type ResultNum: int
-        :param ResultList: 检索结果列表
+        :param _ResultList: 检索结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultList: list of SearchResultItem
-        :param SegList: 检索的分词结果，array类型，可包含多个
+        :param _SegList: 检索的分词结果，array类型，可包含多个
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegList: list of SearchResultSeg
         """
-        self.CostTime = None
-        self.DisplayNum = None
-        self.Echo = None
-        self.EResultNum = None
-        self.ResultNum = None
-        self.ResultList = None
-        self.SegList = None
+        self._CostTime = None
+        self._DisplayNum = None
+        self._Echo = None
+        self._EResultNum = None
+        self._ResultNum = None
+        self._ResultList = None
+        self._SegList = None
+
+    @property
+    def CostTime(self):
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def DisplayNum(self):
+        return self._DisplayNum
+
+    @DisplayNum.setter
+    def DisplayNum(self, DisplayNum):
+        self._DisplayNum = DisplayNum
+
+    @property
+    def Echo(self):
+        return self._Echo
+
+    @Echo.setter
+    def Echo(self, Echo):
+        self._Echo = Echo
+
+    @property
+    def EResultNum(self):
+        return self._EResultNum
+
+    @EResultNum.setter
+    def EResultNum(self, EResultNum):
+        self._EResultNum = EResultNum
+
+    @property
+    def ResultNum(self):
+        return self._ResultNum
+
+    @ResultNum.setter
+    def ResultNum(self, ResultNum):
+        self._ResultNum = ResultNum
+
+    @property
+    def ResultList(self):
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def SegList(self):
+        return self._SegList
+
+    @SegList.setter
+    def SegList(self, SegList):
+        self._SegList = SegList
 
 
     def _deserialize(self, params):
-        self.CostTime = params.get("CostTime")
-        self.DisplayNum = params.get("DisplayNum")
-        self.Echo = params.get("Echo")
-        self.EResultNum = params.get("EResultNum")
-        self.ResultNum = params.get("ResultNum")
+        self._CostTime = params.get("CostTime")
+        self._DisplayNum = params.get("DisplayNum")
+        self._Echo = params.get("Echo")
+        self._EResultNum = params.get("EResultNum")
+        self._ResultNum = params.get("ResultNum")
         if params.get("ResultList") is not None:
-            self.ResultList = []
+            self._ResultList = []
             for item in params.get("ResultList"):
                 obj = SearchResultItem()
                 obj._deserialize(item)
-                self.ResultList.append(obj)
+                self._ResultList.append(obj)
         if params.get("SegList") is not None:
-            self.SegList = []
+            self._SegList = []
             for item in params.get("SegList"):
                 obj = SearchResultSeg()
                 obj._deserialize(item)
-                self.SegList.append(obj)
+                self._SegList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -358,34 +731,75 @@ class SearchResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DocAbs: 动态摘要信息
+        :param _DocAbs: 动态摘要信息
         :type DocAbs: str
-        :param DocId: 检索文档id
+        :param _DocId: 检索文档id
         :type DocId: str
-        :param DocMeta: 原始文档信息
+        :param _DocMeta: 原始文档信息
         :type DocMeta: str
-        :param L2Score: 精计算得分
+        :param _L2Score: 精计算得分
         :type L2Score: float
-        :param SearchDebuginfo: 文档级回传信息
+        :param _SearchDebuginfo: 文档级回传信息
         :type SearchDebuginfo: str
         """
-        self.DocAbs = None
-        self.DocId = None
-        self.DocMeta = None
-        self.L2Score = None
-        self.SearchDebuginfo = None
+        self._DocAbs = None
+        self._DocId = None
+        self._DocMeta = None
+        self._L2Score = None
+        self._SearchDebuginfo = None
+
+    @property
+    def DocAbs(self):
+        return self._DocAbs
+
+    @DocAbs.setter
+    def DocAbs(self, DocAbs):
+        self._DocAbs = DocAbs
+
+    @property
+    def DocId(self):
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def DocMeta(self):
+        return self._DocMeta
+
+    @DocMeta.setter
+    def DocMeta(self, DocMeta):
+        self._DocMeta = DocMeta
+
+    @property
+    def L2Score(self):
+        return self._L2Score
+
+    @L2Score.setter
+    def L2Score(self, L2Score):
+        self._L2Score = L2Score
+
+    @property
+    def SearchDebuginfo(self):
+        return self._SearchDebuginfo
+
+    @SearchDebuginfo.setter
+    def SearchDebuginfo(self, SearchDebuginfo):
+        self._SearchDebuginfo = SearchDebuginfo
 
 
     def _deserialize(self, params):
-        self.DocAbs = params.get("DocAbs")
-        self.DocId = params.get("DocId")
-        self.DocMeta = params.get("DocMeta")
-        self.L2Score = params.get("L2Score")
-        self.SearchDebuginfo = params.get("SearchDebuginfo")
+        self._DocAbs = params.get("DocAbs")
+        self._DocId = params.get("DocId")
+        self._DocMeta = params.get("DocMeta")
+        self._L2Score = params.get("L2Score")
+        self._SearchDebuginfo = params.get("SearchDebuginfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -398,18 +812,27 @@ class SearchResultSeg(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SegStr: 分词
+        :param _SegStr: 分词
         :type SegStr: str
         """
-        self.SegStr = None
+        self._SegStr = None
+
+    @property
+    def SegStr(self):
+        return self._SegStr
+
+    @SegStr.setter
+    def SegStr(self, SegStr):
+        self._SegStr = SegStr
 
 
     def _deserialize(self, params):
-        self.SegStr = params.get("SegStr")
+        self._SegStr = params.get("SegStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

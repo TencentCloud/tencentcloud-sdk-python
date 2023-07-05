@@ -739,6 +739,29 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRawScanLogs(self, request):
+        """支持增量查询扫码日志，通常提供给数据同步使用，调用时需要指定从哪一行开始查询数据
+
+        :param request: Request instance for DescribeRawScanLogs.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeRawScanLogsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeRawScanLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRawScanLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRawScanLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScanLogs(self, request):
         """查询扫码日志明细
 

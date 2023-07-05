@@ -25,22 +25,39 @@ class BatchContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Body: 消息体
+        :param _Body: 消息体
         :type Body: str
-        :param Key: 消息的键名
+        :param _Key: 消息的键名
         :type Key: str
         """
-        self.Body = None
-        self.Key = None
+        self._Body = None
+        self._Key = None
+
+    @property
+    def Body(self):
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
 
 
     def _deserialize(self, params):
-        self.Body = params.get("Body")
-        self.Key = params.get("Key")
+        self._Body = params.get("Body")
+        self._Key = params.get("Key")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,27 +70,44 @@ class SendMessageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataHubId: 接入资源ID
+        :param _DataHubId: 接入资源ID
         :type DataHubId: str
-        :param Message: 批量消息
+        :param _Message: 批量消息
         :type Message: list of BatchContent
         """
-        self.DataHubId = None
-        self.Message = None
+        self._DataHubId = None
+        self._Message = None
+
+    @property
+    def DataHubId(self):
+        return self._DataHubId
+
+    @DataHubId.setter
+    def DataHubId(self, DataHubId):
+        self._DataHubId = DataHubId
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.DataHubId = params.get("DataHubId")
+        self._DataHubId = params.get("DataHubId")
         if params.get("Message") is not None:
-            self.Message = []
+            self._Message = []
             for item in params.get("Message"):
                 obj = BatchContent()
                 obj._deserialize(item)
-                self.Message.append(obj)
+                self._Message.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -86,15 +120,31 @@ class SendMessageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MessageId: 消息ID
+        :param _MessageId: 消息ID
         :type MessageId: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MessageId = None
-        self.RequestId = None
+        self._MessageId = None
+        self._RequestId = None
+
+    @property
+    def MessageId(self):
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MessageId = params.get("MessageId")
-        self.RequestId = params.get("RequestId")
+        self._MessageId = params.get("MessageId")
+        self._RequestId = params.get("RequestId")
