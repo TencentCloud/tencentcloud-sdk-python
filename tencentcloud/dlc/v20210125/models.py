@@ -13551,7 +13551,7 @@ class ModifyWorkGroupRequest(AbstractModel):
         r"""
         :param _WorkGroupId: 工作组Id
         :type WorkGroupId: int
-        :param _WorkGroupDescription: 工作组描述
+        :param _WorkGroupDescription: 工作组描述，最大字符数限制50
         :type WorkGroupDescription: str
         """
         self._WorkGroupId = None

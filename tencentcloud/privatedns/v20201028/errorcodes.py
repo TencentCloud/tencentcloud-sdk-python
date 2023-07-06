@@ -56,6 +56,9 @@ FAILEDOPERATION_MODIFYRECORDFAILED = 'FailedOperation.ModifyRecordFailed'
 # 私有域修改失败。
 FAILEDOPERATION_MODIFYZONEFAILED = 'FailedOperation.ModifyZoneFailed'
 
+# 记录更新失败
+FAILEDOPERATION_UPDATERECORDFAILED = 'FailedOperation.UpdateRecordFailed'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

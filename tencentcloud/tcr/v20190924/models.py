@@ -1225,6 +1225,8 @@ class CreateInstanceRequest(AbstractModel):
         :type SyncTag: bool
         :param _EnableCosMAZ: 是否开启Cos桶多AZ特性
         :type EnableCosMAZ: bool
+        :param _DeletionProtection: 是否开启实例删除保护
+        :type DeletionProtection: bool
         """
         self._RegistryName = None
         self._RegistryType = None
@@ -1233,6 +1235,7 @@ class CreateInstanceRequest(AbstractModel):
         self._RegistryChargePrepaid = None
         self._SyncTag = None
         self._EnableCosMAZ = None
+        self._DeletionProtection = None
 
     @property
     def RegistryName(self):
@@ -1290,6 +1293,14 @@ class CreateInstanceRequest(AbstractModel):
     def EnableCosMAZ(self, EnableCosMAZ):
         self._EnableCosMAZ = EnableCosMAZ
 
+    @property
+    def DeletionProtection(self):
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._RegistryName = params.get("RegistryName")
@@ -1303,6 +1314,7 @@ class CreateInstanceRequest(AbstractModel):
             self._RegistryChargePrepaid._deserialize(params.get("RegistryChargePrepaid"))
         self._SyncTag = params.get("SyncTag")
         self._EnableCosMAZ = params.get("EnableCosMAZ")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10608,11 +10620,17 @@ class ModifyInstanceRequest(AbstractModel):
         r"""
         :param _RegistryId: 实例ID
         :type RegistryId: str
-        :param _RegistryType: 实例的规格
+        :param _RegistryType: 实例的规格,
+基础版：basic
+标准版：standard
+高级版：premium
         :type RegistryType: str
+        :param _DeletionProtection: 实例删除保护，false为关闭
+        :type DeletionProtection: bool
         """
         self._RegistryId = None
         self._RegistryType = None
+        self._DeletionProtection = None
 
     @property
     def RegistryId(self):
@@ -10630,10 +10648,19 @@ class ModifyInstanceRequest(AbstractModel):
     def RegistryType(self, RegistryType):
         self._RegistryType = RegistryType
 
+    @property
+    def DeletionProtection(self):
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
         self._RegistryType = params.get("RegistryType")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

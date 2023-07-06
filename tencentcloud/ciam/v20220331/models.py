@@ -355,10 +355,21 @@ class CreateUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _UserGroupId: 用户组ID
+        :type UserGroupId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._UserGroupId = None
         self._RequestId = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
 
     @property
     def RequestId(self):
@@ -370,6 +381,7 @@ class CreateUserGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._UserGroupId = params.get("UserGroupId")
         self._RequestId = params.get("RequestId")
 
 
@@ -683,10 +695,21 @@ class CreateUserStoreResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _UserStoreId: 用户目录ID
+        :type UserStoreId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._UserStoreId = None
         self._RequestId = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
 
     @property
     def RequestId(self):
@@ -698,6 +721,7 @@ class CreateUserStoreResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._UserStoreId = params.get("UserStoreId")
         self._RequestId = params.get("RequestId")
 
 
