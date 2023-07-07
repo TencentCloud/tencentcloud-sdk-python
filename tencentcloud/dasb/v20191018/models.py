@@ -4832,6 +4832,8 @@ class DescribeUsersRequest(AbstractModel):
         :param _Phone: 精确查询，IdSet、UserName为空时才生效。
 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
         :type Phone: str
+        :param _Email: 邮箱，精确查询
+        :type Email: str
         :param _AuthorizedDeviceIdSet: 查询具有指定资产ID访问权限的用户
         :type AuthorizedDeviceIdSet: list of int non-negative
         :param _AuthTypeSet: 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
@@ -4845,6 +4847,7 @@ class DescribeUsersRequest(AbstractModel):
         self._Limit = None
         self._UserName = None
         self._Phone = None
+        self._Email = None
         self._AuthorizedDeviceIdSet = None
         self._AuthTypeSet = None
         self._DepartmentId = None
@@ -4898,6 +4901,14 @@ class DescribeUsersRequest(AbstractModel):
         self._Phone = Phone
 
     @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
     def AuthorizedDeviceIdSet(self):
         return self._AuthorizedDeviceIdSet
 
@@ -4929,6 +4940,7 @@ class DescribeUsersRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._UserName = params.get("UserName")
         self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
         self._AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
         self._AuthTypeSet = params.get("AuthTypeSet")
         self._DepartmentId = params.get("DepartmentId")
@@ -9327,10 +9339,10 @@ class User(AbstractModel):
         :type UserName: str
         :param _RealName: 用户姓名， 最大20个字符，不能包含空白字符
         :type RealName: str
-        :param _Phone: 手机号码， 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
-        :type Phone: str
         :param _Id: 用户ID
         :type Id: int
+        :param _Phone: 手机号码， 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+        :type Phone: str
         :param _Email: 电子邮件
         :type Email: str
         :param _ValidateFrom: 用户生效时间，如:"2021-09-22T00:00:00+00:00"
@@ -9354,8 +9366,8 @@ class User(AbstractModel):
         """
         self._UserName = None
         self._RealName = None
-        self._Phone = None
         self._Id = None
+        self._Phone = None
         self._Email = None
         self._ValidateFrom = None
         self._ValidateTo = None
@@ -9382,20 +9394,20 @@ class User(AbstractModel):
         self._RealName = RealName
 
     @property
-    def Phone(self):
-        return self._Phone
-
-    @Phone.setter
-    def Phone(self, Phone):
-        self._Phone = Phone
-
-    @property
     def Id(self):
         return self._Id
 
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
 
     @property
     def Email(self):
@@ -9465,8 +9477,8 @@ class User(AbstractModel):
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
         self._RealName = params.get("RealName")
-        self._Phone = params.get("Phone")
         self._Id = params.get("Id")
+        self._Phone = params.get("Phone")
         self._Email = params.get("Email")
         self._ValidateFrom = params.get("ValidateFrom")
         self._ValidateTo = params.get("ValidateTo")

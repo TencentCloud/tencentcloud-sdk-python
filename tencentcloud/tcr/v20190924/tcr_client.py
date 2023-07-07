@@ -463,6 +463,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateServiceAccount(self, request):
+        """创建自定义账户
+
+        :param request: Request instance for CreateServiceAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateServiceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateServiceAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSignature(self, request):
         """为一个镜像版本创建签名
 
@@ -1031,6 +1054,29 @@ class TcrClient(AbstractClient):
             body = self.call("DeleteSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteServiceAccount(self, request):
+        """删除服务级账号
+
+        :param request: Request instance for DeleteServiceAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteServiceAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteServiceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteServiceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteServiceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1868,6 +1914,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeServiceAccounts(self, request):
+        """查询服务级账号
+
+        :param request: Request instance for DescribeServiceAccounts.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeServiceAccountsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeServiceAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTagRetentionExecution(self, request):
         """查询版本保留执行记录
 
@@ -2365,6 +2434,29 @@ class TcrClient(AbstractClient):
             body = self.call("ModifySecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyServiceAccount(self, request):
+        """更新服务级账号
+
+        :param request: Request instance for ModifyServiceAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServiceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

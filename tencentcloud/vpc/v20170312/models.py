@@ -4996,13 +4996,13 @@ class CloneSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         :param _GroupName: 安全组名称，可任意命名，但不得超过60个字符。未提供参数时，克隆后的安全组名称和SecurityGroupId对应的安全组名称相同。
         :type GroupName: str
         :param _GroupDescription: 安全组备注，最多100个字符。未提供参数时，克隆后的安全组备注和SecurityGroupId对应的安全组备注相同。
         :type GroupDescription: str
-        :param _ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
         :type ProjectId: str
         :param _RemoteRegion: 源Region,跨地域克隆安全组时，需要传入源安全组所属地域信息，例如：克隆广州的安全组到上海，则这里需要传入广州安全的地域信息：ap-guangzhou。
         :type RemoteRegion: str
@@ -8417,7 +8417,7 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
         :type GroupName: str
         :param _GroupDescription: 安全组备注，最多100个字符。
         :type GroupDescription: str
-        :param _ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
         :type ProjectId: str
         :param _SecurityGroupPolicySet: 安全组规则集合。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
@@ -20595,7 +20595,7 @@ class DescribeSnapshotFilesRequest(AbstractModel):
         r"""
         :param _BusinessType: 业务类型，目前支持安全组：securitygroup。
         :type BusinessType: str
-        :param _InstanceId: 实例Id。
+        :param _InstanceId: 业务实例Id，和BusinessType对应。
         :type InstanceId: str
         :param _StartDate: 开始日期，格式%Y-%m-%d %H:%M:%S。
         :type StartDate: str
@@ -21479,11 +21479,11 @@ class DescribeUsedIpAddressRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 子网实例ID。
         :type SubnetId: str
-        :param _IpAddresses: 查询是否占用的ip列表
+        :param _IpAddresses: 查询是否占用的ip列表，ip需要在vpc或子网内。最多允许一次查询100个IP。
         :type IpAddresses: list of str
-        :param _Offset: 偏移量。
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 请求对象个数。
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
         self._VpcId = None
@@ -32799,12 +32799,15 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type DnsServers: list of str
         :param _DomainName: 域名。
         :type DomainName: str
+        :param _EnableCdcPublish: 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
+        :type EnableCdcPublish: bool
         """
         self._VpcId = None
         self._VpcName = None
         self._EnableMulticast = None
         self._DnsServers = None
         self._DomainName = None
+        self._EnableCdcPublish = None
 
     @property
     def VpcId(self):
@@ -32846,6 +32849,14 @@ class ModifyVpcAttributeRequest(AbstractModel):
     def DomainName(self, DomainName):
         self._DomainName = DomainName
 
+    @property
+    def EnableCdcPublish(self):
+        return self._EnableCdcPublish
+
+    @EnableCdcPublish.setter
+    def EnableCdcPublish(self, EnableCdcPublish):
+        self._EnableCdcPublish = EnableCdcPublish
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -32853,6 +32864,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
         self._EnableMulticast = params.get("EnableMulticast")
         self._DnsServers = params.get("DnsServers")
         self._DomainName = params.get("DomainName")
+        self._EnableCdcPublish = params.get("EnableCdcPublish")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

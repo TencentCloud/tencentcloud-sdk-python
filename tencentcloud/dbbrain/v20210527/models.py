@@ -1228,6 +1228,113 @@ class CreateProxySessionKillTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
+    """CreateRedisBigKeyAnalysisTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _ShardIds: 分片节点序号列表。当列表为空时，选择所有分片节点。
+        :type ShardIds: list of int
+        :param _KeyDelimiterList: Top Key前缀的分隔符列表。
+目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+        :type KeyDelimiterList: list of str
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._ShardIds = None
+        self._KeyDelimiterList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ShardIds(self):
+        return self._ShardIds
+
+    @ShardIds.setter
+    def ShardIds(self, ShardIds):
+        self._ShardIds = ShardIds
+
+    @property
+    def KeyDelimiterList(self):
+        return self._KeyDelimiterList
+
+    @KeyDelimiterList.setter
+    def KeyDelimiterList(self, KeyDelimiterList):
+        self._KeyDelimiterList = KeyDelimiterList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._ShardIds = params.get("ShardIds")
+        self._KeyDelimiterList = params.get("KeyDelimiterList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRedisBigKeyAnalysisTaskResponse(AbstractModel):
+    """CreateRedisBigKeyAnalysisTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: 异步任务ID。
+        :type AsyncRequestId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSchedulerMailProfileRequest(AbstractModel):
     """CreateSchedulerMailProfile请求参数结构体
 

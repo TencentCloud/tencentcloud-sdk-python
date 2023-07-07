@@ -3045,6 +3045,8 @@ class ClusterLevelAttribute(AbstractModel):
         :type PodCount: int
         :param _ConfigMapCount: Configmap数量
         :type ConfigMapCount: int
+        :param _RSCount: ReplicaSets数量
+        :type RSCount: int
         :param _CRDCount: CRD数量
         :type CRDCount: int
         :param _Enable: 是否启用
@@ -3058,6 +3060,7 @@ class ClusterLevelAttribute(AbstractModel):
         self._NodeCount = None
         self._PodCount = None
         self._ConfigMapCount = None
+        self._RSCount = None
         self._CRDCount = None
         self._Enable = None
         self._OtherCount = None
@@ -3103,6 +3106,14 @@ class ClusterLevelAttribute(AbstractModel):
         self._ConfigMapCount = ConfigMapCount
 
     @property
+    def RSCount(self):
+        return self._RSCount
+
+    @RSCount.setter
+    def RSCount(self, RSCount):
+        self._RSCount = RSCount
+
+    @property
     def CRDCount(self):
         return self._CRDCount
 
@@ -3133,6 +3144,7 @@ class ClusterLevelAttribute(AbstractModel):
         self._NodeCount = params.get("NodeCount")
         self._PodCount = params.get("PodCount")
         self._ConfigMapCount = params.get("ConfigMapCount")
+        self._RSCount = params.get("RSCount")
         self._CRDCount = params.get("CRDCount")
         self._Enable = params.get("Enable")
         self._OtherCount = params.get("OtherCount")
@@ -18078,6 +18090,8 @@ class DescribeResourceUsageResponse(AbstractModel):
         :type CRDUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
         :param _PodUsage: Pod使用量
         :type PodUsage: int
+        :param _RSUsage: ReplicaSet使用量
+        :type RSUsage: int
         :param _ConfigMapUsage: ConfigMap使用量
         :type ConfigMapUsage: int
         :param _OtherUsage: 其他资源使用量
@@ -18087,6 +18101,7 @@ class DescribeResourceUsageResponse(AbstractModel):
         """
         self._CRDUsage = None
         self._PodUsage = None
+        self._RSUsage = None
         self._ConfigMapUsage = None
         self._OtherUsage = None
         self._RequestId = None
@@ -18106,6 +18121,14 @@ class DescribeResourceUsageResponse(AbstractModel):
     @PodUsage.setter
     def PodUsage(self, PodUsage):
         self._PodUsage = PodUsage
+
+    @property
+    def RSUsage(self):
+        return self._RSUsage
+
+    @RSUsage.setter
+    def RSUsage(self, RSUsage):
+        self._RSUsage = RSUsage
 
     @property
     def ConfigMapUsage(self):
@@ -18137,6 +18160,7 @@ class DescribeResourceUsageResponse(AbstractModel):
             self._CRDUsage = ResourceUsage()
             self._CRDUsage._deserialize(params.get("CRDUsage"))
         self._PodUsage = params.get("PodUsage")
+        self._RSUsage = params.get("RSUsage")
         self._ConfigMapUsage = params.get("ConfigMapUsage")
         if params.get("OtherUsage") is not None:
             self._OtherUsage = ResourceUsage()
@@ -26471,6 +26495,8 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
         :type NodePoolId: str
         :param _Name: 节点池名称
         :type Name: str
+        :param _SecurityGroupIds: 安全组ID列表
+        :type SecurityGroupIds: list of str
         :param _Labels: 虚拟节点label
         :type Labels: list of Label
         :param _Taints: 虚拟节点taint
@@ -26481,6 +26507,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
         self._ClusterId = None
         self._NodePoolId = None
         self._Name = None
+        self._SecurityGroupIds = None
         self._Labels = None
         self._Taints = None
         self._DeletionProtection = None
@@ -26508,6 +26535,14 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
 
     @property
     def Labels(self):
@@ -26538,6 +26573,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._NodePoolId = params.get("NodePoolId")
         self._Name = params.get("Name")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("Labels") is not None:
             self._Labels = []
             for item in params.get("Labels"):

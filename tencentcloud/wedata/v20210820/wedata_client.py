@@ -1278,6 +1278,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBatchOperateTask(self, request):
+        """批量操作任务列表
+
+        :param request: Request instance for DescribeBatchOperateTask.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBatchOperateTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBatchOperateTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchOperateTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchOperateTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterNamespaceList(self, request):
         """获取集群命名空间列表
 

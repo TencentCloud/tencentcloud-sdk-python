@@ -582,16 +582,25 @@ class AssignIpv6AddressesRequest(AbstractModel):
         :type Ipv6Addresses: list of Ipv6Address
         :param _Ipv6AddressCount: 自动分配IPv6地址个数，内网IP地址个数总和不能超过配数。与入参Ipv6Addresses合并计算配额。与Ipv6Addresses必填一个。
         :type Ipv6AddressCount: int
-        :param _Ipv6ISP: ipv6运营商如下：
+        :param _ISPType: ipv6运营商如下：
 CTCC：中国电信
 CUCC：中国联通
 CMCC：中国移动
+        :type ISPType: str
+        :param _SkipCheckIPv6Address: 是否跳过校验一个网卡只能分配一个IPv6 CIDR。该字段通常为true（用于兼容存量子机只有一个地址的情形）。
+        :type SkipCheckIPv6Address: bool
+        :param _SkipAllocateBandwidth: 是否跳过自动开通公网带宽。通常为true(根据运营系统的用户配置来决定是否自动开通，以支持当前子机购买时的行为）。
+        :type SkipAllocateBandwidth: bool
+        :param _Ipv6ISP: 该字段没有使用（已过期）。
         :type Ipv6ISP: str
         """
         self._EcmRegion = None
         self._NetworkInterfaceId = None
         self._Ipv6Addresses = None
         self._Ipv6AddressCount = None
+        self._ISPType = None
+        self._SkipCheckIPv6Address = None
+        self._SkipAllocateBandwidth = None
         self._Ipv6ISP = None
 
     @property
@@ -627,6 +636,30 @@ CMCC：中国移动
         self._Ipv6AddressCount = Ipv6AddressCount
 
     @property
+    def ISPType(self):
+        return self._ISPType
+
+    @ISPType.setter
+    def ISPType(self, ISPType):
+        self._ISPType = ISPType
+
+    @property
+    def SkipCheckIPv6Address(self):
+        return self._SkipCheckIPv6Address
+
+    @SkipCheckIPv6Address.setter
+    def SkipCheckIPv6Address(self, SkipCheckIPv6Address):
+        self._SkipCheckIPv6Address = SkipCheckIPv6Address
+
+    @property
+    def SkipAllocateBandwidth(self):
+        return self._SkipAllocateBandwidth
+
+    @SkipAllocateBandwidth.setter
+    def SkipAllocateBandwidth(self, SkipAllocateBandwidth):
+        self._SkipAllocateBandwidth = SkipAllocateBandwidth
+
+    @property
     def Ipv6ISP(self):
         return self._Ipv6ISP
 
@@ -645,6 +678,9 @@ CMCC：中国移动
                 obj._deserialize(item)
                 self._Ipv6Addresses.append(obj)
         self._Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self._ISPType = params.get("ISPType")
+        self._SkipCheckIPv6Address = params.get("SkipCheckIPv6Address")
+        self._SkipAllocateBandwidth = params.get("SkipAllocateBandwidth")
         self._Ipv6ISP = params.get("Ipv6ISP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -8399,7 +8435,8 @@ vpc-cidr-block  - String - vpc网段，形如: 192.168.1.0 。只支持单值的
 region - String - ECM地域
 zone - String - 可用区。
 tag-key - String -是否必填：否- 按照标签键进行过滤。
-tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
+ipv6-cidr-block- String - 是否必填：否 - 按照IPv6 CIDR进行过滤。
+isp-type - String - 是否必填：否 - 按照运营商类型( 如CMCC，CUCC， CTCC)进行过滤。
         :type Filters: list of Filter
         :param _Offset: 偏移量
         :type Offset: str
@@ -8921,6 +8958,8 @@ cidr-block - String - vpc的cidr，只支持单值的模糊查询。
 region - String - vpc的region。
 tag-key - String -是否必填：否- 按照标签键进行过滤。
 tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
+ipv6-cidr-block - String - 是否必填：否 - 按照IPv6 CIDR block进行过滤。
+isp-type - String - 是否必填：否 - 按照运营商（如CMCC, CUCC, CTCC）进行过滤。
         :type Filters: list of Filter
         :param _Offset: 偏移量
         :type Offset: int
@@ -10802,6 +10841,53 @@ class ISPCounter(AbstractModel):
                 obj = ZoneInstanceInfo()
                 obj._deserialize(item)
                 self._ZoneInstanceInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ISPIPv6CidrBlock(AbstractModel):
+    """多运营商IPv6 Cidr Block
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6CidrBlock: IPv6 CIdr Block。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6CidrBlock: str
+        :param _ISPType: 网络运营商类型 取值范围:'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ISPType: str
+        """
+        self._IPv6CidrBlock = None
+        self._ISPType = None
+
+    @property
+    def IPv6CidrBlock(self):
+        return self._IPv6CidrBlock
+
+    @IPv6CidrBlock.setter
+    def IPv6CidrBlock(self, IPv6CidrBlock):
+        self._IPv6CidrBlock = IPv6CidrBlock
+
+    @property
+    def ISPType(self):
+        return self._ISPType
+
+    @ISPType.setter
+    def ISPType(self, ISPType):
+        self._ISPType = ISPType
+
+
+    def _deserialize(self, params):
+        self._IPv6CidrBlock = params.get("IPv6CidrBlock")
+        self._ISPType = params.get("ISPType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21405,6 +21491,9 @@ class Subnet(AbstractModel):
         :param _Region: 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
+        :param _ISPType: 运营商类型。'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ISPType: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -21425,6 +21514,7 @@ class Subnet(AbstractModel):
         self._VpcCidrBlock = None
         self._VpcIpv6CidrBlock = None
         self._Region = None
+        self._ISPType = None
 
     @property
     def VpcId(self):
@@ -21578,6 +21668,14 @@ class Subnet(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def ISPType(self):
+        return self._ISPType
+
+    @ISPType.setter
+    def ISPType(self, ISPType):
+        self._ISPType = ISPType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -21604,6 +21702,7 @@ class Subnet(AbstractModel):
         self._VpcCidrBlock = params.get("VpcCidrBlock")
         self._VpcIpv6CidrBlock = params.get("VpcIpv6CidrBlock")
         self._Region = params.get("Region")
+        self._ISPType = params.get("ISPType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22411,7 +22510,7 @@ FALSE：表示不用作公网网关
 
 
 class VpcInfo(AbstractModel):
-    """私有网络(VPC)对象。
+    """私有网络(VPC) 对象。
 
     """
 
@@ -22456,6 +22555,12 @@ class VpcInfo(AbstractModel):
         :type SubnetCount: int
         :param _InstanceCount: 包含实例数量
         :type InstanceCount: int
+        :param _Ipv6ISP: ipv6运营商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6ISP: str
+        :param _Ipv6CidrBlockSet: 多运营商IPv6 Cidr Block。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
         """
         self._VpcName = None
         self._VpcId = None
@@ -22475,6 +22580,8 @@ class VpcInfo(AbstractModel):
         self._RegionName = None
         self._SubnetCount = None
         self._InstanceCount = None
+        self._Ipv6ISP = None
+        self._Ipv6CidrBlockSet = None
 
     @property
     def VpcName(self):
@@ -22620,6 +22727,22 @@ class VpcInfo(AbstractModel):
     def InstanceCount(self, InstanceCount):
         self._InstanceCount = InstanceCount
 
+    @property
+    def Ipv6ISP(self):
+        return self._Ipv6ISP
+
+    @Ipv6ISP.setter
+    def Ipv6ISP(self, Ipv6ISP):
+        self._Ipv6ISP = Ipv6ISP
+
+    @property
+    def Ipv6CidrBlockSet(self):
+        return self._Ipv6CidrBlockSet
+
+    @Ipv6CidrBlockSet.setter
+    def Ipv6CidrBlockSet(self, Ipv6CidrBlockSet):
+        self._Ipv6CidrBlockSet = Ipv6CidrBlockSet
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -22650,6 +22773,13 @@ class VpcInfo(AbstractModel):
         self._RegionName = params.get("RegionName")
         self._SubnetCount = params.get("SubnetCount")
         self._InstanceCount = params.get("InstanceCount")
+        self._Ipv6ISP = params.get("Ipv6ISP")
+        if params.get("Ipv6CidrBlockSet") is not None:
+            self._Ipv6CidrBlockSet = []
+            for item in params.get("Ipv6CidrBlockSet"):
+                obj = ISPIPv6CidrBlock()
+                obj._deserialize(item)
+                self._Ipv6CidrBlockSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
