@@ -185,6 +185,352 @@ class BoundK8SInfo(AbstractModel):
         
 
 
+class CloudAPIGatewayCanaryRuleList(AbstractModel):
+    """灰度规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanaryRuleList: 灰度规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanaryRuleList: list of CloudNativeAPIGatewayCanaryRule
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._CanaryRuleList = None
+        self._TotalCount = None
+
+    @property
+    def CanaryRuleList(self):
+        return self._CanaryRuleList
+
+    @CanaryRuleList.setter
+    def CanaryRuleList(self, CanaryRuleList):
+        self._CanaryRuleList = CanaryRuleList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("CanaryRuleList") is not None:
+            self._CanaryRuleList = []
+            for item in params.get("CanaryRuleList"):
+                obj = CloudNativeAPIGatewayCanaryRule()
+                obj._deserialize(item)
+                self._CanaryRuleList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudNativeAPIGatewayBalancedService(AbstractModel):
+    """含百分比流量配置的服务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceID: 服务 ID，作为入参时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceID: str
+        :param _ServiceName: 服务名称，作为入参时，无意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _UpstreamName: Upstream 名称，作为入参时，无意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamName: str
+        :param _Percent: 百分比，10 即 10%，范围0-100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: float
+        """
+        self._ServiceID = None
+        self._ServiceName = None
+        self._UpstreamName = None
+        self._Percent = None
+
+    @property
+    def ServiceID(self):
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def UpstreamName(self):
+        return self._UpstreamName
+
+    @UpstreamName.setter
+    def UpstreamName(self, UpstreamName):
+        self._UpstreamName = UpstreamName
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+
+    def _deserialize(self, params):
+        self._ServiceID = params.get("ServiceID")
+        self._ServiceName = params.get("ServiceName")
+        self._UpstreamName = params.get("UpstreamName")
+        self._Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudNativeAPIGatewayCanaryRule(AbstractModel):
+    """灰度规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Priority: 优先级，值范围为 0 到 100；值越大，优先级越高；不同规则间优先级不可重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Enabled: 是否启用规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _ConditionList: 参数匹配条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionList: list of CloudNativeAPIGatewayCanaryRuleCondition
+        :param _BalancedServiceList: 服务的流量百分比配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BalancedServiceList: list of CloudNativeAPIGatewayBalancedService
+        :param _ServiceId: 归属服务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param _ServiceName: 归属服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        """
+        self._Priority = None
+        self._Enabled = None
+        self._ConditionList = None
+        self._BalancedServiceList = None
+        self._ServiceId = None
+        self._ServiceName = None
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ConditionList(self):
+        return self._ConditionList
+
+    @ConditionList.setter
+    def ConditionList(self, ConditionList):
+        self._ConditionList = ConditionList
+
+    @property
+    def BalancedServiceList(self):
+        return self._BalancedServiceList
+
+    @BalancedServiceList.setter
+    def BalancedServiceList(self, BalancedServiceList):
+        self._BalancedServiceList = BalancedServiceList
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+
+    def _deserialize(self, params):
+        self._Priority = params.get("Priority")
+        self._Enabled = params.get("Enabled")
+        if params.get("ConditionList") is not None:
+            self._ConditionList = []
+            for item in params.get("ConditionList"):
+                obj = CloudNativeAPIGatewayCanaryRuleCondition()
+                obj._deserialize(item)
+                self._ConditionList.append(obj)
+        if params.get("BalancedServiceList") is not None:
+            self._BalancedServiceList = []
+            for item in params.get("BalancedServiceList"):
+                obj = CloudNativeAPIGatewayBalancedService()
+                obj._deserialize(item)
+                self._BalancedServiceList.append(obj)
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
+    """灰度规则中的条件配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 条件类型，支持 path, method, query, header, cookie, body 和 system。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Key: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Operator: 操作符，支持 "le", "eq", "lt", "ne", "ge", "gt", "regex", "exists", "in", "not in",  "prefix" ,"exact", "regex" 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _Value: 目标参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Delimiter: 分隔符，当 Operator 为 in 或者 not in 时生效。支持值为英文逗号，英文分号，空格，换行符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Delimiter: str
+        :param _GlobalConfigId: 全局配置 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalConfigId: str
+        :param _GlobalConfigName: 全局配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalConfigName: str
+        """
+        self._Type = None
+        self._Key = None
+        self._Operator = None
+        self._Value = None
+        self._Delimiter = None
+        self._GlobalConfigId = None
+        self._GlobalConfigName = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Delimiter(self):
+        return self._Delimiter
+
+    @Delimiter.setter
+    def Delimiter(self, Delimiter):
+        self._Delimiter = Delimiter
+
+    @property
+    def GlobalConfigId(self):
+        return self._GlobalConfigId
+
+    @GlobalConfigId.setter
+    def GlobalConfigId(self, GlobalConfigId):
+        self._GlobalConfigId = GlobalConfigId
+
+    @property
+    def GlobalConfigName(self):
+        return self._GlobalConfigName
+
+    @GlobalConfigName.setter
+    def GlobalConfigName(self, GlobalConfigName):
+        self._GlobalConfigName = GlobalConfigName
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Key = params.get("Key")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
+        self._Delimiter = params.get("Delimiter")
+        self._GlobalConfigId = params.get("GlobalConfigId")
+        self._GlobalConfigName = params.get("GlobalConfigName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudNativeAPIGatewayNode(AbstractModel):
     """云原生API网关节点信息。
 
@@ -293,6 +639,843 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CloudNativeAPIGatewayRateLimitDetail(AbstractModel):
+    """云原生网关Tse 限流插件配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 插件启用状态
+        :type Enabled: bool
+        :param _QpsThresholds: qps阈值
+        :type QpsThresholds: list of QpsThreshold
+        :param _LimitBy: 限流依据
+ip service consumer credential path header
+        :type LimitBy: str
+        :param _ResponseType: 响应策略
+url请求转发
+text 响应配置
+default 直接返回
+
+        :type ResponseType: str
+        :param _HideClientHeaders: 是否隐藏限流客户端响应头
+        :type HideClientHeaders: bool
+        :param _IsDelay: 是否开启请求排队
+        :type IsDelay: bool
+        :param _Path: 需要进行流量控制的请求路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Header: 需要进行流量控制的请求头Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: str
+        :param _ExternalRedis: 外部redis配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalRedis: :class:`tencentcloud.tse.v20201207.models.ExternalRedis`
+        :param _Policy: 计数器策略 
+local 单机
+redis  默认redis
+external_redis 外部redis
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: str
+        :param _RateLimitResponse: 响应配置，响应策略为text
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RateLimitResponse: :class:`tencentcloud.tse.v20201207.models.RateLimitResponse`
+        :param _RateLimitResponseUrl: 请求转发地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RateLimitResponseUrl: str
+        :param _LineUpTime: 排队时间
+        :type LineUpTime: int
+        """
+        self._Enabled = None
+        self._QpsThresholds = None
+        self._LimitBy = None
+        self._ResponseType = None
+        self._HideClientHeaders = None
+        self._IsDelay = None
+        self._Path = None
+        self._Header = None
+        self._ExternalRedis = None
+        self._Policy = None
+        self._RateLimitResponse = None
+        self._RateLimitResponseUrl = None
+        self._LineUpTime = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def QpsThresholds(self):
+        return self._QpsThresholds
+
+    @QpsThresholds.setter
+    def QpsThresholds(self, QpsThresholds):
+        self._QpsThresholds = QpsThresholds
+
+    @property
+    def LimitBy(self):
+        return self._LimitBy
+
+    @LimitBy.setter
+    def LimitBy(self, LimitBy):
+        self._LimitBy = LimitBy
+
+    @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def HideClientHeaders(self):
+        return self._HideClientHeaders
+
+    @HideClientHeaders.setter
+    def HideClientHeaders(self, HideClientHeaders):
+        self._HideClientHeaders = HideClientHeaders
+
+    @property
+    def IsDelay(self):
+        return self._IsDelay
+
+    @IsDelay.setter
+    def IsDelay(self, IsDelay):
+        self._IsDelay = IsDelay
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Header(self):
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+    @property
+    def ExternalRedis(self):
+        return self._ExternalRedis
+
+    @ExternalRedis.setter
+    def ExternalRedis(self, ExternalRedis):
+        self._ExternalRedis = ExternalRedis
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def RateLimitResponse(self):
+        return self._RateLimitResponse
+
+    @RateLimitResponse.setter
+    def RateLimitResponse(self, RateLimitResponse):
+        self._RateLimitResponse = RateLimitResponse
+
+    @property
+    def RateLimitResponseUrl(self):
+        return self._RateLimitResponseUrl
+
+    @RateLimitResponseUrl.setter
+    def RateLimitResponseUrl(self, RateLimitResponseUrl):
+        self._RateLimitResponseUrl = RateLimitResponseUrl
+
+    @property
+    def LineUpTime(self):
+        return self._LineUpTime
+
+    @LineUpTime.setter
+    def LineUpTime(self, LineUpTime):
+        self._LineUpTime = LineUpTime
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("QpsThresholds") is not None:
+            self._QpsThresholds = []
+            for item in params.get("QpsThresholds"):
+                obj = QpsThreshold()
+                obj._deserialize(item)
+                self._QpsThresholds.append(obj)
+        self._LimitBy = params.get("LimitBy")
+        self._ResponseType = params.get("ResponseType")
+        self._HideClientHeaders = params.get("HideClientHeaders")
+        self._IsDelay = params.get("IsDelay")
+        self._Path = params.get("Path")
+        self._Header = params.get("Header")
+        if params.get("ExternalRedis") is not None:
+            self._ExternalRedis = ExternalRedis()
+            self._ExternalRedis._deserialize(params.get("ExternalRedis"))
+        self._Policy = params.get("Policy")
+        if params.get("RateLimitResponse") is not None:
+            self._RateLimitResponse = RateLimitResponse()
+            self._RateLimitResponse._deserialize(params.get("RateLimitResponse"))
+        self._RateLimitResponseUrl = params.get("RateLimitResponseUrl")
+        self._LineUpTime = params.get("LineUpTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
+    """CreateCloudNativeAPIGatewayCanaryRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID
+        :type GatewayId: str
+        :param _ServiceId: 服务 ID
+        :type ServiceId: str
+        :param _CanaryRule: 灰度规则配置
+        :type CanaryRule: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayCanaryRule`
+        """
+        self._GatewayId = None
+        self._ServiceId = None
+        self._CanaryRule = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def CanaryRule(self):
+        return self._CanaryRule
+
+    @CanaryRule.setter
+    def CanaryRule(self, CanaryRule):
+        self._CanaryRule = CanaryRule
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceId = params.get("ServiceId")
+        if params.get("CanaryRule") is not None:
+            self._CanaryRule = CloudNativeAPIGatewayCanaryRule()
+            self._CanaryRule._deserialize(params.get("CanaryRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
+    """CreateCloudNativeAPIGatewayCanaryRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
+    """CreateCloudNativeAPIGatewayRouteRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Id: 路由id，或路由名称。
+不支持“未命名”
+        :type Id: str
+        :param _LimitDetail: 限流配置
+        :type LimitDetail: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayRateLimitDetail`
+        """
+        self._GatewayId = None
+        self._Id = None
+        self._LimitDetail = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def LimitDetail(self):
+        return self._LimitDetail
+
+    @LimitDetail.setter
+    def LimitDetail(self, LimitDetail):
+        self._LimitDetail = LimitDetail
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        if params.get("LimitDetail") is not None:
+            self._LimitDetail = CloudNativeAPIGatewayRateLimitDetail()
+            self._LimitDetail._deserialize(params.get("LimitDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayRouteRateLimitResponse(AbstractModel):
+    """CreateCloudNativeAPIGatewayRouteRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
+    """CreateCloudNativeAPIGatewayRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _ServiceID: 所属服务的ID
+        :type ServiceID: str
+        :param _RouteName: 路由的名字，实例级别唯一，可以不提供
+        :type RouteName: str
+        :param _Methods: 路由的方法，其中方法可选值：
+- GET
+- POST
+- DELETE
+- PUT
+- OPTIONS
+- PATCH
+- HEAD
+- ANY
+- TRACE
+- COPY
+- MOVE
+- PROPFIND
+- PROPPATCH
+- MKCOL
+- LOCK
+- UNLOCK
+        :type Methods: list of str
+        :param _Hosts: 路由的域名
+        :type Hosts: list of str
+        :param _Paths: 路由的路径
+        :type Paths: list of str
+        :param _Protocols: 路由的协议，可选
+- https
+- http
+        :type Protocols: list of str
+        :param _PreserveHost: 转发到后端时是否保留Host
+        :type PreserveHost: bool
+        :param _HttpsRedirectStatusCode: https重定向状态码
+        :type HttpsRedirectStatusCode: int
+        :param _StripPath: 转发到后端时是否StripPath
+        :type StripPath: bool
+        :param _ForceHttps: 是否开启强制HTTPS
+        :type ForceHttps: bool
+        :param _DestinationPorts: 四层匹配的目的端口
+        :type DestinationPorts: list of int non-negative
+        :param _Headers: 路由的Headers
+        :type Headers: list of KVMapping
+        """
+        self._GatewayId = None
+        self._ServiceID = None
+        self._RouteName = None
+        self._Methods = None
+        self._Hosts = None
+        self._Paths = None
+        self._Protocols = None
+        self._PreserveHost = None
+        self._HttpsRedirectStatusCode = None
+        self._StripPath = None
+        self._ForceHttps = None
+        self._DestinationPorts = None
+        self._Headers = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceID(self):
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def RouteName(self):
+        return self._RouteName
+
+    @RouteName.setter
+    def RouteName(self, RouteName):
+        self._RouteName = RouteName
+
+    @property
+    def Methods(self):
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Hosts(self):
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def Paths(self):
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def Protocols(self):
+        return self._Protocols
+
+    @Protocols.setter
+    def Protocols(self, Protocols):
+        self._Protocols = Protocols
+
+    @property
+    def PreserveHost(self):
+        return self._PreserveHost
+
+    @PreserveHost.setter
+    def PreserveHost(self, PreserveHost):
+        self._PreserveHost = PreserveHost
+
+    @property
+    def HttpsRedirectStatusCode(self):
+        return self._HttpsRedirectStatusCode
+
+    @HttpsRedirectStatusCode.setter
+    def HttpsRedirectStatusCode(self, HttpsRedirectStatusCode):
+        self._HttpsRedirectStatusCode = HttpsRedirectStatusCode
+
+    @property
+    def StripPath(self):
+        return self._StripPath
+
+    @StripPath.setter
+    def StripPath(self, StripPath):
+        self._StripPath = StripPath
+
+    @property
+    def ForceHttps(self):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
+        return self._ForceHttps
+
+    @ForceHttps.setter
+    def ForceHttps(self, ForceHttps):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
+        self._ForceHttps = ForceHttps
+
+    @property
+    def DestinationPorts(self):
+        return self._DestinationPorts
+
+    @DestinationPorts.setter
+    def DestinationPorts(self, DestinationPorts):
+        self._DestinationPorts = DestinationPorts
+
+    @property
+    def Headers(self):
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceID = params.get("ServiceID")
+        self._RouteName = params.get("RouteName")
+        self._Methods = params.get("Methods")
+        self._Hosts = params.get("Hosts")
+        self._Paths = params.get("Paths")
+        self._Protocols = params.get("Protocols")
+        self._PreserveHost = params.get("PreserveHost")
+        self._HttpsRedirectStatusCode = params.get("HttpsRedirectStatusCode")
+        self._StripPath = params.get("StripPath")
+        self._ForceHttps = params.get("ForceHttps")
+        self._DestinationPorts = params.get("DestinationPorts")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayRouteResponse(AbstractModel):
+    """CreateCloudNativeAPIGatewayRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayServiceRateLimitRequest(AbstractModel):
+    """CreateCloudNativeAPIGatewayServiceRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 服务名称，或服务ID
+        :type Name: str
+        :param _LimitDetail: 限流配置
+        :type LimitDetail: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayRateLimitDetail`
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._LimitDetail = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LimitDetail(self):
+        return self._LimitDetail
+
+    @LimitDetail.setter
+    def LimitDetail(self, LimitDetail):
+        self._LimitDetail = LimitDetail
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        if params.get("LimitDetail") is not None:
+            self._LimitDetail = CloudNativeAPIGatewayRateLimitDetail()
+            self._LimitDetail._deserialize(params.get("LimitDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayServiceRateLimitResponse(AbstractModel):
+    """CreateCloudNativeAPIGatewayServiceRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayServiceRequest(AbstractModel):
+    """CreateCloudNativeAPIGatewayService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 服务名称
+        :type Name: str
+        :param _Protocol: 请求协议：
+- https
+- http
+- tcp
+- udp
+        :type Protocol: str
+        :param _Path: 请求路径
+        :type Path: str
+        :param _Timeout: 超时时间，单位ms
+        :type Timeout: int
+        :param _Retries: 重试次数
+        :type Retries: int
+        :param _UpstreamType: 服务类型: 
+- Kubernetes 
+- Registry
+- IPList
+- HostIP
+- Scf	
+        :type UpstreamType: str
+        :param _UpstreamInfo: 服务配置信息
+        :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._Protocol = None
+        self._Path = None
+        self._Timeout = None
+        self._Retries = None
+        self._UpstreamType = None
+        self._UpstreamInfo = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Retries(self):
+        return self._Retries
+
+    @Retries.setter
+    def Retries(self, Retries):
+        self._Retries = Retries
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def UpstreamInfo(self):
+        return self._UpstreamInfo
+
+    @UpstreamInfo.setter
+    def UpstreamInfo(self, UpstreamInfo):
+        self._UpstreamInfo = UpstreamInfo
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        self._Protocol = params.get("Protocol")
+        self._Path = params.get("Path")
+        self._Timeout = params.get("Timeout")
+        self._Retries = params.get("Retries")
+        self._UpstreamType = params.get("UpstreamType")
+        if params.get("UpstreamInfo") is not None:
+            self._UpstreamInfo = KongUpstreamInfo()
+            self._UpstreamInfo._deserialize(params.get("UpstreamInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayServiceResponse(AbstractModel):
+    """CreateCloudNativeAPIGatewayService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEngineRequest(AbstractModel):
@@ -618,6 +1801,369 @@ class CreateEngineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
+    """DeleteCloudNativeAPIGatewayCanaryRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID
+        :type GatewayId: str
+        :param _ServiceId: 服务 ID
+        :type ServiceId: str
+        :param _Priority: 优先级
+        :type Priority: int
+        """
+        self._GatewayId = None
+        self._ServiceId = None
+        self._Priority = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceId = params.get("ServiceId")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
+    """DeleteCloudNativeAPIGatewayCanaryRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
+    """DeleteCloudNativeAPIGatewayRouteRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关Id
+        :type GatewayId: str
+        :param _Id: 路由Id，或路由名称。
+不支持“未命名”
+        :type Id: str
+        """
+        self._GatewayId = None
+        self._Id = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayRouteRateLimitResponse(AbstractModel):
+    """DeleteCloudNativeAPIGatewayRouteRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayRouteRequest(AbstractModel):
+    """DeleteCloudNativeAPIGatewayRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 路由的ID或名字，不支持名称“未命名”
+        :type Name: str
+        """
+        self._GatewayId = None
+        self._Name = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayRouteResponse(AbstractModel):
+    """DeleteCloudNativeAPIGatewayRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayServiceRateLimitRequest(AbstractModel):
+    """DeleteCloudNativeAPIGatewayServiceRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关Id
+        :type GatewayId: str
+        :param _Name: 服务名称，或服务ID
+        :type Name: str
+        """
+        self._GatewayId = None
+        self._Name = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayServiceRateLimitResponse(AbstractModel):
+    """DeleteCloudNativeAPIGatewayServiceRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayServiceRequest(AbstractModel):
+    """DeleteCloudNativeAPIGatewayService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 服务名字，服务ID
+        :type Name: str
+        """
+        self._GatewayId = None
+        self._Name = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayServiceResponse(AbstractModel):
+    """DeleteCloudNativeAPIGatewayService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteEngineRequest(AbstractModel):
     """DeleteEngine请求参数结构体
 
@@ -673,6 +2219,114 @@ class DeleteEngineResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayCanaryRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _ServiceId: 服务 ID
+        :type ServiceId: str
+        :param _Limit: 列表数量
+        :type Limit: int
+        :param _Offset: 列表offset
+        :type Offset: int
+        """
+        self._GatewayId = None
+        self._ServiceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceId = params.get("ServiceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayCanaryRulesResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayCanaryRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 灰度规则列表
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CloudAPIGatewayCanaryRuleList`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CloudAPIGatewayCanaryRuleList()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -832,6 +2486,427 @@ class DescribeCloudNativeAPIGatewayNodesResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayRouteRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关Id
+        :type GatewayId: str
+        :param _Id: 路由Id，或路由名称。
+不支持“未命名”
+        :type Id: str
+        """
+        self._GatewayId = None
+        self._Id = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayRouteRateLimitResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayRouteRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 获取云原生网关限流插件(路由)
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayRateLimitDetail`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CloudNativeAPIGatewayRateLimitDetail()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Limit: 翻页单页查询限制数量[0,1000], 默认值0
+        :type Limit: int
+        :param _Offset: 翻页单页偏移量，默认值0
+        :type Offset: int
+        :param _ServiceName: 服务的名字，精确匹配
+        :type ServiceName: str
+        :param _RouteName: 路由的名字，精确匹配
+        :type RouteName: str
+        :param _Filters: 过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol
+        :type Filters: list of ListFilter
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Offset = None
+        self._ServiceName = None
+        self._RouteName = None
+        self._Filters = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def RouteName(self):
+        return self._RouteName
+
+    @RouteName.setter
+    def RouteName(self, RouteName):
+        self._RouteName = RouteName
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ServiceName = params.get("ServiceName")
+        self._RouteName = params.get("RouteName")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ListFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayRoutesResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.KongServiceRouteList`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongServiceRouteList()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayServiceRateLimitRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayServiceRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关Id
+        :type GatewayId: str
+        :param _Name: 服务名称，或服务ID。
+        :type Name: str
+        """
+        self._GatewayId = None
+        self._Name = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayServiceRateLimitResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayServiceRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 获取云原生网关限流插件(服务)
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayRateLimitDetail`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CloudNativeAPIGatewayRateLimitDetail()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayServicesRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Limit: 列表数量
+        :type Limit: int
+        :param _Offset: 列表 offset
+        :type Offset: int
+        :param _Filters: 过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType
+        :type Filters: list of ListFilter
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ListFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayServicesResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.KongServices`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongServices()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceRegionInfo(AbstractModel):
@@ -1145,6 +3220,90 @@ class DescribeNacosServerInterfacesResponse(AbstractModel):
                 obj = NacosServerInterface()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOneCloudNativeAPIGatewayServiceRequest(AbstractModel):
+    """DescribeOneCloudNativeAPIGatewayService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 服务名字，或服务ID
+        :type Name: str
+        """
+        self._GatewayId = None
+        self._Name = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOneCloudNativeAPIGatewayServiceResponse(AbstractModel):
+    """DescribeOneCloudNativeAPIGatewayService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 无
+        :type Result: :class:`tencentcloud.tse.v20201207.models.KongServiceDetail`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongServiceDetail()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2150,6 +4309,79 @@ class EnvInfo(AbstractModel):
         
 
 
+class ExternalRedis(AbstractModel):
+    """云原生网关限流插件外部redis配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RedisHost: redis ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedisHost: str
+        :param _RedisPassword: redis密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedisPassword: str
+        :param _RedisPort: redis端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedisPort: int
+        :param _RedisTimeout: 超时时间  ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedisTimeout: int
+        """
+        self._RedisHost = None
+        self._RedisPassword = None
+        self._RedisPort = None
+        self._RedisTimeout = None
+
+    @property
+    def RedisHost(self):
+        return self._RedisHost
+
+    @RedisHost.setter
+    def RedisHost(self, RedisHost):
+        self._RedisHost = RedisHost
+
+    @property
+    def RedisPassword(self):
+        return self._RedisPassword
+
+    @RedisPassword.setter
+    def RedisPassword(self, RedisPassword):
+        self._RedisPassword = RedisPassword
+
+    @property
+    def RedisPort(self):
+        return self._RedisPort
+
+    @RedisPort.setter
+    def RedisPort(self, RedisPort):
+        self._RedisPort = RedisPort
+
+    @property
+    def RedisTimeout(self):
+        return self._RedisTimeout
+
+    @RedisTimeout.setter
+    def RedisTimeout(self, RedisTimeout):
+        self._RedisTimeout = RedisTimeout
+
+
+    def _deserialize(self, params):
+        self._RedisHost = params.get("RedisHost")
+        self._RedisPassword = params.get("RedisPassword")
+        self._RedisPort = params.get("RedisPort")
+        self._RedisTimeout = params.get("RedisTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """查询过滤通用对象
 
@@ -2240,6 +4472,53 @@ class InstanceTagInfo(AbstractModel):
         
 
 
+class KVMapping(AbstractModel):
+    """键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KVPair(AbstractModel):
     """键值对
 
@@ -2283,6 +4562,1671 @@ class KVPair(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class KongRoutePreview(AbstractModel):
+    """云原生网关路由信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Name: 服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Methods: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Methods: list of str
+        :param _Paths: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paths: list of str
+        :param _Hosts: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hosts: list of str
+        :param _Protocols: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocols: list of str
+        :param _PreserveHost: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreserveHost: bool
+        :param _HttpsRedirectStatusCode: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsRedirectStatusCode: int
+        :param _StripPath: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StripPath: bool
+        :param _CreatedTime: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _ForceHttps: 是否开启了强制HTTPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceHttps: bool
+        :param _ServiceName: 服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _ServiceID: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceID: str
+        :param _DestinationPorts: 目的端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationPorts: list of int non-negative
+        :param _Headers: 路由的Headers
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: :class:`tencentcloud.tse.v20201207.models.KVMapping`
+        """
+        self._ID = None
+        self._Name = None
+        self._Methods = None
+        self._Paths = None
+        self._Hosts = None
+        self._Protocols = None
+        self._PreserveHost = None
+        self._HttpsRedirectStatusCode = None
+        self._StripPath = None
+        self._CreatedTime = None
+        self._ForceHttps = None
+        self._ServiceName = None
+        self._ServiceID = None
+        self._DestinationPorts = None
+        self._Headers = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Methods(self):
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Paths(self):
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def Hosts(self):
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def Protocols(self):
+        return self._Protocols
+
+    @Protocols.setter
+    def Protocols(self, Protocols):
+        self._Protocols = Protocols
+
+    @property
+    def PreserveHost(self):
+        return self._PreserveHost
+
+    @PreserveHost.setter
+    def PreserveHost(self, PreserveHost):
+        self._PreserveHost = PreserveHost
+
+    @property
+    def HttpsRedirectStatusCode(self):
+        return self._HttpsRedirectStatusCode
+
+    @HttpsRedirectStatusCode.setter
+    def HttpsRedirectStatusCode(self, HttpsRedirectStatusCode):
+        self._HttpsRedirectStatusCode = HttpsRedirectStatusCode
+
+    @property
+    def StripPath(self):
+        return self._StripPath
+
+    @StripPath.setter
+    def StripPath(self, StripPath):
+        self._StripPath = StripPath
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ForceHttps(self):
+        return self._ForceHttps
+
+    @ForceHttps.setter
+    def ForceHttps(self, ForceHttps):
+        self._ForceHttps = ForceHttps
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceID(self):
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def DestinationPorts(self):
+        return self._DestinationPorts
+
+    @DestinationPorts.setter
+    def DestinationPorts(self, DestinationPorts):
+        self._DestinationPorts = DestinationPorts
+
+    @property
+    def Headers(self):
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Methods = params.get("Methods")
+        self._Paths = params.get("Paths")
+        self._Hosts = params.get("Hosts")
+        self._Protocols = params.get("Protocols")
+        self._PreserveHost = params.get("PreserveHost")
+        self._HttpsRedirectStatusCode = params.get("HttpsRedirectStatusCode")
+        self._StripPath = params.get("StripPath")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ForceHttps = params.get("ForceHttps")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceID = params.get("ServiceID")
+        self._DestinationPorts = params.get("DestinationPorts")
+        if params.get("Headers") is not None:
+            self._Headers = KVMapping()
+            self._Headers._deserialize(params.get("Headers"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServiceDetail(AbstractModel):
+    """云原生网关服务详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Name: 服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Protocol: 后端协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _Path: 后端路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Timeout: 后端延时，单位ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        :param _Retries: 重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Retries: int
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param _UpstreamInfo: 后端配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
+        :param _UpstreamType: 后端类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamType: str
+        :param _Editable: 是否可编辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Editable: bool
+        :param _CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Protocol = None
+        self._Path = None
+        self._Timeout = None
+        self._Retries = None
+        self._Tags = None
+        self._UpstreamInfo = None
+        self._UpstreamType = None
+        self._Editable = None
+        self._CreatedTime = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Retries(self):
+        return self._Retries
+
+    @Retries.setter
+    def Retries(self, Retries):
+        self._Retries = Retries
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def UpstreamInfo(self):
+        return self._UpstreamInfo
+
+    @UpstreamInfo.setter
+    def UpstreamInfo(self, UpstreamInfo):
+        self._UpstreamInfo = UpstreamInfo
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def Editable(self):
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Protocol = params.get("Protocol")
+        self._Path = params.get("Path")
+        self._Timeout = params.get("Timeout")
+        self._Retries = params.get("Retries")
+        self._Tags = params.get("Tags")
+        if params.get("UpstreamInfo") is not None:
+            self._UpstreamInfo = KongUpstreamInfo()
+            self._UpstreamInfo._deserialize(params.get("UpstreamInfo"))
+        self._UpstreamType = params.get("UpstreamType")
+        self._Editable = params.get("Editable")
+        self._CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServicePreview(AbstractModel):
+    """云原生网关服务预览信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Name: 服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param _UpstreamInfo: 后端配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
+        :param _UpstreamType: 后端类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamType: str
+        :param _CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _Editable: 是否可编辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Editable: bool
+        """
+        self._ID = None
+        self._Name = None
+        self._Tags = None
+        self._UpstreamInfo = None
+        self._UpstreamType = None
+        self._CreatedTime = None
+        self._Editable = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def UpstreamInfo(self):
+        return self._UpstreamInfo
+
+    @UpstreamInfo.setter
+    def UpstreamInfo(self, UpstreamInfo):
+        self._UpstreamInfo = UpstreamInfo
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Editable(self):
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Tags = params.get("Tags")
+        if params.get("UpstreamInfo") is not None:
+            self._UpstreamInfo = KongUpstreamInfo()
+            self._UpstreamInfo._deserialize(params.get("UpstreamInfo"))
+        self._UpstreamType = params.get("UpstreamType")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Editable = params.get("Editable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServiceRouteList(AbstractModel):
+    """kong服务路由列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteList: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteList: list of KongRoutePreview
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._RouteList = None
+        self._TotalCount = None
+
+    @property
+    def RouteList(self):
+        return self._RouteList
+
+    @RouteList.setter
+    def RouteList(self, RouteList):
+        self._RouteList = RouteList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("RouteList") is not None:
+            self._RouteList = []
+            for item in params.get("RouteList"):
+                obj = KongRoutePreview()
+                obj._deserialize(item)
+                self._RouteList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServices(AbstractModel):
+    """kong实例的服务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceList: kong实例的服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceList: list of KongServicePreview
+        :param _TotalCount: 列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._ServiceList = None
+        self._TotalCount = None
+
+    @property
+    def ServiceList(self):
+        return self._ServiceList
+
+    @ServiceList.setter
+    def ServiceList(self, ServiceList):
+        self._ServiceList = ServiceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceList") is not None:
+            self._ServiceList = []
+            for item in params.get("ServiceList"):
+                obj = KongServicePreview()
+                obj._deserialize(item)
+                self._ServiceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongTarget(AbstractModel):
+    """Kong Upstream中的Target
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: Host
+        :type Host: str
+        :param _Port: 端口
+        :type Port: int
+        :param _Weight: 权重
+        :type Weight: int
+        :param _Health: 健康状态
+        :type Health: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _Source: Target的来源
+        :type Source: str
+        """
+        self._Host = None
+        self._Port = None
+        self._Weight = None
+        self._Health = None
+        self._CreatedTime = None
+        self._Source = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Health(self):
+        return self._Health
+
+    @Health.setter
+    def Health(self, Health):
+        self._Health = Health
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Weight = params.get("Weight")
+        self._Health = params.get("Health")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongUpstreamInfo(AbstractModel):
+    """服务的后端配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: IP或域名
+        :type Host: str
+        :param _Port: 端口
+        :type Port: int
+        :param _SourceID: 服务来源ID
+        :type SourceID: str
+        :param _Namespace: 名字空间
+        :type Namespace: str
+        :param _ServiceName: 服务（注册中心或Kubernetes中的服务）名字
+        :type ServiceName: str
+        :param _Targets: 服务后端类型是IPList时提供
+        :type Targets: list of KongTarget
+        :param _SourceType: 服务来源类型
+        :type SourceType: str
+        :param _ScfType: SCF函数类型
+        :type ScfType: str
+        :param _ScfNamespace: SCF函数命名空间
+        :type ScfNamespace: str
+        :param _ScfLambdaName: SCF函数名
+        :type ScfLambdaName: str
+        :param _ScfLambdaQualifier: SCF函数版本
+        :type ScfLambdaQualifier: str
+        :param _SlowStart: 冷启动时间，单位秒
+        :type SlowStart: int
+        :param _Algorithm: 负载均衡算法，默认为 round-robin，还支持 least-connections，consisten_hashing
+        :type Algorithm: str
+        :param _AutoScalingGroupID: CVM弹性伸缩组ID
+        :type AutoScalingGroupID: str
+        :param _AutoScalingCvmPort: CVM弹性伸缩组端口
+        :type AutoScalingCvmPort: int
+        :param _AutoScalingTatCmdStatus: CVM弹性伸缩组使用的CVM TAT命令状态
+        :type AutoScalingTatCmdStatus: str
+        :param _AutoScalingHookStatus: CVM弹性伸缩组生命周期挂钩状态
+        :type AutoScalingHookStatus: str
+        :param _SourceName: 服务来源的名字
+        :type SourceName: str
+        :param _RealSourceType: 精确的服务来源类型，新建服务来源时候传入的类型
+        :type RealSourceType: str
+        """
+        self._Host = None
+        self._Port = None
+        self._SourceID = None
+        self._Namespace = None
+        self._ServiceName = None
+        self._Targets = None
+        self._SourceType = None
+        self._ScfType = None
+        self._ScfNamespace = None
+        self._ScfLambdaName = None
+        self._ScfLambdaQualifier = None
+        self._SlowStart = None
+        self._Algorithm = None
+        self._AutoScalingGroupID = None
+        self._AutoScalingCvmPort = None
+        self._AutoScalingTatCmdStatus = None
+        self._AutoScalingHookStatus = None
+        self._SourceName = None
+        self._RealSourceType = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SourceID(self):
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def ScfType(self):
+        return self._ScfType
+
+    @ScfType.setter
+    def ScfType(self, ScfType):
+        self._ScfType = ScfType
+
+    @property
+    def ScfNamespace(self):
+        return self._ScfNamespace
+
+    @ScfNamespace.setter
+    def ScfNamespace(self, ScfNamespace):
+        self._ScfNamespace = ScfNamespace
+
+    @property
+    def ScfLambdaName(self):
+        return self._ScfLambdaName
+
+    @ScfLambdaName.setter
+    def ScfLambdaName(self, ScfLambdaName):
+        self._ScfLambdaName = ScfLambdaName
+
+    @property
+    def ScfLambdaQualifier(self):
+        return self._ScfLambdaQualifier
+
+    @ScfLambdaQualifier.setter
+    def ScfLambdaQualifier(self, ScfLambdaQualifier):
+        self._ScfLambdaQualifier = ScfLambdaQualifier
+
+    @property
+    def SlowStart(self):
+        return self._SlowStart
+
+    @SlowStart.setter
+    def SlowStart(self, SlowStart):
+        self._SlowStart = SlowStart
+
+    @property
+    def Algorithm(self):
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def AutoScalingGroupID(self):
+        return self._AutoScalingGroupID
+
+    @AutoScalingGroupID.setter
+    def AutoScalingGroupID(self, AutoScalingGroupID):
+        self._AutoScalingGroupID = AutoScalingGroupID
+
+    @property
+    def AutoScalingCvmPort(self):
+        return self._AutoScalingCvmPort
+
+    @AutoScalingCvmPort.setter
+    def AutoScalingCvmPort(self, AutoScalingCvmPort):
+        self._AutoScalingCvmPort = AutoScalingCvmPort
+
+    @property
+    def AutoScalingTatCmdStatus(self):
+        return self._AutoScalingTatCmdStatus
+
+    @AutoScalingTatCmdStatus.setter
+    def AutoScalingTatCmdStatus(self, AutoScalingTatCmdStatus):
+        self._AutoScalingTatCmdStatus = AutoScalingTatCmdStatus
+
+    @property
+    def AutoScalingHookStatus(self):
+        return self._AutoScalingHookStatus
+
+    @AutoScalingHookStatus.setter
+    def AutoScalingHookStatus(self, AutoScalingHookStatus):
+        self._AutoScalingHookStatus = AutoScalingHookStatus
+
+    @property
+    def SourceName(self):
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def RealSourceType(self):
+        return self._RealSourceType
+
+    @RealSourceType.setter
+    def RealSourceType(self, RealSourceType):
+        self._RealSourceType = RealSourceType
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._SourceID = params.get("SourceID")
+        self._Namespace = params.get("Namespace")
+        self._ServiceName = params.get("ServiceName")
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = KongTarget()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._SourceType = params.get("SourceType")
+        self._ScfType = params.get("ScfType")
+        self._ScfNamespace = params.get("ScfNamespace")
+        self._ScfLambdaName = params.get("ScfLambdaName")
+        self._ScfLambdaQualifier = params.get("ScfLambdaQualifier")
+        self._SlowStart = params.get("SlowStart")
+        self._Algorithm = params.get("Algorithm")
+        self._AutoScalingGroupID = params.get("AutoScalingGroupID")
+        self._AutoScalingCvmPort = params.get("AutoScalingCvmPort")
+        self._AutoScalingTatCmdStatus = params.get("AutoScalingTatCmdStatus")
+        self._AutoScalingHookStatus = params.get("AutoScalingHookStatus")
+        self._SourceName = params.get("SourceName")
+        self._RealSourceType = params.get("RealSourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFilter(AbstractModel):
+    """列表过滤条件，模糊匹配
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 过滤字段
+        :type Key: str
+        :param _Value: 过滤值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
+    """ModifyCloudNativeAPIGatewayCanaryRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID
+        :type GatewayId: str
+        :param _ServiceId: 服务 ID
+        :type ServiceId: str
+        :param _Priority: 优先级，同一个服务的灰度规则优先级是唯一的
+        :type Priority: int
+        :param _CanaryRule: 灰度规则配置
+        :type CanaryRule: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayCanaryRule`
+        """
+        self._GatewayId = None
+        self._ServiceId = None
+        self._Priority = None
+        self._CanaryRule = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def CanaryRule(self):
+        return self._CanaryRule
+
+    @CanaryRule.setter
+    def CanaryRule(self, CanaryRule):
+        self._CanaryRule = CanaryRule
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceId = params.get("ServiceId")
+        self._Priority = params.get("Priority")
+        if params.get("CanaryRule") is not None:
+            self._CanaryRule = CloudNativeAPIGatewayCanaryRule()
+            self._CanaryRule._deserialize(params.get("CanaryRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
+    """ModifyCloudNativeAPIGatewayCanaryRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
+    """ModifyCloudNativeAPIGatewayRouteRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Id: 路由id，或路由名称。
+不支持“未命名”
+        :type Id: str
+        :param _LimitDetail: 限流配置
+        :type LimitDetail: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayRateLimitDetail`
+        """
+        self._GatewayId = None
+        self._Id = None
+        self._LimitDetail = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def LimitDetail(self):
+        return self._LimitDetail
+
+    @LimitDetail.setter
+    def LimitDetail(self, LimitDetail):
+        self._LimitDetail = LimitDetail
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        if params.get("LimitDetail") is not None:
+            self._LimitDetail = CloudNativeAPIGatewayRateLimitDetail()
+            self._LimitDetail._deserialize(params.get("LimitDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayRouteRateLimitResponse(AbstractModel):
+    """ModifyCloudNativeAPIGatewayRouteRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
+    """ModifyCloudNativeAPIGatewayRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _ServiceID: 所属服务的ID
+        :type ServiceID: str
+        :param _RouteID: 路由的ID，实例级别唯一
+        :type RouteID: str
+        :param _RouteName: 路由的名字，实例级别唯一，可以不提供
+        :type RouteName: str
+        :param _Methods: 路由的方法，其中方法可选值：
+- GET
+- POST
+- DELETE
+- PUT
+- OPTIONS
+- PATCH
+- HEAD
+- ANY
+- TRACE
+- COPY
+- MOVE
+- PROPFIND
+- PROPPATCH
+- MKCOL
+- LOCK
+- UNLOCK
+        :type Methods: list of str
+        :param _Hosts: 路由的域名
+        :type Hosts: list of str
+        :param _Paths: 路由的路径
+        :type Paths: list of str
+        :param _Protocols: 路由的协议，可选
+- https
+- http
+        :type Protocols: list of str
+        :param _PreserveHost: 转发到后端时是否保留Host
+        :type PreserveHost: bool
+        :param _HttpsRedirectStatusCode: https重定向状态码
+        :type HttpsRedirectStatusCode: int
+        :param _StripPath: 转发到后端时是否StripPath
+        :type StripPath: bool
+        :param _ForceHttps: 是否开启强制HTTPS
+        :type ForceHttps: bool
+        :param _DestinationPorts: 四层匹配的目的端口	
+        :type DestinationPorts: list of int non-negative
+        :param _Headers: 路由的Headers
+        :type Headers: list of KVMapping
+        """
+        self._GatewayId = None
+        self._ServiceID = None
+        self._RouteID = None
+        self._RouteName = None
+        self._Methods = None
+        self._Hosts = None
+        self._Paths = None
+        self._Protocols = None
+        self._PreserveHost = None
+        self._HttpsRedirectStatusCode = None
+        self._StripPath = None
+        self._ForceHttps = None
+        self._DestinationPorts = None
+        self._Headers = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceID(self):
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def RouteID(self):
+        return self._RouteID
+
+    @RouteID.setter
+    def RouteID(self, RouteID):
+        self._RouteID = RouteID
+
+    @property
+    def RouteName(self):
+        return self._RouteName
+
+    @RouteName.setter
+    def RouteName(self, RouteName):
+        self._RouteName = RouteName
+
+    @property
+    def Methods(self):
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Hosts(self):
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def Paths(self):
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def Protocols(self):
+        return self._Protocols
+
+    @Protocols.setter
+    def Protocols(self, Protocols):
+        self._Protocols = Protocols
+
+    @property
+    def PreserveHost(self):
+        return self._PreserveHost
+
+    @PreserveHost.setter
+    def PreserveHost(self, PreserveHost):
+        self._PreserveHost = PreserveHost
+
+    @property
+    def HttpsRedirectStatusCode(self):
+        return self._HttpsRedirectStatusCode
+
+    @HttpsRedirectStatusCode.setter
+    def HttpsRedirectStatusCode(self, HttpsRedirectStatusCode):
+        self._HttpsRedirectStatusCode = HttpsRedirectStatusCode
+
+    @property
+    def StripPath(self):
+        return self._StripPath
+
+    @StripPath.setter
+    def StripPath(self, StripPath):
+        self._StripPath = StripPath
+
+    @property
+    def ForceHttps(self):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
+        return self._ForceHttps
+
+    @ForceHttps.setter
+    def ForceHttps(self, ForceHttps):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
+        self._ForceHttps = ForceHttps
+
+    @property
+    def DestinationPorts(self):
+        return self._DestinationPorts
+
+    @DestinationPorts.setter
+    def DestinationPorts(self, DestinationPorts):
+        self._DestinationPorts = DestinationPorts
+
+    @property
+    def Headers(self):
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceID = params.get("ServiceID")
+        self._RouteID = params.get("RouteID")
+        self._RouteName = params.get("RouteName")
+        self._Methods = params.get("Methods")
+        self._Hosts = params.get("Hosts")
+        self._Paths = params.get("Paths")
+        self._Protocols = params.get("Protocols")
+        self._PreserveHost = params.get("PreserveHost")
+        self._HttpsRedirectStatusCode = params.get("HttpsRedirectStatusCode")
+        self._StripPath = params.get("StripPath")
+        self._ForceHttps = params.get("ForceHttps")
+        self._DestinationPorts = params.get("DestinationPorts")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayRouteResponse(AbstractModel):
+    """ModifyCloudNativeAPIGatewayRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudNativeAPIGatewayServiceRateLimitRequest(AbstractModel):
+    """ModifyCloudNativeAPIGatewayServiceRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 服务名称，或服务ID
+        :type Name: str
+        :param _LimitDetail: 限流配置
+        :type LimitDetail: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayRateLimitDetail`
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._LimitDetail = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LimitDetail(self):
+        return self._LimitDetail
+
+    @LimitDetail.setter
+    def LimitDetail(self, LimitDetail):
+        self._LimitDetail = LimitDetail
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        if params.get("LimitDetail") is not None:
+            self._LimitDetail = CloudNativeAPIGatewayRateLimitDetail()
+            self._LimitDetail._deserialize(params.get("LimitDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayServiceRateLimitResponse(AbstractModel):
+    """ModifyCloudNativeAPIGatewayServiceRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudNativeAPIGatewayServiceRequest(AbstractModel):
+    """ModifyCloudNativeAPIGatewayService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 服务名称
+        :type Name: str
+        :param _Protocol: 请求协议： 
+- https 
+- http 
+- tcp 
+- udp
+        :type Protocol: str
+        :param _Path: 请求路径
+        :type Path: str
+        :param _Timeout: 超时时间，单位ms
+        :type Timeout: int
+        :param _Retries: 重试次数
+        :type Retries: int
+        :param _UpstreamType: 服务类型: 
+- Kubernetes 
+- Registry
+- IPList
+- HostIP
+- Scf	
+        :type UpstreamType: str
+        :param _UpstreamInfo: 服务配置
+        :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
+        :param _ID: 服务ID
+        :type ID: str
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._Protocol = None
+        self._Path = None
+        self._Timeout = None
+        self._Retries = None
+        self._UpstreamType = None
+        self._UpstreamInfo = None
+        self._ID = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Retries(self):
+        return self._Retries
+
+    @Retries.setter
+    def Retries(self, Retries):
+        self._Retries = Retries
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def UpstreamInfo(self):
+        return self._UpstreamInfo
+
+    @UpstreamInfo.setter
+    def UpstreamInfo(self, UpstreamInfo):
+        self._UpstreamInfo = UpstreamInfo
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        self._Protocol = params.get("Protocol")
+        self._Path = params.get("Path")
+        self._Timeout = params.get("Timeout")
+        self._Retries = params.get("Retries")
+        self._UpstreamType = params.get("UpstreamType")
+        if params.get("UpstreamInfo") is not None:
+            self._UpstreamInfo = KongUpstreamInfo()
+            self._UpstreamInfo._deserialize(params.get("UpstreamInfo"))
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayServiceResponse(AbstractModel):
+    """ModifyCloudNativeAPIGatewayService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class NacosReplica(AbstractModel):
@@ -2452,6 +6396,116 @@ class PolarisLimiterAddress(AbstractModel):
 
     def _deserialize(self, params):
         self._IntranetAddress = params.get("IntranetAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QpsThreshold(AbstractModel):
+    """云原生网关限流插件Qps阈值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Unit: qps阈值控制维度,包含:second、minute、hour、day、month、year
+        :type Unit: str
+        :param _Max: 阈值
+        :type Max: int
+        """
+        self._Unit = None
+        self._Max = None
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Max(self):
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+
+    def _deserialize(self, params):
+        self._Unit = params.get("Unit")
+        self._Max = params.get("Max")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitResponse(AbstractModel):
+    """云原生网关限流插件自定义响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Body: 自定义响应体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Body: str
+        :param _Headers: headrs
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of KVMapping
+        :param _HttpStatus: http状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpStatus: int
+        """
+        self._Body = None
+        self._Headers = None
+        self._HttpStatus = None
+
+    @property
+    def Body(self):
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+    @property
+    def Headers(self):
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def HttpStatus(self):
+        return self._HttpStatus
+
+    @HttpStatus.setter
+    def HttpStatus(self, HttpStatus):
+        self._HttpStatus = HttpStatus
+
+
+    def _deserialize(self, params):
+        self._Body = params.get("Body")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._HttpStatus = params.get("HttpStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1358,10 +1358,16 @@ class CreateDomainRequest(AbstractModel):
         :type GroupId: int
         :param _IsMark: 是否星标域名，”yes”、”no” 分别代表是和否。
         :type IsMark: str
+        :param _TransferSubDomain: 添加子域名时，是否迁移相关父域名的解析记录。不传默认为 true
+        :type TransferSubDomain: bool
+        :param _Tags: 域名绑定的标签
+        :type Tags: list of TagItem
         """
         self._Domain = None
         self._GroupId = None
         self._IsMark = None
+        self._TransferSubDomain = None
+        self._Tags = None
 
     @property
     def Domain(self):
@@ -1387,11 +1393,34 @@ class CreateDomainRequest(AbstractModel):
     def IsMark(self, IsMark):
         self._IsMark = IsMark
 
+    @property
+    def TransferSubDomain(self):
+        return self._TransferSubDomain
+
+    @TransferSubDomain.setter
+    def TransferSubDomain(self, TransferSubDomain):
+        self._TransferSubDomain = TransferSubDomain
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._GroupId = params.get("GroupId")
         self._IsMark = params.get("IsMark")
+        self._TransferSubDomain = params.get("TransferSubDomain")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3621,6 +3650,8 @@ SPAM：封禁
         :type RecordCountEnd: int
         :param _ProjectId: 项目ID
         :type ProjectId: int
+        :param _Tags: 标签过滤
+        :type Tags: list of TagItemFilter
         """
         self._Type = None
         self._Offset = None
@@ -3637,6 +3668,7 @@ SPAM：封禁
         self._RecordCountBegin = None
         self._RecordCountEnd = None
         self._ProjectId = None
+        self._Tags = None
 
     @property
     def Type(self):
@@ -3758,6 +3790,14 @@ SPAM：封禁
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -3775,6 +3815,12 @@ SPAM：封禁
         self._RecordCountBegin = params.get("RecordCountBegin")
         self._RecordCountEnd = params.get("RecordCountEnd")
         self._ProjectId = params.get("ProjectId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagItemFilter()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3906,12 +3952,15 @@ class DescribeDomainListRequest(AbstractModel):
         :type GroupId: int
         :param _Keyword: 根据关键字搜索域名
         :type Keyword: str
+        :param _Tags: 标签过滤
+        :type Tags: list of TagItemFilter
         """
         self._Type = None
         self._Offset = None
         self._Limit = None
         self._GroupId = None
         self._Keyword = None
+        self._Tags = None
 
     @property
     def Type(self):
@@ -3953,6 +4002,14 @@ class DescribeDomainListRequest(AbstractModel):
     def Keyword(self, Keyword):
         self._Keyword = Keyword
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -3960,6 +4017,12 @@ class DescribeDomainListRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._GroupId = params.get("GroupId")
         self._Keyword = params.get("Keyword")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagItemFilter()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6954,6 +7017,9 @@ class DomainInfo(AbstractModel):
         :param _IsSubDomain: 是否是子域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSubDomain: bool
+        :param _TagList: 域名关联的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of TagItem
         """
         self._DomainId = None
         self._Status = None
@@ -6985,6 +7051,7 @@ class DomainInfo(AbstractModel):
         self._VipAutoRenew = None
         self._VipResourceId = None
         self._IsSubDomain = None
+        self._TagList = None
 
     @property
     def DomainId(self):
@@ -7226,6 +7293,14 @@ class DomainInfo(AbstractModel):
     def IsSubDomain(self, IsSubDomain):
         self._IsSubDomain = IsSubDomain
 
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._DomainId = params.get("DomainId")
@@ -7258,6 +7333,12 @@ class DomainInfo(AbstractModel):
         self._VipAutoRenew = params.get("VipAutoRenew")
         self._VipResourceId = params.get("VipResourceId")
         self._IsSubDomain = params.get("IsSubDomain")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7319,6 +7400,9 @@ class DomainListItem(AbstractModel):
         :type UpdatedOn: str
         :param _Owner: 域名所属账号
         :type Owner: str
+        :param _TagList: 域名关联的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of TagItem
         """
         self._DomainId = None
         self._Name = None
@@ -7342,6 +7426,7 @@ class DomainListItem(AbstractModel):
         self._CreatedOn = None
         self._UpdatedOn = None
         self._Owner = None
+        self._TagList = None
 
     @property
     def DomainId(self):
@@ -7519,6 +7604,14 @@ class DomainListItem(AbstractModel):
     def Owner(self, Owner):
         self._Owner = Owner
 
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._DomainId = params.get("DomainId")
@@ -7543,6 +7636,12 @@ class DomainListItem(AbstractModel):
         self._CreatedOn = params.get("CreatedOn")
         self._UpdatedOn = params.get("UpdatedOn")
         self._Owner = params.get("Owner")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11562,6 +11661,97 @@ class SubdomainAnalyticsInfo(AbstractModel):
         self._StartDate = params.get("StartDate")
         self._EndDate = params.get("EndDate")
         self._Subdomain = params.get("Subdomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagItem(AbstractModel):
+    """标签项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagItemFilter(AbstractModel):
+    """标签过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签键
+        :type TagValue: list of str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

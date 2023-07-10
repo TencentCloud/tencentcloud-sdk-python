@@ -5418,12 +5418,15 @@ class GetRoomsRequest(AbstractModel):
         :type Page: int
         :param _Limit: 默认是10条
         :type Limit: int
+        :param _Status: 课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
+        :type Status: list of int non-negative
         """
         self._SdkAppId = None
         self._StartTime = None
         self._EndTime = None
         self._Page = None
         self._Limit = None
+        self._Status = None
 
     @property
     def SdkAppId(self):
@@ -5465,6 +5468,14 @@ class GetRoomsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -5472,6 +5483,7 @@ class GetRoomsRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Page = params.get("Page")
         self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7516,6 +7528,12 @@ class RoomItem(AbstractModel):
         :param _EnableDirectControl: 打开学生麦克风/摄像头的授权开关 
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableDirectControl: int
+        :param _InteractionMode: 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InteractionMode: int
+        :param _VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoOrientation: int
         """
         self._Name = None
         self._RoomId = None
@@ -7530,6 +7548,8 @@ class RoomItem(AbstractModel):
         self._RecordUrl = None
         self._MaxMicNumber = None
         self._EnableDirectControl = None
+        self._InteractionMode = None
+        self._VideoOrientation = None
 
     @property
     def Name(self):
@@ -7635,6 +7655,22 @@ class RoomItem(AbstractModel):
     def EnableDirectControl(self, EnableDirectControl):
         self._EnableDirectControl = EnableDirectControl
 
+    @property
+    def InteractionMode(self):
+        return self._InteractionMode
+
+    @InteractionMode.setter
+    def InteractionMode(self, InteractionMode):
+        self._InteractionMode = InteractionMode
+
+    @property
+    def VideoOrientation(self):
+        return self._VideoOrientation
+
+    @VideoOrientation.setter
+    def VideoOrientation(self, VideoOrientation):
+        self._VideoOrientation = VideoOrientation
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7650,6 +7686,8 @@ class RoomItem(AbstractModel):
         self._RecordUrl = params.get("RecordUrl")
         self._MaxMicNumber = params.get("MaxMicNumber")
         self._EnableDirectControl = params.get("EnableDirectControl")
+        self._InteractionMode = params.get("InteractionMode")
+        self._VideoOrientation = params.get("VideoOrientation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

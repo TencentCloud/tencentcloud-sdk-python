@@ -4823,18 +4823,24 @@ class DescribeRawScanLogsRequest(AbstractModel):
         :param _CorpId: 企业ID, 默认为当前企业
 如果有渠道权限，可以传 0 会查渠道下所有的企业
         :type CorpId: int
-        :param _PageSize: 分页数量，默认为 100，最大为 1000
+        :param _PageSize: 分页数量，默认为 20，最大为 1000
         :type PageSize: int
         :param _PageNumber: 当前分页，默认为 1
         :type PageNumber: int
         :param _AfterLogId: 从哪个日志后查询
 即: LogId > $AfterLogId
         :type AfterLogId: int
+        :param _StartTime: 开始时间 >= StartTime
+        :type StartTime: str
+        :param _EndTime: 结束时间 < EndTime
+        :type EndTime: str
         """
         self._CorpId = None
         self._PageSize = None
         self._PageNumber = None
         self._AfterLogId = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def CorpId(self):
@@ -4868,12 +4874,30 @@ class DescribeRawScanLogsRequest(AbstractModel):
     def AfterLogId(self, AfterLogId):
         self._AfterLogId = AfterLogId
 
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._CorpId = params.get("CorpId")
         self._PageSize = params.get("PageSize")
         self._PageNumber = params.get("PageNumber")
         self._AfterLogId = params.get("AfterLogId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -874,6 +874,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRabbitMQVipInstance(self, request):
+        """删除RabbitMQ专享版实例
+
+        :param request: Request instance for DeleteRabbitMQVipInstance.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVipInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVipInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRabbitMQVipInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRabbitMQVipInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteRabbitMQVirtualHost(self, request):
         """删除RabbitMQ的vhost
 

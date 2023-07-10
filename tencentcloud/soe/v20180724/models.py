@@ -905,6 +905,66 @@ class SentenceInfo(AbstractModel):
         
 
 
+class Tone(AbstractModel):
+    """中文声调检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Valid: 检测结果是否有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Valid: bool
+        :param _RefTone: 文本标准声调，数值范围[-1,1,2,3,4]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefTone: int
+        :param _HypothesisTone: 实际发音声调，数值范围[-1,1,2,3,4]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HypothesisTone: int
+        """
+        self._Valid = None
+        self._RefTone = None
+        self._HypothesisTone = None
+
+    @property
+    def Valid(self):
+        return self._Valid
+
+    @Valid.setter
+    def Valid(self, Valid):
+        self._Valid = Valid
+
+    @property
+    def RefTone(self):
+        return self._RefTone
+
+    @RefTone.setter
+    def RefTone(self, RefTone):
+        self._RefTone = RefTone
+
+    @property
+    def HypothesisTone(self):
+        return self._HypothesisTone
+
+    @HypothesisTone.setter
+    def HypothesisTone(self, HypothesisTone):
+        self._HypothesisTone = HypothesisTone
+
+
+    def _deserialize(self, params):
+        self._Valid = params.get("Valid")
+        self._RefTone = params.get("RefTone")
+        self._HypothesisTone = params.get("HypothesisTone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TransmitOralProcessRequest(AbstractModel):
     """TransmitOralProcess请求参数结构体
 
@@ -1709,6 +1769,9 @@ class WordRsp(AbstractModel):
         :param _KeywordTag: 主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeywordTag: int
+        :param _Tone: 声调检测结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tone: :class:`tencentcloud.soe.v20180724.models.Tone`
         """
         self._MemBeginTime = None
         self._MemEndTime = None
@@ -1719,6 +1782,7 @@ class WordRsp(AbstractModel):
         self._PhoneInfos = None
         self._ReferenceWord = None
         self._KeywordTag = None
+        self._Tone = None
 
     @property
     def MemBeginTime(self):
@@ -1792,6 +1856,14 @@ class WordRsp(AbstractModel):
     def KeywordTag(self, KeywordTag):
         self._KeywordTag = KeywordTag
 
+    @property
+    def Tone(self):
+        return self._Tone
+
+    @Tone.setter
+    def Tone(self, Tone):
+        self._Tone = Tone
+
 
     def _deserialize(self, params):
         self._MemBeginTime = params.get("MemBeginTime")
@@ -1808,6 +1880,9 @@ class WordRsp(AbstractModel):
                 self._PhoneInfos.append(obj)
         self._ReferenceWord = params.get("ReferenceWord")
         self._KeywordTag = params.get("KeywordTag")
+        if params.get("Tone") is not None:
+            self._Tone = Tone()
+            self._Tone._deserialize(params.get("Tone"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

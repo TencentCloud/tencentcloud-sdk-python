@@ -425,7 +425,7 @@ LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
-# 请联系商务开启「中国大陆网络优化(国际加速)」功能。
+# 功能内测中，请联系商务开启「中国大陆网络优化(国际加速)」功能。
 OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = 'OperationDenied.AccelerateMainlandDisable'
 
 # 站点停用未完毕，请稍后再试。
