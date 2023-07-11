@@ -460,7 +460,7 @@ class VodClient(AbstractClient):
 
 
     def CreateRebuildMediaTemplate(self, request):
-        """创建音画质重生模板。
+        """创建视频重生模板。
 
         :param request: Request instance for CreateRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateRebuildMediaTemplateRequest`
@@ -1071,7 +1071,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteRebuildMediaTemplate(self, request):
-        """删除音画质重生模板。
+        """删除视频重生模板。
 
         :param request: Request instance for DeleteRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteRebuildMediaTemplateRequest`

@@ -385,6 +385,8 @@ class CreateKeywordsSamplesResponse(AbstractModel):
         :param _SampleIDs: 添加成功的关键词ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SampleIDs: list of str
+        :param _SuccessInfos: 成功入库关键词列表
+        :type SuccessInfos: list of UserKeywordInfo
         :param _DupInfos: 重复关键词列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DupInfos: list of UserKeywordInfo
@@ -395,6 +397,7 @@ class CreateKeywordsSamplesResponse(AbstractModel):
         :type RequestId: str
         """
         self._SampleIDs = None
+        self._SuccessInfos = None
         self._DupInfos = None
         self._InvalidSamples = None
         self._RequestId = None
@@ -406,6 +409,14 @@ class CreateKeywordsSamplesResponse(AbstractModel):
     @SampleIDs.setter
     def SampleIDs(self, SampleIDs):
         self._SampleIDs = SampleIDs
+
+    @property
+    def SuccessInfos(self):
+        return self._SuccessInfos
+
+    @SuccessInfos.setter
+    def SuccessInfos(self, SuccessInfos):
+        self._SuccessInfos = SuccessInfos
 
     @property
     def DupInfos(self):
@@ -434,6 +445,12 @@ class CreateKeywordsSamplesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._SampleIDs = params.get("SampleIDs")
+        if params.get("SuccessInfos") is not None:
+            self._SuccessInfos = []
+            for item in params.get("SuccessInfos"):
+                obj = UserKeywordInfo()
+                obj._deserialize(item)
+                self._SuccessInfos.append(obj)
         if params.get("DupInfos") is not None:
             self._DupInfos = []
             for item in params.get("DupInfos"):
@@ -525,13 +542,16 @@ class DeleteLibSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SampleIDs: 关键词ID
+        :param _SampleIDs: 关键词ID列表
         :type SampleIDs: list of str
         :param _LibID: 词库ID
         :type LibID: str
+        :param _SampleContents: 关键词内容列表
+        :type SampleContents: list of str
         """
         self._SampleIDs = None
         self._LibID = None
+        self._SampleContents = None
 
     @property
     def SampleIDs(self):
@@ -549,10 +569,19 @@ class DeleteLibSamplesRequest(AbstractModel):
     def LibID(self, LibID):
         self._LibID = LibID
 
+    @property
+    def SampleContents(self):
+        return self._SampleContents
+
+    @SampleContents.setter
+    def SampleContents(self, SampleContents):
+        self._SampleContents = SampleContents
+
 
     def _deserialize(self, params):
         self._SampleIDs = params.get("SampleIDs")
         self._LibID = params.get("LibID")
+        self._SampleContents = params.get("SampleContents")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -819,12 +848,15 @@ class DescribeLibSamplesRequest(AbstractModel):
         :type Content: str
         :param _EvilTypeList: 违规类型列表过滤
         :type EvilTypeList: list of int
+        :param _SampleIDs: 样本词ID列表过滤
+        :type SampleIDs: list of str
         """
         self._Limit = None
         self._Offset = None
         self._LibID = None
         self._Content = None
         self._EvilTypeList = None
+        self._SampleIDs = None
 
     @property
     def Limit(self):
@@ -866,6 +898,14 @@ class DescribeLibSamplesRequest(AbstractModel):
     def EvilTypeList(self, EvilTypeList):
         self._EvilTypeList = EvilTypeList
 
+    @property
+    def SampleIDs(self):
+        return self._SampleIDs
+
+    @SampleIDs.setter
+    def SampleIDs(self, SampleIDs):
+        self._SampleIDs = SampleIDs
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -873,6 +913,7 @@ class DescribeLibSamplesRequest(AbstractModel):
         self._LibID = params.get("LibID")
         self._Content = params.get("Content")
         self._EvilTypeList = params.get("EvilTypeList")
+        self._SampleIDs = params.get("SampleIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

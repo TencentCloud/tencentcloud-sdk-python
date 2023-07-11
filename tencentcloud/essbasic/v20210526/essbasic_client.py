@@ -250,6 +250,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateFlowGroupByTemplates(self, request):
+        """接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
+
+        :param request: Request instance for ChannelCreateFlowGroupByTemplates.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByTemplatesRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateFlowGroupByTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateFlowGroupByTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCreateFlowReminds(self, request):
         """指定需要批量催办的签署流程Id，批量催办合同，最多100个；接口失败后返回错误信息
         注意:
@@ -575,7 +598,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeRoles(self, request):
-        """查询用户角色
+        """查询角色列表，支持根据类型和状态过滤角色列表
 
         :param request: Request instance for ChannelDescribeRoles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeRolesRequest`

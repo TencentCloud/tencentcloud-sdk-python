@@ -665,6 +665,9 @@ MISSINGPARAMETER_MONITORSERVICE = 'MissingParameter.MonitorService'
 # 同样的任务正在运行。
 MUTEXOPERATION_TASKRUNNING = 'MutexOperation.TaskRunning'
 
+# 不支持该账户的操作。
+OPERATIONDENIED_ACCOUNTNOTSUPPORTED = 'OperationDenied.AccountNotSupported'
+
 # 不允许未配置部署网络的CHC安装云上镜像。
 OPERATIONDENIED_CHCINSTALLCLOUDIMAGEWITHOUTDEPLOYNETWORK = 'OperationDenied.ChcInstallCloudImageWithoutDeployNetwork'
 
@@ -772,6 +775,9 @@ UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = 'UnsupportedOperation.Band
 
 # 实例创建快照的时间距今不到24小时。
 UNSUPPORTEDOPERATION_DISKSNAPCREATETIMETOOOLD = 'UnsupportedOperation.DiskSnapCreateTimeTooOld'
+
+# 边缘可用区实例不支持此项操作。
+UNSUPPORTEDOPERATION_EDGEZONEINSTANCE = 'UnsupportedOperation.EdgeZoneInstance'
 
 # 所选择的边缘可用区不支持云盘操作。
 UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTCLOUDDISK = 'UnsupportedOperation.EdgeZoneNotSupportCloudDisk'

@@ -49,6 +49,29 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AllocateIpv6AddressesBandwidth(self, request):
+        """本接口用于给IPv6地址分配公网带宽
+
+        :param request: Request instance for AllocateIpv6AddressesBandwidth.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.AllocateIpv6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.AllocateIpv6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AllocateIpv6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.AllocateIpv6AddressesBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssignIpv6Addresses(self, request):
         """本接口（AssignIpv6Addresses）用于弹性网卡申请IPv6地址。
 
@@ -63,6 +86,83 @@ class EcmClient(AbstractClient):
             body = self.call("AssignIpv6Addresses", params, headers=headers)
             response = json.loads(body)
             model = models.AssignIpv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssignIpv6CidrBlock(self, request):
+        """本接口（AssignIpv6CidrBlock）用于分配IPv6网段。
+
+        使用本接口前，您需要已有VPC实例，如果没有可通过接口CreateVpc创建。
+
+        :param request: Request instance for AssignIpv6CidrBlock.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6CidrBlockRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6CidrBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssignIpv6CidrBlock", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssignIpv6CidrBlockResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssignIpv6CidrBlocks(self, request):
+        """本接口（AssignIpv6CidrBlocks）用于分配IPv6网段。
+
+        使用本接口前，您需要已有VPC实例，如果没有可通过接口CreateVpc创建。
+        每个VPC 可以同时支持运营商网络('CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调)。本接口可以同时申请不同类型的IPv6网段
+
+        :param request: Request instance for AssignIpv6CidrBlocks.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6CidrBlocksRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6CidrBlocksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssignIpv6CidrBlocks", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssignIpv6CidrBlocksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssignIpv6SubnetCidrBlock(self, request):
+        """本接口（AssignIpv6SubnetCidrBlock）用于分配IPv6子网段。
+
+        给子网分配 IPv6 网段，要求子网所属 VPC 已获得 IPv6 网段。如果尚未分配，请先通过接口 AssignIpv6CidrBlock 给子网所属 VPC 分配一个 IPv6 网段。否则无法分配 IPv6 子网段。
+        每个子网只能分配一个IPv6网段。
+
+        :param request: Request instance for AssignIpv6SubnetCidrBlock.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6SubnetCidrBlockRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6SubnetCidrBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssignIpv6SubnetCidrBlock", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssignIpv6SubnetCidrBlockResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1529,6 +1629,29 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRegionIpv6Addresses(self, request):
+        """该接口（DescribeRegionIpv6Addresses）用于查询ECM地域之下的IPV6地址信息。
+
+        :param request: Request instance for DescribeRegionIpv6Addresses.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeRegionIpv6AddressesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeRegionIpv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegionIpv6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegionIpv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRouteConflicts(self, request):
         """查询自定义路由策略与云联网路由策略冲突列表
 
@@ -2253,6 +2376,29 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyIpv6AddressesBandwidth(self, request):
+        """该接口(ModifyIpv6AddressesBandwidth)用于修改IPV6地址访问internet的带宽
+
+        :param request: Request instance for ModifyIpv6AddressesBandwidth.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyIpv6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyIpv6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIpv6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIpv6AddressesBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyListener(self, request):
         """修改负载均衡监听器属性。
 
@@ -2644,6 +2790,29 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryVpcTaskResult(self, request):
+        """查询私有网络下Vpc、子网、havip等异步任务请求结果
+
+        :param request: Request instance for QueryVpcTaskResult.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.QueryVpcTaskResultRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.QueryVpcTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryVpcTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryVpcTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RebootInstances(self, request):
         """只有状态为RUNNING的实例才可以进行此操作；接口调用成功时，实例会进入REBOOTING状态；重启实例成功时，实例会进入RUNNING状态；支持强制重启，强制重启的效果等同于关闭物理计算机的电源开关再重新启动。强制重启可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常重启时使用。
 
@@ -2706,6 +2875,29 @@ class EcmClient(AbstractClient):
             body = self.call("ReleaseIpv6Addresses", params, headers=headers)
             response = json.loads(body)
             model = models.ReleaseIpv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseIpv6AddressesBandwidth(self, request):
+        """该接口用于给弹性公网IPv6地址释放带宽。
+
+        :param request: Request instance for ReleaseIpv6AddressesBandwidth.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ReleaseIpv6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ReleaseIpv6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseIpv6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReleaseIpv6AddressesBandwidthResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3058,6 +3250,30 @@ class EcmClient(AbstractClient):
             body = self.call("TerminateInstances", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnassignIpv6SubnetCidrBlock(self, request):
+        """本接口（UnassignIpv6SubnetCidrBlock）用于释放IPv6子网段。
+        子网段如果还有IP占用且未回收，则子网段无法释放。
+
+        :param request: Request instance for UnassignIpv6SubnetCidrBlock.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.UnassignIpv6SubnetCidrBlockRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.UnassignIpv6SubnetCidrBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnassignIpv6SubnetCidrBlock", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnassignIpv6SubnetCidrBlockResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

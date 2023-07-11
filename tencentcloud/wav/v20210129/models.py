@@ -1110,6 +1110,8 @@ class ClueInfoDetail(AbstractModel):
         :type ShopName: str
         :param _Position: 职位
         :type Position: str
+        :param _CorpShopId: 自定义的门店id
+        :type CorpShopId: str
         """
         self._ClueId = None
         self._DealerId = None
@@ -1161,6 +1163,7 @@ class ClueInfoDetail(AbstractModel):
         self._ShopId = None
         self._ShopName = None
         self._Position = None
+        self._CorpShopId = None
 
     @property
     def ClueId(self):
@@ -1562,6 +1565,14 @@ class ClueInfoDetail(AbstractModel):
     def Position(self, Position):
         self._Position = Position
 
+    @property
+    def CorpShopId(self):
+        return self._CorpShopId
+
+    @CorpShopId.setter
+    def CorpShopId(self, CorpShopId):
+        self._CorpShopId = CorpShopId
+
 
     def _deserialize(self, params):
         self._ClueId = params.get("ClueId")
@@ -1614,6 +1625,7 @@ class ClueInfoDetail(AbstractModel):
         self._ShopId = params.get("ShopId")
         self._ShopName = params.get("ShopName")
         self._Position = params.get("Position")
+        self._CorpShopId = params.get("CorpShopId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

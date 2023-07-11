@@ -8456,8 +8456,8 @@ class ModifyScalingPolicyRequest(AbstractModel):
         :type EstimatedInstanceWarmup: int
         :param _DisableScaleIn: 是否禁用缩容，仅适用于目标追踪策略。取值范围：<br><li>true：目标追踪策略仅触发扩容</li><li>false：目标追踪策略触发扩容和缩容</li>
         :type DisableScaleIn: bool
-        :param _NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
-如果需要清空通知用户组，需要在列表中传入特定字符串 "NULL"。
+        :param _NotificationUserGroupIds: 此参数已不再生效，请使用[创建通知](https://cloud.tencent.com/document/api/377/33185)。
+通知组ID，即为用户组ID集合。
         :type NotificationUserGroupIds: list of str
         """
         self._AutoScalingPolicyId = None

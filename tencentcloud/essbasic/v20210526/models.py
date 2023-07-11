@@ -1677,7 +1677,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowFileInfos: 每个子合同的发起所需的信息，数量限制2-100
+        :param _FlowFileInfos: 每个子合同的发起所需的信息，数量限制2-50
         :type FlowFileInfos: list of FlowFileInfo
         :param _FlowGroupName: 合同组名称，长度不超过200个字符
         :type FlowGroupName: str
@@ -1815,6 +1815,137 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowGroupId = params.get("FlowGroupId")
         self._FlowIds = params.get("FlowIds")
+        self._RequestId = params.get("RequestId")
+
+
+class ChannelCreateFlowGroupByTemplatesRequest(AbstractModel):
+    """ChannelCreateFlowGroupByTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _FlowInfos: 每个子合同的发起所需的信息，数量限制2-50（合同组暂不支持抄送功能）
+        :type FlowInfos: list of FlowInfo
+        :param _FlowGroupName: 合同组名称，长度不超过200个字符
+        :type FlowGroupName: str
+        """
+        self._Agent = None
+        self._FlowInfos = None
+        self._FlowGroupName = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FlowInfos(self):
+        return self._FlowInfos
+
+    @FlowInfos.setter
+    def FlowInfos(self, FlowInfos):
+        self._FlowInfos = FlowInfos
+
+    @property
+    def FlowGroupName(self):
+        return self._FlowGroupName
+
+    @FlowGroupName.setter
+    def FlowGroupName(self, FlowGroupName):
+        self._FlowGroupName = FlowGroupName
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("FlowInfos") is not None:
+            self._FlowInfos = []
+            for item in params.get("FlowInfos"):
+                obj = FlowInfo()
+                obj._deserialize(item)
+                self._FlowInfos.append(obj)
+        self._FlowGroupName = params.get("FlowGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
+    """ChannelCreateFlowGroupByTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowGroupId: 合同组ID
+        :type FlowGroupId: str
+        :param _FlowIds: 子合同ID列表
+        :type FlowIds: list of str
+        :param _TaskInfos: 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
+如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
+        :type TaskInfos: list of TaskInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowGroupId = None
+        self._FlowIds = None
+        self._TaskInfos = None
+        self._RequestId = None
+
+    @property
+    def FlowGroupId(self):
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def TaskInfos(self):
+        return self._TaskInfos
+
+    @TaskInfos.setter
+    def TaskInfos(self, TaskInfos):
+        self._TaskInfos = TaskInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowGroupId = params.get("FlowGroupId")
+        self._FlowIds = params.get("FlowIds")
+        if params.get("TaskInfos") is not None:
+            self._TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = TaskInfo()
+                obj._deserialize(item)
+                self._TaskInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8037,6 +8168,8 @@ class FlowFileInfo(AbstractModel):
         :type CustomerData: str
         :param _Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
         :type Unordered: bool
+        :param _Components: 签署文件中的发起方的填写控件，需要在发起的时候进行填充
+        :type Components: list of Component
         :param _CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
         :param _NeedSignReview: 本企业(发起方企业)是否需要签署审批
@@ -8051,6 +8184,7 @@ class FlowFileInfo(AbstractModel):
         self._CallbackUrl = None
         self._CustomerData = None
         self._Unordered = None
+        self._Components = None
         self._CustomShowMap = None
         self._NeedSignReview = None
 
@@ -8127,6 +8261,14 @@ class FlowFileInfo(AbstractModel):
         self._Unordered = Unordered
 
     @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
     def CustomShowMap(self):
         return self._CustomShowMap
 
@@ -8158,6 +8300,12 @@ class FlowFileInfo(AbstractModel):
         self._CallbackUrl = params.get("CallbackUrl")
         self._CustomerData = params.get("CustomerData")
         self._Unordered = params.get("Unordered")
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = Component()
+                obj._deserialize(item)
+                self._Components.append(obj)
         self._CustomShowMap = params.get("CustomShowMap")
         self._NeedSignReview = params.get("NeedSignReview")
         memeber_set = set(params.keys())

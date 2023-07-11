@@ -179,32 +179,6 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeExternalTrtcMeasure(self, request):
-        """接口内部调用计量接口，计量接口迁通用集群后不可用。目前已有新的对外接口可以供用户使用。
-
-        获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据。
-        当前接口已不再更新维护，请使用新版音视频用量接口：DescribeTrtcUsage （https://cloud.tencent.com/document/product/647/81425）
-
-        :param request: Request instance for DescribeExternalTrtcMeasure.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeExternalTrtcMeasureRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeExternalTrtcMeasureResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeExternalTrtcMeasure", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeExternalTrtcMeasureResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeMixTranscodingUsage(self, request):
         """获取TRTC混流转码的用量明细。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。

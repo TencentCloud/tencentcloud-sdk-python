@@ -1054,6 +1054,11 @@ def test_import_tcex():
     from tencentcloud.tcex.v20200727 import models
 
 
+def test_import_tchd():
+    from tencentcloud.tchd.v20230306 import tchd_client
+    from tencentcloud.tchd.v20230306 import models
+
+
 def test_import_tci():
     from tencentcloud.tci.v20190318 import tci_client
     from tencentcloud.tci.v20190318 import models

@@ -425,7 +425,7 @@ class AddInstancesRequest(AbstractModel):
         :type OrderSource: str
         :param _DealMode: 交易模式 0-下单并支付 1-下单
         :type DealMode: int
-        :param _ParamTemplateId: 参数模版ID
+        :param _ParamTemplateId: 参数模板ID
         :type ParamTemplateId: int
         :param _InstanceParams: 参数列表，ParamTemplateId 传入时InstanceParams才有效
         :type InstanceParams: list of ModifyParamItem
@@ -3674,13 +3674,13 @@ class CreateParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateName: 模版名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
         :param _EngineVersion: mysql版本号
         :type EngineVersion: str
-        :param _TemplateDescription: 模版描述
+        :param _TemplateDescription: 模板描述
         :type TemplateDescription: str
-        :param _TemplateId: 可选参数，需要复制的模版ID
+        :param _TemplateId: 可选参数，需要复制的模板ID
         :type TemplateId: int
         :param _DbMode: 数据库类型，可选值：NORMAL（默认值），SERVERLESS
         :type DbMode: str
@@ -3772,7 +3772,7 @@ class CreateParamTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版ID
+        :param _TemplateId: 模板ID
         :type TemplateId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3819,7 +3819,7 @@ class CreateProxyEndPointRequest(AbstractModel):
         :type ConnectionPoolType: str
         :param _OpenConnectionPool: 是否开启连接池,yes-开启，no-不开启
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: 连接池阀值：单位（秒）
+        :param _ConnectionPoolTimeOut: 连接池阈值：单位（秒）
         :type ConnectionPoolTimeOut: int
         :param _SecurityGroupIds: 安全组ID数组
         :type SecurityGroupIds: list of str
@@ -4132,7 +4132,7 @@ class CreateProxyRequest(AbstractModel):
         :type ConnectionPoolType: str
         :param _OpenConnectionPool: 是否开启连接池,yes-开启，no-不开启
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: 连接池阀值：单位（秒）
+        :param _ConnectionPoolTimeOut: 连接池阈值：单位（秒）
         :type ConnectionPoolTimeOut: int
         :param _SecurityGroupIds: 安全组ID数组
         :type SecurityGroupIds: list of str
@@ -7897,7 +7897,7 @@ class DeleteParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模版ID
+        :param _TemplateId: 参数模板ID
         :type TemplateId: int
         """
         self._TemplateId = None
@@ -11652,9 +11652,9 @@ class DescribeParamTemplatesRequest(AbstractModel):
         r"""
         :param _EngineVersions: 数据库引擎版本号
         :type EngineVersions: list of str
-        :param _TemplateNames: 模版名称
+        :param _TemplateNames: 模板名称
         :type TemplateNames: list of str
-        :param _TemplateIds: 模版ID
+        :param _TemplateIds: 模板ID
         :type TemplateIds: list of int
         :param _DbModes: 数据库类型，可选值：NORMAL，SERVERLESS
         :type DbModes: list of str
@@ -11664,7 +11664,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
         :type Limit: int
         :param _Products: 查询的模板对应的产品类型
         :type Products: list of str
-        :param _TemplateTypes: 模版类型
+        :param _TemplateTypes: 模板类型
         :type TemplateTypes: list of str
         :param _EngineTypes: 版本类型
         :type EngineTypes: list of str
@@ -16974,11 +16974,11 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版ID
+        :param _TemplateId: 模板ID
         :type TemplateId: int
-        :param _TemplateName: 模版名
+        :param _TemplateName: 模板名
         :type TemplateName: str
-        :param _TemplateDescription: 模版描述
+        :param _TemplateDescription: 模板描述
         :type TemplateDescription: str
         :param _ParamList: 参数列表
         :type ParamList: list of ModifyParamItem
@@ -19887,7 +19887,7 @@ class PolicyRule(AbstractModel):
         r"""
         :param _Action: 策略，ACCEPT或者DROP
         :type Action: str
-        :param _CidrIp: 来源Ip或Ip段，例如192.168.0.0/16
+        :param _CidrIp: 来源IP或IP段，例如192.168.0.0/16
         :type CidrIp: str
         :param _PortRange: 端口
         :type PortRange: str
@@ -20008,7 +20008,7 @@ class ProxyConnectionPoolInfo(AbstractModel):
         :param _OpenConnectionPool: 是否开启了连接池
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenConnectionPool: str
-        :param _ConnectionPoolType: 连接池类型：SessionConnectionPool（会话级别连接池
+        :param _ConnectionPoolType: 连接池类型：SessionConnectionPool（会话级别连接池）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectionPoolType: str
         """
@@ -22664,7 +22664,7 @@ class SlowQueriesItem(AbstractModel):
         :type RowsExamined: int
         :param _RowsSent: 返回行数
         :type RowsSent: int
-        :param _SqlTemplate: sql模版
+        :param _SqlTemplate: sql模板
         :type SqlTemplate: str
         :param _SqlMd5: sql语句md5
         :type SqlMd5: str
