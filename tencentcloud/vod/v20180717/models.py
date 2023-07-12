@@ -7892,7 +7892,7 @@ class AiSampleFaceOperation(AbstractModel):
         :type Type: str
         :param _FaceIds: 人脸 ID 集合，当 Type为delete 时，该字段必填。
         :type FaceIds: list of str
-        :param _FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
+        :param _FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合，仅支持 jpeg、png 图片格式。
 <li>当 Type为add 或 reset 时，该字段必填；</li>
 <li>数组长度限制：5 张图片。</li>
 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
@@ -21703,7 +21703,7 @@ class DescribeRebuildMediaTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: 音画质重生模板列表。
+        :param _Definitions: 视频重生模板列表。
         :type Definitions: list of int
         :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -21788,7 +21788,7 @@ class DescribeRebuildMediaTemplatesResponse(AbstractModel):
         r"""
         :param _TotalCount: 符合过滤条件的记录总数。
         :type TotalCount: int
-        :param _RebuildMediaTemplateSet: 音画质重生模板详情列表。
+        :param _RebuildMediaTemplateSet: 视频重生模板详情列表。
         :type RebuildMediaTemplateSet: list of RebuildMediaTemplate
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21965,7 +21965,7 @@ class DescribeReviewTemplatesRequest(AbstractModel):
         r"""
         :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param _Definitions: 审核模版唯一标识过滤条件，数组长度限制：100。
+        :param _Definitions: 审核模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param _Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
@@ -37295,17 +37295,17 @@ class ModifyRebuildMediaTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 音画质重生模板号。
+        :param _Definition: 视频重生模板号。
         :type Definition: int
         :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: str
-        :param _Name: 音画质重生模板名称。
+        :param _Name: 视频重生模板名称。
         :type Name: str
-        :param _Comment: 音画质重生模板描述。
+        :param _Comment: 视频重生模板描述。
         :type Comment: str
-        :param _RebuildVideoInfo: 音画质重生视频控制信息。
+        :param _RebuildVideoInfo: 视频重生视频控制信息。
         :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
-        :param _RebuildAudioInfo: 音画质重生音频控制信息。
+        :param _RebuildAudioInfo: 视频重生音频控制信息。
         :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
         :param _TargetVideoInfo: 输出目标视频控制信息。
         :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
@@ -44606,7 +44606,7 @@ class RebuildMediaByTemplateRequest(AbstractModel):
         r"""
         :param _FileId: 媒体文件 ID。
         :type FileId: str
-        :param _Definition: 音画质重生模板 ID。
+        :param _Definition: 视频重生模板 ID。
         :type Definition: int
         :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: str
@@ -44614,7 +44614,7 @@ class RebuildMediaByTemplateRequest(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: 结束偏移时间，单位：秒，不填表示截取到视频末尾。
         :type EndTimeOffset: float
-        :param _OutputConfig: 音画质重生后的文件配置。
+        :param _OutputConfig: 视频重生后的文件配置。
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.RebuildMediaOutputConfig`
         :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -44747,7 +44747,7 @@ class RebuildMediaByTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+        :param _TaskId: 视频重生的任务 ID，可以通过该 ID 查询视频重生任务的状态。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45141,7 +45141,7 @@ class RebuildMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+        :param _TaskId: 视频重生的任务 ID，可以通过该 ID 查询视频重生任务的状态。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

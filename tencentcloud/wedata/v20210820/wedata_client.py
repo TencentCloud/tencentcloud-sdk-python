@@ -1324,6 +1324,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeColumnLineage(self, request):
+        """列出字段血缘信息
+
+        :param request: Request instance for DescribeColumnLineage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeColumnLineageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeColumnLineageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeColumnLineage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeColumnLineageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDataBases(self, request):
         """查询数据来源列表
 
@@ -3073,6 +3096,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTableInfoList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTableInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTableLineage(self, request):
+        """列出表血缘信息
+
+        :param request: Request instance for DescribeTableLineage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableLineageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableLineageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableLineage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableLineageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

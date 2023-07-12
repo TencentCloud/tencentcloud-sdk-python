@@ -2921,6 +2921,8 @@ class DescribeDocumentResponse(AbstractModel):
         :type DocumentSize: int
         :param _UpdateTime: 更新的UNIX时间戳
         :type UpdateTime: int
+        :param _Pages: 课件页数
+        :type Pages: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2938,6 +2940,7 @@ class DescribeDocumentResponse(AbstractModel):
         self._DocumentType = None
         self._DocumentSize = None
         self._UpdateTime = None
+        self._Pages = None
         self._RequestId = None
 
     @property
@@ -3053,6 +3056,14 @@ class DescribeDocumentResponse(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
+    def Pages(self):
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        self._Pages = Pages
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3076,6 +3087,7 @@ class DescribeDocumentResponse(AbstractModel):
         self._DocumentType = params.get("DocumentType")
         self._DocumentSize = params.get("DocumentSize")
         self._UpdateTime = params.get("UpdateTime")
+        self._Pages = params.get("Pages")
         self._RequestId = params.get("RequestId")
 
 

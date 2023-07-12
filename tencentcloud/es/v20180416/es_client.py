@@ -463,6 +463,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyEsVipSecurityGroup(self, request):
+        """修改绑定VIP的安全组，传安全组id列表
+
+        :param request: Request instance for ModifyEsVipSecurityGroup.
+        :type request: :class:`tencentcloud.es.v20180416.models.ModifyEsVipSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.ModifyEsVipSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEsVipSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEsVipSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartInstance(self, request):
         """重启ES集群实例(用于系统版本更新等操作)
 

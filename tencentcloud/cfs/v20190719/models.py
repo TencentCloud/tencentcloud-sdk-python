@@ -810,6 +810,12 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type CidrBlock: str
         :param _Capacity: 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
         :type Capacity: int
+        :param _SnapshotId: 文件系统快照ID
+        :type SnapshotId: str
+        :param _AutoSnapshotPolicyId: 定期快照策略ID
+        :type AutoSnapshotPolicyId: str
+        :param _EnableAutoScaleUp: 是否开启默认扩容，仅Turbo类型文件存储支持
+        :type EnableAutoScaleUp: bool
         """
         self._Zone = None
         self._NetInterface = None
@@ -825,6 +831,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self._CcnId = None
         self._CidrBlock = None
         self._Capacity = None
+        self._SnapshotId = None
+        self._AutoSnapshotPolicyId = None
+        self._EnableAutoScaleUp = None
 
     @property
     def Zone(self):
@@ -938,6 +947,30 @@ class CreateCfsFileSystemRequest(AbstractModel):
     def Capacity(self, Capacity):
         self._Capacity = Capacity
 
+    @property
+    def SnapshotId(self):
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def AutoSnapshotPolicyId(self):
+        return self._AutoSnapshotPolicyId
+
+    @AutoSnapshotPolicyId.setter
+    def AutoSnapshotPolicyId(self, AutoSnapshotPolicyId):
+        self._AutoSnapshotPolicyId = AutoSnapshotPolicyId
+
+    @property
+    def EnableAutoScaleUp(self):
+        return self._EnableAutoScaleUp
+
+    @EnableAutoScaleUp.setter
+    def EnableAutoScaleUp(self, EnableAutoScaleUp):
+        self._EnableAutoScaleUp = EnableAutoScaleUp
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -959,6 +992,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self._CcnId = params.get("CcnId")
         self._CidrBlock = params.get("CidrBlock")
         self._Capacity = params.get("Capacity")
+        self._SnapshotId = params.get("SnapshotId")
+        self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self._EnableAutoScaleUp = params.get("EnableAutoScaleUp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5352,6 +5388,9 @@ class SnapshotInfo(AbstractModel):
         :param _SnapshotType: 快照类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotType: str
+        :param _SnapshotTime: 实际快照时间，这里主要是为了标识跨地域复制快照的时间快照时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotTime: str
         """
         self._CreationTime = None
         self._SnapshotName = None
@@ -5367,6 +5406,7 @@ class SnapshotInfo(AbstractModel):
         self._FsName = None
         self._Tags = None
         self._SnapshotType = None
+        self._SnapshotTime = None
 
     @property
     def CreationTime(self):
@@ -5480,6 +5520,14 @@ class SnapshotInfo(AbstractModel):
     def SnapshotType(self, SnapshotType):
         self._SnapshotType = SnapshotType
 
+    @property
+    def SnapshotTime(self):
+        return self._SnapshotTime
+
+    @SnapshotTime.setter
+    def SnapshotTime(self, SnapshotTime):
+        self._SnapshotTime = SnapshotTime
+
 
     def _deserialize(self, params):
         self._CreationTime = params.get("CreationTime")
@@ -5501,6 +5549,7 @@ class SnapshotInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._SnapshotType = params.get("SnapshotType")
+        self._SnapshotTime = params.get("SnapshotTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6327,7 +6376,7 @@ class UpdateCfsPGroupRequest(AbstractModel):
         :type PGroupId: str
         :param _Name: 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
         :type Name: str
-        :param _DescInfo: 权限组描述信息，1-255个字符
+        :param _DescInfo: 权限组描述信息，1-255个字符。 Name和Descinfo不能同时为空
         :type DescInfo: str
         """
         self._PGroupId = None

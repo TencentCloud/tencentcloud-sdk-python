@@ -6849,7 +6849,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+        :param _TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
         :type TimeSpan: int
         :param _ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
         :type ResourceIds: list of str

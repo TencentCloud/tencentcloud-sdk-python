@@ -59,6 +59,12 @@ INTERNALERROR = 'InternalError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 无效的InstanceId，没有找到对应资源。
+INVALIDPARAMETER_INVALIDINSTANCEID = 'InvalidParameter.InvalidInstanceId'
+
+# 安全组id列表SecurityGroupIds的取值和预期不符。
+INVALIDPARAMETER_INVALIDSECURITYGROUPIDS = 'InvalidParameter.InvalidSecurityGroupIds'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -86,6 +92,12 @@ RESOURCEINSUFFICIENT_SUBNET = 'ResourceInsufficient.Subnet'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 数据库资源获取失败。
+RESOURCENOTFOUND_DBINFONOTFOUND = 'ResourceNotFound.DBInfoNotFound'
+
+# 安全组信息获取失败。
+RESOURCENOTFOUND_SECURITYGROUPNOTFOUND = 'ResourceNotFound.SecurityGroupNotFound'
+
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
@@ -100,3 +112,6 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 不支持该操作，实例状态有误。
+UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = 'UnsupportedOperation.StatusNotSupport'

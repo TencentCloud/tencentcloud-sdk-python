@@ -7654,6 +7654,9 @@ HANDWRITE -手写签名
 - 发起流程时系统自动补充
 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
         :type SignId: str
+        :param _NotifyType: SMS: 短信; NONE: 不发信息
+默认为SMS(该字段对子客无效)
+        :type NotifyType: str
         """
         self._Name = None
         self._IdCardType = None
@@ -7676,6 +7679,7 @@ HANDWRITE -手写签名
         self._ApproverVerifyTypes = None
         self._ApproverSignTypes = None
         self._SignId = None
+        self._NotifyType = None
 
     @property
     def Name(self):
@@ -7849,6 +7853,14 @@ HANDWRITE -手写签名
     def SignId(self, SignId):
         self._SignId = SignId
 
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7879,6 +7891,7 @@ HANDWRITE -手写签名
         self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
         self._SignId = params.get("SignId")
+        self._NotifyType = params.get("NotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

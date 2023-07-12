@@ -19915,7 +19915,7 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+        :param _SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
         :type SecurityGroupIds: list of str
         :param _Filters: 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
 <li>security-group-id - String - （过滤条件）安全组ID。</li>
@@ -19928,11 +19928,17 @@ class DescribeSecurityGroupsRequest(AbstractModel):
         :type Offset: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
+        :param _OrderField: 排序字段。支持：`CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+        :type OrderField: str
+        :param _OrderDirection: 排序方法。升序：`ASC`，倒序：`DESC`。默认值：`ASC`
+        :type OrderDirection: str
         """
         self._SecurityGroupIds = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._OrderField = None
+        self._OrderDirection = None
 
     @property
     def SecurityGroupIds(self):
@@ -19966,6 +19972,22 @@ class DescribeSecurityGroupsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
 
     def _deserialize(self, params):
         self._SecurityGroupIds = params.get("SecurityGroupIds")
@@ -19977,6 +19999,8 @@ class DescribeSecurityGroupsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

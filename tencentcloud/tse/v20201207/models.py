@@ -5272,7 +5272,7 @@ class KongUpstreamInfo(AbstractModel):
         :type Port: int
         :param _SourceID: 服务来源ID
         :type SourceID: str
-        :param _Namespace: 名字空间
+        :param _Namespace: 命名空间
         :type Namespace: str
         :param _ServiceName: 服务（注册中心或Kubernetes中的服务）名字
         :type ServiceName: str
