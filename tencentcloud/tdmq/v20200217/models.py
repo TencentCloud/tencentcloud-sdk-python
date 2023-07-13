@@ -5285,12 +5285,16 @@ class CreateRoleResponse(AbstractModel):
         :param _Remark: 备注说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param _EnvironmentRoleSets: 批量绑定名字空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentRoleSets: list of EnvironmentRoleSet
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RoleName = None
         self._Token = None
         self._Remark = None
+        self._EnvironmentRoleSets = None
         self._RequestId = None
 
     @property
@@ -5318,6 +5322,14 @@ class CreateRoleResponse(AbstractModel):
         self._Remark = Remark
 
     @property
+    def EnvironmentRoleSets(self):
+        return self._EnvironmentRoleSets
+
+    @EnvironmentRoleSets.setter
+    def EnvironmentRoleSets(self, EnvironmentRoleSets):
+        self._EnvironmentRoleSets = EnvironmentRoleSets
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5330,6 +5342,12 @@ class CreateRoleResponse(AbstractModel):
         self._RoleName = params.get("RoleName")
         self._Token = params.get("Token")
         self._Remark = params.get("Remark")
+        if params.get("EnvironmentRoleSets") is not None:
+            self._EnvironmentRoleSets = []
+            for item in params.get("EnvironmentRoleSets"):
+                obj = EnvironmentRoleSet()
+                obj._deserialize(item)
+                self._EnvironmentRoleSets.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13493,6 +13511,54 @@ class EnvironmentRole(AbstractModel):
         self._RoleDescribe = params.get("RoleDescribe")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvironmentRoleSet(AbstractModel):
+    """批量绑定名字空间和角色权限关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 需要绑定的命名空间Id，不重复且存在资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentId: str
+        :param _Permissions: 名字空间需要绑定的权限，枚举为 "consume" "produce" 组合，但是不为空
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of str
+        """
+        self._EnvironmentId = None
+        self._Permissions = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._Permissions = params.get("Permissions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

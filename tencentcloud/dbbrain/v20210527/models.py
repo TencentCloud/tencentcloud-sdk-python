@@ -112,6 +112,312 @@ class AddUserContactResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditInstance(AbstractModel):
+    """实例详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditStatus: 审计状态，已开通审计为：YES，未开通审计为：ON。
+        :type AuditStatus: str
+        :param _BillingAmount: 审计日志大小，为兼容老版本用。
+        :type BillingAmount: int
+        :param _BillingConfirmed: 计费确认状态，0-未确认；1-已确认。
+        :type BillingConfirmed: int
+        :param _ColdLogExpireDay: 低频存储时长。
+        :type ColdLogExpireDay: int
+        :param _ColdLogSize: 低频日志存储量单位MB。
+        :type ColdLogSize: int
+        :param _HotLogExpireDay: 高频日志存储天数。
+        :type HotLogExpireDay: int
+        :param _HotLogSize: 高频日志存储量，单位MB。
+        :type HotLogSize: int
+        :param _InstanceId: 实例Id。
+        :type InstanceId: str
+        :param _LogExpireDay: 日志保存总天数，为高频存储时长+低频存储时长。
+        :type LogExpireDay: int
+        :param _CreateTime: 实例创建时间。
+        :type CreateTime: str
+        :param _InstanceInfo: 实例详细信息。
+        :type InstanceInfo: :class:`tencentcloud.dbbrain.v20210527.models.AuditInstanceInfo`
+        """
+        self._AuditStatus = None
+        self._BillingAmount = None
+        self._BillingConfirmed = None
+        self._ColdLogExpireDay = None
+        self._ColdLogSize = None
+        self._HotLogExpireDay = None
+        self._HotLogSize = None
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._CreateTime = None
+        self._InstanceInfo = None
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def BillingAmount(self):
+        return self._BillingAmount
+
+    @BillingAmount.setter
+    def BillingAmount(self, BillingAmount):
+        self._BillingAmount = BillingAmount
+
+    @property
+    def BillingConfirmed(self):
+        return self._BillingConfirmed
+
+    @BillingConfirmed.setter
+    def BillingConfirmed(self, BillingConfirmed):
+        self._BillingConfirmed = BillingConfirmed
+
+    @property
+    def ColdLogExpireDay(self):
+        return self._ColdLogExpireDay
+
+    @ColdLogExpireDay.setter
+    def ColdLogExpireDay(self, ColdLogExpireDay):
+        self._ColdLogExpireDay = ColdLogExpireDay
+
+    @property
+    def ColdLogSize(self):
+        return self._ColdLogSize
+
+    @ColdLogSize.setter
+    def ColdLogSize(self, ColdLogSize):
+        self._ColdLogSize = ColdLogSize
+
+    @property
+    def HotLogExpireDay(self):
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+    @property
+    def HotLogSize(self):
+        return self._HotLogSize
+
+    @HotLogSize.setter
+    def HotLogSize(self, HotLogSize):
+        self._HotLogSize = HotLogSize
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def InstanceInfo(self):
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+
+    def _deserialize(self, params):
+        self._AuditStatus = params.get("AuditStatus")
+        self._BillingAmount = params.get("BillingAmount")
+        self._BillingConfirmed = params.get("BillingConfirmed")
+        self._ColdLogExpireDay = params.get("ColdLogExpireDay")
+        self._ColdLogSize = params.get("ColdLogSize")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        self._HotLogSize = params.get("HotLogSize")
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = AuditInstanceInfo()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditInstanceFilter(AbstractModel):
+    """实例列表查询条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 搜索条件名称
+        :type Name: str
+        :param _Values: 要搜索的条件的值
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditInstanceInfo(AbstractModel):
+    """实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appId。
+        :type AppId: int
+        :param _AuditStatus: 审计状态，0-未开通审计；1-已开通审计。
+        :type AuditStatus: int
+        :param _InstanceId: 实例Id。
+        :type InstanceId: str
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _ProjectId: 项目Id。
+        :type ProjectId: int
+        :param _Region: 实例所在地域。
+        :type Region: str
+        :param _ResourceTags: 资源Tags。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of str
+        """
+        self._AppId = None
+        self._AuditStatus = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ProjectId = None
+        self._Region = None
+        self._ResourceTags = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ProjectId = params.get("ProjectId")
+        self._Region = params.get("Region")
+        self._ResourceTags = params.get("ResourceTags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditLogFile(AbstractModel):
     """审计日志文件
 
@@ -419,6 +725,100 @@ class CancelKillTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CloseAuditServiceRequest(AbstractModel):
+    """CloseAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :type Product: str
+        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :type NodeRequestType: str
+        :param _InstanceId: 实例Id。
+        :type InstanceId: str
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    """CloseAuditService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 0-关闭审计成功，非0关闭审计失败。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2264,6 +2664,159 @@ class DescribeAllUserGroupResponse(AbstractModel):
                 obj = GroupItem()
                 obj._deserialize(item)
                 self._Groups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditInstanceListRequest(AbstractModel):
+    """DescribeAuditInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :type Product: str
+        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :type NodeRequestType: str
+        :param _AuditSwitch: 审计状态标识，0-未开通审计；1-已开通审计，默认为0。
+        :type AuditSwitch: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 查询数目，默认为20，最大为100。
+        :type Limit: int
+        :param _Filters: 查询实例的搜索条件。
+        :type Filters: list of AuditInstanceFilter
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._AuditSwitch = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def AuditSwitch(self):
+        return self._AuditSwitch
+
+    @AuditSwitch.setter
+    def AuditSwitch(self, AuditSwitch):
+        self._AuditSwitch = AuditSwitch
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._AuditSwitch = params.get("AuditSwitch")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AuditInstanceFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditInstanceListResponse(AbstractModel):
+    """DescribeAuditInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的实例个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 实例详情。
+        :type Items: list of AuditInstance
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditInstance()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7875,6 +8428,124 @@ class MailConfiguration(AbstractModel):
         
 
 
+class ModifyAuditServiceRequest(AbstractModel):
+    """ModifyAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :type Product: str
+        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :type NodeRequestType: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _LogExpireDay: 日志保存总时长，只能是7,30,90,180,365,1095,1825
+        :type LogExpireDay: int
+        :param _HotLogExpireDay: 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+        :type HotLogExpireDay: int
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._HotLogExpireDay = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HotLogExpireDay(self):
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditServiceResponse(AbstractModel):
+    """ModifyAuditService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 审计配置修改结果，0-修改成功,非0-修改失败。
+        :type Success: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDiagDBInstanceConfRequest(AbstractModel):
     """ModifyDiagDBInstanceConf请求参数结构体
 
@@ -8408,6 +9079,124 @@ class MySqlProcess(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenAuditServiceRequest(AbstractModel):
+    """OpenAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :type Product: str
+        :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :type NodeRequestType: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _LogExpireDay: 日志保存总时长，只能是7,30,90,180,365,1095,1825
+        :type LogExpireDay: int
+        :param _HotLogExpireDay: 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+        :type HotLogExpireDay: int
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._HotLogExpireDay = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HotLogExpireDay(self):
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceResponse(AbstractModel):
+    """OpenAuditService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: taskId 为0表示开通审计成功，否则开通失败
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ProcessStatistic(AbstractModel):

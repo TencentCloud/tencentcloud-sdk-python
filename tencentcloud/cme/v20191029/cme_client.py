@@ -96,7 +96,7 @@ class CmeClient(AbstractClient):
 
 
     def CreateLink(self, request):
-        """创建媒体链接或分类路径链接，将源资源信息链接到目标。
+        """创建媒体链接或分类路径链接，将资源信息链接到目标。
 
         :param request: Request instance for CreateLink.
         :type request: :class:`tencentcloud.cme.v20191029.models.CreateLinkRequest`

@@ -4691,7 +4691,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param _VODExportInfo: 导出的云点播媒资信息。当导出目标为 VOD 时必填。
         :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param _Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使的媒资该操作者需要拥有使用权限。
+        :param _Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使用的媒资该操作者需要拥有使用权限。
         :type Operator: str
         """
         self._Platform = None
@@ -6431,7 +6431,7 @@ class ImportMaterialResponse(AbstractModel):
         r"""
         :param _MaterialId: 媒体 Id。
         :type MaterialId: str
-        :param _PreProcessTaskId: 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。
+        :param _PreProcessTaskId: 媒体文件预处理任务 ID，如果未指定发起预处理任务则为空。
         :type PreProcessTaskId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8371,7 +8371,7 @@ class MediaCastProjectInfo(AbstractModel):
         :type PlaySetting: :class:`tencentcloud.cme.v20191029.models.MediaCastPlaySetting`
         :param _StartTime: 项目启动时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type StartTime: str
-        :param _StopTime: 项目结束时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如果项目还在运行中，改字段为空。
+        :param _StopTime: 项目结束时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如果项目还在运行中，该字段为空。
         :type StopTime: str
         """
         self._Status = None
@@ -9594,7 +9594,7 @@ class ModifyTeamMemberRequest(AbstractModel):
 <li>Admin：团队管理员；</li>
 <li>Member：普通成员。</li>
         :type Role: str
-        :param _Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以个改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
+        :param _Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
         :type Operator: str
         """
         self._Platform = None

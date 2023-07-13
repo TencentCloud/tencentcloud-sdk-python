@@ -813,14 +813,17 @@ class AnalyzeAuditLogsRequest(AbstractModel):
         :type EndTime: str
         :param _AggregationConditions: 聚合维度的排序条件。
         :type AggregationConditions: list of AggregationCondition
-        :param _AuditLogFilter: 该过滤条件下的审计日志结果集作为分析日志。
+        :param _AuditLogFilter: 已废弃。该过滤条件下的审计日志结果集作为分析日志。
         :type AuditLogFilter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        :param _LogFilter: 该过滤条件下的审计日志结果集作为分析日志。
+        :type LogFilter: list of InstanceAuditLogFilters
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._AggregationConditions = None
         self._AuditLogFilter = None
+        self._LogFilter = None
 
     @property
     def InstanceId(self):
@@ -862,6 +865,14 @@ class AnalyzeAuditLogsRequest(AbstractModel):
     def AuditLogFilter(self, AuditLogFilter):
         self._AuditLogFilter = AuditLogFilter
 
+    @property
+    def LogFilter(self):
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -876,6 +887,12 @@ class AnalyzeAuditLogsRequest(AbstractModel):
         if params.get("AuditLogFilter") is not None:
             self._AuditLogFilter = AuditLogFilter()
             self._AuditLogFilter._deserialize(params.get("AuditLogFilter"))
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = InstanceAuditLogFilters()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4174,11 +4191,11 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: 实例 ID，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _StartTime: 开始时间，格式为："2017-07-12 10:29:20"。
+        :param _StartTime: 开始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间，格式为："2017-07-12 10:29:20"。
+        :param _EndTime: 结束时间。
         :type EndTime: str
         :param _Order: 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
         :type Order: str
@@ -4187,8 +4204,10 @@ class CreateAuditLogFileRequest(AbstractModel):
 "affectRows" - 影响行数；
 "execTime" - 执行时间。
         :type OrderBy: str
-        :param _Filter: 过滤条件。可按设置的过滤条件过滤日志。
+        :param _Filter: 已废弃。
         :type Filter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        :param _LogFilter: 过滤条件。可按设置的过滤条件过滤日志。
+        :type LogFilter: list of InstanceAuditLogFilters
         """
         self._InstanceId = None
         self._StartTime = None
@@ -4196,6 +4215,7 @@ class CreateAuditLogFileRequest(AbstractModel):
         self._Order = None
         self._OrderBy = None
         self._Filter = None
+        self._LogFilter = None
 
     @property
     def InstanceId(self):
@@ -4245,6 +4265,14 @@ class CreateAuditLogFileRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def LogFilter(self):
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4255,6 +4283,12 @@ class CreateAuditLogFileRequest(AbstractModel):
         if params.get("Filter") is not None:
             self._Filter = AuditLogFilter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = InstanceAuditLogFilters()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17004,6 +17038,91 @@ class InquiryPriceUpgradeInstancesResponse(AbstractModel):
         self._Price = params.get("Price")
         self._OriginalPrice = params.get("OriginalPrice")
         self._RequestId = params.get("RequestId")
+
+
+class InstanceAuditLogFilters(AbstractModel):
+    """审计日志搜索过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 过滤项。目前支持以下搜索条件：
+
+分词搜索：
+sql - SQL语句；
+
+等于、不等于、包含、不包含：
+host - 客户端地址；
+user - 用户名；
+dbName - 数据库名称；
+
+等于、不等于：
+sqlType - SQL类型；
+errCode - 错误码；
+threadId - 线程ID；
+
+范围搜索（时间类型统一为微妙）：
+execTime - 执行时间；
+lockWaitTime - 执行时间；
+ioWaitTime - IO等待时间；
+trxLivingTime - 事物持续时间；
+cpuTime - cpu时间；
+checkRows - 扫描行数；
+affectRows - 影响行数；
+sentRows - 返回行数。
+        :type Type: str
+        :param _Compare: 过滤条件。支持以下条件：
+INC - 包含,
+EXC - 不包含,
+EQS - 等于,
+NEQ - 不等于,
+RA - 范围。
+        :type Compare: str
+        :param _Value: 过滤的值。
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceInfo(AbstractModel):

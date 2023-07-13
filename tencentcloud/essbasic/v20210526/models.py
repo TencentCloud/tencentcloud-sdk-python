@@ -5578,8 +5578,23 @@ class CreateFlowOption(AbstractModel):
         r"""
         :param _CanEditFlow: 是否允许修改合同信息，true-是，false-否
         :type CanEditFlow: bool
+        :param _HideShowFlowName: 是否允许发起合同弹窗隐藏合同名称
+        :type HideShowFlowName: bool
+        :param _HideShowFlowType: 是否允许发起合同弹窗隐藏合同类型
+        :type HideShowFlowType: bool
+        :param _HideShowDeadline: 是否允许发起合同弹窗隐藏合同到期时间
+        :type HideShowDeadline: bool
+        :param _CanSkipAddApprover: 是否允许发起合同步骤跳过指定签署方步骤
+        :type CanSkipAddApprover: bool
+        :param _CustomCreateFlowDescription: 定制化发起合同页合同描述信息
+        :type CustomCreateFlowDescription: str
         """
         self._CanEditFlow = None
+        self._HideShowFlowName = None
+        self._HideShowFlowType = None
+        self._HideShowDeadline = None
+        self._CanSkipAddApprover = None
+        self._CustomCreateFlowDescription = None
 
     @property
     def CanEditFlow(self):
@@ -5589,9 +5604,54 @@ class CreateFlowOption(AbstractModel):
     def CanEditFlow(self, CanEditFlow):
         self._CanEditFlow = CanEditFlow
 
+    @property
+    def HideShowFlowName(self):
+        return self._HideShowFlowName
+
+    @HideShowFlowName.setter
+    def HideShowFlowName(self, HideShowFlowName):
+        self._HideShowFlowName = HideShowFlowName
+
+    @property
+    def HideShowFlowType(self):
+        return self._HideShowFlowType
+
+    @HideShowFlowType.setter
+    def HideShowFlowType(self, HideShowFlowType):
+        self._HideShowFlowType = HideShowFlowType
+
+    @property
+    def HideShowDeadline(self):
+        return self._HideShowDeadline
+
+    @HideShowDeadline.setter
+    def HideShowDeadline(self, HideShowDeadline):
+        self._HideShowDeadline = HideShowDeadline
+
+    @property
+    def CanSkipAddApprover(self):
+        return self._CanSkipAddApprover
+
+    @CanSkipAddApprover.setter
+    def CanSkipAddApprover(self, CanSkipAddApprover):
+        self._CanSkipAddApprover = CanSkipAddApprover
+
+    @property
+    def CustomCreateFlowDescription(self):
+        return self._CustomCreateFlowDescription
+
+    @CustomCreateFlowDescription.setter
+    def CustomCreateFlowDescription(self, CustomCreateFlowDescription):
+        self._CustomCreateFlowDescription = CustomCreateFlowDescription
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
+        self._HideShowFlowName = params.get("HideShowFlowName")
+        self._HideShowFlowType = params.get("HideShowFlowType")
+        self._HideShowDeadline = params.get("HideShowDeadline")
+        self._CanSkipAddApprover = params.get("CanSkipAddApprover")
+        self._CustomCreateFlowDescription = params.get("CustomCreateFlowDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8725,10 +8785,14 @@ CreateFlowsByTemplates 接口不使用此字段。
         :param _ComponentName: 控件的名字，跟ComponentId二选一，不能全为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentName: str
+        :param _LockComponentValue: 是否锁定模版控件值，锁定后无法修改（用于嵌入式发起合同）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockComponentValue: bool
         """
         self._ComponentValue = None
         self._ComponentId = None
         self._ComponentName = None
+        self._LockComponentValue = None
 
     @property
     def ComponentValue(self):
@@ -8754,11 +8818,20 @@ CreateFlowsByTemplates 接口不使用此字段。
     def ComponentName(self, ComponentName):
         self._ComponentName = ComponentName
 
+    @property
+    def LockComponentValue(self):
+        return self._LockComponentValue
+
+    @LockComponentValue.setter
+    def LockComponentValue(self, LockComponentValue):
+        self._LockComponentValue = LockComponentValue
+
 
     def _deserialize(self, params):
         self._ComponentValue = params.get("ComponentValue")
         self._ComponentId = params.get("ComponentId")
         self._ComponentName = params.get("ComponentName")
+        self._LockComponentValue = params.get("LockComponentValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

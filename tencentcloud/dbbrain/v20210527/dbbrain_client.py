@@ -72,6 +72,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseAuditService(self, request):
+        """不用审计日志时，关闭数据库审计
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAuditLogFile(self, request):
         """用于创建云数据库实例的审计日志文件，最多下载600w审计日志。
 
@@ -431,6 +454,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeAllUserGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAllUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditInstanceList(self, request):
+        """查询实例列表
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1107,6 +1153,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAuditService(self, request):
+        """修改审计配置相关信息，如高频存储时长等
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDiagDBInstanceConf(self, request):
         """修改实例巡检开关。
 
@@ -1144,6 +1213,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("ModifySqlFilters", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySqlFiltersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenAuditService(self, request):
+        """开启数据库审计服务
+
+        :param request: Request instance for OpenAuditService.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.OpenAuditServiceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.OpenAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAuditServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

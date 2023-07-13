@@ -378,7 +378,7 @@ class AvailableType(AbstractModel):
         r"""
         :param _Protocols: 协议与售卖详情
         :type Protocols: list of AvailableProtoStatus
-        :param _Type: 存储类型。返回值中 SD 为标准型存储、HP 为性能型存储
+        :param _Type: 存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
         :type Type: str
         :param _Prepayment: 是否支持预付费。返回值中 true 为支持、false 为不支持
         :type Prepayment: bool
@@ -5118,7 +5118,7 @@ class ScaleUpFileSystemRequest(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统Id
         :type FileSystemId: str
-        :param _TargetCapacity: 扩容的目标容量
+        :param _TargetCapacity: 扩容的目标容量（单位GiB）
         :type TargetCapacity: int
         """
         self._FileSystemId = None
@@ -5163,7 +5163,7 @@ class ScaleUpFileSystemResponse(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统Id
         :type FileSystemId: str
-        :param _TargetCapacity: 扩容的目标容量
+        :param _TargetCapacity: 扩容的目标容量（单位GiB）
         :type TargetCapacity: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

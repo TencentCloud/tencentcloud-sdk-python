@@ -21929,6 +21929,15 @@ class Route(AbstractModel):
         :param _DeleteTimestamp: 时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteTimestamp: str
+        :param _Subnet: 子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subnet: str
+        :param _BrokerVipList: 虚拟IP列表(1对1 broker节点)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerVipList: list of VipEntity
+        :param _VpcId: vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
         """
         self._AccessType = None
         self._RouteId = None
@@ -21937,6 +21946,9 @@ class Route(AbstractModel):
         self._Domain = None
         self._DomainPort = None
         self._DeleteTimestamp = None
+        self._Subnet = None
+        self._BrokerVipList = None
+        self._VpcId = None
 
     @property
     def AccessType(self):
@@ -21994,6 +22006,30 @@ class Route(AbstractModel):
     def DeleteTimestamp(self, DeleteTimestamp):
         self._DeleteTimestamp = DeleteTimestamp
 
+    @property
+    def Subnet(self):
+        return self._Subnet
+
+    @Subnet.setter
+    def Subnet(self, Subnet):
+        self._Subnet = Subnet
+
+    @property
+    def BrokerVipList(self):
+        return self._BrokerVipList
+
+    @BrokerVipList.setter
+    def BrokerVipList(self, BrokerVipList):
+        self._BrokerVipList = BrokerVipList
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -22008,6 +22044,14 @@ class Route(AbstractModel):
         self._Domain = params.get("Domain")
         self._DomainPort = params.get("DomainPort")
         self._DeleteTimestamp = params.get("DeleteTimestamp")
+        self._Subnet = params.get("Subnet")
+        if params.get("BrokerVipList") is not None:
+            self._BrokerVipList = []
+            for item in params.get("BrokerVipList"):
+                obj = VipEntity()
+                obj._deserialize(item)
+                self._BrokerVipList.append(obj)
+        self._VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

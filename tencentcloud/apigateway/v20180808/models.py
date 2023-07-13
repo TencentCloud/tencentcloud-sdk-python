@@ -9573,10 +9573,14 @@ req_t：”>=“ 、 ”<=“
 
     @property
     def LogQuerys(self):
+        warnings.warn("parameter `LogQuerys` is deprecated", DeprecationWarning) 
+
         return self._LogQuerys
 
     @LogQuerys.setter
     def LogQuerys(self, LogQuerys):
+        warnings.warn("parameter `LogQuerys` is deprecated", DeprecationWarning) 
+
         self._LogQuerys = LogQuerys
 
 
