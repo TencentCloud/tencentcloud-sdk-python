@@ -5083,10 +5083,10 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterCIDRSettings: 集群容器网络配置信息
-        :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
         :param _ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
         :type ClusterType: str
+        :param _ClusterCIDRSettings: 集群容器网络配置信息
+        :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
         :param _RunInstancesForNode: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
         :type RunInstancesForNode: list of RunInstancesForNode
         :param _ClusterBasicSettings: 集群的基本配置信息
@@ -5102,8 +5102,8 @@ class CreateClusterRequest(AbstractModel):
         :param _ExtensionAddons: 需要安装的扩展组件信息
         :type ExtensionAddons: list of ExtensionAddon
         """
-        self._ClusterCIDRSettings = None
         self._ClusterType = None
+        self._ClusterCIDRSettings = None
         self._RunInstancesForNode = None
         self._ClusterBasicSettings = None
         self._ClusterAdvancedSettings = None
@@ -5113,20 +5113,20 @@ class CreateClusterRequest(AbstractModel):
         self._ExtensionAddons = None
 
     @property
-    def ClusterCIDRSettings(self):
-        return self._ClusterCIDRSettings
-
-    @ClusterCIDRSettings.setter
-    def ClusterCIDRSettings(self, ClusterCIDRSettings):
-        self._ClusterCIDRSettings = ClusterCIDRSettings
-
-    @property
     def ClusterType(self):
         return self._ClusterType
 
     @ClusterType.setter
     def ClusterType(self, ClusterType):
         self._ClusterType = ClusterType
+
+    @property
+    def ClusterCIDRSettings(self):
+        return self._ClusterCIDRSettings
+
+    @ClusterCIDRSettings.setter
+    def ClusterCIDRSettings(self, ClusterCIDRSettings):
+        self._ClusterCIDRSettings = ClusterCIDRSettings
 
     @property
     def RunInstancesForNode(self):
@@ -5186,10 +5186,10 @@ class CreateClusterRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ClusterType = params.get("ClusterType")
         if params.get("ClusterCIDRSettings") is not None:
             self._ClusterCIDRSettings = ClusterCIDRSettings()
             self._ClusterCIDRSettings._deserialize(params.get("ClusterCIDRSettings"))
-        self._ClusterType = params.get("ClusterType")
         if params.get("RunInstancesForNode") is not None:
             self._RunInstancesForNode = []
             for item in params.get("RunInstancesForNode"):

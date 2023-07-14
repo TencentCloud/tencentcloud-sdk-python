@@ -1230,9 +1230,9 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _EmbedType: WEB嵌入资源类型。
 CREATE_SEAL: 创建印章
-CREATE_TEMPLATE：创建模版
-MODIFY_TEMPLATE：修改模版
-PREVIEW_TEMPLATE：预览模版
+CREATE_TEMPLATE：创建模板
+MODIFY_TEMPLATE：修改模板
+PREVIEW_TEMPLATE：预览模板
 PREVIEW_FLOW：预览合同文档
 PREVIEW_FLOW_DETAIL：预览合同详情
 PREVIEW_SEAL_LIST：预览印章列表
@@ -1240,7 +1240,7 @@ PREVIEW_SEAL_DETAIL：预览印章详情
 EXTEND_SERVICE：扩展服务
         :type EmbedType: str
         :param _BusinessId: WEB嵌入的业务资源ID
-EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模版id
+EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模板id
 PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时必填，取值为合同id
 PREVIEW_SEAL_DETAIL，必填，取值为印章id
         :type BusinessId: str
@@ -5578,15 +5578,15 @@ class CreateFlowOption(AbstractModel):
         r"""
         :param _CanEditFlow: 是否允许修改合同信息，true-是，false-否
         :type CanEditFlow: bool
-        :param _HideShowFlowName: 是否允许发起合同弹窗隐藏合同名称
+        :param _HideShowFlowName: 是否允许发起合同弹窗隐藏合同名称，true-允许，false-不允许
         :type HideShowFlowName: bool
-        :param _HideShowFlowType: 是否允许发起合同弹窗隐藏合同类型
+        :param _HideShowFlowType: 是否允许发起合同弹窗隐藏合同类型，true-允许，false-不允许
         :type HideShowFlowType: bool
-        :param _HideShowDeadline: 是否允许发起合同弹窗隐藏合同到期时间
+        :param _HideShowDeadline: 是否允许发起合同弹窗隐藏合同到期时间，true-允许，false-不允许
         :type HideShowDeadline: bool
-        :param _CanSkipAddApprover: 是否允许发起合同步骤跳过指定签署方步骤
+        :param _CanSkipAddApprover: 是否允许发起合同步骤跳过指定签署方步骤，true-允许，false-不允许
         :type CanSkipAddApprover: bool
-        :param _CustomCreateFlowDescription: 定制化发起合同页合同描述信息
+        :param _CustomCreateFlowDescription: 定制化发起合同弹窗的描述信息，描述信息最长500
         :type CustomCreateFlowDescription: str
         """
         self._CanEditFlow = None
@@ -7714,8 +7714,8 @@ HANDWRITE -手写签名
 - 发起流程时系统自动补充
 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
         :type SignId: str
-        :param _NotifyType: SMS: 短信; NONE: 不发信息
-默认为SMS(该字段对子客无效)
+        :param _NotifyType: SMS: 短信(需确保“电子签短信通知签署方”功能是开启状态才能生效); NONE: 不发信息
+默认为SMS(签署方为子客时该字段不生效)
         :type NotifyType: str
         """
         self._Name = None
@@ -8785,7 +8785,7 @@ CreateFlowsByTemplates 接口不使用此字段。
         :param _ComponentName: 控件的名字，跟ComponentId二选一，不能全为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentName: str
-        :param _LockComponentValue: 是否锁定模版控件值，锁定后无法修改（用于嵌入式发起合同）
+        :param _LockComponentValue: 是否锁定模版控件值，锁定后无法修改（用于嵌入式发起合同），true-锁定，false-不锁定
 注意：此字段可能返回 null，表示取不到有效值。
         :type LockComponentValue: bool
         """
@@ -9344,7 +9344,7 @@ class OperateChannelTemplateResponse(AbstractModel):
         :param _TemplateId: 第三方应用平台模板库模板唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
-        :param _OperateResult: 描述模版可见性更改的结果，和参数中Available无关，全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示。
+        :param _OperateResult: 描述模板可见性更改的结果，和参数中Available无关，全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateResult: str
         :param _AuthTag: 模板可见性, 全部可见-"all", 部分可见-"part"

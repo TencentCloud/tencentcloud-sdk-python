@@ -1097,7 +1097,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeIPStrategysStatus(self, request):
-        """本接口（DescribeIPStrategysStatus）用于查询服务IP策略列表。
+        """本接口（DescribeIPStrategysStatus）用于查询服务IP策略列表，因为接口名拼写错误，已不推荐使用，请优先使用DescribeIPStrategiesStatus接口。
 
         :param request: Request instance for DescribeIPStrategysStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategysStatusRequest`

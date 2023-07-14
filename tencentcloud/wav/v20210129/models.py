@@ -2676,6 +2676,33 @@ class CustomerProfile(AbstractModel):
         :param _ChannelTags: 已为该客户添加的渠道标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelTags: list of ChannelTag
+        :param _LeadId: 关联线索id
+        :type LeadId: int
+        :param _WxId: 客户微信id
+        :type WxId: str
+        :param _Position: 顾问职位
+        :type Position: str
+        :param _IsBindWx: 是否关联微信 1 是 0 否
+        :type IsBindWx: int
+        :param _IsInvalid: 是否无效
+        :type IsInvalid: int
+        :param _InvalidType: 无效类型
+        :type InvalidType: str
+        :param _InvalidTypeName: 无效类型名称
+        :type InvalidTypeName: str
+        :param _InvalidTime: 无效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvalidTime: int
+        :param _InvalidRemark: 由顾问手动输入的无效原因文字
+        :type InvalidRemark: str
+        :param _IsLose: 线索是否战败
+        :type IsLose: int
+        :param _LoseType: 战败类型
+        :type LoseType: str
+        :param _LoseTypeName: 战败类型名称
+        :type LoseTypeName: str
+        :param _LoseRemark: 战败申请原因
+        :type LoseRemark: str
         """
         self._CustomerId = None
         self._DealerCode = None
@@ -2716,6 +2743,19 @@ class CustomerProfile(AbstractModel):
         self._NextFollowTime = None
         self._EnterpriseTags = None
         self._ChannelTags = None
+        self._LeadId = None
+        self._WxId = None
+        self._Position = None
+        self._IsBindWx = None
+        self._IsInvalid = None
+        self._InvalidType = None
+        self._InvalidTypeName = None
+        self._InvalidTime = None
+        self._InvalidRemark = None
+        self._IsLose = None
+        self._LoseType = None
+        self._LoseTypeName = None
+        self._LoseRemark = None
 
     @property
     def CustomerId(self):
@@ -3029,6 +3069,110 @@ class CustomerProfile(AbstractModel):
     def ChannelTags(self, ChannelTags):
         self._ChannelTags = ChannelTags
 
+    @property
+    def LeadId(self):
+        return self._LeadId
+
+    @LeadId.setter
+    def LeadId(self, LeadId):
+        self._LeadId = LeadId
+
+    @property
+    def WxId(self):
+        return self._WxId
+
+    @WxId.setter
+    def WxId(self, WxId):
+        self._WxId = WxId
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def IsBindWx(self):
+        return self._IsBindWx
+
+    @IsBindWx.setter
+    def IsBindWx(self, IsBindWx):
+        self._IsBindWx = IsBindWx
+
+    @property
+    def IsInvalid(self):
+        return self._IsInvalid
+
+    @IsInvalid.setter
+    def IsInvalid(self, IsInvalid):
+        self._IsInvalid = IsInvalid
+
+    @property
+    def InvalidType(self):
+        return self._InvalidType
+
+    @InvalidType.setter
+    def InvalidType(self, InvalidType):
+        self._InvalidType = InvalidType
+
+    @property
+    def InvalidTypeName(self):
+        return self._InvalidTypeName
+
+    @InvalidTypeName.setter
+    def InvalidTypeName(self, InvalidTypeName):
+        self._InvalidTypeName = InvalidTypeName
+
+    @property
+    def InvalidTime(self):
+        return self._InvalidTime
+
+    @InvalidTime.setter
+    def InvalidTime(self, InvalidTime):
+        self._InvalidTime = InvalidTime
+
+    @property
+    def InvalidRemark(self):
+        return self._InvalidRemark
+
+    @InvalidRemark.setter
+    def InvalidRemark(self, InvalidRemark):
+        self._InvalidRemark = InvalidRemark
+
+    @property
+    def IsLose(self):
+        return self._IsLose
+
+    @IsLose.setter
+    def IsLose(self, IsLose):
+        self._IsLose = IsLose
+
+    @property
+    def LoseType(self):
+        return self._LoseType
+
+    @LoseType.setter
+    def LoseType(self, LoseType):
+        self._LoseType = LoseType
+
+    @property
+    def LoseTypeName(self):
+        return self._LoseTypeName
+
+    @LoseTypeName.setter
+    def LoseTypeName(self, LoseTypeName):
+        self._LoseTypeName = LoseTypeName
+
+    @property
+    def LoseRemark(self):
+        return self._LoseRemark
+
+    @LoseRemark.setter
+    def LoseRemark(self, LoseRemark):
+        self._LoseRemark = LoseRemark
+
 
     def _deserialize(self, params):
         self._CustomerId = params.get("CustomerId")
@@ -3087,6 +3231,19 @@ class CustomerProfile(AbstractModel):
                 obj = ChannelTag()
                 obj._deserialize(item)
                 self._ChannelTags.append(obj)
+        self._LeadId = params.get("LeadId")
+        self._WxId = params.get("WxId")
+        self._Position = params.get("Position")
+        self._IsBindWx = params.get("IsBindWx")
+        self._IsInvalid = params.get("IsInvalid")
+        self._InvalidType = params.get("InvalidType")
+        self._InvalidTypeName = params.get("InvalidTypeName")
+        self._InvalidTime = params.get("InvalidTime")
+        self._InvalidRemark = params.get("InvalidRemark")
+        self._IsLose = params.get("IsLose")
+        self._LoseType = params.get("LoseType")
+        self._LoseTypeName = params.get("LoseTypeName")
+        self._LoseRemark = params.get("LoseRemark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

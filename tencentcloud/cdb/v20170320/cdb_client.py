@@ -896,6 +896,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAuditLogs(self, request):
+        """本接口(DescribeAuditLogs)用于查询数据库审计日志。
+
+        :param request: Request instance for DescribeAuditLogs.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAuditPolicies(self, request):
         """本接口(DescribeAuditPolicies)用于查询云数据库实例的审计策略。
 

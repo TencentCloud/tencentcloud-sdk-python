@@ -735,7 +735,7 @@ class CloseAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
         :type Product: str
         :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
         :type NodeRequestType: str
@@ -2674,7 +2674,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
         :type Product: str
         :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
         :type NodeRequestType: str
@@ -8435,15 +8435,15 @@ class ModifyAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
         :type Product: str
         :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
         :type NodeRequestType: str
         :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _LogExpireDay: 日志保存总时长，只能是7,30,90,180,365,1095,1825
+        :param _LogExpireDay: 日志保存总时长，只能是7,30,90,180,365,1095,1825。
         :type LogExpireDay: int
-        :param _HotLogExpireDay: 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+        :param _HotLogExpireDay: 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
         :type HotLogExpireDay: int
         """
         self._Product = None
@@ -9088,15 +9088,15 @@ class OpenAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 与Product保持一致。如："dcdb" ,"mariadb"。
+        :param _Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
         :type Product: str
         :param _NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"。
         :type NodeRequestType: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _LogExpireDay: 日志保存总时长，只能是7,30,90,180,365,1095,1825
+        :param _LogExpireDay: 日志保存总时长，只能是7,30,90,180,365,1095,1825。
         :type LogExpireDay: int
-        :param _HotLogExpireDay: 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+        :param _HotLogExpireDay: 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
         :type HotLogExpireDay: int
         """
         self._Product = None

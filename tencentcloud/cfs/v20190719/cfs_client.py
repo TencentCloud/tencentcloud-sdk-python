@@ -675,7 +675,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeUserQuota(self, request):
-        """查询文件系统配额
+        """查询文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 
         :param request: Request instance for DescribeUserQuota.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeUserQuotaRequest`

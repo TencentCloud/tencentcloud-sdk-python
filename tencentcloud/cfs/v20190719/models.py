@@ -37,11 +37,11 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type DayOfWeek: str
         :param _Hour: 快照定期备份在一天的哪一小时
         :type Hour: str
-        :param _IsActivated: 是否激活定期快照功能
+        :param _IsActivated: 是否激活定期快照功能,1代表已激活，0代表未激活
         :type IsActivated: int
         :param _NextActiveTime: 下一次触发快照时间
         :type NextActiveTime: str
-        :param _Status: 快照策略状态
+        :param _Status: 快照策略状态，1代表快照策略状态正常。这里只有一种状态
         :type Status: str
         :param _AppId: 帐号ID
         :type AppId: int
@@ -57,7 +57,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :param _IntervalDays: 快照定期间隔天数，1-365 天；该参数与DayOfMonth,DayOfWeek互斥
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntervalDays: int
-        :param _CrossRegionsAliveDays: 跨地域复制的快照保留时间
+        :param _CrossRegionsAliveDays: 跨地域复制的快照保留时间，单位天
         :type CrossRegionsAliveDays: int
         """
         self._AutoSnapshotPolicyId = None
@@ -652,13 +652,13 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Hour: 快照重复时间点
+        :param _Hour: 快照重复时间点,0-23
         :type Hour: str
         :param _PolicyName: 策略名称
         :type PolicyName: str
-        :param _DayOfWeek: 快照重复日期，星期一到星期日
+        :param _DayOfWeek: 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天
         :type DayOfWeek: str
-        :param _AliveDays: 快照保留时长
+        :param _AliveDays: 快照保留时长，单位天
         :type AliveDays: int
         :param _DayOfMonth: 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
         :type DayOfMonth: str
@@ -3598,7 +3598,7 @@ class DescribeUserQuotaRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: Offset 分页码
         :type Offset: int
-        :param _Limit: Limit 页面大小
+        :param _Limit: Limit 页面大小，可填范围为大于0的整数
         :type Limit: int
         """
         self._FileSystemId = None
@@ -3724,11 +3724,11 @@ class FileSystemByPolicy(AbstractModel):
         :type CreationToken: str
         :param _FileSystemId: 文件系统ID
         :type FileSystemId: str
-        :param _SizeByte: 文件系统大小
+        :param _SizeByte: 文件系统大小，单位Byte
         :type SizeByte: int
-        :param _StorageType: 存储类型
+        :param _StorageType: 存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
         :type StorageType: str
-        :param _TotalSnapshotSize: 快照总大小
+        :param _TotalSnapshotSize: 快照总大小，单位GiB
         :type TotalSnapshotSize: int
         :param _CreationTime: 文件系统创建时间
         :type CreationTime: str
@@ -3932,17 +3932,17 @@ class FileSystemInfo(AbstractModel):
 - unserviced:停服中
 - upgrading:升级中
         :type LifeCycleState: str
-        :param _SizeByte: 文件系统已使用容量
+        :param _SizeByte: 文件系统已使用容量,单位Byte
         :type SizeByte: int
-        :param _SizeLimit: 文件系统最大空间限制
+        :param _SizeLimit: 文件系统最大空间限制,GiB
         :type SizeLimit: int
         :param _ZoneId: 区域 ID
         :type ZoneId: int
         :param _Zone: 区域名称
         :type Zone: str
-        :param _Protocol: 文件系统协议类型
+        :param _Protocol: 文件系统协议类型, 支持 NFS,CIFS,TURBO
         :type Protocol: str
-        :param _StorageType: 文件系统存储类型
+        :param _StorageType: 存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
         :type StorageType: str
         :param _StorageResourcePkg: 文件系统绑定的预付费存储包
         :type StorageResourcePkg: str
@@ -3952,19 +3952,21 @@ class FileSystemInfo(AbstractModel):
         :type PGroup: :class:`tencentcloud.cfs.v20190719.models.PGroup`
         :param _FsName: 用户自定义名称
         :type FsName: str
-        :param _Encrypted: 文件系统是否加密
+        :param _Encrypted: 文件系统是否加密,true：代表加密，false：非加密
         :type Encrypted: bool
         :param _KmsKeyId: 加密所使用的密钥，可以为密钥的 ID 或者 ARN
         :type KmsKeyId: str
         :param _AppId: 应用ID
         :type AppId: int
-        :param _BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定
+        :param _BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
         :type BandwidthLimit: float
         :param _Capacity: 文件系统总容量
         :type Capacity: int
         :param _Tags: 文件系统标签列表
         :type Tags: list of TagInfo
         :param _TieringState: 文件系统生命周期管理状态
+NotAvailable：不可用
+Available:可用
         :type TieringState: str
         :param _TieringDetail: 分层存储详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5365,7 +5367,7 @@ class SnapshotInfo(AbstractModel):
         :type SnapshotName: str
         :param _SnapshotId: 快照ID
         :type SnapshotId: str
-        :param _Status: 快照状态
+        :param _Status: 快照状态，createing-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
         :type Status: str
         :param _RegionName: 地域名称
         :type RegionName: str
@@ -5375,7 +5377,7 @@ class SnapshotInfo(AbstractModel):
         :type Size: int
         :param _AliveDay: 保留时长天
         :type AliveDay: int
-        :param _Percent: 快照进度
+        :param _Percent: 快照进度百分比，1表示1%
         :type Percent: int
         :param _AppId: 帐号ID
         :type AppId: int
@@ -5385,10 +5387,10 @@ class SnapshotInfo(AbstractModel):
         :type FsName: str
         :param _Tags: 快照标签
         :type Tags: list of TagInfo
-        :param _SnapshotType: 快照类型
+        :param _SnapshotType: 快照类型, general为通用系列快照，turbo为Turbo系列快照
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotType: str
-        :param _SnapshotTime: 实际快照时间，这里主要是为了标识跨地域复制快照的时间快照时间
+        :param _SnapshotTime: 实际快照时间，反应快照对应文件系统某个时刻的数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotTime: str
         """
@@ -5568,14 +5570,22 @@ class SnapshotOperateLog(AbstractModel):
     def __init__(self):
         r"""
         :param _Action: 操作类型
+CreateCfsSnapshot：创建快照
+DeleteCfsSnapshot：删除快照
+CreateCfsFileSystem：创建文件系统
+UpdateCfsSnapshotAttribute：更新快照
         :type Action: str
         :param _ActionTime: 操作时间
         :type ActionTime: str
         :param _ActionName: 操作名称
+CreateCfsSnapshot
+DeleteCfsSnapshot
+CreateCfsFileSystem
+UpdateCfsSnapshotAttribute
         :type ActionName: str
-        :param _Operator: 操作者
+        :param _Operator: 操作者uin
         :type Operator: str
-        :param _Result: 结果
+        :param _Result: 1-任务进行中；2-任务成功；3-任务失败
         :type Result: int
         """
         self._Action = None
@@ -5952,13 +5962,13 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
         :type AutoSnapshotPolicyId: str
         :param _PolicyName: 快照策略名称
         :type PolicyName: str
-        :param _DayOfWeek: 快照定期备份在一星期哪一天
+        :param _DayOfWeek: 快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日
         :type DayOfWeek: str
         :param _Hour: 快照定期备份在一天的哪一小时
         :type Hour: str
         :param _AliveDays: 快照保留日期
         :type AliveDays: int
-        :param _IsActivated: 是否激活定期快照功能
+        :param _IsActivated: 是否激活定期快照功能；1代表激活，0代表未激活
         :type IsActivated: int
         :param _DayOfMonth: 定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥
         :type DayOfMonth: str

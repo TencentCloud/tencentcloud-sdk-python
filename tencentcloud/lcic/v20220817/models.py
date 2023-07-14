@@ -2923,6 +2923,8 @@ class DescribeDocumentResponse(AbstractModel):
         :type UpdateTime: int
         :param _Pages: 课件页数
         :type Pages: int
+        :param _Preview: 课件预览地址
+        :type Preview: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2941,6 +2943,7 @@ class DescribeDocumentResponse(AbstractModel):
         self._DocumentSize = None
         self._UpdateTime = None
         self._Pages = None
+        self._Preview = None
         self._RequestId = None
 
     @property
@@ -3064,6 +3067,14 @@ class DescribeDocumentResponse(AbstractModel):
         self._Pages = Pages
 
     @property
+    def Preview(self):
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3088,6 +3099,7 @@ class DescribeDocumentResponse(AbstractModel):
         self._DocumentSize = params.get("DocumentSize")
         self._UpdateTime = params.get("UpdateTime")
         self._Pages = params.get("Pages")
+        self._Preview = params.get("Preview")
         self._RequestId = params.get("RequestId")
 
 

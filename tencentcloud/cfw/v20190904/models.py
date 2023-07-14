@@ -1483,6 +1483,114 @@ class CreateAcRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAddressTemplateRequest(AbstractModel):
+    """CreateAddressTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 模板名称
+        :type Name: str
+        :param _Detail: 模板描述
+        :type Detail: str
+        :param _IpString: Type为1，ip模板eg：1.1.1.1,2.2.2.2；
+Type为5，域名模板eg：www.qq.com,www.tencent.com
+        :type IpString: str
+        :param _Type: 1 ip模板
+5 域名模板
+        :type Type: int
+        """
+        self._Name = None
+        self._Detail = None
+        self._IpString = None
+        self._Type = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def IpString(self):
+        return self._IpString
+
+    @IpString.setter
+    def IpString(self, IpString):
+        self._IpString = IpString
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Detail = params.get("Detail")
+        self._IpString = params.get("IpString")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAddressTemplateResponse(AbstractModel):
+    """CreateAddressTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 创建结果,0成功
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateChooseVpcsRequest(AbstractModel):
     """CreateChooseVpcs请求参数结构体
 
@@ -2567,6 +2675,76 @@ class DeleteAcRuleResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._Info = params.get("Info")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAddressTemplateRequest(AbstractModel):
+    """DeleteAddressTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uuid: 模板id
+        :type Uuid: str
+        """
+        self._Uuid = None
+
+    @property
+    def Uuid(self):
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+
+    def _deserialize(self, params):
+        self._Uuid = params.get("Uuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAddressTemplateResponse(AbstractModel):
+    """DeleteAddressTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 删除结果,0成功
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

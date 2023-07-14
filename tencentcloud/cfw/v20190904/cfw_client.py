@@ -118,6 +118,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAddressTemplate(self, request):
+        """创建地址模板规则
+
+        :param request: Request instance for CreateAddressTemplate.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAddressTemplateRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateAddressTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAddressTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAddressTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateChooseVpcs(self, request):
         """创建、选择vpc
 
@@ -247,6 +270,29 @@ class CfwClient(AbstractClient):
             body = self.call("DeleteAcRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAcRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAddressTemplate(self, request):
+        """删除地址模板规则
+
+        :param request: Request instance for DeleteAddressTemplate.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAddressTemplateRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteAddressTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAddressTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAddressTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -737,7 +737,7 @@ class ApiEnvironmentStrategy(AbstractModel):
         
 
 
-class ApiEnvironmentStrategyStataus(AbstractModel):
+class ApiEnvironmentStrategyStatus(AbstractModel):
     """API绑定策略列表
 
     """
@@ -7793,7 +7793,7 @@ class DescribeApiEnvironmentStrategyResponse(AbstractModel):
         r"""
         :param _Result: api绑定策略详情
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiEnvironmentStrategyStataus`
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiEnvironmentStrategyStatus`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7819,7 +7819,7 @@ class DescribeApiEnvironmentStrategyResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self._Result = ApiEnvironmentStrategyStataus()
+            self._Result = ApiEnvironmentStrategyStatus()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -9430,7 +9430,7 @@ class DescribeIPStrategysStatusResponse(AbstractModel):
         r"""
         :param _Result: 符合条件的策略列表。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategysStatus`
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategiesStatus`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9456,7 +9456,7 @@ class DescribeIPStrategysStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self._Result = IPStrategysStatus()
+            self._Result = IPStrategiesStatus()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -13272,6 +13272,58 @@ class HealthCheckConf(AbstractModel):
         
 
 
+class IPStrategiesStatus(AbstractModel):
+    """策略列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 策略数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _StrategySet: 策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategySet: list of IPStrategy
+        """
+        self._TotalCount = None
+        self._StrategySet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def StrategySet(self):
+        return self._StrategySet
+
+    @StrategySet.setter
+    def StrategySet(self, StrategySet):
+        self._StrategySet = StrategySet
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("StrategySet") is not None:
+            self._StrategySet = []
+            for item in params.get("StrategySet"):
+                obj = IPStrategy()
+                obj._deserialize(item)
+                self._StrategySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IPStrategy(AbstractModel):
     """ip策略
 
@@ -13562,58 +13614,6 @@ class IPStrategyApiStatus(AbstractModel):
                 obj = IPStrategyApi()
                 obj._deserialize(item)
                 self._ApiIdStatusSet.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class IPStrategysStatus(AbstractModel):
-    """策略列表
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 策略数量。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param _StrategySet: 策略列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StrategySet: list of IPStrategy
-        """
-        self._TotalCount = None
-        self._StrategySet = None
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def StrategySet(self):
-        return self._StrategySet
-
-    @StrategySet.setter
-    def StrategySet(self, StrategySet):
-        self._StrategySet = StrategySet
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("StrategySet") is not None:
-            self._StrategySet = []
-            for item in params.get("StrategySet"):
-                obj = IPStrategy()
-                obj._deserialize(item)
-                self._StrategySet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
