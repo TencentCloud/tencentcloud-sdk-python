@@ -2524,6 +2524,90 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreateOrganizationModifyQrCodeRequest(AbstractModel):
+    """ChannelCreateOrganizationModifyQrCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 应用相关信息。 此接口Agent.AppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self._Agent = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
+    """ChannelCreateOrganizationModifyQrCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QrCodeUrl: 二维码下载链接
+        :type QrCodeUrl: str
+        :param _ExpiredTime: 二维码失效时间 UNIX 时间戳 精确到秒
+        :type ExpiredTime: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QrCodeUrl = None
+        self._ExpiredTime = None
+        self._RequestId = None
+
+    @property
+    def QrCodeUrl(self):
+        return self._QrCodeUrl
+
+    @QrCodeUrl.setter
+    def QrCodeUrl(self, QrCodeUrl):
+        self._QrCodeUrl = QrCodeUrl
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QrCodeUrl = params.get("QrCodeUrl")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreatePrepareFlowRequest(AbstractModel):
     """ChannelCreatePrepareFlow请求参数结构体
 
@@ -7693,8 +7777,11 @@ ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         :type CallbackUrl: str
         :param _SignComponents: 使用PDF文件直接发起合同时，签署人指定的签署控件
         :type SignComponents: list of Component
-        :param _ComponentLimitType: 个人签署方指定签署控件类型，目前支持：OCR_ESIGN -AI智慧手写签名
-HANDWRITE -手写签名
+        :param _ComponentLimitType: 	签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
+	HANDWRITE – 手写签名
+	OCR_ESIGN -- AI智能识别手写签名
+	ESIGN -- 个人印章类型
+	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
         :type ComponentLimitType: list of str
         :param _PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int

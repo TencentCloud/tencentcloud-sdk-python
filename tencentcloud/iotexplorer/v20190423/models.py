@@ -4499,6 +4499,12 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         :param _OriginalVersion: 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalVersion: str
+        :param _CreateUserId: 创建账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserId: int
+        :param _CreatorNickName: 创建账号ID昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorNickName: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4510,6 +4516,8 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._UpgradeMode = None
         self._ProductId = None
         self._OriginalVersion = None
+        self._CreateUserId = None
+        self._CreatorNickName = None
         self._RequestId = None
 
     @property
@@ -4577,6 +4585,22 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._OriginalVersion = OriginalVersion
 
     @property
+    def CreateUserId(self):
+        return self._CreateUserId
+
+    @CreateUserId.setter
+    def CreateUserId(self, CreateUserId):
+        self._CreateUserId = CreateUserId
+
+    @property
+    def CreatorNickName(self):
+        return self._CreatorNickName
+
+    @CreatorNickName.setter
+    def CreatorNickName(self, CreatorNickName):
+        self._CreatorNickName = CreatorNickName
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4594,6 +4618,8 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._UpgradeMode = params.get("UpgradeMode")
         self._ProductId = params.get("ProductId")
         self._OriginalVersion = params.get("OriginalVersion")
+        self._CreateUserId = params.get("CreateUserId")
+        self._CreatorNickName = params.get("CreatorNickName")
         self._RequestId = params.get("RequestId")
 
 

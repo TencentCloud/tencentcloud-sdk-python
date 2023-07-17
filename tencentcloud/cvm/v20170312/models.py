@@ -9416,6 +9416,9 @@ class Instance(AbstractModel):
         :param _RdmaIpAddresses: 高性能计算集群`IP`列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RdmaIpAddresses: list of str
+        :param _DedicatedClusterId: 实例所在的专用集群`ID`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DedicatedClusterId: str
         :param _IsolatedSource: 实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedSource: str
@@ -9467,6 +9470,7 @@ class Instance(AbstractModel):
         self._CamRoleName = None
         self._HpcClusterId = None
         self._RdmaIpAddresses = None
+        self._DedicatedClusterId = None
         self._IsolatedSource = None
         self._GPUInfo = None
         self._LicenseType = None
@@ -9740,6 +9744,14 @@ class Instance(AbstractModel):
         self._RdmaIpAddresses = RdmaIpAddresses
 
     @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
     def IsolatedSource(self):
         return self._IsolatedSource
 
@@ -9850,6 +9862,7 @@ class Instance(AbstractModel):
         self._CamRoleName = params.get("CamRoleName")
         self._HpcClusterId = params.get("HpcClusterId")
         self._RdmaIpAddresses = params.get("RdmaIpAddresses")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._IsolatedSource = params.get("IsolatedSource")
         if params.get("GPUInfo") is not None:
             self._GPUInfo = GPUInfo()

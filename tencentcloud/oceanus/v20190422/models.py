@@ -3000,6 +3000,234 @@ class DescribeJobSavepointResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJobSubmissionLogRequest(AbstractModel):
+    """DescribeJobSubmissionLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业ID，例如：cql-6v1jkxrn
+        :type JobId: str
+        :param _StartTime: 起始时间，unix时间戳，毫秒级，例如：1611754219108
+        :type StartTime: int
+        :param _EndTime: 结束时间，unix时间戳，毫秒级，例如：1611754219108
+        :type EndTime: int
+        :param _RunningOrderId: 作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+        :type RunningOrderId: int
+        :param _Keyword: 日志搜索的关键词，默认为空
+        :type Keyword: str
+        :param _Cursor: 日志搜索的游标，可透传上次返回的值，默认为空
+        :type Cursor: str
+        :param _OrderType: 时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+        :type OrderType: str
+        :param _Limit: 搜索的日志条数上限值，最大为100
+        :type Limit: int
+        """
+        self._JobId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RunningOrderId = None
+        self._Keyword = None
+        self._Cursor = None
+        self._OrderType = None
+        self._Limit = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RunningOrderId(self):
+        return self._RunningOrderId
+
+    @RunningOrderId.setter
+    def RunningOrderId(self, RunningOrderId):
+        self._RunningOrderId = RunningOrderId
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Cursor(self):
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RunningOrderId = params.get("RunningOrderId")
+        self._Keyword = params.get("Keyword")
+        self._Cursor = params.get("Cursor")
+        self._OrderType = params.get("OrderType")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobSubmissionLogResponse(AbstractModel):
+    """DescribeJobSubmissionLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cursor: 日志搜索的游标，需要搜索更多时透传这个值
+        :type Cursor: str
+        :param _ListOver: 是否返回了所有的日志记录
+        :type ListOver: bool
+        :param _JobRequestId: 作业启动的requestId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobRequestId: str
+        :param _JobInstanceList: 该时间段内符合关键字的所有的作业实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobInstanceList: list of JobInstanceForSubmissionLog
+        :param _LogList: 废弃，请使用LogContentList
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogList: list of str
+        :param _LogContentList: 日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogContentList: list of LogContent
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Cursor = None
+        self._ListOver = None
+        self._JobRequestId = None
+        self._JobInstanceList = None
+        self._LogList = None
+        self._LogContentList = None
+        self._RequestId = None
+
+    @property
+    def Cursor(self):
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def ListOver(self):
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def JobRequestId(self):
+        return self._JobRequestId
+
+    @JobRequestId.setter
+    def JobRequestId(self, JobRequestId):
+        self._JobRequestId = JobRequestId
+
+    @property
+    def JobInstanceList(self):
+        return self._JobInstanceList
+
+    @JobInstanceList.setter
+    def JobInstanceList(self, JobInstanceList):
+        self._JobInstanceList = JobInstanceList
+
+    @property
+    def LogList(self):
+        return self._LogList
+
+    @LogList.setter
+    def LogList(self, LogList):
+        self._LogList = LogList
+
+    @property
+    def LogContentList(self):
+        return self._LogContentList
+
+    @LogContentList.setter
+    def LogContentList(self, LogContentList):
+        self._LogContentList = LogContentList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Cursor = params.get("Cursor")
+        self._ListOver = params.get("ListOver")
+        self._JobRequestId = params.get("JobRequestId")
+        if params.get("JobInstanceList") is not None:
+            self._JobInstanceList = []
+            for item in params.get("JobInstanceList"):
+                obj = JobInstanceForSubmissionLog()
+                obj._deserialize(item)
+                self._JobInstanceList.append(obj)
+        self._LogList = params.get("LogList")
+        if params.get("LogContentList") is not None:
+            self._LogContentList = []
+            for item in params.get("LogContentList"):
+                obj = LogContent()
+                obj._deserialize(item)
+                self._LogContentList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeJobsRequest(AbstractModel):
     """DescribeJobs请求参数结构体
 
@@ -4524,6 +4752,63 @@ class JobConfig(AbstractModel):
         
 
 
+class JobInstanceForSubmissionLog(AbstractModel):
+    """搜索启动日志时返回的作业实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunningOrderId: 实例的Id, 按照启动的时间顺序，从1开始
+        :type RunningOrderId: int
+        :param _JobInstanceStartTime: 作业实例的启动时间
+        :type JobInstanceStartTime: str
+        :param _StartingMillis: 作业实例启动的时间（毫秒）
+        :type StartingMillis: int
+        """
+        self._RunningOrderId = None
+        self._JobInstanceStartTime = None
+        self._StartingMillis = None
+
+    @property
+    def RunningOrderId(self):
+        return self._RunningOrderId
+
+    @RunningOrderId.setter
+    def RunningOrderId(self, RunningOrderId):
+        self._RunningOrderId = RunningOrderId
+
+    @property
+    def JobInstanceStartTime(self):
+        return self._JobInstanceStartTime
+
+    @JobInstanceStartTime.setter
+    def JobInstanceStartTime(self, JobInstanceStartTime):
+        self._JobInstanceStartTime = JobInstanceStartTime
+
+    @property
+    def StartingMillis(self):
+        return self._StartingMillis
+
+    @StartingMillis.setter
+    def StartingMillis(self, StartingMillis):
+        self._StartingMillis = StartingMillis
+
+
+    def _deserialize(self, params):
+        self._RunningOrderId = params.get("RunningOrderId")
+        self._JobInstanceStartTime = params.get("JobInstanceStartTime")
+        self._StartingMillis = params.get("StartingMillis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobV1(AbstractModel):
     """Job详细信息
 
@@ -4956,6 +5241,91 @@ class JobV1(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogContent(AbstractModel):
+    """日志查询的每行日志信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Log: 日志内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Log: str
+        :param _Time: 毫秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: int
+        :param _PkgId: 日志组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgId: str
+        :param _PkgLogId: 日志Id，在日志组范围里唯一
+        :type PkgLogId: int
+        :param _ContainerName: 日志所属的容器名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        """
+        self._Log = None
+        self._Time = None
+        self._PkgId = None
+        self._PkgLogId = None
+        self._ContainerName = None
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def PkgId(self):
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def PkgLogId(self):
+        return self._PkgLogId
+
+    @PkgLogId.setter
+    def PkgLogId(self, PkgLogId):
+        self._PkgLogId = PkgLogId
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+
+    def _deserialize(self, params):
+        self._Log = params.get("Log")
+        self._Time = params.get("Time")
+        self._PkgId = params.get("PkgId")
+        self._PkgLogId = params.get("PkgLogId")
+        self._ContainerName = params.get("ContainerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

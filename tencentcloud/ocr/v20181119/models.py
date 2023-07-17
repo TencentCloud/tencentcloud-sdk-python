@@ -7175,7 +7175,7 @@ FailedOperation.UnKnowError：表示识别失败；
 16：全电发票
 17：医疗发票
         :type Type: int
-        :param _Polygon: 旋转后的图片四点坐标。
+        :param _Polygon: 该发票在原图片中的四点坐标。
         :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         :param _Angle: 识别出的图片在混贴票据图片中的旋转角度。
         :type Angle: float

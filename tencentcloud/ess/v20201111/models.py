@@ -9609,6 +9609,16 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type SignId: str
         :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。
         :type ApproverNeedSignReview: bool
+        :param _SignComponents: 签署人签署控件
+        :type SignComponents: list of Component
+        :param _Components: 签署人填写控件
+        :type Components: list of Component
+        :param _ComponentLimitType: 签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
+	HANDWRITE – 手写签名
+	OCR_ESIGN -- AI智能识别手写签名
+	ESIGN -- 个人印章类型
+	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
+        :type ComponentLimitType: list of str
         """
         self._ApproverType = None
         self._OrganizationName = None
@@ -9630,6 +9640,9 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self._JumpUrl = None
         self._SignId = None
         self._ApproverNeedSignReview = None
+        self._SignComponents = None
+        self._Components = None
+        self._ComponentLimitType = None
 
     @property
     def ApproverType(self):
@@ -9795,6 +9808,30 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
     def ApproverNeedSignReview(self, ApproverNeedSignReview):
         self._ApproverNeedSignReview = ApproverNeedSignReview
 
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def ComponentLimitType(self):
+        return self._ComponentLimitType
+
+    @ComponentLimitType.setter
+    def ComponentLimitType(self, ComponentLimitType):
+        self._ComponentLimitType = ComponentLimitType
+
 
     def _deserialize(self, params):
         self._ApproverType = params.get("ApproverType")
@@ -9821,6 +9858,19 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self._JumpUrl = params.get("JumpUrl")
         self._SignId = params.get("SignId")
         self._ApproverNeedSignReview = params.get("ApproverNeedSignReview")
+        if params.get("SignComponents") is not None:
+            self._SignComponents = []
+            for item in params.get("SignComponents"):
+                obj = Component()
+                obj._deserialize(item)
+                self._SignComponents.append(obj)
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = Component()
+                obj._deserialize(item)
+                self._Components.append(obj)
+        self._ComponentLimitType = params.get("ComponentLimitType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

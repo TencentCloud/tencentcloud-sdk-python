@@ -717,7 +717,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupFiles(self, request):
-        """本接口(DescribeBackupFiles)用于在非打包备份模式下单个库对应的备份文件
+        """本接口(DescribeBackupFiles)用于查询单库备份明细
 
         :param request: Request instance for DescribeBackupFiles.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesRequest`

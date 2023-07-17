@@ -993,7 +993,9 @@ class IotClient(AbstractClient):
 
 
     def UnassociateSubDeviceFromGatewayProduct(self, request):
-        """取消子设备产品与网关设备产品的关联
+        """业务无客户使用，下线接口。
+
+        取消子设备产品与网关设备产品的关联
 
         :param request: Request instance for UnassociateSubDeviceFromGatewayProduct.
         :type request: :class:`tencentcloud.iot.v20180123.models.UnassociateSubDeviceFromGatewayProductRequest`

@@ -50,7 +50,7 @@ class FmuClient(AbstractClient):
 
 
     def BeautifyVideo(self, request):
-        """视频美颜
+        """视频美颜(此接口目前已下线)
 
         :param request: Request instance for BeautifyVideo.
         :type request: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoRequest`

@@ -3847,7 +3847,7 @@ class DescribeInstancesListRequest(AbstractModel):
         :type Limit: int
         :param _OrderField: 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
         :type OrderField: str
-        :param _Asc: 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+        :param _Asc: 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
         :type Asc: int
         :param _Filters: 自定义查询
         :type Filters: list of Filters
@@ -4004,7 +4004,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param _ProjectId: 建议必填-1，表示拉取所有项目下的集群。
 不填默认值为0，表示拉取默认项目下的集群。
-实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的 projectId 字段来获取。
+实例所属项目ID。该参数可以通过调用 [DescribeProjects](https://cloud.tencent.com/document/product/651/78725) 的返回值中的 projectId 字段来获取。
         :type ProjectId: int
         :param _OrderField: 排序字段。取值范围：
 <li>clusterId：表示按照实例ID排序。</li>
@@ -4013,7 +4013,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type OrderField: str
         :param _Asc: 按照OrderField升序或者降序进行排序。取值范围：
 <li>0：表示降序。</li>
-<li>1：表示升序。</li>默认值为0。
+<li>1：表示升序。</li>默认值为0。
         :type Asc: int
         """
         self._DisplayStrategy = None
@@ -6322,7 +6322,7 @@ class InquirePriceRenewEmrRequest(AbstractModel):
 <li>m：表示月份。</li>
         :type TimeUnit: str
         :param _Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+<li>CNY：表示人民币。</li>
         :type Currency: str
         """
         self._TimeSpan = None
@@ -6414,7 +6414,7 @@ class InquirePriceRenewEmrResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountCost: float
         :param _TimeUnit: 实例续费的时间单位。取值范围：
-<li>m：表示月份。</li>
+<li>m：表示月份。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _TimeSpan: 实例续费的时长。
@@ -6494,7 +6494,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
         :param _Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+<li>CNY：表示人民币。</li>
         :type Currency: str
         :param _PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
@@ -6760,7 +6760,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
         :type DiscountCost: float
         :param _TimeUnit: 购买实例的时间单位。取值范围：
 <li>s：表示秒。</li>
-<li>m：表示月份。</li>
+<li>m：表示月份。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _TimeSpan: 购买实例的时长。
@@ -6851,7 +6851,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         r"""
         :param _TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
         :type TimeSpan: int
-        :param _ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
+        :param _ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
         :type ResourceIds: list of str
         :param _Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
@@ -6861,7 +6861,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 <li>m：表示月份。</li>
         :type TimeUnit: str
         :param _Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+<li>CNY：表示人民币。</li>
         :type Currency: str
         :param _ModifyPayMode: 是否按量转包年包月。0：否，1：是。
         :type ModifyPayMode: int
@@ -6965,7 +6965,7 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountCost: float
         :param _TimeUnit: 实例续费的时间单位。取值范围：
-<li>m：表示月份。</li>
+<li>m：表示月份。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _TimeSpan: 实例续费的时长。
@@ -7057,7 +7057,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         :param _TaskCount: 扩容的Task节点数量。
         :type TaskCount: int
         :param _Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+<li>CNY：表示人民币。</li>
         :type Currency: str
         :param _RouterCount: 扩容的Router节点数量。
         :type RouterCount: int
@@ -7192,7 +7192,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
         :type DiscountCost: str
         :param _Unit: 扩容的时间单位。取值范围：
 <li>s：表示秒。</li>
-<li>m：表示月份。</li>
+<li>m：表示月份。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _PriceSpec: 询价的节点规格。
@@ -8235,10 +8235,13 @@ class MultiDisk(AbstractModel):
 <li>CLOUD_SSD：表示云SSD。</li>
 <li>CLOUD_PREMIUM：表示高效云盘。</li>
 <li>CLOUD_HSSD：表示增强型SSD云硬盘。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param _Volume: 云盘大小
+注意：此字段可能返回 null，表示取不到有效值。
         :type Volume: int
         :param _Count: 该类型云盘个数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
         self._DiskType = None
@@ -13570,7 +13573,7 @@ class TerminateTasksRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _ResourceIds: 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
+        :param _ResourceIds: 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
         :type ResourceIds: list of str
         """
         self._InstanceId = None

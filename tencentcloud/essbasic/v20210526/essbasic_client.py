@@ -384,6 +384,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateOrganizationModifyQrCode(self, request):
+        """生成渠道子客编辑企业信息二维码
+
+        :param request: Request instance for ChannelCreateOrganizationModifyQrCode.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateOrganizationModifyQrCodeRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateOrganizationModifyQrCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateOrganizationModifyQrCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateOrganizationModifyQrCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCreatePrepareFlow(self, request):
         """创建预发起合同
         通过此接口指定：合同，签署人，填写控件信息，生成预创建合同链接，点击后跳转到web页面完成合同创建并发起

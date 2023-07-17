@@ -348,6 +348,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeJobSubmissionLog(self, request):
+        """查询作业实例启动日志
+
+        :param request: Request instance for DescribeJobSubmissionLog.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobSubmissionLogRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobSubmissionLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobSubmissionLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobSubmissionLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeJobs(self, request):
         """查询作业
 

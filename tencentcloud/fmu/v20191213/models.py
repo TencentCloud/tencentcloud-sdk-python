@@ -1015,11 +1015,14 @@ class QueryBeautifyVideoJobResponse(AbstractModel):
         :param _BeautifyVideoOutput: 视频美颜输出的结果信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeautifyVideoOutput: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoOutput`
+        :param _JobStatusCode: 当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
+        :type JobStatusCode: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobStatus = None
         self._BeautifyVideoOutput = None
+        self._JobStatusCode = None
         self._RequestId = None
 
     @property
@@ -1039,6 +1042,14 @@ class QueryBeautifyVideoJobResponse(AbstractModel):
         self._BeautifyVideoOutput = BeautifyVideoOutput
 
     @property
+    def JobStatusCode(self):
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1052,6 +1063,7 @@ class QueryBeautifyVideoJobResponse(AbstractModel):
         if params.get("BeautifyVideoOutput") is not None:
             self._BeautifyVideoOutput = BeautifyVideoOutput()
             self._BeautifyVideoOutput._deserialize(params.get("BeautifyVideoOutput"))
+        self._JobStatusCode = params.get("JobStatusCode")
         self._RequestId = params.get("RequestId")
 
 

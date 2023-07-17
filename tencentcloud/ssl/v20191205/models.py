@@ -3397,6 +3397,9 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param _EncryptAlgorithm: 证书算法
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptAlgorithm: str
+        :param _DvRevokeAuthDetail: DV证书吊销验证值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DvRevokeAuthDetail: list of DvAuths
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3440,6 +3443,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._CertFingerprint = None
         self._EncryptCertFingerprint = None
         self._EncryptAlgorithm = None
+        self._DvRevokeAuthDetail = None
         self._RequestId = None
 
     @property
@@ -3763,6 +3767,14 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._EncryptAlgorithm = EncryptAlgorithm
 
     @property
+    def DvRevokeAuthDetail(self):
+        return self._DvRevokeAuthDetail
+
+    @DvRevokeAuthDetail.setter
+    def DvRevokeAuthDetail(self, DvRevokeAuthDetail):
+        self._DvRevokeAuthDetail = DvRevokeAuthDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3825,6 +3837,12 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._CertFingerprint = params.get("CertFingerprint")
         self._EncryptCertFingerprint = params.get("EncryptCertFingerprint")
         self._EncryptAlgorithm = params.get("EncryptAlgorithm")
+        if params.get("DvRevokeAuthDetail") is not None:
+            self._DvRevokeAuthDetail = []
+            for item in params.get("DvRevokeAuthDetail"):
+                obj = DvAuths()
+                obj._deserialize(item)
+                self._DvRevokeAuthDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4109,6 +4127,9 @@ class DescribeCertificateResponse(AbstractModel):
         :param _CAEndTimes: CA证书所有的到期时间	
 注意：此字段可能返回 null，表示取不到有效值。
         :type CAEndTimes: list of str
+        :param _DvRevokeAuthDetail: DV证书吊销验证值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DvRevokeAuthDetail: list of DvAuths
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4147,6 +4168,7 @@ class DescribeCertificateResponse(AbstractModel):
         self._CAEncryptAlgorithms = None
         self._CACommonNames = None
         self._CAEndTimes = None
+        self._DvRevokeAuthDetail = None
         self._RequestId = None
 
     @property
@@ -4430,6 +4452,14 @@ class DescribeCertificateResponse(AbstractModel):
         self._CAEndTimes = CAEndTimes
 
     @property
+    def DvRevokeAuthDetail(self):
+        return self._DvRevokeAuthDetail
+
+    @DvRevokeAuthDetail.setter
+    def DvRevokeAuthDetail(self, DvRevokeAuthDetail):
+        self._DvRevokeAuthDetail = DvRevokeAuthDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4485,6 +4515,12 @@ class DescribeCertificateResponse(AbstractModel):
         self._CAEncryptAlgorithms = params.get("CAEncryptAlgorithms")
         self._CACommonNames = params.get("CACommonNames")
         self._CAEndTimes = params.get("CAEndTimes")
+        if params.get("DvRevokeAuthDetail") is not None:
+            self._DvRevokeAuthDetail = []
+            for item in params.get("DvRevokeAuthDetail"):
+                obj = DvAuths()
+                obj._deserialize(item)
+                self._DvRevokeAuthDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 

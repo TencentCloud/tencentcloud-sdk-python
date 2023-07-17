@@ -2271,6 +2271,10 @@ HYBRID_PAID:
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
         :param _CallbackUrl: 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
         :type CallbackUrl: str
+        :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+        :type ModelTurboEnable: bool
+        :param _ServiceCategory: 服务分类
+        :type ServiceCategory: str
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -2299,6 +2303,8 @@ HYBRID_PAID:
         self._VolumeMount = None
         self._ServiceLimit = None
         self._CallbackUrl = None
+        self._ModelTurboEnable = None
+        self._ServiceCategory = None
 
     @property
     def ServiceGroupId(self):
@@ -2516,6 +2522,22 @@ HYBRID_PAID:
     def CallbackUrl(self, CallbackUrl):
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def ModelTurboEnable(self):
+        return self._ModelTurboEnable
+
+    @ModelTurboEnable.setter
+    def ModelTurboEnable(self, ModelTurboEnable):
+        self._ModelTurboEnable = ModelTurboEnable
+
+    @property
+    def ServiceCategory(self):
+        return self._ServiceCategory
+
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2576,6 +2598,8 @@ HYBRID_PAID:
             self._ServiceLimit = ServiceLimit()
             self._ServiceLimit._deserialize(params.get("ServiceLimit"))
         self._CallbackUrl = params.get("CallbackUrl")
+        self._ModelTurboEnable = params.get("ModelTurboEnable")
+        self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7760,10 +7784,21 @@ class DescribeModelServiceHotUpdatedResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ModelTurboFlag: 模型加速标志位.Allowed 允许模型加速. Forbidden 禁止模型加速
+        :type ModelTurboFlag: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ModelTurboFlag = None
         self._RequestId = None
+
+    @property
+    def ModelTurboFlag(self):
+        return self._ModelTurboFlag
+
+    @ModelTurboFlag.setter
+    def ModelTurboFlag(self, ModelTurboFlag):
+        self._ModelTurboFlag = ModelTurboFlag
 
     @property
     def RequestId(self):
@@ -7775,6 +7810,7 @@ class DescribeModelServiceHotUpdatedResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ModelTurboFlag = params.get("ModelTurboFlag")
         self._RequestId = params.get("RequestId")
 
 
@@ -9745,6 +9781,9 @@ class HyperParameter(AbstractModel):
         :param _PipelineArgs: Stable Diffusion 模型优化参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PipelineArgs: str
+        :param _LoraScale: Stable Diffusion 模型优化参数，控制Lora模型的影响效果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoraScale: str
         """
         self._MaxNNZ = None
         self._SlotNum = None
@@ -9754,6 +9793,7 @@ class HyperParameter(AbstractModel):
         self._MinBlockSizePt = None
         self._MinBlockSizeTf = None
         self._PipelineArgs = None
+        self._LoraScale = None
 
     @property
     def MaxNNZ(self):
@@ -9819,6 +9859,14 @@ class HyperParameter(AbstractModel):
     def PipelineArgs(self, PipelineArgs):
         self._PipelineArgs = PipelineArgs
 
+    @property
+    def LoraScale(self):
+        return self._LoraScale
+
+    @LoraScale.setter
+    def LoraScale(self, LoraScale):
+        self._LoraScale = LoraScale
+
 
     def _deserialize(self, params):
         self._MaxNNZ = params.get("MaxNNZ")
@@ -9829,6 +9877,7 @@ class HyperParameter(AbstractModel):
         self._MinBlockSizePt = params.get("MinBlockSizePt")
         self._MinBlockSizeTf = params.get("MinBlockSizeTf")
         self._PipelineArgs = params.get("PipelineArgs")
+        self._LoraScale = params.get("LoraScale")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11013,6 +11062,9 @@ class ModelInfo(AbstractModel):
         :param _ModelType: 默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelType: str
+        :param _ModelFormat: 模型格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelFormat: str
         """
         self._ModelVersionId = None
         self._ModelId = None
@@ -11022,6 +11074,7 @@ class ModelInfo(AbstractModel):
         self._CosPathInfo = None
         self._AlgorithmFramework = None
         self._ModelType = None
+        self._ModelFormat = None
 
     @property
     def ModelVersionId(self):
@@ -11087,6 +11140,14 @@ class ModelInfo(AbstractModel):
     def ModelType(self, ModelType):
         self._ModelType = ModelType
 
+    @property
+    def ModelFormat(self):
+        return self._ModelFormat
+
+    @ModelFormat.setter
+    def ModelFormat(self, ModelFormat):
+        self._ModelFormat = ModelFormat
+
 
     def _deserialize(self, params):
         self._ModelVersionId = params.get("ModelVersionId")
@@ -11099,6 +11160,7 @@ class ModelInfo(AbstractModel):
             self._CosPathInfo._deserialize(params.get("CosPathInfo"))
         self._AlgorithmFramework = params.get("AlgorithmFramework")
         self._ModelType = params.get("ModelType")
+        self._ModelFormat = params.get("ModelFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11328,6 +11390,8 @@ HYBRID_PAID:
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
         :param _VolumeMount: 挂载配置，目前只支持CFS
         :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
+        :type ModelTurboEnable: bool
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -11349,6 +11413,7 @@ HYBRID_PAID:
         self._ScheduledAction = None
         self._ServiceLimit = None
         self._VolumeMount = None
+        self._ModelTurboEnable = None
 
     @property
     def ServiceId(self):
@@ -11510,6 +11575,14 @@ HYBRID_PAID:
     def VolumeMount(self, VolumeMount):
         self._VolumeMount = VolumeMount
 
+    @property
+    def ModelTurboEnable(self):
+        return self._ModelTurboEnable
+
+    @ModelTurboEnable.setter
+    def ModelTurboEnable(self, ModelTurboEnable):
+        self._ModelTurboEnable = ModelTurboEnable
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -11558,6 +11631,7 @@ HYBRID_PAID:
         if params.get("VolumeMount") is not None:
             self._VolumeMount = VolumeMount()
             self._VolumeMount._deserialize(params.get("VolumeMount"))
+        self._ModelTurboEnable = params.get("ModelTurboEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13167,6 +13241,9 @@ class Service(AbstractModel):
         :param _ServiceDescription: 服务描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceDescription: str
+        :param _ServiceInfo: 服务的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceInfo: :class:`tencentcloud.tione.v20211111.models.ServiceInfo`
         :param _ClusterId: 集群id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
@@ -13182,6 +13259,15 @@ class Service(AbstractModel):
         :param _ResourceGroupId: 包年包月服务的资源组id，按量计费的服务为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
+        :param _ResourceGroupName: 包年包月服务对应的资源组名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param _Tags: 服务的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _IngressName: 服务所在的 ingress 的 name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IngressName: str
         :param _CreatedBy: 创建者
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedBy: str
@@ -13200,26 +13286,18 @@ class Service(AbstractModel):
         :param _AppId: app_id
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param _Version: 版本号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Version: str
-        :param _LatestVersion: 服务组下服务的最高版本号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LatestVersion: str
-        :param _ServiceInfo: 服务的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceInfo: :class:`tencentcloud.tione.v20211111.models.ServiceInfo`
         :param _BusinessStatus: 服务的业务状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessStatus: str
-        :param _CreateSource: 服务的创建来源
-AUTO_ML: 来自自动学习的一键发布
-DEFAULT: 其他来源
+        :param _ServiceLimit: 已废弃
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateSource: str
-        :param _BillingInfo: 费用信息
+        :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        :param _ScheduledAction: 已废弃
 注意：此字段可能返回 null，表示取不到有效值。
-        :type BillingInfo: str
+        :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        :param _CreateFailedReason: 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateFailedReason: str
         :param _Status: 服务状态
 CREATING 创建中
 CREATE_FAILED 创建失败
@@ -13231,57 +13309,53 @@ Pending 启动中
 Waiting 就绪中
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _BillingInfo: 费用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingInfo: str
         :param _Weight: 模型权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param _IngressName: 服务所在的 ingress 的 name
+        :param _CreateSource: 服务的创建来源
+AUTO_ML: 来自自动学习的一键发布
+DEFAULT: 其他来源
 注意：此字段可能返回 null，表示取不到有效值。
-        :type IngressName: str
-        :param _ServiceLimit: 服务限速限流相关配置
+        :type CreateSource: str
+        :param _Version: 版本号
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
-        :param _ScheduledAction: 定时停止的配置
+        :type Version: str
+        :param _LatestVersion: 服务组下服务的最高版本号
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
-        :param _CreateFailedReason: 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateFailedReason: str
-        :param _ResourceGroupName: 包年包月服务对应的资源组名字
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceGroupName: str
-        :param _Tags: 服务的标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
+        :type LatestVersion: str
         """
         self._ServiceGroupId = None
         self._ServiceId = None
         self._ServiceGroupName = None
         self._ServiceDescription = None
+        self._ServiceInfo = None
         self._ClusterId = None
         self._Region = None
         self._Namespace = None
         self._ChargeType = None
         self._ResourceGroupId = None
+        self._ResourceGroupName = None
+        self._Tags = None
+        self._IngressName = None
         self._CreatedBy = None
         self._CreateTime = None
         self._UpdateTime = None
         self._Uin = None
         self._SubUin = None
         self._AppId = None
-        self._Version = None
-        self._LatestVersion = None
-        self._ServiceInfo = None
         self._BusinessStatus = None
-        self._CreateSource = None
-        self._BillingInfo = None
-        self._Status = None
-        self._Weight = None
-        self._IngressName = None
         self._ServiceLimit = None
         self._ScheduledAction = None
         self._CreateFailedReason = None
-        self._ResourceGroupName = None
-        self._Tags = None
+        self._Status = None
+        self._BillingInfo = None
+        self._Weight = None
+        self._CreateSource = None
+        self._Version = None
+        self._LatestVersion = None
 
     @property
     def ServiceGroupId(self):
@@ -13314,6 +13388,14 @@ Waiting 就绪中
     @ServiceDescription.setter
     def ServiceDescription(self, ServiceDescription):
         self._ServiceDescription = ServiceDescription
+
+    @property
+    def ServiceInfo(self):
+        return self._ServiceInfo
+
+    @ServiceInfo.setter
+    def ServiceInfo(self, ServiceInfo):
+        self._ServiceInfo = ServiceInfo
 
     @property
     def ClusterId(self):
@@ -13354,6 +13436,30 @@ Waiting 就绪中
     @ResourceGroupId.setter
     def ResourceGroupId(self, ResourceGroupId):
         self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def IngressName(self):
+        return self._IngressName
+
+    @IngressName.setter
+    def IngressName(self, IngressName):
+        self._IngressName = IngressName
 
     @property
     def CreatedBy(self):
@@ -13404,76 +13510,12 @@ Waiting 就绪中
         self._AppId = AppId
 
     @property
-    def Version(self):
-        return self._Version
-
-    @Version.setter
-    def Version(self, Version):
-        self._Version = Version
-
-    @property
-    def LatestVersion(self):
-        return self._LatestVersion
-
-    @LatestVersion.setter
-    def LatestVersion(self, LatestVersion):
-        self._LatestVersion = LatestVersion
-
-    @property
-    def ServiceInfo(self):
-        return self._ServiceInfo
-
-    @ServiceInfo.setter
-    def ServiceInfo(self, ServiceInfo):
-        self._ServiceInfo = ServiceInfo
-
-    @property
     def BusinessStatus(self):
         return self._BusinessStatus
 
     @BusinessStatus.setter
     def BusinessStatus(self, BusinessStatus):
         self._BusinessStatus = BusinessStatus
-
-    @property
-    def CreateSource(self):
-        return self._CreateSource
-
-    @CreateSource.setter
-    def CreateSource(self, CreateSource):
-        self._CreateSource = CreateSource
-
-    @property
-    def BillingInfo(self):
-        return self._BillingInfo
-
-    @BillingInfo.setter
-    def BillingInfo(self, BillingInfo):
-        self._BillingInfo = BillingInfo
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def Weight(self):
-        return self._Weight
-
-    @Weight.setter
-    def Weight(self, Weight):
-        self._Weight = Weight
-
-    @property
-    def IngressName(self):
-        return self._IngressName
-
-    @IngressName.setter
-    def IngressName(self, IngressName):
-        self._IngressName = IngressName
 
     @property
     def ServiceLimit(self):
@@ -13500,20 +13542,52 @@ Waiting 就绪中
         self._CreateFailedReason = CreateFailedReason
 
     @property
-    def ResourceGroupName(self):
-        return self._ResourceGroupName
+    def Status(self):
+        return self._Status
 
-    @ResourceGroupName.setter
-    def ResourceGroupName(self, ResourceGroupName):
-        self._ResourceGroupName = ResourceGroupName
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
-    def Tags(self):
-        return self._Tags
+    def BillingInfo(self):
+        return self._BillingInfo
 
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
+    @BillingInfo.setter
+    def BillingInfo(self, BillingInfo):
+        self._BillingInfo = BillingInfo
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def CreateSource(self):
+        return self._CreateSource
+
+    @CreateSource.setter
+    def CreateSource(self, CreateSource):
+        self._CreateSource = CreateSource
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def LatestVersion(self):
+        return self._LatestVersion
+
+    @LatestVersion.setter
+    def LatestVersion(self, LatestVersion):
+        self._LatestVersion = LatestVersion
 
 
     def _deserialize(self, params):
@@ -13521,35 +13595,14 @@ Waiting 就绪中
         self._ServiceId = params.get("ServiceId")
         self._ServiceGroupName = params.get("ServiceGroupName")
         self._ServiceDescription = params.get("ServiceDescription")
+        if params.get("ServiceInfo") is not None:
+            self._ServiceInfo = ServiceInfo()
+            self._ServiceInfo._deserialize(params.get("ServiceInfo"))
         self._ClusterId = params.get("ClusterId")
         self._Region = params.get("Region")
         self._Namespace = params.get("Namespace")
         self._ChargeType = params.get("ChargeType")
         self._ResourceGroupId = params.get("ResourceGroupId")
-        self._CreatedBy = params.get("CreatedBy")
-        self._CreateTime = params.get("CreateTime")
-        self._UpdateTime = params.get("UpdateTime")
-        self._Uin = params.get("Uin")
-        self._SubUin = params.get("SubUin")
-        self._AppId = params.get("AppId")
-        self._Version = params.get("Version")
-        self._LatestVersion = params.get("LatestVersion")
-        if params.get("ServiceInfo") is not None:
-            self._ServiceInfo = ServiceInfo()
-            self._ServiceInfo._deserialize(params.get("ServiceInfo"))
-        self._BusinessStatus = params.get("BusinessStatus")
-        self._CreateSource = params.get("CreateSource")
-        self._BillingInfo = params.get("BillingInfo")
-        self._Status = params.get("Status")
-        self._Weight = params.get("Weight")
-        self._IngressName = params.get("IngressName")
-        if params.get("ServiceLimit") is not None:
-            self._ServiceLimit = ServiceLimit()
-            self._ServiceLimit._deserialize(params.get("ServiceLimit"))
-        if params.get("ScheduledAction") is not None:
-            self._ScheduledAction = ScheduledAction()
-            self._ScheduledAction._deserialize(params.get("ScheduledAction"))
-        self._CreateFailedReason = params.get("CreateFailedReason")
         self._ResourceGroupName = params.get("ResourceGroupName")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -13557,6 +13610,27 @@ Waiting 就绪中
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IngressName = params.get("IngressName")
+        self._CreatedBy = params.get("CreatedBy")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._AppId = params.get("AppId")
+        self._BusinessStatus = params.get("BusinessStatus")
+        if params.get("ServiceLimit") is not None:
+            self._ServiceLimit = ServiceLimit()
+            self._ServiceLimit._deserialize(params.get("ServiceLimit"))
+        if params.get("ScheduledAction") is not None:
+            self._ScheduledAction = ScheduledAction()
+            self._ScheduledAction._deserialize(params.get("ScheduledAction"))
+        self._CreateFailedReason = params.get("CreateFailedReason")
+        self._Status = params.get("Status")
+        self._BillingInfo = params.get("BillingInfo")
+        self._Weight = params.get("Weight")
+        self._CreateSource = params.get("CreateSource")
+        self._Version = params.get("Version")
+        self._LatestVersion = params.get("LatestVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14083,28 +14157,31 @@ HYBRID_PAID:
         :param _ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelHotUpdateEnable: bool
+        :param _ScaleMode: 实例数量调节方式,默认为手动
+支持：自动 - "AUTO", 手动 - "MANUAL"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleMode: str
+        :param _CronScaleJobs: 定时伸缩任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronScaleJobs: list of CronScaleJob
+        :param _ScaleStrategy: 定时伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleStrategy: str
+        :param _ScheduledAction: 定时停止的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduledAction: str
         :param _Pods: Pod列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pods: :class:`tencentcloud.tione.v20211111.models.Pod`
         :param _PodInfos: Pod列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodInfos: list of Pod
-        :param _ScaleStrategy: 定时伸缩策略
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScaleStrategy: str
-        :param _CronScaleJobs: 定时伸缩任务
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CronScaleJobs: list of CronScaleJob
-        :param _ScaleMode: 实例数量调节方式,默认为手动
-支持：自动 - "AUTO", 手动 - "MANUAL"
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScaleMode: str
         :param _ServiceLimit: 服务限速限流相关配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
-        :param _ScheduledAction: 定时停止的配置
+        :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ScheduledAction: str
+        :type ModelTurboEnable: bool
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -14124,13 +14201,14 @@ HYBRID_PAID:
         self._HybridBillingPrepaidReplicas = None
         self._OldHybridBillingPrepaidReplicas = None
         self._ModelHotUpdateEnable = None
+        self._ScaleMode = None
+        self._CronScaleJobs = None
+        self._ScaleStrategy = None
+        self._ScheduledAction = None
         self._Pods = None
         self._PodInfos = None
-        self._ScaleStrategy = None
-        self._CronScaleJobs = None
-        self._ScaleMode = None
         self._ServiceLimit = None
-        self._ScheduledAction = None
+        self._ModelTurboEnable = None
 
     @property
     def Replicas(self):
@@ -14277,6 +14355,38 @@ HYBRID_PAID:
         self._ModelHotUpdateEnable = ModelHotUpdateEnable
 
     @property
+    def ScaleMode(self):
+        return self._ScaleMode
+
+    @ScaleMode.setter
+    def ScaleMode(self, ScaleMode):
+        self._ScaleMode = ScaleMode
+
+    @property
+    def CronScaleJobs(self):
+        return self._CronScaleJobs
+
+    @CronScaleJobs.setter
+    def CronScaleJobs(self, CronScaleJobs):
+        self._CronScaleJobs = CronScaleJobs
+
+    @property
+    def ScaleStrategy(self):
+        return self._ScaleStrategy
+
+    @ScaleStrategy.setter
+    def ScaleStrategy(self, ScaleStrategy):
+        self._ScaleStrategy = ScaleStrategy
+
+    @property
+    def ScheduledAction(self):
+        return self._ScheduledAction
+
+    @ScheduledAction.setter
+    def ScheduledAction(self, ScheduledAction):
+        self._ScheduledAction = ScheduledAction
+
+    @property
     def Pods(self):
         return self._Pods
 
@@ -14293,30 +14403,6 @@ HYBRID_PAID:
         self._PodInfos = PodInfos
 
     @property
-    def ScaleStrategy(self):
-        return self._ScaleStrategy
-
-    @ScaleStrategy.setter
-    def ScaleStrategy(self, ScaleStrategy):
-        self._ScaleStrategy = ScaleStrategy
-
-    @property
-    def CronScaleJobs(self):
-        return self._CronScaleJobs
-
-    @CronScaleJobs.setter
-    def CronScaleJobs(self, CronScaleJobs):
-        self._CronScaleJobs = CronScaleJobs
-
-    @property
-    def ScaleMode(self):
-        return self._ScaleMode
-
-    @ScaleMode.setter
-    def ScaleMode(self, ScaleMode):
-        self._ScaleMode = ScaleMode
-
-    @property
     def ServiceLimit(self):
         return self._ServiceLimit
 
@@ -14325,12 +14411,12 @@ HYBRID_PAID:
         self._ServiceLimit = ServiceLimit
 
     @property
-    def ScheduledAction(self):
-        return self._ScheduledAction
+    def ModelTurboEnable(self):
+        return self._ModelTurboEnable
 
-    @ScheduledAction.setter
-    def ScheduledAction(self, ScheduledAction):
-        self._ScheduledAction = ScheduledAction
+    @ModelTurboEnable.setter
+    def ModelTurboEnable(self, ModelTurboEnable):
+        self._ModelTurboEnable = ModelTurboEnable
 
 
     def _deserialize(self, params):
@@ -14371,6 +14457,15 @@ HYBRID_PAID:
         self._HybridBillingPrepaidReplicas = params.get("HybridBillingPrepaidReplicas")
         self._OldHybridBillingPrepaidReplicas = params.get("OldHybridBillingPrepaidReplicas")
         self._ModelHotUpdateEnable = params.get("ModelHotUpdateEnable")
+        self._ScaleMode = params.get("ScaleMode")
+        if params.get("CronScaleJobs") is not None:
+            self._CronScaleJobs = []
+            for item in params.get("CronScaleJobs"):
+                obj = CronScaleJob()
+                obj._deserialize(item)
+                self._CronScaleJobs.append(obj)
+        self._ScaleStrategy = params.get("ScaleStrategy")
+        self._ScheduledAction = params.get("ScheduledAction")
         if params.get("Pods") is not None:
             self._Pods = Pod()
             self._Pods._deserialize(params.get("Pods"))
@@ -14380,18 +14475,10 @@ HYBRID_PAID:
                 obj = Pod()
                 obj._deserialize(item)
                 self._PodInfos.append(obj)
-        self._ScaleStrategy = params.get("ScaleStrategy")
-        if params.get("CronScaleJobs") is not None:
-            self._CronScaleJobs = []
-            for item in params.get("CronScaleJobs"):
-                obj = CronScaleJob()
-                obj._deserialize(item)
-                self._CronScaleJobs.append(obj)
-        self._ScaleMode = params.get("ScaleMode")
         if params.get("ServiceLimit") is not None:
             self._ServiceLimit = ServiceLimit()
             self._ServiceLimit._deserialize(params.get("ServiceLimit"))
-        self._ScheduledAction = params.get("ScheduledAction")
+        self._ModelTurboEnable = params.get("ModelTurboEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17173,6 +17260,9 @@ Stopping 停止中
         :type StatefulSetCondition: list of StatefulSetCondition
         :param _Conditions: 工作负载历史的状况信息
         :type Conditions: list of StatefulSetCondition
+        :param _Reason: 状态异常时，展示原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
         """
         self._Replicas = None
         self._UpdatedReplicas = None
@@ -17182,6 +17272,7 @@ Stopping 停止中
         self._Status = None
         self._StatefulSetCondition = None
         self._Conditions = None
+        self._Reason = None
 
     @property
     def Replicas(self):
@@ -17247,6 +17338,14 @@ Stopping 停止中
     def Conditions(self, Conditions):
         self._Conditions = Conditions
 
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -17267,6 +17366,7 @@ Stopping 停止中
                 obj = StatefulSetCondition()
                 obj._deserialize(item)
                 self._Conditions.append(obj)
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

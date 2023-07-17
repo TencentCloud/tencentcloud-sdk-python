@@ -749,6 +749,11 @@ def test_import_lp():
     from tencentcloud.lp.v20200224 import models
 
 
+def test_import_mall():
+    from tencentcloud.mall.v20230518 import mall_client
+    from tencentcloud.mall.v20230518 import models
+
+
 def test_import_mariadb():
     from tencentcloud.mariadb.v20170312 import mariadb_client
     from tencentcloud.mariadb.v20170312 import models
