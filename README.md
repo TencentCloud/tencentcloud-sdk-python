@@ -9,7 +9,7 @@
 3. 获取 SecretID、SecretKey 以及调用地址（endpoint），endpoint 一般形式为\*.tencentcloudapi.com，如CVM 的调用地址为 cvm.tencentcloudapi.com，具体参考各产品说明。
 
 ## 依赖问题
-本项目依赖requests库，由于requests库2.30.0及以上的版本适配了urllib3 2.0版本，如果在使用sdk的时候报错``，可以使用如下方法之一解决：
+本项目依赖requests库，由于requests库2.30.0及以上的版本适配了urllib3 2.0版本，如果在使用sdk的时候报错`ImportError: urllib3 v2.0 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'OpenSSL 1.0.x'`，可以使用如下方法之一解决：
 - 将urllib3的版本降低到1.26.x版本（requsets库的依赖版本是urllib3>=1.21.1,<3）。
 - 将python环境使用openssl 1.1.1+版本重新编译
 
