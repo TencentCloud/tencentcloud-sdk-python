@@ -4732,6 +4732,9 @@ class DomainAssetVO(AbstractModel):
         :param _WebAttack: web攻击
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebAttack: int
+        :param _ServiceRisk: 风险服务暴露数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceRisk: int
         """
         self._AssetId = None
         self._AssetName = None
@@ -4766,6 +4769,7 @@ class DomainAssetVO(AbstractModel):
         self._MemberId = None
         self._CCAttack = None
         self._WebAttack = None
+        self._ServiceRisk = None
 
     @property
     def AssetId(self):
@@ -5031,6 +5035,14 @@ class DomainAssetVO(AbstractModel):
     def WebAttack(self, WebAttack):
         self._WebAttack = WebAttack
 
+    @property
+    def ServiceRisk(self):
+        return self._ServiceRisk
+
+    @ServiceRisk.setter
+    def ServiceRisk(self, ServiceRisk):
+        self._ServiceRisk = ServiceRisk
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -5071,6 +5083,7 @@ class DomainAssetVO(AbstractModel):
         self._MemberId = params.get("MemberId")
         self._CCAttack = params.get("CCAttack")
         self._WebAttack = params.get("WebAttack")
+        self._ServiceRisk = params.get("ServiceRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

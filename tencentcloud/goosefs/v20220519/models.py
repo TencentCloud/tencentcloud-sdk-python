@@ -18,6 +18,109 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ClientToken(AbstractModel):
+    """查询Client Token
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocalDirectory: 挂载点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDirectory: str
+        """
+        self._LocalDirectory = None
+
+    @property
+    def LocalDirectory(self):
+        return self._LocalDirectory
+
+    @LocalDirectory.setter
+    def LocalDirectory(self, LocalDirectory):
+        self._LocalDirectory = LocalDirectory
+
+
+    def _deserialize(self, params):
+        self._LocalDirectory = params.get("LocalDirectory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterRole(AbstractModel):
+    """ClusterRole
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _RoleName: 角色名
+        :type RoleName: str
+        :param _Description: 描述
+        :type Description: str
+        :param _DirectoryList: 目录列表
+        :type DirectoryList: list of str
+        """
+        self._ClusterId = None
+        self._RoleName = None
+        self._Description = None
+        self._DirectoryList = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DirectoryList(self):
+        return self._DirectoryList
+
+    @DirectoryList.setter
+    def DirectoryList(self, DirectoryList):
+        self._DirectoryList = DirectoryList
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._RoleName = params.get("RoleName")
+        self._Description = params.get("Description")
+        self._DirectoryList = params.get("DirectoryList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDataRepositoryTaskRequest(AbstractModel):
     """CreateDataRepositoryTask请求参数结构体
 
@@ -160,6 +263,243 @@ class CreateDataRepositoryTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterClientTokenRequest(AbstractModel):
+    """DescribeClusterClientToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterClientTokenResponse(AbstractModel):
+    """DescribeClusterClientToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientTokens: 客户端凭证
+        :type ClientTokens: list of ClientToken
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClientTokens = None
+        self._RequestId = None
+
+    @property
+    def ClientTokens(self):
+        return self._ClientTokens
+
+    @ClientTokens.setter
+    def ClientTokens(self, ClientTokens):
+        self._ClientTokens = ClientTokens
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClientTokens") is not None:
+            self._ClientTokens = []
+            for item in params.get("ClientTokens"):
+                obj = ClientToken()
+                obj._deserialize(item)
+                self._ClientTokens.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterRoleTokenRequest(AbstractModel):
+    """DescribeClusterRoleToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _RoleName: 角色名
+        :type RoleName: str
+        """
+        self._ClusterId = None
+        self._RoleName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterRoleTokenResponse(AbstractModel):
+    """DescribeClusterRoleToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleTokens: 角色凭证
+        :type RoleTokens: list of RoleToken
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleTokens = None
+        self._RequestId = None
+
+    @property
+    def RoleTokens(self):
+        return self._RoleTokens
+
+    @RoleTokens.setter
+    def RoleTokens(self, RoleTokens):
+        self._RoleTokens = RoleTokens
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RoleTokens") is not None:
+            self._RoleTokens = []
+            for item in params.get("RoleTokens"):
+                obj = RoleToken()
+                obj._deserialize(item)
+                self._RoleTokens.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterRolesRequest(AbstractModel):
+    """DescribeClusterRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterRolesResponse(AbstractModel):
+    """DescribeClusterRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterRoles: 集群角色
+        :type ClusterRoles: list of ClusterRole
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterRoles = None
+        self._RequestId = None
+
+    @property
+    def ClusterRoles(self):
+        return self._ClusterRoles
+
+    @ClusterRoles.setter
+    def ClusterRoles(self, ClusterRoles):
+        self._ClusterRoles = ClusterRoles
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterRoles") is not None:
+            self._ClusterRoles = []
+            for item in params.get("ClusterRoles"):
+                obj = ClusterRole()
+                obj._deserialize(item)
+                self._ClusterRoles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataRepositoryTaskStatusRequest(AbstractModel):
     """DescribeDataRepositoryTaskStatus请求参数结构体
 
@@ -276,3 +616,49 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
         self._FinishedFileNumber = params.get("FinishedFileNumber")
         self._FinishedCapacity = params.get("FinishedCapacity")
         self._RequestId = params.get("RequestId")
+
+
+class RoleToken(AbstractModel):
+    """角色凭证
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名
+        :type RoleName: str
+        :param _Token: 用于goosefs client/sdk等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        """
+        self._RoleName = None
+        self._Token = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

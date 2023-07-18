@@ -2183,12 +2183,15 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _Organization: 机构信息，暂未开放
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        :param _JumpUrl: 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+        :type JumpUrl: str
         """
         self._Agent = None
         self._FlowId = None
         self._FlowApproverInfos = None
         self._Operator = None
         self._Organization = None
+        self._JumpUrl = None
 
     @property
     def Agent(self):
@@ -2238,6 +2241,14 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 
         self._Organization = Organization
 
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -2256,6 +2267,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
         if params.get("Organization") is not None:
             self._Organization = OrganizationInfo()
             self._Organization._deserialize(params.get("Organization"))
+        self._JumpUrl = params.get("JumpUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

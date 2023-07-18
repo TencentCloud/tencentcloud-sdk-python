@@ -18,6 +18,84 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CancelVRSTaskRequest(AbstractModel):
+    """CancelVRSTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelVRSTaskResponse(AbstractModel):
+    """CancelVRSTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务ID
+        :type Data: :class:`tencentcloud.vrs.v20200824.models.CancelVRSTaskRsp`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CancelVRSTaskRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CancelVRSTaskRsp(AbstractModel):
+    """取消任务响应
+
+    """
+
+
 class CreateVRSTaskRequest(AbstractModel):
     """CreateVRSTask请求参数结构体
 
@@ -50,6 +128,8 @@ class CreateVRSTaskRequest(AbstractModel):
         :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
         :type CallbackUrl: str
+        :param _ModelType: 任务类型 1:在线 2:离线  默认为1
+        :type ModelType: int
         """
         self._SessionId = None
         self._VoiceName = None
@@ -59,6 +139,7 @@ class CreateVRSTaskRequest(AbstractModel):
         self._Codec = None
         self._AudioIdList = None
         self._CallbackUrl = None
+        self._ModelType = None
 
     @property
     def SessionId(self):
@@ -124,6 +205,14 @@ class CreateVRSTaskRequest(AbstractModel):
     def CallbackUrl(self, CallbackUrl):
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def ModelType(self):
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
@@ -134,6 +223,7 @@ class CreateVRSTaskRequest(AbstractModel):
         self._Codec = params.get("Codec")
         self._AudioIdList = params.get("AudioIdList")
         self._CallbackUrl = params.get("CallbackUrl")
+        self._ModelType = params.get("ModelType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -570,6 +660,166 @@ class DetectionEnvAndSoundQualityRespData(AbstractModel):
                 obj = Words()
                 obj._deserialize(item)
                 self._DetectionTip.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadVRSModelRequest(AbstractModel):
+    """DownloadVRSModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadVRSModelResponse(AbstractModel):
+    """DownloadVRSModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 响应
+        :type Data: :class:`tencentcloud.vrs.v20200824.models.DownloadVRSModelRsp`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DownloadVRSModelRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DownloadVRSModelRsp(AbstractModel):
+    """离线声音复刻模型下载响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 模型cos地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Model: str
+        :param _VoiceName: 音色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceName: str
+        :param _VoiceGender: 音色性别:
+1-male
+2-female
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceGender: int
+        :param _VoiceLanguage: 语言类型：
+1-中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceLanguage: int
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._Model = None
+        self._VoiceName = None
+        self._VoiceGender = None
+        self._VoiceLanguage = None
+        self._TaskId = None
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def VoiceName(self):
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def VoiceGender(self):
+        return self._VoiceGender
+
+    @VoiceGender.setter
+    def VoiceGender(self, VoiceGender):
+        self._VoiceGender = VoiceGender
+
+    @property
+    def VoiceLanguage(self):
+        return self._VoiceLanguage
+
+    @VoiceLanguage.setter
+    def VoiceLanguage(self, VoiceLanguage):
+        self._VoiceLanguage = VoiceLanguage
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._VoiceName = params.get("VoiceName")
+        self._VoiceGender = params.get("VoiceGender")
+        self._VoiceLanguage = params.get("VoiceLanguage")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

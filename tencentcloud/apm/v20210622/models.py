@@ -402,6 +402,9 @@ class ApmInstanceDetail(AbstractModel):
         :param _MetricDuration: Metric数据保存时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricDuration: int
+        :param _CustomShowTags: 用户自定义展示标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomShowTags: list of str
         """
         self._AmountOfUsedStorage = None
         self._Name = None
@@ -429,6 +432,7 @@ class ApmInstanceDetail(AbstractModel):
         self._TotalCount = None
         self._LogSet = None
         self._MetricDuration = None
+        self._CustomShowTags = None
 
     @property
     def AmountOfUsedStorage(self):
@@ -638,6 +642,14 @@ class ApmInstanceDetail(AbstractModel):
     def MetricDuration(self, MetricDuration):
         self._MetricDuration = MetricDuration
 
+    @property
+    def CustomShowTags(self):
+        return self._CustomShowTags
+
+    @CustomShowTags.setter
+    def CustomShowTags(self, CustomShowTags):
+        self._CustomShowTags = CustomShowTags
+
 
     def _deserialize(self, params):
         self._AmountOfUsedStorage = params.get("AmountOfUsedStorage")
@@ -671,6 +683,7 @@ class ApmInstanceDetail(AbstractModel):
         self._TotalCount = params.get("TotalCount")
         self._LogSet = params.get("LogSet")
         self._MetricDuration = params.get("MetricDuration")
+        self._CustomShowTags = params.get("CustomShowTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2027,6 +2040,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type LogSet: str
         :param _LogSource: CLS | ES
         :type LogSource: str
+        :param _CustomShowTags: 用户自定义展示标签列表
+        :type CustomShowTags: list of str
         """
         self._InstanceId = None
         self._Name = None
@@ -2044,6 +2059,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._LogTopicID = None
         self._LogSet = None
         self._LogSource = None
+        self._CustomShowTags = None
 
     @property
     def InstanceId(self):
@@ -2173,6 +2189,14 @@ class ModifyApmInstanceRequest(AbstractModel):
     def LogSource(self, LogSource):
         self._LogSource = LogSource
 
+    @property
+    def CustomShowTags(self):
+        return self._CustomShowTags
+
+    @CustomShowTags.setter
+    def CustomShowTags(self, CustomShowTags):
+        self._CustomShowTags = CustomShowTags
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2196,6 +2220,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._LogTopicID = params.get("LogTopicID")
         self._LogSet = params.get("LogSet")
         self._LogSource = params.get("LogSource")
+        self._CustomShowTags = params.get("CustomShowTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

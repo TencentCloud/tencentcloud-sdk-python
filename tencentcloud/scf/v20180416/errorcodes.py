@@ -686,6 +686,9 @@ MISSINGPARAMETER_RUNTIME = 'MissingParameter.Runtime'
 # 账号已被隔离。
 OPERATIONDENIED_ACCOUNTISOLATE = 'OperationDenied.AccountIsolate'
 
+# 账号不存在。
+OPERATIONDENIED_ACCOUNTNOTEXISTS = 'OperationDenied.AccountNotExists'
+
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
@@ -874,6 +877,9 @@ UNSUPPORTEDOPERATION_EIPFIXED = 'UnsupportedOperation.EipFixed'
 
 # 不支持的地域。
 UNSUPPORTEDOPERATION_NOTSUPPORTREGION = 'UnsupportedOperation.NotSupportRegion'
+
+# 当前状态无法发布版本。
+UNSUPPORTEDOPERATION_PUBLISHVERSION = 'UnsupportedOperation.PublishVersion'
 
 # 不支持此地域。
 UNSUPPORTEDOPERATION_REGION = 'UnsupportedOperation.Region'

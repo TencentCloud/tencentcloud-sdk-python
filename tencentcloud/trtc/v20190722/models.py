@@ -7067,7 +7067,7 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
         :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
         :param _LayoutParams: 混流输出布局参数。
         :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
-        :param _PublishCdnParams: 第三方CDN转推参数。
+        :param _PublishCdnParams: 第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
         :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
         """
         self._SdkAppId = None
@@ -7193,7 +7193,7 @@ class StartMCUMixTranscodeRequest(AbstractModel):
         :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
         :param _LayoutParams: 混流输出布局参数。
         :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
-        :param _PublishCdnParams: 第三方CDN转推参数。
+        :param _PublishCdnParams: 第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
         :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
         """
         self._SdkAppId = None

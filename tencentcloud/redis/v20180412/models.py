@@ -472,13 +472,13 @@ class BackupDownloadInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: 备份文件名称
+        :param _FileName: 备份文件名称。
         :type FileName: str
-        :param _FileSize: 备份文件大小，单位B，如果为0，表示无效
+        :param _FileSize: 备份文件大小，单位B，如果为0，表示无效。
         :type FileSize: int
-        :param _DownloadUrl: 备份文件外网下载地址（6小时）
+        :param _DownloadUrl: 备份文件外网下载地址。下载地址的有效时长为6小时，过期后请重新获取。
         :type DownloadUrl: str
-        :param _InnerDownloadUrl: 备份文件内网下载地址（6小时）
+        :param _InnerDownloadUrl: 备份文件内网下载地址。下载地址的有效时长为6小时，过期后请重新获取。
         :type InnerDownloadUrl: str
         """
         self._FileName = None

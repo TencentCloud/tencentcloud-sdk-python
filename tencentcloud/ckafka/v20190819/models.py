@@ -13747,6 +13747,10 @@ class EsParam(AbstractModel):
         :type DatabasePrimaryKey: str
         :param _DropDlq: 死信队列
         :type DropDlq: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
+        :param _RecordMappingList: 使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+        :type RecordMappingList: list of EsRecordMapping
+        :param _DateField: 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+        :type DateField: str
         """
         self._Resource = None
         self._Port = None
@@ -13765,6 +13769,8 @@ class EsParam(AbstractModel):
         self._DropCls = None
         self._DatabasePrimaryKey = None
         self._DropDlq = None
+        self._RecordMappingList = None
+        self._DateField = None
 
     @property
     def Resource(self):
@@ -13902,6 +13908,22 @@ class EsParam(AbstractModel):
     def DropDlq(self, DropDlq):
         self._DropDlq = DropDlq
 
+    @property
+    def RecordMappingList(self):
+        return self._RecordMappingList
+
+    @RecordMappingList.setter
+    def RecordMappingList(self, RecordMappingList):
+        self._RecordMappingList = RecordMappingList
+
+    @property
+    def DateField(self):
+        return self._DateField
+
+    @DateField.setter
+    def DateField(self, DateField):
+        self._DateField = DateField
+
 
     def _deserialize(self, params):
         self._Resource = params.get("Resource")
@@ -13925,6 +13947,58 @@ class EsParam(AbstractModel):
         if params.get("DropDlq") is not None:
             self._DropDlq = FailureParam()
             self._DropDlq._deserialize(params.get("DropDlq"))
+        if params.get("RecordMappingList") is not None:
+            self._RecordMappingList = []
+            for item in params.get("RecordMappingList"):
+                obj = EsRecordMapping()
+                obj._deserialize(item)
+                self._RecordMappingList.append(obj)
+        self._DateField = params.get("DateField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EsRecordMapping(AbstractModel):
+    """消息字段与 es 索引的映射关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnName: es 索引成员名称
+        :type ColumnName: str
+        :param _JsonKey: 消息字段名称
+        :type JsonKey: str
+        """
+        self._ColumnName = None
+        self._JsonKey = None
+
+    @property
+    def ColumnName(self):
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+    @property
+    def JsonKey(self):
+        return self._JsonKey
+
+    @JsonKey.setter
+    def JsonKey(self, JsonKey):
+        self._JsonKey = JsonKey
+
+
+    def _deserialize(self, params):
+        self._ColumnName = params.get("ColumnName")
+        self._JsonKey = params.get("JsonKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

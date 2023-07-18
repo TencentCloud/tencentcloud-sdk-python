@@ -89,6 +89,9 @@ INTERNALERROR_FAILACCESSDATABASE = 'InternalError.FailAccessDatabase'
 # 访问Redis失败。
 INTERNALERROR_FAILACCESSREDIS = 'InternalError.FailAccessRedis'
 
+# 说话人音频解码失败
+INTERNALERROR_FAILEDVOICEPRINTDECODE = 'InternalError.FailedVoicePrintDecode'
+
 # 说话人注册接口失败
 INTERNALERROR_FAILEDVOICEPRINTENROLL = 'InternalError.FailedVoicePrintEnroll'
 

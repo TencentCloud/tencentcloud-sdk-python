@@ -4031,31 +4031,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSearchExportList(self, request):
-        """旧版日志下载接口下线
-
-        导出ES查询文档列表
-
-        :param request: Request instance for DescribeSearchExportList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSearchExportListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSearchExportListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSearchExportList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSearchExportListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeSearchLogs(self, request):
         """获取历史搜索记录
 

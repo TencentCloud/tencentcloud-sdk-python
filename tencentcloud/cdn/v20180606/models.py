@@ -19005,7 +19005,7 @@ class LogSetInfo(AbstractModel):
 
 
 class MainlandConfig(AbstractModel):
-    """域名国内地区特殊配置。分地区特殊配置。UpdateDomainConfig接口只支持修改部分分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
+    """域名国内地区特殊配置。分地区特殊配置。UpdateDomainConfig接口只支持修改部分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
     + Authentication
     + BandwidthAlert
     + ErrorPage
@@ -20751,7 +20751,7 @@ off：关闭
 
 
 class OverseaConfig(AbstractModel):
-    """域名海外地区特殊配置。UpdateDomainConfig接口只支持修改部分分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
+    """域名海外地区特殊配置。UpdateDomainConfig接口只支持修改部分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
     + Authentication
     + BandwidthAlert
     + ErrorPage
@@ -22537,7 +22537,7 @@ path 时填充绝对路径，如 /xxx/test.html
 whitelist：白名单
 blacklist：黑名单
         :type RefererType: str
-        :param _Referers: referer 内容列表列表
+        :param _Referers: referer 内容列表
         :type Referers: list of str
         :param _AllowEmpty: 是否允许空 referer
 防盗链类型为白名单时，true表示允许空 referer，false表示不允许空 referer；
@@ -28787,7 +28787,7 @@ class ViolationUrl(AbstractModel):
 forbid：已封禁
 release：已解封
 delay ： 延迟处理
-reject ：申诉驳回，状态仍为封禁态
+reject ：申诉驳回，状态仍为封禁状态
 complain：申诉进行中
         :type UrlStatus: str
         :param _CreateTime: 创建时间

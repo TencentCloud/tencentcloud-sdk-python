@@ -288,6 +288,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 • 16k_th：泰语；
 • 16k_pt：葡萄牙语；
 • 16k_tr：土耳其语；
+• 16k_ar：阿拉伯语；
         :type EngineType: str
         :param _Url: 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
         :type Url: str
@@ -605,6 +606,7 @@ class CreateRecTaskRequest(AbstractModel):
 • 16k_th：泰语；
 • 16k_pt：葡萄牙语；
 • 16k_tr：土耳其语；
+• 16k_ar：阿拉伯语；
 • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
         :type EngineModelType: str
         :param _ChannelNum: 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
@@ -2283,6 +2285,7 @@ class SentenceRecognitionRequest(AbstractModel):
 • 16k_th：泰语；
 • 16k_pt：葡萄牙语；
 • 16k_tr：土耳其语；
+• 16k_ar：阿拉伯语；
 • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
         :type EngSerViceType: str
         :param _SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
@@ -2320,6 +2323,8 @@ class SentenceRecognitionRequest(AbstractModel):
         :param _HotwordList: 临时热词：用于提升识别准确率，临时热词规则：“热词|权重”，热词不超过30个字符（最多10个汉字），权重1-10，最多传入128个热词。举例："腾讯云|10,语音识别|5,ASR|10"。
 “临时热词”和“热词id”的区别：热词id需要先在控制台或通过接口创建热词表，得到热词表id后才可以使用热词功能，本字段可以在每次请求时直接传入热词使用，但每次请求后云端不会保留相关的热词数据，需要客户自行维护相关数据
         :type HotwordList: str
+        :param _InputSampleRate: 支持pcm格式的8k音频在与引擎采样率不匹配的情况下升采样到16k后识别，能有效提升识别准确率。仅支持：8000。如：传入 8000 ，则pcm音频采样率为8k，当引擎选用16k_zh， 那么该8k采样率的pcm音频可以在16k_zh引擎下正常识别。 注：此参数仅适用于pcm格式音频，不传入值将维持默认状态，即默认调用的引擎采样率等于pcm音频采样率。
+        :type InputSampleRate: int
         """
         self._EngSerViceType = None
         self._SourceType = None
@@ -2339,6 +2344,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self._CustomizationId = None
         self._ReinforceHotword = None
         self._HotwordList = None
+        self._InputSampleRate = None
 
     @property
     def EngSerViceType(self):
@@ -2496,6 +2502,14 @@ class SentenceRecognitionRequest(AbstractModel):
     def HotwordList(self, HotwordList):
         self._HotwordList = HotwordList
 
+    @property
+    def InputSampleRate(self):
+        return self._InputSampleRate
+
+    @InputSampleRate.setter
+    def InputSampleRate(self, InputSampleRate):
+        self._InputSampleRate = InputSampleRate
+
 
     def _deserialize(self, params):
         self._EngSerViceType = params.get("EngSerViceType")
@@ -2516,6 +2530,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self._CustomizationId = params.get("CustomizationId")
         self._ReinforceHotword = params.get("ReinforceHotword")
         self._HotwordList = params.get("HotwordList")
+        self._InputSampleRate = params.get("InputSampleRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1044,6 +1044,8 @@ class ClueInfoDetail(AbstractModel):
         :type Gender: int
         :param _CreateTime: 线索创建时间戳，单位：秒
         :type CreateTime: str
+        :param _UpdateTime: 线索创建时间戳，单位：秒
+        :type UpdateTime: str
         :param _LeadStatus: 线索所处状态，101-待分配 201-待建档 301-已建档 401-已邀约 501-跟进中 601-已下订单 701-已成交 801-战败申请中 901-已战败 1001-未知状态 1101-转移申请中 1201-已完成
         :type LeadStatus: int
         :param _LevelCode: 线索意向等级
@@ -1135,6 +1137,7 @@ class ClueInfoDetail(AbstractModel):
         self._SourceChannelName = None
         self._Gender = None
         self._CreateTime = None
+        self._UpdateTime = None
         self._LeadStatus = None
         self._LevelCode = None
         self._ImportAtTime = None
@@ -1340,6 +1343,14 @@ class ClueInfoDetail(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
     @property
     def LeadStatus(self):
@@ -1597,6 +1608,7 @@ class ClueInfoDetail(AbstractModel):
         self._SourceChannelName = params.get("SourceChannelName")
         self._Gender = params.get("Gender")
         self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._LeadStatus = params.get("LeadStatus")
         self._LevelCode = params.get("LevelCode")
         self._ImportAtTime = params.get("ImportAtTime")

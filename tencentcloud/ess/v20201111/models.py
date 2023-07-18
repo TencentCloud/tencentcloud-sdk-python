@@ -193,10 +193,12 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :param _ApproverVerifyTypes: 签署人查看合同时认证方式, 
 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 如果不传默认为1
+模板发起的时候,认证方式以模版配置为主
         :type ApproverVerifyTypes: list of int
         :param _ApproverSignTypes: 签署人签署合同时的认证方式
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
+模板发起的时候,认证方式以模版配置为主
         :type ApproverSignTypes: list of int
         :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
         :type ApproverNeedSignReview: bool
@@ -3670,12 +3672,15 @@ class CreateFlowSignUrlRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Organization: 机构信息，暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
+        :param _JumpUrl: 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+        :type JumpUrl: str
         """
         self._FlowId = None
         self._FlowApproverInfos = None
         self._Operator = None
         self._Agent = None
         self._Organization = None
+        self._JumpUrl = None
 
     @property
     def FlowId(self):
@@ -3721,6 +3726,14 @@ class CreateFlowSignUrlRequest(AbstractModel):
 
         self._Organization = Organization
 
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -3739,6 +3752,7 @@ class CreateFlowSignUrlRequest(AbstractModel):
         if params.get("Organization") is not None:
             self._Organization = OrganizationInfo()
             self._Organization._deserialize(params.get("Organization"))
+        self._JumpUrl = params.get("JumpUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

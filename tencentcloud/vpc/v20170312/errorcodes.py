@@ -32,6 +32,9 @@ FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
 # 不支持的地域。
 FAILEDOPERATION_INVALIDREGION = 'FailedOperation.InvalidRegion'
 
+# 不支持的IP类型。
+FAILEDOPERATION_IPTYPENOTPERMIT = 'FailedOperation.IpTypeNotPermit'
+
 # 未找到实例的主网卡。
 FAILEDOPERATION_MASTERENINOTFOUND = 'FailedOperation.MasterEniNotFound'
 
@@ -757,6 +760,9 @@ UNSUPPORTEDOPERATION_INCORRECTADDRESSRESOURCETYPE = 'UnsupportedOperation.Incorr
 
 # 用户配置的实例和路由表不匹配。
 UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = 'UnsupportedOperation.InstanceAndRtbNotMatch'
+
+# 当前云联网`%(value)s`的CdcId与传入实例的CdcId不一致，不支持关联。
+UNSUPPORTEDOPERATION_INSTANCECDCIDNOTMATCHCCNCDCID = 'UnsupportedOperation.InstanceCdcIdNotMatchCcnCdcId'
 
 # 指定实例资源不匹配。
 UNSUPPORTEDOPERATION_INSTANCEMISMATCH = 'UnsupportedOperation.InstanceMismatch'

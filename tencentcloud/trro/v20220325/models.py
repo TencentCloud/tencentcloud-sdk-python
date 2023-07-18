@@ -3191,6 +3191,42 @@ class SessionDeviceDetail(AbstractModel):
         :type ProjectId: str
         :param _DeviceId: 设备ID
         :type DeviceId: str
+        :param _Ver: sdk版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ver: str
+        :param _SdkMode: 模式(p2p/server)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SdkMode: str
+        :param _DecodeCost: 解码耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DecodeCost: list of int
+        :param _RenderConst: 渲染耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenderConst: list of int
+        :param _K100: 卡顿k100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type K100: list of float
+        :param _K150: 卡顿k150
+注意：此字段可能返回 null，表示取不到有效值。
+        :type K150: list of float
+        :param _NACK: nack请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NACK: list of int
+        :param _BitRateEstimate: 服务端调控码率,单位：kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BitRateEstimate: list of int
+        :param _Width: 宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _Height: 高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param _EncodeCost: 编码耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncodeCost: list of int
+        :param _CaptureCost: 采集耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptureCost: list of int
         """
         self._DeviceType = None
         self._StartTime = None
@@ -3206,6 +3242,18 @@ class SessionDeviceDetail(AbstractModel):
         self._TimeOffset = None
         self._ProjectId = None
         self._DeviceId = None
+        self._Ver = None
+        self._SdkMode = None
+        self._DecodeCost = None
+        self._RenderConst = None
+        self._K100 = None
+        self._K150 = None
+        self._NACK = None
+        self._BitRateEstimate = None
+        self._Width = None
+        self._Height = None
+        self._EncodeCost = None
+        self._CaptureCost = None
 
     @property
     def DeviceType(self):
@@ -3319,6 +3367,102 @@ class SessionDeviceDetail(AbstractModel):
     def DeviceId(self, DeviceId):
         self._DeviceId = DeviceId
 
+    @property
+    def Ver(self):
+        return self._Ver
+
+    @Ver.setter
+    def Ver(self, Ver):
+        self._Ver = Ver
+
+    @property
+    def SdkMode(self):
+        return self._SdkMode
+
+    @SdkMode.setter
+    def SdkMode(self, SdkMode):
+        self._SdkMode = SdkMode
+
+    @property
+    def DecodeCost(self):
+        return self._DecodeCost
+
+    @DecodeCost.setter
+    def DecodeCost(self, DecodeCost):
+        self._DecodeCost = DecodeCost
+
+    @property
+    def RenderConst(self):
+        return self._RenderConst
+
+    @RenderConst.setter
+    def RenderConst(self, RenderConst):
+        self._RenderConst = RenderConst
+
+    @property
+    def K100(self):
+        return self._K100
+
+    @K100.setter
+    def K100(self, K100):
+        self._K100 = K100
+
+    @property
+    def K150(self):
+        return self._K150
+
+    @K150.setter
+    def K150(self, K150):
+        self._K150 = K150
+
+    @property
+    def NACK(self):
+        return self._NACK
+
+    @NACK.setter
+    def NACK(self, NACK):
+        self._NACK = NACK
+
+    @property
+    def BitRateEstimate(self):
+        return self._BitRateEstimate
+
+    @BitRateEstimate.setter
+    def BitRateEstimate(self, BitRateEstimate):
+        self._BitRateEstimate = BitRateEstimate
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def EncodeCost(self):
+        return self._EncodeCost
+
+    @EncodeCost.setter
+    def EncodeCost(self, EncodeCost):
+        self._EncodeCost = EncodeCost
+
+    @property
+    def CaptureCost(self):
+        return self._CaptureCost
+
+    @CaptureCost.setter
+    def CaptureCost(self, CaptureCost):
+        self._CaptureCost = CaptureCost
+
 
     def _deserialize(self, params):
         self._DeviceType = params.get("DeviceType")
@@ -3335,6 +3479,18 @@ class SessionDeviceDetail(AbstractModel):
         self._TimeOffset = params.get("TimeOffset")
         self._ProjectId = params.get("ProjectId")
         self._DeviceId = params.get("DeviceId")
+        self._Ver = params.get("Ver")
+        self._SdkMode = params.get("SdkMode")
+        self._DecodeCost = params.get("DecodeCost")
+        self._RenderConst = params.get("RenderConst")
+        self._K100 = params.get("K100")
+        self._K150 = params.get("K150")
+        self._NACK = params.get("NACK")
+        self._BitRateEstimate = params.get("BitRateEstimate")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._EncodeCost = params.get("EncodeCost")
+        self._CaptureCost = params.get("CaptureCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
