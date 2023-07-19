@@ -7037,6 +7037,8 @@ class DockerContainerConfiguration(AbstractModel):
         :type Volumes: list of DockerContainerVolume
         :param _Command: 运行的命令
         :type Command: str
+        :param _RestartPolicy: 容器重启策略
+        :type RestartPolicy: str
         """
         self._ContainerImage = None
         self._ContainerName = None
@@ -7044,6 +7046,7 @@ class DockerContainerConfiguration(AbstractModel):
         self._PublishPorts = None
         self._Volumes = None
         self._Command = None
+        self._RestartPolicy = None
 
     @property
     def ContainerImage(self):
@@ -7093,6 +7096,14 @@ class DockerContainerConfiguration(AbstractModel):
     def Command(self, Command):
         self._Command = Command
 
+    @property
+    def RestartPolicy(self):
+        return self._RestartPolicy
+
+    @RestartPolicy.setter
+    def RestartPolicy(self, RestartPolicy):
+        self._RestartPolicy = RestartPolicy
+
 
     def _deserialize(self, params):
         self._ContainerImage = params.get("ContainerImage")
@@ -7116,6 +7127,7 @@ class DockerContainerConfiguration(AbstractModel):
                 obj._deserialize(item)
                 self._Volumes.append(obj)
         self._Command = params.get("Command")
+        self._RestartPolicy = params.get("RestartPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

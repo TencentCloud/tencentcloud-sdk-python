@@ -630,8 +630,6 @@ class CreateInstancesRequest(AbstractModel):
         :type ShardNum: int
         :param _ReplicasNum: 副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。
         :type ReplicasNum: int
-        :param _MachineCpu: 计算cpu核心数。
-        :type MachineCpu: int
         :param _MachineMemory: 实例内存容量，单位：GB。
 KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
         :type MachineMemory: int
@@ -661,8 +659,12 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
         :param _DiskSize: 每个分片硬盘的容量。单位：GB。
 每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
         :type DiskSize: int
+        :param _MachineCpu: 计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+        :type MachineCpu: int
         :param _ProjectId: 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
         :type ProjectId: int
+        :param _Compression: 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li>
+        :type Compression: str
         """
         self._TypeId = None
         self._UniqVpcId = None
@@ -672,7 +674,6 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
         self._Period = None
         self._ShardNum = None
         self._ReplicasNum = None
-        self._MachineCpu = None
         self._MachineMemory = None
         self._ZoneId = None
         self._ZoneName = None
@@ -685,7 +686,9 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
         self._ResourceTags = None
         self._MemSize = None
         self._DiskSize = None
+        self._MachineCpu = None
         self._ProjectId = None
+        self._Compression = None
 
     @property
     def TypeId(self):
@@ -750,14 +753,6 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
     @ReplicasNum.setter
     def ReplicasNum(self, ReplicasNum):
         self._ReplicasNum = ReplicasNum
-
-    @property
-    def MachineCpu(self):
-        return self._MachineCpu
-
-    @MachineCpu.setter
-    def MachineCpu(self, MachineCpu):
-        self._MachineCpu = MachineCpu
 
     @property
     def MachineMemory(self):
@@ -856,12 +851,28 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
         self._DiskSize = DiskSize
 
     @property
+    def MachineCpu(self):
+        return self._MachineCpu
+
+    @MachineCpu.setter
+    def MachineCpu(self, MachineCpu):
+        self._MachineCpu = MachineCpu
+
+    @property
     def ProjectId(self):
         return self._ProjectId
 
     @ProjectId.setter
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
+
+    @property
+    def Compression(self):
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
 
 
     def _deserialize(self, params):
@@ -873,7 +884,6 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
         self._Period = params.get("Period")
         self._ShardNum = params.get("ShardNum")
         self._ReplicasNum = params.get("ReplicasNum")
-        self._MachineCpu = params.get("MachineCpu")
         self._MachineMemory = params.get("MachineMemory")
         self._ZoneId = params.get("ZoneId")
         self._ZoneName = params.get("ZoneName")
@@ -891,7 +901,9 @@ KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为�
                 self._ResourceTags.append(obj)
         self._MemSize = params.get("MemSize")
         self._DiskSize = params.get("DiskSize")
+        self._MachineCpu = params.get("MachineCpu")
         self._ProjectId = params.get("ProjectId")
+        self._Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7388,7 +7400,7 @@ class UpgradeInstanceRequest(AbstractModel):
         :param _MemSize: 配置变更后，每个分片持久化内存容量，单位：GB。
 <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :type MemSize: int
-        :param _MachineCpu: CPU 核数。
+        :param _MachineCpu: CPU 核数，可忽略不传
         :type MachineCpu: int
         :param _MachineMemory: 实例内存容量，单位：GB。
 <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>

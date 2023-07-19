@@ -25,11 +25,31 @@ class ClientToken(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _NodeIp: 节点 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeIp: str
         :param _LocalDirectory: 挂载点
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDirectory: str
+        :param _GooseFSDirectory: 可以访问的 GooseFS 目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GooseFSDirectory: str
+        :param _Token: token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
         """
+        self._NodeIp = None
         self._LocalDirectory = None
+        self._GooseFSDirectory = None
+        self._Token = None
+
+    @property
+    def NodeIp(self):
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
 
     @property
     def LocalDirectory(self):
@@ -39,9 +59,28 @@ class ClientToken(AbstractModel):
     def LocalDirectory(self, LocalDirectory):
         self._LocalDirectory = LocalDirectory
 
+    @property
+    def GooseFSDirectory(self):
+        return self._GooseFSDirectory
+
+    @GooseFSDirectory.setter
+    def GooseFSDirectory(self, GooseFSDirectory):
+        self._GooseFSDirectory = GooseFSDirectory
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
 
     def _deserialize(self, params):
+        self._NodeIp = params.get("NodeIp")
         self._LocalDirectory = params.get("LocalDirectory")
+        self._GooseFSDirectory = params.get("GooseFSDirectory")
+        self._Token = params.get("Token")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -434,8 +473,11 @@ class DescribeClusterRolesRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
+        :param _RoleName: 角色名
+        :type RoleName: str
         """
         self._ClusterId = None
+        self._RoleName = None
 
     @property
     def ClusterId(self):
@@ -445,9 +487,18 @@ class DescribeClusterRolesRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

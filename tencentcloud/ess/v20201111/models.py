@@ -4793,12 +4793,15 @@ class CreateReleaseFlowRequest(AbstractModel):
         :type ReleasedApprovers: list of ReleasedApprover
         :param _Deadline: 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
         :type Deadline: int
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._NeedRelievedFlowId = None
         self._ReliveInfo = None
         self._ReleasedApprovers = None
         self._Deadline = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -4840,6 +4843,14 @@ class CreateReleaseFlowRequest(AbstractModel):
     def Deadline(self, Deadline):
         self._Deadline = Deadline
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -4856,6 +4867,9 @@ class CreateReleaseFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ReleasedApprovers.append(obj)
         self._Deadline = params.get("Deadline")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

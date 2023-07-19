@@ -2488,6 +2488,79 @@ class DescribeCloudNativeAPIGatewayNodesResult(AbstractModel):
         
 
 
+class DescribeCloudNativeAPIGatewayPortsRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayPorts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID
+        :type GatewayId: str
+        """
+        self._GatewayId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayPortsResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayPorts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 云原生API网关实例协议端口列表响应结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeGatewayInstancePortResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeGatewayInstancePortResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
     """DescribeCloudNativeAPIGatewayRouteRateLimit请求参数结构体
 
@@ -2907,6 +2980,58 @@ class DescribeCloudNativeAPIGatewayServicesResponse(AbstractModel):
             self._Result = KongServices()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeGatewayInstancePortResult(AbstractModel):
+    """获取云原生API网关实例协议端口列表响应结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _GatewayInstancePortList: 网关实例协议端口列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstancePortList: list of GatewayInstanceSchemeAndPorts
+        """
+        self._GatewayId = None
+        self._GatewayInstancePortList = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayInstancePortList(self):
+        return self._GatewayInstancePortList
+
+    @GatewayInstancePortList.setter
+    def GatewayInstancePortList(self, GatewayInstancePortList):
+        self._GatewayInstancePortList = GatewayInstancePortList
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        if params.get("GatewayInstancePortList") is not None:
+            self._GatewayInstancePortList = []
+            for item in params.get("GatewayInstancePortList"):
+                obj = GatewayInstanceSchemeAndPorts()
+                obj._deserialize(item)
+                self._GatewayInstancePortList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeInstanceRegionInfo(AbstractModel):
@@ -4417,6 +4542,53 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatewayInstanceSchemeAndPorts(AbstractModel):
+    """网关实例协议端口列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scheme: 端口协议，可选HTTP、HTTPS、TCP和UDP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheme: str
+        :param _PortList: 端口列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PortList: list of int non-negative
+        """
+        self._Scheme = None
+        self._PortList = None
+
+    @property
+    def Scheme(self):
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def PortList(self):
+        return self._PortList
+
+    @PortList.setter
+    def PortList(self, PortList):
+        self._PortList = PortList
+
+
+    def _deserialize(self, params):
+        self._Scheme = params.get("Scheme")
+        self._PortList = params.get("PortList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

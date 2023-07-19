@@ -5666,7 +5666,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
 
 class CreateFlowOption(AbstractModel):
-    """创建合同配置信息
+    """创建合同个性化参数
 
     """
 

@@ -4532,6 +4532,222 @@ class CreateMachineGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateScheduledSqlRequest(AbstractModel):
+    """CreateScheduledSql请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcTopicId: 源日志主题
+        :type SrcTopicId: str
+        :param _Name: 任务名称
+        :type Name: str
+        :param _EnableFlag: 任务启动状态.  1正常开启,  2关闭
+        :type EnableFlag: int
+        :param _DstResource: 加工任务目的topic_id以及别名
+        :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
+        :param _ScheduledSqlContent: ScheduledSQL语句
+        :type ScheduledSqlContent: str
+        :param _ProcessStartTime: 调度开始时间,Unix时间戳，单位ms
+        :type ProcessStartTime: int
+        :param _ProcessType: 调度类型，1:持续运行 2:指定调度结束时间
+        :type ProcessType: int
+        :param _ProcessPeriod: 调度周期(分钟)
+        :type ProcessPeriod: int
+        :param _ProcessTimeWindow: 调度时间窗口
+        :type ProcessTimeWindow: str
+        :param _ProcessDelay: 执行延迟(秒)
+        :type ProcessDelay: int
+        :param _SrcTopicRegion: 源topicId的地域信息
+        :type SrcTopicRegion: str
+        :param _ProcessEndTime: 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+        :type ProcessEndTime: int
+        :param _SyntaxRule: 语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+        :type SyntaxRule: int
+        """
+        self._SrcTopicId = None
+        self._Name = None
+        self._EnableFlag = None
+        self._DstResource = None
+        self._ScheduledSqlContent = None
+        self._ProcessStartTime = None
+        self._ProcessType = None
+        self._ProcessPeriod = None
+        self._ProcessTimeWindow = None
+        self._ProcessDelay = None
+        self._SrcTopicRegion = None
+        self._ProcessEndTime = None
+        self._SyntaxRule = None
+
+    @property
+    def SrcTopicId(self):
+        return self._SrcTopicId
+
+    @SrcTopicId.setter
+    def SrcTopicId(self, SrcTopicId):
+        self._SrcTopicId = SrcTopicId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EnableFlag(self):
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def DstResource(self):
+        return self._DstResource
+
+    @DstResource.setter
+    def DstResource(self, DstResource):
+        self._DstResource = DstResource
+
+    @property
+    def ScheduledSqlContent(self):
+        return self._ScheduledSqlContent
+
+    @ScheduledSqlContent.setter
+    def ScheduledSqlContent(self, ScheduledSqlContent):
+        self._ScheduledSqlContent = ScheduledSqlContent
+
+    @property
+    def ProcessStartTime(self):
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def ProcessType(self):
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
+    @property
+    def ProcessPeriod(self):
+        return self._ProcessPeriod
+
+    @ProcessPeriod.setter
+    def ProcessPeriod(self, ProcessPeriod):
+        self._ProcessPeriod = ProcessPeriod
+
+    @property
+    def ProcessTimeWindow(self):
+        return self._ProcessTimeWindow
+
+    @ProcessTimeWindow.setter
+    def ProcessTimeWindow(self, ProcessTimeWindow):
+        self._ProcessTimeWindow = ProcessTimeWindow
+
+    @property
+    def ProcessDelay(self):
+        return self._ProcessDelay
+
+    @ProcessDelay.setter
+    def ProcessDelay(self, ProcessDelay):
+        self._ProcessDelay = ProcessDelay
+
+    @property
+    def SrcTopicRegion(self):
+        return self._SrcTopicRegion
+
+    @SrcTopicRegion.setter
+    def SrcTopicRegion(self, SrcTopicRegion):
+        self._SrcTopicRegion = SrcTopicRegion
+
+    @property
+    def ProcessEndTime(self):
+        return self._ProcessEndTime
+
+    @ProcessEndTime.setter
+    def ProcessEndTime(self, ProcessEndTime):
+        self._ProcessEndTime = ProcessEndTime
+
+    @property
+    def SyntaxRule(self):
+        return self._SyntaxRule
+
+    @SyntaxRule.setter
+    def SyntaxRule(self, SyntaxRule):
+        self._SyntaxRule = SyntaxRule
+
+
+    def _deserialize(self, params):
+        self._SrcTopicId = params.get("SrcTopicId")
+        self._Name = params.get("Name")
+        self._EnableFlag = params.get("EnableFlag")
+        if params.get("DstResource") is not None:
+            self._DstResource = ScheduledSqlResouceInfo()
+            self._DstResource._deserialize(params.get("DstResource"))
+        self._ScheduledSqlContent = params.get("ScheduledSqlContent")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._ProcessType = params.get("ProcessType")
+        self._ProcessPeriod = params.get("ProcessPeriod")
+        self._ProcessTimeWindow = params.get("ProcessTimeWindow")
+        self._ProcessDelay = params.get("ProcessDelay")
+        self._SrcTopicRegion = params.get("SrcTopicRegion")
+        self._ProcessEndTime = params.get("ProcessEndTime")
+        self._SyntaxRule = params.get("SyntaxRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScheduledSqlResponse(AbstractModel):
+    """CreateScheduledSql返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateShipperRequest(AbstractModel):
     """CreateShipper请求参数结构体
 
@@ -14662,6 +14878,51 @@ class RuleTagInfo(AbstractModel):
                 obj = KeyValueInfo()
                 obj._deserialize(item)
                 self._KeyValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduledSqlResouceInfo(AbstractModel):
+    """ScheduledSql的资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 目标主题id
+        :type TopicId: str
+        :param _Region: topic的地域信息
+        :type Region: str
+        """
+        self._TopicId = None
+        self._Region = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

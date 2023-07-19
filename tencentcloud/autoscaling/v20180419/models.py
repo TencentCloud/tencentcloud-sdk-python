@@ -55,7 +55,7 @@ class Activity(AbstractModel):
         :type EndTime: str
         :param _CreatedTime: 伸缩活动创建时间。
         :type CreatedTime: str
-        :param _ActivityRelatedInstanceSet: 伸缩活动相关实例信息集合。
+        :param _ActivityRelatedInstanceSet: 该参数已废弃，请勿使用。
         :type ActivityRelatedInstanceSet: list of ActivtyRelatedInstance
         :param _StatusMessageSimplified: 伸缩活动状态简要描述。
         :type StatusMessageSimplified: str
@@ -65,6 +65,8 @@ class Activity(AbstractModel):
         :type DetailedStatusMessageSet: list of DetailedStatusMessage
         :param _InvocationResultSet: 执行命令结果。
         :type InvocationResultSet: list of InvocationResult
+        :param _RelatedInstanceSet: 伸缩活动相关实例信息集合。
+        :type RelatedInstanceSet: list of RelatedInstance
         """
         self._AutoScalingGroupId = None
         self._ActivityId = None
@@ -81,6 +83,7 @@ class Activity(AbstractModel):
         self._LifecycleActionResultSet = None
         self._DetailedStatusMessageSet = None
         self._InvocationResultSet = None
+        self._RelatedInstanceSet = None
 
     @property
     def AutoScalingGroupId(self):
@@ -164,10 +167,14 @@ class Activity(AbstractModel):
 
     @property
     def ActivityRelatedInstanceSet(self):
+        warnings.warn("parameter `ActivityRelatedInstanceSet` is deprecated", DeprecationWarning) 
+
         return self._ActivityRelatedInstanceSet
 
     @ActivityRelatedInstanceSet.setter
     def ActivityRelatedInstanceSet(self, ActivityRelatedInstanceSet):
+        warnings.warn("parameter `ActivityRelatedInstanceSet` is deprecated", DeprecationWarning) 
+
         self._ActivityRelatedInstanceSet = ActivityRelatedInstanceSet
 
     @property
@@ -201,6 +208,14 @@ class Activity(AbstractModel):
     @InvocationResultSet.setter
     def InvocationResultSet(self, InvocationResultSet):
         self._InvocationResultSet = InvocationResultSet
+
+    @property
+    def RelatedInstanceSet(self):
+        return self._RelatedInstanceSet
+
+    @RelatedInstanceSet.setter
+    def RelatedInstanceSet(self, RelatedInstanceSet):
+        self._RelatedInstanceSet = RelatedInstanceSet
 
 
     def _deserialize(self, params):
@@ -239,6 +254,12 @@ class Activity(AbstractModel):
                 obj = InvocationResult()
                 obj._deserialize(item)
                 self._InvocationResultSet.append(obj)
+        if params.get("RelatedInstanceSet") is not None:
+            self._RelatedInstanceSet = []
+            for item in params.get("RelatedInstanceSet"):
+                obj = RelatedInstance()
+                obj._deserialize(item)
+                self._RelatedInstanceSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8803,6 +8824,55 @@ class NotificationTarget(AbstractModel):
         self._TargetType = params.get("TargetType")
         self._QueueName = params.get("QueueName")
         self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelatedInstance(AbstractModel):
+    """与本次伸缩活动相关的实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _InstanceStatus: 实例在伸缩活动中的状态。取值如下：
+INIT：初始化中
+RUNNING：实例操作中
+SUCCESSFUL：活动成功
+FAILED：活动失败
+        :type InstanceStatus: str
+        """
+        self._InstanceId = None
+        self._InstanceStatus = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

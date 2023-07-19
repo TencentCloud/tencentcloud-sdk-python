@@ -5032,6 +5032,8 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type Angel: float
         :param _PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
         :type PdfPageSize: int
+        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        :type Angle: float
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5039,6 +5041,7 @@ class GeneralBasicOCRResponse(AbstractModel):
         self._Language = None
         self._Angel = None
         self._PdfPageSize = None
+        self._Angle = None
         self._RequestId = None
 
     @property
@@ -5059,10 +5062,14 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         return self._Angel
 
     @Angel.setter
     def Angel(self, Angel):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         self._Angel = Angel
 
     @property
@@ -5072,6 +5079,14 @@ class GeneralBasicOCRResponse(AbstractModel):
     @PdfPageSize.setter
     def PdfPageSize(self, PdfPageSize):
         self._PdfPageSize = PdfPageSize
+
+    @property
+    def Angle(self):
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
 
     @property
     def RequestId(self):
@@ -5092,6 +5107,7 @@ class GeneralBasicOCRResponse(AbstractModel):
         self._Language = params.get("Language")
         self._Angel = params.get("Angel")
         self._PdfPageSize = params.get("PdfPageSize")
+        self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
 
 
@@ -16324,10 +16340,10 @@ class SealOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :type ImageUrl: str
         """
@@ -17490,12 +17506,14 @@ class SmartStructuralOCRV2Request(AbstractModel):
         :param _ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
         :param _ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
@@ -17508,6 +17526,14 @@ ItemNames=["姓名","性别"]
         :type ItemNames: list of str
         :param _ReturnFullText: 是否开启全文字段识别
         :type ReturnFullText: bool
+        :param _ConfigId: 配置id支持：
+General -- 通用场景
+OnlineTaxiItinerary -- 网约车行程单
+RideHailingDriverLicense -- 网约车驾驶证
+RideHailingTransportLicense -- 网约车运输证
+WayBill -- 快递运单
+AccountOpeningPermit -- 银行开户许可证
+        :type ConfigId: str
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -17515,6 +17541,7 @@ ItemNames=["姓名","性别"]
         self._PdfPageNumber = None
         self._ItemNames = None
         self._ReturnFullText = None
+        self._ConfigId = None
 
     @property
     def ImageUrl(self):
@@ -17564,6 +17591,14 @@ ItemNames=["姓名","性别"]
     def ReturnFullText(self, ReturnFullText):
         self._ReturnFullText = ReturnFullText
 
+    @property
+    def ConfigId(self):
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -17572,6 +17607,7 @@ ItemNames=["姓名","性别"]
         self._PdfPageNumber = params.get("PdfPageNumber")
         self._ItemNames = params.get("ItemNames")
         self._ReturnFullText = params.get("ReturnFullText")
+        self._ConfigId = params.get("ConfigId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

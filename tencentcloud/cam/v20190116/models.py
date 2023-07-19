@@ -4126,6 +4126,8 @@ class GetAccountSummaryResponse(AbstractModel):
         :type Group: int
         :param _Member: 分组用户总数
         :type Member: int
+        :param _IdentityProviders: 身份提供商数。
+        :type IdentityProviders: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4135,6 +4137,7 @@ class GetAccountSummaryResponse(AbstractModel):
         self._User = None
         self._Group = None
         self._Member = None
+        self._IdentityProviders = None
         self._RequestId = None
 
     @property
@@ -4155,10 +4158,14 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def Idps(self):
+        warnings.warn("parameter `Idps` is deprecated", DeprecationWarning) 
+
         return self._Idps
 
     @Idps.setter
     def Idps(self, Idps):
+        warnings.warn("parameter `Idps` is deprecated", DeprecationWarning) 
+
         self._Idps = Idps
 
     @property
@@ -4186,6 +4193,14 @@ class GetAccountSummaryResponse(AbstractModel):
         self._Member = Member
 
     @property
+    def IdentityProviders(self):
+        return self._IdentityProviders
+
+    @IdentityProviders.setter
+    def IdentityProviders(self, IdentityProviders):
+        self._IdentityProviders = IdentityProviders
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4201,6 +4216,7 @@ class GetAccountSummaryResponse(AbstractModel):
         self._User = params.get("User")
         self._Group = params.get("Group")
         self._Member = params.get("Member")
+        self._IdentityProviders = params.get("IdentityProviders")
         self._RequestId = params.get("RequestId")
 
 

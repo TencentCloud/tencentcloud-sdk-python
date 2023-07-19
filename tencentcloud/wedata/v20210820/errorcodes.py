@@ -62,6 +62,9 @@ INVALIDPARAMETER_RULETEMPLATENOTEXIST = 'InvalidParameter.RuleTemplateNotExist'
 # 服务繁忙，请稍后重试。
 INVALIDPARAMETER_SERVICEISBUSY = 'InvalidParameter.ServiceIsBusy'
 
+# WeData_QCSRole不存在，请进行服务授权。
+INVALIDPARAMETER_WEDATAROLENOTEXISTS = 'InvalidParameter.WeDataRoleNotExists'
+
 # 工作空间不存在。
 INVALIDPARAMETER_WORKSPACENOTEXIST = 'InvalidParameter.WorkspaceNotExist'
 
@@ -94,6 +97,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# 资源售罄。
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
