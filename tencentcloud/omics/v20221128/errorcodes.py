@@ -26,6 +26,9 @@ FAILEDOPERATION_RETRYLIMITEXCEEDED = 'FailedOperation.RetryLimitExceeded'
 # 状态不支持
 FAILEDOPERATION_STATUSNOTSUPPORTED = 'FailedOperation.StatusNotSupported'
 
+# 版本未发布
+FAILEDOPERATION_VERSIONNOTRELEASED = 'FailedOperation.VersionNotReleased'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -65,11 +68,11 @@ INVALIDPARAMETERVALUE_INVALIDHEADER = 'InvalidParameterValue.InvalidHeader'
 # 输入JSON格式错误
 INVALIDPARAMETERVALUE_INVALIDINPUTJSONFORMAT = 'InvalidParameterValue.InvalidInputJsonFormat'
 
+# 输入占位符错误
+INVALIDPARAMETERVALUE_INVALIDINPUTPLACEHOLDER = 'InvalidParameterValue.InvalidInputPlaceholder'
+
 # 名称错误
 INVALIDPARAMETERVALUE_INVALIDNAME = 'InvalidParameterValue.InvalidName'
-
-# 无法找到对应的占位符
-INVALIDPARAMETERVALUE_INVALIDPLACEHOLDER = 'InvalidParameterValue.InvalidPlaceholder'
 
 # 运行参数错误
 INVALIDPARAMETERVALUE_INVALIDRUNOPTION = 'InvalidParameterValue.InvalidRunOption'
@@ -100,6 +103,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 应用不存在
 RESOURCENOTFOUND_APPLICATIONNOTEXIST = 'ResourceNotFound.ApplicationNotExist'
+
+# 应用版本不存在
+RESOURCENOTFOUND_APPLICATIONVERSIONNOTEXIST = 'ResourceNotFound.ApplicationVersionNotExist'
 
 # 存储桶不存在
 RESOURCENOTFOUND_COSBUCKETNOTEXIST = 'ResourceNotFound.CosBucketNotExist'

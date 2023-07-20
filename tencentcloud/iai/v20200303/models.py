@@ -1097,7 +1097,7 @@ class CreateFaceResponse(AbstractModel):
 RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
         :type RetCode: list of int
         :param _SucIndexes: 加入成功的人脸索引。索引顺序和入参中 Images 或 Urls 的顺序一致。 
-例， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
+例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
         :type SucIndexes: list of int non-negative
         :param _SucFaceRects: 加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
         :type SucFaceRects: list of FaceRect
@@ -3143,7 +3143,7 @@ class FaceDetailAttributesInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Age: 年龄 [0,65]，其中65代表“65岁及以上”。 
-FaceAttributesType 不为含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+FaceAttributesType 不含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Age: int
         :param _Beauty: 美丑打分[0,100]。 
 FaceAttributesType 不含 Beauty 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
@@ -5244,7 +5244,7 @@ class Hat(AbstractModel):
 AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：头盔，3：保安帽。
         :type Style: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         :param _Color: 帽子颜色。
-AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系子。
+AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系。
         :type Color: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
         self._Style = None
@@ -6085,12 +6085,12 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         :type Url: str
         :param _MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
 MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
-例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
         :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34的人脸图片无法被识别。建议设置为80。
         :type MinFaceSize: int
         :param _MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。 
-例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
 值越大，需要处理的时间越长。建议不要超过10。
         :type MaxPersonNum: int
         :param _NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0

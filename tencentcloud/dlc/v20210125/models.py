@@ -15390,6 +15390,9 @@ class SparkJobInfo(AbstractModel):
         :param _IsInherit: 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsInherit: int
+        :param _IsSessionStarted: 是否使用session脚本的sql运行任务：false：否，true：是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSessionStarted: bool
         """
         self._JobId = None
         self._JobName = None
@@ -15431,6 +15434,7 @@ class SparkJobInfo(AbstractModel):
         self._DataEngineClusterType = None
         self._DataEngineImageVersion = None
         self._IsInherit = None
+        self._IsSessionStarted = None
 
     @property
     def JobId(self):
@@ -15752,6 +15756,14 @@ class SparkJobInfo(AbstractModel):
     def IsInherit(self, IsInherit):
         self._IsInherit = IsInherit
 
+    @property
+    def IsSessionStarted(self):
+        return self._IsSessionStarted
+
+    @IsSessionStarted.setter
+    def IsSessionStarted(self, IsSessionStarted):
+        self._IsSessionStarted = IsSessionStarted
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -15796,6 +15808,7 @@ class SparkJobInfo(AbstractModel):
         self._DataEngineClusterType = params.get("DataEngineClusterType")
         self._DataEngineImageVersion = params.get("DataEngineImageVersion")
         self._IsInherit = params.get("IsInherit")
+        self._IsSessionStarted = params.get("IsSessionStarted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

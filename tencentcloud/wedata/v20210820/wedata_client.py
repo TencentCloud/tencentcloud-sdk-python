@@ -72,6 +72,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchDeleteOpsTasks(self, request):
+        """智能运维-批量删除任务
+
+        :param request: Request instance for BatchDeleteOpsTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BatchDeleteOpsTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchDeleteOpsTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteOpsTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteOpsTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchDeleteTasksDs(self, request):
         """Ds批量删除任务，仅对任务状态为”已停止“有效；
 
@@ -188,6 +211,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchModifyOpsOwners(self, request):
+        """批量修改任务责任人
+
+        :param request: Request instance for BatchModifyOpsOwners.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BatchModifyOpsOwnersRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchModifyOpsOwnersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchModifyOpsOwners", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchModifyOpsOwnersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchModifyOwnersNew(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         批量修改任务责任人
@@ -258,6 +304,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchRunOpsTask(self, request):
+        """任务运维-任务列表 批量运行
+
+        :param request: Request instance for BatchRunOpsTask.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BatchRunOpsTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchRunOpsTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchRunOpsTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchRunOpsTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchStartIntegrationTasks(self, request):
         """批量运行集成任务
 
@@ -304,6 +373,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchStopOpsTasks(self, request):
+        """仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度
+
+        :param request: Request instance for BatchStopOpsTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BatchStopOpsTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchStopOpsTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchStopOpsTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchStopOpsTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchStopTasksNew(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度
@@ -319,6 +411,29 @@ class WedataClient(AbstractClient):
             body = self.call("BatchStopTasksNew", params, headers=headers)
             response = json.loads(body)
             model = models.BatchStopTasksNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BatchStopWorkflowsByIds(self, request):
+        """批量停止工作流
+
+        :param request: Request instance for BatchStopWorkflowsByIds.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BatchStopWorkflowsByIdsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchStopWorkflowsByIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchStopWorkflowsByIds", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchStopWorkflowsByIdsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -604,6 +719,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CountOpsInstanceState(self, request):
+        """统计任务实例状态
+
+        :param request: Request instance for CountOpsInstanceState.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CountOpsInstanceStateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CountOpsInstanceStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CountOpsInstanceState", params, headers=headers)
+            response = json.loads(body)
+            model = models.CountOpsInstanceStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateBaseline(self, request):
+        """创建基线
+
+        :param request: Request instance for CreateBaseline.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateBaselineRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBaselineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomFunction(self, request):
         """创建用户自定义函数
 
@@ -813,6 +974,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOpsMakePlan(self, request):
+        """补录任务
+
+        :param request: Request instance for CreateOpsMakePlan.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateOpsMakePlanRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateOpsMakePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOpsMakePlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOpsMakePlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrUpdateResource(self, request):
         """资源管理需要先将资源上传到cos中，然后调用该接口，将cos资源绑定到wedata
 
@@ -976,6 +1160,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DagInstances(self, request):
+        """拉取dag实例
+
+        :param request: Request instance for DagInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DagInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DagInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DagInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DagInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBaseline(self, request):
+        """DeleteBaseline
+
+        :param request: Request instance for DeleteBaseline.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteBaselineRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBaselineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCustomFunction(self, request):
         """删除用户自定义函数
 
@@ -1014,6 +1244,29 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteDataSources", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataSourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteFile(self, request):
+        """删除文件
+
+        :param request: Request instance for DeleteFile.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteFileRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1208,6 +1461,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteResourceFile(self, request):
+        """资源管理-删除资源文件
+
+        :param request: Request instance for DeleteResourceFile.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteResourceFileRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteResourceFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteResourceFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteResourceFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteResourceFiles(self, request):
         """资源管理-批量删除资源文件
 
@@ -1323,6 +1599,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteWorkflowById(self, request):
+        """通过工作流Id删除工作流
+
+        :param request: Request instance for DeleteWorkflowById.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteWorkflowByIdRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteWorkflowByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWorkflowById", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWorkflowByIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWorkflowNew(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         删除工作流
@@ -1393,6 +1692,213 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAllByFolderNew(self, request):
+        """查询父目录下所有子文件夹+工作流
+
+        :param request: Request instance for DescribeAllByFolderNew.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeAllByFolderNewRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeAllByFolderNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllByFolderNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllByFolderNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllTaskType(self, request):
+        """获取所有任务类型
+
+        :param request: Request instance for DescribeAllTaskType.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeAllTaskTypeRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeAllTaskTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllTaskType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllTaskTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllUsedVersionSon(self, request):
+        """根据任务Id查找生产态子任务
+
+        :param request: Request instance for DescribeAllUsedVersionSon.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeAllUsedVersionSonRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeAllUsedVersionSonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllUsedVersionSon", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllUsedVersionSonResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBaselineAllTaskDag(self, request):
+        """查询基线DAG
+
+        :param request: Request instance for DescribeBaselineAllTaskDag.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineAllTaskDagRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineAllTaskDagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselineAllTaskDag", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBaselineAllTaskDagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBaselineById(self, request):
+        """基线列表
+
+        :param request: Request instance for DescribeBaselineById.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineByIdRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselineById", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBaselineByIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBaselineInstanceDag(self, request):
+        """查询基线实例DAG
+
+        :param request: Request instance for DescribeBaselineInstanceDag.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineInstanceDagRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineInstanceDagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselineInstanceDag", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBaselineInstanceDagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBaselineInstanceGantt(self, request):
+        """查询基线实例关键任务实例甘特图
+
+        :param request: Request instance for DescribeBaselineInstanceGantt.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineInstanceGanttRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineInstanceGanttResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselineInstanceGantt", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBaselineInstanceGanttResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBaselineInstances(self, request):
+        """查询基线实例列表
+
+        :param request: Request instance for DescribeBaselineInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselineInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselineInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBaselineInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBaselines(self, request):
+        """基线列表
+
+        :param request: Request instance for DescribeBaselines.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselinesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBaselinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBaselinesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBatchOperateTask(self, request):
         """批量操作任务列表
 
@@ -1407,6 +1913,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeBatchOperateTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBatchOperateTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBelongTo(self, request):
+        """智能运维-事件列表-所属任务/基线过滤列表
+
+        :param request: Request instance for DescribeBelongTo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBelongToRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBelongToResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBelongTo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBelongToResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1672,6 +2201,75 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDependOpsTaskList(self, request):
+        """根据任务id获取下游依赖任务列表
+
+        :param request: Request instance for DescribeDependOpsTaskList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDependOpsTaskListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDependOpsTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDependOpsTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDependOpsTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDependOpsTasks(self, request):
+        """根据层级查找上/下游任务节点
+
+        :param request: Request instance for DescribeDependOpsTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDependOpsTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDependOpsTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDependOpsTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDependOpsTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDependTaskLists(self, request):
+        """通过taskIds查询task详情列表
+
+        :param request: Request instance for DescribeDependTaskLists.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDependTaskListsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDependTaskListsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDependTaskLists", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDependTaskListsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDependTasksNew(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         根据层级查找上/下游任务节点
@@ -1687,6 +2285,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeDependTasksNew", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDependTasksNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDiagnosticInfoByBaselineId(self, request):
+        """查询基线诊断信息
+
+        :param request: Request instance for DescribeDiagnosticInfoByBaselineId.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDiagnosticInfoByBaselineIdRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDiagnosticInfoByBaselineIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDiagnosticInfoByBaselineId", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDiagnosticInfoByBaselineIdResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1719,6 +2340,236 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDrInstancePage(self, request):
+        """分页查询试运行实例列表
+
+        :param request: Request instance for DescribeDrInstancePage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDrInstancePageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDrInstancePageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDrInstancePage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDrInstancePageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDrInstanceScriptContent(self, request):
+        """查询试运行实例执行内容
+
+        :param request: Request instance for DescribeDrInstanceScriptContent.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDrInstanceScriptContentRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDrInstanceScriptContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDrInstanceScriptContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDrInstanceScriptContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDrSonInstance(self, request):
+        """查询试运行实例子实例列表
+
+        :param request: Request instance for DescribeDrSonInstance.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDrSonInstanceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDrSonInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDrSonInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDrSonInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEvent(self, request):
+        """根据项目ID和事件名称查看事件详情
+
+        :param request: Request instance for DescribeEvent.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEventCases(self, request):
+        """根据条件查找事件实例
+
+        :param request: Request instance for DescribeEventCases.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventCasesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeEventCasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventCases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventCasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEventConsumeTasks(self, request):
+        """查看事件实例的消费任务
+
+        :param request: Request instance for DescribeEventConsumeTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventConsumeTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeEventConsumeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventConsumeTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventConsumeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEventDetail(self, request):
+        """智能运维事件详情1
+
+        :param request: Request instance for DescribeEventDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeEventDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEventIsAlarmTypes(self, request):
+        """事件是否告警过滤条件
+
+        :param request: Request instance for DescribeEventIsAlarmTypes.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventIsAlarmTypesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeEventIsAlarmTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventIsAlarmTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventIsAlarmTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEventTypes(self, request):
+        """查询事件类型列表
+
+        :param request: Request instance for DescribeEventTypes.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventTypesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeEventTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEvents(self, request):
+        """智能运维事件查询列表
+
+        :param request: Request instance for DescribeEvents.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExecStrategy(self, request):
         """查询规则组执行策略
 
@@ -1733,6 +2584,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeExecStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeExecStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFathers(self, request):
+        """获取关联父实例
+
+        :param request: Request instance for DescribeFathers.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFathersRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeFathersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFathers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFathersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1928,6 +2802,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceByCycle(self, request):
+        """根据周期类型查询所有实例
+
+        :param request: Request instance for DescribeInstanceByCycle.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceByCycleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceByCycleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceByCycle", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceByCycleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceByCycleReport(self, request):
+        """实例状态周期增长趋势
+
+        :param request: Request instance for DescribeInstanceByCycleReport.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceByCycleReportRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceByCycleReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceByCycleReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceByCycleReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceLastLog(self, request):
         """日志获取详情页面
 
@@ -1988,6 +2908,52 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeInstanceLog", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceLogDetail(self, request):
+        """获取具体实例相关日志信息
+
+        :param request: Request instance for DescribeInstanceLogDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceLogDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceLogDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceLogFile(self, request):
+        """下载日志文件，返回日志URL
+
+        :param request: Request instance for DescribeInstanceLogFile.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogFileRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceLogFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2058,6 +3024,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstancesInfoWithTaskInfo(self, request):
+        """拉取实例列表，join task表一些信息
+
+        :param request: Request instance for DescribeInstancesInfoWithTaskInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstancesInfoWithTaskInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstancesInfoWithTaskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesInfoWithTaskInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesInfoWithTaskInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2366,6 +3355,75 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOperateOpsTaskDatasource(self, request):
+        """任务运维搜索 查询生产态任务数据源列表
+
+        :param request: Request instance for DescribeOperateOpsTaskDatasource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateOpsTaskDatasourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateOpsTaskDatasourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOperateOpsTaskDatasource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOperateOpsTaskDatasourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOperateOpsTaskDatasourceType(self, request):
+        """任务运维-查询生产态任务数据源类型列表
+
+        :param request: Request instance for DescribeOperateOpsTaskDatasourceType.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateOpsTaskDatasourceTypeRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateOpsTaskDatasourceTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOperateOpsTaskDatasourceType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOperateOpsTaskDatasourceTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOperateOpsTasks(self, request):
+        """任务运维列表组合条件查询
+
+        :param request: Request instance for DescribeOperateOpsTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateOpsTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateOpsTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOperateOpsTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOperateOpsTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOperateTasks(self, request):
         """任务运维列表组合条件查询
 
@@ -2380,6 +3438,121 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeOperateTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOperateTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOpsInstanceLogList(self, request):
+        """实例运维-获取实例日志列表
+
+        :param request: Request instance for DescribeOpsInstanceLogList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsInstanceLogListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsInstanceLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOpsInstanceLogList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOpsInstanceLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOpsMakePlanInstances(self, request):
+        """根据补录计划和补录任务获取补录实例列表。
+
+        :param request: Request instance for DescribeOpsMakePlanInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlanInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlanInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOpsMakePlanInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOpsMakePlanInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOpsMakePlanTasks(self, request):
+        """查看补录计划任务
+
+        :param request: Request instance for DescribeOpsMakePlanTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlanTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlanTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOpsMakePlanTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOpsMakePlanTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOpsMakePlans(self, request):
+        """根据条件分页查询补录计划
+
+        :param request: Request instance for DescribeOpsMakePlans.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlansRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOpsMakePlans", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOpsMakePlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOpsWorkflows(self, request):
+        """查询用户生产工作流列表
+
+        :param request: Request instance for DescribeOpsWorkflows.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsWorkflowsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsWorkflowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOpsWorkflows", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOpsWorkflowsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3151,6 +4324,167 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeScheduleInstance(self, request):
+        """在基线系统内查询单个调度任务实例
+
+        :param request: Request instance for DescribeScheduleInstance.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeScheduleInstanceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeScheduleInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduleInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduleInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScheduleInstances(self, request):
+        """获取实例列表
+
+        :param request: Request instance for DescribeScheduleInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeScheduleInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeScheduleInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduleInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSchedulerInstanceStatus(self, request):
+        """运维大屏-实例状态分布
+
+        :param request: Request instance for DescribeSchedulerInstanceStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerInstanceStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerInstanceStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSchedulerInstanceStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSchedulerInstanceStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSchedulerRunTimeInstanceCntByStatus(self, request):
+        """运维大屏-实例运行时长排行
+
+        :param request: Request instance for DescribeSchedulerRunTimeInstanceCntByStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerRunTimeInstanceCntByStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerRunTimeInstanceCntByStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSchedulerRunTimeInstanceCntByStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSchedulerRunTimeInstanceCntByStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSchedulerTaskCntByStatus(self, request):
+        """任务状态统计
+
+        :param request: Request instance for DescribeSchedulerTaskCntByStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerTaskCntByStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerTaskCntByStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSchedulerTaskCntByStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSchedulerTaskCntByStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSchedulerTaskTypeCnt(self, request):
+        """运维大屏-任务状态分布
+
+        :param request: Request instance for DescribeSchedulerTaskTypeCnt.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerTaskTypeCntRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerTaskTypeCntResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSchedulerTaskTypeCnt", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSchedulerTaskTypeCntResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSonInstances(self, request):
+        """获取关联子实例
+
+        :param request: Request instance for DescribeSonInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSonInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeSonInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSonInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSonInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStandardRuleDetailInfoList(self, request):
         """获取数据标准规则详情
 
@@ -3174,6 +4508,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStatisticInstanceStatusTrendOps(self, request):
+        """任务状态趋势
+
+        :param request: Request instance for DescribeStatisticInstanceStatusTrendOps.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeStatisticInstanceStatusTrendOpsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeStatisticInstanceStatusTrendOpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStatisticInstanceStatusTrendOps", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStatisticInstanceStatusTrendOpsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStreamTaskLogList(self, request):
         """查询实时任务日志列表
 
@@ -3188,6 +4545,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeStreamTaskLogList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStreamTaskLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSuccessorOpsTaskInfos(self, request):
+        """获取下游任务信息
+
+        :param request: Request instance for DescribeSuccessorOpsTaskInfos.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSuccessorOpsTaskInfosRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeSuccessorOpsTaskInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSuccessorOpsTaskInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSuccessorOpsTaskInfosResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3326,6 +4706,75 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTaskAlarmRegulations", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTaskAlarmRegulationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTaskByCycle(self, request):
+        """根据周期类型 查询所有任务
+
+        :param request: Request instance for DescribeTaskByCycle.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskByCycle", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskByCycleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTaskByCycleReport(self, request):
+        """任务状态周期增长趋势
+
+        :param request: Request instance for DescribeTaskByCycleReport.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleReportRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskByCycleReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskByCycleReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTaskByStatusReport(self, request):
+        """任务状态趋势
+
+        :param request: Request instance for DescribeTaskByStatusReport.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByStatusReportRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByStatusReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskByStatusReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskByStatusReportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3497,6 +4946,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskRunHistory(self, request):
+        """分页查询任务运行历史
+
+        :param request: Request instance for DescribeTaskRunHistory.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskRunHistoryRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskRunHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskRunHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskRunHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskScript(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         查询任务脚本
@@ -3591,6 +5063,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeThirdTaskRunLog(self, request):
+        """获取第三方运行日志
+
+        :param request: Request instance for DescribeThirdTaskRunLog.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeThirdTaskRunLogRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeThirdTaskRunLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeThirdTaskRunLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeThirdTaskRunLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopTableStat(self, request):
         """数据质量概览页面表排行接口
 
@@ -3637,6 +5132,167 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWorkflowCanvasInfo(self, request):
+        """查询工作流画布
+
+        :param request: Request instance for DescribeWorkflowCanvasInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowCanvasInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowCanvasInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowCanvasInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowCanvasInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowExecuteById(self, request):
+        """查询工作流画布运行起止时间
+
+        :param request: Request instance for DescribeWorkflowExecuteById.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowExecuteByIdRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowExecuteByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowExecuteById", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowExecuteByIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowInfoById(self, request):
+        """通过工作流id，查询工作流详情
+
+        :param request: Request instance for DescribeWorkflowInfoById.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowInfoByIdRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowInfoByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowInfoById", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowInfoByIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowListByProjectId(self, request):
+        """根据项目id 获取项目下所有工作流列表
+
+        :param request: Request instance for DescribeWorkflowListByProjectId.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowListByProjectIdRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowListByProjectIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowListByProjectId", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowListByProjectIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowOpsCanvasInfo(self, request):
+        """查询运维画布信息，只需要获取边和节点
+
+        :param request: Request instance for DescribeWorkflowOpsCanvasInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowOpsCanvasInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowOpsCanvasInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowOpsCanvasInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowOpsCanvasInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowTaskCount(self, request):
+        """查询工作流任务数
+
+        :param request: Request instance for DescribeWorkflowTaskCount.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowTaskCountRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowTaskCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowTaskCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowTaskCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DiagnosePlus(self, request):
+        """实例诊断信息
+
+        :param request: Request instance for DiagnosePlus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DiagnosePlusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DiagnosePlusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DiagnosePlus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DiagnosePlusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DryRunDIOfflineTask(self, request):
         """调试运行集成任务
 
@@ -3651,6 +5307,29 @@ class WedataClient(AbstractClient):
             body = self.call("DryRunDIOfflineTask", params, headers=headers)
             response = json.loads(body)
             model = models.DryRunDIOfflineTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EditBaseline(self, request):
+        """编辑基线
+
+        :param request: Request instance for EditBaseline.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.EditBaselineRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.EditBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EditBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.EditBaselineResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3675,6 +5354,52 @@ class WedataClient(AbstractClient):
             body = self.call("ForceSucInstances", params, headers=headers)
             response = json.loads(body)
             model = models.ForceSucInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ForceSucScheduleInstances(self, request):
+        """实例强制成功
+
+        :param request: Request instance for ForceSucScheduleInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ForceSucScheduleInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ForceSucScheduleInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForceSucScheduleInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.ForceSucScheduleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FreezeOpsTasks(self, request):
+        """任务运维-批量冻结任务
+
+        :param request: Request instance for FreezeOpsTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.FreezeOpsTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.FreezeOpsTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FreezeOpsTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.FreezeOpsTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3723,6 +5448,29 @@ class WedataClient(AbstractClient):
             body = self.call("FreezeTasksByMultiWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.FreezeTasksByMultiWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FreezeTasksByWorkflowIds(self, request):
+        """暂停工作流下的所有任务
+
+        :param request: Request instance for FreezeTasksByWorkflowIds.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.FreezeTasksByWorkflowIdsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.FreezeTasksByWorkflowIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FreezeTasksByWorkflowIds", params, headers=headers)
+            response = json.loads(body)
+            model = models.FreezeTasksByWorkflowIdsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3848,6 +5596,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def KillOpsMakePlanInstances(self, request):
+        """按补录计划批量终止实例。
+
+        :param request: Request instance for KillOpsMakePlanInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.KillOpsMakePlanInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.KillOpsMakePlanInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("KillOpsMakePlanInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.KillOpsMakePlanInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def KillScheduleInstances(self, request):
+        """批量kill实例
+
+        :param request: Request instance for KillScheduleInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.KillScheduleInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.KillScheduleInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("KillScheduleInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.KillScheduleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def LockIntegrationTask(self, request):
         """锁定集成任务
 
@@ -3862,6 +5656,52 @@ class WedataClient(AbstractClient):
             body = self.call("LockIntegrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.LockIntegrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def MakeUpOpsTasks(self, request):
+        """任务批量补录，调度状态任务才可以补录；
+
+        :param request: Request instance for MakeUpOpsTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.MakeUpOpsTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.MakeUpOpsTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MakeUpOpsTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.MakeUpOpsTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def MakeUpTasksByWorkflow(self, request):
+        """工作流补数据
+
+        :param request: Request instance for MakeUpTasksByWorkflow.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.MakeUpTasksByWorkflowRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.MakeUpTasksByWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MakeUpTasksByWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.MakeUpTasksByWorkflowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3912,6 +5752,52 @@ class WedataClient(AbstractClient):
             body = self.call("MakeUpWorkflowNew", params, headers=headers)
             response = json.loads(body)
             model = models.MakeUpWorkflowNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBaselineAlarmStatus(self, request):
+        """编辑基线告警状态
+
+        :param request: Request instance for ModifyBaselineAlarmStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyBaselineAlarmStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyBaselineAlarmStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBaselineAlarmStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBaselineAlarmStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBaselineTaskAlarmStatus(self, request):
+        """编辑基线实例中任务告警状态
+
+        :param request: Request instance for ModifyBaselineTaskAlarmStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyBaselineTaskAlarmStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyBaselineTaskAlarmStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBaselineTaskAlarmStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBaselineTaskAlarmStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4414,6 +6300,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RerunOpsMakePlanInstances(self, request):
+        """按补录计划批量重跑/选择补录计划→补录任务→补录实例，点击重跑
+
+        :param request: Request instance for RerunOpsMakePlanInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RerunOpsMakePlanInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RerunOpsMakePlanInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RerunOpsMakePlanInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.RerunOpsMakePlanInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RerunScheduleInstances(self, request):
+        """实例批量重跑
+
+        :param request: Request instance for RerunScheduleInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RerunScheduleInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RerunScheduleInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RerunScheduleInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.RerunScheduleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RestartInLongAgent(self, request):
         """重启采集器
 
@@ -4507,6 +6439,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RunTasksByMultiWorkflow(self, request):
+        """批量启动工作流
+
+        :param request: Request instance for RunTasksByMultiWorkflow.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RunTasksByMultiWorkflowRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RunTasksByMultiWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunTasksByMultiWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunTasksByMultiWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SaveCustomFunction(self, request):
         """保存用户自定义函数
 
@@ -4577,6 +6532,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopBaseline(self, request):
+        """提交基线
+
+        :param request: Request instance for StopBaseline.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.StopBaselineRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.StopBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopBaselineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopIntegrationTask(self, request):
         """停止集成任务
 
@@ -4591,6 +6569,29 @@ class WedataClient(AbstractClient):
             body = self.call("StopIntegrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopIntegrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitBaseline(self, request):
+        """提交基线
+
+        :param request: Request instance for SubmitBaseline.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitBaselineRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.SubmitBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitBaselineResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4824,6 +6825,29 @@ class WedataClient(AbstractClient):
             body = self.call("UpdateInLongAgent", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateInLongAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateWorkflowOwner(self, request):
+        """修改工作流责任人
+
+        :param request: Request instance for UpdateWorkflowOwner.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateWorkflowOwnerRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UpdateWorkflowOwnerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateWorkflowOwner", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateWorkflowOwnerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

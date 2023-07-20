@@ -72,31 +72,6 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateChaincodeAndInstallForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        创建并安装合约
-
-        :param request: Request instance for CreateChaincodeAndInstallForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.CreateChaincodeAndInstallForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.CreateChaincodeAndInstallForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateChaincodeAndInstallForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateChaincodeAndInstallForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DownloadUserCert(self, request):
         """下载用户证书
 
@@ -157,131 +132,6 @@ class TbaasClient(AbstractClient):
             body = self.call("GetBlockTransactionListForUser", params, headers=headers)
             response = json.loads(body)
             model = models.GetBlockTransactionListForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetChaincodeCompileLogForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        获取合约编译日志
-
-        :param request: Request instance for GetChaincodeCompileLogForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeCompileLogForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeCompileLogForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetChaincodeCompileLogForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetChaincodeCompileLogForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetChaincodeInitializeResultForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        实例化结果查询
-
-        :param request: Request instance for GetChaincodeInitializeResultForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeInitializeResultForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeInitializeResultForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetChaincodeInitializeResultForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetChaincodeInitializeResultForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetChaincodeLogForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        获取合约容器日志
-
-        :param request: Request instance for GetChaincodeLogForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeLogForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeLogForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetChaincodeLogForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetChaincodeLogForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetChannelListForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        获取通道列表
-
-        :param request: Request instance for GetChannelListForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChannelListForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChannelListForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetChannelListForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetChannelListForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetClusterListForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
-
-        :param request: Request instance for GetClusterListForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterListForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetClusterListForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetClusterListForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetClusterListForUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -383,31 +233,6 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetPeerLogForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        获取节点日志
-
-        :param request: Request instance for GetPeerLogForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetPeerLogForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetPeerLogForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetPeerLogForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetPeerLogForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetTransactionDetailForUser(self, request):
         """获取交易详情
 
@@ -422,31 +247,6 @@ class TbaasClient(AbstractClient):
             body = self.call("GetTransactionDetailForUser", params, headers=headers)
             response = json.loads(body)
             model = models.GetTransactionDetailForUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def InitializeChaincodeForUser(self, request):
-        """接口已废弃，请通过控制台查询或操作
-
-        实例化合约
-
-        :param request: Request instance for InitializeChaincodeForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.InitializeChaincodeForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InitializeChaincodeForUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InitializeChaincodeForUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.InitializeChaincodeForUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

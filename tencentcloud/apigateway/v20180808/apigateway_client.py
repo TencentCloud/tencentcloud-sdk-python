@@ -749,7 +749,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiApp(self, request):
-        """本接口（DescribeApiApp）用于根据应用ID搜索应用。
+        """本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
 
         :param request: Request instance for DescribeApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppRequest`

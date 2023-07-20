@@ -20103,88 +20103,6 @@ class ModifyCDBProxyConnectionPoolResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ModifyCDBProxyDescRequest(AbstractModel):
-    """ModifyCDBProxyDesc请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例ID
-        :type InstanceId: str
-        :param _ProxyGroupId: 数据库代理ID
-        :type ProxyGroupId: str
-        :param _Desc: 数据库代理描述
-        :type Desc: str
-        """
-        self._InstanceId = None
-        self._ProxyGroupId = None
-        self._Desc = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def ProxyGroupId(self):
-        return self._ProxyGroupId
-
-    @ProxyGroupId.setter
-    def ProxyGroupId(self, ProxyGroupId):
-        self._ProxyGroupId = ProxyGroupId
-
-    @property
-    def Desc(self):
-        return self._Desc
-
-    @Desc.setter
-    def Desc(self, Desc):
-        self._Desc = Desc
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._ProxyGroupId = params.get("ProxyGroupId")
-        self._Desc = params.get("Desc")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyCDBProxyDescResponse(AbstractModel):
-    """ModifyCDBProxyDesc返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ModifyCDBProxyVipVPortRequest(AbstractModel):
     """ModifyCDBProxyVipVPort请求参数结构体
 
@@ -28022,7 +27940,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type InstanceRole: str
         :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。
         :type DeviceType: str
-        :param _Cpu: 升级后的实例cpu核数，如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
+        :param _Cpu: 升级后的实例cpu核数，如果不传将根据 Memory 指定的内存值自动填充最小允许规格的cpu值。
         :type Cpu: int
         :param _FastUpgrade: 是否极速变配。0-普通升级，1-极速变配，2 极速优先。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
         :type FastUpgrade: int

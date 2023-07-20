@@ -502,6 +502,7 @@ class ApiAppInfo(AbstractModel):
         :param _ApiAppId: 应用ID
         :type ApiAppId: str
         :param _ApiAppSecret: 应用SECRET
+注意:此字段可能返回null，表示取不到有效值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAppSecret: str
         :param _ApiAppDesc: 应用描述
@@ -514,6 +515,7 @@ class ApiAppInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiedTime: str
         :param _ApiAppKey: 应用KEY
+注意:此字段可能返回null，表示取不到有效值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAppKey: str
         """

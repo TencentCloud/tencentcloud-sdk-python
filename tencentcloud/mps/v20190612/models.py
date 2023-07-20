@@ -29952,8 +29952,10 @@ class OverrideTranscodeParameter(AbstractModel):
         :param _AudioTemplate: 音频流配置参数。
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
         :param _TEHDConfig: 极速高清转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         :param _SubtitleTemplate: 字幕流配置参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _AddonAudioStream: 外挂音轨参数。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -37981,7 +37983,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 注意：av1 编码容器目前只支持 mp4 。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
         :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。

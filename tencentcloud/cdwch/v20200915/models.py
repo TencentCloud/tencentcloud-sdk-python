@@ -2614,6 +2614,18 @@ Modify 集群变更中；
         :param _UpgradeVersions: 可升级的内核版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeVersions: str
+        :param _EsIndexId: ex-index
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsIndexId: str
+        :param _EsIndexUsername: username
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsIndexUsername: str
+        :param _EsIndexPassword: password
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsIndexPassword: str
+        :param _HasEsIndex: true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasEsIndex: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -2657,6 +2669,10 @@ Modify 集群变更中；
         self._CanAttachCos = None
         self._Components = None
         self._UpgradeVersions = None
+        self._EsIndexId = None
+        self._EsIndexUsername = None
+        self._EsIndexPassword = None
+        self._HasEsIndex = None
 
     @property
     def InstanceId(self):
@@ -2994,6 +3010,38 @@ Modify 集群变更中；
     def UpgradeVersions(self, UpgradeVersions):
         self._UpgradeVersions = UpgradeVersions
 
+    @property
+    def EsIndexId(self):
+        return self._EsIndexId
+
+    @EsIndexId.setter
+    def EsIndexId(self, EsIndexId):
+        self._EsIndexId = EsIndexId
+
+    @property
+    def EsIndexUsername(self):
+        return self._EsIndexUsername
+
+    @EsIndexUsername.setter
+    def EsIndexUsername(self, EsIndexUsername):
+        self._EsIndexUsername = EsIndexUsername
+
+    @property
+    def EsIndexPassword(self):
+        return self._EsIndexPassword
+
+    @EsIndexPassword.setter
+    def EsIndexPassword(self, EsIndexPassword):
+        self._EsIndexPassword = EsIndexPassword
+
+    @property
+    def HasEsIndex(self):
+        return self._HasEsIndex
+
+    @HasEsIndex.setter
+    def HasEsIndex(self, HasEsIndex):
+        self._HasEsIndex = HasEsIndex
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3054,6 +3102,10 @@ Modify 集群变更中；
                 obj._deserialize(item)
                 self._Components.append(obj)
         self._UpgradeVersions = params.get("UpgradeVersions")
+        self._EsIndexId = params.get("EsIndexId")
+        self._EsIndexUsername = params.get("EsIndexUsername")
+        self._EsIndexPassword = params.get("EsIndexPassword")
+        self._HasEsIndex = params.get("HasEsIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3095,6 +3147,9 @@ class InstanceStateInfo(AbstractModel):
         :param _RequestId: 请求id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestId: str
+        :param _ProcessSubName: 流程的二级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessSubName: str
         """
         self._InstanceState = None
         self._FlowCreateTime = None
@@ -3104,6 +3159,7 @@ class InstanceStateInfo(AbstractModel):
         self._FlowMsg = None
         self._ProcessName = None
         self._RequestId = None
+        self._ProcessSubName = None
 
     @property
     def InstanceState(self):
@@ -3169,6 +3225,14 @@ class InstanceStateInfo(AbstractModel):
     def RequestId(self, RequestId):
         self._RequestId = RequestId
 
+    @property
+    def ProcessSubName(self):
+        return self._ProcessSubName
+
+    @ProcessSubName.setter
+    def ProcessSubName(self, ProcessSubName):
+        self._ProcessSubName = ProcessSubName
+
 
     def _deserialize(self, params):
         self._InstanceState = params.get("InstanceState")
@@ -3179,6 +3243,7 @@ class InstanceStateInfo(AbstractModel):
         self._FlowMsg = params.get("FlowMsg")
         self._ProcessName = params.get("ProcessName")
         self._RequestId = params.get("RequestId")
+        self._ProcessSubName = params.get("ProcessSubName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

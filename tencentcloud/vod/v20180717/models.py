@@ -13949,10 +13949,10 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
         :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
         :param _QRCodeConfigure: 视频画面二维码检测的控制参数。
         :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
-        :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
-        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
         :param _VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
         :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
+        :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
         """
         self._SubAppId = None
         self._Name = None
@@ -13966,8 +13966,8 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
         self._NoiseConfigure = None
         self._MosaicConfigure = None
         self._QRCodeConfigure = None
-        self._QualityEvaluationConfigure = None
         self._VoiceConfigure = None
+        self._QualityEvaluationConfigure = None
 
     @property
     def SubAppId(self):
@@ -14066,20 +14066,20 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
         self._QRCodeConfigure = QRCodeConfigure
 
     @property
-    def QualityEvaluationConfigure(self):
-        return self._QualityEvaluationConfigure
-
-    @QualityEvaluationConfigure.setter
-    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
-        self._QualityEvaluationConfigure = QualityEvaluationConfigure
-
-    @property
     def VoiceConfigure(self):
         return self._VoiceConfigure
 
     @VoiceConfigure.setter
     def VoiceConfigure(self, VoiceConfigure):
         self._VoiceConfigure = VoiceConfigure
+
+    @property
+    def QualityEvaluationConfigure(self):
+        return self._QualityEvaluationConfigure
+
+    @QualityEvaluationConfigure.setter
+    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
+        self._QualityEvaluationConfigure = QualityEvaluationConfigure
 
 
     def _deserialize(self, params):
@@ -14111,12 +14111,12 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
         if params.get("QRCodeConfigure") is not None:
             self._QRCodeConfigure = QRCodeConfigureInfo()
             self._QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
-        if params.get("QualityEvaluationConfigure") is not None:
-            self._QualityEvaluationConfigure = QualityEvaluationConfigureInfo()
-            self._QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
         if params.get("VoiceConfigure") is not None:
             self._VoiceConfigure = VoiceConfigureInfo()
             self._VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self._QualityEvaluationConfigure = QualityEvaluationConfigureInfo()
+            self._QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37078,10 +37078,10 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
         :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfoForUpdate`
         :param _QRCodeConfigure: 视频画面二维码检测的控制参数。
         :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfoForUpdate`
-        :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
-        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfoForUpdate`
         :param _VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
         :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfoForUpdate`
+        :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfoForUpdate`
         """
         self._Definition = None
         self._SubAppId = None
@@ -37096,8 +37096,8 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
         self._NoiseConfigure = None
         self._MosaicConfigure = None
         self._QRCodeConfigure = None
-        self._QualityEvaluationConfigure = None
         self._VoiceConfigure = None
+        self._QualityEvaluationConfigure = None
 
     @property
     def Definition(self):
@@ -37204,20 +37204,20 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
         self._QRCodeConfigure = QRCodeConfigure
 
     @property
-    def QualityEvaluationConfigure(self):
-        return self._QualityEvaluationConfigure
-
-    @QualityEvaluationConfigure.setter
-    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
-        self._QualityEvaluationConfigure = QualityEvaluationConfigure
-
-    @property
     def VoiceConfigure(self):
         return self._VoiceConfigure
 
     @VoiceConfigure.setter
     def VoiceConfigure(self, VoiceConfigure):
         self._VoiceConfigure = VoiceConfigure
+
+    @property
+    def QualityEvaluationConfigure(self):
+        return self._QualityEvaluationConfigure
+
+    @QualityEvaluationConfigure.setter
+    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
+        self._QualityEvaluationConfigure = QualityEvaluationConfigure
 
 
     def _deserialize(self, params):
@@ -37250,12 +37250,12 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
         if params.get("QRCodeConfigure") is not None:
             self._QRCodeConfigure = QRCodeConfigureInfoForUpdate()
             self._QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
-        if params.get("QualityEvaluationConfigure") is not None:
-            self._QualityEvaluationConfigure = QualityEvaluationConfigureInfoForUpdate()
-            self._QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
         if params.get("VoiceConfigure") is not None:
             self._VoiceConfigure = VoiceConfigureInfoForUpdate()
             self._VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self._QualityEvaluationConfigure = QualityEvaluationConfigureInfoForUpdate()
+            self._QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43880,13 +43880,6 @@ class QualityInspectItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: 置信度，取值范围：[0, 100]。
-<font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
-<li>Mosaic：马赛克；</li>
-<li>QRCode：二维码；</li>
-<li>AppletCode：小程序码；</li>
-<li>BarCode：条形码。</li>
-        :type Confidence: int
         :param _StartTimeOffset: 异常片段起始的偏移时间，单位：秒。
         :type StartTimeOffset: float
         :param _EndTimeOffset: 异常片段终止的偏移时间，单位：秒。
@@ -43899,19 +43892,18 @@ class QualityInspectItem(AbstractModel):
 <li>AppletCode：小程序码；</li>
 <li>BarCode：条形码。</li>
         :type AreaCoordSet: list of int
+        :param _Confidence: 置信度，取值范围：[0, 100]。
+<font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
+<li>Mosaic：马赛克；</li>
+<li>QRCode：二维码；</li>
+<li>AppletCode：小程序码；</li>
+<li>BarCode：条形码。</li>
+        :type Confidence: int
         """
-        self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._AreaCoordSet = None
-
-    @property
-    def Confidence(self):
-        return self._Confidence
-
-    @Confidence.setter
-    def Confidence(self, Confidence):
-        self._Confidence = Confidence
+        self._Confidence = None
 
     @property
     def StartTimeOffset(self):
@@ -43937,12 +43929,20 @@ class QualityInspectItem(AbstractModel):
     def AreaCoordSet(self, AreaCoordSet):
         self._AreaCoordSet = AreaCoordSet
 
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
 
     def _deserialize(self, params):
-        self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._AreaCoordSet = params.get("AreaCoordSet")
+        self._Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
