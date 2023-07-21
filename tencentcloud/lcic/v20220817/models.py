@@ -1673,6 +1673,8 @@ video 纯视频
         :type InteractionMode: int
         :param _VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :type VideoOrientation: int
+        :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
+        :type IsGradingRequiredPostClass: int
         """
         self._Name = None
         self._StartTime = None
@@ -1694,6 +1696,7 @@ video 纯视频
         self._EnableDirectControl = None
         self._InteractionMode = None
         self._VideoOrientation = None
+        self._IsGradingRequiredPostClass = None
 
     @property
     def Name(self):
@@ -1855,6 +1858,14 @@ video 纯视频
     def VideoOrientation(self, VideoOrientation):
         self._VideoOrientation = VideoOrientation
 
+    @property
+    def IsGradingRequiredPostClass(self):
+        return self._IsGradingRequiredPostClass
+
+    @IsGradingRequiredPostClass.setter
+    def IsGradingRequiredPostClass(self, IsGradingRequiredPostClass):
+        self._IsGradingRequiredPostClass = IsGradingRequiredPostClass
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1877,6 +1888,7 @@ video 纯视频
         self._EnableDirectControl = params.get("EnableDirectControl")
         self._InteractionMode = params.get("InteractionMode")
         self._VideoOrientation = params.get("VideoOrientation")
+        self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4011,6 +4023,8 @@ video 纯视频
         :type InteractionMode: int
         :param _VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :type VideoOrientation: int
+        :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
+        :type IsGradingRequiredPostClass: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4032,6 +4046,7 @@ video 纯视频
         self._EnableDirectControl = None
         self._InteractionMode = None
         self._VideoOrientation = None
+        self._IsGradingRequiredPostClass = None
         self._RequestId = None
 
     @property
@@ -4179,6 +4194,14 @@ video 纯视频
         self._VideoOrientation = VideoOrientation
 
     @property
+    def IsGradingRequiredPostClass(self):
+        return self._IsGradingRequiredPostClass
+
+    @IsGradingRequiredPostClass.setter
+    def IsGradingRequiredPostClass(self, IsGradingRequiredPostClass):
+        self._IsGradingRequiredPostClass = IsGradingRequiredPostClass
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4206,6 +4229,7 @@ video 纯视频
         self._EnableDirectControl = params.get("EnableDirectControl")
         self._InteractionMode = params.get("InteractionMode")
         self._VideoOrientation = params.get("VideoOrientation")
+        self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RequestId = params.get("RequestId")
 
 
@@ -6759,6 +6783,8 @@ video 纯视频
         :type InteractionMode: int
         :param _VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :type VideoOrientation: int
+        :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
+        :type IsGradingRequiredPostClass: int
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -6777,6 +6803,7 @@ video 纯视频
         self._EnableDirectControl = None
         self._InteractionMode = None
         self._VideoOrientation = None
+        self._IsGradingRequiredPostClass = None
 
     @property
     def RoomId(self):
@@ -6914,6 +6941,14 @@ video 纯视频
     def VideoOrientation(self, VideoOrientation):
         self._VideoOrientation = VideoOrientation
 
+    @property
+    def IsGradingRequiredPostClass(self):
+        return self._IsGradingRequiredPostClass
+
+    @IsGradingRequiredPostClass.setter
+    def IsGradingRequiredPostClass(self, IsGradingRequiredPostClass):
+        self._IsGradingRequiredPostClass = IsGradingRequiredPostClass
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -6933,6 +6968,7 @@ video 纯视频
         self._EnableDirectControl = params.get("EnableDirectControl")
         self._InteractionMode = params.get("InteractionMode")
         self._VideoOrientation = params.get("VideoOrientation")
+        self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

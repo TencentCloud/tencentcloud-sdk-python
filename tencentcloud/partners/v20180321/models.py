@@ -660,6 +660,9 @@ class AgentDealNewElem(AbstractModel):
         :param _ResourceIds: 资源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
+        :param _RefundMap: 退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefundMap: list of RefundMap
         """
         self._DealId = None
         self._DealName = None
@@ -690,6 +693,7 @@ class AgentDealNewElem(AbstractModel):
         self._PaymentMethod = None
         self._UpdateTime = None
         self._ResourceIds = None
+        self._RefundMap = None
 
     @property
     def DealId(self):
@@ -923,6 +927,14 @@ class AgentDealNewElem(AbstractModel):
     def ResourceIds(self, ResourceIds):
         self._ResourceIds = ResourceIds
 
+    @property
+    def RefundMap(self):
+        return self._RefundMap
+
+    @RefundMap.setter
+    def RefundMap(self, RefundMap):
+        self._RefundMap = RefundMap
+
 
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
@@ -961,6 +973,12 @@ class AgentDealNewElem(AbstractModel):
         self._PaymentMethod = params.get("PaymentMethod")
         self._UpdateTime = params.get("UpdateTime")
         self._ResourceIds = params.get("ResourceIds")
+        if params.get("RefundMap") is not None:
+            self._RefundMap = []
+            for item in params.get("RefundMap"):
+                obj = RefundMap()
+                obj._deserialize(item)
+                self._RefundMap.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3663,6 +3681,53 @@ class RebateInfoElemNew(AbstractModel):
         self._MonthSales = params.get("MonthSales")
         self._QuarterSales = params.get("QuarterSales")
         self._ExceptionFlag = params.get("ExceptionFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefundMap(AbstractModel):
+    """退款单关联的原始订单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 退款单关联的原始子订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        :param _RefundAmount: 退款金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefundAmount: int
+        """
+        self._DealName = None
+        self._RefundAmount = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RefundAmount(self):
+        return self._RefundAmount
+
+    @RefundAmount.setter
+    def RefundAmount(self, RefundAmount):
+        self._RefundAmount = RefundAmount
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RefundAmount = params.get("RefundAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4948,6 +4948,13 @@ APP：第三方APP或小程序跳转电子签小程序的path。
         :type AutoJumpBack: bool
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Hides: 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
+
+0:合同签署页面更多操作按钮
+1:合同签署页面更多操作的拒绝签署按钮
+2:合同签署页面更多操作的转他人处理按钮
+3:签署成功页的查看详情按钮
+        :type Hides: list of int
         """
         self._Operator = None
         self._OrganizationName = None
@@ -4959,6 +4966,7 @@ APP：第三方APP或小程序跳转电子签小程序的path。
         self._PathType = None
         self._AutoJumpBack = None
         self._Agent = None
+        self._Hides = None
 
     @property
     def Operator(self):
@@ -5040,6 +5048,14 @@ APP：第三方APP或小程序跳转电子签小程序的path。
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def Hides(self):
+        return self._Hides
+
+    @Hides.setter
+    def Hides(self, Hides):
+        self._Hides = Hides
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5056,6 +5072,7 @@ APP：第三方APP或小程序跳转电子签小程序的path。
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._Hides = params.get("Hides")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9623,7 +9640,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type Required: bool
         :param _ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
-        :param _CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
+        :param _CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一。用于发起含有或签签署人的合同。或签参与人必须有此字段。不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
         :type CustomApproverTag: str
         :param _RegisterInfo: 快速注册相关信息，目前暂未开放！
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
@@ -12036,9 +12053,12 @@ class RegisterInfo(AbstractModel):
         :type LegalName: str
         :param _Uscc: 社会统一信用代码
         :type Uscc: str
+        :param _UnifiedSocialCreditCode: 社会统一信用代码
+        :type UnifiedSocialCreditCode: str
         """
         self._LegalName = None
         self._Uscc = None
+        self._UnifiedSocialCreditCode = None
 
     @property
     def LegalName(self):
@@ -12050,16 +12070,29 @@ class RegisterInfo(AbstractModel):
 
     @property
     def Uscc(self):
+        warnings.warn("parameter `Uscc` is deprecated", DeprecationWarning) 
+
         return self._Uscc
 
     @Uscc.setter
     def Uscc(self, Uscc):
+        warnings.warn("parameter `Uscc` is deprecated", DeprecationWarning) 
+
         self._Uscc = Uscc
+
+    @property
+    def UnifiedSocialCreditCode(self):
+        return self._UnifiedSocialCreditCode
+
+    @UnifiedSocialCreditCode.setter
+    def UnifiedSocialCreditCode(self, UnifiedSocialCreditCode):
+        self._UnifiedSocialCreditCode = UnifiedSocialCreditCode
 
 
     def _deserialize(self, params):
         self._LegalName = params.get("LegalName")
         self._Uscc = params.get("Uscc")
+        self._UnifiedSocialCreditCode = params.get("UnifiedSocialCreditCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

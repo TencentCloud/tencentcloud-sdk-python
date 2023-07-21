@@ -289,6 +289,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
 • 16k_pt：葡萄牙语；
 • 16k_tr：土耳其语；
 • 16k_ar：阿拉伯语；
+• 16k_es：西班牙语；
         :type EngineType: str
         :param _Url: 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
         :type Url: str
@@ -607,6 +608,7 @@ class CreateRecTaskRequest(AbstractModel):
 • 16k_pt：葡萄牙语；
 • 16k_tr：土耳其语；
 • 16k_ar：阿拉伯语；
+• 16k_es：西班牙语；
 • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
         :type EngineModelType: str
         :param _ChannelNum: 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
@@ -2286,6 +2288,7 @@ class SentenceRecognitionRequest(AbstractModel):
 • 16k_pt：葡萄牙语；
 • 16k_tr：土耳其语；
 • 16k_ar：阿拉伯语；
+• 16k_es：西班牙语；
 • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
         :type EngSerViceType: str
         :param _SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。

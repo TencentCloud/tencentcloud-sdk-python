@@ -8373,6 +8373,8 @@ class MediaCastProjectInfo(AbstractModel):
         :type StartTime: str
         :param _StopTime: 项目结束时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如果项目还在运行中，该字段为空。
         :type StopTime: str
+        :param _Duration: 推流时长，单位：秒。项目结束后，返回上次项目运行时的推流时长。如果项目是 Working 状态，返回的时长是0。
+        :type Duration: float
         """
         self._Status = None
         self._SourceInfos = None
@@ -8381,6 +8383,7 @@ class MediaCastProjectInfo(AbstractModel):
         self._PlaySetting = None
         self._StartTime = None
         self._StopTime = None
+        self._Duration = None
 
     @property
     def Status(self):
@@ -8438,6 +8441,14 @@ class MediaCastProjectInfo(AbstractModel):
     def StopTime(self, StopTime):
         self._StopTime = StopTime
 
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -8461,6 +8472,7 @@ class MediaCastProjectInfo(AbstractModel):
             self._PlaySetting._deserialize(params.get("PlaySetting"))
         self._StartTime = params.get("StartTime")
         self._StopTime = params.get("StopTime")
+        self._Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

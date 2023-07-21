@@ -6099,6 +6099,13 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         :type JumpUrl: str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _Hides: 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
+
+0:合同签署页面更多操作按钮
+1:合同签署页面更多操作的拒绝签署按钮
+2:合同签署页面更多操作的转他人处理按钮
+3:签署成功页的查看详情按钮
+        :type Hides: list of int
         """
         self._Agent = None
         self._FlowIds = None
@@ -6113,6 +6120,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         self._AutoJumpBack = None
         self._JumpUrl = None
         self._Operator = None
+        self._Hides = None
 
     @property
     def Agent(self):
@@ -6222,6 +6230,14 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
 
         self._Operator = Operator
 
+    @property
+    def Hides(self):
+        return self._Hides
+
+    @Hides.setter
+    def Hides(self, Hides):
+        self._Hides = Hides
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -6241,6 +6257,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._Hides = params.get("Hides")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

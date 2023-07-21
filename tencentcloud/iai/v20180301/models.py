@@ -2844,7 +2844,7 @@ class FaceDetailAttributesInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Age: 年龄 [0,65]，其中65代表“65岁及以上”。 
-FaceAttributesType 不为含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+FaceAttributesType 不含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Age: int
         :param _Beauty: 美丑打分[0,100]。 
 FaceAttributesType 不含 Beauty 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
@@ -4945,7 +4945,7 @@ class Hat(AbstractModel):
 AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：头盔，3：保安帽。
         :type Style: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
         :param _Color: 帽子颜色。
-AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系子。
+AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系。
         :type Color: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
         """
         self._Style = None

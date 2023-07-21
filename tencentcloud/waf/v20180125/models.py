@@ -950,7 +950,7 @@ class AddDomainWhiteRuleRequest(AbstractModel):
         :type Url: str
         :param _Function: 规则的方法
         :type Function: str
-        :param _Status: 规则的开关
+        :param _Status: 规则的开关，0表示规则关闭，1表示规则打开
         :type Status: int
         """
         self._Domain = None
@@ -3693,7 +3693,7 @@ class DescribeCustomWhiteRuleRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Offset: 偏移
+        :param _Offset: 偏移量
         :type Offset: int
         :param _Limit: 容量
         :type Limit: int
@@ -9305,7 +9305,7 @@ class ModifyWafAutoDenyRulesRequest(AbstractModel):
         :type TimeThreshold: int
         :param _DenyTimeThreshold: 触发IP封禁后的封禁时间，范围为5~360分钟
         :type DenyTimeThreshold: int
-        :param _DefenseStatus: 自动封禁状态
+        :param _DefenseStatus: 自动封禁状态，0表示关闭，1表示打开
         :type DefenseStatus: int
         """
         self._Domain = None
@@ -10892,9 +10892,10 @@ class SwitchDomainRulesRequest(AbstractModel):
         :type Domain: str
         :param _Ids: 规则列表
         :type Ids: list of int non-negative
-        :param _Status: 开关状态
+        :param _Status: 开关状态，0表示关闭，1表示开启，2表示只观察
         :type Status: int
-        :param _Reason: 设置为观察模式原因
+        :param _Reason: 设置为观察模式原因，
+1表示业务自身原因观察，2表示系统规则误报上报，3表示核心业务灰度观察，4表示其他
         :type Reason: int
         """
         self._Domain = None

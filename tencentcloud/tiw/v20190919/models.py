@@ -3552,6 +3552,15 @@ class DescribeTranscodeResponse(AbstractModel):
         :param _Ext: 文档制作方式(内测体验)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: str
+        :param _CreateTime: 文档转码任务创建时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _AssignTime: 文档转码任务分配时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssignTime: int
+        :param _FinishedTime: 文档转码任务完成时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishedTime: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3567,6 +3576,9 @@ class DescribeTranscodeResponse(AbstractModel):
         self._CompressFileUrl = None
         self._ResourceListUrl = None
         self._Ext = None
+        self._CreateTime = None
+        self._AssignTime = None
+        self._FinishedTime = None
         self._RequestId = None
 
     @property
@@ -3666,6 +3678,30 @@ class DescribeTranscodeResponse(AbstractModel):
         self._Ext = Ext
 
     @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AssignTime(self):
+        return self._AssignTime
+
+    @AssignTime.setter
+    def AssignTime(self, AssignTime):
+        self._AssignTime = AssignTime
+
+    @property
+    def FinishedTime(self):
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3687,6 +3723,9 @@ class DescribeTranscodeResponse(AbstractModel):
         self._CompressFileUrl = params.get("CompressFileUrl")
         self._ResourceListUrl = params.get("ResourceListUrl")
         self._Ext = params.get("Ext")
+        self._CreateTime = params.get("CreateTime")
+        self._AssignTime = params.get("AssignTime")
+        self._FinishedTime = params.get("FinishedTime")
         self._RequestId = params.get("RequestId")
 
 
