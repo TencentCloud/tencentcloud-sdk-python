@@ -363,9 +363,9 @@ class DefaultTkeOIDCRoleArnProvider(object):
         if not self.provider_id:
             raise EnvironmentError("TKE_PROVIDER_ID not exist")
 
-        token_file = os.getenv('TKE_IDENTITY_TOKEN_FILE')
+        token_file = os.getenv('TKE_WEB_IDENTITY_TOKEN_FILE')
         if not token_file:
-            raise EnvironmentError("TKE_IDENTITY_TOKEN_FILE not exist")
+            raise EnvironmentError("TKE_WEB_IDENTITY_TOKEN_FILE not exist")
 
         with open(token_file) as f:
             self.web_identity_token = f.read()
