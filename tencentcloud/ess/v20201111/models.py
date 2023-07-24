@@ -658,10 +658,13 @@ class BindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
         :type UserId: str
         :param _OpenId: 客户系统OpenId
         :type OpenId: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._UserId = None
         self._OpenId = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -687,6 +690,14 @@ class BindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
     def OpenId(self, OpenId):
         self._OpenId = OpenId
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -694,6 +705,9 @@ class BindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._UserId = params.get("UserId")
         self._OpenId = params.get("OpenId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2256,11 +2270,16 @@ class CreateFlowApproversRequest(AbstractModel):
         :type Approvers: list of FillApproverInfo
         :param _Initiator: 企微消息中的发起人
         :type Initiator: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作
+
+
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._FlowId = None
         self._Approvers = None
         self._Initiator = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -2294,6 +2313,14 @@ class CreateFlowApproversRequest(AbstractModel):
     def Initiator(self, Initiator):
         self._Initiator = Initiator
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -2307,6 +2334,9 @@ class CreateFlowApproversRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Approvers.append(obj)
         self._Initiator = params.get("Initiator")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5589,6 +5619,8 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type NotifyAddress: str
         :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
         :type ExpiredTime: int
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._SceneKey = None
@@ -5597,6 +5629,7 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         self._NotifyType = None
         self._NotifyAddress = None
         self._ExpiredTime = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -5654,6 +5687,14 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
     def ExpiredTime(self, ExpiredTime):
         self._ExpiredTime = ExpiredTime
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5667,6 +5708,9 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         self._NotifyType = params.get("NotifyType")
         self._NotifyAddress = params.get("NotifyAddress")
         self._ExpiredTime = params.get("ExpiredTime")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8217,8 +8261,14 @@ class DescribeThirdPartyAuthCodeRequest(AbstractModel):
         r"""
         :param _AuthCode: 电子签小程序跳转客户小程序时携带的授权查看码
         :type AuthCode: str
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._AuthCode = None
+        self._Operator = None
+        self._Agent = None
 
     @property
     def AuthCode(self):
@@ -8228,9 +8278,31 @@ class DescribeThirdPartyAuthCodeRequest(AbstractModel):
     def AuthCode(self, AuthCode):
         self._AuthCode = AuthCode
 
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         self._AuthCode = params.get("AuthCode")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8292,10 +8364,13 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
         :param _UserInfo: 查询开启状态的用户信息
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._SceneKey = None
         self._UserInfo = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -8321,6 +8396,14 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
     def UserInfo(self, UserInfo):
         self._UserInfo = UserInfo
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -8330,6 +8413,9 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         if params.get("UserInfo") is not None:
             self._UserInfo = UserThreeFactor()
             self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8415,10 +8501,13 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
         :param _UserInfo: 关闭自动签的个人的三要素
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._SceneKey = None
         self._UserInfo = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -8444,6 +8533,14 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
     def UserInfo(self, UserInfo):
         self._UserInfo = UserInfo
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -8453,6 +8550,9 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         if params.get("UserInfo") is not None:
             self._UserInfo = UserThreeFactor()
             self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8968,6 +9068,9 @@ class FileUrl(AbstractModel):
 
 class FillApproverInfo(AbstractModel):
     """补充签署人信息
+    - RecipientId 必须指定
+    -  通过企业自定义账号ID补充签署人时，ApproverSource 和 CustomUserId 必填
+    - 通过二要素（姓名/手机号）补充签署人时，ApproverName 和 ApproverMobile 必填
 
     """
 
@@ -8981,10 +9084,16 @@ WEWORKAPP: 企业微信
         :param _CustomUserId: 企业自定义账号ID
 WEWORKAPP场景下指企业自有应用获取企微明文的userid
         :type CustomUserId: str
+        :param _ApproverName: 补充签署人姓名
+        :type ApproverName: str
+        :param _ApproverMobile: 补充签署人手机号
+        :type ApproverMobile: str
         """
         self._RecipientId = None
         self._ApproverSource = None
         self._CustomUserId = None
+        self._ApproverName = None
+        self._ApproverMobile = None
 
     @property
     def RecipientId(self):
@@ -9010,11 +9119,29 @@ WEWORKAPP场景下指企业自有应用获取企微明文的userid
     def CustomUserId(self, CustomUserId):
         self._CustomUserId = CustomUserId
 
+    @property
+    def ApproverName(self):
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
 
     def _deserialize(self, params):
         self._RecipientId = params.get("RecipientId")
         self._ApproverSource = params.get("ApproverSource")
         self._CustomUserId = params.get("CustomUserId")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13385,10 +13512,13 @@ class UnbindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
         :type UserId: str
         :param _OpenId: 客户系统OpenId
         :type OpenId: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._UserId = None
         self._OpenId = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -13414,6 +13544,14 @@ class UnbindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
     def OpenId(self, OpenId):
         self._OpenId = OpenId
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -13421,6 +13559,9 @@ class UnbindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._UserId = params.get("UserId")
         self._OpenId = params.get("OpenId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

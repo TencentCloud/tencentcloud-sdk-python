@@ -118,6 +118,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDomainRedemption(self, request):
+        """创建赎回订单。
+
+        :param request: Request instance for CreateDomainRedemption.
+        :type request: :class:`tencentcloud.domain.v20180808.models.CreateDomainRedemptionRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.CreateDomainRedemptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDomainRedemption", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDomainRedemptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePhoneEmail(self, request):
         """此接口用于创建有效的手机、邮箱
 

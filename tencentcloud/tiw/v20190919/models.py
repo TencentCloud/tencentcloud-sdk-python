@@ -3383,6 +3383,116 @@ class DescribeTIWRoomDailyUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTranscodeByUrlRequest(AbstractModel):
+    """DescribeTranscodeByUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param _Url: 经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。	
+        :type Url: str
+        """
+        self._SdkAppId = None
+        self._Url = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTranscodeByUrlResponse(AbstractModel):
+    """DescribeTranscodeByUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Progress: 转码的当前进度,取值范围为0~100
+        :type Progress: int
+        :param _Status: 任务的当前状态
+- QUEUED: 正在排队等待转换
+- PROCESSING: 转换中
+- FINISHED: 转换完成
+- EXCEPTION: 转换异常
+        :type Status: str
+        :param _TaskId: 转码任务的唯一标识Id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Progress = None
+        self._Status = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Progress = params.get("Progress")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTranscodeCallbackRequest(AbstractModel):
     """DescribeTranscodeCallback请求参数结构体
 

@@ -1,145 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 多媒体创作引擎(cme) 版本：2019-10-29
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 55 次发布
+### 第 51 次发布
 
-发布时间：2023-07-21 01:14:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MediaCastProjectInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInfo)
-
-	* 新增成员：Duration
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 90 次发布
-
-发布时间：2023-07-21 01:23:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
-
-	* 新增入参：Hides
-
-
-修改数据结构：
-
-* [RegisterInfo](https://cloud.tencent.com/document/api/1323/70369#RegisterInfo)
-
-	* 新增成员：UnifiedSocialCreditCode
-
-	* <font color="#dd0000">**修改成员**：</font>Uscc
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 96 次发布
-
-发布时间：2023-07-21 01:23:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
-
-	* 新增入参：Hides
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 31 次发布
-
-发布时间：2023-07-21 01:29:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
-
-	* 新增入参：IsGradingRequiredPostClass
-
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
-
-	* 新增出参：IsGradingRequiredPostClass
-
-* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
-
-	* 新增入参：IsGradingRequiredPostClass
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 38 次发布
-
-发布时间：2023-07-21 01:35:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CloneDBInstance](https://cloud.tencent.com/document/api/409/68071)
-
-	* 新增入参：SyncMode
-
-
-
-
-## 云压测(pts) 版本：2021-07-28
-
-### 第 12 次发布
-
-发布时间：2023-07-21 01:35:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
-
-	* <font color="#dd0000">**修改成员**：</font>ScenarioId, Name, Description, Type, Status, Load, EncodedScripts, Configs, Extensions, Datasets, SLAId, CronId, CreatedAt, UpdatedAt, ProjectId, AppId, Uin, SubAccountUin, TestScripts, Protocols, RequestFiles, SLAPolicy, Plugins, DomainNameConfig, NotificationHooks, Owner, ProjectName
-
-
-
-
-## 分布式身份(tdid) 版本：2021-05-19
-
-### 第 9 次发布
-
-发布时间：2023-07-21 01:42:20
+发布时间：2023-07-24 01:12:51
 
 本次发布包含了以下内容：
 
@@ -147,53 +12,174 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* GetConsortiumClusterList
-* GetConsortiumList
-* GetCredentialCptRank
+* DescribeDiskOperationLogs
+* DescribeSnapshotOperationLogs
 
 <font color="#dd0000">**删除数据结构**：</font>
 
-* BcosClusterItem
-* ConsortiumItem
-* CptIssueRank
+* DiskOperationLog
+* SnapshotOperationLog
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 139 次发布
+
+发布时间：2023-07-24 01:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeCDBProxy
+* DescribeProxyConnectionPoolConf
+* ModifyCDBProxyConnectionPool
+* ModifyCDBProxyVipVPort
+* QueryCDBProxy
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Address
+* BaseGroupInfo
+* ConnectionPoolInfo
+* PoolConf
+* ProxyGroup
+* ProxyGroups
+* ProxyNodeInfo
+* RWInfo
+* RWInfos
+* RWInstanceInfo
+
+
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2023-05-08
+
+### 第 4 次发布
+
+发布时间：2023-07-24 01:17:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWorkspaceToken](https://cloud.tencent.com/document/api/1039/94095)
+
+	* 新增入参：Policies
+
+
+
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 25 次发布
+
+发布时间：2023-07-24 01:25:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDomainRedemption](https://cloud.tencent.com/document/api/242/95411)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 91 次发布
+
+发布时间：2023-07-24 01:28:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)
+
+	* 新增入参：Agent
+
+* [CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)
+
+	* 新增入参：Agent
+
+* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
+
+	* 新增入参：Agent
+
+* [DescribeThirdPartyAuthCode](https://cloud.tencent.com/document/api/1323/70368)
+
+	* 新增入参：Operator, Agent
+
+* [DescribeUserAutoSignStatus](https://cloud.tencent.com/document/api/1323/87786)
+
+	* 新增入参：Agent
+
+* [DisableUserAutoSign](https://cloud.tencent.com/document/api/1323/87785)
+
+	* 新增入参：Agent
+
+* [UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)
+
+	* 新增入参：Agent
+
+
+修改数据结构：
+
+* [FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo)
+
+	* 新增成员：ApproverName, ApproverMobile
+
+	* <font color="#dd0000">**修改成员**：</font>ApproverSource, CustomUserId
+
+
+
+
+## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 10 次发布
+
+发布时间：2023-07-24 01:49:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* AddLabel
+* GetAgencyTDid
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Identity
 
 
 
 ## 互动白板(tiw) 版本：2019-09-19
 
-### 第 32 次发布
+### 第 33 次发布
 
-发布时间：2023-07-21 01:44:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeTranscode](https://cloud.tencent.com/document/api/1137/40059)
-
-	* 新增出参：CreateTime, AssignTime, FinishedTime
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 38 次发布
-
-发布时间：2023-07-21 01:50:55
+发布时间：2023-07-24 01:52:09
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [AddDomainWhiteRule](https://cloud.tencent.com/document/api/627/72650)
-
-	* <font color="#dd0000">**修改出参**：</font>Id
-
+* [DescribeTranscodeByUrl](https://cloud.tencent.com/document/api/1137/95412)
 
 
 
@@ -1906,14 +1892,14 @@
 
 修改接口：
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterBasicPlusFlag
 
 
 修改数据结构：
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：BasicPlusFlag
 
@@ -1928,11 +1914,11 @@
 
 修改接口：
 
-* [CreateBoundIP](https://cloud.tencent.com/document/api/1021/57763)
+* [CreateBoundIP](https://cloud.tencent.com/document/api/297/95349)
 
 	* 新增入参：FilterRegion
 
-* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/1021/59237)
+* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/297/95386)
 
 	* 新增入参：IdList, FilterRegion
 
@@ -1940,14 +1926,14 @@
 
 	* 新增出参：CLBData
 
-* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/1021/76706)
+* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/297/95344)
 
 	* 新增入参：Export
 
 
 修改数据结构：
 
-* [BoundIpInfo](https://cloud.tencent.com/document/api/1021/57582#BoundIpInfo)
+* [BoundIpInfo](https://cloud.tencent.com/document/api/297/95396#BoundIpInfo)
 
 	* 新增成员：Domain
 
@@ -1962,40 +1948,40 @@
 
 修改接口：
 
-* [DescribeBizTrend](https://cloud.tencent.com/document/api/1021/60144)
+* [DescribeBizTrend](https://cloud.tencent.com/document/api/297/95359)
 
 	* 新增入参：BusinessType
 
 	* 新增出参：MaxData
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterAssetIpList
 
-* [DescribeListSchedulingDomain](https://cloud.tencent.com/document/api/1021/57556)
+* [DescribeListSchedulingDomain](https://cloud.tencent.com/document/api/297/95364)
 
 	* 新增入参：Status
 
-* [DescribeOverviewCCTrend](https://cloud.tencent.com/document/api/1021/73420)
+* [DescribeOverviewCCTrend](https://cloud.tencent.com/document/api/297/95355)
 
 	* <font color="#dd0000">**修改入参**：</font>Business
 
-* [DescribeOverviewDDoSTrend](https://cloud.tencent.com/document/api/1021/73419)
+* [DescribeOverviewDDoSTrend](https://cloud.tencent.com/document/api/297/95353)
 
 	* <font color="#dd0000">**修改入参**：</font>Business
 
 
 修改数据结构：
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：ModifyTime
 
-* [EipProductInfo](https://cloud.tencent.com/document/api/1021/57582#EipProductInfo)
+* [EipProductInfo](https://cloud.tencent.com/document/api/297/95396#EipProductInfo)
 
 	* 新增成员：Domain
 
-* [IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo)
+* [IPLineInfo](https://cloud.tencent.com/document/api/297/95396#IPLineInfo)
 
 	* 新增成员：Domain
 
@@ -2010,7 +1996,7 @@
 
 修改数据结构：
 
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/297/95396#BGPInstanceSpecification)
 
 	* 新增成员：DownGradeProtect
 
@@ -2025,7 +2011,7 @@
 
 修改数据结构：
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：GiftServiceBandWidth
 
@@ -2040,11 +2026,11 @@
 
 修改数据结构：
 
-* [Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)
+* [Layer7Rule](https://cloud.tencent.com/document/api/297/95396#Layer7Rule)
 
 	* 新增成员：Protocol, Vport
 
-* [SourceServer](https://cloud.tencent.com/document/api/1021/57582#SourceServer)
+* [SourceServer](https://cloud.tencent.com/document/api/297/95396#SourceServer)
 
 	* 新增成员：Port
 
@@ -2059,14 +2045,14 @@
 
 修改接口：
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：ExcludeAdvancedInfo
 
 
 修改数据结构：
 
-* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+* [L7RuleHealth](https://cloud.tencent.com/document/api/297/95396#L7RuleHealth)
 
 	* 新增成员：PassiveStatus
 
@@ -2081,11 +2067,11 @@
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：ElasticBandwidth, EOFlag
 
-* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/297/95396#NewL7RuleEntry)
 
 	* 新增成员：Version
 
@@ -2100,11 +2086,11 @@
 
 新增接口：
 
-* [DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/84352)
+* [DescribeBizHttpStatus](https://cloud.tencent.com/document/api/297/95360)
 
 新增数据结构：
 
-* [HttpStatusMap](https://cloud.tencent.com/document/api/1021/57582#HttpStatusMap)
+* [HttpStatusMap](https://cloud.tencent.com/document/api/297/95396#HttpStatusMap)
 
 ### 第 48 次发布
 
@@ -2116,18 +2102,18 @@
 
 修改接口：
 
-* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/1021/59001)
+* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/297/95299)
 
 	* 新增入参：CloudSdkProxy
 
 
 修改数据结构：
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：Line, ElasticServiceBandwidth
 
-* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/297/95396#WaterPrintConfig)
 
 	* 新增成员：CloudSdkProxy
 
@@ -2142,18 +2128,18 @@
 
 修改接口：
 
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/297/95347)
 
 	* 新增入参：FilterConvoy
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterTrialFlag, FilterConvoy
 
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：ConvoyId
 
@@ -2168,14 +2154,14 @@
 
 修改接口：
 
-* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/1021/69190)
+* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/297/95394)
 
 	* 新增入参：AckFloodThreshold, AckFloodPktThreshold, SynAckFloodThreshold, SynAckFloodPktThreshold, RstFloodThreshold, RstFloodPktThreshold
 
 
 修改数据结构：
 
-* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
+* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/297/95396#ProtectThresholdRelation)
 
 	* 新增成员：AckFloodThreshold, AckFloodPktThreshold, SynAckFloodThreshold, SynAckFloodPktThreshold, RstFloodThreshold, RstFloodPktThreshold
 
@@ -2190,22 +2176,22 @@
 
 修改接口：
 
-* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/1021/69190)
+* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/297/95394)
 
 	* 新增入参：OtherThresholdFlag, SynFloodThreshold, SynFloodPktThreshold, UdpFloodThreshold, UdpFloodPktThreshold
 
 
 修改数据结构：
 
-* [PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig)
+* [PacketFilterConfig](https://cloud.tencent.com/document/api/297/95396#PacketFilterConfig)
 
 	* 新增成员：PktLenGT
 
-* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
+* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/297/95396#ProtectThresholdRelation)
 
 	* 新增成员：SynFloodThreshold, SynFloodPktThreshold, UdpFloodThreshold, UdpFloodPktThreshold
 
-* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig)
+* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/297/95396#ProtocolBlockConfig)
 
 	* 新增成员：PingOfDeath, TearDrop
 
@@ -2220,7 +2206,7 @@
 
 新增接口：
 
-* [DescribePendingRiskInfo](https://cloud.tencent.com/document/api/1021/82200)
+* [DescribePendingRiskInfo](https://cloud.tencent.com/document/api/297/95351)
 
 ### 第 43 次发布
 
@@ -2232,7 +2218,7 @@
 
 修改接口：
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterLightFlag, FilterChannelFlag
 
@@ -2247,7 +2233,7 @@
 
 修改数据结构：
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：VitalityVersion
 
@@ -2274,7 +2260,7 @@
 
 新增接口：
 
-* [DescribeNewL7RulesErrHealth](https://cloud.tencent.com/document/api/1021/79701)
+* [DescribeNewL7RulesErrHealth](https://cloud.tencent.com/document/api/297/95368)
 
 ### 第 39 次发布
 
@@ -2286,7 +2272,7 @@
 
 新增接口：
 
-* [DescribeBgpBizTrend](https://cloud.tencent.com/document/api/1021/78796)
+* [DescribeBgpBizTrend](https://cloud.tencent.com/document/api/297/95361)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -2302,15 +2288,15 @@
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：InstanceVersion
 
-* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
+* [L4RuleSource](https://cloud.tencent.com/document/api/297/95396#L4RuleSource)
 
 	* 新增成员：Backup
 
-* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+* [L7RuleHealth](https://cloud.tencent.com/document/api/297/95396#L7RuleHealth)
 
 	* 新增成员：ProtocolFlag, PassiveEnable, BlockInter, FailedCountInter, FailedThreshold, PassiveStatusCode
 
@@ -2325,7 +2311,7 @@
 
 修改数据结构：
 
-* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry)
+* [L7RuleEntry](https://cloud.tencent.com/document/api/297/95396#L7RuleEntry)
 
 	* 新增成员：CCAIEnable
 
@@ -2340,7 +2326,7 @@
 
 新增接口：
 
-* [CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/76711)
+* [CreateNewL7Rules](https://cloud.tencent.com/document/api/297/95369)
 
 ### 第 35 次发布
 
@@ -2352,11 +2338,11 @@
 
 新增接口：
 
-* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/1021/76706)
+* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/297/95344)
 
 新增数据结构：
 
-* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+* [L7RuleHealth](https://cloud.tencent.com/document/api/297/95396#L7RuleHealth)
 
 ### 第 34 次发布
 
@@ -2368,22 +2354,22 @@
 
 修改接口：
 
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/297/95347)
 
 	* 新增入参：FilterPackType
 
 
 新增数据结构：
 
-* [AnycastOutPackRelation](https://cloud.tencent.com/document/api/1021/57582#AnycastOutPackRelation)
+* [AnycastOutPackRelation](https://cloud.tencent.com/document/api/297/95396#AnycastOutPackRelation)
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：AnycastOutPackRelation
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：IpCountNewFlag
 
@@ -2398,39 +2384,39 @@
 
 修改接口：
 
-* [CreateCCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/69187)
+* [CreateCCReqLimitPolicy](https://cloud.tencent.com/document/api/297/95391)
 
 	* 新增入参：IsGlobal
 
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/297/95347)
 
 	* 新增入参：FilterTag
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterTag
 
 
 新增数据结构：
 
-* [TagFilter](https://cloud.tencent.com/document/api/1021/57582#TagFilter)
-* [TagInfo](https://cloud.tencent.com/document/api/1021/57582#TagInfo)
+* [TagFilter](https://cloud.tencent.com/document/api/297/95396#TagFilter)
+* [TagInfo](https://cloud.tencent.com/document/api/297/95396#TagInfo)
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：TagInfoList
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：TagInfoList
 
-* [BlackWhiteIpRelation](https://cloud.tencent.com/document/api/1021/57582#BlackWhiteIpRelation)
+* [BlackWhiteIpRelation](https://cloud.tencent.com/document/api/297/95396#BlackWhiteIpRelation)
 
 	* 新增成员：ModifyTime
 
-* [PacketFilterRelation](https://cloud.tencent.com/document/api/1021/57582#PacketFilterRelation)
+* [PacketFilterRelation](https://cloud.tencent.com/document/api/297/95396#PacketFilterRelation)
 
 	* 新增成员：ModifyTime
 
@@ -2445,7 +2431,7 @@
 
 修改接口：
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterEnterpriseFlag
 
@@ -2460,34 +2446,34 @@
 
 新增接口：
 
-* [DescribeOverviewDDoSEventList](https://cloud.tencent.com/document/api/1021/73673)
+* [DescribeOverviewDDoSEventList](https://cloud.tencent.com/document/api/297/95354)
 
 修改接口：
 
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/297/95347)
 
 	* 新增入参：FilterCname, FilterInstanceIdList
 
-* [DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/1021/57559)
+* [DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/297/95372)
 
 	* 新增入参：FilterCname
 
 
 新增数据结构：
 
-* [OverviewDDoSEvent](https://cloud.tencent.com/document/api/1021/57582#OverviewDDoSEvent)
+* [OverviewDDoSEvent](https://cloud.tencent.com/document/api/297/95396#OverviewDDoSEvent)
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：BGPIPChannelFlag
 
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/297/95396#BGPInstanceSpecification)
 
 	* 新增成员：EnterpriseFlag, ElasticLimit
 
-* [IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo)
+* [IPLineInfo](https://cloud.tencent.com/document/api/297/95396#IPLineInfo)
 
 	* 新增成员：Cname, ResourceFlag
 
@@ -2502,15 +2488,15 @@
 
 新增数据结构：
 
-* [RuleInstanceRelation](https://cloud.tencent.com/document/api/1021/57582#RuleInstanceRelation)
+* [RuleInstanceRelation](https://cloud.tencent.com/document/api/297/95396#RuleInstanceRelation)
 
 修改数据结构：
 
-* [Layer4Rule](https://cloud.tencent.com/document/api/1021/57582#Layer4Rule)
+* [Layer4Rule](https://cloud.tencent.com/document/api/297/95396#Layer4Rule)
 
 	* 新增成员：InstanceDetailRule
 
-* [Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)
+* [Layer7Rule](https://cloud.tencent.com/document/api/297/95396#Layer7Rule)
 
 	* 新增成员：InstanceDetailRule
 
@@ -2525,10 +2511,10 @@
 
 新增接口：
 
-* [DescribeOverviewAttackTrend](https://cloud.tencent.com/document/api/1021/73421)
-* [DescribeOverviewCCTrend](https://cloud.tencent.com/document/api/1021/73420)
-* [DescribeOverviewDDoSTrend](https://cloud.tencent.com/document/api/1021/73419)
-* [DescribeOverviewIndex](https://cloud.tencent.com/document/api/1021/73418)
+* [DescribeOverviewAttackTrend](https://cloud.tencent.com/document/api/297/95356)
+* [DescribeOverviewCCTrend](https://cloud.tencent.com/document/api/297/95355)
+* [DescribeOverviewDDoSTrend](https://cloud.tencent.com/document/api/297/95353)
+* [DescribeOverviewIndex](https://cloud.tencent.com/document/api/297/95352)
 
 ### 第 28 次发布
 
@@ -2540,7 +2526,7 @@
 
 修改数据结构：
 
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/297/95396#BGPInstanceSpecification)
 
 	* 新增成员：BattleEditionFlag, ChannelEditionFlag
 
@@ -2555,7 +2541,7 @@
 
 修改数据结构：
 
-* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/297/95396#NewL7RuleEntry)
 
 	* 新增成员：RewriteHttps, ErrCode
 
@@ -2570,7 +2556,7 @@
 
 修改接口：
 
-* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/1021/57557)
+* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/297/95365)
 
 	* 新增入参：Product
 
@@ -2585,14 +2571,14 @@
 
 修改接口：
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterInstanceIdList
 
 
 修改数据结构：
 
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/297/95396#BGPInstanceSpecification)
 
 	* 新增成员：ServiceBandWidth
 
@@ -2607,7 +2593,7 @@
 
 修改数据结构：
 
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/297/95396#BGPInstanceSpecification)
 
 	* 新增成员：UnionPackFlag
 
@@ -2622,17 +2608,17 @@
 
 新增接口：
 
-* [CreateCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/70487)
-* [DeleteCCLevelPolicy](https://cloud.tencent.com/document/api/1021/70492)
-* [DeleteCCThresholdPolicy](https://cloud.tencent.com/document/api/1021/70491)
-* [DescribeCCLevelList](https://cloud.tencent.com/document/api/1021/70490)
-* [DescribeCCLevelPolicy](https://cloud.tencent.com/document/api/1021/70489)
-* [DescribeCCThresholdList](https://cloud.tencent.com/document/api/1021/70488)
+* [CreateCcBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95341)
+* [DeleteCCLevelPolicy](https://cloud.tencent.com/document/api/297/95390)
+* [DeleteCCThresholdPolicy](https://cloud.tencent.com/document/api/297/95387)
+* [DescribeCCLevelList](https://cloud.tencent.com/document/api/297/95385)
+* [DescribeCCLevelPolicy](https://cloud.tencent.com/document/api/297/95384)
+* [DescribeCCThresholdList](https://cloud.tencent.com/document/api/297/95381)
 
 新增数据结构：
 
-* [CCLevelPolicy](https://cloud.tencent.com/document/api/1021/57582#CCLevelPolicy)
-* [CCThresholdPolicy](https://cloud.tencent.com/document/api/1021/57582#CCThresholdPolicy)
+* [CCLevelPolicy](https://cloud.tencent.com/document/api/297/95396#CCLevelPolicy)
+* [CCThresholdPolicy](https://cloud.tencent.com/document/api/297/95396#CCThresholdPolicy)
 
 ### 第 22 次发布
 
@@ -2644,7 +2630,7 @@
 
 修改接口：
 
-* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
+* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/297/95296)
 
 	* 新增入参：Vip
 
@@ -2659,37 +2645,37 @@
 
 新增接口：
 
-* [CreateCCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/69188)
-* [CreateCCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/69187)
-* [CreateCcGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/69178)
-* [DeleteCCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/69186)
-* [DeleteCCRequestLimitPolicy](https://cloud.tencent.com/document/api/1021/69185)
-* [DeleteCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69177)
-* [DeleteCcGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/69176)
-* [DeletePortAclConfig](https://cloud.tencent.com/document/api/1021/69175)
-* [DescribeCCPrecisionPlyList](https://cloud.tencent.com/document/api/1021/69184)
-* [DescribeCCReqLimitPolicyList](https://cloud.tencent.com/document/api/1021/69183)
-* [DescribeCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69174)
-* [DescribeCcGeoIPBlockConfigList](https://cloud.tencent.com/document/api/1021/69173)
-* [ModifyCCLevelPolicy](https://cloud.tencent.com/document/api/1021/69182)
-* [ModifyCCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/69181)
-* [ModifyCCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/69180)
-* [ModifyCCThresholdPolicy](https://cloud.tencent.com/document/api/1021/69179)
-* [ModifyCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69172)
-* [ModifyDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69171)
-* [ModifyDDoSLevel](https://cloud.tencent.com/document/api/1021/69191)
-* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/1021/69190)
-* [ModifyPortAclConfig](https://cloud.tencent.com/document/api/1021/69170)
+* [CreateCCPrecisionPolicy](https://cloud.tencent.com/document/api/297/95392)
+* [CreateCCReqLimitPolicy](https://cloud.tencent.com/document/api/297/95391)
+* [CreateCcGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95340)
+* [DeleteCCPrecisionPolicy](https://cloud.tencent.com/document/api/297/95389)
+* [DeleteCCRequestLimitPolicy](https://cloud.tencent.com/document/api/297/95388)
+* [DeleteCcBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95328)
+* [DeleteCcGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95327)
+* [DeletePortAclConfig](https://cloud.tencent.com/document/api/297/95322)
+* [DescribeCCPrecisionPlyList](https://cloud.tencent.com/document/api/297/95383)
+* [DescribeCCReqLimitPolicyList](https://cloud.tencent.com/document/api/297/95382)
+* [DescribeCcBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95318)
+* [DescribeCcGeoIPBlockConfigList](https://cloud.tencent.com/document/api/297/95317)
+* [ModifyCCLevelPolicy](https://cloud.tencent.com/document/api/297/95380)
+* [ModifyCCPrecisionPolicy](https://cloud.tencent.com/document/api/297/95379)
+* [ModifyCCReqLimitPolicy](https://cloud.tencent.com/document/api/297/95378)
+* [ModifyCCThresholdPolicy](https://cloud.tencent.com/document/api/297/95377)
+* [ModifyCcBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95305)
+* [ModifyDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95304)
+* [ModifyDDoSLevel](https://cloud.tencent.com/document/api/297/95395)
+* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/297/95394)
+* [ModifyPortAclConfig](https://cloud.tencent.com/document/api/297/95300)
 
 新增数据结构：
 
-* [CCPrecisionPlyRecord](https://cloud.tencent.com/document/api/1021/57582#CCPrecisionPlyRecord)
-* [CCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/57582#CCPrecisionPolicy)
-* [CCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/57582#CCReqLimitPolicy)
-* [CCReqLimitPolicyRecord](https://cloud.tencent.com/document/api/1021/57582#CCReqLimitPolicyRecord)
-* [CcBlackWhiteIpPolicy](https://cloud.tencent.com/document/api/1021/57582#CcBlackWhiteIpPolicy)
-* [CcGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57582#CcGeoIPBlockConfig)
-* [CcGeoIpPolicyNew](https://cloud.tencent.com/document/api/1021/57582#CcGeoIpPolicyNew)
+* [CCPrecisionPlyRecord](https://cloud.tencent.com/document/api/297/95396#CCPrecisionPlyRecord)
+* [CCPrecisionPolicy](https://cloud.tencent.com/document/api/297/95396#CCPrecisionPolicy)
+* [CCReqLimitPolicy](https://cloud.tencent.com/document/api/297/95396#CCReqLimitPolicy)
+* [CCReqLimitPolicyRecord](https://cloud.tencent.com/document/api/297/95396#CCReqLimitPolicyRecord)
+* [CcBlackWhiteIpPolicy](https://cloud.tencent.com/document/api/297/95396#CcBlackWhiteIpPolicy)
+* [CcGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95396#CcGeoIPBlockConfig)
+* [CcGeoIpPolicyNew](https://cloud.tencent.com/document/api/297/95396#CcGeoIpPolicyNew)
 
 ### 第 20 次发布
 
@@ -2701,13 +2687,13 @@
 
 新增接口：
 
-* [DescribeDDoSConnectLimitList](https://cloud.tencent.com/document/api/1021/68398)
-* [DescribeListPortAclList](https://cloud.tencent.com/document/api/1021/68397)
+* [DescribeDDoSConnectLimitList](https://cloud.tencent.com/document/api/297/95315)
+* [DescribeListPortAclList](https://cloud.tencent.com/document/api/297/95309)
 
 新增数据结构：
 
-* [AclConfigRelation](https://cloud.tencent.com/document/api/1021/57582#AclConfigRelation)
-* [ConnectLimitRelation](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitRelation)
+* [AclConfigRelation](https://cloud.tencent.com/document/api/297/95396#AclConfigRelation)
+* [ConnectLimitRelation](https://cloud.tencent.com/document/api/297/95396#ConnectLimitRelation)
 
 ### 第 19 次发布
 
@@ -2719,11 +2705,11 @@
 
 新增接口：
 
-* [CreateDDoSConnectLimit](https://cloud.tencent.com/document/api/1021/68352)
+* [CreateDDoSConnectLimit](https://cloud.tencent.com/document/api/297/95337)
 
 新增数据结构：
 
-* [ConnectLimitConfig](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitConfig)
+* [ConnectLimitConfig](https://cloud.tencent.com/document/api/297/95396#ConnectLimitConfig)
 
 ### 第 18 次发布
 
@@ -2735,12 +2721,12 @@
 
 新增接口：
 
-* [CreatePortAclConfig](https://cloud.tencent.com/document/api/1021/68253)
-* [CreatePortAclConfigList](https://cloud.tencent.com/document/api/1021/68252)
+* [CreatePortAclConfig](https://cloud.tencent.com/document/api/297/95333)
+* [CreatePortAclConfigList](https://cloud.tencent.com/document/api/297/95332)
 
 新增数据结构：
 
-* [AclConfig](https://cloud.tencent.com/document/api/1021/57582#AclConfig)
+* [AclConfig](https://cloud.tencent.com/document/api/297/95396#AclConfig)
 
 ### 第 17 次发布
 
@@ -2752,13 +2738,13 @@
 
 新增接口：
 
-* [CreateDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/66356)
-* [DeleteDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/66355)
-* [DescribeDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/66354)
+* [CreateDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95338)
+* [DeleteDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95326)
+* [DescribeDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95316)
 
 新增数据结构：
 
-* [IpSegment](https://cloud.tencent.com/document/api/1021/57582#IpSegment)
+* [IpSegment](https://cloud.tencent.com/document/api/297/95396#IpSegment)
 
 ### 第 16 次发布
 
@@ -2770,11 +2756,11 @@
 
 修改接口：
 
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/297/95347)
 
 	* 新增入参：FilterStatus
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
 
 	* 新增入参：FilterStatus, FilterBoundStatus
 
@@ -2789,7 +2775,7 @@
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：V6Flag
 
@@ -2804,11 +2790,11 @@
 
 新增接口：
 
-* [ModifyNewDomainRules](https://cloud.tencent.com/document/api/1021/64631)
+* [ModifyNewDomainRules](https://cloud.tencent.com/document/api/297/95367)
 
 新增数据结构：
 
-* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/297/95396#NewL7RuleEntry)
 
 ### 第 13 次发布
 
@@ -2820,14 +2806,14 @@
 
 修改接口：
 
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/297/95347)
 
 	* 新增入参：FilterDamDDoSStatus
 
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：DamDDoSStatus
 
@@ -2842,7 +2828,7 @@
 
 修改数据结构：
 
-* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
+* [L4RuleSource](https://cloud.tencent.com/document/api/297/95396#L4RuleSource)
 
 	* 新增成员：Port
 
@@ -2857,7 +2843,7 @@
 
 修改数据结构：
 
-* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry)
+* [L7RuleEntry](https://cloud.tencent.com/document/api/297/95396#L7RuleEntry)
 
 	* 新增成员：Id
 
@@ -2872,13 +2858,13 @@
 
 新增接口：
 
-* [DescribeBizTrend](https://cloud.tencent.com/document/api/1021/60144)
-* [DescribeCCTrend](https://cloud.tencent.com/document/api/1021/60143)
-* [DescribeDDoSTrend](https://cloud.tencent.com/document/api/1021/60142)
+* [DescribeBizTrend](https://cloud.tencent.com/document/api/297/95359)
+* [DescribeCCTrend](https://cloud.tencent.com/document/api/297/95358)
+* [DescribeDDoSTrend](https://cloud.tencent.com/document/api/297/95357)
 
 新增数据结构：
 
-* [ProtocolPort](https://cloud.tencent.com/document/api/1021/57582#ProtocolPort)
+* [ProtocolPort](https://cloud.tencent.com/document/api/297/95396#ProtocolPort)
 
 ### 第 9 次发布
 
@@ -2890,7 +2876,7 @@
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
 
 	* 新增成员：Domain
 
@@ -2905,7 +2891,7 @@
 
 新增接口：
 
-* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
+* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/297/95296)
 
 ### 第 7 次发布
 
@@ -2917,12 +2903,12 @@
 
 新增接口：
 
-* [ModifyL7RulesEdge](https://cloud.tencent.com/document/api/1021/59510)
+* [ModifyL7RulesEdge](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
-* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry)
+* [L4RuleSource](https://cloud.tencent.com/document/api/297/95396#L4RuleSource)
+* [L7RuleEntry](https://cloud.tencent.com/document/api/297/95396#L7RuleEntry)
 
 ### 第 6 次发布
 
@@ -2934,11 +2920,11 @@
 
 新增接口：
 
-* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/1021/59237)
+* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/297/95386)
 
 新增数据结构：
 
-* [KeyValue](https://cloud.tencent.com/document/api/1021/57582#KeyValue)
+* [KeyValue](https://cloud.tencent.com/document/api/297/95396#KeyValue)
 
 ### 第 5 次发布
 
@@ -2950,15 +2936,15 @@
 
 新增接口：
 
-* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/1021/59001)
+* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/297/95299)
 
 修改数据结构：
 
-* [ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener)
+* [ForwardListener](https://cloud.tencent.com/document/api/297/95396#ForwardListener)
 
 	* 新增成员：FrontendPortEnd
 
-* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/297/95396#WaterPrintConfig)
 
 	* 新增成员：Verify
 
@@ -2973,22 +2959,22 @@
 
 新增接口：
 
-* [CreateBoundIP](https://cloud.tencent.com/document/api/1021/57763)
+* [CreateBoundIP](https://cloud.tencent.com/document/api/297/95349)
 
 修改接口：
 
-* [CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)
+* [CreateL7RuleCerts](https://cloud.tencent.com/document/api/297/95370)
 
 	* 新增入参：CertId, L7Rules
 
-* [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)
+* [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/297/95348)
 
 	* 新增入参：Status, CertIds
 
 
 新增数据结构：
 
-* [BoundIpInfo](https://cloud.tencent.com/document/api/1021/57582#BoundIpInfo)
+* [BoundIpInfo](https://cloud.tencent.com/document/api/297/95396#BoundIpInfo)
 
 ### 第 3 次发布
 
@@ -3000,14 +2986,14 @@
 
 新增接口：
 
-* [CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)
-* [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)
+* [CreateL7RuleCerts](https://cloud.tencent.com/document/api/297/95370)
+* [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/297/95348)
 
 新增数据结构：
 
-* [CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules)
-* [InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules)
-* [SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode)
+* [CertIdInsL7Rules](https://cloud.tencent.com/document/api/297/95396#CertIdInsL7Rules)
+* [InsL7Rules](https://cloud.tencent.com/document/api/297/95396#InsL7Rules)
+* [SuccessCode](https://cloud.tencent.com/document/api/297/95396#SuccessCode)
 
 ### 第 2 次发布
 
@@ -3019,7 +3005,7 @@
 
 修改数据结构：
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
 
 	* 新增成员：DDoSLevel, CCEnable
 
@@ -3034,86 +3020,86 @@
 
 新增接口：
 
-* [AssociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57525)
-* [CreateBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57553)
-* [CreateDDoSAI](https://cloud.tencent.com/document/api/1021/57552)
-* [CreateDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57551)
-* [CreateDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57550)
-* [CreateDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57562)
-* [CreateIPAlarmThresholdConfig](https://cloud.tencent.com/document/api/1021/57561)
-* [CreatePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57549)
-* [CreateProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57548)
-* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/1021/57557)
-* [CreateWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57547)
-* [CreateWaterPrintKey](https://cloud.tencent.com/document/api/1021/57546)
-* [DeleteBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57545)
-* [DeleteDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57544)
-* [DeleteDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57543)
-* [DeletePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57542)
-* [DeleteWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57541)
-* [DeleteWaterPrintKey](https://cloud.tencent.com/document/api/1021/57540)
-* [DescribeBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57539)
-* [DescribeDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57560)
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
-* [DescribeListBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57538)
-* [DescribeListDDoSAI](https://cloud.tencent.com/document/api/1021/57537)
-* [DescribeListDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57536)
-* [DescribeListDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57535)
-* [DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/1021/57559)
-* [DescribeListListener](https://cloud.tencent.com/document/api/1021/57534)
-* [DescribeListPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57533)
-* [DescribeListProtectThresholdConfig](https://cloud.tencent.com/document/api/1021/57532)
-* [DescribeListProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57531)
-* [DescribeListSchedulingDomain](https://cloud.tencent.com/document/api/1021/57556)
-* [DescribeListWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57530)
-* [DisassociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57523)
-* [ModifyDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57529)
-* [ModifyDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57528)
-* [ModifyDomainUsrName](https://cloud.tencent.com/document/api/1021/57555)
-* [ModifyPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57527)
+* [AssociateDDoSEipAddress](https://cloud.tencent.com/document/api/297/95297)
+* [CreateBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95342)
+* [CreateDDoSAI](https://cloud.tencent.com/document/api/297/95339)
+* [CreateDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95336)
+* [CreateDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/297/95335)
+* [CreateDefaultAlarmThreshold](https://cloud.tencent.com/document/api/297/95375)
+* [CreateIPAlarmThresholdConfig](https://cloud.tencent.com/document/api/297/95374)
+* [CreatePacketFilterConfig](https://cloud.tencent.com/document/api/297/95334)
+* [CreateProtocolBlockConfig](https://cloud.tencent.com/document/api/297/95331)
+* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/297/95365)
+* [CreateWaterPrintConfig](https://cloud.tencent.com/document/api/297/95330)
+* [CreateWaterPrintKey](https://cloud.tencent.com/document/api/297/95329)
+* [DeleteBlackWhiteIpList](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95325)
+* [DeleteDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/297/95324)
+* [DeletePacketFilterConfig](https://cloud.tencent.com/document/api/297/95323)
+* [DeleteWaterPrintConfig](https://cloud.tencent.com/document/api/297/95321)
+* [DeleteWaterPrintKey](https://cloud.tencent.com/document/api/297/95320)
+* [DescribeBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95319)
+* [DescribeDefaultAlarmThreshold](https://cloud.tencent.com/document/api/297/95373)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/297/95347)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/297/95346)
+* [DescribeListBlackWhiteIpList](https://cloud.tencent.com/document/api/297/95314)
+* [DescribeListDDoSAI](https://cloud.tencent.com/document/api/297/95313)
+* [DescribeListDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95312)
+* [DescribeListDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/297/95311)
+* [DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/297/95372)
+* [DescribeListListener](https://cloud.tencent.com/document/api/297/95345)
+* [DescribeListPacketFilterConfig](https://cloud.tencent.com/document/api/297/95310)
+* [DescribeListProtectThresholdConfig](https://cloud.tencent.com/document/api/297/95308)
+* [DescribeListProtocolBlockConfig](https://cloud.tencent.com/document/api/297/95307)
+* [DescribeListSchedulingDomain](https://cloud.tencent.com/document/api/297/95364)
+* [DescribeListWaterPrintConfig](https://cloud.tencent.com/document/api/297/95306)
+* [DisassociateDDoSEipAddress](https://cloud.tencent.com/document/api/297/95295)
+* [ModifyDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95303)
+* [ModifyDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/297/95302)
+* [ModifyDomainUsrName](https://cloud.tencent.com/document/api/297/95363)
+* [ModifyPacketFilterConfig](https://cloud.tencent.com/document/api/297/95301)
 
 新增数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
-* [BGPIPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceSpecification)
-* [BGPIPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceUsages)
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
-* [BGPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceUsages)
-* [BlackWhiteIpRelation](https://cloud.tencent.com/document/api/1021/57582#BlackWhiteIpRelation)
-* [DDoSAIRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSAIRelation)
-* [DDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfig)
-* [DDoSGeoIPBlockConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfigRelation)
-* [DDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfig)
-* [DDoSSpeedLimitConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfigRelation)
-* [DefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57582#DefaultAlarmThreshold)
-* [EipAddressPackRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressPackRelation)
-* [EipAddressRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressRelation)
-* [EipProductInfo](https://cloud.tencent.com/document/api/1021/57582#EipProductInfo)
-* [ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener)
-* [IPAlarmThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#IPAlarmThresholdRelation)
-* [IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo)
-* [InstanceRelation](https://cloud.tencent.com/document/api/1021/57582#InstanceRelation)
-* [Layer4Rule](https://cloud.tencent.com/document/api/1021/57582#Layer4Rule)
-* [Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)
-* [ListenerCcThreholdConfig](https://cloud.tencent.com/document/api/1021/57582#ListenerCcThreholdConfig)
-* [PackInfo](https://cloud.tencent.com/document/api/1021/57582#PackInfo)
-* [PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig)
-* [PacketFilterRelation](https://cloud.tencent.com/document/api/1021/57582#PacketFilterRelation)
-* [PortSegment](https://cloud.tencent.com/document/api/1021/57582#PortSegment)
-* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
-* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig)
-* [ProtocolBlockRelation](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockRelation)
-* [ProxyTypeInfo](https://cloud.tencent.com/document/api/1021/57582#ProxyTypeInfo)
-* [RegionInfo](https://cloud.tencent.com/document/api/1021/57582#RegionInfo)
-* [SchedulingDomainInfo](https://cloud.tencent.com/document/api/1021/57582#SchedulingDomainInfo)
-* [SourceServer](https://cloud.tencent.com/document/api/1021/57582#SourceServer)
-* [SpeedValue](https://cloud.tencent.com/document/api/1021/57582#SpeedValue)
-* [StaticPackRelation](https://cloud.tencent.com/document/api/1021/57582#StaticPackRelation)
-* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
-* [WaterPrintKey](https://cloud.tencent.com/document/api/1021/57582#WaterPrintKey)
-* [WaterPrintRelation](https://cloud.tencent.com/document/api/1021/57582#WaterPrintRelation)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/297/95396#BGPIPInstance)
+* [BGPIPInstanceSpecification](https://cloud.tencent.com/document/api/297/95396#BGPIPInstanceSpecification)
+* [BGPIPInstanceUsages](https://cloud.tencent.com/document/api/297/95396#BGPIPInstanceUsages)
+* [BGPInstance](https://cloud.tencent.com/document/api/297/95396#BGPInstance)
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/297/95396#BGPInstanceSpecification)
+* [BGPInstanceUsages](https://cloud.tencent.com/document/api/297/95396#BGPInstanceUsages)
+* [BlackWhiteIpRelation](https://cloud.tencent.com/document/api/297/95396#BlackWhiteIpRelation)
+* [DDoSAIRelation](https://cloud.tencent.com/document/api/297/95396#DDoSAIRelation)
+* [DDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/297/95396#DDoSGeoIPBlockConfig)
+* [DDoSGeoIPBlockConfigRelation](https://cloud.tencent.com/document/api/297/95396#DDoSGeoIPBlockConfigRelation)
+* [DDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/297/95396#DDoSSpeedLimitConfig)
+* [DDoSSpeedLimitConfigRelation](https://cloud.tencent.com/document/api/297/95396#DDoSSpeedLimitConfigRelation)
+* [DefaultAlarmThreshold](https://cloud.tencent.com/document/api/297/95396#DefaultAlarmThreshold)
+* [EipAddressPackRelation](https://cloud.tencent.com/document/api/297/95396#EipAddressPackRelation)
+* [EipAddressRelation](https://cloud.tencent.com/document/api/297/95396#EipAddressRelation)
+* [EipProductInfo](https://cloud.tencent.com/document/api/297/95396#EipProductInfo)
+* [ForwardListener](https://cloud.tencent.com/document/api/297/95396#ForwardListener)
+* [IPAlarmThresholdRelation](https://cloud.tencent.com/document/api/297/95396#IPAlarmThresholdRelation)
+* [IPLineInfo](https://cloud.tencent.com/document/api/297/95396#IPLineInfo)
+* [InstanceRelation](https://cloud.tencent.com/document/api/297/95396#InstanceRelation)
+* [Layer4Rule](https://cloud.tencent.com/document/api/297/95396#Layer4Rule)
+* [Layer7Rule](https://cloud.tencent.com/document/api/297/95396#Layer7Rule)
+* [ListenerCcThreholdConfig](https://cloud.tencent.com/document/api/297/95396#ListenerCcThreholdConfig)
+* [PackInfo](https://cloud.tencent.com/document/api/297/95396#PackInfo)
+* [PacketFilterConfig](https://cloud.tencent.com/document/api/297/95396#PacketFilterConfig)
+* [PacketFilterRelation](https://cloud.tencent.com/document/api/297/95396#PacketFilterRelation)
+* [PortSegment](https://cloud.tencent.com/document/api/297/95396#PortSegment)
+* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/297/95396#ProtectThresholdRelation)
+* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/297/95396#ProtocolBlockConfig)
+* [ProtocolBlockRelation](https://cloud.tencent.com/document/api/297/95396#ProtocolBlockRelation)
+* [ProxyTypeInfo](https://cloud.tencent.com/document/api/297/95396#ProxyTypeInfo)
+* [RegionInfo](https://cloud.tencent.com/document/api/297/95396#RegionInfo)
+* [SchedulingDomainInfo](https://cloud.tencent.com/document/api/297/95396#SchedulingDomainInfo)
+* [SourceServer](https://cloud.tencent.com/document/api/297/95396#SourceServer)
+* [SpeedValue](https://cloud.tencent.com/document/api/297/95396#SpeedValue)
+* [StaticPackRelation](https://cloud.tencent.com/document/api/297/95396#StaticPackRelation)
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/297/95396#WaterPrintConfig)
+* [WaterPrintKey](https://cloud.tencent.com/document/api/297/95396#WaterPrintKey)
+* [WaterPrintRelation](https://cloud.tencent.com/document/api/297/95396#WaterPrintRelation)
 
 
 
@@ -12385,6 +12371,24 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 51 次发布
+
+发布时间：2023-07-24 01:12:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDiskOperationLogs
+* DescribeSnapshotOperationLogs
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DiskOperationLog
+* SnapshotOperationLog
+
 ### 第 50 次发布
 
 发布时间：2023-05-23 01:06:09
@@ -14310,6 +14314,35 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 139 次发布
+
+发布时间：2023-07-24 01:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeCDBProxy
+* DescribeProxyConnectionPoolConf
+* ModifyCDBProxyConnectionPool
+* ModifyCDBProxyVipVPort
+* QueryCDBProxy
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Address
+* BaseGroupInfo
+* ConnectionPoolInfo
+* PoolConf
+* ProxyGroup
+* ProxyGroups
+* ProxyNodeInfo
+* RWInfo
+* RWInfos
+* RWInstanceInfo
 
 ### 第 138 次发布
 
@@ -26888,6 +26921,21 @@
 
 
 ## Cloud Studio（云端 IDE）(cloudstudio) 版本：2023-05-08
+
+### 第 4 次发布
+
+发布时间：2023-07-24 01:17:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWorkspaceToken](https://cloud.tencent.com/document/api/1039/94095)
+
+	* 新增入参：Policies
+
 
 ### 第 3 次发布
 
@@ -44074,6 +44122,18 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 25 次发布
+
+发布时间：2023-07-24 01:25:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDomainRedemption](https://cloud.tencent.com/document/api/242/95411)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 24 次发布
 
 发布时间：2023-05-18 01:23:17
@@ -50320,6 +50380,54 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 91 次发布
+
+发布时间：2023-07-24 01:28:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)
+
+	* 新增入参：Agent
+
+* [CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)
+
+	* 新增入参：Agent
+
+* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
+
+	* 新增入参：Agent
+
+* [DescribeThirdPartyAuthCode](https://cloud.tencent.com/document/api/1323/70368)
+
+	* 新增入参：Operator, Agent
+
+* [DescribeUserAutoSignStatus](https://cloud.tencent.com/document/api/1323/87786)
+
+	* 新增入参：Agent
+
+* [DisableUserAutoSign](https://cloud.tencent.com/document/api/1323/87785)
+
+	* 新增入参：Agent
+
+* [UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)
+
+	* 新增入参：Agent
+
+
+修改数据结构：
+
+* [FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo)
+
+	* 新增成员：ApproverName, ApproverMobile
+
+	* <font color="#dd0000">**修改成员**：</font>ApproverSource, CustomUserId
+
 
 ### 第 90 次发布
 
@@ -96891,6 +96999,23 @@
 
 ## 分布式身份(tdid) 版本：2021-05-19
 
+### 第 10 次发布
+
+发布时间：2023-07-24 01:49:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* AddLabel
+* GetAgencyTDid
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Identity
+
 ### 第 9 次发布
 
 发布时间：2023-07-21 01:42:20
@@ -105217,6 +105342,18 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 33 次发布
+
+发布时间：2023-07-24 01:52:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTranscodeByUrl](https://cloud.tencent.com/document/api/1137/95412)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 32 次发布
 

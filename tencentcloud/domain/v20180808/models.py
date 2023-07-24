@@ -1047,6 +1047,64 @@ class CreateDomainBatchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDomainRedemptionRequest(AbstractModel):
+    """CreateDomainRedemption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名 ID
+        :type DomainId: str
+        """
+        self._DomainId = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDomainRedemptionResponse(AbstractModel):
+    """CreateDomainRedemption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePhoneEmailRequest(AbstractModel):
     """CreatePhoneEmail请求参数结构体
 

@@ -12743,7 +12743,7 @@ class ModifyHostsCertificateRequest(AbstractModel):
         :type ServerCertInfo: list of ServerCertInfo
         :param _ApplyType: 托管类型，取值有：
 <li>apply：托管EO；</li>
-<li>none：不托管EO；</li>不填，默认取值为apply。
+<li>none：不托管EO；</li>不填，默认取值为none。
         :type ApplyType: str
         """
         self._ZoneId = None

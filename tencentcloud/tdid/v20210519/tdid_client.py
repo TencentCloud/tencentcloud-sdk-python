@@ -26,31 +26,6 @@ class TdidClient(AbstractClient):
     _service = 'tdid'
 
 
-    def AddLabel(self, request):
-        """下线已有内测接口，待上线正式版本的接口
-
-        DID添加标签
-
-        :param request: Request instance for AddLabel.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.AddLabelRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.AddLabelResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AddLabel", params, headers=headers)
-            response = json.loads(body)
-            model = models.AddLabelResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CheckChain(self, request):
         """该接口不再使用
 
@@ -192,31 +167,6 @@ class TdidClient(AbstractClient):
             body = self.call("CreateTDidByPublicKey", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTDidByPublicKeyResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetAgencyTDid(self, request):
-        """该接口已废弃
-
-        本机构DID详情
-
-        :param request: Request instance for GetAgencyTDid.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.GetAgencyTDidRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetAgencyTDidResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetAgencyTDid", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetAgencyTDidResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

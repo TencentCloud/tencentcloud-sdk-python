@@ -204,9 +204,12 @@ class CreateWorkspaceTokenRequest(AbstractModel):
         :type SpaceKey: str
         :param _TokenExpiredLimitSec: token过期时间，单位是秒，默认 3600
         :type TokenExpiredLimitSec: int
+        :param _Policies: token 授权策略，可选值为 workspace-run-only, all。默认为 all
+        :type Policies: list of str
         """
         self._SpaceKey = None
         self._TokenExpiredLimitSec = None
+        self._Policies = None
 
     @property
     def SpaceKey(self):
@@ -224,10 +227,19 @@ class CreateWorkspaceTokenRequest(AbstractModel):
     def TokenExpiredLimitSec(self, TokenExpiredLimitSec):
         self._TokenExpiredLimitSec = TokenExpiredLimitSec
 
+    @property
+    def Policies(self):
+        return self._Policies
+
+    @Policies.setter
+    def Policies(self, Policies):
+        self._Policies = Policies
+
 
     def _deserialize(self, params):
         self._SpaceKey = params.get("SpaceKey")
         self._TokenExpiredLimitSec = params.get("TokenExpiredLimitSec")
+        self._Policies = params.get("Policies")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

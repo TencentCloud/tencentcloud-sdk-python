@@ -651,6 +651,29 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTranscodeByUrl(self, request):
+        """通过文档URL查询转码任务，返回最近的一次转码结果
+
+        :param request: Request instance for DescribeTranscodeByUrl.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeByUrlRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeByUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTranscodeByUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTranscodeByUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTranscodeCallback(self, request):
         """查询文档转码回调地址
 
