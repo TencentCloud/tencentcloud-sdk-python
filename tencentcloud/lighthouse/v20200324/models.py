@@ -3940,6 +3940,466 @@ class DescribeDisksReturnableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDockerActivitiesRequest(AbstractModel):
+    """DescribeDockerActivities请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ActivityIds: Docker活动ID列表。
+        :type ActivityIds: list of str
+        :param _Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param _CreatedTimeBegin: 活动创建时间的起始值，时间戳秒数。
+        :type CreatedTimeBegin: int
+        :param _CreatedTimeEnd: 活动创建时间的结束值，时间戳秒数。
+        :type CreatedTimeEnd: int
+        """
+        self._InstanceId = None
+        self._ActivityIds = None
+        self._Offset = None
+        self._Limit = None
+        self._CreatedTimeBegin = None
+        self._CreatedTimeEnd = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ActivityIds(self):
+        return self._ActivityIds
+
+    @ActivityIds.setter
+    def ActivityIds(self, ActivityIds):
+        self._ActivityIds = ActivityIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CreatedTimeBegin(self):
+        return self._CreatedTimeBegin
+
+    @CreatedTimeBegin.setter
+    def CreatedTimeBegin(self, CreatedTimeBegin):
+        self._CreatedTimeBegin = CreatedTimeBegin
+
+    @property
+    def CreatedTimeEnd(self):
+        return self._CreatedTimeEnd
+
+    @CreatedTimeEnd.setter
+    def CreatedTimeEnd(self, CreatedTimeEnd):
+        self._CreatedTimeEnd = CreatedTimeEnd
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ActivityIds = params.get("ActivityIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CreatedTimeBegin = params.get("CreatedTimeBegin")
+        self._CreatedTimeEnd = params.get("CreatedTimeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDockerActivitiesResponse(AbstractModel):
+    """DescribeDockerActivities返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量。
+        :type TotalCount: int
+        :param _DockerActivitySet: Docker活动列表。
+        :type DockerActivitySet: list of DockerActivity
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DockerActivitySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DockerActivitySet(self):
+        return self._DockerActivitySet
+
+    @DockerActivitySet.setter
+    def DockerActivitySet(self, DockerActivitySet):
+        self._DockerActivitySet = DockerActivitySet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DockerActivitySet") is not None:
+            self._DockerActivitySet = []
+            for item in params.get("DockerActivitySet"):
+                obj = DockerActivity()
+                obj._deserialize(item)
+                self._DockerActivitySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDockerContainerConfigurationRequest(AbstractModel):
+    """DescribeDockerContainerConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerId: 容器ID。
+        :type ContainerId: str
+        """
+        self._InstanceId = None
+        self._ContainerId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerId = params.get("ContainerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDockerContainerConfigurationResponse(AbstractModel):
+    """DescribeDockerContainerConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContainerConfiguration: Docker容器配置信息。
+        :type ContainerConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.DockerContainerConfiguration`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ContainerConfiguration = None
+        self._RequestId = None
+
+    @property
+    def ContainerConfiguration(self):
+        return self._ContainerConfiguration
+
+    @ContainerConfiguration.setter
+    def ContainerConfiguration(self, ContainerConfiguration):
+        self._ContainerConfiguration = ContainerConfiguration
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ContainerConfiguration") is not None:
+            self._ContainerConfiguration = DockerContainerConfiguration()
+            self._ContainerConfiguration._deserialize(params.get("ContainerConfiguration"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDockerContainerDetailRequest(AbstractModel):
+    """DescribeDockerContainerDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerId: 容器ID。
+        :type ContainerId: str
+        """
+        self._InstanceId = None
+        self._ContainerId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerId = params.get("ContainerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDockerContainerDetailResponse(AbstractModel):
+    """DescribeDockerContainerDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContainerDetail: Docker容器详情，json字符串base64编码。
+        :type ContainerDetail: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ContainerDetail = None
+        self._RequestId = None
+
+    @property
+    def ContainerDetail(self):
+        return self._ContainerDetail
+
+    @ContainerDetail.setter
+    def ContainerDetail(self, ContainerDetail):
+        self._ContainerDetail = ContainerDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ContainerDetail = params.get("ContainerDetail")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDockerContainersRequest(AbstractModel):
+    """DescribeDockerContainers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerIds: 容器ID列表。
+        :type ContainerIds: list of str
+        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param _Filters: 过滤器列表。
+<li>container-id</li>按照【容器ID】进行过滤。
+类型：String
+必选：否
+<li>container-name</li>按照【容器名称】进行过滤。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 ContainerIds 和 Filters。
+        :type Filters: list of Filter
+        """
+        self._InstanceId = None
+        self._ContainerIds = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerIds(self):
+        return self._ContainerIds
+
+    @ContainerIds.setter
+    def ContainerIds(self, ContainerIds):
+        self._ContainerIds = ContainerIds
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerIds = params.get("ContainerIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDockerContainersResponse(AbstractModel):
+    """DescribeDockerContainers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量。
+        :type TotalCount: int
+        :param _DockerContainerSet: 容器列表。
+        :type DockerContainerSet: list of DockerContainer
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DockerContainerSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DockerContainerSet(self):
+        return self._DockerContainerSet
+
+    @DockerContainerSet.setter
+    def DockerContainerSet(self, DockerContainerSet):
+        self._DockerContainerSet = DockerContainerSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DockerContainerSet") is not None:
+            self._DockerContainerSet = []
+            for item in params.get("DockerContainerSet"):
+                obj = DockerContainer()
+                obj._deserialize(item)
+                self._DockerContainerSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFirewallRulesRequest(AbstractModel):
     """DescribeFirewallRules请求参数结构体
 
@@ -7018,6 +7478,255 @@ class DiskReturnable(AbstractModel):
         
 
 
+class DockerActivity(AbstractModel):
+    """Docker活动信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivityId: 活动ID。
+        :type ActivityId: str
+        :param _ActivityName: 活动名称。
+        :type ActivityName: str
+        :param _ActivityState: 活动状态。取值范围： 
+<li>INIT：表示初始化，活动尚未执行</li>
+<li>OPERATING：表示活动执行中</li>
+<li>SUCCESS：表示活动执行成功</li>
+<li>FAILED：表示活动执行失败</li>
+        :type ActivityState: str
+        :param _ActivityCommandOutput: 活动执行的命令输出，以base64编码。
+        :type ActivityCommandOutput: str
+        :param _ContainerIds: 容器ID列表。
+        :type ContainerIds: list of str
+        :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
+        :type CreatedTime: str
+        :param _EndTime: 结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._ActivityId = None
+        self._ActivityName = None
+        self._ActivityState = None
+        self._ActivityCommandOutput = None
+        self._ContainerIds = None
+        self._CreatedTime = None
+        self._EndTime = None
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def ActivityName(self):
+        return self._ActivityName
+
+    @ActivityName.setter
+    def ActivityName(self, ActivityName):
+        self._ActivityName = ActivityName
+
+    @property
+    def ActivityState(self):
+        return self._ActivityState
+
+    @ActivityState.setter
+    def ActivityState(self, ActivityState):
+        self._ActivityState = ActivityState
+
+    @property
+    def ActivityCommandOutput(self):
+        return self._ActivityCommandOutput
+
+    @ActivityCommandOutput.setter
+    def ActivityCommandOutput(self, ActivityCommandOutput):
+        self._ActivityCommandOutput = ActivityCommandOutput
+
+    @property
+    def ContainerIds(self):
+        return self._ContainerIds
+
+    @ContainerIds.setter
+    def ContainerIds(self, ContainerIds):
+        self._ContainerIds = ContainerIds
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._ActivityId = params.get("ActivityId")
+        self._ActivityName = params.get("ActivityName")
+        self._ActivityState = params.get("ActivityState")
+        self._ActivityCommandOutput = params.get("ActivityCommandOutput")
+        self._ContainerIds = params.get("ContainerIds")
+        self._CreatedTime = params.get("CreatedTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DockerContainer(AbstractModel):
+    """Docker容器信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContainerId: 容器ID
+        :type ContainerId: str
+        :param _ContainerName: 容器名称
+        :type ContainerName: str
+        :param _ContainerImage: 容器镜像地址
+        :type ContainerImage: str
+        :param _Command: 容器Command
+        :type Command: str
+        :param _Status: 容器状态描述
+        :type Status: str
+        :param _State: 容器状态，和docker的容器状态保持一致，当前取值有：created, restarting, running, removing, paused, exited, or dead
+        :type State: str
+        :param _PublishPortSet: 容器端口主机端口映射列表
+        :type PublishPortSet: list of DockerContainerPublishPort
+        :param _VolumeSet: 容器挂载本地卷列表
+        :type VolumeSet: list of DockerContainerVolume
+        :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
+        :type CreatedTime: str
+        """
+        self._ContainerId = None
+        self._ContainerName = None
+        self._ContainerImage = None
+        self._Command = None
+        self._Status = None
+        self._State = None
+        self._PublishPortSet = None
+        self._VolumeSet = None
+        self._CreatedTime = None
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def ContainerImage(self):
+        return self._ContainerImage
+
+    @ContainerImage.setter
+    def ContainerImage(self, ContainerImage):
+        self._ContainerImage = ContainerImage
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def PublishPortSet(self):
+        return self._PublishPortSet
+
+    @PublishPortSet.setter
+    def PublishPortSet(self, PublishPortSet):
+        self._PublishPortSet = PublishPortSet
+
+    @property
+    def VolumeSet(self):
+        return self._VolumeSet
+
+    @VolumeSet.setter
+    def VolumeSet(self, VolumeSet):
+        self._VolumeSet = VolumeSet
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+
+    def _deserialize(self, params):
+        self._ContainerId = params.get("ContainerId")
+        self._ContainerName = params.get("ContainerName")
+        self._ContainerImage = params.get("ContainerImage")
+        self._Command = params.get("Command")
+        self._Status = params.get("Status")
+        self._State = params.get("State")
+        if params.get("PublishPortSet") is not None:
+            self._PublishPortSet = []
+            for item in params.get("PublishPortSet"):
+                obj = DockerContainerPublishPort()
+                obj._deserialize(item)
+                self._PublishPortSet.append(obj)
+        if params.get("VolumeSet") is not None:
+            self._VolumeSet = []
+            for item in params.get("VolumeSet"):
+                obj = DockerContainerVolume()
+                obj._deserialize(item)
+                self._VolumeSet.append(obj)
+        self._CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DockerContainerConfiguration(AbstractModel):
     """Docker容器创建时的配置
 
@@ -9211,9 +9920,12 @@ class LoginConfiguration(AbstractModel):
 `LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能包含空格, 不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;' <>,.?/</li>
 `WINDOWS` 实例密码必须 12-30 位，不能包含空格, 不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字： 0-9<br><li>特殊字符：()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/
         :type Password: str
+        :param _KeyIds: 密钥ID列表，最多同时指定5个密钥。关联密钥后，就可以通过对应的私钥来访问实例。密钥与密码不能同时指定，同时WINDOWS操作系统不支持指定密钥。密钥ID列表可以通过[DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540)接口获取。
+        :type KeyIds: list of str
         """
         self._AutoGeneratePassword = None
         self._Password = None
+        self._KeyIds = None
 
     @property
     def AutoGeneratePassword(self):
@@ -9231,10 +9943,19 @@ class LoginConfiguration(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
 
     def _deserialize(self, params):
         self._AutoGeneratePassword = params.get("AutoGeneratePassword")
         self._Password = params.get("Password")
+        self._KeyIds = params.get("KeyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9644,6 +10365,169 @@ class ModifyDisksRenewFlagResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDockerContainerRequest(AbstractModel):
+    """ModifyDockerContainer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerId: 容器ID。
+        :type ContainerId: str
+        :param _Envs: 环境变量列表
+        :type Envs: list of ContainerEnv
+        :param _PublishPorts: 容器端口主机端口映射列表
+        :type PublishPorts: list of DockerContainerPublishPort
+        :param _Volumes: 容器加载本地卷列表
+        :type Volumes: list of DockerContainerVolume
+        :param _Command: 运行的命令
+        :type Command: str
+        :param _RestartPolicy: 容器重启策略，对应docker "--restart"参数。
+
+枚举值:
+no: 不自动重启。默认策略。
+on-failure[:max-retries]: 当容器退出码非0时重启容器。使用max-retries限制重启次数，比如on-failure:10，限制最多重启10次。
+always: 只要容器退出就重启。
+unless-stopped: 始终重新启动容器，包括在守护进程启动时，除非容器在 Docker 守护进程停止之前进入停止状态。
+        :type RestartPolicy: str
+        """
+        self._InstanceId = None
+        self._ContainerId = None
+        self._Envs = None
+        self._PublishPorts = None
+        self._Volumes = None
+        self._Command = None
+        self._RestartPolicy = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def Envs(self):
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def PublishPorts(self):
+        return self._PublishPorts
+
+    @PublishPorts.setter
+    def PublishPorts(self, PublishPorts):
+        self._PublishPorts = PublishPorts
+
+    @property
+    def Volumes(self):
+        return self._Volumes
+
+    @Volumes.setter
+    def Volumes(self, Volumes):
+        self._Volumes = Volumes
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def RestartPolicy(self):
+        return self._RestartPolicy
+
+    @RestartPolicy.setter
+    def RestartPolicy(self, RestartPolicy):
+        self._RestartPolicy = RestartPolicy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerId = params.get("ContainerId")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = ContainerEnv()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("PublishPorts") is not None:
+            self._PublishPorts = []
+            for item in params.get("PublishPorts"):
+                obj = DockerContainerPublishPort()
+                obj._deserialize(item)
+                self._PublishPorts.append(obj)
+        if params.get("Volumes") is not None:
+            self._Volumes = []
+            for item in params.get("Volumes"):
+                obj = DockerContainerVolume()
+                obj._deserialize(item)
+                self._Volumes.append(obj)
+        self._Command = params.get("Command")
+        self._RestartPolicy = params.get("RestartPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDockerContainerResponse(AbstractModel):
+    """ModifyDockerContainer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivityId: Docker活动ID。
+        :type DockerActivityId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivityId = None
+        self._RequestId = None
+
+    @property
+    def DockerActivityId(self):
+        return self._DockerActivityId
+
+    @DockerActivityId.setter
+    def DockerActivityId(self, DockerActivityId):
+        self._DockerActivityId = DockerActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivityId = params.get("DockerActivityId")
         self._RequestId = params.get("RequestId")
 
 
@@ -10429,6 +11313,182 @@ class RegionInfo(AbstractModel):
         
 
 
+class RemoveDockerContainersRequest(AbstractModel):
+    """RemoveDockerContainers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerIds: 容器ID列表。
+        :type ContainerIds: list of str
+        """
+        self._InstanceId = None
+        self._ContainerIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerIds(self):
+        return self._ContainerIds
+
+    @ContainerIds.setter
+    def ContainerIds(self, ContainerIds):
+        self._ContainerIds = ContainerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerIds = params.get("ContainerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveDockerContainersResponse(AbstractModel):
+    """RemoveDockerContainers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivityId: Docker活动ID。
+        :type DockerActivityId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivityId = None
+        self._RequestId = None
+
+    @property
+    def DockerActivityId(self):
+        return self._DockerActivityId
+
+    @DockerActivityId.setter
+    def DockerActivityId(self, DockerActivityId):
+        self._DockerActivityId = DockerActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivityId = params.get("DockerActivityId")
+        self._RequestId = params.get("RequestId")
+
+
+class RenameDockerContainerRequest(AbstractModel):
+    """RenameDockerContainer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerId: 容器ID。
+        :type ContainerId: str
+        :param _ContainerName: 容器新的名称。
+        :type ContainerName: str
+        """
+        self._InstanceId = None
+        self._ContainerId = None
+        self._ContainerName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerId = params.get("ContainerId")
+        self._ContainerName = params.get("ContainerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenameDockerContainerResponse(AbstractModel):
+    """RenameDockerContainer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivityId: Docker活动ID。
+        :type DockerActivityId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivityId = None
+        self._RequestId = None
+
+    @property
+    def DockerActivityId(self):
+        return self._DockerActivityId
+
+    @DockerActivityId.setter
+    def DockerActivityId(self, DockerActivityId):
+        self._DockerActivityId = DockerActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivityId = params.get("DockerActivityId")
+        self._RequestId = params.get("RequestId")
+
+
 class RenewDiskChargePrepaid(AbstractModel):
     """续费云硬盘包年包月相关参数设置
 
@@ -10685,6 +11745,102 @@ class RenewInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RerunDockerContainerRequest(AbstractModel):
+    """RerunDockerContainer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerConfiguration: 重新创建的容器配置。
+        :type ContainerConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.DockerContainerConfiguration`
+        :param _ContainerId: 容器ID。
+        :type ContainerId: str
+        """
+        self._InstanceId = None
+        self._ContainerConfiguration = None
+        self._ContainerId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerConfiguration(self):
+        return self._ContainerConfiguration
+
+    @ContainerConfiguration.setter
+    def ContainerConfiguration(self, ContainerConfiguration):
+        self._ContainerConfiguration = ContainerConfiguration
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ContainerConfiguration") is not None:
+            self._ContainerConfiguration = DockerContainerConfiguration()
+            self._ContainerConfiguration._deserialize(params.get("ContainerConfiguration"))
+        self._ContainerId = params.get("ContainerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RerunDockerContainerResponse(AbstractModel):
+    """RerunDockerContainer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivityId: Docker活动ID。
+        :type DockerActivityId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivityId = None
+        self._RequestId = None
+
+    @property
+    def DockerActivityId(self):
+        return self._DockerActivityId
+
+    @DockerActivityId.setter
+    def DockerActivityId(self, DockerActivityId):
+        self._DockerActivityId = DockerActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivityId = params.get("DockerActivityId")
         self._RequestId = params.get("RequestId")
 
 
@@ -10956,6 +12112,175 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RestartDockerContainersRequest(AbstractModel):
+    """RestartDockerContainers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerIds: 容器ID列表。
+        :type ContainerIds: list of str
+        """
+        self._InstanceId = None
+        self._ContainerIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerIds(self):
+        return self._ContainerIds
+
+    @ContainerIds.setter
+    def ContainerIds(self, ContainerIds):
+        self._ContainerIds = ContainerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerIds = params.get("ContainerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartDockerContainersResponse(AbstractModel):
+    """RestartDockerContainers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivityId: Docker活动ID。
+        :type DockerActivityId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivityId = None
+        self._RequestId = None
+
+    @property
+    def DockerActivityId(self):
+        return self._DockerActivityId
+
+    @DockerActivityId.setter
+    def DockerActivityId(self, DockerActivityId):
+        self._DockerActivityId = DockerActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivityId = params.get("DockerActivityId")
+        self._RequestId = params.get("RequestId")
+
+
+class RunDockerContainersRequest(AbstractModel):
+    """RunDockerContainers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Containers: 要创建的容器列表。
+        :type Containers: list of DockerContainerConfiguration
+        """
+        self._InstanceId = None
+        self._Containers = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Containers(self):
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Containers") is not None:
+            self._Containers = []
+            for item in params.get("Containers"):
+                obj = DockerContainerConfiguration()
+                obj._deserialize(item)
+                self._Containers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunDockerContainersResponse(AbstractModel):
+    """RunDockerContainers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivitySet: Docker活动ID列表。
+        :type DockerActivitySet: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivitySet = None
+        self._RequestId = None
+
+    @property
+    def DockerActivitySet(self):
+        return self._DockerActivitySet
+
+    @DockerActivitySet.setter
+    def DockerActivitySet(self, DockerActivitySet):
+        self._DockerActivitySet = DockerActivitySet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivitySet = params.get("DockerActivitySet")
         self._RequestId = params.get("RequestId")
 
 
@@ -11431,6 +12756,88 @@ class SoftwareDetail(AbstractModel):
         
 
 
+class StartDockerContainersRequest(AbstractModel):
+    """StartDockerContainers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerIds: 容器ID列表。
+        :type ContainerIds: list of str
+        """
+        self._InstanceId = None
+        self._ContainerIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerIds(self):
+        return self._ContainerIds
+
+    @ContainerIds.setter
+    def ContainerIds(self, ContainerIds):
+        self._ContainerIds = ContainerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerIds = params.get("ContainerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartDockerContainersResponse(AbstractModel):
+    """StartDockerContainers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivityId: Docker活动ID。
+        :type DockerActivityId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivityId = None
+        self._RequestId = None
+
+    @property
+    def DockerActivityId(self):
+        return self._DockerActivityId
+
+    @DockerActivityId.setter
+    def DockerActivityId(self, DockerActivityId):
+        self._DockerActivityId = DockerActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivityId = params.get("DockerActivityId")
+        self._RequestId = params.get("RequestId")
+
+
 class StartInstancesRequest(AbstractModel):
     """StartInstances请求参数结构体
 
@@ -11486,6 +12893,88 @@ class StartInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopDockerContainersRequest(AbstractModel):
+    """StopDockerContainers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ContainerIds: 容器ID列表。
+        :type ContainerIds: list of str
+        """
+        self._InstanceId = None
+        self._ContainerIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ContainerIds(self):
+        return self._ContainerIds
+
+    @ContainerIds.setter
+    def ContainerIds(self, ContainerIds):
+        self._ContainerIds = ContainerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ContainerIds = params.get("ContainerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopDockerContainersResponse(AbstractModel):
+    """StopDockerContainers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DockerActivityId: Docker活动ID。
+        :type DockerActivityId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DockerActivityId = None
+        self._RequestId = None
+
+    @property
+    def DockerActivityId(self):
+        return self._DockerActivityId
+
+    @DockerActivityId.setter
+    def DockerActivityId(self, DockerActivityId):
+        self._DockerActivityId = DockerActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DockerActivityId = params.get("DockerActivityId")
         self._RequestId = params.get("RequestId")
 
 

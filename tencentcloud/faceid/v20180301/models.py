@@ -2895,7 +2895,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param _Encryption: 敏感数据加密信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _IntentionVerifyData: 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
+        :param _IntentionVerifyData: 意愿核身朗读模式结果信息。若未使用意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyData: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
         :param _IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。

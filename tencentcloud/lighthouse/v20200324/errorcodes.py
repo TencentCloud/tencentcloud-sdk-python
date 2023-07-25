@@ -59,6 +59,12 @@ FAILEDOPERATION_DESCRIBERESOURCESRETURNABLEERROR = 'FailedOperation.DescribeReso
 # 销毁资源失败，请稍后重新操作。
 FAILEDOPERATION_DESTROYRESOURCESFAILED = 'FailedOperation.DestroyResourcesFailed'
 
+# 容器列表过长。
+FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = 'FailedOperation.DockerContainersListTooLarge'
+
+# 指定Docker环境操作失败, 请检查Docker环境。
+FAILEDOPERATION_DOCKEROPERATIONFAILED = 'FailedOperation.DockerOperationFailed'
+
 # 对防火墙规则的操作失败。
 FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = 'FailedOperation.FirewallRulesOperationFailed'
 
@@ -88,6 +94,9 @@ FAILEDOPERATION_REQUESTERROR = 'FailedOperation.RequestError'
 
 # 快照操作失败。
 FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = 'FailedOperation.SnapshotOperationFailed'
+
+# TAT命令未完成。
+FAILEDOPERATION_TATINVOCATIONNOTFINISHED = 'FailedOperation.TATInvocationNotFinished'
 
 # 调用计费网关服务失败，请稍后重新操作。
 FAILEDOPERATION_TRADECALLBILLINGGATEWAYFAILED = 'FailedOperation.TradeCallBillingGatewayFailed'
@@ -239,6 +248,9 @@ INVALIDPARAMETERVALUE_DUPLICATEPARAMETERVALUE = 'InvalidParameterValue.Duplicate
 # 参数值非法，不允许包含重复的值。
 INVALIDPARAMETERVALUE_DUPLICATED = 'InvalidParameterValue.Duplicated'
 
+# 列值不正确。
+INVALIDPARAMETERVALUE_FIELDSCOMPARE = 'InvalidParameterValue.FieldsCompare'
+
 # 防火墙规则描述长度超出限制。
 INVALIDPARAMETERVALUE_FIREWALLRULEDESCRIPTIONTOOLONG = 'InvalidParameterValue.FirewallRuleDescriptionTooLong'
 
@@ -349,6 +361,9 @@ INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = 'InvalidParameterValue.SnapshotIdMal
 
 # 参数值非法，快照名称超过允许的最大长度。
 INVALIDPARAMETERVALUE_SNAPSHOTNAMETOOLONG = 'InvalidParameterValue.SnapshotNameTooLong'
+
+# 参数值非法，大于有效值。
+INVALIDPARAMETERVALUE_TOOLARGE = 'InvalidParameterValue.TooLarge'
 
 # 参数取值过长，超过最大长度。
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
@@ -497,17 +512,35 @@ RESOURCENOTFOUND_SNAPSHOTNOTFOUND = 'ResourceNotFound.SnapshotNotFound'
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
+# 指定实例镜像不符合要求。
+RESOURCEUNAVAILABLE_BLUEPRINTINVALID = 'ResourceUnavailable.BlueprintInvalid'
+
 # 镜像资源不可用。
 RESOURCEUNAVAILABLE_BLUEPRINTUNAVAILABLE = 'ResourceUnavailable.BlueprintUnavailable'
 
 # 套餐不可用。
 RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = 'ResourceUnavailable.BundleUnavailable'
 
+# Docker资源不可用。
+RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = 'ResourceUnavailable.DockerUnavailable'
+
+# TAT agent不可用。
+RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = 'ResourceUnavailable.TATAgentUnavailable'
+
+# TAT 服务错误。
+RESOURCEUNAVAILABLE_TATSERVICEERROR = 'ResourceUnavailable.TATServiceError'
+
 # 套餐无可用配置。
 RESOURCESSOLDOUT_PURCHASESOURCEHASNOBUNDLECONFIGS = 'ResourcesSoldOut.PurchaseSourceHasNoBundleConfigs'
 
 # 套餐无可用配置。
 RESOURCESSOLDOUT_ZONESHASNOBUNDLECONFIGS = 'ResourcesSoldOut.ZonesHasNoBundleConfigs'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 无效 Token。
+UNAUTHORIZEDOPERATION_INVALIDTOKEN = 'UnauthorizedOperation.InvalidToken'
 
 # MFA 已过期。
 UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'

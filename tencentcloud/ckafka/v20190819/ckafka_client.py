@@ -1591,6 +1591,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InstanceScalingDown(self, request):
+        """按量实例缩容
+
+        :param request: Request instance for InstanceScalingDown.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.InstanceScalingDownRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceScalingDownResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstanceScalingDown", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstanceScalingDownResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAclRule(self, request):
         """修改AC策略，目前只支持预设规则的是否应用到新增topic这一项的修改
 

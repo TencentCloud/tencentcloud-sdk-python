@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActionFilter(AbstractModel):
+    """动作库筛选栏位
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keyword: 关键字
+        :type Keyword: str
+        :param _Values: 搜索内容值
+        :type Values: list of str
+        """
+        self._Keyword = None
+        self._Values = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Keyword = params.get("Keyword")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateTaskFromTemplateRequest(AbstractModel):
     """CreateTaskFromTemplate请求参数结构体
 
@@ -347,6 +392,8 @@ class DescribeTaskListRequest(AbstractModel):
         :type TaskEndTime: str
         :param _Tags: 标签对
         :type Tags: list of TagWithDescribe
+        :param _Filters: 筛选条件
+        :type Filters: list of ActionFilter
         """
         self._Limit = None
         self._Offset = None
@@ -356,6 +403,7 @@ class DescribeTaskListRequest(AbstractModel):
         self._TaskStartTime = None
         self._TaskEndTime = None
         self._Tags = None
+        self._Filters = None
 
     @property
     def Limit(self):
@@ -421,6 +469,14 @@ class DescribeTaskListRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -436,6 +492,12 @@ class DescribeTaskListRequest(AbstractModel):
                 obj = TagWithDescribe()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ActionFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -610,6 +672,8 @@ class DescribeTemplateListRequest(AbstractModel):
         :type TemplateSource: int
         :param _TemplateIdList: 经验ID
         :type TemplateIdList: list of int
+        :param _Filters: 过滤参数
+        :type Filters: list of ActionFilter
         """
         self._Limit = None
         self._Offset = None
@@ -619,6 +683,7 @@ class DescribeTemplateListRequest(AbstractModel):
         self._Tags = None
         self._TemplateSource = None
         self._TemplateIdList = None
+        self._Filters = None
 
     @property
     def Limit(self):
@@ -684,6 +749,14 @@ class DescribeTemplateListRequest(AbstractModel):
     def TemplateIdList(self, TemplateIdList):
         self._TemplateIdList = TemplateIdList
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -699,6 +772,12 @@ class DescribeTemplateListRequest(AbstractModel):
                 self._Tags.append(obj)
         self._TemplateSource = params.get("TemplateSource")
         self._TemplateIdList = params.get("TemplateIdList")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ActionFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

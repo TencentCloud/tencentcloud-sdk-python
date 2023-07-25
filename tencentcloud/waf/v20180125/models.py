@@ -10306,8 +10306,7 @@ class SearchAccessLogRequest(AbstractModel):
         :type Query: str
         :param _Limit: 单次查询返回的日志条数，最大值为100
         :type Limit: int
-        :param _Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。
-新版本此字段填空填
+        :param _Context: 新版本此字段失效，填空字符串，翻页使用Page
         :type Context: str
         :param _Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
         :type Sort: str
@@ -10414,7 +10413,7 @@ class SearchAccessLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Context: 加载后续内容的Context
+        :param _Context: 新接口此字段失效，默认返回空字符串
         :type Context: str
         :param _ListOver: 日志查询结果是否全部返回，其中，“true”表示结果返回，“false”表示结果为返回
         :type ListOver: bool
@@ -10533,7 +10532,7 @@ class SearchAttackLogRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 查询结束时间
         :type EndTime: str
-        :param _Context: 查询的游标。第一次请求使用空字符串即可，后续请求使用上一次请求返回的最后一条记录的context的值即可。
+        :param _Context: 接口升级，这个字段传空字符串,翻页使用Page字段
         :type Context: str
         :param _QueryString: Lucene语法
         :type QueryString: str
@@ -10646,7 +10645,7 @@ class SearchAttackLogResponse(AbstractModel):
         r"""
         :param _Count: 当前返回的攻击日志条数
         :type Count: int
-        :param _Context: 翻页游标，如果没有下一页了，这个参数为空""
+        :param _Context: 接口升级，此字段无效，默认返回空字符串
         :type Context: str
         :param _Data: 攻击日志数组条目内容
         :type Data: list of AttackLogInfo

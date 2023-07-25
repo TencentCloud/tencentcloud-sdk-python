@@ -56,7 +56,7 @@ class AiartClient(AbstractClient):
 
     def TextToImage(self, request):
         """智能文生图接口将根据输入的描述文本，智能生成与之相关的结果图。
-        输入：512个字符以内的描述性文本，推荐使用中文。
+        输入：256个字符以内的描述性文本，推荐使用中文。
         输出：对应风格及分辨率的 AI 生成图。
         可支持的风格详见 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249)，请将列表中的“风格编号”传入 Styles 数组，建议选择一种风格。
 

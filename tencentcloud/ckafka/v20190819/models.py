@@ -17437,6 +17437,128 @@ class InstanceResponse(AbstractModel):
         
 
 
+class InstanceScalingDownRequest(AbstractModel):
+    """InstanceScalingDown请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _UpgradeStrategy: 缩容模式  1:稳定变配 
+2.高速变配
+        :type UpgradeStrategy: int
+        :param _DiskSize: 磁盘大小 单位 GB
+        :type DiskSize: int
+        :param _BandWidth: 峰值带宽 单位 MB/s
+        :type BandWidth: int
+        :param _Partition: 分区上限
+        :type Partition: int
+        """
+        self._InstanceId = None
+        self._UpgradeStrategy = None
+        self._DiskSize = None
+        self._BandWidth = None
+        self._Partition = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UpgradeStrategy(self):
+        return self._UpgradeStrategy
+
+    @UpgradeStrategy.setter
+    def UpgradeStrategy(self, UpgradeStrategy):
+        self._UpgradeStrategy = UpgradeStrategy
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def BandWidth(self):
+        return self._BandWidth
+
+    @BandWidth.setter
+    def BandWidth(self, BandWidth):
+        self._BandWidth = BandWidth
+
+    @property
+    def Partition(self):
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UpgradeStrategy = params.get("UpgradeStrategy")
+        self._DiskSize = params.get("DiskSize")
+        self._BandWidth = params.get("BandWidth")
+        self._Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceScalingDownResponse(AbstractModel):
+    """InstanceScalingDown返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 缩容应答
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ScalingDownResp`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ScalingDownResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class JgwOperateResponse(AbstractModel):
     """操作型结果返回值
 
@@ -22740,6 +22862,40 @@ class SaleInfo(AbstractModel):
         self._Version = params.get("Version")
         self._Platform = params.get("Platform")
         self._SoldOut = params.get("SoldOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScalingDownResp(AbstractModel):
+    """实例缩容应答
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealNames: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        """
+        self._DealNames = None
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+
+    def _deserialize(self, params):
+        self._DealNames = params.get("DealNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

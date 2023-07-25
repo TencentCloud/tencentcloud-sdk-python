@@ -3472,7 +3472,7 @@ class DescribeHiveQueriesRequest(AbstractModel):
         :type InstanceId: str
         :param _StartTime: 起始时间秒
         :type StartTime: int
-        :param _EndTime: 结束时间秒，EndTime-StartTime不得超过31天秒数31*24*3600
+        :param _EndTime: 结束时间秒，EndTime-StartTime不得超过1天秒数86400
         :type EndTime: int
         :param _Offset: 分页起始偏移，从0开始
         :type Offset: int
@@ -3607,7 +3607,7 @@ class DescribeImpalaQueriesRequest(AbstractModel):
         :type InstanceId: str
         :param _StartTime: 起始时间秒
         :type StartTime: int
-        :param _EndTime: 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+        :param _EndTime: 结束时间秒，EndTime-StartTime不得超过1天秒数86400
         :type EndTime: int
         :param _Offset: 分页起始偏移，从0开始
         :type Offset: int
@@ -4516,7 +4516,7 @@ class DescribeYarnApplicationsRequest(AbstractModel):
         :type InstanceId: str
         :param _StartTime: 起始时间秒
         :type StartTime: int
-        :param _EndTime: 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+        :param _EndTime: 结束时间秒，EndTime-StartTime不得超过1天秒数86400
         :type EndTime: int
         :param _Offset: 分页起始偏移，从0开始
         :type Offset: int
@@ -6310,7 +6310,7 @@ class InquirePriceRenewEmrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+        :param _TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
         :type TimeSpan: int
         :param _InstanceId: 待续费集群ID列表。
         :type InstanceId: str

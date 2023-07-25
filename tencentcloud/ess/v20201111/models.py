@@ -193,12 +193,12 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :param _ApproverVerifyTypes: 签署人查看合同时认证方式, 
 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 如果不传默认为1
-模板发起的时候,认证方式以模版配置为主
+模板发起的时候,认证方式以模板配置为主
         :type ApproverVerifyTypes: list of int
         :param _ApproverSignTypes: 签署人签署合同时的认证方式
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
-模板发起的时候,认证方式以模版配置为主
+模板发起的时候,认证方式以模板配置为主
         :type ApproverSignTypes: list of int
         :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
         :type ApproverNeedSignReview: bool
@@ -11283,10 +11283,13 @@ class ModifyApplicationCallbackInfoRequest(AbstractModel):
         :type OperateType: int
         :param _CallbackInfo: 回调信息
         :type CallbackInfo: :class:`tencentcloud.ess.v20201111.models.CallbackInfo`
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._OperateType = None
         self._CallbackInfo = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -11312,6 +11315,14 @@ class ModifyApplicationCallbackInfoRequest(AbstractModel):
     def CallbackInfo(self, CallbackInfo):
         self._CallbackInfo = CallbackInfo
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -11321,6 +11332,9 @@ class ModifyApplicationCallbackInfoRequest(AbstractModel):
         if params.get("CallbackInfo") is not None:
             self._CallbackInfo = CallbackInfo()
             self._CallbackInfo._deserialize(params.get("CallbackInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1,65 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## AI 绘画(aiart) 版本：2022-12-29
 
-### 第 51 次发布
+### 第 2 次发布
 
-发布时间：2023-07-24 01:12:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeDiskOperationLogs
-* DescribeSnapshotOperationLogs
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* DiskOperationLog
-* SnapshotOperationLog
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 139 次发布
-
-发布时间：2023-07-24 01:13:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeCDBProxy
-* DescribeProxyConnectionPoolConf
-* ModifyCDBProxyConnectionPool
-* ModifyCDBProxyVipVPort
-* QueryCDBProxy
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Address
-* BaseGroupInfo
-* ConnectionPoolInfo
-* PoolConf
-* ProxyGroup
-* ProxyGroups
-* ProxyNodeInfo
-* RWInfo
-* RWInfos
-* RWInstanceInfo
-
-
-
-## Cloud Studio（云端 IDE）(cloudstudio) 版本：2023-05-08
-
-### 第 4 次发布
-
-发布时间：2023-07-24 01:17:40
+发布时间：2023-07-25 10:37:02
 
 本次发布包含了以下内容：
 
@@ -67,22 +12,49 @@
 
 修改接口：
 
-* [CreateWorkspaceToken](https://cloud.tencent.com/document/api/1039/94095)
+* [ImageToImage](https://cloud.tencent.com/document/api/1668/88066)
 
-	* 新增入参：Policies
+	* 新增入参：RspImgType
 
+* [TextToImage](https://cloud.tencent.com/document/api/1668/88064)
 
-
-
-## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
-
+	* 新增入参：RspImgType
 
 
-## 域名注册(domain) 版本：2018-08-08
 
-### 第 25 次发布
 
-发布时间：2023-07-24 01:25:15
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 9 次发布
+
+发布时间：2023-07-25 10:44:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskList](https://cloud.tencent.com/document/api/1500/71779)
+
+	* 新增入参：Filters
+
+* [DescribeTemplateList](https://cloud.tencent.com/document/api/1500/71773)
+
+	* 新增入参：Filters
+
+
+新增数据结构：
+
+* [ActionFilter](https://cloud.tencent.com/document/api/1500/71784#ActionFilter)
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 90 次发布
+
+发布时间：2023-07-25 10:45:07
 
 本次发布包含了以下内容：
 
@@ -90,15 +62,19 @@
 
 新增接口：
 
-* [CreateDomainRedemption](https://cloud.tencent.com/document/api/242/95411)
+* [InstanceScalingDown](https://cloud.tencent.com/document/api/597/95460)
+
+新增数据结构：
+
+* [ScalingDownResp](https://cloud.tencent.com/document/api/597/40861#ScalingDownResp)
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 91 次发布
+### 第 92 次发布
 
-发布时间：2023-07-24 01:28:01
+发布时间：2023-07-25 10:56:49
 
 本次发布包含了以下内容：
 
@@ -106,72 +82,18 @@
 
 修改接口：
 
-* [BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)
-
-	* 新增入参：Agent
-
-* [CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)
-
-	* 新增入参：Agent
-
-* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
-
-	* 新增入参：Agent
-
-* [DescribeThirdPartyAuthCode](https://cloud.tencent.com/document/api/1323/70368)
-
-	* 新增入参：Operator, Agent
-
-* [DescribeUserAutoSignStatus](https://cloud.tencent.com/document/api/1323/87786)
-
-	* 新增入参：Agent
-
-* [DisableUserAutoSign](https://cloud.tencent.com/document/api/1323/87785)
-
-	* 新增入参：Agent
-
-* [UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)
+* [ModifyApplicationCallbackInfo](https://cloud.tencent.com/document/api/1323/86752)
 
 	* 新增入参：Agent
 
 
-修改数据结构：
-
-* [FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo)
-
-	* 新增成员：ApproverName, ApproverMobile
-
-	* <font color="#dd0000">**修改成员**：</font>ApproverSource, CustomUserId
 
 
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 51 次发布
 
-## 分布式身份(tdid) 版本：2021-05-19
-
-### 第 10 次发布
-
-发布时间：2023-07-24 01:49:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* AddLabel
-* GetAgencyTDid
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Identity
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 33 次发布
-
-发布时间：2023-07-24 01:52:09
+发布时间：2023-07-25 11:04:43
 
 本次发布包含了以下内容：
 
@@ -179,7 +101,46 @@
 
 新增接口：
 
-* [DescribeTranscodeByUrl](https://cloud.tencent.com/document/api/1137/95412)
+* [DescribeDockerActivities](https://cloud.tencent.com/document/api/1207/95476)
+* [DescribeDockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/95475)
+* [DescribeDockerContainerDetail](https://cloud.tencent.com/document/api/1207/95474)
+* [DescribeDockerContainers](https://cloud.tencent.com/document/api/1207/95473)
+* [ModifyDockerContainer](https://cloud.tencent.com/document/api/1207/95472)
+* [RemoveDockerContainers](https://cloud.tencent.com/document/api/1207/95471)
+* [RenameDockerContainer](https://cloud.tencent.com/document/api/1207/95470)
+* [RerunDockerContainer](https://cloud.tencent.com/document/api/1207/95469)
+* [RestartDockerContainers](https://cloud.tencent.com/document/api/1207/95468)
+* [RunDockerContainers](https://cloud.tencent.com/document/api/1207/95467)
+* [StartDockerContainers](https://cloud.tencent.com/document/api/1207/95466)
+* [StopDockerContainers](https://cloud.tencent.com/document/api/1207/95465)
+
+新增数据结构：
+
+* [DockerActivity](https://cloud.tencent.com/document/api/1207/47576#DockerActivity)
+* [DockerContainer](https://cloud.tencent.com/document/api/1207/47576#DockerContainer)
+
+修改数据结构：
+
+* [LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)
+
+	* 新增成员：KeyIds
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 39 次发布
+
+发布时间：2023-07-25 11:27:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeAutoDenyIP
 
 
 
@@ -801,6 +762,25 @@
 
 
 ## AI 绘画(aiart) 版本：2022-12-29
+
+### 第 2 次发布
+
+发布时间：2023-07-25 10:37:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImageToImage](https://cloud.tencent.com/document/api/1668/88066)
+
+	* 新增入参：RspImgType
+
+* [TextToImage](https://cloud.tencent.com/document/api/1668/88064)
+
+	* 新增入参：RspImgType
+
 
 ### 第 1 次发布
 
@@ -20311,6 +20291,29 @@
 
 ## 混沌演练平台(cfg) 版本：2021-08-20
 
+### 第 9 次发布
+
+发布时间：2023-07-25 10:44:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskList](https://cloud.tencent.com/document/api/1500/71779)
+
+	* 新增入参：Filters
+
+* [DescribeTemplateList](https://cloud.tencent.com/document/api/1500/71773)
+
+	* 新增入参：Filters
+
+
+新增数据结构：
+
+* [[ActionFilter](https://cloud.tencent.com/document/api/1500/71784#ActionFilter)](https://cloud.tencent.com/document/api/1500/71784#[ActionFilter](https://cloud.tencent.com/document/api/1500/71784#ActionFilter))
+
 ### 第 8 次发布
 
 发布时间：2023-06-29 01:09:00
@@ -22579,6 +22582,22 @@
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 90 次发布
+
+发布时间：2023-07-25 10:45:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[InstanceScalingDown](https://cloud.tencent.com/document/api/597/95460)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ScalingDownResp](https://cloud.tencent.com/document/api/597/40861#ScalingDownResp)](https://cloud.tencent.com/document/api/597/40861#[ScalingDownResp](https://cloud.tencent.com/document/api/597/40861#ScalingDownResp))
 
 ### 第 89 次发布
 
@@ -44132,7 +44151,7 @@
 
 新增接口：
 
-* [[CreateDomainRedemption](https://cloud.tencent.com/document/api/242/95411)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDomainRedemption](https://cloud.tencent.com/document/api/242/95411)
 
 ### 第 24 次发布
 
@@ -50380,6 +50399,21 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 92 次发布
+
+发布时间：2023-07-25 10:56:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyApplicationCallbackInfo](https://cloud.tencent.com/document/api/1323/86752)
+
+	* 新增入参：Agent
+
 
 ### 第 91 次发布
 
@@ -65769,6 +65803,41 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 51 次发布
+
+发布时间：2023-07-25 11:04:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDockerActivities](https://cloud.tencent.com/document/api/1207/95476)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/95475)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDockerContainerDetail](https://cloud.tencent.com/document/api/1207/95474)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDockerContainers](https://cloud.tencent.com/document/api/1207/95473)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDockerContainer](https://cloud.tencent.com/document/api/1207/95472)](https://cloud.tencent.com/document/api/#/#)
+* [[RemoveDockerContainers](https://cloud.tencent.com/document/api/1207/95471)](https://cloud.tencent.com/document/api/#/#)
+* [[RenameDockerContainer](https://cloud.tencent.com/document/api/1207/95470)](https://cloud.tencent.com/document/api/#/#)
+* [[RerunDockerContainer](https://cloud.tencent.com/document/api/1207/95469)](https://cloud.tencent.com/document/api/#/#)
+* [[RestartDockerContainers](https://cloud.tencent.com/document/api/1207/95468)](https://cloud.tencent.com/document/api/#/#)
+* [[RunDockerContainers](https://cloud.tencent.com/document/api/1207/95467)](https://cloud.tencent.com/document/api/#/#)
+* [[StartDockerContainers](https://cloud.tencent.com/document/api/1207/95466)](https://cloud.tencent.com/document/api/#/#)
+* [[StopDockerContainers](https://cloud.tencent.com/document/api/1207/95465)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DockerActivity](https://cloud.tencent.com/document/api/1207/47576#DockerActivity)](https://cloud.tencent.com/document/api/1207/47576#[DockerActivity](https://cloud.tencent.com/document/api/1207/47576#DockerActivity))
+* [[DockerContainer](https://cloud.tencent.com/document/api/1207/47576#DockerContainer)](https://cloud.tencent.com/document/api/1207/47576#[DockerContainer](https://cloud.tencent.com/document/api/1207/47576#DockerContainer))
+
+修改数据结构：
+
+* [LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)
+
+	* 新增成员：KeyIds
+
 
 ### 第 50 次发布
 
@@ -105353,7 +105422,7 @@
 
 新增接口：
 
-* [[DescribeTranscodeByUrl](https://cloud.tencent.com/document/api/1137/95412)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTranscodeByUrl](https://cloud.tencent.com/document/api/1137/95412)
 
 ### 第 32 次发布
 
@@ -123220,6 +123289,18 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 39 次发布
+
+发布时间：2023-07-25 11:27:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeAutoDenyIP
 
 ### 第 38 次发布
 
