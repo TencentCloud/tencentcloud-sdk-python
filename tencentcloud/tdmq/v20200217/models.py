@@ -14967,6 +14967,9 @@ class RabbitMQClusterInfo(AbstractModel):
         :type Remark: str
         :param _Vpcs: VPC及网络信息
         :type Vpcs: list of VpcEndpointInfo
+        :param _ZoneIds: 可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: list of int
         :param _VirtualHostNumber: 虚拟主机数量
         :type VirtualHostNumber: int
         :param _QueueNumber: 队列数量
@@ -14989,7 +14992,6 @@ class RabbitMQClusterInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionInformation: str
         :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: int
         """
         self._ClusterId = None
@@ -14998,6 +15000,7 @@ class RabbitMQClusterInfo(AbstractModel):
         self._CreateTime = None
         self._Remark = None
         self._Vpcs = None
+        self._ZoneIds = None
         self._VirtualHostNumber = None
         self._QueueNumber = None
         self._MessagePublishRate = None
@@ -15057,6 +15060,14 @@ class RabbitMQClusterInfo(AbstractModel):
     @Vpcs.setter
     def Vpcs(self, Vpcs):
         self._Vpcs = Vpcs
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
 
     @property
     def VirtualHostNumber(self):
@@ -15159,6 +15170,7 @@ class RabbitMQClusterInfo(AbstractModel):
                 obj = VpcEndpointInfo()
                 obj._deserialize(item)
                 self._Vpcs.append(obj)
+        self._ZoneIds = params.get("ZoneIds")
         self._VirtualHostNumber = params.get("VirtualHostNumber")
         self._QueueNumber = params.get("QueueNumber")
         self._MessagePublishRate = params.get("MessagePublishRate")

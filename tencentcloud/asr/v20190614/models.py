@@ -1754,8 +1754,10 @@ class HotWord(AbstractModel):
     def __init__(self):
         r"""
         :param _Word: 热词
+注意：此字段可能返回 null，表示取不到有效值。
         :type Word: str
         :param _Weight: 权重
+注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         """
         self._Word = None

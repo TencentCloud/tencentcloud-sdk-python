@@ -762,6 +762,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteScheduledSql(self, request):
+        """本接口用于删除ScheduledSql任务
+
+        :param request: Request instance for DeleteScheduledSql.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteScheduledSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteScheduledSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteShipper(self, request):
         """删除投递COS任务
 
@@ -1245,6 +1268,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeScheduledSqlInfo(self, request):
+        """本接口用于获取ScheduledSql任务列表
+
+        :param request: Request instance for DescribeScheduledSqlInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeScheduledSqlInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeScheduledSqlInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduledSqlInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduledSqlInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeShipperTasks(self, request):
         """获取投递任务列表
 
@@ -1604,6 +1650,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyMachineGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMachineGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyScheduledSql(self, request):
+        """本接口用于修改ScheduledSql任务
+
+        :param request: Request instance for ModifyScheduledSql.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyScheduledSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyScheduledSqlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

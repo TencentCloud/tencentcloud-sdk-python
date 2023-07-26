@@ -841,7 +841,7 @@ class OcrClient(AbstractClient):
 
 
     def GetTaskState(self, request):
-        """支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超连接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
+        """支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超链接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
 
         :param request: Request instance for GetTaskState.
         :type request: :class:`tencentcloud.ocr.v20181119.models.GetTaskStateRequest`
@@ -1477,6 +1477,11 @@ class OcrClient(AbstractClient):
                 <tr>
                   <td> VatElectronicInvoiceToll</td>
                   <td> 增值税电子普通发票(通行费)</td>
+                  <td> 3 </td>
+                </tr>
+                <tr>
+                  <td> VatSalesList</td>
+                  <td> 增值税销货清单</td>
                   <td> 3 </td>
                 </tr>
                 <tr>

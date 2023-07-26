@@ -512,6 +512,9 @@ LIMITEXCEEDED_HIDDENURLEXCEEDED = 'LimitExceeded.HiddenUrlExceeded'
 # NS记录数量超出限制。
 LIMITEXCEEDED_NSCOUNTLIMIT = 'LimitExceeded.NsCountLimit'
 
+# 分页起始数量过大。
+LIMITEXCEEDED_OFFSETEXCEEDED = 'LimitExceeded.OffsetExceeded'
+
 # 记录的TTL值超出了限制。
 LIMITEXCEEDED_RECORDTTLLIMIT = 'LimitExceeded.RecordTtlLimit'
 

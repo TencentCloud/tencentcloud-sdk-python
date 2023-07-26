@@ -946,6 +946,29 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBizMonitorTrend(self, request):
+        """获取高防IP业务监控流量曲线
+
+        :param request: Request instance for DescribeBizMonitorTrend.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizMonitorTrendRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizMonitorTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBizMonitorTrend", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBizMonitorTrendResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBizTrend(self, request):
         """获取业务流量曲线
 

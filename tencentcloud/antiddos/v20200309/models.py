@@ -6668,6 +6668,161 @@ class DescribeBizHttpStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBizMonitorTrendRequest(AbstractModel):
+    """DescribeBizMonitorTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param _StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
+        :type StartTime: str
+        :param _EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”
+        :type EndTime: str
+        :param _Id: 资源实例ID
+        :type Id: str
+        :param _MetricName: 统计纬度，可取值intraffic outtraffic inpkg outpkg
+        :type MetricName: str
+        :param _Period: 时间粒度 60 300 3600 21600 86400
+        :type Period: int
+        """
+        self._Business = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Id = None
+        self._MetricName = None
+        self._Period = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._Business = params.get("Business")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Id = params.get("Id")
+        self._MetricName = params.get("MetricName")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBizMonitorTrendResponse(AbstractModel):
+    """DescribeBizMonitorTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataList: 曲线图各个时间点的值
+        :type DataList: list of float
+        :param _MetricName: 统计纬度
+        :type MetricName: str
+        :param _MaxData: 返回DataList中的最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxData: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataList = None
+        self._MetricName = None
+        self._MaxData = None
+        self._RequestId = None
+
+    @property
+    def DataList(self):
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def MaxData(self):
+        return self._MaxData
+
+    @MaxData.setter
+    def MaxData(self, MaxData):
+        self._MaxData = MaxData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataList = params.get("DataList")
+        self._MetricName = params.get("MetricName")
+        self._MaxData = params.get("MaxData")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBizTrendRequest(AbstractModel):
     """DescribeBizTrend请求参数结构体
 

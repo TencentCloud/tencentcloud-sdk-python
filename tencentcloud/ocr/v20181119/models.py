@@ -10690,11 +10690,14 @@ class OtherInvoice(AbstractModel):
         :type OtherInvoiceListItems: list of OtherInvoiceItem
         :param _OtherInvoiceTableItems: 表格
         :type OtherInvoiceTableItems: list of OtherInvoiceList
+        :param _Date: 发票日期
+        :type Date: str
         """
         self._Title = None
         self._Total = None
         self._OtherInvoiceListItems = None
         self._OtherInvoiceTableItems = None
+        self._Date = None
 
     @property
     def Title(self):
@@ -10728,6 +10731,14 @@ class OtherInvoice(AbstractModel):
     def OtherInvoiceTableItems(self, OtherInvoiceTableItems):
         self._OtherInvoiceTableItems = OtherInvoiceTableItems
 
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -10744,6 +10755,7 @@ class OtherInvoice(AbstractModel):
                 obj = OtherInvoiceList()
                 obj._deserialize(item)
                 self._OtherInvoiceTableItems.append(obj)
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16992,6 +17004,9 @@ class SingleInvoiceItem(AbstractModel):
         :param _MedicalHospitalizedInvoice: 医疗住院收费票据（电子）
 注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalHospitalizedInvoice: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
+        :param _VatSalesList: 增值税销货清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VatSalesList: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
         self._VatSpecialInvoice = None
         self._VatCommonInvoice = None
@@ -17017,6 +17032,7 @@ class SingleInvoiceItem(AbstractModel):
         self._TrainTicket = None
         self._MedicalOutpatientInvoice = None
         self._MedicalHospitalizedInvoice = None
+        self._VatSalesList = None
 
     @property
     def VatSpecialInvoice(self):
@@ -17210,6 +17226,14 @@ class SingleInvoiceItem(AbstractModel):
     def MedicalHospitalizedInvoice(self, MedicalHospitalizedInvoice):
         self._MedicalHospitalizedInvoice = MedicalHospitalizedInvoice
 
+    @property
+    def VatSalesList(self):
+        return self._VatSalesList
+
+    @VatSalesList.setter
+    def VatSalesList(self, VatSalesList):
+        self._VatSalesList = VatSalesList
+
 
     def _deserialize(self, params):
         if params.get("VatSpecialInvoice") is not None:
@@ -17284,6 +17308,9 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("MedicalHospitalizedInvoice") is not None:
             self._MedicalHospitalizedInvoice = MedicalInvoice()
             self._MedicalHospitalizedInvoice._deserialize(params.get("MedicalHospitalizedInvoice"))
+        if params.get("VatSalesList") is not None:
+            self._VatSalesList = VatInvoiceInfo()
+            self._VatSalesList._deserialize(params.get("VatSalesList"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22947,6 +22974,14 @@ class VatInvoiceInfo(AbstractModel):
         :type ElectronicFullNumber: str
         :param _FormName: 发票联名
         :type FormName: str
+        :param _BlockChainMark: 是否有区块链标记（0：没有，1：有）	
+        :type BlockChainMark: int
+        :param _AcquisitionMark: 是否有收购标记（0：没有，1：有）	
+        :type AcquisitionMark: int
+        :param _SubTotal: 小计金额
+        :type SubTotal: str
+        :param _SubTax: 小计税额
+        :type SubTax: str
         """
         self._CheckCode = None
         self._FormType = None
@@ -22990,6 +23025,10 @@ class VatInvoiceInfo(AbstractModel):
         self._ElectronicFullMark = None
         self._ElectronicFullNumber = None
         self._FormName = None
+        self._BlockChainMark = None
+        self._AcquisitionMark = None
+        self._SubTotal = None
+        self._SubTax = None
 
     @property
     def CheckCode(self):
@@ -23327,6 +23366,38 @@ class VatInvoiceInfo(AbstractModel):
     def FormName(self, FormName):
         self._FormName = FormName
 
+    @property
+    def BlockChainMark(self):
+        return self._BlockChainMark
+
+    @BlockChainMark.setter
+    def BlockChainMark(self, BlockChainMark):
+        self._BlockChainMark = BlockChainMark
+
+    @property
+    def AcquisitionMark(self):
+        return self._AcquisitionMark
+
+    @AcquisitionMark.setter
+    def AcquisitionMark(self, AcquisitionMark):
+        self._AcquisitionMark = AcquisitionMark
+
+    @property
+    def SubTotal(self):
+        return self._SubTotal
+
+    @SubTotal.setter
+    def SubTotal(self, SubTotal):
+        self._SubTotal = SubTotal
+
+    @property
+    def SubTax(self):
+        return self._SubTax
+
+    @SubTax.setter
+    def SubTax(self, SubTax):
+        self._SubTax = SubTax
+
 
     def _deserialize(self, params):
         self._CheckCode = params.get("CheckCode")
@@ -23376,6 +23447,10 @@ class VatInvoiceInfo(AbstractModel):
         self._ElectronicFullMark = params.get("ElectronicFullMark")
         self._ElectronicFullNumber = params.get("ElectronicFullNumber")
         self._FormName = params.get("FormName")
+        self._BlockChainMark = params.get("BlockChainMark")
+        self._AcquisitionMark = params.get("AcquisitionMark")
+        self._SubTotal = params.get("SubTotal")
+        self._SubTax = params.get("SubTax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23642,6 +23717,8 @@ class VatInvoiceItemInfo(AbstractModel):
         :type LicensePlate: str
         :param _VehicleType: 车辆类型
         :type VehicleType: str
+        :param _SerialNumber: 序号
+        :type SerialNumber: str
         """
         self._Name = None
         self._Specification = None
@@ -23655,6 +23732,7 @@ class VatInvoiceItemInfo(AbstractModel):
         self._DateEnd = None
         self._LicensePlate = None
         self._VehicleType = None
+        self._SerialNumber = None
 
     @property
     def Name(self):
@@ -23752,6 +23830,14 @@ class VatInvoiceItemInfo(AbstractModel):
     def VehicleType(self, VehicleType):
         self._VehicleType = VehicleType
 
+    @property
+    def SerialNumber(self):
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -23766,6 +23852,7 @@ class VatInvoiceItemInfo(AbstractModel):
         self._DateEnd = params.get("DateEnd")
         self._LicensePlate = params.get("LicensePlate")
         self._VehicleType = params.get("VehicleType")
+        self._SerialNumber = params.get("SerialNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

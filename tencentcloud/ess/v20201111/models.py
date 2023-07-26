@@ -186,7 +186,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type UserId: str
         :param _ApproverSource: 签署人用户来源，企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
-        :param _CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+        :param _CustomApproverTag: 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
         :type CustomApproverTag: str
         :param _ApproverOption: 签署人个性化能力值
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
@@ -5314,7 +5314,9 @@ class CreateSealRequest(AbstractModel):
         :type SealName: str
         :param _Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _SealType: 电子印章类型，PERSONAL-个人私章,OFFICIAL-公章,SPECIAL_FINANCIAL-财务专用章,CONTRACT-合同专用章,LEGAL_REPRESENTATIVE-法定代表人章,SPECIAL_NATIONWIDE_INVOICE-发票专用章
+        :param _GenerateSource: 本接口支持上传图片印章及系统直接生成印章；如果要使用系统生成印章，此值传：SealGenerateSourceSystem；如果要使用图片上传请传字段 Image
+        :type GenerateSource: str
+        :param _SealType: 电子印章类型，OFFICIAL-公章,CONTRACT-合同专用章
         :type SealType: str
         :param _FileName: 电子印章图片文件名称
         :type FileName: str
@@ -5331,24 +5333,20 @@ class CreateSealRequest(AbstractModel):
 
 系统目前只支持红色印章创建。
         :type Color: str
-        :param _SealHorizontalText: 电子印章生成时的横向文字。
+        :param _SealHorizontalText: 暂时不支持横向文字设置
         :type SealHorizontalText: str
-        :param _SealChordText: 电子印章下弦文字
+        :param _SealChordText: 暂时不支持下弦文字设置
         :type SealChordText: str
-        :param _SealCentralType: 电子印章中心图案类型,STAR-圆形有五角星,NONE-圆形无五角星
-系统生成的印章只支持STAR
+        :param _SealCentralType: 系统生成的印章只支持STAR
         :type SealCentralType: str
         :param _FileToken: 通过文件上传时，服务端生成的电子印章上传图片的token
 
         :type FileToken: str
-        :param _GenerateSource: 印章生成来源方式
-取值：
-SealGenerateSourceSystem 表示系统生成企业印章
-        :type GenerateSource: str
         """
         self._Operator = None
         self._SealName = None
         self._Agent = None
+        self._GenerateSource = None
         self._SealType = None
         self._FileName = None
         self._Image = None
@@ -5359,7 +5357,6 @@ SealGenerateSourceSystem 表示系统生成企业印章
         self._SealChordText = None
         self._SealCentralType = None
         self._FileToken = None
-        self._GenerateSource = None
 
     @property
     def Operator(self):
@@ -5384,6 +5381,14 @@ SealGenerateSourceSystem 表示系统生成企业印章
     @Agent.setter
     def Agent(self, Agent):
         self._Agent = Agent
+
+    @property
+    def GenerateSource(self):
+        return self._GenerateSource
+
+    @GenerateSource.setter
+    def GenerateSource(self, GenerateSource):
+        self._GenerateSource = GenerateSource
 
     @property
     def SealType(self):
@@ -5465,14 +5470,6 @@ SealGenerateSourceSystem 表示系统生成企业印章
     def FileToken(self, FileToken):
         self._FileToken = FileToken
 
-    @property
-    def GenerateSource(self):
-        return self._GenerateSource
-
-    @GenerateSource.setter
-    def GenerateSource(self, GenerateSource):
-        self._GenerateSource = GenerateSource
-
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5482,6 +5479,7 @@ SealGenerateSourceSystem 表示系统生成企业印章
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._GenerateSource = params.get("GenerateSource")
         self._SealType = params.get("SealType")
         self._FileName = params.get("FileName")
         self._Image = params.get("Image")
@@ -5492,7 +5490,6 @@ SealGenerateSourceSystem 表示系统生成企业印章
         self._SealChordText = params.get("SealChordText")
         self._SealCentralType = params.get("SealCentralType")
         self._FileToken = params.get("FileToken")
-        self._GenerateSource = params.get("GenerateSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9767,7 +9764,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type Required: bool
         :param _ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
-        :param _CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一。用于发起含有或签签署人的合同。或签参与人必须有此字段。不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
+        :param _CustomApproverTag: 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
         :type CustomApproverTag: str
         :param _RegisterInfo: 快速注册相关信息，目前暂未开放！
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`

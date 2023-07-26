@@ -808,6 +808,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecordFilterList(self, request):
+        """获取某个域名下的解析记录列表
+
+        :param request: Request instance for DescribeRecordFilterList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordFilterListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordFilterListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordFilterList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordFilterListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRecordGroupList(self, request):
         """查询解析记录分组列表
 

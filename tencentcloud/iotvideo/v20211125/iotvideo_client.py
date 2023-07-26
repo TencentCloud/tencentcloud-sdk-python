@@ -440,6 +440,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCloudStorageEvent(self, request):
+        """删除云存事件
+
+        :param request: Request instance for DeleteCloudStorageEvent.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DeleteCloudStorageEventRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DeleteCloudStorageEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudStorageEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudStorageEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDevice(self, request):
         """删除设备
 
@@ -1167,6 +1190,29 @@ class IotvideoClient(AbstractClient):
             body = self.call("DescribeDeviceEventHistory", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeviceEventHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDevicePackages(self, request):
+        """根据设备信息拉取有效套餐列表
+
+        :param request: Request instance for DescribeDevicePackages.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDevicePackagesRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DescribeDevicePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDevicePackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDevicePackagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

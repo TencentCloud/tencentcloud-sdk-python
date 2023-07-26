@@ -26,6 +26,29 @@ class MsClient(AbstractClient):
     _service = 'ms'
 
 
+    def CancelEncryptTask(self, request):
+        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
+
+        :param request: Request instance for CancelEncryptTask.
+        :type request: :class:`tencentcloud.ms.v20180408.models.CancelEncryptTaskRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.CancelEncryptTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelEncryptTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelEncryptTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBindInstance(self, request):
         """将应用和资源进行绑定。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 
@@ -63,6 +86,54 @@ class MsClient(AbstractClient):
             body = self.call("CreateCosSecKeyInstance", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCosSecKeyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateEncryptInstance(self, request):
+        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
+
+        :param request: Request instance for CreateEncryptInstance.
+        :type request: :class:`tencentcloud.ms.v20180408.models.CreateEncryptInstanceRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.CreateEncryptInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEncryptInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEncryptInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateOrderInstance(self, request):
+        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
+        订单类型有：免费试用、按年收费、按次收费。
+        应用加固支持的平台类型有：android安卓加固 、ios源码混淆 、sdk加固、applet小程序加固。
+
+        :param request: Request instance for CreateOrderInstance.
+        :type request: :class:`tencentcloud.ms.v20180408.models.CreateOrderInstanceRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.CreateOrderInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrderInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrderInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -178,6 +249,79 @@ class MsClient(AbstractClient):
             body = self.call("DescribeApkDetectionResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeApkDetectionResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEncryptInstances(self, request):
+        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
+
+        :param request: Request instance for DescribeEncryptInstances.
+        :type request: :class:`tencentcloud.ms.v20180408.models.DescribeEncryptInstancesRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.DescribeEncryptInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEncryptInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEncryptInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEncryptPlan(self, request):
+        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制。入参中的条件过滤字段均为精准匹配。
+
+        :param request: Request instance for DescribeEncryptPlan.
+        :type request: :class:`tencentcloud.ms.v20180408.models.DescribeEncryptPlanRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.DescribeEncryptPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEncryptPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEncryptPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOrderInstances(self, request):
+        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
+        接口功能点：
+        1.支持多订单分页查询；
+        2.支持唯一订单号精准匹配查询；
+        3.支持唯一资源号精准匹配查询；
+
+        :param request: Request instance for DescribeOrderInstances.
+        :type request: :class:`tencentcloud.ms.v20180408.models.DescribeOrderInstancesRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.DescribeOrderInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrderInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrderInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
