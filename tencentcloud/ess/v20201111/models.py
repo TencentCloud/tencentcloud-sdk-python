@@ -2255,6 +2255,137 @@ class CreateDocumentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateEmbedWebUrlRequest(AbstractModel):
+    """CreateEmbedWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 操作者信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _EmbedType: WEB嵌入资源类型。
+<br/>CREATE_SEAL: 创建印章
+<br/>PREVIEW_SEAL_LIST：预览印章列表
+<br/>PREVIEW_SEAL_DETAIL：预览印章详情
+<br/>EXTEND_SERVICE：拓展服务
+
+        :type EmbedType: str
+        :param _BusinessId: WEB嵌入的业务资源ID
+<br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
+        :type BusinessId: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Reviewer: 抄送方信息
+        :type Reviewer: :class:`tencentcloud.ess.v20201111.models.ReviewerInfo`
+        """
+        self._Operator = None
+        self._EmbedType = None
+        self._BusinessId = None
+        self._Agent = None
+        self._Reviewer = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def EmbedType(self):
+        return self._EmbedType
+
+    @EmbedType.setter
+    def EmbedType(self, EmbedType):
+        self._EmbedType = EmbedType
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Reviewer(self):
+        return self._Reviewer
+
+    @Reviewer.setter
+    def Reviewer(self, Reviewer):
+        self._Reviewer = Reviewer
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._EmbedType = params.get("EmbedType")
+        self._BusinessId = params.get("BusinessId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Reviewer") is not None:
+            self._Reviewer = ReviewerInfo()
+            self._Reviewer._deserialize(params.get("Reviewer"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEmbedWebUrlResponse(AbstractModel):
+    """CreateEmbedWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebUrl: 嵌入的web链接，有效期：5分钟
+EmbedType=PREVIEW_CC_FLOW，该url为h5链接
+        :type WebUrl: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebUrl = None
+        self._RequestId = None
+
+    @property
+    def WebUrl(self):
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WebUrl = params.get("WebUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFlowApproversRequest(AbstractModel):
     """CreateFlowApprovers请求参数结构体
 
@@ -4417,6 +4548,152 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrganizationBatchSignUrlRequest(AbstractModel):
+    """CreateOrganizationBatchSignUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 调用方用户信息，UserId 必填，支持填入集团子公司经办人UserId。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _FlowIds: 指定需要进行批量签署的流程id，数量1-100，填写后用户将通过链接对这些合同进行批量签署。
+        :type FlowIds: list of str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _UserId: 员工的UserId，该UserId对应的员工必须已经加入企业并实名，Name和Mobile为空时该字段不能为空。（优先使用UserId对应的员工）
+        :type UserId: str
+        :param _Name: 员工姓名，该字段需要与Mobile组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+        :type Name: str
+        :param _Mobile: 员工手机号码，该字段需要与Name组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+        :type Mobile: str
+        """
+        self._Operator = None
+        self._FlowIds = None
+        self._Agent = None
+        self._UserId = None
+        self._Name = None
+        self._Mobile = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowIds = params.get("FlowIds")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._UserId = params.get("UserId")
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationBatchSignUrlResponse(AbstractModel):
+    """CreateOrganizationBatchSignUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SignUrl: 批量签署入口链接
+        :type SignUrl: str
+        :param _ExpiredTime: 链接过期时间戳
+        :type ExpiredTime: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SignUrl = None
+        self._ExpiredTime = None
+        self._RequestId = None
+
+    @property
+    def SignUrl(self):
+        return self._SignUrl
+
+    @SignUrl.setter
+    def SignUrl(self, SignUrl):
+        self._SignUrl = SignUrl
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SignUrl = params.get("SignUrl")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePrepareFlowRequest(AbstractModel):
     """CreatePrepareFlow请求参数结构体
 
@@ -4441,6 +4718,8 @@ class CreatePrepareFlowRequest(AbstractModel):
         :type Approvers: list of FlowCreateApprover
         :param _IntelligentStatus: 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
         :type IntelligentStatus: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._ResourceId = None
@@ -4450,6 +4729,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._UserFlowTypeId = None
         self._Approvers = None
         self._IntelligentStatus = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -4515,6 +4795,14 @@ class CreatePrepareFlowRequest(AbstractModel):
     def IntelligentStatus(self, IntelligentStatus):
         self._IntelligentStatus = IntelligentStatus
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -4532,6 +4820,9 @@ class CreatePrepareFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Approvers.append(obj)
         self._IntelligentStatus = params.get("IntelligentStatus")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5812,6 +6103,94 @@ class CreateUserAutoSignEnableUrlResponse(AbstractModel):
         self._Path = params.get("Path")
         self._QrCode = params.get("QrCode")
         self._UrlType = params.get("UrlType")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateWebThemeConfigRequest(AbstractModel):
+    """CreateWebThemeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ThemeType: 主题类型
+<br/>EMBED_WEB_THEME：嵌入式主题
+<br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+        :type ThemeType: str
+        :param _WebThemeConfig: 主题配置
+        :type WebThemeConfig: :class:`tencentcloud.ess.v20201111.models.WebThemeConfig`
+        """
+        self._Operator = None
+        self._ThemeType = None
+        self._WebThemeConfig = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ThemeType(self):
+        return self._ThemeType
+
+    @ThemeType.setter
+    def ThemeType(self, ThemeType):
+        self._ThemeType = ThemeType
+
+    @property
+    def WebThemeConfig(self):
+        return self._WebThemeConfig
+
+    @WebThemeConfig.setter
+    def WebThemeConfig(self, WebThemeConfig):
+        self._WebThemeConfig = WebThemeConfig
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ThemeType = params.get("ThemeType")
+        if params.get("WebThemeConfig") is not None:
+            self._WebThemeConfig = WebThemeConfig()
+            self._WebThemeConfig._deserialize(params.get("WebThemeConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWebThemeConfigResponse(AbstractModel):
+    """CreateWebThemeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -9788,6 +10167,10 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 	ESIGN -- 个人印章类型
 	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
         :type ComponentLimitType: list of str
+        :param _ApproverVerifyTypes: 合同查看方式<br/>默认1 -实名查看 <br/>2-短信验证码查看(企业签署方暂不支持该方式)
+        :type ApproverVerifyTypes: list of int
+        :param _ApproverSignTypes: 合同签署方式(默认1,2) <br/>1-人脸认证 <br/>2-签署密码 <br/>3-运营商三要素
+        :type ApproverSignTypes: list of int non-negative
         """
         self._ApproverType = None
         self._OrganizationName = None
@@ -9812,6 +10195,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self._SignComponents = None
         self._Components = None
         self._ComponentLimitType = None
+        self._ApproverVerifyTypes = None
+        self._ApproverSignTypes = None
 
     @property
     def ApproverType(self):
@@ -10001,6 +10386,22 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
     def ComponentLimitType(self, ComponentLimitType):
         self._ComponentLimitType = ComponentLimitType
 
+    @property
+    def ApproverVerifyTypes(self):
+        return self._ApproverVerifyTypes
+
+    @ApproverVerifyTypes.setter
+    def ApproverVerifyTypes(self, ApproverVerifyTypes):
+        self._ApproverVerifyTypes = ApproverVerifyTypes
+
+    @property
+    def ApproverSignTypes(self):
+        return self._ApproverSignTypes
+
+    @ApproverSignTypes.setter
+    def ApproverSignTypes(self, ApproverSignTypes):
+        self._ApproverSignTypes = ApproverSignTypes
+
 
     def _deserialize(self, params):
         self._ApproverType = params.get("ApproverType")
@@ -10040,6 +10441,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
                 obj._deserialize(item)
                 self._Components.append(obj)
         self._ComponentLimitType = params.get("ComponentLimitType")
+        self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
+        self._ApproverSignTypes = params.get("ApproverSignTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12484,6 +12887,51 @@ class RemindFlowRecords(AbstractModel):
         
 
 
+class ReviewerInfo(AbstractModel):
+    """关注方信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 姓名
+        :type Name: str
+        :param _Mobile: 手机号
+        :type Mobile: str
+        """
+        self._Name = None
+        self._Mobile = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SealInfo(AbstractModel):
     """模板结构体中的印章信息
 
@@ -14231,3 +14679,52 @@ class VerifyPdfResponse(AbstractModel):
                 self._PdfVerifyResults.append(obj)
         self._VerifySerialNo = params.get("VerifySerialNo")
         self._RequestId = params.get("RequestId")
+
+
+class WebThemeConfig(AbstractModel):
+    """页面主题配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisplaySignBrandLogo: 是否页面底部显示电子签logo
+<br/>true：允许在页面底部隐藏电子签logo
+<br/>false：不允许允许在页面底部隐藏电子签logo
+<br/>默认false，不隐藏logo
+        :type DisplaySignBrandLogo: bool
+        :param _WebEmbedThemeColor: 主题颜色
+<br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+        :type WebEmbedThemeColor: str
+        """
+        self._DisplaySignBrandLogo = None
+        self._WebEmbedThemeColor = None
+
+    @property
+    def DisplaySignBrandLogo(self):
+        return self._DisplaySignBrandLogo
+
+    @DisplaySignBrandLogo.setter
+    def DisplaySignBrandLogo(self, DisplaySignBrandLogo):
+        self._DisplaySignBrandLogo = DisplaySignBrandLogo
+
+    @property
+    def WebEmbedThemeColor(self):
+        return self._WebEmbedThemeColor
+
+    @WebEmbedThemeColor.setter
+    def WebEmbedThemeColor(self, WebEmbedThemeColor):
+        self._WebEmbedThemeColor = WebEmbedThemeColor
+
+
+    def _deserialize(self, params):
+        self._DisplaySignBrandLogo = params.get("DisplaySignBrandLogo")
+        self._WebEmbedThemeColor = params.get("WebEmbedThemeColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

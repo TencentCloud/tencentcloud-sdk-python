@@ -12132,11 +12132,19 @@ class PackageInfo(AbstractModel):
         :type CSShiftDuration: int
         :param _CSExpiredTime: 云存套餐过期时间
         :type CSExpiredTime: int
+        :param _CreatedAt: 云存套餐创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: int
+        :param _UpdatedAt: 云存套餐更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: int
         """
         self._Status = None
         self._CSType = None
         self._CSShiftDuration = None
         self._CSExpiredTime = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
 
     @property
     def Status(self):
@@ -12170,12 +12178,30 @@ class PackageInfo(AbstractModel):
     def CSExpiredTime(self, CSExpiredTime):
         self._CSExpiredTime = CSExpiredTime
 
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._CSType = params.get("CSType")
         self._CSShiftDuration = params.get("CSShiftDuration")
         self._CSExpiredTime = params.get("CSExpiredTime")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

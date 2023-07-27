@@ -3277,6 +3277,93 @@ class ChannelCreateUserRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreateWebThemeConfigRequest(AbstractModel):
+    """ChannelCreateWebThemeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _ThemeType: 主题类型<br/>EMBED_WEB_THEME：嵌入式主题
+<br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+        :type ThemeType: str
+        :param _WebThemeConfig: 主题配置
+        :type WebThemeConfig: :class:`tencentcloud.essbasic.v20210526.models.WebThemeConfig`
+        """
+        self._Agent = None
+        self._ThemeType = None
+        self._WebThemeConfig = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ThemeType(self):
+        return self._ThemeType
+
+    @ThemeType.setter
+    def ThemeType(self, ThemeType):
+        self._ThemeType = ThemeType
+
+    @property
+    def WebThemeConfig(self):
+        return self._WebThemeConfig
+
+    @WebThemeConfig.setter
+    def WebThemeConfig(self, WebThemeConfig):
+        self._WebThemeConfig = WebThemeConfig
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ThemeType = params.get("ThemeType")
+        if params.get("WebThemeConfig") is not None:
+            self._WebThemeConfig = WebThemeConfig()
+            self._WebThemeConfig._deserialize(params.get("WebThemeConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateWebThemeConfigResponse(AbstractModel):
+    """ChannelCreateWebThemeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelDeleteRoleUsersRequest(AbstractModel):
     """ChannelDeleteRoleUsers请求参数结构体
 
@@ -12132,6 +12219,54 @@ class UserInfo(AbstractModel):
         self._CustomUserId = params.get("CustomUserId")
         self._ClientIp = params.get("ClientIp")
         self._ProxyIp = params.get("ProxyIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebThemeConfig(AbstractModel):
+    """主题配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisplaySignBrandLogo: 页面底部是否显示电子签logo
+<br/>true：允许在页面底部隐藏电子签logo 
+<br/>默认false，不允许允许在页面底部隐藏电子签logo
+        :type DisplaySignBrandLogo: bool
+        :param _WebEmbedThemeColor: 嵌入式主题颜色
+<br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+        :type WebEmbedThemeColor: str
+        """
+        self._DisplaySignBrandLogo = None
+        self._WebEmbedThemeColor = None
+
+    @property
+    def DisplaySignBrandLogo(self):
+        return self._DisplaySignBrandLogo
+
+    @DisplaySignBrandLogo.setter
+    def DisplaySignBrandLogo(self, DisplaySignBrandLogo):
+        self._DisplaySignBrandLogo = DisplaySignBrandLogo
+
+    @property
+    def WebEmbedThemeColor(self):
+        return self._WebEmbedThemeColor
+
+    @WebEmbedThemeColor.setter
+    def WebEmbedThemeColor(self, WebEmbedThemeColor):
+        self._WebEmbedThemeColor = WebEmbedThemeColor
+
+
+    def _deserialize(self, params):
+        self._DisplaySignBrandLogo = params.get("DisplaySignBrandLogo")
+        self._WebEmbedThemeColor = params.get("WebEmbedThemeColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

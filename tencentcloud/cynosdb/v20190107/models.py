@@ -13784,6 +13784,10 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
         :type Database: str
         :param _FileType: 文件类型，可选值：csv, original
         :type FileType: str
+        :param _OrderBy: 排序字段，可选值： QueryTime,LockTime,RowsExamined,RowsSent
+        :type OrderBy: str
+        :param _OrderByType: 排序类型，可选值：asc,desc
+        :type OrderByType: str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -13794,6 +13798,8 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
         self._Host = None
         self._Database = None
         self._FileType = None
+        self._OrderBy = None
+        self._OrderByType = None
 
     @property
     def InstanceId(self):
@@ -13867,6 +13873,22 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
     def FileType(self, FileType):
         self._FileType = FileType
 
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13878,6 +13900,8 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
         self._Host = params.get("Host")
         self._Database = params.get("Database")
         self._FileType = params.get("FileType")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

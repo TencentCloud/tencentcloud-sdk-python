@@ -222,6 +222,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEmbedWebUrl(self, request):
+        """本接口（CreateEmbedWebUrl）用于创建嵌入web的链接 本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接 进入web连接后与当前控制台操作保持一致
+
+        :param request: Request instance for CreateEmbedWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateEmbedWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateEmbedWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEmbedWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEmbedWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFlow(self, request):
         """通过模板创建签署流程<br/>
         适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。<br/>
@@ -555,6 +578,30 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrganizationBatchSignUrl(self, request):
+        """通过此接口，创建企业批量签署链接，企业员工点击链接即可跳转控制台进行批量签署。
+        如果没有UserId，Name和Mobile必填，对应的员工必须在企业下已经实名，且该员工为批量签署合同中的签署方。
+
+        :param request: Request instance for CreateOrganizationBatchSignUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationBatchSignUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationBatchSignUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrganizationBatchSignUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrganizationBatchSignUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePrepareFlow(self, request):
         """创建快速发起流程
         适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
@@ -719,6 +766,29 @@ class EssClient(AbstractClient):
             body = self.call("CreateUserAutoSignEnableUrl", params, headers=headers)
             response = json.loads(body)
             model = models.CreateUserAutoSignEnableUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateWebThemeConfig(self, request):
+        """用来创建页面主题配置
+
+        :param request: Request instance for CreateWebThemeConfig.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateWebThemeConfigRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateWebThemeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWebThemeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWebThemeConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -6256,11 +6256,14 @@ Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
 API 3.0 Explorer 设置方式参考：
 Config = {"CropIdCard":true,"CropPortrait":true}
         :type Config: str
+        :param _EnableRecognitionRectify: 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
+        :type EnableRecognitionRectify: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._CardSide = None
         self._Config = None
+        self._EnableRecognitionRectify = None
 
     @property
     def ImageBase64(self):
@@ -6294,12 +6297,21 @@ Config = {"CropIdCard":true,"CropPortrait":true}
     def Config(self, Config):
         self._Config = Config
 
+    @property
+    def EnableRecognitionRectify(self):
+        return self._EnableRecognitionRectify
+
+    @EnableRecognitionRectify.setter
+    def EnableRecognitionRectify(self, EnableRecognitionRectify):
+        self._EnableRecognitionRectify = EnableRecognitionRectify
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         self._CardSide = params.get("CardSide")
         self._Config = params.get("Config")
+        self._EnableRecognitionRectify = params.get("EnableRecognitionRectify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

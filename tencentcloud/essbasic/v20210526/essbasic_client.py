@@ -504,6 +504,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChannelCreateWebThemeConfig(self, request):
+        """生成页面主题配置
+
+        :param request: Request instance for ChannelCreateWebThemeConfig.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateWebThemeConfigRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateWebThemeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateWebThemeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateWebThemeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelDeleteRoleUsers(self, request):
         """通过此接口，删除员工绑定的角色，支持以电子签userId、客户系统userId两种方式调用。
 

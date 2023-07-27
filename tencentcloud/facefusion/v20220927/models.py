@@ -309,6 +309,8 @@ class FuseFaceRequest(AbstractModel):
         :param _LogoParam: 标识内容设置。
 默认在融合结果图右下角添加“本图片为AI合成图片”字样，您可根据自身需要替换为其他的Logo图片。
         :type LogoParam: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
+        :param _FuseParam: 融合参数。
+        :type FuseParam: :class:`tencentcloud.facefusion.v20220927.models.FuseParam`
         """
         self._ProjectId = None
         self._ModelId = None
@@ -318,6 +320,7 @@ class FuseFaceRequest(AbstractModel):
         self._FuseFaceDegree = None
         self._LogoAdd = None
         self._LogoParam = None
+        self._FuseParam = None
 
     @property
     def ProjectId(self):
@@ -383,6 +386,14 @@ class FuseFaceRequest(AbstractModel):
     def LogoParam(self, LogoParam):
         self._LogoParam = LogoParam
 
+    @property
+    def FuseParam(self):
+        return self._FuseParam
+
+    @FuseParam.setter
+    def FuseParam(self, FuseParam):
+        self._FuseParam = FuseParam
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -400,6 +411,9 @@ class FuseFaceRequest(AbstractModel):
         if params.get("LogoParam") is not None:
             self._LogoParam = LogoParam()
             self._LogoParam._deserialize(params.get("LogoParam"))
+        if params.get("FuseParam") is not None:
+            self._FuseParam = FuseParam()
+            self._FuseParam._deserialize(params.get("FuseParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -445,6 +459,79 @@ class FuseFaceResponse(AbstractModel):
     def _deserialize(self, params):
         self._FusedImage = params.get("FusedImage")
         self._RequestId = params.get("RequestId")
+
+
+class FuseParam(AbstractModel):
+    """融合参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageCodecParam: 图片编码参数
+        :type ImageCodecParam: :class:`tencentcloud.facefusion.v20220927.models.ImageCodecParam`
+        """
+        self._ImageCodecParam = None
+
+    @property
+    def ImageCodecParam(self):
+        return self._ImageCodecParam
+
+    @ImageCodecParam.setter
+    def ImageCodecParam(self, ImageCodecParam):
+        self._ImageCodecParam = ImageCodecParam
+
+
+    def _deserialize(self, params):
+        if params.get("ImageCodecParam") is not None:
+            self._ImageCodecParam = ImageCodecParam()
+            self._ImageCodecParam._deserialize(params.get("ImageCodecParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageCodecParam(AbstractModel):
+    """图片编码参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetaData: 元数据
+        :type MetaData: list of MetaData
+        """
+        self._MetaData = None
+
+    @property
+    def MetaData(self):
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        if params.get("MetaData") is not None:
+            self._MetaData = []
+            for item in params.get("MetaData"):
+                obj = MetaData()
+                obj._deserialize(item)
+                self._MetaData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LogoParam(AbstractModel):
@@ -614,6 +701,51 @@ class MergeInfo(AbstractModel):
             self._InputImageFaceRect = FaceRect()
             self._InputImageFaceRect._deserialize(params.get("InputImageFaceRect"))
         self._TemplateFaceID = params.get("TemplateFaceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetaData(AbstractModel):
+    """MetaData数据结构，Key/Value格式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetaKey: MetaData的Key
+        :type MetaKey: str
+        :param _MetaValue: MetaData的Value
+        :type MetaValue: str
+        """
+        self._MetaKey = None
+        self._MetaValue = None
+
+    @property
+    def MetaKey(self):
+        return self._MetaKey
+
+    @MetaKey.setter
+    def MetaKey(self, MetaKey):
+        self._MetaKey = MetaKey
+
+    @property
+    def MetaValue(self):
+        return self._MetaValue
+
+    @MetaValue.setter
+    def MetaValue(self, MetaValue):
+        self._MetaValue = MetaValue
+
+
+    def _deserialize(self, params):
+        self._MetaKey = params.get("MetaKey")
+        self._MetaValue = params.get("MetaValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

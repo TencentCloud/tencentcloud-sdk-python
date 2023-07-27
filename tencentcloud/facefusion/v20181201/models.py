@@ -316,6 +316,8 @@ class FaceFusionRequest(AbstractModel):
         :type CelebrityIdentify: int
         :param _Url: 图片Url地址
         :type Url: str
+        :param _FuseParam: 融合参数
+        :type FuseParam: :class:`tencentcloud.facefusion.v20181201.models.FuseParam`
         """
         self._ProjectId = None
         self._ModelId = None
@@ -324,6 +326,7 @@ class FaceFusionRequest(AbstractModel):
         self._PornDetect = None
         self._CelebrityIdentify = None
         self._Url = None
+        self._FuseParam = None
 
     @property
     def ProjectId(self):
@@ -381,6 +384,14 @@ class FaceFusionRequest(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def FuseParam(self):
+        return self._FuseParam
+
+    @FuseParam.setter
+    def FuseParam(self, FuseParam):
+        self._FuseParam = FuseParam
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -390,6 +401,9 @@ class FaceFusionRequest(AbstractModel):
         self._PornDetect = params.get("PornDetect")
         self._CelebrityIdentify = params.get("CelebrityIdentify")
         self._Url = params.get("Url")
+        if params.get("FuseParam") is not None:
+            self._FuseParam = FuseParam()
+            self._FuseParam._deserialize(params.get("FuseParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -616,6 +630,8 @@ class FuseFaceRequest(AbstractModel):
         :param _CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
         :type CelebrityIdentify: int
+        :param _FuseParam: 融合参数
+        :type FuseParam: :class:`tencentcloud.facefusion.v20181201.models.FuseParam`
         """
         self._ProjectId = None
         self._ModelId = None
@@ -624,6 +640,7 @@ class FuseFaceRequest(AbstractModel):
         self._FuseProfileDegree = None
         self._FuseFaceDegree = None
         self._CelebrityIdentify = None
+        self._FuseParam = None
 
     @property
     def ProjectId(self):
@@ -681,6 +698,14 @@ class FuseFaceRequest(AbstractModel):
     def CelebrityIdentify(self, CelebrityIdentify):
         self._CelebrityIdentify = CelebrityIdentify
 
+    @property
+    def FuseParam(self):
+        return self._FuseParam
+
+    @FuseParam.setter
+    def FuseParam(self, FuseParam):
+        self._FuseParam = FuseParam
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -695,6 +720,9 @@ class FuseFaceRequest(AbstractModel):
         self._FuseProfileDegree = params.get("FuseProfileDegree")
         self._FuseFaceDegree = params.get("FuseFaceDegree")
         self._CelebrityIdentify = params.get("CelebrityIdentify")
+        if params.get("FuseParam") is not None:
+            self._FuseParam = FuseParam()
+            self._FuseParam._deserialize(params.get("FuseParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -933,6 +961,79 @@ class FuseFaceReviewResult(AbstractModel):
         
 
 
+class FuseParam(AbstractModel):
+    """融合参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageCodecParam: 图片编码参数
+        :type ImageCodecParam: :class:`tencentcloud.facefusion.v20181201.models.ImageCodecParam`
+        """
+        self._ImageCodecParam = None
+
+    @property
+    def ImageCodecParam(self):
+        return self._ImageCodecParam
+
+    @ImageCodecParam.setter
+    def ImageCodecParam(self, ImageCodecParam):
+        self._ImageCodecParam = ImageCodecParam
+
+
+    def _deserialize(self, params):
+        if params.get("ImageCodecParam") is not None:
+            self._ImageCodecParam = ImageCodecParam()
+            self._ImageCodecParam._deserialize(params.get("ImageCodecParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageCodecParam(AbstractModel):
+    """图片编码参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetaData: 元数据
+        :type MetaData: list of MetaData
+        """
+        self._MetaData = None
+
+    @property
+    def MetaData(self):
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        if params.get("MetaData") is not None:
+            self._MetaData = []
+            for item in params.get("MetaData"):
+                obj = MetaData()
+                obj._deserialize(item)
+                self._MetaData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaterialFaceList(AbstractModel):
     """人脸信息
 
@@ -1041,6 +1142,51 @@ class MergeInfo(AbstractModel):
             self._InputImageFaceRect = FaceRect()
             self._InputImageFaceRect._deserialize(params.get("InputImageFaceRect"))
         self._TemplateFaceID = params.get("TemplateFaceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetaData(AbstractModel):
+    """MetaData数据结构，Key/Value格式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetaKey: MetaData的Key
+        :type MetaKey: str
+        :param _MetaValue: MetaData的Value
+        :type MetaValue: str
+        """
+        self._MetaKey = None
+        self._MetaValue = None
+
+    @property
+    def MetaKey(self):
+        return self._MetaKey
+
+    @MetaKey.setter
+    def MetaKey(self, MetaKey):
+        self._MetaKey = MetaKey
+
+    @property
+    def MetaValue(self):
+        return self._MetaValue
+
+    @MetaValue.setter
+    def MetaValue(self, MetaValue):
+        self._MetaValue = MetaValue
+
+
+    def _deserialize(self, params):
+        self._MetaKey = params.get("MetaKey")
+        self._MetaValue = params.get("MetaValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

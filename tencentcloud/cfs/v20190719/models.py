@@ -2767,10 +2767,16 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 子网 ID
         :type SubnetId: str
+        :param _Offset: Offset 分页码
+        :type Offset: int
+        :param _Limit: Limit 页面大小
+        :type Limit: int
         """
         self._FileSystemId = None
         self._VpcId = None
         self._SubnetId = None
+        self._Offset = None
+        self._Limit = None
 
     @property
     def FileSystemId(self):
@@ -2796,11 +2802,29 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
