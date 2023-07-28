@@ -2296,6 +2296,8 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type SpeedLimit: int
         :param _Insecure: 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
         :type Insecure: int
+        :param _ConnDetectConfig: 联通性检测的记录ID
+        :type ConnDetectConfig: list of ConnDetectConfig
         """
         self._Name = None
         self._Username = None
@@ -2307,6 +2309,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._RegistryRegion = None
         self._SpeedLimit = None
         self._Insecure = None
+        self._ConnDetectConfig = None
 
     @property
     def Name(self):
@@ -2388,6 +2391,14 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
     def Insecure(self, Insecure):
         self._Insecure = Insecure
 
+    @property
+    def ConnDetectConfig(self):
+        return self._ConnDetectConfig
+
+    @ConnDetectConfig.setter
+    def ConnDetectConfig(self, ConnDetectConfig):
+        self._ConnDetectConfig = ConnDetectConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2400,6 +2411,12 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._RegistryRegion = params.get("RegistryRegion")
         self._SpeedLimit = params.get("SpeedLimit")
         self._Insecure = params.get("Insecure")
+        if params.get("ConnDetectConfig") is not None:
+            self._ConnDetectConfig = []
+            for item in params.get("ConnDetectConfig"):
+                obj = ConnDetectConfig()
+                obj._deserialize(item)
+                self._ConnDetectConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7986,6 +8003,51 @@ class ConfirmNetworkFirewallPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ConnDetectConfig(AbstractModel):
+    """联通性检测配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Quuid: 主机quuid
+        :type Quuid: str
+        :param _Uuid: 主机uuid
+        :type Uuid: str
+        """
+        self._Quuid = None
+        self._Uuid = None
+
+    @property
+    def Quuid(self):
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def Uuid(self):
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+
+    def _deserialize(self, params):
+        self._Quuid = params.get("Quuid")
+        self._Uuid = params.get("Uuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerInfo(AbstractModel):
     """容器列表集合
 
@@ -8880,10 +8942,21 @@ class CreateAssetImageRegistryScanTaskOneKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskID: 扫描任务id
+        :type TaskID: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskID = None
         self._RequestId = None
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
 
     @property
     def RequestId(self):
@@ -8895,6 +8968,7 @@ class CreateAssetImageRegistryScanTaskOneKeyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
         self._RequestId = params.get("RequestId")
 
 
@@ -9020,10 +9094,21 @@ class CreateAssetImageRegistryScanTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskID: 返回的任务ID
+        :type TaskID: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskID = None
         self._RequestId = None
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
 
     @property
     def RequestId(self):
@@ -9035,6 +9120,7 @@ class CreateAssetImageRegistryScanTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
         self._RequestId = params.get("RequestId")
 
 
@@ -20270,7 +20356,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         :param _RegistryVersion: 仓库版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryVersion: str
-        :param _NetType: 网络类型，列表：public（公网）
+        :param _NetType: 网络类型，列表：public（公网）,private（私网）
         :type NetType: str
         :param _RegistryRegion: 区域，列表:default（默认）
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20281,6 +20367,10 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         :param _Insecure: 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
 注意：此字段可能返回 null，表示取不到有效值。
         :type Insecure: int
+        :param _ConnDetectDetail: 联通性检测结果详情
+        :type ConnDetectDetail: list of RegistryConnDetectResult
+        :param _InstanceID: tcr情况下instance_id
+        :type InstanceID: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -20294,6 +20384,8 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         self._RegistryRegion = None
         self._SpeedLimit = None
         self._Insecure = None
+        self._ConnDetectDetail = None
+        self._InstanceID = None
         self._RequestId = None
 
     @property
@@ -20377,6 +20469,22 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         self._Insecure = Insecure
 
     @property
+    def ConnDetectDetail(self):
+        return self._ConnDetectDetail
+
+    @ConnDetectDetail.setter
+    def ConnDetectDetail(self, ConnDetectDetail):
+        self._ConnDetectDetail = ConnDetectDetail
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -20396,6 +20504,13 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         self._RegistryRegion = params.get("RegistryRegion")
         self._SpeedLimit = params.get("SpeedLimit")
         self._Insecure = params.get("Insecure")
+        if params.get("ConnDetectDetail") is not None:
+            self._ConnDetectDetail = []
+            for item in params.get("ConnDetectDetail"):
+                obj = RegistryConnDetectResult()
+                obj._deserialize(item)
+                self._ConnDetectDetail.append(obj)
+        self._InstanceID = params.get("InstanceID")
         self._RequestId = params.get("RequestId")
 
 
@@ -20753,10 +20868,13 @@ class DescribeAssetImageRegistryScanStatusOneKeyRequest(AbstractModel):
         :type All: bool
         :param _Id: 需要获取进度的镜像列表Id
         :type Id: list of int non-negative
+        :param _TaskID: 获取进度的任务ID
+        :type TaskID: int
         """
         self._Images = None
         self._All = None
         self._Id = None
+        self._TaskID = None
 
     @property
     def Images(self):
@@ -20782,6 +20900,14 @@ class DescribeAssetImageRegistryScanStatusOneKeyRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
 
     def _deserialize(self, params):
         if params.get("Images") is not None:
@@ -20792,6 +20918,7 @@ class DescribeAssetImageRegistryScanStatusOneKeyRequest(AbstractModel):
                 self._Images.append(obj)
         self._All = params.get("All")
         self._Id = params.get("Id")
+        self._TaskID = params.get("TaskID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46260,10 +46387,13 @@ class ModifyAssetImageRegistryScanStopOneKeyRequest(AbstractModel):
         :type Images: list of ImageInfo
         :param _Id: 扫描的镜像列表Id
         :type Id: list of int non-negative
+        :param _TaskID: 停止的任务ID
+        :type TaskID: int
         """
         self._All = None
         self._Images = None
         self._Id = None
+        self._TaskID = None
 
     @property
     def All(self):
@@ -46289,6 +46419,14 @@ class ModifyAssetImageRegistryScanStopOneKeyRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
 
     def _deserialize(self, params):
         self._All = params.get("All")
@@ -46299,6 +46437,7 @@ class ModifyAssetImageRegistryScanStopOneKeyRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Images.append(obj)
         self._Id = params.get("Id")
+        self._TaskID = params.get("TaskID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46353,6 +46492,8 @@ class ModifyAssetImageRegistryScanStopRequest(AbstractModel):
         :type ExcludeImageList: list of int non-negative
         :param _OnlyScanLatest: 是否仅扫描各repository最新版本的镜像
         :type OnlyScanLatest: bool
+        :param _TaskID: 停止的任务ID
+        :type TaskID: int
         """
         self._All = None
         self._Images = None
@@ -46360,6 +46501,7 @@ class ModifyAssetImageRegistryScanStopRequest(AbstractModel):
         self._Filters = None
         self._ExcludeImageList = None
         self._OnlyScanLatest = None
+        self._TaskID = None
 
     @property
     def All(self):
@@ -46409,6 +46551,14 @@ class ModifyAssetImageRegistryScanStopRequest(AbstractModel):
     def OnlyScanLatest(self, OnlyScanLatest):
         self._OnlyScanLatest = OnlyScanLatest
 
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
 
     def _deserialize(self, params):
         self._All = params.get("All")
@@ -46427,6 +46577,7 @@ class ModifyAssetImageRegistryScanStopRequest(AbstractModel):
                 self._Filters.append(obj)
         self._ExcludeImageList = params.get("ExcludeImageList")
         self._OnlyScanLatest = params.get("OnlyScanLatest")
+        self._TaskID = params.get("TaskID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50958,6 +51109,99 @@ class RegionInfo(AbstractModel):
         
 
 
+class RegistryConnDetectResult(AbstractModel):
+    """镜像仓库联通性检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Quuid: 联通性检测的主机quuid 或者 backend
+        :type Quuid: str
+        :param _Uuid: 联通性检测的主机uuid 或者 backend
+        :type Uuid: str
+        :param _ConnDetectStatus: 检测结果状态
+        :type ConnDetectStatus: str
+        :param _ConnDetectMessage: 检测结果信息
+        :type ConnDetectMessage: str
+        :param _Solution: 失败的解决方案
+        :type Solution: str
+        :param _FailReason: 失败原因
+        :type FailReason: str
+        """
+        self._Quuid = None
+        self._Uuid = None
+        self._ConnDetectStatus = None
+        self._ConnDetectMessage = None
+        self._Solution = None
+        self._FailReason = None
+
+    @property
+    def Quuid(self):
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def Uuid(self):
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def ConnDetectStatus(self):
+        return self._ConnDetectStatus
+
+    @ConnDetectStatus.setter
+    def ConnDetectStatus(self, ConnDetectStatus):
+        self._ConnDetectStatus = ConnDetectStatus
+
+    @property
+    def ConnDetectMessage(self):
+        return self._ConnDetectMessage
+
+    @ConnDetectMessage.setter
+    def ConnDetectMessage(self, ConnDetectMessage):
+        self._ConnDetectMessage = ConnDetectMessage
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+
+    def _deserialize(self, params):
+        self._Quuid = params.get("Quuid")
+        self._Uuid = params.get("Uuid")
+        self._ConnDetectStatus = params.get("ConnDetectStatus")
+        self._ConnDetectMessage = params.get("ConnDetectMessage")
+        self._Solution = params.get("Solution")
+        self._FailReason = params.get("FailReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RemoveAssetImageRegistryRegistryDetailRequest(AbstractModel):
     """RemoveAssetImageRegistryRegistryDetail请求参数结构体
 
@@ -55366,6 +55610,8 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type SpeedLimit: int
         :param _Insecure: 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
         :type Insecure: int
+        :param _ConnDetectConfig: 联通性检测的配置
+        :type ConnDetectConfig: list of ConnDetectConfig
         """
         self._Name = None
         self._Username = None
@@ -55377,6 +55623,7 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._RegistryRegion = None
         self._SpeedLimit = None
         self._Insecure = None
+        self._ConnDetectConfig = None
 
     @property
     def Name(self):
@@ -55458,6 +55705,14 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
     def Insecure(self, Insecure):
         self._Insecure = Insecure
 
+    @property
+    def ConnDetectConfig(self):
+        return self._ConnDetectConfig
+
+    @ConnDetectConfig.setter
+    def ConnDetectConfig(self, ConnDetectConfig):
+        self._ConnDetectConfig = ConnDetectConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -55470,6 +55725,12 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._RegistryRegion = params.get("RegistryRegion")
         self._SpeedLimit = params.get("SpeedLimit")
         self._Insecure = params.get("Insecure")
+        if params.get("ConnDetectConfig") is not None:
+            self._ConnDetectConfig = []
+            for item in params.get("ConnDetectConfig"):
+                obj = ConnDetectConfig()
+                obj._deserialize(item)
+                self._ConnDetectConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4023,6 +4023,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSpecificTrafficPackageUsedDetails(self, request):
+        """本接口 (DescribeSpecificTrafficPackageUsedDetails) 用于查询指定 共享流量包 的用量明细。
+
+        :param request: Request instance for DescribeSpecificTrafficPackageUsedDetails.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSpecificTrafficPackageUsedDetailsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSpecificTrafficPackageUsedDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSpecificTrafficPackageUsedDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSpecificTrafficPackageUsedDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSubnetResourceDashboard(self, request):
         """本接口(DescribeSubnetResourceDashboard)用于查看Subnet资源信息。
 

@@ -1606,10 +1606,10 @@ class FakeURLData(AbstractModel):
         :param _Heat: 热度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Heat: int
-        :param _BlockStatus: 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+        :param _BlockStatus: 拦截处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockStatus: int
-        :param _BlockNote: 协助处置状态说明
+        :param _BlockNote: 拦截处置状态说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockNote: str
         :param _OfflineStatus: 关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
@@ -1654,6 +1654,9 @@ class FakeURLData(AbstractModel):
         :param _AccountStatus: 账户资源状态：0-不可用 1-可用
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountStatus: int
+        :param _AuditStatus: 审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditStatus: int
         """
         self._FakeURLId = None
         self._BrandName = None
@@ -1677,6 +1680,7 @@ class FakeURLData(AbstractModel):
         self._CertificationStatus = None
         self._Snapshot = None
         self._AccountStatus = None
+        self._AuditStatus = None
 
     @property
     def FakeURLId(self):
@@ -1854,6 +1858,14 @@ class FakeURLData(AbstractModel):
     def AccountStatus(self, AccountStatus):
         self._AccountStatus = AccountStatus
 
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
 
     def _deserialize(self, params):
         self._FakeURLId = params.get("FakeURLId")
@@ -1878,6 +1890,7 @@ class FakeURLData(AbstractModel):
         self._CertificationStatus = params.get("CertificationStatus")
         self._Snapshot = params.get("Snapshot")
         self._AccountStatus = params.get("AccountStatus")
+        self._AuditStatus = params.get("AuditStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

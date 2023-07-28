@@ -41387,6 +41387,9 @@ class LicenseDetail(AbstractModel):
         :param _Tags: 平台标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
+        :param _FreezeNum: 冻结数,当为0时 为未冻结,非0 则表示冻结授权数额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreezeNum: int
         """
         self._LicenseId = None
         self._LicenseType = None
@@ -41403,6 +41406,7 @@ class LicenseDetail(AbstractModel):
         self._SourceType = None
         self._Alias = None
         self._Tags = None
+        self._FreezeNum = None
 
     @property
     def LicenseId(self):
@@ -41524,6 +41528,14 @@ class LicenseDetail(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def FreezeNum(self):
+        return self._FreezeNum
+
+    @FreezeNum.setter
+    def FreezeNum(self, FreezeNum):
+        self._FreezeNum = FreezeNum
+
 
     def _deserialize(self, params):
         self._LicenseId = params.get("LicenseId")
@@ -41546,6 +41558,7 @@ class LicenseDetail(AbstractModel):
                 obj = Tags()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._FreezeNum = params.get("FreezeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

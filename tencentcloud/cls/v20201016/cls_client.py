@@ -1015,6 +1015,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDashboards(self, request):
+        """本接口用于获取仪表盘
+
+        :param request: Request instance for DescribeDashboards.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDashboardsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeDashboardsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDashboards", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDashboardsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataTransformInfo(self, request):
         """本接口用于获取数据加工任务列表基本信息
 

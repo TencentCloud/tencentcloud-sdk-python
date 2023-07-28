@@ -79,6 +79,51 @@ class AccessFullTextInfo(AbstractModel):
         
 
 
+class AccessHistogramItem(AbstractModel):
+    """用于接口DescribeAccessHistogram 的出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BTime: 时间，单位ms
+        :type BTime: int
+        :param _Count: 日志条数
+        :type Count: int
+        """
+        self._BTime = None
+        self._Count = None
+
+    @property
+    def BTime(self):
+        return self._BTime
+
+    @BTime.setter
+    def BTime(self, BTime):
+        self._BTime = BTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._BTime = params.get("BTime")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccessKeyValueInfo(AbstractModel):
     """用于 DescribeAccessIndex 的出参
 
@@ -3057,6 +3102,154 @@ class DescribeAccessFastAnalysisResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessHistogramRequest(AbstractModel):
+    """DescribeAccessHistogram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 老版本查询的日志主题ID，新版本传空字符串即可
+        :type TopicId: str
+        :param _From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param _To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param _Query: 查询语句，语句长度最大为4096
+        :type Query: str
+        :param _Interval: 柱状图间隔时间差，单位ms
+        :type Interval: int
+        """
+        self._TopicId = None
+        self._From = None
+        self._To = None
+        self._Query = None
+        self._Interval = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def Query(self):
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._Query = params.get("Query")
+        self._Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessHistogramResponse(AbstractModel):
+    """DescribeAccessHistogram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Interval: 柱状图间隔时间差，单位ms
+        :type Interval: int
+        :param _TotalCount: 满足条件的日志条数
+        :type TotalCount: int
+        :param _HistogramInfos: 注意：此字段可能返回 null，表示取不到有效值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HistogramInfos: list of AccessHistogramItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Interval = None
+        self._TotalCount = None
+        self._HistogramInfos = None
+        self._RequestId = None
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def HistogramInfos(self):
+        return self._HistogramInfos
+
+    @HistogramInfos.setter
+    def HistogramInfos(self, HistogramInfos):
+        self._HistogramInfos = HistogramInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Interval = params.get("Interval")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("HistogramInfos") is not None:
+            self._HistogramInfos = []
+            for item in params.get("HistogramInfos"):
+                obj = AccessHistogramItem()
+                obj._deserialize(item)
+                self._HistogramInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 

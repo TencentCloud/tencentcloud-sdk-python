@@ -4168,7 +4168,7 @@ class McuLayout(AbstractModel):
         :type LocationY: int
         :param _ZOrder: 子画面在输出时的层级，不填默认为0。
         :type ZOrder: int
-        :param _RenderMode: 子画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底。不填默认为0。
+        :param _RenderMode: 子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。
         :type RenderMode: int
         :param _BackGroundColor: 【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：
 红色：0xcc0033。
@@ -4183,6 +4183,8 @@ class McuLayout(AbstractModel):
         :type BackgroundImageUrl: str
         :param _CustomCrop: 客户自定义裁剪，针对原始输入流裁剪
         :type CustomCrop: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
+        :param _BackgroundRenderMode: 子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩。不填默认为3。
+        :type BackgroundRenderMode: int
         """
         self._UserMediaStream = None
         self._ImageWidth = None
@@ -4194,6 +4196,7 @@ class McuLayout(AbstractModel):
         self._BackGroundColor = None
         self._BackgroundImageUrl = None
         self._CustomCrop = None
+        self._BackgroundRenderMode = None
 
     @property
     def UserMediaStream(self):
@@ -4275,6 +4278,14 @@ class McuLayout(AbstractModel):
     def CustomCrop(self, CustomCrop):
         self._CustomCrop = CustomCrop
 
+    @property
+    def BackgroundRenderMode(self):
+        return self._BackgroundRenderMode
+
+    @BackgroundRenderMode.setter
+    def BackgroundRenderMode(self, BackgroundRenderMode):
+        self._BackgroundRenderMode = BackgroundRenderMode
+
 
     def _deserialize(self, params):
         if params.get("UserMediaStream") is not None:
@@ -4291,6 +4302,7 @@ class McuLayout(AbstractModel):
         if params.get("CustomCrop") is not None:
             self._CustomCrop = McuCustomCrop()
             self._CustomCrop._deserialize(params.get("CustomCrop"))
+        self._BackgroundRenderMode = params.get("BackgroundRenderMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4693,12 +4705,15 @@ class McuVideoParams(AbstractModel):
         :type BackgroundImageUrl: str
         :param _WaterMarkList: 混流布局的水印参数。
         :type WaterMarkList: list of McuWaterMarkParams
+        :param _BackgroundRenderMode: 背景图在输出时的显示模式：0为裁剪，1为缩放并显示黑底，2为变比例伸缩。后台默认为变比例伸缩。
+        :type BackgroundRenderMode: int
         """
         self._VideoEncode = None
         self._LayoutParams = None
         self._BackGroundColor = None
         self._BackgroundImageUrl = None
         self._WaterMarkList = None
+        self._BackgroundRenderMode = None
 
     @property
     def VideoEncode(self):
@@ -4740,6 +4755,14 @@ class McuVideoParams(AbstractModel):
     def WaterMarkList(self, WaterMarkList):
         self._WaterMarkList = WaterMarkList
 
+    @property
+    def BackgroundRenderMode(self):
+        return self._BackgroundRenderMode
+
+    @BackgroundRenderMode.setter
+    def BackgroundRenderMode(self, BackgroundRenderMode):
+        self._BackgroundRenderMode = BackgroundRenderMode
+
 
     def _deserialize(self, params):
         if params.get("VideoEncode") is not None:
@@ -4756,6 +4779,7 @@ class McuVideoParams(AbstractModel):
                 obj = McuWaterMarkParams()
                 obj._deserialize(item)
                 self._WaterMarkList.append(obj)
+        self._BackgroundRenderMode = params.get("BackgroundRenderMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

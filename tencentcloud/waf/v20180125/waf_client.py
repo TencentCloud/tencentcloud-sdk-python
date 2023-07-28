@@ -371,6 +371,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccessHistogram(self, request):
+        """本接口用于访问日志柱状趋势图
+
+        :param request: Request instance for DescribeAccessHistogram.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessHistogramRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAccessHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessHistogram", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessHistogramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccessIndex(self, request):
         """本接口用于获取访问日志索引配置信息
 

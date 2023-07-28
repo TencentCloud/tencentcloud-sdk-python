@@ -6362,12 +6362,16 @@ class SdkAppIdBuyInfo(AbstractModel):
         :type StaffBuyList: list of StaffBuyInfo
         :param _PhoneNumBuyList: 号码购买列表
         :type PhoneNumBuyList: list of PhoneNumBuyInfo
+        :param _SipBuyNum: 办公电话购买数（还在有效期内）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SipBuyNum: int
         """
         self._SdkAppId = None
         self._Name = None
         self._StaffBuyNum = None
         self._StaffBuyList = None
         self._PhoneNumBuyList = None
+        self._SipBuyNum = None
 
     @property
     def SdkAppId(self):
@@ -6409,6 +6413,14 @@ class SdkAppIdBuyInfo(AbstractModel):
     def PhoneNumBuyList(self, PhoneNumBuyList):
         self._PhoneNumBuyList = PhoneNumBuyList
 
+    @property
+    def SipBuyNum(self):
+        return self._SipBuyNum
+
+    @SipBuyNum.setter
+    def SipBuyNum(self, SipBuyNum):
+        self._SipBuyNum = SipBuyNum
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -6426,6 +6438,7 @@ class SdkAppIdBuyInfo(AbstractModel):
                 obj = PhoneNumBuyInfo()
                 obj._deserialize(item)
                 self._PhoneNumBuyList.append(obj)
+        self._SipBuyNum = params.get("SipBuyNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7002,10 +7015,14 @@ class StaffBuyInfo(AbstractModel):
         :type BuyTime: int
         :param _EndTime: 截止时间戳
         :type EndTime: int
+        :param _SipNum: 购买办公电话数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SipNum: int
         """
         self._Num = None
         self._BuyTime = None
         self._EndTime = None
+        self._SipNum = None
 
     @property
     def Num(self):
@@ -7031,11 +7048,20 @@ class StaffBuyInfo(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def SipNum(self):
+        return self._SipNum
+
+    @SipNum.setter
+    def SipNum(self, SipNum):
+        self._SipNum = SipNum
+
 
     def _deserialize(self, params):
         self._Num = params.get("Num")
         self._BuyTime = params.get("BuyTime")
         self._EndTime = params.get("EndTime")
+        self._SipNum = params.get("SipNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -452,8 +452,10 @@ class EssClient(AbstractClient):
 
 
     def CreateFlowSignUrl(self, request):
-        """创建个人H5签署链接，请联系客户经理申请使用 <br/>
-        该接口用于发起合同后，生成C端签署人的签署链接 <br/>
+        """创建个人H5签署链接，请联系客户经理申请开通使用, 否则调用会返回失败 <br/>
+
+        该接口用于发起合同后，生成个人签署人的签署链接, 暂时不支持企业端签署 <br/>
+
         注意：该接口目前签署人类型仅支持个人签署方（PERSON） <br/>
         注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
         注意：该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入。微信小程序请使用小程序跳转或半屏弹窗的方式<br/>
@@ -1033,8 +1035,18 @@ class EssClient(AbstractClient):
 
 
     def DescribeFlowTemplates(self, request):
-        """当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。<br/>
-        该接口常用来配合“创建电子文档”接口作为前置的接口使用。<br/>
+        """本接口用于查询本企业模板列表。
+
+        当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
+
+        > **适用场景**
+        >  该接口常用来配合“模板发起合同-创建电子文档”接口作为前置的接口使用。
+        >  一个模板通常会包含以下结构信息
+        >- 模板基本信息
+        >- 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
+        >- 填写控件 Components
+        >- 签署控件 SignComponents
+        >- 生成模板的文件基础信息 FileInfos
 
         :param request: Request instance for DescribeFlowTemplates.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowTemplatesRequest`
