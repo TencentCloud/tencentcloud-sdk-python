@@ -559,15 +559,32 @@ class AutoSignConfig(AbstractModel):
         r"""
         :param _UserInfo: 自动签开通个人用户的三要素
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
-        :param _CallbackUrl: 接受自动签开启的回调地址。需要保证post返回200
+        :param _CallbackUrl: 接受回调URL地址。支持http://或者https://协议
+
+Post数据到此地址后后返回httpcode200表示接受回调成功, 返回其他httpcode表示接受回调失败
         :type CallbackUrl: str
-        :param _CertInfoCallback: 是否回调证书信息，默认false-不需要
+        :param _CertInfoCallback: 是否回调证书信息
+false-不需要 (默认值)
+true-需要
         :type CertInfoCallback: bool
-        :param _UserDefineSeal: 是否支持用户自定义签名印章，默认false-不需要
+        :param _UserDefineSeal: 是否支持用户自定义签名印章
+false-不需要(默认)
+true-需要
         :type UserDefineSeal: bool
-        :param _SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64，默认false-不需要
+        :param _SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64
+
+false-不需要(默认)
+true-需要(
         :type SealImgCallback: bool
-        :param _VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
+        :param _VerifyChannels: 开通时候的验证方式, 分布为
+
+WEIXINAPP : 微信人脸识别
+INSIGHT : 慧眼人脸认别
+TELECOM : 运营商三要素验证
+
+如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。
+
+如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
         :type VerifyChannels: list of str
         """
         self._UserInfo = None
@@ -1712,7 +1729,8 @@ class CreateBatchCancelFlowUrlRequest(AbstractModel):
         r"""
         :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowIds: 需要执行撤回的签署流程id数组，最多100个
+        :param _FlowIds: 需要执行撤回的流程(合同)的编号列表，最多100个.
+列表中的流程(合同)编号不要重复.
         :type FlowIds: list of str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 
@@ -1775,8 +1793,11 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         :param _BatchCancelFlowUrl: 批量撤回签署流程链接
         :type BatchCancelFlowUrl: str
         :param _FailMessages: 签署流程撤回失败信息
+数组里边的错误原因与传进来的FlowIds一一对应,如果是空字符串则标识没有出错
         :type FailMessages: list of str
         :param _UrlExpireOn: 签署连接过期时间字符串：年月日-时分秒
+
+例如:2023-07-28 17:25:59
         :type UrlExpireOn: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3701,7 +3722,7 @@ CreateReview:发起审核
 默认：SignReview；SignReview:签署审核
 
 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
-若发起个人审核，则指定该字段为：SignReview（注意，给个人审核时，需联系客户经理开白使用）
+若发起个人审核，则指定该字段为：SignReview
         :type OperateType: str
         """
         self._Operator = None
@@ -5263,11 +5284,14 @@ APP：第三方APP或小程序跳转电子签小程序的path。
         :type EndPoint: str
         :param _FlowId: 签署流程编号 (PathType=1时必传)
         :type FlowId: str
-        :param _FlowGroupId: 合同组ID
+        :param _FlowGroupId: 合同组ID 
         :type FlowGroupId: str
         :param _PathType: 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
         :type PathType: int
-        :param _AutoJumpBack: 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
+        :param _AutoJumpBack: 是否自动回跳
+true：是，
+false：否。
+该参数只针对"APP" 类型的签署链接有效
         :type AutoJumpBack: bool
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -5901,11 +5925,16 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
         :param _AutoSignConfig: 自动签开通，签署相关配置
         :type AutoSignConfig: :class:`tencentcloud.ess.v20201111.models.AutoSignConfig`
-        :param _UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+        :param _UrlType: 链接类型，
+空-默认小程序端链接
+H5SIGN-h5端链接
         :type UrlType: str
-        :param _NotifyType: 通知类型，默认不填为不通知开通方，填写 SMS 为短信通知。
+        :param _NotifyType: 通知类型
+
+默认不设置为不通知开通方，
+SMS 为短信通知 , 此种方式需要NotifyAddress填写手机号。
         :type NotifyType: str
-        :param _NotifyAddress: 若上方填写为 SMS，则此处为手机号
+        :param _NotifyAddress: 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
         :type NotifyAddress: str
         :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
         :type ExpiredTime: int
@@ -6026,7 +6055,7 @@ class CreateUserAutoSignEnableUrlResponse(AbstractModel):
         :type AppOriginalId: str
         :param _Path: 跳转路径
         :type Path: str
-        :param _QrCode: base64格式跳转二维码
+        :param _QrCode: base64格式跳转二维码,可以通过微信扫描后跳转到业务界面
         :type QrCode: str
         :param _UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
         :type UrlType: str
@@ -7325,12 +7354,14 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportUrl: 报告 URL
+        :param _ReportUrl: 出证报告PDF的下载 URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param _Status: 执行中：EvidenceStatusExecuting
-成功：EvidenceStatusSuccess
-失败：EvidenceStatusFailed
+        :param _Status: 出证任务执行的状态, 分布表示下面的含义
+
+EvidenceStatusExecuting  出证任务在执行中
+EvidenceStatusSuccess  出证任务执行成功
+EvidenceStatusFailed  出征任务执行失败
         :type Status: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7380,10 +7411,14 @@ class DescribeFlowInfoRequest(AbstractModel):
         :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowIds: 需要查询的流程ID列表，限制最大100个
+
+如果查询合同组的信息,不要传此参数
         :type FlowIds: list of str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowGroupId: 合同组ID
+        :param _FlowGroupId: 合同组ID, 如果传此参数会忽略FlowIds入参
+ 所以如传此参数不要传FlowIds参数
+
         :type FlowGroupId: str
         """
         self._Operator = None
@@ -8748,7 +8783,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
         :param _SceneKey: 自动签场景:
 E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type SceneKey: str
-        :param _UserInfo: 查询开启状态的用户信息
+        :param _UserInfo: 要查询开启状态的用户信息
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -8819,11 +8854,14 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsOpen: 是否已开通自动签
+        :param _IsOpen: 查询用户是否已开通自动签
         :type IsOpen: bool
         :param _LicenseFrom: 自动签许可生效时间。当且仅当已开通自动签时有值。
+
+值为unix时间戳,单位为秒。
         :type LicenseFrom: int
         :param _LicenseTo: 自动签许可到期时间。当且仅当已开通自动签时有值。
+值为unix时间戳,单位为秒。
         :type LicenseTo: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9999,7 +10037,9 @@ class FlowBrief(AbstractModel):
         :param _CreatedOn: 流程创建的时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: int
-        :param _FlowMessage: 拒签或者取消的原因描述
+        :param _FlowMessage: 当合同被拒签或者取消后(当FlowStatus=3或者FlowStatus=6的时候)
+此字段展示拒签或者取消的原因描述
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMessage: str
         :param _Creator:  合同发起人userId
@@ -11059,7 +11099,7 @@ class GetTaskResultApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务Id，通过CreateConvertTaskApi得到
+        :param _TaskId: 任务Id，通过接口CreateConvertTaskApi或CreateMergeFileTask得到的返回任务id
         :type TaskId: str
         :param _Operator: 操作人信息,UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
@@ -11160,7 +11200,7 @@ DownloadFailed - 下载失败
 ProcessFailed  - 转换失败
 ProcessTimeout - 转换文件超时
         :type TaskMessage: str
-        :param _ResourceId: 资源Id，也是FileId，用于文件发起使用
+        :param _ResourceId: 资源Id，也是FileId，用于文件发起时使用
         :type ResourceId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12679,7 +12719,7 @@ ENTERPRISESERVER-企业静默签
 - SIGN_SEAL-默认为印章控件类型
 - SIGN_SIGNATURE-手写签名控件类型
         :type ApproverSignComponentType: str
-        :param _ApproverSignRole: 签署方自定义控件别名，最大长度20个字符
+        :param _ApproverSignRole: 参与方在合同中的角色是按照创建合同的时候来排序的; 解除协议会将第一个参与人叫甲方, 第二个叫乙方,第三个叫丙方, 依次类推.  如果想改动参与人的角色名字, 可以设置此签署方自定义控件别名字段，最大20个字符
         :type ApproverSignRole: str
         """
         self._Name = None

@@ -3991,6 +3991,8 @@ class DescribeRoomResponse(AbstractModel):
         :type TeacherId: str
         :param _SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
+        :param _AudienceType: 观看类型。互动观看 （默认）	
+        :type AudienceType: int
         :param _Resolution: 分辨率。可以有如下取值：
 1 标清
 2 高清
@@ -4047,6 +4049,7 @@ video 纯视频
         self._EndTime = None
         self._TeacherId = None
         self._SdkAppId = None
+        self._AudienceType = None
         self._Resolution = None
         self._MaxMicNumber = None
         self._AutoMic = None
@@ -4103,6 +4106,14 @@ video 纯视频
     @SdkAppId.setter
     def SdkAppId(self, SdkAppId):
         self._SdkAppId = SdkAppId
+
+    @property
+    def AudienceType(self):
+        return self._AudienceType
+
+    @AudienceType.setter
+    def AudienceType(self, AudienceType):
+        self._AudienceType = AudienceType
 
     @property
     def Resolution(self):
@@ -4239,6 +4250,7 @@ video 纯视频
         self._EndTime = params.get("EndTime")
         self._TeacherId = params.get("TeacherId")
         self._SdkAppId = params.get("SdkAppId")
+        self._AudienceType = params.get("AudienceType")
         self._Resolution = params.get("Resolution")
         self._MaxMicNumber = params.get("MaxMicNumber")
         self._AutoMic = params.get("AutoMic")

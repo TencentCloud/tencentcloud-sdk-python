@@ -7278,6 +7278,141 @@ class GetAttackDownloadRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetAttackHistogramRequest(AbstractModel):
+    """GetAttackHistogram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 查询的域名，所有域名使用all
+        :type Domain: str
+        :param _StartTime: 查询起始时间
+        :type StartTime: str
+        :param _EndTime: 查询结束时间
+        :type EndTime: str
+        :param _QueryString: Lucene语法
+        :type QueryString: str
+        """
+        self._Domain = None
+        self._StartTime = None
+        self._EndTime = None
+        self._QueryString = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def QueryString(self):
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._QueryString = params.get("QueryString")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAttackHistogramResponse(AbstractModel):
+    """GetAttackHistogram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 统计详情
+        :type Data: list of LogHistogramInfo
+        :param _Period: 时间段大小
+        :type Period: int
+        :param _TotalCount: 统计的条目数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Period = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LogHistogramInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Period = params.get("Period")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class HostRecord(AbstractModel):
     """clb-waf防护域名
 
@@ -8523,6 +8658,51 @@ class LoadBalancerPackageNew(AbstractModel):
         self._Zone = params.get("Zone")
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogHistogramInfo(AbstractModel):
+    """攻击日志统计详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 日志条数
+        :type Count: int
+        :param _TimeStamp: 时间戳
+        :type TimeStamp: int
+        """
+        self._Count = None
+        self._TimeStamp = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def TimeStamp(self):
+        return self._TimeStamp
+
+    @TimeStamp.setter
+    def TimeStamp(self, TimeStamp):
+        self._TimeStamp = TimeStamp
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._TimeStamp = params.get("TimeStamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

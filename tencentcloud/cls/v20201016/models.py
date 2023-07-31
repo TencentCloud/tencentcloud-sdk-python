@@ -4543,7 +4543,7 @@ class CreateScheduledSqlRequest(AbstractModel):
         :type SrcTopicId: str
         :param _Name: 任务名称
         :type Name: str
-        :param _EnableFlag: 任务启动状态.  1正常开启,  2关闭
+        :param _EnableFlag: 任务启动状态.  1开启,  2关闭
         :type EnableFlag: int
         :param _DstResource: 定时SQL分析目标日志主题
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
@@ -4551,7 +4551,7 @@ class CreateScheduledSqlRequest(AbstractModel):
         :type ScheduledSqlContent: str
         :param _ProcessStartTime: 调度开始时间,Unix时间戳，单位ms
         :type ProcessStartTime: int
-        :param _ProcessType: 调度类型，1:持续运行 2:指定调度结束时间
+        :param _ProcessType: 调度类型，1:持续运行 2:指定时间范围
         :type ProcessType: int
         :param _ProcessPeriod: 调度周期(分钟)
         :type ProcessPeriod: int
@@ -4563,7 +4563,7 @@ class CreateScheduledSqlRequest(AbstractModel):
         :type SrcTopicRegion: str
         :param _ProcessEndTime: 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
         :type ProcessEndTime: int
-        :param _SyntaxRule: 语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+        :param _SyntaxRule: 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
         :type SyntaxRule: int
         """
         self._SrcTopicId = None
@@ -14087,7 +14087,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
         :type TaskId: str
         :param _SrcTopicId: 源日志主题
         :type SrcTopicId: str
-        :param _EnableFlag: 任务启动状态.   1正常开启,  2关闭
+        :param _EnableFlag: 任务启动状态.   1开启,  2关闭
         :type EnableFlag: int
         :param _DstResource: 定时SQL分析的目标日志主题
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
@@ -15747,7 +15747,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
         :type ScheduledSqlContent: str
         :param _ProcessStartTime: 调度开始时间
         :type ProcessStartTime: str
-        :param _ProcessType: 调度类型，1:持续运行 2:指定调度结束时间
+        :param _ProcessType: 调度类型，1:持续运行 2:指定时间范围
         :type ProcessType: int
         :param _ProcessEndTime: 调度结束时间，当process_type=2时为必传字段
         :type ProcessEndTime: str

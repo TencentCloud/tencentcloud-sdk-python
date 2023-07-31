@@ -1357,33 +1357,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def QueryBarCode(self, request):
-        """库源服务调整，该接口在2023年6月1日将正式下线。
-
-        本接口支持条形码备案信息查询，返回条形码查询结果的相关信息，包括产品名称、产品英文名称、品牌名称、规格型号、宽度、高度、深度、关键字、产品描述、厂家名称、厂家地址、企业社会信用代码13个字段信息。
-
-        产品优势：直联中国物品编码中心，查询结果更加准确、可靠。
-
-        :param request: Request instance for QueryBarCode.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.QueryBarCodeRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.QueryBarCodeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QueryBarCode", params, headers=headers)
-            response = json.loads(body)
-            model = models.QueryBarCodeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def QuotaInvoiceOCR(self, request):
         """本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
 
@@ -2418,31 +2391,6 @@ class OcrClient(AbstractClient):
             body = self.call("VerifyBizLicense", params, headers=headers)
             response = json.loads(body)
             model = models.VerifyBizLicenseResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def VerifyEnterpriseFourFactors(self, request):
-        """库源服务调整，该接口在2023年6月1日将正式下线。
-
-        此接口基于企业四要素授权“姓名、证件号码、企业标识、企业全称”，验证企业信息是否一致。
-
-        :param request: Request instance for VerifyEnterpriseFourFactors.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyEnterpriseFourFactorsRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyEnterpriseFourFactorsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VerifyEnterpriseFourFactors", params, headers=headers)
-            response = json.loads(body)
-            model = models.VerifyEnterpriseFourFactorsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -295,24 +295,32 @@ class BaseFlowInfo(AbstractModel):
         :param _FlowName: 合同流程名称
         :type FlowName: str
         :param _FlowType: 合同流程类型
+<br/>客户自定义，用于合同分类展示
         :type FlowType: str
         :param _FlowDescription: 合同流程描述信息
         :type FlowDescription: str
         :param _Deadline: 合同流程截止时间，unix时间戳，单位秒
         :type Deadline: int
         :param _Unordered: 是否顺序签署(true:无序签,false:顺序签)
+<br/>默认false，有序签署合同
         :type Unordered: bool
         :param _IntelligentStatus: 是否打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
         :type IntelligentStatus: str
         :param _FormFields: 填写控件内容
         :type FormFields: list of FormField
-        :param _NeedSignReview: 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批。使用ChannelCreateFlowSignReview接口提交审批结果，才能继续完成签署
+        :param _NeedSignReview: 本企业(发起方企业)是否需要签署审批
+<br/>true：开启发起方签署审批
+<br/>false：不开启发起方签署审批
+<br/>开启后，使用ChannelCreateFlowSignReview接口提交审批结果，才能继续完成签署
         :type NeedSignReview: bool
         :param _UserData: 用户流程自定义数据参数
         :type UserData: str
         :param _CcInfos: 抄送人信息
         :type CcInfos: list of CcInfo
-        :param _NeedCreateReview: 是否需要发起前审核，当指定NeedCreateReview=true，则发起后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
+        :param _NeedCreateReview: 是否需要开启发起方发起前审核
+<br/>true：开启发起方发起前审核
+<br/>false：不开启发起方发起前审核
+<br/>当指定NeedCreateReview=true，则提交审核后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
         :type NeedCreateReview: bool
         """
         self._FlowName = None
@@ -534,10 +542,11 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
         :param _CancelMessage: 撤销理由,不超过200个字符
         :type CancelMessage: str
         :param _CancelMessageFormat: 撤销理由自定义格式；选项：
-0 默认格式
-1 只保留身份信息：展示为【发起方】
-2 保留身份信息+企业名称：展示为【发起方xxx公司】
-3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+
+- 0 默认格式
+- 1 只保留身份信息：展示为【发起方】
+- 2 保留身份信息+企业名称：展示为【发起方xxx公司】
+- 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
         :type CancelMessageFormat: int
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -1228,21 +1237,23 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
         r"""
         :param _Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _EmbedType: WEB嵌入资源类型。
-CREATE_SEAL: 创建印章
-CREATE_TEMPLATE：创建模板
-MODIFY_TEMPLATE：修改模板
-PREVIEW_TEMPLATE：预览模板
-PREVIEW_FLOW：预览合同文档
-PREVIEW_FLOW_DETAIL：预览合同详情
-PREVIEW_SEAL_LIST：预览印章列表
-PREVIEW_SEAL_DETAIL：预览印章详情
-EXTEND_SERVICE：扩展服务
+        :param _EmbedType: 要生成WEB嵌入界面的类型, 可以选择的值如下: 
+
+- CREATE_SEAL: 生成创建印章的嵌入页面
+- CREATE_TEMPLATE：生成创建模板的嵌入页面
+- MODIFY_TEMPLATE：生成修改模板的嵌入页面
+- PREVIEW_TEMPLATE：生成预览模板的嵌入页面
+- PREVIEW_FLOW：生成预览合同文档的嵌入页面
+- PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面
+- PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
+- PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
+- EXTEND_SERVICE：生成扩展服务的嵌入页面
         :type EmbedType: str
         :param _BusinessId: WEB嵌入的业务资源ID
-EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模板id
-PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时必填，取值为合同id
-PREVIEW_SEAL_DETAIL，必填，取值为印章id
+
+- 当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId
+- 当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId
+- 当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId
         :type BusinessId: str
         :param _HiddenComponents: 是否隐藏控件，只有预览模板时生效
         :type HiddenComponents: bool
@@ -2063,7 +2074,7 @@ SIGN_REJECT:拒签(流程结束)
 注：接口通过该字段区分操作类型
 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
 若想使用发起审核，请指定该字段为：CreateReview
-若发起个人审核，则指定该字段为：SignReview（注意，给个人审核时，需联系客户经理开白使用）
+若发起个人审核，则指定该字段为：SignReview
         :type OperateType: str
         """
         self._Agent = None
@@ -2633,12 +2644,12 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         :type ResourceType: int
         :param _FlowInfo: 合同流程基础信息
         :type FlowInfo: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
-        :param _FlowApproverList: 合同签署人信息
-        :type FlowApproverList: list of CommonFlowApprover
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _FlowOption: 合同流程配置信息，用于配置发起合同时定制化
         :type FlowOption: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
+        :param _FlowApproverList: 合同签署人信息
+        :type FlowApproverList: list of CommonFlowApprover
         :param _FlowId: 通过flowid快速获得之前成功通过页面发起的合同生成链接
         :type FlowId: str
         :param _NeedPreview: 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
@@ -2651,9 +2662,9 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         self._ResourceId = None
         self._ResourceType = None
         self._FlowInfo = None
-        self._FlowApproverList = None
         self._Agent = None
         self._FlowOption = None
+        self._FlowApproverList = None
         self._FlowId = None
         self._NeedPreview = None
         self._Organization = None
@@ -2684,14 +2695,6 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         self._FlowInfo = FlowInfo
 
     @property
-    def FlowApproverList(self):
-        return self._FlowApproverList
-
-    @FlowApproverList.setter
-    def FlowApproverList(self, FlowApproverList):
-        self._FlowApproverList = FlowApproverList
-
-    @property
     def Agent(self):
         return self._Agent
 
@@ -2706,6 +2709,14 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     @FlowOption.setter
     def FlowOption(self, FlowOption):
         self._FlowOption = FlowOption
+
+    @property
+    def FlowApproverList(self):
+        return self._FlowApproverList
+
+    @FlowApproverList.setter
+    def FlowApproverList(self, FlowApproverList):
+        self._FlowApproverList = FlowApproverList
 
     @property
     def FlowId(self):
@@ -2758,18 +2769,18 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         if params.get("FlowInfo") is not None:
             self._FlowInfo = BaseFlowInfo()
             self._FlowInfo._deserialize(params.get("FlowInfo"))
-        if params.get("FlowApproverList") is not None:
-            self._FlowApproverList = []
-            for item in params.get("FlowApproverList"):
-                obj = CommonFlowApprover()
-                obj._deserialize(item)
-                self._FlowApproverList.append(obj)
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         if params.get("FlowOption") is not None:
             self._FlowOption = CreateFlowOption()
             self._FlowOption._deserialize(params.get("FlowOption"))
+        if params.get("FlowApproverList") is not None:
+            self._FlowApproverList = []
+            for item in params.get("FlowApproverList"):
+                obj = CommonFlowApprover()
+                obj._deserialize(item)
+                self._FlowApproverList.append(obj)
         self._FlowId = params.get("FlowId")
         self._NeedPreview = params.get("NeedPreview")
         if params.get("Organization") is not None:
@@ -5466,12 +5477,15 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportId: 出证报告 ID，用于查询出证报告接口DescribeChannelFlowEvidenceReport时用到
+        :param _ReportId: 出证报告 ID，可用户DescribeChannelFlowEvidenceReport接口查询出证PDF的下载地址
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
-        :param _Status: 执行中：EvidenceStatusExecuting
-成功：EvidenceStatusSuccess
-失败：EvidenceStatusFailed
+        :param _Status: 出征任务的执行状态,状态列表如下
+
+- EvidenceStatusExecuting : 出征任务正在执行中
+- EvidenceStatusSuccess : 出征任务执行成功
+- EvidenceStatusFailed : 出征任务执行失败
         :type Status: str
         :param _ReportUrl: 废除，字段无效
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6528,12 +6542,14 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportUrl: 出证报告 URL
+        :param _ReportUrl: 出证报告下载 URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param _Status: 执行中：EvidenceStatusExecuting
-成功：EvidenceStatusSuccess
-失败：EvidenceStatusFailed
+        :param _Status: 出征任务的执行状态,状态列表如下
+
+- EvidenceStatusExecuting : 出征任务正在执行中
+- EvidenceStatusSuccess : 出征任务执行成功
+- EvidenceStatusFailed : 出征任务执行失败
         :type Status: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6664,7 +6680,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _FlowIds: 合同(流程)编号数组，最多支持100个。
-（备注：该参数和合同组编号必须二选一）
+（备注：该参数和合同组编号必须二选一, 如果填写FlowGroupId则忽略此FlowIds的入参）
         :type FlowIds: list of str
         :param _FlowGroupId: 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
         :type FlowGroupId: str

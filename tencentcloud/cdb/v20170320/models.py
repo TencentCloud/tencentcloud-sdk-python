@@ -6073,7 +6073,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type InstanceRole: str
         :param _MasterInstanceId: 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
         :type MasterInstanceId: str
-        :param _EngineVersion: MySQL 版本，值包括：5.5、5.6 和 5.7，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
+        :param _EngineVersion: MySQL 版本，值包括：5.5、5.6 、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
         :type EngineVersion: str
         :param _Password: 设置 root 帐号密码，密码规则：8 - 64 个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
         :type Password: str
@@ -6540,7 +6540,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealIds: 短订单 ID。
+        :param _DealIds: 计费子订单 ID。
         :type DealIds: list of str
         :param _InstanceIds: 实例 ID 列表。
         :type InstanceIds: list of str

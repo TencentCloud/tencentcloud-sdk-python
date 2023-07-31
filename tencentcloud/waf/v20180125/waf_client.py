@@ -902,6 +902,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAttackHistogram(self, request):
+        """生成攻击日志的产生时间柱状图
+
+        :param request: Request instance for GetAttackHistogram.
+        :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackHistogramRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.GetAttackHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAttackHistogram", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAttackHistogramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAccessPeriod(self, request):
         """本接口用于修改访问日志保存期限及大字段是否存储
 

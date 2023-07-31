@@ -940,9 +940,9 @@ class EssClient(AbstractClient):
 
 
     def DescribeFlowBriefs(self, request):
-        """查询流程摘要
+        """查询流程基础信息
         适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
-        日调用量限制：10W
+        每个企业限制日调用量限制：10W,  当当日超过此限制后再调用接口返回错误
 
         :param request: Request instance for DescribeFlowBriefs.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowBriefsRequest`
@@ -1040,6 +1040,7 @@ class EssClient(AbstractClient):
         当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
 
         > **适用场景**
+        >
         >  该接口常用来配合“模板发起合同-创建电子文档”接口作为前置的接口使用。
         >  一个模板通常会包含以下结构信息
         >- 模板基本信息
@@ -1279,8 +1280,8 @@ class EssClient(AbstractClient):
 
 
     def GetTaskResultApi(self, request):
-        """通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。<br/>
-        大文件转换所需的时间可能会比较长。
+        """查询转换任务的状态。转换任务Id通过发起转换任务接口（CreateConvertTaskApi）获取。
+        注意：大文件转换所需的时间可能会比较长。
 
         :param request: Request instance for GetTaskResultApi.
         :type request: :class:`tencentcloud.ess.v20201111.models.GetTaskResultApiRequest`
