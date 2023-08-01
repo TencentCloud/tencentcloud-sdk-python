@@ -3,6 +3,7 @@ import os
 import shutil
 import sys
 import argparse
+from tencentcloud import __version__
 
 
 README = '''============================
@@ -113,9 +114,9 @@ def build_and_install_package(mod, upload):
 
 def mk_config_file(temp_dir, mod):
     if mod == 'common':
-        required = '\n    install_requires=["requests>=2.27.0"],'
+        required = '\n    install_requires=["requests>=2.16.0"],'
     else:
-        required = ''
+        required = '\n    install_requires=["tencentcloud-sdk-python-common==%s"],' % __version__
     with open(os.path.join(temp_dir, 'setup.py'), 'w') as f:
         f.write(SETUP % (mod, required, mod.capitalize()))
     with open(os.path.join(temp_dir, 'README.rst'), 'w') as f:
