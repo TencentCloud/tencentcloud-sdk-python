@@ -9908,7 +9908,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type VpcId: str
         :param _VpnGatewayName: VPN网关名称，最大长度不能超过60个字节。
         :type VpnGatewayName: str
-        :param _InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps
+        :param _InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
         :type InternetMaxBandwidthOut: int
         :param _InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
         :type InstanceChargeType: str
@@ -9916,13 +9916,13 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         :param _Zone: 可用区，如：ap-guangzhou-2。
         :type Zone: str
-        :param _Type: VPN网关类型。值“CCN”云联网类型VPN网关，值SSL为SSL-VPN
+        :param _Type: VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。
         :type Type: str
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
-        :param _CdcId: CDC实例ID
+        :param _CdcId: CDC实例ID。
         :type CdcId: str
-        :param _MaxConnection: SSL-VPN 最大CLIENT 连接数。可选 [5, 10, 20, 50, 100]。仅SSL-VPN 需要选这个参数。
+        :param _MaxConnection: SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
         :type MaxConnection: int
         """
         self._VpcId = None
@@ -42852,15 +42852,15 @@ class VpnGateway(AbstractModel):
         :type VpcId: str
         :param _VpnGatewayName: 网关实例名称。
         :type VpnGatewayName: str
-        :param _Type: 网关实例类型：'IPSEC', 'SSL','CCN'。
+        :param _Type: 网关实例类型：'IPSEC', 'SSL','CCN','SSL_CCN'。
         :type Type: str
-        :param _State: 网关实例状态， 'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中。
+        :param _State: 网关实例状态， 'PENDING'：生产中，'PENDING_ERROR'：生产失败，'DELETING'：删除中，'DELETING_ERROR'：删除失败，'AVAILABLE'：运行中。
         :type State: str
         :param _PublicIpAddress: 网关公网IP。
         :type PublicIpAddress: str
         :param _RenewFlag: 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费，'NOT_NOTIFY_AND_NOT_RENEW'：到期不续费。
         :type RenewFlag: str
-        :param _InstanceChargeType: 网关付费类型：POSTPAID_BY_HOUR：按小时后付费，PREPAID：包年包月预付费，
+        :param _InstanceChargeType: 网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。
         :type InstanceChargeType: str
         :param _InternetMaxBandwidthOut: 网关出带宽。
         :type InternetMaxBandwidthOut: int
@@ -42872,17 +42872,17 @@ class VpnGateway(AbstractModel):
         :type IsAddressBlocked: bool
         :param _NewPurchasePlan: 计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。
         :type NewPurchasePlan: str
-        :param _RestrictState: 网关计费装，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
+        :param _RestrictState: 网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
         :type RestrictState: str
-        :param _Zone: 可用区，如：ap-guangzhou-2
+        :param _Zone: 可用区，如：ap-guangzhou-2。
         :type Zone: str
-        :param _VpnGatewayQuotaSet: 网关带宽配额信息
+        :param _VpnGatewayQuotaSet: 网关带宽配额信息。
         :type VpnGatewayQuotaSet: list of VpnGatewayQuota
-        :param _Version: 网关实例版本信息
+        :param _Version: 网关实例版本信息。
         :type Version: str
-        :param _NetworkInstanceId: Type值为CCN时，该值表示云联网实例ID
+        :param _NetworkInstanceId: Type值为CCN时，该值表示云联网实例ID。
         :type NetworkInstanceId: str
-        :param _CdcId: CDC 实例ID
+        :param _CdcId: CDC 实例ID。
         :type CdcId: str
         :param _MaxConnection: SSL-VPN 客户端连接数。
         :type MaxConnection: int

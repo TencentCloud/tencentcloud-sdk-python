@@ -1671,10 +1671,13 @@ class CommonMixInputParam(AbstractModel):
         :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
         :param _CropParams: 输入流裁剪参数。
         :type CropParams: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`
+        :param _PortraitSegmentParams: 抠图参数。
+        :type PortraitSegmentParams: :class:`tencentcloud.live.v20180801.models.MixPortraitSegmentParams`
         """
         self._InputStreamName = None
         self._LayoutParams = None
         self._CropParams = None
+        self._PortraitSegmentParams = None
 
     @property
     def InputStreamName(self):
@@ -1700,6 +1703,14 @@ class CommonMixInputParam(AbstractModel):
     def CropParams(self, CropParams):
         self._CropParams = CropParams
 
+    @property
+    def PortraitSegmentParams(self):
+        return self._PortraitSegmentParams
+
+    @PortraitSegmentParams.setter
+    def PortraitSegmentParams(self, PortraitSegmentParams):
+        self._PortraitSegmentParams = PortraitSegmentParams
+
 
     def _deserialize(self, params):
         self._InputStreamName = params.get("InputStreamName")
@@ -1709,6 +1720,9 @@ class CommonMixInputParam(AbstractModel):
         if params.get("CropParams") is not None:
             self._CropParams = CommonMixCropParams()
             self._CropParams._deserialize(params.get("CropParams"))
+        if params.get("PortraitSegmentParams") is not None:
+            self._PortraitSegmentParams = MixPortraitSegmentParams()
+            self._PortraitSegmentParams._deserialize(params.get("PortraitSegmentParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3399,6 +3413,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :param _Mp3Param: Mp3录制参数，开启Mp3录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param _RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
+如果为false，则录制水印流或转码流；如果为true，则录制原始流。
         :type RemoveWatermark: bool
         :param _FlvSpecialParam: FLV 录制特殊参数。
         :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
@@ -17940,6 +17955,47 @@ class MPSResult(AbstractModel):
     def _deserialize(self, params):
         self._AiAsrResults = params.get("AiAsrResults")
         self._AiOcrResults = params.get("AiOcrResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MixPortraitSegmentParams(AbstractModel):
+    """混流抠图参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Color: 抠图背景颜色，
+常用的颜色有：
+红色：0xcc0033。
+黄色：0xcc9900。
+绿色：0xcccc33。
+蓝色：0x99CCFF。
+黑色：0x000000。
+白色：0xFFFFFF。
+灰色：0x999999。
+        :type Color: str
+        """
+        self._Color = None
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+
+    def _deserialize(self, params):
+        self._Color = params.get("Color")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

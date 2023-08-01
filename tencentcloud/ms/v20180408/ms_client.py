@@ -121,7 +121,7 @@ class MsClient(AbstractClient):
     def CreateOrderInstance(self, request):
         """该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
         订单类型有：免费试用、按年收费、按次收费。
-        应用加固支持的平台类型有：android安卓加固 、ios源码混淆 、sdk加固、applet小程序加固。
+        应用加固支持的平台类型有：android加固 、ios源码混淆 、sdk加固、applet小程序加固。
 
         :param request: Request instance for CreateOrderInstance.
         :type request: :class:`tencentcloud.ms.v20180408.models.CreateOrderInstanceRequest`

@@ -1283,7 +1283,7 @@ class CcInfo(AbstractModel):
 
 
 class Component(AbstractModel):
-    """模板控件信息
+    """模板/流程中控件信息，可以是填充控件或签署控件
 
     """
 
@@ -1311,7 +1311,8 @@ SIGN_LEGAL_PERSON_SEAL - 企业法定代表人控件。
 
 表单域的控件不能作为印章和签名控件
         :type ComponentType: str
-        :param _FileIndex: 控件所属文件的序号（取值为：0-N）。目前单文件的情况下，值是0
+        :param _FileIndex: 控件所属文件的序号（取值为：0-N）。
+目前单文件的情况下，值是0
         :type FileIndex: int
         :param _ComponentHeight: 参数控件高度，单位pt
         :type ComponentHeight: float
@@ -1323,13 +1324,15 @@ SIGN_LEGAL_PERSON_SEAL - 企业法定代表人控件。
         :type ComponentPosX: float
         :param _ComponentPosY: 参数控件Y位置，单位pt
         :type ComponentPosY: float
-        :param _ComponentId: 查询时返回控件唯一Id。使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
+        :param _ComponentId: 控件唯一ID。
+或使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
         :type ComponentId: str
-        :param _ComponentName: 查询时返回控件名。使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
+        :param _ComponentName: 控件名。
+或使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
         :type ComponentName: str
-        :param _ComponentRequired: 是否必选，默认为false
+        :param _ComponentRequired: 是否必选，默认为false-非必选
         :type ComponentRequired: bool
-        :param _ComponentRecipientId: 控件关联的签署人ID
+        :param _ComponentRecipientId: 控件关联的参与方ID，对应Recipient结构体中的RecipientId
         :type ComponentRecipientId: str
         :param _ComponentExtra: 扩展参数：
 为JSON格式。
@@ -1361,7 +1364,7 @@ ComponentType为SIGN_SEAL类型时，支持以下参数：
 1.PageRanges：PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）
 参数样例："ComponentExtra":"{\"PageRanges\":[{\"BeginPage\":1,\"EndPage\":-1}]}"
         :type ComponentExtra: str
-        :param _IsFormType: 是否是表单域类型，默认不false-不是
+        :param _IsFormType: 是否是表单域类型，默认false-不是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsFormType: bool
         :param _ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
@@ -1447,7 +1450,7 @@ KEYWORD 关键字，使用ComponentId指定关键字
         :type GenerateMode: str
         :param _ComponentDateFontSize: 日期签署控件的字号，默认为 12
         :type ComponentDateFontSize: int
-        :param _ChannelComponentId: 第三方应用集成平台模板控件 id 标识
+        :param _ChannelComponentId: 第三方应用集成平台模板控件 ID 标识
         :type ChannelComponentId: str
         :param _OffsetX: 指定关键字时横坐标偏移量，单位pt
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1455,17 +1458,37 @@ KEYWORD 关键字，使用ComponentId指定关键字
         :param _OffsetY: 指定关键字时纵坐标偏移量，单位pt
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetY: float
-        :param _ChannelComponentSource: 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
+        :param _ChannelComponentSource: 第三方应用集成中子客企业控件来源。
+0-平台指定；
+1-用户自定义
         :type ChannelComponentSource: int
-        :param _KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
+        :param _KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。
+传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
         :type KeywordOrder: str
-        :param _KeywordPage: 指定关键字页码，可选参数，指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
+        :param _KeywordPage: 指定关键字页码。
+指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
         :type KeywordPage: int
-        :param _RelativeLocation: 关键字位置模式，Middle-居中，Below-正下方，Right-正右方，LowerRight-右上角，UpperRight-右下角。示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
+        :param _RelativeLocation: 关键字位置模式，
+Middle-居中，
+Below-正下方，
+Right-正右方，
+LowerRight-右上角，
+UpperRight-右下角。
+示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
         :type RelativeLocation: str
-        :param _KeywordIndexes: 关键字索引，可选参数，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。示例：[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
+        :param _KeywordIndexes: 关键字索引。
+如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。
+示例：[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
         :type KeywordIndexes: list of int
+        :param _LockComponentValue: 是否锁定控件值不允许编辑（嵌入式发起使用）
+<br/>默认false：不锁定控件值，允许在页面编辑控件值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockComponentValue: bool
+        :param _ForbidMoveAndDelete: 是否禁止移动和删除控件
+<br/>默认false，不禁止移动和删除控件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForbidMoveAndDelete: bool
         """
         self._ComponentType = None
         self._FileIndex = None
@@ -1491,6 +1514,8 @@ KEYWORD 关键字，使用ComponentId指定关键字
         self._KeywordPage = None
         self._RelativeLocation = None
         self._KeywordIndexes = None
+        self._LockComponentValue = None
+        self._ForbidMoveAndDelete = None
 
     @property
     def ComponentType(self):
@@ -1684,6 +1709,22 @@ KEYWORD 关键字，使用ComponentId指定关键字
     def KeywordIndexes(self, KeywordIndexes):
         self._KeywordIndexes = KeywordIndexes
 
+    @property
+    def LockComponentValue(self):
+        return self._LockComponentValue
+
+    @LockComponentValue.setter
+    def LockComponentValue(self, LockComponentValue):
+        self._LockComponentValue = LockComponentValue
+
+    @property
+    def ForbidMoveAndDelete(self):
+        return self._ForbidMoveAndDelete
+
+    @ForbidMoveAndDelete.setter
+    def ForbidMoveAndDelete(self, ForbidMoveAndDelete):
+        self._ForbidMoveAndDelete = ForbidMoveAndDelete
+
 
     def _deserialize(self, params):
         self._ComponentType = params.get("ComponentType")
@@ -1710,6 +1751,8 @@ KEYWORD 关键字，使用ComponentId指定关键字
         self._KeywordPage = params.get("KeywordPage")
         self._RelativeLocation = params.get("RelativeLocation")
         self._KeywordIndexes = params.get("KeywordIndexes")
+        self._LockComponentValue = params.get("LockComponentValue")
+        self._ForbidMoveAndDelete = params.get("ForbidMoveAndDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2290,7 +2333,8 @@ class CreateEmbedWebUrlRequest(AbstractModel):
 <br/>PREVIEW_SEAL_LIST：预览印章列表
 <br/>PREVIEW_SEAL_DETAIL：预览印章详情
 <br/>EXTEND_SERVICE：拓展服务
-
+<br/>PREVIEW_FLOW：预览合同
+<br/>PREVIEW_FLOW_DETAIL：查看合同详情
         :type EmbedType: str
         :param _BusinessId: WEB嵌入的业务资源ID
 <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
@@ -2299,12 +2343,15 @@ class CreateEmbedWebUrlRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Reviewer: 抄送方信息
         :type Reviewer: :class:`tencentcloud.ess.v20201111.models.ReviewerInfo`
+        :param _Option: 个性化参数
+        :type Option: :class:`tencentcloud.ess.v20201111.models.EmbedUrlOption`
         """
         self._Operator = None
         self._EmbedType = None
         self._BusinessId = None
         self._Agent = None
         self._Reviewer = None
+        self._Option = None
 
     @property
     def Operator(self):
@@ -2346,6 +2393,14 @@ class CreateEmbedWebUrlRequest(AbstractModel):
     def Reviewer(self, Reviewer):
         self._Reviewer = Reviewer
 
+    @property
+    def Option(self):
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -2359,6 +2414,9 @@ class CreateEmbedWebUrlRequest(AbstractModel):
         if params.get("Reviewer") is not None:
             self._Reviewer = ReviewerInfo()
             self._Reviewer._deserialize(params.get("Reviewer"))
+        if params.get("Option") is not None:
+            self._Option = EmbedUrlOption()
+            self._Option._deserialize(params.get("Option"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3295,6 +3353,160 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
         self._FlowGroupId = params.get("FlowGroupId")
         self._FlowIds = params.get("FlowIds")
         self._RequestId = params.get("RequestId")
+
+
+class CreateFlowOption(AbstractModel):
+    """创建合同个性化参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanEditFlow: 是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。
+<br/>true：允许编辑（默认），<br/>false：不允许编辑<br/>默认：false：不允许编辑
+        :type CanEditFlow: bool
+        :param _CanEditFormField: 是否允许编辑模版控件
+<br/>true:允许编辑模版控件信息
+<br/>false:不允许编辑模版控件信息
+<br/>默认false:不允许编辑模版控件信息
+        :type CanEditFormField: bool
+        :param _HideShowFlowName: 发起页面隐藏合同名称展示
+<br/>true:发起页面隐藏合同名称展示
+<br/>false:发起页面不隐藏合同名称展示
+<br/>默认false:发起页面不隐藏合同名称展示
+        :type HideShowFlowName: bool
+        :param _HideShowFlowType: 发起页面隐藏合同类型展示
+<br/>true:发起页面隐藏合同类型展示
+<br/>false:发起页面不隐藏合同类型展示
+<br/>默认false:发起页面不隐藏合同类型展示
+
+        :type HideShowFlowType: bool
+        :param _HideShowDeadline: 发起页面隐藏合同截止日期展示
+<br/>true:发起页面隐藏合同截止日期展示
+<br/>false:发起页面不隐藏合同截止日期展示
+<br/>默认false:发起页面不隐藏合同截止日期展示
+        :type HideShowDeadline: bool
+        :param _CanSkipAddApprover: 发起页面允许跳过添加签署人环节
+<br/>true:发起页面允许跳过添加签署人环节
+<br/>false:发起页面不允许跳过添加签署人环节
+<br/>默认false:发起页面不允许跳过添加签署人环节
+
+        :type CanSkipAddApprover: bool
+        :param _SkipUploadFile: 文件发起页面跳过文件上传步骤
+<br/>true:文件发起页面跳过文件上传步骤
+<br/>false:文件发起页面不跳过文件上传步骤
+<br/>默认false:文件发起页面不跳过文件上传步骤
+        :type SkipUploadFile: bool
+        :param _ForbidEditFillComponent: 禁止编辑填写控件
+<br/>true:禁止编辑填写控件
+<br/>false:允许编辑填写控件
+<br/>默认false:允许编辑填写控件
+        :type ForbidEditFillComponent: bool
+        :param _CustomCreateFlowDescription: 定制化发起合同弹窗的描述信息，描述信息最长500
+
+        :type CustomCreateFlowDescription: str
+        """
+        self._CanEditFlow = None
+        self._CanEditFormField = None
+        self._HideShowFlowName = None
+        self._HideShowFlowType = None
+        self._HideShowDeadline = None
+        self._CanSkipAddApprover = None
+        self._SkipUploadFile = None
+        self._ForbidEditFillComponent = None
+        self._CustomCreateFlowDescription = None
+
+    @property
+    def CanEditFlow(self):
+        return self._CanEditFlow
+
+    @CanEditFlow.setter
+    def CanEditFlow(self, CanEditFlow):
+        self._CanEditFlow = CanEditFlow
+
+    @property
+    def CanEditFormField(self):
+        return self._CanEditFormField
+
+    @CanEditFormField.setter
+    def CanEditFormField(self, CanEditFormField):
+        self._CanEditFormField = CanEditFormField
+
+    @property
+    def HideShowFlowName(self):
+        return self._HideShowFlowName
+
+    @HideShowFlowName.setter
+    def HideShowFlowName(self, HideShowFlowName):
+        self._HideShowFlowName = HideShowFlowName
+
+    @property
+    def HideShowFlowType(self):
+        return self._HideShowFlowType
+
+    @HideShowFlowType.setter
+    def HideShowFlowType(self, HideShowFlowType):
+        self._HideShowFlowType = HideShowFlowType
+
+    @property
+    def HideShowDeadline(self):
+        return self._HideShowDeadline
+
+    @HideShowDeadline.setter
+    def HideShowDeadline(self, HideShowDeadline):
+        self._HideShowDeadline = HideShowDeadline
+
+    @property
+    def CanSkipAddApprover(self):
+        return self._CanSkipAddApprover
+
+    @CanSkipAddApprover.setter
+    def CanSkipAddApprover(self, CanSkipAddApprover):
+        self._CanSkipAddApprover = CanSkipAddApprover
+
+    @property
+    def SkipUploadFile(self):
+        return self._SkipUploadFile
+
+    @SkipUploadFile.setter
+    def SkipUploadFile(self, SkipUploadFile):
+        self._SkipUploadFile = SkipUploadFile
+
+    @property
+    def ForbidEditFillComponent(self):
+        return self._ForbidEditFillComponent
+
+    @ForbidEditFillComponent.setter
+    def ForbidEditFillComponent(self, ForbidEditFillComponent):
+        self._ForbidEditFillComponent = ForbidEditFillComponent
+
+    @property
+    def CustomCreateFlowDescription(self):
+        return self._CustomCreateFlowDescription
+
+    @CustomCreateFlowDescription.setter
+    def CustomCreateFlowDescription(self, CustomCreateFlowDescription):
+        self._CustomCreateFlowDescription = CustomCreateFlowDescription
+
+
+    def _deserialize(self, params):
+        self._CanEditFlow = params.get("CanEditFlow")
+        self._CanEditFormField = params.get("CanEditFormField")
+        self._HideShowFlowName = params.get("HideShowFlowName")
+        self._HideShowFlowType = params.get("HideShowFlowType")
+        self._HideShowDeadline = params.get("HideShowDeadline")
+        self._CanSkipAddApprover = params.get("CanSkipAddApprover")
+        self._SkipUploadFile = params.get("SkipUploadFile")
+        self._ForbidEditFillComponent = params.get("ForbidEditFillComponent")
+        self._CustomCreateFlowDescription = params.get("CustomCreateFlowDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateFlowRemindsRequest(AbstractModel):
@@ -4730,17 +4942,54 @@ class CreatePrepareFlowRequest(AbstractModel):
         :type ResourceId: str
         :param _FlowName: 合同名称
         :type FlowName: str
-        :param _Unordered: 是否顺序签署(true:无序签,false:顺序签)
+        :param _Unordered: 是否顺序签署
+true:无序签
+false:顺序签
         :type Unordered: bool
         :param _Deadline: 签署流程的签署截止时间。
-值为unix时间戳,精确到秒,不传默认为当前时间一年后
+值为unix时间戳,精确到秒
+不传默认为当前时间一年后
         :type Deadline: int
-        :param _UserFlowTypeId: 用户自定义合同类型
+        :param _UserFlowTypeId: 用户自定义合同类型Id
+该id为电子签企业内的合同类型id
         :type UserFlowTypeId: str
         :param _Approvers: 签署流程参与者信息，最大限制50方
         :type Approvers: list of FlowCreateApprover
-        :param _IntelligentStatus: 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+        :param _IntelligentStatus: 打开智能添加填写区
+(默认开启，打开:"OPEN"
+ 关闭："CLOSE"
         :type IntelligentStatus: str
+        :param _ResourceType: 资源类型，
+1：文件，
+2：模板
+不传默认为1：文件
+目前仅支持文件
+        :type ResourceType: int
+        :param _Components: 发起方填写控件
+该类型控件由发起方完成填写
+        :type Components: :class:`tencentcloud.ess.v20201111.models.Component`
+        :param _FlowOption: 发起合同个性化参数
+用于满足创建及页面操作过程中的个性化要求
+具体定制化内容详见数据接口说明
+        :type FlowOption: :class:`tencentcloud.ess.v20201111.models.CreateFlowOption`
+        :param _NeedSignReview: 是否开启发起方签署审核
+true:开启发起方签署审核
+false:不开启发起方签署审核
+默认false:不开启发起方签署审核
+        :type NeedSignReview: bool
+        :param _NeedCreateReview: 开启发起方发起合同审核
+true:开启发起方发起合同审核
+false:不开启发起方发起合同审核
+默认false:不开启发起方发起合同审核
+        :type NeedCreateReview: bool
+        :param _UserData: 用户自定义参数
+        :type UserData: str
+        :param _FlowId: 合同id,用于通过已web页面发起的合同id快速生成一个web发起合同链接
+        :type FlowId: str
+        :param _FlowType: 合同类型名称
+该字段用于客户自定义合同类型
+建议使用时指定合同类型，便于之后合同分类以及查看
+        :type FlowType: str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
@@ -4752,6 +5001,14 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._UserFlowTypeId = None
         self._Approvers = None
         self._IntelligentStatus = None
+        self._ResourceType = None
+        self._Components = None
+        self._FlowOption = None
+        self._NeedSignReview = None
+        self._NeedCreateReview = None
+        self._UserData = None
+        self._FlowId = None
+        self._FlowType = None
         self._Agent = None
 
     @property
@@ -4819,6 +5076,70 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._IntelligentStatus = IntelligentStatus
 
     @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def FlowOption(self):
+        return self._FlowOption
+
+    @FlowOption.setter
+    def FlowOption(self, FlowOption):
+        self._FlowOption = FlowOption
+
+    @property
+    def NeedSignReview(self):
+        return self._NeedSignReview
+
+    @NeedSignReview.setter
+    def NeedSignReview(self, NeedSignReview):
+        self._NeedSignReview = NeedSignReview
+
+    @property
+    def NeedCreateReview(self):
+        return self._NeedCreateReview
+
+    @NeedCreateReview.setter
+    def NeedCreateReview(self, NeedCreateReview):
+        self._NeedCreateReview = NeedCreateReview
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowType(self):
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
     def Agent(self):
         return self._Agent
 
@@ -4843,6 +5164,18 @@ class CreatePrepareFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Approvers.append(obj)
         self._IntelligentStatus = params.get("IntelligentStatus")
+        self._ResourceType = params.get("ResourceType")
+        if params.get("Components") is not None:
+            self._Components = Component()
+            self._Components._deserialize(params.get("Components"))
+        if params.get("FlowOption") is not None:
+            self._FlowOption = CreateFlowOption()
+            self._FlowOption._deserialize(params.get("FlowOption"))
+        self._NeedSignReview = params.get("NeedSignReview")
+        self._NeedCreateReview = params.get("NeedCreateReview")
+        self._UserData = params.get("UserData")
+        self._FlowId = params.get("FlowId")
+        self._FlowType = params.get("FlowType")
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
@@ -7553,7 +7886,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
         r"""
         :param _Operator: 调用方员工/经办人信息
 UserId 必填，在企业控制台组织架构中可以查到员工的UserId
-注：请保证对应
+注：请保证员工有相关的角色权限
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _Agent: 代理相关应用信息
 如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -9012,6 +9345,57 @@ class DisableUserAutoSignResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EmbedUrlOption(AbstractModel):
+    """个性化参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShowFlowDetailComponent: 合同详情预览，允许展示控件信息
+<br/>true：允许在合同详情页展示控件
+<br/>false：不允许在合同详情页展示控件
+<br/>默认false，合同详情页不展示控件
+        :type ShowFlowDetailComponent: bool
+        :param _ShowTemplateComponent: 模版预览，允许展示模版控件信息
+<br/>true：允许在模版预览页展示控件
+<br/>false：不允许在模版预览页展示控件
+<br/>默认false，模版预览页不展示控件
+        :type ShowTemplateComponent: bool
+        """
+        self._ShowFlowDetailComponent = None
+        self._ShowTemplateComponent = None
+
+    @property
+    def ShowFlowDetailComponent(self):
+        return self._ShowFlowDetailComponent
+
+    @ShowFlowDetailComponent.setter
+    def ShowFlowDetailComponent(self, ShowFlowDetailComponent):
+        self._ShowFlowDetailComponent = ShowFlowDetailComponent
+
+    @property
+    def ShowTemplateComponent(self):
+        return self._ShowTemplateComponent
+
+    @ShowTemplateComponent.setter
+    def ShowTemplateComponent(self, ShowTemplateComponent):
+        self._ShowTemplateComponent = ShowTemplateComponent
+
+
+    def _deserialize(self, params):
+        self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
+        self._ShowTemplateComponent = params.get("ShowTemplateComponent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExtendAuthInfo(AbstractModel):
     """授权服务信息
 
@@ -9382,13 +9766,13 @@ class FileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 文件Id
+        :param _FileId: 文件ID
         :type FileId: str
         :param _FileName: 文件名
         :type FileName: str
         :param _FileSize: 文件大小，单位为Byte
         :type FileSize: int
-        :param _CreatedOn: 文件上传时间，10位时间戳（精确到秒）
+        :param _CreatedOn: 文件上传时间，格式为Unix标准时间戳（秒）
         :type CreatedOn: int
         """
         self._FileId = None
@@ -9493,8 +9877,8 @@ class FileUrl(AbstractModel):
 class FillApproverInfo(AbstractModel):
     """补充签署人信息
     - RecipientId 必须指定
-    -  通过企业自定义账号ID补充签署人时，ApproverSource 和 CustomUserId 必填
-    - 通过二要素（姓名/手机号）补充签署人时，ApproverName 和 ApproverMobile 必填
+    -  通过企业自定义账号ID补充签署人时，ApproverSource 和 CustomUserId 必填，ApproverSource取值：WEWORKAPP
+    - 通过二要素（姓名/手机号）补充签署人时，ApproverName 和 ApproverMobile 必填，ApproverSource设置为空
 
     """
 
@@ -9504,9 +9888,10 @@ class FillApproverInfo(AbstractModel):
         :type RecipientId: str
         :param _ApproverSource: 签署人来源
 WEWORKAPP: 企业微信
+<br/>仅【企微或签】时指定WEWORKAPP
         :type ApproverSource: str
         :param _CustomUserId: 企业自定义账号ID
-WEWORKAPP场景下指企业自有应用获取企微明文的userid
+<br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企微明文的userid
         :type CustomUserId: str
         :param _ApproverName: 补充签署人姓名
         :type ApproverName: str
@@ -10165,11 +10550,17 @@ class FlowCreateApprover(AbstractModel):
 3：企业静默签署
 注：类型为3（企业静默签署）时，会默认完成该签署方的签署。静默签署仅进行盖章操作，不能是手写签名。
         :type ApproverType: int
-        :param _OrganizationName: 如果签署方为企业，需要填入企业全称
+        :param _OrganizationName: 签署人企业名称
+<br/>当approverType=1 或 approverType=3时，必须指定
+
+
         :type OrganizationName: str
         :param _ApproverName: 签署方经办人姓名
+<br/>在未指定签署人电子签UserId情况下，为必填参数
         :type ApproverName: str
         :param _ApproverMobile: 签署方经办人手机号码
+<br/>在未指定签署人电子签UserId情况下，为必填参数
+
         :type ApproverMobile: str
         :param _ApproverIdCardType: 签署方经办人证件类型ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
@@ -10178,22 +10569,35 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :param _ApproverIdCardNumber: 签署方经办人证件号码
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中的参与方ID
+<br/>模版发起合同时，该参数为必填项
+<br/>文件发起合同是，该参数无序传值
+
         :type RecipientId: str
         :param _VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
         :type VerifyChannel: list of str
-        :param _NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
+        :param _NotifyType: 是否发送短信
+<br/>sms--短信通知
+<br/>none--不通知
+<br/>默认为sms
+<br/>发起方=签署方时不发送短信
         :type NotifyType: str
         :param _IsFullText: 合同强制需要阅读全文，无需传此参数
         :type IsFullText: bool
         :param _PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
-        :param _UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
+        :param _UserId: 签署方经办人的电子签用户ID
+<br/>当未指定签署人姓名+手机号的情况下，该字段毕传
+
         :type UserId: str
         :param _Required: 当前只支持true，默认为true
         :type Required: bool
-        :param _ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
+        :param _ApproverSource: 签署人用户来源
+<br/>企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
-        :param _CustomApproverTag: 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
+        :param _CustomApproverTag: 企业签署方或签标识，客户自定义，64位长度
+<br>用于发起含有或签签署人的合同。或签参与人必须有此字段。
+<br/>合同内不同或签参与人CustomApproverTag需要保证唯一。
+<br/>如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
         :type CustomApproverTag: str
         :param _RegisterInfo: 快速注册相关信息，目前暂未开放！
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
@@ -10205,11 +10609,16 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 - 发起流程时系统自动补充
 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
         :type SignId: str
-        :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。
+        :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批
+<br>true 则为需要
+<br/>false,无序企业内部审批（默认）
+<br/>为个人签署方时则由发起方企业审核。
         :type ApproverNeedSignReview: bool
         :param _SignComponents: 签署人签署控件
+<br/>文件发起时，可通过该参数为签署人指定签署控件类型以及位置
         :type SignComponents: list of Component
         :param _Components: 签署人填写控件
+<br/>文件发起时，可通过该参数为签署人指定填写控件类型以及位置
         :type Components: list of Component
         :param _ComponentLimitType: 签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
 	HANDWRITE – 手写签名
@@ -12220,9 +12629,9 @@ class PdfVerifyResult(AbstractModel):
         :type SignAlgorithm: str
         :param _CertSn: 签名证书序列号
         :type CertSn: str
-        :param _CertNotBefore: 证书起始时间戳，单位秒
+        :param _CertNotBefore: 证书起始时间戳，单位毫秒
         :type CertNotBefore: int
-        :param _CertNotAfter: 证书过期时间戳，单位秒
+        :param _CertNotAfter: 证书过期时间戳，单位毫秒
         :type CertNotAfter: int
         :param _ComponentPosX: 签名域横坐标，单位pt
         :type ComponentPosX: float
@@ -12379,37 +12788,47 @@ class PdfVerifyResult(AbstractModel):
 
 
 class Recipient(AbstractModel):
-    """签署参与者信息
+    """流程中参与方的信息结构
 
     """
 
     def __init__(self):
         r"""
-        :param _RecipientId: 签署参与者ID
+        :param _RecipientId: 签署参与者ID，唯一标识
         :type RecipientId: str
-        :param _RecipientType: 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
+        :param _RecipientType: 参与者类型。
+默认为空。
+ENTERPRISE-企业；
+INDIVIDUAL-个人；
+PROMOTER-发起方
         :type RecipientType: str
         :param _Description: 描述信息
         :type Description: str
         :param _RoleName: 角色名称
         :type RoleName: str
-        :param _RequireValidation: 是否需要验证，默认为false
+        :param _RequireValidation: 是否需要验证，
+默认为false-不需要验证
         :type RequireValidation: bool
-        :param _RequireSign: 是否需要签署，默认为true
+        :param _RequireSign: 是否需要签署，
+默认为true-需要签署
         :type RequireSign: bool
-        :param _RoutingOrder: 添加序列，0～N
+        :param _RoutingOrder: 此参与方添加的顺序，从0～N
         :type RoutingOrder: int
-        :param _RequireDelivery: 是否需要发送，默认为true
+        :param _RequireDelivery: 是否需要发送，
+默认为true-需要发送
         :type RequireDelivery: bool
         :param _Email: 邮箱地址
         :type Email: str
         :param _Mobile: 电话号码
         :type Mobile: str
-        :param _UserId: 关联的用户ID
+        :param _UserId: 关联的用户ID，电子签系统的用户ID
         :type UserId: str
-        :param _DeliveryMethod: 发送方式。默认为EMAIL。EMAIL-邮件；MOBILE-手机短信；WECHAT-微信通知
+        :param _DeliveryMethod: 发送方式，默认为EMAIL。
+EMAIL-邮件；
+MOBILE-手机短信；
+WECHAT-微信通知
         :type DeliveryMethod: str
-        :param _RecipientExtra: 附属信息
+        :param _RecipientExtra: 参与方的一些附属信息，json格式
         :type RecipientExtra: str
         """
         self._RecipientId = None
@@ -12983,9 +13402,66 @@ class ReviewerInfo(AbstractModel):
 
 
 class SealInfo(AbstractModel):
-    """模板结构体中的印章信息
+    """模板中指定的印章信息
 
     """
+
+    def __init__(self):
+        r"""
+        :param _SealId: 印章ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SealId: str
+        :param _SealType: 印章类型。LEGAL_PERSON_SEAL: 法定代表人章；
+ORGANIZATIONSEAL：企业印章；
+OFFICIAL：企业公章；
+CONTRACT：合同专用章
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SealType: str
+        :param _SealName: 印章名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SealName: str
+        """
+        self._SealId = None
+        self._SealType = None
+        self._SealName = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+
+    def _deserialize(self, params):
+        self._SealId = params.get("SealId")
+        self._SealType = params.get("SealType")
+        self._SealName = params.get("SealName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SignQrCode(AbstractModel):
@@ -13680,48 +14156,63 @@ class SuccessUpdateStaffData(AbstractModel):
 
 
 class TemplateInfo(AbstractModel):
-    """企业模板的信息结构
+    """此结构体 (TemplateInfo) 用于描述模板的信息。
+
+    > **模板组成**
+    >
+    >  一个模板通常会包含以下结构信息
+    >- 模板基本信息
+    >- 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
+    >- 填写控件 Components
+    >- 签署控件 SignComponents
+    >- 生成模板的文件基础信息 FileInfos
 
     """
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID
+        :param _TemplateId: 模板ID，模板的唯一标识
         :type TemplateId: str
-        :param _TemplateName: 模板名字
+        :param _TemplateName: 模板名
         :type TemplateName: str
         :param _Description: 模板描述信息
         :type Description: str
         :param _DocumentResourceIds: 模板关联的资源ID列表
         :type DocumentResourceIds: list of str
-        :param _FileInfos: 返回的文件信息结构
+        :param _FileInfos: 生成模板的文件基础信息
         :type FileInfos: list of FileInfo
         :param _AttachmentResourceIds: 附件关联的资源ID
         :type AttachmentResourceIds: list of str
         :param _SignOrder: 签署顺序
+无序 -1
+有序为序列数字 0,1,2
         :type SignOrder: list of int
-        :param _Recipients: 签署参与者的信息
+        :param _Recipients: 模板中的签署参与方列表
         :type Recipients: list of Recipient
-        :param _Components: 模板信息结构
+        :param _Components: 模板的填充控件列表
         :type Components: list of Component
-        :param _SignComponents: 签署区模板信息结构
+        :param _SignComponents: 模板中的签署控件列表
         :type SignComponents: list of Component
-        :param _Status: 模板状态(-1:不可用；0:草稿态；1:正式态)
+        :param _Status: 模板状态
+-1:不可用
+0:草稿态
+1:正式态，可以正常使用
         :type Status: int
-        :param _Creator: 模板的创建人UserId
+        :param _Creator: 模板的创建者信息，电子签系统用户ID
         :type Creator: str
-        :param _CreatedOn: 模板创建的时间戳，单位秒
+        :param _CreatedOn: 模板创建的时间戳，格式为Unix标准时间戳（秒）
         :type CreatedOn: int
-        :param _Promoter: 发起人角色信息
+        :param _Promoter: 发起方参与信息Promoter
         :type Promoter: :class:`tencentcloud.ess.v20201111.models.Recipient`
-        :param _TemplateType: 模板类型
-取值：
+        :param _TemplateType: 模板类型：
 1  静默签,
 3  普通模板
         :type TemplateType: int
-        :param _Available: 模板可用状态，取值：1启用（默认），2停用
+        :param _Available: 模板可用状态：
+1 启用（默认）
+2 停用
         :type Available: int
-        :param _OrganizationId: 创建模板的机构id
+        :param _OrganizationId: 创建模板的企业ID，电子签的机构ID
         :type OrganizationId: str
         :param _PreviewUrl: 模板预览链接，有效时间5分钟
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13729,7 +14220,9 @@ class TemplateInfo(AbstractModel):
         :param _TemplateVersion: 模板版本。默认为空时，全数字字符，初始版本为yyyyMMdd001。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateVersion: str
-        :param _Published: 模板是否已发布。true-已发布；false-未发布
+        :param _Published: 模板是否已发布：
+true-已发布
+false-未发布
 注意：此字段可能返回 null，表示取不到有效值。
         :type Published: bool
         :param _TemplateSeals: 模板内部指定的印章列表
@@ -14125,7 +14618,7 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 操作人信息，userId必填
+        :param _Operator: 当前用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为YUFU；
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _Employees: 员工信息，不超过100个。
 根据UserId或OpenId更新员工，必填一个，优先UserId。

@@ -1107,6 +1107,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeKafkaConsumer(self, request):
+        """获取Kafka协议消费信息
+
+        :param request: Request instance for DescribeKafkaConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKafkaConsumer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKafkaConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeKafkaRecharges(self, request):
         """本接口用于获取Kafka数据订阅任务
 
@@ -1604,6 +1627,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyIndex", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKafkaConsumer(self, request):
+        """修改Kafka协议消费信息
+
+        :param request: Request instance for ModifyKafkaConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKafkaConsumer", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKafkaConsumerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -8757,6 +8757,9 @@ class NodeHardwareInfo(AbstractModel):
         :param _TradeVersion: 0表示老计费，1表示新计费
 注意：此字段可能返回 null，表示取不到有效值。
         :type TradeVersion: int
+        :param _ServicesStatus: 各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServicesStatus: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -8808,6 +8811,7 @@ class NodeHardwareInfo(AbstractModel):
         self._ServiceClient = None
         self._DisableApiTermination = None
         self._TradeVersion = None
+        self._ServicesStatus = None
 
     @property
     def AppId(self):
@@ -9209,6 +9213,14 @@ class NodeHardwareInfo(AbstractModel):
     def TradeVersion(self, TradeVersion):
         self._TradeVersion = TradeVersion
 
+    @property
+    def ServicesStatus(self):
+        return self._ServicesStatus
+
+    @ServicesStatus.setter
+    def ServicesStatus(self, ServicesStatus):
+        self._ServicesStatus = ServicesStatus
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -9275,6 +9287,7 @@ class NodeHardwareInfo(AbstractModel):
         self._ServiceClient = params.get("ServiceClient")
         self._DisableApiTermination = params.get("DisableApiTermination")
         self._TradeVersion = params.get("TradeVersion")
+        self._ServicesStatus = params.get("ServicesStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

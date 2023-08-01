@@ -1526,10 +1526,16 @@ class GetDevicesRequest(AbstractModel):
         :type PageNumber: int
         :param _Keyword: 搜索设备的关键字（ID或者设备名），为空时匹配所有设备
         :type Keyword: str
+        :param _DeviceType: DeviceType
+不传：返回所有设备；
+1:自有设备；
+2:三方设备
+        :type DeviceType: int
         """
         self._PageSize = None
         self._PageNumber = None
         self._Keyword = None
+        self._DeviceType = None
 
     @property
     def PageSize(self):
@@ -1555,11 +1561,20 @@ class GetDevicesRequest(AbstractModel):
     def Keyword(self, Keyword):
         self._Keyword = Keyword
 
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
 
     def _deserialize(self, params):
         self._PageSize = params.get("PageSize")
         self._PageNumber = params.get("PageNumber")
         self._Keyword = params.get("Keyword")
+        self._DeviceType = params.get("DeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

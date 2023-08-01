@@ -1376,7 +1376,7 @@ class CloseKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: CLS对应的topic标识
+        :param _FromTopicId: 日志主题ID
         :type FromTopicId: str
         """
         self._FromTopicId = None
@@ -1562,6 +1562,13 @@ class ConfigExtraInfo(AbstractModel):
         :param _TopicName: 日志主题name
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
+        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedConfig: str
         """
         self._ConfigExtraId = None
         self._Name = None
@@ -1582,6 +1589,7 @@ class ConfigExtraInfo(AbstractModel):
         self._LogsetId = None
         self._LogsetName = None
         self._TopicName = None
+        self._AdvancedConfig = None
 
     @property
     def ConfigExtraId(self):
@@ -1735,6 +1743,14 @@ class ConfigExtraInfo(AbstractModel):
     def TopicName(self, TopicName):
         self._TopicName = TopicName
 
+    @property
+    def AdvancedConfig(self):
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._ConfigExtraId = params.get("ConfigExtraId")
@@ -1769,6 +1785,7 @@ class ConfigExtraInfo(AbstractModel):
         self._LogsetId = params.get("LogsetId")
         self._LogsetName = params.get("LogsetName")
         self._TopicName = params.get("TopicName")
+        self._AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1816,6 +1833,13 @@ class ConfigInfo(AbstractModel):
         :param _UserDefineRule: 用户自定义解析字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineRule: str
+        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedConfig: str
         """
         self._ConfigId = None
         self._Name = None
@@ -1828,6 +1852,7 @@ class ConfigInfo(AbstractModel):
         self._UpdateTime = None
         self._CreateTime = None
         self._UserDefineRule = None
+        self._AdvancedConfig = None
 
     @property
     def ConfigId(self):
@@ -1917,6 +1942,14 @@ class ConfigInfo(AbstractModel):
     def UserDefineRule(self, UserDefineRule):
         self._UserDefineRule = UserDefineRule
 
+    @property
+    def AdvancedConfig(self):
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
@@ -1937,6 +1970,7 @@ class ConfigInfo(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._CreateTime = params.get("CreateTime")
         self._UserDefineRule = params.get("UserDefineRule")
+        self._AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2991,6 +3025,12 @@ class CreateConfigExtraRequest(AbstractModel):
         :type GroupId: str
         :param _GroupIds: 绑定的机器组id列表
         :type GroupIds: list of str
+        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+        :type AdvancedConfig: str
         """
         self._Name = None
         self._TopicId = None
@@ -3009,6 +3049,7 @@ class CreateConfigExtraRequest(AbstractModel):
         self._UserDefineRule = None
         self._GroupId = None
         self._GroupIds = None
+        self._AdvancedConfig = None
 
     @property
     def Name(self):
@@ -3146,6 +3187,14 @@ class CreateConfigExtraRequest(AbstractModel):
     def GroupIds(self, GroupIds):
         self._GroupIds = GroupIds
 
+    @property
+    def AdvancedConfig(self):
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3178,6 +3227,7 @@ class CreateConfigExtraRequest(AbstractModel):
         self._UserDefineRule = params.get("UserDefineRule")
         self._GroupId = params.get("GroupId")
         self._GroupIds = params.get("GroupIds")
+        self._AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3246,7 +3296,11 @@ class CreateConfigRequest(AbstractModel):
         :type ExcludePaths: list of ExcludePathInfo
         :param _UserDefineRule: 用户自定义采集规则，Json格式序列化的字符串
         :type UserDefineRule: str
-        :param _AdvancedConfig: 高级采集配置
+        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
         :type AdvancedConfig: str
         """
         self._Name = None
@@ -8218,6 +8272,100 @@ class DescribeIndexResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeKafkaConsumerRequest(AbstractModel):
+    """DescribeKafkaConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FromTopicId: 日志主题ID
+        :type FromTopicId: str
+        """
+        self._FromTopicId = None
+
+    @property
+    def FromTopicId(self):
+        return self._FromTopicId
+
+    @FromTopicId.setter
+    def FromTopicId(self, FromTopicId):
+        self._FromTopicId = FromTopicId
+
+
+    def _deserialize(self, params):
+        self._FromTopicId = params.get("FromTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKafkaConsumerResponse(AbstractModel):
+    """DescribeKafkaConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Kafka协议消费是否打开
+        :type Status: bool
+        :param _TopicID: KafkaConsumer 消费时使用的Topic参数
+        :type TopicID: str
+        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :type Compression: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._TopicID = None
+        self._Compression = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TopicID(self):
+        return self._TopicID
+
+    @TopicID.setter
+    def TopicID(self, TopicID):
+        self._TopicID = TopicID
+
+    @property
+    def Compression(self):
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._TopicID = params.get("TopicID")
+        self._Compression = params.get("Compression")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeKafkaRechargesRequest(AbstractModel):
     """DescribeKafkaRecharges请求参数结构体
 
@@ -12818,6 +12966,12 @@ class ModifyConfigExtraRequest(AbstractModel):
         :type LogsetName: str
         :param _TopicName: 日志主题name
         :type TopicName: str
+        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+        :type AdvancedConfig: str
         """
         self._ConfigExtraId = None
         self._Name = None
@@ -12836,6 +12990,7 @@ class ModifyConfigExtraRequest(AbstractModel):
         self._LogsetId = None
         self._LogsetName = None
         self._TopicName = None
+        self._AdvancedConfig = None
 
     @property
     def ConfigExtraId(self):
@@ -12973,6 +13128,14 @@ class ModifyConfigExtraRequest(AbstractModel):
     def TopicName(self, TopicName):
         self._TopicName = TopicName
 
+    @property
+    def AdvancedConfig(self):
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._ConfigExtraId = params.get("ConfigExtraId")
@@ -13005,6 +13168,7 @@ class ModifyConfigExtraRequest(AbstractModel):
         self._LogsetId = params.get("LogsetId")
         self._LogsetName = params.get("LogsetName")
         self._TopicName = params.get("TopicName")
+        self._AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13063,6 +13227,12 @@ class ModifyConfigRequest(AbstractModel):
         :type Output: str
         :param _UserDefineRule: 用户自定义解析字符串，Json格式序列化的字符串
         :type UserDefineRule: str
+        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+        :type AdvancedConfig: str
         """
         self._ConfigId = None
         self._Name = None
@@ -13072,6 +13242,7 @@ class ModifyConfigRequest(AbstractModel):
         self._ExcludePaths = None
         self._Output = None
         self._UserDefineRule = None
+        self._AdvancedConfig = None
 
     @property
     def ConfigId(self):
@@ -13137,6 +13308,14 @@ class ModifyConfigRequest(AbstractModel):
     def UserDefineRule(self, UserDefineRule):
         self._UserDefineRule = UserDefineRule
 
+    @property
+    def AdvancedConfig(self):
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
@@ -13154,6 +13333,7 @@ class ModifyConfigRequest(AbstractModel):
                 self._ExcludePaths.append(obj)
         self._Output = params.get("Output")
         self._UserDefineRule = params.get("UserDefineRule")
+        self._AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13606,6 +13786,76 @@ class ModifyIndexRequest(AbstractModel):
 
 class ModifyIndexResponse(AbstractModel):
     """ModifyIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyKafkaConsumerRequest(AbstractModel):
+    """ModifyKafkaConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FromTopicId: 日志主题ID
+        :type FromTopicId: str
+        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :type Compression: int
+        """
+        self._FromTopicId = None
+        self._Compression = None
+
+    @property
+    def FromTopicId(self):
+        return self._FromTopicId
+
+    @FromTopicId.setter
+    def FromTopicId(self, FromTopicId):
+        self._FromTopicId = FromTopicId
+
+    @property
+    def Compression(self):
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
+
+    def _deserialize(self, params):
+        self._FromTopicId = params.get("FromTopicId")
+        self._Compression = params.get("Compression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyKafkaConsumerResponse(AbstractModel):
+    """ModifyKafkaConsumer返回参数结构体
 
     """
 
@@ -14826,7 +15076,7 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: CLS控制台创建的TopicId
+        :param _FromTopicId: 日志主题ID
         :type FromTopicId: str
         :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
         :type Compression: int
@@ -14885,7 +15135,7 @@ class OpenKafkaConsumerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicID: 待消费TopicId
+        :param _TopicID: KafkaConsumer 消费时使用的Topic参数
         :type TopicID: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

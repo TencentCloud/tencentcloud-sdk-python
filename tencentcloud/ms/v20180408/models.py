@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AndroidAppInfo(AbstractModel):
-    """渠道合作安卓加固App信息
+    """渠道合作Android加固App信息
 
     """
 
@@ -37,14 +37,14 @@ d40cc11e4bddd643ecdf29cde729a12b
         :param _AppName: app名称，非必输
         :type AppName: str
         :param _AppPkgName: app的包名，本次操作的包名。
-当安卓是按年收费、免费试用加固时，在线加固和输出工具要求该字段必输，且与AndroidPlan.AppPkgName值相等。
+当Android是按年收费、免费试用加固时，在线加固和输出工具要求该字段必输，且与AndroidPlan.AppPkgName值相等。
         :type AppPkgName: str
         :param _AppFileName: app的文件名，非必输。
         :type AppFileName: str
         :param _AppVersion: app版本号，非必输。
         :type AppVersion: str
-        :param _AppType: 安卓app的文件类型，本次加固操作的应用类型 。
-安卓在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+        :param _AppType: Android app的文件类型，本次加固操作的应用类型 。
+Android在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
         :type AppType: str
         """
         self._AppMd5 = None
@@ -1871,7 +1871,7 @@ class CreateEncryptInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformType: 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :param _PlatformType: 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
         :type PlatformType: int
         :param _OrderType: 订单采购类型 1-免费试用 2-按年收费 3-按次收费
         :type OrderType: int
@@ -1879,9 +1879,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
         :type EncryptOpType: int
         :param _ResourceId: 本次加固使用的资源id
         :type ResourceId: str
-        :param _AndroidAppInfo: 渠道合作安卓加固App信息 
+        :param _AndroidAppInfo: 渠道合作android加固App信息 
         :type AndroidAppInfo: :class:`tencentcloud.ms.v20180408.models.AndroidAppInfo`
-        :param _AndroidPlan: 渠道合作安卓加固策略信息
+        :param _AndroidPlan: 渠道合作android加固策略信息
         :type AndroidPlan: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
         :param _AppletInfo: 小程序加固信息
         :type AppletInfo: :class:`tencentcloud.ms.v20180408.models.AppletInfo`
@@ -2019,12 +2019,12 @@ class CreateOrderInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformType: 平台类型枚举值：1-android安卓加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
+        :param _PlatformType: 平台类型枚举值：1-android加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
         :type PlatformType: int
         :param _OrderType: 订单采购类型 1-免费试用 ；2-按年收费 ；3-按次收费
         :type OrderType: int
         :param _AppPkgNameList: 代表应用包名列表，值为单个包名（例如：“a.b.xxx”）或多个包名用逗号隔开(例如：“a.b.xxx,b.c.xxx”)。
-当安卓按年收费加固或安卓免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
+当android按年收费加固或android免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
 
         :type AppPkgNameList: str
         """
@@ -2628,7 +2628,7 @@ class DescribeEncryptInstancesRequest(AbstractModel):
         :type OrderField: str
         :param _OrderDirection: 升序（asc）还是降序（desc），默认：desc。
         :type OrderDirection: str
-        :param _PlatformType: (条件过滤字段) 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :param _PlatformType: (条件过滤字段) 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
         :type PlatformType: int
         :param _OrderType: (条件过滤字段) 订单采购类型 1-免费试用 2-按年收费 3-按次收费
         :type OrderType: int
@@ -2640,9 +2640,9 @@ class DescribeEncryptInstancesRequest(AbstractModel):
         :type OrderId: str
         :param _ResourceId: (条件过滤字段) 查询与资源Id关联的任务
         :type ResourceId: str
-        :param _AppType: (条件过滤字段) 安卓应用类型：安卓-apk; 安卓-aab;
+        :param _AppType: (条件过滤字段) 应用类型：android-apk; android-aab;
         :type AppType: str
-        :param _AppPkgName: （条件过滤字段）安卓应用的包名
+        :param _AppPkgName: （条件过滤字段）应用的包名
         :type AppPkgName: str
         :param _EncryptState: 加固结果，
 0：正在排队；
@@ -2857,7 +2857,7 @@ class DescribeEncryptPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformType: 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :param _PlatformType: 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
         :type PlatformType: int
         :param _OrderType: 订单采购类型 1-免费试用 2-按年收费 3-按次收费
         :type OrderType: int
@@ -2865,9 +2865,9 @@ class DescribeEncryptPlanRequest(AbstractModel):
         :type EncryptOpType: int
         :param _ResourceId: 本次加固使用的资源id
         :type ResourceId: str
-        :param _AppPkgName: （条件过滤字段）安卓加固查询时，根据包名查询
+        :param _AppPkgName: （条件过滤字段）加固查询时，根据包名查询
         :type AppPkgName: str
-        :param _AppType: （条件过滤字段）安卓加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
+        :param _AppType: （条件过滤字段）加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
         :type AppType: str
         """
         self._PlatformType = None
@@ -2952,7 +2952,7 @@ class DescribeEncryptPlanResponse(AbstractModel):
         r"""
         :param _PlatformType: 平台类型整型值  
         :type PlatformType: int
-        :param _PlatformTypeDesc: 平台类型描述 1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :param _PlatformTypeDesc: 平台类型描述 1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
         :type PlatformTypeDesc: str
         :param _EncryptOpType: 1- 在线加固 2-输出工具加固
         :type EncryptOpType: int
@@ -2964,7 +2964,7 @@ class DescribeEncryptPlanResponse(AbstractModel):
         :type OrderTypeDesc: str
         :param _ResourceId: 资源id
         :type ResourceId: str
-        :param _AndroidPlan: 上次安卓加固策略
+        :param _AndroidPlan: 上次加固策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidPlan: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
         :param _AppletPlan: 上次小程序加固策略
@@ -3127,7 +3127,7 @@ class DescribeOrderInstancesRequest(AbstractModel):
         :type OrderField: str
         :param _OrderDirection: 升序（asc）还是降序（desc），默认：desc。
         :type OrderDirection: str
-        :param _PlatformType: （条件过滤字段）平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :param _PlatformType: （条件过滤字段）平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
         :type PlatformType: int
         :param _OrderType: （条件过滤字段）订单采购类型 1-免费试用 2-按年收费 3-按次收费
         :type OrderType: int
@@ -3139,7 +3139,7 @@ class DescribeOrderInstancesRequest(AbstractModel):
         :type OrderId: str
         :param _ResourceId: （条件过滤字段）资源ID
         :type ResourceId: str
-        :param _AppPkgName: （条件过滤字段）安卓包名，查询android安卓加固订单时使用
+        :param _AppPkgName: （条件过滤字段）包名，查询android加固订单时使用
         :type AppPkgName: str
         """
         self._PageNumber = None

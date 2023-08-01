@@ -2247,6 +2247,15 @@ class ClusterInstanceDetail(AbstractModel):
         :type InstanceStorage: int
         :param _InstanceRole: 实例角色
         :type InstanceRole: str
+        :param _MaintainStartTime: 执行开始时间(距离0点的秒数)	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainStartTime: int
+        :param _MaintainDuration: 持续的时间(单位：秒)	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainDuration: int
+        :param _MaintainWeekDays: 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainWeekDays: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -2257,6 +2266,9 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceMemory = None
         self._InstanceStorage = None
         self._InstanceRole = None
+        self._MaintainStartTime = None
+        self._MaintainDuration = None
+        self._MaintainWeekDays = None
 
     @property
     def InstanceId(self):
@@ -2330,6 +2342,30 @@ class ClusterInstanceDetail(AbstractModel):
     def InstanceRole(self, InstanceRole):
         self._InstanceRole = InstanceRole
 
+    @property
+    def MaintainStartTime(self):
+        return self._MaintainStartTime
+
+    @MaintainStartTime.setter
+    def MaintainStartTime(self, MaintainStartTime):
+        self._MaintainStartTime = MaintainStartTime
+
+    @property
+    def MaintainDuration(self):
+        return self._MaintainDuration
+
+    @MaintainDuration.setter
+    def MaintainDuration(self, MaintainDuration):
+        self._MaintainDuration = MaintainDuration
+
+    @property
+    def MaintainWeekDays(self):
+        return self._MaintainWeekDays
+
+    @MaintainWeekDays.setter
+    def MaintainWeekDays(self, MaintainWeekDays):
+        self._MaintainWeekDays = MaintainWeekDays
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2341,6 +2377,9 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceMemory = params.get("InstanceMemory")
         self._InstanceStorage = params.get("InstanceStorage")
         self._InstanceRole = params.get("InstanceRole")
+        self._MaintainStartTime = params.get("MaintainStartTime")
+        self._MaintainDuration = params.get("MaintainDuration")
+        self._MaintainWeekDays = params.get("MaintainWeekDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8328,6 +8367,8 @@ class DescribeAccountsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量
         :type Offset: int
+        :param _AccountRegular: 模糊匹配关键字(同时匹配AccountName和AccountHost，返回并集结果，支持正则)
+        :type AccountRegular: str
         """
         self._ClusterId = None
         self._AccountNames = None
@@ -8335,6 +8376,7 @@ class DescribeAccountsRequest(AbstractModel):
         self._Hosts = None
         self._Limit = None
         self._Offset = None
+        self._AccountRegular = None
 
     @property
     def ClusterId(self):
@@ -8384,6 +8426,14 @@ class DescribeAccountsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def AccountRegular(self):
+        return self._AccountRegular
+
+    @AccountRegular.setter
+    def AccountRegular(self, AccountRegular):
+        self._AccountRegular = AccountRegular
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -8392,6 +8442,7 @@ class DescribeAccountsRequest(AbstractModel):
         self._Hosts = params.get("Hosts")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._AccountRegular = params.get("AccountRegular")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21983,8 +22034,10 @@ class RollbackTableInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _OldTable: 旧表名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type OldTable: str
         :param _NewTable: 新表名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type NewTable: str
         """
         self._OldTable = None

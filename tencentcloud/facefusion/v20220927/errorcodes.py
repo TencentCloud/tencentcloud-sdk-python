@@ -29,6 +29,9 @@ FAILEDOPERATION_FACEFUSIONERROR = 'FailedOperation.FaceFusionError'
 # 人脸框不合法。
 FAILEDOPERATION_FACERECTINVALID = 'FailedOperation.FaceRectInvalid'
 
+# 人脸配准失败。
+FAILEDOPERATION_FACESHAPEFAILED = 'FailedOperation.FaceShapeFailed'
+
 # 人脸因太小被过滤，建议人脸分辨率不小于34*34。
 FAILEDOPERATION_FACESIZETOOSMALL = 'FailedOperation.FaceSizeTooSmall'
 
