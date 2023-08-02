@@ -2727,7 +2727,7 @@ class DescribeTrtcRoomUsageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 房间维度用量数据，csv文件格式。
+        :param _Data: 房间维度用量数据，csv文件格式，单位：秒。
         :type Data: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

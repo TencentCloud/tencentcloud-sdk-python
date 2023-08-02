@@ -2464,6 +2464,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenClusterReadOnlyInstanceGroupAccess(self, request):
+        """开启只读实例组接入
+
+        :param request: Request instance for OpenClusterReadOnlyInstanceGroupAccess.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterReadOnlyInstanceGroupAccessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterReadOnlyInstanceGroupAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClusterReadOnlyInstanceGroupAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClusterReadOnlyInstanceGroupAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenReadOnlyInstanceExclusiveAccess(self, request):
         """开通只读实例独有访问接入组
 

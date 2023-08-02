@@ -141,7 +141,7 @@ Android在线加固和输出工具加固必输，其值需等于“apk”或“a
 
 
 class AndroidPlan(AbstractModel):
-    """渠道合作安卓加固策略信息
+    """渠道合作Android加固策略信息
 
     """
 
@@ -150,13 +150,13 @@ class AndroidPlan(AbstractModel):
         :param _PlanId: 非必输字段，PlanId 是指本次加固使用的配置策略Id，可通过载入上次配置接口获取。其值非0时，代表引用对应的策略。
         :type PlanId: int
         :param _AppPkgName: 本次操作的包名。
-当收费模式是安卓按年收费和安卓免费试用的在线加固和输出工具加固时，要求该字段必输，且与AndroidAppInfo.AppPkgName值相等。
+当收费模式是android按年收费和android免费试用的在线加固和输出工具加固时，要求该字段必输，且与AndroidAppInfo.AppPkgName值相等。
         :type AppPkgName: str
-        :param _AppType: 安卓app的文件类型，本次加固操作的应用类型 。 
-安卓在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+        :param _AppType: android app的文件类型，本次加固操作的应用类型 。 
+android在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
 
         :type AppType: str
-        :param _EncryptParam: 安卓加固必输字段。
+        :param _EncryptParam: android加固必输字段。
 加固策略，json格式字符串。
 字段说明（0-关闭，1-开启）：
         "enable"=1 #DEX整体加固;
@@ -324,7 +324,7 @@ aab加固方案二
 
 
 class AndroidResult(AbstractModel):
-    """安卓加固结果
+    """Android加固结果
 
     """
 
@@ -338,7 +338,7 @@ class AndroidResult(AbstractModel):
         :type ResourceId: str
         :param _OpUin: 本次任务发起者
         :type OpUin: int
-        :param _AppType: 应用类型：安卓-apk; 安卓-aab;
+        :param _AppType: 应用类型：android-apk; android-aab;
         :type AppType: str
         :param _AppPkgName: 应用包名
         :type AppPkgName: str
@@ -362,35 +362,35 @@ class AndroidResult(AbstractModel):
         :type EndTime: str
         :param _CostTime: 加固耗时（秒单位）
         :type CostTime: int
-        :param _AppUrl: 在线加固-安卓应用原包下载链接
+        :param _AppUrl: 在线加固-android应用原包下载链接
         :type AppUrl: str
-        :param _AppMd5: 在线加固-安卓应用文件MD5算法值
+        :param _AppMd5: 在线加固-android应用文件MD5算法值
         :type AppMd5: str
-        :param _AppName: 在线加固-安卓应用应用名称
+        :param _AppName: 在线加固-android应用应用名称
         :type AppName: str
-        :param _AppVersion: 在线加固-安卓应用版本；
+        :param _AppVersion: 在线加固-android应用版本；
         :type AppVersion: str
-        :param _AppSize: 在线加固-安卓应用大小
+        :param _AppSize: 在线加固-android应用大小
         :type AppSize: int
-        :param _OnlineToolVersion: 在线加固-安卓加固-腾讯云应用加固工具版本
+        :param _OnlineToolVersion: 在线加固-android加固-腾讯云应用加固工具版本
         :type OnlineToolVersion: str
-        :param _EncryptAppMd5: 在线加固-安卓加固，加固成功后文件md5算法值
+        :param _EncryptAppMd5: 在线加固-android加固，加固成功后文件md5算法值
         :type EncryptAppMd5: str
-        :param _EncryptAppSize: 在线加固-安卓加固，加固成功后应用大小
+        :param _EncryptAppSize: 在线加固-android加固，加固成功后应用大小
         :type EncryptAppSize: int
-        :param _EncryptPkgUrl: 在线加固-安卓加固，加固包下载链接。
+        :param _EncryptPkgUrl: 在线加固-android加固，加固包下载链接。
         :type EncryptPkgUrl: str
-        :param _OutputToolVersion: 输出工具-安卓加固-腾讯云输出工具版本
+        :param _OutputToolVersion: 输出工具-android加固-腾讯云输出工具版本
         :type OutputToolVersion: str
-        :param _OutputToolSize: 输出工具-安卓加固-工具大小
+        :param _OutputToolSize: 输出工具-android加固-工具大小
         :type OutputToolSize: int
-        :param _ToolOutputTime: 输出工具-安卓加固-工具输出时间
+        :param _ToolOutputTime: 输出工具-android加固-工具输出时间
         :type ToolOutputTime: str
-        :param _ToolExpireTime: 输出工具-安卓加固-工具到期时间
+        :param _ToolExpireTime: 输出工具-android加固-工具到期时间
         :type ToolExpireTime: str
-        :param _OutputToolUrl: 输出工具-安卓加固-输出工具下载链接
+        :param _OutputToolUrl: 输出工具-android加固-输出工具下载链接
         :type OutputToolUrl: str
-        :param _AndroidPlan: 本次安卓加固策略信息
+        :param _AndroidPlan: 本次android加固策略信息
         :type AndroidPlan: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
         """
         self._ResultId = None
@@ -4158,9 +4158,9 @@ class EncryptResults(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformType: 平台类型枚举值  1-android安卓加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+        :param _PlatformType: 平台类型枚举值  1-android加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
         :type PlatformType: int
-        :param _PlatformDesc: 平台类型描述  1-android安卓加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+        :param _PlatformDesc: 平台类型描述  1-android加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
         :type PlatformDesc: str
         :param _OrderType: 订单采购类型枚举值， 1-免费试用 2-按年收费 3-按次收费
         :type OrderType: int
@@ -4174,7 +4174,7 @@ class EncryptResults(AbstractModel):
         :type ResourceId: str
         :param _OrderId: 与当前任务关联的订单Id
         :type OrderId: str
-        :param _AndroidResult: 对应PlatformType平台类型值   1-android安卓加固结果
+        :param _AndroidResult: 对应PlatformType平台类型值   1-android加固结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidResult: :class:`tencentcloud.ms.v20180408.models.AndroidResult`
         :param _IOSResult: 对应PlatformType平台类型值   2-ios源码混淆加固结果
@@ -4507,13 +4507,13 @@ class Orders(AbstractModel):
         :type OrderId: str
         :param _PlatformType: 平台类型整型值 
         :type PlatformType: int
-        :param _PlatformTypeDesc: 平台类型描述：  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :param _PlatformTypeDesc: 平台类型描述：  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
         :type PlatformTypeDesc: str
         :param _OrderType: 订单采购类型整型值
         :type OrderType: int
         :param _OrderTypeDesc: 订单采购类型描述： 1-免费试用 2-按年收费 3-按次收费
         :type OrderTypeDesc: str
-        :param _AppPkgName: 安卓包年收费加固的包名
+        :param _AppPkgName: android包年收费加固的包名
         :type AppPkgName: str
         :param _ResourceId: 资源号
         :type ResourceId: str

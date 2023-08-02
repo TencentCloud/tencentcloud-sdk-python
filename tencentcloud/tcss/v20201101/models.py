@@ -54786,7 +54786,7 @@ class SoftQuotaDayInfo(AbstractModel):
         r"""
         :param _PayTime: 扣费时间
         :type PayTime: str
-        :param _CoresCnt: 计费核数
+        :param _CoresCnt: 计费核数(已废弃)
         :type CoresCnt: int
         """
         self._PayTime = None

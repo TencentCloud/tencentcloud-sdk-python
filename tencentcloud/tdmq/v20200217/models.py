@@ -1566,6 +1566,9 @@ filterType = 2表示用户使用 bindingKey 过滤。
         :param _NotifyContentFormat: 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 protocol 是 queue，则取值必须为 SIMPLIFIED。如果 protocol 是 HTTP，两个值均可以，默认值是 JSON。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyContentFormat: str
+        :param _TopicName: 订阅所属的主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
         """
         self._SubscriptionName = None
         self._SubscriptionId = None
@@ -1579,6 +1582,7 @@ filterType = 2表示用户使用 bindingKey 过滤。
         self._Protocol = None
         self._NotifyStrategy = None
         self._NotifyContentFormat = None
+        self._TopicName = None
 
     @property
     def SubscriptionName(self):
@@ -1676,6 +1680,14 @@ filterType = 2表示用户使用 bindingKey 过滤。
     def NotifyContentFormat(self, NotifyContentFormat):
         self._NotifyContentFormat = NotifyContentFormat
 
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
 
     def _deserialize(self, params):
         self._SubscriptionName = params.get("SubscriptionName")
@@ -1690,6 +1702,7 @@ filterType = 2表示用户使用 bindingKey 过滤。
         self._Protocol = params.get("Protocol")
         self._NotifyStrategy = params.get("NotifyStrategy")
         self._NotifyContentFormat = params.get("NotifyContentFormat")
+        self._TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1757,6 +1770,9 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         :param _BrokerType: 0表示pulsar，1表示rocketmq
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerType: int
+        :param _SubscriptionCount: 订阅数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionCount: int
         """
         self._TopicId = None
         self._TopicName = None
@@ -1774,6 +1790,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         self._NamespaceName = None
         self._Status = None
         self._BrokerType = None
+        self._SubscriptionCount = None
 
     @property
     def TopicId(self):
@@ -1903,6 +1920,14 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     def BrokerType(self, BrokerType):
         self._BrokerType = BrokerType
 
+    @property
+    def SubscriptionCount(self):
+        return self._SubscriptionCount
+
+    @SubscriptionCount.setter
+    def SubscriptionCount(self, SubscriptionCount):
+        self._SubscriptionCount = SubscriptionCount
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -1926,6 +1951,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         self._NamespaceName = params.get("NamespaceName")
         self._Status = params.get("Status")
         self._BrokerType = params.get("BrokerType")
+        self._SubscriptionCount = params.get("SubscriptionCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5577,6 +5603,64 @@ class DeleteRocketMQTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRocketMQVipInstanceRequest(AbstractModel):
+    """DeleteRocketMQVipInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 实例的集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRocketMQVipInstanceResponse(AbstractModel):
+    """DeleteRocketMQVipInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRolesRequest(AbstractModel):
     """DeleteRoles请求参数结构体
 
@@ -6973,11 +7057,18 @@ class DescribeCmqSubscriptionDetailRequest(AbstractModel):
         :type Limit: int
         :param _SubscriptionName: 根据SubscriptionName进行模糊搜索
         :type SubscriptionName: str
+        :param _QueueName: 队列名称，订阅绑定的endpoint
+        :type QueueName: str
+        :param _QueryType: 查询类型。取值：（1）topic；（2）queue。
+默认值是topic。如果 queryType 是 topic，则查询主题下的订阅列表；如果 queryType 是 queue，则查询队列绑定的订阅列表。
+        :type QueryType: str
         """
         self._TopicName = None
         self._Offset = None
         self._Limit = None
         self._SubscriptionName = None
+        self._QueueName = None
+        self._QueryType = None
 
     @property
     def TopicName(self):
@@ -7011,12 +7102,30 @@ class DescribeCmqSubscriptionDetailRequest(AbstractModel):
     def SubscriptionName(self, SubscriptionName):
         self._SubscriptionName = SubscriptionName
 
+    @property
+    def QueueName(self):
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def QueryType(self):
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._SubscriptionName = params.get("SubscriptionName")
+        self._QueueName = params.get("QueueName")
+        self._QueryType = params.get("QueryType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

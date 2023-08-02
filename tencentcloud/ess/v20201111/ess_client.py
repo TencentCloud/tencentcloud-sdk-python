@@ -604,6 +604,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePersonAuthCertificateImage(self, request):
+        """本接口（CreatePersonAuthCertificateImage）用于创建个人用户证书证明图片
+
+        :param request: Request instance for CreatePersonAuthCertificateImage.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreatePersonAuthCertificateImageRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreatePersonAuthCertificateImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePersonAuthCertificateImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePersonAuthCertificateImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePrepareFlow(self, request):
         """创建快速发起流程
         <br/>适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.

@@ -512,8 +512,9 @@ class TrtcClient(AbstractClient):
     def DescribeTrtcRoomUsage(self, request):
         """查询TRTC音视频房间维度用量。
         - 单次只能查询一天数据，返回查询时间段内的汇总数据；通过多次查询可以查不同天数据。若查询跨天用量，由于统计延迟等原因，返回数据可能不够准确。
-        - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+        - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用，不可用于账单核对，如需对账请使用账号/应用维度用量API：DescribeTrtcUsage。
         - 默认接口请求频率限制：1次/15秒。
+        - 数据最早可查日期为2023年4月1日0点，最大可查范围近3个月。
 
         :param request: Request instance for DescribeTrtcRoomUsage.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcRoomUsageRequest`

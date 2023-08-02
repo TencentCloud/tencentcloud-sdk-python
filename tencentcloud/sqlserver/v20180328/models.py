@@ -6023,6 +6023,51 @@ class DealInfo(AbstractModel):
         
 
 
+class DealInstance(AbstractModel):
+    """订单号对应的资源ID列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: list of str
+        :param _DealName: 订单号
+        :type DealName: str
+        """
+        self._InstanceId = None
+        self._DealName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DealName = params.get("DealName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccountRequest(AbstractModel):
     """DeleteAccount请求参数结构体
 
@@ -9251,6 +9296,81 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
                 obj = Migration()
                 obj._deserialize(item)
                 self._IncrementalMigrationSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceByOrdersRequest(AbstractModel):
+    """DescribeInstanceByOrders请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealNames: 订单号集合
+        :type DealNames: list of str
+        """
+        self._DealNames = None
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+
+    def _deserialize(self, params):
+        self._DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceByOrdersResponse(AbstractModel):
+    """DescribeInstanceByOrders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealInstance: 资源ID集合
+        :type DealInstance: list of DealInstance
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealInstance = None
+        self._RequestId = None
+
+    @property
+    def DealInstance(self):
+        return self._DealInstance
+
+    @DealInstance.setter
+    def DealInstance(self, DealInstance):
+        self._DealInstance = DealInstance
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DealInstance") is not None:
+            self._DealInstance = []
+            for item in params.get("DealInstance"):
+                obj = DealInstance()
+                obj._deserialize(item)
+                self._DealInstance.append(obj)
         self._RequestId = params.get("RequestId")
 
 

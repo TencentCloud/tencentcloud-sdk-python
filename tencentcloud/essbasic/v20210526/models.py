@@ -2345,13 +2345,16 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type TemplateId: str
         :param _FlowName: 签署流程名称，最大长度200个字符。
         :type FlowName: str
-        :param _MaxFlowNum: 最大可发起签署流程份数，默认5份；发起签署流程数量超过此上限后，二维码自动失效。
+        :param _MaxFlowNum: 最大可发起签署流程份数
+<br/>默认5份
+<br/>备注：发起签署流程数量超过此上限后，二维码自动失效。
         :type MaxFlowNum: int
         :param _FlowEffectiveDay: 签署流程有效天数 默认7天 最高设置不超过30天
         :type FlowEffectiveDay: int
         :param _QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
         :type QrEffectiveDay: int
-        :param _Restrictions: 限制二维码用户条件
+        :param _Restrictions: 指定的签署二维码签署人
+<br/>指定后，只允许知道的人操作和签署
         :type Restrictions: list of ApproverRestriction
         :param _CallbackUrl: 回调地址，最大长度1000个字符
 不传默认使用第三方应用号配置的回调地址
@@ -6691,9 +6694,10 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _FlowIds: 合同(流程)编号数组，最多支持100个。
-（备注：该参数和合同组编号必须二选一, 如果填写FlowGroupId则忽略此FlowIds的入参）
+<br/>备注：该参数和合同组编号必须二选一, 如果填写FlowGroupId则忽略此FlowIds的入参
         :type FlowIds: list of str
-        :param _FlowGroupId: 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
+        :param _FlowGroupId: 合同组编号
+<br/>备注：该参数和合同(流程)编号数组必须二选一
         :type FlowGroupId: str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -7730,28 +7734,29 @@ class FlowApproverDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveName: str
         :param _ApproveStatus: 当前签署人的状态, 状态如下
-
-PENDING 待签署	
-FILLPENDING 待填写
-FILLACCEPT 填写完成	
-FILLREJECT 拒绝填写	
-WAITPICKUP 待领取	
-ACCEPT 已签署	
-REJECT 拒签 
-DEADLINE 过期没人处理 
-CANCEL 流程已撤回	
-FORWARD 已经转他人处理
-STOP 流程已终止	
-RELIEVED 解除协议（已解除）
+<br/>PENDING 待签署	
+<br/>FILLPENDING 待填写
+<br/>FILLACCEPT 填写完成	
+<br/>FILLREJECT 拒绝填写	
+<br/>WAITPICKUP 待领取	
+<br/>ACCEPT 已签署	
+<br/>REJECT 拒签 
+<br/>DEADLINE 过期没人处理 
+<br/>CANCEL 流程已撤回	
+<br/>FORWARD 已经转他人处理
+<br/>STOP 流程已终止	
+<br/>RELIEVED 解除协议（已解除）
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveStatus: str
-        :param _ApproveMessage: 签署人信息
+        :param _ApproveMessage: 签署人自定义信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveMessage: str
         :param _ApproveTime: 签署人签署时间戳，单位秒
         :type ApproveTime: int
-        :param _ApproveType: 参与者类型 (ORGANIZATION企业/PERSON个人)
+        :param _ApproveType: 参与者类型 
+<br/>ORGANIZATION：企业签署人
+<br/>PERSON：个人签署人
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveType: str
         """

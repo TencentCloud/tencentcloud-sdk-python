@@ -13800,6 +13800,8 @@ class DeployGroupRequest(AbstractModel):
         :type AgentProfileList: list of AgentProfile
         :param _WarmupSetting: 预热参数配置
         :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
+        :param _EnableBatchHealthCheck: 开启分批健康检查
+        :type EnableBatchHealthCheck: bool
         """
         self._GroupId = None
         self._PkgId = None
@@ -13820,6 +13822,7 @@ class DeployGroupRequest(AbstractModel):
         self._JdkVersion = None
         self._AgentProfileList = None
         self._WarmupSetting = None
+        self._EnableBatchHealthCheck = None
 
     @property
     def GroupId(self):
@@ -13973,6 +13976,14 @@ class DeployGroupRequest(AbstractModel):
     def WarmupSetting(self, WarmupSetting):
         self._WarmupSetting = WarmupSetting
 
+    @property
+    def EnableBatchHealthCheck(self):
+        return self._EnableBatchHealthCheck
+
+    @EnableBatchHealthCheck.setter
+    def EnableBatchHealthCheck(self, EnableBatchHealthCheck):
+        self._EnableBatchHealthCheck = EnableBatchHealthCheck
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -14003,6 +14014,7 @@ class DeployGroupRequest(AbstractModel):
         if params.get("WarmupSetting") is not None:
             self._WarmupSetting = WarmupSetting()
             self._WarmupSetting._deserialize(params.get("WarmupSetting"))
+        self._EnableBatchHealthCheck = params.get("EnableBatchHealthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43560,6 +43572,9 @@ class VmGroup(AbstractModel):
         :param _GatewayConfig: Envoy网关配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayConfig: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
+        :param _EnableBatchHealthCheck: 批次是否开启健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableBatchHealthCheck: bool
         """
         self._GroupId = None
         self._GroupName = None
@@ -43599,6 +43614,7 @@ class VmGroup(AbstractModel):
         self._AgentProfileList = None
         self._WarmupSetting = None
         self._GatewayConfig = None
+        self._EnableBatchHealthCheck = None
 
     @property
     def GroupId(self):
@@ -43904,6 +43920,14 @@ class VmGroup(AbstractModel):
     def GatewayConfig(self, GatewayConfig):
         self._GatewayConfig = GatewayConfig
 
+    @property
+    def EnableBatchHealthCheck(self):
+        return self._EnableBatchHealthCheck
+
+    @EnableBatchHealthCheck.setter
+    def EnableBatchHealthCheck(self, EnableBatchHealthCheck):
+        self._EnableBatchHealthCheck = EnableBatchHealthCheck
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -43955,6 +43979,7 @@ class VmGroup(AbstractModel):
         if params.get("GatewayConfig") is not None:
             self._GatewayConfig = GatewayConfig()
             self._GatewayConfig._deserialize(params.get("GatewayConfig"))
+        self._EnableBatchHealthCheck = params.get("EnableBatchHealthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

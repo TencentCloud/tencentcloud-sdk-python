@@ -18801,6 +18801,37 @@ class OpenClusterPasswordComplexityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OpenClusterReadOnlyInstanceGroupAccessRequest(AbstractModel):
+    """OpenClusterReadOnlyInstanceGroupAccess请求参数结构体
+
+    """
+
+
+class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
+    """OpenClusterReadOnlyInstanceGroupAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
     """OpenReadOnlyInstanceExclusiveAccess请求参数结构体
 

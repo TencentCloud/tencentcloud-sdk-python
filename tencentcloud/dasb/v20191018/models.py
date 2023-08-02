@@ -5047,6 +5047,9 @@ class Device(AbstractModel):
         :param _Department: 资产所属部门
 注意：此字段可能返回 null，表示取不到有效值。
         :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
+        :param _IpPortSet: 数据库资产的多节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpPortSet: list of str
         """
         self._Id = None
         self._InstanceId = None
@@ -5063,6 +5066,7 @@ class Device(AbstractModel):
         self._SubnetId = None
         self._Resource = None
         self._Department = None
+        self._IpPortSet = None
 
     @property
     def Id(self):
@@ -5184,6 +5188,14 @@ class Device(AbstractModel):
     def Department(self, Department):
         self._Department = Department
 
+    @property
+    def IpPortSet(self):
+        return self._IpPortSet
+
+    @IpPortSet.setter
+    def IpPortSet(self, IpPortSet):
+        self._IpPortSet = IpPortSet
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5210,6 +5222,7 @@ class Device(AbstractModel):
         if params.get("Department") is not None:
             self._Department = Department()
             self._Department._deserialize(params.get("Department"))
+        self._IpPortSet = params.get("IpPortSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5318,12 +5331,15 @@ class ExternalDevice(AbstractModel):
         :type Name: str
         :param _DepartmentId: 资产所属的部门ID
         :type DepartmentId: str
+        :param _IpPortSet: 资产多节点：字段ip和端口
+        :type IpPortSet: list of str
         """
         self._OsName = None
         self._Ip = None
         self._Port = None
         self._Name = None
         self._DepartmentId = None
+        self._IpPortSet = None
 
     @property
     def OsName(self):
@@ -5365,6 +5381,14 @@ class ExternalDevice(AbstractModel):
     def DepartmentId(self, DepartmentId):
         self._DepartmentId = DepartmentId
 
+    @property
+    def IpPortSet(self):
+        return self._IpPortSet
+
+    @IpPortSet.setter
+    def IpPortSet(self, IpPortSet):
+        self._IpPortSet = IpPortSet
+
 
     def _deserialize(self, params):
         self._OsName = params.get("OsName")
@@ -5372,6 +5396,7 @@ class ExternalDevice(AbstractModel):
         self._Port = params.get("Port")
         self._Name = params.get("Name")
         self._DepartmentId = params.get("DepartmentId")
+        self._IpPortSet = params.get("IpPortSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

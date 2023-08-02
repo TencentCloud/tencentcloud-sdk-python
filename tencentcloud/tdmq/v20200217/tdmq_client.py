@@ -785,6 +785,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRocketMQVipInstance(self, request):
+        """删除RocketMQ专享实例
+
+        :param request: Request instance for DeleteRocketMQVipInstance.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQVipInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQVipInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRocketMQVipInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRocketMQVipInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRoles(self, request):
         """删除角色，支持批量。
 

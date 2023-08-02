@@ -27,7 +27,9 @@ class MsClient(AbstractClient):
 
 
     def CancelEncryptTask(self, request):
-        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
+        """上错服务器了
+
+        该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
 
         :param request: Request instance for CancelEncryptTask.
         :type request: :class:`tencentcloud.ms.v20180408.models.CancelEncryptTaskRequest`
@@ -96,7 +98,9 @@ class MsClient(AbstractClient):
 
 
     def CreateEncryptInstance(self, request):
-        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
+        """上错服务器了
+
+        该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
 
         :param request: Request instance for CreateEncryptInstance.
         :type request: :class:`tencentcloud.ms.v20180408.models.CreateEncryptInstanceRequest`
@@ -119,7 +123,9 @@ class MsClient(AbstractClient):
 
 
     def CreateOrderInstance(self, request):
-        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
+        """上错服务器了
+
+        该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
         订单类型有：免费试用、按年收费、按次收费。
         应用加固支持的平台类型有：android加固 、ios源码混淆 、sdk加固、applet小程序加固。
 
@@ -259,7 +265,9 @@ class MsClient(AbstractClient):
 
 
     def DescribeEncryptInstances(self, request):
-        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
+        """上错服务器了
+
+        该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
 
         :param request: Request instance for DescribeEncryptInstances.
         :type request: :class:`tencentcloud.ms.v20180408.models.DescribeEncryptInstancesRequest`
@@ -305,7 +313,9 @@ class MsClient(AbstractClient):
 
 
     def DescribeOrderInstances(self, request):
-        """该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
+        """上错服务器了
+
+        该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
         接口功能点：
         1.支持多订单分页查询；
         2.支持唯一订单号精准匹配查询；
