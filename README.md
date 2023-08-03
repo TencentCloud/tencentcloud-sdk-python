@@ -249,11 +249,29 @@ cred = credential.CVMRoleCredential().get_credential()
 
 5. 凭证提供链
 
-腾讯云 Python SDK 提供了凭证提供链，它会默认以`环境变量->配置文件->实例角色`的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
+腾讯云 Python SDK 提供了凭证提供链，它会默认以`环境变量->配置文件->实例角色->TKE OIDC凭证`的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
 
+示例代码参考[credential_providers.py](examples/cvm/v20170312/credential_providers.py)
 ```python
+# 使用默认凭证提供链
 from tencentcloud.common import credential
-cred = credential.DefaultCredentialProvider().get_credentials()
+cred = credential.DefaultCredentialProvider().get_credential()
+
+# 使用环境变量
+from tencentcloud.common import credential
+cred = credential.EnvironmentVariableCredential().get_credential()
+
+# 使用配置文件
+from tencentcloud.common import credential
+cred = credential.ProfileCredential().get_credential()
+
+# 使用实例角色
+from tencentcloud.common import credential
+cred = credential.CVMRoleCredential().get_credential()
+
+# 使用TKE OIDC凭证
+from tencentcloud.common import credential
+cred = credential.DefaultTkeOIDCRoleArnProvider().get_credential()
 ```
 
 6. 地域容灾
