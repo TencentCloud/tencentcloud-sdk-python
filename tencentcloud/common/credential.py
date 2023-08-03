@@ -332,6 +332,9 @@ class DefaultCredentialProvider(object):
     def __init__(self):
         self.cred = None
 
+    def get_credential(self):
+        return self.get_credentials()
+
     def get_credentials(self):
         if self.cred is not None:
             return self.cred
@@ -345,6 +348,10 @@ class DefaultCredentialProvider(object):
             return self.cred
 
         self.cred = CVMRoleCredential().get_credential()
+        if self.cred is not None:
+            return self.cred
+
+        self.cred = DefaultTkeOIDCRoleArnProvider().get_credential()
         if self.cred is not None:
             return self.cred
 
@@ -375,6 +382,9 @@ class DefaultTkeOIDCRoleArnProvider(object):
             raise EnvironmentError("TKE_ROLE_ARN not exist")
 
         self.role_session_name = self.default_session_name + str(time.time() * 1e6)  # time in microseconds
+
+    def get_credential(self):
+        return self.get_credentials()
 
     def get_credentials(self):
         return OIDCRoleArnCredential(self.region, self.provider_id, self.web_identity_token, self.role_arn,
