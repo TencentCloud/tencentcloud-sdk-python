@@ -652,7 +652,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscodeByUrl(self, request):
-        """通过文档URL查询转码任务，返回最近的一次转码结果
+        """通过文档URL查询转码任务，返回最近一次的转码任务状态
 
         :param request: Request instance for DescribeTranscodeByUrl.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeByUrlRequest`

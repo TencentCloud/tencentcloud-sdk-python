@@ -2713,9 +2713,9 @@ class CheckCnameStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _RecordNames: 记录名称列表。
+        :param _RecordNames: 加速域名列表。
         :type RecordNames: list of str
         """
         self._ZoneId = None
@@ -2758,7 +2758,7 @@ class CheckCnameStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CnameStatus: 域名Cname状态信息列表。
+        :param _CnameStatus: 加速域名 CNAME 状态信息列表。
         :type CnameStatus: list of CnameStatus
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

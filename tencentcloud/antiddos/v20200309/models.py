@@ -3039,7 +3039,7 @@ class CreateBoundIPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+        :param _Business: DDoS防护子产品代号（bgp表示独享包；bgp-multip表示共享包）
         :type Business: str
         :param _Id: 资源实例ID
         :type Id: str
@@ -4260,7 +4260,7 @@ class CreateNewL7RulesRequest(AbstractModel):
         r"""
         :param _Rules: 规则列表
         :type Rules: list of L7RuleEntry
-        :param _Business: 大禹子产品代号（bgpip表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP）
         :type Business: str
         :param _IdList: 资源ID列表
         :type IdList: list of str
@@ -6348,7 +6348,7 @@ class DescribeBgpBizTrendRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgp-multip表示高防包）
+        :param _Business: DDoS防护子产品代号（bgp-multip表示高防包）
         :type Business: str
         :param _StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
         :type StartTime: str
@@ -6516,7 +6516,7 @@ class DescribeBizHttpStatusRequest(AbstractModel):
         r"""
         :param _Statistics: 统计方式，仅支持sum
         :type Statistics: str
-        :param _Business: 大禹子产品代号（bgpip表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP）
         :type Business: str
         :param _Period: 统计周期，可取值60，300，1800，3600， 21600，86400，单位秒
         :type Period: int
@@ -6675,7 +6675,7 @@ class DescribeBizMonitorTrendRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgpip表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP）
         :type Business: str
         :param _StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
         :type StartTime: str
@@ -6832,7 +6832,7 @@ class DescribeBizTrendRequest(AbstractModel):
         r"""
         :param _Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
         :type Statistics: str
-        :param _Business: 大禹子产品代号（bgpip表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP）
         :type Business: str
         :param _Period: 统计周期，可取值60，300，1800，3600，21600，86400，单位秒
         :type Period: int
@@ -7122,7 +7122,7 @@ class DescribeCCLevelListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgp-multip表示高防包）
+        :param _Business: DDoS防护子产品代号（bgp-multip表示高防包）
         :type Business: str
         :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -7351,7 +7351,7 @@ class DescribeCCPrecisionPlyListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
         :type Business: str
         :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -7510,7 +7510,7 @@ class DescribeCCReqLimitPolicyListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
         :type Business: str
         :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -7669,7 +7669,7 @@ class DescribeCCThresholdListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgp-multip表示高防包）
+        :param _Business: DDoS防护子产品代号（bgp-multip表示高防包）
         :type Business: str
         :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -7792,7 +7792,7 @@ class DescribeCCTrendRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param _Ip: 资源的IP
         :type Ip: str
@@ -8043,7 +8043,7 @@ class DescribeCcBlackWhiteIpListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
         :type Business: str
         :param _InstanceId: 指定特定实例Id
         :type InstanceId: str
@@ -8226,7 +8226,7 @@ class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
         :type Business: str
         :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -11068,7 +11068,7 @@ class DescribeNewL7RulesErrHealthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号(bgpip表示高防IP)
+        :param _Business: DDoS防护子产品代号(bgpip表示高防IP)
         :type Business: str
         :param _RuleIdList: 规则Id列表
         :type RuleIdList: list of str
@@ -11167,7 +11167,7 @@ class DescribeNewL7RulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgpip表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP）
         :type Business: str
         :param _StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
         :type StatusList: list of int non-negative
@@ -11553,7 +11553,7 @@ class DescribeOverviewCCTrendRequest(AbstractModel):
         :type EndTime: str
         :param _MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
         :type MetricName: str
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
         :type Business: str
         :param _IpList: 资源的IP
         :type IpList: list of str
@@ -11842,7 +11842,7 @@ class DescribeOverviewDDoSTrendRequest(AbstractModel):
         :type EndTime: str
         :param _MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
         :type MetricName: str
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
         :type Business: str
         :param _IpList: 资源实例的IP列表
         :type IpList: list of str
@@ -14728,7 +14728,7 @@ class ModifyDDoSLevelRequest(AbstractModel):
         r"""
         :param _Id: 资源ID
         :type Id: str
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
         :type Business: str
         :param _Method: =get表示读取防护等级；=set表示修改防护等级
         :type Method: str
@@ -14921,7 +14921,7 @@ class ModifyDDoSThresholdRequest(AbstractModel):
         :type Threshold: int
         :param _Id: 资源ID
         :type Id: str
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
         :type Business: str
         :param _OtherThresholdFlag: 配置其他阈值标志位，1表示配置其他阈值
         :type OtherThresholdFlag: int
@@ -15215,7 +15215,7 @@ class ModifyNewDomainRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgpip表示高防IP）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP）
         :type Business: str
         :param _Id: 资源ID
         :type Id: str

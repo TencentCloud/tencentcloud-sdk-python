@@ -14885,9 +14885,9 @@ class SourceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: 来源IP
+        :param _Ip: 来源 IP 地址。
         :type Ip: str
-        :param _Conn: 连接数
+        :param _Conn: 客户端连接数量。
         :type Conn: int
         :param _Cmd: 命令
         :type Cmd: int

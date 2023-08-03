@@ -8318,12 +8318,15 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         :type TopicID: str
         :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
         :type Compression: int
+        :param _ConsumerContent: kafka协议消费数据格式
+        :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._TopicID = None
         self._Compression = None
+        self._ConsumerContent = None
         self._RequestId = None
 
     @property
@@ -8351,6 +8354,14 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         self._Compression = Compression
 
     @property
+    def ConsumerContent(self):
+        return self._ConsumerContent
+
+    @ConsumerContent.setter
+    def ConsumerContent(self, ConsumerContent):
+        self._ConsumerContent = ConsumerContent
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8363,6 +8374,9 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         self._Status = params.get("Status")
         self._TopicID = params.get("TopicID")
         self._Compression = params.get("Compression")
+        if params.get("ConsumerContent") is not None:
+            self._ConsumerContent = KafkaConsumerContent()
+            self._ConsumerContent._deserialize(params.get("ConsumerContent"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13890,9 +13904,12 @@ class ModifyKafkaConsumerRequest(AbstractModel):
         :type FromTopicId: str
         :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
         :type Compression: int
+        :param _ConsumerContent: kafka协议消费数据格式
+        :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         """
         self._FromTopicId = None
         self._Compression = None
+        self._ConsumerContent = None
 
     @property
     def FromTopicId(self):
@@ -13910,10 +13927,21 @@ class ModifyKafkaConsumerRequest(AbstractModel):
     def Compression(self, Compression):
         self._Compression = Compression
 
+    @property
+    def ConsumerContent(self):
+        return self._ConsumerContent
+
+    @ConsumerContent.setter
+    def ConsumerContent(self, ConsumerContent):
+        self._ConsumerContent = ConsumerContent
+
 
     def _deserialize(self, params):
         self._FromTopicId = params.get("FromTopicId")
         self._Compression = params.get("Compression")
+        if params.get("ConsumerContent") is not None:
+            self._ConsumerContent = KafkaConsumerContent()
+            self._ConsumerContent._deserialize(params.get("ConsumerContent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15976,7 +16004,7 @@ class ScheduledSqlResouceInfo(AbstractModel):
         r"""
         :param _TopicId: 目标主题id
         :type TopicId: str
-        :param _Region: 主题的的地域信息
+        :param _Region: 主题的地域信息
         :type Region: str
         :param _BizType: 主题类型：0为日志主题，1为指标主题
         :type BizType: int

@@ -15728,7 +15728,7 @@ class RabbitMQPrivateNode(AbstractModel):
 
 
 class RabbitMQPrivateVirtualHost(AbstractModel):
-    """RabbitMQ专享版虚拟机
+    """RabbitMQ专享版云服务器
 
     """
 

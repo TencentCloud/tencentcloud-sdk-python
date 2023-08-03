@@ -561,7 +561,7 @@ class AutoSignConfig(AbstractModel):
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         :param _CallbackUrl: 接受回调URL地址。支持http://或者https://协议
 
-Post数据到此地址后后返回httpcode200表示接受回调成功, 返回其他httpcode表示接受回调失败
+Post数据到此地址后返回httpcode200表示接受回调成功, 返回其他httpcode表示接受回调失败
         :type CallbackUrl: str
         :param _CertInfoCallback: 是否回调证书信息
 false-不需要 (默认值)
@@ -574,7 +574,7 @@ true-需要
         :param _SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64
 
 false-不需要(默认)
-true-需要(
+true-需要
         :type SealImgCallback: bool
         :param _VerifyChannels: 开通时候的验证方式, 分布为
 
@@ -2329,15 +2329,21 @@ class CreateEmbedWebUrlRequest(AbstractModel):
         :param _Operator: 操作者信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _EmbedType: WEB嵌入资源类型。
-<br/>CREATE_SEAL: 创建印章
-<br/>PREVIEW_SEAL_LIST：预览印章列表
-<br/>PREVIEW_SEAL_DETAIL：预览印章详情
-<br/>EXTEND_SERVICE：拓展服务
-<br/>PREVIEW_FLOW：预览合同
-<br/>PREVIEW_FLOW_DETAIL：查看合同详情
+<br/>CREATE_SEAL: 生成创建印章的嵌入页面
+<br/>CREATE_TEMPLATE：生成创建模板的嵌入页面
+<br/>MODIFY_TEMPLATE：生成编辑模板的嵌入页面
+<br/>PREVIEW_TEMPLATE：生成预览模板的嵌入页面
+<br/>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
+<br/>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
+<br/>EXTEND_SERVICE：生成拓展服务的嵌入页面
+<br/>PREVIEW_FLOW：生成预览合同的嵌入页面
+<br/>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面
+
         :type EmbedType: str
         :param _BusinessId: WEB嵌入的业务资源ID
 <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
+<br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模版id
+<br/>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id
         :type BusinessId: str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -3365,10 +3371,10 @@ class CreateFlowOption(AbstractModel):
         :param _CanEditFlow: 是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。
 <br/>true：允许编辑（默认），<br/>false：不允许编辑<br/>默认：false：不允许编辑
         :type CanEditFlow: bool
-        :param _CanEditFormField: 是否允许编辑模版控件
-<br/>true:允许编辑模版控件信息
-<br/>false:不允许编辑模版控件信息
-<br/>默认false:不允许编辑模版控件信息
+        :param _CanEditFormField: 是否允许编辑模板控件
+<br/>true:允许编辑模板控件信息
+<br/>false:不允许编辑模板控件信息
+<br/>默认false:不允许编辑模板控件信息
         :type CanEditFormField: bool
         :param _HideShowFlowName: 发起页面隐藏合同名称展示
 <br/>true:发起页面隐藏合同名称展示
@@ -7811,7 +7817,7 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
 EvidenceStatusExecuting  出证任务在执行中
 EvidenceStatusSuccess  出证任务执行成功
-EvidenceStatusFailed  出征任务执行失败
+EvidenceStatusFailed  出证任务执行失败
         :type Status: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8872,7 +8878,7 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
         :param _JoinedTotal: 已授权待激活的企业数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type JoinedTotal: int
-        :param _ActivedTotal: 已加入的企业数量
+        :param _ActivedTotal: 已加入的企业数量(废弃,请使用ActivatedTotal)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivedTotal: int
         :param _ExportUrl: 导出文件的url
@@ -8881,6 +8887,9 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
         :param _List: 成员企业信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of GroupOrganization
+        :param _ActivatedTotal: 已加入的企业数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivatedTotal: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8889,6 +8898,7 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
         self._ActivedTotal = None
         self._ExportUrl = None
         self._List = None
+        self._ActivatedTotal = None
         self._RequestId = None
 
     @property
@@ -8909,10 +8919,14 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
 
     @property
     def ActivedTotal(self):
+        warnings.warn("parameter `ActivedTotal` is deprecated", DeprecationWarning) 
+
         return self._ActivedTotal
 
     @ActivedTotal.setter
     def ActivedTotal(self, ActivedTotal):
+        warnings.warn("parameter `ActivedTotal` is deprecated", DeprecationWarning) 
+
         self._ActivedTotal = ActivedTotal
 
     @property
@@ -8930,6 +8944,14 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
     @List.setter
     def List(self, List):
         self._List = List
+
+    @property
+    def ActivatedTotal(self):
+        return self._ActivatedTotal
+
+    @ActivatedTotal.setter
+    def ActivatedTotal(self, ActivatedTotal):
+        self._ActivatedTotal = ActivatedTotal
 
     @property
     def RequestId(self):
@@ -8951,6 +8973,7 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
                 obj = GroupOrganization()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._ActivatedTotal = params.get("ActivatedTotal")
         self._RequestId = params.get("RequestId")
 
 
@@ -9474,10 +9497,10 @@ class EmbedUrlOption(AbstractModel):
 <br/>false：不允许在合同详情页展示控件
 <br/>默认false，合同详情页不展示控件
         :type ShowFlowDetailComponent: bool
-        :param _ShowTemplateComponent: 模版预览，允许展示模版控件信息
-<br/>true：允许在模版预览页展示控件
-<br/>false：不允许在模版预览页展示控件
-<br/>默认false，模版预览页不展示控件
+        :param _ShowTemplateComponent: 模板预览，允许展示模板控件信息
+<br/>true：允许在模板预览页展示控件
+<br/>false：不允许在模板预览页展示控件
+<br/>默认false，模板预览页不展示控件
         :type ShowTemplateComponent: bool
         """
         self._ShowFlowDetailComponent = None
@@ -10689,7 +10712,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :param _ApproverIdCardNumber: 签署方经办人证件号码
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中的参与方ID
-<br/>模版发起合同时，该参数为必填项
+<br/>模板发起合同时，该参数为必填项
 <br/>文件发起合同是，该参数无序传值
 
         :type RecipientId: str
@@ -13322,7 +13345,7 @@ ENTERPRISESERVER-企业静默签
 - SIGN_SEAL-默认为印章控件类型
 - SIGN_SIGNATURE-手写签名控件类型
         :type ApproverSignComponentType: str
-        :param _ApproverSignRole: 参与方在合同中的角色是按照创建合同的时候来排序的; 解除协议会将第一个参与人叫甲方, 第二个叫乙方,第三个叫丙方, 依次类推.  如果想改动参与人的角色名字, 可以设置此签署方自定义控件别名字段，最大20个字符
+        :param _ApproverSignRole: 参与方在合同中的角色是按照创建合同的时候来排序的; 解除协议会将第一个参与人叫甲方, 第二个叫乙方,第三个叫丙方，以此类推。  如果想改动参与人的角色名字, 可以设置此签署方自定义控件别名字段，最大20个字符
         :type ApproverSignRole: str
         """
         self._Name = None

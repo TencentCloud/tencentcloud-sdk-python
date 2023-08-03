@@ -177,7 +177,7 @@ class OcrClient(AbstractClient):
 
 
     def BusinessCardOCR(self, request):
-        """本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
+        """本接口支持中英文名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
 
         默认接口请求频率限制：10次/秒。
 
@@ -935,7 +935,9 @@ class OcrClient(AbstractClient):
                 </tr>
                 <tr>
                   <td rowspan="9">告警功能</td>
-                  <td>身份证有效日期不合法告警</td>
+                  <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
+
+        </td>
                 </tr>
                 <tr>
                   <td>身份证边框不完整告警</td>

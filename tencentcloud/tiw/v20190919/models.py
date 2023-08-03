@@ -7579,7 +7579,7 @@ class SnapshotCOS(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: cos所在腾讯云帐号uin
+        :param _Uin: cos所在腾讯云账号uin
         :type Uin: int
         :param _Region: cos所在地区
         :type Region: str
