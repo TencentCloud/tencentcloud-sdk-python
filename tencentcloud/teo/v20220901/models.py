@@ -238,7 +238,8 @@ class AclCondition(AbstractModel):
 <li>idcid：IDC 规则，仅bot自定义规则可用；</li>
 <li>sipbot：搜索引擎规则，仅bot自定义规则可用；</li>
 <li>portrait：画像分析，仅bot自定义规则可用；</li>
-<li>header_seq：请求头顺序，仅bot自定义规则可用。</li>
+<li>header_seq：请求头顺序，仅bot自定义规则可用；</li>
+<li>hdr：请求正文，仅Web防护自定义规则可用。</li>
         :type MatchFrom: str
         :param _MatchParam: 匹配字符串。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
         :type MatchParam: str
@@ -9543,13 +9544,13 @@ class DownloadL4LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间。
         :type EndTime: str
-        :param _ZoneIds: 站点集合，不填默认选择全部站点。
+        :param _ZoneIds: 站点集合，此参数必填，不填默认查询为空。
         :type ZoneIds: list of str
-        :param _ProxyIds: 四层实例ID集合。
+        :param _ProxyIds: 四层实例 ID 集合。
         :type ProxyIds: list of str
-        :param _Limit: 分页查询的限制数目，默认值为20，最大查询条目为1000。
+        :param _Limit: 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
         :type Limit: int
-        :param _Offset: 分页的偏移量，默认值为0。
+        :param _Offset: 分页的偏移量，默认值为 0。
         :type Offset: int
         """
         self._StartTime = None
@@ -9632,25 +9633,16 @@ class DownloadL4LogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 四层离线日志数据列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: list of L4OfflineLog
         :param _TotalCount: 查询结果的总条数。
         :type TotalCount: int
+        :param _Data: 四层离线日志数据列表。
+        :type Data: list of L4OfflineLog
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._Data = None
         self._TotalCount = None
+        self._Data = None
         self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
 
     @property
     def TotalCount(self):
@@ -9659,6 +9651,14 @@ class DownloadL4LogsResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -9670,13 +9670,13 @@ class DownloadL4LogsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):
                 obj = L4OfflineLog()
                 obj._deserialize(item)
                 self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9691,13 +9691,13 @@ class DownloadL7LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间。
         :type EndTime: str
-        :param _ZoneIds: 站点集合，不填默认选择全部站点。
+        :param _ZoneIds: 站点集合，此参数必填，不填默认查询为空。
         :type ZoneIds: list of str
         :param _Domains: 子域名集合，不填默认选择全部子域名。
         :type Domains: list of str
-        :param _Limit: 分页查询的限制数目，默认值为20，最大查询条目为1000。
+        :param _Limit: 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
         :type Limit: int
-        :param _Offset: 分页的偏移量，默认值为0。
+        :param _Offset: 分页的偏移量，默认值为 0。
         :type Offset: int
         """
         self._StartTime = None
@@ -9780,25 +9780,16 @@ class DownloadL7LogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 七层离线日志数据列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: list of L7OfflineLog
         :param _TotalCount: 查询结果的总条数。
         :type TotalCount: int
+        :param _Data: 七层离线日志数据列表。
+        :type Data: list of L7OfflineLog
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._Data = None
         self._TotalCount = None
+        self._Data = None
         self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
 
     @property
     def TotalCount(self):
@@ -9807,6 +9798,14 @@ class DownloadL7LogsResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -9818,13 +9817,13 @@ class DownloadL7LogsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):
                 obj = L7OfflineLog()
                 obj._deserialize(item)
                 self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -11607,36 +11606,33 @@ class L4OfflineLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogTime: 日志打包开始时间。
-        :type LogTime: int
-        :param _ProxyId: 四层实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ProxyId: 四层代理实例 ID。
         :type ProxyId: str
-        :param _Size: 原始大小 单位byte。
-        :type Size: int
-        :param _Url: 下载地址。
-        :type Url: str
-        :param _LogPacketName: 日志数据包名。
-        :type LogPacketName: str
-        :param _Area: 加速区域，取值有：
+        :param _Area: 日志所属区域，取值有：
 <li>mainland：中国大陆境内;</li>
 <li>overseas：全球（不含中国大陆）。</li>
         :type Area: str
+        :param _LogPacketName: 离线日志数据包名。
+        :type LogPacketName: str
+        :param _Url: 离线日志下载地址。
+        :type Url: str
+        :param _LogTime: 日志打包时间，此参数已经废弃。
+        :type LogTime: int
+        :param _LogStartTime: 日志打包开始时间。
+        :type LogStartTime: str
+        :param _LogEndTime: 日志打包结束时间。
+        :type LogEndTime: str
+        :param _Size: 日志大小，单位为 Byte。
+        :type Size: int
         """
-        self._LogTime = None
         self._ProxyId = None
-        self._Size = None
-        self._Url = None
-        self._LogPacketName = None
         self._Area = None
-
-    @property
-    def LogTime(self):
-        return self._LogTime
-
-    @LogTime.setter
-    def LogTime(self, LogTime):
-        self._LogTime = LogTime
+        self._LogPacketName = None
+        self._Url = None
+        self._LogTime = None
+        self._LogStartTime = None
+        self._LogEndTime = None
+        self._Size = None
 
     @property
     def ProxyId(self):
@@ -11647,20 +11643,12 @@ class L4OfflineLog(AbstractModel):
         self._ProxyId = ProxyId
 
     @property
-    def Size(self):
-        return self._Size
+    def Area(self):
+        return self._Area
 
-    @Size.setter
-    def Size(self, Size):
-        self._Size = Size
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
     @property
     def LogPacketName(self):
@@ -11671,21 +11659,55 @@ class L4OfflineLog(AbstractModel):
         self._LogPacketName = LogPacketName
 
     @property
-    def Area(self):
-        return self._Area
+    def Url(self):
+        return self._Url
 
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def LogTime(self):
+        return self._LogTime
+
+    @LogTime.setter
+    def LogTime(self, LogTime):
+        self._LogTime = LogTime
+
+    @property
+    def LogStartTime(self):
+        return self._LogStartTime
+
+    @LogStartTime.setter
+    def LogStartTime(self, LogStartTime):
+        self._LogStartTime = LogStartTime
+
+    @property
+    def LogEndTime(self):
+        return self._LogEndTime
+
+    @LogEndTime.setter
+    def LogEndTime(self, LogEndTime):
+        self._LogEndTime = LogEndTime
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
 
 
     def _deserialize(self, params):
-        self._LogTime = params.get("LogTime")
         self._ProxyId = params.get("ProxyId")
-        self._Size = params.get("Size")
-        self._Url = params.get("Url")
-        self._LogPacketName = params.get("LogPacketName")
         self._Area = params.get("Area")
+        self._LogPacketName = params.get("LogPacketName")
+        self._Url = params.get("Url")
+        self._LogTime = params.get("LogTime")
+        self._LogStartTime = params.get("LogStartTime")
+        self._LogEndTime = params.get("LogEndTime")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11697,41 +11719,39 @@ class L4OfflineLog(AbstractModel):
 
 
 class L7OfflineLog(AbstractModel):
-    """离线日志详细信息
+    """七层离线日志详细信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _LogTime: 日志打包开始时间。
-        :type LogTime: int
-        :param _Domain: 子域名。
+        :param _Domain: 离线日志域名。
         :type Domain: str
-        :param _Size: 原始大小，单位byte。
-        :type Size: int
-        :param _Url: 下载地址。
-        :type Url: str
-        :param _LogPacketName: 日志数据包名。
-        :type LogPacketName: str
-        :param _Area: 加速区域，取值有：
+        :param _Area: 日志所属区域，取值有：
 <li>mainland：中国大陆境内; </li>
 <li>overseas：全球（不含中国大陆）。</li>
         :type Area: str
+        :param _LogPacketName: 离线日志数据包名。	
+        :type LogPacketName: str
+        :param _Url: 离线日志下载地址。	
+        :type Url: str
+        :param _LogTime: 日志打包时间，此参数已经废弃。
+        :type LogTime: int
+        :param _LogStartTime: 日志打包开始时间。
+        :type LogStartTime: str
+        :param _LogEndTime: 日志打包结束时间。
+        :type LogEndTime: str
+        :param _Size: 日志原始大小，单位 Byte。
+        :type Size: int
         """
-        self._LogTime = None
         self._Domain = None
-        self._Size = None
-        self._Url = None
-        self._LogPacketName = None
         self._Area = None
-
-    @property
-    def LogTime(self):
-        return self._LogTime
-
-    @LogTime.setter
-    def LogTime(self, LogTime):
-        self._LogTime = LogTime
+        self._LogPacketName = None
+        self._Url = None
+        self._LogTime = None
+        self._LogStartTime = None
+        self._LogEndTime = None
+        self._Size = None
 
     @property
     def Domain(self):
@@ -11742,20 +11762,12 @@ class L7OfflineLog(AbstractModel):
         self._Domain = Domain
 
     @property
-    def Size(self):
-        return self._Size
+    def Area(self):
+        return self._Area
 
-    @Size.setter
-    def Size(self, Size):
-        self._Size = Size
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
     @property
     def LogPacketName(self):
@@ -11766,21 +11778,55 @@ class L7OfflineLog(AbstractModel):
         self._LogPacketName = LogPacketName
 
     @property
-    def Area(self):
-        return self._Area
+    def Url(self):
+        return self._Url
 
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def LogTime(self):
+        return self._LogTime
+
+    @LogTime.setter
+    def LogTime(self, LogTime):
+        self._LogTime = LogTime
+
+    @property
+    def LogStartTime(self):
+        return self._LogStartTime
+
+    @LogStartTime.setter
+    def LogStartTime(self, LogStartTime):
+        self._LogStartTime = LogStartTime
+
+    @property
+    def LogEndTime(self):
+        return self._LogEndTime
+
+    @LogEndTime.setter
+    def LogEndTime(self, LogEndTime):
+        self._LogEndTime = LogEndTime
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
 
 
     def _deserialize(self, params):
-        self._LogTime = params.get("LogTime")
         self._Domain = params.get("Domain")
-        self._Size = params.get("Size")
-        self._Url = params.get("Url")
-        self._LogPacketName = params.get("LogPacketName")
         self._Area = params.get("Area")
+        self._LogPacketName = params.get("LogPacketName")
+        self._Url = params.get("Url")
+        self._LogTime = params.get("LogTime")
+        self._LogStartTime = params.get("LogStartTime")
+        self._LogEndTime = params.get("LogEndTime")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15525,10 +15571,7 @@ class RateLimitUserRule(AbstractModel):
         :type Period: int
         :param _RuleName: 规则名，只能以英文字符，数字，下划线组合，且不能以下划线开头。
         :type RuleName: str
-        :param _Action: 处置动作，取值有：
-<li>monitor：观察；</li>
-<li>drop：拦截；</li>
-<li>alg：JavaScript挑战。</li>
+        :param _Action: 处置动作，取值有： <li>monitor：观察；</li> <li>drop：拦截；</li> <li>alg：JavaScript挑战。</li>	
         :type Action: str
         :param _PunishTime: 惩罚时长，0-2天。
         :type PunishTime: int
@@ -15545,7 +15588,7 @@ class RateLimitUserRule(AbstractModel):
         :type AclConditions: list of AclCondition
         :param _RulePriority: 规则权重，取值范围0-100。
         :type RulePriority: int
-        :param _RuleID: 规则id。仅出参使用。
+        :param _RuleID: 规则 Id。仅出参使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleID: int
         :param _FreqFields: 过滤词，取值有：
@@ -15555,7 +15598,7 @@ class RateLimitUserRule(AbstractModel):
         :param _UpdateTime: 更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _FreqScope: 统计范围，字段为null时，代表source_to_eo。取值有：
+        :param _FreqScope: 统计范围，字段为 null 时，代表 source_to_eo。取值有：
 <li>source_to_eo：（响应）源站到EdgeOne。</li>
 <li>client_to_eo：（请求）客户端到EdgeOne；</li>
 注意：此字段可能返回 null，表示取不到有效值。

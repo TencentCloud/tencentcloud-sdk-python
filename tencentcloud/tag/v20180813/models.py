@@ -119,11 +119,11 @@ class AddResourceTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: 标签键
+        :param _TagKey: 需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :type TagKey: str
-        :param _TagValue: 标签值
+        :param _TagValue: 需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :type TagValue: str
-        :param _Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
+        :param _Resource: 待关联的资源，用标准的资源六段式表示。正确的资源六段式请参考：https://cloud.tencent.com/document/product/651/89122
         :type Resource: str
         """
         self._TagKey = None
@@ -201,15 +201,15 @@ class AttachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceType: 资源所属业务名称（资源六段式中的第三段）
+        :param _ServiceType: 业务的英文简称，即资源六段式第三段。资源六段式的描述方式参考：https://cloud.tencent.com/document/product/651/89122
         :type ServiceType: str
         :param _ResourceIds: 资源ID数组，资源个数最多为50
         :type ResourceIds: list of str
-        :param _TagKey: 标签键
+        :param _TagKey: 需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :type TagKey: str
-        :param _TagValue: 标签值
+        :param _TagValue: 需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
         :type TagValue: str
-        :param _ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
+        :param _ResourceRegion: 资源所在地域，区分地域的资源必填，不区分地域的资源不需要传入该字段。注意该地域必须为资源ID参数ResourceIds对应的地域
         :type ResourceRegion: str
         :param _ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
         :type ResourcePrefix: str

@@ -4718,7 +4718,7 @@ class DBInstance(AbstractModel):
         :param _SlaveZones: 备可用区信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
-        :param _Architecture: 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点
+        :param _Architecture: 架构标识，SINGLE-单节点 DOUBLE-双节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Architecture: str
         :param _Style: 类型标识，EXCLUSIVE-独享型，SHARED-共享型
@@ -11287,9 +11287,9 @@ class DescribeSlowlogsRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID，形如mssql-k8voqdlz
         :type InstanceId: str
-        :param _StartTime: 查询开始时间
+        :param _StartTime: 开始时间(yyyy-MM-dd HH:mm:ss)
         :type StartTime: str
-        :param _EndTime: 查询结束时间
+        :param _EndTime: 结束时间(yyyy-MM-dd HH:mm:ss)
         :type EndTime: str
         :param _Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
         :type Limit: int
@@ -11768,9 +11768,9 @@ class DescribeXEventsRequest(AbstractModel):
         :type InstanceId: str
         :param _EventType: 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
         :type EventType: str
-        :param _StartTime: 扩展文件生成开始时间
+        :param _StartTime: 扩展文件生成开始时间(yyyy-MM-dd HH:mm:ss)
         :type StartTime: str
-        :param _EndTime: 扩展文件生成结束时间
+        :param _EndTime: 扩展文件生成结束时间(yyyy-MM-dd HH:mm:ss)
         :type EndTime: str
         :param _Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
@@ -15546,7 +15546,7 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _CertificateAttribution: 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认self。
+        :param _CertificateAttribution: 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认取值self。
         :type CertificateAttribution: str
         :param _QuoteUin: 引用的其他主账号ID，当CertificateAttribution 为others时必填。
         :type QuoteUin: str
@@ -17713,7 +17713,7 @@ class RenewDBInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param _Period: 续费多少个月，取值范围为1-48，默认为1
         :type Period: int
-        :param _AutoVoucher: 是否自动使用代金券，0-不使用；1-使用；默认不实用
+        :param _AutoVoucher: 是否自动使用代金券，0-不使用；1-使用；默认不使用
         :type AutoVoucher: int
         :param _VoucherIds: 代金券ID数组，目前只支持使用1张代金券
         :type VoucherIds: list of str
@@ -19592,7 +19592,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type DBVersion: str
         :param _HAType: 升级sqlserver的高可用架构,从镜像容灾升级到always on集群容灾，仅支持2017及以上版本且支持always on高可用的实例，不支持降级到镜像方式容灾，CLUSTER-升级为always on容灾，不填则不修改高可用架构
         :type HAType: str
-        :param _MultiZones: 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为夸可用区
+        :param _MultiZones: 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为跨可用区
         :type MultiZones: str
         :param _WaitSwitch: 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
         :type WaitSwitch: int

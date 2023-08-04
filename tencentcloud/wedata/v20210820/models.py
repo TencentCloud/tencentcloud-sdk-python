@@ -199,6 +199,66 @@ class AdhocRecord(AbstractModel):
         
 
 
+class AgentStatus(AbstractModel):
+    """Agent采集器状态统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Running: 运行中的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Running: int
+        :param _Abnormal: 异常的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Abnormal: int
+        :param _InOperation: 操作中的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InOperation: int
+        """
+        self._Running = None
+        self._Abnormal = None
+        self._InOperation = None
+
+    @property
+    def Running(self):
+        return self._Running
+
+    @Running.setter
+    def Running(self, Running):
+        self._Running = Running
+
+    @property
+    def Abnormal(self):
+        return self._Abnormal
+
+    @Abnormal.setter
+    def Abnormal(self, Abnormal):
+        self._Abnormal = Abnormal
+
+    @property
+    def InOperation(self):
+        return self._InOperation
+
+    @InOperation.setter
+    def InOperation(self, InOperation):
+        self._InOperation = InOperation
+
+
+    def _deserialize(self, params):
+        self._Running = params.get("Running")
+        self._Abnormal = params.get("Abnormal")
+        self._InOperation = params.get("InOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmEventInfo(AbstractModel):
     """告警事件详情
 
@@ -2513,10 +2573,13 @@ class BatchDeleteIntegrationTasksRequest(AbstractModel):
         :type TaskType: int
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _DeleteKFFlag: 是否删除开发态任务。默认不删除开发态，为 0 不删除 , 为 1 删除
+        :type DeleteKFFlag: int
         """
         self._TaskIds = None
         self._TaskType = None
         self._ProjectId = None
+        self._DeleteKFFlag = None
 
     @property
     def TaskIds(self):
@@ -2542,11 +2605,20 @@ class BatchDeleteIntegrationTasksRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def DeleteKFFlag(self):
+        return self._DeleteKFFlag
+
+    @DeleteKFFlag.setter
+    def DeleteKFFlag(self, DeleteKFFlag):
+        self._DeleteKFFlag = DeleteKFFlag
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
+        self._DeleteKFFlag = params.get("DeleteKFFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6572,12 +6644,18 @@ class CommitIntegrationTaskRequest(AbstractModel):
         :type TaskType: int
         :param _ExtConfig: 额外参数
         :type ExtConfig: list of RecordField
+        :param _VersionDesc: 提交版本描述
+        :type VersionDesc: str
+        :param _InstanceVersion: 提交版本号
+        :type InstanceVersion: int
         """
         self._TaskId = None
         self._ProjectId = None
         self._CommitType = None
         self._TaskType = None
         self._ExtConfig = None
+        self._VersionDesc = None
+        self._InstanceVersion = None
 
     @property
     def TaskId(self):
@@ -6619,6 +6697,22 @@ class CommitIntegrationTaskRequest(AbstractModel):
     def ExtConfig(self, ExtConfig):
         self._ExtConfig = ExtConfig
 
+    @property
+    def VersionDesc(self):
+        return self._VersionDesc
+
+    @VersionDesc.setter
+    def VersionDesc(self, VersionDesc):
+        self._VersionDesc = VersionDesc
+
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -6631,6 +6725,8 @@ class CommitIntegrationTaskRequest(AbstractModel):
                 obj = RecordField()
                 obj._deserialize(item)
                 self._ExtConfig.append(obj)
+        self._VersionDesc = params.get("VersionDesc")
+        self._InstanceVersion = params.get("InstanceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12679,10 +12775,21 @@ class DeleteIntegrationTaskResponse(AbstractModel):
         r"""
         :param _Data: 任务删除成功与否标识
         :type Data: bool
+        :param _DeleteFlag: 任务删除成功与否标识
+0表示删除成功
+1 表示失败，失败原因见 DeleteErrInfo
+100 表示running or suspend task can't be deleted失败，失败原因也会写到DeleteErrInfo里面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteFlag: int
+        :param _DeleteErrInfo: 删除失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteErrInfo: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._DeleteFlag = None
+        self._DeleteErrInfo = None
         self._RequestId = None
 
     @property
@@ -12692,6 +12799,22 @@ class DeleteIntegrationTaskResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def DeleteFlag(self):
+        return self._DeleteFlag
+
+    @DeleteFlag.setter
+    def DeleteFlag(self, DeleteFlag):
+        self._DeleteFlag = DeleteFlag
+
+    @property
+    def DeleteErrInfo(self):
+        return self._DeleteErrInfo
+
+    @DeleteErrInfo.setter
+    def DeleteErrInfo(self, DeleteErrInfo):
+        self._DeleteErrInfo = DeleteErrInfo
 
     @property
     def RequestId(self):
@@ -12704,6 +12827,8 @@ class DeleteIntegrationTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._DeleteFlag = params.get("DeleteFlag")
+        self._DeleteErrInfo = params.get("DeleteErrInfo")
         self._RequestId = params.get("RequestId")
 
 
@@ -22841,10 +22966,13 @@ class DescribeIntegrationTaskRequest(AbstractModel):
         :type ProjectId: str
         :param _TaskType: 任务类型：201. stream,   202. offline
         :type TaskType: int
+        :param _InstanceVersion: 提交版本号
+        :type InstanceVersion: int
         """
         self._TaskId = None
         self._ProjectId = None
         self._TaskType = None
+        self._InstanceVersion = None
 
     @property
     def TaskId(self):
@@ -22870,11 +22998,20 @@ class DescribeIntegrationTaskRequest(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._ProjectId = params.get("ProjectId")
         self._TaskType = params.get("TaskType")
+        self._InstanceVersion = params.get("InstanceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22895,10 +23032,18 @@ class DescribeIntegrationTaskResponse(AbstractModel):
         :param _TaskInfo: 任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskInfo: :class:`tencentcloud.wedata.v20210820.models.IntegrationTaskInfo`
+        :param _AgentStatus: 采集器统计信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentStatus: :class:`tencentcloud.wedata.v20210820.models.AgentStatus`
+        :param _TaskVersion: 任务版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskVersion: :class:`tencentcloud.wedata.v20210820.models.TaskVersionInstance`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskInfo = None
+        self._AgentStatus = None
+        self._TaskVersion = None
         self._RequestId = None
 
     @property
@@ -22908,6 +23053,22 @@ class DescribeIntegrationTaskResponse(AbstractModel):
     @TaskInfo.setter
     def TaskInfo(self, TaskInfo):
         self._TaskInfo = TaskInfo
+
+    @property
+    def AgentStatus(self):
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def TaskVersion(self):
+        return self._TaskVersion
+
+    @TaskVersion.setter
+    def TaskVersion(self, TaskVersion):
+        self._TaskVersion = TaskVersion
 
     @property
     def RequestId(self):
@@ -22922,6 +23083,12 @@ class DescribeIntegrationTaskResponse(AbstractModel):
         if params.get("TaskInfo") is not None:
             self._TaskInfo = IntegrationTaskInfo()
             self._TaskInfo._deserialize(params.get("TaskInfo"))
+        if params.get("AgentStatus") is not None:
+            self._AgentStatus = AgentStatus()
+            self._AgentStatus._deserialize(params.get("AgentStatus"))
+        if params.get("TaskVersion") is not None:
+            self._TaskVersion = TaskVersionInstance()
+            self._TaskVersion._deserialize(params.get("TaskVersion"))
         self._RequestId = params.get("RequestId")
 
 
@@ -42824,6 +42991,15 @@ class IntegrationTaskInfo(AbstractModel):
         :param _TaskAlarmRegularList: 该任务关联的告警规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAlarmRegularList: list of str
+        :param _SwitchResource: 资源分层情况： 0：进行中,1：成功 ,2：失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchResource: int
+        :param _ReadPhase: 读取阶段：0：全部全量,1：部分全量,2：全部增量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadPhase: int
+        :param _InstanceVersion: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceVersion: int
         """
         self._TaskName = None
         self._Description = None
@@ -42869,6 +43045,9 @@ class IntegrationTaskInfo(AbstractModel):
         self._Locker = None
         self._RunningCu = None
         self._TaskAlarmRegularList = None
+        self._SwitchResource = None
+        self._ReadPhase = None
+        self._InstanceVersion = None
 
     @property
     def TaskName(self):
@@ -43222,6 +43401,30 @@ class IntegrationTaskInfo(AbstractModel):
     def TaskAlarmRegularList(self, TaskAlarmRegularList):
         self._TaskAlarmRegularList = TaskAlarmRegularList
 
+    @property
+    def SwitchResource(self):
+        return self._SwitchResource
+
+    @SwitchResource.setter
+    def SwitchResource(self, SwitchResource):
+        self._SwitchResource = SwitchResource
+
+    @property
+    def ReadPhase(self):
+        return self._ReadPhase
+
+    @ReadPhase.setter
+    def ReadPhase(self, ReadPhase):
+        self._ReadPhase = ReadPhase
+
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -43295,6 +43498,9 @@ class IntegrationTaskInfo(AbstractModel):
         self._Locker = params.get("Locker")
         self._RunningCu = params.get("RunningCu")
         self._TaskAlarmRegularList = params.get("TaskAlarmRegularList")
+        self._SwitchResource = params.get("SwitchResource")
+        self._ReadPhase = params.get("ReadPhase")
+        self._InstanceVersion = params.get("InstanceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65927,6 +66133,105 @@ class TaskTypeOpsDto(AbstractModel):
         self._TypeDesc = params.get("TypeDesc")
         self._TypeId = params.get("TypeId")
         self._TypeSort = params.get("TypeSort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskVersionInstance(AbstractModel):
+    """任务实例基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceVersion: 实例版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceVersion: int
+        :param _VersionDesc: 实例描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionDesc: str
+        :param _ChangeType: 0, "新增"，1, "修改"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeType: int
+        :param _SubmitterUin: 版本提交人UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubmitterUin: str
+        :param _InstanceDate: 提交日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceDate: str
+        :param _InstanceStatus: 0, "未启用"，1, "启用(生产态)"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStatus: int
+        """
+        self._InstanceVersion = None
+        self._VersionDesc = None
+        self._ChangeType = None
+        self._SubmitterUin = None
+        self._InstanceDate = None
+        self._InstanceStatus = None
+
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
+    @property
+    def VersionDesc(self):
+        return self._VersionDesc
+
+    @VersionDesc.setter
+    def VersionDesc(self, VersionDesc):
+        self._VersionDesc = VersionDesc
+
+    @property
+    def ChangeType(self):
+        return self._ChangeType
+
+    @ChangeType.setter
+    def ChangeType(self, ChangeType):
+        self._ChangeType = ChangeType
+
+    @property
+    def SubmitterUin(self):
+        return self._SubmitterUin
+
+    @SubmitterUin.setter
+    def SubmitterUin(self, SubmitterUin):
+        self._SubmitterUin = SubmitterUin
+
+    @property
+    def InstanceDate(self):
+        return self._InstanceDate
+
+    @InstanceDate.setter
+    def InstanceDate(self, InstanceDate):
+        self._InstanceDate = InstanceDate
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+
+    def _deserialize(self, params):
+        self._InstanceVersion = params.get("InstanceVersion")
+        self._VersionDesc = params.get("VersionDesc")
+        self._ChangeType = params.get("ChangeType")
+        self._SubmitterUin = params.get("SubmitterUin")
+        self._InstanceDate = params.get("InstanceDate")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

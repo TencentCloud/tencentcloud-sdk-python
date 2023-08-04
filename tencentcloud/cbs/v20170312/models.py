@@ -4204,21 +4204,13 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Values: 一个或者多个过滤值。
-        :type Values: list of str
         :param _Name: 过滤键的名称。
         :type Name: str
+        :param _Values: 一个或者多个过滤值。
+        :type Values: list of str
         """
-        self._Values = None
         self._Name = None
-
-    @property
-    def Values(self):
-        return self._Values
-
-    @Values.setter
-    def Values(self, Values):
-        self._Values = Values
+        self._Values = None
 
     @property
     def Name(self):
@@ -4228,10 +4220,18 @@ class Filter(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
 
     def _deserialize(self, params):
-        self._Values = params.get("Values")
         self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

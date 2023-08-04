@@ -7312,6 +7312,12 @@ class NamespaceResourceEnvTKE(AbstractModel):
         :param _Port: scf组件将占用的节点端口起始号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
+        :param _PodTemplatePatch: yaml格式的pod patch内容，例如
+metadata:
+  labels:
+    key: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodTemplatePatch: str
         """
         self._ClusterID = None
         self._SubnetID = None
@@ -7320,6 +7326,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
         self._NodeSelector = None
         self._Tolerations = None
         self._Port = None
+        self._PodTemplatePatch = None
 
     @property
     def ClusterID(self):
@@ -7377,6 +7384,14 @@ class NamespaceResourceEnvTKE(AbstractModel):
     def Port(self, Port):
         self._Port = Port
 
+    @property
+    def PodTemplatePatch(self):
+        return self._PodTemplatePatch
+
+    @PodTemplatePatch.setter
+    def PodTemplatePatch(self, PodTemplatePatch):
+        self._PodTemplatePatch = PodTemplatePatch
+
 
     def _deserialize(self, params):
         self._ClusterID = params.get("ClusterID")
@@ -7396,6 +7411,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
                 obj._deserialize(item)
                 self._Tolerations.append(obj)
         self._Port = params.get("Port")
+        self._PodTemplatePatch = params.get("PodTemplatePatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

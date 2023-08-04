@@ -42,7 +42,6 @@ class BRIRequest(AbstractModel):
         :param _Scene: 业务场景 (1-注册, 2-登录, 3-发消息)
         :type Scene: str
         :param _PhoneNumber: 电话号码 (业务名为bri_num时必填)
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneNumber: str
         :param _FileSize: Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
         :type FileSize: int
@@ -54,6 +53,8 @@ class BRIRequest(AbstractModel):
         :type Wechat: str
         :param _WechatTag: 微信号的可疑标签
         :type WechatTag: str
+        :param _SubAppid: 子客户ID
+        :type SubAppid: str
         """
         self._Service = None
         self._QQ = None
@@ -69,6 +70,7 @@ class BRIRequest(AbstractModel):
         self._Imei = None
         self._Wechat = None
         self._WechatTag = None
+        self._SubAppid = None
 
     @property
     def Service(self):
@@ -182,6 +184,14 @@ class BRIRequest(AbstractModel):
     def WechatTag(self, WechatTag):
         self._WechatTag = WechatTag
 
+    @property
+    def SubAppid(self):
+        return self._SubAppid
+
+    @SubAppid.setter
+    def SubAppid(self, SubAppid):
+        self._SubAppid = SubAppid
+
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
@@ -198,6 +208,7 @@ class BRIRequest(AbstractModel):
         self._Imei = params.get("Imei")
         self._Wechat = params.get("Wechat")
         self._WechatTag = params.get("WechatTag")
+        self._SubAppid = params.get("SubAppid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -47939,7 +47939,7 @@ class ReviewAudioVideoRequest(AbstractModel):
 不填或填空数组时，默认为审核 Media。
         :type ReviewContents: list of str
         :param _Definition: 审核模板 ID，默认值为 10。取值范围：
-<li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
+<li>10：[预置模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E9.9F.B3.E8.A7.86.E9.A2.91.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF.5B.5D(id.3Averify))，支持检测的违规标签包括色情（Porn）、暴力（Terror）、不适宜的信息（Polity）和娇喘（Moan）。</li>
         :type Definition: int
         :param _TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int

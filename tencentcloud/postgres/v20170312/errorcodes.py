@@ -119,6 +119,9 @@ FAILEDOPERATION_MODIFYROGROUPERROR = 'FailedOperation.ModifyROGroupError'
 # 不符合资源所拥有的网络数量要求。
 FAILEDOPERATION_NETWORKNUMLIMITERROR = 'FailedOperation.NetworkNumLimitError'
 
+# 实例无可用备机
+FAILEDOPERATION_NOAVAILABLESTANDBY = 'FailedOperation.NoAvailableStandby'
+
 # 操作超过频率限制，请稍后重试。如果持续不成功，请联系客服进行处理。
 FAILEDOPERATION_OPERATEFREQUENCYLIMITEDERROR = 'FailedOperation.OperateFrequencyLimitedError'
 
@@ -287,6 +290,9 @@ INVALIDPARAMETER_INSTANCENAMEEXIST = 'InvalidParameter.InstanceNameExist'
 # 参数检查失败。
 INVALIDPARAMETER_PARAMETERCHECKERROR = 'InvalidParameter.ParameterCheckError'
 
+# 参数不可全部不设置
+INVALIDPARAMETER_PARAMETERSNOTSET = 'InvalidParameter.ParametersNotSet'
+
 # pid错误。
 INVALIDPARAMETER_TRADEACCESSDENIEDERROR = 'InvalidParameter.TradeAccessDeniedError'
 
@@ -401,6 +407,9 @@ INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = 'InvalidParameterValue.ParameterHan
 # 参数长度超过限制。
 INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = 'InvalidParameterValue.ParameterLengthLimitError'
 
+# 参数超出可设置范围
+INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = 'InvalidParameterValue.ParameterOutOfRange'
+
 # 存在无效的参数值。
 INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = 'InvalidParameterValue.ParameterOutRangeError'
 
@@ -451,6 +460,9 @@ OPERATIONDENIED_INSTANCESTATUSLIMITERROR = 'OperationDenied.InstanceStatusLimitE
 
 # 实例状态限制当前操作。
 OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = 'OperationDenied.InstanceStatusLimitOpError'
+
+# 实例类型错误
+OPERATIONDENIED_INSTANCETYPEDENIED = 'OperationDenied.InstanceTypeDenied'
 
 # Serverless不支持当前可用区。
 OPERATIONDENIED_NOTSUPPORTZONEERROR = 'OperationDenied.NotSupportZoneError'

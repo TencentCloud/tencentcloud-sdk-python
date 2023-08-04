@@ -787,6 +787,31 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceHAConfig(self, request):
+        """本接口（DescribeDBInstanceHAConfig）用于查询实例HA配置信息。其中HA配置信息包括：
+        <li>允许备节点切换为主节点的条件配置
+        <li>半同步实例使用同步复制或异步复制的条件配置
+
+        :param request: Request instance for DescribeDBInstanceHAConfig.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceHAConfigRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceHAConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceHAConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceHAConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstanceParameters(self, request):
         """本接口（DescribeDBInstanceAttribute）用于查询实例的参数信息。
 
@@ -1569,6 +1594,31 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstanceHAConfig(self, request):
+        """本接口（ModifyDBInstanceHAConfig）用于修改实例HA配置信息。其中HA配置信息包括：
+        <li>允许备节点切换为主节点的条件配置
+        <li>半同步实例使用同步复制或异步复制的条件配置
+
+        :param request: Request instance for ModifyDBInstanceHAConfig.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceHAConfigRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceHAConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceHAConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceHAConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceName(self, request):
         """本接口（ModifyDBInstanceName）用于修改postgresql实例名字。
 
@@ -1951,6 +2001,32 @@ class PostgresClient(AbstractClient):
             body = self.call("SetAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             model = models.SetAutoRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchDBInstancePrimary(self, request):
+        """本接口（SwitchDBInstancePrimary）用于切换实例主备关系。
+        <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景
+        <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换
+        <li>只有主实例可以执行该操作
+
+        :param request: Request instance for SwitchDBInstancePrimary.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.SwitchDBInstancePrimaryRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.SwitchDBInstancePrimaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchDBInstancePrimary", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchDBInstancePrimaryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

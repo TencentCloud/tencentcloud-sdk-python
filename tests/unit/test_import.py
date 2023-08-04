@@ -709,6 +709,11 @@ def test_import_irp():
     from tencentcloud.irp.v20220805 import models
 
 
+def test_import_iss():
+    from tencentcloud.iss.v20230517 import iss_client
+    from tencentcloud.iss.v20230517 import models
+
+
 def test_import_ivld():
     from tencentcloud.ivld.v20210903 import ivld_client
     from tencentcloud.ivld.v20210903 import models

@@ -6303,6 +6303,138 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceHAConfigRequest(AbstractModel):
+    """DescribeDBInstanceHAConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        """
+        self._DBInstanceId = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceHAConfigResponse(AbstractModel):
+    """DescribeDBInstanceHAConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SyncMode: 主从同步方式：
+<li>Semi-sync：半同步
+<li>Async：异步
+        :type SyncMode: str
+        :param _MaxStandbyLatency: 高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
+<li>单位：byte
+<li>参数范围：[1073741824, 322122547200]
+        :type MaxStandbyLatency: int
+        :param _MaxStandbyLag: 高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
+<li>单位：s
+<li>参数范围：[5, 10]
+        :type MaxStandbyLag: int
+        :param _MaxSyncStandbyLatency: 同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
+该参数值针对SyncMode设置为Semi-sync的实例有效。
+异步实例该字段返回null。
+半同步实例禁止退化为异步复制时，该字段返回null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSyncStandbyLatency: int
+        :param _MaxSyncStandbyLag: 同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
+该参数值针对SyncMode设置为Semi-sync的实例有效。
+异步实例不返回该字段。
+半同步实例禁止退化为异步复制时，不返回该字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSyncStandbyLag: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SyncMode = None
+        self._MaxStandbyLatency = None
+        self._MaxStandbyLag = None
+        self._MaxSyncStandbyLatency = None
+        self._MaxSyncStandbyLag = None
+        self._RequestId = None
+
+    @property
+    def SyncMode(self):
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def MaxStandbyLatency(self):
+        return self._MaxStandbyLatency
+
+    @MaxStandbyLatency.setter
+    def MaxStandbyLatency(self, MaxStandbyLatency):
+        self._MaxStandbyLatency = MaxStandbyLatency
+
+    @property
+    def MaxStandbyLag(self):
+        return self._MaxStandbyLag
+
+    @MaxStandbyLag.setter
+    def MaxStandbyLag(self, MaxStandbyLag):
+        self._MaxStandbyLag = MaxStandbyLag
+
+    @property
+    def MaxSyncStandbyLatency(self):
+        return self._MaxSyncStandbyLatency
+
+    @MaxSyncStandbyLatency.setter
+    def MaxSyncStandbyLatency(self, MaxSyncStandbyLatency):
+        self._MaxSyncStandbyLatency = MaxSyncStandbyLatency
+
+    @property
+    def MaxSyncStandbyLag(self):
+        return self._MaxSyncStandbyLag
+
+    @MaxSyncStandbyLag.setter
+    def MaxSyncStandbyLag(self, MaxSyncStandbyLag):
+        self._MaxSyncStandbyLag = MaxSyncStandbyLag
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SyncMode = params.get("SyncMode")
+        self._MaxStandbyLatency = params.get("MaxStandbyLatency")
+        self._MaxStandbyLag = params.get("MaxStandbyLag")
+        self._MaxSyncStandbyLatency = params.get("MaxSyncStandbyLatency")
+        self._MaxSyncStandbyLag = params.get("MaxSyncStandbyLag")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceParametersRequest(AbstractModel):
     """DescribeDBInstanceParameters请求参数结构体
 
@@ -10731,6 +10863,137 @@ class ModifyDBInstanceDeploymentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceHAConfigRequest(AbstractModel):
+    """ModifyDBInstanceHAConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param _SyncMode: 主从同步方式：
+<li>Semi-sync：半同步
+<li>Async：异步
+
+        :type SyncMode: str
+        :param _MaxStandbyLatency: 高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
+<li>单位：byte
+<li>参数范围：[1073741824, 322122547200]
+        :type MaxStandbyLatency: int
+        :param _MaxStandbyLag: 高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
+<li>单位：s
+<li>参数范围：[5, 10]
+        :type MaxStandbyLag: int
+        :param _MaxSyncStandbyLatency: 同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
+该参数值针对SyncMode设置为Semi-sync的实例有效。
+半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+        :type MaxSyncStandbyLatency: int
+        :param _MaxSyncStandbyLag: 同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
+该参数值针对SyncMode设置为Semi-sync的实例有效。
+半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag，
+        :type MaxSyncStandbyLag: int
+        """
+        self._DBInstanceId = None
+        self._SyncMode = None
+        self._MaxStandbyLatency = None
+        self._MaxStandbyLag = None
+        self._MaxSyncStandbyLatency = None
+        self._MaxSyncStandbyLag = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def SyncMode(self):
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def MaxStandbyLatency(self):
+        return self._MaxStandbyLatency
+
+    @MaxStandbyLatency.setter
+    def MaxStandbyLatency(self, MaxStandbyLatency):
+        self._MaxStandbyLatency = MaxStandbyLatency
+
+    @property
+    def MaxStandbyLag(self):
+        return self._MaxStandbyLag
+
+    @MaxStandbyLag.setter
+    def MaxStandbyLag(self, MaxStandbyLag):
+        self._MaxStandbyLag = MaxStandbyLag
+
+    @property
+    def MaxSyncStandbyLatency(self):
+        return self._MaxSyncStandbyLatency
+
+    @MaxSyncStandbyLatency.setter
+    def MaxSyncStandbyLatency(self, MaxSyncStandbyLatency):
+        self._MaxSyncStandbyLatency = MaxSyncStandbyLatency
+
+    @property
+    def MaxSyncStandbyLag(self):
+        return self._MaxSyncStandbyLag
+
+    @MaxSyncStandbyLag.setter
+    def MaxSyncStandbyLag(self, MaxSyncStandbyLag):
+        self._MaxSyncStandbyLag = MaxSyncStandbyLag
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._SyncMode = params.get("SyncMode")
+        self._MaxStandbyLatency = params.get("MaxStandbyLatency")
+        self._MaxStandbyLag = params.get("MaxStandbyLag")
+        self._MaxSyncStandbyLatency = params.get("MaxSyncStandbyLatency")
+        self._MaxSyncStandbyLag = params.get("MaxSyncStandbyLag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceHAConfigResponse(AbstractModel):
+    """ModifyDBInstanceHAConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName请求参数结构体
 
@@ -14688,6 +14951,117 @@ class SpecItemInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchDBInstancePrimaryRequest(AbstractModel):
+    """SwitchDBInstancePrimary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param _Force: 是否强制切换。强制切换时只要备节点可访问，无论主备延迟多大都会发起切换。只有SwitchTag为0时，才可使用立即切换。
+<li>默认：false
+        :type Force: bool
+        :param _SwitchTag: 指定实例配置完成变更后的切换时间。
+<li>0：立即切换 
+<li>1：指定时间切换
+<li>2：维护时间窗口内切换
+<li>默认值：0 
+        :type SwitchTag: int
+        :param _SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
+        :type SwitchEndTime: str
+        """
+        self._DBInstanceId = None
+        self._Force = None
+        self._SwitchTag = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def Force(self):
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+    @property
+    def SwitchTag(self):
+        return self._SwitchTag
+
+    @SwitchTag.setter
+    def SwitchTag(self, SwitchTag):
+        self._SwitchTag = SwitchTag
+
+    @property
+    def SwitchStartTime(self):
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._Force = params.get("Force")
+        self._SwitchTag = params.get("SwitchTag")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDBInstancePrimaryResponse(AbstractModel):
+    """SwitchDBInstancePrimary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Tag(AbstractModel):
