@@ -1224,6 +1224,11 @@ def test_import_trdp():
     from tencentcloud.trdp.v20220726 import models
 
 
+def test_import_trocket():
+    from tencentcloud.trocket.v20230308 import trocket_client
+    from tencentcloud.trocket.v20230308 import models
+
+
 def test_import_trp():
     from tencentcloud.trp.v20210515 import trp_client
     from tencentcloud.trp.v20210515 import models
